@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hive-news-backend
+  namespace: hivenews
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hive-news-backend
+  template:
+    metadata:
+      labels:
+        app: hive-news-backend
+    spec:
+      containers:
+      - name: backend
+        image: hivenews/backend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: hivenews-secrets
+              key: database_url
+        - name: DEEPSEEK_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: hivenews-secrets
+              key: deepseek_api_key
+        - name: VECTORIZER_URL
+          value: "http://vectorizer:15002"
+        - name: SYNAP_URL
+          value: "http://synap:15500"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hive-news-backend
+  namespace: hivenews
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: hive-news-backend
+
+

@@ -1,0 +1,39 @@
+{
+  "name": "hive-news",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.2.4",
+  "workspaces": [
+    "apps/backend-cmmv",
+    "apps/frontend-next/AIResearch",
+    "apps/frontend-next/ScienceAI",
+    "apps/gui"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:frontend": "turbo run dev --filter='frontend-next-*'",
+    "dev:backend": "turbo run dev --filter='backend-cmmv'",
+    "dev:gui": "turbo run dev --filter='gui'",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "test": "turbo run test",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:e2e": "turbo run test:e2e",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "type-check": "turbo run type-check",
+    "coverage": "turbo run coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.3",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.1",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
