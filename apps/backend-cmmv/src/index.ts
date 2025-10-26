@@ -4,6 +4,8 @@
  */
 
 import "reflect-metadata";
+import { Application } from "@cmmv/core";
+import { DefaultAdapter, DefaultHTTPModule } from "@cmmv/http";
 
 // Services
 import { ProfileLoaderService } from "./services/profile-loader.service";
@@ -20,11 +22,41 @@ import { SchedulerService } from "./services/scheduler.service";
 import { MetricsService } from "./services/metrics.service";
 import { QAValidatorService } from "./services/qa-validator.service";
 
+// Controllers
+import { ArticlesController } from "./controllers/articles.controller";
+import { SourcesController } from "./controllers/sources.controller";
+
+// Contracts
+import { Article } from "./contracts/article.contract";
+import { Source } from "./contracts/source.contract";
+
 /**
  * Application entry point
  */
 console.log("🚀 Hive-News Backend Starting...");
-console.log("⚠️  CMMV Application requires HTTP controllers");
-console.log("📝 TODO: Implement REST API controllers");
-console.log("✅ Services initialized");
-console.log("🌐 Ready to accept connections");
+
+// Initialize CMMV Application
+Application.create({
+  httpAdapter: DefaultAdapter,
+  modules: [DefaultHTTPModule],
+  providers: [
+    ProfileLoaderService,
+    StyleSystemService,
+    CronValidatorService,
+    RSSParserService,
+    APICollectorService,
+    HTMLScraperService,
+    SourceManagerService,
+    MetadataExtractorService,
+    RankerService,
+    PublisherService,
+    SchedulerService,
+    MetricsService,
+    QAValidatorService,
+  ],
+  controllers: [ArticlesController, SourcesController],
+  contracts: [Article, Source],
+});
+
+console.log("✅ Hive-News Backend initialized");
+console.log("🌐 Server listening on http://localhost:3000");
