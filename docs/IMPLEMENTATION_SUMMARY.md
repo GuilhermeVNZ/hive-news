@@ -152,6 +152,7 @@ tests/
 ### 🚧 Phase 2: CMMV Configuration (IN PROGRESS)
 
 **Goal:** Configure CMMV to auto-generate:
+
 - ORM Entities
 - REST API Controllers
 - RPC Endpoints

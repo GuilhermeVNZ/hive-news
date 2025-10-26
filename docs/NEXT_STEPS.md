@@ -19,6 +19,7 @@ Baseado na consulta ao ROADMAP e arquitetura atual do projeto, identifiquei as t
 **Status:** ⚠️ **REQUIRED FOR PRODUCTION**
 
 **Why Critical:**
+
 - 12 CMMV contracts criados ✅
 - Services implementados ✅
 - MAS: APIs REST não geradas automaticamente ainda
@@ -41,6 +42,7 @@ News-main/docs/ROADMAP.md (linhas 279-336)
 ```
 
 **Impact:**
+
 - Sem isto: Frontend não consegue consumir APIs
 - Com isto: REST APIs auto-geradas para todos os 12 contracts
 - **Effort:** 2-3 semanas
@@ -54,6 +56,7 @@ News-main/docs/ROADMAP.md (linhas 279-336)
 **Status:** 🟡 **ENHANCEMENT NEEDED**
 
 **Why Important:**
+
 - Scientific Validation module implementado ✅
 - MAS: Usando placeholders para validações reais
 - APIs reais necessárias para produção
@@ -68,7 +71,7 @@ News-main/docs/ROADMAP.md (linhas 279-336)
 - [ ] Check impact factor
 - [ ] Verify citation references (5 tasks)
 
-// 2. ORCID API Integration  
+// 2. ORCID API Integration
 - [ ] Setup ORCID credentials
 - [ ] Query author profiles
 - [ ] Verify publication history
@@ -87,6 +90,7 @@ News-main/docs/ROADMAP.md (linhas 279-336)
 ```
 
 **Impact:**
+
 - Sem isto: Validação científica funciona mas com heurísticas básicas
 - Com isto: Validação com APIs reais, alta precisão
 - **Effort:** 1-2 semanas

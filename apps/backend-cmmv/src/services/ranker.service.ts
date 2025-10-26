@@ -33,12 +33,8 @@ export interface ScientificValidationInfo {
 }
 
 export class RankerService {
-  private readonly WEIGHTS = {
-    freshness: 0.4,
-    relevance: 0.3,
-    trend: 0.2,
-    socialSignal: 0.1,
-  };
+  // Weights are now defined inline in calculateRank() method
+  // to match the enhanced formula with Scientific Validation
 
   /**
    * Calculate freshness score (0-1)
@@ -167,11 +163,11 @@ export class RankerService {
 
     // Base rank calculation with Scientific Validation 🧬
     let finalRank =
-      freshness * 0.35 +           // Reduced from 0.4 to accommodate validation
-      relevance * 0.25 +          // Reduced from 0.3 to accommodate validation
-      trend * 0.20 +               // Reduced from 0.2
-      socialSignal * 0.10 +
-      (scientificValidation?.validation_score ?? 1.0) * 0.10; // Scientific Validation (10%)
+      freshness * 0.35 + // Reduced from 0.4 to accommodate validation
+      relevance * 0.25 + // Reduced from 0.3 to accommodate validation
+      trend * 0.2 + // Reduced from 0.2
+      socialSignal * 0.1 +
+      (scientificValidation?.validation_score ?? 1.0) * 0.1; // Scientific Validation (10%)
 
     // Apply QA penalty if validation info is provided
     let qaPenalty = 1.0;

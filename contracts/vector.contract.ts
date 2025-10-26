@@ -59,3 +59,4 @@ export class VectorContract {
   })
   created_at: Date;
 }
+

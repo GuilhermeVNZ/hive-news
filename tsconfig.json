@@ -28,3 +28,4 @@
   "include": ["src/**/*", "apps/**/*", "contracts/**/*", "configs/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist", ".next", "build"]
 }
+

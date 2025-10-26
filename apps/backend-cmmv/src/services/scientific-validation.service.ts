@@ -36,10 +36,7 @@ export class ScientificValidationService {
    * Main validation method
    * Conditionally validates only academic sources
    */
-  async validate(
-    article: ArticleMeta,
-    config: PortalConfig
-  ): Promise<ScientificValidationResult> {
+  async validate(article: ArticleMeta, config: PortalConfig): Promise<ScientificValidationResult> {
     // Skip validation if disabled or not academic source
     if (!config.enable_scientific_validation) {
       return this.defaultPass(article);
@@ -106,18 +103,18 @@ export class ScientificValidationService {
     // - Query DOI metadata
     // - Check journal impact factor
     // - Verify conference rankings
-    
+
     // Placeholder: Basic heuristics
     const highReputationDomains = ["nature.com", "science.org", "cell.com", "arxiv.org"];
     const mediumReputationDomains = ["ieee.org", "acm.org", "springer.com"];
-    
-    if (highReputationDomains.some(domain => source.includes(domain))) {
+
+    if (highReputationDomains.some((domain) => source.includes(domain))) {
       return 0.9;
     }
-    if (mediumReputationDomains.some(domain => source.includes(domain))) {
+    if (mediumReputationDomains.some((domain) => source.includes(domain))) {
       return 0.7;
     }
-    
+
     return 0.5; // Default for unknown sources
   }
 
@@ -130,16 +127,16 @@ export class ScientificValidationService {
     // Extract citations (DOI, URL patterns)
     const citationPattern = /(DOI|https?:\/\/[^\s,]+)/gi;
     const matches = text.match(citationPattern);
-    
+
     if (!matches || matches.length === 0) {
       return 0.5; // No citations found
     }
-    
+
     // TODO: Implement citation verification
     // - Resolve each DOI/URL
     // - Check accessibility
     // - Verify citation coherence
-    
+
     // Placeholder: Assume 80% of citations are valid
     return 0.8;
   }
@@ -153,14 +150,14 @@ export class ScientificValidationService {
     if (!authors || authors.length === 0) {
       return false;
     }
-    
+
     // TODO: Implement ORCID API integration
     // - Check ORCID profiles
     // - Verify publication history
     // - Check for known authors
-    
+
     // Placeholder: Basic name validation
-    const validNames = authors.filter(name => name.length > 3);
+    const validNames = authors.filter((name) => name.length > 3);
     return validNames.length > 0;
   }
 
@@ -174,7 +171,7 @@ export class ScientificValidationService {
     // - Analyze text patterns
     // - Check for AI signatures
     // - Use statistical methods
-    
+
     // Placeholder: Basic heuristics
     // Check for common AI patterns
     const suspiciousPatterns = [
@@ -183,11 +180,11 @@ export class ScientificValidationService {
       "Furthermore,",
       "In summary,",
     ];
-    
-    const patternCount = suspiciousPatterns.filter(pattern => 
+
+    const patternCount = suspiciousPatterns.filter((pattern) =>
       text.toLowerCase().includes(pattern.toLowerCase())
     ).length;
-    
+
     return Math.min(0.5, patternCount * 0.1);
   }
 
@@ -205,13 +202,9 @@ export class ScientificValidationService {
     // citation_resolve_rate × 0.3
     // author_verified × 0.2
     // (1 - ai_generated_prob) × 0.1
-    
-    const base = 
-      rep * 0.4 + 
-      cit * 0.3 + 
-      (auth ? 1 : 0) * 0.2 + 
-      (1 - ai) * 0.1;
-    
+
+    const base = rep * 0.4 + cit * 0.3 + (auth ? 1 : 0) * 0.2 + (1 - ai) * 0.1;
+
     return Math.min(1.0, Math.max(0.0, base));
   }
 }

@@ -80,24 +80,25 @@ RSS/API → Collector → Metadata Extractor
 
 3. **Integration with Ranker**
    ```typescript
-   finalRank = (
-     freshness * 0.35 +
-     relevance * 0.25 +
-     trend * 0.20 +
-     socialSignal * 0.10 +
-     validationScore * 0.10  // NEW: Scientific validation
-   ) * qaPenalty
+   finalRank =
+     (freshness * 0.35 +
+       relevance * 0.25 +
+       trend * 0.2 +
+       socialSignal * 0.1 +
+       validationScore * 0.1) * // NEW: Scientific validation
+     qaPenalty;
    ```
 
 ### Configuration
 
 **Per-Portal YAML:**
+
 ```yaml
 enable_scientific_validation: true
 source_types:
-  - arxiv.org: "academic"    # Validated
-  - nature.com: "academic"   # Validated
-  - techcrunch.com: "news"   # Skipped
+  - arxiv.org: "academic" # Validated
+  - nature.com: "academic" # Validated
+  - techcrunch.com: "news" # Skipped
 ```
 
 ---
@@ -237,13 +238,13 @@ Published Content
 ### Formula
 
 ```typescript
-finalRank = (
-  freshness * 0.35 +        // Freshness (NEW: reduced from 0.4)
-  relevance * 0.25 +        // Relevance (NEW: reduced from 0.3)
-  trend * 0.20 +
-  socialSignal * 0.10 +
-  validationScore * 0.10    // NEW: Scientific validation
-) * qaPenalty
+finalRank =
+  (freshness * 0.35 + // Freshness (NEW: reduced from 0.4)
+    relevance * 0.25 + // Relevance (NEW: reduced from 0.3)
+    trend * 0.2 +
+    socialSignal * 0.1 +
+    validationScore * 0.1) * // NEW: Scientific validation
+  qaPenalty;
 ```
 
 ### QA Feedback Loop
