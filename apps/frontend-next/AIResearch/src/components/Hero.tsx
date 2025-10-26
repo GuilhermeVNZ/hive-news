@@ -4,32 +4,44 @@ import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-br from-primary/5 via-background to-background py-8 md:py-12">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-10">
-            Notícias Científicas sobre
-            <span className="text-primary block mt-2">Inteligência Artificial</span>
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
+      {/* Animated Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-5xl mx-auto text-center animate-fade-in-up">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-12 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient">
+            Descubra as Últimas
+            <br />
+            <span className="text-primary">Pesquisas em IA</span>
           </h1>
 
-          <div className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-12">
+            <div className="relative flex-1 group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <Input
                 placeholder="Buscar artigos, tópicos ou pesquisadores..."
-                className="pl-12 h-12 text-base border-border bg-card"
+                className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-all"
               />
             </div>
-            <Button className="h-12 px-8 bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button 
+              size="lg"
+              className="h-14 px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover-lift"
+            >
               Buscar
             </Button>
           </div>
 
-          <div className="flex flex-wrap gap-2 justify-center mt-8">
-            {["Machine Learning", "LLMs", "Computer Vision", "Robótica", "NLP"].map((tag) => (
+          <div className="flex flex-wrap gap-3 justify-center">
+            {["Machine Learning", "LLMs", "Computer Vision", "Robótica", "NLP"].map((tag, index) => (
               <button
                 key={tag}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-full border border-border transition-all hover:border-primary"
+                className="group px-5 py-2.5 text-sm font-medium rounded-full border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {tag}
               </button>

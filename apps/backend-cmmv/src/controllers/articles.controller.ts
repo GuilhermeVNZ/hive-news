@@ -13,8 +13,12 @@ export class ArticlesController {
   private async getClient(): Promise<pg.Client> {
     if (!this.client) {
       const { Client } = await import("pg");
+      // Default connection string for Docker PostgreSQL
+      const connectionString =
+        process.env.DATABASE_URL ||
+        "postgresql://hivenews:hivenews123@localhost:5432/hivenews";
       this.client = new Client({
-        connectionString: process.env.DATABASE_URL,
+        connectionString,
       });
       await this.client.connect();
     }
