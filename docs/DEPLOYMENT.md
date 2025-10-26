@@ -472,11 +472,27 @@ npm run migrate
 
 ### ⚠️ Remaining (5%)
 
-**To Get System Running:**
+**Status Check:** ❌ Docker not installed | ❌ PostgreSQL not installed
 
-1. **Install Docker Desktop** (if not installed)
-   - Download from: https://www.docker.com/products/docker-desktop
-   - Or use PostgreSQL locally without Docker
+**To Get System Running - Choose ONE Option:**
+
+**Option A: Install Docker Desktop (Recommended)**
+1. Download from: https://www.docker.com/products/docker-desktop
+2. Install and start Docker Desktop
+3. Run: `docker-compose up -d postgres`
+4. Then: `npm run migrate` in `apps/backend-cmmv`
+
+**Option B: Install PostgreSQL Locally**
+1. Download from: https://www.postgresql.org/download/windows/
+2. Install PostgreSQL 15+
+3. Create database: `createdb hivenews`
+4. Run: `npm run migrate` in `apps/backend-cmmv`
+
+**Option C: Use Cloud Database (PostgreSQL)**
+1. Sign up for free PostgreSQL at: https://www.elephantsql.com/ or https://railway.app/
+2. Get connection string
+3. Update `.env` file with connection string
+4. Run: `npm run migrate` in `apps/backend-cmmv`
 
 2. **Start PostgreSQL:**
    ```bash
