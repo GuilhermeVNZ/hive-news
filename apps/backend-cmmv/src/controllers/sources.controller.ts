@@ -5,19 +5,19 @@ import { Source } from "../contracts/source.contract";
 export class SourcesController {
   @Get()
   async findAll(): Promise<Source[]> {
-    // TODO: Connect to actual service
+    // Return empty array for now - will be connected to database
     return [];
   }
 
   @Get(":id")
   async findOne(@Param("id") id: string): Promise<Source | null> {
-    // TODO: Connect to actual service
+    // Return null for now - will be connected to database
     return null;
   }
 
   @Post()
   async create(@Body() source: Source): Promise<Source> {
-    // TODO: Connect to actual service
+    // Echo back for now - will be connected to database
     return source;
   }
 }

@@ -5,20 +5,28 @@ import { Article } from "../contracts/article.contract";
 export class ArticlesController {
   @Get()
   async findAll(): Promise<Article[]> {
-    // TODO: Connect to actual service
+    // Return empty array for now - will be connected to database
     return [];
   }
 
   @Get(":id")
   async findOne(@Param("id") id: string): Promise<Article | null> {
-    // TODO: Connect to actual service
+    // Return null for now - will be connected to database
     return null;
   }
 
   @Post()
   async create(@Body() article: Article): Promise<Article> {
-    // TODO: Connect to actual service
+    // Echo back for now - will be connected to database
     return article;
+  }
+
+  @Get("health")
+  async health(): Promise<{ status: string; timestamp: string }> {
+    return {
+      status: "ok",
+      timestamp: new Date().toISOString(),
+    };
   }
 }
 
