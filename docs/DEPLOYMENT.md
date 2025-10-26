@@ -243,15 +243,77 @@ git push origin v1.0.0
 - **Readiness**: `GET /ready`
 - **Metrics**: `GET /metrics`
 
-### Prometheus Metrics
+### Metrics Exposed
+
+#### Application Metrics
+
+- HTTP Requests: Request count, duration, status codes
+- Error Rate: 4xx, 5xx error counts
+- Database: Connection pool, query duration
+- Cache: Hit/miss rates, eviction counts
+- Queue: Job count, processing time
+
+#### Business Metrics
+
+- Articles Generated: Total articles created
+- Sources Active: Active content sources
+- Publishing Rate: Articles published per hour
+- Engagement: Views, clicks, time on page
+- Rank: Average rank score
+
+#### System Metrics
+
+- CPU Usage: Per service
+- Memory Usage: Heap, RSS
+- Disk I/O: Read/write operations
+- Network: Bandwidth, latency
+
+### Prometheus Configuration
 
 ```yaml
-# Exposed on port 8080
+# prometheus.yml
 scrape_configs:
   - job_name: 'hivenews'
     static_configs:
       - targets: ['localhost:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
 ```
+
+### Key Performance Indicators (KPIs)
+
+#### Service Availability
+- **Target**: 99.9% uptime
+- **Metric**: `up` (1 = healthy, 0 = down)
+- **Alert**: < 99% for 5 minutes
+
+#### Response Time
+- **Target**: P95 < 500ms
+- **Metric**: `http_request_duration_seconds`
+- **Alert**: P95 > 1s
+
+#### Error Rate
+- **Target**: < 1%
+- **Metric**: `rate(http_requests_total{status="5xx"}[5m])`
+- **Alert**: > 5%
+
+#### Article Generation
+- **Target**: 100 articles/hour
+- **Metric**: `articles_generated_total`
+- **Alert**: < 50 articles/hour
+
+### Alerting Rules
+
+#### Critical Alerts (PagerDuty)
+- Database down
+- > 10% error rate
+- Memory usage > 95%
+- Disk space < 10%
+
+#### Warning Alerts (Slack)
+- Response time > 1s
+- Queue depth > 1000
+- Low article generation rate
 
 ### Logging
 
@@ -261,6 +323,9 @@ docker-compose logs -f backend
 
 # View specific service
 kubectl logs -f deployment/hivenews-backend -n hivenews
+
+# Follow specific service
+kubectl logs -f deployment/hivenews-backend -n hivenews -c backend
 ```
 
 ---
