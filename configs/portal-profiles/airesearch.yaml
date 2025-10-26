@@ -37,6 +37,7 @@ editorial:
       - neural networks
 
 sources:
+  # RSS Feeds (for metadata only)
   - url: https://arxiv.org/list/cs.AI/recent
     type: rss
     enabled: true
@@ -51,6 +52,42 @@ sources:
     type: rss
     enabled: true
     refresh: "*/15 * * * *"
+  
+  # ArXiv API (for fetching full PDFs)
+  - url: https://export.arxiv.org/api/query
+    type: api
+    enabled: true
+    refresh: "0 * * * *"  # Every hour
+    params:
+      search_query: "cat:cs.AI OR cat:cs.CV OR cat:cs.LG"
+      start: 0
+      max_results: 25
+      sortBy: "submittedDate"
+      sortOrder: "descending"
+    
+  # BioRxiv API (biological sciences papers)
+  - url: https://api.biorxiv.org/details/biorxiv
+    type: api
+    enabled: true
+    refresh: "0 * * * *"
+    params:
+      server: biorxiv
+      page: 0
+      limit: 25
+      sort: "date"
+      order: "desc"
+    
+  # medRxiv API (medical papers)
+  - url: https://api.biorxiv.org/details/medrxiv
+    type: api
+    enabled: true
+    refresh: "0 * * * *"
+    params:
+      server: medrxiv
+      page: 0
+      limit: 25
+      sort: "date"
+      order: "desc"
 
 publishing:
   schedule:
