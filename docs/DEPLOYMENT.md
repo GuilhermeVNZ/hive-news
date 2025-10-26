@@ -407,6 +407,46 @@ kubectl scale deployment/hivenews-backend --replicas=1 -n hivenews
 
 ---
 
+## Missing for Production (15% remaining)
+
+### Critical Setup Required
+
+#### 1. Environment Configuration
+```bash
+cp env.template .env
+# Set: DEEPSEEK_API_KEY, VECTORIZER_URL, SYNAP_URL
+```
+
+#### 2. Start External Services
+```bash
+docker-compose up -d  # PostgreSQL, Redis, MinIO
+cd ../vectorizer-main && cargo run --release  # Port 15002
+cd ../synap-main && cargo run --release  # Port 15500
+```
+
+#### 3. CMMV Auto-Generation
+- REST API controllers not generated yet
+- Need to create HTTP routes
+- Estimated: 2-3 hours
+
+#### 4. Frontend-Backend Integration
+- UI exists but not connected
+- Need API client
+- Estimated: 2-3 hours
+
+#### 5. Database Migrations
+```bash
+npm run migrate
+```
+
+### Time to Launch: 5-7 days
+- Backend API: 2-3 days
+- Frontend integration: 2 days
+- Production deployment: 1 day
+- Testing: 1 day
+
+---
+
 ## Support
 
 For issues or questions:
