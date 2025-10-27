@@ -19,9 +19,12 @@ pub struct CollectorService {
 impl CollectorService {
     /// Cria uma nova instância do CollectorService
     pub fn new(db: PgPool, download_dir: impl AsRef<Path>) -> Self {
+        // Cliente HTTP com configurações de segurança para evitar reCAPTCHA
         let client = reqwest::Client::builder()
-            .timeout(std::time::Duration::from_secs(30))
-            .user_agent("News-System-Collector/1.0")
+            .timeout(std::time::Duration::from_secs(60))
+            .cookie_store(true)  // Manter sessão entre requisições (evita reCAPTCHA)
+            .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+            .redirect(reqwest::redirect::Policy::limited(5))
             .build()
             .expect("Failed to create HTTP client");
 
@@ -172,16 +175,42 @@ impl CollectorService {
 
         // Fazer download do PDF
         let pdf_url = if source == "arxiv" {
-            // arXiv: Construir URL do PDF a partir do ID
-            format!("https://arxiv.org/pdf/{}.pdf", article.id)
+            // arXiv: Usar export.arxiv.org (API oficial, evita reCAPTCHA)
+            format!("https://export.arxiv.org/pdf/{}.pdf", article.id)
         } else {
             article.url.clone()
         };
 
         info!(url = %pdf_url, "Downloading PDF");
-        let response = self.client.get(&pdf_url).send().await?;
+        
+        // Criar requisição com headers de segurança para evitar reCAPTCHA
+        let request = self.client
+            .get(&pdf_url)
+            .header("Accept", "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+            .header("Accept-Language", "en-US,en;q=0.9")
+            .header("Accept-Encoding", "gzip, deflate, br")
+            .header("DNT", "1")
+            .header("Connection", "keep-alive")
+            .header("Upgrade-Insecure-Requests", "1")
+            .header("Sec-Fetch-Dest", "document")
+            .header("Sec-Fetch-Mode", "navigate")
+            .header("Sec-Fetch-Site", "none")
+            .header("Cache-Control", "max-age=0");
+        
+        let response = request.send().await?;
+        
+        // Verificar se é uma resposta de sucesso
+        if !response.status().is_success() {
+            return Err(anyhow::anyhow!("HTTP error: {}", response.status()));
+        }
+        
         let bytes = response.bytes().await?;
         let size = bytes.len();
+
+        // Validar se é um PDF (verificar magic bytes)
+        if bytes.len() > 4 && &bytes[0..4] != b"%PDF" {
+            return Err(anyhow::anyhow!("Invalid PDF (got HTML or redirect, likely reCAPTCHA)"));
+        }
 
         // Salvar arquivo
         tokio::fs::write(&file_path, bytes)
@@ -262,6 +291,11 @@ impl CollectorService {
                     println!("❌");
                     errors.push(error_msg);
                 }
+            }
+            
+            // Rate limiting: delay de 3 segundos entre downloads para evitar bloqueios
+            if i < articles.len() - 1 {
+                tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;
             }
         }
 

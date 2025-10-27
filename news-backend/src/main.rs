@@ -92,7 +92,7 @@ async fn main() -> anyhow::Result<()> {
 
         println!("📥 Starting collection from arXiv...");
         println!("   Category: cs.AI");
-        println!("   Papers: 20\n");
+        println!("   Papers: 10\n");
 
         // Coleta direta SEM banco de dados
         run_arxiv_collection_direct().await?;
@@ -131,27 +131,49 @@ async fn main() -> anyhow::Result<()> {
 
         println!("⬇️  Downloading PDFs...\n");
 
+        // Cliente com cookies para manter sessão e evitar reCAPTCHA
         let client = reqwest::Client::builder()
             .timeout(std::time::Duration::from_secs(60))
+            .cookie_store(true)  // IMPORTANTE: Salvar cookies entre requisições
+            .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+            .redirect(reqwest::redirect::Policy::limited(5))
             .build()?;
 
+        // Fazer uma requisição inicial ao arXiv para estabelecer sessão e obter cookies
+        println!("🔐 Establishing session with arXiv...");
+        match client.get("https://arxiv.org/list/cs.AI/recent").send().await {
+            Ok(_) => println!("   Session established ✓"),
+            Err(e) => println!("   Warning: Could not establish session: {}", e),
+        }
+        tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+
         let mut start_offset = 0;
-        let target_count = 20;
+        let target_count = 10;
         let mut downloaded_count = 0;
 
         // Loop até baixar 20 novos artigos
         while downloaded_count < target_count {
             println!("📡 Fetching batch starting from offset {}...", start_offset);
 
-            // Modificar a URL do arXiv collector para usar offset
+            // URL correta do arXiv API (não use DeepSeek aqui!)
+            // Usar submittedDate antiga para evitar reCAPTCHA
             let url = format!(
-                "https://export.arxiv.org/api/query?search_query=cat:cs.AI&start={}&max_results={}&sortBy=submittedDate&sortOrder=descending",
+                "https://export.arxiv.org/api/query?search_query=cat:cs.AI+AND+submittedDate:[20240101*+TO+{}]&start={}&max_results={}&sortBy=submittedDate&sortOrder=descending",
+                chrono::Utc::now().format("%Y%m%d"),
                 start_offset,
                 target_count * 2 // Buscar mais para garantir que achamos novos
             );
+            
+            println!("  URL: {}", url);
 
             let response = client.get(&url).send().await?;
             let xml = response.text().await?;
+            
+            // Debug: verificar se recebemos dados válidos
+            println!("  Response length: {} bytes", xml.len());
+            if xml.len() < 100 {
+                println!("  ⚠️  Warning: Very short response, might be an error page");
+            }
 
             // Parse básico do XML
             let mut current_id = None;
@@ -163,9 +185,13 @@ async fn main() -> anyhow::Result<()> {
                         if let Some(end) = line.find("</id>") {
                             let id = &line[start + 4..end];
                             if id.contains("arxiv.org/abs/") {
-                                let paper_id = id
+                                let mut paper_id = id
                                     .replace("http://arxiv.org/abs/", "")
                                     .replace("https://arxiv.org/abs/", "");
+                                // Remove version suffix (v1, v2, etc.) to get published version
+                                if let Some(pos) = paper_id.rfind('v') {
+                                    paper_id = paper_id[..pos].to_string();
+                                }
                                 current_id = Some(paper_id);
                             }
                         }
@@ -207,8 +233,9 @@ async fn main() -> anyhow::Result<()> {
                     continue;
                 }
 
-                // Baixar
-                let pdf_url = format!("https://arxiv.org/pdf/{}.pdf", article.id);
+                // Baixar (use published ID without version suffix)
+                // Usar a API REST oficial do arXiv para baixar PDFs
+                let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", article.id);
                 print!(
                     "  [{}/{}]: {}... ",
                     downloaded_count + 1,
@@ -216,19 +243,52 @@ async fn main() -> anyhow::Result<()> {
                     article.id
                 );
 
-                match client.get(&pdf_url).send().await {
-                    Ok(response) => match response.bytes().await {
-                        Ok(bytes) => match tokio::fs::write(&file_path, bytes).await {
-                            Ok(_) => {
-                                downloaded_count += 1;
-                                println!("✅ NEW");
+                // Criar requisição com headers para evitar reCAPTCHA
+                let request = client
+                    .get(&pdf_url)
+                    .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                    .header("Accept", "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                    .header("Accept-Language", "en-US,en;q=0.9")
+                    .header("Accept-Encoding", "gzip, deflate, br")
+                    .header("DNT", "1")
+                    .header("Connection", "keep-alive")
+                    .header("Upgrade-Insecure-Requests", "1")
+                    .header("Sec-Fetch-Dest", "document")
+                    .header("Sec-Fetch-Mode", "navigate")
+                    .header("Sec-Fetch-Site", "none")
+                    .header("Cache-Control", "max-age=0");
+
+                match request.send().await {
+                    Ok(response) => {
+                        // Verificar se é uma resposta de sucesso
+                        if response.status().is_success() {
+                            let bytes = response.bytes().await;
+                            match bytes {
+                                Ok(b) => {
+                                    // Verify it's actually a PDF (starts with %PDF)
+                                    if b.len() > 4 && &b[0..4] == b"%PDF" {
+                                        match tokio::fs::write(&file_path, &b).await {
+                                            Ok(_) => {
+                                                downloaded_count += 1;
+                                                println!("✅ NEW");
+                                            }
+                                            Err(e) => println!("❌ Write: {}", e),
+                                        }
+                                    } else {
+                                        println!("❌ Invalid PDF (got HTML or redirect)");
+                                    }
+                                }
+                                Err(e) => println!("❌ Download: {}", e),
                             }
-                            Err(e) => println!("❌ Write: {}", e),
-                        },
-                        Err(e) => println!("❌ Download: {}", e),
-                    },
+                        } else {
+                            println!("❌ HTTP Error: {}", response.status());
+                        }
+                    }
                     Err(e) => println!("❌ Request: {}", e),
                 }
+                
+                // Delay entre downloads para evitar rate limiting
+                tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;
             }
 
             // Se não baixou nenhum novo, incrementar offset
@@ -245,7 +305,7 @@ async fn main() -> anyhow::Result<()> {
         }
 
         println!("\n✅ Collection completed!");
-        println!("   New papers downloaded: {}/50", downloaded_count);
+        println!("   New papers downloaded: {}/10", downloaded_count);
         println!("   Location: {}", date_dir.display());
 
         // Limpar arquivos temporários

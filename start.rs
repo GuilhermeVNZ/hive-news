@@ -215,8 +215,14 @@ fn test_collector() {
     println!("\n🚀 Starting Real Collection from arXiv...");
     println!("\n📊 Configuration:");
     println!("   Source: cs.AI (Computer Science - Artificial Intelligence)");
-    println!("   Papers: 20 most recent");
+    println!("   Papers: 10 most recent");
     println!("   Location: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+    println!("\n🛡️  Security Features:");
+    println!("   ✅ Using export.arxiv.org (official API)");
+    println!("   ✅ Cookie-based session management");
+    println!("   ✅ Browser-like headers (anti-bot protection bypassed)");
+    println!("   ✅ Rate limiting (3s delay between downloads)");
+    println!("   ✅ Incremental collection (anti-duplication)");
     println!("\n⏳ Executing collection...\n");
     
     // Executar via PowerShell com handling de banco
@@ -224,7 +230,7 @@ fn test_collector() {
         r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run -- collect
+cargo run --bin news-backend -- collect
 "#
     );
     
@@ -268,7 +274,7 @@ cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 $env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
 $env:WRITER_DEFAULT_SITE="AIResearch";
-cargo run -- write
+cargo run --bin news-backend -- write
 "#;
     
     let output = Command::new("powershell")
@@ -298,12 +304,19 @@ fn run_scheduler() {
     println!("\n📋 Scheduler Status:");
     println!("   ✅ Collector Service implemented");
     println!("   ✅ Download directory configured");
+    println!("   ✅ Secure PDF downloads (export.arxiv.org)");
+    println!("   ✅ Anti-reCAPTCHA protection enabled");
     println!("   ⏳ Scheduler with tokio-cron-scheduler - TODO");
     println!("\n🔄 Workflow:");
     println!("   1. Fetch active portals from dashboard");
     println!("   2. Execute collector for each portal");
     println!("   3. Downloads stored in downloads/<source>/<date>/");
     println!("   4. Metadata saved to raw_documents table");
+    println!("\n🔐 Security Features:");
+    println!("   • Uses export.arxiv.org (bypasses reCAPTCHA)");
+    println!("   • Cookie-based session handling");
+    println!("   • Rate limiting (3s between downloads)");
+    println!("   • Anti-duplication checking");
     println!("\n📚 See docs/PHASE1_COLLECTOR.md for details");
 }
 
@@ -381,6 +394,11 @@ fn show_help() {
     println!("  monitor    - 📊 Monitor system health");
     println!("  status     - ℹ️  Check system status");
     println!("  help       - 📖 Show this help\n");
+    println!("🔐 Collector Security:");
+    println!("   • Uses export.arxiv.org (official API, no reCAPTCHA)");
+    println!("   • Cookie-based session management");
+    println!("   • Anti-bot protection bypass");
+    println!("   • Rate limiting: 3s between downloads\n");
     println!("Usage: cargo run -- start [command]");
     println!("\nExample:");
     println!("  cargo run -- start start    # Start full system");

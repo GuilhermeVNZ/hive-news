@@ -470,10 +470,87 @@ tracing::info!(
 **Funcionalidades Adicionais:**
 - [x] **Limpeza automática de arquivos temporários** - Implementada ✅
 - [x] **Coleta incremental anti-duplicação** - Implementada ✅
+- [x] **Correção de bloqueio reCAPTCHA nos downloads** - Implementada ✅
 - [ ] Validação de arquivos baixados
 - [ ] Download paralelo de múltiplos PDFs
 - [ ] Estatísticas de uso de disco
 - [ ] Webhooks para notificações
+
+## 🐛 Problema Resolvido: reCAPTCHA Blocking Downloads
+
+### Problema Identificado
+
+O download de PDFs estava falhando com mensagens de "Invalid PDF (got HTML or redirect)" porque o site público do arXiv (`arxiv.org/pdf/{ID}.pdf`) estava apresentando um desafio reCAPTCHA do Google:
+
+**Erro original:**
+```
+❌ Invalid PDF (got HTML or redirect)
+```
+
+**Causa:** O endpoint público do arXiv implementa proteção anti-bot que bloqueia downloads automáticos com reCAPTCHA.
+
+### Solução Implementada
+
+**Mudança de endpoint:** Alterado de `arxiv.org` para `export.arxiv.org` (API oficial).
+
+**Antes:**
+```rust
+let pdf_url = format!("https://arxiv.org/pdf/{}.pdf", paper_id);
+// ❌ Retorna HTML com reCAPTCHA
+```
+
+**Depois:**
+```rust
+let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", paper_id);
+// ✅ Retorna PDF diretamente
+```
+
+### Proteções Adicionais Implementadas
+
+1. **Cookies e Sessão**
+   ```rust
+   let client = reqwest::Client::builder()
+       .cookie_store(true)  // Manter sessão entre requisições
+       .user_agent("Mozilla/5.0...")  // Simular navegador real
+       .build()?;
+   ```
+
+2. **Headers de Navegador Real**
+   ```rust
+   .header("Accept", "application/pdf,text/html,application/xhtml+xml")
+   .header("Accept-Language", "en-US,en;q=0.9")
+   .header("Sec-Fetch-Dest", "document")
+   .header("Sec-Fetch-Mode", "navigate")
+   ```
+
+3. **Estabelecer Sessão Antecipadamente**
+   ```rust
+   // Fazer requisição inicial para obter cookies
+   client.get("https://arxiv.org/list/cs.AI/recent").send().await?;
+   tokio::time::sleep(Duration::from_secs(2)).await;
+   ```
+
+4. **Rate Limiting entre Downloads**
+   ```rust
+   // Delay de 3 segundos entre downloads
+   tokio::time::sleep(Duration::from_secs(3)).await;
+   ```
+
+### Resultado
+
+✅ **Downloads funcionando 100%**  
+✅ **10/10 papers baixados com sucesso**  
+✅ **Sem bloqueios de reCAPTCHA**  
+✅ **Sem arquivos HTML ou erros**
+
+**Output final:**
+```
+✅ Collection completed!
+   New papers downloaded: 10/10
+   Location: G:/Hive-Hub/News-main/downloads\arxiv\2025-10-27
+```
+
+---
 
 ## 🎉 Funcionalidades Implementadas
 

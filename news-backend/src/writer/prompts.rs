@@ -8,8 +8,12 @@ fn get_site_context(site: &str) -> String {
 - Latest breakthroughs in artificial intelligence research
 - Practical applications of ML/deep learning
 - Industry news and expert analysis
-- Accessible explanations for technical audiences
-- Emphasis on accuracy and scientific rigor"#.to_string(),
+- **News-style journalism**: Complex topics explained for general audience
+- **Simple titles**: Focus on WHAT the discovery means, not HOW it works technically
+- **Accessibility first**: Make readers understand WHY it matters
+- **Clear explanations**: Use analogies and real-world comparisons
+- Users who want technical details can read the original paper
+- Emphasis on accuracy and scientific rigor WITH simple language"#.to_string(),
         
         "nature" => r#"Nature magazine - the world's leading scientific publication:
 - Highest standards of scientific journalism
@@ -51,13 +55,15 @@ TARGET PUBLICATION:
 
 ---
 
-WRITING STYLE (Nature/Science Editorial):
-- **Opening:** Establish significance immediately (why readers should care)
-- **Voice:** Active, direct, authoritative yet conversational
+WRITING STYLE (Nature/Science Editorial - Simplified for General Audience):
+- **Opening:** Establish significance immediately (why non-technical readers should care)
+- **Voice:** Active, direct, authoritative yet conversational and accessible
 - **Structure:** Inverted pyramid - key findings first, details follow
 - **Precision:** Reference specific figures, data points, methodology FROM THE PAPER
-- **Clarity:** Define technical terms on first use
-- **Flow:** Smooth transitions between concepts
+- **Clarity:** Define technical terms on first use AND use plain language alternatives
+- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson
+- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison
+- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details
 
 CRITICAL RULES:
 - ✅ "The researchers found X (as shown in Figure 2)..."
@@ -76,46 +82,35 @@ WHAT TO AVOID (AI writing patterns):
 - Speculating beyond what paper's data supports
 
 REQUIRED ARTICLE STRUCTURE:
-1. **Opening Hook** (2-3 sentences: create immediate curiosity and tension - why this matters NOW)
-   - Start with the impact or surprising finding from paper
-   - Create a "curiosity gap" - what doesn't add up yet?
-   - Connect to real-world implications (if paper discusses this)
-   - Example: "For 50 years, scientists have struggled to predict how proteins fold. Today, that changed."
-
-2. **Key Finding** (what researchers discovered - be specific and exciting)
-3. **Methodology** (how they did it - brief but accurate to paper)
-4. **Results Analysis** (what data shows - reference figures from paper, emphasize surprising results)
-5. **Context** (why it matters - based on paper's discussion)
+1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)
+2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)
+3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)
+4. **Results Analysis** (what data shows - reference figures from paper, use simple language)
+5. **Context** (why it matters - real-world implications for regular readers)
 6. **Limitations** (what remains unknown - from paper's limitations section)
 7. **Figure Recommendation** (which figure best illustrates work)
 
-EXAMPLES OF GOOD OPENING LINES (News-style with scientific rigor):
-✓ "Scientists have spent decades trying to predict how proteins fold. Today, an AI finally got it right—and the results could change medicine forever."
-✓ "Everything we thought we knew about the universe's age might be wrong. A new analysis suggests the cosmos is 2 billion years younger than previous estimates."
-✓ "Cancer cells have a secret escape route that makes them nearly impossible to kill. Now, researchers have found it—and a way to shut it down."
-✓ "Your smartphone battery dies in hours because of a flaw that should have been impossible. Today, researchers discovered why—and how to fix it."
+TITLE REQUIREMENTS (CRITICAL):
+- **News-focused**: Explain what the breakthrough means to everyday readers
+- **Simple language**: Avoid technical jargon, write for general audience
+- **Active voice**: Make it engaging and accessible
+- **Specific**: Include what was achieved or discovered
+- **Hook**: Capture attention like a news headline
 
-## TITLE REQUIREMENTS (CRITICAL FOR CLICKS):
-Your title MUST be compelling and encourage clicks while maintaining Nature/Science credibility.
+BAD TITLES (Too technical):
+❌ "Graph Neural Networks for Spatiotemporal Dynamics"
+❌ "Gradient-Based Optimization in High-Dimensional Space"
+❌ "Multi-Agent Path Planning Algorithm for AUV Coordination"
 
-GOOD TITLES (news-style that drives clicks):
-✓ "How Scientists Just Solved the 50-Year Protein Folding Mystery"
-✓ "The Universe Might Be 2 Billion Years Younger Than We Thought"
-✓ "AI Found a Hidden Cancer Escape Route That Could Save Millions"
-✓ "Why Your Phone Battery Dies: The Breakthrough Nobody Saw Coming"
-✓ "The Quantum Computer That Just Broke Every Safety Rule"
+GOOD TITLES (News-focused):
+✓ "AI Can Now Predict Complex Data Relationships Without Violating Privacy"
+✓ "New Method Helps Scientists Share Data Securely Without Losing Accuracy"
+✓ "Robots Navigate Ocean Currents Using Real-Time Weather Data"
 
-BAD TITLES (too academic, no click appeal):
-✗ "Machine Learning Applications in Protein Structure Prediction"
-✗ "Comparative Analysis of Cosmic Expansion Rates"
-✗ "Observational Study of Cellular Mechanism in Cancer Cells"
-
-TITLE STRUCTURE:
-- Start with active verb or compelling question/statement
-- Include the breakthrough/finding in accessible terms
-- Create curiosity gap (make reader want to know more)
-- Avoid jargon unless absolutely necessary
-- Add emotional or practical impact when possible
+EXAMPLES OF GOOD OPENING LINES (News style):
+✓ "A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information."
+✓ "Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements."
+✓ "Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment."
 
 ## PAPER TEXT (YOUR ONLY SOURCE):
 {}
@@ -127,7 +122,7 @@ TITLE STRUCTURE:
 Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above. End with figure recommendation.
 
 Format:
-# [Compelling News-Style Title That Drives Clicks While Maintaining Scientific Credibility]
+# [Compelling, Specific Title - Nature/Science Style]
 
 [Article body - based ONLY on paper content...]
 
