@@ -36,6 +36,19 @@ uuid = { version = "1.0", features = ["v4", "serde"] }
 # Scheduler
 tokio-cron-scheduler = "0.9"
 
+# Filter dependencies
+lopdf = "0.34"
+rayon = "1.10"
+dashmap = "6.1"
+futures = "0.3"
+lazy_static = "1.5"
+urlencoding = "2.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
 [dev-dependencies]
 tokio-test = "0.4"
 

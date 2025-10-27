@@ -16,6 +16,7 @@ mod config;
 mod middleware;
 mod models;
 mod utils;
+mod filter;
 
 use db::connection::Database;
 
@@ -173,6 +174,20 @@ async fn run_arxiv_collection_direct() -> anyhow::Result<()> {
     // Limpar arquivos temporários
     println!("\n🧹 Cleaning temporary files...");
     cleanup_temp_files(&temp_dir).await?;
+    
+    // Filtro científico (processa todos os PDFs não filtrados)
+    println!("\n🔬 Starting Scientific Filter...");
+    println!("   (Blogs and non-scientific sources will be skipped)");
+    
+    let filter_result = filter::pipeline::run_filter_pipeline(
+        Path::new("G:/Hive-Hub/News-main/downloads")
+    ).await?;
+    
+    println!("\n✅ Filter completed!");
+    println!("   Approved: {}", filter_result.approved);
+    println!("   Rejected: {}", filter_result.rejected);
+    println!("   Skipped (non-scientific): {}", filter_result.skipped);
+    println!("   Total processed: {}", filter_result.total);
     
     Ok(())
 }
