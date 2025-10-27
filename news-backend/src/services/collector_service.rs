@@ -1,10 +1,10 @@
+use crate::collectors::arxiv_collector::ArxivCollector;
+use crate::models::raw_document::*;
 use anyhow::{Context, Result};
+use chrono::Utc;
 use sqlx::PgPool;
 use std::path::{Path, PathBuf};
-use tracing::{info, error, warn};
-use chrono::Utc;
-use crate::models::raw_document::*;
-use crate::collectors::arxiv_collector::ArxivCollector;
+use tracing::{error, info, warn};
 
 /// Serviço de coleta de documentos de fontes externas
 pub struct CollectorService {
@@ -37,7 +37,7 @@ impl CollectorService {
     }
 
     /// Coleta artigos para um portal específico
-    /// 
+    ///
     /// Fluxo:
     /// 1. Busca configuração do portal no banco
     /// 2. Para cada source configurada, busca novos artigos
@@ -56,10 +56,10 @@ impl CollectorService {
 
         // 2. Buscar sources configuradas para este portal
         let sources = self.get_portal_sources(portal_id).await?;
-        
+
         for source in sources {
             info!(source = %source.name, "Collecting from source");
-            
+
             // TODO: Implementar lógica de coleta por API
             // Por enquanto, mock para demonstração
             match self.collect_from_source(&source.name, &portal_name).await {
@@ -75,14 +75,14 @@ impl CollectorService {
         }
 
         let duration = start_time.elapsed();
-        
+
         info!(
             portal_id = %portal_id,
             documents_collected = documents_collected,
             duration_ms = duration.as_millis(),
             "Collection completed"
         );
-        
+
         Ok(CollectionResult {
             success: errors.is_empty(),
             documents_collected,
@@ -90,14 +90,14 @@ impl CollectorService {
             errors,
         })
     }
-    
+
     /// Coleta documentos de uma fonte específica
     async fn collect_from_source(&self, source: &str, portal: &str) -> Result<i32> {
         let mut count = 0;
-        
+
         // Mock: Simular busca de artigos
         let articles = self.fetch_articles_from_api(source).await?;
-        
+
         for article in articles {
             match self.download_article(&article, portal, source).await {
                 Ok(_) => {
@@ -109,10 +109,10 @@ impl CollectorService {
                 }
             }
         }
-        
+
         Ok(count)
     }
-    
+
     /// Busca artigos de uma API (implementado para arXiv)
     async fn fetch_articles_from_api(&self, source: &str) -> Result<Vec<ArticleMetadata>> {
         match source.to_lowercase().as_str() {
@@ -129,7 +129,7 @@ impl CollectorService {
     }
 
     /// Faz download de um artigo
-    /// 
+    ///
     /// Estrutura: downloads/<origem>/<YYYY-MM-DD>/<arquivo>.pdf
     /// Exemplo: downloads/arxiv/2025-10-27/article_001.pdf
     pub async fn download_article(
@@ -140,20 +140,25 @@ impl CollectorService {
     ) -> Result<PathBuf> {
         // Criar data no formato YYYY-MM-DD
         let date = Utc::now().format("%Y-%m-%d").to_string();
-        
+
         // Criar estrutura de diretórios: downloads/<origem>/<YYYY-MM-DD>/
         let download_dir = self.download_dir.join(source).join(&date);
-        tokio::fs::create_dir_all(&download_dir).await
+        tokio::fs::create_dir_all(&download_dir)
+            .await
             .context("Failed to create download directory")?;
 
         // Gerar nome do arquivo baseado na URL
         let filename = sanitize_filename(&article.title).unwrap_or_else(|| {
             url::Url::parse(&article.url)
                 .ok()
-                .and_then(|u| u.path_segments().and_then(|segments| segments.last()).map(|s| s.to_string()))
+                .and_then(|u| {
+                    u.path_segments()
+                        .and_then(|segments| segments.last())
+                        .map(|s| s.to_string())
+                })
                 .unwrap_or_else(|| format!("article_{}.pdf", article.id))
         });
-        
+
         let file_path = download_dir.join(&filename);
 
         // Verificar se arquivo já existe
@@ -172,14 +177,15 @@ impl CollectorService {
         } else {
             article.url.clone()
         };
-        
+
         info!(url = %pdf_url, "Downloading PDF");
         let response = self.client.get(&pdf_url).send().await?;
         let bytes = response.bytes().await?;
         let size = bytes.len();
 
         // Salvar arquivo
-        tokio::fs::write(&file_path, bytes).await
+        tokio::fs::write(&file_path, bytes)
+            .await
             .context("Failed to save downloaded file")?;
 
         info!(
@@ -204,44 +210,45 @@ impl CollectorService {
                 "published_date": article.published_date,
             })),
         };
-        
+
         self.save_document(&doc).await?;
 
         Ok(file_path)
     }
-    
+
     /// Helper: Busca nome do portal no banco
     async fn get_portal_name(&self, portal_id: i32) -> Result<String> {
         // TODO: Implementar query real
         Ok(format!("Portal_{}", portal_id))
     }
-    
+
     /// Helper: Busca sources configuradas para o portal
     async fn get_portal_sources(&self, _portal_id: i32) -> Result<Vec<SourceConfig>> {
         // Para teste: retorna arXiv configurado
         if _portal_id == 1 {
-            Ok(vec![
-                SourceConfig {
-                    name: "arxiv".to_string(),
-                    api_url: "https://export.arxiv.org/api/query".to_string(),
-                    api_key: None,
-                }
-            ])
+            Ok(vec![SourceConfig {
+                name: "arxiv".to_string(),
+                api_url: "https://export.arxiv.org/api/query".to_string(),
+                api_key: None,
+            }])
         } else {
             Ok(vec![])
         }
     }
-    
+
     /// Coleta direta do arXiv (para testes) - SEM DEPENDÊNCIA DE BANCO
     pub async fn collect_arxiv_direct(&self) -> Result<CollectionResult> {
         info!("Starting direct arXiv collection (no database)");
-        
-        let articles = self.arxiv_collector.fetch_recent_papers("cs.AI", 10).await?;
+
+        let articles = self
+            .arxiv_collector
+            .fetch_recent_papers("cs.AI", 10)
+            .await?;
         let mut count = 0;
         let mut errors = Vec::new();
-        
+
         println!("Found {} articles to download", articles.len());
-        
+
         for (i, article) in articles.iter().enumerate() {
             print!("  {}/{}: {}... ", i + 1, articles.len(), article.id);
             match self.download_article(article, "AIResearch", "arxiv").await {
@@ -257,7 +264,7 @@ impl CollectorService {
                 }
             }
         }
-        
+
         Ok(CollectionResult {
             success: errors.is_empty(),
             documents_collected: count,
@@ -313,8 +320,6 @@ fn sanitize_filename(name: &str) -> Option<String> {
             _ => '-',
         })
         .collect::<String>();
-    
+
     Some(sanitized).filter(|s| !s.is_empty())
 }
-
-

@@ -1,7 +1,7 @@
+use crate::services::collector_service::CollectorService;
 use anyhow::Result;
 use sqlx::PgPool;
 use tracing::{error, info};
-use crate::services::collector_service::CollectorService;
 
 pub struct SchedulerService {
     db: PgPool,
@@ -72,5 +72,3 @@ impl SchedulerService {
         Ok(())
     }
 }
-
-

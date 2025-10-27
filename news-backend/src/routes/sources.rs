@@ -13,4 +13,3 @@ pub async fn create_source(Extension(_db): Extension<std::sync::Arc<Database>>) 
     // TODO: Implement create source logic
     Json(serde_json::json!({ "message": "Create source endpoint" }))
 }
-

@@ -1,7 +1,7 @@
 use anyhow::Result;
-use std::path::Path;
-use regex::Regex;
 use lopdf::Document;
+use regex::Regex;
+use std::path::Path;
 
 pub struct ParsedPdf {
     pub file_path: String,
@@ -16,15 +16,16 @@ pub struct ParsedPdf {
 }
 
 pub fn parse_pdf(path: &Path) -> Result<ParsedPdf> {
-    let file_name = path.file_stem()
+    let file_name = path
+        .file_stem()
         .and_then(|s| s.to_str())
         .unwrap_or("unknown");
-    
+
     // Extrair metadados do path
     let raw_doc_id = 1;
     let source_name = "arxiv".to_string();
     let source_url = format!("https://arxiv.org/abs/{}", file_name);
-    
+
     // Tentar parser real com lopdf
     let text = match parse_pdf_text(path) {
         Ok(content) => content,
@@ -34,14 +35,14 @@ pub fn parse_pdf(path: &Path) -> Result<ParsedPdf> {
             String::new()
         }
     };
-    
+
     // Extrair informações do texto real
     let dois = extract_dois(&text);
     let sections = extract_sections(&text);
-    
+
     // Tentar extrair título (primeira linha com texto)
     let title = extract_title(&text, file_name);
-    
+
     Ok(ParsedPdf {
         file_path: path.to_string_lossy().to_string(),
         raw_doc_id,
@@ -57,17 +58,18 @@ pub fn parse_pdf(path: &Path) -> Result<ParsedPdf> {
 
 fn parse_pdf_text(path: &Path) -> Result<String> {
     use std::process::Command;
-    
+
     // Caminho para pdftotext instalado localmente
-    let pdftotext_path = "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe";
-    
+    let pdftotext_path =
+        "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe";
+
     // Verificar se pdftotext existe
     if std::path::Path::new(pdftotext_path).exists() {
         let output = Command::new(pdftotext_path)
             .arg(path.as_os_str())
             .arg("-") // output para stdout
             .output()?;
-        
+
         if output.status.success() {
             let text = String::from_utf8_lossy(&output.stdout);
             if text.len() > 100 {
@@ -75,12 +77,12 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
             }
         }
     }
-    
+
     // Estratégia 2: Tentar lopdf
     if let Ok(doc) = Document::load(path) {
         let mut full_text = String::new();
         let pages = doc.get_pages();
-        
+
         if !pages.is_empty() {
             for (page_id, _) in pages.iter() {
                 if let Ok(text) = doc.extract_text(&[*page_id]) {
@@ -88,13 +90,13 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
                     full_text.push('\n');
                 }
             }
-            
+
             if full_text.len() > 100 {
                 return Ok(full_text);
             }
         }
     }
-    
+
     // Estratégia 3: Leitura direta de bytes brutos
     if let Ok(bytes) = std::fs::read(path) {
         let text = extract_text_from_bytes(&bytes);
@@ -102,7 +104,7 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
             return Ok(text);
         }
     }
-    
+
     // Fallback: retornar string vazia mas logar o erro
     eprintln!("⚠️  Failed to extract text from PDF: {}", path.display());
     Ok(String::new())
@@ -110,19 +112,19 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
 
 fn extract_text_from_bytes(bytes: &[u8]) -> String {
     use std::str;
-    
+
     let mut text = String::new();
     let pdf_str = str::from_utf8(bytes).unwrap_or("");
-    
+
     // Procurar por padrões comuns de texto em PDFs
     let mut cursor = 0;
-    
+
     while let Some(start) = pdf_str[cursor..].find("BT") {
         cursor += start + 2;
-        
+
         if let Some(end) = pdf_str[cursor..].find("ET") {
             let text_block = &pdf_str[cursor..cursor + end];
-            
+
             // Extrair texto entre parênteses (comum em PDFs)
             for line in text_block.lines() {
                 let mut current = line;
@@ -137,13 +139,13 @@ fn extract_text_from_bytes(bytes: &[u8]) -> String {
                     }
                 }
             }
-            
+
             cursor += end;
         } else {
             break;
         }
     }
-    
+
     // Limpar caracteres de controle e normalizar espaços
     text.chars()
         .filter(|c| c.is_alphanumeric() || c.is_whitespace() || c.is_ascii_punctuation())
@@ -155,7 +157,8 @@ fn extract_text_from_bytes(bytes: &[u8]) -> String {
 
 pub fn extract_dois(text: &str) -> Vec<String> {
     let doi_regex = Regex::new(r"10\.\d{4,}/[^\s]+").unwrap();
-    doi_regex.find_iter(text)
+    doi_regex
+        .find_iter(text)
         .map(|m| m.as_str().to_string())
         .collect()
 }
@@ -168,7 +171,7 @@ pub fn extract_title(text: &str, fallback: &str) -> String {
             return line.to_string();
         }
     }
-    
+
     // Fallback para nome do arquivo
     fallback.to_string()
 }
@@ -180,9 +183,9 @@ pub fn extract_authors(text: &str) -> Vec<String> {
 
 pub fn extract_sections(text: &str) -> Vec<String> {
     let sections = vec!["Abstract", "Introduction", "Method", "Results"];
-    sections.into_iter()
+    sections
+        .into_iter()
         .filter(|&s| text.contains(s))
         .map(|s| s.to_string())
         .collect()
 }
-

@@ -1,5 +1,5 @@
 use axum::{extract::Extension, response::Json};
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 
 use crate::db::connection::Database;
 
@@ -17,4 +17,3 @@ pub async fn get_me(Extension(_db): Extension<std::sync::Arc<Database>>) -> Json
     // TODO: Implement get current user logic
     Json(json!({ "message": "Get current user endpoint" }))
 }
-

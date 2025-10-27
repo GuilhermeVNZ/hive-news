@@ -8,4 +8,3 @@ pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>) -> J
     // TODO: Implement list logs logic
     Json(serde_json::json!({ "message": "List logs endpoint" }))
 }
-

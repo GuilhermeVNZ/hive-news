@@ -20,3 +20,4 @@ CREATE INDEX IF NOT EXISTS idx_filtered_category ON filtered_documents(category)
 CREATE INDEX IF NOT EXISTS idx_filtered_source_type ON filtered_documents(source_type);
 
 
+

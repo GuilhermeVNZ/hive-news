@@ -1,9 +1,9 @@
+use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Context, Result};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
-use tracing::{info, warn, error};
-use crate::models::raw_document::ArticleMetadata;
+use tracing::{error, info, warn};
 
 /// Cliente para coleta de artigos do arXiv
 pub struct ArxivCollector {
@@ -56,11 +56,14 @@ impl ArxivCollector {
     }
 
     /// Busca os 10 artigos mais recentes de uma categoria
-    pub async fn fetch_recent_papers(&self, category: &str, max_results: u32) -> Result<Vec<ArticleMetadata>> {
+    pub async fn fetch_recent_papers(
+        &self,
+        category: &str,
+        max_results: u32,
+    ) -> Result<Vec<ArticleMetadata>> {
         let url = format!(
             "https://export.arxiv.org/api/query?search_query=cat:{}&start=10&max_results={}&sortBy=submittedDate&sortOrder=descending",
-            category,
-            max_results
+            category, max_results
         );
 
         info!(url = %url, category = %category, "Fetching papers from arXiv");
@@ -69,37 +72,40 @@ impl ArxivCollector {
         let xml_content = response.text().await?;
 
         // Salvar XML temporário
-        let temp_file = self.temp_dir.join(format!("arxiv_feed_{}.xml", chrono::Utc::now().timestamp()));
-        tokio::fs::write(&temp_file, &xml_content).await
+        let temp_file = self
+            .temp_dir
+            .join(format!("arxiv_feed_{}.xml", chrono::Utc::now().timestamp()));
+        tokio::fs::write(&temp_file, &xml_content)
+            .await
             .context("Failed to save arXiv feed XML")?;
-        
+
         info!(temp_file = %temp_file.display(), "Saved arXiv feed XML");
 
         // Parse XML (simplificado - usando regex por enquanto)
         let papers = self.parse_arxiv_xml(&xml_content)?;
-        
+
         info!(count = papers.len(), "Parsed arXiv papers");
-        
+
         Ok(papers)
     }
 
     /// Faz parsing do XML do arXiv
     fn parse_arxiv_xml(&self, xml: &str) -> Result<Vec<ArticleMetadata>> {
         use regex::Regex;
-        
+
         let mut papers = Vec::new();
-        
+
         // Regex para extrair informações do XML
         let id_re = Regex::new(r#"<id>([^<]+)</id>"#)?;
         let title_re = Regex::new(r#"<title>([^<]+)</title>"#)?;
         let summary_re = Regex::new(r#"<summary>([^<]+)</summary>"#)?;
         let published_re = Regex::new(r#"<published>([^<]+)</published>"#)?;
-        
+
         let mut current_id = None;
         let mut current_title = None;
         let mut current_summary = None;
         let mut current_published = None;
-        
+
         for line in xml.lines() {
             if let Some(caps) = id_re.captures(line) {
                 current_id = Some(caps[1].to_string());
@@ -113,21 +119,24 @@ impl ArxivCollector {
             if let Some(caps) = published_re.captures(line) {
                 current_published = Some(caps[1].to_string());
             }
-            
+
             // Quando encontramos </entry>, criamos o paper
             if line.contains("</entry>") {
                 if let Some(id) = current_id.take() {
                     let paper_id = id.replace("http://arxiv.org/abs/", "");
                     let _pdf_url = format!("https://arxiv.org/pdf/{}.pdf", paper_id.clone());
                     let page_url = format!("https://arxiv.org/abs/{}", paper_id.clone());
-                    
-                    let title = current_title.take().unwrap_or_else(|| "Untitled".to_string());
+
+                    let title = current_title
+                        .take()
+                        .unwrap_or_else(|| "Untitled".to_string());
                     let title_clone = title.clone();
                     let summary = current_summary.take().unwrap_or_default();
-                    let published = current_published.take()
+                    let published = current_published
+                        .take()
                         .and_then(|s| chrono::DateTime::parse_from_rfc3339(&s).ok())
                         .map(|dt| dt.with_timezone(&chrono::Utc));
-                    
+
                     papers.push(ArticleMetadata {
                         id: paper_id.clone(),
                         title,
@@ -136,12 +145,12 @@ impl ArxivCollector {
                         author: Some("arXiv".to_string()),
                         summary: Some(summary),
                     });
-                    
+
                     info!(paper_id = %paper_id, title = %title_clone, "Found paper");
                 }
             }
         }
-        
+
         Ok(papers)
     }
 
@@ -150,4 +159,3 @@ impl ArxivCollector {
         format!("https://arxiv.org/pdf/{}.pdf", paper_id)
     }
 }
-

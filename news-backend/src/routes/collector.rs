@@ -1,12 +1,13 @@
-use axum::{extract::{Extension, Path}, response::Json};
-use serde_json::Value;
 use crate::db::connection::Database;
 use crate::models::raw_document::*;
+use axum::{
+    extract::{Extension, Path},
+    response::Json,
+};
+use serde_json::Value;
 
 /// Inicia coleta para um portal específico
-pub async fn start_collection(
-    Extension(_db): Extension<std::sync::Arc<Database>>,
-) -> Json<Value> {
+pub async fn start_collection(Extension(_db): Extension<std::sync::Arc<Database>>) -> Json<Value> {
     // TODO: Implementar lógica de coleta
     Json(serde_json::json!({
         "message": "Collection started",
@@ -36,5 +37,3 @@ pub async fn list_collection_logs(
         "logs": []
     }))
 }
-
-

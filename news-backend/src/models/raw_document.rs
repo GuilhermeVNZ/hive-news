@@ -45,5 +45,3 @@ pub struct CollectionResult {
     pub duration_ms: i64,
     pub errors: Vec<String>,
 }
-
-
