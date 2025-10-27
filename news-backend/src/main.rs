@@ -17,6 +17,7 @@ mod models;
 mod routes;
 mod services;
 mod utils;
+mod writer;
 
 use db::connection::Database;
 use std::path::Path;
@@ -74,12 +75,16 @@ fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    // Load environment variables from .env file
+    dotenv::dotenv().ok();
+    
     // Initialize tracing
     tracing_subscriber::fmt::init();
 
-    // Check if we should run a collection test
+    // Check if we should run a collection test or writer
     let args: Vec<String> = std::env::args().collect();
     let test_collector = args.len() > 1 && args[1] == "collect";
+    let test_writer = args.len() > 1 && args[1] == "write";
 
     if test_collector {
         println!("🔬 Test Collector - arXiv");
@@ -87,11 +92,22 @@ async fn main() -> anyhow::Result<()> {
 
         println!("📥 Starting collection from arXiv...");
         println!("   Category: cs.AI");
-        println!("   Papers: 10\n");
+        println!("   Papers: 20\n");
 
         // Coleta direta SEM banco de dados
         run_arxiv_collection_direct().await?;
 
+        return Ok(());
+    }
+
+    if test_writer {
+        println!("✍️  DeepSeek Writer - Content Generation");
+        println!("=====================================\n");
+        println!("   Style: Nature/Science magazine editorial");
+        
+        // Run writer pipeline
+        run_writer_pipeline().await?;
+        
         return Ok(());
     }
 
@@ -120,10 +136,10 @@ async fn main() -> anyhow::Result<()> {
             .build()?;
 
         let mut start_offset = 0;
-        let target_count = 50;
+        let target_count = 20;
         let mut downloaded_count = 0;
 
-        // Loop até baixar 50 novos artigos
+        // Loop até baixar 20 novos artigos
         while downloaded_count < target_count {
             println!("📡 Fetching batch starting from offset {}...", start_offset);
 
@@ -336,4 +352,71 @@ async fn main() -> anyhow::Result<()> {
 
 async fn health_check() -> &'static str {
     "OK"
+}
+
+async fn run_writer_pipeline() -> anyhow::Result<()> {
+    use crate::writer::WriterService;
+    use std::path::Path;
+    
+    let writer = WriterService::new()?;
+    
+    // Scan filtered directory for approved PDFs
+    let filtered_dir = Path::new("G:/Hive-Hub/News-main/downloads/filtered");
+    let approved_pdfs = scan_filtered_directory(filtered_dir)?;
+    
+    println!("📄 Found {} approved documents to process\n", approved_pdfs.len());
+    
+    if approved_pdfs.is_empty() {
+        println!("⚠️  No filtered PDFs found in downloads/filtered/");
+        println!("   Run collector first to generate content");
+        return Ok(());
+    }
+    
+    for (i, pdf_path) in approved_pdfs.iter().enumerate() {
+        let filename = pdf_path.file_name().unwrap().to_string_lossy();
+        println!("[{}/{}] Processing: {}", i + 1, approved_pdfs.len(), filename);
+        println!("  Phase 1: Generating article (Nature/Science style)...");
+        
+        match writer.process_pdf(pdf_path).await {
+            Ok(result) => {
+                println!("  ✅ Content saved → {}", result.output_dir.display());
+                println!("     Tokens: {} → {} ({:.1}% savings)\n", 
+                         result.original_tokens,
+                         result.compressed_tokens,
+                         result.compression_ratio * 100.0);
+            }
+            Err(e) => {
+                println!("  ❌ Error: {}\n", e);
+            }
+        }
+    }
+    
+    println!("✅ Writer pipeline completed!");
+    println!("   Output: G:\\Hive-Hub\\News-main\\output\\news\\");
+    
+    Ok(())
+}
+
+fn scan_filtered_directory(base_dir: &Path) -> anyhow::Result<Vec<std::path::PathBuf>> {
+    let mut pdfs = Vec::new();
+    
+    if !base_dir.exists() {
+        return Ok(pdfs);
+    }
+    
+    for entry in std::fs::read_dir(base_dir)? {
+        let entry = entry?;
+        let path = entry.path();
+        
+        if path.is_dir() {
+            for sub_entry in std::fs::read_dir(path)? {
+                let sub_path = sub_entry?.path();
+                if sub_path.extension().and_then(|e| e.to_str()) == Some("pdf") {
+                    pdfs.push(sub_path);
+                }
+            }
+        }
+    }
+    
+    Ok(pdfs)
 }

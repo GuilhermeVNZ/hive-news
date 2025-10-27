@@ -215,7 +215,7 @@ fn test_collector() {
     println!("\n🚀 Starting Real Collection from arXiv...");
     println!("\n📊 Configuration:");
     println!("   Source: cs.AI (Computer Science - Artificial Intelligence)");
-    println!("   Papers: 10 most recent");
+    println!("   Papers: 20 most recent");
     println!("   Location: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
     println!("\n⏳ Executing collection...\n");
     
@@ -246,8 +246,49 @@ cargo run -- collect
     if output.status.success() {
         println!("\n✅ Collection completed!");
         println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+        
+        // After collection, the filter runs automatically, then trigger writer
+        println!("\n✍️  Starting Content Generation with DeepSeek...");
+        println!("   Style: Nature/Science magazine editorial");
+        println!("   Phase 1: Article generation");
+        println!("   Phase 2: Social media + video script");
+        
+        run_writer();
     } else {
         println!("\n⚠️  Collection had issues");
+        println!("   Check output above for details");
+    }
+}
+
+fn run_writer() {
+    println!("✍️  DeepSeek Writer - Processing filtered papers\n");
+    
+    let ps_script = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+$env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
+$env:WRITER_DEFAULT_SITE="AIResearch";
+cargo run -- write
+"#;
+    
+    let output = Command::new("powershell")
+        .args(&["-Command", ps_script])
+        .output()
+        .expect("Failed to execute writer");
+    
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    
+    println!("{}", stdout);
+    if !stderr.is_empty() {
+        eprintln!("{}", stderr);
+    }
+    
+    if output.status.success() {
+        println!("\n✅ Content generation completed!");
+        println!("   Output: G:\\Hive-Hub\\News-main\\output\\news\\");
+    } else {
+        println!("\n⚠️  Content generation had issues");
         println!("   Check output above for details");
     }
 }
@@ -335,7 +376,7 @@ fn show_help() {
     println!("  backend    - 🔧 Start backend server only");
     println!("  frontend   - 🎨 Start dashboard only");
     println!("  vectorizer - 🔍 Start vectorizer server only");
-    println!("  collector  - 🔍 Test collector service");
+    println!("  collector  - 🔍 Test collector service (collector → filter → writer)");
     println!("  schedule   - ⏰ Run scheduled collection tasks");
     println!("  monitor    - 📊 Monitor system health");
     println!("  status     - ℹ️  Check system status");
