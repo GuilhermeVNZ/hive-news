@@ -1,7 +1,7 @@
 // Writer Module - Content Generation with DeepSeek API
 pub mod deepseek_client;
 pub mod prompts;
-pub mod image_extractor;
+pub mod illustrator;
 pub mod prompt_compressor;
 pub mod content_generator;
 pub mod file_writer;

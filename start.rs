@@ -253,15 +253,55 @@ cargo run --bin news-backend -- collect
         println!("\n✅ Collection completed!");
         println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
         
-        // After collection, the filter runs automatically, then trigger writer
+        // FASE 2: Filter
+        println!("\n🔍 Starting Filter Phase (Scientific Validation)...");
+        run_filter();
+        
+        // FASE 3: Writer + Illustrator
         println!("\n✍️  Starting Content Generation with DeepSeek...");
         println!("   Style: Nature/Science magazine editorial");
         println!("   Phase 1: Article generation");
         println!("   Phase 2: Social media + video script");
+        println!("   Phase 3: Featured image extraction (Illustrator)");
         
         run_writer();
+        
+        println!("\n✅ Full Pipeline Completed!");
+        println!("   Collection → Filter → Writer → Illustrator");
+        println!("   Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
     } else {
         println!("\n⚠️  Collection had issues");
+        println!("   Check output above for details");
+    }
+}
+
+fn run_filter() {
+    println!("🔍 Filter Service - Validating Scientific Papers\n");
+    
+    let ps_script = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+cargo run --bin news-backend -- filter
+"#;
+    
+    let output = Command::new("powershell")
+        .args(&["-Command", ps_script])
+        .output()
+        .expect("Failed to execute filter");
+    
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    
+    println!("{}", stdout);
+    if !stderr.is_empty() {
+        eprintln!("{}", stderr);
+    }
+    
+    if output.status.success() {
+        println!("\n✅ Filter completed!");
+        println!("   Approved: G:\\Hive-Hub\\News-main\\downloads\\filtered\\");
+    } else {
+        println!("\n⚠️  Filter had issues");
         println!("   Check output above for details");
     }
 }
@@ -389,7 +429,7 @@ fn show_help() {
     println!("  backend    - 🔧 Start backend server only");
     println!("  frontend   - 🎨 Start dashboard only");
     println!("  vectorizer - 🔍 Start vectorizer server only");
-    println!("  collector  - 🔍 Test collector service (collector → filter → writer)");
+    println!("  collector  - 🔍 Test collector service (collector → filter → writer → illustrator)");
     println!("  schedule   - ⏰ Run scheduled collection tasks");
     println!("  monitor    - 📊 Monitor system health");
     println!("  status     - ℹ️  Check system status");

@@ -90,6 +90,16 @@ REQUIRED ARTICLE STRUCTURE:
 6. **Limitations** (what remains unknown - from paper's limitations section)
 7. **Figure Recommendation** (which figure best illustrates work)
 
+FIGURE SELECTION PRIORITY (CRITICAL):
+When recommending a figure, prioritize in this order:
+1. **Architecture diagrams** - Show how the model/system is structured (e.g., "Figure 1: Architecture overview")
+2. **Pipeline diagrams** - Show the workflow or process flow (e.g., "Figure 2: Processing pipeline")
+3. **Conceptual diagrams** - Explain how the method or experiment works (e.g., "Figure 3: Methodology overview")
+4. **Experimental results** - Charts, graphs, or performance comparisons
+5. **Other visuals** - Tables, illustrations, or supplementary figures
+
+**Priority Rule:** If the paper contains an architecture, pipeline, or conceptual diagram that explains how the model or experiment works, you MUST prioritize that figure — especially for articles that need to explain complex systems to general readers.
+
 TITLE REQUIREMENTS (CRITICAL):
 - **News-focused**: Explain what the breakthrough means to everyday readers
 - **Simple language**: Avoid technical jargon, write for general audience

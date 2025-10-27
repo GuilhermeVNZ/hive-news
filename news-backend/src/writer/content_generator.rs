@@ -8,7 +8,13 @@ use super::deepseek_client::*;
 use super::prompts::*;
 use super::prompt_compressor::*;
 use super::file_writer::*;
-use super::image_extractor::find_figure_references;
+use super::illustrator::{
+    find_figure_references,
+    extract_figures_from_pdf,
+    find_recommended_image,
+    extract_figure_caption,
+    extract_figure_number,
+};
 
 pub struct WriterService {
     deepseek_client: DeepSeekClient,
@@ -52,6 +58,16 @@ impl WriterService {
         })
     }
     
+    /// Retorna o site atual (ex: AIResearch, Nature, Science)
+    pub fn get_site(&self) -> &str {
+        &self.site
+    }
+    
+    /// Retorna o diretório base de output
+    pub fn get_output_base(&self) -> &Path {
+        &self.output_base
+    }
+    
     pub async fn process_pdf(&self, pdf_path: &Path) -> Result<GeneratedContent> {
         // 1. Extract text from PDF
         println!("  📄 Parsing PDF...");
@@ -91,6 +107,54 @@ impl WriterService {
             .context("Failed to generate article")?;
         
         println!("  ✅ Article generated");
+        
+        // 3.5. PHASE 4: Extract and copy featured image
+        println!("  🖼️  Extracting images from PDF...");
+        match extract_figures_from_pdf(pdf_path, &output_dir).await {
+            Ok(extracted_images) if !extracted_images.is_empty() => {
+                println!("  ✅ Extracted {} images", extracted_images.len());
+                
+                // Encontrar imagem recomendada
+                if let Some(recommended_img) = find_recommended_image(
+                    &article_response.recommended_figure,
+                    &extracted_images,
+                ) {
+                    // Copiar para output com nome padrão
+                    let dest_path = output_dir.join("featured_image.png");
+                    tokio::fs::copy(&recommended_img, &dest_path).await
+                        .context("Failed to copy featured image")?;
+                    println!("  ✅ Featured image saved: {}", dest_path.display());
+                    
+                    // Extrair e salvar legenda da figura
+                    if let Some(figure_num) = extract_figure_number(&article_response.recommended_figure) {
+                        if let Some(caption) = extract_figure_caption(&parsed.text, figure_num) {
+                            let caption_path = output_dir.join("featured_image_caption.txt");
+                            tokio::fs::write(&caption_path, &caption).await
+                                .context("Failed to save caption")?;
+                            println!("  ✅ Caption saved: {}", caption_path.display());
+                        }
+                    }
+                    
+                    // Limpar diretório temporário
+                    let temp_dir = output_dir.join("temp_images");
+                    if temp_dir.exists() {
+                        tokio::fs::remove_dir_all(&temp_dir).await
+                            .context("Failed to remove temp_images")?;
+                    }
+                } else {
+                    println!("  ⚠️  Could not find recommended image: {}", 
+                             article_response.recommended_figure);
+                    println!("     Available: {} images extracted", extracted_images.len());
+                }
+            }
+            Ok(_) => {
+                println!("  ⚠️  No images found in PDF");
+            }
+            Err(e) => {
+                println!("  ⚠️  Image extraction failed: {}", e);
+                // Não falhar o pipeline inteiro por causa de imagem
+            }
+        }
         
         // 4. PHASE 2: Generate social content
         println!("  📱 Building social media prompts...");

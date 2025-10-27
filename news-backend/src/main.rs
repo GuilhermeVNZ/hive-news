@@ -422,19 +422,47 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
     
     // Scan filtered directory for approved PDFs
     let filtered_dir = Path::new("G:/Hive-Hub/News-main/downloads/filtered");
-    let approved_pdfs = scan_filtered_directory(filtered_dir)?;
+    let all_approved_pdfs = scan_filtered_directory(filtered_dir)?;
     
-    println!("📄 Found {} approved documents to process\n", approved_pdfs.len());
+    println!("📄 Found {} approved documents in filtered/\n", all_approved_pdfs.len());
     
-    if approved_pdfs.is_empty() {
+    if all_approved_pdfs.is_empty() {
         println!("⚠️  No filtered PDFs found in downloads/filtered/");
         println!("   Run collector first to generate content");
         return Ok(());
     }
     
-    for (i, pdf_path) in approved_pdfs.iter().enumerate() {
+    // Filtrar apenas PDFs ainda não processados para este site
+    let mut pending_pdfs = Vec::new();
+    let site = writer.get_site();
+    let output_base = writer.get_output_base();
+    
+    for pdf_path in all_approved_pdfs.iter() {
+        let article_id = pdf_path
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("unknown");
+        
+        let output_dir = output_base.join(&site).join(article_id);
+        
+        // Verificar se já existe conteúdo gerado
+        if !article_already_processed(&output_dir) {
+            pending_pdfs.push(pdf_path.clone());
+        } else {
+            println!("⏭️  Skipping {} (already processed for {})", article_id, site);
+        }
+    }
+    
+    println!("📝 {} new documents to process for {}\n", pending_pdfs.len(), site);
+    
+    if pending_pdfs.is_empty() {
+        println!("✅ All documents already processed for {}", site);
+        return Ok(());
+    }
+    
+    for (i, pdf_path) in pending_pdfs.iter().enumerate() {
         let filename = pdf_path.file_name().unwrap().to_string_lossy();
-        println!("[{}/{}] Processing: {}", i + 1, approved_pdfs.len(), filename);
+        println!("[{}/{}] Processing: {}", i + 1, pending_pdfs.len(), filename);
         println!("  Phase 1: Generating article (Nature/Science style)...");
         
         match writer.process_pdf(pdf_path).await {
@@ -455,6 +483,18 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
     println!("   Output: G:\\Hive-Hub\\News-main\\output\\news\\");
     
     Ok(())
+}
+
+/// Verifica se um artigo já foi processado pelo Writer
+fn article_already_processed(output_dir: &Path) -> bool {
+    // Verifica se o diretório existe
+    if !output_dir.exists() {
+        return false;
+    }
+    
+    // Verifica se o arquivo article.md existe (arquivo principal gerado)
+    let article_file = output_dir.join("article.md");
+    article_file.exists()
 }
 
 fn scan_filtered_directory(base_dir: &Path) -> anyhow::Result<Vec<std::path::PathBuf>> {
