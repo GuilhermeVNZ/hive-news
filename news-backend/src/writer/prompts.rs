@@ -76,18 +76,46 @@ WHAT TO AVOID (AI writing patterns):
 - Speculating beyond what paper's data supports
 
 REQUIRED ARTICLE STRUCTURE:
-1. **Opening Hook** (2-3 sentences: significance and context from paper)
-2. **Key Finding** (what researchers discovered - be specific)
+1. **Opening Hook** (2-3 sentences: create immediate curiosity and tension - why this matters NOW)
+   - Start with the impact or surprising finding from paper
+   - Create a "curiosity gap" - what doesn't add up yet?
+   - Connect to real-world implications (if paper discusses this)
+   - Example: "For 50 years, scientists have struggled to predict how proteins fold. Today, that changed."
+
+2. **Key Finding** (what researchers discovered - be specific and exciting)
 3. **Methodology** (how they did it - brief but accurate to paper)
-4. **Results Analysis** (what data shows - reference figures from paper)
+4. **Results Analysis** (what data shows - reference figures from paper, emphasize surprising results)
 5. **Context** (why it matters - based on paper's discussion)
 6. **Limitations** (what remains unknown - from paper's limitations section)
 7. **Figure Recommendation** (which figure best illustrates work)
 
-EXAMPLES OF GOOD OPENING LINES (Nature/Science style):
-✓ "Machine learning models can now predict protein structures with near-atomic accuracy."
-✓ "A new analysis reveals the universe may be younger than previously thought."
-✓ "Researchers have identified a molecular pathway in cancer cell evasion."
+EXAMPLES OF GOOD OPENING LINES (News-style with scientific rigor):
+✓ "Scientists have spent decades trying to predict how proteins fold. Today, an AI finally got it right—and the results could change medicine forever."
+✓ "Everything we thought we knew about the universe's age might be wrong. A new analysis suggests the cosmos is 2 billion years younger than previous estimates."
+✓ "Cancer cells have a secret escape route that makes them nearly impossible to kill. Now, researchers have found it—and a way to shut it down."
+✓ "Your smartphone battery dies in hours because of a flaw that should have been impossible. Today, researchers discovered why—and how to fix it."
+
+## TITLE REQUIREMENTS (CRITICAL FOR CLICKS):
+Your title MUST be compelling and encourage clicks while maintaining Nature/Science credibility.
+
+GOOD TITLES (news-style that drives clicks):
+✓ "How Scientists Just Solved the 50-Year Protein Folding Mystery"
+✓ "The Universe Might Be 2 Billion Years Younger Than We Thought"
+✓ "AI Found a Hidden Cancer Escape Route That Could Save Millions"
+✓ "Why Your Phone Battery Dies: The Breakthrough Nobody Saw Coming"
+✓ "The Quantum Computer That Just Broke Every Safety Rule"
+
+BAD TITLES (too academic, no click appeal):
+✗ "Machine Learning Applications in Protein Structure Prediction"
+✗ "Comparative Analysis of Cosmic Expansion Rates"
+✗ "Observational Study of Cellular Mechanism in Cancer Cells"
+
+TITLE STRUCTURE:
+- Start with active verb or compelling question/statement
+- Include the breakthrough/finding in accessible terms
+- Create curiosity gap (make reader want to know more)
+- Avoid jargon unless absolutely necessary
+- Add emotional or practical impact when possible
 
 ## PAPER TEXT (YOUR ONLY SOURCE):
 {}
@@ -99,7 +127,7 @@ EXAMPLES OF GOOD OPENING LINES (Nature/Science style):
 Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above. End with figure recommendation.
 
 Format:
-# [Compelling, Specific Title - Nature/Science Style]
+# [Compelling News-Style Title That Drives Clicks While Maintaining Scientific Credibility]
 
 [Article body - based ONLY on paper content...]
 
