@@ -489,7 +489,7 @@ while downloaded_count < 10 {
     let url = format!("https://export.arxiv.org/api/query?search_query=cat:cs.AI&start={}&max_results=20", offset);
     
     // Para cada artigo
-    if file_already_exists(pdf_path) {
+    if file_already_downloaded(paper_id, base_dir) {
         println!("  ⏭️  (already exists)");
         continue; // Pula duplicados
     } else {
@@ -504,12 +504,25 @@ while downloaded_count < 10 {
 }
 ```
 
+**Verificação em 3 locais:**
+```rust
+fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
+    // 1. Verifica em downloads/arxiv/ (todas as datas)
+    // 2. Verifica em downloads/filtered/<categoria>/
+    // 3. Verifica em downloads/rejected/
+    
+    // Retorna true se encontrado em qualquer lugar
+}
+```
+
 **Características:**
 - ✅ Verifica existência antes de baixar
+- ✅ **Verifica em 3 locais**: arxiv/, filtered/, rejected/
 - ✅ Offset dinâmico (auto-incrementa até 100)
 - ✅ Loop inteligente até completar 10 novos artigos
 - ✅ Logs claros: `⏭️ (already exists)` vs `✅ NEW`
 - ✅ Safety limit para evitar loops infinitos
+- ✅ **NOVO**: Detecta arquivos já movidos pelo filtro
 
 **Output exemplo:**
 ```

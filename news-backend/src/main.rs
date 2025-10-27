@@ -19,6 +19,58 @@ mod utils;
 mod filter;
 
 use db::connection::Database;
+use std::path::Path;
+
+fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
+    let filename = format!("{}.pdf", paper_id);
+    
+    // 1. Verificar em downloads/arxiv/ (todas as subpastas de data)
+    let arxiv_dir = base_dir.join("arxiv");
+    if arxiv_dir.exists() {
+        if let Ok(entries) = std::fs::read_dir(&arxiv_dir) {
+            for entry in entries {
+                if let Ok(entry) = entry {
+                    let date_dir = entry.path();
+                    if date_dir.is_dir() {
+                        let file_path = date_dir.join(&filename);
+                        if file_path.exists() {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 2. Verificar em downloads/filtered/<categoria>/
+    let filtered_dir = base_dir.join("filtered");
+    if filtered_dir.exists() {
+        if let Ok(entries) = std::fs::read_dir(&filtered_dir) {
+            for entry in entries {
+                if let Ok(entry) = entry {
+                    let category_dir = entry.path();
+                    if category_dir.is_dir() {
+                        let file_path = category_dir.join(&filename);
+                        if file_path.exists() {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 3. Verificar em downloads/rejected/
+    let rejected_dir = base_dir.join("rejected");
+    if rejected_dir.exists() {
+        let file_path = rejected_dir.join(&filename);
+        if file_path.exists() {
+            return true;
+        }
+    }
+    
+    false
+}
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -125,8 +177,8 @@ async fn run_arxiv_collection_direct() -> anyhow::Result<()> {
             
             let file_path = date_dir.join(format!("{}.pdf", article.id));
             
-            // Verificar se já existe
-            if file_path.exists() {
+            // Verificar se já existe em qualquer lugar (arxiv, filtered, rejected)
+            if file_already_downloaded(&article.id, base_dir) {
                 println!("  [{}/{}]: {}... ⏭️  (already exists)", downloaded_count + 1, target_count, article.id);
                 continue;
             }
