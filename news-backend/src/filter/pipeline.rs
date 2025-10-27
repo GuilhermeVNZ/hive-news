@@ -1,6 +1,7 @@
 use anyhow::Result;
 use std::path::{Path, PathBuf};
 use tokio::sync::mpsc;
+use std::fs;
 
 use crate::filter::parser::ParsedPdf;
 use crate::filter::source_detector::{SourceType, detect_source_type};
@@ -89,13 +90,14 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             println!("   Approved (score: {:.2}): {} → {}", score, result.doc.title, category);
             stats.approved += 1;
             
-            // TODO: Mover para /filtered/<category>/
-            // TODO: Salvar no banco
+            // Mover para /filtered/<category>/
+            move_to_category(&pdf_path, &category, download_dir)?;
         } else {
             println!("   Rejected (score: {:.2}): {}", score, result.doc.title);
             stats.rejected += 1;
             
-            // TODO: Mover para /rejected/
+            // Mover para /rejected/
+            move_to_rejected(&pdf_path, download_dir)?;
         }
     }
     
@@ -131,3 +133,46 @@ fn discover_unfiltered_pdfs(download_dir: &Path) -> Result<Vec<PathBuf>> {
     Ok(pdfs)
 }
 
+fn move_to_category(pdf_path: &Path, category: &str, base_dir: &Path) -> Result<()> {
+    let category_dir = base_dir.join("filtered").join(category);
+    
+    // Criar diretório se não existir
+    if !category_dir.exists() {
+        fs::create_dir_all(&category_dir)?;
+    }
+    
+    // Obter nome do arquivo
+    let filename = pdf_path.file_name()
+        .and_then(|n| n.to_str())
+        .unwrap_or("unknown.pdf");
+    
+    let dest_path = category_dir.join(filename);
+    
+    // Mover arquivo
+    fs::rename(pdf_path, &dest_path)?;
+    
+    Ok(())
+}
+
+fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<()> {
+    let rejected_dir = base_dir.join("rejected");
+    
+    // Criar diretório se não existir
+    if !rejected_dir.exists() {
+        fs::create_dir_all(&rejected_dir)?;
+    }
+    
+    // Obter nome do arquivo
+    let filename = pdf_path.file_name()
+        .and_then(|n| n.to_str())
+        .unwrap_or("unknown.pdf");
+    
+    let dest_path = rejected_dir.join(filename);
+    
+    // Mover arquivo
+    fs::rename(pdf_path, &dest_path)?;
+    
+    Ok(())
+}
+
+ 
