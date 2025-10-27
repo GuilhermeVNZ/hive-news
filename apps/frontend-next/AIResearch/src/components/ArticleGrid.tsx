@@ -94,19 +94,30 @@ const mockArticles = [
   },
 ];
 
-const ArticleGrid = () => {
+interface ArticleGridProps {
+  selectedCategory?: string;
+}
+
+const ArticleGrid = ({ selectedCategory }: ArticleGridProps) => {
+  const filteredArticles = selectedCategory 
+    ? mockArticles.filter(article => article.category === selectedCategory)
+    : mockArticles;
+
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section className="container mx-auto px-4 py-16" id="articles">
       <div className="mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-          Artigos em Destaque
+          {selectedCategory ? `Artigos em ${selectedCategory}` : "Artigos em Destaque"}
         </h2>
         <p className="text-muted-foreground text-lg">
-          Explore as últimas pesquisas e desenvolvimentos em IA
+          {selectedCategory 
+            ? `${filteredArticles.length} ${filteredArticles.length === 1 ? 'artigo encontrado' : 'artigos encontrados'}`
+            : "Explore as últimas pesquisas e desenvolvimentos em IA"
+          }
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {mockArticles.map((article, index) => (
+        {filteredArticles.map((article, index) => (
           <div 
             key={article.id}
             className="animate-fade-in-up"

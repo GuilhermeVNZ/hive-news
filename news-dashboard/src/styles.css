@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 192 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 192 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 192 10% 3.9%;
+    --primary: 187 100% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 187 30% 96%;
+    --secondary-foreground: 187 100% 45%;
+    --muted: 187 30% 96%;
+    --muted-foreground: 192 3.8% 46.1%;
+    --accent: 187 30% 96%;
+    --accent-foreground: 187 100% 45%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 187 20% 89.8%;
+    --input: 187 20% 89.8%;
+    --ring: 187 100% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 192 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 192 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 192 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 187 100% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 187 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 187 30% 20%;
+    --muted-foreground: 192 5% 64.9%;
+    --accent: 187 30% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 187 30% 20%;
+    --input: 187 30% 20%;
+    --ring: 187 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Animations */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}

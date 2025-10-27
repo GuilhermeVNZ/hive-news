@@ -1,8 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-const Hero = () => {
+interface HeroProps {
+  selectedCategory?: string;
+  onCategorySelect?: (category: string) => void;
+}
+
+const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
+  const categories = ["Machine Learning", "LLMs", "Computer Vision", "Robótica", "NLP"];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
       {/* Animated Background Blobs */}
@@ -37,10 +47,15 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 justify-center">
-            {["Machine Learning", "LLMs", "Computer Vision", "Robótica", "NLP"].map((tag, index) => (
+            {categories.map((tag, index) => (
               <button
                 key={tag}
-                className="group px-5 py-2.5 text-sm font-medium rounded-full border-2 border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300 animate-fade-in"
+                onClick={() => onCategorySelect?.(tag)}
+                className={`group px-5 py-2.5 text-sm font-medium rounded-full border-2 transition-all duration-300 animate-fade-in ${
+                  selectedCategory === tag
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary"
+                }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {tag}

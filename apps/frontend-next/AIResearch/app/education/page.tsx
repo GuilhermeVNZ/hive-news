@@ -1,11 +1,14 @@
+"use client";
+
+import { useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Clock, BookOpen, ExternalLink, CheckCircle } from "lucide-react";
+import { Clock, BookOpen, ExternalLink, CheckCircle, Search } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 // Mock data - will be replaced with actual API calls
-// Note: Links de afiliados devem ser substituídos pelos links reais
 const courses = [
   {
     id: "1",
@@ -145,6 +148,30 @@ const courses = [
 ];
 
 export default function EducationPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // Unique categories from courses
+  const categories = useMemo(() => {
+    const uniqueCats = Array.from(new Set(courses.map(c => c.category)));
+    return ["all", ...uniqueCats];
+  }, []);
+
+  // Filter courses based on search and category
+  const filteredCourses = useMemo(() => {
+    return courses.filter((course) => {
+      const matchesSearch = 
+        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const matchesCategory = selectedCategory === "all" || course.category === selectedCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategory]);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -152,28 +179,63 @@ export default function EducationPage() {
         {/* Hero Section */}
         <div className="relative bg-gradient-to-br from-primary/5 via-background to-background py-12">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
                 Educação em IA
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-8">
                 Descubra cursos nas melhores instituições de ensino do mundo
               </p>
               
-              {/* Affiliate Disclosure */}
+              {/* Search Bar */}
               <div className="max-w-2xl mx-auto">
-                <p className="text-sm text-muted-foreground bg-muted/50 px-4 py-3 rounded-lg border border-border">
-                  ℹ️ <strong>Aviso Legal:</strong> Alguns links podem ser afiliados. Isso significa que podemos receber uma pequena comissão se você fizer uma compra através desses links, sem custo adicional para você. Isso nos ajuda a manter o site gratuitamente.
-                </p>
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Pesquisar por curso, instituição, instrutor ou tema..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-12 h-14 text-base border-2 border-border bg-background focus:border-primary transition-all"
+                  />
+                </div>
               </div>
+
+              {/* Category Filter */}
+              <div className="flex flex-wrap gap-2 justify-center mt-6">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                      selectedCategory === category
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-accent"
+                    }`}
+                  >
+                    {category === "all" ? "Todos" : category}
+                  </button>
+                ))}
+              </div>
+
+              {/* Results count */}
+              <p className="text-center text-sm text-muted-foreground mt-6">
+                {filteredCourses.length} {filteredCourses.length === 1 ? "curso encontrado" : "cursos encontrados"}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Courses Grid */}
         <section className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course) => (
+          {filteredCourses.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">Nenhum curso encontrado</p>
+              <p className="text-sm text-muted-foreground mt-2">Tente alterar sua busca ou filtro</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCourses.map((course) => (
               <Card key={course.id} className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift h-full flex flex-col">
                 <CardHeader className="relative">
                   <div className="flex items-center justify-between mb-3">
@@ -247,8 +309,9 @@ export default function EducationPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
       </main>
       <Footer />

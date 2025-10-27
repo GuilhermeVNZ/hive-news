@@ -1,332 +1,157 @@
-# Hive-News Architecture
+# News Management System - Architecture
 
-**Version:** 1.1.0  
-**Last Updated:** 2025-10-26  
-**Status:** Production Ready
+## Overview
 
----
+The News Management System is a multi-tier architecture designed to manage content aggregation, curation, and distribution across multiple portals.
 
-## 📋 Overview
+## Architecture Layers
 
-Hive-News is a **scientific news automation platform** that collects, validates, ranks, generates, and publishes AI-powered articles across multiple languages and channels.
+### 1. Backend Layer (Rust + Axum + PostgreSQL)
 
-**🧬 Scientific Validation Module** ensures authenticity and integrity of academic papers before news generation.
+**Location**: `news-backend/`
 
-### Core Components
+**Components**:
+- **HTTP Server** (Axum): RESTful API endpoints
+- **Database Layer** (SQLx): PostgreSQL interactions
+- **Authentication** (JWT + bcrypt): Secure user sessions
+- **Services**: Business logic layer
 
-1. **Content Collection** - RSS feeds, APIs, web scraping
-2. **Scientific Validation** 🧬 - Academic paper verification (NEW)
-3. **Vector Search** - Semantic indexing with 512D embeddings
-4. **Content Ranking** - Dynamic ranking with QA feedback loop
-5. **AI Generation** - DeepSeek-powered article writing
-6. **Multi-language** - 5 languages (pt-BR, es-ES, fr-FR, de-DE, zh-CN)
-7. **Image Generation** - SDXL-powered AI images
-8. **Automated Publishing** - Websites and social media (X.com, LinkedIn)
+**Key Features**:
+- RESTful API for dashboard operations
+- JWT-based authentication
+- PostgreSQL for persistent storage
+- Structured logging with tracing
 
----
+### 2. Dashboard Frontend (React + Tauri)
 
-## 🏗️ System Architecture
+**Location**: `news-dashboard/`
 
-### High-Level Flow
+**Components**:
+- **React UI**: Component-based interface
+- **Tauri Shell**: Desktop application wrapper
+- **TanStack Query**: Server state management
+- **Tailwind CSS**: Styling
 
-```
-RSS/API → Collector → Metadata Extractor
-                              ↓
-                         Vectorizer (512D)
-                              ↓
-🧬 ScientificValidationService (NEW)
-    - Reputation checks
-    - Citation verification
-    - Author verification
-    - AI detection
-                              ↓
-                         Ranker (with QA feedback)
-    - Freshness (40%)
-    - Relevance (30%)
-    - Trend (20%)
-    - Social Signal (10%)
-    - QA Penalty (applied)
-                              ↓
-                        DeepSeek (Writer)
-                              ↓
-                        Translator (5 langs)
-                              ↓
-                        SDXL (Images)
-                              ↓
-                        Publisher
-```
+**Key Features**:
+- Real-time status updates
+- Configuration management UI
+- Cross-platform desktop app (Windows, macOS, Linux)
 
----
+### 3. Content Portals (Next.js)
 
-## 🧬 Scientific Validation Module (NEW)
+**Location**: `News-main/apps/frontend-next/`
 
-### Position in Pipeline
+**Components**:
+- **AIResearch**: Scientific news portal
+- **ScienceAI**: Technical research portal (future)
 
-**Location:** After Vectorizer, Before Ranker  
-**Purpose:** Verify authenticity of academic papers
+## Database Schema
 
-### Components
+### pages_config
+Stores configuration for each content portal.
 
-1. **ScientificValidationService**
-   - Conditional execution (only for academic sources)
-   - Portal-specific configuration
-   - Multi-factor scoring
-
-2. **Validation Factors**
-   - **Reputation Score (40%)**: Journal/conference reputation
-   - **Citation Rate (30%)**: Citation accessibility verification
-   - **Author Verification (20%)**: ORCID/profile checks
-   - **AI Detection (10%)**: AI-generated content probability
-
-3. **Integration with Ranker**
-   ```typescript
-   finalRank =
-     (freshness * 0.35 +
-       relevance * 0.25 +
-       trend * 0.2 +
-       socialSignal * 0.1 +
-       validationScore * 0.1) * // NEW: Scientific validation
-     qaPenalty;
-   ```
-
-### Configuration
-
-**Per-Portal YAML:**
-
-```yaml
-enable_scientific_validation: true
-source_types:
-  - arxiv.org: "academic" # Validated
-  - nature.com: "academic" # Validated
-  - techcrunch.com: "news" # Skipped
+```sql
+CREATE TABLE pages_config (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    sources TEXT[] DEFAULT '{}',
+    frequency_minutes INT NOT NULL DEFAULT 60,
+    writing_style TEXT NOT NULL DEFAULT 'scientific',
+    linked_accounts JSONB DEFAULT '{}',
+    active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
 ```
 
----
+### users
+Stores user authentication information.
 
-## 📦 Module Overview
-
-### 19 Modules Implemented
-
-1. **Core/Application** - CMMV integration, YAML profiles, ORM
-2. **Editorial** - Style presets, language config, cadence
-3. **Source/Collector** - RSS, API, HTML scraping
-4. **Metadata Extractor** - Title, authors, dates, abstracts
-5. **Vectorizer** - 512D embeddings, semantic search
-6. **Ranker** - Dynamic ranking with QA feedback loop
-7. **Writer** - DeepSeek-powered article generation
-8. **Translator** - Multi-language translation
-9. **Image Generator** - SDXL image generation
-10. **Publisher** - Website and social media publishing
-11. **Scheduler** - Cron-based job scheduling
-12. **Metrics** - Engagement tracking
-13. **SEO/i18n** - SEO optimization, hreflang
-14. **QA/Factuality** - Content validation
-15. **Scientific Validation** 🧬 - Academic paper verification (NEW)
-16. **Observability** - Logging, monitoring
-17. **Security** - Authentication, encryption
-18. **Frontend** - Next.js 15 portals
-19. **GUI** - Electron desktop app
-
----
-
-## 🔄 Data Flow
-
-### 1. Collection Phase
-
-```
-Sources (RSS/API/HTML)
-    ↓
-Collector Service
-    ↓
-Metadata Extraction
-    ↓
-Vectorizer (embedding)
-    ↓
-[Stored in PostgreSQL]
+```sql
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
 ```
 
-### 2. Validation Phase (NEW) 🧬
+### collection_logs
+Tracks automated collection runs.
 
-```
-Academic Papers Only
-    ↓
-ScientificValidationService
-    ↓
-Check: Reputation + Citations + Authors + AI
-    ↓
-validation_score (0-1)
-    ↓
-flagged (boolean)
-```
-
-### 3. Ranking Phase
-
-```
-Articles (all sources)
-    ↓
-RankerService
-    ↓
-Calculate: Freshness + Relevance + Trend + Social
-    ↓
-Apply: QA Penalty + Validation Score
-    ↓
-Ranked Articles
+```sql
+CREATE TABLE collection_logs (
+    id SERIAL PRIMARY KEY,
+    page_id INT REFERENCES pages_config(id) ON DELETE CASCADE,
+    status TEXT NOT NULL,
+    articles_collected INT DEFAULT 0,
+    duration_ms INT,
+    error_message TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
 ```
 
-### 4. Generation Phase
-
-```
-Top-Ranked Articles
-    ↓
-DeepSeek Writer
-    ↓
-Generated Content
-    ↓
-Translator (5 languages)
-    ↓
-SDXL Image Generator
-    ↓
-Published Content
-```
-
----
-
-## 📊 CMMV Contracts
-
-### 12 Contracts (including NEW Scientific Validation)
-
-1. **EditorialContract** - Portal configurations
-2. **SourceContract** - Content sources
-3. **DocumentContract** - Document metadata
-4. **VectorContract** - Vector embeddings (512D)
-5. **ArticleContract** - Generated articles
-6. **TranslationContract** - Multi-language translations
-7. **ImageContract** - Generated images
-8. **PublishContract** - Publishing records
-9. **JobContract** - Scheduled jobs
-10. **MetricContract** - Engagement metrics
-11. **ValidationContract** - QA validation
-12. **ScientificValidationContract** 🧬 - Academic validation (NEW)
-
----
-
-## 🔌 Protocol Support
-
-### Multi-Protocol Architecture
-
-1. **MCP** - Model Context Protocol (full support)
-   - 32 tools exposed
-   - Synap integration (13 tools)
-   - Vectorizer integration (19 tools)
-
-2. **UMICP** - Universal Micro-ICP
-   - Native JSON types
-   - Auto documentation
-
-3. **StreamableHTTP** - Server-Sent Events
-   - Real-time metrics
-   - Live search results
-
-4. **WebSocket** - Binary RPC
-   - Protobuf encoding
-   - High performance
-
----
-
-## 🧮 Ranking Algorithm (Enhanced)
-
-### Formula
-
-```typescript
-finalRank =
-  (freshness * 0.35 + // Freshness (NEW: reduced from 0.4)
-    relevance * 0.25 + // Relevance (NEW: reduced from 0.3)
-    trend * 0.2 +
-    socialSignal * 0.1 +
-    validationScore * 0.1) * // NEW: Scientific validation
-  qaPenalty;
-```
-
-### QA Feedback Loop
-
-- **Rejected**: -50% penalty
-- **Pending**: -10% penalty
-- **Non-factual**: -30% penalty
-- **Non-neutral tone**: -20% penalty
-- Applied to final rank calculation
-
----
-
-## 🎯 Performance Targets
-
-- **Processing Speed**: < 5 min/article
-- **API Latency**: < 500ms per request
-- **Vector Search**: < 100ms per query
-- **Image Generation**: < 30s per image
-- **System Uptime**: 99.9%
-
----
-
-## 🔐 Security
+## API Endpoints
 
 ### Authentication
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `GET /api/auth/me` - Get current user
 
-- JWT tokens
-- OAuth2 support
-- 2FA ready
+### Pages
+- `GET /api/pages` - List all pages
+- `POST /api/pages` - Create new page
+- `GET /api/pages/:id` - Get page details
+- `PUT /api/pages/:id` - Update page
+- `DELETE /api/pages/:id` - Delete page
 
-### Encryption
+### Sources
+- `GET /api/sources` - List sources
+- `POST /api/sources` - Create source
 
-- Vault for secrets
-- AES-256-GCM
-- Encrypted API keys
+### Logs
+- `GET /api/logs` - Get collection logs
 
-### API Security
+## Development Workflow
 
-- Rate limiting
-- Input validation
-- SQL injection prevention
-- XSS prevention
+1. **Setup Database**:
+   ```bash
+   createdb news_system
+   psql news_system -f news-backend/migrations/001_create_tables.sql
+   ```
 
----
+2. **Run Backend**:
+   ```bash
+   cd news-backend
+   cargo run
+   ```
 
-## 📈 Monitoring
+3. **Run Frontend**:
+   ```bash
+   cd news-dashboard
+   npm install
+   npm run dev
+   ```
 
-### Observability Stack
+## Technology Stack
 
-- **Logs**: Loki
-- **Metrics**: Grafana + Prometheus
-- **Traces**: Distributed tracing
-- **Alerts**: PagerDuty integration
+### Backend
+- **Language**: Rust (Edition 2024)
+- **Framework**: Axum 0.7
+- **Database**: PostgreSQL
+- **Authentication**: JWT + bcrypt
+- **Async**: Tokio
 
-### Key Metrics
+### Frontend
+- **Framework**: React 18
+- **Desktop**: Tauri 1.5
+- **State**: TanStack Query
+- **Styling**: Tailwind CSS
 
-- Article generation rate
-- Validation success rate
-- API response times
-- Error rates
-- Engagement metrics
+### Future Extensions
+- WebSocket for real-time updates
+- Social media integration (LinkedIn, X, YouTube)
+- Automated content collection workers
+- Article ranking and curation system
 
----
 
-## 🚀 Deployment
-
-### Infrastructure
-
-- **Backend**: Docker containers
-- **Database**: PostgreSQL 15+
-- **Cache**: Redis
-- **Storage**: MinIO/S3
-- **Frontend**: Vercel/Cloudflare
-
-### Scaling
-
-- Horizontal scaling supported
-- Load balancing ready
-- Auto-scaling configured
-- CDN integration
-
----
-
-**Maintained by:** Hive-News Team  
-**Last Updated:** 2025-10-26
