@@ -53,6 +53,10 @@ pub async fn extract_figures_from_pdf(
     
     extracted_files.sort();
     
+    // LIMPAR diretório temp_images após uso
+    std::fs::remove_dir_all(&temp_extract_dir)
+        .ok();  // Não falhar se já foi removido
+    
     Ok(extracted_files)
 }
 
@@ -133,6 +137,85 @@ pub fn extract_figure_caption(text: &str, figure_num: usize) -> Option<String> {
     }
     
     None
+}
+
+/// Extrai o terço superior da primeira página do PDF como banner
+/// e gera também uma imagem completa da primeira página
+/// 
+/// Retorna: Vec com 2 PathBufs (banner_<id>.png, page_<id>.png)
+pub async fn extract_first_page_images(
+    pdf_path: &Path,
+    output_dir: &Path,
+    article_id: &str,
+) -> Result<(PathBuf, PathBuf)> {
+    use std::process::Command;
+    
+    let pdftoppm_path = 
+        "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftoppm.exe";
+    
+    if !std::path::Path::new(pdftoppm_path).exists() {
+        return Err(anyhow::anyhow!("pdftoppm.exe not found at: {}", pdftoppm_path));
+    }
+    
+    // Executar: pdftoppm -f 1 -l 1 -png -singlefile <pdf> <output>
+    let output = Command::new(pdftoppm_path)
+        .arg("-f").arg("1")          // Primeira página
+        .arg("-l").arg("1")          // Última página (só a primeira)
+        .arg("-png")                 // Formato PNG
+        .arg("-singlefile")          // Gerar apenas 1 arquivo
+        .arg("-r").arg("150")        // Resolução (150 DPI)
+        .arg(pdf_path)
+        .arg(output_dir.join("temp_page").to_str().unwrap())
+        .output()
+        .context("Failed to execute pdftoppm")?;
+    
+    if !output.status.success() {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        return Err(anyhow::anyhow!("pdftoppm failed: {}", stderr));
+    }
+    
+    // Buscar arquivo gerado (pdftoppm pode gerar com ou sem zero à esquerda: temp_page-1.png, temp_page-01.png, etc)
+    let mut temp_full_page = None;
+    for suffix in ["-1.png", "-01.png", ".png"] {
+        let path = output_dir.join(format!("temp_page{}", suffix));
+        if path.exists() {
+            temp_full_page = Some(path);
+            break;
+        }
+    }
+    
+    let temp_full_page = temp_full_page
+        .ok_or_else(|| anyhow::anyhow!("Failed to generate first page image - no output file found"))?;
+    
+    // Usar biblioteca image para processar
+    use image::{DynamicImage, imageops::crop_imm};
+    
+    // Carregar imagem completa
+    let img = image::open(&temp_full_page)
+        .context("Failed to load page image")?;
+    
+    let width = img.width();
+    let height = img.height();
+    let crop_height = height / 3;  // Terço superior
+    
+    // 1. GERAR BANNER (terço superior) - banner_<article_id>.png
+    let mut img_mut = img.clone();
+    let cropped = crop_imm(&mut img_mut, 0, 0, width, crop_height);
+    
+    let banner_path = output_dir.join(format!("banner_{}.png", article_id));
+    cropped.to_image().save(&banner_path)
+        .context(format!("Failed to save banner image: banner_{}.png", article_id))?;
+    
+    // 2. GERAR PAGE COMPLETA - page_<article_id>.png
+    let page_path = output_dir.join(format!("page_{}.png", article_id));
+    img.save(&page_path)
+        .context(format!("Failed to save full page image: page_{}.png", article_id))?;
+    
+    // Limpar arquivo temporário
+    tokio::fs::remove_file(&temp_full_page).await
+        .ok();  // Não falhar se já foi removido
+    
+    Ok((banner_path, page_path))
 }
 
 /// MANTIDO POR COMPATIBILIDADE: Encontra referências textuais a figuras

@@ -83,7 +83,17 @@ impl PromptCompressor {
             return Err(anyhow::anyhow!("Compression process failed"));
         }
         
-        let compressed_text = String::from_utf8_lossy(&output.stdout).to_string();
+        let mut compressed_text = String::from_utf8_lossy(&output.stdout).to_string();
+        
+        // Ensure the compressed prompt contains the JSON instruction
+        let has_json_original = text.to_lowercase().contains("json");
+        let has_json_compressed = compressed_text.to_lowercase().contains("json");
+        
+        if has_json_original && !has_json_compressed {
+            // Add a fixed JSON instruction at the end
+            compressed_text.push_str("\n\n## JSON OUTPUT REQUIRED:\nYou MUST return valid JSON only:\n{{\"title\": \"...\", \"article_text\": \"...\"}}");
+        }
+        
         let compressed_tokens = self.count_tokens(&compressed_text);
         let compression_ratio = if original_tokens > 0 {
             1.0 - (compressed_tokens as f32 / original_tokens as f32)

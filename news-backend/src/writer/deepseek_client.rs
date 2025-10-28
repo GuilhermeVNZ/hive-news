@@ -15,8 +15,6 @@ pub struct DeepSeekClient {
 #[derive(Debug, Clone)]
 pub struct ArticleResponse {
     pub article_text: String,
-    pub recommended_figure: String,
-    pub figure_reason: String,
 }
 
 #[derive(Debug, Clone)]
@@ -58,7 +56,8 @@ impl DeepSeekClient {
                 }
             ],
             "temperature": 0.7,
-            "max_tokens": 3000
+            "max_tokens": 3000,
+            "response_format": { "type": "json_object" }
         });
         
         let response = self.client
@@ -69,27 +68,34 @@ impl DeepSeekClient {
             .await
             .context("Failed to send request to DeepSeek API")?;
         
-        if !response.status().is_success() {
-            let status = response.status();
+        let status = response.status();
+        if !status.is_success() {
             let error_text = response.text().await.unwrap_or_default();
+            eprintln!("❌ DeepSeek API error status: {}", status);
+            eprintln!("❌ Error body: {}", error_text);
             return Err(anyhow::anyhow!("DeepSeek API error {}: {}", status, error_text));
         }
         
         let response_json: serde_json::Value = response.json().await?;
         
-        // Parse article and extract recommended figure
+        // Parse article from JSON response
         let content = response_json["choices"][0]["message"]["content"]
             .as_str()
             .unwrap_or("")
             .to_string();
         
-        let (article_clean, recommended_figure, figure_reason) = 
-            Self::extract_figure_recommendation(&content);
+        // Parse JSON response
+        #[derive(Debug, serde::Deserialize)]
+        struct ArticleContentJson {
+            title: String,
+            article_text: String,
+        }
+        
+        let parsed: ArticleContentJson = serde_json::from_str(&content)
+            .with_context(|| format!("Failed to parse article JSON. Content: {}", &content[..content.len().min(500)]))?;
         
         Ok(ArticleResponse {
-            article_text: article_clean,
-            recommended_figure,
-            figure_reason,
+            article_text: parsed.article_text,
         })
     }
     
@@ -122,13 +128,20 @@ impl DeepSeekClient {
             .await
             .context("Failed to send request to DeepSeek API")?;
         
-        if !response.status().is_success() {
-            let status = response.status();
+        let status = response.status();
+        if !status.is_success() {
             let error_text = response.text().await.unwrap_or_default();
+            eprintln!("❌ DeepSeek API error {}: {}", status, error_text);
             return Err(anyhow::anyhow!("DeepSeek API error {}: {}", status, error_text));
         }
         
         let response_json: serde_json::Value = response.json().await?;
+        
+        // Log response for debugging
+        if response_json["choices"].is_null() || response_json["choices"].as_array().map_or(0, |a| a.len()) == 0 {
+            eprintln!("❌ No choices in DeepSeek response: {}", serde_json::to_string_pretty(&response_json).unwrap_or_default());
+            return Err(anyhow::anyhow!("No choices in DeepSeek response"));
+        }
         
         let content = response_json["choices"][0]["message"]["content"]
             .as_str()
@@ -146,36 +159,6 @@ impl DeepSeekClient {
         })
     }
     
-    fn extract_figure_recommendation(text: &str) -> (String, String, String) {
-        // Look for "Recommended Figure:" section
-        if let Some(start) = text.find("**Recommended Figure:**") {
-            if let Some(reason_start) = text[start..].find("**Reason:**") {
-                let figure_line = &text[start..start + reason_start];
-                let figure = figure_line
-                    .replace("**Recommended Figure:**", "")
-                    .trim()
-                    .to_string();
-                
-                // Extract reason (up to 500 chars)
-                let reason = if let Some(reason_content) = text[start + reason_start..].lines().nth(0) {
-                    reason_content
-                        .replace("**Reason:**", "")
-                        .trim()
-                        .to_string()
-                } else {
-                    String::new()
-                };
-                
-                // Get article without recommendation section
-                let article_clean = text[..start].trim().to_string();
-                
-                return (article_clean, figure, reason);
-            }
-        }
-        
-        // Fallback: no recommendation found
-        (text.to_string(), String::new(), String::new())
-    }
 }
 
 #[derive(Deserialize)]

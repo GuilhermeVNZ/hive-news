@@ -9,11 +9,7 @@ use super::prompts::*;
 use super::prompt_compressor::*;
 use super::file_writer::*;
 use super::illustrator::{
-    find_figure_references,
-    extract_figures_from_pdf,
-    find_recommended_image,
-    extract_figure_caption,
-    extract_figure_number,
+    extract_first_page_images,
 };
 
 pub struct WriterService {
@@ -73,22 +69,19 @@ impl WriterService {
         println!("  📄 Parsing PDF...");
         let parsed = parse_pdf(pdf_path)?;
         
-        // 2. Extract figures
-        println!("  🖼️  Finding figure references...");
+        // 2. Extract article ID (sem criar pasta ainda)
         let article_id = extract_article_id(pdf_path);
         
         // Structure: output/<Site>/<código do artigo>/
         let output_dir = self.output_base.join(&self.site).join(&article_id);
+        
+        // 2.1. Criar pasta de output
         tokio::fs::create_dir_all(&output_dir).await?;
-        
         println!("  📁 Saving to: {}", output_dir.display());
-        
-        let figures_in_text = find_figure_references(&parsed.text);
-        let figures: Vec<String> = figures_in_text.into_iter().map(|f| f + ".png").collect();
         
         // 3. PHASE 1: Generate article
         println!("  📝 Building article prompt for: {}", self.site);
-        let article_prompt = build_article_prompt(&parsed.text, &figures, &self.site);
+        let article_prompt = build_article_prompt(&parsed.text, &[], &self.site);
         
         let estimated_tokens = article_prompt.len() / 4;
         println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
@@ -104,55 +97,30 @@ impl WriterService {
         let article_response = self.deepseek_client
             .generate_article(&compressed_article.compressed_text)
             .await
-            .context("Failed to generate article")?;
+            .with_context(|| format!("Failed to generate article for {}", article_id))?;
         
         println!("  ✅ Article generated");
         
-        // 3.5. PHASE 4: Extract and copy featured image
-        println!("  🖼️  Extracting images from PDF...");
-        match extract_figures_from_pdf(pdf_path, &output_dir).await {
-            Ok(extracted_images) if !extracted_images.is_empty() => {
-                println!("  ✅ Extracted {} images", extracted_images.len());
-                
-                // Encontrar imagem recomendada
-                if let Some(recommended_img) = find_recommended_image(
-                    &article_response.recommended_figure,
-                    &extracted_images,
-                ) {
-                    // Copiar para output com nome padrão
-                    let dest_path = output_dir.join("featured_image.png");
-                    tokio::fs::copy(&recommended_img, &dest_path).await
-                        .context("Failed to copy featured image")?;
-                    println!("  ✅ Featured image saved: {}", dest_path.display());
-                    
-                    // Extrair e salvar legenda da figura
-                    if let Some(figure_num) = extract_figure_number(&article_response.recommended_figure) {
-                        if let Some(caption) = extract_figure_caption(&parsed.text, figure_num) {
-                            let caption_path = output_dir.join("featured_image_caption.txt");
-                            tokio::fs::write(&caption_path, &caption).await
-                                .context("Failed to save caption")?;
-                            println!("  ✅ Caption saved: {}", caption_path.display());
-                        }
-                    }
-                    
-                    // Limpar diretório temporário
-                    let temp_dir = output_dir.join("temp_images");
-                    if temp_dir.exists() {
-                        tokio::fs::remove_dir_all(&temp_dir).await
-                            .context("Failed to remove temp_images")?;
-                    }
-                } else {
-                    println!("  ⚠️  Could not find recommended image: {}", 
-                             article_response.recommended_figure);
-                    println!("     Available: {} images extracted", extracted_images.len());
+        // 3.5. PHASE 4: Extract banner and full page images
+        // Substituir '.' por '_' no article_id para evitar problemas de path
+        let safe_article_id = article_id.replace(".", "_");
+        let banner_path = output_dir.join(format!("banner_{}.png", safe_article_id));
+        let page_path = output_dir.join(format!("page_{}.png", safe_article_id));
+        
+        // Verificar se as imagens já existem (anti-duplicação)
+        if banner_path.exists() && page_path.exists() {
+            println!("  ⏭️  Images already exist (banner + page)");
+        } else {
+            println!("  🖼️  Extracting first page images (banner + full page)...");
+            match extract_first_page_images(pdf_path, &output_dir, &safe_article_id).await {
+                Ok((generated_banner, generated_page)) => {
+                    println!("  ✅ Banner saved: {}", generated_banner.display());
+                    println!("  ✅ Full page saved: {}", generated_page.display());
                 }
-            }
-            Ok(_) => {
-                println!("  ⚠️  No images found in PDF");
-            }
-            Err(e) => {
-                println!("  ⚠️  Image extraction failed: {}", e);
-                // Não falhar o pipeline inteiro por causa de imagem
+                Err(e) => {
+                    println!("  ⚠️  Image extraction failed: {}", e);
+                    // Não falhar o pipeline inteiro por causa de imagem
+                }
             }
         }
         
@@ -187,7 +155,6 @@ impl WriterService {
             &output_dir,
             &article_response,
             &social_response,
-            &figures,
         ).await?;
         
         Ok(GeneratedContent {
@@ -203,7 +170,6 @@ impl WriterService {
         output_dir: &Path,
         article: &ArticleResponse,
         social: &SocialResponse,
-        figures: &[String],
     ) -> Result<()> {
         // Save article
         save_article(output_dir, &article.article_text).await?;
@@ -215,13 +181,7 @@ impl WriterService {
         // Save video script
         save_shorts_script(output_dir, &social.shorts_script).await?;
         
-        // Save metadata
-        let metadata = serde_json::json!({
-            "recommended_figure": article.recommended_figure,
-            "figure_reason": article.figure_reason,
-            "extracted_figures": figures,
-        });
-        save_metadata(output_dir, &metadata).await?;
+        // NO LONGER SAVING metadata.json - not needed
         
         Ok(())
     }

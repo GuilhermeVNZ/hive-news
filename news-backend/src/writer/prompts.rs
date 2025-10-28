@@ -37,8 +37,7 @@ fn get_site_context(site: &str) -> String {
     }
 }
 
-pub fn build_article_prompt(paper_text: &str, figures: &[String], site: &str) -> String {
-    let figures_list = figures.join(", ");
+pub fn build_article_prompt(paper_text: &str, _figures: &[String], site: &str) -> String {
     let site_context = get_site_context(site);
     
     format!(r#"CRITICAL INSTRUCTIONS (READ FIRST):
@@ -88,17 +87,6 @@ REQUIRED ARTICLE STRUCTURE:
 4. **Results Analysis** (what data shows - reference figures from paper, use simple language)
 5. **Context** (why it matters - real-world implications for regular readers)
 6. **Limitations** (what remains unknown - from paper's limitations section)
-7. **Figure Recommendation** (which figure best illustrates work)
-
-FIGURE SELECTION PRIORITY (CRITICAL):
-When recommending a figure, prioritize in this order:
-1. **Architecture diagrams** - Show how the model/system is structured (e.g., "Figure 1: Architecture overview")
-2. **Pipeline diagrams** - Show the workflow or process flow (e.g., "Figure 2: Processing pipeline")
-3. **Conceptual diagrams** - Explain how the method or experiment works (e.g., "Figure 3: Methodology overview")
-4. **Experimental results** - Charts, graphs, or performance comparisons
-5. **Other visuals** - Tables, illustrations, or supplementary figures
-
-**Priority Rule:** If the paper contains an architecture, pipeline, or conceptual diagram that explains how the model or experiment works, you MUST prioritize that figure — especially for articles that need to explain complex systems to general readers.
 
 TITLE REQUIREMENTS (CRITICAL):
 - **News-focused**: Explain what the breakthrough means to everyday readers
@@ -125,21 +113,20 @@ EXAMPLES OF GOOD OPENING LINES (News style):
 ## PAPER TEXT (YOUR ONLY SOURCE):
 {}
 
-## AVAILABLE FIGURES (from paper):
-{}
-
 ## DELIVERABLE:
-Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above. End with figure recommendation.
+Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.
 
 Format:
 # [Compelling, Specific Title - Nature/Science Style]
 
 [Article body - based ONLY on paper content...]
 
----
-**Recommended Figure:** figure_X.png
-**Reason:** [Why this figure best represents the work]
-"#, site, site_context, paper_text, figures_list)
+IMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):
+{{
+  "title": "...",
+  "article_text": "..."
+}}
+"#, site, site_context, paper_text)
 }
 
 pub fn build_social_script_prompt(article: &str, paper_title: &str) -> String {
