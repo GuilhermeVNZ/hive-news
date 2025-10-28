@@ -14,6 +14,7 @@ pub struct DeepSeekClient {
 
 #[derive(Debug, Clone)]
 pub struct ArticleResponse {
+    pub title: String,
     pub article_text: String,
 }
 
@@ -95,6 +96,7 @@ impl DeepSeekClient {
             .with_context(|| format!("Failed to parse article JSON. Content: {}", &content[..content.len().min(500)]))?;
         
         Ok(ArticleResponse {
+            title: parsed.title,
             article_text: parsed.article_text,
         })
     }

@@ -7,7 +7,7 @@ use crate::filter::parser::parse_pdf;
 use super::deepseek_client::*;
 use super::prompts::*;
 use super::prompt_compressor::*;
-use super::file_writer::*;
+use super::file_writer::{save_article, save_title, save_linkedin, save_x, save_shorts_script};
 use super::illustrator::{
     extract_first_page_images,
 };
@@ -171,6 +171,9 @@ impl WriterService {
         article: &ArticleResponse,
         social: &SocialResponse,
     ) -> Result<()> {
+        // Save title (short hook for frontend)
+        save_title(output_dir, &article.title).await?;
+        
         // Save article
         save_article(output_dir, &article.article_text).await?;
         

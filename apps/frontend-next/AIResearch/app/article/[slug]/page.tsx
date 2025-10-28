@@ -4,6 +4,7 @@ import { Clock, Calendar, User, ArrowLeft, Share2, BookOpen } from "lucide-react
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
 
 // Mock data - will be replaced with actual API calls
 const articles: Record<string, any> = {
@@ -457,6 +458,41 @@ Transformers estão abrindo novas possibilidades para análise temporal, com apl
     `,
   },
 };
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
+
+  if (!article) {
+    return {
+      title: "Artigo Não Encontrado",
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    keywords: [article.category, "IA", "Machine Learning", article.title],
+    authors: [{ name: article.author }],
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: 'article',
+      publishedTime: article.publishedAt,
+      authors: [article.author],
+      tags: [article.category],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+    },
+    alternates: {
+      canonical: `https://airesearch.com/article/${slug}`,
+    },
+  };
+}
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

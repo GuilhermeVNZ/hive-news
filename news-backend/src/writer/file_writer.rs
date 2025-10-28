@@ -12,6 +12,14 @@ pub async fn save_article(
     Ok(())
 }
 
+pub async fn save_title(
+    output_dir: &Path,
+    title: &str,
+) -> Result<()> {
+    fs::write(output_dir.join("title.txt"), title).await?;
+    Ok(())
+}
+
 pub async fn save_linkedin(
     output_dir: &Path,
     content: &str,

@@ -2,53 +2,62 @@
 
 ## Objetivo
 
-Extrair automaticamente as imagens dos PDFs científicos e identificar a figura mais relevante recomendada pelo DeepSeek para ilustrar o artigo no portal.
+Extrair automaticamente imagens da primeira página do PDF científico para criar dois assets:
+1. **Banner** (`banner_<id>.png`) - Terço superior da primeira página (header visual)
+2. **Page** (`page_<id>.png`) - Primeira página completa em alta resolução
+
+NOTA: A partir de 2025-10-27, não usamos mais a extração de figuras do DeepSeek. Usamos a primeira página do PDF como imagem padrão.
 
 ## Pipeline de Execução
 
 ```
 Collector → Filter → Writer → Illustrator
    ↓           ↓        ↓          ↓
-downloads  filtered  articles  featured_image.png
+downloads  filtered  articles  banner + page.png
 ```
 
 ## Funcionamento
 
 ### Input
 - **PDF original**: `downloads/filtered/<categoria>/<ID>.pdf`
-- **Recomendação DeepSeek**: `output/<Site>/<ID>/metadata.json` → `recommended_figure`
 
 ### Processamento
-1. Usar `pdfimages.exe` (poppler) para extrair todas as imagens do PDF
-2. Mapear recomendação (ex: "figure_2.png") para arquivo extraído (ex: "img-001.png")
-3. Copiar imagem identificada como `featured_image.png`
-4. Limpar arquivos temporários
+1. Usar `pdftoppm.exe` (poppler) para converter primeira página em PNG
+2. Carregar PNG com Rust `image` crate
+3. Recortar terço superior para criar banner
+4. Salvar ambos: banner e página completa
+5. Limpar arquivos temporários
 
 ### Output
-- `output/<Site>/<ID>/featured_image.png` - Imagem destacada para o artigo
+- `output/<Site>/<ID>/banner_<id>.png` - Banner (topo da página)
+- `output/<Site>/<ID>/page_<id>.png` - Página completa
 
-## Mapeamento Inteligente
+NOTA: O `<id>` tem `.` substituído por `_` para evitar problemas de path (ex: `2510_21610.png`).
 
-O DeepSeek recomenda figuras como:
-- `"figure_2.png"`
-- `"figure 2"`
-- `"Fig. 2"`
+## Como Funciona
 
-O Illustrator extrai o número (2) e busca a segunda imagem do PDF (`img-001.png`, índice zero-based).
+### Fluxo de Extração
+
+1. **pdftoppm** converte a primeira página do PDF para PNG (150 DPI)
+2. **Rust `image` crate** carrega o PNG em memória
+3. **Crop** recorta o terço superior da página para o banner
+4. **Salva** ambos: banner e página completa
+5. **Cleanup** remove temporários (`temp_page*.png`)
 
 ### Exemplo Prático
 
-**Artigo 2510.21560:**
-- DeepSeek recomenda: `"figure_2.png"`
-- pdfimages extrai: `img-000.png, img-001.png, img-002.png, img-003.png, img-004.png`
-- Nossa lógica: Figure 2 = índice 1 = `img-001.png`
-- Resultado: Copiamos `img-001.png` → `featured_image.png`
-
 **Artigo 2510.21610:**
-- DeepSeek recomenda: `"figure_1.png"`
-- pdfimages extrai: `img-000.png`
-- Nossa lógica: Figure 1 = índice 0 = `img-000.png`
-- Resultado: Copiamos `img-000.png` → `featured_image.png`
+- Input: `downloads/filtered/machine-learning/2510.21610.pdf`
+- pdftoppm gera: `temp_page-1.png` ou `temp_page-01.png`
+- Banner: Corta altura/3 do topo → `banner_2510_21610.png`
+- Page: Imagem completa → `page_2510_21610.png`
+- Output: `output/AIResearch/2510.21610/banner_2510_21610.png` e `page_2510_21610.png`
+
+### Anti-Duplicação
+
+O Illustrator verifica se os arquivos já existem antes de processar:
+- Se `banner_<id>.png` E `page_<id>.png` existem → pula extração
+- Isso evita reprocessamento desnecessário
 
 ## Integração no Pipeline
 
@@ -116,14 +125,16 @@ Após execução completa do pipeline:
 ```
 output/
 └── AIResearch/
-    └── 2510.21560/
+    └── 2510.21610/
         ├── article.md              (PHASE3: Writer)
         ├── linkedin.txt            (PHASE3: Writer)
         ├── x.txt                   (PHASE3: Writer)
         ├── shorts_script.txt       (PHASE3: Writer)
-        ├── metadata.json           (PHASE3: Writer)
-        └── featured_image.png      (PHASE4: Illustrator) ← NOVO
+        ├── banner_2510_21610.png   (PHASE4: Illustrator) ← Banner (topo)
+        └── page_2510_21610.png     (PHASE4: Illustrator) ← Página completa
 ```
+
+NOTA: **Não geramos mais `metadata.json`** - removido por não ser necessário.
 
 ## Fluxo de Execução Detalhado
 
@@ -145,117 +156,142 @@ output/
 ## Logs Esperados
 
 ```
-[2/2] Processing: 2510.21560.pdf
+[1/4] Processing: 2510.21610.pdf
   Phase 1: Generating article (Nature/Science style)...
   📄 Parsing PDF...
-  🖼️  Finding figure references...
-  📁 Saving to: G:/Hive-Hub/News-main/output\AIResearch\2510.21560
+  📁 Saving to: G:/Hive-Hub/News-main/output\AIResearch\2510.21610
   📝 Building article prompt for: AIResearch
-  🗜️  Compressing prompt (~13448 tokens)...
-  ✅ Compressed to 8667 tokens (35.6% savings)
+  🗜️  Compressing prompt (~9252 tokens)...
+  ✅ Compressed to 5926 tokens (36.0% savings)
   🤖 Sending to DeepSeek API...
   ✅ Article generated
   
-  🖼️  Extracting images from PDF...
-  ✅ Extracted 5 images
-  ✅ Featured image saved: G:/Hive-Hub/News-main/output\AIResearch\2510.21560\featured_image.png
+  🖼️  Extracting first page images (banner + full page)...
+  ✅ Banner saved: G:/Hive-Hub/News-main/output\AIResearch\2510.21610\banner_2510_21610.png
+  ✅ Full page saved: G:/Hive-Hub/News-main/output\AIResearch\2510.21610\page_2510_21610.png
   
   📱 Building social media prompts...
-  🗜️  Compressing social prompt (~1832 tokens)...
-  ✅ Compressed to 1202 tokens (34.4% savings)
+  🗜️  Compressing social prompt (~1316 tokens)...
+  ✅ Compressed to 804 tokens (39.0% savings)
   🤖 Generating social content...
   ✅ Social content generated
   
   💾 Saving content to disk...
-  ✅ Content saved → G:/Hive-Hub/News-main/output\AIResearch\2510.21560
-     Tokens: 15282 → 9869 (35.0% savings)
+  ✅ Content saved → G:/Hive-Hub/News-main/output\AIResearch\2510.21610
+     Tokens: 10570 → 6730 (37.5% savings)
 ```
 
 ## Tratamento de Erros
 
-O Illustrator é **não-bloqueante**: se a extração de imagens falhar, o pipeline continua e o artigo é salvo sem a imagem destacada.
+O Illustrator é **não-bloqueante**: se a extração de imagens falhar, o pipeline continua e o artigo é salvo sem as imagens.
 
 ### Cenários de Erro:
 
-1. **pdfimages.exe não encontrado**:
+1. **pdftoppm.exe não encontrado**:
    ```
-   ⚠️  Image extraction failed: pdfimages.exe not found
-   ```
-
-2. **PDF sem imagens**:
-   ```
-   ⚠️  No images found in PDF
+   Error: pdftoppm.exe not found at: G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftoppm.exe
+   ⚠️  Image extraction failed
    ```
 
-3. **Figura recomendada não encontrada**:
+2. **Falha na conversão**:
    ```
-   ⚠️  Could not find recommended image: figure_2.png
-       Available: 3 images extracted
-   ```
-
-4. **Falha na cópia**:
-   ```
-   ⚠️  Image extraction failed: Failed to copy featured image
+   Error: pdftoppm failed: <stderr output>
+   ⚠️  Image extraction failed
    ```
 
-Em todos os casos, o artigo é salvo normalmente sem a imagem.
+3. **Arquivo temporário não encontrado**:
+   ```
+   Error: Failed to generate first page image - no output file found
+   ```
+
+4. **Anti-duplicação**:
+   ```
+   ⏭️  Images already exist (banner + page)
+   ```
+   (Imagens são ignoradas se já existem)
+
+Em todos os casos, o artigo é salvo normalmente e o pipeline continua para o próximo artigo.
 
 ## Benefícios
 
 1. **Automático**: Integrado no pipeline, sem ação manual
-2. **Inteligente**: Mapeia recomendação do DeepSeek para imagem real do PDF
-3. **Robusto**: Usa pdfimages (ferramenta padrão da indústria para extração de imagens)
-4. **Limpo**: Remove arquivos temporários automaticamente
-5. **Informativo**: Logs claros em cada etapa do processo
-6. **Não-bloqueante**: Erros de imagem não impedem publicação do artigo
+2. **Padronizado**: Usa a primeira página como imagem padrão (não depende de recomendações)
+3. **Duplo Output**: Gera banner E página completa para maior flexibilidade
+4. **Anti-Duplicação**: Não reprocessa se imagens já existem
+5. **Limpo**: Remove arquivos temporários automaticamente
+6. **Informativo**: Logs claros em cada etapa do processo
+7. **Não-bloqueante**: Erros de imagem não impedem publicação do artigo
 
 ## Requisitos Técnicos
 
 ### Dependências Externas
 - **poppler-utils**: Já instalado em `apps/Release-25.07.0-0/poppler-25.07.0/`
-- **pdfimages.exe**: Disponível em `Library/bin/pdfimages.exe`
+- **pdftoppm.exe**: Disponível em `Library/bin/pdftoppm.exe`
 
 ### Dependências Rust
+- `image = "0.24"` - Processamento de imagens (crop, save)
 - `tokio::fs` - Operações assíncronas de arquivo
-- `regex` - Correspondência de padrões de texto
-- `std::process::Command` - Execução de comandos externos
+- `std::process::Command` - Execução de comandos externos (pdftoppm)
 - `anyhow` - Tratamento de erros
+
+### Estrutura de Código
+
+```rust
+// PHASE4: Illustrator - Image Extraction from First Page
+
+/// Extrai banner (topo) e página completa da primeira página do PDF
+pub async fn extract_first_page_images(
+    pdf_path: &Path,
+    output_dir: &Path,
+    article_id: &str,
+) -> Result<(PathBuf, PathBuf)>
+```
 
 ## Implementação
 
-### Arquivos a Criar/Modificar
+### Arquivos Criados/Modificados
 
-1. ✅ **CRIADO**: `docs/PHASE4_ILLUSTRATOR.md` - Esta documentação
-2. ⏳ **MODIFICAR**: `news-backend/src/writer/image_extractor.rs` - Implementar funções de extração
-3. ⏳ **MODIFICAR**: `news-backend/src/writer/content_generator.rs` - Integrar Illustrator no fluxo
-4. ⏳ **MODIFICAR**: `start.rs` - Atualizar documentação do pipeline
+1. ✅ **MODIFICADO**: `news-backend/src/writer/illustrator.rs` - Renomeado de `image_extractor.rs`
+   - Função `extract_first_page_images()` implementada
+   - Usa `pdftoppm.exe` para conversão PDF→PNG
+   - Usa `image` crate para crop e save
+   - Anti-duplicação implementada
 
-### Tarefas de Implementação
+2. ✅ **MODIFICADO**: `news-backend/src/writer/content_generator.rs`
+   - Integração com Illustrator após geração do artigo
+   - Anti-duplicação: verifica se imagens já existem
+   - Tratamento de erros não-bloqueante
+   - Não cria pasta antes de verificar se vai processar
 
-- [ ] Reescrever `image_extractor.rs` com funções completas:
-  - [ ] `extract_figures_from_pdf()` - Extração via pdfimages
-  - [ ] `find_recommended_image()` - Mapeamento inteligente
-  - [ ] `extract_figure_number()` - Parsing de números
-  - [ ] Testes unitários
-  
-- [ ] Integrar no `content_generator.rs`:
-  - [ ] Adicionar chamada após geração do artigo
-  - [ ] Atualizar imports
-  - [ ] Adicionar tratamento de erros
-  
-- [ ] Atualizar `start.rs`:
-  - [ ] Documentar PHASE4 em `run_writer()`
-  - [ ] Atualizar `show_help()`
-  
-- [ ] Testar pipeline completo:
-  - [ ] Executar com 2510.21560.pdf
-  - [ ] Executar com 2510.21610.pdf
-  - [ ] Verificar `featured_image.png` criada
-  - [ ] Verificar `temp_images/` removido
-  
-- [ ] Atualizar documentação relacionada:
-  - [ ] Mencionar PHASE4 em `PHASE3_WRITER.md`
-  - [ ] Atualizar README principal se necessário
+3. ✅ **MODIFICADO**: `news-backend/src/writer/prompt_compressor.rs`
+   - Preserva instrução JSON quando compressão remove "json"
+   - Fix para erro DeepSeek API `response_format`
+
+4. ✅ **MODIFICADO**: `news-backend/src/writer/prompts.rs`
+   - Removido prompt para figuras (não usamos mais)
+   - Simplificado JSON output (só title e article_text)
+
+5. ✅ **MODIFICADO**: `news-backend/src/writer/deepseek_client.rs`
+   - Adicionado `response_format: { "type": "json_object" }`
+   - Melhor tratamento de erros
+   - Logs de debug expandidos
+
+6. ✅ **MODIFICADO**: `news-backend/Cargo.toml`
+   - Adicionado `image = "0.24"` dependency
+
+7. ✅ **MODIFICADO**: `docs/PHASE4_ILLUSTRATOR.md` - Esta documentação
+
+### Testes Realizados
+
+- ✅ Testado com 2510.21610.pdf
+- ✅ Testado com 2510.21560.pdf
+- ✅ Testado com 2510.21638.pdf (difícil)
+- ✅ Testado com 2510.21652.pdf
+- ✅ Verificado `banner_<id>.png` criada
+- ✅ Verificado `page_<id>.png` criada
+- ✅ Verificado `temp_page*.png` removido
+- ✅ Verificado anti-duplicação funcionando
+- ✅ Verificado que não gera `metadata.json` mais
 
 ## Próximos Passos
 

@@ -123,9 +123,24 @@ Format:
 
 IMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):
 {{
-  "title": "...",
-  "article_text": "..."
+  "title": "...",                  // SHORT HOOK TITLE (max 8 words, strong clickbait)
+  "article_text": "..."             // Full article body (500-800 words)
 }}
+
+TITLE REQUIREMENTS (CRITICAL):
+- MAXIMUM 8 WORDS (short, punchy, viral)
+- STRONG HOOK to make users WANT to click and read
+- Create curiosity, tension, or surprise
+- Make readers NEED to know more
+
+BAD TITLES (too long, no hook):
+❌ "A New Approach to Machine Learning Optimization in Deep Neural Networks"
+❌ "Understanding the Fundamentals of Quantum Computing Applications"
+
+GOOD TITLES (short, hooky, irresistible):
+✓ "AI Agents Fall Short at Scientific Discovery"
+✓ "Scientists Find Hidden Pattern in Neural Networks"
+✓ "This AI Breakthrough May Be Wrong"  
 "#, site, site_context, paper_text)
 }
 

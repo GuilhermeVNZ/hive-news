@@ -90,6 +90,57 @@ LLMs give more attention to the beginning of prompts. Our prompts are organized 
 - "dive into", "shed light on"
 - "paradigm-shifting", "groundbreaking" (unless genuinely warranted)
 
+## Output Structure
+
+Após processamento completo, cada artigo gera:
+
+```
+output/<Site>/<article_id>/
+├── article.md           # Artigo completo em Nature/Science style
+├── linkedin.txt         # Post para LinkedIn
+├── x.txt                # Post para X/Twitter  
+├── shorts_script.txt    # Script para video (2 minutos)
+├── banner_<id>.png     # Banner do topo da página (PHASE4)
+└── page_<id>.png        # Página completa (PHASE4)
+```
+
+**NOTA:** Não geramos mais `metadata.json` - removido pois não é necessário para o frontend.
+
+## Anti-Duplicação
+
+### Lógica de Prevenção
+
+O Writer implementa anti-duplicação em **dois níveis**:
+
+1. **Antes de processar** (em `main.rs`):
+   - Verifica se `article.md` já existe no output
+   - Se existe, pula o artigo inteiramente
+   - Log: `⏭️ Skipping X (already processed for Y)`
+
+2. **Durante processamento** (em `content_generator.rs`):
+   - Verifica se `banner_<id>.png` E `page_<id>.png` já existem
+   - Se existem, pula a extração de imagens
+   - Log: `⏭️ Images already exist (banner + page)`
+   - **CRÍTICO**: Não cria pasta de output antes de verificar se vai processar
+
+### Comportamento
+
+- **Re-executar Writer**: Só processa artigos que ainda não foram processados
+- **Re-extrair imagens**: Não reprocessa imagens se já existem
+- **Segurança**: Evita chamadas desnecessárias à DeepSeek API
+- **Eficiência**: Não cria pastas vazias para artigos já processados
+
+### Logs de Anti-Duplicação
+
+```
+📝 1 new document to process for AIResearch
+
+[1/1] Processing: 2510.21610.pdf
+  ✅ Content saved → G:/Hive-Hub/News-main/output/AIResearch/2510.21610
+
+✅ All documents already processed for AIResearch
+```
+
 ## Prompt Compression
 
 **Tool:** `G:\Hive-Hub\compression-prompt-main`
@@ -366,6 +417,130 @@ cargo run -- write
 
 ---
 
+## Changelog
+
+### 2025-10-27: Site-Based Organization & Image Updates
+
+#### Changes Made
+
+**1. Output Structure Reorganized**
+
+Before:
+```
+G:\Hive-Hub\News-main\output\news\<article_id>\
+```
+
+After:
+```
+G:\Hive-Hub\News-main\output\<Site>\<article_id>\
+```
+
+**Rationale:** Site/revista selection now affects both storage location and prompt generation.
+
+**2. Site-Specific Prompt Customization**
+
+Added `get_site_context()` function in `prompts.rs`:
+- **AIResearch** (default): AI news platform, technical audience
+- **Nature**: Highest standards, global reach
+- **Science**: AAAS journal, broad interdisciplinary coverage
+
+**3. Environment Variables Updated**
+
+```env
+WRITER_DEFAULT_SITE=AIResearch  # Controls where content is saved
+DEEPSEEK_API_KEY=sk-...         # API authentication
+```
+
+**4. Metadata.json Removed**
+
+- ❌ No longer generate `metadata.json` files
+- ✅ Articles output only: `article.md`, `linkedin.txt`, `x.txt`, `shorts_script.txt`
+- ✅ Images: `banner_<id>.png`, `page_<id>.png` (PHASE4: Illustrator)
+
+**5. Anti-Duplication Enhanced**
+
+- Two-tier checking: before processing AND during image extraction
+- No empty folders created for failed processing
+- Smart skipping: "⏭️ Skipping X (already processed)"
+
+**6. Image Extraction Standardized**
+
+- **Before**: DeepSeek recommended figures
+- **After**: First page extraction (banner + full page)
+- Uses `pdftoppm.exe` + Rust `image` crate
+- Consistent output: `banner_<id>.png`, `page_<id>.png`
+
+**7. JSON Instruction Preservation**
+
+- Fix for DeepSeek API error: "Prompt must contain the word 'json'"
+- Compression sometimes removes "json" from prompt
+- Solution: Auto-restore JSON instruction when missing
+
+#### Code Changes
+
+**Modified Files:**
+1. ✅ `news-backend/src/writer/content_generator.rs` - Site-based output, anti-duplication, no metadata.json
+2. ✅ `news-backend/src/writer/prompts.rs` - Site contexts, simplified prompts
+3. ✅ `news-backend/src/writer/illustrator.rs` - First page extraction (renamed from image_extractor.rs)
+4. ✅ `news-backend/src/writer/prompt_compressor.rs` - JSON preservation fix
+5. ✅ `news-backend/src/writer/deepseek_client.rs` - response_format fix
+6. ✅ `news-backend/Cargo.toml` - Added `image = "0.24"` dependency
+7. ✅ `docs/PHASE3_WRITER.md` - This documentation
+
+**Removed Files:**
+- `PHASE3_COMPLETE.md` (consolidated)
+- `PHASE3_IMPLEMENTATION_SUMMARY.md` (consolidated)
+- `WRITER_PDF_SELECTION_FLOW.md` (merged into PHASE3_WRITER.md)
+- `PHASE3_WRITER_VERIFICATION.md` (merged into PHASE3_WRITER.md)
+
+**Rationale:** Single source of truth for Phase 3 documentation.
+
+#### Impact
+
+**Before This Update:**
+- All content saved to `output/news/`
+- Generic prompts for all publications
+- Metadata.json generated (not needed)
+- Figure extraction from DeepSeek recommendations
+- No anti-duplication for images
+
+**After This Update:**
+- Content saved to `output/<Site>/` based on environment variable
+- Prompts customized per target publication
+- No metadata.json (cleaner output)
+- Standardized first page extraction (banner + page)
+- Two-tier anti-duplication (content + images)
+- JSON instruction preserved during compression
+
+#### Testing Status
+
+✅ **All Tests Passed:**
+- Tested with 4 real PDFs (2510.21610, 2510.21560, 2510.21652, 2510.21638)
+- All articles generated successfully
+- Anti-duplication working correctly
+- Images extracted properly
+- No metadata.json generated
+- Compression fixed (JSON preserved)
+
+#### Next Steps
+
+1. **Dashboard Integration:**
+   - Allow dashboard to set site/revista
+   - Pass site to WriterService during processing
+   - Update database to track which site content was generated for
+
+2. **Content Quality Monitoring:**
+   - Track which articles perform best
+   - Fine-tune prompts based on performance data
+   - Add quality scoring for generated content
+
+3. **Enhancements:**
+   - Add more output formats (Newsletter, Email)
+   - Implement A/B testing for viral hooks
+   - Add content quality metrics
+
+---
+
 ## Implementation Status
 
 ### ✅ Completed
@@ -377,19 +552,24 @@ cargo run -- write
 - ✅ Start.rs integration (runs after filter)
 - ✅ Site-based output structure (`output/<Site>/<article_id>/`)
 - ✅ Site-specific prompts (AIResearch, Nature, Science)
+- ✅ Anti-duplication (two-tier system)
+- ✅ Image extraction (first page: banner + page)
+- ✅ No metadata.json generation
+- ✅ JSON instruction preservation
 - ✅ Documentation complete
 
-### ⏳ Testing Required
+### ✅ Testing Completed
 
-- [ ] Test with real filtered PDFs
-- [ ] Validate compression works correctly
-- [ ] Review generated content quality
-- [ ] Test DeepSeek API calls
-- [ ] Verify output files created correctly
+- ✅ Tested with real filtered PDFs (4 articles)
+- ✅ Compression validated and working
+- ✅ Content quality reviewed and approved
+- ✅ DeepSeek API calls tested successfully
+- ✅ Output files verified correctly
+- ✅ Images extracted and saved
+- ✅ Anti-duplication working
 
 ### 🔮 Future Enhancements
 
-- [ ] Real image extraction from PDFs (currently placeholder)
 - [ ] Integration with dashboard for site selection
 - [ ] Fine-tune prompts based on feedback
 - [ ] Add more output formats (Newsletter, Email)
@@ -397,8 +577,10 @@ cargo run -- write
 
 ---
 
-**Status:** ✅ **IMPLEMENTATION COMPLETE - READY FOR TESTING**
+**Status:** ✅ **IMPLEMENTATION COMPLETE - TESTED & WORKING**
 
 **Last Updated:** 2025-10-27  
 **Author:** AI Assistant
+
+**Version:** 2.0 (Site-based organization + Image extraction + Anti-duplication)
 
