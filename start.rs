@@ -230,7 +230,7 @@ fn test_collector() {
         r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run collect
+cargo run --bin news-backend collect
 "#
     );
     
@@ -281,7 +281,7 @@ fn run_filter() {
     let ps_script = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run filter
+cargo run --bin news-backend filter
 "#;
     
     let output = Command::new("powershell")
@@ -314,7 +314,7 @@ cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 $env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
 $env:WRITER_DEFAULT_SITE="AIResearch";
-cargo run write
+cargo run --bin news-backend write
 "#;
     
     let output = Command::new("powershell")

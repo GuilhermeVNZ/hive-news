@@ -118,25 +118,65 @@ fn discover_unfiltered_pdfs(download_dir: &Path) -> Result<Vec<PathBuf>> {
         return Ok(pdfs);
     }
 
-    // Buscar PDFs recursivamente
-    fn find_pdfs(dir: &Path, pdfs: &mut Vec<PathBuf>) -> std::io::Result<()> {
+    // Check if article already has writer output
+    fn article_already_processed(pdf_path: &Path, download_dir: &Path) -> bool {
+        // Extract article ID from PDF path (e.g., "2510.21610.pdf" -> "2510.21610")
+        let article_id = pdf_path
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("");
+        
+        // Check multiple possible output locations
+        let output_locations = vec![
+            download_dir.parent().map(|p| p.join("output").join("AIResearch").join(article_id)),
+            Some(download_dir.parent().unwrap_or(download_dir).join("output").join("AIResearch").join(article_id)),
+            Some(PathBuf::from("G:/Hive-Hub/News-main/output/AIResearch").join(article_id)),
+            Some(PathBuf::from("G:/Hive-Hub/News-main/output/ScienceAI").join(article_id)),
+        ];
+        
+        for opt_path in output_locations {
+            if let Some(output_dir) = opt_path {
+                let article_file = output_dir.join("article.md");
+                if article_file.exists() {
+                    return true;
+                }
+            }
+        }
+        
+        false
+    }
+
+    // Buscar PDFs recursivamente de downloads/ (ONLY arxiv/, skip filtered/ e rejected/)
+    fn find_pdfs(dir: &Path, pdfs: &mut Vec<PathBuf>, download_dir: &Path) -> std::io::Result<()> {
         for entry in std::fs::read_dir(dir)? {
             let entry = entry?;
             let path = entry.path();
 
             if path.is_dir() {
+                let dir_name = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
+                
+                // Skip filtered, rejected, cache subdirectories
+                if dir_name == "filtered" || dir_name == "rejected" || dir_name == "cache" || dir_name == "temp" {
+                    continue;
+                }
+                
                 // Recursão para subdiretórios
-                find_pdfs(&path, pdfs)?;
+                find_pdfs(&path, pdfs, download_dir)?;
             } else if let Some(ext) = path.extension() {
                 if ext == "pdf" {
-                    pdfs.push(path);
+                    // Check if article already processed by writer
+                    if !article_already_processed(&path, download_dir) {
+                        pdfs.push(path);
+                    }
                 }
             }
         }
         Ok(())
     }
 
-    find_pdfs(download_dir, &mut pdfs)?;
+    // Search in downloads/ (mainly from arxiv/, excluding filtered/, rejected/, cache/)
+    find_pdfs(download_dir, &mut pdfs, download_dir)?;
+    
     Ok(pdfs)
 }
 
