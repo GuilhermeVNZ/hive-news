@@ -88,8 +88,8 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
 
         let score = calculate_score(&result);
 
-        if score >= 0.5 {
-            // Threshold reduzido de 0.7 para 0.5
+        if score >= 0.4 {
+            // Threshold reduzido de 0.45 para 0.4
             let category = categorize(&result.doc);
             println!(
                 "   Approved (score: {:.2}): {} → {}",

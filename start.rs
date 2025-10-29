@@ -429,52 +429,78 @@ fn execute_full_pipeline() {
     // Aguardar um pouco para garantir que backend está pronto
     std::thread::sleep(std::time::Duration::from_secs(5));
     
-    println!("\n\n🔬 Starting Full Pipeline Execution");
-    println!("=====================================\n");
+    println!("\n\n🔄 Starting Automatic Pipeline Loop");
+    println!("=====================================");
+    println!("   ⏰ Interval: 15 minutes (900 seconds)");
+    println!("   🚀 Running continuously...\n");
     
-    // FASE 1: Collector
-    println!("📥 Phase 1: Collecting papers from arXiv...");
-    let ps_script_collect = r#"
+    let mut cycle = 1;
+    
+    loop {
+        let start_time = std::time::Instant::now();
+        
+        println!("\n{}", "=".repeat(70));
+        println!("🔄 CYCLE #{} - Pipeline Execution Started", cycle);
+        println!("⏱️  Time: {}", get_current_time());
+        println!("{}", "=".repeat(70));
+        
+        // FASE 1: Collector
+        println!("\n📥 Phase 1: Collecting papers from arXiv...");
+        let ps_script_collect = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 cargo run --bin news-backend collect
 "#;
-    
-    let output = Command::new("powershell")
-        .args(&["-Command", ps_script_collect])
-        .output()
-        .expect("Failed to execute collector");
-    
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    let stderr = String::from_utf8_lossy(&output.stderr);
-    
-    println!("{}", stdout);
-    if !stderr.is_empty() {
-        eprintln!("{}", stderr);
+        
+        let output = Command::new("powershell")
+            .args(&["-Command", ps_script_collect])
+            .output()
+            .expect("Failed to execute collector");
+        
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        
+        println!("{}", stdout);
+        if !stderr.is_empty() {
+            eprintln!("{}", stderr);
+        }
+        
+        if output.status.success() {
+            println!("\n✅ Collection completed!");
+            println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+            
+            // FASE 2: Filter
+            println!("\n🔍 Phase 2: Filtering and validating papers...");
+            run_filter();
+            
+            // FASE 3: Writer
+            println!("\n✍️  Phase 3: Generating content with DeepSeek...");
+            run_writer();
+            
+            let execution_time = start_time.elapsed();
+            let next_run = chrono::Local::now() + chrono::Duration::minutes(15);
+            
+            println!("\n{}", "=".repeat(70));
+            println!("✅ Cycle #{} completed successfully!", cycle);
+            println!("⏱️  Execution time: {:?}", execution_time);
+            println!("⏰ Next cycle: {}", next_run.format("%Y-%m-%d %H:%M:%S"));
+            println!("📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
+            println!("{}", "=".repeat(70));
+        } else {
+            println!("\n⚠️  Collection had issues, skipping to next cycle");
+            println!("   Check output above for details");
+        }
+        
+        cycle += 1;
+        
+        // Aguardar 15 minutos antes de próxima execução
+        println!("\n⏳ Waiting 15 minutes until next cycle...\n");
+        std::thread::sleep(std::time::Duration::from_secs(900)); // 15 minutos
     }
-    
-    if output.status.success() {
-        println!("\n✅ Collection completed!");
-        println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
-        
-        // FASE 2: Filter
-        println!("\n🔍 Phase 2: Filtering and validating papers...");
-        run_filter();
-        
-        // FASE 3: Writer
-        println!("\n✍️  Phase 3: Generating content with DeepSeek...");
-        run_writer();
-        
-        println!("\n✅ Full Pipeline Completed Successfully!");
-        println!("=====================================");
-        println!("   📥 Collection: Completed");
-        println!("   🔍 Filter: Completed");
-        println!("   ✍️  Writer: Completed");
-        println!("   📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
-    } else {
-        println!("\n⚠️  Collection had issues, pipeline stopped");
-        println!("   Check output above for details");
-    }
+}
+
+fn get_current_time() -> String {
+    chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string()
 }
 
 fn check_system_health() {
