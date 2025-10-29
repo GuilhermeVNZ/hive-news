@@ -76,14 +76,34 @@ fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     // Load environment variables from .env file
+    // Try multiple locations for .env file
+    let env_paths = vec![
+        std::path::PathBuf::from(".env"),
+        std::path::PathBuf::from("news-backend/.env"),
+        std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend/.env"),
+    ];
+    
+    for path in &env_paths {
+        if path.exists() {
+            if let Err(e) = dotenv::from_path(path) {
+                eprintln!("Warning: Failed to load .env from {}: {}", path.display(), e);
+            } else {
+                eprintln!("✅ Loaded .env from {}", path.display());
+            }
+            break;
+        }
+    }
+    
+    // Fallback: try default location
     dotenv::dotenv().ok();
     
     // Initialize tracing
     tracing_subscriber::fmt::init();
 
-    // Check if we should run a collection test or writer
+    // Check if we should run a collection test, filter, or writer
     let args: Vec<String> = std::env::args().collect();
     let test_collector = args.len() > 1 && args[1] == "collect";
+    let test_filter = args.len() > 1 && args[1] == "filter";
     let test_writer = args.len() > 1 && args[1] == "write";
 
     if test_collector {
@@ -97,6 +117,22 @@ async fn main() -> anyhow::Result<()> {
         // Coleta direta SEM banco de dados
         run_arxiv_collection_direct().await?;
 
+        return Ok(());
+    }
+
+    if test_filter {
+        println!("🔬 Scientific Filter - PDF Validation");
+        println!("=====================================\n");
+        
+        // Run filter pipeline
+        let filter_result = filter::pipeline::run_filter_pipeline(Path::new("G:/Hive-Hub/News-main/downloads")).await?;
+        
+        println!("\n✅ Filter completed!");
+        println!("   Approved: {}", filter_result.approved);
+        println!("   Rejected: {}", filter_result.rejected);
+        println!("   Skipped (non-scientific): {}", filter_result.skipped);
+        println!("   Total processed: {}", filter_result.total);
+        
         return Ok(());
     }
 

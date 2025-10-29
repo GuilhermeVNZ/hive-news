@@ -80,6 +80,42 @@ WHAT TO AVOID (AI writing patterns):
 - Inventing related research not mentioned in paper
 - Speculating beyond what paper's data supports
 
+IMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):
+
+You MUST select exactly 3 categories from THIS EXACT LIST ONLY:
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+CRITICAL CONSTRAINTS:
+- ❌ DO NOT create new categories (like "biology", "physics", "medical", etc.)
+- ❌ DO NOT use synonyms or variations
+- ✅ ONLY use the 13 categories listed above
+- ✅ Order by priority: most relevant first, second choice, third choice
+- ✅ Must be lowercase, matching the list exactly
+
+SELECTION GUIDELINES:
+- ai: Artificial intelligence, machine learning, AI research
+- coding: Programming, software development, code
+- crypto: Cryptocurrency, blockchain, digital currency
+- database: Data storage, data management, servers
+- ethics: Ethical considerations, societal impact
+- games: Gaming, game development, interactive tech
+- hardware: Physical computing, electronics, processors
+- legal: Legal issues, regulations, compliance
+- network: Networking, connectivity, communication
+- robotics: Robots, automation, mechanical AI
+- science: General scientific research, experiments
+- security: Cybersecurity, privacy, protection
+- sound: Audio technology, sound processing
+
+EXAMPLES (USE THESE EXACT NAMES):
+✓ For neural networks → ["ai", "science", "network"]
+✓ For robotics → ["robotics", "ai", "hardware"]
+✓ For cybersecurity → ["security", "network", "crypto"]
+✓ For data analysis → ["database", "ai", "coding"]
+✓ For chip research → ["hardware", "science", "ai"]
+
+Include this as "image_categories" array in your JSON response.
+
 REQUIRED ARTICLE STRUCTURE:
 1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)
 2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)
@@ -123,8 +159,11 @@ Format:
 
 IMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):
 {{
-  "title": "...",                  // SHORT HOOK TITLE (max 8 words, strong clickbait)
-  "article_text": "..."             // Full article body (500-800 words)
+  "title": "...",                           // SHORT HOOK TITLE (max 8 words, strong clickbait)
+  "article_text": "...",                    // Full article body (500-800 words)
+  "image_categories": [                      // Array of image categories in priority order
+    "category1", "category2", "category3"    // Based on: ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+  ]
 }}
 
 TITLE REQUIREMENTS (CRITICAL):

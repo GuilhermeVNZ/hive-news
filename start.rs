@@ -230,7 +230,7 @@ fn test_collector() {
         r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run --bin news-backend -- collect
+cargo run collect
 "#
     );
     
@@ -257,17 +257,17 @@ cargo run --bin news-backend -- collect
         println!("\n🔍 Starting Filter Phase (Scientific Validation)...");
         run_filter();
         
-        // FASE 3: Writer + Illustrator
+        // FASE 3: Writer (with DeepSeek image category selection)
         println!("\n✍️  Starting Content Generation with DeepSeek...");
         println!("   Style: Nature/Science magazine editorial");
-        println!("   Phase 1: Article generation");
+        println!("   Phase 1: Article generation with image categories");
         println!("   Phase 2: Social media + video script");
-        println!("   Phase 3: Featured image extraction (Illustrator)");
+        println!("   Phase 3: Pixabay image fetch (based on article keywords)");
         
         run_writer();
         
         println!("\n✅ Full Pipeline Completed!");
-        println!("   Collection → Filter → Writer → Illustrator");
+        println!("   Collection → Filter → Writer (with image categories)");
         println!("   Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
     } else {
         println!("\n⚠️  Collection had issues");
@@ -281,7 +281,7 @@ fn run_filter() {
     let ps_script = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run --bin news-backend -- filter
+cargo run filter
 "#;
     
     let output = Command::new("powershell")
@@ -314,7 +314,7 @@ cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 $env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
 $env:WRITER_DEFAULT_SITE="AIResearch";
-cargo run --bin news-backend -- write
+cargo run write
 "#;
     
     let output = Command::new("powershell")
@@ -429,7 +429,7 @@ fn show_help() {
     println!("  backend    - 🔧 Start backend server only");
     println!("  frontend   - 🎨 Start dashboard only");
     println!("  vectorizer - 🔍 Start vectorizer server only");
-    println!("  collector  - 🔍 Test collector service (collector → filter → writer → illustrator)");
+    println!("  collector  - 🔍 Test collector service (collector → filter → writer)");
     println!("  schedule   - ⏰ Run scheduled collection tasks");
     println!("  monitor    - 📊 Monitor system health");
     println!("  status     - ℹ️  Check system status");

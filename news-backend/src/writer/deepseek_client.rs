@@ -16,6 +16,7 @@ pub struct DeepSeekClient {
 pub struct ArticleResponse {
     pub title: String,
     pub article_text: String,
+    pub image_categories: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -90,6 +91,7 @@ impl DeepSeekClient {
         struct ArticleContentJson {
             title: String,
             article_text: String,
+            image_categories: Option<Vec<String>>, // Optional field for backward compatibility
         }
         
         let parsed: ArticleContentJson = serde_json::from_str(&content)
@@ -98,6 +100,7 @@ impl DeepSeekClient {
         Ok(ArticleResponse {
             title: parsed.title,
             article_text: parsed.article_text,
+            image_categories: parsed.image_categories.unwrap_or_default(),
         })
     }
     

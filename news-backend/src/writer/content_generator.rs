@@ -7,10 +7,7 @@ use crate::filter::parser::parse_pdf;
 use super::deepseek_client::*;
 use super::prompts::*;
 use super::prompt_compressor::*;
-use super::file_writer::{save_article, save_title, save_linkedin, save_x, save_shorts_script};
-use super::illustrator::{
-    extract_first_page_images,
-};
+use super::file_writer::{save_article, save_title, save_linkedin, save_x, save_shorts_script, save_image_categories};
 
 pub struct WriterService {
     deepseek_client: DeepSeekClient,
@@ -101,28 +98,9 @@ impl WriterService {
         
         println!("  ✅ Article generated");
         
-        // 3.5. PHASE 4: Extract banner and full page images
-        // Substituir '.' por '_' no article_id para evitar problemas de path
-        let safe_article_id = article_id.replace(".", "_");
-        let banner_path = output_dir.join(format!("banner_{}.png", safe_article_id));
-        let page_path = output_dir.join(format!("page_{}.png", safe_article_id));
-        
-        // Verificar se as imagens já existem (anti-duplicação)
-        if banner_path.exists() && page_path.exists() {
-            println!("  ⏭️  Images already exist (banner + page)");
-        } else {
-            println!("  🖼️  Extracting first page images (banner + full page)...");
-            match extract_first_page_images(pdf_path, &output_dir, &safe_article_id).await {
-                Ok((generated_banner, generated_page)) => {
-                    println!("  ✅ Banner saved: {}", generated_banner.display());
-                    println!("  ✅ Full page saved: {}", generated_page.display());
-                }
-                Err(e) => {
-                    println!("  ⚠️  Image extraction failed: {}", e);
-                    // Não falhar o pipeline inteiro por causa de imagem
-                }
-            }
-        }
+        // PHASE 3: Fetch Pixabay image (based on keywords)
+        // Images are fetched from Pixabay API using article keywords
+        // No longer extracting images from PDF - using Pixabay instead
         
         // 4. PHASE 2: Generate social content
         println!("  📱 Building social media prompts...");
@@ -149,7 +127,7 @@ impl WriterService {
         
         println!("  ✅ Social content generated");
         
-        // 5. Save all content
+        // PHASE 3: Save all content (no longer fetching from Pixabay - using local images instead)
         println!("  💾 Saving content to disk...");
         self.save_content(
             &output_dir,
@@ -183,6 +161,12 @@ impl WriterService {
         
         // Save video script
         save_shorts_script(output_dir, &social.shorts_script).await?;
+        
+        // Save image categories (for future image selection)
+        if !article.image_categories.is_empty() {
+            println!("  📑 Image categories: {:?}", article.image_categories);
+            save_image_categories(output_dir, &article.image_categories).await?;
+        }
         
         // NO LONGER SAVING metadata.json - not needed
         

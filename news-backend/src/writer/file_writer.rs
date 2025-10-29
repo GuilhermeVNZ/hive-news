@@ -52,3 +52,12 @@ pub async fn save_metadata(
     fs::write(output_dir.join("metadata.json"), metadata_str).await?;
     Ok(())
 }
+
+pub async fn save_image_categories(
+    output_dir: &Path,
+    categories: &[String],
+) -> Result<()> {
+    let content = categories.join("\n");
+    fs::write(output_dir.join("image_categories.txt"), content).await?;
+    Ok(())
+}
