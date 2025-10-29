@@ -11,7 +11,15 @@ interface HeroProps {
 }
 
 const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
-  const categories = ["Machine Learning", "LLMs", "Computer Vision", "Robótica", "NLP"];
+  const categories = [
+    { label: "Machine Learning", value: "ai" },
+    { label: "Robotics", value: "robotics" },
+    { label: "Science", value: "science" },
+    { label: "Coding", value: "coding" },
+    { label: "Hardware", value: "hardware" },
+    { label: "Network", value: "network" },
+    { label: "Security", value: "security" },
+  ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
@@ -25,16 +33,16 @@ const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center animate-fade-in-up">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-12 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-gradient">
-            Descubra as Últimas
+            Discover the Latest
             <br />
-            <span className="text-primary">Pesquisas em IA</span>
+            <span className="text-primary">AI Research</span>
           </h1>
 
           <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto mb-12">
             <div className="relative flex-1 group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <Input
-                placeholder="Buscar artigos, tópicos ou pesquisadores..."
+                placeholder="Search articles, topics or researchers..."
                 className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-all"
               />
             </div>
@@ -42,23 +50,23 @@ const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
               size="lg"
               className="h-14 px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover-lift"
             >
-              Buscar
+              Search
             </Button>
           </div>
 
           <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((tag, index) => (
+            {categories.map((cat, index) => (
               <button
-                key={tag}
-                onClick={() => onCategorySelect?.(tag)}
+                key={cat.value}
+                onClick={() => onCategorySelect?.(cat.value)}
                 className={`group px-5 py-2.5 text-sm font-medium rounded-full border-2 transition-all duration-300 animate-fade-in ${
-                  selectedCategory === tag
+                  selectedCategory === cat.value
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary"
                 }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {tag}
+                {cat.label}
               </button>
             ))}
           </div>

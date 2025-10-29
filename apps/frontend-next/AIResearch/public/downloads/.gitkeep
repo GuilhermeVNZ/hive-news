@@ -1,0 +1,4 @@
+# Diretório para armazenar downloads organizados por origem
+# Estrutura: /downloads/<origem>/<YYYY-MM-DD>/<arquivo>.pdf
+# Exemplo: /downloads/arxiv/2025-10-27/article_001.pdf
+

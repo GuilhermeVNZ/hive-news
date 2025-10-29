@@ -24,12 +24,12 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Notícias científicas sobre Inteligência Artificial
+              Scientific news about Artificial Intelligence
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Categorias</h4>
+            <h4 className="font-semibold mb-4">Categories</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
@@ -59,14 +59,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Recursos</h4>
+            <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  Sobre
+                  About
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  Contato
+                  Contact
                 </Link>
               </li>
               <li>
@@ -96,7 +96,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  Privacidade
+                  Privacy
                 </Link>
               </li>
               <li>
@@ -104,7 +104,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  Termos
+                  Terms
                 </Link>
               </li>
             </ul>
@@ -114,7 +114,7 @@ const Footer = () => {
         <div className="border-t border-border mt-10 pt-8">
           <div className="flex items-center justify-center">
             <p className="text-sm text-muted-foreground">
-              &copy; 2025 AIResearch. Todos os direitos reservados.
+              &copy; 2025 AIResearch. All rights reserved.
             </p>
           </div>
         </div>

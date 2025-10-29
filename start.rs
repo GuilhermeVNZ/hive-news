@@ -74,6 +74,18 @@ fn start_full_system() {
     println!("   ⏰ Scheduler:      CONFIGURED");
     println!("   📊 Monitor:        RUNNING");
     println!("\n   💡 Access Dashboard: http://localhost:1420");
+    
+    // Etapa 8: Iniciar Pipeline Automático
+    println!("\n🚀 Step 8: Starting Automatic Pipeline...");
+    println!("   📥 Phase 1: Collect papers from arXiv");
+    println!("   🔍 Phase 2: Filter and validate papers");
+    println!("   ✍️  Phase 3: Generate content with DeepSeek");
+    
+    // Executar pipeline em background
+    std::thread::spawn(|| {
+        execute_full_pipeline();
+    });
+    
     println!("\n   Press Ctrl+C to stop all services...\n");
 
     // Orquestração contínua
@@ -413,6 +425,58 @@ fn run_orchestration_loop() {
     }
 }
 
+fn execute_full_pipeline() {
+    // Aguardar um pouco para garantir que backend está pronto
+    std::thread::sleep(std::time::Duration::from_secs(5));
+    
+    println!("\n\n🔬 Starting Full Pipeline Execution");
+    println!("=====================================\n");
+    
+    // FASE 1: Collector
+    println!("📥 Phase 1: Collecting papers from arXiv...");
+    let ps_script_collect = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+cargo run --bin news-backend collect
+"#;
+    
+    let output = Command::new("powershell")
+        .args(&["-Command", ps_script_collect])
+        .output()
+        .expect("Failed to execute collector");
+    
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    
+    println!("{}", stdout);
+    if !stderr.is_empty() {
+        eprintln!("{}", stderr);
+    }
+    
+    if output.status.success() {
+        println!("\n✅ Collection completed!");
+        println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+        
+        // FASE 2: Filter
+        println!("\n🔍 Phase 2: Filtering and validating papers...");
+        run_filter();
+        
+        // FASE 3: Writer
+        println!("\n✍️  Phase 3: Generating content with DeepSeek...");
+        run_writer();
+        
+        println!("\n✅ Full Pipeline Completed Successfully!");
+        println!("=====================================");
+        println!("   📥 Collection: Completed");
+        println!("   🔍 Filter: Completed");
+        println!("   ✍️  Writer: Completed");
+        println!("   📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
+    } else {
+        println!("\n⚠️  Collection had issues, pipeline stopped");
+        println!("   Check output above for details");
+    }
+}
+
 fn check_system_health() {
     // Verificar saúde do sistema
     println!("   ✅ Vectorizer: Active");
@@ -425,7 +489,7 @@ fn check_system_health() {
 fn show_help() {
     println!("🎯 News System - Orchestrator\n");
     println!("Available Commands:\n");
-    println!("  start      - 🚀 Start FULL system (vectorizer + backend + dashboard)");
+    println!("  start      - 🚀 Start FULL system (vectorizer + backend + dashboard + pipeline)");
     println!("  backend    - 🔧 Start backend server only");
     println!("  frontend   - 🎨 Start dashboard only");
     println!("  vectorizer - 🔍 Start vectorizer server only");

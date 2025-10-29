@@ -1,479 +1,90 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Clock, Calendar, User, ArrowLeft, Share2, BookOpen } from "lucide-react";
+import { Clock, Calendar, User, ArrowLeft, Share2, BookOpen, Download } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
-
-// Mock data - will be replaced with actual API calls
-const articles: Record<string, any> = {
-  "nova-arquitetura-de-transformer-para-llms": {
-    title: "Nova Arquitetura de Transformer para LLMs",
-    category: "Machine Learning",
-    author: "Dr. João Silva",
-    publishedAt: "2025-10-26",
-    readTime: 5,
-    excerpt: "Pesquisadores desenvolvem arquitetura inovadora que reduz significativamente o custo computacional necessário para treinar e operar modelos de linguagem grandes (LLMs).",
-    content: `
-# Nova Arquitetura de Transformer para LLMs
-
-## Introdução
-
-Pesquisadores do MIT e da Stanford desenvolveram uma arquitetura de transformer inovadora que reduz significativamente o custo computacional necessário para treinar e operar modelos de linguagem grandes (LLMs).
-
-## O Problema Atual
-
-Os modelos de linguagem tradicionais, como GPT-4, requerem trilhões de operações para processar texto. Isso resulta em:
-- Alto custo de treinamento
-- Alto consumo de energia
-- Latência significativa em inferência
-- Necessidade de hardware especializado
-
-## A Solução
-
-A nova arquitetura, chamada **EfficientTransformer**, implementa várias otimizações:
-
-### 1. Attention Esparsa
-Em vez de computar attention entre todos os tokens, o modelo usa uma estratégia hierárquica onde apenas tokens-chave recebem atenção completa.
-
-### 2. Compressão de Embeddings
-Os embeddings são comprimidos usando técnicas de quantização adaptativa, reduzindo o uso de memória em até 60%.
-
-### 3. Pipeline Paralelo
-Novo esquema de paralelização permite treinar modelos maiores usando menos GPUs.
-
-## Resultados
-
-Experimentos em datasets padrão mostraram:
-- **70% menos memória** durante inferência
-- **45% mais rápido** para textos longos
-- Qualidade **equivalente ou superior** a modelos tradicionais
-
-## Implicações
-
-Esta arquitetura permite que organizações menores tenham acesso a LLMs poderosos, democratizando a inteligência artificial e permitindo mais pesquisadores a explorar novas fronteiras.
-
-## Conclusão
-
-A EfficientTransformer representa um marco importante na evolução dos modelos de linguagem, equilibrando eficiência e desempenho de forma inovadora.
-    `,
-  },
-  "avances-em-computer-vision-com-redes-neurais": {
-    title: "Avances em Computer Vision com Redes Neurais",
-    category: "Computer Vision",
-    author: "Dra. Maria Santos",
-    publishedAt: "2025-10-25",
-    readTime: 7,
-    excerpt: "Técnicas de visão computacional alcançam nova precisão em reconhecimento de objetos em tempo real.",
-    content: `
-# Avances em Computer Vision com Redes Neurais
-
-## Introdução
-
-Novas arquiteturas de redes neurais profundas estão revolucionando o campo de visão computacional, alcançando níveis de precisão sem precedentes em tarefas complexas.
-
-## Breakthroughs Recentes
-
-### Reconhecimento de Objetos em Tempo Real
-
-Sistemas baseados em **YOLO v8** e **EfficientDet** conseguem detectar e classificar objetos com **95% de precisão** em vídeos de alta resolução processando em tempo real.
-
-### Segmentação Semântica
-
-Técnicas de segmentação avançada permitem identificar com precisão cada pixel de uma imagem, facilitando aplicações em:
-- Diagnóstico médico
-- Automação industrial
-- Veículos autônomos
-
-## Aplicações Práticas
-
-### Saúde
-- Detecção precoce de câncer em imagens médicas
-- Análise automatizada de raios-X
-
-### Automotivo
-- Sistemas de assistência ao condutor
-- Detecção de pedestres e sinais
-
-### Manufatura
-- Inspeção de qualidade automatizada
-- Controle de produção
-
-## Impacto
-
-Essas inovações estão tornando a visão computacional mais acessível e confiável para aplicações do mundo real.
-    `,
-  },
-  "pesquisa-em-nlp-para-linguas-menos-frequentes": {
-    title: "Pesquisa em NLP para Línguas Menos Frequentes",
-    category: "NLP",
-    author: "Prof. Carlos Oliveira",
-    publishedAt: "2025-10-24",
-    readTime: 6,
-    excerpt: "Novo modelo de linguagem processa e compreende idiomas com poucos recursos disponíveis.",
-    content: `
-# Pesquisa em NLP para Línguas Menos Frequentes
-
-## Desafio
-
-A maioria dos modelos de linguagem é treinada com foco em línguas de alta disponibilidade de dados, deixando milhares de idiomas sem suporte adequado.
-
-## Solução
-
-Novos modelos desenvolvidos usando transferência de aprendizado e few-shot learning mostram resultados promissores:
-
-### Multilingual BERT Expandido
-- Suporte para 100+ idiomas
-- Arquitetura otimizada para baixos recursos
-- Treinamento eficiente com dados limitados
-
-### Aplicações
-- Preservação cultural
-- Acesso à informação
-- Educação multilíngue
-
-## Resultados
-
-Modelos conseguem atingir 80% da performance de sistemas dedicados usando apenas 10% dos dados normalmente necessários.
-
-Isso abre portas para inclusão digital de comunidades linguísticas menos representadas.
-    `,
-  },
-  "reinforcement-learning-em-jogos-complexos": {
-    title: "Reinforcement Learning em Jogos Complexos",
-    category: "Robótica",
-    author: "Dr. Ana Costa",
-    publishedAt: "2025-10-23",
-    readTime: 8,
-    excerpt: "Agentes de IA superam jogadores humanos em jogos estratégicos de longa duração através de RL avançado.",
-    content: `
-# Reinforcement Learning em Jogos Complexos
-
-## Introdução
-
-Agentes de IA baseados em **Deep Reinforcement Learning** estão alcançando níveis de jogabilidade humana em jogos de estratégia complexos.
-
-## Arquitetura
-
-### Agent Alpha
-Usa uma combinação de:
-- Monte Carlo Tree Search (MCTS)
-- Deep Neural Networks
-- Self-play contínuo
-
-## Desafios Superados
-
-### Jogos de Informação Imperfeita
-Modelos conseguem lidar com **informação incompleta** ao longo da partida, como em poker e bridge.
-
-### Horizonte Temporal Longo
-Estratégias que abrangem centenas de movimentos à frente.
-
-## Aplicações Além de Jogos
-
-- Otimização de logística
-- Gestão de recursos
-- Planejamento estratégico empresarial
-
-## Próximos Passos
-
-Explorando aplicações em:
-- Veículos autônomos
-- Sistemas de recomendação
-- Robótica autônoma
-
-O futuro mostra que RL será fundamental para sistemas inteligentes verdadeiramente adaptativos.
-    `,
-  },
-  "generative-ai-criacao-de-conteudo-multimodal": {
-    title: "Generative AI: Criação de Conteúdo Multimodal",
-    category: "Generative AI",
-    author: "Dra. Patricia Lima",
-    publishedAt: "2025-10-22",
-    readTime: 5,
-    excerpt: "Novos modelos gerativos combinam texto, imagens e áudio para criar experiências imersivas.",
-    content: `
-# Generative AI: Criação de Conteúdo Multimodal
-
-## Era Multimodal
-
-Modelos de IA generativa estão se tornando verdadeiramente **multimodais**, capaz de criar e compreender múltiplos formatos simultaneamente.
-
-## Geração Cross-Modal
-
-### Text-to-Image-to-Video
-- Entrada: descrição em texto
-- Saída: vídeo gerado com alta qualidade
-
-### Audio-to-Image
-Geração de imagens a partir de descrições em áudio.
-
-## Aplicações Criativas
-
-- **Filmes e Animação**: Geração rápida de storyboards
-- **Música**: Composição assistida por IA
-- **Design**: Protótipos visuais instantâneos
-
-## Desafios Técnicos
-
-### Sincronização
-Garantir que múltiplos modais estejam alinhados (áudio sincronizado com vídeo, por exemplo).
-
-### Qualidade
-Manter alta fidelidade em todos os formatos gerados.
-
-## Futuro
-
-Esses avanços estão democratizando a criação de conteúdo profissional, permitindo que qualquer pessoa seja um criador.
-    `,
-  },
-  "etica-em-ia-desafios-e-melhores-praticas": {
-    title: "Ética em IA: Desafios e Melhores Práticas",
-    category: "AI Ethics",
-    author: "Prof. Ricardo Mendes",
-    publishedAt: "2025-10-21",
-    readTime: 7,
-    excerpt: "Especialistas discutem framework ético para desenvolvimento responsável de sistemas de IA.",
-    content: `
-# Ética em IA: Desafios e Melhores Práticas
-
-## Necessidade Urgente
-
-Com o crescimento acelerado da IA, questões éticas tornaram-se críticas para garantir benefícios para toda humanidade.
-
-## Principais Preocupações
-
-### Viés e Discriminação
-- Modelos que perpetuam estereótipos sociais
-- Sistemas que discriminam minorias
-- Necessidade de datasets diversos
-
-### Privacidade
-- Uso não autorizado de dados pessoais
-- Surveillance por IA
-- Consentimento informado
-
-### Transparência
-- "Black box" em decisões automatizadas
-- Explicabilidade de algoritmos
-- Accountability
-
-## Frameworks Existentes
-
-### Princípios Asilomar
-Guidelines estabelecidos por pesquisadores de IA líderes.
-
-### UNESCO Ethics Recommendations
-Framework internacional para governança de IA.
-
-## Melhores Práticas
-
-1. **Testes Contínuos de Viés**
-2. **Transparência em Algoritmos**
-3. **Inclusão de Stakeholders Diversos**
-4. **Auditoria Regular**
-5. **Trabalho Multidisciplinar**
-
-## Conclusão
-
-Ética não é um obstáculo para inovação, mas sim uma **necessidade** para garantir que a IA beneficie a humanidade de forma justa e equitativa.
-    `,
-  },
-  "neural-architecture-search-automatizado": {
-    title: "Neural Architecture Search Automatizado",
-    category: "Machine Learning",
-    author: "Dr. Luis Ferreira",
-    publishedAt: "2025-10-20",
-    readTime: 6,
-    excerpt: "Técnicas de busca automática de arquiteturas neurais otimizam modelos com menor intervenção humana.",
-    content: `
-# Neural Architecture Search Automatizado
-
-## Automação de Design
-
-NAS (Neural Architecture Search) está revolucionando como projetamos redes neurais, automatizando o processo de design de arquitetura.
-
-## Como Funciona
-
-### Busca Automática
-Algoritmos exploram milhões de possíveis arquiteturas:
-- Combinações de camadas
-- Conexões entre neurônios
-- Funções de ativação
-- Padrões de pooling
-
-### Avaliação Eficiente
-Usa técnicas como:
-- Progressive search
-- Early stopping
-- Transfer learning
-
-## Vantagens
-
-### Eficiência
-Encontra arquiteturas otimizadas em **dias** vs **meses** de trabalho manual.
-
-### Performance
-Muitas vezes supera designs manuais experientes.
-
-### Acesso
-Permite que não-especialistas criem redes de alta performance.
-
-## Aplicações
-
-- Computer vision
-- NLP
-- Speech recognition
-- Recommendation systems
-
-## Futuro
-
-NAS está se tornando padrão em desenvolvimento de IA profissional, democratizando a criação de modelos state-of-the-art.
-    `,
-  },
-  "edge-ai-inteligencia-em-dispositivos-iot": {
-    title: "Edge AI: Inteligência em Dispositivos IoT",
-    category: "IoT",
-    author: "Dra. Fernanda Rocha",
-    publishedAt: "2025-10-19",
-    readTime: 5,
-    excerpt: "Processamento de IA diretamente em dispositivos edge reduz latência e melhora privacidade.",
-    content: `
-# Edge AI: Inteligência em Dispositivos IoT
-
-## Revolução Edge
-
-IA não precisa mais estar na nuvem. Dispositivos IoT estão se tornando cada vez mais inteligentes com processamento **local**.
-
-## Vantagens do Edge AI
-
-### Latência Ultra-Baixa
-Decisões em **milissegundos** vs segundos da nuvem.
-
-### Privacidade Melhorada
-Dados nunca saem do dispositivo local.
-
-### Funcionamento Offline
-Dispositivos funcionam mesmo sem conectividade.
-
-### Redução de Custos
-Menos transmissão de dados = economia de banda.
-
-## Aplicações Práticas
-
-### Saúde Wearable
-- Monitoramento contínuo de sinais vitais
-- Detecção de anomalias em tempo real
-
-### Smart Homes
-- Reconhecimento de voz local
-- Detecção de intrusos
-
-### Indústria 4.0
-- Manutenção preditiva
-- Controle de qualidade automatizado
-
-## Desafios Técnicos
-
-### Recursos Limitados
-Como otimizar modelos para:
-- **Baixo consumo de energia**
-- **Pouca memória**
-- **CPU limitada**
-
-### Soluções
-- Quantização (INT8, INT4)
-- Pruning de redes
-- Knowledge distillation
-- Modelos especializados
-
-## Impacto
-
-Edge AI está tornando tecnologia inteligente **acessível, confiável e privada** em todos os lugares.
-    `,
-  },
-  "transformers-em-analise-de-series-temporais": {
-    title: "Transformers em Análise de Séries Temporais",
-    category: "Machine Learning",
-    author: "Prof. Gustavo Almeida",
-    publishedAt: "2025-10-18",
-    readTime: 6,
-    excerpt: "Modelos Transformer adaptados para análise de dados temporais mostram resultados promissores.",
-    content: `
-# Transformers em Análise de Séries Temporais
-
-## Novo Horizonte
-
-Arquitetura Transformer, revolucionária em NLP, está mostrando excelência em **predição de séries temporais**.
-
-## Desafios Tradicionais
-
-Modelos tradicionais (ARIMA, LSTM) têm limitações:
-- Dificuldade com dependências de longo prazo
-- Necessidade de feature engineering extensivo
-- Sensibilidade a ruído
-
-## A Solução Transformer
-
-### Temporal Transformers
-Arquiteturas adaptadas para dados temporais:
-- **Temporal Attention**: Foco em patterns temporais
-- **Positional Encoding**: Captura ordem temporal
-- **Multi-head Attention**: Identifica múltiplos padrões
-
-## Aplicações
-
-### Finanças
-- Previsão de ações
-- Detecção de fraude
-- Análise de risco
-
-### Energia
-- Previsão de demanda
-- Otimização de grid
-- Energia renovável
-
-### Manufatura
-- Previsão de falhas
-- Otimização de produção
-- Controle de qualidade
-
-## Resultados
-
-### Performance Superior
-- **15-30% melhor** que LSTM em diversas tasks
-- Superior em séries com **alta variância**
-- Excelente em dados **multivariáveis**
-
-### Mas nem tudo são flores...
-Alguns desafios permanecem:
-- Treinamento computacionalmente caro
-- Necessidade de grandes datasets
-- Interpretabilidade ainda limitada
-
-## Conclusão
-
-Transformers estão abrindo novas possibilidades para análise temporal, com aplicações promissoras em múltiplos domínios.
-    `,
-  },
+import Image from "next/image";
+import fs from 'fs/promises';
+import path from 'path';
+
+// Map category values to display labels
+const categoryLabels: Record<string, string> = {
+  ai: 'AI',
+  robotics: 'Robotics',
+  science: 'Science',
+  coding: 'Coding',
+  crypto: 'Crypto',
+  database: 'Database',
+  ethics: 'Ethics',
+  games: 'Games',
+  hardware: 'Hardware',
+  legal: 'Legal',
+  network: 'Network',
+  security: 'Security',
+  sound: 'Sound',
 };
+
+async function selectArticleImage(categories: string[], articleId: string): Promise<string | undefined> {
+  const imagesDir = path.join(process.cwd(), '../../../images');
+  
+  try {
+    // Try each category in order of priority
+    for (const category of categories) {
+      const categoryDir = path.join(imagesDir, category);
+      
+      try {
+        const stats = await fs.stat(categoryDir);
+        if (!stats.isDirectory()) continue;
+        
+        const files = await fs.readdir(categoryDir);
+        const imageFiles = files.filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
+        
+        if (imageFiles.length > 0) {
+          // Sort by number in filename
+          imageFiles.sort((a, b) => {
+            const numA = parseInt(a.match(/\d+/)?.[0] || '0');
+            const numB = parseInt(b.match(/\d+/)?.[0] || '0');
+            return numA - numB;
+          });
+          
+          // Use article ID to select image
+          const imageIndex = parseInt(articleId.split('.').pop()?.replace(/[^0-9]/g, '') || '0') % imageFiles.length;
+          const selectedImage = imageFiles[imageIndex];
+          
+          return `/images/${category}/${selectedImage}`;
+        }
+      } catch (err) {
+        continue;
+      }
+    }
+  } catch (err) {
+    console.error('Error selecting article image:', err);
+  }
+  
+  return undefined;
+}
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const article = articles[slug];
-
-  if (!article) {
-    return {
-      title: "Artigo Não Encontrado",
-    };
-  }
-
+  
+  try {
+    // Fetch all articles and find matching one
+    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3003'}/api/articles`, { cache: 'no-store' });
+    if (response.ok) {
+      const data = await response.json();
+      const article = data.articles.find((a: any) => {
+        const articleSlug = a.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        return articleSlug === slug;
+      });
+      
+      if (article) {
   return {
     title: article.title,
     description: article.excerpt,
-    keywords: [article.category, "IA", "Machine Learning", article.title],
+          keywords: [article.category, "AI", "Machine Learning", article.title],
     authors: [{ name: article.author }],
     openGraph: {
       title: article.title,
@@ -481,25 +92,58 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       publishedTime: article.publishedAt,
       authors: [article.author],
-      tags: [article.category],
+            tags: article.imageCategories,
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.excerpt,
     },
-    alternates: {
-      canonical: `https://airesearch.com/article/${slug}`,
-    },
+        };
+      }
+    }
+  } catch (err) {
+    console.error('Error generating metadata:', err);
+  }
+  
+  return {
+    title: "Article Not Found",
   };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = articles[slug];
+  let article;
+  
+  try {
+    // Fetch all articles and find the one matching the slug
+    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3003'}/api/articles`, { cache: 'no-store' });
+    if (response.ok) {
+      const data = await response.json();
+      // Find article by matching slug with title
+      article = data.articles.find((a: any) => {
+        const articleSlug = a.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        return articleSlug === slug;
+      });
+    }
+  } catch (err) {
+    console.error('Error fetching article:', err);
+  }
 
   if (!article) {
     notFound();
+  }
+  
+  const primaryCategory = article.imageCategories[0] || 'ai';
+  const categoryLabel = categoryLabels[primaryCategory] || primaryCategory;
+  
+  // Select image for this article
+  let articleImage: string | undefined;
+  
+  try {
+    articleImage = await selectArticleImage(article.imageCategories, article.id);
+  } catch (err) {
+    console.error('Error selecting image:', err);
   }
 
   return (
@@ -515,15 +159,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
             >
               <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              <span>Voltar para notícias</span>
+              <span>Back to articles</span>
             </Link>
 
-            {/* Category Badge */}
-            <div className="mb-6">
-              <span className="px-4 py-2 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20 inline-flex items-center gap-2">
-                <BookOpen className="h-3.5 w-3.5" />
-                {article.category}
+            {/* Category Badges */}
+            <div className="mb-6 flex flex-wrap gap-2">
+              {article.imageCategories.map((cat, index) => (
+                <span
+                  key={index}
+                  className={`px-4 py-2 text-sm font-semibold rounded-full border ${
+                    index === 0
+                      ? 'text-primary bg-primary/10 border-primary/20'
+                      : 'text-muted-foreground bg-muted border-border'
+                  }`}
+                >
+                  {index === 0 && <BookOpen className="h-3.5 w-3.5 inline mr-1.5" />}
+                  {categoryLabels[cat] || cat}
               </span>
+              ))}
             </div>
 
             {/* Title */}
@@ -533,7 +186,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
             {/* Excerpt */}
             {article.excerpt && (
-              <p className="text-xl text-muted-foreground mb-8 max-w-3xl leading-relaxed">
+              <p className="text-2xl text-muted-foreground mb-8 leading-relaxed">
                 {article.excerpt}
               </p>
             )}
@@ -546,16 +199,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Calendar className="h-4 w-4" />
-                <span className="text-sm">{new Date(article.publishedAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
+                <span className="text-sm">{new Date(article.publishedAt).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Clock className="h-4 w-4" />
-                <span className="text-sm">{article.readTime} min de leitura</span>
+                <span className="text-sm">{article.readTime} min read</span>
               </div>
               <div className="flex-1" />
               <Button variant="outline" size="sm" className="gap-2">
                 <Share2 className="h-4 w-4" />
-                Compartilhar
+                Share
               </Button>
             </div>
           </div>
@@ -563,53 +216,81 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
         {/* Article Content */}
         <article className="container mx-auto px-4 py-12 max-w-4xl">
-
-          {/* Article Image Placeholder */}
+          {/* Article Image */}
+          {articleImage && (
           <div className="mb-12">
-            <div className="aspect-video bg-gradient-to-br from-primary/20 via-primary/10 to-background rounded-2xl flex items-center justify-center border border-border">
-              <div className="text-center p-12">
-                <div className="h-24 w-24 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
-                  <BookOpen className="h-12 w-12 text-primary" />
-                </div>
-                <p className="text-muted-foreground">Imagem do artigo</p>
+              <div className="aspect-video relative rounded-2xl overflow-hidden border border-border">
+                <Image
+                  src={articleImage}
+                  alt={article.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="prose prose-xl max-w-none dark:prose-invert prose-headings:font-bold prose-p:text-lg prose-p:leading-relaxed prose-p:text-foreground prose-li:text-lg prose-strong:text-foreground prose-p:text-justify">
+            <div className="article-content whitespace-pre-wrap leading-relaxed text-lg text-justify">
+              {article.article.trim()}
             </div>
           </div>
 
-          {/* Content */}
-          <div className="prose prose-lg max-w-none">
-            <div className="article-content whitespace-pre-wrap leading-relaxed">
-              {article.content.trim()}
+          {/* Download Section */}
+          <div className="mt-16 py-12 border-t border-b border-border bg-gradient-to-r from-primary/5 via-transparent to-primary/5 -mx-4 px-4">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-2">Download Original Article</h3>
+                <p className="text-muted-foreground">
+                  Get the complete research paper in its original PDF format
+                </p>
+              </div>
+              <Button 
+                size="lg"
+                className="gap-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg hover:shadow-xl transition-all whitespace-nowrap"
+                asChild
+              >
+                <a 
+                  href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="h-5 w-5" />
+                  Download PDF from arXiv
+                </a>
+              </Button>
             </div>
           </div>
 
           {/* Related Articles */}
           <div className="mt-16 pt-12 border-t border-border">
             <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              Artigos Relacionados
+              Related Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Placeholder for related articles */}
               <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors">
                 <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                  Machine Learning
+                  {categoryLabel}
                 </span>
                 <h3 className="mt-2 font-semibold text-lg hover:text-primary cursor-pointer">
-                  Neural Architecture Search Automatizado
+                  More {categoryLabel} Research
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  Técnicas de busca automática de arquiteturas neurais...
+                  Explore more articles in this category...
                 </p>
               </div>
               <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors">
                 <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                  LLMs
+                  AI Research
                 </span>
                 <h3 className="mt-2 font-semibold text-lg hover:text-primary cursor-pointer">
-                  Fine-tuning de Modelos de Linguagem
+                  Latest AI Articles
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  Como adaptar LLMs para tarefas específicas com poucos dados...
+                  Discover the latest developments in AI...
                 </p>
               </div>
             </div>
@@ -620,4 +301,3 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     </div>
   );
 }
-

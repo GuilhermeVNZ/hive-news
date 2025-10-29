@@ -1,132 +1,116 @@
-import ArticleCard from "./ArticleCard";
+"use client";
 
-// Placeholder data - will be replaced with actual API calls
-const mockArticles = [
-  {
-    id: "1",
-    title: "Nova Arquitetura de Transformer para LLMs",
-    excerpt:
-      "Pesquisadores desenvolvem arquitetura inovadora que reduz significativamente o custo computacional...",
-    publishedAt: "2025-10-26T10:00:00Z",
-    author: "Dr. João Silva",
-    category: "Machine Learning",
-    readTime: 5,
-  },
-  {
-    id: "2",
-    title: "Avances em Computer Vision com Redes Neurais",
-    excerpt:
-      "Técnicas de visão computacional alcançam nova precisão em reconhecimento de objetos...",
-    publishedAt: "2025-10-25T14:30:00Z",
-    author: "Dra. Maria Santos",
-    category: "Computer Vision",
-    readTime: 7,
-  },
-  {
-    id: "3",
-    title: "Pesquisa em NLP para Línguas Menos Frequentes",
-    excerpt:
-      "Novo modelo de linguagem processa e compreende idiomas com poucos recursos disponíveis...",
-    publishedAt: "2025-10-24T09:15:00Z",
-    author: "Prof. Carlos Oliveira",
-    category: "NLP",
-    readTime: 6,
-  },
-  {
-    id: "4",
-    title: "Reinforcement Learning em Jogos Complexos",
-    excerpt:
-      "Agentes de IA superam jogadores humanos em jogos estratégicos de longa duração através de RL avançado...",
-    publishedAt: "2025-10-23T16:20:00Z",
-    author: "Dr. Ana Costa",
-    category: "Robótica",
-    readTime: 8,
-  },
-  {
-    id: "5",
-    title: "Generative AI: Criação de Conteúdo Multimodal",
-    excerpt:
-      "Novos modelos gerativos combinam texto, imagens e áudio para criar experiências imersivas...",
-    publishedAt: "2025-10-22T11:45:00Z",
-    author: "Dra. Patricia Lima",
-    category: "Generative AI",
-    readTime: 5,
-  },
-  {
-    id: "6",
-    title: "Ética em IA: Desafios e Melhores Práticas",
-    excerpt:
-      "Especialistas discutem framework ético para desenvolvimento responsável de sistemas de IA...",
-    publishedAt: "2025-10-21T13:30:00Z",
-    author: "Prof. Ricardo Mendes",
-    category: "AI Ethics",
-    readTime: 7,
-  },
-  {
-    id: "7",
-    title: "Neural Architecture Search Automatizado",
-    excerpt:
-      "Técnicas de busca automática de arquiteturas neurais otimizam modelos com menor intervenção humana...",
-    publishedAt: "2025-10-20T09:00:00Z",
-    author: "Dr. Luis Ferreira",
-    category: "Machine Learning",
-    readTime: 6,
-  },
-  {
-    id: "8",
-    title: "Edge AI: Inteligência em Dispositivos IoT",
-    excerpt:
-      "Processamento de IA diretamente em dispositivos edge reduz latência e melhora privacidade...",
-    publishedAt: "2025-10-19T15:15:00Z",
-    author: "Dra. Fernanda Rocha",
-    category: "IoT",
-    readTime: 5,
-  },
-  {
-    id: "9",
-    title: "Transformers em Análise de Séries Temporais",
-    excerpt:
-      "Modelos Transformer adaptados para análise de dados temporais mostram resultados promissores...",
-    publishedAt: "2025-10-18T10:30:00Z",
-    author: "Prof. Gustavo Almeida",
-    category: "Machine Learning",
-    readTime: 6,
-  },
-];
+import { useState, useEffect } from "react";
+import ArticleCard from "./ArticleCard";
+import { Button } from "@/components/ui/button";
+
+interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  article: string;
+  publishedAt: string;
+  author: string;
+  category: string;
+  readTime: number;
+  imageCategories: string[];
+}
 
 interface ArticleGridProps {
   selectedCategory?: string;
 }
 
 const ArticleGrid = ({ selectedCategory }: ArticleGridProps) => {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [displayedCount, setDisplayedCount] = useState(6);
+  
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const response = await fetch('/api/articles');
+        const data = await response.json();
+        setArticles(data.articles || []);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchArticles();
+  }, []);
+  
+  // Reset displayed count when category changes
+  useEffect(() => {
+    setDisplayedCount(6);
+  }, [selectedCategory]);
+  
   const filteredArticles = selectedCategory 
-    ? mockArticles.filter(article => article.category === selectedCategory)
-    : mockArticles;
+    ? articles.filter(article => {
+        // Check if any image category matches
+        return article.imageCategories && article.imageCategories.includes(selectedCategory.toLowerCase());
+      })
+    : articles;
+  
+  // Display only first N articles
+  const displayedArticles = filteredArticles.slice(0, displayedCount);
+  const hasMore = filteredArticles.length > displayedCount;
+
+  if (loading) {
+    return (
+      <section className="container mx-auto px-4 py-16" id="articles">
+        <div className="flex justify-center items-center h-64">
+          <p className="text-muted-foreground">Loading articles...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="container mx-auto px-4 py-16" id="articles">
       <div className="mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-          {selectedCategory ? `Artigos em ${selectedCategory}` : "Artigos em Destaque"}
+          {selectedCategory ? `Articles in ${selectedCategory}` : "Featured Articles"}
         </h2>
         <p className="text-muted-foreground text-lg">
           {selectedCategory 
-            ? `${filteredArticles.length} ${filteredArticles.length === 1 ? 'artigo encontrado' : 'artigos encontrados'}`
-            : "Explore as últimas pesquisas e desenvolvimentos em IA"
+            ? `${filteredArticles.length} ${filteredArticles.length === 1 ? 'article found' : 'articles found'}`
+            : "Explore the latest research and developments in AI"
           }
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredArticles.map((article, index) => (
-          <div 
-            key={article.id}
-            className="animate-fade-in-up"
-            style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'both' }}
-          >
-            <ArticleCard {...article} />
+      {filteredArticles.length === 0 ? (
+        <div className="text-center py-16">
+          <p className="text-muted-foreground text-lg">No articles found</p>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedArticles.map((article, index) => (
+              <div 
+                key={article.id}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'both' }}
+              >
+                <ArticleCard {...article} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+          
+          {hasMore && (
+            <div className="flex justify-center mt-12">
+              <Button 
+                onClick={() => setDisplayedCount(prev => prev + 6)}
+                className="px-8 py-6 text-lg"
+                variant="outline"
+              >
+                Load More Articles
+              </Button>
+            </div>
+          )}
+        </>
+      )}
     </section>
   );
 };

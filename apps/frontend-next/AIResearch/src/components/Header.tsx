@@ -30,26 +30,26 @@ const Header = () => {
             href="/"
             className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
           >
-            Artigos
+            Articles
           </Link>
           <Link
             href="/education"
             className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
           >
-            Educação
+            Education
           </Link>
           <Link
             href="#"
             className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
           >
-            Categorias
+            Categories
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
           <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all hover:bg-accent rounded-lg border border-border hover:border-primary">
             <Search className="h-4 w-4" />
-            <span>Buscar</span>
+            <span>Search</span>
           </button>
           <button className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-accent rounded-lg">
             <Menu className="h-5 w-5" />
