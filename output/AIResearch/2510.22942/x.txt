@@ -1,0 +1,1 @@
+AI now predicts where you'll go next with unprecedented accuracy. GTR-Mamba uses hyperbolic geometry to outperform 12 baseline methods by up to 15.62%, mastering complex human mobility patterns. Nature/Science research reveals how geometric routing transforms real-time recommendations.

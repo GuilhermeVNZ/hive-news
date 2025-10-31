@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could know an epileptic seizure was coming before it happened?
+[VISUAL DIRECTION] [Animated text: "AI PREDICTS SEIZURES" with pulsing brain graphic]
+
+[VOICEOVER 0:05-0:20] For 26 million Americans with epilepsy, life is constant uncertainty. When will the next seizure strike? This unpredictability limits daily activities and independence.
+[VISUAL DIRECTION] [Show person hesitating before everyday activities like driving or cooking]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect the subtle brain signals that occur before a seizure begins?
+[VISUAL DIRECTION] [Zoom in on EEG waveform, highlight pre-seizure patterns]
+
+[VOICEOVER 0:40-1:00] The breakthrough: Long Short-Term Memory networks can identify these patterns with 70.77% accuracy across different patients.
+[VISUAL DIRECTION] [Show LSTM network architecture diagram, highlight temporal pattern recognition]
+
+[VOICEOVER 1:00-1:30] Using the CHB-MIT Scalp EEG Database, the AI analyzes brainwave signals to forecast seizures minutes before onset. Critical finding: The system works patient-independently, meaning it can generalize to people it's never seen before.
+[VISUAL DIRECTION] [Animated flow: EEG signal → LSTM processing → Prediction output. Show cross-validation results: 70.77% accuracy, 64.09% precision]
+
+[VOICEOVER 1:30-1:50] This means wearable devices could soon provide warnings, allowing preventive measures and alerting caregivers in advance. For drug-resistant epilepsy patients, this predictive capability could be life-changing.
+[VISUAL DIRECTION] [Show concept wearable device with alert system, caregiver receiving notification]
+
+[VOICEOVER 1:50-2:00] From unpredictable condition to manageable one—AI is rewriting epilepsy care.
+[VISUAL DIRECTION] [Final text overlay: "70.77% accuracy in seizure prediction" with Nature/Science journal branding]

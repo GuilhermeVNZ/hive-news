@@ -1,0 +1,1 @@
+AI now reads blurry, distorted license plates with near-perfect accuracy. New research combines Grounding DINO and YOLOv8 to achieve just 3.5% error on North American plates. How could this transform traffic enforcement and vehicle tracking in your region?

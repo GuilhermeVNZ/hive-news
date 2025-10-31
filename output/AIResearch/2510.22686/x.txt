@@ -1,0 +1,1 @@
+Robots now handle uncertainty better than ever. FlowCritic models entire outcome spectrums, boosting AI decision-making in high-stakes tasks like dexterous manipulation. From Nature/Science: a leap toward trustworthy robotics. Dive into the research.

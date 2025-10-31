@@ -1,0 +1,15 @@
+[VOICEOVER 0:00-0:05] What if AI could master minority dialects using just 1% of typical computing power?
+[VISUAL DIRECTION] Animated text: "AI LEARNS MINORITY DIALECTS" with dramatic zoom on "1%"
+[VOICEOVER 0:05-0:15] Right now, powerful AI works well for dominant languages like English but struggles with local vocabulary and expressions that define everyday communication for millions.
+[VISUAL DIRECTION] Split screen showing English text on left, Québécois French phrases on right with question marks
+[VOICEOVER 0:15-0:30] Researchers asked: Can we bridge this 'dialect gap' without massive computing resources?
+[VISUAL DIRECTION] Animated chart showing typical AI training data requirements vs new method
+[VOICEOVER 0:30-0:45] They discovered that large language models can effectively learn Québécois French using only 86 million tokens—a tiny fraction of normal requirements.
+[VISUAL DIRECTION] Zoom in on "86M tokens" with comparison to typical billions requirement
+[VOICEOVER 0:45-1:05] Using Low-Rank Adaptation (LoRA), the team froze most of an existing model while updating only a small subset specifically tuned for the dialect.
+[VISUAL DIRECTION] Animated diagram showing LoRA technique with frozen layers and small adaptive components
+[VOICEOVER 1:05-1:25] The largest model tested, Llama-3.1-8B, actually improved in both dialect understanding AND standard French after adaptation—no trade-offs required.
+[VISUAL DIRECTION] Benchmark results showing dual improvement in dialect and standard language performance
+[VOICEOVER 1:25-1:45] This method requires only single GPU hardware, making it feasible for institutions and communities with limited resources to develop their own AI systems.
+[VISUAL DIRECTION] Show simple GPU setup vs massive server farm comparison
+[VOICEOVER 1:45-2:00] The 'dialect gap' is closing—AI is becoming accessible to speakers worldwide who've been left behind by current technology.

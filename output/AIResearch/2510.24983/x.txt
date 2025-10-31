@@ -1,0 +1,1 @@
+AI's risky behavior problem: New method gives AI calibrated risk control. LRT-Diffusion outperforms baselines by 2.3% while reducing dangerous actions. Single parameter makes AI decision-making transparent and reliable for autonomous systems.

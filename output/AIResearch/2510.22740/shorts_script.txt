@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if robots could map disaster zones nearly six times faster, with far fewer errors? [VISUAL DIRECTION] Animated text: '6x Faster Mapping' with a bold question mark; fast zoom on a dynamic robot swarm graphic.
+
+[VOICEOVER 0:05-0:20] In critical scenarios like search-and-rescue or warehouse operations, robots often get stuck due to navigation bottlenecks. [VISUAL DIRECTION] Show chaotic disaster scene transitioning to a warehouse grid; emphasize slow, inefficient robot movements with red X overlays.
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can multiple robots coordinate to estimate positions and build maps simultaneously without falling into suboptimal solutions? [VISUAL DIRECTION] Display split-screen of traditional vs. new methods; highlight 'suboptimal solutions' in red text.
+
+[VOICEOVER 0:40-1:00] They discovered an AI-based method that reduces errors by 37.5% on average, using cooperative SLAM with an 'edge-gating' mechanism to suppress unreliable data. [VISUAL DIRECTION] Zoom on a diagram of edge-gating; overlay text: '37.5% Fewer Errors' and 'Edge-Gating'.
+
+[VOICEOVER 1:00-1:30] Here's how it works: Each robot shares specialized info, a central coordinator refines estimates, and the system scales without retraining—even with 10% intentional errors. [VISUAL DIRECTION] Animated flow of data between robots and coordinator; fast cuts showing scalability from 3 to many robots.
+
+[VOICEOVER 1:30-1:50] This means faster, more reliable mapping for search-and-rescue missions, environmental monitoring, and warehouse automation, overcoming complexity in shared spaces. [VISUAL DIRECTION] Show real-world applications: rescue bots in rubble, drones over forests, warehouse bots navigating shelves.
+
+[VOICEOVER 1:50-2:00] Robots that map smarter and faster—imagine the lives saved and efficiencies gained. [VISUAL DIRECTION] Final hold on a cohesive robot team map; text overlay: 'Smarter Coordination, Faster Results'.

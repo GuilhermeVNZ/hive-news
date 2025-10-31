@@ -1,0 +1,1 @@
+Scientists can now analyze your data without ever seeing it. New privacy-preserving technique generates fake datasets that maintain patterns and correlations while ensuring no individual can be identified. Breakthrough enables secure medical research collaboration.

@@ -1,0 +1,1 @@
+AI agents now coordinate complex tasks nearly as efficiently as mathematical solutions—without communicating. New research shows GPT-4.1-based systems achieved mean makespan of 13.93 steps vs 20.54 for traditional methods. Could this revolutionize warehouse logistics and disaster response?

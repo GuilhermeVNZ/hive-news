@@ -1,0 +1,1 @@
+AI aligns medical images 96% faster with 9.5% of the computational power. ReCorr achieves 74.7% Dice accuracy on MRI data, revolutionizing clinical efficiency. How will this transform your medical imaging workflows?

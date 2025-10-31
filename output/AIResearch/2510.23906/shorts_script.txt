@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if traditional AI is missing 90% of the real connections in complex systems?
+[VISUAL DIRECTION] [Animated text: "90% MISSING?" with question mark animation]
+
+[VOICEOVER 0:05-0:20] From climate ecosystems to brain networks, most real-world systems involve groups of variables interacting simultaneously, not just simple pairs.
+[VISUAL DIRECTION] [Show interconnected network diagram with multiple nodes lighting up simultaneously]
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can we detect when entire groups of factors cause changes in other groups, rather than just individual cause-effect pairs?
+[VISUAL DIRECTION] [Transition to side-by-side comparison: traditional pairwise vs group-level connections]
+
+[VOICEOVER 0:40-1:00] They developed gCDMI - a neural network that learns structural relationships, performs group-wise interventions, and tests for causal relationships between entire groups.
+[VISUAL DIRECTION] [Show three-step animation: learning → interventions → testing with clear labels]
+
+[VOICEOVER 1:00-1:30] The method achieved perfect F1 scores (1.0) on synthetic datasets and revealed bidirectional climate-ecosystem feedbacks that traditional methods missed.
+[VISUAL DIRECTION] [Zoom on F1 score chart from paper, highlight 1.0 perfect score]
+
+[VOICEOVER 1:30-1:50] In neuroscience, it identified brain region connections with 0.7-0.8 accuracy, outperforming existing methods as complexity increased.
+[VISUAL DIRECTION] [Show brain network diagram with highlighted connections]
+
+[VOICEOVER 1:50-2:00] The takeaway? Understanding complex systems requires seeing the group interactions, not just the individual parts.
+[VISUAL DIRECTION] [Final text overlay: "SEE THE FOREST, NOT JUST THE TREES"]

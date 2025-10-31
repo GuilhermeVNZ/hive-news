@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you the most advanced AI fails 61% of real-world tasks?
+[VISUAL DIRECTION] Animated text: "61% FAILURE RATE" with shocking red numbers filling screen
+
+[VOICEOVER 0:05-0:20] A groundbreaking Nature/Science study just revealed why your AI assistant keeps messing up practical work.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance distribution across models, highlighting the 38.6% peak success rate
+
+[VOICEOVER 0:20-0:40] Researchers created the Tool Decathlon benchmark - 604 diverse tasks testing everything from Google Calendar to Kubernetes.
+[VISUAL DIRECTION] Fast cuts between icons of different applications: Gmail, Notion, BigQuery, Poste.io
+
+[VOICEOVER 0:40-1:00] The results are staggering: Claude-4.5-Sonnet led with just 38.6% success. GPT-5 and Gemini-2.5-Pro followed closely behind.
+[VISUAL DIRECTION] Animated bar chart showing all model performance below 40%, with dramatic red shading for failure rates
+
+[VOICEOVER 1:00-1:30] The study connected models to 32 real applications through Model Context Protocol. Each task required multi-step coordination mimicking human workflows.
+[VISUAL DIRECTION] Show network diagram of MCP connections, zooming in on specific API calls and failure points
+
+[VOICEOVER 1:30-1:50] This means your AI assistant can't reliably handle student assignments, customer tickets, or database management - despite excelling in narrow domains.
+[VISUAL DIRECTION] Split screen showing AI success in lab vs failure in practical office scenarios
+
+[VOICEOVER 1:50-2:00] The AI revolution? It's still waiting to solve real-world problems.
+[VISUAL DIRECTION] Final text overlay: "AI: 38.6% Success Rate" with dramatic hold

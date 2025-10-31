@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could instantly understand any environment without months of specialized training?
+[VISUAL DIRECTION] Animated text: "ROBOTS: INSTANT ENVIRONMENT UNDERSTANDING" with pulsing glow effect
+
+[VOICEOVER 0:05-0:20] Current AI systems require extensive training for each new scene, creating major bottlenecks for real-world applications.
+[VISUAL DIRECTION] Show Figure 1 from paper - comparison diagram of traditional vs new method with red X through "per-scene training"
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create a single AI that works across all environments without losing accuracy?
+[VISUAL DIRECTION] Zoom in on research question from paper introduction, highlight "generalized scene understanding"
+
+[VOICEOVER 0:40-1:00] They discovered Gen-LangSplat - a method that eliminates per-scene training while maintaining 93% feature preservation.
+[VISUAL DIRECTION] Show Figure 2 with zoom on 93% preservation metric, animated arrow pointing to key result
+
+[VOICEOVER 1:00-1:30] The innovation uses mathematical Gaussians and CLIP embeddings compressed to 16 dimensions, creating a universal scene interpreter.
+[VISUAL DIRECTION] Animated diagram showing 512D → 16D compression with Gaussian distributions morphing
+
+[VOICEOVER 1:30-1:50] This means robots can respond to verbal commands in any space, and AR systems can instantly describe environments.
+[VISUAL DIRECTION] Quick cuts: robot navigating lab → AR glasses showing room descriptions → industrial setting
+
+[VOICEOVER 1:50-2:00] The result? 90% faster deployment of AI systems that truly understand our world.
+[VISUAL DIRECTION] Final text overlay: "90% FASTER AI DEPLOYMENT" with spinning 3D environment models

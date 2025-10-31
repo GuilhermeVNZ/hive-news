@@ -1,0 +1,1 @@
+Small AI models (7-8B parameters) achieve near-identical accuracy to massive LLMs in document classification—just 2% difference. From Nature/Science: Secure, efficient analysis for sensitive business data without external risks.

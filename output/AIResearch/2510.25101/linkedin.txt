@@ -1,0 +1,1 @@
+AI that learns from outcomes, not instructions, achieves 11.1% higher accuracy on new questions. This breakthrough in outcome-supervised learning enables AI to recover from errors and explore multiple solutions. Read how KnowCoder-A1 advances problem-solving in healthcare and finance.

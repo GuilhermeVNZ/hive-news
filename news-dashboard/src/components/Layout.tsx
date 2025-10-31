@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { 
   LayoutDashboard, 
   FileCode, 
@@ -6,9 +6,13 @@ import {
   FileText,
   Menu,
   X,
-  Settings
+  LogOut,
+  User,
+  Globe
 } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { Button } from "./ui/button";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,13 +21,22 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const menuItems = [
     { path: "/", icon: LayoutDashboard, label: "Dashboard" },
-    { path: "/pages", icon: FileCode, label: "Pages" },
+    { path: "/sites", icon: Globe, label: "Sites" },
+    { path: "/writer", icon: FileCode, label: "Writer" },
+    { path: "/educational", icon: FileCode, label: "Education" },
     { path: "/sources", icon: Newspaper, label: "Sources" },
     { path: "/logs", icon: FileText, label: "Logs" },
   ];
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <div className="flex h-screen bg-background">
@@ -69,13 +82,22 @@ export default function Layout({ children }: LayoutProps) {
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border">
-          <button className="flex items-center gap-3 px-4 py-3 rounded-lg text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-all w-full">
-            <Settings size={20} />
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border space-y-2">
+          <div className={`flex items-center gap-3 px-4 py-2 rounded-lg text-muted-foreground ${sidebarOpen ? "block" : "hidden"}`}>
+            <User size={16} />
+            <span className="text-sm font-medium">{user?.username || 'Admin'}</span>
+            <span className="text-xs text-muted-foreground">({user?.role || 'admin'})</span>
+          </div>
+          <Button
+            variant="ghost"
+            onClick={handleLogout}
+            className="flex items-center gap-3 w-full justify-start"
+          >
+            <LogOut size={20} />
             <span className={`font-medium ${sidebarOpen ? "block" : "hidden"}`}>
-              Settings
+              Logout
             </span>
-          </button>
+          </Button>
         </div>
       </aside>
 

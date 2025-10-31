@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] AI promised to revolutionize medical diagnosis, but what if it's failing at tasks humans do routinely?
+[VISUAL DIRECTION] Animated text: "AI Diagnosis FAILING?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Mayo Clinic researchers just revealed that the same technology behind ChatGPT struggles with basic pathology analysis
+[VISUAL DIRECTION] Show rotating medical images with accuracy percentages dropping from 85% to 45%
+
+[VOICEOVER 0:20-0:40] They systematically tested multiple foundation models on 100,000 biopsies from 7,342 patients across 11 countries
+[VISUAL DIRECTION] World map highlighting 11 countries with biopsy count numbers appearing
+
+[VOICEOVER 0:40-1:00] The shocking finding: these AI models can't handle simple image rotations that occur in real clinical settings
+[VISUAL DIRECTION] Show Figure 2 from paper - accuracy drops dramatically with rotation angles
+
+[VOICEOVER 1:00-1:30] Why? Foundation models use small image patches that miss critical contextual relationships in tissue architecture
+[VISUAL DIRECTION] Zoom into tissue samples showing how small patches miss larger patterns
+
+[VOICEOVER 1:30-1:50] This matters because reliability is critical in healthcare - where AI decisions affect patient lives
+[VISUAL DIRECTION] Transition to hospital setting with doctors reviewing AI results
+
+[VOICEOVER 1:50-2:00] The verdict: current AI approaches may need complete redesign before they're ready for real medical diagnosis
+[VISUAL DIRECTION] Animated text: "AI Diagnosis: NOT READY" with caution symbols

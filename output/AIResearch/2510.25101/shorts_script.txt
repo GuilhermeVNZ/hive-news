@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could learn from outcomes instead of instructions, recovering from errors like humans do?
+[VISUAL DIRECTION] Animated text: "AI learns from outcomes, not instructions" with question mark pulsing
+[VOICEOVER 0:05-0:20] Current AI systems struggle when faced with unexpected situations, limiting their use in critical applications like healthcare diagnostics and financial analysis.
+[VISUAL DIRECTION] Quick cuts: doctor looking at screen, financial chart with error symbol, search engine showing empty results
+[VOICEOVER 0:20-0:40] Researchers developed KnowCoder-A1, an AI that learns through outcome-only feedback rather than detailed demonstrations.
+[VISUAL DIRECTION] Split screen: traditional AI with step-by-step instructions vs. KnowCoder-A1 with only final outcome feedback
+[VOICEOVER 0:40-1:00] The system achieved 3.3% higher F1 score on GrailQA benchmark and, most notably, 11.1% higher accuracy on completely new questions.
+[VISUAL DIRECTION] Large animated numbers: "+3.3% F1 score" and "+11.1% zero-shot accuracy" with upward arrows
+[VOICEOVER 1:00-1:30] How? Through multi-stage reinforcement learning where the AI learns to explore multiple solutions and recover from empty results or errors.
+[VISUAL DIRECTION] Flowchart animation showing AI trying different approaches, with failed attempts crossed out and successful path highlighted
+[VOICEOVER 1:30-1:50] This means AI assistants in healthcare, finance, and education can better handle situations with incomplete information.
+[VISUAL DIRECTION] Real-world applications montage: medical diagnosis interface, financial dashboard, educational platform
+[VOICEOVER 1:50-2:00] AI that learns from outcomes, not instructions—transforming how systems solve complex problems.
+[VISUAL DIRECTION] Final text overlay: "Outcome-supervised learning: The future of AI problem-solving" with Nature/Science logo

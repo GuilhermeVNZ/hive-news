@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know your AI coding assistant can be hijacked regardless of what commands you give it?
+[VISUAL DIRECTION] [Animated text: "AI HIJACKED - NO MATTER WHAT YOU TYPE" with warning symbols]
+[VOICEOVER 0:05-0:20] This isn't theoretical - researchers discovered a fundamental vulnerability in popular AI tools used by millions of developers worldwide.
+[VISUAL DIRECTION] [Show developer working in VS Code with AI assistant, then red warning overlay]
+[VOICEOVER 0:20-0:40] The critical question: Can AI assistants be compromised even when users give normal, harmless commands?
+[VISUAL DIRECTION] [Show question mark animation transitioning to research lab setting]
+[VOICEOVER 0:40-1:00] QueryIPI research reveals yes - with 82% attack success rate. The method works by systematically refining prompts to bypass AI guardrails.
+[VISUAL DIRECTION] [Show statistical chart with 82% highlighted, animated arrows breaking through barrier]
+[VOICEOVER 1:00-1:30] How it works: The automated method exploits leaked system prompts, using iterative optimization to reliably execute predetermined payloads. It analyzes failures and rewrites to defeat defenses.
+[VISUAL DIRECTION] [Animated flow diagram showing prompt refinement process, with "FAILURE ANALYSIS" and "REWRITE" steps highlighted]
+[VOICEOVER 1:30-1:50] Real impact: This threatens IDEs like VS Code and Cursor where AI agents orchestrate system-level actions. Compromise could mean data theft or supply chain attacks.
+[VISUAL DIRECTION] [Show IDE interfaces with security warning popups, data breach animations]
+[VOICEOVER 1:50-2:00] The takeaway: AI prompts transform from opportunistic to deterministic threats. Secure architectures are now essential, not optional.
+[VISUAL DIRECTION] [Final screen: "AI SECURITY CAN'T WAIT" with shield icon, reference to QueryIPI paper]

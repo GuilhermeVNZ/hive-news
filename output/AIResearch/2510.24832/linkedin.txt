@@ -1,0 +1,1 @@
+AI learns better from its messy mistakes than perfect answers. New research shows focusing on error structure—not accuracy—dramatically improves mathematical reasoning. This breakthrough could transform how we train AI systems for scientific discovery. What domains would you apply this to?

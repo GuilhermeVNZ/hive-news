@@ -1,0 +1,1 @@
+AI now creates chess puzzles that stump grandmasters. Google DeepMind's generative neural networks produced compositions praised by international experts for creativity and challenge. This represents a pioneering human-AI partnership in problem-solving. Read the Nature paper to explore how machines are collaborating with human creativity.

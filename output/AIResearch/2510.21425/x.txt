@@ -1,0 +1,1 @@
+AI hallucinations solved? Neurosymbolic integration makes LLMs explain their reasoning step-by-step, cutting made-up info while boosting accuracy. Critical for healthcare decisions where transparency is non-negotiable. #AIethics #ExplainableAI

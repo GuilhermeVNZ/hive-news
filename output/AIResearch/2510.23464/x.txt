@@ -1,0 +1,1 @@
+AI can now read financial reports better than humans—87.79% accuracy in detecting corporate sentiment. This Nature/Science study shows GPT-4.1-Mini outperforms other models, automating complex analysis for investors and regulators.

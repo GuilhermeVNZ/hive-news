@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could coordinate complex tasks with human-like efficiency, deciding exactly when to work together or independently?
+[VISUAL DIRECTION] [Animated text: ROBOTS NOW COORDINATE LIKE HUMANS with dramatic reveal of robot arms working together]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - researchers at NVIDIA and UC San Diego have solved a fundamental robotics challenge that's stumped engineers for years.
+[VISUAL DIRECTION] [Show lab environment with researchers working, transition to simulation interface]
+
+[VOICEOVER 0:20-0:40] Traditional robots either work completely independently or follow strict sequences, leading to inefficient movements and frequent failures in complex tasks.
+[VISUAL DIRECTION] [Split screen showing clumsy traditional robot movements vs smooth coordinated actions]
+
+[VOICEOVER 0:40-1:00] Their breakthrough treats coordination as an integrated scheduling problem, allowing robots to dynamically plan when to use each arm for maximum efficiency.
+[VISUAL DIRECTION] [Zoom on hierarchical framework diagram from paper, highlight scheduler component]
+
+[VOICEOVER 1:00-1:30] The system combines individual manipulation skills like pushing and lifting with a high-level scheduler that observes the environment and chooses optimal actions. It was trained using GPU-accelerated simulation and successful human demonstrations.
+[VISUAL DIRECTION] [Animated flow of decision-making process, show skill selection and parameter optimization]
+
+[VOICEOVER 1:30-1:50] The results are dramatic: 65.2% task completion versus just 26.4% for traditional methods, with 16% faster execution than sequential-only approaches.
+[VISUAL DIRECTION] [Large text overlay: 65.2% SUCCESS vs 26.4% TRADITIONAL, show comparison charts from experimental results]
+
+[VOICEOVER 1:50-2:00] This technology could revolutionize everything from warehouse operations to domestic assistance, enabling robots to handle tasks that currently require human dexterity.
+[VISUAL DIRECTION] [Quick cuts showing industrial applications, furniture assembly, final dramatic shot of coordinated robot arms]

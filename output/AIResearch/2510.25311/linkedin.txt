@@ -1,0 +1,1 @@
+AI's biggest weakness? Getting stuck on one solution. Google DeepMind's breakthrough teaches AI to explore multiple optimal paths simultaneously - achieving 40% better state coverage in robotics. This could revolutionize drug discovery and autonomous navigation. What real-world problems could this solve?

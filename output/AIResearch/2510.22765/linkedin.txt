@@ -1,0 +1,1 @@
+What if AI could generate datasets that preserve all analytical value while containing zero real personal data? Researchers developed neural networks that learn underlying data distributions without memorizing individual records. Could this breakthrough finally enable secure medical research collaboration without privacy compromises?

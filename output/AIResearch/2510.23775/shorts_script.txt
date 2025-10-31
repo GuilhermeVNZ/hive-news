@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Can you spot AI-generated fakes? New research achieves 96.5% detection accuracy and explains exactly why images are fake.
+[VISUAL DIRECTION] [Show split screen: real photo vs AI-generated image with flashing question marks]
+[VOICEOVER 0:05-0:20] As AI images become indistinguishable from reality, this technology addresses growing misinformation concerns in everyday digital interactions.
+[VISUAL DIRECTION] [Quick cuts of social media feeds, news articles, security footage]
+[VOICEOVER 0:20-0:40] Researchers developed a system that not only detects fakes but localizes artifacts and provides human-understandable explanations.
+[VISUAL DIRECTION] [Zoom on Figure 2 showing artifact localization maps with highlighted anomalies]
+[VOICEOVER 0:40-1:00] Using a lightweight neural network called Faster-Than-Lies, it identifies geometric errors, texture issues, and anatomical problems in low-resolution images.
+[VISUAL DIRECTION] [Animated text: 96.5% accuracy, 175ms inference time, 98MB size]
+[VOICEOVER 1:00-1:30] The method combines reconstruction maps with vision-language models to generate explanations like 'unrealistic specular highlights' and 'misaligned bilateral symmetry.'
+[VISUAL DIRECTION] [Show side-by-side: technical artifact map vs simple text explanation]
+[VOICEOVER 1:30-1:50] This enables real-world applications from content moderation to medical imaging analysis on resource-limited devices.
+[VISUAL DIRECTION] [Transition through use cases: social media flagging, security footage analysis, X-ray inspection]
+[VOICEOVER 1:50-2:00] The future of digital trust just got smarter - and more transparent.
+[VISUAL DIRECTION] [Final screen: paper title 'Explainable Detection of AI-Generated Images via Artifact Localization' with key stats overlay]

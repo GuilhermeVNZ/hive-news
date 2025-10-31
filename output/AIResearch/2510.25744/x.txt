@@ -1,0 +1,1 @@
+AI's dirty secret: They're terrible collaborators. New research shows even GPT-4o fails in 34.9% of multi-turn interactions. We've been measuring AI all wrong. The real test? Whether they improve with human involvement.

@@ -1,0 +1,1 @@
+AI aligns MRI/CT scans 96% faster using just 9.5% of the power. ReCorr hits 74.7% accuracy in 0.18 seconds—clinical game-changer. Nature/Science breakthrough.

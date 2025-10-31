@@ -1,0 +1,1 @@
+What if AI could watermark its own text, making generated content permanently traceable? Researchers developed PRO, a co-optimization method that embeds robust watermarks directly during AI training. This breakthrough enables precise tracking of AI-generated text while maintaining quality. How will this transform AI accountability in your industry?

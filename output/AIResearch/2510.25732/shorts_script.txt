@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if AI models never truly forget your private data - they just hide it better? New research reveals a startling truth about artificial intelligence.
+
+[VISUAL DIRECTION] Animated text: "AI CAN'T FORGET" with question mark morphing into exclamation point. Fast cuts between brain network diagrams.
+
+[VOICEOVER 0:05-0:20] When companies try to make AI forget sensitive information like medical records or private conversations, they might be creating a false sense of security. This Nature study exposes what really happens during 'unlearning'.
+
+[VISUAL DIRECTION] Show Figure 2 from paper - zoom on the peak distribution showing recovery rates. Animated arrows pointing to the 50-128% range.
+
+[VOICEOVER 0:20-0:40] Researchers tested four AI models with 300 original facts, then used persuasive questioning techniques to see if 'erased' knowledge could be recovered. The results were dramatic.
+
+[VISUAL DIRECTION] Show model comparison chart (OPT-2.7B, LLaMA-2-7B, LLaMA3.1-8B, LLaMA-2-13B) with recovery percentages highlighted.
+
+[VOICEOVER 0:40-1:00] Authority framing - using endorsements from respected figures - achieved 25.4% recovery rates on average. Emotional appeals and logical reasoning also significantly boosted content retrieval.
+
+[VISUAL DIRECTION] Text overlay: "25.4% RECOVERY RATE" with authority icon. Show correlation graph with 0.77 correlation coefficient.
+
+[VOICEOVER 1:00-1:30] The science behind this? It's called Stimulus-Knowledge Entanglement. Even when AI tries to forget, knowledge remains interconnected in semantic networks. Strategic prompting activates these connections through spreading activation - just like human memory works.
+
+[VISUAL DIRECTION] Animated neural network showing connections lighting up when prompted. Zoom on distance-weighted influence metrics.
+
+[VOICEOVER 1:30-1:50] This has huge implications for AI safety and privacy. If personal data can be recovered through simple persuasion techniques, current unlearning methods may provide false security.
+
+[VISUAL DIRECTION] Show practical applications - medical records, private communications with warning symbols. Text: "COMPREHENSIVE TESTING NEEDED"
+
+[VOICEOVER 1:50-2:00] The bottom line? AI models don't forget - they just get better at hiding information. Organizations need better testing before deploying these systems with sensitive data.
+
+[VISUAL DIRECTION] Final screen with key takeaway: "AI UNLEARNING HAS LIMITS" and Nature/Science branding.

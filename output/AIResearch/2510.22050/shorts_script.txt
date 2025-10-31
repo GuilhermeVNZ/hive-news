@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could not only predict your disease risk but explain exactly why it reached that conclusion—and surgically correct its own mistakes?
+[VISUAL DIRECTION] Animated text: "AI CAN'T EXPLAIN ITSELF" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Today's AI excels at predictions but fails at explanations. This opacity limits trust in medicine, autonomous vehicles, and other high-stakes applications where we need to understand the reasoning behind decisions.
+[VISUAL DIRECTION] Show medical diagnosis AI interface with "95% confidence" but "Reasoning: Unknown"
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that provides human-like explanations while maintaining accuracy? Current models suffer from 'fractured, entangled representations' where surface competence hides underlying reasoning failures.
+[VISUAL DIRECTION] Animated diagram showing tangled neural connections vs. clean causal pathways
+
+[VOICEOVER 0:40-1:00] They discovered Energy-Structured Causal Models—a new approach that defines intelligence as the ability to refine falsifiable explanations. Instead of treating AI components as input-output functions, they represent them as energy-based constraints.
+[VISUAL DIRECTION] Show Figure 2 with zoom on energy landscape visualization, highlighting constraint barriers
+
+[VOICEOVER 1:00-1:30] Here's how it works: When the AI makes an error, researchers can perform local 'surgery' on specific constraints—hard barriers that define admissible values. The system then re-establishes consistency through re-equilibration, ensuring only affected components change while others remain stable.
+[VISUAL DIRECTION] Animated sequence showing surgical intervention on specific constraint, then system rebalancing
+
+[VOICEOVER 1:30-1:50] This means medical AI could eventually explain its conclusions in human terms and show how changing specific factors would alter outcomes. It supports counterfactual reasoning through a three-step process: abduction, intervention, and prediction.
+[VISUAL DIRECTION] Show medical diagnosis example with "What if cholesterol was lower?" counterfactual display
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about better predictions—it's about building systems that can genuinely explain their reasoning and correct their own mistakes.
+[VISUAL DIRECTION] Final text overlay: "AI THAT EXPLAINS ITSELF" with checkmark animation

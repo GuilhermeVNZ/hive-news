@@ -1,0 +1,1 @@
+AI can now diagnose from X-rays & MRIs without seeing your private data. Medformer's adaptive transformers eliminate the need for sensitive patient information while boosting diagnostic accuracy. Nature paper reveals how this protects privacy while advancing healthcare AI.

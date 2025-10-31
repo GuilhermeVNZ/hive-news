@@ -1,0 +1,1 @@
+AI predicts structural vibrations with unprecedented accuracy—simulating how waves travel through buildings and bridges. This breakthrough could prevent disasters by monitoring infrastructure in real-time. Paper: Network-based Structural Simulator: Neural Networks

@@ -1,0 +1,1 @@
+AI trains on encrypted data without decryption! New technique maintains 94.7% medical diagnosis accuracy while keeping patient records private. Privacy-preserving AI breakthrough enables secure collaboration on sensitive datasets.

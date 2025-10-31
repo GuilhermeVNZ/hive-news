@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could read molecular fingerprints directly from mass spectra—bypassing years of traditional chemistry steps?
+[VISUAL DIRECTION] Animated text: "AI Reads Molecular Fingerprints" with swirling molecular structures
+[VOICEOVER 0:05-0:20] Identifying molecules is fundamental to discovering new drugs and understanding environmental pollutants, but current methods often fail with novel compounds.
+[VISUAL DIRECTION] Show lab equipment with red X over database matching process
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI generate complete molecular structures using only spectrum data and chemical formula—without intermediate steps?
+[VISUAL DIRECTION] Animated flowchart showing traditional vs AI approach side by side
+[VOICEOVER 0:40-1:00] They discovered a transformer-based AI that outputs structures in SMILES notation, achieving 100% improvement on benchmark tests.
+[VISUAL DIRECTION] Zoom on performance charts from paper with highlighted 100% improvement
+[VOICEOVER 1:00-1:30] The AI learns general spectral patterns through pre-training on millions of entries, then adapts to specific instruments without full retraining.
+[VISUAL DIRECTION] Animated neural network processing spectral data into molecular structures
+[VOICEOVER 1:30-1:50] This means faster identification of metabolites and natural products—essential for drug discovery and environmental analysis.
+[VISUAL DIRECTION] Show drug molecules and pollutant structures appearing rapidly
+[VOICEOVER 1:50-2:00] AI is now reading nature's molecular language directly—transforming chemistry discovery.

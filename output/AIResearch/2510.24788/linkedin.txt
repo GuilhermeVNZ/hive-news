@@ -1,0 +1,1 @@
+Standard computer vision models can match or exceed specialized neural networks at analyzing complex networks. This reveals their ability to perceive organizational structures holistically, like humans. Read the Nature/Science paper to explore the implications for AI reasoning.

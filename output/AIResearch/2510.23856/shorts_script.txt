@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could cut your business process time in half while maintaining near-perfect accuracy? [VISUAL DIRECTION] Animated text: 50% FASTER flashes dramatically with clock animation speeding up
+
+[VOICEOVER 0:05-0:20] IBM's new general-purpose AI architecture is doing exactly that - transforming how enterprises automate complex workflows. [VISUAL DIRECTION] Show IBM logo transitioning to business process flow diagrams with efficiency metrics
+
+[VOICEOVER 0:20-0:40] The challenge: Most AI excels in labs but fails in real business environments. Can academic performance translate to enterprise value? [VISUAL DIRECTION] Contrast lab setting with chaotic office environment, question mark animation
+
+[VOICEOVER 0:40-1:00] IBM's CUGA architecture achieved state-of-the-art results - 61.7% on WebArena benchmark, but crucially 87% on real business processes. [VISUAL DIRECTION] Show benchmark comparison chart with WebArena 61.7% vs BPO-TA 87% highlighted
+
+[VOICEOVER 1:00-1:30] How it works: Three-layer architecture - conversational interface, planning manager, and specialized executors for APIs and browsing. Reliability mechanisms ensure consistent performance. [VISUAL DIRECTION] Animated diagram showing three layers with arrows between them, highlight "schema-grounded prompting" and "reflective retries"
+
+[VOICEOVER 1:30-1:50] Real impact: In IBM's Talent Acquisition pilot, response times dropped from hours to minutes - representing massive efficiency gains for enterprises. [VISUAL DIRECTION] Show before/after timeline comparison, zoom on 20-minute response time metric
+
+[VOICEOVER 1:50-2:00] This isn't lab theory - it's working AI that bridges the gap between academic promise and business reality. [VISUAL DIRECTION] Final screen with key stats: 50% faster, 87% accuracy, enterprise-ready

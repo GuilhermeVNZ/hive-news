@@ -1,0 +1,1 @@
+What if AI could solve complex scientific problems faster than traditional methods? New research shows LLMs outperform established optimization techniques in black-box problems. This breakthrough could accelerate drug discovery and materials science. Read the Nature/Science paper on GPTOpt's zero-shot generalization capabilities.

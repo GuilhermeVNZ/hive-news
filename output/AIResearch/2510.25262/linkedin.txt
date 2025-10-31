@@ -1,0 +1,1 @@
+AI that selectively forgets unimportant information outperforms standard methods by up to 9.51%. Singapore Management University's IBNorm technique enhances AI learning by compressing task-irrelevant details while preserving essential information. How might this transform how we approach machine learning efficiency?

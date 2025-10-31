@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if analyzing complex networks could be 1000 times faster? [VISUAL DIRECTION] Animated text: "1000x FASTER" with pulsing effect
+
+[VOICEOVER 0:05-0:20] Researchers have developed a breakthrough method that transforms how we understand relationships in biological systems and genetics. [VISUAL DIRECTION] Show network diagrams morphing and connecting, with "Genetics" and "Healthcare" labels appearing
+
+[VOICEOVER 0:20-0:40] Traditional approaches to sampling directed acyclic graphs took weeks of computation, limiting our ability to analyze complex networks with hundreds of variables. [VISUAL DIRECTION] Show calendar pages flipping rapidly, then a "STUCK" warning sign over a complex network diagram
+
+[VOICEOVER 0:40-1:00] The new method, called Gibby, reduces computational time by up to three orders of magnitude - from weeks to just hours. [VISUAL DIRECTION] Show dramatic transformation: "WEEKS" → "HOURS" with speed lines and clock animation
+
+[VOICEOVER 1:00-1:30] How does it work? Gibby improves Monte Carlo techniques by efficiently adding, deleting, and reversing graph edges while preserving accuracy. It processes millions of operations per second. [VISUAL DIRECTION] Animated graph nodes with edges appearing/disappearing, counter showing "4.6 million ops/sec"
+
+[VOICEOVER 1:30-1:50] This means faster discoveries in genetics, better healthcare insights, and more efficient supply chain optimization. Large-network analysis is now accessible. [VISUAL DIRECTION] Show applications: DNA helix, hospital icon, logistics network - all connected by the same graph structure
+
+[VOICEOVER 1:50-2:00] Complex network analysis just went from impossible to practical overnight. [VISUAL DIRECTION] Final screen: "WEEKS → HOURS" with the Gibby method name and network diagram background

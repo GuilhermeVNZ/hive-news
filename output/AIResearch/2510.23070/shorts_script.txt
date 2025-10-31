@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems often provide false information in multilingual searches? 
+[VISUAL DIRECTION] Animated text: "FALSE INFO?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] This is a critical problem affecting everything from academic research to customer support across languages.
+[VISUAL DIRECTION] Quick cuts: globe spinning, researcher at computer, customer service chat bubbles
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can we make AI more accurate when answering questions across different languages?
+[VISUAL DIRECTION] Zoom in on multilingual text floating across screen
+
+[VOICEOVER 0:40-1:00] They developed QTT-RAG - a system that evaluates translation quality instead of altering content.
+[VISUAL DIRECTION] Show quality assessment scale with checkmarks for semantic equivalence, grammatical accuracy, naturalness
+
+[VOICEOVER 1:00-1:30] Here's how it works: Retrieves documents, translates using NLLB-200, attaches quality tags, then guides AI to prioritize high-quality information.
+[VISUAL DIRECTION] Animated flowchart showing retrieval → translation → quality tagging → AI response
+
+[VOICEOVER 1:30-1:50] Results show 6.8% improvement in Finnish question-answering, reducing entity hallucinations for more trustworthy interactions.
+[VISUAL DIRECTION] Show benchmark comparison chart with Finnish results highlighted
+
+[VOICEOVER 1:50-2:00] This breakthrough means more accurate AI systems across global languages - a crucial step toward reliable multilingual AI.
+[VISUAL DIRECTION] Final text overlay: "Better translations = More accurate AI"

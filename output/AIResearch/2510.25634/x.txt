@@ -1,0 +1,1 @@
+Robots can now dynamically switch between independent, sequential, and collaborative actions just like humans. NVIDIA/UC San Diego breakthrough achieves 65.2% task completion vs 26.4% traditional methods. Game-changer for warehouse operations and complex manipulation tasks.

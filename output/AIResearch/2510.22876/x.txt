@@ -1,0 +1,1 @@
+AI chatbots fail when processing multiple queries at once, generating nonsensical outputs. PEC method preserves accuracy with 3× speedup, addressing a critical flaw in systems like customer service and education.

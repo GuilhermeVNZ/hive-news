@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI is fundamentally changing how enterprise architects work—shifting them from creators to curators of AI-generated content?
+[VISUAL DIRECTION] Animated text: "AI TRANSFORMS ENTERPRISE ARCHITECTS" with fast zoom effect
+[VOICEOVER 0:05-0:20] A rigorous Nature/Science study analyzed 1,529 records to understand how AI impacts enterprise architecture—the professionals who align business strategy with IT capabilities.
+[VISUAL DIRECTION] Show scrolling database records with highlight on "1,529 studies analyzed"
+[VOICEOVER 0:20-0:40] Researchers asked: How is generative AI changing enterprise architecture work in our fast-paced digital world?
+[VISUAL DIRECTION] Animated question mark morphing into architecture diagrams
+[VOICEOVER 0:40-1:00] They discovered AI consistently supports three areas: generating ideas during planning, creating documentation models, and providing decision support—allowing architects to explore solutions faster.
+[VISUAL DIRECTION] Split screen showing three animated icons: lightbulb (ideas), document (models), decision tree (support)
+[VOICEOVER 1:00-1:30] Tools like ChatGPT accelerate creation and improve team collaboration. But there's a catch: AI introduces "black box" opacity, generates plausible but incorrect responses, and raises reliability concerns.
+[VISUAL DIRECTION] Show AI interface with warning symbols appearing over "black box" section
+[VOICEOVER 1:30-1:50] This represents a fundamental shift—architects must now focus on AI literacy, output evaluation, and establishing clear usage guidelines to manage these risks.
+[VISUAL DIRECTION] Transition from architect as creator to architect as validator with checkmark animations
+[VOICEOVER 1:50-2:00] The future of enterprise architecture isn't about replacing humans—it's about humans learning to curate and validate AI effectively.
+[VISUAL DIRECTION] Final text overlay: "ARCHITECTS BECOME CURATORS" with human and AI icons collaborating

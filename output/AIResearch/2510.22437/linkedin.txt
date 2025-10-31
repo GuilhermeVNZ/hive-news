@@ -1,0 +1,1 @@
+AI reasoning isn't a black box—it unfolds in 6 measurable states. UC Riverside researchers mapped thinking styles in large models, revealing how structured reasoning boosts performance. Read the Nature/Science study to understand AI transparency.

@@ -1,0 +1,1 @@
+AI can now explain its medical decisions like a human doctor. HistoLens lets pathologists ask questions in plain English and get detailed analysis with proof. The system achieved expert-level agreement in testing and proved particularly valuable for verifying staining location—something even experienced pathologists sometimes struggle with.

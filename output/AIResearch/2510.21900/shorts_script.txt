@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could write scientific literature reviews that experts actually prefer over human-written ones?
+[VISUAL DIRECTION] Animated text: "AI WRITES SCIENCE REVIEWS EXPERTS PREFER" with shocking question mark animation
+
+[VOICEOVER 0:05-0:20] In a breakthrough from Nature/Science research, IterSurvey AI mimics how scientists actually read and synthesize research.
+[VISUAL DIRECTION] Show animated scientist reading papers, then AI brain processing them simultaneously
+
+[VOICEOVER 0:20-0:40] The question: Can AI truly understand and organize scientific knowledge as well as human experts?
+[VISUAL DIRECTION] Split screen showing human expert vs AI processing papers
+
+[VOICEOVER 0:40-1:00] The finding: In head-to-head comparisons, experts preferred IterSurvey's reviews over leading systems like AutoSurvey and SurveyForge.
+[VISUAL DIRECTION] Show bar chart with IterSurvey outperforming competitors across multiple metrics
+
+[VOICEOVER 1:00-1:30] How it works: Unlike traditional AI, IterSurvey uses recurrent planning to incrementally explore literature, creating "contribution cards" that distill each paper's core findings.
+[VISUAL DIRECTION] Animated flow diagram showing iterative planning process with contribution cards building up
+
+[VOICEOVER 1:30-1:50] The impact: For emerging fields where no reviews exist, IterSurvey showed particular strength, autonomously organizing research into coherent surveys.
+[VISUAL DIRECTION] Show emerging science topics appearing, then AI organizing them into structured review
+
+[VOICEOVER 1:50-2:00] AI is now writing scientific reviews that compete with human expertise. The future of knowledge synthesis has arrived.
+[VISUAL DIRECTION] Final text overlay: "AI: THE NEW SCIENCE SYNTHESIZER" with IterSurvey logo

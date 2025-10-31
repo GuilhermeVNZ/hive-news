@@ -1,0 +1,1 @@
+AI teams waste 90% of computational resources on unnecessary chatter. New research shows teaching AI strategic silence achieves state-of-the-art performance while slashing costs. This breakthrough makes complex AI collaborations practical for real-world applications. Read how Agent-GSPO optimizes multi-agent communication efficiency in Nature/Science.

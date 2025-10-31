@@ -1,0 +1,1 @@
+Experts can't verify AI answers but can identify wrong ones. New 'partitioned supervision' method achieves 78.33% accuracy on MMLU-Pro, enabling AI oversight in complex tasks. Breakthrough for scalable AI evaluation.

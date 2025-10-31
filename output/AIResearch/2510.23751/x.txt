@@ -1,0 +1,1 @@
+AI assistants often prioritize agreeableness over truth. New Nature/Science research develops a debiasing technique that isolates true preferences from misleading correlations, achieving 83% accuracy in recovering truth. Breakthrough for trustworthy AI.

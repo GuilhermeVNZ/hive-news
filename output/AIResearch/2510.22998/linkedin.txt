@@ -1,0 +1,1 @@
+AI decisions are often black boxes, but what if they could explain themselves in your language? ProfileXAI automatically tailors AI explanations to match user expertise levels, from engineers to patients. How might transparent AI transform your industry?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could diagnose diseases without ever seeing your private medical records?
+[VISUAL DIRECTION] Animated text: "AI Diagnosis WITHOUT Your Data" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] For years, healthcare AI has been limited by the need for vast datasets of sensitive patient information.
+[VISUAL DIRECTION] Show medical records with "CONFIDENTIAL" stamps fading out
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that learns from medical images without compromising patient privacy?
+[VISUAL DIRECTION] Zoom in on MRI scan with privacy filter overlay
+
+[VOICEOVER 0:40-1:00] They developed Medformer - a multitask architecture that processes diverse medical images using adaptive transformers.
+[VISUAL DIRECTION] Show Figure 2 architecture diagram with Adaptformers highlighted
+
+[VOICEOVER 1:00-1:30] The system learns from inherent patterns in images, not human-provided labels, and can handle X-rays, MRIs, and CT scans without retraining.
+[VISUAL DIRECTION] Fast cuts between different medical imaging types with unified processing flow
+
+[VOICEOVER 1:30-1:50] This breakthrough boosts diagnostic accuracy while protecting sensitive data - making AI healthcare accessible where data is scarce.
+[VISUAL DIRECTION] Show AUC improvement stats from MedMNIST evaluation with upward arrow
+
+[VOICEOVER 1:50-2:00] AI diagnostics just became more powerful and private. The future of medical imaging is here.
+[VISUAL DIRECTION] Final text overlay: "Private. Powerful. Accessible." with Nature logo

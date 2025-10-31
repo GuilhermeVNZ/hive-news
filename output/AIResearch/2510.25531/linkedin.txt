@@ -1,0 +1,1 @@
+AI can now connect fragmented medical records to reveal medication switching effects with 197% accuracy. This breakthrough in spinal muscular atrophy care demonstrates how variational autoencoders align disparate assessments, enabling powerful personalized treatment evaluation from existing registry data.

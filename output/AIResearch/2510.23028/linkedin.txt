@@ -1,0 +1,1 @@
+AI can now generate high-quality images 10x faster without sacrificing quality. NestAR's breakthrough hierarchical approach reduces computational complexity from O(n) to O(log n), achieving 342.4 FID score on ImageNet. Could this eliminate creative bottlenecks in design and scientific visualization?

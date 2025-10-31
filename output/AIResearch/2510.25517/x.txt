@@ -1,0 +1,1 @@
+AI just cracked a major scientific barrier: understanding unnamed programs that humans couldn't interpret. ChatGPT models successfully renamed abstract functions with 16% accuracy, identifying 'parent', 'coauthors', and 'cousins' in complex systems. This could revolutionize how we reuse automated reasoning tools.

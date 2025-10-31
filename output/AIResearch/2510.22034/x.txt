@@ -1,0 +1,1 @@
+AI predicts startup success 6x better than humans. The LLM-AR framework achieves 59.5% accuracy while explaining its decisions—critical when only 1.9% of startups succeed. Nature/Science research could revolutionize venture funding.

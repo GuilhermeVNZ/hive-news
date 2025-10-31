@@ -1,0 +1,1 @@
+AI can ace math tests but fails at real research: New EPFL benchmark shows top models achieve only 10.3% success on genuine mathematical challenges. The gap between artificial benchmarks and real-world complexity is stark. What does this mean for AI's role in scientific discovery?

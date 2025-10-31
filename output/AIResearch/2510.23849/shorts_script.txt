@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could admit when it doesn't know something before making mistakes?
+[VISUAL DIRECTION] Animated text: "AI CONFUSION?" with question mark morphing into checkmark
+
+[VOICEOVER 0:05-0:20] Current voice assistants stumble on technical terms and rare words, causing frustrating errors in medical transcription and professional settings.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on error distribution peaks for rare vocabulary
+
+[VOICEOVER 0:20-0:40] Researchers at University of Iowa asked: Can we teach AI to recognize when it's likely to be wrong?
+[VISUAL DIRECTION] Animated text: "THE PROBLEM: Technical jargon" with medical terms flashing
+
+[VOICEOVER 0:40-1:00] They discovered AI can learn to score phrase likelihood, acting as a quality control checkpoint that filters out improbable transcriptions.
+[VISUAL DIRECTION] Show attention mechanism diagram with scoring system highlighted
+
+[VOICEOVER 1:00-1:30] The system combines attention-based speech analysis with phrase-level scoring, learning to distinguish between likely and unlikely words during training.
+[VISUAL DIRECTION] Fast cuts between different components: attention mechanism → scoring system → filtering process
+
+[VOICEOVER 1:30-1:50] Results are dramatic: 95% reduction in incorrect transcriptions for rare words, maintaining accuracy while eliminating most errors.
+[VISUAL DIRECTION] Animated text: "95% ERROR REDUCTION" with Librispeech benchmark results displayed
+
+[VOICEOVER 1:50-2:00] Voice assistants that know when they're confused - the future of accurate speech recognition is here.
+[VISUAL DIRECTION] Final hold on clean transcription example with checkmark overlay

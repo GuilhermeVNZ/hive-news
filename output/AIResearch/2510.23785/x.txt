@@ -1,0 +1,1 @@
+AI just learned to count like humans—identifying objects it's never seen before. CountFormer's structural coherence approach outperforms traditional methods, enabling real-world applications from conservation to manufacturing. Nature/Science study reveals the details.

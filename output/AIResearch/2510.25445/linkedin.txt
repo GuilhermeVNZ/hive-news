@@ -1,0 +1,1 @@
+AI isn't one technology—it's two fundamentally different lineages with incompatible approaches to autonomy. New research reveals the symbolic vs neural paradigm divide resolves widespread confusion about what truly makes AI "agentic." Read the comprehensive survey to understand how organizations should strategically deploy these distinct systems.

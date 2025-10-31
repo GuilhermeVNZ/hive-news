@@ -1,0 +1,1 @@
+What if your shoes could reconstruct your entire body's motion? Researchers developed Step2Motion, using pressure-sensing insoles to accurately track activities like running and crouching without cameras or suits. This breakthrough enables seamless motion analytics for rehabilitation and VR. Explore how this innovation transforms real-world movement monitoring.

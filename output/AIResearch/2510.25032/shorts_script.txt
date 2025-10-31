@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could read license plates that are blurry, poorly lit, or distorted with near-perfect accuracy?
+[VISUAL DIRECTION] Show rapidly alternating images of blurry, dark, and distorted license plates with question marks
+[VOICEOVER 0:05-0:20] Traditional systems struggle with real-world conditions - vehicles at high speeds, intense sunlight, shadows, and partial occlusions
+[VISUAL DIRECTION] Show side-by-side comparison: traditional system failing vs new AI working
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create a system that works across different countries and challenging conditions?
+[VISUAL DIRECTION] Show world map with Brazil, US, and Canada highlighted
+[VOICEOVER 0:40-1:00] They discovered combining Grounding DINO for automatic labeling with YOLOv8 for detection achieves just 3.5% error on North American plates
+[VISUAL DIRECTION] Animated diagram showing the two AI technologies merging, then display: "3.5% error rate"
+[VOICEOVER 1:00-1:30] The system uses pseudo-labeled supervision - AI generates its own training data, minimizing human effort while improving accuracy across diverse scenarios
+[VISUAL DIRECTION] Show training process visualization with AI generating labels automatically
+[VOICEOVER 1:30-1:50] This means reliable vehicle identification even in poor lighting, at high speeds, or with partial obstructions
+[VISUAL DIRECTION] Show real-world traffic scenarios with the system working effectively
+[VOICEOVER 1:50-2:00] The future of traffic enforcement just got dramatically more accurate and efficient worldwide

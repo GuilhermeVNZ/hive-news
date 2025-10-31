@@ -1,20 +1,40 @@
 import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import PagesConfig from "./pages/PagesConfig";
+import Sites from "./pages/Sites";
 import Sources from "./pages/Sources";
 import Logs from "./pages/Logs";
+import Writer from "./pages/Writer";
+import Educational from "./pages/Educational";
 
 function App() {
   return (
-    <Layout>
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/pages" element={<PagesConfig />} />
-        <Route path="/sources" element={<Sources />} />
-        <Route path="/logs" element={<Logs />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  {/** Pages route removed */}
+                  <Route path="/sites" element={<Sites />} />
+                  <Route path="/writer" element={<Writer />} />
+                  <Route path="/educational" element={<Educational />} />
+                  <Route path="/sources" element={<Sources />} />
+                  <Route path="/logs" element={<Logs />} />
+                </Routes>
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </Layout>
+    </AuthProvider>
   );
 }
 

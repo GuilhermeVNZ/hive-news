@@ -1,0 +1,1 @@
+AI can now learn from complex networks without accessing private data. Researchers developed a technique allowing multiple parties to train AI models collaboratively while maintaining complete confidentiality, achieving competitive accuracy with formal privacy protection.

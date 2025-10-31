@@ -1,0 +1,1 @@
+Self-driving AI that mimics human drivers achieved ZERO crashes in simulations. New hierarchical reinforcement learning breaks driving into interpretable maneuvers like lane changes and speed adjustments. This could accelerate trustworthy autonomous vehicle deployment on highways. What safety standards should regulators prioritize?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could analyze sensitive medical records without ever seeing a single patient's private information?
+[VISUAL DIRECTION] [Animated text: "ANALYZE MEDICAL DATA WITHOUT PRIVACY RISKS?" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] For years, medical research and financial analysis have been limited by privacy concerns. Hospitals can't share patient data, banks can't collaborate on fraud detection - all because exposing individual information is too risky.
+[VISUAL DIRECTION] [Show silhouette figures with lock icons over medical charts and financial graphs, fast cuts between different scenarios]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create artificial data that maintains all the statistical patterns of real data, but contains no actual personal information?
+[VISUAL DIRECTION] [Animated transition from real data points to synthetic points, showing patterns preserved while individual markers disappear]
+
+[VOICEOVER 0:40-1:00] The breakthrough: A generation technique that creates synthetic data points maintaining 95% statistical accuracy while providing complete privacy protection.
+[VISUAL DIRECTION] [Show "95% STATISTICAL ACCURACY" text with checkmark, then "COMPLETE PRIVACY PROTECTION" with shield icon]
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system learns the underlying patterns, correlations, and distributions from real data, then generates entirely new data points that replicate these statistical relationships. No individual's actual information appears in the synthetic dataset.
+[VISUAL DIRECTION] [Animated flow: Real data → Pattern analysis → Synthetic generation → New dataset with same statistical shapes but different points]
+
+[VOICEOVER 1:30-1:50] This means researchers can analyze disease risk factors, treatment outcomes, and financial trends using accurate synthetic data. Testing showed the method maintains crucial multivariate correlations needed for proper analysis.
+[VISUAL DIRECTION] [Show medical research scenario with doctors analyzing synthetic patient data, then financial fraud detection with transaction patterns]
+
+[VOICEOVER 1:50-2:00] The result? Secure collaboration without privacy risks - potentially transforming medicine, finance, and scientific discovery.
+[VISUAL DIRECTION] [Final screen: "SYNTHETIC DATA: 95% ACCURACY, 100% PRIVACY" with paper reference 2510.23127]

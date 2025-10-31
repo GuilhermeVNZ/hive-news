@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Clock, BookOpen, ExternalLink, CheckCircle, Search } from "lucide-react";
@@ -8,82 +8,117 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// Mock data - will be replaced with actual API calls
-const courses = [
+interface Course {
+  id: string;
+  title: string;
+  platform: string;
+  instructor: string;
+  institution?: string;
+  category: string;
+  duration: string;
+  level: string;
+  price: string;
+  rating?: number;
+  description: string;
+  url: string;
+  language?: string;
+  image_url?: string;
+  affiliate: boolean;
+  certificate_available: boolean;
+  free: boolean;
+}
+
+// Fallback mock data - usado apenas se API falhar
+const fallbackCourses: Course[] = [
   {
     id: "1",
     title: "Deep Learning Specialization",
     platform: "Coursera",
     instructor: "Andrew Ng - Stanford",
+    institution: "Stanford University",
     category: "Machine Learning",
     duration: "5 meses",
     level: "Intermediário",
     price: "Grátis (certificado pago)",
     rating: 4.8,
-    students: 500000,
     description: "A especialização completa de Deep Learning de Andrew Ng cobrindo CNN, RNN, Transformers e mais. Curso obrigatório para qualquer profissional de IA.",
     url: "https://www.coursera.org/specializations/deep-learning",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: true,
   },
   {
     id: "2",
     title: "Machine Learning de Stanford",
     platform: "Coursera",
     instructor: "Andrew Ng",
+    institution: "Stanford University",
     category: "Machine Learning",
     duration: "11 semanas",
     level: "Iniciante",
     price: "Grátis (certificado pago)",
     rating: 4.9,
-    students: 3000000,
     description: "O curso mais popular de Machine Learning no mundo. Fundamentos de ML, aprendizado supervisionado e não-supervisionado.",
     url: "https://www.coursera.org/learn/machine-learning",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: true,
   },
   {
     id: "3",
     title: "CS50's Introduction to AI with Python",
     platform: "edX",
     instructor: "Harvard University",
+    institution: "Harvard University",
     category: "Introdução à IA",
     duration: "7 semanas",
     level: "Iniciante",
     price: "Grátis",
     rating: 4.9,
-    students: 500000,
     description: "Curso de Harvard sobre fundamentos de IA, search algorithms, machine learning, neural networks e muito mais",
     url: "https://www.edx.org/learn/artificial-intelligence/harvard-university-cs50-s-introduction-to-artificial-intelligence-with-python",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: true,
   },
   {
     id: "4",
     title: "Natural Language Processing",
     platform: "Coursera",
     instructor: "Stanford & DeepLearning.ai",
+    institution: "Stanford University",
     category: "NLP",
     duration: "4 semanas",
     level: "Intermediário",
     price: "Grátis (certificado pago)",
     rating: 4.7,
-    students: 150000,
     description: "Aprenda processamento de linguagem natural, sentiment analysis, word embeddings, Transformers e LLMs",
     url: "https://www.coursera.org/learn/classification-vector-spaces-in-nlp",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: true,
   },
   {
     id: "5",
     title: "Stanford CS231n: Computer Vision",
     platform: "YouTube / Stanford",
     instructor: "Stanford University",
+    institution: "Stanford University",
     category: "Computer Vision",
-    duration: "10 horas",
+    duration: "10 semanas",
     level: "Avançado",
     price: "Grátis",
     rating: 4.9,
-    students: 1000000,
     description: "Curso completo de Stanford sobre visão computacional. CNN, object detection, segmentation, GANs.",
     url: "https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3KO8WR-",
+    language: "en",
     affiliate: false,
+    certificate_available: false,
+    free: true,
   },
   {
     id: "6",
@@ -95,10 +130,12 @@ const courses = [
     level: "Todos os níveis",
     price: "Grátis",
     rating: 4.8,
-    students: 200000,
     description: "Aprenda deep learning de forma prática e com foco em código. Curso reconhecido pela comunidade científica.",
     url: "https://course.fast.ai",
+    language: "en",
     affiliate: false,
+    certificate_available: false,
+    free: true,
   },
   {
     id: "7",
@@ -110,10 +147,12 @@ const courses = [
     level: "Iniciante",
     price: "Pago (sempre em promoção)",
     rating: 4.7,
-    students: 800000,
     description: "Curso completo de Machine Learning do zero. Data preprocessing, regression, classification, clustering e mais.",
     url: "https://www.udemy.com/course/machinelearning",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: false,
   },
   {
     id: "8",
@@ -125,37 +164,127 @@ const courses = [
     level: "Intermediário",
     price: "Pago (sempre em promoção)",
     rating: 4.6,
-    students: 400000,
     description: "Curso completo sobre deep learning aplicado a visão computacional com TensorFlow e Keras.",
     url: "https://www.udemy.com/course/computer-vision-a-z",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: false,
   },
   {
     id: "9",
     title: "TensorFlow Developer Certificate",
     platform: "Coursera",
     instructor: "TensorFlow Team",
+    institution: "Google",
     category: "Certificação",
     duration: "4 meses",
     level: "Intermediário",
     price: "Grátis (certificado pago)",
     rating: 4.8,
-    students: 50000,
     description: "Preparação para o TensorFlow Certification exam. Aprenda building and training neural networks.",
     url: "https://www.coursera.org/professional-certificates/tensorflow-in-practice",
+    language: "en",
     affiliate: true,
+    certificate_available: true,
+    free: true,
   },
 ];
 
 export default function EducationPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [courses, setCourses] = useState<Course[]>(fallbackCourses);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Buscar cursos da API ao montar o componente
+  useEffect(() => {
+    async function fetchCourses() {
+      try {
+        setLoading(true);
+        // Buscar apenas cursos de tecnologia
+        const response = await fetch('/api/education/courses?category=technology');
+        const data = await response.json();
+        
+        // Filtrar cursos para garantir que são apenas de tecnologia
+        const techCategories = [
+          'Machine Learning', 
+          'Introdução à IA', 
+          'NLP', 
+          'Computer Vision', 
+          'Certificação',
+          'Artificial Intelligence',
+          'Data Science',
+          'Programming',
+          'Computer Science'
+        ];
+        
+        let filteredCourses = [];
+        if (data.courses && data.courses.length > 0) {
+          // Filtrar cursos por categoria de tecnologia
+          filteredCourses = data.courses.filter((c: Course) => 
+            techCategories.some(cat => 
+              c.category.toLowerCase().includes(cat.toLowerCase()) ||
+              c.title.toLowerCase().includes('ai') ||
+              c.title.toLowerCase().includes('machine learning') ||
+              c.title.toLowerCase().includes('deep learning') ||
+              c.title.toLowerCase().includes('computer science') ||
+              c.title.toLowerCase().includes('programming') ||
+              c.title.toLowerCase().includes('artificial intelligence')
+            )
+          );
+        }
+        
+        if (filteredCourses.length > 0) {
+          setCourses(filteredCourses);
+          setError(null);
+        } else {
+          // Usar fallback filtrado se API retornar vazio
+          console.log('No courses from API, using filtered fallback data');
+          const filteredFallback = fallbackCourses.filter(c => 
+            techCategories.some(cat => 
+              c.category.toLowerCase().includes(cat.toLowerCase()) ||
+              c.title.toLowerCase().includes('ai') ||
+              c.title.toLowerCase().includes('machine learning') ||
+              c.title.toLowerCase().includes('deep learning') ||
+              c.title.toLowerCase().includes('computer science')
+            )
+          );
+          setCourses(filteredFallback);
+        }
+      } catch (err) {
+        console.error('Error fetching courses:', err);
+        setError('Failed to load courses');
+        // Usar dados de fallback filtrados em caso de erro
+        const techCategories = [
+          'Machine Learning', 
+          'Introdução à IA', 
+          'NLP', 
+          'Computer Vision', 
+          'Certificação'
+        ];
+        const filteredFallback = fallbackCourses.filter(c => 
+          techCategories.some(cat => 
+            c.category.toLowerCase().includes(cat.toLowerCase()) ||
+            c.title.toLowerCase().includes('ai') ||
+            c.title.toLowerCase().includes('machine learning')
+          )
+        );
+        setCourses(filteredFallback);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchCourses();
+  }, []);
 
   // Unique categories from courses
   const categories = useMemo(() => {
     const uniqueCats = Array.from(new Set(courses.map(c => c.category)));
     return ["all", ...uniqueCats];
-  }, []);
+  }, [courses]);
 
   // Filter courses based on search and category
   const filteredCourses = useMemo(() => {
@@ -170,7 +299,7 @@ export default function EducationPage() {
       
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, courses]);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -228,7 +357,16 @@ export default function EducationPage() {
 
         {/* Courses Grid */}
         <section className="container mx-auto px-4 py-12">
-          {filteredCourses.length === 0 ? (
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">Carregando cursos...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">Erro ao carregar cursos</p>
+              <p className="text-sm text-muted-foreground mt-2">Usando dados em cache</p>
+            </div>
+          ) : filteredCourses.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">Nenhum curso encontrado</p>
               <p className="text-sm text-muted-foreground mt-2">Tente alterar sua busca ou filtro</p>
@@ -242,10 +380,12 @@ export default function EducationPage() {
                     <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
                       {course.category}
                     </span>
-                    <div className="flex items-center gap-1">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      <span className="text-xs font-medium">{course.rating}</span>
-                    </div>
+                    {course.rating && (
+                      <div className="flex items-center gap-1">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        <span className="text-xs font-medium">{course.rating.toFixed(1)}</span>
+                      </div>
+                    )}
                   </div>
                   <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
                     {course.title}
@@ -267,14 +407,11 @@ export default function EducationPage() {
                       <span>•</span>
                       <span>{course.level}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-medium">{course.students.toLocaleString()} alunos</span>
-                    </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
+                    <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
                     <div className="flex items-center gap-2 flex-wrap">
-                      {course.price === "Grátis" ? (
+                      {course.free ? (
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
                           Gratuito
                         </span>
@@ -283,9 +420,11 @@ export default function EducationPage() {
                           <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
                             Gratuito
                           </span>
-                          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                            Certificado
-                          </span>
+                          {course.certificate_available && (
+                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
+                              Certificado
+                            </span>
+                          )}
                         </>
                       ) : course.price.includes("Pago") ? (
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/20">
@@ -302,7 +441,12 @@ export default function EducationPage() {
                         </span>
                       )}
                     </div>
-                    <Button variant="outline" size="sm" className="gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="gap-2"
+                      onClick={() => window.open(course.url, '_blank')}
+                    >
                       Acessar
                       <ExternalLink className="h-4 w-4" />
                     </Button>

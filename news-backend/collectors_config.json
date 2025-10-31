@@ -1,0 +1,29 @@
+{
+  "collectors": [
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "enabled": true,
+      "api_key": null,
+      "config": {
+        "category": "cs.AI",
+        "max_results": 10
+      }
+    },
+    {
+      "id": "pmc",
+      "name": "PubMed Central",
+      "enabled": false,
+      "api_key": null,
+      "config": {}
+    },
+    {
+      "id": "semantic_scholar",
+      "name": "Semantic Scholar",
+      "enabled": false,
+      "api_key": null,
+      "config": {}
+    }
+  ],
+  "updated_at": "2025-10-30T22:59:56.680326400+00:00"
+}

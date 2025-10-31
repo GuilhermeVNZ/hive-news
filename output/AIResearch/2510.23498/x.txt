@@ -1,0 +1,1 @@
+AI training just got 50% faster—no accuracy drop. Mixed-precision Neural ODEs slash memory use, enabling efficient large-scale models. Game-changer for AI development. From Nature/Science paper.

@@ -1,0 +1,1 @@
+New AI predicts friendships with 92.9% accuracy by analyzing connections simultaneously. RIDGE method outperforms previous approaches by 35% on link prediction. Nature/Science paper reveals how this reflects how human behavior actually works.

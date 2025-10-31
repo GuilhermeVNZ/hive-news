@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could fix quantum computing's error crisis?
+[VISUAL DIRECTION] Animated text: 'QUANTUM ERRORS SOLVED?' with flickering circuit graphics.
+[VOICEOVER 0:05-0:20] Quantum computers promise to solve impossible problems, but errors from complex operations hold them back.
+[VISUAL DIRECTION] Show qubit entanglement diagram, zooming into noisy CNOT gates.
+[VOICEOVER 0:20-0:40] Researchers asked: Can we minimize these error-prone gates?
+[VISUAL DIRECTION] Display 'CNOT GATES = NOISE SOURCE' text overlay.
+[VOICEOVER 0:40-1:00] They discovered AI using reinforcement learning cuts CNOT gates by 15%—from 101 to 86 on average.
+[VISUAL DIRECTION] Animate bar chart comparing gate counts, highlighting reduction.
+[VOICEOVER 1:00-1:30] The AI trains like a student, mastering simple circuits first, then tackling complex ones with fewer gates.
+[VISUAL DIRECTION] Show curriculum learning progression with circuit complexity increasing.
+[VOICEOVER 1:30-1:50] This means more reliable quantum algorithms for drug discovery and cryptography.
+[VISUAL DIRECTION] Flash icons for materials science and security applications.
+[VOICEOVER 1:50-2:00] AI is clearing the path to practical quantum computing—fewer errors, faster breakthroughs.
+[VISUAL DIRECTION] End with 'FEWER GATES, MORE POTENTIAL' text and quantum circuit animation.

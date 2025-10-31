@@ -1,0 +1,1 @@
+AI models naturally organize emotions as geometric patterns in high-dimensional space—without any explicit training. Georgia Tech research reveals LLMs encode universal emotional dimensions (valence, dominance, approach-avoidance) across 8 languages. What does this mean for cross-cultural AI communication?

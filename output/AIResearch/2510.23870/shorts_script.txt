@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could ask your database complex analytical questions in plain English or Chinese and get accurate answers instantly?
+[VISUAL DIRECTION] [Animated text: "AI UNDERSTANDS YOUR DATA QUESTIONS"]
+
+[VOICEOVER 0:05-0:20] Most databases require structured queries that non-technical users struggle with, creating a critical bottleneck in data analysis.
+[VISUAL DIRECTION] [Show Figure 1: Comparison of natural language vs SQL query complexity]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI bridge this gap while handling arithmetic, commonsense knowledge, and complex inference—not just simple lookups?
+[VISUAL DIRECTION] [Zoom on benchmark evaluation metrics showing multiple reasoning types]
+
+[VOICEOVER 0:40-1:00] OraPlan–SQL outperformed the second-best system by 6.3 to 12.6 points on the Archer Evaluation Challenge, achieving 55% accuracy in English and 56.7% in Chinese.
+[VISUAL DIRECTION] [Animated bar chart showing performance comparison with competitors]
+
+[VOICEOVER 1:00-1:30] The innovation lies in its problem-solving approach—instead of directly converting to SQL, it first creates intermediate plans, breaking down complex questions into manageable steps. It uses "meta-prompting" to analyze common errors and incorporate corrective guidelines.
+[VISUAL DIRECTION] [Show Figure 3: Step-by-step breakdown of query planning process]
+
+[VOICEOVER 1:30-1:50] This means businesses with multilingual datasets can now use natural language queries directly, making data analysis interpretable and accessible to non-technical teams.
+[VISUAL DIRECTION] [Show real-world application scenarios with text overlays in multiple languages]
+
+[VOICEOVER 1:50-2:00] AI that thinks through database problems step-by-step—just like a human analyst would.
+[VISUAL DIRECTION] [Final screen: "99% SYNTAX VALIDITY • 56.7% ACCURACY"]

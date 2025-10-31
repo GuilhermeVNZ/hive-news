@@ -1,0 +1,1 @@
+Smaller AI beats bigger rivals: 20% improvement in accuracy selection using compact models (3.8B-14B params). Challenges 'bigger is better' dogma, opens doors to accessible, eco-friendly AI tools. Game-changer for organizations without massive computing resources.

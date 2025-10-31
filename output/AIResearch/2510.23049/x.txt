@@ -1,0 +1,1 @@
+Stop scrolling: Two major AI training methods are actually identical. Research shows GRPO and REINFORCE algorithms are mathematically equivalent, simplifying AI development. This discovery provides clearer paths to efficient AI systems for coding and education.

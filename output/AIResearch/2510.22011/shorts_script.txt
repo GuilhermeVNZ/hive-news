@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your phone could instantly translate sign language with 95% accuracy?
+[VISUAL DIRECTION] [Animated text: 95% ACCURACY flashes dramatically with sign language hands animation]
+
+[VOICEOVER 0:05-0:20] Researchers at Vietnam National University have developed an AI that breaks down communication barriers using just a camera.
+[VISUAL DIRECTION] [Show university logo, then transition to person using sign language with digital skeleton overlay]
+
+[VOICEOVER 0:20-0:40] They asked: Can we create an accessible system that doesn't require special equipment?
+[VISUAL DIRECTION] [Cross out images of expensive gloves/sensors, show ordinary smartphone camera]
+
+[VOICEOVER 0:40-1:00] Their hybrid AI achieves 95% accuracy for clear gestures by tracking 522 body points—21 hand points, 468 facial points, and joint positions.
+[VISUAL DIRECTION] [Zoom on MediaPipe skeleton diagram showing all tracking points, highlight hand and face regions]
+
+[VOICEOVER 1:00-1:30] It works by combining two neural networks: CNNs analyze single frames while LSTMs track movement across 30 consecutive frames—mimicking how humans process gestures.
+[VISUAL DIRECTION] [Animated diagram showing CNN processing static frames, LSTM processing movement sequence]
+
+[VOICEOVER 1:30-1:50] This means deaf patients could communicate directly with doctors, and students could join mainstream classrooms without interpreters.
+[VISUAL DIRECTION] [Quick cuts: hospital setting, classroom, government office—all showing real-time translation]
+
+[VOICEOVER 1:50-2:00] The code is open-source on GitHub—accelerating the development of truly inclusive communication technology.
+[VISUAL DIRECTION] [GitHub logo with code scrolling, final text overlay: BREAKING BARRIERS WITH AI]

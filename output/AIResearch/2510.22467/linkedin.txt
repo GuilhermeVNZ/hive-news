@@ -1,0 +1,1 @@
+Training AI models typically requires 65+ GB of VRAM - but what if you could do it with just 17.5 GB? Sun Yat-sen University's GradLite achieves exactly that while maintaining competitive performance. This breakthrough could democratize AI development for researchers with limited resources. What implications does this have for your organization's AI strategy?

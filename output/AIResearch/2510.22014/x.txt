@@ -1,0 +1,1 @@
+AI safety features fail with simple tricks: nonsensical sequences make models ignore training and generate dangerous content. This vulnerability spans systems like Qwen and Llama, challenging reliability in medical and legal AI. Nature/Science study highlights urgent need for robust safeguards.

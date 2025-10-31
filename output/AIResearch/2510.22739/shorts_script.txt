@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI can now predict ocean currents with 20% higher accuracy, revolutionizing how we navigate the seas?
+[VISUAL DIRECTION] [Animated text: '20% More Accurate' with ocean wave visuals]
+[VOICEOVER 0:05-0:20] Ocean currents influence everything from shipping routes to search-and-rescue missions, making precise forecasts critical for safety and efficiency.
+[VISUAL DIRECTION] [Show map of global shipping lanes with animated current flows]
+[VOICEOVER 0:20-0:40] Researchers tackled the challenge of predicting complex, dynamic ocean movements, which traditional methods often miss due to computational limits.
+[VISUAL DIRECTION] [Zoom in on data graphs comparing old vs. new methods, highlighting deviations]
+[VOICEOVER 0:40-1:00] Using deep learning, their AI model analyzes wind, water temperature, and satellite data to identify hidden patterns, achieving reliable medium-term forecasts.
+[VISUAL DIRECTION] [Animated neural network diagram processing environmental inputs]
+[VOICEOVER 1:00-1:30] Instead of relying on complex equations, the AI learns from vast datasets to simulate behaviors, focusing on velocity and direction for faster, more efficient predictions.
+[VISUAL DIRECTION] [Fast cuts between data streams and simplified model outputs]
+[VOICEOVER 1:30-1:50] This means ships can avoid hazardous routes, cut fuel consumption, and reduce emissions, while emergency teams gain better coordination for missions.
+[VISUAL DIRECTION] [Show cargo ship on optimized route with emission reduction stats overlay]
+[VOICEOVER 1:50-2:00] Imagine a future where AI not only saves lives at sea but also supports a sustainable ocean economy—this is just the beginning.

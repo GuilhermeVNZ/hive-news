@@ -1,0 +1,1 @@
+AI now designs optimal bridges & buildings in under a second—90% faster than previous models. MIT/IBM's OAT foundation model achieves near-perfect structural layouts while reducing compliance by 1.74%. This breakthrough could revolutionize engineering prototyping. What infrastructure challenges could this solve in your industry?

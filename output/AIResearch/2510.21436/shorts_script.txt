@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could read your scribbled equations and solve them in seconds?
+[VISUAL DIRECTION] Animated text: '98.14% accuracy' flashes on screen with a handwritten equation morphing into code. Fast zoom on the text.
+[VOICEOVER 0:05-0:20] For decades, converting handwritten math into computer code has been slow and error-prone, holding back engineers and scientists.
+[VISUAL DIRECTION] Show a montage of scientists struggling with papers and whiteboards, then transition to a blurred background with the AutoOpt logo. Emphasize frustration with quick cuts.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI eliminate this bottleneck? They developed AutoOpt to handle everything from simple equations to multi-objective problems.
+[VISUAL DIRECTION] Display Figure 2 from the paper, panning across the dataset examples. Annotate with '11,000+ images' in bold text.
+[VOICEOVER 0:40-1:00] They found a hybrid model combining ResNet-101 and Transformer architectures achieves 2.86% character error rate, far surpassing tools like ChatGPT.
+[VISUAL DIRECTION] Split screen: left shows AI processing symbols, right highlights the error rate stat. Use fast cuts between symbol recognition animations.
+[VOICEOVER 1:00-1:30] How it works: AutoOpt first converts images to LaTeX, then to executable PYOMO scripts, and solves them with a bilevel method that breaks problems into subproblems.
+[VISUAL DIRECTION] Animated flowchart illustrating the three modules. Zoom in on superscripts and fractions to show spatial understanding. Pacing: steady holds on key steps.
+[VOICEOVER 1:30-1:50] Implications are huge—students can photograph whiteboards for instant answers, and engineers optimize designs without manual coding.
+[VISUAL DIRECTION] Show real-world scenarios: student with phone, engineer in lab. Overlay text: 'Education & Industry transformed'. Use smooth transitions.
+[VOICEOVER 1:50-2:00] This isn't sci-fi; it's science. AutoOpt is reshaping optimization, one handwritten note at a time.
+[VISUAL DIRECTION] Final shot: equation solving automatically, with 'AutoOpt' text fading in. Hold for impact.

@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant was confidently explaining data wrong? New research reveals AI-generated data narratives contain significant inaccuracies that increase with dataset size.
+
+[VISUAL DIRECTION] Animated text: "AI GETS DATA WRONG" with question mark appearing. Show error rate graph rising dramatically.
+
+[VOICEOVER 0:05-0:20] When AI systems translate tabular data into human-readable explanations, they frequently omit information, invent non-existent data, and misinterpret queries. This fundamental communication flaw remained largely unexamined until now.
+
+[VISUAL DIRECTION] Show table data transforming into garbled text with red X marks. Zoom in on specific data points being misinterpreted.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can large language models accurately narrate tabular data? They tested 11 different domains including finance, healthcare, and education using a new dataset of 1,468 samples.
+
+[VISUAL DIRECTION] Show domain icons (finance, healthcare, education) appearing. Display "1,468 samples tested" prominently.
+
+[VOICEOVER 0:40-1:00] The findings are striking: AI performance drops substantially as result-sets increase. Error rates jump from small datasets to much higher rates with 10 or more data points.
+
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance degradation curve. Animate error rate climbing from 20% to 60%+.
+
+[VOICEOVER 1:00-1:30] The team developed a novel hybrid framework combining traditional metrics with AI-based judgment. This approach achieved 80.88% accuracy in identifying correct narratives, outperforming metric-only methods (69.73%) and AI-judge approaches (75.82%).
+
+[VISUAL DIRECTION] Show comparison bar chart: Hybrid (80.88%) vs Metric-only (69.73%) vs AI-judge (75.82%). Highlight the hybrid advantage.
+
+[VOICEOVER 1:30-1:50] The implications are critical for real-world applications. Financial analysts interpreting transaction patterns, healthcare professionals reading patient data—all rely on accurate AI explanations. This framework provides crucial quality assessment.
+
+[VISUAL DIRECTION] Show financial charts and medical data transforming into accurate vs inaccurate narratives side by side.
+
+[VOICEOVER 1:50-2:00] Next time AI explains your data, remember: even advanced systems struggle with accuracy. This research provides the tools to verify what's real versus what's invented.
+
+[VISUAL DIRECTION] Final screen: "Verify Your AI's Explanations" with paper title "Can LLMs Narrate Tabular Data?"

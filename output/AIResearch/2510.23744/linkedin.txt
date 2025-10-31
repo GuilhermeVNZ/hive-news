@@ -1,0 +1,1 @@
+What if AI could make optimal decisions even when experts completely disagree? New research from UT Austin enables AI to handle conflicting world models through adversarial-belief POMDPs. This breakthrough ensures reliable AI deployment in healthcare and robotics. How will this transform your industry?

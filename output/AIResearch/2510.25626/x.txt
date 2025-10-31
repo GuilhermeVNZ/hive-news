@@ -1,0 +1,1 @@
+AI wastes HALF its steps solving simple problems. New research shows models' accuracy drops from 65% to 35.6% with minimal distractions. This inefficiency has major implications for real-world applications like medical diagnosis. Study reveals critical limitation in current AI reasoning.

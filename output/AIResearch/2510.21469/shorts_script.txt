@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the AI saving your life suddenly lost half its sensors? New research shows this isn't a hypothetical—it's a design requirement.
+[VISUAL DIRECTION] [Animated text: "AI THAT WORKS WHEN EVERYTHING GOES WRONG" with glitching effect]
+[VOICEOVER 0:05-0:20] In healthcare settings, AI faces unpredictable environments, degraded sensors, and limited computational resources. When failures have serious consequences, resilience becomes non-negotiable.
+[VISUAL DIRECTION] [Show medical setting with AI interface, then gradually remove visual elements to simulate sensor degradation]
+[VOICEOVER 0:20-0:40] Researchers asked: How can AI maintain functionality when conditions are imperfect from the beginning?
+[VISUAL DIRECTION] [Animated question mark transforming into broken connection symbols]
+[VOICEOVER 0:40-1:00] They discovered AI must be designed for suboptimal situations upfront, using data augmentation to train with diverse scenarios including erroneous inputs.
+[VISUAL DIRECTION] [Show data streams with intentional errors and gaps, highlighting how AI processes them]
+[VOICEOVER 1:00-1:30] The RAISE project implements a multidimensional framework: absorptive resilience tolerates disturbances, adaptive resilience reorganizes functions, and transformative resilience enables new capabilities. Like facial recognition AI that works despite occlusions and lighting variations.
+[VISUAL DIRECTION] [Split screen showing three resilience types with practical examples: AMP-Net handling occlusions, Auto-FERNet optimizing architecture, RAILS defending against attacks]
+[VOICEOVER 1:30-1:50] The implications are profound—healthcare AI must recognize when perception is wrong and switch to alternative methods, maintaining both technical function and positive user relationships.
+[VISUAL DIRECTION] [Show AI transitioning from failed visual recognition to voice-based assistance in medical scenario]
+[VOICEOVER 1:50-2:00] The future of life-saving AI isn't about perfect conditions—it's about working perfectly when nothing else is.
+[VISUAL DIRECTION] [Final text overlay: "RESILIENCE ISN'T OPTIONAL WHEN LIVES ARE AT STAKE" with Nature/Science branding]

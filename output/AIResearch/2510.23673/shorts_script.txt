@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant could be tricked into stealing your private data through a normal-looking web page?
+[VISUAL DIRECTION] Animated text: "AI TRICKED?" with question mark pulsing, dark background with glitch effect
+
+[VOICEOVER 0:05-0:20] The Model Context Protocol—the system that lets AI assistants like ChatGPT connect to external services—contains critical vulnerabilities that attackers can exploit right now.
+[VISUAL DIRECTION] Show Figure 1 from paper: MCP architecture diagram with red flashing arrows highlighting vulnerability points
+
+[VOICEOVER 0:20-0:40] Researchers found malicious commands can be hidden in seemingly normal data, tricking AI systems into executing unauthorized actions without user detection.
+[VISUAL DIRECTION] Zoom on CVE-2025-49596 vulnerability details, show animated sequence of clean document transforming into malicious payload
+
+[VOICEOVER 0:40-1:00] The study analyzed multiple MCP implementations and found 3.7 out of tested systems contained exploitable flaws, with some servers having no authentication at all.
+[VISUAL DIRECTION] Bar chart showing vulnerability distribution across implementations, highlight the 3.7 statistic in bold red
+
+[VOICEOVER 1:00-1:30] Attackers can modify tools like WhatsApp integrations to appear legitimate while actually sending message histories to attacker-controlled servers. The research employed layered scanning pipelines combining pattern-based filtering with network analysis specifically trained to recognize these threats.
+[VISUAL DIRECTION] Show detection methodology flowchart from paper, animate the layered scanning process with green checkmarks for legitimate traffic and red Xs for threats
+
+[VOICEOVER 1:30-1:50] This matters because MCP has become the standard protocol connecting AI systems to the real world—used by major platforms including Anthropic, OpenAI, and Cursor. Current implementations lack service vetting and security controls.
+[VISUAL DIRECTION] Quick cuts showing logos of affected platforms with warning symbols, then transition to MCP-Guard monitoring interface
+
+[VOICEOVER 1:50-2:00] The proposed MCP-Guard system automatically detects these vulnerabilities in real-time—because when AI can access everything, security can't be an afterthought.
+[VISUAL DIRECTION] Final screen: "MCPGuard: Automated Vulnerability Detection" with paper citation, slow zoom on protection shield icon

@@ -1,0 +1,1 @@
+AI systems fail dramatically when they encounter situations outside their training data. New DEEDEE detection method outperforms state-of-the-art by focusing on fundamental signal pattern changes, achieving 95% accuracy with just 2 features versus 794. Could simpler solutions be the key to safe AI deployment?

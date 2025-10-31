@@ -1,0 +1,1 @@
+What if AI could save lives even when its sensors fail? New research shows resilient AI systems must function in imperfect conditions from the start. The RAISE project develops algorithms that maintain care during disruptions—critical for healthcare where failures have serious consequences. How should we prioritize resilience in life-critical AI?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could finally see the brain's true wiring diagram - not just where connections go, but how they actually function?
+[VISUAL DIRECTION] Animated brain with glowing neural pathways, text overlay: "BRAIN MAPPING BREAKTHROUGH"
+
+[VOICEOVER 0:05-0:20] Current brain mapping techniques have a fundamental limitation - they show us pathways but ignore how they actually work. This has held back our understanding of neurological conditions.
+[VISUAL DIRECTION] Split screen: left shows static brain connections, right shows flickering activity patterns with question marks
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an AI that maps both structure AND function simultaneously?
+[VISUAL DIRECTION] Zoom into brain cross-section showing fiber pathways with BOLD signal overlays
+
+[VOICEOVER 0:40-1:00] The answer is DMVFC - a deep learning system that integrates diffusion MRI, BOLD signals, and fractional anisotropy data.
+[VISUAL DIRECTION] Animated diagram showing three data streams converging into neural network architecture
+
+[VOICEOVER 1:00-1:30] It works through multi-stage analysis: geometric processing of fiber paths, functional analysis of brain activity, and collaborative fine-tuning that prevents over-reliance on any single data type.
+[VISUAL DIRECTION] Step-by-step animation showing fiber clustering with color-coded functional consistency
+
+[VOICEOVER 1:30-1:50] Results show dramatic improvements - 0.326 correlation for corticospinal tract versus 0.251 in previous methods. This could provide meaningful insights into conditions like schizophrenia and Parkinson's.
+[VISUAL DIRECTION] Bar chart comparison showing DMVFC vs QuickBundles vs Deep Fiber Clustering performance metrics
+
+[VOICEOVER 1:50-2:00] We're finally seeing the brain's true wiring - not just where connections go, but how they actually work together.
+[VISUAL DIRECTION] Final composite image showing complete brain connectivity map with functional activity overlays

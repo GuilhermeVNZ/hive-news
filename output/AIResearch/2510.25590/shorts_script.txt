@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could edit images 2.5 times faster, and you couldn't tell the difference? [VISUAL DIRECTION] Animated text: '2.5x FASTER AI' with a lightning bolt icon. Fast cut to a split-screen showing identical images labeled 'Normal' and 'Accelerated'.
+
+[VOICEOVER 0:05-0:20] Right now, AI image editing is slow because it processes everything, even parts that don't change. This limits real-time uses like creative software and e-commerce. [VISUAL DIRECTION] Show a timeline animation: 'Full Image Processing' with red wasted areas, then transition to a question mark. Pacing: quick cuts to hold attention.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Why not focus only on the regions that need editing? [VISUAL DIRECTION] Zoom in on a diagram from the paper showing an image with highlighted 'edited' and 'unedited' regions. Text overlay: 'Targeting Changes Only'.
+
+[VOICEOVER 0:40-1:00] They discovered RegionE—a training-free method that identifies and modifies only specific areas, speeding up tasks without quality loss. In tests, it achieved up to 2.57x faster editing. [VISUAL DIRECTION] Show bar charts from the paper with labels: 'Step1X-Edit: 2.57x', 'FLUX.1: 2.41x'. Animated text: 'No Compromise on Quality'.
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, Region Partition analyzes differences to spot areas needing change. Then, caching mechanisms like RIKVCache and AVDCache reuse data across similar tasks. Finally, stabilization ensures seamless integration. [VISUAL DIRECTION] Use simple animations: arrows pointing to 'Region Partition', 'Caching', 'Stabilization'. Include zooms on paper figures for credibility. Pacing: steady with brief holds.
+
+[VOICEOVER 1:30-1:50] This means real-time image editing for apps like product customization and content creation. Tasks that took 30 seconds could drop to 12, making AI practical for everyday use. [VISUAL DIRECTION] Show mockups: a fast-paced e-commerce site with customizable products, then a creative app interface. Text overlay: 'Real-World Impact'.
+
+[VOICEOVER 1:50-2:00] AI is getting smarter—and faster—by doing less, not more. [VISUAL DIRECTION] End with the paper's title slide: 'Preprint Version (Under Review) — October'. Fade out with the key stat: '2.5x Speed, No Quality Loss'.

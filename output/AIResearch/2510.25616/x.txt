@@ -1,0 +1,1 @@
+AI systems forget how to recognize basic symbols after specialized training, becoming less reliable in new environments. New research identifies 'representation collapse' and introduces VL-Think - a lightweight anchor that prevents this forgetting with minimal computational overhead, improving performance by 10% in unfamiliar scenarios.

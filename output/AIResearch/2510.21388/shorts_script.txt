@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your phone could run advanced AI sound recognition with 80% fewer parameters and 53% less energy?
+[VISUAL DIRECTION] [Animated text: 80% FEWER PARAMETERS + 53% LESS ENERGY with bold question marks]
+[VOICEOVER 0:05-0:20] AI sound systems are becoming essential for everything from music analysis to security, but their high computational demands limit deployment on mobile devices.
+[VISUAL DIRECTION] [Show rotating smartphone with sound wave animations, then transition to power consumption meter showing high energy use]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically compress AI models without sacrificing accuracy for real-world applications?
+[VISUAL DIRECTION] [Show Figure 2 from paper with zoom on parameter reduction, animated arrows showing compression process]
+[VOICEOVER 0:40-1:00] They discovered quaternion convolutional neural networks (QCNNs) with pruning techniques remove low-importance components, achieving 94.9% accuracy on GTZAN with only 6 billion MACs.
+[VISUAL DIRECTION] [Animated network diagram showing pruning process, then display comparison chart: QCNN 6B MACs vs genreMERT 100B MACs]
+[VOICEOVER 1:00-1:30] The method evaluates which parameters contribute least to model output, removes them, then fine-tunes remaining components to recover performance - outperforming knowledge distillation in efficiency.
+[VISUAL DIRECTION] [Show ESC-50 dataset results: 97.6% accuracy text overlay with checkmarks, then RAVDESS emotion recognition matching conventional CNNs with reduced loads]
+[VOICEOVER 1:30-1:50] This enables sustainable AI deployment in energy-sensitive environments - mobile assistants, healthcare monitoring, and IoT systems where efficiency is critical.
+[VISUAL DIRECTION] [Fast cuts: smart speaker, medical monitoring device, security camera, all with low energy icons]
+[VOICEOVER 1:50-2:00] Advanced AI sound recognition is now feasible for everyday devices with dramatically reduced environmental impact.
+[VISUAL DIRECTION] [Final screen: smartphone with green energy leaf icon, text: SUSTAINABLE AI ACCESSIBLE NOW]

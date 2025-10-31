@@ -1,0 +1,1 @@
+BREAKING: Quantum algorithms achieve exponential speedup over classical methods. Research reveals QITE mathematically equals natural gradient descent, explaining why quantum approaches often outperform. This could revolutionize materials science and chemistry simulations.

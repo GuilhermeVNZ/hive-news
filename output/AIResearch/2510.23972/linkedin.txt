@@ -1,0 +1,1 @@
+AI could consume 10% of U.S. electricity by 2030. New chip achieves GPU-level performance with 10,000x less energy. Read the Nature paper on hardware-algorithm co-design to rethink AI efficiency.

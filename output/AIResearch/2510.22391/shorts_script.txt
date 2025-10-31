@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could stop hallucinating and actually understand what it sees? [VISUAL DIRECTION] Animated text: "AI HALLUCINATIONS ENDED?" with glitching AI eye graphic
+
+[VOICEOVER 0:05-0:20] Current AI suffers from 'myopic decision-making' - generating one word at a time without considering narrative structure, leading to generic or factually wrong captions. [VISUAL DIRECTION] Show side-by-side: human writing complete sentences vs AI typing one word at a time with errors
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI think like humans when describing images? [VISUAL DIRECTION] Zoom in on brain scan transitioning to AI neural network diagram
+
+[VOICEOVER 0:40-1:00] They developed TDSR - mimicking how humans form complete thoughts first, then fill in details. [VISUAL DIRECTION] Animated blueprint filling with structural details, then specific elements
+
+[VOICEOVER 1:00-1:30] Using modified Monte Carlo Tree Search, TDSR reduces computation by an order of magnitude while maintaining quality. It adapts effort based on image complexity. [VISUAL DIRECTION] Show computational load comparison: old method (high) vs TDSR (low) with adaptive stopping mechanism graphic
+
+[VOICEOVER 1:30-1:50] Results: 62.4% boost in fine-grained caption quality, state-of-the-art compositionality, and maintained 95%+ accuracy against hallucinations. [VISUAL DIRECTION] Show benchmark charts with dramatic improvement arrows, POPE benchmark results highlighted
+
+[VOICEOVER 1:50-2:00] This breakthrough brings us closer to AI that reliably assists the visually impaired and automatically describes complex content. [VISUAL DIRECTION] Final shot: AI module plugging into existing systems, transforming blurry image into clear description

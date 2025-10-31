@@ -1,0 +1,1 @@
+What if we could predict evictions before they happen? New research from Nature shows machine learning can identify families at highest risk of losing their homes with 85% accuracy, enabling proactive rental assistance. This breakthrough shifts from reactive crisis response to preventive social support. How might similar predictive systems transform other public services?

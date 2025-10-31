@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could finally handle complex, multi-step tasks without getting stuck in endless loops?
+[VISUAL DIRECTION] Animated text: "AI BREAKTHROUGH" with spinning loading icon that resolves into checkmark
+
+[VOICEOVER 0:05-0:20] Traditional AI systems suffer from 'plan drift'—losing track of goals during extended tasks, making redundant decisions that prevent completion.
+[VISUAL DIRECTION] Show animated flowchart where AI path diverges into multiple dead-end loops with "PLAN DRIFT" text overlay
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that maintains coherence across long decision sequences?
+[VISUAL DIRECTION] Zoom on research paper title "R E CAP: Recursive Context-Aware Reasoning" with question mark animation
+
+[VOICEOVER 0:40-1:00] ReCAP achieves 32% improvement in task completion by combining complete upfront planning with continuous refinement.
+[VISUAL DIRECTION] Show benchmark comparison chart with ReCAP bar significantly higher than traditional methods
+
+[VOICEOVER 1:00-1:30] The system generates ordered subtask lists, executes them while refining remaining steps, and maintains shared memory across decision levels.
+[VISUAL DIRECTION] Animated sequence showing task hierarchy with recursive refinement arrows and memory sliding window visualization
+
+[VOICEOVER 1:30-1:50] This means AI could reliably handle real-world scenarios like multi-course meal preparation or systematic software debugging.
+[VISUAL DIRECTION] Quick cuts: robot in kitchen, coding interface, industrial automation - all with "RELIABLE AI" overlay
+
+[VOICEOVER 1:50-2:00] ReCAP demonstrates that organized reasoning, not just model scaling, may be the key to efficient AI systems.
+[VISUAL DIRECTION] Final text overlay: "32% IMPROVEMENT | MULTI-STEP TASKS SOLVED" with Nature/Science logo

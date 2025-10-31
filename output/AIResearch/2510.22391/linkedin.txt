@@ -1,0 +1,1 @@
+AI can now generate coherent image captions that overcome 'myopic decision-making' limitations. Researchers developed TDSR, mimicking human thought to boost caption quality by 62.4% while reducing hallucinations. How might this transform accessibility technologies in your field?

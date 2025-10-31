@@ -1,0 +1,1 @@
+Weeks to hours: New method speeds up complex network analysis by 1000x. 'Gibby' handles hundreds of nodes efficiently, revolutionizing Bayesian inference for genetics and healthcare. Science just got faster.

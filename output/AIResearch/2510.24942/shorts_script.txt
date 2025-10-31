@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know your AI might have cultural blind spots? Research reveals specific neurons in vision-language models respond only to certain cultures while ignoring others.
+[VISUAL DIRECTION] Animated text: "AI's Cultural Blind Spots" with neural network visualization pulsing
+[VOICEOVER 0:05-0:20] As AI becomes ubiquitous in applications from document parsing to question answering, its uneven performance across different cultural contexts poses serious fairness concerns.
+[VISUAL DIRECTION] Show diverse global imagery fading in/out rapidly
+[VOICEOVER 0:20-0:40] Scientists asked: Why do AI models struggle with cultural content? The answer lies deep within their neural architecture.
+[VISUAL DIRECTION] Zoom into neural network diagram, highlighting specific nodes
+[VOICEOVER 0:40-1:00] They discovered culture-sensitive neurons - specialized cells that activate preferentially for inputs tied to specific cultures. When deactivated, models showed substantial accuracy drops for that culture alone.
+[VISUAL DIRECTION] Show Figure 2 with zoom on peak neuron activation distribution
+[VOICEOVER 1:00-1:30] Using a three-stage pipeline, researchers identified these neurons by measuring selectivity through difference scores and causality testing. The neurons concentrate in mid-to-late decoder layers, crucial for cultural reasoning.
+[VISUAL DIRECTION] Animated pipeline diagram showing three stages with text overlays
+[VOICEOVER 1:30-1:50] This means we can now develop targeted interventions - adjusting only relevant neurons to improve cultural competence without affecting overall model performance.
+[VISUAL DIRECTION] Show before/after comparison with improved accuracy metrics
+[VOICEOVER 1:50-2:00] Cultural knowledge in AI isn't distributed - it's concentrated. This discovery opens new avenues for building AI that truly serves diverse populations worldwide.
+[VISUAL DIRECTION] Global map with connecting neural pathways, final text: "Equitable AI Starts Here"

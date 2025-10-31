@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if I told you most AI data agents can't actually work independently? They're stuck at Level 2 autonomy—like a self-driving car that still needs your hands on the wheel.
+
+[VISUAL DIRECTION] Animated text: "Level 2 Autonomy" with spinning loading icon. Show Figure 2 from paper zooming in on the peak distribution around Level 2.
+
+[VOICEOVER 0:05-0:20] Researchers from Tsinghua University and Hong Kong Science and Technology analyzed 100 data agents and found a critical reality gap. Businesses are being sold tools that promise full automation but deliver limited assistance.
+
+[VISUAL DIRECTION] Show animated bar chart growing from Level 0 to Level 5, with Level 2 highlighted in red. Quick cuts between different AI interface screens.
+
+[VOICEOVER 0:20-0:40] The team developed a six-level framework inspired by self-driving car standards. They asked: How much human oversight do these tools actually need for data tasks like SQL generation and report creation?
+
+[VISUAL DIRECTION] Show SAE J3016 standard comparison side-by-side with new data agent framework. Animated arrows connecting levels between the two systems.
+
+[VOICEOVER 0:40-1:00] The finding? Most existing agents operate at Levels 1-2—they can help with specific tasks like converting temperature units or generating basic queries, but require significant human supervision and can't adapt to new situations.
+
+[VISUAL DIRECTION] Zoom on Figure 3 showing capability distribution. Text overlay: "Level 2: Task assistance with oversight" with checkmarks for what they can do and X's for limitations.
+
+[VOICEOVER 1:00-1:30] Here's how it works: The framework evaluates environmental perception, invocation methods, and task dominance. Tools like AutoPrep for data cleaning or Alpha-SQL for query generation were tested across real-world scenarios to measure true autonomy.
+
+[VISUAL DIRECTION] Show workflow diagrams from the methodology section. Animated arrows showing data flow and decision points where human intervention is required.
+
+[VOICEOVER 1:30-1:50] This matters because businesses risk over-reliance on underpowered tools. In finance and healthcare, mismatched expectations could lead to serious consequences when agents can't handle unforeseen changes or complex problems.
+
+[VISUAL DIRECTION] Show industry icons (finance, healthcare) with warning symbols. Text overlay: "Not set-and-forget solutions" with rotating caution triangle.
+
+[VOICEOVER 1:50-2:00] The truth: True autonomous data agents that can innovate and solve problems independently remain largely unrealized. Know what your tools can actually do before you trust them with critical data.
+
+[VISUAL DIRECTION] Final screen showing the six-level framework with Level 5 (full autonomy) grayed out. Text: "The future is coming, but we're not there yet."

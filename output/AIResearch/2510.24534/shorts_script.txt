@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if quantum computers could instantly crack all our current encryption systems?
+[VISUAL DIRECTION] Animated text: QUANTUM COMPUTERS BREAK ENCRYPTION? with dramatic particle effects
+
+[VOICEOVER 0:05-0:20] Right now, our most secure communications - from financial transactions to government secrets - rely on encryption that quantum computers could easily defeat.
+[VISUAL DIRECTION] Show data packets flowing between computers with lock icons breaking apart
+
+[VOICEOVER 0:20-0:40] Researchers at University of Pittsburgh asked: How can we protect quantum networks when even their own components remain vulnerable to attack?
+[VISUAL DIRECTION] Zoom on network diagram showing vulnerable points in quantum channel components
+
+[VOICEOVER 0:40-1:00] They discovered that by integrating cryptography directly into quantum channels, they could create a unified system that withstands quantum-era threats.
+[VISUAL DIRECTION] Animated overlay showing cryptographic protection wrapping around quantum data streams
+
+[VOICEOVER 1:00-1:30] The breakthrough embeds protection at every level of the protocol stack - securing measurement outcomes, routing data, and synchronization signals as they travel through quantum channels. The key constraint: encryption, transmission, and decryption must all happen before quantum states lose coherence.
+[VISUAL DIRECTION] Stack diagram with layers lighting up as protection is applied, with coherence timer counting down
+
+[VOICEOVER 1:30-1:50] This means financial transactions and government communications can maintain absolute security even as quantum computers emerge. Attackers would need to complete manipulations before quantum states decohere, making sustained attacks nearly impossible.
+[VISUAL DIRECTION] Show secure financial transaction and government communication scenarios with quantum protection shields
+
+[VOICEOVER 1:50-2:00] The future of secure communication just got quantum-proof protection built directly into the network itself.
+[VISUAL DIRECTION] Final text overlay: QUANTUM-SECURE NETWORKS ARE HERE with network visualization

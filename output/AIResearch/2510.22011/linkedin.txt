@@ -1,0 +1,1 @@
+AI can now translate sign language with 95% accuracy using just a camera. This breakthrough from Vietnam National University combines CNNs and LSTMs to analyze 522 body points, creating a digital skeleton that captures gestures and expressions. Could this finally break down communication barriers in healthcare and education?

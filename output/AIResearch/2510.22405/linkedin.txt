@@ -1,0 +1,1 @@
+AI can now learn continuously without forgetting its past knowledge. Nature research shows a new method combining replay and data augmentation reduces catastrophic forgetting by 30%, enabling stable AI for evolving online content. How can this transform digital trust?

@@ -1,0 +1,1 @@
+AI breakthrough: PEPSY maintains 80% accuracy when 80% of health data is missing. Outperforms traditional methods by 36.45% in federated learning while preserving privacy. Critical for wearable monitoring. Nature/Science paper details.

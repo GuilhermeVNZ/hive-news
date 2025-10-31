@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your smartphone could run complex AI 10 times faster without killing your battery or risking your privacy?
+[VISUAL DIRECTION] Animated text: "AI 10x FASTER" with smartphone graphic showing battery icon full
+
+[VOICEOVER 0:05-0:20] Right now, running advanced AI on phones and IoT devices creates major bottlenecks - slow responses, high costs, and security risks.
+[VISUAL DIRECTION] Show spinning loading wheel on phone screen, then dollar signs draining from battery icon
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we split AI tasks between your device and powerful servers to optimize speed, cost, and protection simultaneously?
+[VISUAL DIRECTION] Animated diagram showing AI model being split between phone and cloud server with connecting arrows
+
+[VOICEOVER 0:40-1:00] They discovered that decomposing deep learning into smaller submodels and strategically placing them across devices achieves dramatic improvements.
+[VISUAL DIRECTION] Show Figure 2 activation profiles from paper with zoom on distribution peaks
+
+[VOICEOVER 1:00-1:30] The system uses multi-objective optimization to balance computational demands, using techniques like early exiting and compression. On a Raspberry Pi, this reduced delays from 500ms to just 50ms while maintaining 79% accuracy.
+[VISUAL DIRECTION] Fast cuts between Raspberry Pi graphic, optimization framework diagram, and text overlay: "500ms → 50ms"
+
+[VOICEOVER 1:30-1:50] For consumers, this means responsive mobile AI without draining batteries. For healthcare, it enables secure real-time diagnostics while keeping patient data local.
+[VISUAL DIRECTION] Show medical app interface on phone, then transition to autonomous vehicle with privacy shield graphic
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just more powerful - it's smarter about where and how it runs.
+[VISUAL DIRECTION] Final text overlay: "SMARTER AI PLACEMENT" with paper title citation

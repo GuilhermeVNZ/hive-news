@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if cities could predict traffic and pollution with 30% more accuracy while using fewer sensors?
+[VISUAL DIRECTION] Animated text: "30% MORE ACCURACY" with traffic flow visualization behind
+[VOICEOVER 0:05-0:20] Cities face budget constraints but need accurate predictions for everything from congestion to air quality levels.
+[VISUAL DIRECTION] Show city skyline with pollution overlay, transition to budget charts
+[VOICEOVER 0:20-0:40] The challenge: how to choose which sensors to deploy when you can't afford them everywhere?
+[VISUAL DIRECTION] Map with blinking sensor locations, some fading out
+[VOICEOVER 0:40-1:00] Researchers developed Variable-Parameter Iterative Pruning (VIP) - an AI that automatically selects only the most valuable sensor locations.
+[VISUAL DIRECTION] Show AI algorithm flowchart with pruning steps highlighted
+[VOICEOVER 1:00-1:30] It works through iterative pruning: starts with all possible locations, systematically removes least valuable ones while maintaining accuracy.
+[VISUAL DIRECTION] Animated sequence showing sensors being removed while accuracy metrics stay high
+[VOICEOVER 1:30-1:50] Real-world tests on traffic and air quality datasets achieved MAE improvements up to 31.33% using only a fraction of possible sensors.
+[VISUAL DIRECTION] Show data charts from PEMS-BAY and METR-LA datasets with MAE improvements highlighted
+[VOICEOVER 1:50-2:00] This means cities can deploy cheaper temporary sensors at strategic locations, saving thousands while getting maximum accuracy.
+[VISUAL DIRECTION] Final shot: smart city visualization with optimized sensor placement, text overlay: "Smarter Cities, Fewer Sensors"

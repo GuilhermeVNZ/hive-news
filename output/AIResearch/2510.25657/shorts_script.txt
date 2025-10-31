@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could learn everything about your network without ever seeing your private data?
+[VISUAL DIRECTION] Animated text: "AI learns without seeing your data" with question mark pulsing
+[VOICEOVER 0:05-0:20] Organizations desperately need AI that understands complex networks - from healthcare records to supply chains - but privacy regulations prevent data sharing.
+[VISUAL DIRECTION] Quick cuts: medical chart, supply chain map, financial network diagram with lock icons
+[VOICEOVER 0:20-0:40] Traditional approaches either require sharing sensitive embeddings or use computationally intensive methods that don't scale. How can we collaborate without compromising privacy?
+[VISUAL DIRECTION] Split screen: left shows data sharing with red X, right shows complex computations with loading symbol
+[VOICEOVER 0:40-1:00] Researchers developed FED AP+, a two-phase method that extracts structural information through one-time computations, converting data into secure representations without revealing features or labels.
+[VISUAL DIRECTION] Animated diagram showing data → secure representations → AI model with green checkmarks
+[VOICEOVER 1:00-1:30] The first phase captures essential network structure, then standard federated learning proceeds using these privacy-preserving representations. Experimental results show competitive accuracy approaching centralized approaches.
+[VISUAL DIRECTION] Zoom on benchmark graph showing FED AP+ performance approaching centralized baseline
+[VOICEOVER 1:30-1:50] This enables effective AI collaboration across healthcare, business, and research while maintaining confidentiality. Organizations can now build better models without regulatory conflicts.
+[VISUAL DIRECTION] Show healthcare, finance, and logistics icons with connecting lines and shield symbols
+[VOICEOVER 1:50-2:00] AI collaboration without privacy compromise - the future of networked intelligence is here.
+[VISUAL DIRECTION] Final text overlay: "Privacy-Preserving AI Collaboration" with paper title "Subgraph Federated Learning with Spectral Methods"

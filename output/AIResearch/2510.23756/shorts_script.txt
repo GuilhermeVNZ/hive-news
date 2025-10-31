@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could learn like humans - continuously building knowledge without forgetting everything it knew before?
+[VISUAL DIRECTION] Animated text: "AI's Memory Problem SOLVED?" with dramatic background shift
+
+[VOICEOVER 0:05-0:20] For decades, catastrophic forgetting has prevented AI from achieving true continuous learning. Every time traditional neural networks learn something new, they overwrite previous knowledge.
+[VISUAL DIRECTION] Show neural network diagram with connections fading out as new ones appear
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that resists this memory loss? They tested three potential explanations for stability in learning systems.
+[VISUAL DIRECTION] Split screen showing three question marks with different AI architecture diagrams
+
+[VOICEOVER 0:40-1:00] The breakthrough came with Cobweb/4V - an AI that maintains 85-95% accuracy across multiple learning sessions without revisiting old data.
+[VISUAL DIRECTION] Show accuracy chart from paper with 85-95% range highlighted across sessions
+
+[VOICEOVER 1:00-1:30] The key difference? Traditional AI uses backpropagation that tends to overwrite information. Cobweb/4V builds summaries of understanding, avoiding the recency bias that plagues other methods.
+[VISUAL DIRECTION] Side-by-side animation: left shows backpropagation erasing connections, right shows Cobweb building knowledge structures
+
+[VOICEOVER 1:30-1:50] This means medical AI could learn from new patient cases while remembering earlier diagnoses. Self-driving cars could adapt to new roads without forgetting safety protocols.
+[VISUAL DIRECTION] Quick cuts: medical imaging AI, autonomous vehicle, industrial robot - all with "continuous learning" overlay
+
+[VOICEOVER 1:50-2:00] The solution to catastrophic forgetting isn't more memory - it's fundamentally rethinking how AI learns.
+[VISUAL DIRECTION] Final text overlay: "Rethink Learning" with Nature/Science logo

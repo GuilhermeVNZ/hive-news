@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if designing the electronics in your smartphone could go from taking months to just days?
+[VISUAL DIRECTION] [Animated text: MONTHS → DAYS with dramatic transition effect]
+
+[VOICEOVER 0:05-0:20] Electronic design is notoriously slow and expensive, often requiring months of manual work for everything from medical devices to consumer electronics.
+[VISUAL DIRECTION] [Show rotating images of smartphones, medical devices, IoT sensors with slow motion effects]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically accelerate this process while maintaining performance and cutting costs?
+[VISUAL DIRECTION] [Show animated question marks transforming into circuit diagrams]
+
+[VOICEOVER 0:40-1:00] They developed a hardware/software co-design methodology that slashes development time and reduces costs. In one case, achieving timing requirements of 3620.6 milliseconds at just $14.20.
+[VISUAL DIRECTION] [Show Table IV data with zoom on timing and cost metrics, highlight the $14.20 figure]
+
+[VOICEOVER 1:00-1:30] Using System-on-Chip Environment modeling, they divided designs into functional partitions, exploring trade-offs between performance and expense. The method required only 31 communication models versus traditional approaches.
+[VISUAL DIRECTION] [Animated flow chart showing design partitioning, highlight the 31 models vs traditional complexity]
+
+[VOICEOVER 1:30-1:50] This means companies can develop chips and devices faster and cheaper - from IoT sensors to consumer electronics - potentially leading to more affordable, innovative products.
+[VISUAL DIRECTION] [Fast cuts showing various electronic devices with price tags decreasing]
+
+[VOICEOVER 1:50-2:00] The future of electronics design just got dramatically faster and more affordable.
+[VISUAL DIRECTION] [Final text overlay: FASTER DESIGN + LOWER COSTS with circuit animation background]

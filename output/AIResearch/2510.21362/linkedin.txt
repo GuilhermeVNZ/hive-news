@@ -1,0 +1,1 @@
+What if AI could reconstruct 3D medical images from just 2 views? New Nature/Science research shows AI creates detailed radiation dose maps with 5% better accuracy than traditional methods, potentially cutting hospital costs and scan times. Could this make precision cancer therapy accessible to more patients?

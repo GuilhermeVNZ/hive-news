@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could run on 10,000 times less energy? [VISUAL DIRECTION] Animated text: "10,000x LESS ENERGY" with lightning bolt striking through "10,000x"
+
+[VOICEOVER 0:05-0:20] AI data centers are projected to consume 10% of all U.S. electricity by 2030. We're hitting a wall with current hardware. [VISUAL DIRECTION] Show graph of electricity consumption projections rising steeply to 2030, zoom on "10% U.S. electricity"
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we fundamentally rethink how computers process AI? The answer lies in moving beyond traditional GPU architecture. [VISUAL DIRECTION] Show side-by-side: GPU chip vs new DTM chip design, highlight "fundamentally different computing"
+
+[VOICEOVER 0:40-1:00] They discovered the Denoising Thermodynamic Model - a chip that achieves performance parity with GPUs on Fashion-MNIST benchmark while using dramatically less power. [VISUAL DIRECTION] Show Figure 2 comparison charts - FID scores nearly identical, energy consumption bars showing massive difference
+
+[VOICEOVER 1:00-1:30] How it works: Instead of single complex circuits, multiple simpler chains gradually denoise signals. Entirely transistor-based, avoiding components that limited previous proposals. [VISUAL DIRECTION] Animated diagram showing multiple chains converging, zoom on "all-transistor implementation"
+
+[VOICEOVER 1:30-1:50] Real impact: This could transform AI's environmental footprint. Current systems are locked into hardware-algorithm pairings that may be far from optimal for efficiency. [VISUAL DIRECTION] Show data center footage with "HARDWARE LOTTERY" text overlay, then transition to green energy symbols
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just better algorithms - it's better hardware designed from the ground up for efficiency. [VISUAL DIRECTION] Final screen: "10,000x ENERGY SAVINGS" with Nature/Science logos, fast cut to black

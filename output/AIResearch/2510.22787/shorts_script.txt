@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if scientists could learn everything about a dataset without ever seeing your private information?
+[VISUAL DIRECTION] Animated text: "ANALYZE DATA WITHOUT SEEING IT" with question mark morphing into lock icon
+
+[VOICEOVER 0:05-0:20] For years, privacy concerns have blocked scientific progress. Medical research, financial analysis—all hampered because we can't share sensitive data safely.
+[VISUAL DIRECTION] Quick cuts: medical chart with "CONFIDENTIAL" stamp, financial graph with red "RESTRICTED" overlay, scientist looking frustrated at computer
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create artificial data that maintains all the patterns and correlations needed for analysis, but contains no real personal information?
+[VISUAL DIRECTION] Split screen: left shows complex data patterns, right shows identical patterns but with fake names/numbers
+
+[VOICEOVER 0:40-1:00] They developed a breakthrough technique that generates synthetic datasets. These fake datasets maintain the same statistical characteristics while reducing re-identification risk by 80%.
+[VISUAL DIRECTION] Show Figure 2 with zoom on distribution peaks—highlight identical patterns between real and synthetic data
+
+[VOICEOVER 1:00-1:30] The system learns the underlying structure of your data, then creates artificial versions that work equally well for machine learning and analysis. No individual can be identified or reconstructed.
+[VISUAL DIRECTION] Animated flow: data → pattern extraction → synthetic generation → analysis results. Fast cuts showing ML models working on both datasets
+
+[VOICEOVER 1:30-1:50] This means researchers worldwide can finally collaborate on medical records, financial information, and other sensitive data without privacy concerns slowing scientific progress.
+[VISUAL DIRECTION] Globe animation with data flowing between research institutions, medical breakthroughs appearing
+
+[VOICEOVER 1:50-2:00] The future of data analysis is here—where privacy protection and scientific discovery work together, not against each other.
+[VISUAL DIRECTION] Final text overlay: "PRIVACY + PROGRESS = POSSIBLE" with paper reference: arXiv:2510.22787

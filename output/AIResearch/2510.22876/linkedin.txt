@@ -1,0 +1,1 @@
+AI systems often produce incorrect outputs when handling multiple requests simultaneously, violating output equivalence. A new method called PEC maintains quality while achieving 3× speedup, challenging the trade-off between efficiency and accuracy. How can we ensure AI reliability in high-demand applications?

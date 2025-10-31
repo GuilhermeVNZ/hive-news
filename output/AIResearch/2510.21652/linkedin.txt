@@ -1,0 +1,1 @@
+AI excels at reviewing research (80% accuracy) but struggles with scientific discovery (25% execution). The most comprehensive AI benchmarking study reveals stark performance gaps. Read the Nature/Science analysis to understand what AI can—and cannot—reliably accomplish in research assistance.

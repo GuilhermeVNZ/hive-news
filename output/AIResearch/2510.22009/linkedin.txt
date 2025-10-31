@@ -1,0 +1,1 @@
+What if your smartphone could run sophisticated AI without constant expensive cloud connections? LightAgent achieves comparable performance to larger models while cutting cloud usage by 90%—proving smarter AI doesn't require bigger models. Read the Nature/Science paper to see how device-cloud collaboration is solving AI's cost-performance trade-off.

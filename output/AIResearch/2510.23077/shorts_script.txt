@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI recommendations understood your preferences like a thoughtful friend would?
+[VISUAL DIRECTION] Animated text: "AI that THINKS before recommending" with thinking emoji
+
+[VOICEOVER 0:05-0:20] Current AI systems just match patterns - leading to irrelevant suggestions that frustrate users daily.
+[VISUAL DIRECTION] Show generic recommendation icons with red X marks, quick cuts of frustrated user expressions
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI genuinely understand what we like and dislike, not just copy behavior patterns?
+[VISUAL DIRECTION] Zoom in on question mark animation, transition to research lab imagery
+
+[VOICEOVER 0:40-1:00] Enter RecZero - reducing recommendation errors by up to 29.9% on major benchmarks including books, music, and restaurant reviews.
+[VISUAL DIRECTION] Show 29.9% statistic in bold text, animated downward arrow showing error reduction
+
+[VOICEOVER 1:00-1:30] How? The 'Think-before-Recommendation' approach: First analyzes your likes/dislikes, then examines product features, finally predicts what you'll actually appreciate.
+[VISUAL DIRECTION] Three-step animated flowchart: 1. Analyze preferences 2. Examine features 3. Predict appreciation
+
+[VOICEOVER 1:30-1:50] This means recommendations that explain why something suits you - addressing the frustration of irrelevant suggestions in everyday apps.
+[VISUAL DIRECTION] Show app interfaces with personalized recommendations, checkmarks on relevant items
+
+[VOICEOVER 1:50-2:00] The future of AI recommendations just got more thoughtful - and more accurate.
+[VISUAL DIRECTION] Final text overlay: "AI that understands you" with upward trending accuracy graph

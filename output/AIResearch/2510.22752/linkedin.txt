@@ -1,0 +1,1 @@
+AI models have a memory quirk: they recall the start and end of inputs best, mirroring human 'primacy and recency' effects. This bias, from a Nature-style study, means critical middle information in long documents may be overlooked. How can we design AI systems to ensure reliable retrieval across all data?

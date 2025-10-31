@@ -1,0 +1,1 @@
+AI just got 5x faster at search without sacrificing accuracy. E2Rank eliminates the reranking bottleneck, achieving 54.35 on BEIR benchmark—highest overall score. Single model does work of two systems. The future of efficient AI search is here.

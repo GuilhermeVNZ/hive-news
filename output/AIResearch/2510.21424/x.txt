@@ -1,0 +1,1 @@
+Vision-language AI can identify human activities it wasn't trained on, reaching 78.6% accuracy on complex tasks. This breakthrough means AI could interact naturally with patients without specialized training - potentially revolutionizing healthcare monitoring while preserving privacy.

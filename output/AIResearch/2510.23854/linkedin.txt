@@ -1,0 +1,1 @@
+AI-generated data explanations contain significant inaccuracies that increase with dataset size, new research reveals. A novel hybrid evaluation framework achieves 80.88% accuracy in assessing narrative quality while reducing computational costs. Essential reading for organizations relying on AI for data interpretation.

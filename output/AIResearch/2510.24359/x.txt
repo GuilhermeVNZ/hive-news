@@ -1,0 +1,1 @@
+AI often fails on unusual cases—but a new multi-agent system catches what others miss, boosting accuracy to 90.6%. This Nature/Science study shows how specialized agents improve predictions for diverse health profiles. #AI #Medicine

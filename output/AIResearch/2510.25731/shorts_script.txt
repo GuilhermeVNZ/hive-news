@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if every AI prediction in physics was mathematically guaranteed to be correct?
+[VISUAL DIRECTION] Animated text: "100% ACCURATE AI PHYSICS" with glowing mathematical symbols
+[VOICEOVER 0:05-0:20] Current AI struggles with complex equations, often producing implausible results that require extensive validation
+[VISUAL DIRECTION] Show chaotic wave patterns with red X marks over incorrect predictions
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that automatically obeys the fundamental laws of physics?
+[VISUAL DIRECTION] Zoom in on partial differential equations transforming into neural network architecture
+[VOICEOVER 0:40-1:00] They discovered LieSolver - an AI that embeds physical symmetries directly into its architecture
+[VISUAL DIRECTION] Show symmetry transformations preserving equation structure while AI learns
+[VOICEOVER 1:00-1:30] By designing AI blocks that compose like mathematical operations, LieSolver guarantees solutions always satisfy the equations
+[VISUAL DIRECTION] Animated blocks snapping together, showing error reduction from 10^-2 to 10^-6
+[VOICEOVER 1:30-1:50] Results: 100x more accurate than standard methods, solving in seconds what took hours. Revolutionizes weather prediction, aircraft design, emergency planning
+[VISUAL DIRECTION] Fast cuts showing applications - storm simulations, aircraft prototypes, emergency response maps
+[VOICEOVER 1:50-2:00] AI that thinks like a physicist - transforming how we simulate our world
+[VISUAL DIRECTION] Final text overlay: "MATHEMATICALLY PERFECT AI PREDICTIONS" with Nature journal logo

@@ -1,0 +1,1 @@
+AI that says 'I don't know' achieves 97% accuracy rejecting out-of-domain questions - 40 points better than current systems. FARSIQA's FAIR-RAG architecture prevents misinformation by dynamically verifying evidence. How might responsible AI transform your industry?

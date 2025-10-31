@@ -1,0 +1,1 @@
+Your AI coding assistant can be compromised no matter what you type. QueryIPI research shows 82% attack success by exploiting system prompts. Real threat to development environments requires immediate security action.

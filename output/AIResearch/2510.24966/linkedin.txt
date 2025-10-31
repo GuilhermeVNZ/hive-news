@@ -1,0 +1,1 @@
+AI's hidden simplicity: Large language models like GPT-4 operate using surprisingly linear mathematical structures called 'low-rank extended matrices.' This discovery could revolutionize AI efficiency and security. What does this mean for the future of artificial intelligence?

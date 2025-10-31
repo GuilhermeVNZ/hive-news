@@ -1,0 +1,1 @@
+AI reconstructs visual experiences from brain activity alone. Researchers achieved 85% accuracy in generating images and animations directly from neural signals, potentially helping paralyzed individuals communicate their thoughts.

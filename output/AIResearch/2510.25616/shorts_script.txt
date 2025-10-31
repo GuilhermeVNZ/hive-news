@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems actually get worse at recognizing basic symbols like weather icons and traffic signs after specialized training?
+[VISUAL DIRECTION] [Animated text: "AI FORGETS WHAT IT LEARNS" with question mark appearing]
+
+[VOICEOVER 0:05-0:20] This 'forgetting' problem makes AI unreliable in unpredictable situations - a critical issue for robots in hospitals, warehouses, and other real-world applications.
+[VISUAL DIRECTION] [Show robot in hospital setting with medical symbols blurring out]
+
+[VOICEOVER 0:20-0:40] Researchers discovered this occurs due to 'representation collapse' - where AI's understanding of concepts becomes less detailed during standard vision-language-action training.
+[VISUAL DIRECTION] [Animated diagram showing concept representations collapsing from detailed to simplified]
+
+[VOICEOVER 0:40-1:00] They measured this degradation using VL-Think, a diagnostic tool that tests eight categories including shapes, colors, and directional arrows.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance degradation across categories]
+
+[VOICEOVER 1:00-1:30] The solution? A lightweight anchor that keeps AI's original knowledge intact while adding minimal computational overhead - essentially serving as a gentle reminder that prevents forgetting.
+[VISUAL DIRECTION] [Animated anchor symbol stabilizing the collapsing representations]
+
+[VOICEOVER 1:30-1:50] This approach improved AI performance by 10% in out-of-distribution scenarios, making robots more reliable when they encounter unfamiliar environments.
+[VISUAL DIRECTION] [Show performance improvement graph with 10% callout]
+
+[VOICEOVER 1:50-2:00] The result: AI that can learn specialized tasks without forgetting its original understanding of the world.
+[VISUAL DIRECTION] [Final shot of robot successfully recognizing symbols in new environment]

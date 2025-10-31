@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if the AI systems we rely on for teamwork can't actually work together effectively? [VISUAL DIRECTION] [Animated text: 'AI TEAMWORK FAILURE' with question mark, fast zoom]
+
+[VOICEOVER 0:05-0:20] New research reveals a critical gap: large language models often fail to collaborate when they possess different pieces of information. [VISUAL DIRECTION] [Show Figure 2 with zoom on error distribution, highlight 28.22% misunderstanding rate]
+
+[VOICEOVER 0:20-0:40] Researchers adapted a logic-based puzzle game where AI agents must coordinate with partial knowledge—mirroring real-world scenarios like software development and autonomous systems. [VISUAL DIRECTION] [Animated diagram of puzzle environment, fast cuts between different object configurations]
+
+[VOICEOVER 0:40-1:00] The finding: AI with information-seeking capabilities reduced failure ratios and improved completion rates by 40 percentage points. But without verification, they made redundant actions up to 79.35% of the time. [VISUAL DIRECTION] [Show key statistics as animated text overlays, hold on '40% improvement' and '79.35% redundancy']
+
+[VOICEOVER 1:00-1:30] Using a fine-tuning-plus-verifier framework, researchers equipped AI agents with specific communication strategies. The verifier corrected errors in real-time, ensuring communications weren't redundant and enhancing performance across all configurations. [VISUAL DIRECTION] [Flowchart animation of verification process, zoom on correction mechanisms]
+
+[VOICEOVER 1:30-1:50] This matters because as AI systems are deployed in team-based settings—from multi-agent robotics to misinformation coordination—effective communication becomes crucial for reliability and safety. [VISUAL DIRECTION] [Quick cuts: robotics simulation, software development team, autonomous system interface]
+
+[VOICEOVER 1:50-2:00] The takeaway: AI completion rates alone are insufficient; we need transparent, interpretable interactions to ensure safe deployment in critical applications. [VISUAL DIRECTION] [Final text overlay: 'TRANSPARENT AI INTERACTIONS = SAFER DEPLOYMENT', hold until end]

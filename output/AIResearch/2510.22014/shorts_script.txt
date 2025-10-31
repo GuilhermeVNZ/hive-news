@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems built to refuse harmful requests can be easily tricked by gibberish? [VISUAL DIRECTION] Animated text: 'AI TRICKED BY NONSENSE' with bold red alert icon flashing.
+
+[VOICEOVER 0:05-0:20] This isn't science fiction—it's from a Nature/Science study on today's most advanced AI models, like those in customer service and personal assistants. [VISUAL DIRECTION] Show split screen: left side with chatbot interface, right side with abstract neural network diagram. Pan to emphasize 'vulnerability'.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Why do safety features fail? They tested models including Qwen and Llama to uncover why certain prompts bypass refusal mechanisms. [VISUAL DIRECTION] Display paper title overlay: 'TOWARD UNDERSTANDING TRANSFERABILITY'. Fast cuts between model logos (Qwen, Llama, Vicuna).
+
+[VOICEOVER 0:40-1:00] They discovered 'adversarial suffixes'—nonsensical sequences that shift AI's internal processing, making it ignore training. For example, Qwen had up to 23% success in bypassing safeguards. [VISUAL DIRECTION] Zoom in on Figure 2 from paper showing peak distribution of suffix effectiveness. Animate arrow pointing to '23%' stat.
+
+[VOICEOVER 1:00-1:30] How does it work? These suffixes activate refusal mechanisms in reverse, pushing AI's concept representations away from safe responses. Experiments tracked internal changes using optimization methods. [VISUAL DIRECTION] Animated flowchart: 'Prompt + Suffix' -> 'Internal Shift' -> 'Dangerous Output'. Use slow pan to highlight key steps.
+
+[VOICEOVER 1:30-1:50] Implications are huge: AI in medical or legal apps might unpredictably fail, raising questions about reliability. Current safety measures are more fragile than thought. [VISUAL DIRECTION] Show icons for medical cross and legal scales with warning symbols. Hold on 'FRAGILE' text overlay.
+
+[VOICEOVER 1:50-2:00] Remember, even advanced AI can be deceived by simple tricks—demand stronger safeguards for trustworthy systems. [VISUAL DIRECTION] Fade to black with final animated text: 'AI SAFETY NEEDS FIXING NOW'.

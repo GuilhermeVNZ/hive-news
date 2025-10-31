@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if I told you AI can read music perfectly but fails at basic listening? [VISUAL DIRECTION] Animated text: "AI: Perfect Reader, Terrible Listener" with question mark appearing dramatically
+
+[VOICEOVER 0:05-0:20] New research from Nature/Science reveals a critical gap in today's multimodal AI systems. While they excel with symbolic inputs, they struggle significantly when asked to analyze actual audio recordings. [VISUAL DIRECTION] Show side-by-side comparison: left side shows musical notation with 100% checkmark, right side shows audio waveform with 6% X mark
+
+[VOICEOVER 0:20-0:40] Researchers created a comprehensive benchmark testing AI's ability to identify rhythmic complexity, detect transposed melodies, and recognize musical qualities. They systematically compared performance across different input types and learning conditions. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on accuracy distribution between symbolic vs audio inputs
+
+[VOICEOVER 0:40-1:00] The results are striking: AI models achieved 84-100% accuracy with musical notation but only 6-65% with actual audio. Even state-of-the-art models like Qwen2.5-Omni showed the same dramatic drop when switching from symbols to sound. [VISUAL DIRECTION] Animated bar chart showing dramatic accuracy drop from notation to audio across all tested models
+
+[VOICEOVER 1:00-1:30] The study isolated whether failures stemmed from input limitations or fundamental processing issues. They found AI systems can process symbols effectively but struggle with actual audio perception—difficulties with transcription accuracy, temporal tracking, and salience detection. [VISUAL DIRECTION] Show animated diagram of AI processing pipeline with "bottleneck" highlighted at audio processing stage
+
+[VOICEOVER 1:30-1:50] This has real implications for applications like music recommendation, education, and any system that relies on understanding audio content. Current AI successes may reflect pattern matching rather than true perception. [VISUAL DIRECTION] Show quick cuts of music apps, educational platforms, and audio-based AI applications with question marks appearing
+
+[VOICEOVER 1:50-2:00] The takeaway? Progress requires addressing these fundamental perception challenges, not just scaling existing approaches. True multimodal AI needs to learn how to listen, not just read. [VISUAL DIRECTION] Final screen with text: "AI Can Read. Now It Needs to Learn to Listen."

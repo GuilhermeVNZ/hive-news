@@ -1,0 +1,1 @@
+AI breakthrough: New method AUPO helps artificial intelligence make smarter decisions by focusing on what matters and ignoring the rest. Outperforms standard approaches in 14 benchmark environments with only 4-8% runtime overhead. Nature/Science research shows practical applications for robotics, gaming, and energy optimization.

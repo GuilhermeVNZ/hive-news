@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if art could continue creating itself long after the artist is gone?
+[VISUAL DIRECTION] [Animated text: "ART THAT CREATES ITSELF" with pulsing glow effect]
+
+[VOICEOVER 0:05-0:20] Performance art is inherently ephemeral - once the show ends, it's gone forever. Traditional archives can't capture the magic of live creation.
+[VISUAL DIRECTION] [Quick cuts of empty performance spaces, fading audio waveforms]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI preserve an artist's creative voice so their work continues evolving?
+[VISUAL DIRECTION] [Zoom on paper title: 'Studies for: Human-AI Co-Creative Sound']
+
+[VOICEOVER 0:40-1:00] They developed a system trained exclusively on 200 hours of an artist's past work. The AI learned to generate new soundscapes while preserving the creator's unique identity.
+[VISUAL DIRECTION] [Animated data flow diagram showing training process, highlight "200 hours"]
+
+[VOICEOVER 1:00-1:30] Using SpecMaskGIT generation and optimized transformer architecture, the system produces coherent audio in real-time without perceptible delays. During exhibition, it created evolving eight-channel environments.
+[VISUAL DIRECTION] [Technical schematic animation, then transition to installation footage showing eight speakers]
+
+[VOICEOVER 1:30-1:50] 20,000 visitors experienced this living archive - art that continues generating new elements while remaining faithful to the original creator's style.
+[VISUAL DIRECTION] [Crowd shots from exhibition, overlay text: "20,000 visitors experienced evolving art"]
+
+[VOICEOVER 1:50-2:00] This isn't just preservation - it's the beginning of art that outlives its creator.
+[VISUAL DIRECTION] [Final text overlay: "ART BEYOND LIFESPAN" with subtle particle animation]

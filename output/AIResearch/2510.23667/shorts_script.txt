@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could design a perfect bridge in less time than it takes to snap your fingers? [VISUAL DIRECTION] Animated text: "BRIDGE DESIGN: 1 SECOND" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] MIT and IBM researchers have developed a breakthrough AI that designs optimal structures instantly—something that traditionally took engineers hours or days. [VISUAL DIRECTION] Show time-lapse of traditional engineering design process vs instant AI generation
+
+[VOICEOVER 0:20-0:40] They asked: Can AI predict the perfect structural layout for any shape, size, or loading condition without computational bottlenecks? [VISUAL DIRECTION] Show various bridge and building shapes morphing with different load conditions
+
+[VOICEOVER 0:40-1:00] Their OAT model achieves near-optimal structural designs with 90% lower computational cost than previous AI—and reduces compliance by 1.74% on standard benchmarks. [VISUAL DIRECTION] Zoom on Figure 2 showing compliance comparison charts with dramatic 90% reduction highlight
+
+[VOICEOVER 1:00-1:30] The secret? A shape-agnostic autoencoder trained on millions of optimized configurations that processes variable-sized domains instantly. [VISUAL DIRECTION] Animated diagram showing autoencoder processing different structural shapes into optimal layouts
+
+[VOICEOVER 1:30-1:50] This means engineers can now rapidly prototype complex aerospace, automotive, and civil infrastructure designs in seconds instead of days. [VISUAL DIRECTION] Fast cuts showing aerospace components, car frames, and building structures being generated instantly
+
+[VOICEOVER 1:50-2:00] The future of engineering design just got 90% faster—and it's happening right now. [VISUAL DIRECTION] Final text overlay: "ENGINEERING PROTOTYPING: REVOLUTIONIZED" with MIT/IBM logos

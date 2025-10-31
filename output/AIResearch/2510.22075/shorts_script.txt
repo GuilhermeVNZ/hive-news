@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could share sensitive data without ever revealing a single person's information?
+[VISUAL DIRECTION] Animated text: "SHARE DATA WITHOUT REVEALING IDENTITIES" with question mark morphing into lock icon
+
+[VOICEOVER 0:05-0:20] As organizations increasingly rely on data sharing for AI development, they face impossible choices between utility and privacy protection.
+[VISUAL DIRECTION] Split screen showing hospital data on left, financial records on right, both with red "CONFIDENTIAL" stamps
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create datasets that behave like real data but contain zero actual individual records?
+[VISUAL DIRECTION] Neural network diagram with question mark in center, transitioning to data flow animation
+
+[VOICEOVER 0:40-1:00] The breakthrough: Training AI to learn underlying patterns in sensitive datasets, then generate entirely new data points that preserve statistical relationships.
+[VISUAL DIRECTION] Show correlation matrices from paper side-by-side comparing original vs synthetic data
+
+[VOICEOVER 1:00-1:30] The system analyzes thousands of variables, identifies correlations without memorizing individual records, and produces synthetic data that maintains 97%+ predictive accuracy for machine learning tasks.
+[VISUAL DIRECTION] Animated bar chart showing performance differences within 3 percentage points across multiple benchmarks
+
+[VOICEOVER 1:30-1:50] This enables healthcare institutions to share medical data, financial companies to collaborate on fraud detection, and researchers to provide data access - all while complying with GDPR and HIPAA regulations.
+[VISUAL DIRECTION] Quick cuts: hospital icon, bank building, research lab - all with green checkmarks
+
+[VOICEOVER 1:50-2:00] The future of data sharing just became both powerful and private.
+[VISUAL DIRECTION] Final screen: "SYNTHETIC DATA: REAL PATTERNS, ZERO IDENTITIES" with paper reference: Nature/Science 2510.22075

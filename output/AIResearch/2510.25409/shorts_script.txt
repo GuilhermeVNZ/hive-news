@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems score just 34% on critical knowledge in medicine, agriculture, law, and Ayurveda? That's a massive blind spot affecting billions.
+[VISUAL DIRECTION] [Animated text: 'AI FAILS: 34% Accuracy' with bold red font, quick zoom]
+[VOICEOVER 0:05-0:20] Researchers created BhashaBench V1 to test AI in domains that underpin life in regions like India, where AI is already deployed in farming and healthcare.
+[VISUAL DIRECTION] [Show map of India with icons for agriculture, finance, law, Ayurveda; fast cuts between icons]
+[VOICEOVER 0:20-0:40] They asked: How well do AI models handle nuanced, domain-specific knowledge from authentic sources like government exams?
+[VISUAL DIRECTION] [Display sample Q&A pairs from BhashaBench with text overlays; pan across questions]
+[VOICEOVER 0:40-1:00] The findings? Dramatic disparities—GPT-4o led overall but failed in Ayurveda, especially Panchakarma therapy. Even top models like Qwen3-235B struggled in specialized areas.
+[VISUAL DIRECTION] [Show bar graph of model accuracies; zoom on low scores for Ayurveda and agriculture]
+[VOICEOVER 1:00-1:30] How it works: BhashaBench uses 74,166 Q&A pairs in Hindi and English, sourced from real exams. Surya OCR tech achieved 98%+ accuracy, outperforming Google and Tesseract.
+[VISUAL DIRECTION] [Animate OCR process with text extraction; highlight accuracy stats: 98.1% English, 98.9% Hindi]
+[VOICEOVER 1:30-1:50] Implications: In agriculture, 100 million Indians use AI tools like Krishi Sathi. In healthcare, patients depend on accurate Ayurvedic protocols. AI's Western bias limits utility.
+[VISUAL DIRECTION] [Show real-world scenes: farmers using apps, Ayurvedic treatments; fast cuts with text overlays on numbers]
+[VOICEOVER 1:50-2:00] AI isn't ready for the real world yet. We need benchmarks that capture local knowledge—our future depends on it.
+[VISUAL DIRECTION] [End with bold text: 'AI Must Learn Local' and paper title; hold for 2 seconds]

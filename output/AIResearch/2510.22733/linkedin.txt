@@ -1,0 +1,1 @@
+What if AI could cut search processing time by 80% while improving accuracy? E2Rank achieves exactly that—combining embedding and ranking into one AI model. This breakthrough from Renmin University and Alibaba delivers +4.06 NDCG@10 gains with dramatically lower latency. How will this transform your retrieval systems?

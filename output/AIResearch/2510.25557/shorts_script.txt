@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could remember sequences forever without forgetting anything?
+[VISUAL DIRECTION] Animated text: "AI WITH PERFECT MEMORY?" with quantum circuit animation in background
+
+[VOICEOVER 0:05-0:20] Current AI systems struggle with long sequences - they forget information as they process more data, limiting their ability to understand context in language, video, and complex patterns.
+[VISUAL DIRECTION] Show RNN architecture diagram with "memory loss" animation as sequence length increases
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we overcome the fundamental memory limitations that plague recurrent neural networks?
+[VISUAL DIRECTION] Zoom in on vanishing gradient problem visualization from paper, show gradient collapse in traditional RNNs
+
+[VOICEOVER 0:40-1:00] They discovered a quantum-classical hybrid called QRNN that maintains coherent memory across 400+ timesteps without degradation.
+[VISUAL DIRECTION] Show QRNN architecture diagram with quantum hidden state, highlight "exponentially large state space"
+
+[VOICEOVER 1:00-1:30] The quantum component preserves information unitarily while classical networks steer computation. In tests, QRNN achieved 86.5% accuracy on sentiment analysis vs 84.05% for LSTMs, and near-perfect performance on copying tasks where LSTMs failed.
+[VISUAL DIRECTION] Show comparison charts from paper: sentiment analysis results, copying task performance, gradient propagation across timesteps
+
+[VOICEOVER 1:30-1:50] This bridges quantum computing advantages with practical machine learning, enabling AI that can handle long-term dependencies in language modeling, translation, and sequential data analysis.
+[VISUAL DIRECTION] Show applications: language translation, video understanding, financial forecasting with QRNN architecture overlay
+
+[VOICEOVER 1:50-2:00] Quantum-enhanced AI may finally solve the memory problem that has constrained artificial intelligence for decades.
+[VISUAL DIRECTION] Final text overlay: "QUANTUM AI: REMEMBERING EVERYTHING" with quantum circuit animation

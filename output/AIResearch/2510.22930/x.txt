@@ -1,0 +1,1 @@
+Robots can now understand any environment instantly—no specialized training needed. Gen-LangSplat uses pre-trained AI to interpret scenes, cutting development time by ~90% while matching state-of-the-art accuracy. This breakthrough accelerates practical robot deployment across multiple environments.

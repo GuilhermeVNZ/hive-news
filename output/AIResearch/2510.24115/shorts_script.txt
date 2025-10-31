@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could explain its medical diagnoses like a human colleague?
+[VISUAL DIRECTION] [Animated text: "AI EXPLAINS ITSELF" with medical imagery background]
+
+[VOICEOVER 0:05-0:20] In high-stakes medicine, doctors hesitate to trust AI because they can't understand how it reaches conclusions.
+[VISUAL DIRECTION] [Show pathologist looking at slides with question marks appearing]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that provides transparent explanations for its diagnostic decisions?
+[VISUAL DIRECTION] [Transition to lab setting with researchers working]
+
+[VOICEOVER 0:40-1:00] They developed HistoLens - a framework that transforms AI from black box to transparent partner.
+[VISUAL DIRECTION] [Show Figure 2 with heatmaps highlighting diagnostic regions]
+
+[VOICEOVER 1:00-1:30] Here's how it works: Doctors ask questions in plain English. The system converts these to technical prompts, analyzes images, and generates reports with percentages, intensity grades, and explanations. Most importantly, it provides evidence heatmaps showing exactly which regions it focused on.
+[VISUAL DIRECTION] [Fast cuts showing: doctor typing question → AI processing → heatmap overlay on tissue sample]
+
+[VOICEOVER 1:30-1:50] In testing, it achieved expert-level agreement and proved particularly valuable for verifying staining location—a distinction even experienced pathologists sometimes struggle with due to morphological overlap.
+[VISUAL DIRECTION] [Zoom on cytoplasm vs nucleus staining comparison]
+
+[VOICEOVER 1:50-2:00] This matters because when AI can justify its findings, doctors can trust it with patient lives.
+[VISUAL DIRECTION] [Final text overlay: "VERIFIABLE AI IS HERE"]

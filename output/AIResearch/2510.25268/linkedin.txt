@@ -1,0 +1,1 @@
+What if AI could translate 'open the middle drawer' into precise human-like movements? SynHLMA bridges high-level commands to realistic object manipulation, advancing robotics and virtual reality. Read the Nature/Science article to explore how this technology respects mechanical constraints for plausible actions.

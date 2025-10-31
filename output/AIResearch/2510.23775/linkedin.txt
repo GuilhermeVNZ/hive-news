@@ -1,0 +1,1 @@
+AI can now detect fake images with 96.5% accuracy AND explain its reasoning. This breakthrough system identifies artifacts like unrealistic anatomy and color errors, running efficiently on smartphones. How will this transform digital trust?

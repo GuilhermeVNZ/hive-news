@@ -1,0 +1,1 @@
+What if AI could think like a human expert, comparing alternatives before committing to an answer? RaCoT introduces a plug-and-play mechanism that enhances AI reasoning by generating subtle contrasts, improving accuracy by 1.6-1.7 percentage points on benchmarks. Learn how this proactive approach from Nature/Science research is transforming AI reliability.

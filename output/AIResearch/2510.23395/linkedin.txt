@@ -1,0 +1,1 @@
+AI models like GPT-4o and Llama 3.3 70B performed worse than simple keyword searches at identifying environmental discussions in organizational communications. This research reveals fundamental limitations in how AI interprets nuanced human language about climate and ecological concepts. Consider how these findings impact automated analysis systems in your field.

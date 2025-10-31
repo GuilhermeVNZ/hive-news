@@ -1,0 +1,1 @@
+AI breakthrough: New planning system achieves 99.7% efficiency in robotics by dynamically adjusting detail levels, outperforming traditional methods. This adaptive approach mirrors human problem-solving. Read the Nature/Science paper to understand how mixed-density diffusion could revolutionize autonomous systems.

@@ -1,0 +1,1 @@
+AI breakthrough: Microwave imaging no longer struggles with scatter ambiguity. University of Manitoba's physics-constrained approach achieves remarkable accuracy (MSE 0.0334) for cancer detection and security screening. Nature/Science paper details how it selects the most plausible reconstruction from multiple solutions.

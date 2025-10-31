@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could tell you when it's making mistakes? New research gives AI systems the ability to measure their own incorrectness.
+[VISUAL DIRECTION] Animated text: "AI THAT CATCHES ITS OWN ERRORS" with pulsing alert icon
+[VOICEOVER 0:05-0:20] As large language models become ubiquitous tools, their frequent generation of incorrect content without warning poses serious risks in high-stakes applications.
+[VISUAL DIRECTION] Show AI generating text with red error flags popping up
+[VOICEOVER 0:20-0:40] Researchers asked: Can we give AI systems the ability to assess their own mistakes and provide guarantees about their reliability?
+[VISUAL DIRECTION] Zoom in on question mark transforming into checkmark
+[VOICEOVER 0:40-1:00] They developed e-scores - a method that calculates how incorrect each AI response might be, comparing outputs against previously evaluated datasets.
+[VISUAL DIRECTION] Show e-score scale from 0-100 with color gradient (green to red)
+[VOICEOVER 1:00-1:30] The system works by analyzing AI's step-by-step solutions to complex problems. Low e-scores suggest correct responses, while high scores signal potential errors, particularly effective at catching cascading mistakes.
+[VISUAL DIRECTION] Animated flowchart showing problem → AI solution → e-score calculation → reliability assessment
+[VOICEOVER 1:30-1:50] This has huge implications: In education, it helps students identify AI errors. In research, it flags potentially incorrect AI-generated analyses. Businesses can now make decisions based on AI responses with guaranteed reliability.
+[VISUAL DIRECTION] Split screen showing classroom, lab, and business office scenarios with e-score overlays
+[VOICEOVER 1:50-2:00] The future of AI isn't just about smarter systems - it's about systems that know when they're wrong.
+[VISUAL DIRECTION] Final text: "TRUSTWORTHY AI IS HERE" with e-score meter showing high reliability

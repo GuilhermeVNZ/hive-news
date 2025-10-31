@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] AI can solve math problems with 96% accuracy, but it still can't think like a human. Why is that?
+[VISUAL DIRECTION] Animated text: 96% accuracy on screen with a question mark.
+[VOICEOVER 0:05-0:20] A comprehensive review in Nature/Science analyzed AI's problem-solving skills. It's not just about getting answers right—it's about how AI understands and reasons.
+[VISUAL DIRECTION] Show a split screen: one side with AI symbols, the other with a human brain. Zoom in on key terms like 'Problem Understanding'.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI match human intelligence in tasks requiring flexible, integrated thinking? They tested AI on datasets like Math23K and GSM8K to find out.
+[VISUAL DIRECTION] Display dataset names with fast cuts to graphs from the paper, highlighting performance gaps.
+[VOICEOVER 0:40-1:00] They found AI excels in logical organization, with methods like DEDUCTREASONER hitting 85.1% on Math23K, but it struggles with critical thinking and adaptive learning.
+[VISUAL DIRECTION] Show a bar graph comparing AI methods, with DEDUCTREASONER's score emphasized. Animate arrows pointing to 'Logical Organization'.
+[VOICEOVER 1:00-1:30] How it works: AI uses networks and tools like Program-of-Thought to generate steps, but it can't genuinely understand concepts or combine skills like humans do in geometry.
+[VISUAL DIRECTION] Use animated flowcharts showing AI reasoning steps, then cross them out with 'No Genuine Understanding' text overlay.
+[VOICEOVER 1:30-1:50] This has real implications for education and scientific discovery, where AI's limitations in integrated decision-making could hinder progress.
+[VISUAL DIRECTION] Show icons for education and science with a caution symbol. Pan to a summary of limitations from the article.
+[VOICEOVER 1:50-2:00] So, AI is powerful but not yet intelligent. The gap between accuracy and true reasoning defines the future of AI.
+[VISUAL DIRECTION] End with the hook text and a closing visual of a bridge symbolizing the gap, holding for emphasis.

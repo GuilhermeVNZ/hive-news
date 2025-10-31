@@ -1,0 +1,1 @@
+AI systems score 84-100% on music notation but only 6-65% when actually listening to audio recordings. New research reveals multimodal AI's critical listening gap—they excel with symbols but struggle with real perception. This exposes limitations in current 'intelligence' that developers must address for reliable real-world applications.

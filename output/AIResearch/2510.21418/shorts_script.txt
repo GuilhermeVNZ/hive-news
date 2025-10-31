@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could strategically ignore what it already knows and focus only on its knowledge gaps?
+[VISUAL DIRECTION] Animated text: "AI's Secret: Focus on the Unknown" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Most AI training requires massive resources and time to master tasks through trial and error. But what if we could make AI learn more like humans?
+[VISUAL DIRECTION] Show AI training montage with resource counters draining rapidly, then transition to human learning analogy
+
+[VOICEOVER 0:20-0:40] The challenge: AI often wastes time repeatedly practicing what it already knows. Researchers asked: Can AI prioritize exploring unfamiliar scenarios instead?
+[VISUAL DIRECTION] Split screen showing AI repeating same task vs exploring new scenarios
+
+[VOICEOVER 0:40-1:00] DreamerV3-XP introduces uncertainty-driven exploration. It measures where the AI is most uncertain and focuses learning there.
+[VISUAL DIRECTION] Animated diagram showing uncertainty scoring system with high scores on unfamiliar areas
+
+[VOICEOVER 1:00-1:30] Here's how it works: The AI uses world models to imagine futures without actual interaction. It combines prioritized experience replay with disagreement between multiple world models to identify knowledge gaps.
+[VISUAL DIRECTION] Step-by-step animation: 1) World modeling 2) Uncertainty measurement 3) Focus on high-uncertainty areas
+
+[VOICEOVER 1:30-1:50] Results show steeper learning curves and reduced loss on underrepresented transitions. Particularly effective for complex tasks like Cup Catch requiring precise coordination.
+[VISUAL DIRECTION] Show learning curve comparison graphs from paper, zoom on performance improvements
+
+[VOICEOVER 1:50-2:00] This could revolutionize robotics and autonomous systems, making sophisticated AI more accessible with fewer resources.
+[VISUAL DIRECTION] Final shot of robotics applications with text overlay: "Smarter AI, Fewer Resources"

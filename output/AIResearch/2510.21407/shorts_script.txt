@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could design computer chips better than humans?
+[VISUAL DIRECTION] Animated text: "AI Designs Chips" with circuit board background
+
+[VOICEOVER 0:05-0:20] Current chip design takes months and often gets stuck in suboptimal solutions. The REvolution framework changes everything.
+[VISUAL DIRECTION] Show timeline animation of traditional design process vs AI approach
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI automatically generate Register-Transfer Level code - the blueprint for computer chips - while optimizing for both correctness and efficiency?
+[VISUAL DIRECTION] Zoom in on RTL code structure with highlighting
+
+[VOICEOVER 0:40-1:00] The breakthrough: AI achieved near-perfect accuracy with 30% power reduction using evolutionary computation and large language models.
+[VISUAL DIRECTION] Show Figure 2 with power consumption comparison charts
+
+[VOICEOVER 1:00-1:30] How it works: Two populations evolve - one explores failures, one optimizes successes. The system systematically improves designs through generations.
+[VISUAL DIRECTION] Animated evolution diagram showing population branching
+
+[VOICEOVER 1:30-1:50] This could accelerate semiconductor manufacturing, impacting everything from consumer devices to supercomputers.
+[VISUAL DIRECTION] Fast cuts showing various electronic devices
+
+[VOICEOVER 1:50-2:00] AI is now designing the computers that will design the next generation of AI.
+[VISUAL DIRECTION] Circuit board animation morphing into AI brain graphic

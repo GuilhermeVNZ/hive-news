@@ -1,0 +1,1 @@
+AI bias isn't a bug—it's a feature. Texas A&M researchers turned LLM persona variations into a reliability tool, boosting accuracy up to 19.2% by harmonizing multiple perspectives. Discover how embracing diversity makes AI systems more robust in this Nature/Science study.

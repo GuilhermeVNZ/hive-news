@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if AI could learn to avoid danger just by watching experts, without anyone ever defining what 'danger' means mathematically?
+
+[VISUAL DIRECTION] Animated text: "AI Learns Safety by Watching" with pulsing question mark. Fast zoom on abstract neural network visualization.
+
+[VOICEOVER 0:05-0:20] Autonomous systems face a critical challenge: many real-world dangers are too complex to define with mathematical rules. Think of tailgating in driving or subtle hazards in industrial settings.
+
+[VISUAL DIRECTION] Show quick cuts: autonomous car footage, industrial robot arm, drone navigation. Text overlay: "Complex Dangers = Hard to Define"
+
+[VOICEOVER 0:20-0:40] Researchers at Washington University asked: Can AI learn safety constraints directly from expert demonstrations, bypassing the need for mathematical hazard definitions?
+
+[VISUAL DIRECTION] Show research lab setting with animated thought bubble containing mathematical equations crossed out. Text: "Beyond Mathematical Rules"
+
+[VOICEOVER 0:40-1:00] They developed ICL-CBF - Inverse Constraint Learning for Control Barrier Functions. The AI watches experts successfully complete tasks, then learns to distinguish safe from unsafe states.
+
+[VISUAL DIRECTION] Show neural network diagram with "Expert Demo" input flowing to "Safety Classifier" output. Highlight the learning loop with circular arrows.
+
+[VOICEOVER 1:00-1:30] The system iteratively improves its safety filter. In robot navigation tests, it achieved 100% success with zero collisions, outperforming existing methods. For quadrotors, it matched performance of systems trained with ground-truth safety labels.
+
+[VISUAL DIRECTION] Show robot navigation success metrics with 100% highlighted. Display quadrotor maintaining stability comparison. Text overlays: "Zero Collisions" "Outperforms Baselines"
+
+[VOICEOVER 1:30-1:50] This means self-driving cars could learn safe driving behaviors by watching expert drivers. Industrial robots could work safely alongside humans. Drones could navigate complex environments by learning from pilots.
+
+[VISUAL DIRECTION] Show applications: autonomous vehicle following safe distance, robot-human collaboration, drone navigating obstacles. Text: "Real-World Safety Applications"
+
+[VOICEOVER 1:50-2:00] The future of autonomous safety may not be in programming rules, but in learning from expertise - bridging the gap between theoretical guarantees and practical deployment.

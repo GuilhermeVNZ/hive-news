@@ -1,0 +1,1 @@
+AI breakthrough: Google DeepMind's new method stops AI from getting stuck on single solutions. It explores multiple optimal paths at once, achieving 40% better coverage in robotics. Could transform drug discovery and autonomous systems.

@@ -1,0 +1,1 @@
+AI now achieves 64.4% accuracy on complex database queries using just 7B parameters - outperforming models 2x its size. This breakthrough in multi-turn SQL generation could revolutionize business analytics by enabling non-technical users to query databases directly. What industries will be transformed first?

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your shoes could see every move you make—from dancing to crouching—without a single camera?
+[VISUAL DIRECTION] [Animated text: 'Shoes That See Your Moves' with fast zoom on a shoe insole graphic]
+[VOICEOVER 0:05-0:20] Current motion capture needs bulky suits or controlled labs, limiting real-world use. Step2Motion changes that.
+[VISUAL DIRECTION] [Show split screen: left side with clunky motion-capture suit, right side with simple shoe insoles; fast cuts between them]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we reconstruct full-body locomotion using only data from smart insoles?
+[VISUAL DIRECTION] [Display question text overlay: 'Can Insoles Track Full Motion?' with arrow pointing to insole diagram]
+[VOICEOVER 0:40-1:00] They discovered yes—Step2Motion combines pressure sensors and IMUs in insoles, achieving 7.2-10.7 cm positional accuracy across diverse activities.
+[VISUAL DIRECTION] [Zoom on Figure 2 from paper showing pressure distribution peaks; text overlay: 'Accuracy: 7.2-10.7 cm']
+[VOICEOVER 1:00-1:30] How it works: A diffusion model processes pressure, acceleration, and rotation data, iteratively refining motion sequences. For walking, acceleration dominates; for squatting, pressure is key.
+[VISUAL DIRECTION] [Animated flow diagram: pressure data -> IMU data -> model -> motion output; hold on key steps with text labels]
+[VOICEOVER 1:30-1:50] Implications: This enables outdoor rehabilitation, athletic training, and VR without external gear, making motion analytics practical and accessible.
+[VISUAL DIRECTION] [Show quick cuts: athlete running outdoors, patient in therapy, VR user; text overlay: 'Real-World Motion Capture']
+[VOICEOVER 1:50-2:00] Your next steps could be fully tracked by the shoes you're wearing right now.
+[VISUAL DIRECTION] [Final shot of ordinary shoes with glowing insole effect; slow fade to black]

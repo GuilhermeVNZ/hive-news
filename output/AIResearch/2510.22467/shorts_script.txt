@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could train powerful AI models using only a quarter of the memory typically required?
+[VISUAL DIRECTION] [Animated text: "AI TRAINING: 65.4 GB → 17.5 GB" with dramatic countdown animation]
+
+[VOICEOVER 0:05-0:20] Training today's advanced AI systems demands massive computational resources, making development inaccessible to many researchers and organizations.
+[VISUAL DIRECTION] [Show GPU racks with red "X" overlays and price tags flashing "$10,000+" - fast cuts between different expensive hardware setups]
+
+[VOICEOVER 0:20-0:40] But researchers at Sun Yat-sen University asked: Can we dramatically reduce these memory requirements without sacrificing performance?
+[VISUAL DIRECTION] [Zoom in on researcher at computer with thought bubble containing "65.4 GB → ?" - hold on questioning expression]
+
+[VOICEOVER 0:40-1:00] Their solution, GradLite, achieves a remarkable 73% reduction in VRAM usage - from 65.4 GB down to just 17.5 GB.
+[VISUAL DIRECTION] [Bar chart animation showing dramatic drop from 65.4 to 17.5 GB - emphasize the gap with bold colors and percentage callout]
+
+[VOICEOVER 1:00-1:30] How does it work? GradLite uses two key techniques: low-rank compression that reduces calculation complexity, and a residual accumulation mechanism that ensures no gradient information is permanently lost despite approximations.
+[VISUAL DIRECTION] [Animated diagrams showing compression process - circles shrinking into smaller circles while maintaining shape - with text overlays: "Low-rank compression" and "Residual accumulation"]
+
+[VOICEOVER 1:30-1:50] The impact is significant - throughput increased by 27% while maintaining competitive performance on mathematical reasoning (74.2% on GSM8K) and general knowledge benchmarks.
+[VISUAL DIRECTION] [Side-by-side comparison: left side shows single researcher with modest setup, right side shows expensive server room - arrow pointing "accessible to all" from left side]
+
+[VOICEOVER 1:50-2:00] This breakthrough democratizes AI development, making powerful model training accessible to researchers and organizations with limited budgets.
+[VISUAL DIRECTION] [Final screen: "AI Development: Now Accessible to All" with university logo and paper title "Backward-Friendly Optimization" - slow fade out]

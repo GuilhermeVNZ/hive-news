@@ -1,0 +1,1 @@
+Quantum networks now have built-in protection against quantum computer attacks. Pittsburgh researchers integrated cryptography directly into quantum channels, creating unified systems that withstand future threats while maintaining quantum coherence. The future of secure communications just got safer.

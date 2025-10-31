@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could explain its decisions as clearly as a human expert?
+[VISUAL DIRECTION] Animated text: "AI BLACK BOX PROBLEM" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] When AI helps diagnose diseases or makes critical predictions, we need to understand how it reached those conclusions. But current AI systems often operate as mysterious black boxes.
+[VISUAL DIRECTION] Show medical imaging with AI overlay, then transition to opaque box animation
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that automatically explains itself in language anyone can understand?
+[VISUAL DIRECTION] Zoom on researcher figures analyzing data patterns
+
+[VOICEOVER 0:40-1:00] They discovered ProfileXAI - a system that selects the best explanation technique for each situation and generates explanations matched to user expertise.
+[VISUAL DIRECTION] Show flowchart of ProfileXAI decision process with LIME/SHAP branches
+
+[VOICEOVER 1:00-1:30] The system analyzes whether you're an engineer, doctor, or general user, then retrieves knowledge and generates natural language explanations. For doctors, it translates technical terms; for patients, it uses simple analogies.
+[VISUAL DIRECTION] Split screen showing different explanation styles for different user types
+
+[VOICEOVER 1:30-1:50] Testing showed LIME achieved 0.30 infidelity with 0.7 Lipschitz stability, while SHAP excelled at capturing feature interactions. User ratings averaged 4.1/5, with domain experts giving 3.77 for medical explanations.
+[VISUAL DIRECTION] Animated charts showing performance metrics and user satisfaction scores
+
+[VOICEOVER 1:50-2:00] This breakthrough makes AI trustworthy for healthcare, finance, and any field where decisions impact lives.
+[VISUAL DIRECTION] Final text overlay: "TRANSPARENT AI = TRUSTWORTHY DECISIONS"

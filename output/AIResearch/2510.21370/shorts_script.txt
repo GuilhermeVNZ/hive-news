@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could run an entire scientific conference autonomously—from research to publication?
+[VISUAL DIRECTION] Animated text: "AI Conference" with question mark, fast zoom on conference podium
+
+[VOICEOVER 0:05-0:20] Researchers developed HIKMA, a multi-agent system that processed datasets, managed peer review, and delivered talks through avatars.
+[VISUAL DIRECTION] Show workflow diagram from paper, highlight agent interactions, fast cuts between different stages
+
+[VOICEOVER 0:20-0:40] They asked: Can AI replicate the complex process of scientific communication while maintaining transparency and safeguards?
+[VISUAL DIRECTION] Animated text: "30 Papers Processed" with counter animation, show peer review interface
+
+[VOICEOVER 0:40-1:00] The system successfully processed 30 papers through eight-stage workflow, with dual agents providing constructive and skeptical reviews.
+[VISUAL DIRECTION] Zoom on review metrics from paper, show acceptance rates, highlight "Weak Accept" ratings
+
+[VOICEOVER 1:00-1:30] HIKMA used constrained prompts to remain grounded in source material, tracked all changes, and converted papers into avatar-narrated presentations.
+[VISUAL DIRECTION] Show avatar presentation clip, zoom on cryptographic verification process, highlight watermarked documents
+
+[VOICEOVER 1:30-1:50] This means faster knowledge sharing and automated assistance for literature review and presentation—but AI still needs human oversight for bias correction and judgment.
+[VISUAL DIRECTION] Split screen: AI workflow on left, human researcher on right, emphasize collaboration
+
+[VOICEOVER 1:50-2:00] AI isn't replacing researchers—it's creating new ways to accelerate science while preserving integrity.
+[VISUAL DIRECTION] Final text overlay: "AI + Human Collaboration" with Nature/Science logos, hold for emphasis

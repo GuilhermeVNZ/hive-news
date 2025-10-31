@@ -1,0 +1,209 @@
+{
+  "sites": {
+    "scienceai": {
+      "id": "scienceai",
+      "name": "Science AI",
+      "domain": "scienceai.news",
+      "enabled": false,
+      "collectors": [
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "enabled": false,
+          "api_key": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          }
+        }
+      ],
+      "writer": {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
+        "base_url": "https://api.deepseek.com",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "enabled": true,
+        "use_compressor": null
+      },
+      "education_sources": [],
+      "social_media": [
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "x",
+          "name": "X (Twitter)",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        }
+      ],
+      "collection_frequency_minutes": null,
+      "writing_style": null,
+      "prompt_article": null,
+      "prompt_social": null,
+      "prompt_blog": null,
+      "prompt_article_enabled": null,
+      "prompt_social_enabled": null,
+      "prompt_blog_enabled": null
+    },
+    "airesearch": {
+      "id": "airesearch",
+      "name": "AI Research",
+      "domain": "airesearch.news",
+      "enabled": true,
+      "collectors": [
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "enabled": true,
+          "api_key": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          }
+        },
+        {
+          "id": "pmc",
+          "name": "PubMed Central",
+          "enabled": true,
+          "api_key": null,
+          "config": {}
+        },
+        {
+          "id": "semantic_scholar",
+          "name": "Semantic Scholar",
+          "enabled": true,
+          "api_key": null,
+          "config": {}
+        }
+      ],
+      "writer": {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
+        "base_url": "https://api.deepseek.com",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "enabled": true,
+        "use_compressor": null
+      },
+      "education_sources": [
+        {
+          "id": "edx",
+          "name": "edX",
+          "enabled": false,
+          "api_key": null,
+          "config": {
+            "language": "en"
+          }
+        },
+        {
+          "id": "mit_ocw",
+          "name": "MIT OpenCourseWare",
+          "enabled": false,
+          "api_key": null,
+          "config": {
+            "language": "en"
+          }
+        },
+        {
+          "id": "class_central",
+          "name": "Class Central",
+          "enabled": false,
+          "api_key": null,
+          "config": {
+            "language": "en"
+          }
+        }
+      ],
+      "social_media": [
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "tiktok",
+          "name": "TikTok",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "x",
+          "name": "X (Twitter)",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "instagram",
+          "name": "Instagram",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "facebook",
+          "name": "Facebook",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        }
+      ],
+      "collection_frequency_minutes": null,
+      "writing_style": null,
+      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nGeneral scientific publication:\n- Clear, accurate, accessible communication\n- Emphasis on evidence-based reporting\n- Professional academic tone\n- Broad scientific audience\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference results from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n- **SEO**: Optimize the title for SEO search\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nIMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):\n{\n  \"title\": \"...\",                           // SHORT HOOK TITLE (max 8 words, strong clickbait)\n  \"article_text\": \"...\",                    // Full article body (500-800 words)\n  \"image_categories\": [                      // Array of image categories in priority order\n    \"category1\", \"category2\", \"category3\"    // Based on: ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n  ]\n}\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"",
+      "prompt_social": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. Create viral social media content based on Nature/Science style article below\n2. **FACT-BASED ONLY**: Do not add information not in the article\n3. Start each piece with a VIRAL HOOK (surprising fact, bold question, tension)\n4. Match Nature/Science credibility - no clickbait lies\n\n---\n\n## ARTICLE (Nature/Science style - YOUR ONLY SOURCE):\n{{article_text}}\n\n## ORIGINAL PAPER TITLE:\n{{paper_title}}\n\n---\n\nDELIVERABLES:\n\n### 1. LINKEDIN POST (300 characters max)\nSTRUCTURE:\n- Line 1: VIRAL HOOK (surprising fact/question from article)\n- Line 2: Core finding in 1 sentence\n- Line 3: Thought-provoking question or call-to-action\n\nSTYLE:\n- Professional tone (Nature/Science authority)\n- No emojis, no hashtag spam\n- Fact-based (from article only)\n\nEXAMPLE HOOKS:\n✓ \"What if AI could predict every protein structure in existence?\"\n✓ \"The universe might be 2 billion years younger than we thought.\"\n✓ \"Cancer cells have a hidden escape route. Researchers just found it.\"\n\n### 2. X POST (280 characters max)\nSTRUCTURE:\n- HOOK first (stop the scroll)\n- Key insight compressed\n- Paper relevance\n\nSTYLE:\n- Match Nature/Science credibility\n- No fabrication\n- No hashtags unless natural\n\n### 3. YOUTUBE SHORTS SCRIPT (2 minutes / ~300 words)\n\nFORMAT (alternating blocks with timestamps):\n\n[VOICEOVER 0:00-0:05]\n[Viral hook - surprising statement/question from article creating immediate tension]\n\n[VISUAL DIRECTION]\n[Director note: \"Show Figure 2 with zoom on peak distribution\" OR \"Animated text: key stat\"]\n\n[VOICEOVER 0:05-0:15]\n[Setup context - why viewer should care, from article]\n\n[VISUAL DIRECTION]\n[Transition guidance, what to emphasize]\n\nSCRIPT STRUCTURE (2 minutes):\n- Hook (0:00-0:05) - Grab attention instantly\n- Context (0:05-0:20) - Why this matters\n- Problem/Question (0:20-0:40) - What researchers asked\n- Key Finding (0:40-1:00) - What they discovered\n- How It Works (1:00-1:30) - Explain the science\n- Implications (1:30-1:50) - Real-world impact FROM ARTICLE\n- Closing Hook (1:50-2:00) - Memorable takeaway\n\nVOICEOVER STYLE:\n- Conversational but intelligent\n- No AI clichés or buzzwords\n- Active voice, direct statements\n- Assume intelligent audience\n\nVISUAL REQUIREMENTS:\n- Reference specific figures from paper\n- Include zoom/pan directions\n- Suggest text overlays for key numbers\n- Indicate pacing (fast cuts vs holds)\n\nOUTPUT FORMAT (JSON):\n{\n  \"linkedin_post\": \"...\",\n  \"x_post\": \"...\",\n  \"shorts_script\": \"...\"\n}",
+      "prompt_blog": null,
+      "prompt_article_enabled": true,
+      "prompt_social_enabled": false,
+      "prompt_blog_enabled": null
+    }
+  },
+  "updated_at": "2025-10-31T00:32:27.601193500+00:00"
+}

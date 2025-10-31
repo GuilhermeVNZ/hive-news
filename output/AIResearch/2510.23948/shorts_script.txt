@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the most advanced AI can't think strategically even in a game we've mastered for centuries?
+[VISUAL DIRECTION] Animated text: "AI CAN'T THINK STRATEGICALLY" with chess board background, fast zoom on text
+
+[VOICEOVER 0:05-0:20] New research from the University of Toronto reveals that large language models, including GPT-5, struggle with the very strategic thinking that makes chess challenging.
+[VISUAL DIRECTION] Show rotating 3D model of brain with chess pieces, transition to university logo
+
+[VOICEOVER 0:20-0:40] Researchers created ChessQA - 3,500 test items across five categories from basic rules to complex position evaluation. They asked: Can AI truly understand strategic planning?
+[VISUAL DIRECTION] Show animated bar chart growing from "Structural" to "Judgment" categories, highlight "3,500 test items" text overlay
+
+[VOICEOVER 0:40-1:00] The results are staggering: While AI achieves 97% accuracy on basic chess rules, its performance plummets when strategic judgment is required.
+[VISUAL DIRECTION] Show dramatic graph drop from 97% to near 50%, animated text: "97% → 50%" with downward arrow
+
+[VOICEOVER 1:00-1:30] GPT-5 and other top models perform at near-guessing levels on position evaluation - the core of strategic planning. They can recognize patterns but fail at calculating long-term advantages.
+[VISUAL DIRECTION] Show chess position with AI "thinking" animation, then red X over strategic moves, text: "PATTERN RECOGNITION ✓ STRATEGIC PLANNING ✗"
+
+[VOICEOVER 1:30-1:50] This isn't just about chess - it reveals fundamental gaps in AI's ability to handle complex real-world decisions where long-term planning is crucial.
+[VISUAL DIRECTION] Transition from chess board to business/medical/engineering scenarios with question marks over strategic decisions
+
+[VOICEOVER 1:50-2:00] The takeaway: Even our most advanced AI still can't think ahead like humans can. Strategic planning remains AI's final frontier.
+[VISUAL DIRECTION] Final shot of chess grandmaster silhouette against AI circuit board, text: "STRATEGIC THINKING: AI'S FINAL FRONTIER"

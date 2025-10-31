@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI models have a memory quirk that mirrors human forgetfulness? They're much better at recalling the start and end of information, struggling with the middle.
+[VISUAL DIRECTION] [Animated text: 'AI Memory Quirk: Start & End Best, Middle Forgotten' with bold, flashing arrows pointing to the words 'start' and 'end']
+[VOICEOVER 0:05-0:20] This isn't just a curiosity—it affects how AI systems like ChatGPT and Llama handle long documents, where critical details in the middle might be missed.
+[VISUAL DIRECTION] [Show a fast-cut sequence of documents with highlighted sections fading in and out, emphasizing the middle parts dimming]
+[VOICEOVER 0:20-0:40] Researchers at Indiana University asked: How does input position affect AI recall? They used systematic prompts to isolate this effect, removing semantic biases.
+[VISUAL DIRECTION] [Display a simplified diagram of input sequences with tokens labeled, panning across to show varying positions]
+[VOICEOVER 0:40-1:00] The key finding: AI models show stronger memory for tokens at the beginning and end, with a drop in the middle. This held true across seven models, including Mistral and others.
+[VISUAL DIRECTION] [Show Figure 2 from the paper with a zoom on the peak distribution at start and end positions, highlighting the dip in the middle]
+[VOICEOVER 1:00-1:30] How does it work? It's tied to 'induction heads' in transformers—when disabled, correct predictions plummet. This confirms the role of in-context learning in serial recall behavior.
+[VISUAL DIRECTION] [Animated illustration of induction heads in a neural network, with parts lighting up and then dimming when 'disabled', accompanied by text: 'Ablation: 9x10^-5 drop in accuracy']
+[VOICEOVER 1:30-1:50] Implications are huge: from document analysis to medical data processing, this bias means AI might not reliably retrieve all critical information. It suggests switching architectures won't fix this fundamental limitation.
+[VISUAL DIRECTION] [Fast cuts of real-world scenarios: a doctor reviewing patient records, a lawyer analyzing contracts, with warning icons popping up over middle sections]
+[VOICEOVER 1:50-2:00] So next time you use AI, remember: its memory isn't perfect. The start and end stick—but the middle might slip away.
+[VISUAL DIRECTION] [Final screen with animated text: 'AI Remembers Start & End Best' and a call-to-action arrow pointing to a paper icon labeled 'Study: Temporal Biases in Transformers', holding for emphasis]

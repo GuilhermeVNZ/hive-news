@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could truly understand when you're making a mistake versus intentionally deceiving it?
+[VISUAL DIRECTION] [Animated text: "AI CAN READ YOUR BEHAVIOR" with question mark animation]
+[VOICEOVER 0:05-0:20] As AI integrates into our daily lives, a critical gap emerges: machines execute tasks flawlessly but struggle to interpret human behavior the way humans do.
+[VISUAL DIRECTION] [Show AI robot and human working together with confusion symbols]
+[VOICEOVER 0:20-0:40] This gap becomes dangerous when misinterpretations lead to risks or failed teamwork. How can we bridge this fundamental limitation?
+[VISUAL DIRECTION] [Transition to assembly line scenario with warning signs]
+[VOICEOVER 0:40-1:00] OntoPret provides the breakthrough - enabling AI to formally interpret human actions using machine-readable categories of behavior meaning.
+[VISUAL DIRECTION] [Show three distinct behavior categories: Task-Oriented, Deviation, Deception with clear visual distinctions]
+[VOICEOVER 1:00-1:30] The system uses logical reasoning to assess whether behavior matches expectations, violates them, or involves intentional deception. It monitors scenarios, establishes expectations, and interprets observed actions.
+[VISUAL DIRECTION] [Animated flow diagram showing scenario → expectation → assessment process]
+[VOICEOVER 1:30-1:50] This means safer workplaces where AI can detect when a worker misses required steps, or in autonomous vehicles that better understand pedestrian intentions.
+[VISUAL DIRECTION] [Show healthcare application and security monitoring scenarios]
+[VOICEOVER 1:50-2:00] We're moving toward AI that doesn't just follow commands, but genuinely works alongside us - understanding the nuances that matter.

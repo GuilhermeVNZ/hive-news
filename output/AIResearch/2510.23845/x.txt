@@ -1,0 +1,1 @@
+AI detects suicide risk at 87.9% accuracy—beating top models like GPT-5. Emory's BENCH system uses clinician-annotated data to improve safety in health support. A breakthrough, but still misses urgent interventions. Read the Nature/Science paper.

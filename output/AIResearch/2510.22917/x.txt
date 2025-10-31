@@ -1,0 +1,1 @@
+Robots just got smarter at finding their way around. New research shows they can navigate unknown spaces 65.4% of the time using hybrid perception - combining what they see directly with overall layout understanding. Published in Nature/Science, this could transform autonomous systems in homes and emergency response.

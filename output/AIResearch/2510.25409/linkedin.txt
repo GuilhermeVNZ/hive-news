@@ -1,0 +1,1 @@
+AI systems fail in critical domains like agriculture and Ayurveda, scoring only 34% on specialized knowledge. BhashaBench V1 reveals this gap with 74,166 Q&A pairs. Are we deploying AI that misunderstands billions? Read the findings.

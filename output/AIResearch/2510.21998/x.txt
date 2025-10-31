@@ -1,0 +1,1 @@
+AI models can't answer 'what if' questions about their reasoning, a Columbia study reveals. This gap hinders trust in high-stakes fields like medicine and law, demanding better interpretability.

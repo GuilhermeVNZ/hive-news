@@ -1,0 +1,1 @@
+Your shoes now reconstruct full-body motion—no cameras needed. Step2Motion uses smart insoles with pressure sensors and IMUs to track running, dancing, and more, achieving 7.2-10.7 cm accuracy. A Nature/Science study shows this tech makes motion capture accessible outdoors for training and therapy.

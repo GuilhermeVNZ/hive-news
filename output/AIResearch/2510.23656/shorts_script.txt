@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if traffic predictions weren't random but followed hidden patterns that AI could decode?
+[VISUAL DIRECTION] Animated text: "Traffic Predictions Aren't Random" with question mark morphing into AI brain icon
+
+[VOICEOVER 0:05-0:20] For years, we've assumed traffic forecast errors were random - but new research reveals they're actually spatiotemporally autocorrelated, meaning mistakes repeat in predictable patterns across time and locations.
+[VISUAL DIRECTION] Show Figure 1 covariance matrices with zoom on clustered error patterns, animated arrows showing error propagation between sensors
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we model these hidden error correlations to make traffic predictions more accurate?
+[VISUAL DIRECTION] Split screen: left shows chaotic traffic flow, right shows researchers analyzing data with question marks
+
+[VOICEOVER 0:40-1:00] They discovered that by accounting for autocorrelated errors using vector autoregressive processes, AI can boost forecasting accuracy by an average of 6.5% across multiple datasets.
+[VISUAL DIRECTION] Show Table 1 results with highlighted 6.5% improvement, animated arrow pointing upward
+
+[VOICEOVER 1:00-1:30] The system works by modeling error dependencies between nearby sensors and time steps, then embedding this understanding directly into the training process. It captures how errors at one location influence others, similar to ripples spreading in water.
+[VISUAL DIRECTION] Animated diagram showing error propagation like water ripples, with VAR process equations appearing briefly
+
+[VOICEOVER 1:30-1:50] For commuters, this means more reliable arrival estimates. For city planners, better congestion management. The STGCN model showed 10% RMSE improvement for 45-minute-ahead forecasts.
+[VISUAL DIRECTION] Show Figure 5 comparison: before (cluttered error magnitudes) vs after (cleaner predictions matching truth)
+
+[VOICEOVER 1:50-2:00] Traffic predictions are about to get much smarter - because the errors were never random to begin with.
+[VISUAL DIRECTION] Final shot: smooth traffic flow animation with text overlay: "Smarter Traffic, Better Commutes"

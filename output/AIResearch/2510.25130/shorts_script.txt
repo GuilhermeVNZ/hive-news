@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI systems could be made fundamentally immune to malicious attacks that cause catastrophic errors?
+[VISUAL DIRECTION] [Animated text: IMMUNE AI? with glitching effect transitioning to stable text]
+
+[VOICEOVER 0:05-0:20] As AI integrates into everything from self-driving cars to medical diagnostics, these systems face serious security risks from subtle data manipulations.
+[VISUAL DIRECTION] [Quick cuts: autonomous vehicle, medical scanner, security system - all with subtle glitch effects]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI inherently resistant to these attacks while maintaining core functionality?
+[VISUAL DIRECTION] [Show animated question mark transforming into shield symbol]
+
+[VOICEOVER 0:40-1:00] They discovered that by selectively replacing vulnerable neural components with more stable alternatives, they can significantly tighten what's known as the Lipschitz constant.
+[VISUAL DIRECTION] [Animated neural network diagram highlighting "influential neurons" being replaced with stable versions]
+
+[VOICEOVER 1:00-1:30] The method identifies the most vulnerable neurons through backward selection and replaces non-linear ReLU activation functions, reducing overall sensitivity without compromising performance.
+[VISUAL DIRECTION] [Zoom on neural network layers showing backward selection process and function replacement animation]
+
+[VOICEOVER 1:30-1:50] This enables certified robustness - meaning we can mathematically guarantee AI resistance to attacks in critical real-world applications.
+[VISUAL DIRECTION] [Show certification stamp appearing over stable AI systems in autonomous vehicle and medical scenarios]
+
+[VOICEOVER 1:50-2:00] The result? AI that's fundamentally attack-resistant - a critical step toward safe AI deployment in our most sensitive systems.
+[VISUAL DIRECTION] [Final shot: clean, stable AI systems operating flawlessly with shield overlay]

@@ -1,0 +1,1 @@
+What if AI could catch the health issues that standard models miss? A new multi-agent AI system achieves 90.6% accuracy by using specialized agents to address the 'average fallacy' in medicine. Read the Nature/Science paper to explore how this approach improves care for underrepresented patients.

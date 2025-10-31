@@ -1,0 +1,1 @@
+AI vulnerabilities exposed: layered attacks bypass filters. New multi-agent moderation cuts success rates by 7-19% while maintaining response quality. Nature/Science study reveals a smarter defense.

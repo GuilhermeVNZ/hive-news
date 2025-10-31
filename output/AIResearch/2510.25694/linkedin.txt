@@ -1,0 +1,1 @@
+AI agents can detect 80% of engineering problems but fix only 25%—revealing a critical gap in autonomous tools. New research introduces EnConda-Bench to systematically evaluate AI's ability to handle real-world coding issues. Read the Nature/Science study to understand the limitations and future of AI-assisted engineering.

@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] AI systems are wasting HALF their steps solving simple problems - and this inefficiency could be impacting your medical diagnoses and financial decisions right now.
+
+[VISUAL DIRECTION] [Animated text: "AI WASTES 50% OF STEPS" with dramatic reveal effect]
+
+[VOICEOVER 0:05-0:20] New research from Nature/Science reveals a shocking truth about modern AI. While we assume these systems think like humans, they're actually incredibly inefficient problem-solvers.
+
+[VISUAL DIRECTION] [Show Figure 2 with zoom on step distribution chart, highlighting the 50% unnecessary steps]
+
+[VOICEOVER 0:20-0:40] Researchers created a novel methodology treating AI reasoning like computer programming. They mapped every deduction AI models performed, measuring how well they avoided unnecessary detours.
+
+[VISUAL DIRECTION] [Animated flowchart showing AI taking multiple unnecessary paths before reaching conclusion]
+
+[VOICEOVER 0:40-1:00] The key finding? AI models generated up to 50% extraneous steps - actions that didn't contribute to the final solution. Even minimal distractions caused dramatic accuracy drops.
+
+[VISUAL DIRECTION] [Text overlay: "65% → 52.6% accuracy drop" and "35.6% with distractions" with downward arrows]
+
+[VOICEOVER 1:00-1:30] The researchers tested AI on grade school word problems with distracting information. When "cats" were mentioned in a math problem, AI struggled to focus on relevant details. This shows current evaluation methods miss critical limitations.
+
+[VISUAL DIRECTION] [Fast cuts between different problem examples, highlighting distracting elements in red]
+
+[VOICEOVER 1:30-1:50] This isn't just academic - it affects real applications. In medical diagnosis, financial analysis, and scientific research, inefficient AI means wasted resources and potentially missed critical information.
+
+[VISUAL DIRECTION] [Show medical, financial, and research icons with warning symbols]
+
+[VOICEOVER 1:50-2:00] The takeaway? Current AI isn't thinking efficiently - it's taking unnecessary detours that could impact decisions affecting your health and finances.
+
+[VISUAL DIRECTION] [Final screen: "AI: 50% WASTED STEPS" with paper citation]

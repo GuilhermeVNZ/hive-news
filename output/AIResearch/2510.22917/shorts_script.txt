@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could navigate completely unfamiliar environments as effectively as humans?
+[VISUAL DIRECTION] Animated text: "65.4% success in unknown spaces" with robot silhouette exploring maze
+
+[VOICEOVER 0:05-0:20] Current robots struggle with new places, but researchers at Tsinghua University just solved a fundamental limitation in robotics navigation.
+[VISUAL DIRECTION] Show comparison: traditional robot stuck in corner vs new system moving smoothly
+
+[VOICEOVER 0:20-0:40] The problem? Robots typically use either immediate visual perception OR global mapping, but not both together. This disconnect causes navigation failures.
+[VISUAL DIRECTION] Split screen showing egocentric view vs top-down map with disconnect highlighted
+
+[VOICEOVER 0:40-1:00] Their HyPerNav system achieves 65.4% success finding targets in completely unknown environments - the highest among training-free methods tested on HM3D dataset.
+[VISUAL DIRECTION] Zoom on data table showing 65.4% success rate compared to previous methods
+
+[VOICEOVER 1:00-1:30] How? It combines what the robot sees directly in front (egocentric) with overall layout understanding (global) using advanced vision-language models. Like humans using both immediate awareness and spatial memory.
+[VISUAL DIRECTION] Animated diagram showing RGB-D camera data flowing into dual perception pathways merging into navigation decisions
+
+[VOICEOVER 1:30-1:50] This means autonomous robots could soon perform tasks in homes, offices, and disaster zones without prior mapping - finding optimal paths 43.7% closer to ideal routes.
+[VISUAL DIRECTION] Quick cuts: robot in home setting, office environment, disaster zone scenario
+
+[VOICEOVER 1:50-2:00] The future of autonomous navigation just took a major leap forward with hybrid perception.
+[VISUAL DIRECTION] Final text overlay: "HyPerNav: 65.4% success in unknown environments" with university logo

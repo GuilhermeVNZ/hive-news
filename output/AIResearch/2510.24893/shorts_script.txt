@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] Does AI actually make you smarter, or just better at tasks? The answer might surprise you.
+
+[VISUAL DIRECTION] [Animated text: "AI: Smarter or Just Faster?" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] As artificial intelligence becomes embedded in our daily lives, researchers wanted to know: does AI enhance our underlying intelligence, or just help us perform more efficiently?
+
+[VISUAL DIRECTION] [Show split screen: one side "Enhanced Intelligence" with brain icon, other side "Better Performance" with speedometer icon]
+
+[VOICEOVER 0:20-0:40] In a rigorous experiment, researchers compared young adults using ChatGPT against those working independently across diverse tasks over four weeks.
+
+[VISUAL DIRECTION] [Show animated bar chart growing for AI-assisted group across puzzle-solving, word games, and creative challenges]
+
+[VOICEOVER 0:40-1:00] The results were clear: AI-assisted participants significantly outperformed controls on specific tasks - puzzles, problem-solving, word games - and completed them faster with more confidence.
+
+[VISUAL DIRECTION] [Zoom in on statistical results: p < 0.001 for multiple tasks, with significant performance gaps highlighted]
+
+[VOICEOVER 1:00-1:30] But here's the critical finding: when both groups were retested on standardized cognitive measures, there were zero differences in fundamental abilities. Both groups showed similar results on Picture Completion, Arithmetic, and Vocabulary tests.
+
+[VISUAL DIRECTION] [Show two identical brain scan images side by side with "NO DIFFERENCE" text overlay]
+
+[VOICEOVER 1:30-1:50] This means current AI systems function as performance enhancers - they reduce cognitive load but don't restructure underlying intelligence. The distinction is crucial for how we integrate AI into education and workplaces.
+
+[VISUAL DIRECTION] [Show classroom and office settings with "Performance ≠ Intelligence" text overlay]
+
+[VOICEOVER 1:50-2:00] AI can optimize what you do, but may not fundamentally change how you think. The efficiency vs intelligence distinction matters more than ever.

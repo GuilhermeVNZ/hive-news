@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if self-driving cars could navigate highways with zero crashes? New AI research just made this breakthrough.
+[VISUAL DIRECTION] Animated text: "ZERO CRASHES" with car simulation footage
+[VOICEOVER 0:05-0:20] Researchers developed AI that mimics how human drivers think, breaking complex driving into simple decisions.
+[VISUAL DIRECTION] Show hierarchical diagram: High-level maneuvers → Low-level actions
+[VOICEOVER 0:20-0:40] The challenge: Standard AI makes unpredictable movements. This new system uses predefined "options" like lane changes and speed adjustments.
+[VISUAL DIRECTION] Side-by-side comparison: jerky AI movements vs smooth new system
+[VOICEOVER 0:40-1:00] Results: The options-based AI achieved perfect safety records in simulations across different traffic densities.
+[VISUAL DIRECTION] Show performance graphs with highlighted zero-crash results
+[VOICEOVER 1:00-1:30] How it works: AI chooses maneuvers ("change lanes left") then executes them gradually. Safety checks prevent dangerous actions.
+[VISUAL DIRECTION] Animated sequence: Decision → Lane change → Safety verification
+[VOICEOVER 1:30-1:50] Real impact: This interpretable approach could build public trust and accelerate autonomous vehicle deployment on highways.
+[VISUAL DIRECTION] Show highway traffic flow improving with autonomous integration
+[VOICEOVER 1:50-2:00] The future of driving: AI that thinks like us, drives safer than us.
+[VISUAL DIRECTION] Final text overlay: "Human-like AI driving = Zero crashes"

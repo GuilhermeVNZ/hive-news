@@ -12,14 +12,14 @@ interface Article {
   category: string;
   readTime: number;
   imageCategories: string[];
+  isPromotional?: boolean;
 }
 
-async function readArticles(): Promise<Article[]> {
-  const outputDir = path.join(process.cwd(), '../../../output/AIResearch');
+async function readArticlesFromDir(outputDir: string, isPromotional: boolean = false): Promise<Article[]> {
+  const articles: Article[] = [];
   
   try {
     const dirs = await fs.readdir(outputDir);
-    const articles: Article[] = [];
     
     for (const articleId of dirs) {
       const articleDir = path.join(outputDir, articleId);
@@ -32,9 +32,10 @@ async function readArticles(): Promise<Article[]> {
         const titlePath = path.join(articleDir, 'title.txt');
         const articlePath = path.join(articleDir, 'article.md');
         
-        const [title, articleContent] = await Promise.all([
+        const [title, articleContent, dirStats] = await Promise.all([
           fs.readFile(titlePath, 'utf-8').catch(() => ''),
           fs.readFile(articlePath, 'utf-8').catch(() => ''),
+          fs.stat(articleDir), // Para obter data de modificação
         ]);
         
         // Extrair excerpt (primeiras 3 linhas)
@@ -58,23 +59,57 @@ async function readArticles(): Promise<Article[]> {
             title: title.trim(),
             excerpt,
             article: articleContent,
-            publishedAt: new Date().toISOString(),
+            // Usar data de modificação da pasta como publishedAt (mais recente = modificado mais recentemente)
+            publishedAt: dirStats.mtime.toISOString(),
             author: 'AI Research',
             category: imageCategories[0] || 'ai',
             readTime: Math.ceil(articleContent.split(' ').length / 200),
             imageCategories,
+            // Marcar como promocional
+            isPromotional: isPromotional,
           });
         }
       } catch (err) {
         console.error(`Error reading article ${articleId}:`, err);
       }
     }
-    
-    return articles;
   } catch (err) {
-    console.error('Error reading output directory:', err);
-    return [];
+    // Se a pasta não existir, não é erro (pode não ter artigos promocionais ainda)
+    if (isPromotional) {
+      console.log('Promotional directory not found, skipping...');
+    } else {
+      console.error('Error reading output directory:', err);
+    }
   }
+  
+  return articles;
+}
+
+async function readArticles(): Promise<Article[]> {
+  const baseOutputDir = path.join(process.cwd(), '../../../output');
+  const promotionalDir = path.join(baseOutputDir, 'Promotional');
+  const normalDir = path.join(baseOutputDir, 'AIResearch');
+  
+  // Ler artigos promocionais primeiro
+  const promotionalArticles = await readArticlesFromDir(promotionalDir, true);
+  
+  // Ler artigos normais
+  const normalArticles = await readArticlesFromDir(normalDir, false);
+  
+  // Combinar: promocionais primeiro, depois normais
+  const allArticles = [...promotionalArticles, ...normalArticles];
+  
+  // Ordenar por data de publicação (mais recente primeiro)
+  // Artigos promocionais vêm primeiro automaticamente porque foram adicionados primeiro
+  allArticles.sort((a, b) => {
+    // Primeiro, garantir que promocionais vêm primeiro
+    if (a.isPromotional && !b.isPromotional) return -1;
+    if (!a.isPromotional && b.isPromotional) return 1;
+    // Se ambos são promocionais ou ambos normais, ordenar por data (mais recente primeiro)
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+  });
+  
+  return allArticles;
 }
 
 export async function GET(request: Request) {
@@ -90,4 +125,3 @@ export async function GET(request: Request) {
   
   return NextResponse.json({ articles: filteredArticles });
 }
-

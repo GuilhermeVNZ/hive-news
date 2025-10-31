@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your health monitor could maintain 80% accuracy even when 80% of its sensors fail? [VISUAL DIRECTION] Animated text: 80% ACCURACY WITH 80% MISSING DATA - bold red numbers flashing
+
+[VOICEOVER 0:05-0:20] In today's interconnected world, smartphones and monitors collect diverse health signals, but sensor failures and incompatibility create massive data gaps. [VISUAL DIRECTION] Show smartphone with multiple sensor icons, then half disappear with X marks - fast cuts
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI systems adapt to severe missing data while preserving user privacy in federated learning? [VISUAL DIRECTION] Zoom on animated question mark transforming into privacy lock icon - hold for 2 seconds
+
+[VOICEOVER 0:40-1:00] They developed PEPSY - a method that learns each device's unique missing data profile and guides models to reconfigure internally. [VISUAL DIRECTION] Show flowchart: Device → Missing Profile → Model Reconfiguration → Improved Output - animated arrows
+
+[VOICEOVER 1:00-1:30] Instead of assuming complete data, PEPSY uses client-side encoding and probabilistic clustering to handle gaps. On PTBXL dataset with 12 modalities, it achieved 36.45% improvement over existing methods. [VISUAL DIRECTION] Show bar graph comparing PEPSY vs traditional methods - zoom on 36.45% improvement highlight
+
+[VOICEOVER 1:30-1:50] This matters for healthcare monitoring, environmental sensing, and IoT devices where reliable performance with fragmented data is crucial, without exposing sensitive information. [VISUAL DIRECTION] Quick cuts: hospital monitor → weather station → smart home device → privacy shield
+
+[VOICEOVER 1:50-2:00] PEPSY paves the way for resilient AI systems that function reliably despite real-world imperfections. [VISUAL DIRECTION] Final text overlay: "PEPSY: 80% Accuracy with 80% Missing Data" - hold until end

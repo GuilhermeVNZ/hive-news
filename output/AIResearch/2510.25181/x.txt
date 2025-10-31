@@ -1,0 +1,1 @@
+5G networks face a bottleneck: massive data updates strain capacity. Fed-PELAD cuts costs 57% by sending only key parameters, not raw data, preserving accuracy. A breakthrough for efficient, private wireless systems from Nature/Science research.

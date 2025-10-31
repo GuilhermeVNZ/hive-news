@@ -1,0 +1,1 @@
+Robots can now navigate unfamiliar environments 65.4% of the time without prior mapping. Tsinghua University's HyPerNav system combines immediate visual perception with broader context understanding, enabling autonomous navigation in homes and disaster zones. This breakthrough in hybrid perception represents a fundamental advancement in robotics reliability.

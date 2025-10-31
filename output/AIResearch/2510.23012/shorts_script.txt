@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] Did you know AI stability is twice as strong as we thought? The softmax function that powers everything from ChatGPT to self-driving cars has a hidden mathematical superpower.
+
+[VISUAL DIRECTION] Animated text: "AI STABILITY 2X STRONGER" with glowing effect, fast zoom on neural network visualization
+
+[VOICEOVER 0:05-0:20] This isn't just theoretical - it affects every AI system you use today. When AI faces unexpected inputs, this discovery guarantees much more predictable behavior.
+
+[VISUAL DIRECTION] Show rotating 3D visualization of probability distributions, quick cuts between ChatGPT interface and self-driving car footage
+
+[VOICEOVER 0:20-0:40] Researchers at IIT Madras asked: How stable is the softmax function really? Previous estimates were too conservative, leaving AI systems with weaker guarantees than they actually have.
+
+[VISUAL DIRECTION] Zoom on mathematical equations with "Lipschitz continuity" highlighted in red, show researcher figures analyzing data
+
+[VOICEOVER 0:40-1:00] They proved softmax is exactly 1/2-Lipschitz. This means small input changes cause only half the output variation we assumed. The bound is tight - it can't get better.
+
+[VISUAL DIRECTION] Animated graph showing input-output relationship with "1/2" prominently displayed, show experimental results reaching 0.4999
+
+[VOICEOVER 1:00-1:30] How does it work? By analyzing the function's Jacobian norm and using interpolation techniques, they established uniform distance measures. Extensive testing on Vision Transformers, GPT-2, and 8-billion parameter models confirmed the finding.
+
+[VISUAL DIRECTION] Show technical diagrams from paper with zoom on key mathematical proofs, fast cuts between different AI model architectures
+
+[VOICEOVER 1:30-1:50] Practical implications: Better guarantees for language models, computer vision systems, and reinforcement learning. Direct improvements to cosine similarity and game-theoretic applications.
+
+[VISUAL DIRECTION] Show real-world applications: language translation, autonomous vehicle decision-making, medical imaging analysis
+
+[VOICEOVER 1:50-2:00] Remember: AI stability is mathematically proven to be twice as strong as we thought. Your AI systems are more reliable than you realized.
+
+[VISUAL DIRECTION] Final screen with key takeaway: "Softmax = 1/2-Lipschitz" with Nature/Science branding, hold for 3 seconds

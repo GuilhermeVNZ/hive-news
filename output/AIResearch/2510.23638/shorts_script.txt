@@ -1,0 +1,15 @@
+[VOICEOVER 0:00-0:05] What if your phone could run advanced AI for weeks on a single charge? [VISUAL DIRECTION] Animated text: 'AI on 1/1000th the energy?' with battery icon draining slowly
+
+[VOICEOVER 0:05-0:15] Current AI systems waste massive energy converting between digital and analog. [VISUAL DIRECTION] Show Figure 2 zooming in on diode characteristics, highlight conversion inefficiency with red X
+
+[VOICEOVER 0:15-0:30] Researchers asked: Can we build AI that computes like biological brains? [VISUAL DIRECTION] Split screen: brain neurons firing vs. traditional computer chips overheating
+
+[VOICEOVER 0:30-0:45] They discovered diodes with specific atomic configurations can perform mathematical operations directly. [VISUAL DIRECTION] Animated atomic structure of NbSi2/HfSi2 heterostructure, zoom on armchair vs zigzag orientations
+
+[VOICEOVER 0:45-1:05] By mapping Kolmogorov-Arnold Networks to physical devices, they created KANalogue - where each node is an actual electronic component. [VISUAL DIRECTION] Network diagram morphing into physical circuit layout, highlight individual diodes
+
+[VOICEOVER 1:05-1:25] Results: 88.89% accuracy on handwritten digits with just 26,570 parameters - comparable to systems requiring millions. [VISUAL DIRECTION] MNIST digit recognition demo with parameter count comparison overlay
+
+[VOICEOVER 1:25-1:45] This means AI could run on tiny devices for months, enabling medical implants, environmental sensors, and edge computing without constant power. [VISUAL DIRECTION] Fast cuts: pacemaker, forest sensor, smart glasses - all with 'AI ENABLED' text
+
+[VOICEOVER 1:45-2:00] The future of AI isn't just smarter algorithms - it's hardware that thinks. [VISUAL DIRECTION] Final shot: glowing diode with 'PHYSICS AS COMPUTATION' text overlay

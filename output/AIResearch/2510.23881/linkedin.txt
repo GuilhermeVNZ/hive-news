@@ -1,0 +1,1 @@
+Can AI create puzzles that humans find more enjoyable than human-designed ones? DeepMind researchers developed an AI that generates chess puzzles rated higher for creativity and counter-intuitiveness than popular human compositions. Could this approach revolutionize creative AI applications beyond games?

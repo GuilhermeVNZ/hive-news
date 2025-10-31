@@ -1,0 +1,1 @@
+Smaller AI models can outperform giants? New research shows compact models (3.8B-14B parameters) achieve 20% improvement in selecting accurate AI generations. This breakthrough challenges 'bigger is better' assumptions, making advanced AI more accessible. What does this mean for sustainable AI development?

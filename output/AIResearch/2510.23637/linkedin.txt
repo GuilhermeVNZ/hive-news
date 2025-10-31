@@ -1,0 +1,1 @@
+AI can now find mathematical proofs 36% faster by understanding how concepts connect, not just reading text. This graph-augmented system treats mathematical libraries as networks, capturing premise relationships that traditional AI misses. How might this transform scientific discovery and software verification?

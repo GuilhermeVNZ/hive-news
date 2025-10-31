@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if the AI system detecting your cancer could be secretly manipulated to miss tumors? [VISUAL DIRECTION] [Animated text: AI CAN MISS YOUR CANCER? with medical scan imagery]
+
+[VOICEOVER 0:05-0:20] New research reveals medical AI imaging systems are vulnerable to hardware attacks that can implant hidden triggers, causing dangerous misdiagnoses while appearing normal to doctors. [VISUAL DIRECTION] [Show Figure 1: Attack success rates - 82.51% on ISIC, 92.56% on MobileViT]
+
+[VOICEOVER 0:20-0:40] The Med-Hammer attack exploits physical hardware vulnerabilities in Vision Transformers, the powerful AI increasingly used for medical image analysis. [VISUAL DIRECTION] [Animated diagram showing Rowhammer bit-flip process]
+
+[VOICEOVER 0:40-1:00] Attackers use electrical interference to subtly alter AI parameters, implanting triggers that activate when specific patterns appear in medical scans. [VISUAL DIRECTION] [Zoom on attention mechanisms being manipulated]
+
+[VOICEOVER 1:00-1:30] The compromised AI maintains high accuracy on clean scans - MobileViT retained 95% performance - but produces attacker-controlled outputs when triggered, suppressing tumor detections by 75% in some cases. [VISUAL DIRECTION] [Side-by-side comparison: normal scan vs triggered scan with missed detection]
+
+[VOICEOVER 1:30-1:50] This represents a practical threat since the attack occurs at hardware level, requiring no access to AI training parameters, highlighting critical security gaps in healthcare AI systems. [VISUAL DIRECTION] [Show clinical setting with warning overlay]
+
+[VOICEOVER 1:50-2:00] As healthcare increasingly relies on AI diagnostics, understanding and mitigating these hardware-level vulnerabilities becomes essential for patient safety. [VISUAL DIRECTION] [Final text: HARDWARE SECURITY MATTERS IN MEDICAL AI]

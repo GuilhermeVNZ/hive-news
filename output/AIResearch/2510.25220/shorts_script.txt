@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if AI could predict exactly what videos you want to watch—four times faster than current systems?
+
+[VISUAL DIRECTION] Animated text: "4x FASTER VIDEO RECOMMENDATIONS" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] This isn't science fiction. Streaming platforms serving billions of viewers daily face a critical bottleneck: slow recommendation systems that affect everything from entertainment to e-commerce.
+
+[VISUAL DIRECTION] Show streaming platform icons (Netflix, YouTube, TikTok) with loading spinners and frustrated user emojis
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically speed up video recommendations without sacrificing accuracy?
+
+[VISUAL DIRECTION] Zoom in on researcher at computer, show thought bubble with "Speed + Accuracy = ?"
+
+[VOICEOVER 0:40-1:00] They discovered GReF—a unified generative framework that eliminates the traditional two-stage process. In offline experiments, it achieved the highest AUC scores—1.5% higher than the next best method.
+
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on peak distribution, animated arrows showing performance improvement
+
+[VOICEOVER 1:00-1:30] The secret? Ordered Multi-token Prediction allows the system to generate multiple recommendations simultaneously. Without OMTP, step-by-step decoding took milliseconds. With OMTP, processing time dropped to 12.97 milliseconds—nearly halving the time while maintaining accuracy.
+
+[VISUAL DIRECTION] Split screen: left side shows sequential loading bars, right side shows parallel processing with multiple bars filling simultaneously
+
+[VOICEOVER 1:30-1:50] Real-world testing on Kuaishou, a platform with millions of users, showed measurable improvements: views increased, forwarding jumped, and comments rose—proving this not only improves visibility but fosters interactive experiences.
+
+[VISUAL DIRECTION] Show Kuaishou interface with rising engagement metrics (views ↗, shares ↗, comments ↗)
+
+[VOICEOVER 1:50-2:00] The future of streaming is faster, smarter recommendations that understand what you really want to watch.
+
+[VISUAL DIRECTION] Final screen: "GReF: Transforming how we discover content" with paper citation overlay

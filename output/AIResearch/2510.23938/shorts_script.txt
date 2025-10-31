@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could learn everything about your data patterns without ever seeing your actual information?
+[VISUAL DIRECTION] [Animated text: "AI learns without seeing your data" with question mark animation]
+[VOICEOVER 0:05-0:20] In today's data-driven world, organizations face a critical dilemma: how to extract valuable insights while protecting individual privacy.
+[VISUAL DIRECTION] [Show data privacy symbols locking, then breaking, creating visual tension]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create synthetic data that behaves exactly like real datasets but contains no actual records?
+[VISUAL DIRECTION] [Animated transition from real data points to synthetic equivalents with identical patterns]
+[VOICEOVER 0:40-1:00] The breakthrough: A method using generative AI and differential privacy that learns underlying distributions without memorizing individual entries.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on distribution patterns matching between real and synthetic data]
+[VOICEOVER 1:00-1:30] The system creates synthetic data points that maintain statistical relationships and patterns for analysis, but cannot be traced back to any individual.
+[VISUAL DIRECTION] [Animated text: "2-5% accuracy drop" with "near-random reconstruction attempts" counter showing failed attempts]
+[VOICEOVER 1:30-1:50] This enables healthcare collaboration without exposing patient data, financial fraud detection without sharing transactions, and government analysis while protecting citizen privacy.
+[VISUAL DIRECTION] [Fast cuts between healthcare, finance, and government icons with privacy shields]
+[VOICEOVER 1:50-2:00] The future of data analysis: All the insights, none of the privacy risks.
+[VISUAL DIRECTION] [Closing shot with animated text: "Privacy-preserving AI is here" with Nature journal logo]

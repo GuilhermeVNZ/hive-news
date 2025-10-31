@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you AI models naturally organize themselves exactly like human brains - even when they're not designed to?
+[VISUAL DIRECTION] Animated text: "AI BRAINS = HUMAN BRAINS?" with brain network visualization pulsing
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's a groundbreaking discovery from Nature/Science that reveals fundamental principles of intelligence transcend both biology and technology.
+[VISUAL DIRECTION] Show rotating 3D brain model transitioning to AI network visualization
+
+[VOICEOVER 0:20-0:40] Researchers asked: Do different AI systems organize internally in similar ways? And how do they compare to actual human brain networks?
+[VISUAL DIRECTION] Split screen showing human MRI scans on left, AI architecture diagrams on right
+
+[VOICEOVER 0:40-1:00] They discovered all 151 AI models - from language processors to vision systems - form a continuous arc-shaped geometry in "Brain-like Space" that reflects their brain similarity.
+[VISUAL DIRECTION] Show Figure 2 with zoom on the arc-shaped distribution of models
+
+[VOICEOVER 1:00-1:30] Here's how it works: Scientists mapped each AI's internal organization onto seven human brain networks derived from MRI scans. Language models clustered strongly with language regions, while training methods dramatically influenced brain-likeness.
+[VISUAL DIRECTION] Animated overlay showing 89.6% text appearing with augmentation vs pixel-focused methods comparison
+
+[VOICEOVER 1:30-1:50] This matters because AI that thinks more like us could be more interpretable and trustworthy. The methods that create semantic abstraction rather than pixel-level focus produce more human-like reasoning.
+[VISUAL DIRECTION] Show practical applications: medical AI, autonomous systems, education tools
+
+[VOICEOVER 1:50-2:00] The takeaway? Intelligence has universal organizational principles - and now we can measure how brain-like any AI truly is.
+[VISUAL DIRECTION] Final shot of unified geometric space with text: "MEASURING INTELLIGENCE'S UNIVERSAL LANGUAGE"

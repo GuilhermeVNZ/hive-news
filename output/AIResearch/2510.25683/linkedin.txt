@@ -1,0 +1,1 @@
+AI can now predict how structures vibrate with remarkable precision—transforming how we monitor bridges and buildings before they become dangerous. This neural network simulator achieves orders-of-magnitude improvements in accuracy. What if your next building could self-monitor for earthquakes? Read the paper: Network-based Structural Simulator: Neural Networks

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if every piece of AI-generated text carried an invisible, unremovable signature?
+[VISUAL DIRECTION] [Animated text: "AI Watermarking Breakthrough" with pulsing glow effect]
+
+[VOICEOVER 0:05-0:20] As artificial intelligence creates more content, distinguishing human from AI writing becomes crucial for transparency and accountability.
+[VISUAL DIRECTION] [Split screen showing human writing vs AI text streams, with question marks appearing]
+
+[VOICEOVER 0:20-0:40] Current watermarking methods fail when users modify AI models. Researchers asked: Can we create watermarks that survive fine-tuning and model merging?
+[VISUAL DIRECTION] [Show diagram of traditional watermark being erased during model modification, with red X appearing]
+
+[VOICEOVER 0:40-1:00] Their solution: PRO. This new approach trains the AI model and a separate watermark generator simultaneously through co-optimization.
+[VISUAL DIRECTION] [Animated flow chart showing model and generator training in parallel, with connecting arrows]
+
+[VOICEOVER 1:00-1:30] The system internalizes watermarks naturally during training, making them robust against removal. It also protects against "forgotten perturbation" when models update accidentally.
+[VISUAL DIRECTION] [Zoom on technical diagram showing watermark embedding process, with protective shield animation]
+
+[VOICEOVER 1:30-1:50] Experiments show PRO successfully tracks AI-generated content creation. This enables responsible AI deployment and can even retrofit already-trained models.
+[VISUAL DIRECTION] [Show real-world applications: news articles, academic papers, social media posts with PRO verification badges]
+
+[VOICEOVER 1:50-2:00] The future of AI transparency is here - where every generated word carries its origin story.
+[VISUAL DIRECTION] [Final shot: AI text flowing with subtle watermark pattern visible, then text: "PRO: Precise & Robust Text Watermarking"]

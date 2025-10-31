@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could understand your shopping searches in any language, even with typos and mixed languages?
+[VISUAL DIRECTION] Animated text: "89% ACCURATE SEARCHES" with globe spinning behind
+[VOICEOVER 0:05-0:20] E-commerce platforms serve millions across 100+ countries and 20+ languages, but traditional search fails with misspellings and mixed-language queries.
+[VISUAL DIRECTION] Show globe with 100+ country pins, then transition to search bar with crossed-out "no results"
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI bridge this language gap without requiring expensive labeled data for every language?
+[VISUAL DIRECTION] Show question mark transforming into AI brain icon
+[VOICEOVER 0:40-1:00] They discovered large language models, properly adapted, achieved 88.8% accuracy in understanding user intent and finding specific items.
+[VISUAL DIRECTION] Show F1 score graphs from paper with 88.83% and 88.81% highlighted
+[VOICEOVER 1:00-1:30] The two-stage approach: First, task-adaptive pre-training familiarizes models with e-commerce patterns. Then cross-validation prevents data leakage.
+[VISUAL DIRECTION] Animated flowchart showing two-stage process with "Pre-training" and "Cross-validation" boxes
+[VOICEOVER 1:30-1:50] This means better discovery worldwide—platforms like AliExpress and Lazada can now understand noisy, ambiguous searches across languages.
+[VISUAL DIRECTION] Show happy customer finding product with checkmark, then expand to global map with success indicators
+[VOICEOVER 1:50-2:00] The future: AI that understands global shoppers, no matter how they search.
+[VISUAL DIRECTION] Final text overlay: "AI UNDERSTANDS GLOBAL SHOPPERS" with globe icon

@@ -1,0 +1,1 @@
+Machines can now count objects they've never seen before with human-like accuracy. CountFormer AI recognizes structural patterns without prior training, revolutionizing inventory and medical imaging. Read the Nature/Science paper to explore this breakthrough in visual repetition learning.

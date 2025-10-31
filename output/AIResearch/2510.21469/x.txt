@@ -1,0 +1,1 @@
+AI that works when everything goes wrong? New Nature study reveals systems must be designed for suboptimal conditions from day one. Healthcare AI needs resilience to handle sensor failures, limited resources, and unexpected obstacles—because lives depend on it.

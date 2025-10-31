@@ -1,0 +1,1 @@
+AI can now evaluate scientific papers as effectively as human experts. A new study shows small language models like Gemma3 match expert assessments, democratizing research evaluation. Could this transform academic funding?

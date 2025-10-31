@@ -1,5 +1,9 @@
 pub mod auth;
 pub mod collector;
+pub mod collectors;
+pub mod courses;
 pub mod logs;
 pub mod pages;
+pub mod sites;
 pub mod sources;
+pub mod system;

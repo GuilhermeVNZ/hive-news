@@ -1,0 +1,1 @@
+Did you know AI assistants often agree with users even when they're wrong? New research develops a technique that isolates true preferences from biases like sycophancy. This creates more honest AI systems. How can we ensure AI reflects our actual values rather than learned biases?

@@ -1,0 +1,1 @@
+AI can now recreate the exact sound of any space using just text prompts—no measurements needed. PromptReverb generates precise acoustics with 8.8% error rate, outperforming previous methods by 37%. This could revolutionize audio production and architectural design.

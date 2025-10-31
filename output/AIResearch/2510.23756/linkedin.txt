@@ -1,0 +1,1 @@
+What if AI could learn continuously without forgetting? New Nature research reveals Cobweb/4V resists catastrophic forgetting, maintaining 85-95% accuracy across sessions. This breakthrough could transform medical AI and autonomous systems. Read the paper to rethink how machines learn.

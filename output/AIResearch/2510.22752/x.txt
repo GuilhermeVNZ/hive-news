@@ -1,0 +1,1 @@
+AI models struggle to remember the middle of inputs, just like humans, per a new study. This 'primacy and recency' effect in transformers could impact document analysis and medical processing. Essential reading for AI practitioners.

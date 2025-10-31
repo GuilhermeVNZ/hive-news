@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could run a greenhouse with human intuition but machine precision? [VISUAL DIRECTION] Animated text: AI GREENHOUSE CONTROL with glowing neural network animation
+
+[VOICEOVER 0:05-0:20] Researchers just proved GPT-4 can effectively manage environmental conditions in miniature greenhouses. [VISUAL DIRECTION] Show laboratory greenhouse setup with heaters, LED lights, and sensors - pan across equipment
+
+[VOICEOVER 0:20-0:40] The challenge: Traditional automation requires technical expertise. Can AI bridge this gap while maintaining precision? [VISUAL DIRECTION] Split screen showing complex control panels vs simple AI interface
+
+[VOICEOVER 0:40-1:00] They discovered hybrid modeling delivers the most balanced digital twins. The HAM method combines physics with data-driven corrections, achieving comparable accuracy to pure machine learning but using less power. [VISUAL DIRECTION] Show Figure 2 comparing error rates - zoom on HAM performance metrics
+
+[VOICEOVER 1:00-1:30] Here's how it works: Four approaches were tested - linear models, physics-based modeling, LSTM networks, and the hybrid method. LLM-based controllers allowed human-AI interaction through simple prompts. [VISUAL DIRECTION] Animated flowchart showing four methods with performance metrics
+
+[VOICEOVER 1:30-1:50] This means facilities like greenhouses, manufacturing plants, and climate-controlled buildings can benefit from reliable digital twins that balance practical requirements. [VISUAL DIRECTION] Quick cuts showing greenhouse, factory, and smart building applications
+
+[VOICEOVER 1:50-2:00] AI is now managing environments with both human intuition and machine precision. [VISUAL DIRECTION] Final text overlay: HUMAN INTUITION + MACHINE PRECISION with greenhouse time-lapse

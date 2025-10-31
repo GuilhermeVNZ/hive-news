@@ -1,0 +1,1 @@
+Vague AI prompts increase code vulnerabilities by 150%—not hackers. Peking University research reveals poorly written requests make AI generate insecure code by default. Read the Nature/Science study on prompt normativity and secure AI development.

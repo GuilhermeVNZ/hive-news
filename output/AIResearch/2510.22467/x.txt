@@ -1,0 +1,1 @@
+AI training breakthrough: GradLite cuts VRAM requirements by 73% (65.4 GB → 17.5 GB) while maintaining competitive performance on benchmarks. This optimization makes powerful AI development accessible to researchers with limited budgets. The future of AI just got more inclusive.

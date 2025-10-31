@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the real AI threat isn't job displacement, but our ability to adapt quickly enough?
+[VISUAL DIRECTION] Animated text: "AI's REAL THREAT?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] New research from Nature reveals AI's disruption isn't about replacing humans—it's about whether we can build resilience fast enough to preserve our values and well-being.
+[VISUAL DIRECTION] Show rotating 3D spheres labeled "Psychological" "Social" "Organizational" with connecting lines
+
+[VOICEOVER 0:20-0:40] Scientists asked: How do we counter AI's negative impacts while enhancing human capabilities? They identified three interconnected protective layers.
+[VISUAL DIRECTION] Split screen showing lab experiments and field observations with text overlay: "Multiple experiments + field data"
+
+[VOICEOVER 0:40-1:00] At the psychological level, individuals can regulate emotions and cognition facing AI-induced stress. Socially, strong networks distribute pressure and share knowledge. Organizationally, built-in monitoring prevents complete system dependence.
+[VISUAL DIRECTION] Animated diagram showing three layers with arrows between them, highlighting "emotion regulation" "community support" "oversight procedures"
+
+[VOICEOVER 1:00-1:30] In one experiment, professionals using AI writing assistance improved task completion while retaining control over their goals. AI served as scaffolding, not replacement. Field studies showed less-experienced agents improved most with AI support while maintaining oversight.
+[VISUAL DIRECTION] Show before/after comparison of writing tasks with AI assistance, then customer service metrics with arrows showing improvement percentages
+
+[VOICEOVER 1:30-1:50] Most importantly, resilience is trainable. Meta-analyses show structured interventions—cognitive-behavioral and mindfulness approaches—systematically improve regulation and adaptive thinking. Social empathy can be developed through AI-scaffolded training without displacing human judgment.
+[VISUAL DIRECTION] Show training progression graphics with upward trend lines, then highlight the 19.6% empathy improvement from the TalkLife platform study
+
+[VOICEOVER 1:50-2:00] The challenge isn't resisting AI intellectually—it's building the resilience to adopt it responsibly while strengthening human capabilities.
+[VISUAL DIRECTION] Final screen with animated text: "Resilience > Resistance" then "Human + AI = Enhanced Capabilities"

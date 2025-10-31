@@ -1,0 +1,1 @@
+🚨 AI medical imaging systems can be secretly manipulated to suppress tumor detections with 92% success rates. New research shows hardware attacks can implant triggers that cause dangerous misdiagnoses while appearing normal to clinicians. The Med-Hammer attack exploits physical hardware vulnerabilities in Vision Transformers used for medical image analysis.

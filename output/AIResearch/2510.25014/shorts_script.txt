@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI game characters could follow rules with near-perfect accuracy while staying engaging?
+[VISUAL DIRECTION] Animated text: 99.6% RULE COMPLIANCE with gaming controller icon
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - Amazon researchers just solved a fundamental AI challenge. Large language models often struggle between being flexible and following necessary procedures.
+[VISUAL DIRECTION] Show Figure 2 with zoom on compliance metrics, fast cuts between gaming scenarios
+
+[VOICEOVER 0:20-0:40] The problem? AI characters would frequently skip important steps like confirmation dialogues, breaking game integrity. Researchers asked: Can we make AI reliably follow procedural rules without sacrificing engagement?
+[VISUAL DIRECTION] Animated sequence showing AI skipping confirmations vs proper workflow
+
+[VOICEOVER 0:40-1:00] Their discovery: Autoregressive State-Tracking Prompting (ASTP) achieves over 99% accuracy in required steps. AI characters now maintain transaction integrity while remaining interactive.
+[VISUAL DIRECTION] Show ASTP workflow diagram with highlighted Prime-Guide-Enforce steps
+
+[VOICEOVER 1:00-1:30] How it works: Instead of vague instructions, ASTP compels AI to track its position in predefined workflows. The method makes AI's decision-making process explicit - it identifies, reports, and transforms implicit reasoning into verifiable processes.
+[VISUAL DIRECTION] Animated text overlays showing state tracking and conditional guidance
+
+[VOICEOVER 1:30-1:50] The implications extend beyond gaming. This breakthrough enables trustworthy AI interactions in any rule-governed environment - from financial transactions to safety-critical systems.
+[VISUAL DIRECTION] Transition from gaming scenarios to real-world applications with fast cuts
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about what it can do, but how reliably it follows the rules while staying engaging.
+[VISUAL DIRECTION] Final hold on 99.6% compliance stat with gaming and transaction icons

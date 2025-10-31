@@ -1,0 +1,1 @@
+GPT-5 struggles with PowerPoints: 66.7% parseability drop with 32+ elements, near-random slide sequencing. Microsoft study reveals AI's fundamental gap in document comprehension. #AI #Research

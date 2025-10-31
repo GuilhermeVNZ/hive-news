@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI therapist could remember everything you discussed in your last session - and use it to actually help you?
+[VISUAL DIRECTION] Animated text: "AI REMEMBERS YOUR THERAPY" with pulsing brain graphic
+
+[VOICEOVER 0:05-0:20] Current AI chatbots suffer from 'clinical amnesia' - they treat every conversation as isolated, forcing you to repeat yourself each time.
+[VISUAL DIRECTION] Show frustrated person typing to chatbot, with "START OVER" text appearing repeatedly
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI maintain continuity across multiple therapy sessions like human therapists do?
+[VISUAL DIRECTION] Split screen showing traditional AI vs therapist comparison, with question mark animation
+
+[VOICEOVER 0:40-1:00] TheraMind's breakthrough dual-loop architecture separates real-time conversation management from long-term adaptation planning.
+[VISUAL DIRECTION] Animated diagram showing Intra-Session and Cross-Session loops connecting, with zoom on architecture
+
+[VOICEOVER 1:00-1:30] The system remembers patient metaphors and emotional patterns, adapting strategies between sessions. If cognitive therapy isn't working, it switches to mindfulness techniques.
+[VISUAL DIRECTION] Show example of patient mentioning "feeling crushed" metaphor, then AI referencing it 3 sessions later with strategy change
+
+[VOICEOVER 1:30-1:50] Results: 34% better conversation continuity, significantly higher empathy scores, and unique progress-tracking capability absent in other systems.
+[VISUAL DIRECTION] Bar chart animation showing TheraMind vs traditional AI performance metrics, highlight 34% continuity improvement
+
+[VOICEOVER 1:50-2:00] AI that remembers your breakthroughs and grows with you - the future of personalized mental health support is here.
+[VISUAL DIRECTION] Final text overlay: "AI THAT REMEMBERS YOU" with TheraMind logo, slow fade out

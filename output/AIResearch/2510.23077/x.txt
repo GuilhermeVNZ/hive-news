@@ -1,0 +1,1 @@
+AI now thinks before recommending - reducing errors by 29.9%. RecZero analyzes what you actually like/dislike, moving beyond simple pattern matching. Finally, recommendations that understand you.

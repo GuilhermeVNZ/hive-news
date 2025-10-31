@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if an AI could predict exactly where you'll go next—before you even know it yourself?
+[VISUAL DIRECTION] Animated text: "AI Predicts Your Next Move" with pulsing question mark. Fast zoom on moving dot patterns.
+
+[VOICEOVER 0:05-0:20] Human mobility isn't random—we follow complex patterns that shift throughout the day, from work routines to leisure activities. Traditional AI struggles with these constantly changing contexts.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on daily pattern distributions. Split screen showing work-to-leisure transitions.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that truly understands how humans move between locations? The challenge was capturing hierarchical relationships—like cuisines to specific restaurants.
+[VISUAL DIRECTION] Animated tree diagram showing hierarchy breakdown. Text overlay: "The Mobility Prediction Problem"
+
+[VOICEOVER 0:40-1:00] They discovered GTR-Mamba, an AI that uses hyperbolic geometry to naturally capture these complex relationships. It achieved 2.72% to 15.62% improvements across major datasets.
+[VISUAL DIRECTION] Show performance comparison chart from paper. Zoom on the 15.62% improvement marker. Animated hyperbolic space visualization.
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system processes multiple data types simultaneously—historical locations, place relationships, categories, and regional features. It converts complex geometric data into simpler forms using "geometry-to-tangent routing" for computational efficiency.
+[VISUAL DIRECTION] Fast cuts showing data streams merging. Visual representation of tangent space conversion. Text overlays: "Multiple Data Types" "Real-time Processing"
+
+[VOICEOVER 1:30-1:50] This means more accurate, context-aware recommendations in apps like Yelp and Google Maps. The AI excels in high-context-switching scenarios, adapting as you transition between work and leisure.
+[VISUAL DIRECTION] Show app interfaces with improved recommendations. Split screen comparing traditional vs GTR-Mamba suggestions.
+
+[VOICEOVER 1:50-2:00] The future of mobility prediction is here—AI that truly understands how humans navigate their world, one geometric calculation at a time.
+[VISUAL DIRECTION] Final zoom on the GTR-Mamba architecture diagram. Text overlay: "Geometry Meets Mobility" with the performance improvements highlighted.

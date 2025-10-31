@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know today's most advanced AI can't create a basic PowerPoint presentation?
+[VISUAL DIRECTION] Animated text: "AI FAILS AT POWERPOINT" with shocked emoji face
+[VOICEOVER 0:05-0:20] Microsoft research reveals AI's surprising weakness in business communication - despite excelling elsewhere
+[VISUAL DIRECTION] Show office worker struggling with presentation, then AI logo with question mark
+[VOICEOVER 0:20-0:40] The study tested GPT-4o, GPT-4.1, and GPT-5 on 1,948 PowerPoint slides using their VLM-SlideEval framework
+[VISUAL DIRECTION] Show Figure 1 methodology diagram with zoom on testing pipeline
+[VOICEOVER 0:40-1:00] Results were stark: GPT-5's parseability plummeted to 66.7% with complex slides, and slide sequencing was near random guessing
+[VISUAL DIRECTION] Animated bar chart showing parseability drop from 99.5% to 66.7%
+[VOICEOVER 1:00-1:30] The AI struggled with font recognition and geometry - crucial for document hierarchy. Even slight content alterations caused inconsistent behavior
+[VISUAL DIRECTION] Show side-by-side comparison: human-made slide vs AI-misinterpreted version
+[VOICEOVER 1:30-1:50] This matters because organizations increasingly automate document processing. AI can parse but not comprehend presentation flow
+[VISUAL DIRECTION] Show business automation statistics with warning symbols
+[VOICEOVER 1:50-2:00] The takeaway: AI excels at many tasks, but structured document comprehension remains a fundamental challenge
+[VISUAL DIRECTION] Final screen: "AI: Great at coding, bad at PowerPoint" with Nature paper citation

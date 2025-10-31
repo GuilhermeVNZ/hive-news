@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could solve microwave imaging's fundamental scatter problem that's plagued diagnostics for decades?
+[VISUAL DIRECTION] Animated text: "SCATTER PROBLEM SOLVED?" with pulsing question mark, fast zoom on abstract microwave patterns
+
+[VOICEOVER 0:05-0:20] Microwave imaging is crucial for cancer detection and security screening, but current systems struggle with ambiguity - different interpretations can mean missed diagnoses or false alarms.
+[VISUAL DIRECTION] Split screen: left shows medical imaging with question marks over tissue, right shows security scanner with uncertainty indicators
+
+[VOICEOVER 0:20-0:40] Researchers at University of Manitoba asked: Can AI provide reliable reconstructions when measurements alone aren't enough?
+[VISUAL DIRECTION] Zoom on researcher figures from paper, animated thought bubbles showing measurement data flowing into AI system
+
+[VOICEOVER 0:40-1:00] They discovered AI that doesn't just process data - it generates plausible solutions that match observed measurements, achieving remarkable accuracy with MSE as low as 0.0334.
+[VISUAL DIRECTION] Show Figure 2 reconstruction comparisons, zoom on accuracy metrics with highlighted numbers
+
+[VOICEOVER 1:00-1:30] How it works: First, autoencoders compress the problem into manageable format, then conditional models generate reconstructions consistent with measured fields, using physics-based validation to select the most plausible solution.
+[VISUAL DIRECTION] Animated flowchart showing data compression → reconstruction generation → physics validation → final selection
+
+[VOICEOVER 1:30-1:50] Real impact: More accurate cancer detection by determining true tissue properties, better security screening for concealed objects, and reliable non-destructive testing for materials.
+[VISUAL DIRECTION] Fast cuts between medical application, security screening, and industrial testing scenarios
+
+[VOICEOVER 1:50-2:00] This AI breakthrough directly addresses microwave imaging's core challenge - providing certainty where ambiguity once ruled.
+[VISUAL DIRECTION] Final text overlay: "CERTAINTY FROM AMBIGUITY" with University of Manitoba logo

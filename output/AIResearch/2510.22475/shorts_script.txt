@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI's biggest weakness—its sensitivity to pronouns like 'he' or 'she'—could actually make it smarter?
+[VISUAL DIRECTION] Animated text: "AI's WEAKNESS = STRENGTH?" with pronoun symbols (♂♀) morphing into brain icon
+
+[VOICEOVER 0:05-0:20] Texas A&M researchers discovered that small persona cues in language models create dramatically different reasoning patterns—and instead of treating this as a flaw, they turned it into a superpower.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on performance distribution across personas, highlighting 2-16% variation bars
+
+[VOICEOVER 0:20-0:40] The team asked: Could we combine these diverse AI perspectives to create more reliable systems without expensive retraining?
+[VISUAL DIRECTION] Split screen showing same math problem solved differently by 'teacher' vs 'engineer' personas
+
+[VOICEOVER 0:40-1:00] They developed CHOIR—a framework that harmonizes multiple persona-conditioned versions of an AI model during inference. By computing consensus and balancing predictions, it lifts disadvantaged personas while leveraging complementary strengths.
+[VISUAL DIRECTION] Animated flowchart showing multiple persona streams converging into unified output, with text overlay: "71.63% accuracy vs 55.47% baseline"
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system runs the same prompt through slightly modified persona versions, then dynamically weights their predictions. Outliers are identified, and the final answer synthesizes the best reasoning from all perspectives in real-time.
+[VISUAL DIRECTION] Fast cuts showing mathematical consensus calculation, with zoom on logit balancing and outlier detection mechanisms
+
+[VOICEOVER 1:30-1:50] The impact? On CommonsenseQA, CHOIR boosted Llama-8B's accuracy by over 16 percentage points. It provided a 'floor-raising' effect, reducing disparities for personas labeled as 'disabled' and improving performance across gender, religion, and disability demographics.
+[VISUAL DIRECTION] Bar chart animation showing performance improvements across demographic groups, with final stat: "19.2% average improvement"
+
+[VOICEOVER 1:50-2:00] The takeaway: Diversity in AI reasoning isn't noise—it's signal. By embracing multiple perspectives, we can build AI systems that are both more accurate and more equitable.
+[VISUAL DIRECTION] Final screen with paper title "CHOIR: Collaborative Inference Robustness" and Texas A&M logo, text overlay: "Strength through diversity"

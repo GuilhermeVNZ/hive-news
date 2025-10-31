@@ -1,0 +1,1 @@
+AI can now train on encrypted data without ever seeing the original information. Researchers developed homomorphic encryption allowing neural networks to learn patterns directly from encrypted datasets, achieving 94.7% accuracy in medical diagnosis while preserving privacy. How could this transform healthcare data collaboration?

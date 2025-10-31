@@ -1,0 +1,1 @@
+AI can now detect student engagement with 99.9% less gender bias. University of Colorado researchers developed a breakthrough method using attribute-orthogonal regularization that maintains accuracy while eliminating unfair penalties. Could this transform equitable education monitoring?

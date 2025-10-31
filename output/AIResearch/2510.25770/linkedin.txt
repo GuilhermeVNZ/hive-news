@@ -1,0 +1,1 @@
+AI can now measure its own mistakes with e-scores, providing crucial guarantees for high-stakes applications. This breakthrough allows adjusting error tolerance after seeing outputs, enabling reliable AI in education and research. How will this transform AI trust in your field?

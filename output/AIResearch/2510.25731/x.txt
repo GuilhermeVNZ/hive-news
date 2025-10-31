@@ -1,0 +1,1 @@
+BREAKING: AI now solves physics equations with perfect accuracy using hidden symmetries. LieSolver achieves 100x better results than standard methods, solving in seconds what took hours. Game-changer for weather prediction, engineering, and real-time simulations. Nature paper reveals how.

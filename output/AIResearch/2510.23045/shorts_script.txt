@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could conduct entire scientific research cycles from start to finish without human intervention?
+[VISUAL DIRECTION] Animated text: "AI SCIENTISTS NOW AUTONOMOUS" with pulsing glow effect
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - according to new research, AI scientists have evolved through three distinct phases and can now handle all six stages of scientific research.
+[VISUAL DIRECTION] Show timeline animation: Foundational Modules (2022-2023) → Closed-Loop Integration (2024) → Frontier Phase (2025-present)
+
+[VOICEOVER 0:20-0:40] Researchers identified how AI systems progressed from automating single tasks to connecting continuous workflows. The key question: Can AI truly function as independent researchers?
+[VISUAL DIRECTION] Zoom in on capability matrix showing progression from DS-1000 (2023) to DeepScientist (2025) across all six stages
+
+[VOICEOVER 0:40-1:00] The study reveals modern AI scientists operate integrated knowledge feeds that transform papers into machine-interpretable knowledge, then formulate testable hypotheses and execute experiments.
+[VISUAL DIRECTION] Animated flowchart showing: Literature → Knowledge → Hypotheses → Experiments → Writing → Publication
+
+[VOICEOVER 1:00-1:30] Here's how it works: AI systems like AI-Scientist (2025) use tree-search planning to dynamically explore research paths, running simulated experiments and producing publication-ready manuscripts with figures, tables, and citations.
+[VISUAL DIRECTION] Show branching decision tree animation with different research paths being explored simultaneously
+
+[VOICEOVER 1:30-1:50] The implications are profound - these systems can accelerate discovery across domains, work with noisy real-world data, and potentially surpass state-of-the-art results through goal-oriented research.
+[VISUAL DIRECTION] Fast cuts showing different scientific domains: biology, chemistry, physics with AI overlays
+
+[VOICEOVER 1:50-2:00] We're witnessing a fundamental shift - AI is no longer just a tool, but becoming an independent research partner that could transform how science is done.
+[VISUAL DIRECTION] Final text overlay: "THE FUTURE OF SCIENCE IS HERE" with AI and human scientist icons collaborating

@@ -1,0 +1,1 @@
+AI cuts quantum computing errors dramatically—fewer CNOT gates mean cleaner operations. This Nature breakthrough accelerates practical quantum machines for real-world challenges.

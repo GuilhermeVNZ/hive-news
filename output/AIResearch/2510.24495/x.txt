@@ -1,0 +1,1 @@
+AI just solved a fundamental wireless bottleneck. Diffusion models reconstruct signals from sparse data, achieving 0.000022 NMSE with just 4 subcarriers. This means faster 6G without new spectrum. Game-changer for stadiums and high-mobility scenarios.

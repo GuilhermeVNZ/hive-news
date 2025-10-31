@@ -1,0 +1,1 @@
+AI now matches expert radiologists in interpreting cancer MRI reports. New research demonstrates optimized AI systems can achieve 75-100% composite scores for medical accuracy and clinical prioritization, addressing critical hospital bottlenecks. This breakthrough could standardize care and reduce diagnostic delays worldwide.

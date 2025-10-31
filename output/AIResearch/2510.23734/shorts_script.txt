@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] AI just solved a major math problem, but researchers say it failed to demonstrate real creativity. What does this mean for the future of discovery?
+[VISUAL DIRECTION] Animated text: "AI SOLVED IT... BUT AT WHAT COST?" with mathematical symbols flashing
+[VOICEOVER 0:05-0:20] New research from Nature/Science reveals AI's fundamental limitation: it can produce correct answers but lacks the disciplinary creativity that drives meaningful scientific progress.
+[VISUAL DIRECTION] Show contrasting images: traditional mathematical proofs vs AI-generated code, with text overlay: "CORRECT ANSWERS ≠ TRUE CREATIVITY"
+[VOICEOVER 0:20-0:40] The study examined two breakthroughs: the Four Color Theorem, which maintained mathematical reasoning even with computer assistance, versus an AI that solved extremal combinatorics without engaging field expertise.
+[VISUAL DIRECTION] Split screen showing Four Color Theorem visualization on left, AI code generation on right. Zoom in on key differences in approach.
+[VOICEOVER 0:40-1:00] Researchers found AI achieved a breakthrough - increasing set size from 496 to 512 - but was essentially indifferent to the problem's disciplinary context. The system just generated and tested programs.
+[VISUAL DIRECTION] Animated graph showing progression from 496 to 512 with text: "BREAKTHROUGH WITHOUT UNDERSTANDING"
+[VOICEOVER 1:00-1:30] This highlights AI's detachment from the conceptual frameworks and specialized knowledge that define true problem-solving in fields like mathematics and physics. The AI only cared if solutions met constraints.
+[VISUAL DIRECTION] Show abstract representations of disciplinary knowledge vs AI's brute-force approach. Fast cuts between different scientific fields.
+[VOICEOVER 1:30-1:50] The concern echoes historical worries from Socrates about writing eroding memory to mathematicians' fears about calculators. Computational gains may come at the cost of what makes discovery meaningful.
+[VISUAL DIRECTION] Historical timeline showing Socrates → Calculators → Modern AI, with question marks appearing
+[VOICEOVER 1:50-2:00] So while AI can produce valuable results, it may be bypassing the very process that gives scientific progress its true value and meaning.
+[VISUAL DIRECTION] Final screen with text: "AI CAN SOLVE PROBLEMS, BUT CAN IT TRULY DISCOVER?" with the Nature/Science logo

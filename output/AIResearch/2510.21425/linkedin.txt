@@ -1,0 +1,1 @@
+What if AI could explain its reasoning like humans? Researchers developed neurosymbolic AI that combines LLMs with symbolic systems, boosting explainability without performance loss. This breakthrough enables trustworthy AI for healthcare—read how symbolic integration creates transparent decision-making.

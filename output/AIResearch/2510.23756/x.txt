@@ -1,0 +1,1 @@
+AI's biggest weakness just got solved: Cobweb/4V resists catastrophic forgetting, maintaining 85-95% accuracy across learning sessions. Unlike traditional networks that overwrite knowledge, this system preserves understanding through information-theoretic mechanisms. Nature paper reveals how this transforms continuous learning.

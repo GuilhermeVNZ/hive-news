@@ -1,0 +1,1 @@
+AI models that power ChatGPT are failing at basic pathology tasks humans perform routinely. Mayo Clinic research reveals foundation models struggle with cancer diagnosis, dropping accuracy significantly when images are rotated. This critical reliability gap demands rethinking AI deployment in healthcare settings.

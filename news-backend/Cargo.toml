@@ -7,6 +7,14 @@ edition = "2024"
 name = "test_single_paper"
 path = "src/bin/test_single_paper.rs"
 
+[[bin]]
+name = "migrate-registry"
+path = "src/bin/migrate_registry.rs"
+
+[[bin]]
+name = "sync-env-from-config"
+path = "src/bin/sync_env_from_config.rs"
+
 [dependencies]
 # Web Framework
 axum = "0.7"

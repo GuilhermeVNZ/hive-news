@@ -1,0 +1,1 @@
+Stop training AI on accuracy scores. New Nature/Science research reveals: AI learns math better by analyzing error patterns in its reasoning trees. Simple structural mistakes provide more learning signal than scattered complex errors. This RLVR method boosts performance by 3.2 percentage points.

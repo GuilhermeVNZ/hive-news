@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if an AI could create chess puzzles so creative they stump world-class grandmasters?
+[VISUAL DIRECTION] [Animated text: "AI CREATES PUZZLES THAT STUMP GRANDMASTERS" with chess board background]
+
+[VOICEOVER 0:05-0:20] Google DeepMind has developed AI that generates chess compositions reviewed and praised by international experts. This isn't about beating humans at chess - it's about creating beautiful, challenging puzzles.
+[VISUAL DIRECTION] [Show DeepMind logo transitioning to chess pieces moving on board]
+
+[VOICEOVER 0:20-0:40] The researchers trained generative neural networks on 4 million chess positions from Lichess, using auto-regressive transformers and reinforcement learning. Their custom reward function emphasized uniqueness and counter-intuitiveness.
+[VISUAL DIRECTION] [Animated diagram showing neural network processing chess positions, highlight "uniqueness" and "counter-intuitive" text]
+
+[VOICEOVER 0:40-1:00] From approximately one million generated positions, they filtered samples rated 2200-2300 Elo. Three chess experts evaluated the AI's creations, assessing creativity, challenge level, and design quality.
+[VISUAL DIRECTION] [Show rating scale from 2200-2300 with chess pieces, transition to expert evaluation icons]
+
+[VOICEOVER 1:00-1:30] The AI produced puzzles described as "unorthodox" and "paradoxical" - positions where the best move isn't what strong players would consider first. One featured a sacrifice that prepared piece repositioning and infiltration.
+[VISUAL DIRECTION] [Show chess puzzle with animated arrows showing paradoxical moves, highlight "sacrifice" and "repositioning" text]
+
+[VOICEOVER 1:30-1:50] This represents early evidence that AI can genuinely collaborate with humans on creative pattern recognition. The puzzles serve as training resources and sources of enjoyment, offering surprising tactical patterns.
+[VISUAL DIRECTION] [Show human and AI icons collaborating, transition to chess training interface]
+
+[VOICEOVER 1:50-2:00] AI isn't just calculating - it's creating. And the results are puzzles that challenge even the strongest human minds.
+[VISUAL DIRECTION] [Final shot of chess board with text: "AI + HUMAN CREATIVITY" fading to Nature journal logo]

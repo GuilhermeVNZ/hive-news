@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could admit when it doesn't know something - and be right 97% of the time?
+[VISUAL DIRECTION] Animated text: 97% ACCURATE REJECTION with dramatic reveal
+
+[VOICEOVER 0:05-0:20] Current AI systems often provide confident but wrong answers outside their knowledge domain, spreading misinformation. This is the critical reliability challenge FARSIQA addresses.
+[VISUAL DIRECTION] Show misleading AI responses fading into warning symbols, then transition to FARSIQA architecture diagram
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that knows its limits and refuses to answer questions it can't verify?
+[VISUAL DIRECTION] Zoom on question mark transforming into boundary lines, show researchers at Sharif University of Technology
+
+[VOICEOVER 0:40-1:00] FARSIQA achieves 74.3% accuracy on complex multi-hop questions while demonstrating unprecedented 97% rejection accuracy for out-of-domain queries - 40 points better than existing systems.
+[VISUAL DIRECTION] Show bar chart comparison: 97% vs 57% rejection rates with dramatic difference highlighted
+
+[VOICEOVER 1:00-1:30] The secret? FAIR-RAG architecture doesn't just retrieve and generate. It dynamically breaks down questions, critically assesses evidence sufficiency, and runs targeted verification loops until confident.
+[VISUAL DIRECTION] Animated flow: Question → Decomposition → Evidence Check → Verification Loop → Confident Answer/Rejection
+
+[VOICEOVER 1:30-1:50] Real impact: This prevents AI from providing unsubstantiated answers on sensitive topics, explicitly refusing to issue religious rulings and instead directing users to qualified authorities.
+[VISUAL DIRECTION] Show practical applications: healthcare, legal, education contexts with safety boundaries emphasized
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about knowing more - it's about knowing what you don't know.
+[VISUAL DIRECTION] Final text overlay: RESPONSIBLE AI STARTS WITH HUMILITY

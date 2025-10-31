@@ -1,0 +1,1 @@
+AI just learned a minority dialect using 99% less data than normal. Researchers adapted Llama-3.1-8B to understand Québécois French with just 86M tokens—achieving benchmark improvements in both dialect-specific and standard French. This LoRA method requires only single GPU hardware, opening AI access to communities left behind by current technology. The 'dialect gap' is closing.

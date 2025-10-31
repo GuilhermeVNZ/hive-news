@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if an AI could read your MRI scan as accurately as a trained radiologist?
+[VISUAL DIRECTION] Animated text: "AI vs Radiologists" with MRI scan background
+
+[VOICEOVER 0:05-0:20] Right now, radiologists face overwhelming workloads, interpreting thousands of images daily while patients wait for critical diagnoses.
+[VISUAL DIRECTION] Show rapid succession of MRI images with clock ticking overlay
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI match human expertise in medical imaging interpretation without the fatigue and delays?
+[VISUAL DIRECTION] Split screen showing radiologist at workstation vs AI processing animation
+
+[VOICEOVER 0:40-1:00] The breakthrough: A specialized AI architecture achieved competitive performance across multiple evaluation metrics, with ROUGE-L score of 0.75 indicating semantic similarity to human-written reports.
+[VISUAL DIRECTION] Show ROUGE-L score graphic with upward trend line
+
+[VOICEOVER 1:00-1:30] How it works: The system uses transformer-based encoders to analyze MRI patches, capturing relationships between different brain regions crucial for detecting subtle abnormalities. It then generates clinically relevant descriptions through aligned language embeddings.
+[VISUAL DIRECTION] Animated diagram showing MRI scan → patch analysis → language generation process
+
+[VOICEOVER 1:30-1:50] Real impact: This technology can flag abnormalities, prioritize urgent cases, and reduce cognitive load on healthcare professionals, potentially speeding up diagnosis for conditions like tumors and strokes.
+[VISUAL DIRECTION] Show hospital setting with AI assisting radiologists
+
+[VOICEOVER 1:50-2:00] The future of medical imaging is here - AI that works alongside humans to deliver faster, more accurate diagnoses.
+[VISUAL DIRECTION] Final text overlay: "AI + Human Expertise = Better Patient Care"

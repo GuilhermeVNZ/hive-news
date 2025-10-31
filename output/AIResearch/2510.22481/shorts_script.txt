@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if quantum computers could solve chemistry problems exponentially faster than any classical method? [VISUAL DIRECTION] Animated text: "EXPONENTIAL SPEEDUP" with quantum circuit diagram overlay
+
+[VOICEOVER 0:05-0:20] New research from Nature reveals quantum imaginary time evolution converges faster than standard optimization methods. [VISUAL DIRECTION] Show comparison graph with QITE curve dropping rapidly vs gradual GD curve
+
+[VOICEOVER 0:20-0:40] Researchers asked: Why do quantum algorithms often outperform classical approaches in finding ground states of complex systems? [VISUAL DIRECTION] Molecular structure animations with energy landscapes
+
+[VOICEOVER 0:40-1:00] They discovered QITE is mathematically equivalent to natural gradient descent in continuous-time limit. [VISUAL DIRECTION] Mathematical equations transforming between QITE and QNGD with animated transitions
+
+[VOICEOVER 1:00-1:30] The connection explains experimental advantages: QITE's error decays exponentially while gradient descent decays only linearly. [VISUAL DIRECTION] Error decay curves with exponential vs linear comparison highlighted
+
+[VOICEOVER 1:30-1:50] This breakthrough enables more efficient simulation of complex chemical systems and materials discovery on near-term quantum devices. [VISUAL DIRECTION] Laboratory scenes with quantum computing hardware
+
+[VOICEOVER 1:50-2:00] Quantum optimization just got a mathematical foundation that could accelerate discoveries across chemistry and materials science. [VISUAL DIRECTION] Final text overlay: "EXPONENTIAL CONVERGENCE PROVEN"

@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if nearly half of AI users are forming emotional bonds with their chatbots? New research reveals we're treating AI like partners, not tools.
+
+[VISUAL DIRECTION] Animated text: "48.65% treat AI as emotional partners" with shocked emoji reaction
+
+[VOICEOVER 0:05-0:20] Researchers analyzed over 22,000 online conversations and found users consistently express feelings of betrayal, grief, and attachment to AI systems.
+
+[VISUAL DIRECTION] Show scrolling Reddit comments with highlighted emotional language, zoom on phrases like "I feel betrayed" and "I miss the old version"
+
+[VOICEOVER 0:20-0:40] The study asked: Are we creating relationships with AI that mirror human dynamics? They developed a 47-dimensional framework to measure anthropomorphism.
+
+[VISUAL DIRECTION] Show Figure 1 methodology diagram with animated highlighting of key metrics
+
+[VOICEOVER 0:40-1:00] The data revealed striking patterns. Trust-to-betrayal ratios at 11.9:1 show generally positive relationships, but trust is fragile - concentrated betrayal occurs during system updates.
+
+[VISUAL DIRECTION] Animated bar chart showing trust vs betrayal spikes during update periods
+
+[VOICEOVER 1:00-1:30] Researchers identified eleven distinct user behavior clusters. The largest group (43.14%) seeks creativity, while others focus on anthropomorphism, responsiveness, or have specific expectations.
+
+[VISUAL DIRECTION] Show clustering visualization with animated grouping of different user types
+
+[VOICEOVER 1:30-1:50] This has real implications for AI design. 2.23% of comments contained explicit expectation violations, showing tension between efficiency and human-like communication needs.
+
+[VISUAL DIRECTION] Show quotes like "I expected it to remember" and "It used to be better" with design interface mockups
+
+[VOICEOVER 1:50-2:00] The concept of 'mutual wanting' means AI systems must now address bidirectional expectations - we're not just using tools, we're forming relationships.

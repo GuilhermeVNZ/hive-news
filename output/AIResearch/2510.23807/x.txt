@@ -1,0 +1,1 @@
+BREAKING: AI models revolutionizing diagnosis? Not so fast. New Nature/Science study shows foundation models fail basic pathology tasks, with accuracy plummeting when images rotate. Mayo Clinic tested 100,000+ biopsies across 11 countries - the results question real-world utility.

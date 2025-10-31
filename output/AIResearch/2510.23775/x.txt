@@ -1,0 +1,1 @@
+New AI detects fake images with 96.5% accuracy, even when altered. It explains findings like 'misaligned symmetry' and runs on low-power devices. Game-changer for fighting misinformation.

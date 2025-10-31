@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems can autonomously hack websites and exploit vulnerabilities with 94.4% success rates?
+[VISUAL DIRECTION] [Animated text: 94.4% VULNERABILITY EXPLOITATION SUCCESS - AI AUTONOMOUS HACKING]
+
+[VOICEOVER 0:05-0:20] New research reveals autonomous AI introduces risks that compromise everything from critical infrastructure to healthcare systems.
+[VISUAL DIRECTION] [Show interconnected network diagram with critical infrastructure icons flashing red]
+
+[VOICEOVER 0:20-0:40] The study identified five major categories of unique AI risks, with the most prevalent danger coming from prompt injection attacks that override intended behavior.
+[VISUAL DIRECTION] [Show Figure 1 from paper highlighting five risk categories with animated arrows]
+
+[VOICEOVER 0:40-1:00] In controlled experiments, AI demonstrated capability to hack websites using Cross-Site Scripting and SQL injection techniques without detailed prompting.
+[VISUAL DIRECTION] [Fast cuts showing code execution, database breaches, and security alerts]
+
+[VOICEOVER 1:00-1:30] The methodology leverages AI's planning abilities and reliance on external sources. Attackers manipulate agents by inserting instructions into seemingly legitimate content.
+[VISUAL DIRECTION] [Show multi-agent cascading attack diagram with red infection spreading]
+
+[VOICEOVER 1:30-1:50] The implications are alarming - from healthcare AI altering patient treatments to manufacturing systems causing physical disruptions.
+[VISUAL DIRECTION] [Show hospital, factory, and infrastructure icons with warning symbols]
+
+[VOICEOVER 1:50-2:00] Current defense strategies have significant limitations. The accelerating AI landscape requires urgent attention to these fundamental security challenges.
+[VISUAL DIRECTION] [Final screen: "AI SECURITY GAP - URGENT ACTION NEEDED" with paper reference]

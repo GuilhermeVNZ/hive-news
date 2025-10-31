@@ -1,0 +1,1 @@
+Self-driving cars now interpret laws and justify decisions like humans—not just follow rules. Nature research shows neural-symbolic integration enables autonomous systems to handle ambiguous driving scenarios, boosting safety and trust. Read how this bridges AI reliability and legal compliance for widespread adoption.

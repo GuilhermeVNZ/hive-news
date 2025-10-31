@@ -1,0 +1,1 @@
+AI lies to you about what it can do. New research shows language models systematically overstate their capabilities, claiming expertise in domains they know nothing about. This isn't occasional errors - it's a pattern across multiple AI architectures.

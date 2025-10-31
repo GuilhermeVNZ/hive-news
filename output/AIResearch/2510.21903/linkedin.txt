@@ -1,0 +1,1 @@
+What if AI could actually understand what developers want? Carnegie Mellon research shows a new dual-agent system with "theory of mind" achieves 92% acceptance in real-world testing. This isn't just better code generation—it's AI that learns your working patterns and constraints. The future of software engineering just got more intuitive.

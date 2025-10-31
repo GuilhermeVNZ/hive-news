@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if everything we know about AI number processing is fundamentally flawed?
+[VISUAL DIRECTION] Animated text: "AI NUMBER CRISIS" with question mark exploding
+
+[VOICEOVER 0:05-0:20] As AI models grow to billions of parameters, researchers discovered the industry's standard approach to number formats may be wrong for many applications.
+[VISUAL DIRECTION] Show exponential growth curve of model sizes with floating-point icons struggling
+
+[VOICEOVER 0:20-0:40] The team asked: Could simpler integer formats actually outperform the complex floating-point systems championed by major manufacturers?
+[VISUAL DIRECTION] Side-by-side comparison: complex floating-point circuits vs clean integer circuits
+
+[VOICEOVER 0:40-1:00] Their comprehensive testing revealed integer formats consistently beat floating-point across multiple model architectures. MXINT8 outperformed MXFP8, NVINT4 surpassed NVFP4 with rotation techniques.
+[VISUAL DIRECTION] Show performance charts with integer formats clearly leading, highlight crossover points
+
+[VOICEOVER 1:00-1:30] The breakthrough came from analyzing signal-to-noise ratios and developing gradient clipping that resolved persistent quantization issues. Testing on Llama3 3B parameters showed integer-based training matched high-precision baselines.
+[VISUAL DIRECTION] Animated explanation of gradient clipping resolving outlier effects
+
+[VOICEOVER 1:30-1:50] Real impact: Integer formats demonstrated 50% lower area requirements and mixed-format configurations reduced energy consumption by 40% relative to floating-point combinations.
+[VISUAL DIRECTION] Show energy consumption comparison charts, highlight mobile devices and edge computing applications
+
+[VOICEOVER 1:50-2:00] The hardware industry's trajectory might need rethinking - sometimes simpler is fundamentally better.
+[VISUAL DIRECTION] Final text overlay: "SIMPLER NUMBERS, SMARTER AI" with rotating integer symbols

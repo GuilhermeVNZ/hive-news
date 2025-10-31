@@ -1,0 +1,1 @@
+Robots now find the complete set of optimal trade-offs between conflicting goals like speed vs safety. New MOS algorithms achieve dramatic speedups, enabling better autonomous vehicle planning in complex urban environments. Nature/Science research advances multi-objective search frontiers.

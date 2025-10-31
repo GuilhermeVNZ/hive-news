@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could learn perfect safety without ever making dangerous mistakes? [VISUAL DIRECTION] Animated text: 'AI Safety Crisis?' with red warning symbols flashing
+
+[VOICEOVER 0:05-0:20] In critical applications like autonomous driving and healthcare, AI mistakes can have serious consequences. Current methods often rely on risky trial-and-error learning. [VISUAL DIRECTION] Show split screen: autonomous car swerving dangerously on left, medical robot making error on right
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn to make optimal decisions while strictly following safety rules from the start? [VISUAL DIRECTION] Animated text: 'The Challenge: Performance vs Safety' with scale balancing icons
+
+[VOICEOVER 0:40-1:00] They discovered Online Optimization Learning (O3SRL) - a framework that trains AI to maximize rewards while keeping cumulative costs below strict thresholds. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on constraint violation distributions
+
+[VOICEOVER 1:00-1:30] Here's how it works: Instead of unstable evaluations, O3SRL uses no-regret learning to adaptively control the trade-off between performance and safety. It treats different penalty strengths as 'arms' in multi-armed bandit, selecting optimal policies through iterative updates. [VISUAL DIRECTION] Animated diagram showing optimization process with constraint boundaries clearly marked
+
+[VOICEOVER 1:30-1:50] In tests, O3SRL achieved zero constraint violations in autonomous navigation tasks, outperforming all baseline algorithms. This means AI can now learn safe operation without dangerous experimentation. [VISUAL DIRECTION] Show comparative results table highlighting 'Normalized Constraint Violation: 0' for O3SRL
+
+[VOICEOVER 1:50-2:00] The breakthrough: AI that learns perfect safety from existing data alone - no risky trial required. [VISUAL DIRECTION] Final screen: 'Safe AI Learning - Available Now' with Nature journal logo

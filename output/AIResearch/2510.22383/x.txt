@@ -1,0 +1,1 @@
+Conway's Game of Life now boosts AI learning, cutting overfitting by evolving neuron states dynamically. A Nature-inspired leap for smarter, more reliable neural networks.

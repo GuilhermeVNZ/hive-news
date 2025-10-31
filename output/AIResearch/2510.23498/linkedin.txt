@@ -1,0 +1,1 @@
+AI training can now be 50% faster with no accuracy loss. Neural ODEs use mixed-precision training to cut memory use and speed up computations, making advanced AI more accessible. How could this transform your field? Based on Nature/Science research.

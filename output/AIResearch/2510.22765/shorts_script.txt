@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if every dataset used for research could contain zero actual personal information while preserving all analytical value?
+[VISUAL DIRECTION] Animated text: ZERO REAL DATA • FULL ANALYTICAL VALUE with dramatic reveal
+
+[VOICEOVER 0:05-0:20] Right now, medical research, fraud detection, and scientific collaboration are limited by privacy concerns. Hospitals can't share patient records, banks hesitate with transaction data, and companies risk breaches.
+[VISUAL DIRECTION] Quick cuts: hospital charts, bank transactions, research labs with "RESTRICTED ACCESS" overlays
+
+[VOICEOVER 0:20-0:40] The fundamental question: Can we maintain data utility while completely protecting individual privacy?
+[VISUAL DIRECTION] Split screen: data analysis charts vs. privacy lock icons with tension-building animation
+
+[VOICEOVER 0:40-1:00] The breakthrough: AI that generates entirely synthetic datasets preserving statistical relationships and correlations without containing any real personal information.
+[VISUAL DIRECTION] Show neural network architecture diagram with data flowing through but individual points dissolving into patterns
+
+[VOICEOVER 1:00-1:30] How it works: Neural networks learn the underlying distribution of real datasets without memorizing specific data points. The protection is built directly into the generation process, not added later.
+[VISUAL DIRECTION] Animated flow: Real data → Pattern learning → Synthetic generation → Identical analysis results
+
+[VOICEOVER 1:30-1:50] Testing showed identical performance on analytical tasks while preventing attackers from identifying whether individuals were in the original data. This enables secure collaboration across organizations.
+[VISUAL DIRECTION] Show benchmark comparison charts with identical results, then security test results blocking data identification
+
+[VOICEOVER 1:50-2:00] The future: Research without privacy barriers. Science can advance while personal data remains protected.
+[VISUAL DIRECTION] Final text overlay: "RESEARCH UNLEASHED • PRIVACY PRESERVED" with paper reference 2510.22765

@@ -1,0 +1,1 @@
+AI systems can now identify which individual AIs are most responsible for group decisions. New CAIR method achieves 76.1% accuracy in pinpointing key decision-makers in multi-agent workflows, providing crucial transparency for AI safety. How might this transform AI deployment in sensitive applications?

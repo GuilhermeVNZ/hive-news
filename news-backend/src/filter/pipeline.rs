@@ -11,6 +11,7 @@ use crate::filter::parser::ParsedPdf;
 use crate::filter::scorer::{FilterResult, calculate_score};
 use crate::filter::source_detector::{SourceType, detect_source_type};
 use crate::filter::validator::validate_dois;
+use crate::utils::article_registry::{RegistryManager, ArticleStatus};
 
 #[derive(Default)]
 pub struct FilterStats {
@@ -21,7 +22,14 @@ pub struct FilterStats {
 }
 
 pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
-    let pdfs = discover_unfiltered_pdfs(download_dir)?;
+    // Threshold para aprovação: score >= 0.4
+    const FILTER_THRESHOLD: f32 = 0.4;
+    
+    // Inicializar registry
+    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+    let registry = RegistryManager::new(registry_path)?;
+
+    let pdfs = discover_unfiltered_pdfs(download_dir, &registry)?;
 
     if pdfs.is_empty() {
         println!("   No unfiltered PDFs found");
@@ -88,8 +96,18 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
 
         let score = calculate_score(&result);
 
-        if score >= 0.4 {
-            // Threshold reduzido de 0.45 para 0.4
+        // Extrair article_id do caminho do PDF
+        let article_id = pdf_path
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("");
+
+        // Arredondar score para 2 casas decimais para evitar problemas de precisão float
+        // Se arredondado for >= 0.40, aprovar
+        let rounded_score = (score * 100.0).round() / 100.0;
+
+        // Threshold: aprovar se score arredondado >= 0.4
+        if rounded_score >= FILTER_THRESHOLD {
             let category = categorize(&result.doc);
             println!(
                 "   Approved (score: {:.2}): {} → {}",
@@ -97,57 +115,67 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             );
             stats.approved += 1;
 
-            // Mover para /filtered/<category>/
+            // Mover para /filtered/<category>/ (ainda temporário - será deletado após writer)
             move_to_category(&pdf_path, &category, download_dir)?;
+
+            // Registrar no registry como filtered
+            if let Err(e) = registry.register_filtered(article_id, score as f64, category.clone()) {
+                eprintln!("   ⚠️  Failed to register filtered article: {}", e);
+            }
+
+            // Nota: PDF será deletado após writer processar (não deletar aqui ainda)
         } else {
             println!("   Rejected (score: {:.2}): {}", score, result.doc.title);
             stats.rejected += 1;
 
-            // Mover para /rejected/
-            move_to_rejected(&pdf_path, download_dir)?;
+            // Registrar no registry como rejected ANTES de mover/deletar
+            let reason = format!("Score {:.2} below threshold {:.2}", score, FILTER_THRESHOLD);
+            if let Err(e) = registry.register_rejected(article_id, score as f64, reason.clone()) {
+                eprintln!("   ⚠️  Failed to register rejected article: {}", e);
+            }
+
+            // Verificar se o arquivo ainda existe antes de tentar mover
+            if !pdf_path.exists() {
+                println!("   ⚠️  PDF already removed: {}", pdf_path.display());
+                continue;
+            }
+
+            // Mover para /rejected/ (para debug/logging, mas será deletado)
+            let rejected_path = match move_to_rejected(&pdf_path, download_dir) {
+                Ok(path) => path,
+                Err(e) => {
+                    eprintln!("   ⚠️  Failed to move rejected PDF: {}", e);
+                    // Tentar deletar diretamente do local original se mover falhou
+                    if let Err(del_err) = fs::remove_file(&pdf_path) {
+                        eprintln!("   ⚠️  Failed to delete rejected PDF from original location: {}", del_err);
+                    } else {
+                        println!("   🗑️  Rejected PDF deleted from original location: {}", pdf_path.display());
+                    }
+                    continue;
+                }
+            };
+
+            // Deletar PDF rejeitado imediatamente do destino (rejected/)
+            if let Err(e) = fs::remove_file(&rejected_path) {
+                eprintln!("   ⚠️  Failed to delete rejected PDF from {}: {}", rejected_path.display(), e);
+            } else {
+                println!("   🗑️  Rejected PDF deleted: {}", rejected_path.display());
+            }
         }
     }
 
     Ok(stats)
 }
 
-fn discover_unfiltered_pdfs(download_dir: &Path) -> Result<Vec<PathBuf>> {
+fn discover_unfiltered_pdfs(download_dir: &Path, registry: &RegistryManager) -> Result<Vec<PathBuf>> {
     let mut pdfs = Vec::new();
 
     if !download_dir.exists() {
         return Ok(pdfs);
     }
 
-    // Check if article already has writer output
-    fn article_already_processed(pdf_path: &Path, download_dir: &Path) -> bool {
-        // Extract article ID from PDF path (e.g., "2510.21610.pdf" -> "2510.21610")
-        let article_id = pdf_path
-            .file_stem()
-            .and_then(|s| s.to_str())
-            .unwrap_or("");
-        
-        // Check multiple possible output locations
-        let output_locations = vec![
-            download_dir.parent().map(|p| p.join("output").join("AIResearch").join(article_id)),
-            Some(download_dir.parent().unwrap_or(download_dir).join("output").join("AIResearch").join(article_id)),
-            Some(PathBuf::from("G:/Hive-Hub/News-main/output/AIResearch").join(article_id)),
-            Some(PathBuf::from("G:/Hive-Hub/News-main/output/ScienceAI").join(article_id)),
-        ];
-        
-        for opt_path in output_locations {
-            if let Some(output_dir) = opt_path {
-                let article_file = output_dir.join("article.md");
-                if article_file.exists() {
-                    return true;
-                }
-            }
-        }
-        
-        false
-    }
-
     // Buscar PDFs recursivamente de downloads/ (ONLY arxiv/, skip filtered/ e rejected/)
-    fn find_pdfs(dir: &Path, pdfs: &mut Vec<PathBuf>, download_dir: &Path) -> std::io::Result<()> {
+    fn find_pdfs(dir: &Path, pdfs: &mut Vec<PathBuf>, download_dir: &Path, registry: &RegistryManager) -> std::io::Result<()> {
         for entry in std::fs::read_dir(dir)? {
             let entry = entry?;
             let path = entry.path();
@@ -161,12 +189,45 @@ fn discover_unfiltered_pdfs(download_dir: &Path) -> Result<Vec<PathBuf>> {
                 }
                 
                 // Recursão para subdiretórios
-                find_pdfs(&path, pdfs, download_dir)?;
+                find_pdfs(&path, pdfs, download_dir, registry)?;
             } else if let Some(ext) = path.extension() {
                 if ext == "pdf" {
-                    // Check if article already processed by writer
-                    if !article_already_processed(&path, download_dir) {
-                        pdfs.push(path);
+                    // Extrair article_id do caminho
+                    let article_id = path
+                        .file_stem()
+                        .and_then(|s| s.to_str())
+                        .unwrap_or("");
+
+                    // Processar se:
+                    // 1. Nunca processado
+                    // 2. Status Collected (baixado mas não filtrado ainda)
+                    // 3. Status Rejected mas ainda está em arxiv/ (pode ter sido rejeitado com threshold antigo)
+                    //    e o PDF ainda existe (não foi deletado)
+                    let metadata = registry.get_metadata(article_id);
+                    let should_process = match metadata {
+                        None => true, // Nunca processado - processar
+                        Some(meta) => {
+                            match meta.status {
+                                ArticleStatus::Collected => true, // Baixado mas não filtrado ainda
+                                ArticleStatus::Rejected => {
+                                    // Se foi rejeitado mas ainda está em arxiv/, reprocessar
+                                    // (pode ter sido rejeitado com threshold maior antes, e agora com 0.4 pode ser aprovado)
+                                    // Verificar se o PDF ainda existe fisicamente
+                                    if path.exists() {
+                                        // Reprocessar todos os rejeitados que ainda estão em arxiv/
+                                        // porque podem ter sido rejeitados com threshold antigo (0.5, 0.45)
+                                        true
+                                    } else {
+                                        false // PDF não existe mais, não processar
+                                    }
+                                }
+                                ArticleStatus::Filtered | ArticleStatus::Published => false, // Já processado completamente
+                            }
+                        }
+                    };
+
+                    if should_process {
+                    pdfs.push(path);
                     }
                 }
             }
@@ -175,7 +236,7 @@ fn discover_unfiltered_pdfs(download_dir: &Path) -> Result<Vec<PathBuf>> {
     }
 
     // Search in downloads/ (mainly from arxiv/, excluding filtered/, rejected/, cache/)
-    find_pdfs(download_dir, &mut pdfs, download_dir)?;
+    find_pdfs(download_dir, &mut pdfs, download_dir, &registry)?;
     
     Ok(pdfs)
 }
@@ -202,7 +263,7 @@ fn move_to_category(pdf_path: &Path, category: &str, base_dir: &Path) -> Result<
     Ok(())
 }
 
-fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<()> {
+fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<PathBuf> {
     let rejected_dir = base_dir.join("rejected");
 
     // Criar diretório se não existir
@@ -221,5 +282,5 @@ fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<()> {
     // Mover arquivo
     fs::rename(pdf_path, &dest_path)?;
 
-    Ok(())
+    Ok(dest_path)
 }

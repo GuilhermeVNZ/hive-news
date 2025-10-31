@@ -1,0 +1,11 @@
+Virtual reality headsets can now display photorealistic human avatars without the lag and power drain that typically plague immersive experiences. Researchers have developed a co-optimized system that combines algorithmic improvements with custom hardware to achieve real-time avatar rendering on resource-constrained devices.
+
+The breakthrough centers on Codec Avatars, which use deep learning to generate high-fidelity facial renderings for VR communication. These avatars traditionally demand substantial computational resources, making them challenging to run on head-mounted displays where latency and power consumption are critical. The new approach enables these avatars to run efficiently while maintaining visual quality.
+
+Methodology combines several novel techniques. The team developed Input Channel-wise Activation Smoothing (ICAS), which equalizes activation ranges across channels to reduce quantization difficulty. They also created Facial-Feature-Aware Smoothing (FFAS) that selectively preserves fine details in critical regions like eyes and mouth. For weight quantization, they introduced UV-weighted Hessian-based quantization that concentrates precision where it most affects facial features.
+
+Experimental results demonstrate significant improvements. At 4-bit precision, the system achieved FovVideoVDP score improvements of +0.39 compared to the best baseline, while reducing latency by 3.36 times. The system sustains 90 frames per second in end-to-end tests, satisfying VR requirements. For spontaneous facial expressions including shushing, surprise, and frowning, the method consistently outperformed existing approaches across multiple viewing angles.
+
+The implications extend to practical VR applications where users need seamless, lifelike interactions without performance compromises. Current commercial headsets like those using Qualcomm's XR2 Gen 2 platform struggle with full avatar decoding, achieving only 25.25 FPS median inference rates. The new system enables true on-device execution without cloud offloading, addressing privacy concerns while maintaining performance.
+
+Limitations include dependence on accurate facial priors and optimization focused solely on the decoding stage, leaving other pipeline components unoptimized. Future work aims to reduce this dependence and extend co-optimization to full telepresence systems.

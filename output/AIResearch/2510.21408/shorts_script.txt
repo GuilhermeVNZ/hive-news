@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could teach us how our own brains form memories and associations? [VISUAL DIRECTION] Animated text: 'AI Learning Like Human Brains' with neural network animation
+
+[VOICEOVER 0:05-0:20] Researchers at Max Planck Institute just discovered that large language models exhibit the exact same learning patterns as human brains. [VISUAL DIRECTION] Show researcher lab setting with LLM architecture diagram
+
+[VOICEOVER 0:20-0:40] They asked: Can AI systems mimic fundamental brain processes like associative learning? [VISUAL DIRECTION] Zoom in on brain scan imagery transitioning to AI network visualization
+
+[VOICEOVER 0:40-1:00] The answer stunned them - LLMs show non-monotonic plasticity, the same U-shaped learning curve observed in human hippocampal consolidation. [VISUAL DIRECTION] Show Figure 2 with zoom on the U-shaped pattern distribution
+
+[VOICEOVER 1:00-1:30] When exposed to token pairs, models' internal representations reorganize exactly like human brains - moderately dissimilar items integrate best. [VISUAL DIRECTION] Animated text showing similarity spectrum from 0.95 with peak at moderate dissimilarity
+
+[VOICEOVER 1:30-1:50] This means we can now use AI as scalable model organisms for neuroscience experiments that were previously impossible with biological systems. [VISUAL DIRECTION] Show side-by-side comparison of brain experiments vs AI experiments
+
+[VOICEOVER 1:50-2:00] The future of understanding human cognition just got a powerful new tool - and it's already learning alongside us. [VISUAL DIRECTION] Final text overlay: 'AI as Model Organisms for Neuroscience'

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your smartphone could run sophisticated AI without draining your wallet on constant cloud services?
+[VISUAL DIRECTION] Animated text: "SMARTPHONE AI WITHOUT THE CLOUD COSTS?" with phone graphic glowing
+
+[VOICEOVER 0:05-0:20] Current AI assistants require expensive, always-on cloud connections that limit accessibility and drive up costs.
+[VISUAL DIRECTION] Show dollar signs flowing from phone to cloud servers with red arrows
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that's both powerful AND affordable for everyday mobile use?
+[VISUAL DIRECTION] Zoom in on question mark transforming into LightAgent logo
+
+[VOICEOVER 0:40-1:00] They developed LightAgent—a 3-billion-parameter system that matches larger models' performance while cutting cloud usage by approximately 90%.
+[VISUAL DIRECTION] Show benchmark comparison chart with LightAgent outperforming cloud-only systems
+
+[VOICEOVER 1:00-1:30] How? Three smart components: enhanced multimodal training, efficient memory management, and dynamic orchestration that only calls powerful cloud AI when absolutely necessary.
+[VISUAL DIRECTION] Animated diagram showing the three components working together with smart switching
+
+[VOICEOVER 1:30-1:50] This means your phone can handle complex tasks across TikTok, Chrome, Reddit, and Gmail without constant expensive upgrades.
+[VISUAL DIRECTION] Fast cuts between app icons with checkmarks appearing
+
+[VOICEOVER 1:50-2:00] The breakthrough? Smarter AI doesn't require bigger models—just smarter design.
+[VISUAL DIRECTION] Final text overlay: "SMARTER AI, SMARTER COSTS" with LightAgent logo

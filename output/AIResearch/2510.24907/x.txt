@@ -1,0 +1,1 @@
+Transformers don't process images all at once - they refine understanding layer by layer. Self-attention handles 94% of viewpoint alignment, while cross-attention actually increases alignment by 11%. New research from Nature/Science reveals how AI reconstructs 3D scenes internally.

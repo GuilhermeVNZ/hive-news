@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know that the most advanced AI systems, like GPT-4, operate using surprisingly simple mathematical patterns?
+[VISUAL DIRECTION] Animated text: "AI's Hidden Simplicity" with neural network visualization in background
+
+[VOICEOVER 0:05-0:20] Researchers have uncovered that beneath the complex human-like text generation lies what they call 'low-rank structure' - meaning these AI systems use linear combinations to predict word sequences.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on matrix structure, animated arrows showing linear combinations
+
+[VOICEOVER 0:20-0:40] The big question: How do these complex systems generate such sophisticated text from such simple underlying mathematics?
+[VISUAL DIRECTION] Split screen: left shows complex AI-generated text, right shows simplified matrix diagrams
+
+[VOICEOVER 0:40-1:00] Across multiple modern AI models including OLMo, Llama, and Gemma, researchers consistently found this same pattern. Even approximating OLMo-7b with rank-500 matrices achieved KL divergence of just 5.
+[VISUAL DIRECTION] Show bar chart comparing multiple AI models with consistent low-rank patterns, highlight KL divergence numbers
+
+[VOICEOVER 1:00-1:30] The methodology involved constructing 'extended matrices' and measuring how well they could be approximated by lower-rank versions. This pattern emerges during training and persists even with random inputs.
+[VISUAL DIRECTION] Animated sequence showing matrix construction, rank reduction, and approximation process with visual quality indicators
+
+[VOICEOVER 1:30-1:50] Real implications: This discovery enables new techniques like 'Lingen' that can generate coherent text using unrelated prompts, potentially bypassing safety filters and raising critical AI security questions.
+[VISUAL DIRECTION] Show security warning symbols overlaying AI interface, demonstrate prompt manipulation concept
+
+[VOICEOVER 1:50-2:00] The takeaway: Even the most complex AI systems may operate on surprisingly simple mathematical principles that could reshape how we build and secure artificial intelligence.
+[VISUAL DIRECTION] Final screen with key paper title: "Sequences Logits Reveal Low Rank Structure" and main finding highlighted

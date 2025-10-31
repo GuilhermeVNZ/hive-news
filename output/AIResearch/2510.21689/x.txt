@@ -1,0 +1,1 @@
+AI trained to monitor wildlife makes critical errors—confusing seals with rocks. Study shows 97% of detections fail when key areas are masked. Raises serious questions about trusting automated systems in conservation.

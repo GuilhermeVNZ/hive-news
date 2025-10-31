@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your VR avatar could look completely real without slowing down your headset or killing the battery?
+[VISUAL DIRECTION] Animated text: "Photorealistic VR Avatars - No Lag, No Drain" with futuristic avatar shimmering into view
+
+[VOICEOVER 0:05-0:20] Current VR systems struggle with realistic human avatars because they demand massive computational power, creating lag and draining batteries on head-mounted displays.
+[VISUAL DIRECTION] Show side-by-side comparison: choppy avatar vs smooth avatar, with battery percentage dropping rapidly on left side
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we achieve photorealistic avatar rendering while maintaining real-time performance on resource-limited devices?
+[VISUAL DIRECTION] Zoom in on researcher at workstation, animated question marks appearing around VR headset
+
+[VOICEOVER 0:40-1:00] They discovered that by co-optimizing algorithms with custom hardware, they could achieve seamless avatar execution. Their ESCA method uses deep learning to generate high-fidelity renderings efficiently.
+[VISUAL DIRECTION] Show animated diagram of algorithm flow with "ICAS - Input Channel-wise Activation Sparsity" and "FFAS - Facial-Feature-Aware Sparsity" labels
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system selectively preserves critical facial details while optimizing computational resources. It uses techniques like UV-weighted Hessian-based precision allocation to maintain visual quality where it matters most.
+[VISUAL DIRECTION] Zoom and pan across facial features - eyes, mouth, expressions - with heat maps showing computational focus areas
+
+[VOICEOVER 1:30-1:50] The impact? Commercial devices like Qualcomm's XR2 Gen 2 can now achieve smooth performance instead of struggling at 15 FPS. This makes practical VR communication without visual compromises finally possible.
+[VISUAL DIRECTION] Show before/after performance graphs with FPS numbers jumping dramatically, then transition to people using VR for remote collaboration
+
+[VOICEOVER 1:50-2:00] The barrier to truly immersive virtual communication has just been shattered.
+[VISUAL DIRECTION] Final shot of photorealistic avatar making eye contact with viewer, then quick cut to black with "ESCA: Seamless Avatar Execution" text

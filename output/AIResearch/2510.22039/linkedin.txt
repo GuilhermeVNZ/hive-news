@@ -1,0 +1,1 @@
+AI struggles with uncertainty where humans excel. New Nature research shows predictive coding—mimicking brain prediction—helps AI build mental models for better decisions in partial information environments. This breakthrough bridges machine learning and neuroscience for more adaptable systems.

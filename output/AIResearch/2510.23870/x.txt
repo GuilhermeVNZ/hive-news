@@ -1,0 +1,1 @@
+AI now translates natural language to database queries with human-like reasoning—OraPlan–SQL achieves 55-56.7% accuracy on complex analytical benchmarks while maintaining 99% syntax validity. This breakthrough bridges the gap between how people naturally ask questions and what databases require.

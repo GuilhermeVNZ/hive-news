@@ -1,0 +1,1 @@
+AI now designs computer chips with near-perfect accuracy, slashing power consumption by 30% while boosting performance. This breakthrough in automated RTL generation could transform semiconductor manufacturing. Read the Nature/Science paper to see how evolutionary computation is revolutionizing hardware design.

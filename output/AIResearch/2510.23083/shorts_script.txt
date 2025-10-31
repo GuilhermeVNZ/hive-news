@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if smaller AI models could actually outperform the giants? This isn't hypothetical - it's happening right now.
+[VISUAL DIRECTION] Animated text: "SMALLER AI BEATS GIANTS?" with question mark shaking dramatically
+[VOICEOVER 0:05-0:20] For years, we've assumed bigger AI models are always better. But new research from Nature/Science reveals a stunning reversal that could transform how we build artificial intelligence.
+[VISUAL DIRECTION] Show scale tipping from "BIGGER" to "SMARTER" with animated weights
+[VOICEOVER 0:20-0:40] The question researchers asked: Could compact AI models serve as effective critics to evaluate and select the best AI generations? The answer shocked everyone.
+[VISUAL DIRECTION] Show Phi-4 model family icons (3.8B, 14B parameters) with size comparison to larger models
+[VOICEOVER 0:40-1:00] Using a two-sided reward methodology that combines process and outcome evaluation, these smaller models achieved a 20% improvement in selecting the most accurate AI generations.
+[VISUAL DIRECTION] Animated graph showing 20% improvement spike, highlight "Pass@1: 78%" with upward arrow
+[VOICEOVER 1:00-1:30] How does it work? They transformed standard language models into critics by replacing classification layers with regression to estimate success likelihood. Think of it like training a seasoned reviewer to spot potential problems before they become full-blown errors.
+[VISUAL DIRECTION] Show neural network diagram with "classification" layer being replaced by "regression" layer, animated flow of data
+[VOICEOVER 1:30-1:50] The real-world impact is massive: Smaller, more efficient AI means reduced computational and environmental costs. This makes advanced AI accessible to organizations without enormous computing resources - everyday programmers could get better AI suggestions without massive server farms.
+[VISUAL DIRECTION] Show comparison: massive server farm vs single efficient server, with environmental impact metrics
+[VOICEOVER 1:50-2:00] The era of 'bigger is better' in AI might be ending. Smaller models are proving they can be smarter, more efficient, and more accessible.
+[VISUAL DIRECTION] Final screen: "SMALLER MODELS, SMARTER REWARDS" with Nature/Science logo

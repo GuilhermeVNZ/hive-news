@@ -1,0 +1,1 @@
+Small AI models match large ones in document analysis accuracy, with only a 2% performance gap. This breakthrough allows secure, cost-effective handling of proprietary specifications in industries like healthcare and finance. Read the Nature/Science study to explore how smaller models address security without sacrificing reliability.

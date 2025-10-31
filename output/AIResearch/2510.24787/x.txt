@@ -1,0 +1,1 @@
+VR avatars can now look photorealistic without lag or battery drain. New research co-optimizes algorithms and hardware to achieve real-time rendering on constrained devices like Qualcomm's XR2 Gen 2, jumping from 15 FPS to smooth performance. The future of immersive communication is here.

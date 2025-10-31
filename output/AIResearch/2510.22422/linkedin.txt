@@ -1,0 +1,1 @@
+When AI agents work together, they can develop biases that don't exist when they operate alone. New research reveals multi-agent systems fundamentally change AI behavior, amplifying existing biases and creating new ones through interaction. This calls for urgent development of frameworks to predict and control complex AI in large-scale deployments.

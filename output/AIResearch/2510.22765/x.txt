@@ -1,0 +1,1 @@
+AI breakthrough: Generate datasets with identical analytical value but zero real personal data. Neural networks learn underlying patterns without memorizing records, enabling secure research collaboration. Nature paper 2510.22765 solves privacy-utility tension.

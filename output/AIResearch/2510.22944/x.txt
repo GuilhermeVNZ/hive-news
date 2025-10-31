@@ -1,0 +1,1 @@
+The biggest AI security risk isn't hackers—it's how you ask. Vague prompts increase code vulnerabilities by 150% (Peking University/Nature). Clear specifications prevent AI from taking insecure shortcuts.

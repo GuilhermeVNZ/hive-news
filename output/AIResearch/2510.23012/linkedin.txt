@@ -1,0 +1,1 @@
+AI stability breakthrough: Softmax function is exactly 1/2-Lipschitz, not just stable. This tighter bound from IIT Madras means AI outputs change only half as much as inputs - revolutionizing reliability in ChatGPT, self-driving cars, and vision systems. How will you apply this mathematical guarantee?

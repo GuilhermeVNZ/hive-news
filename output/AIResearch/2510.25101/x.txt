@@ -1,0 +1,1 @@
+New AI learns like humans—from outcomes, not instructions. KnowCoder-A1 achieves 11.1% higher accuracy on completely new questions, recovering from errors by trying alternative approaches. Nature/Science breakthrough.

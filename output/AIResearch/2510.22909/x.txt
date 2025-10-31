@@ -1,0 +1,1 @@
+Your phone's AI could get 10x faster without draining battery. New Nature research shows decomposing deep learning models across devices and cloud cuts delays from 500ms to 50ms while keeping 79% accuracy and adding privacy protection. Real-world impact for mobile AI.

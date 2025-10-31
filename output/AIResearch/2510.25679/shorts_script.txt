@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if drones could predict turbulent city airflows before they even happen? [VISUAL DIRECTION] Animated text: "97%+ Precision" with swirling airflow visualization around buildings
+
+[VOICEOVER 0:05-0:20] Navigating complex urban environments has been a major challenge for unmanned vehicles—until now. [VISUAL DIRECTION] Show drone struggling in turbulent winds, then transition to smooth flight path
+
+[VOICEOVER 0:20-0:40] Researchers developed AI that combines reinforcement learning with transformer architectures to learn from trial and error, much like humans. [VISUAL DIRECTION] Animated diagram showing LSTM vs Transformer architecture comparison from paper
+
+[VOICEOVER 0:40-1:00] The breakthrough: Gated Transformer architecture achieved 97%+ precision in turbulent environments, reducing errors by 0.2% compared to previous methods. [VISUAL DIRECTION] Zoom on performance metrics chart showing transformer outperforming LSTM and classical algorithms
+
+[VOICEOVER 1:00-1:30] Unlike conventional approaches that optimize for static conditions, this system continuously adapts to environmental feedback, anticipating airflow changes proactively. [VISUAL DIRECTION] Side-by-side comparison: Zermelo's algorithm (rigid path) vs AI (fluid, adaptive path)
+
+[VOICEOVER 1:30-1:50] This means more reliable drone delivery, improved emergency response, and better surveillance capabilities in complex urban areas. [VISUAL DIRECTION] Quick cuts: delivery drone, emergency drone, surveillance drone operating smoothly
+
+[VOICEOVER 1:50-2:00] AI that predicts turbulence before it happens—transforming how vehicles navigate our cities. [VISUAL DIRECTION] Final text overlay: "97%+ Precision in Turbulent Airflows" with drone flying smoothly through urban canyon

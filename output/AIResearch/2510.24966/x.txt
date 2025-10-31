@@ -1,0 +1,1 @@
+Scientists discovered AI's secret: GPT-4 and other large language models use surprisingly simple 'low-rank structures' - complex text generation emerges from linear combinations. This breakthrough could transform AI efficiency and raise critical security questions.

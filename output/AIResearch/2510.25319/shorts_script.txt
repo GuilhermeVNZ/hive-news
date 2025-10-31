@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could describe any object in words and watch it come to life as a moving 3D sketch?
+[VISUAL DIRECTION] [Animated text: "DESCRIBE IT → WATCH IT MOVE" with rotating sketch of a bicycle appearing]
+
+[VOICEOVER 0:05-0:20] Researchers have developed AI that transforms text descriptions into dynamic drawings that rotate and move naturally, revolutionizing how we create visuals.
+[VISUAL DIRECTION] [Show Figure 1 from paper - side-by-side comparison of text prompt "a cat sitting" and the generated rotating sketch]
+
+[VOICEOVER 0:20-0:40] Previous AI focused on photorealistic content, but this system specializes in sparse, stylized sketches that preserve the abstract nature of hand-drawn art while adding realistic motion.
+[VISUAL DIRECTION] [Zoom on Bézier curve construction showing mathematical points defining smooth sketch lines]
+
+[VOICEOVER 0:40-1:00] The breakthrough outperforms existing methods with superior text-to-image alignment scores of 0.314 versus 0.308 for MVDream and 0.260 for DiffSketcher.
+[VISUAL DIRECTION] [Animated bar chart showing CLIP score comparison with clear highlighting of the 0.314 result]
+
+[VOICEOVER 1:00-1:30] Using two-stage methodology, the AI constructs Bézier curves and optimizes camera angles to maintain geometric consistency across different viewpoints, then recombines projections to enable full motion.
+[VISUAL DIRECTION] [Fast cuts showing the two-stage process: curve construction → camera optimization → motion generation with a "surfer riding a wave" example]
+
+[VOICEOVER 1:30-1:50] For creative professionals and educators, this means rapidly generating educational visuals from simple descriptions without requiring artistic expertise or extensive computational resources.
+[VISUAL DIRECTION] [Show classroom and design studio scenarios with quick sketches appearing from text prompts]
+
+[VOICEOVER 1:50-2:00] The future of visual creation is here: describe anything in words and watch it become a moving sketch.
+[VISUAL DIRECTION] [Final rotating composite of multiple generated sketches - bicycle, boat, cat - with paper title "4-Doodle: Text Sketches Move!" overlay]

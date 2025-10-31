@@ -1,0 +1,1 @@
+AI systems don't process images all at once - they refine understanding through iterative layers, with self-attention responsible for 94% viewpoint alignment. Researchers developed a method to peer inside transformers, revealing how they reconstruct 3D scenes from multiple views. How might this transparency improve medical imaging and autonomous vehicle safety?

@@ -1,0 +1,1 @@
+AI systems that fail at complex, multi-step tasks just got a breakthrough solution. ReCAP enables agents to handle long-horizon problems with 32% higher completion rates by maintaining goal coherence across decision levels. This framework works across GPT-4o, LLaMA-4, and other models without task-specific engineering. How might this transform real-world AI reliability?

@@ -1,0 +1,1 @@
+AI can read music perfectly but fails at listening. New study shows models score 84-100% with notation vs 6-65% with actual audio. The listening gap reveals current AI's perception limitations. Time to rethink what 'multimodal' really means.

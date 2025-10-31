@@ -1,0 +1,1 @@
+AI's hidden flaw: Random tie-breaking in Monte Carlo Tree Search causes suboptimal decisions. Researchers replaced randomness with smarter policies like UCT, boosting AI performance by 1.1% across diverse applications. How might this enhance reliability in your AI systems?

@@ -1,0 +1,1 @@
+AI now predicts flight delays in under a minute with 99% accuracy. This breakthrough from KAIST integrates real-time data to slash air travel costs and congestion. Imagine smoother journeys—read the science behind it.

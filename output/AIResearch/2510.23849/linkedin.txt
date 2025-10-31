@@ -1,0 +1,1 @@
+AI can now predict when it doesn't know a word before making errors. University of Iowa researchers developed a system that scores phrase likelihood, eliminating 95% of incorrect transcriptions while maintaining accuracy. How could this transform voice assistants in your industry?

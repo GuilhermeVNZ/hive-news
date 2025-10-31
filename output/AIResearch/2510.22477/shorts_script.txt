@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if AI teams waste 90% of their computational power just by talking too much?
+
+[VISUAL DIRECTION] Animated text: "90% WASTED" with pulsing red warning symbols
+
+[VOICEOVER 0:05-0:20] Current AI collaborations are plagued by verbose, low-value exchanges that drain resources and limit real-world applications.
+
+[VISUAL DIRECTION] Show chaotic network diagram with excessive message arrows flooding the screen
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI when to stay silent? How can we optimize communication without sacrificing performance?
+
+[VISUAL DIRECTION] Zoom in on research paper title "Agent-GSPO" with question marks appearing
+
+[VOICEOVER 0:40-1:00] They developed Agent-GSPO - a system that treats messaging as a sequential decision problem optimized through reinforcement learning.
+
+[VISUAL DIRECTION] Show reinforcement learning diagram with reward/punishment mechanisms highlighted
+
+[VOICEOVER 1:00-1:30] Using Group Sequence Policy Optimization, the system rewards successful task completion while penalizing unnecessary communication. It balances message usage, conversational turns, and repetition.
+
+[VISUAL DIRECTION] Animated flowchart showing strategic decision points for when to speak vs stay silent
+
+[VOICEOVER 1:30-1:50] Results: State-of-the-art accuracy on mathematical reasoning benchmarks while consuming only a fraction of computational resources - approximately 9x less than competing methods.
+
+[VISUAL DIRECTION] Show performance comparison charts with dramatic resource savings highlighted
+
+[VOICEOVER 1:50-2:00] Strategic silence isn't just polite - it's the key to making AI collaborations practical where computational costs matter.

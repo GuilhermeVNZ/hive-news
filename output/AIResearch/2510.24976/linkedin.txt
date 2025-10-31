@@ -1,0 +1,1 @@
+AI medical imaging systems can be secretly manipulated through hardware attacks, causing dangerous misdiagnoses. New research reveals attackers can implant triggers that suppress tumor detections while maintaining normal performance on clean scans. This hardware-level vulnerability demands urgent attention in healthcare AI security.

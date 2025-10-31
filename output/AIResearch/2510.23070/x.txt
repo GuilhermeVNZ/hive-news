@@ -1,0 +1,1 @@
+Stop scroll: AI now tags translation quality instead of altering content. QTT-RAG cuts entity hallucinations, improving multilingual QA accuracy by 6.8% in Finnish. Essential for trustworthy global AI systems.

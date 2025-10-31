@@ -18,9 +18,10 @@ interface Article {
 
 interface ArticleGridProps {
   selectedCategory?: string;
+  searchQuery?: string;
 }
 
-const ArticleGrid = ({ selectedCategory }: ArticleGridProps) => {
+const ArticleGrid = ({ selectedCategory, searchQuery }: ArticleGridProps) => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [displayedCount, setDisplayedCount] = useState(6);
@@ -46,12 +47,29 @@ const ArticleGrid = ({ selectedCategory }: ArticleGridProps) => {
     setDisplayedCount(6);
   }, [selectedCategory]);
   
-  const filteredArticles = selectedCategory 
-    ? articles.filter(article => {
-        // Check if any image category matches
-        return article.imageCategories && article.imageCategories.includes(selectedCategory.toLowerCase());
-      })
+  // Normalize helper (similar to dashboard Logs)
+  const normalize = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[^\w\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const words = (searchQuery ?? "").trim()
+    ? normalize(searchQuery as string).split(" ")
+    : [];
+
+  const byCategory = selectedCategory
+    ? articles.filter(a => a.imageCategories && a.imageCategories.includes(selectedCategory.toLowerCase()))
     : articles;
+
+  const filteredArticles = words.length === 0
+    ? byCategory
+    : byCategory.filter(a => {
+        const topics = Array.isArray(a.imageCategories) ? a.imageCategories.join(" ") : "";
+        const hay = normalize(`${a.title} ${a.id} ${a.excerpt} ${a.category ?? ""} ${topics}`);
+        return words.every(w => hay.includes(w));
+      });
   
   // Display only first N articles
   const displayedArticles = filteredArticles.slice(0, displayedCount);
@@ -86,17 +104,17 @@ const ArticleGrid = ({ selectedCategory }: ArticleGridProps) => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedArticles.map((article, index) => (
-              <div 
-                key={article.id}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'both' }}
-              >
-                <ArticleCard {...article} />
-              </div>
-            ))}
+          <div 
+            key={article.id}
+            className="animate-fade-in-up"
+            style={{ animationDelay: `${index * 150}ms`, animationFillMode: 'both' }}
+          >
+            <ArticleCard {...article} />
           </div>
+        ))}
+      </div>
           
           {hasMore && (
             <div className="flex justify-center mt-12">

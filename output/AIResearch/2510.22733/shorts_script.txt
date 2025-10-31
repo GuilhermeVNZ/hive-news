@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your AI searches could run 5 times faster while becoming more accurate? [VISUAL DIRECTION] Animated text: "5X FASTER AI SEARCH" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] Right now, AI systems use separate models for embedding and ranking, creating massive computational bottlenecks. [VISUAL DIRECTION] Show two separate processing pipelines merging into one, with "BOTTLENECK" text flashing red
+
+[VOICEOVER 0:20-0:40] Researchers at Renmin University and Alibaba asked: Could one AI handle both tasks simultaneously? [VISUAL DIRECTION] Zoom in on researcher figures with thought bubbles containing mathematical equations
+
+[VOICEOVER 0:40-1:00] They discovered that complex prompts can be reinterpreted as pseudo-relevance feedback, eliminating the overhead. [VISUAL DIRECTION] Show text transformation animation: "Complex Query" → "Pseudo-Relevance Feedback"
+
+[VOICEOVER 1:00-1:30] E2Rank works through two-stage training: first creating semantic embeddings, then multi-task contrastive learning for ranking. [VISUAL DIRECTION] Animated diagram showing embedding creation → contrastive learning → final ranking output
+
+[VOICEOVER 1:30-1:50] The results? 54.35 on BEIR benchmark—highest overall score—with 80% lower latency than current systems. [VISUAL DIRECTION] Bar chart animation showing E2Rank outperforming other models, with "-80% LATENCY" flashing
+
+[VOICEOVER 1:50-2:00] This means faster, more accurate search for everything from question-answering to document retrieval. The AI efficiency revolution has arrived. [VISUAL DIRECTION] Quick cuts showing search applications: document retrieval, Q&A systems, with final text: "E2Rank: Embedding + Ranking = Efficiency"]

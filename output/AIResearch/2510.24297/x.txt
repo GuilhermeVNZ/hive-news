@@ -1,0 +1,1 @@
+AI's subtle flaw: Random tie-breaking in MCTS leads to suboptimal choices. New research shows replacing randomness with UCT improves performance by 1.1% - a simple fix with big implications for game AI and decision systems.

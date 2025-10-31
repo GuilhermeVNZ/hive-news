@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could master complex games and robotic tasks with half the trial and error? [VISUAL DIRECTION] Animated text: 'AI learns 2x faster' with pulsing effect
+
+[VOICEOVER 0:05-0:20] Current AI systems often struggle with inefficient learning through endless trial and error. This slows down everything from game AI to autonomous vehicles. [VISUAL DIRECTION] Show rapid cuts of AI failing at tasks - game characters falling, robots bumping into walls
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we group similar actions together to accelerate learning without sacrificing performance? [VISUAL DIRECTION] Show abstract tree diagram with nodes grouping together, animated arrows connecting similar actions
+
+[VOICEOVER 0:40-1:00] They discovered KVDA-UCT - an algorithm that doubles abstraction rates while maintaining exact convergence. In Connect4 and Othello, it matched or exceeded optimized competitors with fewer iterations. [VISUAL DIRECTION] Show comparison graphs from paper - KVDA-UCT line outperforming others, highlight '2x abstraction rate' text overlay
+
+[VOICEOVER 1:00-1:30] The method groups actions by their known value differences, adjusting values before aggregation. It builds on Monte Carlo Tree Search but relaxes constraints to infer abstractions through reward analysis. [VISUAL DIRECTION] Animated flowchart showing value adjustment process, zoom on key mathematical relationships from paper
+
+[VOICEOVER 1:30-1:50] This means faster training for game AI, more efficient robotic navigation, and accelerated development of autonomous systems - all with just 1% runtime overhead. [VISUAL DIRECTION] Show real-world applications: game character learning quickly, robot navigating complex environment smoothly
+
+[VOICEOVER 1:50-2:00] The future of AI just got significantly more efficient - and it's parameter-free, making advanced decision-making accessible to more applications. [VISUAL DIRECTION] Final text overlay: 'KVDA-UCT: Smarter AI, Faster Learning' with algorithm name highlighted

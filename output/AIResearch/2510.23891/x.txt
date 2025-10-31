@@ -1,0 +1,1 @@
+AI can now watermark its own text permanently. New PRO method embeds traceable markers during training, surviving model modifications. This solves the critical transparency challenge as AI content proliferates. The future of responsible AI is here.

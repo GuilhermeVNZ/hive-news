@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if we could actually see inside an AI's brain as it processes images? The inner workings of transformers have been a mystery - until now.
+
+[VISUAL DIRECTION] [Animated brain graphic with neural pathways lighting up, text overlay: "SEE INSIDE AI'S BRAIN"]
+
+[VOICEOVER 0:05-0:20] Transformers revolutionized how computers understand images, but we never knew exactly how they worked. This matters because these systems make critical decisions in autonomous vehicles and medical imaging.
+
+[VISUAL DIRECTION] [Show medical scan and autonomous vehicle footage, transition to researcher lab setting]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we peer inside these complex systems to understand how they reconstruct 3D scenes from multiple viewpoints?
+
+[VISUAL DIRECTION] [Show multiple camera angles of same object, animated lines connecting viewpoints]
+
+[VOICEOVER 0:40-1:00] They discovered transformers don't process everything at once. Instead, they refine understanding through an iterative process across layers.
+
+[VISUAL DIRECTION] [Show layer-by-layer animation building up 3D reconstruction, highlight self-attention layers]
+
+[VOICEOVER 1:00-1:30] The breakthrough: Self-attention layers handle 94% of viewpoint alignment, while cross-attention increases alignment by 11%. The team trained models to track positions in intermediate states, revealing distinct processing stages.
+
+[VISUAL DIRECTION] [Show Figure 2 with zoom on alignment metrics, animated text: "94% alignment from self-attention", "11% boost from cross-attention"]
+
+[VOICEOVER 1:30-1:50] This means medical imaging could precisely reconstruct anatomical structures, and autonomous vehicles could make safer decisions by understanding their internal reasoning.
+
+[VISUAL DIRECTION] [Show medical reconstruction examples, autonomous vehicle decision scenarios]
+
+[VOICEOVER 1:50-2:00] We're no longer guessing how AI sees the world - we can watch it think, layer by layer.
+
+[VISUAL DIRECTION] [Final shot of transparent AI brain with visible processing layers, text: "WATCH AI THINK"]

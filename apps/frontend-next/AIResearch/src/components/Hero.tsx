@@ -8,9 +8,12 @@ import { Button } from "@/components/ui/button";
 interface HeroProps {
   selectedCategory?: string;
   onCategorySelect?: (category: string) => void;
+  searchQuery?: string;
+  onSearchQueryChange?: (q: string) => void;
+  onSubmitSearch?: () => void;
 }
 
-const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
+const Hero = ({ selectedCategory, onCategorySelect, searchQuery, onSearchQueryChange, onSubmitSearch }: HeroProps) => {
   const categories = [
     { label: "Machine Learning", value: "ai" },
     { label: "Robotics", value: "robotics" },
@@ -44,11 +47,15 @@ const Hero = ({ selectedCategory, onCategorySelect }: HeroProps) => {
               <Input
                 placeholder="Search articles, topics or researchers..."
                 className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-all"
+                value={searchQuery ?? ""}
+                onChange={(e) => onSearchQueryChange?.(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') onSubmitSearch?.(); }}
               />
             </div>
             <Button 
               size="lg"
               className="h-14 px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover-lift"
+              onClick={() => onSubmitSearch?.()}
             >
               Search
             </Button>

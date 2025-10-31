@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could explain its decisions as clearly as a human? FaCT makes this possible, tracking concepts like 'wheels' or 'animal eyes' to reveal exactly how AI thinks.
+[VISUAL DIRECTION] [Animated text: 'AI Explains Itself' with a pulsing question mark; fast cut to a blurred AI network diagram]
+[VOICEOVER 0:05-0:20] In critical areas like healthcare, AI's 'black box' problem means doctors can't trust automated diagnoses—limiting its real-world use.
+[VISUAL DIRECTION] [Show a doctor reviewing a medical scan with a red 'X' over it; transition to a hospital setting with concerned expressions]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we redesign AI to be inherently transparent, not just approximate explanations after the fact?
+[VISUAL DIRECTION] [Zoom in on a research lab scene; animated text: 'The Challenge: Black Box AI' with gears turning slowly]
+[VOICEOVER 0:40-1:00] They developed FaCT, a network architecture that decomposes decisions into concepts, ensuring contributions sum to the final score—like identifying a bus with 3.4% from 'wheels'.
+[VISUAL DIRECTION] [Show Figure 2 from the paper with zoom on concept traces; fast cuts between labeled concepts like 'color' and 'shape']
+[VOICEOVER 1:00-1:30] FaCT uses B-cos networks and autoencoders to maintain alignment, providing faithful explanations without sacrificing performance on tasks like ImageNet classification.
+[VISUAL DIRECTION] [Animated flow diagram of FaCT architecture; highlight intermediate layers with text overlays: 'Interpretable Concepts']
+[VOICEOVER 1:30-1:50] This transparency allows doctors to verify features in medical diagnoses and helps autonomous vehicle developers understand object classifications, building trust in AI systems.
+[VISUAL DIRECTION] [Show a doctor nodding in approval at a transparent AI display; cut to a self-driving car with clear object labels]
+[VOICEOVER 1:50-2:00] FaCT turns AI from a mystery into a partner—opening doors for safe, reliable AI in our daily lives.
+[VISUAL DIRECTION] [End with a bright, hopeful image of AI and human collaboration; hold for 2 seconds]

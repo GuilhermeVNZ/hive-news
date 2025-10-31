@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could fix all your coding problems? It can't—new research shows AI agents detect 80% of issues but successfully solve only 25%.
+[VISUAL DIRECTION] Animated text: '80% detection vs 25% fixes' with bold, contrasting colors; fast zoom-in on the text to emphasize the gap.
+[VOICEOVER 0:05-0:20] Engineers rely on AI for tasks like setting up environments, but frequent stalls and failures hinder progress. This isn't just annoying—it impacts everything from apps to scientific computing.
+[VISUAL DIRECTION] Show a split screen: left side with a developer looking frustrated at a terminal, right side with a graph of project delays; use quick cuts between scenes to build tension.
+[VOICEOVER 0:20-0:40] Researchers asked: How well do AI agents actually handle real coding problems? They created EnConda-Bench, a benchmark with 4,201 automatically generated issues from reliable GitHub repositories.
+[VISUAL DIRECTION] Display a mock-up of the EnConda-Bench interface with scrolling code snippets; pan across a list of issue types like 'missing dependencies' and 'syntax errors'.
+[VOICEOVER 0:40-1:00] They found AI agents, including top models like GPT-4.1 and Claude-4, struggle with precise diagnoses and repairs. Agents often misclassify problems or fail to implement correct solutions on the first try.
+[VISUAL DIRECTION] Zoom in on a table from the paper highlighting low success rates; overlay text: 'Best agent: 25% first-attempt success' with a red 'X' next to it.
+[VOICEOVER 1:00-1:30] How does it work? The benchmark tests four key capabilities: planning setup steps, analyzing feedback, and implementing repairs. It injects common errors into real codebases to simulate authentic challenges.
+[VISUAL DIRECTION] Animate a flowchart showing the testing process—from repository selection to error injection and evaluation; use arrows and highlights to guide the viewer through each step.
+[VOICEOVER 1:30-1:50] For organizations, this means AI tools can identify issues but can't be trusted to fix them autonomously. It affects software reliability and development speed worldwide.
+[VISUAL DIRECTION] Show real-world scenarios: a team discussing a project delay, with text overlays like 'Need human oversight' and 'Limitations in AI assistance'.
+[VOICEOVER 1:50-2:00] The takeaway: AI isn't ready to solve coding problems alone. EnConda-Bench sets a standard to measure progress and drive better tools for engineers.
+[VISUAL DIRECTION] End with the paper's title and authors on screen, slowly fading to black; include a call-to-action text: 'Explore the Nature/Science study for evidence'.

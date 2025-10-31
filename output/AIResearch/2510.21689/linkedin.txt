@@ -1,0 +1,1 @@
+AI seal detectors achieve 95% precision yet fail on basic visual cues. New research reveals these systems confuse seals with rocks by focusing on shapes rather than biological features. This demands urgent development of explainable AI for conservation decisions.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Physics-informed AI works perfectly for physics but completely fails in biology. Why? [VISUAL DIRECTION] Animated text: "PHYSICS AI FAILS IN BIOLOGY" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Because living systems operate fundamentally differently—they're messy, uncertain, and full of variables that challenge traditional AI methods. [VISUAL DIRECTION] Show chaotic molecular interactions animation with "UNCERTAINTY" and "VARIABILITY" text overlays
+
+[VOICEOVER 0:20-0:40] The core problem? Physics AI assumes fully observable systems governed by precise equations with minimal noise. Biology presents the opposite: partially observable, uncertain principles, measured with significant noise. [VISUAL DIRECTION] Split screen: left shows clean physics equations, right shows messy biological network with "PARTIAL OBSERVABILITY" text
+
+[VOICEOVER 0:40-1:00] Researchers developed Biology-Informed Machine Learning (BIML) to tackle these challenges through four key pillars: uncertainty quantification, contextualization, constrained inference, and scalability. [VISUAL DIRECTION] Show four pillars as animated columns building up with each term highlighted
+
+[VOICEOVER 1:00-1:30] Uncertainty quantification treats distributions rather than fixed truths. Contextualization handles data heterogeneity from different individuals and conditions. Constrained inference models unmeasured variables. Scalability handles high-dimensional biological networks. [VISUAL DIRECTION] Quick cuts showing: probability distributions, different cell types, hidden variables animation, complex network visualization
+
+[VOICEOVER 1:30-1:50] This approach has major implications: better drug discovery by preventing failures from incorrect assumptions, personalized medicine through contextualization, and revealing previously hidden biological mechanisms. [VISUAL DIRECTION] Show drug molecule animation, personalized treatment icons, cellular mechanism discovery visualization
+
+[VOICEOVER 1:50-2:00] The transition to biology-informed AI means rethinking how we evaluate AI—moving beyond physics-inspired standards to reflect biological realities. [VISUAL DIRECTION] Final text overlay: "RETHINK AI FOR BIOLOGY" with Nature paper citation

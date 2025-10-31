@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant could catch its own lies before telling them to you?
+[VISUAL DIRECTION] Animated text: "AI LIES?" with question mark shaking violently
+[VOICEOVER 0:05-0:20] Microsoft researchers discovered AI's most dangerous habit: sounding completely convincing while stating false information. This becomes critical when used for medical advice or financial decisions.
+[VISUAL DIRECTION] Show Figure 2 from paper - error distribution chart with dramatic red peaks
+[VOICEOVER 0:20-0:40] They asked: Can we build a system that automatically detects when AI is making things up? The answer involves four components working in real-time.
+[VISUAL DIRECTION] Animated diagram showing four interconnected circles labeled: Claim Extraction, Parallel Verification, Confidence Scoring, Correction Generation
+[VOICEOVER 0:40-1:00] The breakthrough: Multi-source verification against knowledge graphs (95% coverage) and PubMed databases simultaneously. The system calculates confidence scores combining AI's own uncertainty with external evidence.
+[VISUAL DIRECTION] Zoom on verification process - show claims being checked against multiple databases with green checkmarks appearing
+[VOICEOVER 1:00-1:30] When confidence falls below threshold, it generates corrections that preserve natural language flow. No more awkwardly cautious responses - just accurate information.
+[VISUAL DIRECTION] Show before/after comparison - fabricated clinical trial claim being corrected to accurate medical information
+[VOICEOVER 1:30-1:50] Real impact: 78% reduction in potentially harmful healthcare misinformation. Prevents AI from suggesting fake treatments or investment recommendations based on fabricated data.
+[VISUAL DIRECTION] Healthcare professionals in lab coats with 78% statistic overlay in bold
+[VOICEOVER 1:50-2:00] The result: AI that's 52% less likely to hallucinate while maintaining the natural responses we need. Trustworthy AI is finally here.
+[VISUAL DIRECTION] Final screen: "52% FEWER HALLUCINATIONS" with Microsoft logo and paper citation

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if we could predict traffic jams before they happen—with near-perfect accuracy? [VISUAL DIRECTION] Animated text: '99.68% ACCURATE TRAFFIC PREDICTION' with urban traffic time-lapse background
+
+[VOICEOVER 0:05-0:20] Urban congestion costs cities billions annually in lost productivity and damage. Current forecasting methods struggle with traffic's complex, nonlinear patterns. [VISUAL DIRECTION] Show congested highway with dollar signs fading over vehicles, transition to confused planner looking at charts
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we break down traffic into components to forecast more precisely? [VISUAL DIRECTION] Animated diagram showing traffic flow splitting into three streams: trend, seasonal, residual components
+
+[VOICEOVER 0:40-1:00] They developed a hybrid AI system combining LSTM networks, ARIMA models, and XGBoost algorithms. The result? 99.68% accuracy on New York City data. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on prediction vs actual lines nearly overlapping, highlight R² score of 0.9968
+
+[VOICEOVER 1:00-1:30] Here's how it works: The STL method separates traffic into long-term trends, seasonal patterns, and random fluctuations. Each gets specialized AI processing—LSTM for dependencies, ARIMA for seasonality, XGBoost for irregularities. [VISUAL DIRECTION] Animated flow chart showing data splitting into three paths with different AI models processing each, then recombining
+
+[VOICEOVER 1:30-1:50] This means traffic planners can optimize light timing, commuters get accurate travel estimates, and cities can dynamically manage congestion. [VISUAL DIRECTION] Fast cuts: traffic light optimization, commuter app showing accurate ETA, city control room managing flow
+
+[VOICEOVER 1:50-2:00] The future of urban mobility just got clearer—AI that sees traffic patterns we can't. [VISUAL DIRECTION] Final shot of smooth flowing traffic with text overlay: 'AI-PREDICTED FLOW'

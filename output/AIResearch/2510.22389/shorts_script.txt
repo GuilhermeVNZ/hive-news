@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could evaluate scientific research as accurately as human experts?
+[VISUAL DIRECTION] [Animated text: "AI vs HUMAN EXPERTS" with question mark pulsing]
+[VOICEOVER 0:05-0:20] Universities spend millions on peer review. But new research reveals even small AI models can assess journal articles effectively.
+[VISUAL DIRECTION] [Show stack of research papers with "PEER REVIEW" label and dollar signs floating away]
+[VOICEOVER 0:20-0:40] Researchers tested 2,780 medical and science papers. They compared AI evaluations against expert judgments from the UK's Research Excellence Framework.
+[VISUAL DIRECTION] [Show animated counter rapidly counting to 2,780 papers, then split screen showing AI and human evaluators]
+[VOICEOVER 0:40-1:00] The finding: Small language models like Gemma3 performed comparably to cloud-based AI and human experts in most fields.
+[VISUAL DIRECTION] [Show comparison chart with Gemma3, ChatGPT, and human expert bars at similar heights]
+[VOICEOVER 1:00-1:30] How? AI analyzed paper titles and abstracts using zero-shot and few-shot approaches. Averaging five identical queries consistently improved accuracy.
+[VISUAL DIRECTION] [Show animated flow: Paper → AI analysis → Multiple queries → Averaged score]
+[VOICEOVER 1:30-1:50] This means universities with limited resources can deploy local AI for preliminary evaluations, reducing costs and enhancing data security.
+[VISUAL DIRECTION] [Show university building with "LOCAL AI" label and security shield icon]
+[VOICEOVER 1:50-2:00] Small AI is now a credible research evaluator - democratizing access to quality assessment worldwide.
+[VISUAL DIRECTION] [Final screen: "SMALL AI, BIG IMPACT" with globe animation showing AI nodes spreading]

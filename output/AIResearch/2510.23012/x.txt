@@ -1,0 +1,1 @@
+AI stability just doubled: Softmax function is exactly 1/2-Lipschitz. Small input changes cause only half the output variation previously assumed. Game-changer for ChatGPT, self-driving cars, and AI reliability. Nature paper proves it.

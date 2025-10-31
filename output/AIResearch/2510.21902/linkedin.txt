@@ -1,0 +1,1 @@
+AI can fix GitHub bugs but fails at basic navigation. New research reveals embodied AI struggles with partial visibility. Current approaches may not scale to real-world robotics. Read the NeurIPS 2025 findings.

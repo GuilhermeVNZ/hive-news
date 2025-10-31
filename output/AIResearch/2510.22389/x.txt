@@ -1,0 +1,1 @@
+Small AI models now evaluate scientific papers as well as human experts. Study finds 12B-parameter models match expert judgments in medicine & biology. Faster, cheaper research assessment is here.

@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if your computer could understand what you're not saying? New AI research reveals a breakthrough in reading between the lines.
+
+[VISUAL DIRECTION] Animated text: "AI CAN READ YOUR MIND?" with question mark dissolving into "BETWEEN THE LINES"
+
+[VOICEOVER 0:05-0:20] When someone says "I have a lot of work to do," they're often politely refusing an invitation without saying no directly. This hidden layer of communication has been the Achilles' heel of AI—until now.
+
+[VISUAL DIRECTION] Show split screen: left side shows person saying "I have work" with literal interpretation (calendar icon), right side shows implied meaning (declined invitation icon)
+
+[VOICEOVER 0:20-0:40] Researchers at University of Jyväskylä systematically tested whether AI could grasp conversational implicature—the unspoken meanings that make human conversation efficient.
+
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on accuracy distribution across models
+
+[VOICEOVER 0:40-1:00] The results: Advanced models like GPT-4 achieved near-human accuracy in interpreting hidden meanings, reaching levels that match human judgment.
+
+[VISUAL DIRECTION] Animated bar chart showing GPT-4 accuracy approaching human baseline, with text overlay: "NEAR-HUMAN INTERPRETATION"
+
+[VOICEOVER 1:00-1:30] The study tested six AI models across communication categories: information-seeking, direction-seeking, and emotional expression. Larger models excelled at understanding emotional cues, while smaller models defaulted to literal interpretations.
+
+[VISUAL DIRECTION] Fast cuts between three communication categories with appropriate icons: question mark for information, arrow for direction, heart for emotion
+
+[VOICEOVER 1:30-1:50] Most importantly, users strongly preferred AI that understood implied meanings. This transforms digital assistants from frustrating literal processors to context-aware partners.
+
+[VISUAL DIRECTION] Show before/after comparison: frustrated user with literal AI vs. satisfied user with implicature-aware AI
+
+[VOICEOVER 1:50-2:00] The future of human-computer interaction just got smarter—AI that understands what you mean, not just what you say.
+
+[VISUAL DIRECTION] Final screen with animated text: "UNDERSTANDS WHAT YOU MEAN, NOT JUST WHAT YOU SAY"

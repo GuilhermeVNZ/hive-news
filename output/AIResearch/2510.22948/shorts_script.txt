@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your phone could handle complex augmented reality instantly, even with terrible signal?
+[VISUAL DIRECTION] Animated text: "AR WITHOUT LAG?" with glitching phone graphic
+
+[VOICEOVER 0:05-0:20] Next-generation applications like the metaverse and autonomous vehicles demand ultra-low latency, but traditional mobile computing struggles with delays and interference.
+[VISUAL DIRECTION] Show Figure 2 with zoom on delay distribution comparison between traditional and proposed methods
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can we reduce computation delays when obstacles degrade connection quality?
+[VISUAL DIRECTION] Animated diagram showing signal interference from buildings and objects
+
+[VOICEOVER 0:40-1:00] They discovered that dynamically positioning dielectric particles along waveguides creates short-distance, line-of-sight connections that outperform conventional methods.
+[VISUAL DIRECTION] Close-up animation of "pinching antennas" mechanism with dielectric particles moving along waveguide
+
+[VOICEOVER 1:00-1:30] Using a specialized AI algorithm called LBPPO, the system balances computational loads between devices and nearby servers, replacing long-distance propagation with optimized short-distance connections.
+[VISUAL DIRECTION] Flow diagram showing computation offloading process with AI decision-making overlay
+
+[VOICEOVER 1:30-1:50] This means more responsive augmented reality experiences and safer autonomous systems that don't rely on distant cloud servers.
+[VISUAL DIRECTION] Split screen: smooth AR navigation vs laggy conventional system
+
+[VOICEOVER 1:50-2:00] The future of mobile computing might just depend on how well we can pinch our antennas.
+[VISUAL DIRECTION] Final text overlay: "Pinching antennas: Cutting delays by creating smarter connections"

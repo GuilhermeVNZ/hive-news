@@ -1,0 +1,1 @@
+AI 'forgetting' is an illusion - new study finds persuasive questioning can recover 50-128% more erased knowledge. Smaller models are particularly vulnerable to having secrets exposed through strategic prompting. Nature research reveals the limits of AI unlearning.

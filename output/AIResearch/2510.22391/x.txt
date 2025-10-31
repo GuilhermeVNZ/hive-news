@@ -1,0 +1,1 @@
+BREAKING: AI no longer hallucinates images! New TDSR method boosts caption accuracy 62.4%, maintains 95%+ accuracy against hallucinations. From automated captioning to assistive tech - this changes everything.

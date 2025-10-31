@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [committedQuery, setCommittedQuery] = useState<string>("");
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category === selectedCategory ? "" : category);
@@ -21,6 +23,17 @@ export default function Home() {
     }, 100);
   };
 
+  const handleSubmitSearch = () => {
+    setCommittedQuery(searchQuery);
+    // scroll to articles
+    setTimeout(() => {
+      const articlesSection = document.getElementById("articles");
+      if (articlesSection) {
+        articlesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 50);
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -28,8 +41,11 @@ export default function Home() {
         <Hero 
           selectedCategory={selectedCategory}
           onCategorySelect={handleCategorySelect}
+          searchQuery={searchQuery}
+          onSearchQueryChange={setSearchQuery}
+          onSubmitSearch={handleSubmitSearch}
         />
-        <ArticleGrid selectedCategory={selectedCategory} />
+        <ArticleGrid selectedCategory={selectedCategory} searchQuery={committedQuery} />
       </main>
       <Footer />
     </div>

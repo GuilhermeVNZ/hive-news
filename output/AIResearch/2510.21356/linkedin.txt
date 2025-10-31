@@ -1,0 +1,1 @@
+AI can now learn human eye movements without tracking hardware, boosting performance by 11% in predicting actions. This breakthrough enhances AI reliability in robotics and autonomous systems. Explore how gaze integration is shaping trustworthy AI.

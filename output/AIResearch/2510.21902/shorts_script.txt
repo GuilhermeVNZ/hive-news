@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] AI can fix complex GitHub bugs but fails at simple navigation tasks. Why the dramatic performance gap?
+[VISUAL DIRECTION] Animated text: "AI: Bug Fixer ✓ Navigation ✗" with question mark appearing
+[VOICEOVER 0:05-0:20] New research from NeurIPS 2025 reveals AI systems that excel at software engineering struggle dramatically when faced with physical challenges.
+[VISUAL DIRECTION] Show MiniGrid environment examples transitioning from simple to complex layouts
+[VOICEOVER 0:20-0:40] Researchers tested 20 diverse MiniGrid environments, measuring AI performance under different conditions. The key question: How do visibility and documentation access affect embodied AI?
+[VISUAL DIRECTION] Zoom on experimental setup diagram showing four conditions: full access, no visibility, no documentation, neither
+[VOICEOVER 0:40-1:00] Results were dramatic. With full visibility and documentation, AI solved most tasks successfully. But remove either capability, and performance dropped significantly.
+[VISUAL DIRECTION] Show bar chart from paper with best@5 metric comparison across conditions, highlighting the performance drop
+[VOICEOVER 1:00-1:30] The study used a two-level structure where agents interact with environments through Markov Decision Processes. Documentation access alone could restore nearly full performance levels.
+[VISUAL DIRECTION] Animated flowchart showing agent-environment interaction with documentation access highlighted
+[VOICEOVER 1:30-1:50] This matters because current AI approaches may not scale to real-world robotics and autonomous systems where partial visibility is the norm.
+[VISUAL DIRECTION] Show real-world robotics applications with partial visibility scenarios
+[VOICEOVER 1:50-2:00] The takeaway: Embodied AI needs fundamental new approaches, not just scaling existing methods.

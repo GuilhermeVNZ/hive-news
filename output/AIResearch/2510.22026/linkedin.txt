@@ -1,0 +1,1 @@
+AI's hidden layers control everything—but they can collapse, crippling learning. A new Nature study reveals how layer normalization schemes dramatically affect AI evolution and stability. Read the paper to understand how to build more robust neural networks.

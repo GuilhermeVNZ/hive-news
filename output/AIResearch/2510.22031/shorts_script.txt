@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could discover true causes from just a handful of observations - with 98% accuracy?
+[VISUAL DIRECTION] [Animated text: "98% CAUSAL ACCURACY" with dramatic reveal effect]
+
+[VOICEOVER 0:05-0:20] In medicine, economics, and social sciences, we often can't run controlled experiments. But understanding causes is everything.
+[VISUAL DIRECTION] [Quick cuts: doctor reviewing patient charts, economist analyzing market data, researcher with limited data]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that finds causal relationships when we only have observational data - and very little of it?
+[VISUAL DIRECTION] [Show Figure 1 from paper - causal graph with question marks on connections]
+
+[VOICEOVER 0:40-1:00] They developed DAGPA - a hybrid method that transforms discrete causal theory into continuous functions. On the challenging Sachs signaling network with just 853 samples, it achieved near-perfect CI-MCC scores of 0.98.
+[VISUAL DIRECTION] [Zoom on Sachs network results from paper, highlight 0.98 score vs 0.65 baselines]
+
+[VOICEOVER 1:00-1:30] The breakthrough: DAGPA uses mathematical operators to test conditional independence patterns, avoiding small-sample errors that plague traditional methods. It parameterizes connection probabilities rather than searching through combinatorial possibilities.
+[VISUAL DIRECTION] [Animated diagram showing transformation from discrete d-separation to continuous functions with gradient arrows]
+
+[VOICEOVER 1:30-1:50] This means doctors could identify disease progression factors from patient records, economists could understand market mechanisms without interventions, and social scientists could study rare phenomena with confidence.
+[VISUAL DIRECTION] [Split screen: medical records, stock market charts, social study data - all with causal arrows appearing]
+
+[VOICEOVER 1:50-2:00] When experiments are impossible, AI now finds causes from minimal data - transforming how we understand our world.
+[VISUAL DIRECTION] [Final text overlay: "CAUSAL AI: SEEING BEYOND CORRELATION" with Nature/Science branding]

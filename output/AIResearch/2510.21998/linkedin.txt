@@ -1,0 +1,1 @@
+AI can't explain its own decisions—even in healthcare and finance. Columbia researchers found AI fails at 'what if' reasoning, limiting trust in critical applications. How can we ensure AI's transparency without sacrificing accuracy?

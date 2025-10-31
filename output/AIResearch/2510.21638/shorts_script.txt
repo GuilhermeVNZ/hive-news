@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if the AI controlling your self-driving car fails when it encounters something it's never seen before? [VISUAL DIRECTION] Show animated car swerving unexpectedly with text overlay: 'AI FAILURE WHEN UNSEEN'
+
+[VOICEOVER 0:05-0:20] This brittleness is AI's critical vulnerability - systems trained on specific data often collapse when reality throws them curveballs. [VISUAL DIRECTION] Transition to industrial robot malfunctioning with text: 'TRAINING DATA ≠ REAL WORLD'
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect when AI is operating outside its comfort zone before disaster strikes? [VISUAL DIRECTION] Show scientist at computer with thought bubble containing question mark
+
+[VOICEOVER 0:40-1:00] They discovered DEEDEE - a detection method that outperforms all others by focusing on fundamental signal pattern changes. [VISUAL DIRECTION] Animated graph showing DEEDEE performance curve vs other methods
+
+[VOICEOVER 1:00-1:30] Instead of complex analysis, DEEDEE computes just two numbers: overall environment similarity and basis function changes. It then uses isolation forests to identify anomalous behavior. [VISUAL DIRECTION] Simple diagram showing the two computation steps with arrows
+
+[VOICEOVER 1:30-1:50] The implications are huge - DEEDEE trains in seconds versus 20 minutes for other methods, making it perfect for real-time safety in self-driving cars and industrial robots. [VISUAL DIRECTION] Show stopwatch comparison: 5 seconds vs 20 minutes
+
+[VOICEOVER 1:50-2:00] Sometimes the most elegant safety solutions are surprisingly simple. [VISUAL DIRECTION] Final text overlay: 'SIMPLER SOLUTIONS FOR SAFER AI'

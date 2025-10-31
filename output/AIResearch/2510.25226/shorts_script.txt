@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could detect rare diseases without ever being shown labeled examples?
+[VISUAL DIRECTION] [Animated text: "AI Detects Rare Diseases - NO LABELS NEEDED" with pulsing effect]
+
+[VOICEOVER 0:05-0:20] In medical imaging and security screening, obtaining fully labeled training data is often prohibitively expensive or practically impossible.
+[VISUAL DIRECTION] [Show medical imaging examples with question marks over rare conditions, transition to security footage with unidentified threats]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI systems effectively identify rare conditions when most data lacks labels—the common scenario where traditional methods fail?
+[VISUAL DIRECTION] [Show traditional AI training vs new approach comparison diagram]
+
+[VOICEOVER 0:40-1:00] They discovered cost-sensitive multi-class positive-unlabeled learning allows AI to distinguish rare conditions from everything else without comprehensive labeling.
+[VISUAL DIRECTION] [Zoom on MNIST dataset showing rare digit detection, highlight 97% accuracy statistic]
+
+[VOICEOVER 1:00-1:30] The methodology builds on risk minimization principles, combining class-dependent weighting with unbiased estimation. Systems assign distinct, data-dependent weights to maintain stability during optimization.
+[VISUAL DIRECTION] [Animated flowchart showing weighting mechanism, highlight "data-dependent weights" with arrows]
+
+[VOICEOVER 1:30-1:50] This enables reliable detection of rare diseases in medical imaging and identification of harmful content online—both scenarios where complete knowledge of possible classes is impossible.
+[VISUAL DIRECTION] [Split screen: medical imaging detection on left, content moderation on right]
+
+[VOICEOVER 1:50-2:00] AI can now identify what's rare and important, even when most of what it sees is completely unlabeled.
+[VISUAL DIRECTION] [Final text overlay: "Detecting the rare without labels" with research citation]

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if one AI could run ALL your advertising campaigns perfectly, without ever needing retraining?
+[VISUAL DIRECTION] Animated text: "ONE AI FOR ALL ADS" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] In the multi-billion dollar world of online advertising, traditional AI systems are limited - each needs custom training for different scenarios, wasting time and money.
+[VISUAL DIRECTION] Show chaotic network diagram with multiple disconnected AI models, then transition to unified system
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build one universal model that understands the fundamental principles of bidding across ALL advertising environments?
+[VISUAL DIRECTION] Zoom in on researcher looking at complex bidding data, animated question marks appearing
+
+[VOICEOVER 0:40-1:00] They discovered Bid2X - a transformer-based AI that learns the underlying dynamics of how bids, costs, and impressions interact across diverse scenarios.
+[VISUAL DIRECTION] Show transformer architecture diagram with data flowing through attention mechanisms
+
+[VOICEOVER 1:00-1:30] The key innovation: Instead of memorizing specific scenarios, Bid2X identifies universal patterns - like how increasing bids leads to diminishing returns. It processes heterogeneous data types and uses self-supervised learning on 132 million bidding trajectories.
+[VISUAL DIRECTION] Animated graph showing diminishing returns curve, then data flowing through unified representation system
+
+[VOICEOVER 1:30-1:50] Real-world impact: In Taobao tests, Bid2X increased gross merchandise value by 3.21% and return on investment by 2.44% compared to existing systems, while handling new scenarios without retraining.
+[VISUAL DIRECTION] Show percentage improvements in bold text over real e-commerce dashboard
+
+[VOICEOVER 1:50-2:00] One AI model that adapts to any advertising challenge - this could revolutionize how businesses reach customers online.
+[VISUAL DIRECTION] Final shot of unified AI system with text: "Universal Bidding Intelligence"

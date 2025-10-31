@@ -1,0 +1,1 @@
+Advanced AI models like GPT-5 perform at near-guessing levels on chess position evaluation despite 97% accuracy on basic rules. New ChessQA research reveals critical gaps in AI strategic planning capabilities that impact real-world decision-making applications. Read the Nature/Science paper to understand these fundamental limitations in AI development.

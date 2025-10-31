@@ -1,0 +1,1 @@
+AI weather forecasts can now follow physics laws, eliminating unrealistic patterns. Duke researchers developed a physics-constrained AI model that improves forecast reliability for agriculture and emergency response. How might this transform climate adaptation strategies?

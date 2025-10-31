@@ -1,0 +1,1 @@
+AI agents coordinate complex tasks without communication—achieving near-optimal efficiency. GPT-4.1-based systems reached goals in 13.93 steps vs 20.54 for traditional methods. This breakthrough could transform warehouse logistics and disaster response.

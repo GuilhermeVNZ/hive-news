@@ -1,0 +1,1 @@
+Robots now coordinate complex tasks with human-like efficiency, overcoming a major robotics challenge. NVIDIA and UC San Diego developed a system enabling robots to intelligently decide when to act independently, sequentially, or collaboratively. This breakthrough in dynamic scheduling could transform industrial automation and domestic assistance.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI speech recognition makes 4 times more errors with children's voices compared to adults? 
+[VISUAL DIRECTION] Animated text: "AI CAN'T UNDERSTAND KIDS" with shocked emoji face
+
+[VOICEOVER 0:05-0:20] This isn't just a technical glitch - it's a critical problem affecting millions of young learners worldwide as voice technology becomes essential for education.
+[VISUAL DIRECTION] Show classroom scene with children using tablets, zoom in on speech bubbles with question marks
+
+[VOICEOVER 0:20-0:40] Researchers tested state-of-the-art AI models on children's speech and found even the most advanced systems struggle dramatically.
+[VISUAL DIRECTION] Show Figure 5 from paper with error rates comparison, zoom on the 415% higher error rate for children
+
+[VOICEOVER 0:40-1:00] When tested with Arabic-speaking children aged 6-13, the best-performing model achieved only 38% word accuracy - meaning it missed nearly two-thirds of what was said.
+[VISUAL DIRECTION] Animated pie chart showing 38% accuracy vs 62% missed words
+
+[VOICEOVER 1:00-1:30] The research team created a specialized dataset called STT with 288 recordings of children speaking in realistic classroom environments, capturing moderate background noise to reflect real-world conditions.
+[VISUAL DIRECTION] Show classroom audio recording setup, animated waveforms of children's speech vs adult speech
+
+[VOICEOVER 1:30-1:50] This failure means current AI isn't serving our youngest users effectively, particularly for educational applications like pronunciation feedback and accessibility tools.
+[VISUAL DIRECTION] Show child struggling with voice-activated learning app, red X over failed interactions
+
+[VOICEOVER 1:50-2:00] The takeaway? We need AI that understands everyone - not just adults. The future of education depends on it.
+[VISUAL DIRECTION] Split screen: frustrated child on left, happy child with working voice tech on right, text: "INCLUSIVE AI MATTERS"

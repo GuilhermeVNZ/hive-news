@@ -1,0 +1,1 @@
+AI training can now automatically detect when to switch optimization methods, achieving superlinear convergence. This breakthrough from Nature/Science research reduces computational costs while improving accuracy across medical imaging and autonomous vehicles. How will this impact your organization's AI strategy?

@@ -1,0 +1,1 @@
+What if two seemingly different AI training methods are actually the same? New research reveals GRPO and REINFORCE-style algorithms are mathematically equivalent. This unification simplifies AI development, making systems more efficient and reliable. How could this reshape your approach to machine learning?

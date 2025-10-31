@@ -1,0 +1,1 @@
+AI assistants can be tricked into executing malicious commands through normal web pages/documents—without user detection. MCP protocol vulnerabilities expose private data, bypass security. 3.7 of tested implementations exploitable. Nature/Science research proposes MCP-Guard for real-time threat monitoring.

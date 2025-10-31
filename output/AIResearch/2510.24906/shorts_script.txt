@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if mathematics could guarantee fair political representation while preventing any coalition from gaining advantage by breaking away?
+[VISUAL DIRECTION] [Animated text: FAIR ELECTIONS IMPOSSIBLE? with question mark shaking]
+
+[VOICEOVER 0:05-0:20] For centuries, distributing limited parliamentary seats fairly has challenged democracies. Traditional methods often fail when resources can't be divided into fractions.
+[VISUAL DIRECTION] [Show Figure 1: Seat distribution charts with red X marks over failed allocations]
+
+[VOICEOVER 0:20-0:40] Researchers from University of Warsaw and ETH Zürich asked: Can we create a system where every group gets their fair share, and no subgroup can do better by leaving?
+[VISUAL DIRECTION] [Animated coalition diagrams breaking apart with warning symbols]
+
+[VOICEOVER 0:40-1:00] They discovered the 'indivisible value' method - a mathematical breakthrough that ensures quota satisfaction while maintaining coalitional stability.
+[VISUAL DIRECTION] [Zoom on algorithm flowchart with green checkmarks at each step]
+
+[VOICEOVER 1:00-1:30] Here's how it works: First assign each player their minimum guaranteed share, then iteratively distribute remaining items to those with highest claims. Using AI sampling, it estimates values and synergies between players.
+[VISUAL DIRECTION] [Animated bar charts showing floor values then iterative distribution with rising bars]
+
+[VOICEOVER 1:30-1:50] Real-world tests proved revolutionary: French election data showed balanced representation across political spectrums. In Polish elections, it formed stable coalitions from 5 to 265 seats.
+[VISUAL DIRECTION] [Show Figure 2: French election results comparison - new method vs traditional]
+
+[VOICEOVER 1:50-2:00] This isn't just about elections - it's about ensuring fairness in any system where resources can't be divided. Mathematics just made democracy more stable.
+[VISUAL DIRECTION] [Final screen: "FAIRNESS BY DESIGN" with mathematical symbols forming a checkmark]

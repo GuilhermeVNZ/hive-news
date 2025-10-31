@@ -1,0 +1,1 @@
+What if AI could strategically focus on what it doesn't know? DreamerV3-XP introduces uncertainty-driven exploration, prioritizing unfamiliar scenarios over repeated practice. This reduces training resources while improving learning efficiency. How might this transform robotics and autonomous systems?

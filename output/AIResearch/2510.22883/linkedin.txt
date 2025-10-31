@@ -1,0 +1,1 @@
+What if AI could think using the same logic gates as computers? Researchers discovered electronic circuits can model how humans perform complex cognitive tasks like categorization and inference. This unified framework reveals eight fundamental dependency patterns underlying diverse cognitive functions. Could this circuit-based approach help us build more human-like AI systems?

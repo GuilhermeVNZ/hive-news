@@ -1,0 +1,1 @@
+What if AI could learn from your data without ever seeing it? New research enables organizations to collaboratively train AI models on networked data while keeping all information private. This breakthrough achieves near-centralized accuracy with formal privacy guarantees. How could this transform healthcare and supply chain AI?

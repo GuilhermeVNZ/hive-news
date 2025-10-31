@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you the AI revolution powering our chatbots and search engines is built on surprisingly fragile foundations?
+[VISUAL DIRECTION] [Animated text: "AI's Secret Weakness" with cracking effect]
+
+[VOICEOVER 0:05-0:20] New research reveals AI faces systemic vulnerabilities that threaten its continued growth and stability - and this matters because AI is now embedded in everything from search engines to productivity tools.
+[VISUAL DIRECTION] [Show AI applications collapsing like dominoes - chatbots, search bars, productivity tools]
+
+[VOICEOVER 0:20-0:40] Researchers asked: How vulnerable is AI really? They developed the Artificial Intelligence Vulnerability Index to measure five critical inputs: computing power, specialized talent, training data, investment capital, and energy requirements.
+[VISUAL DIRECTION] [Show five pillars labeled: Computing, Talent, Data, Capital, Energy with cracks appearing]
+
+[VOICEOVER 0:40-1:00] The findings reveal stark concentrations. NVIDIA maintains a near-monopoly on AI computing. AI talent is heavily concentrated in the US. Training data shows diminishing returns. Capital requirements are massive - leading companies spend millions monthly.
+[VISUAL DIRECTION] [Zoom on world map showing talent concentration in US, NVIDIA logo dominance, dollar signs piling up]
+
+[VOICEOVER 1:00-1:30] But energy presents the most dramatic finding. If AI continues its current expansion, NVIDIA would need to produce approximately 2 million servers annually by 2027. Operating at capacity, these systems would consume between 85-134 terawatt-hours of electricity - a significant portion of worldwide energy.
+[VISUAL DIRECTION] [Animated power meter skyrocketing, show server farms with energy consumption numbers overlaying]
+
+[VOICEOVER 1:30-1:50] Any disruption to these inputs - from geopolitical tensions to resource shortages - could ripple through our entire digital economy. This means the tools we rely on for work and entertainment are built on a potentially unstable foundation.
+[VISUAL DIRECTION] [Show digital economy network with red disruption waves spreading]
+
+[VOICEOVER 1:50-2:00] The AI revolution isn't just about smarter chatbots - it's about understanding the fragile pillars supporting our technological future.
+[VISUAL DIRECTION] [Final shot: Five cracked pillars with question mark overlay]

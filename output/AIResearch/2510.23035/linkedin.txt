@@ -1,0 +1,1 @@
+AI can now hide triple the information in normal-looking text while cutting detection risk in half. This breakthrough in steganography uses rank-based coding and entropy adjustment to generate covert messages that appear completely ordinary. How might this transform secure digital communications in high-stakes environments?

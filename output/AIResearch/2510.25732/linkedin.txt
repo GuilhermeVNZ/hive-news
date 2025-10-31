@@ -1,0 +1,1 @@
+AI models can't truly forget - new research shows they just hide information better. Persuasive questioning recovers 50-128% more 'unlearned' content, with authority framing achieving 25.4% recovery rates. This reveals critical security implications for AI deployment that organizations must address.

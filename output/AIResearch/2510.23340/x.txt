@@ -1,0 +1,1 @@
+AI learns to strategically frame alerts based on operator attention levels. New d-RSA++ model outperforms baselines by 13.74% in simulations, adapting message specificity to prevent cognitive overload in emergencies. Human-AI cooperation just got smarter.

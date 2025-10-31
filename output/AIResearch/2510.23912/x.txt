@@ -1,0 +1,1 @@
+AI breakthrough: Generate datasets that preserve analytical value while 100% protecting individual privacy. New method reduces re-identification risk by 80% vs traditional anonymization. Nature paper 2510.23912 shows how.

@@ -1,0 +1,1 @@
+AI layers aren't just passive—they can collapse, halting learning. New research shows how layer normalization schemes like Pre-LN and Peri-LN prevent this, stabilizing transformers. Nature study explains why some AI fails and how to fix it.

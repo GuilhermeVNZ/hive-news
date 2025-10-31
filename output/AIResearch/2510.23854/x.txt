@@ -1,0 +1,1 @@
+AI struggles to translate tabular data into accurate narratives—error rates jump dramatically as datasets grow. New framework cuts evaluation costs while improving assessment accuracy to 80.88%. Critical for real-world AI applications.

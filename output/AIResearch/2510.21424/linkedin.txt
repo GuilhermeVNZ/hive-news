@@ -1,0 +1,1 @@
+AI can now recognize human activities it was never trained on - achieving 78.6% accuracy on complex tasks like cooking and cleaning. This breakthrough in vision-language models could transform healthcare by enabling natural patient-AI interactions while maintaining privacy. What other domains could benefit from this general-purpose AI capability?

@@ -1,0 +1,1 @@
+AI just got a privacy upgrade: it processes encrypted data without decrypting it, hitting 3.2x faster speeds. From healthcare to finance, this breakthrough keeps data confidential while boosting performance. A game-changer for trustworthy AI systems.

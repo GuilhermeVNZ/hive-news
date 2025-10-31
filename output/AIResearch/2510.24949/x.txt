@@ -1,0 +1,1 @@
+Self-driving cars can now test dangerous scenarios without massive computational costs. Stanford's SCOUT AI analyzes vehicle navigation to identify near-collisions & hazardous maneuvers with 80% accuracy - cutting inference time from hours to 1.6 milliseconds. Published in Nature/Science, this could revolutionize autonomous vehicle safety testing.

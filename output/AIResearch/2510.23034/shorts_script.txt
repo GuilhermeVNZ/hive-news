@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if stolen AI models could protect themselves, dropping to just 15% accuracy for thieves?
+[VISUAL DIRECTION] Animated text: STOLEN AI = 15% ACCURACY with dramatic red X through it
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - Singapore researchers have solved one of AI's biggest vulnerabilities: intellectual property theft.
+[VISUAL DIRECTION] Show rotating 3D model of neural network with lock icon appearing
+
+[VOICEOVER 0:20-0:40] Current AI protection methods add overhead that undermines efficiency benefits. The team asked: Can we secure models without performance penalties?
+[VISUAL DIRECTION] Show scale tipping between SECURITY and PERFORMANCE
+
+[VOICEOVER 0:40-1:00] They discovered that binarized neural networks can be transformed using physical unclonable functions - hardware-derived keys that are unique and unclonable.
+[VISUAL DIRECTION] Zoom on circuit diagram showing PUF generation process
+
+[VOICEOVER 1:00-1:30] Here's how it works: The model's architecture combinations become the protection key. Attackers trying to steal the protected model see accuracy plummet from 92% to just 9.42% on MNIST dataset tests.
+[VISUAL DIRECTION] Show accuracy graph dropping dramatically for UNAUTHORIZED ACCESS
+
+[VOICEOVER 1:30-1:50] For authorized users? Near-original performance with minimal 0.5-2% overhead. This makes AI deployment secure for real-world applications where IP protection is critical.
+[VISUAL DIRECTION] Show authorized user with green checkmark and 92% accuracy
+
+[VOICEOVER 1:50-2:00] The future of AI just got safer - where stolen models protect themselves from theft.
+[VISUAL DIRECTION] Final text overlay: SELF-PROTECTING AI IS HERE

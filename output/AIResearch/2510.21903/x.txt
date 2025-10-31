@@ -1,0 +1,1 @@
+AI that reads your mind? Carnegie Mellon's ToM-SWE system achieves 92% acceptance from developers by modeling user intent across conversations. No more repeating yourself to AI assistants. This changes everything for software engineering workflows.

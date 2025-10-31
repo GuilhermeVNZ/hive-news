@@ -1,0 +1,1 @@
+AI coding assistants can be hijacked regardless of what you ask them. New research reveals QueryIPI achieves 82% attack success by systematically bypassing guardrails. This demands urgent security architecture redesign - how will your organization respond?

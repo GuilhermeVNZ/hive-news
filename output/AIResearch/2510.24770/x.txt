@@ -1,0 +1,1 @@
+AI now maps brain wiring with unprecedented accuracy. DMVFC integrates structural and functional data, achieving 0.326 correlation for corticospinal tract vs 0.251 in previous methods. This could revolutionize neurological disorder research.

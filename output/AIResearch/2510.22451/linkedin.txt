@@ -1,0 +1,1 @@
+What if AI could get smarter by rewiring its own connections instead of retraining from scratch? GraphTOP enhances neural networks by modifying data topology, achieving higher accuracy with less computation. Explore how this breakthrough from Nature/Science could transform real-world applications like healthcare analysis.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could connect your scattered medical records to reveal exactly how medication switches affect your health? 
+[VISUAL DIRECTION] Animated text: "197% accuracy in detecting medication effects" with medical chart graphics
+[VOICEOVER 0:05-0:20] For patients with spinal muscular atrophy, tracking treatment effectiveness has been nearly impossible due to fragmented tests over time.
+[VISUAL DIRECTION] Show scattered medical files floating apart, then coming together with connecting lines
+[VOICEOVER 0:20-0:40] Researchers faced a critical question: How can we quantify medication switching effects when patients use different assessment tools at different times?
+[VISUAL DIRECTION] Animated transition showing CHOP-INTEND and HFMSE assessment scales side by side
+[VOICEOVER 0:40-1:00] The breakthrough came from variational autoencoders that map diverse test scores into a unified, low-dimensional representation.
+[VISUAL DIRECTION] Show data points from different scales converging into a single coherent pattern
+[VOICEOVER 1:00-1:30] This AI technique aligns five different function assessments used in SMA care, creating continuous trajectories that incorporate age, genetic markers, and timing.
+[VISUAL DIRECTION] Zoom on Figure 2 showing aligned representations and trajectory modeling
+[VOICEOVER 1:30-1:50] The practical impact? Clinicians can now leverage existing longitudinal registry data to evaluate emerging therapies without additional testing.
+[VISUAL DIRECTION] Show SMArtCARE registry dataset visualization with 522 patients and 17.3 median visits
+[VOICEOVER 1:50-2:00] This isn't just about better data - it's about giving rare disease patients the personalized care they deserve.

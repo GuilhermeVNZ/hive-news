@@ -1,0 +1,1 @@
+AI agents working together can create biases that don't exist individually. New Nature study shows multi-agent systems fundamentally alter behavior, with groups of 100+ AI converging on unpredictable outcomes. Critical for defense and energy applications.

@@ -1,0 +1,1 @@
+BREAKING: AI designs computer chips that achieve near-perfect accuracy while cutting power consumption by 30%. The REvolution framework combines large language models with evolutionary computation to create optimized hardware blueprints automatically. Nature/Science paper reveals how this could accelerate chip development.

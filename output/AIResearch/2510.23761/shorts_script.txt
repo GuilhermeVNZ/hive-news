@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could fix software bugs with the same accuracy as human developers?
+[VISUAL DIRECTION] Animated text: "94.3% BUG-FIXING ACCURACY" with glowing checkmarks
+
+[VOICEOVER 0:05-0:20] New research reveals TDFlow AI achieves developer-level performance on real software testing benchmarks
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on accuracy metrics comparison between AI and human developers
+
+[VOICEOVER 0:20-0:40] The challenge: Software bugs cost companies millions and create security vulnerabilities. Can AI handle the complexity of real codebases?
+[VISUAL DIRECTION] Fast cuts of error messages, crashing applications, and frustrated developers
+
+[VOICEOVER 0:40-1:00] TDFlow solved 88.8% of problems on SWE-Bench Lite - a 27.8% absolute improvement over the next best system
+[VISUAL DIRECTION] Animated bar chart showing performance comparison between TDFlow and previous systems
+
+[VOICEOVER 1:00-1:30] How it works: Multiple AI sub-agents break down the bug-fixing process. One understands the problem, another proposes solutions, and a third revises patches
+[VISUAL DIRECTION] Flowchart animation showing different AI components working together, with zoom on modular architecture
+
+[VOICEOVER 1:30-1:50] For everyday users: More reliable applications with fewer crashes. For developers: Less tedious debugging, more creative programming
+[VISUAL DIRECTION] Split screen showing smooth app performance vs buggy experience, then developer celebrating completed feature
+
+[VOICEOVER 1:50-2:00] The main obstacle isn't AI capability itself - it's writing accurate tests that properly reproduce issues. The future is human-AI collaboration
+[VISUAL DIRECTION] Final text overlay: "AI + Developers = Better Software" with TDFlow paper citation

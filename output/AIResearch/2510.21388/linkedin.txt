@@ -1,0 +1,1 @@
+AI sound recognition can now run on phones with 80% fewer parameters and 53% less energy. New QCNN compression maintains 97.6% accuracy while slashing computational costs. This breakthrough makes sustainable AI accessible for healthcare, security, and IoT. Nature/Science authority.

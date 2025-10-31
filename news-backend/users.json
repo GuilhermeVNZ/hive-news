@@ -1,0 +1,7 @@
+{
+  "admin": {
+    "username": "admin",
+    "password_hash": "$2b$12$yyDa.3RjWE8CNKcnD3fSaOI7D65rrylPIL7chfyHlY7I.m477JHby",
+    "role": "admin"
+  }
+}

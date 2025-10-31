@@ -1,0 +1,1 @@
+🚨 AI can't understand kids! New research shows speech recognition makes 4x more errors with children's voices vs adults. Even the best model (Whisper Large-v3) missed nearly 2/3 of what Arabic-speaking children said. This education tech gap affects millions worldwide.

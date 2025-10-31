@@ -1,0 +1,1 @@
+AI systems can autonomously discover and exploit software vulnerabilities with 94.4% success rates. New research reveals critical security gaps in autonomous AI that current defenses cannot address. Read the Nature/Science paper to understand the urgent implications for cybersecurity.

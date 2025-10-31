@@ -1,0 +1,1 @@
+AI now creates chess puzzles humans find more enjoyable than human-designed ones. DeepMind's creativity-rewarding framework achieved 2.5% generation rate, surpassing existing AI and matching classic compositions. Breakthrough suggests AI may be closing the creativity gap.

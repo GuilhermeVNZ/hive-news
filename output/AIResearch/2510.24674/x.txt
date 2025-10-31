@@ -1,0 +1,1 @@
+Self-driving AI just got smarter: Zero crashes in simulations using hierarchical decision-making. The system breaks driving into human-like maneuvers (lane changes, speed adjustments) for smoother, safer highway navigation. Could this be the key to trustworthy autonomous vehicles?

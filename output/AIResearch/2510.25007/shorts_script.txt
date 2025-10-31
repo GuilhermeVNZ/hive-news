@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Medical billing errors cost Medicare $6.7 billion annually in inappropriate payments. Could AI finally fix this?
+[VISUAL DIRECTION] Animated text: "$6.7B lost annually" with medical billing documents flashing rapidly
+[VOICEOVER 0:05-0:20] In Florida alone, 9% of primary care visits are undercoded, costing hospitals $114 million in lost revenue each year.
+[VISUAL DIRECTION] Show map of Florida with dollar signs fading in/out, transition to hospital financial charts
+[VOICEOVER 0:20-0:40] Oracle Health developed ProFees, an AI system that tackles five major coding challenges: coder disagreement, lack of explainability, model inconsistency, and the need for broad clinical knowledge.
+[VISUAL DIRECTION] Show five animated icons representing each challenge, quick cuts between them
+[VOICEOVER 0:40-1:00] The system achieved 36% higher accuracy than existing systems by using modular AI components that classify encounters and assess complexity through recursive self-criticism.
+[VISUAL DIRECTION] Show accuracy comparison chart with ProFees significantly outperforming baseline, zoom on 36% improvement
+[VOICEOVER 1:00-1:30] ProFees runs parallel inferences and uses majority voting for reliability, while incorporating dynamic few-shot prompting from expert-annotated examples.
+[VISUAL DIRECTION] Animated flowchart showing modular components working together, highlight recursive criticism process
+[VOICEOVER 1:30-1:50] Beyond just accuracy, ProFees generates human-readable justifications crucial for compliance - creating step-by-step explanations clinicians can verify.
+[VISUAL DIRECTION] Show sample justification text appearing line by line, medical professionals reviewing documentation
+[VOICEOVER 1:50-2:00] This demonstrates how transparent AI could finally tame the complexities of medical billing while saving billions.
+[VISUAL DIRECTION] Final screen with animated text: "36% higher accuracy | Transparent AI | Billions saved"

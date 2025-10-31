@@ -1,0 +1,1 @@
+AI agents fail over 50% on novel verification tasks. New CoreThink Reasoner outperforms top models by 5-30% at one-tenth the cost. Rethink AI's limits—explore the MAVEN benchmark.

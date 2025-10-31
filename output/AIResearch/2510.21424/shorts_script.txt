@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could understand human activities it was never trained to recognize? [VISUAL DIRECTION] [Animated text: "AI sees what it wasn't taught" with question mark animation]
+
+[VOICEOVER 0:05-0:20] Researchers just discovered that general-purpose vision-language models can identify complex human activities like cooking and cleaning with remarkable accuracy, even without specific training. [VISUAL DIRECTION] [Show Figure 2 from paper with zoom on accuracy distribution across different activities]
+
+[VOICEOVER 0:20-0:40] The big question: Can AI truly understand human behavior without being explicitly programmed for each task? [VISUAL DIRECTION] [Fast cuts between different human activity scenarios - cooking, cleaning, using phones]
+
+[VOICEOVER 0:40-1:00] The breakthrough: Models like InternVL2 achieved 78.6% accuracy on the Toyota Smarthome dataset, outperforming specialized systems designed specifically for activity recognition. [VISUAL DIRECTION] [Animated bar chart showing InternVL2-5 at 78.6% vs specialized models]
+
+[VOICEOVER 1:00-1:30] How it works: These vision-language models use a systematic evaluation framework with 16,115 descriptive captions to measure how well AI understands human activities across different scenarios and camera angles. [VISUAL DIRECTION] [Show systematic evaluation framework diagram with zoom on cosine similarity measurements]
+
+[VOICEOVER 1:30-1:50] For healthcare: This means AI could naturally interact with patients, understanding their daily activities without requiring separate specialized components - maintaining privacy while providing support. [VISUAL DIRECTION] [Show healthcare application scenario with privacy-focused visual elements]
+
+[VOICEOVER 1:50-2:00] The future: AI that truly understands human behavior, not just what it was trained to see. [VISUAL DIRECTION] [Final text overlay: "Understanding beyond training" with model accuracy stats]

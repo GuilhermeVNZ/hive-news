@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could make doctors 30% more accurate in diagnosing sleep disorders?
+[VISUAL DIRECTION] Animated text: '30% more accurate' with a pulsing graph icon. Fast zoom on text to emphasize surprise.
+[VOICEOVER 0:05-0:20] Sleep disorders like obstructive apnea affect 20% of people, but diagnosis relies on complex data. AI can help, but only if clinicians trust it.
+[VISUAL DIRECTION] Show a split screen: one side with polysomnographic data waves, the other with a doctor looking confused. Use quick cuts between data and human expressions.
+[VOICEOVER 0:20-0:40] Researchers tested if AI with clear explanations beats opaque systems. They used a DeepSleep model with DeepLIFT for feature attributions in a real-world study.
+[VISUAL DIRECTION] Display Figure 2 from the paper, zooming in on event-level performance bars. Overlay text: 'Black-box vs. White-box AI'.
+[VOICEOVER 0:40-1:00] Transparent AI improved scoring by 30% on average, especially in early phases. It corrected biases and reduced variability among experts.
+[VISUAL DIRECTION] Animate a bar chart growing by 30%, with text: '30% improvement'. Hold on the peak for emphasis.
+[VOICEOVER 1:00-1:30] How? AI provided step-by-step explanations, making it a reliable co-scorer. This builds trust without major workflow changes.
+[VISUAL DIRECTION] Show an animated flow: AI box → explanation bubbles → doctor nodding. Use smooth transitions to illustrate collaboration.
+[VOICEOVER 1:30-1:50] This means AI can enhance diagnostic accuracy in labs, but familiarity is key. Strategic integration is the next step for healthcare.
+[VISUAL DIRECTION] Cut to a hospital lab scene with AI and human working together. Overlay text: 'Trustworthy AI in practice'.
+[VOICEOVER 1:50-2:00] Transparent AI isn't just smarter—it's a partner doctors want. Embrace the future of collaborative medicine.
+[VISUAL DIRECTION] End with the Nature paper title on screen: 'Assessing Real-World Utility of Explainable AI'. Fade out slowly.

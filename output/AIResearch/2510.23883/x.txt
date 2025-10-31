@@ -1,0 +1,1 @@
+AI can autonomously hack websites using SQL injection & XSS attacks without detailed prompting. Study shows 94.4% vulnerability exploitation success rates. Current defenses failing against these new AI threats. Full paper reveals alarming implications.

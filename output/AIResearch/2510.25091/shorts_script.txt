@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if an AI could predict market movements with 50% accuracy - outperforming every existing method?
+[VISUAL DIRECTION] Animated text: "50% Market Prediction Accuracy" with dramatic reveal effect
+[VOICEOVER 0:05-0:20] This isn't science fiction - researchers have developed H3M-SSMoEs, an AI that analyzes both quantitative data and news content simultaneously.
+[VISUAL DIRECTION] Split screen showing stock charts on left, news headlines on right, then merging into unified analysis
+[VOICEOVER 0:20-0:40] Traditional methods treat data sources separately, but this breakthrough processes them together through hypergraphs that capture coordinated market movements.
+[VISUAL DIRECTION] Animated network diagram showing connections between different market sectors reacting to events
+[VOICEOVER 0:40-1:00] The system achieved 50.00% accuracy on DJIA predictions, significantly higher than the second-best method at 31.70%.
+[VISUAL DIRECTION] Bar chart comparison: H3M-SSMoEs 50.00% vs Second-best 31.70% with clear visual gap
+[VOICEOVER 1:00-1:30] How does it work? It combines local analysis of short-term reactions with global understanding of persistent relationships, plus an LLM that processes news to anticipate events before they appear in data.
+[VISUAL DIRECTION] Flowchart animation showing data inputs → local/global analysis → LLM processing → predictions
+[VOICEOVER 1:30-1:50] This means investors could potentially identify market movements based on corporate disclosures and geopolitical events before traditional indicators catch up.
+[VISUAL DIRECTION] Timeline animation showing news event → AI prediction → market reaction → traditional detection
+[VOICEOVER 1:50-2:00] The most sophisticated prediction tool to date - transforming how we understand and respond to market dynamics.
+[VISUAL DIRECTION] Final screen with key stat: "50% accuracy - Outperforming all existing methods"

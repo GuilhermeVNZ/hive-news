@@ -1,0 +1,1 @@
+AI systems often provide false info in multilingual searches. New QTT-RAG tags translation quality, boosting accuracy by 6.8% in Finnish. Could this solve cross-lingual misinformation? Read the Nature paper.

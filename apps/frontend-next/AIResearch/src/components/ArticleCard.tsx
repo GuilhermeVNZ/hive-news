@@ -67,9 +67,9 @@ const ArticleCard = ({
               ))
             ) : (
               // Fallback to single category
-              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/20 group-hover:border-primary/40 transition-all">
-                {category}
-              </span>
+            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/20 group-hover:border-primary/40 transition-all">
+              {category}
+            </span>
             )}
           </div>
           <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors duration-300">

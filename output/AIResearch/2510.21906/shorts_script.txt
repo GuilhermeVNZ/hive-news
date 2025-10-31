@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could solve complex network problems by seeing data as images instead of numbers?
+[VISUAL DIRECTION] Animated text: "AI SEES DATA DIFFERENTLY" with network visualization morphing into abstract art
+
+[VOICEOVER 0:05-0:20] Traditional AI struggles with combinatorial optimization - problems like finding the best routes, optimal networks, or critical nodes. These challenges involve selecting optimal subsets where understanding relationships matters more than raw data.
+[VISUAL DIRECTION] Show traffic network with congested routes, then transition to molecular structure diagrams
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI understand complex relationships by visualizing data rather than processing numbers?
+[VISUAL DIRECTION] Split screen: left shows numerical data tables, right shows same data as network diagrams
+
+[VOICEOVER 0:40-1:00] They discovered multimodal AI can interpret topological relationships lost in numerical formats. By converting data into images, AI makes better decisions about which elements to keep during optimization processes.
+[VISUAL DIRECTION] Zoom in on Figure 2 showing performance comparison charts
+
+[VOICEOVER 1:00-1:30] The method uses cooperative AI frameworks where different versions analyze data through degree-based and community-based layouts. These AI subprocessors share high-quality solutions through a master coordination system.
+[VISUAL DIRECTION] Animated flowchart showing multiple AI processors feeding into central coordinator
+
+[VOICEOVER 1:30-1:50] This breakthrough applies to real-world problems: influence maximization in social networks, disease immunization strategies, and even traveling salesman optimization.
+[VISUAL DIRECTION] Fast cuts: social network connections, virus spread simulation, delivery route optimization
+
+[VOICEOVER 1:50-2:00] The AI achieved highest average performance of 1.38 compared to 4.38 for conventional methods - making complex optimization accessible while maintaining efficiency.
+[VISUAL DIRECTION] Final screen: side-by-side comparison showing 3x performance improvement with text overlay "1.38 vs 4.38"]

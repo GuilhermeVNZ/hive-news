@@ -1,0 +1,1 @@
+What if robots could find the perfect balance between speed, safety, and efficiency in city navigation? New multi-objective search algorithms discover all optimal trade-offs simultaneously, dramatically improving autonomous vehicle planning. This breakthrough enables sophisticated decision-making for critical transportation systems.

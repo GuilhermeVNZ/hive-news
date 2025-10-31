@@ -1,0 +1,1 @@
+AI learns safety rules by watching experts, avoiding dangers too complex to define mathematically. New research shows autonomous systems can navigate safely without explicit hazard programming, bridging theory and real-world deployment.

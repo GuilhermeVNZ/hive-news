@@ -1,0 +1,1 @@
+What if robots could understand uncertainty like humans? FlowCritic enables AI to model outcome distributions, not just averages, improving decision-making in complex environments. This Nature/Science breakthrough enhances robotic reliability—imagine autonomous vehicles navigating chaos. Read the paper to explore how.

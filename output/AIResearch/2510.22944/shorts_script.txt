@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the biggest security risk in AI coding isn't hackers—but how you ask the question?
+[VISUAL DIRECTION] Animated text: "AI SECURITY RISK?" with question mark morphing into "YOUR PROMPTS"
+[VOICEOVER 0:05-0:20] Peking University researchers discovered that vague, incomplete prompts dramatically increase vulnerabilities in AI-generated code.
+[VISUAL DIRECTION] Show Figure 2 zooming on vulnerability distribution from L0 to L3 prompts
+[VOICEOVER 0:20-0:40] They tested 10 major AI models including GPT-4o and Gemini using their CWE-BENCH-PYTHON framework with 33 vulnerability categories.
+[VISUAL DIRECTION] Fast cuts between model logos with vulnerability percentages flashing
+[VOICEOVER 0:40-1:00] As prompt quality decreased, vulnerability rates skyrocketed. Access control flaws jumped from 13.59% to 49.84%—over 150% increase.
+[VISUAL DIRECTION] Animated bar chart showing dramatic rise in CWE-284 vulnerabilities
+[VOICEOVER 1:00-1:30] AI follows the "path of least resistance"—with vague instructions, it defaults to insecure coding practices like string concatenation instead of proper validation.
+[VISUAL DIRECTION] Side-by-side code comparison: secure vs vulnerable implementations
+[VOICEOVER 1:30-1:50] This affects everyday developers: unclear requirements directly create exploitable code. Chain-of-Thought prompting reduced vulnerabilities by breaking problems down step-by-step.
+[VISUAL DIRECTION] Developer at computer with secure coding checklist overlay
+[VOICEOVER 1:50-2:00] Your prompt quality determines your code security. Clear specifications prevent AI from guessing wrong.
+[VISUAL DIRECTION] Final text overlay: "CLEAR PROMPTS = SECURE CODE" with Nature/Science branding

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know trust erodes three times faster than it builds? A single violation can destroy months of cooperation instantly.
+[VISUAL DIRECTION] [Animated text: "TRUST ERODES 3X FASTER THAN IT BUILDS" with countdown timer showing rapid decline]
+[VOICEOVER 0:05-0:20] This isn't just intuition - it's computational science. Researchers developed a framework analyzing how trust evolves in systems where organizations both cooperate and compete.
+[VISUAL DIRECTION] [Show network diagram with nodes representing organizations, connections pulsing to show cooperation]
+[VOICEOVER 0:20-0:40] They asked: Why do strategic partnerships fail despite repair efforts? The answer lies in trust asymmetry - the fundamental imbalance between trust building and erosion.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on peak distribution, highlight the asymmetry curve]
+[VOICEOVER 0:40-1:00] The research reveals that minor violations disproportionately damage trust, with an amplification factor of 1.97. High-dependency relationships experience 27% more erosion than low-dependency ones.
+[VISUAL DIRECTION] [Animated bar chart showing 27% difference, fast cuts between high and low dependency scenarios]
+[VOICEOVER 1:00-1:30] How does this work? The computational model uses two-layer tracking of responses and historical reputation. Extensive simulations across 78,125 parameter configurations validated this trust bias phenomenon.
+[VISUAL DIRECTION] [Show simulation grid expanding, zoom into specific parameter configurations with trust metrics]
+[VOICEOVER 1:30-1:50] Real-world impact: The Renault-Nissan Alliance case study shows that despite repair efforts after the 2018 crisis, trust only reached original levels by 2025. Full recovery is often impossible.
+[VISUAL DIRECTION] [Timeline visualization showing 1999-2025 with crisis point and slow recovery curve]
+[VOICEOVER 1:50-2:00] The takeaway? Protect trust aggressively - because once broken, it may never fully recover. Trust is fragile, and science proves it.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI learns more from its messy mistakes than perfect answers?
+[VISUAL DIRECTION] Animated text: "AI's Messy Mistakes" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Current AI training treats all errors equally, but new research reveals a fundamental insight
+[VISUAL DIRECTION] Show Figure 2 from paper - error distribution chart with zoom on structural patterns
+
+[VOICEOVER 0:20-0:40] Researchers asked: Do some mistakes teach AI more than others? They discovered error structure matters most
+[VISUAL DIRECTION] Animated reasoning tree diagram showing correct branches vs. pruned incorrect ones
+
+[VOICEOVER 0:40-1:00] Simple, organized errors with clear structure provide the strongest learning signal
+[VISUAL DIRECTION] Text overlay: "Simple structural errors = Better learning"
+
+[VOICEOVER 1:00-1:30] Their RLVR method creates "Reasoning Trees" - mapping AI's thought process and calculating improvement potential
+[VISUAL DIRECTION] Fast cuts showing tree construction, r-score calculation, and training prioritization
+
+[VOICEOVER 1:30-1:50] Results: 3.2 percentage point improvement on Qwen2.5-Math-7B, consistent gains across architectures
+[VISUAL DIRECTION] Hold on benchmark performance chart with highlighted improvement numbers
+
+[VOICEOVER 1:50-2:00] The future: AI that learns efficiently from its own reasoning patterns, not just right answers
+[VISUAL DIRECTION] Final animated text: "Better Errors = Smarter AI" with paper title overlay

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the two main ways we train AI are actually the exact same method in disguise?
+[VISUAL DIRECTION] Animated text: "AI TRAINING SECRET" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Researchers just made a breakthrough discovery that unifies how artificial intelligence learns and improves.
+[VISUAL DIRECTION] Show rotating 3D cube transforming between different AI algorithm icons
+
+[VOICEOVER 0:20-0:40] They asked: Are GRPO and REINFORCE-style algorithms really different approaches, or are they mathematically identical?
+[VISUAL DIRECTION] Split screen showing GRPO and REINFORCE labels with "VS" between them, then merging
+
+[VOICEOVER 0:40-1:00] The finding: These two techniques are actually two sides of the same coin. Through mathematical derivations, they proved the equivalence.
+[VISUAL DIRECTION] Show Figure 2 from paper zooming in on gradient convergence patterns
+
+[VOICEOVER 1:00-1:30] How it works: By reverse-engineering approaches and showing modifications like hard-example up-weighting in GRPO equate to regularization in REINFORCE.
+[VISUAL DIRECTION] Animated flow chart showing mathematical transformations between methods
+
+[VOICEOVER 1:30-1:50] This means simpler AI development for real applications like coding assistants and educational tools, making systems more reliable and efficient.
+[VISUAL DIRECTION] Show coding interface with AI suggestions and educational platform interface
+
+[VOICEOVER 1:50-2:00] The takeaway: What appeared as distinct AI training strategies are actually the same path forward.
+[VISUAL DIRECTION] Final text overlay: "SIMPLER AI DEVELOPMENT AHEAD" with unified arrow graphic

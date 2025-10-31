@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if you could capture the perfect acoustics of any space—from concert halls to ancient cathedrals—using just words?
+[VISUAL DIRECTION] [Animated text: "AI RECREATES ANY SOUND SPACE" with pulsing effect]
+[VOICEOVER 0:05-0:20] For audio engineers and architects, capturing how sound behaves in different environments has always required expensive equipment and specialized knowledge.
+[VISUAL DIRECTION] [Show rapid cuts of audio measurement equipment, then cross to architects reviewing blueprints]
+[VOICEOVER 0:20-0:40] Researchers asked: Could AI understand and recreate acoustic properties without physical measurements?
+[VISUAL DIRECTION] [Zoom in on research paper title with glowing highlight effect]
+[VOICEOVER 0:40-1:00] They discovered PromptReverb—a system that analyzes space characteristics and generates precise acoustic responses using only text prompts.
+[VISUAL DIRECTION] [Show animated diagram of three-stage process: image analysis → text translation → acoustic generation]
+[VOICEOVER 1:00-1:30] The system works by first understanding physical space characteristics, then translating text cues into acoustic models, and finally generating the actual sound response.
+[VISUAL DIRECTION] [Pan across frequency response graphs showing before/after comparison]
+[VOICEOVER 1:30-1:50] This means virtual reality developers can create realistic soundscapes without expensive equipment, and architects can preview acoustic designs before construction.
+[VISUAL DIRECTION] [Show VR headset user experiencing spatial audio, then architect reviewing 3D model with sound visualization]
+[VOICEOVER 1:50-2:00] The future of sound design is here—and it speaks your language.

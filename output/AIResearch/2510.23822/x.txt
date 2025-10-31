@@ -1,0 +1,1 @@
+AI agents struggle with complex tasks—until now. ReCAP achieves 32% improvement in completion rates by solving 'plan drift' with recursive reasoning. Works across multiple models without fine-tuning. Nature/Science paper shows breakthrough for practical AI deployment.

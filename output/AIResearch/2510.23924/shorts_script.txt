@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could share valuable research data while mathematically guaranteeing no one's personal information could ever be identified?
+[VISUAL DIRECTION] [Animated text: "MATHEMATICALLY IMPOSSIBLE TO IDENTIFY" with lock icon animation]
+[VOICEOVER 0:05-0:20] This addresses one of the fundamental tensions in modern science - how to share valuable research without exposing personal details.
+[VISUAL DIRECTION] [Show data sharing dilemma animation - research value vs privacy scales]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create artificial data that maintains all the useful statistical properties while protecting every individual's privacy?
+[VISUAL DIRECTION] [Animated question mark transforming into neural network diagram]
+[VOICEOVER 0:40-1:00] They discovered neural networks can generate synthetic data that preserves disease prevalence, treatment outcomes, and financial risk patterns.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on distribution matching between real and synthetic data]
+[VOICEOVER 1:00-1:30] The system uses differential privacy techniques to guarantee that even with additional information, identifying any person in the synthetic output remains computationally infeasible.
+[VISUAL DIRECTION] [Animated flow: Real data → Neural network → Synthetic data with privacy shield]
+[VOICEOVER 1:30-1:50] This transforms healthcare collaboration, financial fraud detection, and government data release - all while preserving citizen confidentiality.
+[VISUAL DIRECTION] [Fast cuts: Hospital research, bank security, government data visualization]
+[VOICEOVER 1:50-2:00] The future of data sharing just became both more useful and more private.
+[VISUAL DIRECTION] [Final text overlay: "PRESERVING UTILITY, PROTECTING PRIVACY" with Nature/Science logo]

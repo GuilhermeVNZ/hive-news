@@ -1,0 +1,7 @@
+[VOICEOVER 0:00-0:05] What if AI could predict your flight delay before it even happens—in under a minute? [VISUAL DIRECTION] Animated text: 'UNDER 60 SECONDS' with a ticking clock graphic.
+[VOICEOVER 0:05-0:20] Air travel frustrations cost billions annually, but researchers at KAIST have a solution. [VISUAL DIRECTION] Show chaotic airport scenes transitioning to a calm, efficient air traffic control room.
+[VOICEOVER 0:20-0:40] They asked: Can we forecast delays by combining schedules, weather, and live aircraft positions? [VISUAL DIRECTION] Zoom in on a map with overlapping flight paths and weather icons.
+[VOICEOVER 0:40-1:00] Using cross-modality AI, they converted flight data into language-like representations for models like LLaMA-3.2. [VISUAL DIRECTION] Animated flow diagram: data inputs → AI processing → delay prediction output.
+[VOICEOVER 1:00-1:30] The system achieves sub-minute predictions with R-squared >0.99, meaning near-perfect accuracy. [VISUAL DIRECTION] Display a graph from the paper showing prediction vs. actual times, with a highlight on the high R-squared value.
+[VOICEOVER 1:30-1:50] This means fewer missed connections, less congestion, and potential cost savings for travelers—no hardware upgrades needed. [VISUAL DIRECTION] Fast cuts of happy passengers, on-time departures, and reduced airport queues.
+[VOICEOVER 1:50-2:00] Next time you fly, AI might already know your delay. [VISUAL DIRECTION] End with text overlay: 'Science in Motion' and the paper title reference.

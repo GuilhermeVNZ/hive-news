@@ -1,0 +1,1 @@
+AI can now learn directly from raw data without human labels—achieving 92% accuracy vs 94% with traditional methods. The gap is narrowing. This breakthrough could revolutionize industries from healthcare to autonomous vehicles where labeling is too expensive.

@@ -1,0 +1,1 @@
+AI that thinks like humans? DeepAgent solves problems in a single continuous process, achieving 91.8% success in virtual navigation. This breakthrough from Renmin University enables AI to dynamically navigate 16,000+ tools. Read the Nature/Science paper to understand how unified reasoning transforms AI capabilities.

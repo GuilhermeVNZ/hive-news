@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if everything we thought about AI's capabilities was wrong? [VISUAL DIRECTION] Animated text: "AI'S COLLABORATION PROBLEM" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] MIT and Carnegie Mellon researchers just revealed a critical flaw in how we evaluate artificial intelligence. [VISUAL DIRECTION] Show university logos with researchers in lab setting, transition to AI interface screens
+
+[VOICEOVER 0:20-0:40] They asked: Can today's AI systems truly collaborate with humans, or are they just good at one-shot responses? [VISUAL DIRECTION] Split screen showing single task completion vs. complex multi-turn conversation failing
+
+[VOICEOVER 0:40-1:00] The findings are striking: Even the most advanced AI like GPT-4o and Claude-3.5-Sonnet fail in 34.9% of collaborative scenarios. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on failure rate statistics, animated text: "34.9% FAILURE RATE"
+
+[VOICEOVER 1:00-1:30] The problem? AI gets stuck in loops, misinterprets intent, and can't develop coherent long-term strategies when working with humans. [VISUAL DIRECTION] Show looping animation of AI responses, then red X over collaboration diagram
+
+[VOICEOVER 1:30-1:50] This affects everything from business tools that can't explain their reasoning to educational tutors that provide answers but don't promote understanding. [VISUAL DIRECTION] Quick cuts: business dashboard, classroom setting, research lab - all with collaboration breakdown indicators
+
+[VOICEOVER 1:50-2:00] The future of AI isn't about making systems more autonomous—it's about designing them to truly collaborate with us. [VISUAL DIRECTION] Final screen: "TASK COMPLETION ≠ TRUE COLLABORATION" with paper title overlay

@@ -1,0 +1,1 @@
+AI doesn't just process words—it maps emotions as directional vectors in neural networks. Georgia Tech found consistent emotional geometry across 8 languages, emerging naturally during training. Machines understand feelings without being taught.

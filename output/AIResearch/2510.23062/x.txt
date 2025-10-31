@@ -1,0 +1,1 @@
+AI now predicts student performance across subjects like math and biology with 80% accuracy, using transfer learning from data-rich fields. This Nature/Science breakthrough could revolutionize education by identifying strengths without separate tests. No clickbait—just facts from the paper.

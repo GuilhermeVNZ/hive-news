@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your bank could practice trillion-dollar trades in a risk-free simulation that's indistinguishable from real markets?
+[VISUAL DIRECTION] Animated text: "RISK-FREE TRADING SIMULATION" with glowing financial charts background
+
+[VOICEOVER 0:05-0:20] Financial institutions face a critical problem: testing trading strategies risks real money and exposes sensitive information. But Nature research reveals a breakthrough solution.
+[VISUAL DIRECTION] Show Figure 1 from paper - zoom on limit book patterns with fast cuts between real vs synthetic data comparisons
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create synthetic market data that behaves exactly like the real thing? Their hybrid approach merges two powerful methodologies.
+[VISUAL DIRECTION] Split screen showing TABL processing vs ABM simulation - animated arrows connecting the two systems
+
+[VOICEOVER 0:40-1:00] TABL-ABM successfully reproduces real market patterns including autocorrelation and volatility clustering - the exact statistical fingerprints of actual trading.
+[VISUAL DIRECTION] Show Figure 2 with zoom on autocorrelation patterns - highlight matching curves between real and synthetic data
+
+[VOICEOVER 1:00-1:30] The system combines Temporal Attention Augmented Bilinear Layer processing with Agent-Based Models simulating different trader types: fundamentalists, momentum traders, and noise traders.
+[VISUAL DIRECTION] Animated diagram showing three trader types interacting - fast cuts showing how each influences market behavior
+
+[VOICEOVER 1:30-1:50] Practical applications are massive. Investment firms can now stress-test execution strategies against historical crises like 2008 or COVID-19 without risking actual capital.
+[VISUAL DIRECTION] Show crisis timeline with 2008 and 2020 markers - overlay with "STRESS TESTING" text and simulated trading screens
+
+[VOICEOVER 1:50-2:00] The future of financial risk management just got a risk-free training ground. What would you test first?
+[VISUAL DIRECTION] Final shot of glowing "TABL-ABM" logo with rotating financial charts - hold for memorable impact

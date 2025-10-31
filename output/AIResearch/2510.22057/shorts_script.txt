@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could monitor classroom engagement without gender bias? New research shows it's possible with 99.9% bias reduction.
+[VISUAL DIRECTION] Animated text: "99.9% LESS GENDER BIAS" with dramatic entrance
+[VOICEOVER 0:05-0:20] Current AI systems often penalize students based on gender, not actual engagement. This creates unfair educational tracking.
+[VISUAL DIRECTION] Show side-by-side comparison: biased AI vs fair AI with gender symbols
+[VOICEOVER 0:20-0:40] Researchers at University of Colorado Denver asked: Can we build AI that ignores gender while accurately detecting engagement?
+[VISUAL DIRECTION] Zoom on researcher lab setting, animated question mark
+[VOICEOVER 0:40-1:00] Their breakthrough uses multi-task learning with attribute-orthogonal regularization. The AI learns to detect engagement while actively ignoring gender-related features.
+[VISUAL DIRECTION] Split-screen showing two AI branches: engagement detection vs gender classification
+[VOICEOVER 1:00-1:30] The system achieved near-perfect fairness - Pearson coefficient improved from 0.897 to 0.999. Students with similar behavior get identical predictions regardless of gender.
+[VISUAL DIRECTION] Show distribution graphs from paper, zoom on improved correlation coefficients
+[VOICEOVER 1:30-1:50] This means teachers get accurate engagement data without gender influencing results. Critical as online learning grows and AI monitors larger classrooms.
+[VISUAL DIRECTION] Show classroom monitoring scenario with fair AI indicators
+[VOICEOVER 1:50-2:00] The future of education AI just got fairer - and more accurate.

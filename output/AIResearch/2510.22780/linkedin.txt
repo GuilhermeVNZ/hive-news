@@ -1,0 +1,1 @@
+AI can now reconstruct your personal data from 'anonymized' datasets with alarming accuracy. New research reveals neural networks can generate synthetic data that preserves complex patterns, effectively replicating original information. How will your organization adapt privacy protection strategies in this AI era?

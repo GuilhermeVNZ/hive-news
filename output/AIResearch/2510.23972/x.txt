@@ -1,0 +1,1 @@
+BREAKING: New AI chip runs on 10,000x less energy than GPUs while matching performance. Nature study shows how alternative computing paradigms could solve AI's energy crisis. The hardware lottery just got rewritten.

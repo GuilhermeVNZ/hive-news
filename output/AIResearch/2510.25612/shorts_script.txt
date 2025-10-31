@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI systems could tell us which individual AIs are making the most important decisions in group settings?
+[VISUAL DIRECTION] Animated text: "AI Transparency Breakthrough" with glowing neural network animation
+
+[VOICEOVER 0:05-0:20] As AI systems increasingly work together autonomously - projected to grow eightfold in coming years - understanding who's making key decisions becomes critical for safety and reliability.
+[VISUAL DIRECTION] Show multiple AI agents collaborating, with question marks appearing over their interactions
+
+[VOICEOVER 0:20-0:40] Researchers faced a fundamental challenge: when multiple AIs work together, it's nearly impossible to determine which specific agents are driving the outcomes. This creates major safety risks in sensitive applications.
+[VISUAL DIRECTION] Zoom in on complex workflow diagram showing multiple AI interactions
+
+[VOICEOVER 0:40-1:00] The breakthrough: CAIR - Counterfactual-based AI Ranker. This method systematically tests what happens when you modify each AI's contributions while keeping everything else constant.
+[VISUAL DIRECTION] Show counterfactual testing visualization - highlight one agent while others fade
+
+[VOICEOVER 1:00-1:30] Here's how it works: CAIR creates "what if" scenarios, measures how changes affect the final result, and combines three key metrics to calculate each AI's influence score. The system achieved 76.1% accuracy in identifying the most influential agents.
+[VISUAL DIRECTION] Animated flow chart showing the three-phase process with metrics overlay
+
+[VOICEOVER 1:30-1:50] The practical impact? Applying safety guardrails only to the most influential AIs maintains 95% effectiveness while reducing computational overhead by two-thirds - making comprehensive AI protection feasible in real-time applications.
+[VISUAL DIRECTION] Show safety guardrail application visualization with efficiency metrics
+
+[VOICEOVER 1:50-2:00] This represents a significant step toward making complex AI systems more transparent and controllable as they become increasingly autonomous in our daily lives.
+[VISUAL DIRECTION] Final text overlay: "AI Transparency: 76.1% Accuracy in Decision Attribution"

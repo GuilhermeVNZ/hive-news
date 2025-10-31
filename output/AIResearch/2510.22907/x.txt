@@ -1,0 +1,1 @@
+AI coding assistants hallucinate APIs and mislocalize edits. Princeton's solution: Lanser-CLI provides verified, machine-checkable information instead of speculative guesses. Results show measurable process rewards with fewer errors and safety indicators. Discover how this transforms software development reliability.

@@ -19,6 +19,7 @@ fn main() {
         "frontend" => start_dashboard(),
         "vectorizer" => start_vectorizer(),
         "collector" => test_collector(),
+        "collector-enabled" => trigger_collect_enabled(),
         "schedule" => run_scheduler(),
         "monitor" => monitor_system(),
         "status" => check_system_status(),
@@ -223,68 +224,42 @@ fn start_vectorizer() {
 }
 
 fn test_collector() {
-    println!("🔍 Testing Collector Service...");
-    println!("\n🚀 Starting Real Collection from arXiv...");
+    println!("🔍 Collector Service - Continuous Pipeline Mode");
+    println!("\n🚀 Starting Continuous Pipeline Loop...");
     println!("\n📊 Configuration:");
     println!("   Source: cs.AI (Computer Science - Artificial Intelligence)");
-    println!("   Papers: 10 most recent");
+    println!("   Papers: 10 most recent per cycle (busca regressiva até encontrar)");
     println!("   Location: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+    println!("   ⏰ Interval: 15 minutes (900 seconds)");
     println!("\n🛡️  Security Features:");
     println!("   ✅ Using export.arxiv.org (official API)");
     println!("   ✅ Cookie-based session management");
     println!("   ✅ Browser-like headers (anti-bot protection bypassed)");
     println!("   ✅ Rate limiting (3s delay between downloads)");
-    println!("   ✅ Incremental collection (anti-duplication)");
-    println!("\n⏳ Executing collection...\n");
+    println!("   ✅ Incremental collection (anti-duplication via registry)");
+    println!("\n🔄 Running continuously...\n");
     
-    // Executar via PowerShell com handling de banco
-    let ps_script = format!(
-        r#"
+    // Usar a função de pipeline contínuo que tem o loop
+    execute_full_pipeline();
+}
+
+fn trigger_collect_enabled() {
+    println!("🔍 Collector Service - Enabled Sources via backend config\n");
+    let ps_script = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
-cargo run --bin news-backend collect
-"#
-    );
-    
-    // Executar coleta real via backend
+cargo run --bin news-backend collect-enabled
+"#;
+
     let output = Command::new("powershell")
-        .args(&["-Command", &ps_script])
+        .args(&["-Command", ps_script])
         .output()
-        .expect("Failed to execute collector");
-    
-    // Mostrar output
+        .expect("Failed to trigger collect-enabled");
+
     let stdout = String::from_utf8_lossy(&output.stdout);
     let stderr = String::from_utf8_lossy(&output.stderr);
-    
     println!("{}", stdout);
-    if !stderr.is_empty() {
-        eprintln!("{}", stderr);
-    }
-    
-    if output.status.success() {
-        println!("\n✅ Collection completed!");
-        println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
-        
-        // FASE 2: Filter
-        println!("\n🔍 Starting Filter Phase (Scientific Validation)...");
-        run_filter();
-        
-        // FASE 3: Writer (with DeepSeek image category selection)
-        println!("\n✍️  Starting Content Generation with DeepSeek...");
-        println!("   Style: Nature/Science magazine editorial");
-        println!("   Phase 1: Article generation with image categories");
-        println!("   Phase 2: Social media + video script");
-        println!("   Phase 3: Pixabay image fetch (based on article keywords)");
-        
-        run_writer();
-        
-        println!("\n✅ Full Pipeline Completed!");
-        println!("   Collection → Filter → Writer (with image categories)");
-        println!("   Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
-    } else {
-        println!("\n⚠️  Collection had issues");
-        println!("   Check output above for details");
-    }
+    if !stderr.is_empty() { eprintln!("{}", stderr); }
 }
 
 fn run_filter() {
@@ -444,14 +419,35 @@ fn execute_full_pipeline() {
         println!("⏱️  Time: {}", get_current_time());
         println!("{}", "=".repeat(70));
         
-        // FASE 1: Collector
+        // FASE 1: Collector - arXiv
         println!("\n📥 Phase 1: Collecting papers from arXiv...");
         let ps_script_collect = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 cargo run --bin news-backend collect
 "#;
-        
+        // FASE 1b: Collector - PMC (safe: 1 paper)
+        println!("\n📥 Phase 1b: Collecting papers from PubMed Central (safe mode)...");
+        let ps_collect_pmc = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+cargo run --bin news-backend collect-pmc
+"#;
+        let out_pmc = Command::new("powershell").args(&["-Command", ps_collect_pmc]).output().expect("Failed to execute PMC collector");
+        println!("{}", String::from_utf8_lossy(&out_pmc.stdout));
+        if !out_pmc.stderr.is_empty() { eprintln!("{}", String::from_utf8_lossy(&out_pmc.stderr)); }
+
+        // FASE 1c: Collector - Semantic Scholar (safe: 1 paper)
+        println!("\n📥 Phase 1c: Collecting papers from Semantic Scholar (safe mode)...");
+        let ps_collect_ss = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+cargo run --bin news-backend collect-ss
+"#;
+        let out_ss = Command::new("powershell").args(&["-Command", ps_collect_ss]).output().expect("Failed to execute Semantic Scholar collector");
+        println!("{}", String::from_utf8_lossy(&out_ss.stdout));
+        if !out_ss.stderr.is_empty() { eprintln!("{}", String::from_utf8_lossy(&out_ss.stderr)); }
+
         let output = Command::new("powershell")
             .args(&["-Command", ps_script_collect])
             .output()
@@ -465,31 +461,36 @@ cargo run --bin news-backend collect
             eprintln!("{}", stderr);
         }
         
-        if output.status.success() {
+        let collection_success = output.status.success();
+        
+        if collection_success {
             println!("\n✅ Collection completed!");
             println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
-            
-            // FASE 2: Filter
-            println!("\n🔍 Phase 2: Filtering and validating papers...");
-            run_filter();
-            
-            // FASE 3: Writer
-            println!("\n✍️  Phase 3: Generating content with DeepSeek...");
-            run_writer();
-            
-            let execution_time = start_time.elapsed();
-            let next_run = chrono::Local::now() + chrono::Duration::minutes(15);
-            
-            println!("\n{}", "=".repeat(70));
-            println!("✅ Cycle #{} completed successfully!", cycle);
-            println!("⏱️  Execution time: {:?}", execution_time);
-            println!("⏰ Next cycle: {}", next_run.format("%Y-%m-%d %H:%M:%S"));
-            println!("📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
-            println!("{}", "=".repeat(70));
         } else {
-            println!("\n⚠️  Collection had issues, skipping to next cycle");
+            println!("\n⚠️  Collection had issues (but continuing pipeline anyway)");
             println!("   Check output above for details");
+            println!("   Will still run Filter and Writer for existing PDFs");
         }
+        
+        // FASE 2: Filter - SEMPRE executar, mesmo se Collector não encontrou novos artigos
+        // Isso garante que PDFs pendentes sejam processados
+        println!("\n🔍 Phase 2: Filtering and validating papers...");
+        run_filter();
+        
+        // FASE 3: Writer - SEMPRE executar, mesmo se não encontrou novos artigos
+        // Isso garante que PDFs filtrados pendentes sejam processados
+        println!("\n✍️  Phase 3: Generating content with DeepSeek...");
+        run_writer();
+        
+        let execution_time = start_time.elapsed();
+        let next_run = chrono::Local::now() + chrono::Duration::minutes(15);
+        
+        println!("\n{}", "=".repeat(70));
+        println!("✅ Cycle #{} completed successfully!", cycle);
+        println!("⏱️  Execution time: {:?}", execution_time);
+        println!("⏰ Next cycle: {}", next_run.format("%Y-%m-%d %H:%M:%S"));
+        println!("📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
+        println!("{}", "=".repeat(70));
         
         cycle += 1;
         

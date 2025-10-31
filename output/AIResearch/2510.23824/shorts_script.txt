@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI agents could coordinate complex tasks perfectly—without ever talking to each other?
+[VISUAL DIRECTION] Animated text: "AI Coordination Without Communication" with glowing network lines
+
+[VOICEOVER 0:05-0:20] Researchers just discovered that properly designed AI systems can achieve near-optimal coordination in multi-agent scenarios
+[VISUAL DIRECTION] Show warehouse robots moving in sync, disaster response drones coordinating
+
+[VOICEOVER 0:20-0:40] The fundamental challenge: how can independent agents work together effectively without centralized control?
+[VISUAL DIRECTION] Split screen showing chaotic vs coordinated robot movement
+
+[VOICEOVER 0:40-1:00] The breakthrough: GPT-4.1-based systems achieved mean makespan of just 13.93 steps—significantly outperforming traditional methods at 20.54 steps
+[VISUAL DIRECTION] Bar chart animation showing 13.93 vs 20.54 with dramatic difference
+
+[VOICEOVER 1:00-1:30] How it works: Each agent independently generates preference rankings using quantitative environmental information, achieving decentralized coordination
+[VISUAL DIRECTION] Animated flow chart showing preference ranking process with numerical data inputs
+
+[VOICEOVER 1:30-1:50] Real impact: This enables scalable coordination in warehouses, urban networks, and disaster response where centralized control becomes computationally impossible
+[VISUAL DIRECTION] Rapid cuts showing warehouse automation, traffic management, emergency response
+
+[VOICEOVER 1:50-2:00] The future: AI systems serving as competitive alternatives to algorithmic coordination in complex multi-agent environments
+[VISUAL DIRECTION] Final text overlay: "Decentralized Intelligence: The New Frontier"

@@ -1,0 +1,1 @@
+AI's biggest weakness isn't accuracy—it's explainability. New research creates AI that can surgically correct errors without full retraining, providing human-like reasoning. Finally, AI that can explain its thinking.

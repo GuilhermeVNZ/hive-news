@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could generate high-quality images 10 times faster without losing quality? [VISUAL DIRECTION] Animated text: "10X FASTER AI IMAGE GENERATION" with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] Current AI image generation has been bottlenecked by slow sequential processing, limiting practical applications in creative design and scientific visualization. [VISUAL DIRECTION] Show side-by-side comparison: traditional slow process vs new fast approach with loading bars
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically speed up image generation while maintaining or improving quality? [VISUAL DIRECTION] Animated question mark transforming into NestAR logo
+
+[VOICEOVER 0:40-1:00] The breakthrough is NestAR - a hierarchical approach that processes multiple detail levels simultaneously, reducing computational complexity from O(n) to O(log n). [VISUAL DIRECTION] Show hierarchical diagram expanding from coarse to fine details
+
+[VOICEOVER 1:00-1:30] Instead of predicting one piece at a time, NestAR uses continuous tokens and pattern matching to generate coherent images across scales. [VISUAL DIRECTION] Zoom on Figure 2 showing pattern matching mechanism with animated arrows
+
+[VOICEOVER 1:30-1:50] Results: 342.4 FID score on ImageNet, beating previous methods while being 10x faster. Designers can iterate rapidly, creators overcome production bottlenecks. [VISUAL DIRECTION] Show ImageNet comparison grid with FID scores highlighted
+
+[VOICEOVER 1:50-2:00] This isn't just faster AI - it's practical AI that could transform how we create and visualize. [VISUAL DIRECTION] Final text overlay: "NestAR: Quality + Speed" with paper citation

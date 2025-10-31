@@ -1,0 +1,1 @@
+AI fails in 34.9% of collaborative scenarios despite excelling at single tasks. New MIT/Carnegie Mellon research reveals current AI evaluation misses critical collaboration gaps. The future isn't autonomous agents—it's true human-AI partnerships. Read the Nature/Science paper.

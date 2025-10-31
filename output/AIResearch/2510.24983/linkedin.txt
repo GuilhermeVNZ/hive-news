@@ -1,0 +1,1 @@
+AI systems often make risky decisions when faced with unfamiliar situations. New research introduces LRT-Diffusion, giving AI calibrated risk-aware control with a single user-specified parameter. This breakthrough could transform autonomous systems and medical decision support. Read the Nature/Science paper to understand how transparent AI decision-making is becoming reality.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could predict which startups will succeed with nearly 60% accuracy—six times better than current methods?
+[VISUAL DIRECTION] [Animated text: 59.5% ACCURACY - 6X BETTER] with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] In venture capital, identifying the rare successful startup is incredibly difficult—only 1.9% actually make it. Billions get misallocated every year.
+[VISUAL DIRECTION] [Show Figure 2 distribution with zoom on the 1.9% success rate area, fast cuts between failed startup logos and successful ones]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build an AI that not only predicts success but explains its reasoning, unlike black-box systems?
+[VISUAL DIRECTION] [Animated transition from question mark to LLM-AR framework diagram, highlight "transparent decisions" text overlay]
+
+[VOICEOVER 0:40-1:00] They discovered LLM-AR analyzes founder backgrounds from LinkedIn and Crunchbase, then uses statistical analysis and self-reflection to continuously improve.
+[VISUAL DIRECTION] [Show data flow animation: LinkedIn/Crunchbase → Pattern Recognition → ProbLog Engine → Refinement Loop]
+
+[VOICEOVER 1:00-1:30] The system works iteratively—first examining profiles, converting insights, then refining through automated reasoning. It's particularly effective at minimizing false positives.
+[VISUAL DIRECTION] [Zoom on iterative process diagram, highlight "minimizing false positives" with red X over wrong predictions]
+
+[VOICEOVER 1:30-1:50] This means venture capitalists could dramatically improve how they allocate billions in funding, reducing costly misallocations.
+[VISUAL DIRECTION] [Fast cuts between funding charts, dollar signs transforming into successful startup growth curves]
+
+[VOICEOVER 1:50-2:00] AI that doesn't just predict—it explains. Transforming how we identify the next big thing.
+[VISUAL DIRECTION] [Final hold on LLM-AR framework with key stats: 59.5% accuracy, 6x better, transparent decisions]

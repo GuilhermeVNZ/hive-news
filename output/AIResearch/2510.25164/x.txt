@@ -1,0 +1,1 @@
+AI interprets MRIs with radiologist-level accuracy. New system generates detailed reports in seconds, tackling healthcare's imaging bottleneck. Nature research shows domain-specific AI can match human precision with minimal computational demands.

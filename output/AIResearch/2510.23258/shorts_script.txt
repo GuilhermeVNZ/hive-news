@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could actually 'imagine' the future before taking action?
+[VISUAL DIRECTION] [Animated text: "ROBOTS THAT IMAGINE" with question mark floating above robot silhouette]
+
+[VOICEOVER 0:05-0:20] In complex environments where traditional robots struggle, researchers developed an AI that balances exploration and goal achievement - just like humans do when navigating uncertain situations.
+[VISUAL DIRECTION] [Show Figure 2 from paper - robot navigation paths with collision points highlighted]
+
+[VOICEOVER 0:20-0:40] The key question: Can robots learn to actively figure out their environment while still reaching targets efficiently?
+[VISUAL DIRECTION] [Split screen: left shows traditional robot bumping into obstacles, right shows new AI robot smoothly navigating]
+
+[VOICEOVER 0:40-1:00] The results are striking - 28% fewer collisions compared to standard methods, especially in scenarios requiring active exploration with location uncertainty.
+[VISUAL DIRECTION] [Animated text overlay: "28% FEWER COLLISIONS" with statistical comparison from Table 1]
+
+[VOICEOVER 1:00-1:30] How does it work? The system uses a deep framework that unifies exploration and navigation. Instead of switching modes, it constantly balances gathering information and minimizing 'expected energy' - imagining consequences before acting.
+[VISUAL DIRECTION] [Animated diagram showing MTRSSM model with multiple timescales, zooming in on decision process]
+
+[VOICEOVER 1:30-1:50] This means future autonomous systems in homes, hospitals, and disaster zones could navigate unpredictable environments without pre-programmed maps or constant human guidance.
+[VISUAL DIRECTION] [Quick cuts: search-and-rescue robot, warehouse logistics, hospital delivery robot]
+
+[VOICEOVER 1:50-2:00] The future of robotics is here - machines that don't just follow instructions, but imagine possibilities before they act.
+[VISUAL DIRECTION] [Final shot: Robot successfully navigating complex maze with "IMAGINE BEFORE ACTING" text overlay]

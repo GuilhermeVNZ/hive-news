@@ -1,0 +1,1 @@
+AI now navigates websites with human-like foresight using mental rehearsal. ATLAS agents achieve 53.9% success on complex web tasks by building cognitive maps of sites. Could this transform how we interact with digital services?

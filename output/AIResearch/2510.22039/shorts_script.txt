@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could predict what it can't see, just like our brains do? [VISUAL DIRECTION] Animated text: "AI vs Uncertainty" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] AI systems struggle with complex environments where they can't see everything at once—a challenge humans handle easily. [VISUAL DIRECTION] Show robot navigating maze with foggy areas, zoom on confused AI expression
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to build mental models of its surroundings like biological brains do? [VISUAL DIRECTION] Split screen: human brain activity on left, AI network diagram on right with connecting arrows
+
+[VOICEOVER 0:40-1:00] They discovered predictive coding—a brain-inspired principle—helps AI develop beliefs about unseen environments, leading to more effective planning. [VISUAL DIRECTION] Show Figure 2B from paper zooming in on belief distributions, highlight structural similarity to optimal beliefs
+
+[VOICEOVER 1:00-1:30] The method combines self-supervised learning with meta-reinforcement learning, allowing AI to predict sensory inputs and update internal models without relying solely on reward signals. [VISUAL DIRECTION] Animated diagram showing autoencoder processing observations, recurrent network predicting future states
+
+[VOICEOVER 1:30-1:50] This means safer autonomous systems for medical diagnostics, disaster response, and robotics that can operate with limited information. [VISUAL DIRECTION] Quick cuts: medical imaging, search-and-rescue drone, autonomous vehicle in challenging conditions
+
+[VOICEOVER 1:50-2:00] The gap between artificial and biological intelligence just got smaller. [VISUAL DIRECTION] Final text overlay: "Predictive Coding Bridges AI and Neuroscience" with Nature logo

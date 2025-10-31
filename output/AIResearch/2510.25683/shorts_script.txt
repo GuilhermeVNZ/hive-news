@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could predict exactly how a bridge vibrates during an earthquake—before it happens?
+[VISUAL DIRECTION] Animated text: "AI PREDICTS STRUCTURAL VIBRATIONS" with shaking bridge graphic
+[VOICEOVER 0:05-0:20] Engineers have struggled for decades to accurately simulate how vibrations travel through structures. Current methods often fail with high-frequency pulses.
+[VISUAL DIRECTION] Show traditional simulation glitching vs new AI simulation running smoothly. Fast cuts between failed and successful models.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI simulate wave propagation through clamped structures with the precision needed for real-world engineering?
+[VISUAL DIRECTION] Zoom on "clamped structure" diagram from paper. Animated arrows showing vibration paths.
+[VOICEOVER 0:40-1:00] They developed a neural network that uses node-fixed reference frames—preventing the catastrophic cancellation that plagues traditional calculations.
+[VISUAL DIRECTION] Show side-by-side comparison: traditional method showing error accumulation vs AI method maintaining accuracy. Highlight "orders of magnitude improvement" text.
+[VOICEOVER 1:00-1:30] The AI achieved substantial improvements, reproducing kHz pulse physics where standard methods failed. It maintains spatial and temporal fidelity while running much faster than finite element analysis.
+[VISUAL DIRECTION] Show vibration wave propagation with timestamp overlay. Fast cuts showing different loading conditions being simulated accurately.
+[VOICEOVER 1:30-1:50] This means engineers could soon monitor bridges for earthquake damage, aircraft for turbulence stress, and buildings for load capacity—all in real-time.
+[VISUAL DIRECTION] Show real-world applications: bridge monitoring, aircraft wing stress, building safety checks. Text overlay: "Computational speed advantage enables quick design variations"
+[VOICEOVER 1:50-2:00] AI is now predicting structural vibrations with precision we've never seen before—potentially saving lives through better infrastructure monitoring.
+[VISUAL DIRECTION] Final text: "Network-based Structural Simulator: Neural Networks" with shaking structure stabilizing as AI prediction improves accuracy.

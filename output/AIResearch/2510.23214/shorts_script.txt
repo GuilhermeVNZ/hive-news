@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could instantly know what to focus on and what to ignore? [VISUAL DIRECTION] Animated text: "AI FOCUS PROBLEM" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Current AI struggles with decision-making in complex environments, often making suboptimal choices due to noise and overestimation bias. [VISUAL DIRECTION] Show chaotic traffic simulation with AI making poor route choices
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to automatically identify equivalent states and focus only on what truly matters? [VISUAL DIRECTION] Zoom on researcher at computer, show abstract state diagrams
+
+[VOICEOVER 0:40-1:00] They discovered AUPO - a method that groups similar states together, reducing bias and improving decision quality. [VISUAL DIRECTION] Animated clustering of states, show performance improvement graphs from paper
+
+[VOICEOVER 1:00-1:30] AUPO works by analyzing AI's search process, comparing confidence intervals to separate truly different states from equivalent ones. [VISUAL DIRECTION] Show Monte Carlo Tree Search simulation with confidence interval overlays
+
+[VOICEOVER 1:30-1:50] This means AI can now adapt to changing environments without retraining - crucial for autonomous driving, robotics, and energy optimization. [VISUAL DIRECTION] Fast cuts: self-driving car, robot arm, power grid optimization
+
+[VOICEOVER 1:50-2:00] The future of AI decision-making just got smarter by learning what to ignore. [VISUAL DIRECTION] Final text overlay: "AUPO: Smarter AI through better focus"

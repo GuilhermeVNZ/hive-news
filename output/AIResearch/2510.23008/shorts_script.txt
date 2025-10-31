@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could match expert radiologists in interpreting your medical scans? The hospital crisis just found its solution.
+[VISUAL DIRECTION] [Animated text: AI MATCHES EXPERT RADIOLOGISTS with hospital background]
+
+[VOICEOVER 0:05-0:20] Hospitals worldwide face a critical bottleneck: too many scans, too few specialists to interpret them. This leads to delayed diagnoses and inconsistent care.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on scan volume growth - animated line chart showing exponential increase]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI generate medical reports that are medically accurate, read like real doctors wrote them, and prioritize urgent cases first?
+[VISUAL DIRECTION] [Three animated icons appearing sequentially: checkmark (accuracy), document (writing), exclamation (priority)]
+
+[VOICEOVER 0:40-1:00] They discovered that with the right prompts, AI systems achieved composite scores of 75-100% across 15,000 cancer MRI reports - approaching expert-level performance.
+[VISUAL DIRECTION] [Bar chart showing AI performance scores vs expert baseline, with Kimi-K2-Instruct-0905 hitting near-perfect scores]
+
+[VOICEOVER 1:00-1:30] The breakthrough came from the Multi-Dimensional Credibility Assessment framework, which automatically evaluates three critical aspects without time-consuming human review. The most effective prompts included role definitions, diagnostic taxonomies, and strategic examples.
+[VISUAL DIRECTION] [Animated flowchart showing framework components: medical accuracy → writing quality → clinical prioritization → composite score]
+
+[VOICEOVER 1:30-1:50] This means hospitals can reduce radiologist workload while maintaining consistent, high-quality reporting. No more diagnostic delays due to fatigue or resource constraints.
+[VISUAL DIRECTION] [Split screen: stressed radiologist vs AI system generating reports efficiently]
+
+[VOICEOVER 1:50-2:00] The future of medical imaging is here: AI that doesn't just assist, but reliably matches expert performance where it matters most.
+[VISUAL DIRECTION] [Final text overlay: "AI: Matching Experts, Saving Time, Saving Lives" with Nature/Science branding]

@@ -1,0 +1,1 @@
+Robots that 'imagine' consequences before acting achieved 28% fewer collisions in complex navigation tasks. This AI breakthrough brings us closer to autonomous systems that can handle unpredictable situations like search-and-rescue missions without constant human guidance.

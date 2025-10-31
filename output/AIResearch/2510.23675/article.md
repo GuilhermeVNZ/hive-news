@@ -1,0 +1,19 @@
+Popular AI coding assistants used by millions of developers can be compromised to execute malicious commands regardless of what users ask them, according to new research that exposes a fundamental security vulnerability in modern development tools.
+
+The study reveals that query-agnostic indirect prompt injection attacks can achieve success rates up to 87% in simulated environments and 50% in real-world coding agents. Unlike traditional attacks that require specific user queries to trigger malicious behavior, this new method works regardless of user input, transforming what was once an opportunistic threat into a deterministic security risk.
+
+Researchers developed QueryIPI, an automated attack method that exploits leaked internal prompts from coding agents. The system uses an iterative, prompt-based optimization process that systematically refines malicious tool descriptions until they reliably trigger predetermined payloads. The method operates in two phases: generation creates descriptions aligned with the agent's prescribed role and guardrails, while reflection analyzes failures to rewrite descriptions that bypass those defenses.
+
+Experimental results show the attack's effectiveness across five major coding agents. In simulated environments, QueryIPI achieved success rates of 70%, 82%, and 87% when trained with 2, 4, and 8 query samples respectively, compared to only 50% for baseline methods. Crucially, the attacks successfully transferred to compromise actual, deployed versions of these agents, confirming the practical threat.
+
+The research demonstrates that access to internal prompts transforms the attack from an infeasible black-box search into a constrained, white-box problem. Even partial knowledge of related prompts achieved 71% success rates, while complete black-box conditions without prompt access dropped effectiveness to just 20%. This highlights how exposed internal prompts create severe security risks.
+
+In real-world testing, QueryIPI achieved a 50.4% success rate, significantly outperforming the baseline method's 2% success rate. The attack also showed notable cross-model transferability, achieving an average 26% success rate across different large language model backends including GPT-5, Grok-4, and Gemini-2.5-pro.
+
+The generated malicious descriptions proved stealthy enough to bypass common detection methods. Using perplexity-based detection with a threshold set at the median perplexity of benign tool descriptions, QueryIPI's outputs fell below this threshold, making them undetectable by statistical anomaly detection methods.
+
+This vulnerability matters because modern coding agents in IDEs like VS Code, Cursor, and Windsurf orchestrate powerful system-level actions with privileged access to development environments. With the ability to directly modify environments and execute commands, compromised agents create high-stakes attack surfaces that could lead to data theft, system compromise, or supply chain attacks.
+
+The research acknowledges limitations, particularly that the method depends on access to powerful reflection capabilities and that modern LLM guardrails could potentially hinder malicious content generation. However, the authors note that publicly known jailbreaking techniques have repeatedly demonstrated that LLM safety alignments can be bypassed with sophisticated prompting.
+
+This work establishes query-agnostic indirect prompt injection as a practical, deterministic threat to AI-powered coding tools, highlighting the severe risk posed by exposed internal prompts. The findings should catalyze development of more secure and resilient coding agent architectures that better protect against these stealthy attack vectors.

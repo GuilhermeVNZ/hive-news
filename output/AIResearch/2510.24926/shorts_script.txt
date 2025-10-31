@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if we could predict glacier melt in seconds instead of weeks? [VISUAL DIRECTION] Animated text: 'WEEKS → SECONDS' with dramatic transition effect
+
+[VOICEOVER 0:05-0:20] As Antarctica's ice melts faster, scientists need better ways to forecast sea level rise. Traditional models take days to run just one scenario. [VISUAL DIRECTION] Show Antarctic map with Thwaites Glacier highlighted, animated sea level rise graph
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI predict glacier behavior accurately and instantly? [VISUAL DIRECTION] Show side-by-side comparison: complex equations vs neural network diagram
+
+[VOICEOVER 0:40-1:00] They discovered KAN-GCN networks achieve 95% accuracy in seconds. [VISUAL DIRECTION] Zoom on key statistic: 'Mean squared error: 1.92-2.08 vs 4.07-4.75 baseline'
+
+[VOICEOVER 1:00-1:30] The system combines two neural networks working on triangular meshes, trained on 20 years of Thwaites Glacier data. [VISUAL DIRECTION] Animated diagram showing KAN and GCN networks processing ice thickness and velocity data
+
+[VOICEOVER 1:30-1:50] This means scientists can test hundreds of climate scenarios quickly, improving IPCC projections that guide global policy. [VISUAL DIRECTION] Show rapid succession of different climate scenarios with sea level impact maps
+
+[VOICEOVER 1:50-2:00] AI is giving us the speed we need to understand our changing planet. [VISUAL DIRECTION] Final text overlay: 'Seconds matter when predicting our future coastline'

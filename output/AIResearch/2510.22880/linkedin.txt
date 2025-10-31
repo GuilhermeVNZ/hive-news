@@ -1,0 +1,1 @@
+What if AI could maintain 80% accuracy even when 80% of health data is missing? PEPSY enables multimodal federated learning systems to adapt to missing sensors, improving accuracy by 36.45% while preserving privacy. Essential for reliable healthcare monitoring - read the Nature/Science paper.

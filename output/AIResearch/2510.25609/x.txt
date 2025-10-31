@@ -1,0 +1,1 @@
+🚨 AI breakthrough: New BOLT-GAN produces images 66% higher quality than current methods! Stable training + sharper textures = game-changer for content creation. From Nature/Science paper: BOLT-GAN achieves dramatic FID improvements across multiple benchmarks.

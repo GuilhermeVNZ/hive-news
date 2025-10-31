@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] AI can review research with 80% accuracy, but can it actually make scientific discoveries?
+[VISUAL DIRECTION] Animated text: "AI REVIEW: 80%" with checkmark, then "AI DISCOVERY: 25%" with red X
+
+[VOICEOVER 0:05-0:20] The most comprehensive AI benchmarking study to date reveals a stark reality about artificial intelligence in science
+[VISUAL DIRECTION] Show AstaBench logo with rotating scientific domains icons (biology, chemistry, physics)
+
+[VOICEOVER 0:20-0:40] Researchers tested 57 AI systems across 2,400 problems to answer: Can AI truly assist with scientific discovery?
+[VISUAL DIRECTION] Animated counter showing 57 AI models, 2,400 problems tested
+
+[VOICEOVER 0:40-1:00] They found AI excels at understanding and reviewing research but struggles dramatically with execution and end-to-end discovery
+[VISUAL DIRECTION] Show performance gap visualization - high bar for understanding, low bar for execution
+
+[VOICEOVER 1:00-1:30] The AstaBench environment isolated specific capabilities, revealing that expensive models don't always perform better. The most economical system cost just $0.04 per problem
+[VISUAL DIRECTION] Show cost-performance chart with ReAct + GPT-5-mini highlighted at $0.04
+
+[VOICEOVER 1:30-1:50] This means AI can effectively assist with literature review and search, but cannot replace scientists in formulating hypotheses or designing experiments
+[VISUAL DIRECTION] Split screen: AI assisting with papers vs scientist at lab bench
+
+[VOICEOVER 1:50-2:00] AI transforms science, but this benchmark shows exactly where it succeeds—and where human reasoning remains essential
+[VISUAL DIRECTION] Final text overlay: "AI assists, scientists discover"

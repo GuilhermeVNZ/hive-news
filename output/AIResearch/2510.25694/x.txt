@@ -1,0 +1,1 @@
+AI agents spot 80% of coding problems but fix just 25%, exposing a major reliability gap. A new benchmark, EnConda-Bench, tests 4,201 realistic issues, showing tools can't be trusted to solve them autonomously. Nature/Science paper details the evidence.

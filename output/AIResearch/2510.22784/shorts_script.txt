@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could share sensitive data without ever revealing private information?
+[VISUAL DIRECTION] [Animated text: 'SHARE DATA WITHOUT PRIVACY RISKS?' with question mark pulsing]
+[VOICEOVER 0:05-0:20] Organizations face a critical dilemma: how to collaborate on data while protecting individual privacy. This tension limits innovation across healthcare, finance, and research.
+[VISUAL DIRECTION] [Show split screen: 'COLLABORATION' vs 'PRIVACY' with tension arrows between them]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create data that behaves exactly like real datasets but contains no personally identifiable information?
+[VISUAL DIRECTION] [Animated flow: Real data → AI processing → Synthetic data output]
+[VOICEOVER 0:40-1:00] The breakthrough: A machine learning method that learns the underlying distributions of real data and generates completely synthetic versions.
+[VISUAL DIRECTION] [Show distribution curves overlapping - real vs synthetic data matching perfectly]
+[VOICEOVER 1:00-1:30] How it works: The AI trains on real datasets to understand patterns and relationships, then creates new data that preserves all analytical characteristics while removing any private elements.
+[VISUAL DIRECTION] [Fast cuts: Training phase → Pattern recognition → Generation process → Validation metrics]
+[VOICEOVER 1:30-1:50] Real impact: Organizations can now share data freely for analysis while maintaining privacy guarantees. Enables broader collaboration and innovation without security compromises.
+[VISUAL DIRECTION] [Show industry icons: healthcare, finance, research with checkmarks]
+[VOICEOVER 1:50-2:00] The future of data sharing: Privacy protection and analytical utility, finally working together.
+[VISUAL DIRECTION] [Final text overlay: 'PRIVACY + UTILITY = INNOVATION' with paper reference: 2510.22784]

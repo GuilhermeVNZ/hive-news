@@ -1,0 +1,1 @@
+AI image editing just got 2.5x faster—no quality loss. RegionE speeds up tasks by modifying only specific regions, not the whole image. Tested on models like Step1X-Edit, it's a game-changer for real-time apps. Details in the preprint.

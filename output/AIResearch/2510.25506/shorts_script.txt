@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the AI research you're reading can't be verified? Scientists just discovered a shocking reproducibility crisis in artificial intelligence.
+[VISUAL DIRECTION] [Animated text: "AI Research Crisis" with red warning symbols, fast zoom]
+[VOICEOVER 0:05-0:20] When researchers analyzed 86 recent studies using large language models like ChatGPT, they found something alarming about scientific reliability.
+[VISUAL DIRECTION] [Show paper title slide: "Reflections on Reproducibility of Commercial LLM Research", slow pan across text]
+[VOICEOVER 0:20-0:40] The team developed a systematic framework to retest studies using the exact same methods and data described in original papers. They asked: Can we actually reproduce these AI findings?
+[VISUAL DIRECTION] [Show flowchart animation of reproduction process, highlight "same methods" and "same data" boxes]
+[VOICEOVER 0:40-1:00] The results were staggering. Out of 65 studies using OpenAI services, only 5% contained enough detail for functional reproduction attempts. And none produced identical results.
+[VISUAL DIRECTION] [Show bar graph: 65 studies → 5% reproducible, 0% identical results. Zoom on the zero]
+[VOICEOVER 1:00-1:30] For example, in code translation tasks, Python-to-Go translation success rates varied wildly from 55.3% to completely different patterns. The researchers used Bayesian bootstrapping to account for AI variability, but significant differences remained.
+[VISUAL DIRECTION] [Show code translation visualization with success rates fluctuating, highlight 55.3% statistic]
+[VOICEOVER 1:30-1:50] This matters because reproducibility is the foundation of science. When research can't be verified, we can't build cumulative knowledge or trust the findings. The problem is particularly acute with commercial models that lack transparency.
+[VISUAL DIRECTION] [Show building blocks of science crumbling, transition to opaque AI model icons]
+[VOICEOVER 1:50-2:00] The takeaway? We need structural improvements in AI research transparency. Without reliable reproduction, we're building on shaky ground.
+[VISUAL DIRECTION] [Final screen: "AI Research Needs Transparency" with Nature/Science journal logos]

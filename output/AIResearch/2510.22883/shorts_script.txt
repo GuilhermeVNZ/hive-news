@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the same logic gates that power your computer could also explain how humans think?
+[VISUAL DIRECTION] Animated text: "LOGIC GATES = HUMAN THINKING?" with circuit diagrams flashing rapidly
+
+[VOICEOVER 0:05-0:20] Researchers have made a breakthrough discovery - electronic circuits can model complex cognitive tasks we perform every day.
+[VISUAL DIRECTION] Show Figure 1 from paper with zoom on circuit diagrams, transition to brain imagery
+
+[VOICEOVER 0:20-0:40] They asked: Can we unify our understanding of diverse cognitive functions like categorization, inference, and conceptual blending?
+[VISUAL DIRECTION] Split screen showing different cognitive tasks - categorization on left, inference on right
+
+[VOICEOVER 0:40-1:00] The answer: Yes. By analyzing AND and OR gates, they identified eight distinct patterns that underlie various forms of human reasoning.
+[VISUAL DIRECTION] Animated diagram showing eight different circuit patterns emerging from basic gates
+
+[VOICEOVER 1:00-1:30] An AND gate, for example, implements conditional reasoning - both inputs must be active to produce an output. These circuits map to operations like combining concepts, abstracting features, and breaking down complex ideas.
+[VISUAL DIRECTION] Close-up animation of AND gate with inputs/outputs labeled, showing how it models conditional thinking
+
+[VOICEOVER 1:30-1:50] This matters because it suggests complex AI capabilities might be built from simpler components, without requiring entirely new architectures.
+[VISUAL DIRECTION] Transition from circuit diagrams to AI system architecture, highlighting simplified components
+
+[VOICEOVER 1:50-2:00] The way computers process information might just reveal how natural intelligence works.
+[VISUAL DIRECTION] Final split screen: logic circuits on left, human brain on right, with "UNIFIED UNDERSTANDING" text overlay

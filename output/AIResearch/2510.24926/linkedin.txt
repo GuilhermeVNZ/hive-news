@@ -1,0 +1,1 @@
+AI now predicts glacier melt in seconds instead of weeks. New KAN-GCN neural networks accurately model Antarctic ice flow, crucial for sea level rise projections. This breakthrough could transform how we prepare for coastal impacts worldwide.

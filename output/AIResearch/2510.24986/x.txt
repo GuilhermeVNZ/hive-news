@@ -1,0 +1,1 @@
+AI now predicts epileptic seizures before they occur. LSTM networks detect subtle brainwave signals with 70.77% accuracy, validated on CHB-MIT database. Could transform 26M lives from uncertainty to predictability.

@@ -1,0 +1,1 @@
+Quantum algorithms can converge exponentially faster than classical methods. New research establishes mathematical equivalence between quantum imaginary time evolution and natural gradient descent, accelerating materials discovery. Read how this bridges quantum and classical optimization approaches.

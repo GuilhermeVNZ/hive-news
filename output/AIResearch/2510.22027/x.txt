@@ -1,0 +1,1 @@
+AI can now learn safe decision-making without risky trial-and-error. New Online Optimization Learning (O3SRL) framework enables AI to maximize rewards while keeping cumulative costs below strict thresholds. Outperforms baselines in autonomous navigation tasks with zero constraint violations. Nature paper reveals how this addresses critical safety challenges.

@@ -1,0 +1,1 @@
+AI can now formally interpret human behavior - not just execute tasks. OntoPret bridges the gap between technical execution and behavioral understanding, classifying actions as normal completion, deviations, or intentional deception. How might this transform human-AI collaboration in your field?

@@ -1,0 +1,1 @@
+AI excels at coding but fails navigation tasks. Study shows agents struggle when they can't see entire environment. Critical for robotics development. #AIresearch

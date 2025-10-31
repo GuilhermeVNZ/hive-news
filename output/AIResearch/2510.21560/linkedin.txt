@@ -1,0 +1,1 @@
+AI can now learn safety rules just by watching experts, without mathematical definitions of danger. This breakthrough from Washington University enables autonomous systems to navigate complex environments safely. Could this transform how we deploy AI in safety-critical applications?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if an AI could conduct psychiatric interviews as accurately as licensed psychiatrists?
+[VISUAL DIRECTION] [Animated text: "AI PSYCHIATRIST?" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] Mental disorders often occur together, making diagnosis incredibly complex. Depression, anxiety, bipolar disorder, and ADHD frequently overlap in real patients.
+[VISUAL DIRECTION] [Show overlapping circles animation labeled with different disorders, with center showing "COMORBIDITY COMPLEXITY"]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an AI that simulates realistic psychiatric interviews for these complex cases?
+[VISUAL DIRECTION] [Show AI brain graphic with thought bubble containing psychiatric symbols]
+
+[VOICEOVER 0:40-1:00] They developed PsyCoTalk - a dataset of 3,000 doctor-patient conversations validated by licensed psychiatrists, covering comorbid conditions.
+[VISUAL DIRECTION] [Show scrolling text of conversation snippets with psychiatrist validation stamps]
+
+[VOICEOVER 1:00-1:30] The AI uses multi-agent architecture: one simulates the patient, another conducts interviews following standard psychiatric protocols, adjusting questions based on responses.
+[VISUAL DIRECTION] [Animated diagram showing two AI agents interacting, with conversation flow arrows and protocol checklist]
+
+[VOICEOVER 1:30-1:50] Results: 92% accuracy for depression diagnosis, 81% for ADHD - outperforming most single-disorder AI systems in complex settings.
+[VISUAL DIRECTION] [Show bar charts comparing accuracy scores with previous models, highlighting the 92% peak]
+
+[VOICEOVER 1:50-2:00] AI psychiatric interviews are here - and they're remarkably human-like.
+[VISUAL DIRECTION] [Final screen: "PSYCOTALK: SCALABLE MENTAL HEALTH ASSESSMENT" with rotating AI and human doctor icons]

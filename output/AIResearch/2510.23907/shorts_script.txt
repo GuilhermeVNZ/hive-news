@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if an AI could see what you're seeing just by reading your brain activity? [VISUAL DIRECTION] [Animated text: AI READS YOUR MIND? with brain scan background]
+
+[VOICEOVER 0:05-0:20] Researchers have developed technology that reconstructs visual experiences directly from neural patterns, representing a major step toward brain-computer interfaces. [VISUAL DIRECTION] [Show fMRI machine with animated neural pathways]
+
+[VOICEOVER 0:20-0:40] The challenge: How can we help paralyzed individuals who cannot speak communicate their thoughts and experiences to the outside world? [VISUAL DIRECTION] [Show person in wheelchair looking at screen, then cut to brain activity visualization]
+
+[VOICEOVER 0:40-1:00] The AI learned to decode brain activity patterns from fMRI recordings, successfully generating versions of shapes, objects, and even brief movie clips participants were watching. [VISUAL DIRECTION] [Show side-by-side: actual image and AI reconstruction with 85% accuracy label]
+
+[VOICEOVER 1:00-1:30] The system was trained on thousands of images while measuring brain responses, learning to predict what someone was viewing from neural signals alone. It even worked on views never seen during training. [VISUAL DIRECTION] [Animated flow: Brain scan → Neural patterns → AI decoder → Reconstructed image]
+
+[VOICEOVER 1:30-1:50] This could eventually help individuals with locked-in syndrome or paralysis communicate their imagination and thoughts, unlike current interfaces that require extensive training and offer limited commands. [VISUAL DIRECTION] [Show person imagining something, then AI translating it to screen]
+
+[VOICEOVER 1:50-2:00] The future of communication may lie in reading minds - not with magic, but with science. [VISUAL DIRECTION] [Final text overlay: TRANSLATING THOUGHTS INTO IMAGES with Nature journal logo]

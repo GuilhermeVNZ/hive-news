@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if self-driving cars could test thousands of dangerous scenarios in milliseconds instead of hours?
+[VISUAL DIRECTION] [Animated text: "1.6ms vs HOURS" with lightning bolt animation]
+
+[VOICEOVER 0:05-0:20] Current autonomous vehicle testing faces a massive scalability problem - simulating rare but critical scenarios requires enormous computational power that slows down development.
+[VISUAL DIRECTION] [Show computational server racks with loading bars stuck at 1%, then transition to car simulation footage]
+
+[VOICEOVER 0:20-0:40] Stanford researchers asked: Can we predict whether a self-driving car has experienced dangerous situations without running expensive AI models repeatedly?
+[VISUAL DIRECTION] [Zoom on research paper title "Scenario Coverage Assessment for Autonomous Driving" with question mark animation]
+
+[VOICEOVER 0:40-1:00] They discovered SCOUT - a lightweight AI that analyzes a vehicle's own navigation data to identify critical scenarios like near-collisions and intersection conflicts with 80% accuracy.
+[VISUAL DIRECTION] [Show SCOUT architecture diagram with highlighted accuracy metrics, fast cuts between different scenario types]
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, they fine-tuned a large language model using human-annotated crash data. Then they trained SCOUT - a smaller network - to replicate the model's decisions using only precomputed inputs, eliminating the need for repeated testing.
+[VISUAL DIRECTION] [Animated flow: Large model → Training data → SCOUT network → Fast inference, with timing indicators showing the acceleration]
+
+[VOICEOVER 1:30-1:50] This means autonomous vehicles can undergo frequent, comprehensive testing to identify experience gaps with rare but dangerous scenarios - crucial for ensuring they encounter all possible conditions before deployment.
+[VISUAL DIRECTION] [Show safety validation dashboard with multiple scenario coverage metrics, fast cuts between urban, highway, and edge-case driving scenarios]
+
+[VOICEOVER 1:50-2:00] The result? Autonomous vehicle testing that's not just faster, but fundamentally safer - because we can now comprehensively validate what these cars have truly experienced.
+[VISUAL DIRECTION] [Final shot: SCOUT accuracy metrics (80% F1 score) and timing (1.6ms) overlayed on autonomous vehicle in complex urban environment]

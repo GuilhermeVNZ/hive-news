@@ -4,6 +4,7 @@ use std::path::{Path, PathBuf};
 use std::env;
 use anyhow::{Result, Context};
 use crate::filter::parser::parse_pdf;
+use crate::utils::site_config_manager::SiteConfigManager;
 use super::deepseek_client::*;
 use super::prompts::*;
 use super::prompt_compressor::*;
@@ -14,6 +15,11 @@ pub struct WriterService {
     prompt_compressor: PromptCompressor,
     output_base: PathBuf,
     site: String,
+    site_id: String,
+    // Custom prompts from config (if enabled)
+    prompt_article: Option<String>,
+    prompt_social: Option<String>,
+    prompt_blog: Option<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -25,7 +31,166 @@ pub struct GeneratedContent {
 }
 
 impl WriterService {
+    /// Creates a new WriterService, reading configuration from system_config.json
+    /// Falls back to environment variables if config file is not available
     pub fn new() -> Result<Self> {
+        Self::new_with_site(None)
+    }
+
+    /// Creates a new WriterService for a specific site
+    /// Reads writer configuration from system_config.json for that site
+    pub fn new_with_site(site_id: Option<&str>) -> Result<Self> {
+        let config_path = Path::new("system_config.json");
+        let config_manager = SiteConfigManager::new(config_path);
+        
+        // Try to load config from JSON file
+        let (api_key, base_url, model, site_name, prompt_article, prompt_social, prompt_blog) = if let Some(site_id) = site_id {
+            match config_manager.get_site_config(site_id) {
+                Ok(Some(site_config)) => {
+                    let writer_config = &site_config.writer;
+                    if writer_config.enabled {
+                        let api_key = writer_config.api_key.clone()
+                            .or_else(|| env::var("DEEPSEEK_API_KEY").ok())
+                            .context("API key not found in config or environment")?;
+                        
+                        let base_url = writer_config.base_url.clone()
+                            .unwrap_or_else(|| env::var("DEEPSEEK_BASE_URL")
+                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
+                        
+                        let model = writer_config.model.clone();
+                        
+                        // Load custom prompts if enabled
+                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
+                            site_config.prompt_article.clone()
+                        } else {
+                            None
+                        };
+                        let prompt_social = if site_config.prompt_social_enabled.unwrap_or(false) {
+                            site_config.prompt_social.clone()
+                        } else {
+                            None
+                        };
+                        let prompt_blog = if site_config.prompt_blog_enabled.unwrap_or(false) {
+                            site_config.prompt_blog.clone()
+                        } else {
+                            None
+                        };
+                        
+                        println!("✅ Loaded writer config from system_config.json for site: {}", site_id);
+                        println!("   Provider: {}, Model: {}", writer_config.provider, model);
+                        if prompt_article.is_some() {
+                            println!("   📝 Using custom article prompt");
+                        }
+                        if prompt_social.is_some() {
+                            println!("   📱 Using custom social prompt");
+                        }
+                        if prompt_blog.is_some() {
+                            println!("   📄 Using custom blog prompt");
+                        }
+                        
+                        (api_key, base_url, model, site_config.name.clone(), prompt_article, prompt_social, prompt_blog)
+                    } else {
+                        anyhow::bail!("Writer is disabled for site: {}", site_id);
+                    }
+                }
+                Ok(None) => {
+                    println!("⚠️  Site {} not found in config, using environment variables", site_id);
+                    let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
+                    (api_key, base_url, model, site_name, None, None, None)
+                }
+                Err(e) => {
+                    println!("⚠️  Failed to load config for site {}: {}, using environment variables", site_id, e);
+                    let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
+                    (api_key, base_url, model, site_name, None, None, None)
+                }
+            }
+        } else {
+            // No site_id provided, try to use default site or env vars
+            let default_site_id = env::var("WRITER_DEFAULT_SITE")
+                .unwrap_or_else(|_| "airesearch".to_string());
+            
+            match config_manager.get_site_config(&default_site_id) {
+                Ok(Some(site_config)) => {
+                    let writer_config = &site_config.writer;
+                    if writer_config.enabled {
+                        let api_key = writer_config.api_key.clone()
+                            .or_else(|| env::var("DEEPSEEK_API_KEY").ok())
+                            .context("API key not found in config or environment")?;
+                        
+                        let base_url = writer_config.base_url.clone()
+                            .unwrap_or_else(|| env::var("DEEPSEEK_BASE_URL")
+                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
+                        
+                        let model = writer_config.model.clone();
+                        
+                        // Load custom prompts if enabled
+                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
+                            site_config.prompt_article.clone()
+                        } else {
+                            None
+                        };
+                        let prompt_social = if site_config.prompt_social_enabled.unwrap_or(false) {
+                            site_config.prompt_social.clone()
+                        } else {
+                            None
+                        };
+                        let prompt_blog = if site_config.prompt_blog_enabled.unwrap_or(false) {
+                            site_config.prompt_blog.clone()
+                        } else {
+                            None
+                        };
+                        
+                        println!("✅ Loaded writer config from system_config.json for default site: {}", default_site_id);
+                        println!("   Provider: {}, Model: {}", writer_config.provider, model);
+                        if prompt_article.is_some() {
+                            println!("   📝 Using custom article prompt");
+                        }
+                        if prompt_social.is_some() {
+                            println!("   📱 Using custom social prompt");
+                        }
+                        if prompt_blog.is_some() {
+                            println!("   📄 Using custom blog prompt");
+                        }
+                        
+                        (api_key, base_url, model, site_config.name.clone(), prompt_article, prompt_social, prompt_blog)
+                    } else {
+                        let (api_key, base_url, model, site_name) = Self::from_env(site_config.name.clone())?;
+                        (api_key, base_url, model, site_name, None, None, None)
+                    }
+                }
+                _ => {
+                    println!("⚠️  Default site {} not found in config, using environment variables", default_site_id);
+                    let (api_key, base_url, model, site_name) = Self::from_env("AIResearch".to_string())?;
+                    (api_key, base_url, model, site_name, None, None, None)
+                }
+            }
+        };
+        
+        let output_base = PathBuf::from(
+            env::var("WRITER_OUTPUT_DIR")
+                .unwrap_or_else(|_| "G:/Hive-Hub/News-main/output".to_string())
+        );
+        
+        let actual_site_id = match site_id {
+            Some(id) => id.to_string(),
+            None => env::var("WRITER_DEFAULT_SITE")
+                .unwrap_or_else(|_| "airesearch".to_string()),
+        };
+        
+        Ok(Self {
+            deepseek_client: DeepSeekClient::new(api_key, base_url, model),
+            prompt_compressor: PromptCompressor::new()?,
+            output_base,
+            site: site_name.clone(),
+            site_id: actual_site_id,
+            prompt_article,
+            prompt_social,
+            prompt_blog,
+        })
+    }
+
+    /// Helper to load config from environment variables (fallback)
+    fn from_env(site_name: String) -> Result<(String, String, String, String)> {
         let api_key = env::var("DEEPSEEK_API_KEY")
             .context("DEEPSEEK_API_KEY environment variable not set")?;
         
@@ -35,20 +200,7 @@ impl WriterService {
         let model = env::var("DEEPSEEK_MODEL")
             .unwrap_or_else(|_| "deepseek-chat".to_string());
         
-        let output_base = PathBuf::from(
-            env::var("WRITER_OUTPUT_DIR")
-                .unwrap_or_else(|_| "G:/Hive-Hub/News-main/output".to_string())
-        );
-        
-        let site = env::var("WRITER_DEFAULT_SITE")
-            .unwrap_or_else(|_| "AIResearch".to_string());
-        
-        Ok(Self {
-            deepseek_client: DeepSeekClient::new(api_key, base_url, model),
-            prompt_compressor: PromptCompressor::new()?,
-            output_base,
-            site,
-        })
+        Ok((api_key, base_url, model, site_name))
     }
     
     /// Retorna o site atual (ex: AIResearch, Nature, Science)
@@ -69,8 +221,15 @@ impl WriterService {
         // 2. Extract article ID (sem criar pasta ainda)
         let article_id = extract_article_id(pdf_path);
         
-        // Structure: output/<Site>/<código do artigo>/
-        let output_dir = self.output_base.join(&self.site).join(&article_id);
+        // Map site_id to correct output directory name
+        let output_dir_name = match self.site_id.to_lowercase().as_str() {
+            "airesearch" => "AIResearch",
+            "scienceai" => "ScienceAI",
+            _ => self.site.as_str(), // Fallback to site name if not mapped
+        };
+        
+        // Structure: output/<SiteID>/<código do artigo>/
+        let output_dir = self.output_base.join(output_dir_name).join(&article_id);
         
         // 2.1. Criar pasta de output
         tokio::fs::create_dir_all(&output_dir).await?;
@@ -78,7 +237,17 @@ impl WriterService {
         
         // 3. PHASE 1: Generate article
         println!("  📝 Building article prompt for: {}", self.site);
-        let article_prompt = build_article_prompt(&parsed.text, &[], &self.site);
+        let article_prompt = if let Some(ref custom_prompt) = self.prompt_article {
+            println!("  📝 Using custom article prompt from config");
+            // Replace {{paper_text}} placeholder if present, otherwise prepend paper text
+            if custom_prompt.contains("{{paper_text}}") {
+                custom_prompt.replace("{{paper_text}}", &parsed.text)
+            } else {
+                format!("{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{}", custom_prompt, &parsed.text)
+            }
+        } else {
+            build_article_prompt(&parsed.text, &[], &self.site)
+        };
         
         let estimated_tokens = article_prompt.len() / 4;
         println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
@@ -104,10 +273,24 @@ impl WriterService {
         
         // 4. PHASE 2: Generate social content
         println!("  📱 Building social media prompts...");
-        let social_prompt = build_social_script_prompt(
-            &article_response.article_text,
-            &parsed.title,
-        );
+        let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
+            println!("  📱 Using custom social prompt from config");
+            // Replace placeholders if present, otherwise prepend article text
+            let mut prompt = custom_prompt.clone();
+            prompt = prompt.replace("{{article_text}}", &article_response.article_text);
+            prompt = prompt.replace("{{paper_title}}", &parsed.title);
+            if !custom_prompt.contains("{{article_text}}") && !custom_prompt.contains("{{paper_title}}") {
+                format!("{}\n\n## ARTICLE TEXT:\n{}\n\n## PAPER TITLE:\n{}", 
+                    custom_prompt, &article_response.article_text, &parsed.title)
+            } else {
+                prompt
+            }
+        } else {
+            build_social_script_prompt(
+                &article_response.article_text,
+                &parsed.title,
+            )
+        };
         
         let estimated_social_tokens = social_prompt.len() / 4;
         println!("  🗜️  Compressing social prompt (~{} tokens)...", estimated_social_tokens);

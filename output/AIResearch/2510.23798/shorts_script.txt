@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could spot every piece of plastic flowing down rivers before it reaches our oceans?
+[VISUAL DIRECTION] Animated text: "96.2% ACCURACY" with plastic bottles floating down river
+
+[VOICEOVER 0:05-0:20] Millions of tons of plastic flow through rivers into oceans each year, harming wildlife. Current methods like boat sampling are slow and miss critical data.
+[VISUAL DIRECTION] Show map with plastic flow animation from rivers to ocean, fast cuts
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we continuously monitor river plastic automatically? They developed AI models that identify floating bottles and bags from fixed riverbank cameras.
+[VISUAL DIRECTION] Show camera setup on riverbank, zoom on AI detection interface
+
+[VOICEOVER 0:40-1:00] The YOLOv11-m model achieved 96.2% accuracy detecting objects, processing images in seconds on standard hardware.
+[VISUAL DIRECTION] Show detection boxes highlighting plastic items in river footage
+
+[VOICEOVER 1:00-1:30] The system uses pan-tilt-zoom cameras on France's Steingiessen River, capturing 6,000 debris images. Advanced techniques prevent AI from memorizing data, ensuring real-world performance.
+[VISUAL DIRECTION] Show camera movement tracking debris, animated text showing "6,000 images analyzed"
+
+[VOICEOVER 1:30-1:50] This provides reliable size measurements for calculating plastic volumes, validated across different rivers without retraining. It supports the One Health initiative by linking environmental and human wellbeing.
+[VISUAL DIRECTION] Show size measurement overlays on detected objects, transition to cleanup teams using data
+
+[VOICEOVER 1:50-2:00] Real-time river monitoring could transform how we fight plastic pollution worldwide.
+[VISUAL DIRECTION] Final shot of clean river with text: "AI for cleaner rivers"

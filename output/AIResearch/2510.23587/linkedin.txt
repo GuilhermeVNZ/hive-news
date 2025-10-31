@@ -1,0 +1,1 @@
+Most AI data agents operate at Level 2 autonomy—they can generate SQL queries but require significant human oversight. This new framework reveals the reality gap between marketing claims and actual capabilities. What level of autonomy does your organization's data tools actually have?

@@ -1,0 +1,1 @@
+AI can now detect suicide risk with 87.9% accuracy—outperforming any single model. The BENCH system, developed at Emory University, combines AI ensembles to identify crises in vulnerable populations. How can we ensure these tools prioritize the most severe cases?

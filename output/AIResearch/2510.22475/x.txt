@@ -1,0 +1,1 @@
+Changing 'he' to 'she' in AI prompts alters reasoning dramatically. Instead of fixing this 'bias,' researchers weaponized it—boosting accuracy by 16%+ without retraining. CHOIR framework harmonizes persona variations for more reliable AI. Nature/Science study reveals how diversity strengthens AI systems.

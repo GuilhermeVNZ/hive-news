@@ -1,0 +1,1 @@
+What if AI could translate your natural questions directly into database insights? OraPlan–SQL outperforms competitors by 6.3-12.6 points on complex analytical tasks while maintaining 99% syntax validity. How might this transform how your organization accesses data insights?

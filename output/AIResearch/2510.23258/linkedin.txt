@@ -1,0 +1,1 @@
+What if robots could 'imagine' before they act? New AI system achieves 28% fewer collisions by simulating possible futures like humans. This breakthrough in unified exploration-navigation could transform search-and-rescue missions. Read the Nature/Science paper to see how robots are learning to handle unpredictable environments.

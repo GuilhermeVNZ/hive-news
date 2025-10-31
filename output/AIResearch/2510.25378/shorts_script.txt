@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the AI helping your research was inventing fake references 300 times more often for obscure papers?
+[VISUAL DIRECTION] Animated text: "300x MORE FAKE REFERENCES" with shocked emoji face
+
+[VOICEOVER 0:05-0:20] New research from Nature reveals a systematic flaw in AI systems like GPT-4.1 when recommending scientific papers.
+[VISUAL DIRECTION] Show AI brain graphic with question marks, transition to academic library setting
+
+[VOICEOVER 0:20-0:40] Researchers tested how accurately AI generates citations across different scientific domains, manually verifying every reference against real databases.
+[VISUAL DIRECTION] Show researcher at computer, zoom into citation verification process with checkmarks and X's
+
+[VOICEOVER 0:40-1:00] They discovered citation accuracy drops dramatically for papers with fewer citations. Highly-cited papers scored 1.245 out of 2, while obscure papers scored only 0.725.
+[VISUAL DIRECTION] Show Figure 2 from paper - citation frequency vs accuracy curve, highlight the steep drop-off around log(citation) ≈ 7
+
+[VOICEOVER 1:00-1:30] The methodology involved a three-point scoring system: perfect citations (2), partially correct (1), or completely fabricated (0). The pattern was systematic, not random.
+[VISUAL DIRECTION] Animated breakdown of scoring system with examples, show the systematic pattern emerging across domains
+
+[VOICEOVER 1:30-1:50] This means AI tools for literature review may be particularly unreliable for emerging research areas where citation counts are naturally lower.
+[VISUAL DIRECTION] Show researcher missing key papers, animated text: "SYSTEMATIC BIAS IN EMERGING FIELDS"
+
+[VOICEOVER 1:50-2:00] The takeaway? Verify AI-generated references, especially when exploring niche topics where hallucination risk is highest.
+[VISUAL DIRECTION] Final screen with key warning: "ALWAYS VERIFY AI CITATIONS" and Nature journal logo

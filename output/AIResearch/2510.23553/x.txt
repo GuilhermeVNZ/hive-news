@@ -1,0 +1,1 @@
+Breakthrough: AI can now formally interpret human behavior - distinguishing normal task completion from deviations and intentional deception. OntoPret enables machines to understand behavioral meaning in context, from workplace safety to autonomous vehicles.
