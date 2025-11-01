@@ -23,6 +23,7 @@ pub struct LoginResponse {
     pub message: String,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Serialize)]
 pub struct UserInfo {
     pub username: String,

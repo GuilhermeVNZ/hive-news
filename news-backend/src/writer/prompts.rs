@@ -157,14 +157,19 @@ Format:
 
 [Article body - based ONLY on paper content...]
 
-IMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):
+CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
 {{
-  "title": "...",                           // SHORT HOOK TITLE (max 8 words, strong clickbait)
-  "article_text": "...",                    // Full article body (500-800 words)
-  "image_categories": [                      // Array of image categories in priority order
-    "category1", "category2", "category3"    // Based on: ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
-  ]
+  "title": "Your title here",
+  "article_text": "Full article body text here - all content in one string field",
+  "image_categories": ["category1", "category2", "category3"]
 }}
+
+⚠️ IMPORTANT RULES:
+- "article_text" MUST be a STRING field at the root level (NOT nested in an "article" object)
+- "article_text" MUST contain the complete article text in one string
+- DO NOT create nested objects like {{"article": {{"opening_hook": "...", "key_finding": "..."}}}}
+- All article content goes directly into the "article_text" string field
+- Return ONLY valid JSON - no markdown, no extra formatting
 
 TITLE REQUIREMENTS (CRITICAL):
 - MAXIMUM 8 WORDS (short, punchy, viral)

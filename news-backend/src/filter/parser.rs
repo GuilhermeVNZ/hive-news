@@ -3,6 +3,7 @@ use lopdf::Document;
 use regex::Regex;
 use std::path::Path;
 
+#[allow(dead_code)]
 pub struct ParsedPdf {
     pub file_path: String,
     pub raw_doc_id: i32,
@@ -176,7 +177,8 @@ pub fn extract_title(text: &str, fallback: &str) -> String {
     fallback.to_string()
 }
 
-pub fn extract_authors(text: &str) -> Vec<String> {
+#[allow(dead_code)]
+pub fn extract_authors(_text: &str) -> Vec<String> {
     // TODO: Extrair autores do PDF
     vec![]
 }

@@ -99,13 +99,49 @@ async function readArticles(): Promise<Article[]> {
   // Combinar: promocionais primeiro, depois normais
   const allArticles = [...promotionalArticles, ...normalArticles];
   
-  // Ordenar por data de publicação (mais recente primeiro)
-  // Artigos promocionais vêm primeiro automaticamente porque foram adicionados primeiro
+  // Ler registry para verificar featured status
+  const featuredMap = new Map<string, boolean>();
+  try {
+    const registryPath = path.join(process.cwd(), '../../../articles_registry.json');
+    const registryContent = await fs.readFile(registryPath, 'utf-8');
+    const registry = JSON.parse(registryContent);
+    if (registry.articles) {
+      for (const [id, meta] of Object.entries(registry.articles)) {
+        const metadata = meta as any;
+        if (metadata.featured === true) {
+          featuredMap.set(id, true);
+        }
+      }
+    }
+  } catch (err) {
+    // Registry não encontrado ou erro - continuar sem featured
+  }
+  
+  // Adicionar campo featured aos artigos
+  for (const article of allArticles) {
+    (article as any).featured = featuredMap.get(article.id) || false;
+  }
+  
+  // Ordenar: featured primeiro, depois promocionais, depois por data (mais recente primeiro)
   allArticles.sort((a, b) => {
-    // Primeiro, garantir que promocionais vêm primeiro
-    if (a.isPromotional && !b.isPromotional) return -1;
-    if (!a.isPromotional && b.isPromotional) return 1;
-    // Se ambos são promocionais ou ambos normais, ordenar por data (mais recente primeiro)
+    const aFeatured = (a as any).featured || false;
+    const bFeatured = (b as any).featured || false;
+    
+    // Featured sempre vem primeiro
+    if (aFeatured && !bFeatured) return -1;
+    if (!aFeatured && bFeatured) return 1;
+    
+    // Se ambos são featured ou ambos não são featured, considerar promocional
+    if (aFeatured === bFeatured) {
+      // Promocionais vêm depois dos featured
+      if (a.isPromotional && !b.isPromotional) return -1;
+      if (!a.isPromotional && b.isPromotional) return 1;
+      
+      // Se ambos são promocionais ou ambos normais, ordenar por data (mais recente primeiro)
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    }
+    
+    // Fallback (não deve chegar aqui)
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
   });
   

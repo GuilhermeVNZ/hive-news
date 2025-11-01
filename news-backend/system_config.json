@@ -1,68 +1,5 @@
 {
   "sites": {
-    "scienceai": {
-      "id": "scienceai",
-      "name": "Science AI",
-      "domain": "scienceai.news",
-      "enabled": false,
-      "collectors": [
-        {
-          "id": "arxiv",
-          "name": "arXiv",
-          "enabled": false,
-          "api_key": null,
-          "config": {
-            "category": "cs.AI",
-            "max_results": 10
-          }
-        }
-      ],
-      "writer": {
-        "provider": "deepseek",
-        "model": "deepseek-chat",
-        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
-        "base_url": "https://api.deepseek.com",
-        "temperature": 0.7,
-        "max_tokens": 4000,
-        "enabled": true,
-        "use_compressor": null
-      },
-      "education_sources": [],
-      "social_media": [
-        {
-          "id": "youtube",
-          "name": "YouTube",
-          "enabled": false,
-          "api_key": null,
-          "api_secret": null,
-          "access_token": null,
-          "refresh_token": null,
-          "channel_id": null,
-          "username": null,
-          "config": {}
-        },
-        {
-          "id": "x",
-          "name": "X (Twitter)",
-          "enabled": false,
-          "api_key": null,
-          "api_secret": null,
-          "access_token": null,
-          "refresh_token": null,
-          "channel_id": null,
-          "username": null,
-          "config": {}
-        }
-      ],
-      "collection_frequency_minutes": null,
-      "writing_style": null,
-      "prompt_article": null,
-      "prompt_social": null,
-      "prompt_blog": null,
-      "prompt_article_enabled": null,
-      "prompt_social_enabled": null,
-      "prompt_blog_enabled": null
-    },
     "airesearch": {
       "id": "airesearch",
       "name": "AI Research",
@@ -74,6 +11,7 @@
           "name": "arXiv",
           "enabled": true,
           "api_key": null,
+          "collector_type": null,
           "config": {
             "category": "cs.AI",
             "max_results": 10
@@ -84,6 +22,7 @@
           "name": "PubMed Central",
           "enabled": true,
           "api_key": null,
+          "collector_type": null,
           "config": {}
         },
         {
@@ -91,7 +30,107 @@
           "name": "Semantic Scholar",
           "enabled": true,
           "api_key": null,
+          "collector_type": null,
           "config": {}
+        },
+        {
+          "id": "rss_openai",
+          "name": "OpenAI Blog RSS",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://openai.com/blog/rss.xml",
+          "base_url": "https://openai.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_google_ai",
+          "name": "Google AI RSS",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://blog.research.google/feeds/posts/default",
+          "base_url": "https://blog.research.google",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_nvidia",
+          "name": "NVIDIA News RSS",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://nvidianews.nvidia.com/rss/all-news.xml",
+          "base_url": "https://nvidianews.nvidia.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_alibaba_damo",
+          "name": "Alibaba DAMO RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://damo.alibaba.com/news/rss",
+          "base_url": "https://damo.alibaba.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_anthropic",
+          "name": "Anthropic News",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.anthropic.com/news",
+          "selectors": {
+            "article": "article",
+            "content": ".content, article, main",
+            "link": "a[href*='/news/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_meta_ai",
+          "name": "Meta AI Blog",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://ai.meta.com/blog/",
+          "selectors": {
+            "article": "article, .post, .blog-post",
+            "content": ".content, article, main",
+            "link": "a[href*='/blog/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_deepseek",
+          "name": "DeepSeek News",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://deepseek.com/news",
+          "selectors": {
+            "article": "article, .post, .news-item",
+            "content": ".content, article, main",
+            "link": "a[href*='/news/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
         }
       ],
       "writer": {
@@ -102,7 +141,7 @@
         "temperature": 0.7,
         "max_tokens": 4000,
         "enabled": true,
-        "use_compressor": null
+        "use_compressor": true
       },
       "education_sources": [
         {
@@ -203,7 +242,204 @@
       "prompt_article_enabled": true,
       "prompt_social_enabled": false,
       "prompt_blog_enabled": null
+    },
+    "scienceai": {
+      "id": "scienceai",
+      "name": "Science AI",
+      "domain": "scienceai.news",
+      "enabled": true,
+      "collectors": [
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          }
+        },
+        {
+          "id": "rss_openai",
+          "name": "OpenAI Blog RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://openai.com/blog/rss.xml",
+          "base_url": "https://openai.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_google_ai",
+          "name": "Google AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://blog.research.google/feeds/posts/default",
+          "base_url": "https://blog.research.google",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_nvidia",
+          "name": "NVIDIA News RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://nvidianews.nvidia.com/rss/all-news.xml",
+          "base_url": "https://nvidianews.nvidia.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_alibaba_damo",
+          "name": "Alibaba DAMO RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://damo.alibaba.com/news/rss",
+          "base_url": "https://damo.alibaba.com",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_anthropic",
+          "name": "Anthropic News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.anthropic.com/news",
+          "selectors": {
+            "article": "article",
+            "content": ".content, article, main",
+            "link": "a[href*='/news/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_meta_ai",
+          "name": "Meta AI Blog",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://ai.meta.com/blog/",
+          "selectors": {
+            "article": "article, .post, .blog-post",
+            "content": ".content, article, main",
+            "link": "a[href*='/blog/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_deepseek",
+          "name": "DeepSeek News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://deepseek.com/news",
+          "selectors": {
+            "article": "article, .post, .news-item",
+            "content": ".content, article, main",
+            "link": "a[href*='/news/']",
+            "title": "h1, h2"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_alibaba_damo",
+          "name": "Alibaba Alizila News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.alizila.com/",
+          "selectors": {
+            "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
+            "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
+            "link": "a",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_xai",
+          "name": "X.ai News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://x.ai/news",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news/'], a[href*='x.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        }
+      ],
+      "writer": {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
+        "base_url": "https://api.deepseek.com",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "enabled": true,
+        "use_compressor": true
+      },
+      "education_sources": [],
+      "social_media": [
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "x",
+          "name": "X (Twitter)",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        }
+      ],
+      "collection_frequency_minutes": null,
+      "writing_style": null,
+      "prompt_article": null,
+      "prompt_social": null,
+      "prompt_blog": null,
+      "prompt_article_enabled": null,
+      "prompt_social_enabled": null,
+      "prompt_blog_enabled": null
     }
   },
-  "updated_at": "2025-10-31T00:32:27.601193500+00:00"
+  "updated_at": "2025-11-01T16:41:56.892405100+00:00"
 }

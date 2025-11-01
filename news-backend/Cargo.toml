@@ -2,6 +2,7 @@
 name = "news-backend"
 version = "0.1.0"
 edition = "2024"
+default-run = "news-backend"
 
 [[bin]]
 name = "test_single_paper"
@@ -15,6 +16,10 @@ path = "src/bin/migrate_registry.rs"
 name = "sync-env-from-config"
 path = "src/bin/sync_env_from_config.rs"
 
+[[bin]]
+name = "clean-articles"
+path = "src/bin/clean_articles.rs"
+
 [dependencies]
 # Web Framework
 axum = "0.7"
@@ -27,8 +32,15 @@ reqwest = { version = "0.11", features = ["json", "cookies"] }
 url = "2.5"
 regex = "1.10"
 
+# RSS/Atom parsing
+rss = "2.0"
+atom_syndication = "0.12"
+
+# HTML scraping
+scraper = "0.21"
+
 # Database
-sqlx = { version = "0.7", features = ["runtime-tokio-native-tls", "postgres", "chrono", "uuid"] }
+sqlx = { version = "0.8", features = ["runtime-tokio", "tls-native-tls", "postgres", "chrono", "uuid"] }
 
 # Serialization
 serde = { version = "1.0", features = ["derive"] }

@@ -11,6 +11,20 @@ pub struct CollectorConfig {
     pub name: String,
     pub enabled: bool,
     pub api_key: Option<String>,
+    /// Type of collector: "api", "rss", "html"
+    #[serde(default)]
+    pub collector_type: Option<String>,
+    /// RSS feed URL (for RSS collectors)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub feed_url: Option<String>,
+    /// Base URL for HTML scraping (for HTML collectors)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub base_url: Option<String>,
+    /// CSS selectors for HTML scraping (for HTML collectors)
+    /// Format: {"article": "article", "title": "h1", "content": ".content", ...}
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selectors: Option<serde_json::Value>,
+    /// Additional configuration (for backwards compatibility)
     pub config: serde_json::Value,
 }
 
@@ -151,6 +165,7 @@ impl SiteConfigManager {
     }
 
     /// Update writer configuration for a site
+    #[allow(dead_code)]
     pub fn update_writer_config(&self, site_id: &str, writer: WriterConfig) -> Result<()> {
         let mut config = self.load()?;
         if let Some(site) = config.sites.get_mut(site_id) {
@@ -209,6 +224,10 @@ impl SiteConfigManager {
                     name: "arXiv".to_string(),
                     enabled: true,
                     api_key: None,
+                    collector_type: None,
+                    feed_url: None,
+                    base_url: None,
+                    selectors: None,
                     config: serde_json::json!({
                         "category": "cs.AI",
                         "max_results": 10,
@@ -219,6 +238,10 @@ impl SiteConfigManager {
                     name: "PubMed Central".to_string(),
                     enabled: false,
                     api_key: None,
+                    collector_type: None,
+                    feed_url: None,
+                    base_url: None,
+                    selectors: None,
                     config: serde_json::json!({
                         "filter_technology_only": true,
                         "search_terms": [
@@ -244,6 +267,10 @@ impl SiteConfigManager {
                     name: "Semantic Scholar".to_string(),
                     enabled: false,
                     api_key: None,
+                    collector_type: None,
+                    feed_url: None,
+                    base_url: None,
+                    selectors: None,
                     config: serde_json::json!({
                         "filter_technology_only": true,
                         "fields_of_study": [
@@ -389,6 +416,10 @@ impl SiteConfigManager {
                     name: "arXiv".to_string(),
                     enabled: true,
                     api_key: None,
+                    collector_type: None,
+                    feed_url: None,
+                    base_url: None,
+                    selectors: None,
                     config: serde_json::json!({
                         "category": "cs.AI",
                         "max_results": 10,

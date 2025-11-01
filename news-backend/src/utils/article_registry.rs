@@ -39,7 +39,9 @@ pub struct ArticleMetadata {
     pub output_dir: Option<PathBuf>,
     pub hidden: Option<bool>,
     // Sites de destino para publicação (ex.: ["airesearch","scienceai"]) 
-    pub destinations: Option<Vec<String>>, 
+    pub destinations: Option<Vec<String>>,
+    // Artigo destacado para primeira página
+    pub featured: Option<bool>,
 }
 
 /// Registry completo de artigos
@@ -60,10 +62,162 @@ impl ArticleRegistry {
         let content = fs::read_to_string(registry_path)
             .context("Failed to read registry file")?;
         
-        let registry: ArticleRegistry = serde_json::from_str(&content)
-            .context("Failed to parse registry JSON")?;
-
-        Ok(registry)
+        // Tentar parse normal primeiro
+        match serde_json::from_str::<ArticleRegistry>(&content) {
+            Ok(registry) => Ok(registry),
+            Err(e) => {
+                // Tentar reparar JSON corrompido
+                eprintln!("⚠️  Failed to parse registry JSON: {}. Attempting repair...", e);
+                
+                // Estratégia 1: Remover trailing characters simples
+                let trimmed = content.trim();
+                if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(trimmed) {
+                    eprintln!("✅ Successfully repaired registry JSON (simple trim)!");
+                    if let Err(save_err) = registry.save(registry_path) {
+                        eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
+                    }
+                    return Ok(registry);
+                }
+                
+                // Estratégia 2: Encontrar último } válido usando contador de chaves
+                if let Some(repaired) = Self::repair_json_by_finding_last_valid_brace(&trimmed) {
+                    if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
+                        eprintln!("✅ Successfully repaired registry JSON (brace matching)!");
+                        if let Err(save_err) = registry.save(registry_path) {
+                            eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
+                        }
+                        return Ok(registry);
+                    }
+                }
+                
+                // Estratégia 3: Tentar extrair apenas a seção "articles"
+                if let Some(articles_json) = Self::extract_articles_section(&trimmed) {
+                    let repaired = format!("{{\"articles\":{}}}", articles_json);
+                    if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
+                        eprintln!("✅ Successfully repaired registry JSON (extracted articles section)!");
+                        if let Err(save_err) = registry.save(registry_path) {
+                            eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
+                        }
+                        return Ok(registry);
+                    }
+                }
+                
+                // Estratégia 4: Se tudo falhar, criar backup e iniciar novo registry
+                eprintln!("⚠️  All repair strategies failed. Creating backup and initializing new registry...");
+                let backup_path = format!("{}.backup.{}", registry_path.display(), chrono::Utc::now().format("%Y%m%d_%H%M%S"));
+                if let Err(backup_err) = fs::copy(registry_path, &backup_path) {
+                    eprintln!("⚠️  Failed to create backup: {}", backup_err);
+                } else {
+                    eprintln!("✅ Backup created: {}", backup_path);
+                }
+                
+                // Criar novo registry vazio
+                let new_registry = Self {
+                    articles: HashMap::new(),
+                };
+                if let Err(save_err) = new_registry.save(registry_path) {
+                    eprintln!("⚠️  Failed to save new registry: {}", save_err);
+                }
+                eprintln!("✅ Initialized new empty registry");
+                Ok(new_registry)
+            }
+        }
+    }
+    
+    /// Tenta reparar JSON encontrando o último } válido
+    fn repair_json_by_finding_last_valid_brace(content: &str) -> Option<String> {
+        let mut brace_count = 0;
+        let mut in_string = false;
+        let mut escape_next = false;
+        let mut last_valid_pos = None;
+        
+        for (i, ch) in content.char_indices() {
+            if escape_next {
+                escape_next = false;
+                continue;
+            }
+            
+            match ch {
+                '\\' if in_string => {
+                    escape_next = true;
+                }
+                '"' => {
+                    in_string = !in_string;
+                }
+                '{' if !in_string => {
+                    brace_count += 1;
+                }
+                '}' if !in_string => {
+                    brace_count -= 1;
+                    if brace_count == 0 {
+                        last_valid_pos = Some(i);
+                    }
+                }
+                _ => {}
+            }
+        }
+        
+        if let Some(pos) = last_valid_pos {
+            Some(content[..=pos].to_string())
+        } else {
+            None
+        }
+    }
+    
+    /// Extrai a seção "articles" do JSON
+    fn extract_articles_section(content: &str) -> Option<String> {
+        if let Some(articles_start) = content.find("\"articles\":") {
+            let after_colon = &content[articles_start + "\"articles\":".len()..];
+            let trimmed_after = after_colon.trim_start();
+            
+            // Encontrar o início do objeto
+            if let Some(obj_start) = trimmed_after.find('{') {
+                let json_part = &trimmed_after[obj_start..];
+                
+                // Encontrar o fim do objeto usando contador de chaves
+                let mut brace_count = 0;
+                let mut in_string = false;
+                let mut escape_next = false;
+                let mut end_pos = None;
+                
+                for (i, ch) in json_part.char_indices() {
+                    if escape_next {
+                        escape_next = false;
+                        continue;
+                    }
+                    
+                    match ch {
+                        '\\' if in_string => {
+                            escape_next = true;
+                        }
+                        '"' => {
+                            in_string = !in_string;
+                        }
+                        '{' if !in_string => {
+                            brace_count += 1;
+                        }
+                        '}' if !in_string => {
+                            brace_count -= 1;
+                            if brace_count == 0 {
+                                end_pos = Some(i + 1);
+                                break;
+                            }
+                        }
+                        _ => {}
+                    }
+                }
+                
+                if let Some(end) = end_pos {
+                    Some(json_part[..end].to_string())
+                } else {
+                    None
+                }
+            } else {
+                None
+            }
+        } else {
+            None
+        }
     }
 
     /// Salva o registry no arquivo JSON
@@ -120,6 +274,7 @@ impl ArticleRegistry {
             output_dir: None,
             hidden: Some(false),
             destinations: None,
+            featured: Some(false),
         };
 
         self.articles.insert(article_id, metadata);
@@ -324,6 +479,34 @@ impl RegistryManager {
     pub fn get_all_articles(&self) -> Vec<ArticleMetadata> {
         let registry = self.registry.lock().unwrap();
         registry.articles.values().cloned().collect()
+    }
+
+    /// Atualiza o status featured de um artigo
+    pub fn set_featured(&self, article_id: &str, featured: bool) -> Result<()> {
+        let mut registry = self.registry.lock().unwrap();
+        if let Some(meta) = registry.articles.get_mut(article_id) {
+            meta.featured = Some(featured);
+            drop(registry); // Liberar lock antes de salvar
+            self.save()?;
+            Ok(())
+        } else {
+            drop(registry);
+            Err(anyhow::anyhow!("Article with ID '{}' not found", article_id))
+        }
+    }
+
+    /// Atualiza o status hidden de um artigo
+    pub fn set_hidden(&self, article_id: &str, hidden: bool) -> Result<()> {
+        let mut registry = self.registry.lock().unwrap();
+        if let Some(meta) = registry.articles.get_mut(article_id) {
+            meta.hidden = Some(hidden);
+            drop(registry); // Liberar lock antes de salvar
+            self.save()?;
+            Ok(())
+        } else {
+            drop(registry);
+            Err(anyhow::anyhow!("Article with ID '{}' not found", article_id))
+        }
     }
 }
 

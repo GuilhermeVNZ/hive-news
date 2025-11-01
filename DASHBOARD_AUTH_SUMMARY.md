@@ -138,3 +138,44 @@ O `start.rs` precisa ser atualizado para ler `collectors_config.json` e executar
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

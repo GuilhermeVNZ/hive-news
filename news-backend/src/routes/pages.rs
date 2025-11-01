@@ -145,6 +145,10 @@ pub async fn create_page(
                         name: collector.name,
                         enabled: false, // All collectors disabled by default
                         api_key: collector.api_key,
+                        collector_type: collector.collector_type,
+                        feed_url: collector.feed_url,
+                        base_url: collector.base_url,
+                        selectors: collector.selectors,
                         config: collector.config,
                     }
                 })

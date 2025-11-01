@@ -169,3 +169,44 @@ echo "📚 Full documentation: docs/DEPLOY_HOSTINGER.md"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

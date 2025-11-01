@@ -18,6 +18,7 @@ struct ArticleLogItem {
     source: String,
     destinations: Vec<DestinationInfo>,
     hidden: bool,
+    featured: bool,
 }
 
 #[derive(Debug, Serialize)]
@@ -92,6 +93,7 @@ pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
             source: if m.arxiv_url.contains("arxiv") {"arXiv"} else {"Source"}.to_string(),
             destinations,
             hidden: m.hidden.unwrap_or(false),
+            featured: m.featured.unwrap_or(false),
         };
         (ts.timestamp(), item)
     }).collect();
@@ -142,24 +144,33 @@ pub async fn set_hidden(
     Path(id): Path<String>,
     Json(body): Json<HiddenUpdate>,
 ) -> Json<Value> {
+    // Validar ID
+    if id.is_empty() {
+        return Json(serde_json::json!({"success": false, "error": "Article ID is required"}));
+    }
+
     let registry_path = FsPath::new("../articles_registry.json");
+    
+    // Criar manager thread-safe (usa Mutex internamente)
     let manager = match RegistryManager::new(registry_path) {
         Ok(m) => m,
-        Err(e) => return Json(serde_json::json!({"success": false, "error": format!("{}", e)})),
+        Err(e) => {
+            tracing::error!("Failed to load registry: {}", e);
+            return Json(serde_json::json!({"success": false, "error": format!("Failed to load registry: {}", e)}));
+        },
     };
-    let mut all = manager.get_all_articles();
-    if let Some(meta) = all.iter_mut().find(|m| m.id == id) {
-        meta.hidden = Some(body.hidden);
-        use crate::utils::article_registry::ArticleRegistry;
-        use std::collections::HashMap;
-        let mut map: HashMap<String, _> = HashMap::new();
-        for m in all.into_iter() { map.insert(m.id.clone(), m); }
-        let reg = ArticleRegistry{ articles: map };
-        if let Err(e) = reg.save(registry_path) {
-            return Json(serde_json::json!({"success": false, "error": format!("{}", e)}))
+    
+    // Usar método thread-safe do RegistryManager
+    match manager.set_hidden(&id, body.hidden) {
+        Ok(_) => {
+            tracing::info!("Successfully updated hidden status for article: {}", id);
+            Json(serde_json::json!({"success": true}))
+        },
+        Err(e) => {
+            tracing::error!("Failed to update hidden status: {}", e);
+            Json(serde_json::json!({"success": false, "error": format!("{}", e)}))
         }
     }
-    Json(serde_json::json!({"success": true}))
 }
 
 #[derive(Debug, Serialize)]
@@ -249,4 +260,41 @@ async fn fetch_arxiv_title(client: &reqwest::Client, id: &str) -> Result<Option<
         }
     }
     Ok(None)
+}
+
+#[derive(Debug, Deserialize)]
+pub struct FeaturedUpdate { pub featured: bool }
+
+pub async fn set_featured(
+    Extension(_db): Extension<std::sync::Arc<Database>>,
+    Path(id): Path<String>,
+    Json(body): Json<FeaturedUpdate>,
+) -> Json<Value> {
+    // Validar ID
+    if id.is_empty() {
+        return Json(serde_json::json!({"success": false, "error": "Article ID is required"}));
+    }
+
+    let registry_path = FsPath::new("../articles_registry.json");
+    
+    // Criar manager thread-safe (usa Mutex internamente)
+    let manager = match RegistryManager::new(registry_path) {
+        Ok(m) => m,
+        Err(e) => {
+            tracing::error!("Failed to load registry: {}", e);
+            return Json(serde_json::json!({"success": false, "error": format!("Failed to load registry: {}", e)}));
+        },
+    };
+    
+    // Usar método thread-safe do RegistryManager
+    match manager.set_featured(&id, body.featured) {
+        Ok(_) => {
+            tracing::info!("Successfully updated featured status for article: {}", id);
+            Json(serde_json::json!({"success": true}))
+        },
+        Err(e) => {
+            tracing::error!("Failed to update featured status: {}", e);
+            Json(serde_json::json!({"success": false, "error": format!("{}", e)}))
+        }
+    }
 }

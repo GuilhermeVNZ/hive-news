@@ -22,6 +22,7 @@ pub struct Course {
     pub free: bool,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CourseCatalog {
     pub courses: Vec<Course>,

@@ -23,6 +23,7 @@ use db::connection::Database;
 use std::path::Path;
 use crate::utils::article_registry::RegistryManager;
 
+#[allow(dead_code)]
 fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
     let filename = format!("{}.pdf", paper_id);
 
@@ -89,7 +90,7 @@ async fn main() -> anyhow::Result<()> {
             if let Err(e) = dotenv::from_path(path) {
                 eprintln!("Warning: Failed to load .env from {}: {}", path.display(), e);
             } else {
-                eprintln!("✅ Loaded .env from {}", path.display());
+                eprintln!("[OK] Loaded .env from {}", path.display());
             }
             break;
         }
@@ -107,8 +108,14 @@ async fn main() -> anyhow::Result<()> {
     let collect_pmc = args.len() > 1 && args[1] == "collect-pmc";
     let collect_ss = args.len() > 1 && args[1] == "collect-ss";
     let collect_enabled = args.len() > 1 && args[1] == "collect-enabled";
+    let test_rss = args.len() > 1 && args[1] == "test-rss";
+    let test_html = args.len() > 1 && args[1] == "test-html";
     let test_filter = args.len() > 1 && args[1] == "filter";
     let test_writer = args.len() > 1 && args[1] == "write";
+    let write_news = args.len() > 1 && args[1] == "write-news";
+    let cleanup_news = args.len() > 1 && args[1] == "cleanup-news";
+    let run_pipeline = args.len() > 1 && args[1] == "pipeline";
+    let run_pipeline_debug = args.len() > 1 && args[1] == "pipeline-debug";
     let migrate_registry = args.len() > 1 && args[1] == "migrate-registry";
     let enrich_registry = args.len() > 1 && args[1] == "enrich-registry";
 
@@ -147,6 +154,20 @@ async fn main() -> anyhow::Result<()> {
         return Ok(());
     }
 
+    if test_rss {
+        println!("📡 Test RSS Collector");
+        println!("=====================================\n");
+        run_rss_collector_test().await?;
+        return Ok(());
+    }
+
+    if test_html {
+        println!("🌐 Test HTML Collector");
+        println!("=====================================\n");
+        run_html_collector_test().await?;
+        return Ok(());
+    }
+
     if test_filter {
         println!("🔬 Scientific Filter - PDF Validation");
         println!("=====================================\n");
@@ -160,6 +181,34 @@ async fn main() -> anyhow::Result<()> {
         println!("   Skipped (non-scientific): {}", filter_result.skipped);
         println!("   Total processed: {}", filter_result.total);
         
+        return Ok(());
+    }
+
+    if cleanup_news {
+        println!("🧹 News Cleanup - Verify and Clean Processed Articles");
+        println!("====================================================\n");
+        run_cleanup_news().await?;
+        return Ok(());
+    }
+
+    if write_news {
+        println!("📰 News Writer - Generate Articles from Collected News");
+        println!("====================================================\n");
+        run_news_writer().await?;
+        return Ok(());
+    }
+
+    if run_pipeline {
+        println!("🔄 News Pipeline - Complete Processing Flow");
+        println!("==========================================\n");
+        run_news_pipeline().await?;
+        return Ok(());
+    }
+
+    if run_pipeline_debug {
+        println!("🔍 News Pipeline - DEBUG MODE (Ultra-Detailed Logging)");
+        println!("====================================================\n");
+        run_news_pipeline_debug().await?;
         return Ok(());
     }
 
@@ -226,7 +275,16 @@ async fn main() -> anyhow::Result<()> {
         let date_dir = download_dir.join(&date);
         tokio::fs::create_dir_all(&date_dir).await?;
 
-        println!("⬇️  Downloading PDFs...\n");
+        // Definir target_count antes de usar nos prints
+        let target_count = 20;
+        let mut start_offset = 0;
+        let mut downloaded_count = 0;
+
+        println!("⬇️  Downloading PDFs from arXiv...");
+        println!("   📂 Target directory: {}", date_dir.display());
+        println!("   🎯 Target count: {} new papers", target_count);
+        println!("   📊 Registry: {} articles already registered", total_articles);
+        println!("");
 
         // Cliente com cookies para manter sessão e evitar reCAPTCHA
         let client = reqwest::Client::builder()
@@ -243,17 +301,13 @@ async fn main() -> anyhow::Result<()> {
             Err(e) => println!("   Warning: Could not establish session: {}", e),
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
-
-        let mut start_offset = 0;
-        let target_count = 20;
-        let mut downloaded_count = 0;
         
         // Safe guards para evitar ban da API
         let max_api_requests = 50; // Máximo de requisições por ciclo
         let max_consecutive_empty = 5; // Máximo de batches vazios consecutivos antes de parar (aumentado para permitir gaps)
         let mut api_request_count = 0;
         let mut consecutive_empty_batches = 0;
-        let mut last_successful_offset = None;
+        let mut _last_successful_offset = None;
         let mut batches_with_articles_seen = 0; // Contador de batches com artigos encontrados
 
         // Loop até baixar 10 novos artigos (busca regressiva até encontrar)
@@ -265,7 +319,11 @@ async fn main() -> anyhow::Result<()> {
                 break;
             }
             
-            println!("📡 Fetching batch starting from offset {}...", start_offset);
+            println!("📡 [BATCH] Fetching articles from arXiv API...");
+            println!("   📊 Offset: {}", start_offset);
+            println!("   🔢 Batch size: {}", target_count * 2);
+            println!("   📈 Progress: {} new papers downloaded (target: {})", downloaded_count, target_count);
+            println!("   🔄 API requests: {}/{}", api_request_count + 1, max_api_requests);
 
             // URL correta do arXiv API (não use DeepSeek aqui!)
             // Usar submittedDate antiga para evitar reCAPTCHA
@@ -353,12 +411,21 @@ async fn main() -> anyhow::Result<()> {
                             author: Some("Unknown".to_string()),
                             summary: Some("No summary available".to_string()),
                             published_date: Some(chrono::Utc::now()),
+                            image_url: None,
+                            source_type: Some("arxiv".to_string()),
+                            content_html: None,
+                            content_text: None,
+                            category: None,
                         });
                     }
                 }
             }
 
-            println!("  Found {} papers in this batch", articles.len());
+            println!("  ✅ Batch fetched successfully");
+            println!("  📄 Found {} papers in this batch", articles.len());
+            if !articles.is_empty() {
+                println!("  📋 First article: {} - {}", articles[0].id, articles[0].title.chars().take(60).collect::<String>());
+            }
             
             // Safe guard: verificar se batch está vazio
             if articles.is_empty() {
@@ -402,13 +469,13 @@ async fn main() -> anyhow::Result<()> {
             } else {
                 // Reset contador se encontramos resultados
                 consecutive_empty_batches = 0;
-                last_successful_offset = Some(start_offset);
+                _last_successful_offset = Some(start_offset);
                 batches_with_articles_seen += 1;
             }
 
             // Tentar baixar artigos não duplicados
             let mut found_new_in_batch = false;
-            for (i, article) in articles.iter().enumerate() {
+            for article in articles.iter() {
                 if downloaded_count >= target_count {
                     break;
                 }
@@ -418,33 +485,22 @@ async fn main() -> anyhow::Result<()> {
                 // Verificar se já foi processado usando registry
                 let is_registered = registry.is_article_registered(&article.id);
                 if is_registered {
-                    // Debug: mostrar detalhes da verificação
-                    if api_request_count <= 2 {
-                        let metadata = registry.get_metadata(&article.id);
-                        if let Some(meta) = metadata {
-                            println!(
-                                "  [{}/{}]: {}... ⏭️  (already in registry - status: {:?})",
-                                downloaded_count + 1,
-                                target_count,
-                                article.id,
-                                meta.status
-                            );
-                        } else {
-                            println!(
-                                "  [{}/{}]: {}... ⏭️  (already in registry - metadata not found)",
-                                downloaded_count + 1,
-                                target_count,
-                                article.id
-                            );
+                    // Mostrar sempre detalhes quando encontra duplicado
+                    println!(
+                        "  [{}/{}]: ⏭️  SKIPPED (duplicate): {}",
+                        downloaded_count + 1,
+                        target_count,
+                        article.id
+                    );
+                    println!("      📄 Title: {}", article.title);
+                    let metadata = registry.get_metadata(&article.id);
+                    if let Some(meta) = metadata {
+                        println!("      📊 Status: {:?}", meta.status);
+                        if let Some(output_dir) = &meta.output_dir {
+                            println!("      📁 Output dir: {}", output_dir.display());
                         }
-                    } else {
-                        println!(
-                            "  [{}/{}]: {}... ⏭️  (already in registry)",
-                            downloaded_count + 1,
-                            target_count,
-                            article.id
-                        );
                     }
+                    println!("      ℹ️  Article already in registry, skipping download");
                     continue;
                 }
                 
@@ -454,12 +510,16 @@ async fn main() -> anyhow::Result<()> {
                 // Usar a API REST oficial do arXiv para baixar PDFs
                 let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", article.id);
                 let arxiv_url = format!("https://arxiv.org/abs/{}", article.id);
-                print!(
-                    "  [{}/{}]: {}... ",
+                println!(
+                    "  [{}/{}]: 📥 DOWNLOADING: {}",
                     downloaded_count + 1,
                     target_count,
                     article.id
                 );
+                println!("      📄 Title: {}", article.title);
+                println!("      🔗 URL: {}", arxiv_url);
+                println!("      ⬇️  PDF URL: {}", pdf_url);
+                print!("      ⏳ Downloading... ");
 
                 // Criar requisição com headers para evitar reCAPTCHA
                 let request = client
@@ -476,17 +536,34 @@ async fn main() -> anyhow::Result<()> {
                     .header("Sec-Fetch-Site", "none")
                     .header("Cache-Control", "max-age=0");
 
+                let download_start = std::time::Instant::now();
                 match request.send().await {
                     Ok(response) => {
                         // Verificar se é uma resposta de sucesso
                         if response.status().is_success() {
+                            // Verificar Content-Length se disponível
+                            if let Some(content_length) = response.headers().get("content-length") {
+                                if let Ok(len_str) = content_length.to_str() {
+                                    if let Ok(len_bytes) = len_str.parse::<u64>() {
+                                        let len_mb = len_bytes as f64 / 1_048_576.0;
+                                        println!("({:.2} MB)", len_mb);
+                                    }
+                                }
+                            }
                             let bytes = response.bytes().await;
                             match bytes {
                                 Ok(b) => {
+                                    let file_size_mb = b.len() as f64 / 1_048_576.0;
                                     // Verify it's actually a PDF (starts with %PDF)
                                     if b.len() > 4 && &b[0..4] == b"%PDF" {
                                         match tokio::fs::write(&file_path, &b).await {
                                             Ok(_) => {
+                                                let download_duration = download_start.elapsed();
+                                                println!("      ✅ Downloaded successfully!");
+                                                println!("      📦 File size: {:.2} MB", file_size_mb);
+                                                println!("      📁 Saved to: {}", file_path.display());
+                                                println!("      ⏱️  Download time: {:.2}s", download_duration.as_secs_f64());
+                                                print!("      📝 Registering in registry... ");
                                                 // Registrar no registry após download bem-sucedido
                                                 if let Err(e) = registry.register_collected(
                                                     article.id.clone(),
@@ -494,30 +571,48 @@ async fn main() -> anyhow::Result<()> {
                                                     arxiv_url.clone(),
                                                     pdf_url.clone(),
                                                 ) {
-                                                    eprintln!("  ⚠️  Failed to register article: {}", e);
+                                                    eprintln!("⚠️  Failed: {}", e);
                                                 } else {
                                                     // Define destinos com base nos sites que têm arXiv habilitado
                                                     let destinations = get_enabled_sites_for_source("arxiv");
                                                     if let Err(e) = registry.set_destinations(&article.id, destinations) {
-                                                        eprintln!("  ⚠️  Failed to set destinations: {}", e);
+                                                        eprintln!("⚠️  Failed to set destinations: {}", e);
                                                     }
                                                     downloaded_count += 1;
-                                                    println!("✅ NEW (registered)");
+                                                    println!("✅ Registered");
+                                                    println!("      ✅ Article {} registered successfully!", article.id);
                                                 }
                                             }
-                                            Err(e) => println!("❌ Write: {}", e),
+                                            Err(e) => {
+                                                println!("❌ Failed to write file: {}", e);
+                                                println!("      💥 Error details: {:?}", e);
+                                            },
                                         }
                                     } else {
-                                        println!("❌ Invalid PDF (got HTML or redirect)");
+                                        println!("❌ Invalid PDF format (got HTML or redirect)");
+                                        println!("      💥 Response size: {} bytes", b.len());
+                                        println!("      💥 First bytes: {:?}", &b[..std::cmp::min(100, b.len())]);
                                     }
                                 }
-                                Err(e) => println!("❌ Download: {}", e),
+                                Err(e) => {
+                                    println!("❌ Failed to read response bytes: {}", e);
+                                    println!("      💥 Error details: {:?}", e);
+                                },
                             }
                         } else {
-                            println!("❌ HTTP Error: {}", response.status());
+                            println!("❌ HTTP Error: {} {}", response.status(), response.status().canonical_reason().unwrap_or("Unknown"));
+                            if let Ok(status_text) = response.text().await {
+                                if !status_text.is_empty() {
+                                    let preview = status_text.chars().take(200).collect::<String>();
+                                    println!("      💥 Response preview: {}", preview);
+                                }
+                            }
                         }
                     }
-                    Err(e) => println!("❌ Request: {}", e),
+                    Err(e) => {
+                        println!("❌ Request failed: {}", e);
+                        println!("      💥 Error details: {:?}", e);
+                    },
                 }
                 
                 // Delay entre downloads para evitar rate limiting
@@ -582,7 +677,6 @@ async fn main() -> anyhow::Result<()> {
         use crate::collectors::pmc_collector::PmcCollector;
         use crate::models::raw_document::ArticleMetadata;
         use std::path::Path;
-        use serde_json::{json, Value};
 
         let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
         let registry = RegistryManager::new(registry_path)?;
@@ -646,7 +740,6 @@ async fn main() -> anyhow::Result<()> {
         use crate::collectors::semantic_scholar_collector::SemanticScholarCollector;
         use crate::models::raw_document::ArticleMetadata;
         use std::path::Path;
-        use serde_json::{json, Value};
 
         let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
         let registry = RegistryManager::new(registry_path)?;
@@ -709,23 +802,33 @@ async fn main() -> anyhow::Result<()> {
     async fn run_collect_enabled_from_config() -> anyhow::Result<()> {
         use std::path::Path;
         use crate::utils::config_manager::ConfigManager;
+        use crate::utils::site_config_manager::SiteConfigManager;
 
-        // Ler do collectors_config.json que é atualizado pelo dashboard
-        // Tentar múltiplos caminhos possíveis
-        let possible_paths = vec![
+        // Primeiro tentar ler do collectors_config.json (prioridade)
+        // Se não existir, ler do system_config.json (compatibilidade)
+        let possible_config_paths = vec![
             Path::new("collectors_config.json"),
             Path::new("G:/Hive-Hub/News-main/news-backend/collectors_config.json"),
             Path::new("G:/Hive-Hub/News-main/collectors_config.json"),
         ];
         
+        let possible_system_paths = vec![
+            Path::new("system_config.json"),
+            Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
+            Path::new("G:/Hive-Hub/News-main/system_config.json"),
+        ];
+        
         let mut config = None;
         let mut config_path_used = None;
-        for path in &possible_paths {
+        let mut use_system_config = false;
+        
+        // Tentar collectors_config.json primeiro
+        for path in &possible_config_paths {
             if path.exists() {
                 let manager = ConfigManager::new(path);
                 match manager.load() {
                     Ok(c) => {
-                        config = Some(c);
+                        config = Some(c.collectors);
                         config_path_used = Some(path.to_path_buf());
                         break;
                     }
@@ -734,37 +837,128 @@ async fn main() -> anyhow::Result<()> {
             }
         }
         
-        let config = match config {
+        // Se não encontrou collectors_config.json, tentar system_config.json
+        if config.is_none() {
+            for path in &possible_system_paths {
+                if path.exists() {
+                    let manager = SiteConfigManager::new(path);
+                    match manager.load() {
+                        Ok(system_config) => {
+                            // Pegar coletores de todos os sites habilitados e converter para CollectorConfig do config_manager
+                            use crate::utils::config_manager::CollectorConfig as ConfigCollectorConfig;
+                            let mut all_collectors: Vec<ConfigCollectorConfig> = Vec::new();
+                            for (_site_id, site) in &system_config.sites {
+                                if site.enabled {
+                                    for site_collector in &site.collectors {
+                                        // Converter de site_config_manager::CollectorConfig para config_manager::CollectorConfig
+                                        all_collectors.push(ConfigCollectorConfig {
+                                            id: site_collector.id.clone(),
+                                            name: site_collector.name.clone(),
+                                            enabled: site_collector.enabled,
+                                            api_key: site_collector.api_key.clone(),
+                                            collector_type: site_collector.collector_type.clone(),
+                                            feed_url: site_collector.feed_url.clone(),
+                                            base_url: site_collector.base_url.clone(),
+                                            selectors: site_collector.selectors.clone(),
+                                            config: site_collector.config.clone(),
+                                        });
+                                    }
+                                }
+                            }
+                            config = Some(all_collectors);
+                            config_path_used = Some(path.to_path_buf());
+                            use_system_config = true;
+                            break;
+                        }
+                        Err(_) => continue,
+                    }
+                }
+            }
+        }
+        
+        let collectors = match config {
             Some(c) => c,
             None => {
-                anyhow::bail!("collectors_config.json not found. Please configure collectors via dashboard first.");
+                anyhow::bail!("No config file found (collectors_config.json or system_config.json). Please configure collectors first.");
             }
         };
         
         if let Some(path) = config_path_used {
             println!("  Using config from: {}", path.display());
+            if use_system_config {
+                println!("  (Reading from system_config.json - all enabled sites)");
+            }
         }
 
         // Determinar fontes habilitadas a partir dos collectors habilitados
         let mut use_arxiv = false;
         let mut use_pmc = false;
         let mut use_ss = false;
+        let mut rss_collectors = Vec::new();
+        let mut html_collectors = Vec::new();
 
-        for c in config.collectors {
-            let id = c.id.to_lowercase();
+        for c in &collectors {
             if !c.enabled { continue; }
-            if id.contains("arxiv") { use_arxiv = true; }
-            if id.contains("pmc") || id.contains("pubmed") { use_pmc = true; }
-            if id.contains("semantic") { use_ss = true; }
+            
+            let collector_type = c.collector_type.as_deref().unwrap_or("api");
+            
+            match collector_type {
+                "rss" => {
+                    if let Some(feed_url) = &c.feed_url {
+                        let base_url = c.base_url.clone();
+                        let max_results = c.config.get("max_results")
+                            .and_then(|v| v.as_u64())
+                            .map(|v| v as u32);
+                        rss_collectors.push((c.id.clone(), feed_url.clone(), base_url, max_results));
+                    }
+                }
+                "html" => {
+                    if let Some(base_url) = &c.base_url {
+                        let selectors = c.selectors.as_ref().and_then(|s| {
+                            use std::collections::HashMap;
+                            if let Ok(map) = serde_json::from_value::<HashMap<String, String>>(s.clone()) {
+                                Some(map)
+                            } else {
+                                None
+                            }
+                        });
+                        let max_results = c.config.get("max_results")
+                            .and_then(|v| v.as_u64())
+                            .map(|v| v as u32);
+                        html_collectors.push((c.id.clone(), base_url.clone(), selectors, max_results));
+                    }
+                }
+                _ => {
+                    // API collectors (arxiv, pmc, semantic_scholar)
+                    let id = c.id.to_lowercase();
+                    if id.contains("arxiv") { use_arxiv = true; }
+                    if id.contains("pmc") || id.contains("pubmed") { use_pmc = true; }
+                    if id.contains("semantic") { use_ss = true; }
+                }
+            }
         }
+        
         println!("Enabled sources summary:");
         println!("  arXiv:   {}", if use_arxiv { "ON" } else { "OFF" });
         println!("  PMC:     {}", if use_pmc { "ON" } else { "OFF" });
         println!("  Semantic:{}", if use_ss { "ON" } else { "OFF" });
+        println!("  RSS:     {} collector(s)", rss_collectors.len());
+        println!("  HTML:    {} collector(s)", html_collectors.len());
 
+        // Executar collectors API
         if use_arxiv { run_arxiv_collection_direct().await?; }
         if use_pmc { run_pmc_collection_direct().await?; }
         if use_ss { run_semantic_scholar_collection_direct().await?; }
+
+        // Executar collectors RSS
+        if !rss_collectors.is_empty() {
+            run_rss_collectors(&rss_collectors).await?;
+        }
+
+        // Executar collectors HTML
+        if !html_collectors.is_empty() {
+            run_html_collectors(&html_collectors).await?;
+        }
 
         Ok(())
     }
@@ -781,14 +975,959 @@ async fn main() -> anyhow::Result<()> {
                 for c in s.collectors {
                     let id = c.id.to_lowercase();
                     if !c.enabled { continue; }
-                    if source_key == "arxiv" && id.contains("arxiv") { enabled_for_source = true; }
-                    if source_key == "pmc" && (id.contains("pmc") || id.contains("pubmed")) { enabled_for_source = true; }
-                    if source_key == "semantic" && id.contains("semantic") { enabled_for_source = true; }
+                    
+                    // Check collector type if available
+                    let collector_type = c.collector_type.as_deref().unwrap_or("api");
+                    
+                    match (source_key, collector_type) {
+                        ("arxiv", "api") if id.contains("arxiv") => enabled_for_source = true,
+                        ("pmc", "api") if id.contains("pmc") || id.contains("pubmed") => enabled_for_source = true,
+                        ("semantic", "api") if id.contains("semantic") => enabled_for_source = true,
+                        ("rss", "rss") | ("rss", _) if id.contains("rss") => enabled_for_source = true,
+                        ("html", "html") | ("html", _) if id.contains("html") => enabled_for_source = true,
+                        _ => {
+                            // Fallback: check by ID pattern
+                            if source_key == "arxiv" && id.contains("arxiv") { enabled_for_source = true; }
+                            if source_key == "pmc" && (id.contains("pmc") || id.contains("pubmed")) { enabled_for_source = true; }
+                            if source_key == "semantic" && id.contains("semantic") { enabled_for_source = true; }
+                            if source_key == "rss" && (id.contains("rss") || collector_type == "rss") { enabled_for_source = true; }
+                            if source_key == "html" && (id.contains("html") || collector_type == "html") { enabled_for_source = true; }
+                        }
+                    }
                 }
                 if enabled_for_source { result.push(s.id); }
             }
         }
         result
+    }
+
+    async fn run_rss_collectors(
+        collectors: &[(String, String, Option<String>, Option<u32>)],
+    ) -> anyhow::Result<()> {
+        use crate::collectors::rss_collector::RssCollector;
+        use crate::utils::article_registry::RegistryManager;
+        use std::path::{Path, PathBuf};
+        use serde_json;
+
+        println!("\n📡 Starting RSS collectors...\n");
+
+        // Inicializar registry
+        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry = RegistryManager::new(registry_path)?;
+
+        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        tokio::fs::create_dir_all(&temp_dir).await?;
+
+        // Criar diretório para salvar artigos raw
+        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let raw_dir = base_dir.join("raw");
+        tokio::fs::create_dir_all(&raw_dir).await?;
+        
+        let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
+        let date_dir = raw_dir.join(&date);
+        tokio::fs::create_dir_all(&date_dir).await?;
+
+        // Inicializar filtro de notícias (verifica no registry)
+        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let rejected_dir = base_dir.join("rejected");
+        let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
+        news_filter.check_registry()?;
+
+        let rss_collector = RssCollector::new(temp_dir);
+        let mut total_saved = 0;
+        let mut total_rejected = 0;
+
+        println!("📋 Total RSS collectors to process: {}\n", collectors.len());
+        
+        for (idx, (collector_id, feed_url, base_url, max_results)) in collectors.iter().enumerate() {
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("📡 [RSS COLLECTOR {}/{}] {}", idx + 1, collectors.len(), collector_id);
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("  🌐 Feed URL: {}", feed_url);
+            println!("  📊 Max results: {:?}", max_results);
+            println!("  🔗 Base URL: {:?}", base_url);
+            println!("  ⏳ Fetching feed...\n");
+            
+            let fetch_start = std::time::Instant::now();
+            
+            match rss_collector.fetch_feed(
+                feed_url,
+                *max_results,
+                base_url.as_deref(),
+            ).await {
+                Ok(articles) => {
+                    let fetch_duration = fetch_start.elapsed();
+                    println!("  ✅ Fetch completed in {:?}", fetch_duration);
+                    println!("  📄 Found {} articles from {}", articles.len(), collector_id);
+                    
+                    // Salvar artigos coletados
+                    println!("  🔄 Processing {} articles...\n", articles.len());
+                    
+                    for (art_idx, article) in articles.iter().enumerate() {
+                        println!("    ┌─ [ARTICLE {}/{}] {}", art_idx + 1, articles.len(), article.id);
+                        println!("    │  📝 Title: {}", article.title);
+                        println!("    │  🔗 URL: {}", article.url);
+                        
+                        // Verificar se já está registrado
+                        println!("    │  🔍 Checking if already registered...");
+                        if registry.is_article_registered(&article.id) {
+                            println!("    │  ⏭️  Already registered - skipping");
+                            println!("    └─\n");
+                            continue;
+                        }
+
+                        // Verificar se é duplicata no registry (por ID ou URL)
+                        println!("    │  🔍 Checking for duplicates...");
+                        if news_filter.is_duplicate(&article.id, &article.url) {
+                            println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
+                            println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
+                            
+                            // Salvar JSON temporariamente para poder mover
+                            println!("    │  💾 Saving JSON temporarily...");
+                            let json_path = date_dir.join(format!("{}.json", article.id));
+                            if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                    eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                    println!("    └─\n");
+                                    continue;
+                                }
+                                println!("    │  ✅ JSON saved: {}", json_path.display());
+                            }
+
+                            // Mover para pasta rejected
+                            println!("    │  🗑️  Moving to rejected folder...");
+                            if let Err(e) = news_filter.reject_news(&json_path).await {
+                                eprintln!("    │  ❌ Failed to reject: {}", e);
+                                // Deletar arquivo se não conseguir mover
+                                let _ = tokio::fs::remove_file(&json_path).await;
+                                println!("    └─\n");
+                                continue;
+                            }
+                            
+                            println!("    │  ✅ Moved to rejected folder");
+                            println!("    └─ ❌ REJECTED\n");
+                            total_rejected += 1;
+                            continue;
+                        }
+                        
+                        println!("    │  ✅ Not a duplicate - proceeding");
+
+                        // Salvar JSON em downloads/raw/{date}/{id}.json
+                        println!("    │  💾 Saving JSON to raw folder...");
+                        let json_path = date_dir.join(format!("{}.json", article.id));
+                        if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                            if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                println!("    └─\n");
+                                continue;
+                            }
+                            println!("    │  ✅ JSON saved: {}", json_path.display());
+                        }
+
+                        // Registrar no registry (usando url como pdf_url para compatibilidade)
+                        println!("    │  📝 Registering in registry...");
+                        if let Err(e) = registry.register_collected(
+                            article.id.clone(),
+                            article.title.clone(),
+                            article.url.clone(),
+                            article.url.clone(), // Web articles não têm PDF, usar URL como pdf_url
+                        ) {
+                            eprintln!("    │  ❌ Failed to register: {}", e);
+                            println!("    └─\n");
+                            continue;
+                        }
+                        println!("    │  ✅ Registered successfully");
+
+                        // Definir destinos baseado nos sites que têm RSS/HTML collectors habilitados
+                        println!("    │  🎯 Setting destinations...");
+                        let destinations = get_enabled_sites_for_source("rss");
+                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                            eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                        } else {
+                            println!("    │  ✅ Destinations set: {:?}", destinations);
+                        }
+
+                        total_saved += 1;
+                        println!("    └─ ✅ SAVED: {} - {}\n", article.id, article.title);
+                    }
+                }
+                Err(e) => {
+                    println!("    ❌ Error: {}", e);
+                }
+            }
+        }
+
+        println!("\n✅ RSS collection completed!");
+        println!("   Saved {} new articles to {}", total_saved, date_dir.display());
+        if total_rejected > 0 {
+            println!("   Rejected {} duplicate articles (already published)", total_rejected);
+        }
+        Ok(())
+    }
+
+    async fn run_html_collectors(
+        collectors: &[(String, String, Option<std::collections::HashMap<String, String>>, Option<u32>)],
+    ) -> anyhow::Result<()> {
+        use crate::collectors::html_collector::HtmlCollector;
+        use crate::utils::article_registry::RegistryManager;
+        use std::path::{Path, PathBuf};
+        use serde_json;
+
+        println!("\n🌐 Starting HTML collectors...\n");
+
+        // Inicializar registry
+        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry = RegistryManager::new(registry_path)?;
+
+        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        tokio::fs::create_dir_all(&temp_dir).await?;
+
+        // Criar diretório para salvar artigos raw
+        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let raw_dir = base_dir.join("raw");
+        tokio::fs::create_dir_all(&raw_dir).await?;
+        
+        let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
+        let date_dir = raw_dir.join(&date);
+        tokio::fs::create_dir_all(&date_dir).await?;
+
+        // Inicializar filtro de notícias (verifica no registry)
+        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let rejected_dir = base_dir.join("rejected");
+        let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
+        news_filter.check_registry()?;
+
+        let html_collector = HtmlCollector::new(temp_dir);
+        let mut total_saved = 0;
+        let mut total_rejected = 0;
+
+        println!("📋 Total collectors to process: {}\n", collectors.len());
+        
+        for (idx, (collector_id, base_url, selectors, max_results)) in collectors.iter().enumerate() {
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("📰 [HTML COLLECTOR {}/{}] {}", idx + 1, collectors.len(), collector_id);
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("  🌐 URL: {}", base_url);
+            println!("  📊 Max results: {:?}", max_results);
+            println!("  🔍 Selectors: {:?}", selectors.as_ref().map(|s| s.keys().collect::<Vec<_>>()));
+            println!("  ⏳ Fetching page...\n");
+            
+            let fetch_start = std::time::Instant::now();
+            
+            match html_collector.fetch_page(
+                base_url,
+                selectors.as_ref(),
+                *max_results,
+                Some(collector_id), // Passar collector_id para detectar se precisa JS rendering
+            ).await {
+                Ok(articles) => {
+                    let fetch_duration = fetch_start.elapsed();
+                    println!("  ✅ Fetch completed in {:?}", fetch_duration);
+                    println!("  📄 Found {} articles from {}", articles.len(), collector_id);
+                    
+                    // Salvar artigos coletados
+                    println!("  🔄 Processing {} articles...\n", articles.len());
+                    
+                    for (art_idx, article) in articles.iter().enumerate() {
+                        println!("    ┌─ [ARTICLE {}/{}] {}", art_idx + 1, articles.len(), article.id);
+                        println!("    │  📝 Title: {}", article.title);
+                        println!("    │  🔗 URL: {}", article.url);
+                        
+                        // Verificar se já está registrado
+                        println!("    │  🔍 Checking if already registered...");
+                        if registry.is_article_registered(&article.id) {
+                            println!("    │  ⏭️  Already registered - skipping");
+                            println!("    └─\n");
+                            continue;
+                        }
+
+                        // Verificar se é duplicata no registry (por ID ou URL)
+                        println!("    │  🔍 Checking for duplicates...");
+                        if news_filter.is_duplicate(&article.id, &article.url) {
+                            println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
+                            println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
+                            
+                            // Salvar JSON temporariamente para poder mover
+                            println!("    │  💾 Saving JSON temporarily...");
+                            let json_path = date_dir.join(format!("{}.json", article.id));
+                            if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                    eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                    println!("    └─\n");
+                                    continue;
+                                }
+                                println!("    │  ✅ JSON saved: {}", json_path.display());
+                            }
+
+                            // Mover para pasta rejected
+                            println!("    │  🗑️  Moving to rejected folder...");
+                            if let Err(e) = news_filter.reject_news(&json_path).await {
+                                eprintln!("    │  ❌ Failed to reject: {}", e);
+                                // Deletar arquivo se não conseguir mover
+                                let _ = tokio::fs::remove_file(&json_path).await;
+                                println!("    └─\n");
+                                continue;
+                            }
+                            
+                            println!("    │  ✅ Moved to rejected folder");
+                            println!("    └─ ❌ REJECTED\n");
+                            total_rejected += 1;
+                            continue;
+                        }
+                        
+                        println!("    │  ✅ Not a duplicate - proceeding");
+
+                        // Salvar JSON em downloads/raw/{date}/{id}.json
+                        println!("    │  💾 Saving JSON to raw folder...");
+                        let json_path = date_dir.join(format!("{}.json", article.id));
+                        if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                            if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                println!("    └─\n");
+                                continue;
+                            }
+                            println!("    │  ✅ JSON saved: {}", json_path.display());
+                        }
+
+                        // Registrar no registry (usando url como pdf_url para compatibilidade)
+                        println!("    │  📝 Registering in registry...");
+                        if let Err(e) = registry.register_collected(
+                            article.id.clone(),
+                            article.title.clone(),
+                            article.url.clone(),
+                            article.url.clone(), // Web articles não têm PDF, usar URL como pdf_url
+                        ) {
+                            eprintln!("    │  ❌ Failed to register: {}", e);
+                            println!("    └─\n");
+                            continue;
+                        }
+                        println!("    │  ✅ Registered successfully");
+
+                        // Definir destinos baseado nos sites que têm RSS/HTML collectors habilitados
+                        println!("    │  🎯 Setting destinations...");
+                        let destinations = get_enabled_sites_for_source("html");
+                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                            eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                        } else {
+                            println!("    │  ✅ Destinations set: {:?}", destinations);
+                        }
+
+                        total_saved += 1;
+                        println!("    └─ ✅ SAVED: {} - {}\n", article.id, article.title);
+                    }
+                }
+                Err(e) => {
+                    println!("    ❌ Error: {}", e);
+                }
+            }
+        }
+
+        println!("\n✅ HTML collection completed!");
+        println!("   Saved {} new articles to {}", total_saved, date_dir.display());
+        if total_rejected > 0 {
+            println!("   Rejected {} duplicate articles (already published)", total_rejected);
+        }
+        Ok(())
+    }
+
+    async fn run_news_writer() -> anyhow::Result<()> {
+        use crate::writer::news_writer::NewsWriterService;
+        use std::path::{Path, PathBuf};
+
+        println!("📰 Processing collected news articles...\n");
+
+        // Inicializar news writer
+        let output_base = PathBuf::from("G:/Hive-Hub/News-main/output");
+        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let news_writer = NewsWriterService::new(output_base, registry_path)?;
+
+        // Encontrar todos os artigos coletados em downloads/raw/
+        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let raw_dir = base_dir.join("raw");
+        
+        if !raw_dir.exists() {
+            println!("⚠️  No raw directory found. Run collectors first.");
+            return Ok(());
+        }
+
+        // Encontrar todas as pastas de data
+        let mut all_articles = Vec::new();
+        
+        let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
+        while let Some(date_entry) = date_entries.next_entry().await? {
+            let date_dir = date_entry.path();
+            
+            if !date_dir.is_dir() {
+                continue;
+            }
+
+            // Encontrar todos os arquivos JSON neste diretório
+            let mut json_entries = tokio::fs::read_dir(&date_dir).await?;
+            while let Some(json_entry) = json_entries.next_entry().await? {
+                let json_path = json_entry.path();
+                
+                if json_path.extension().and_then(|s| s.to_str()) == Some("json") {
+                    all_articles.push(json_path);
+                }
+            }
+        }
+
+        if all_articles.is_empty() {
+            println!("⚠️  No news articles found in downloads/raw/");
+            return Ok(());
+        }
+
+        println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        println!("📄 Found {} news articles to process", all_articles.len());
+        println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+
+        let mut processed = 0;
+        let mut failed = 0;
+        let mut successfully_processed_articles = Vec::new();
+
+        // Processar cada artigo
+        for (i, article_path) in all_articles.iter().enumerate() {
+            let article_id = article_path
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .unwrap_or("unknown");
+
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("✍️  [WRITER {}/{}] {}", i + 1, all_articles.len(), article_id);
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("  📄 JSON path: {}", article_path.display());
+            println!("  ⏳ Processing article...\n");
+
+            let process_start = std::time::Instant::now();
+
+            match news_writer.process_news_article(article_path).await {
+                Ok(results) => {
+                    let process_duration = process_start.elapsed();
+                    println!("  ✅ Processing completed in {:?}", process_duration);
+                    println!("  📊 Generated content for {} destination(s):", results.len());
+                    
+                    for (idx, result) in results.iter().enumerate() {
+                        println!("    [{}/{}] ✅ {} → {}", idx + 1, results.len(), result.site_name, result.output_dir.display());
+                    }
+                    
+                    processed += 1;
+                    successfully_processed_articles.push(article_path.clone());
+                    println!("");
+                }
+                Err(e) => {
+                    let process_duration = process_start.elapsed();
+                    eprintln!("  ❌ Processing failed after {:?}: {}", process_duration, e);
+                    failed += 1;
+                    println!("");
+                }
+            }
+        }
+
+        println!("\n✅ News writing completed!");
+        println!("   Processed: {}", processed);
+        if failed > 0 {
+            println!("   Failed: {}", failed);
+        }
+
+        // Cleanup: verificar arquivos criados, atualizar registry e remover JSONs processados
+        if !successfully_processed_articles.is_empty() {
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            println!("🧹 [CLEANUP] Starting cleanup for {} processed articles", successfully_processed_articles.len());
+            println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+            
+            let cleanup_start = std::time::Instant::now();
+            
+            match news_writer.cleanup_processed_articles(&successfully_processed_articles).await {
+                Ok(stats) => {
+                    let cleanup_duration = cleanup_start.elapsed();
+                    println!("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                    println!("✅ [CLEANUP] Completed in {:?}", cleanup_duration);
+                    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                    println!("  ✅ Verified: {} articles", stats.verified);
+                    println!("  📝 Updated in registry: {} articles", stats.updated);
+                    println!("  🗑️  Removed from raw: {} JSON files", stats.removed);
+                    println!("");
+                }
+                Err(e) => {
+                    let cleanup_duration = cleanup_start.elapsed();
+                    eprintln!("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                    eprintln!("❌ [CLEANUP] Failed after {:?}: {}", cleanup_duration, e);
+                    eprintln!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+                }
+            }
+        }
+
+        Ok(())
+    }
+
+    async fn run_cleanup_news() -> anyhow::Result<()> {
+        use crate::writer::news_writer::NewsWriterService;
+        use crate::utils::article_registry::RegistryManager;
+        use std::path::{Path, PathBuf};
+
+        println!("🧹 Running cleanup on already processed articles...\n");
+
+        // Inicializar news writer
+        let output_base = PathBuf::from("G:/Hive-Hub/News-main/output");
+        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        
+        let registry = RegistryManager::new(&registry_path)?;
+        let news_writer = NewsWriterService::new(output_base, registry_path)?;
+
+        // Encontrar todos os artigos no registry que já foram publicados (têm output_dir)
+        let registry_data = registry.get_all_articles();
+        let mut processed_articles = Vec::new();
+
+        for metadata in registry_data {
+            if let Some(_output_dir) = &metadata.output_dir {
+                // Verificar se o artigo tem um JSON correspondente na pasta raw
+                let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+                let raw_dir = base_dir.join("raw");
+                
+                // Procurar o JSON em todas as pastas de data
+                let mut json_found: Option<PathBuf> = None;
+                
+                if raw_dir.exists() {
+                    let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
+                    while let Some(date_entry) = date_entries.next_entry().await? {
+                        let date_dir = date_entry.path();
+                        if !date_dir.is_dir() {
+                            continue;
+                        }
+                        
+                        let json_path = date_dir.join(format!("{}.json", metadata.id));
+                        if json_path.exists() {
+                            json_found = Some(json_path);
+                            break;
+                        }
+                    }
+                }
+
+                if let Some(json_path) = json_found {
+                    let path_display = json_path.display().to_string();
+                    processed_articles.push(json_path);
+                    println!("  📄 Found JSON for {}: {}", metadata.id, path_display);
+                } else {
+                    println!("  ℹ️  Article {} has no JSON in raw/ (already cleaned?)", metadata.id);
+                }
+            } else {
+                // Even if no output_dir, check if JSON exists in raw/ (orphaned files)
+                let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+                let raw_dir = base_dir.join("raw");
+                
+                if raw_dir.exists() {
+                    let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
+                    while let Some(date_entry) = date_entries.next_entry().await? {
+                        let date_dir = date_entry.path();
+                        if !date_dir.is_dir() {
+                            continue;
+                        }
+                        
+                        let json_path = date_dir.join(format!("{}.json", metadata.id));
+                        if json_path.exists() {
+                            let path_display = json_path.display().to_string();
+                            processed_articles.push(json_path);
+                            println!("  📄 Found orphaned JSON for {}: {}", metadata.id, path_display);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if processed_articles.is_empty() {
+            println!("⚠️  No articles found that need cleanup.");
+            return Ok(());
+        }
+
+        println!("\n📄 Found {} articles to cleanup\n", processed_articles.len());
+
+        // Executar cleanup
+        match news_writer.cleanup_processed_articles(&processed_articles).await {
+            Ok(stats) => {
+                println!("\n✅ Cleanup completed:");
+                println!("   Verified: {}", stats.verified);
+                println!("   Updated in registry: {}", stats.updated);
+                println!("   Removed from raw: {}", stats.removed);
+            }
+            Err(e) => {
+                eprintln!("  ❌ Cleanup failed: {}", e);
+                return Err(e);
+            }
+        }
+
+        Ok(())
+    }
+
+    async fn run_news_pipeline() -> anyhow::Result<()> {
+        let pipeline_start = std::time::Instant::now();
+        
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  🔄 NEWS PIPELINE - COMPLETE PROCESSING FLOW                  ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("");
+
+        // Step 1: Collect news
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  📥 STEP 1: COLLECT NEWS                                       ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("");
+        let collect_start = std::time::Instant::now();
+        run_collect_enabled_from_config().await?;
+        let collect_duration = collect_start.elapsed();
+        println!("");
+        println!("✅ STEP 1 completed in {:?}\n", collect_duration);
+
+        // Step 2: Filter news (already integrated in collect, but show status)
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  🔍 STEP 2: FILTER NEWS (duplicate check)                     ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("✅ Filtering is integrated in collection step");
+        println!("✅ STEP 2 completed\n");
+
+        // Step 3: Write news
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  ✍️  STEP 3: WRITE NEWS ARTICLES                                ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("");
+        let write_start = std::time::Instant::now();
+        run_news_writer().await?;
+        let write_duration = write_start.elapsed();
+        println!("");
+        println!("✅ STEP 3 completed in {:?}\n", write_duration);
+
+        // Step 4: Cleanup processed articles
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  🧹 STEP 4: CLEANUP PROCESSED ARTICLES                         ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("");
+        let cleanup_start = std::time::Instant::now();
+        run_cleanup_news().await?;
+        let cleanup_duration = cleanup_start.elapsed();
+        println!("");
+        println!("✅ STEP 4 completed in {:?}\n", cleanup_duration);
+
+        let pipeline_duration = pipeline_start.elapsed();
+        
+        println!("╔═══════════════════════════════════════════════════════════════╗");
+        println!("║  ✅ PIPELINE COMPLETED SUCCESSFULLY!                            ║");
+        println!("╚═══════════════════════════════════════════════════════════════╝");
+        println!("");
+        println!("📊 Total execution time: {:?}", pipeline_duration);
+        println!("   📥 Collection: {:?}", collect_duration);
+        println!("   ✍️  Writing: {:?}", write_duration);
+        println!("   🧹 Cleanup: {:?}", cleanup_duration);
+        println!("");
+
+        Ok(())
+    }
+
+    /// Helper function to log with timestamp
+    fn debug_log(message: &str) {
+        let now = chrono::Utc::now();
+        println!("[{}] {}", now.format("%H:%M:%S%.3f"), message);
+    }
+
+    /// Run news pipeline with ultra-detailed debug logging
+    async fn run_news_pipeline_debug() -> anyhow::Result<()> {
+        let pipeline_start = std::time::Instant::now();
+        let start_time = chrono::Utc::now();
+        
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("🔄 NEWS PIPELINE - DEBUG MODE ACTIVATED");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log(&format!("Pipeline started at: {}", start_time.format("%Y-%m-%d %H:%M:%S%.3f")));
+        debug_log("");
+
+        // Step 1: Collect news
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("📥 STEP 1: COLLECT NEWS (DEBUG MODE)");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("");
+        
+        let collect_start = std::time::Instant::now();
+        debug_log("Calling run_collect_enabled_from_config()...");
+        
+        match run_collect_enabled_from_config().await {
+            Ok(_) => {
+                let collect_duration = collect_start.elapsed();
+                debug_log(&format!("✅ STEP 1 completed successfully in {:?}", collect_duration));
+                debug_log(&format!("   Duration breakdown: {}s", collect_duration.as_secs_f64()));
+            }
+            Err(e) => {
+                let collect_duration = collect_start.elapsed();
+                debug_log(&format!("❌ STEP 1 failed after {:?}: {}", collect_duration, e));
+                return Err(e);
+            }
+        }
+        debug_log("");
+
+        // Step 2: Filter news (already integrated in collect, but show status)
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("🔍 STEP 2: FILTER NEWS (duplicate check)");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("ℹ️  Filtering is integrated in collection step");
+        debug_log("   - Duplicate checking happens during collection");
+        debug_log("   - Articles are checked against registry");
+        debug_log("   - Duplicates are moved to rejected/ folder");
+        debug_log("✅ STEP 2 completed (integrated with Step 1)");
+        debug_log("");
+
+        // Step 3: Write news
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("✍️  STEP 3: WRITE NEWS ARTICLES (DEBUG MODE)");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("");
+        
+        let write_start = std::time::Instant::now();
+        debug_log("Calling run_news_writer()...");
+        
+        match run_news_writer().await {
+            Ok(_) => {
+                let write_duration = write_start.elapsed();
+                debug_log(&format!("✅ STEP 3 completed successfully in {:?}", write_duration));
+                debug_log(&format!("   Duration breakdown: {}s", write_duration.as_secs_f64()));
+            }
+            Err(e) => {
+                let write_duration = write_start.elapsed();
+                debug_log(&format!("❌ STEP 3 failed after {:?}: {}", write_duration, e));
+                return Err(e);
+            }
+        }
+        debug_log("");
+
+        // Step 4: Cleanup processed articles
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("🧹 STEP 4: CLEANUP PROCESSED ARTICLES (DEBUG MODE)");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("");
+        
+        let cleanup_start = std::time::Instant::now();
+        debug_log("Calling run_cleanup_news()...");
+        
+        match run_cleanup_news().await {
+            Ok(_) => {
+                let cleanup_duration = cleanup_start.elapsed();
+                debug_log(&format!("✅ STEP 4 completed successfully in {:?}", cleanup_duration));
+                debug_log(&format!("   Duration breakdown: {}s", cleanup_duration.as_secs_f64()));
+            }
+            Err(e) => {
+                let cleanup_duration = cleanup_start.elapsed();
+                debug_log(&format!("❌ STEP 4 failed after {:?}: {}", cleanup_duration, e));
+                return Err(e);
+            }
+        }
+        debug_log("");
+
+        let pipeline_duration = pipeline_start.elapsed();
+        let end_time = chrono::Utc::now();
+        
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("✅ PIPELINE COMPLETED SUCCESSFULLY!");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+        debug_log("");
+        debug_log(&format!("Pipeline started:  {}", start_time.format("%Y-%m-%d %H:%M:%S%.3f")));
+        debug_log(&format!("Pipeline finished: {}", end_time.format("%Y-%m-%d %H:%M:%S%.3f")));
+        debug_log(&format!("Total execution time: {:?}", pipeline_duration));
+        debug_log("");
+        debug_log("📊 Detailed Timing Breakdown:");
+        debug_log(&format!("   📥 Collection: {:?} ({:.2}s)", collect_start.elapsed(), collect_start.elapsed().as_secs_f64()));
+        debug_log(&format!("   ✍️  Writing:   {:?} ({:.2}s)", write_start.elapsed(), write_start.elapsed().as_secs_f64()));
+        debug_log(&format!("   🧹 Cleanup:   {:?} ({:.2}s)", cleanup_start.elapsed(), cleanup_start.elapsed().as_secs_f64()));
+        debug_log(&format!("   🕐 Total:      {:?} ({:.2}s)", pipeline_duration, pipeline_duration.as_secs_f64()));
+        debug_log("");
+        debug_log("═══════════════════════════════════════════════════════════════════");
+
+        Ok(())
+    }
+
+    async fn run_rss_collector_test() -> anyhow::Result<()> {
+        use crate::collectors::rss_collector::RssCollector;
+        use crate::utils::article_registry::RegistryManager;
+        use std::path::{Path, PathBuf};
+        use serde_json;
+
+        println!("📡 Testing RSS Collector with real feeds...\n");
+
+        // Inicializar registry
+        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry = RegistryManager::new(registry_path)?;
+
+        // Criar diretório para salvar artigos raw
+        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let raw_dir = base_dir.join("raw");
+        tokio::fs::create_dir_all(&raw_dir).await?;
+        
+        let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
+        let date_dir = raw_dir.join(&date);
+        tokio::fs::create_dir_all(&date_dir).await?;
+
+        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        tokio::fs::create_dir_all(&temp_dir).await?;
+
+        let collector = RssCollector::new(temp_dir);
+
+        // Test 1: OpenAI Blog RSS
+        println!("1️⃣  OpenAI Blog RSS");
+        println!("   URL: https://openai.com/blog/rss.xml\n");
+        
+        match collector.fetch_feed(
+            "https://openai.com/blog/rss.xml",
+            Some(3), // Apenas 3 artigos para teste
+            Some("https://openai.com"),
+        ).await {
+            Ok(articles) => {
+                println!("   ✅ Collected {} articles:", articles.len());
+                let mut saved_count = 0;
+                
+                for article in articles {
+                    // Verificar se já está registrado
+                    if registry.is_article_registered(&article.id) {
+                        println!("      ⏭️  Skipped (already registered): {}", article.id);
+                        continue;
+                    }
+
+                    // Salvar JSON em downloads/raw/{date}/{id}.json
+                    let json_path = date_dir.join(format!("{}.json", article.id));
+                    if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                        if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                            eprintln!("      ⚠️  Failed to save JSON for {}: {}", article.id, e);
+                            continue;
+                        }
+                    }
+
+                    // Registrar no registry
+                    if let Err(e) = registry.register_collected(
+                        article.id.clone(),
+                        article.title.clone(),
+                        article.url.clone(),
+                        article.url.clone(),
+                    ) {
+                        eprintln!("      ⚠️  Failed to register {}: {}", article.id, e);
+                        continue;
+                    }
+
+                    // Definir destinos
+                    let destinations = get_enabled_sites_for_source("rss");
+                    if let Err(e) = registry.set_destinations(&article.id, destinations) {
+                        eprintln!("      ⚠️  Failed to set destinations for {}: {}", article.id, e);
+                    }
+
+                    saved_count += 1;
+                    println!("      ✅ Saved: {} - {}", article.id, article.title);
+                    println!("         Content: {} chars", article.content_text.as_ref().map(|s| s.len()).unwrap_or(0));
+                    println!("         URL: {}", article.url);
+                }
+                
+                println!("\n   📊 Saved {} new articles to {}", saved_count, date_dir.display());
+            }
+            Err(e) => {
+                println!("   ❌ Error: {}", e);
+            }
+        }
+
+        println!("\n✅ RSS Collector test completed!\n");
+        
+        Ok(())
+    }
+
+    async fn run_html_collector_test() -> anyhow::Result<()> {
+        use crate::collectors::html_collector::HtmlCollector;
+        use crate::utils::article_registry::RegistryManager;
+        use std::collections::HashMap;
+        use std::path::{Path, PathBuf};
+        use serde_json;
+
+        println!("🌐 Testing HTML Collector with real pages...\n");
+
+        // Inicializar registry
+        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry = RegistryManager::new(registry_path)?;
+
+        // Criar diretório para salvar artigos raw
+        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let raw_dir = base_dir.join("raw");
+        tokio::fs::create_dir_all(&raw_dir).await?;
+        
+        let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
+        let date_dir = raw_dir.join(&date);
+        tokio::fs::create_dir_all(&date_dir).await?;
+
+        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        tokio::fs::create_dir_all(&temp_dir).await?;
+
+        let collector = HtmlCollector::new(temp_dir);
+
+        // Test 1: TechCrunch (HTML scraping friendly)
+        println!("1️⃣  TechCrunch - HTML Articles");
+        println!("   URL: https://techcrunch.com/\n");
+
+        // Seletores para TechCrunch (site mais acessível para scraping)
+        let mut techcrunch_selectors = HashMap::new();
+        techcrunch_selectors.insert("article".to_string(), "article.post-block".to_string());
+        techcrunch_selectors.insert("title".to_string(), "a.post-block__title__link".to_string());
+        techcrunch_selectors.insert("content".to_string(), ".article-content".to_string());
+
+        match collector.fetch_page(
+            "https://techcrunch.com/",
+            Some(&techcrunch_selectors),
+            Some(3), // Apenas 3 artigos para teste
+            None, // TechCrunch não precisa de JS rendering
+        ).await {
+            Ok(articles) => {
+                println!("   ✅ Collected {} articles:", articles.len());
+                let mut saved_count = 0;
+                
+                for article in articles {
+                    // Verificar se já está registrado
+                    if registry.is_article_registered(&article.id) {
+                        println!("      ⏭️  Skipped (already registered): {}", article.id);
+                        continue;
+                    }
+
+                    // Salvar JSON em downloads/raw/{date}/{id}.json
+                    let json_path = date_dir.join(format!("{}.json", article.id));
+                    if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                        if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                            eprintln!("      ⚠️  Failed to save JSON for {}: {}", article.id, e);
+                            continue;
+                        }
+                    }
+
+                    // Registrar no registry
+                    if let Err(e) = registry.register_collected(
+                        article.id.clone(),
+                        article.title.clone(),
+                        article.url.clone(),
+                        article.url.clone(),
+                    ) {
+                        eprintln!("      ⚠️  Failed to register {}: {}", article.id, e);
+                        continue;
+                    }
+
+                    // Definir destinos
+                    let destinations = get_enabled_sites_for_source("html");
+                    if let Err(e) = registry.set_destinations(&article.id, destinations) {
+                        eprintln!("      ⚠️  Failed to set destinations for {}: {}", article.id, e);
+                    }
+
+                    saved_count += 1;
+                    println!("      ✅ Saved: {} - {}", article.id, article.title);
+                    println!("         Content: {} chars", article.content_text.as_ref().map(|s| s.len()).unwrap_or(0));
+                    println!("         URL: {}", article.url);
+                }
+                
+                println!("\n   📊 Saved {} new articles to {}", saved_count, date_dir.display());
+            }
+            Err(e) => {
+                println!("   ❌ Error: {}", e);
+                println!("   ℹ️  Note: Some sites may block scrapers or have different HTML structure");
+            }
+        }
+
+        println!("\n✅ HTML Collector test completed!\n");
+        
+        Ok(())
     }
 
     /// Ensure destinations are present for each article in the given date directory
@@ -903,6 +2042,7 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/logs", get(routes::logs::list_logs))
         .route("/api/logs/articles/:id", delete(routes::logs::hide_article))
         .route("/api/logs/articles/:id/hidden", put(routes::logs::set_hidden))
+        .route("/api/logs/articles/:id/featured", put(routes::logs::set_featured))
         .route("/api/logs/enrich-titles", post(routes::logs::enrich_titles_from_arxiv))
         .route("/api/health", get(routes::system::health))
         .route("/api/system/status", get(routes::system::system_status))
@@ -977,7 +2117,7 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
     // Filtrar apenas PDFs ainda não processados (filtered mas não published)
     let mut pending_pdfs = Vec::new();
     let site = writer.get_site();
-    let output_base = writer.get_output_base();
+    let _output_base = writer.get_output_base();
     
     for pdf_path in all_approved_pdfs.iter() {
         let article_id = pdf_path
@@ -1026,10 +2166,11 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
                 }
                 
                 // Deletar PDF imediatamente após processar
-                if let Err(e) = std::fs::remove_file(pdf_path) {
-                    eprintln!("  ⚠️  Failed to delete PDF: {}", e);
+                let pdf_path_to_remove = pdf_path.clone();
+                if let Err(e) = std::fs::remove_file(&pdf_path_to_remove) {
+                    eprintln!("  ⚠️  Failed to delete PDF {}: {}", pdf_path_to_remove.display(), e);
                 } else {
-                    println!("  🗑️  PDF deleted (content saved in registry)\n");
+                    println!("  🗑️  PDF deleted: {} (content saved in registry)", pdf_path_to_remove.display());
                 }
             }
             Err(e) => {
@@ -1145,6 +2286,7 @@ fn run_registry_migration() -> anyhow::Result<()> {
                             output_dir: Some(article_dir.clone()),
                             hidden: Some(false),
                             destinations: None,
+                            featured: None,
                         };
 
                         // Tentar ler categoria se existir
@@ -1214,6 +2356,7 @@ fn run_registry_migration() -> anyhow::Result<()> {
                                 output_dir: None,
                                 hidden: Some(false),
                                 destinations: None,
+                                featured: None,
                             };
                             
                             registry.articles.insert(article_id.to_string(), metadata);
@@ -1264,6 +2407,7 @@ fn run_registry_migration() -> anyhow::Result<()> {
                         output_dir: None,
                         hidden: Some(false),
                         destinations: None,
+                        featured: None,
                     };
                     
                     registry.articles.insert(article_id.to_string(), metadata);
@@ -1293,7 +2437,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                         fake_detector::calculate_fake_penalty, validator::validate_dois,
                         authors::validate_authors, scorer::{FilterResult, calculate_score},
                         categorizer::categorize};
-    use std::path::{Path, PathBuf};
+    use std::path::Path;
     use std::fs;
 
     let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");

@@ -33,6 +33,28 @@ Guia de testes:
 - Cobertura esperada
 - Testes unitários e de integração
 
+### ✍️ [`PHASE3_WRITER.md`](./PHASE3_WRITER.md)
+Documentação do Writer (geração de conteúdo):
+- Geração de artigos com DeepSeek API
+- Prompts customizados por site
+- Limpeza automática de markdown
+- Tratamento de erros da API
+- Suporte a formatos JSON alternativos
+
+### 🧹 [`PHASE4_CLEANUP.md`](./PHASE4_CLEANUP.md)
+Documentação do Cleanup:
+- Limpeza automática de PDFs
+- Sistema de registry
+- Reparo automático de JSON corrompido
+- Logging aprimorado
+
+---
+
+## 📝 Changelog
+
+Todas as mudanças do projeto estão documentadas em:
+- **Root:** [`../CHANGELOG.md`](../CHANGELOG.md) - Mudanças recentes e histórico completo
+
 ---
 
 ## 🎯 Quick Start

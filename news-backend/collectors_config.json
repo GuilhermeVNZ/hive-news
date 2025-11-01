@@ -5,6 +5,7 @@
       "name": "arXiv",
       "enabled": true,
       "api_key": null,
+      "collector_type": null,
       "config": {
         "category": "cs.AI",
         "max_results": 10
@@ -15,6 +16,7 @@
       "name": "PubMed Central",
       "enabled": false,
       "api_key": null,
+      "collector_type": null,
       "config": {}
     },
     {
@@ -22,8 +24,130 @@
       "name": "Semantic Scholar",
       "enabled": false,
       "api_key": null,
+      "collector_type": null,
       "config": {}
+    },
+    {
+      "id": "rss_openai",
+      "name": "OpenAI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://openai.com/blog/rss.xml",
+      "base_url": "https://openai.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_google_ai",
+      "name": "Google AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://blog.research.google/feeds/posts/default",
+      "base_url": "https://blog.research.google",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_nvidia",
+      "name": "NVIDIA News RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://nvidianews.nvidia.com/rss.xml",
+      "base_url": "https://nvidianews.nvidia.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_alibaba_damo",
+      "name": "Alibaba Alizila News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.alizila.com/",
+      "selectors": {
+        "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
+        "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
+        "link": "a",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_anthropic",
+      "name": "Anthropic News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.anthropic.com/news",
+      "selectors": {
+        "article": "article",
+        "content": ".content, article, main",
+        "link": "a[href*='/news/']",
+        "title": "h1, h2"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_meta_ai",
+      "name": "Meta Newsroom",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://about.fb.com/news/",
+      "selectors": {
+        "article": "article, [data-testid*='article'], .news-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/news/'], a[href*='about.fb.com/news/']",
+        "title": "h2, h3, h1, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_deepseek",
+      "name": "DeepSeek Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://deepseek.ai/blog",
+      "selectors": {
+        "article": "article, .post, .blog-item, .news-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .blog-content",
+        "link": "a[href*='/blog/'], a[href*='deepseek.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .blog-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_xai",
+      "name": "X.ai News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://x.ai/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .blog-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/news/'], a[href*='x.ai/news']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
     }
   ],
-  "updated_at": "2025-10-30T22:59:56.680326400+00:00"
+  "updated_at": "2025-11-01T16:56:24.274361300+00:00"
 }

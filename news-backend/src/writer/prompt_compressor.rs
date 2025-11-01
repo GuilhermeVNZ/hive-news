@@ -8,6 +8,7 @@ pub struct PromptCompressor {
     compression_tool_path: PathBuf,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct CompressedPrompt {
     pub original_text: String,
@@ -90,8 +91,8 @@ impl PromptCompressor {
         let has_json_compressed = compressed_text.to_lowercase().contains("json");
         
         if has_json_original && !has_json_compressed {
-            // Add a fixed JSON instruction at the end
-            compressed_text.push_str("\n\n## JSON OUTPUT REQUIRED:\nYou MUST return valid JSON only:\n{{\"title\": \"...\", \"article_text\": \"...\"}}");
+            // Add a fixed JSON instruction at the end with explicit format requirements
+            compressed_text.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{{\"title\": \"...\", \"article_text\": \"...\", \"image_categories\": [...]}}\n⚠️ \"article_text\" MUST be a STRING field at root level (NOT nested in an \"article\" object)");
         }
         
         let compressed_tokens = self.count_tokens(&compressed_text);

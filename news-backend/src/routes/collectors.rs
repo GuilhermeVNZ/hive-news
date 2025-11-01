@@ -1,11 +1,10 @@
 use axum::{extract::Extension, response::Json};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use serde_json::{json, Value};
 use std::sync::Arc;
-use anyhow::Result;
 use std::path::Path;
 
-use crate::utils::config_manager::{ConfigManager, CollectorConfig};
+use crate::utils::config_manager::ConfigManager;
 use crate::utils::site_config_manager::SiteConfigManager;
 
 #[derive(Debug, Deserialize)]
@@ -161,11 +160,15 @@ pub async fn update_collector_sites(
                 let collectors_manager = ConfigManager::new(collectors_path);
                 if let Ok(collectors_config) = collectors_manager.load() {
                     if let Some(base_collector) = collectors_config.collectors.iter().find(|c| c.id == collector_id) {
-                        let mut mapped = crate::utils::site_config_manager::CollectorConfig {
+                        let mapped = crate::utils::site_config_manager::CollectorConfig {
                             id: base_collector.id.clone(),
                             name: base_collector.name.clone(),
                             enabled: true,
                             api_key: base_collector.api_key.clone(),
+                            collector_type: base_collector.collector_type.clone(),
+                            feed_url: base_collector.feed_url.clone(),
+                            base_url: base_collector.base_url.clone(),
+                            selectors: base_collector.selectors.clone(),
                             config: base_collector.config.clone(),
                         };
                         updated_site.collectors.push(mapped);

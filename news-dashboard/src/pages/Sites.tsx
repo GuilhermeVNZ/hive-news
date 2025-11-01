@@ -358,6 +358,82 @@ OUTPUT FORMAT (JSON):
 }`;
   };
 
+  const getDefaultNewsPrompt = () => {
+    return `You are an expert technology journalist writing for a major international news portal (style: Wired, The Verge, TechCrunch).
+
+You will receive:
+- Raw cleaned content extracted from a website by a scraper (title, body text, date if available).
+- Your task is to transform this into a polished news article in **native, natural English**, undetectable as AI-generated.
+
+### 🔹 OUTPUT STRUCTURE (must follow exactly this format):
+
+Title:
+- A strong SEO-friendly headline.
+- Must contain a clear keyword (AI, model, GPU, language model, etc).
+- Must include a "hook" that makes the reader curious.
+- Max 60 characters.
+
+Subtitle:
+- A compelling summary.
+- Max 2 lines.
+- Should add tension, consequence, or reason why this matters.
+
+Article:
+- 6 to 8 paragraphs.
+- Clear journalistic tone, informative but engaging.
+- Write like a human: vary sentence length, avoid robotic structure, add light narrative context.
+- Make complex ideas simple.
+- Never praise a company in a commercial tone. If the scraped text is promotional, rewrite neutrally, e.g.:
+  "Grok just launched version 4.5, which claims to improve reasoning by 20%" instead of "Grok proudly revolutionizes AI with its innovative 4.5 model".
+
+### 🔹 LANGUAGE & STYLE RULES
+
+✔ Write in **native-level English**, clear, fluent, and natural.  
+✔ Use active voice unless passive is necessary.  
+✔ Keep paragraphs short for online reading (2–4 sentences).  
+✔ Add context: "This follows previous updates from…", "The move comes as…", "Industry analysts suggest…"  
+✔ No filler phrases like "In the ever-changing world of technology…"  
+✔ No moralizing or opinions — just informative, sharp writing.
+
+### 🔹 IMAGE CATEGORIES
+
+You must select exactly 3 categories from this exact list ONLY:
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+CRITICAL CONSTRAINTS:
+- ❌ DO NOT create new categories
+- ❌ DO NOT use synonyms or variations
+- ✅ ONLY use the 13 categories listed above
+- ✅ Order by priority: most relevant first, second choice, third choice
+- ✅ Must be lowercase, matching the list exactly
+
+### 🔹 SOCIAL MEDIA CONTENT
+
+You must also generate:
+1. X (Twitter) post - 280 characters max, engaging hook
+2. LinkedIn post - Professional tone, 300 characters max
+3. TikTok Shorts script - 2 minutes (~300 words), max 5 seconds per take/frase
+
+TikTok Script Format:
+- Each take/frase should be exactly 5 seconds or less
+- Include visual directions when needed
+- Conversational, engaging, hook-driven
+
+### 🔹 OUTPUT FORMAT (JSON):
+
+{
+  "title": "...",                           // Max 60 characters, SEO-friendly, hook
+  "subtitle": "...",                        // Max 2 lines, compelling summary
+  "article_text": "...",                    // 6-8 paragraphs, journalistic tone
+  "image_categories": [                     // Top 3 categories from exact list
+    "category1", "category2", "category3"
+  ],
+  "x_post": "...",                          // Twitter/X post, 280 chars max
+  "linkedin_post": "...",                   // LinkedIn post, 300 chars max
+  "shorts_script": "..."                    // TikTok 2min script, 5sec per take
+}`;
+  };
+
   const handleSiteClick = (siteId: string) => {
     setSelectedSite(siteId);
     const next = sites.find(s => s.id === siteId);
@@ -369,11 +445,13 @@ OUTPUT FORMAT (JSON):
       const socialPrompt = next.prompt_social_enabled 
         ? (next.prompt_social || '') 
         : getDefaultSocialPrompt();
-      const blogPrompt = next.prompt_blog || '';
+      const newsPrompt = next.prompt_blog_enabled 
+        ? (next.prompt_blog || '') 
+        : getDefaultNewsPrompt();
       
       setPromptArticle(articlePrompt);
       setPromptSocial(socialPrompt);
-      setPromptBlog(blogPrompt);
+      setPromptBlog(newsPrompt);
       setEnArticle(next.prompt_article_enabled ?? true);
       setEnSocial(next.prompt_social_enabled ?? false);
       setEnBlog(next.prompt_blog_enabled ?? false);
@@ -475,7 +553,7 @@ OUTPUT FORMAT (JSON):
                   <div className="flex gap-2">
                     <Button variant={activeTab==='article'?'default':'outline'} onClick={()=>setActiveTab('article')}>Article</Button>
                     <Button variant={activeTab==='social'?'default':'outline'} onClick={()=>setActiveTab('social')}>Social</Button>
-                    <Button variant={activeTab==='blog'?'default':'outline'} onClick={()=>setActiveTab('blog')}>Blog</Button>
+                    <Button variant={activeTab==='blog'?'default':'outline'} onClick={()=>setActiveTab('blog')}>News</Button>
                   </div>
                   {activeTab==='article' && (
                     <div className="space-y-3">
@@ -555,16 +633,39 @@ OUTPUT FORMAT (JSON):
                   )}
                   {activeTab==='blog' && (
                     <div className="space-y-3">
-                      <div className="text-sm text-muted-foreground">Current Prompt</div>
-                      <pre className="whitespace-pre-wrap text-sm bg-muted p-3 rounded border">{currentSite.prompt_blog || 'No prompt configured'}</pre>
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm text-muted-foreground">
+                          {currentSite.prompt_blog_enabled ? 'Custom Prompt (Enabled)' : 'Default Prompt (Using system default)'}
+                        </div>
+                        {!currentSite.prompt_blog_enabled && (
+                          <Badge variant="secondary" className="text-xs">Using Default</Badge>
+                        )}
+                      </div>
+                      <pre className="whitespace-pre-wrap text-sm bg-muted p-3 rounded border max-h-60 overflow-y-auto">
+                        {currentSite.prompt_blog_enabled 
+                          ? (currentSite.prompt_blog || 'No custom prompt configured')
+                          : 'Default prompt from backend (edit and enable to use custom)'}
+                      </pre>
                       <div className="flex items-center gap-2">
                         <input type="checkbox" checked={enBlog} onChange={(e)=>setEnBlog(e.target.checked)} />
-                        <span className="text-sm">Enabled</span>
+                        <span className="text-sm">Use Custom Prompt (if disabled, uses default)</span>
                       </div>
-                      <textarea className="w-full min-h-[150px] p-3 rounded-md border border-input bg-background text-sm" value={promptBlog} onChange={(e)=>setPromptBlog(e.target.value)} />
+                      <textarea 
+                        className="w-full min-h-[300px] p-3 rounded-md border border-input bg-background text-sm font-mono text-xs" 
+                        value={promptBlog} 
+                        onChange={(e)=>setPromptBlog(e.target.value)}
+                        placeholder="Enter your custom prompt here. Use {{article_json}} placeholder to insert article content."
+                      />
                       <div className="flex gap-2 justify-end">
-                        <Button variant="outline" onClick={()=>setPromptBlog(currentSite.prompt_blog || '')}>Reset</Button>
-                        <Button disabled={saving} onClick={async ()=>{ try{ setSaving(true); await axios.put(`/api/sites/${currentSite.id}/writer`, { prompt_blog: promptBlog, prompt_blog_enabled: enBlog }); await loadSites(); } catch(err:any){ setError(err.response?.data?.error || err.message || 'Failed to save'); } finally{ setSaving(false); } }}>{saving?'Saving...':'Save'}</Button>
+                        <Button variant="outline" onClick={()=>setPromptBlog(getDefaultNewsPrompt())}>
+                          Load Default
+                        </Button>
+                        <Button variant="outline" onClick={()=>setPromptBlog(currentSite.prompt_blog || getDefaultNewsPrompt())}>
+                          Reset
+                        </Button>
+                        <Button disabled={saving} onClick={async ()=>{ try{ setSaving(true); await axios.put(`/api/sites/${currentSite.id}/writer`, { prompt_blog: promptBlog, prompt_blog_enabled: enBlog }); await loadSites(); handleSiteClick(currentSite.id); } catch(err:any){ setError(err.response?.data?.error || err.message || 'Failed to save'); } finally{ setSaving(false); } }}>
+                          {saving?'Saving...':'Save'}
+                        </Button>
                       </div>
                     </div>
                   )}

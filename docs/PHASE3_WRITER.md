@@ -584,3 +584,85 @@ DEEPSEEK_API_KEY=sk-...         # API authentication
 
 **Version:** 2.0 (Site-based organization + Image extraction + Anti-duplication)
 
+---
+
+## Changelog - Recent Improvements (2025-11-01)
+
+### 🎉 Novas Funcionalidades
+
+**1. Pipeline Debug Mode**
+- Novo comando `pipeline-debug` para logging ultra-detalhado
+- Logs com timestamps e separadores visuais
+- Acompanhamento completo de todas as etapas
+
+**2. Tratamento Avançado de Erros da API**
+- Logs detalhados quando API retorna erros
+- Validação completa de resposta (choices, content, formato)
+- Mensagens de erro com contexto completo
+
+**3. Suporte a Formatos JSON Alternativos**
+- Aceita formato `article` nested quando API retorna formato diferente
+- Reconstrução inteligente de `article_text` preservando toda informação
+- Logs de aviso quando formato incorreto é detectado
+
+**4. Limpeza Automática de Markdown**
+- Remoção automática de formatação markdown indesejada (**Label:**)
+- Aplicada durante salvamento de artigos
+- Função `clean_markdown_formatting()` em `file_writer.rs`
+
+**5. Binário Rust para Limpeza**
+- Novo binário `clean-articles` para limpar artigos existentes
+- Comando: `cargo run --bin clean-articles -- <diretório>` ou sem parâmetros para todos
+
+### 🔧 Melhorias
+
+**Logging Aprimorado:**
+- Logs detalhados para cada etapa do processamento
+- Progresso em tempo real (ex: `[1/40] Processing: ...`)
+- Duração de cada etapa
+- Estatísticas de compressão de tokens
+
+**Tratamento de Erros:**
+- Mensagens de erro mais informativas
+- Contexto completo (PDF path, tokens, API response)
+- Avisos quando formato incorreto é detectado mas processado
+
+**Reconstrução de Article Text:**
+- Extração de todos os campos string do objeto `article` nested
+- Ordenação lógica: opening_hook → key_finding → methodology → results → conclusion
+- Remoção de duplicatas
+- Concatenação natural sem formatação markdown
+
+**Limpeza de Markdown:**
+- Remove padrões `**Label:**` automaticamente
+- Limpa espaços extras entre parágrafos
+- Garante texto limpo e legível
+
+### 🐛 Correções
+
+- **Registry Save**: Sempre salva registry após cleanup, garantindo consistência
+- **Formato JSON**: Aceita formatos alternativos da API sem quebrar pipeline
+- **Formatação Markdown**: Removida automaticamente durante salvamento
+- **Logging**: Logs suficientes para debugging em todas as etapas
+
+### 📝 Mudanças Técnicas
+
+**Dependências:**
+- `sqlx`: `0.7` → `0.8` (nova API `PgPoolOptions`)
+- Feature flags ajustados: `runtime-tokio` + `tls-native-tls`
+
+**Código:**
+- Função `clean_markdown_formatting()` em `file_writer.rs`
+- Reconstrução inteligente de `article_text` em `deepseek_client.rs`
+- Logs detalhados em `content_generator.rs` e `main.rs`
+- Novo binário `clean-articles` em `src/bin/clean_articles.rs`
+
+### 📚 Documentação
+
+- CHANGELOG.md criado com todas as mudanças
+- Documentação atualizada com melhorias recentes
+
+---
+
+**Version:** 2.1 (Enhanced logging + Error handling + Markdown cleanup + JSON format support)
+

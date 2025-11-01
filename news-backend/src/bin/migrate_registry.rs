@@ -85,6 +85,7 @@ fn main() -> Result<()> {
                             published_at: Some(Utc::now()), // Aproximação
                             output_dir: Some(article_dir.clone()),
                             hidden: Some(false),
+                            featured: Some(false),
                             destinations: None,
                         };
 
@@ -154,6 +155,7 @@ fn main() -> Result<()> {
                                 published_at: None,
                                 output_dir: None,
                                 hidden: Some(false),
+                                featured: Some(false),
                                 destinations: None,
                             };
                             
@@ -204,6 +206,7 @@ fn main() -> Result<()> {
                         published_at: None,
                         output_dir: None,
                         hidden: Some(false),
+                        featured: Some(false),
                         destinations: None,
                     };
                     

@@ -83,12 +83,35 @@ Ver índice completo: `docs/README.md`
 
 ## 🎯 Comandos Disponíveis
 
+### Sistema
 ```bash
 cargo run --bin start start       # Sistema completo
 cargo run --bin start backend     # Apenas backend
 cargo run --bin start frontend    # Apenas dashboard
 cargo run --bin start vectorizer  # Apenas vectorizer
 cargo run --bin start status      # Verificar status
+```
+
+### Pipeline de News
+```bash
+cd news-backend
+cargo run --bin news-backend -- pipeline           # Pipeline completo (collect → filter → write → cleanup)
+cargo run --bin news-backend -- pipeline-debug     # Pipeline com logging ultra-detalhado
+cargo run --bin news-backend -- write-news         # Processar apenas news (JSONs de RSS/HTML)
+cargo run --bin news-backend -- cleanup-news       # Limpar apenas news processadas
+```
+
+### Pipeline de Artigos (PDFs)
+```bash
+cd news-backend
+cargo run --bin news-backend -- write              # Processar PDFs aprovados (filtered/)
+```
+
+### Utilitários
+```bash
+cd news-backend
+cargo run --bin clean-articles                     # Limpar formatação markdown de todos os artigos
+cargo run --bin clean-articles -- <diretório>      # Limpar artigo específico
 ```
 
 ## 🏗️ Arquitetura

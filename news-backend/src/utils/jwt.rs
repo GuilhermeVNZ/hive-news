@@ -41,6 +41,7 @@ impl JwtService {
     }
 
     /// Verify JWT token and extract claims
+    #[allow(dead_code)]
     pub fn verify_token(token: &str) -> Result<Claims, jsonwebtoken::errors::Error> {
         let secret = Self::get_secret();
         let validation = Validation::default();

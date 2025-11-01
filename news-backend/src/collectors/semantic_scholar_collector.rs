@@ -7,6 +7,7 @@ use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Result, Context};
 use serde::Deserialize;
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct SemanticScholarCollector {
     client: Client,
@@ -14,6 +15,7 @@ pub struct SemanticScholarCollector {
     api_key: Option<String>,
 }
 
+#[allow(non_snake_case)]
 #[derive(Debug, Deserialize)]
 struct SemanticScholarPaper {
     paperId: Option<String>,
@@ -21,6 +23,7 @@ struct SemanticScholarPaper {
     authors: Option<Vec<SemanticScholarAuthor>>,
     #[serde(rename = "abstract")]
     abstract_text: Option<String>,
+    #[allow(dead_code)]
     venue: Option<String>,
     year: Option<i32>,
     url: Option<String>,
@@ -38,6 +41,7 @@ struct OpenAccessPdf {
     url: Option<String>,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct SemanticScholarResponse {
     total: Option<usize>,
@@ -60,7 +64,7 @@ impl SemanticScholarCollector {
         &self,
         limit: usize,
         offset: usize,
-        categories: Option<Vec<String>>,
+        _categories: Option<Vec<String>>,
     ) -> Result<Vec<ArticleMetadata>> {
         println!("📥 Fetching recent papers from Semantic Scholar (Technology filter active)...");
         
@@ -87,7 +91,7 @@ impl SemanticScholarCollector {
         let effective_limit = if has_key { limit.min(20) } else { limit.min(5) };
         let limit_str = effective_limit.to_string();
         let offset_str = offset.to_string();
-        let mut params = vec![
+        let params = vec![
             ("query", query),
             ("limit", &limit_str),
             ("offset", &offset_str),
@@ -204,6 +208,11 @@ impl SemanticScholarCollector {
                 author: if authors_str.is_empty() { None } else { Some(authors_str) },
                 summary: paper.abstract_text,
                 published_date,
+                image_url: None,
+                source_type: Some("semantic_scholar".to_string()),
+                content_html: None,
+                content_text: None,
+                category: None,
             });
         }
         

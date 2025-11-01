@@ -7,6 +7,7 @@ use std::path::{Path, PathBuf};
 use tracing::{error, info, warn};
 
 /// Serviço de coleta de documentos de fontes externas
+#[allow(dead_code)]
 pub struct CollectorService {
     db: PgPool,
     client: reqwest::Client,
@@ -16,6 +17,7 @@ pub struct CollectorService {
     arxiv_collector: ArxivCollector,
 }
 
+#[allow(dead_code)]
 impl CollectorService {
     /// Cria uma nova instância do CollectorService
     pub fn new(db: PgPool, download_dir: impl AsRef<Path>) -> Self {
@@ -138,7 +140,7 @@ impl CollectorService {
     pub async fn download_article(
         &self,
         article: &ArticleMetadata,
-        portal: &str,
+        _portal: &str,
         source: &str,
     ) -> Result<PathBuf> {
         // Criar data no formato YYYY-MM-DD
@@ -337,6 +339,7 @@ impl CollectorService {
 }
 
 /// Configuração de source (placeholder)
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 struct SourceConfig {
     name: String,
@@ -345,6 +348,7 @@ struct SourceConfig {
 }
 
 /// Sanitiza nome de arquivo para evitar caracteres inválidos
+#[allow(dead_code)]
 fn sanitize_filename(name: &str) -> Option<String> {
     let sanitized = name
         .chars()

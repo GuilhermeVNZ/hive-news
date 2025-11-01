@@ -1,28 +1,32 @@
 use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Context, Result};
 use reqwest::Client;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use std::path::PathBuf;
-use tracing::{error, info, warn};
+use tracing::info;
 
 /// Cliente para coleta de artigos do arXiv
+#[allow(dead_code)]
 pub struct ArxivCollector {
     client: Client,
     temp_dir: PathBuf,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct ArxivFeed {
     #[serde(rename = "feed")]
     feed: ArxivFeedContent,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct ArxivFeedContent {
     #[serde(rename = "entry")]
     entry: Vec<ArxivEntry>,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct ArxivEntry {
     #[serde(rename = "id")]
@@ -37,6 +41,7 @@ struct ArxivEntry {
     authors: Vec<ArxivAuthor>,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct ArxivAuthor {
     name: String,
@@ -56,6 +61,7 @@ impl ArxivCollector {
     }
 
     /// Busca os 10 artigos mais recentes de uma categoria
+    #[allow(dead_code)]
     pub async fn fetch_recent_papers(
         &self,
         category: &str,
@@ -90,6 +96,7 @@ impl ArxivCollector {
     }
 
     /// Faz parsing do XML do arXiv
+    #[allow(dead_code)]
     fn parse_arxiv_xml(&self, xml: &str) -> Result<Vec<ArticleMetadata>> {
         use regex::Regex;
 
@@ -144,6 +151,11 @@ impl ArxivCollector {
                         published_date: published,
                         author: Some("arXiv".to_string()),
                         summary: Some(summary),
+                        image_url: None,
+                        source_type: Some("arxiv".to_string()),
+                        content_html: None,
+                        content_text: None,
+                        category: None,
                     });
 
                     info!(paper_id = %paper_id, title = %title_clone, "Found paper");
@@ -155,6 +167,7 @@ impl ArxivCollector {
     }
 
     /// Obtém URL de download do PDF a partir do ID do paper
+    #[allow(dead_code)]
     pub fn get_pdf_url(&self, paper_id: &str) -> String {
         format!("https://arxiv.org/pdf/{}.pdf", paper_id)
     }

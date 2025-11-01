@@ -5,16 +5,18 @@ use std::path::{Path, PathBuf};
 use crate::models::raw_document::ArticleMetadata;
 use crate::utils::article_registry::RegistryManager;
 use crate::utils::site_config_manager::SiteConfigManager;
-use super::deepseek_client::{DeepSeekClient, ArticleResponse, SocialResponse};
+use super::deepseek_client::DeepSeekClient;
 use super::file_writer::{save_article, save_title, save_subtitle, save_linkedin, save_x, save_shorts_script, save_image_categories, save_source};
 use super::prompt_compressor::PromptCompressor;
 use serde_json;
 
+#[allow(dead_code)]
 pub struct NewsWriterService {
     output_base: PathBuf,
     registry: RegistryManager,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct NewsWriterResult {
     pub output_dir: PathBuf,
@@ -68,20 +70,35 @@ impl NewsWriterService {
             return Err(anyhow::anyhow!("No destinations configured for article {}", article.id));
         }
 
+        println!("  📋 Loading article JSON: {}", article_json_path.display());
+        println!("  📝 Title: {}", article.title);
+        println!("  🔗 URL: {}", article.url);
+        println!("  🎯 Destinations: {:?}", destinations);
+        println!("");
+
         // Load site configurations
+        println!("  ⚙️  Loading site configurations...");
         let config_path = Path::new("system_config.json");
         let config_manager = SiteConfigManager::new(config_path);
+        println!("  ✅ Config loaded\n");
         
         let mut results = Vec::new();
 
         // Process article for each destination site
-        for site_id in destinations {
-            match self.process_article_for_site(&article, &site_id, &config_manager).await {
+        println!("  🔄 Processing for {} destination(s)...\n", destinations.len());
+        
+        for (idx, site_id) in destinations.iter().enumerate() {
+            println!("  ┌─ [DESTINATION {}/{}] {}", idx + 1, destinations.len(), site_id);
+            
+            match self.process_article_for_site(&article, site_id, &config_manager).await {
                 Ok(result) => {
+                    println!("  │  ✅ Successfully generated for {}", site_id);
                     results.push(result);
+                    println!("  └─\n");
                 }
                 Err(e) => {
-                    eprintln!("⚠️  Failed to process article for site {}: {}", site_id, e);
+                    eprintln!("  │  ❌ Failed to process for {}: {}", site_id, e);
+                    eprintln!("  └─\n");
                     // Continue with other sites even if one fails
                 }
             }
@@ -129,59 +146,87 @@ impl NewsWriterService {
         let article_json = serde_json::to_string_pretty(article)?;
         let full_prompt = format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json);
 
-        println!("  📝 Generating content for site: {} ({})", site_id, site_config.name);
-        println!("     Using custom blog prompt: {}", site_config.prompt_blog_enabled.unwrap_or(false));
+        println!("    ┌─ [SITE {}] {}", site_id, site_config.name);
+        println!("    │  📝 Generating content...");
+        println!("    │  📄 Custom blog prompt: {}", site_config.prompt_blog_enabled.unwrap_or(false));
+        println!("    │  🔑 API: {} ({})", base_url, model);
+        println!("    │  📊 Prompt size: {} characters", full_prompt.len());
 
         // Compress prompt if enabled
         let final_prompt = if site_config.writer.use_compressor.unwrap_or(false) {
-            println!("     Compressing prompt...");
+            println!("    │  🗜️  Compressing prompt...");
             let compressor = PromptCompressor::new()
                 .context("Failed to initialize prompt compressor")?;
             
+            let compression_start = std::time::Instant::now();
             let compressed = compressor.compress(&full_prompt)
                 .context("Failed to compress prompt")?;
+            let compression_duration = compression_start.elapsed();
             
-            println!("     ✅ Prompt compressed: {} → {} tokens ({:.1}% reduction)", 
+            println!("    │  ✅ Prompt compressed in {:?}: {} → {} tokens ({:.1}% reduction)", 
+                compression_duration,
                 compressed.original_tokens, 
                 compressed.compressed_tokens,
                 compressed.compression_ratio * 100.0);
             
             compressed.compressed_text
         } else {
+            println!("    │  ⏭️  Prompt compression disabled");
             full_prompt
         };
 
         // Create DeepSeek client for this site
+        println!("    │  🔧 Creating DeepSeek client...");
         let deepseek_client = DeepSeekClient::new(api_key, base_url, model);
 
         // Generate article content (includes social media content in response)
+        println!("    │  🤖 Calling DeepSeek API...");
+        let api_start = std::time::Instant::now();
         let article_response = deepseek_client.generate_article(&final_prompt).await
             .context("Failed to generate article content")?;
+        let api_duration = api_start.elapsed();
+        println!("    │  ✅ API response received in {:?}", api_duration);
 
         // Create output directory
+        println!("    │  📁 Creating output directory...");
         let site_output_dir = Self::get_site_output_dir(&site_id);
         let article_output_dir = site_output_dir.join(&article.id);
         tokio::fs::create_dir_all(&article_output_dir).await
             .context("Failed to create article output directory")?;
+        println!("    │  ✅ Directory created: {}", article_output_dir.display());
 
         // Detect article source/category
+        println!("    │  🔍 Detecting source category...");
         let source_category = Self::detect_source_category(&article.url, &article.title);
+        println!("    │  ✅ Source: {}", source_category);
 
         // Save all content to separate files
+        println!("    │  💾 Saving files...");
+        println!("    │  │  📝 Saving title.txt...");
         save_title(&article_output_dir, &article_response.title).await?;
+        println!("    │  │  📝 Saving subtitle.txt...");
         save_subtitle(&article_output_dir, &article_response.subtitle).await?;
+        println!("    │  │  📄 Saving article.md...");
         save_article(&article_output_dir, &article_response.article_text).await?;
+        println!("    │  │  🖼️  Saving image_categories.txt...");
         save_image_categories(&article_output_dir, &article_response.image_categories).await?;
+        println!("    │  │  🏷️  Saving source.txt...");
         save_source(&article_output_dir, &source_category).await?;
+        println!("    │  │  🐦 Saving x.txt...");
         save_x(&article_output_dir, &article_response.x_post).await?;
+        println!("    │  │  💼 Saving linkedin.txt...");
         save_linkedin(&article_output_dir, &article_response.linkedin_post).await?;
+        println!("    │  │  🎬 Saving shorts_script.txt...");
         save_shorts_script(&article_output_dir, &article_response.shorts_script).await?;
+        println!("    │  ✅ All files saved");
 
         // Update registry to mark as published
+        println!("    │  📝 Updating registry...");
         self.registry.register_published(&article.id, article_output_dir.clone())
             .context("Failed to register article as published")?;
+        println!("    │  ✅ Registry updated");
 
-        println!("  ✅ Content saved → {}", article_output_dir.display());
+        println!("    └─ ✅ Content saved → {}\n", article_output_dir.display());
 
         Ok(NewsWriterResult {
             output_dir: article_output_dir,
@@ -296,6 +341,8 @@ impl NewsWriterService {
                 .file_stem()
                 .and_then(|s| s.to_str())
                 .unwrap_or("unknown");
+            
+            println!("  📄 Processing cleanup for: {}", article_id);
 
             // Get metadata from registry
             let metadata = self.registry.get_metadata(article_id);
@@ -305,62 +352,124 @@ impl NewsWriterService {
                 if let Some(output_dir) = &meta.output_dir {
                     // Verify all required files exist
                     let mut all_files_exist = true;
+                    let mut missing_files = Vec::new();
                     for file_name in &required_files {
                         let file_path = output_dir.join(file_name);
                         if !file_path.exists() {
                             all_files_exist = false;
-                            eprintln!("  ⚠️  Missing file for {}: {}", article_id, file_name);
-                            break;
+                            missing_files.push(file_name);
                         }
                     }
 
                     if all_files_exist {
                         stats.verified += 1;
+                    } else {
+                        eprintln!("  ⚠️  Article {} has {} missing files: {:?}", article_id, missing_files.len(), missing_files);
+                    }
 
-                        // Read title and subtitle from output files for registry update
-                        let title_file = output_dir.join("title.txt");
-                        let subtitle_file = output_dir.join("subtitle.txt");
+                    // Read title and subtitle from output files for registry update
+                    let title_file = output_dir.join("title.txt");
+                    let subtitle_file = output_dir.join("subtitle.txt");
 
-                        // Try to read and update registry with more information
-                        let mut should_update = false;
-                        if let Ok(title) = tokio::fs::read_to_string(&title_file).await {
-                            if let Ok(subtitle) = tokio::fs::read_to_string(&subtitle_file).await {
-                                // Check if registry needs update
-                                if let Some(current_meta) = self.registry.get_metadata(article_id) {
-                                    if current_meta.title.is_empty() || 
-                                       current_meta.title != title.trim() {
-                                        // We can't directly update, but mark as updated
-                                        should_update = true;
-                                    }
+                    // Try to read and update registry with more information
+                    let mut should_update = false;
+                    if let Ok(title) = tokio::fs::read_to_string(&title_file).await {
+                        if let Ok(_subtitle) = tokio::fs::read_to_string(&subtitle_file).await {
+                            // Check if registry needs update
+                            if let Some(current_meta) = self.registry.get_metadata(article_id) {
+                                if current_meta.title.is_empty() || 
+                                   current_meta.title != title.trim() {
+                                    // We can't directly update, but mark as updated
+                                    should_update = true;
                                 }
                             }
                         }
+                    }
 
-                        if should_update {
-                            stats.updated += 1;
+                    if should_update {
+                        stats.updated += 1;
+                    }
+
+                    // Remove JSON from raw directory if article was published
+                    // Even if some files are missing, we remove the JSON since processing started
+                    if json_path.exists() {
+                        let path_to_remove = json_path.clone();
+                        if let Err(e) = tokio::fs::remove_file(&path_to_remove).await {
+                            eprintln!("  ⚠️  Failed to remove {}: {}", path_to_remove.display(), e);
+                        } else {
+                            stats.removed += 1;
+                            println!("  🗑️  Removed: {}", path_to_remove.display());
                         }
-
-                        // Remove JSON from raw directory if all files are verified
-                        if json_path.exists() {
-                            if let Err(e) = tokio::fs::remove_file(json_path).await {
-                                eprintln!("  ⚠️  Failed to remove {}: {}", json_path.display(), e);
-                            } else {
-                                stats.removed += 1;
-                                println!("  🗑️  Removed: {}", json_path.display());
+                    } else {
+                        // Try to find JSON in any date subfolder
+                        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+                        let raw_dir = base_dir.join("raw");
+                        
+                        if raw_dir.exists() {
+                            let mut found_json: Option<PathBuf> = None;
+                            let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
+                            
+                            while let Some(date_entry) = date_entries.next_entry().await? {
+                                let date_dir = date_entry.path();
+                                if !date_dir.is_dir() {
+                                    continue;
+                                }
+                                
+                                let potential_json = date_dir.join(format!("{}.json", article_id));
+                                if potential_json.exists() {
+                                    found_json = Some(potential_json);
+                                    println!("  🔍 Found JSON in date folder: {}", found_json.as_ref().unwrap().display());
+                                    break;
+                                }
                             }
+                            
+                            if let Some(found_path) = found_json {
+                                if let Err(e) = tokio::fs::remove_file(&found_path).await {
+                                    eprintln!("  ⚠️  Failed to remove {}: {}", found_path.display(), e);
+                                } else {
+                                    stats.removed += 1;
+                                    println!("  🗑️  Removed: {}", found_path.display());
+                                }
+                            } else {
+                                println!("  ⚠️  JSON not found for {} (searched in all date folders)", article_id);
+                            }
+                        } else {
+                            println!("  ⚠️  Raw directory does not exist: {}", raw_dir.display());
                         }
                     }
                 } else {
                     eprintln!("  ⚠️  Article {} has no output_dir (not published?)", article_id);
+                    // Still try to remove JSON if it exists
+                    if json_path.exists() {
+                        let path_to_remove = json_path.clone();
+                        if let Err(e) = tokio::fs::remove_file(&path_to_remove).await {
+                            eprintln!("  ⚠️  Failed to remove {}: {}", path_to_remove.display(), e);
+                        } else {
+                            stats.removed += 1;
+                            println!("  🗑️  Removed (unpublished): {}", path_to_remove.display());
+                        }
+                    }
                 }
             } else {
                 eprintln!("  ⚠️  Article {} not found in registry", article_id);
+                // Still try to remove JSON if it exists
+                if json_path.exists() {
+                    let path_to_remove = json_path.clone();
+                    if let Err(e) = tokio::fs::remove_file(&path_to_remove).await {
+                        eprintln!("  ⚠️  Failed to remove {}: {}", path_to_remove.display(), e);
+                    } else {
+                        stats.removed += 1;
+                        println!("  🗑️  Removed (not in registry): {}", path_to_remove.display());
+                    }
+                }
             }
         }
 
-        // Save registry after updates
-        if stats.updated > 0 {
-            self.registry.save()?;
+        // Always save registry after cleanup (even if no content updates, registry may have changed)
+        // This ensures the registry reflects the current state after cleanup
+        self.registry.save()?;
+        if stats.removed > 0 {
+            println!("  💾 Registry saved after cleanup ({} files removed)", stats.removed);
         }
 
         Ok(stats)

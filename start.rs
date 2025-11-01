@@ -46,7 +46,7 @@ fn start_full_system() {
     
     // Etapa 4: Iniciar Backend
     println!("\n🔧 Step 3: Starting Backend Server...");
-    println!("   → Running backend on http://localhost:3001");
+    println!("   → Running backend on http://localhost:3005");
     start_backend_background();
     
     // Etapa 5: Aguardar backend estar pronto
@@ -69,18 +69,24 @@ fn start_full_system() {
     println!("\n✅ News System is FULLY OPERATIONAL!");
     println!("=====================================");
     println!("   🔍 Vectorizer:     http://localhost:15002");
-    println!("   🔧 Backend API:    http://localhost:3001");
+    println!("   🔧 Backend API:    http://localhost:3005");
     println!("   🎨 Dashboard:      http://localhost:1420");
     println!("   🎯 Orchestrator:   ACTIVE");
     println!("   ⏰ Scheduler:      CONFIGURED");
     println!("   📊 Monitor:        RUNNING");
     println!("\n   💡 Access Dashboard: http://localhost:1420");
     
-    // Etapa 8: Iniciar Pipeline Automático
-    println!("\n🚀 Step 8: Starting Automatic Pipeline...");
-    println!("   📥 Phase 1: Collect papers from arXiv");
-    println!("   🔍 Phase 2: Filter and validate papers");
-    println!("   ✍️  Phase 3: Generate content with DeepSeek");
+    // Etapa 8: Iniciar Pipeline Automático (Artigos + News em paralelo)
+    println!("\n🚀 Step 8: Starting Automatic Pipelines...");
+    println!("   📄 Articles Pipeline:");
+    println!("      📥 Phase 1: Collect papers from arXiv (only)");
+    println!("      🔍 Phase 2: Filter and validate papers");
+    println!("      ✍️  Phase 3: Generate content with DeepSeek");
+    println!("   📰 News Pipeline (parallel):");
+    println!("      📥 Phase 1: Collect news from RSS/HTML sources");
+    println!("      🔍 Phase 2: Filter duplicates");
+    println!("      ✍️  Phase 3: Generate news articles");
+    println!("      🧹 Phase 4: Cleanup processed files");
     
     // Executar pipeline em background
     std::thread::spawn(|| {
@@ -129,11 +135,11 @@ fn start_backend_background() {
         return;
     }
 
-    println!("   Running: cd {} && cargo run", backend_path);
+    println!("   Running: cd {} && cargo run --bin news-backend", backend_path);
     // Em produção, executaria com spawn em background
     std::thread::spawn(|| {
         Command::new("cmd")
-            .args(&["/C", "cd news-backend && cargo run"])
+            .args(&["/C", "cd news-backend && cargo run --bin news-backend"])
             .stdout(Stdio::piped())
             .spawn()
             .expect("Failed to start backend");
@@ -193,7 +199,7 @@ fn start_dashboard_background() {
 fn monitor_system() {
     let metrics = HashMap::from([
         ("Vectorizer", "http://localhost:15002"),
-        ("Backend API", "http://localhost:3001"),
+        ("Backend API", "http://localhost:3005"),
         ("Dashboard", "http://localhost:1420"),
         ("Database", "connected"),
         ("Collector", "idle"),
@@ -208,7 +214,7 @@ fn monitor_system() {
 fn start_backend() {
     println!("🔧 Starting Backend Server...");
     println!("Run: cd news-backend && cargo run");
-    println!("Server will be available at: http://localhost:3001");
+    println!("Server will be available at: http://localhost:3005");
 }
 
 fn start_dashboard() {
@@ -294,34 +300,33 @@ cargo run --bin news-backend filter
 }
 
 fn run_writer() {
-    println!("✍️  DeepSeek Writer - Processing filtered papers\n");
+    println!("✍️  [ARTICLES] DeepSeek Writer - Processing filtered papers\n");
     
     let ps_script = r#"
 cd G:\Hive-Hub\News-main\news-backend;
 $env:RUST_LOG="info";
 $env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
 $env:WRITER_DEFAULT_SITE="AIResearch";
-cargo run --bin news-backend write
+cargo run --bin news-backend write 2>&1
 "#;
     
-    let output = Command::new("powershell")
+    // Executar com output em tempo real (sem bufferizar)
+    let mut child = Command::new("powershell")
         .args(&["-Command", ps_script])
-        .output()
+        .stdout(Stdio::inherit())  // Herdar stdout para ver em tempo real
+        .stderr(Stdio::inherit())  // Herdar stderr para ver em tempo real
+        .spawn()
         .expect("Failed to execute writer");
     
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    let stderr = String::from_utf8_lossy(&output.stderr);
+    // Aguardar processo terminar
+    let status = child.wait().expect("Failed to wait for writer");
     
-    println!("{}", stdout);
-    if !stderr.is_empty() {
-        eprintln!("{}", stderr);
-    }
-    
-    if output.status.success() {
-        println!("\n✅ Content generation completed!");
-        println!("   Output: G:\\Hive-Hub\\News-main\\output\\news\\");
+    println!("");
+    if status.success() {
+        println!("✅ [ARTICLES] Content generation completed!");
+        println!("   Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
     } else {
-        println!("\n⚠️  Content generation had issues");
+        println!("⚠️  [ARTICLES] Content generation had issues (exit code: {:?})", status.code());
         println!("   Check output above for details");
     }
 }
@@ -352,7 +357,7 @@ fn check_system_status() {
 
     let components = vec![
         ("Vectorizer", "http://localhost:15002"),
-        ("Backend API", "http://localhost:3001"),
+        ("Backend API", "http://localhost:3005"),
         ("Dashboard", "http://localhost:1420"),
         ("Database", "PostgreSQL"),
         ("Collector Service", "News-backend"),
@@ -407,7 +412,9 @@ fn execute_full_pipeline() {
     println!("\n\n🔄 Starting Automatic Pipeline Loop");
     println!("=====================================");
     println!("   ⏰ Interval: 15 minutes (900 seconds)");
-    println!("   🚀 Running continuously...\n");
+    println!("   🚀 Running continuously...");
+    println!("   📄 Articles Pipeline: Active");
+    println!("   📰 News Pipeline: Active (parallel)\n");
     
     let mut cycle = 1;
     
@@ -419,68 +426,38 @@ fn execute_full_pipeline() {
         println!("⏱️  Time: {}", get_current_time());
         println!("{}", "=".repeat(70));
         
-        // FASE 1: Collector - arXiv
-        println!("\n📥 Phase 1: Collecting papers from arXiv...");
-        let ps_script_collect = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-cargo run --bin news-backend collect
-"#;
-        // FASE 1b: Collector - PMC (safe: 1 paper)
-        println!("\n📥 Phase 1b: Collecting papers from PubMed Central (safe mode)...");
-        let ps_collect_pmc = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-cargo run --bin news-backend collect-pmc
-"#;
-        let out_pmc = Command::new("powershell").args(&["-Command", ps_collect_pmc]).output().expect("Failed to execute PMC collector");
-        println!("{}", String::from_utf8_lossy(&out_pmc.stdout));
-        if !out_pmc.stderr.is_empty() { eprintln!("{}", String::from_utf8_lossy(&out_pmc.stderr)); }
-
-        // FASE 1c: Collector - Semantic Scholar (safe: 1 paper)
-        println!("\n📥 Phase 1c: Collecting papers from Semantic Scholar (safe mode)...");
-        let ps_collect_ss = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-cargo run --bin news-backend collect-ss
-"#;
-        let out_ss = Command::new("powershell").args(&["-Command", ps_collect_ss]).output().expect("Failed to execute Semantic Scholar collector");
-        println!("{}", String::from_utf8_lossy(&out_ss.stdout));
-        if !out_ss.stderr.is_empty() { eprintln!("{}", String::from_utf8_lossy(&out_ss.stderr)); }
-
-        let output = Command::new("powershell")
-            .args(&["-Command", ps_script_collect])
-            .output()
-            .expect("Failed to execute collector");
+        // Executar pipelines em paralelo usando threads
+        println!("\n🚀 Starting parallel pipelines...");
+        println!("   📄 Articles pipeline: Thread spawned");
+        println!("   📰 News pipeline: Thread spawned\n");
         
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        let stderr = String::from_utf8_lossy(&output.stderr);
+        let papers_pipeline_handle = std::thread::spawn(|| {
+            execute_papers_pipeline()
+        });
         
-        println!("{}", stdout);
-        if !stderr.is_empty() {
-            eprintln!("{}", stderr);
-        }
+        let news_pipeline_handle = std::thread::spawn(|| {
+            execute_news_pipeline()
+        });
         
-        let collection_success = output.status.success();
+        // Aguardar ambos os pipelines terminarem
+        println!("⏳ Waiting for both pipelines to complete...\n");
+        let papers_result = papers_pipeline_handle.join();
+        let news_result = news_pipeline_handle.join();
         
-        if collection_success {
-            println!("\n✅ Collection completed!");
-            println!("   Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+        // Verificar se houve erros
+        println!("\n📊 Pipeline Results Summary:");
+        if let Err(e) = papers_result {
+            eprintln!("   ❌ [ARTICLES] Papers pipeline thread error: {:?}", e);
         } else {
-            println!("\n⚠️  Collection had issues (but continuing pipeline anyway)");
-            println!("   Check output above for details");
-            println!("   Will still run Filter and Writer for existing PDFs");
+            println!("   ✅ [ARTICLES] Papers pipeline thread completed");
         }
         
-        // FASE 2: Filter - SEMPRE executar, mesmo se Collector não encontrou novos artigos
-        // Isso garante que PDFs pendentes sejam processados
-        println!("\n🔍 Phase 2: Filtering and validating papers...");
-        run_filter();
-        
-        // FASE 3: Writer - SEMPRE executar, mesmo se não encontrou novos artigos
-        // Isso garante que PDFs filtrados pendentes sejam processados
-        println!("\n✍️  Phase 3: Generating content with DeepSeek...");
-        run_writer();
+        if let Err(e) = news_result {
+            eprintln!("   ❌ [NEWS] News pipeline thread error: {:?}", e);
+        } else {
+            println!("   ✅ [NEWS] News pipeline thread completed");
+        }
+        println!("");
         
         let execution_time = start_time.elapsed();
         let next_run = chrono::Local::now() + chrono::Duration::minutes(15);
@@ -490,6 +467,7 @@ cargo run --bin news-backend collect-ss
         println!("⏱️  Execution time: {:?}", execution_time);
         println!("⏰ Next cycle: {}", next_run.format("%Y-%m-%d %H:%M:%S"));
         println!("📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
+        println!("📰 News Output: G:\\Hive-Hub\\News-main\\output\\ScienceAI\\");
         println!("{}", "=".repeat(70));
         
         cycle += 1;
@@ -498,6 +476,151 @@ cargo run --bin news-backend collect-ss
         println!("\n⏳ Waiting 15 minutes until next cycle...\n");
         std::thread::sleep(std::time::Duration::from_secs(900)); // 15 minutos
     }
+}
+
+fn execute_papers_pipeline() {
+    println!("\n📄 [ARTICLES PIPELINE] ======================================");
+    println!("📄 [ARTICLES] Starting papers collection and processing...");
+    println!("📄 [ARTICLES PIPELINE] ======================================\n");
+    
+    // FASE 1: Collector - arXiv (apenas arXiv, conforme solicitado)
+    println!("📄 [ARTICLES] Phase 1: Collecting papers from arXiv...");
+    let ps_script_collect = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+Write-Host "[ARTICLES] Executing: cargo run --bin news-backend collect" -ForegroundColor Cyan;
+cargo run --bin news-backend collect
+"#;
+    
+    let start_time = std::time::Instant::now();
+    
+    let output = Command::new("powershell")
+        .args(&["-Command", ps_script_collect])
+        .output()
+        .expect("Failed to execute collector");
+    
+    let duration = start_time.elapsed();
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    
+    println!("📄 [ARTICLES] Collection completed in {:?}", duration);
+    println!("📄 [ARTICLES] Exit code: {:?}", output.status.code());
+    
+    // Exibir output completo
+    if !stdout.is_empty() {
+        for line in stdout.lines() {
+            let trimmed = line.trim();
+            if !trimmed.is_empty() {
+                println!("📄 [ARTICLES] {}", line);
+            }
+        }
+    }
+    
+    if !stderr.is_empty() {
+        for line in stderr.lines() {
+            let trimmed = line.trim();
+            if !trimmed.is_empty() {
+                eprintln!("📄 [ARTICLES] ERROR: {}", line);
+            }
+        }
+    }
+    
+    let collection_success = output.status.success();
+    
+    if collection_success {
+        println!("\n📄 [ARTICLES] ✅ Collection completed!");
+        println!("📄 [ARTICLES] Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
+    } else {
+        println!("\n📄 [ARTICLES] ⚠️  Collection had issues (but continuing pipeline anyway)");
+        println!("📄 [ARTICLES] Check output above for details");
+        println!("📄 [ARTICLES] Will still run Filter and Writer for existing PDFs");
+    }
+    
+    // FASE 2: Filter - SEMPRE executar, mesmo se Collector não encontrou novos artigos
+    // Isso garante que PDFs pendentes sejam processados
+    println!("\n📄 [ARTICLES] Phase 2: Filtering and validating papers...");
+    run_filter();
+    
+    // FASE 3: Writer - SEMPRE executar, mesmo se não encontrou novos artigos
+    // Isso garante que PDFs filtrados pendentes sejam processados
+    println!("\n📄 [ARTICLES] Phase 3: Generating content with DeepSeek...");
+    run_writer();
+    
+    println!("\n📄 [ARTICLES PIPELINE] ✅ Completed!");
+    println!("");
+}
+
+fn execute_news_pipeline() {
+    println!("\n📰 [NEWS PIPELINE] =========================================");
+    println!("📰 [NEWS PIPELINE] Starting news collection and processing...");
+    println!("📰 [NEWS PIPELINE] =========================================\n");
+    
+    // Executar o pipeline completo de news: collect → filter → write → cleanup
+    let ps_news_pipeline = r#"
+cd G:\Hive-Hub\News-main\news-backend;
+$env:RUST_LOG="info";
+Write-Host "[NEWS] Executing: cargo run --bin news-backend pipeline" -ForegroundColor Cyan;
+cargo run --bin news-backend pipeline 2>&1 | ForEach-Object { 
+    Write-Host "[NEWS] $_" -ForegroundColor Yellow
+}
+"#;
+    
+    println!("📰 [NEWS] Running complete news pipeline (collect → filter → write → cleanup)...");
+    println!("📰 [NEWS] This may take a few minutes...\n");
+    
+    let start_time = std::time::Instant::now();
+    
+    let output = Command::new("powershell")
+        .args(&["-Command", ps_news_pipeline])
+        .output()
+        .expect("Failed to execute news pipeline");
+    
+    let duration = start_time.elapsed();
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    
+    println!("\n📰 [NEWS PIPELINE] =========================================");
+    println!("📰 [NEWS] Execution completed in {:?}", duration);
+    println!("📰 [NEWS] Exit code: {:?}", output.status.code());
+    println!("📰 [NEWS PIPELINE] =========================================\n");
+    
+    // Exibir output com prefixo [NEWS] para facilitar identificação
+    if !stdout.is_empty() {
+        println!("📰 [NEWS] STDOUT OUTPUT:");
+        for line in stdout.lines() {
+            let trimmed = line.trim();
+            if !trimmed.is_empty() {
+                // Se já tem prefixo [NEWS], não adicionar outro
+                if trimmed.starts_with("[NEWS]") {
+                    println!("{}", line);
+                } else {
+                    println!("📰 [NEWS] {}", line);
+                }
+            }
+        }
+        println!("");
+    }
+    
+    if !stderr.is_empty() {
+        println!("📰 [NEWS] STDERR OUTPUT:");
+        for line in stderr.lines() {
+            let trimmed = line.trim();
+            if !trimmed.is_empty() {
+                eprintln!("📰 [NEWS] ERROR: {}", line);
+            }
+        }
+        println!("");
+    }
+    
+    if output.status.success() {
+        println!("📰 [NEWS PIPELINE] ✅ Completed successfully!");
+        println!("📰 [NEWS] Check: G:\\Hive-Hub\\News-main\\output\\ScienceAI\\");
+        println!("📰 [NEWS] Check: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
+    } else {
+        println!("📰 [NEWS PIPELINE] ⚠️  Had issues (exit code: {:?})", output.status.code());
+        println!("📰 [NEWS] Check output above for details");
+    }
+    println!("");
 }
 
 fn get_current_time() -> String {

@@ -401,3 +401,52 @@ async fn test_full_cleanup_pipeline() {
 
 **Key Principle:** Registry first, delete second - metadata always preserved.
 
+---
+
+## Recent Improvements (2025-11-01)
+
+### 🎉 Novas Funcionalidades
+
+**1. Reparo Automático de Registry JSON**
+- Sistema de reparo multi-estratégia para `articles_registry.json` corrompido
+- Estratégias: trim simples, busca por última chave válida, extração de seção `articles`
+- Backup automático antes de reparar
+- Criação de novo registry vazio se todas as estratégias falharem
+
+**2. Registry Always Saved**
+- Registry sempre salvo após cleanup, mesmo sem mudanças de conteúdo
+- Garante consistência e previne perda de dados
+- Logs detalhados para cada operação de registry
+
+**3. Logging Aprimorado**
+- Logs detalhados para cada artigo durante cleanup
+- Estatísticas de cleanup (artigos verificados, removidos, mantidos)
+- Duração de operações de cleanup
+
+### 🔧 Melhorias
+
+**Sistema de Registry:**
+- Reparo automático previne crashes do pipeline
+- Backup automático de registries corrompidos
+- Logs detalhados para debugging
+- Validação de estrutura antes de salvar
+
+**Cleanup Process:**
+- Logs mais informativos sobre cada etapa
+- Estatísticas completas após cleanup
+- Melhor tratamento de erros
+
+### 🐛 Correções
+
+- **Registry JSON Corrompido**: Sistema de reparo automático previne crashes
+- **Registry Save**: Sempre salva após cleanup, garantindo consistência
+- **Logging**: Logs suficientes para debugging em todas as etapas
+
+### 📝 Mudanças Técnicas
+
+**Código:**
+- Função `repair_json_by_finding_last_valid_brace()` em `article_registry.rs`
+- Função `extract_articles_section()` para extração de seção
+- Backup automático com timestamp
+- Validação de estrutura JSON antes de salvar
+

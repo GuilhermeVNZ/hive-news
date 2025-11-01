@@ -4,13 +4,14 @@ use sqlx::PgPool;
 use tracing::{error, info};
 
 pub struct SchedulerService {
-    db: PgPool,
+    _db: PgPool,
     collector: CollectorService,
 }
 
+#[allow(dead_code)]
 impl SchedulerService {
     pub fn new(db: PgPool, collector: CollectorService) -> Self {
-        Self { db, collector }
+        Self { _db: db, collector }
     }
 
     /// Inicia o scheduler

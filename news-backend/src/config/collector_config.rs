@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::env;
 
 /// Configurações gerais do Collector
+#[allow(dead_code)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CollectorConfig {
     /// Timeout para requests HTTP (segundos)
@@ -32,6 +33,7 @@ pub struct CollectorConfig {
     pub rate_limits: RateLimits,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RateLimits {
     pub nature: u32,
@@ -67,6 +69,7 @@ impl Default for CollectorConfig {
     }
 }
 
+#[allow(dead_code)]
 impl CollectorConfig {
     /// Carrega configurações das variáveis de ambiente
     pub fn from_env() -> Self {

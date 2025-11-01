@@ -1,13 +1,11 @@
 use anyhow::Result;
 use std::fs;
 use std::path::{Path, PathBuf};
-use tokio::sync::mpsc;
 
 use crate::filter::authors::validate_authors;
 use crate::filter::categorizer::categorize;
 use crate::filter::experiments::has_experimental_sections;
 use crate::filter::fake_detector::calculate_fake_penalty;
-use crate::filter::parser::ParsedPdf;
 use crate::filter::scorer::{FilterResult, calculate_score};
 use crate::filter::source_detector::{SourceType, detect_source_type};
 use crate::filter::validator::validate_dois;

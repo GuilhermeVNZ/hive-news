@@ -7,6 +7,7 @@ use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Result, Context};
 use serde::{Deserialize};
 
+#[allow(dead_code)]
 #[derive(Debug)]
 pub struct PmcCollector {
     client: Client,
@@ -46,7 +47,7 @@ impl PmcCollector {
     pub async fn fetch_recent_papers(&self, limit: usize, retstart: usize) -> Result<Vec<ArticleMetadata>> {
         // PMC API - Technology/Computer Science papers only
         // Filtro abrangente de tecnologia aplicado
-        let url = "https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/";
+        let _url = "https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/";
         
         println!("📥 Fetching recent papers from PubMed Central (Technology filter active)...");
         
@@ -107,6 +108,11 @@ impl PmcCollector {
                 author: Some("PMC Paper".to_string()),
                 summary: Some("PubMed Central paper".to_string()),
                 published_date: Some(chrono::Utc::now()),
+                image_url: None,
+                source_type: Some("pmc".to_string()),
+                content_html: None,
+                content_text: None,
+                category: None,
             });
         }
         

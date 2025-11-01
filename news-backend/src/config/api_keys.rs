@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::env;
 
 /// Configuração de chaves API para fontes de coleta
+#[allow(dead_code)]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ApiKeys {
     /// arXiv - Public API, sem chave necessária
@@ -31,6 +32,7 @@ pub struct ApiKeys {
     pub elsevier_base_url: String,
 }
 
+#[allow(dead_code)]
 impl ApiKeys {
     /// Carrega configurações de chaves API das variáveis de ambiente
     pub fn from_env() -> Self {
@@ -105,9 +107,10 @@ impl ApiKeys {
 }
 
 /// Valida se todas as chaves necessárias estão configuradas
+#[allow(dead_code)]
 pub fn validate_api_keys() -> Result<(), Vec<String>> {
-    let api_keys = ApiKeys::from_env();
-    let mut missing_keys = Vec::new();
+    let _api_keys = ApiKeys::from_env();
+    let missing_keys = Vec::new();
 
     // Verificar chaves críticas (podem ser implementadas futuramente)
     // Por enquanto, apenas arXiv está implementado e não precisa de chave

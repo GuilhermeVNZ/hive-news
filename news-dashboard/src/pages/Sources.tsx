@@ -141,22 +141,19 @@ export default function Sources() {
 
     try {
       setUpdating(collectorId);
-      const resp = await axios.put(`/api/sites/${siteId}/collectors/${collectorId}/status`, {
-        enabled: !isAssigned,
+      
+      // Use the collector sites endpoint which properly handles adding/removing collectors from sites
+      const newSiteIds = !isAssigned
+        ? [...currentSiteIds, siteId]
+        : currentSiteIds.filter(id => id !== siteId);
+      
+      const resp = await axios.put(`/api/collectors/${collectorId}/sites`, {
+        site_ids: newSiteIds,
       });
 
       if (resp.data?.success) {
-        // Optimistically update UI
-        const newSiteIds = !isAssigned
-          ? [...currentSiteIds, siteId]
-          : currentSiteIds.filter(id => id !== siteId);
-        setCollectors(prev => prev.map(c => {
-          if (c.id !== collectorId) return c;
-          const assigned = sites
-            .filter(s => newSiteIds.includes(s.id))
-            .map(s => ({ id: s.id, name: s.name }));
-          return { ...c, assigned_sites: assigned };
-        }));
+        // Reload collectors to get updated assigned_sites
+        await loadCollectors();
         setError("");
       } else {
         setError(resp.data?.error || 'Failed to update site assignment');

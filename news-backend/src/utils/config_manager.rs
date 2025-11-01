@@ -9,6 +9,20 @@ pub struct CollectorConfig {
     pub name: String,
     pub enabled: bool,
     pub api_key: Option<String>,
+    /// Type of collector: "api", "rss", "html"
+    #[serde(default)]
+    pub collector_type: Option<String>,
+    /// RSS feed URL (for RSS collectors)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub feed_url: Option<String>,
+    /// Base URL for HTML scraping (for HTML collectors)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub base_url: Option<String>,
+    /// CSS selectors for HTML scraping (for HTML collectors)
+    /// Format: {"article": "article", "title": "h1", "content": ".content", ...}
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selectors: Option<serde_json::Value>,
+    /// Additional configuration (for backwards compatibility)
     pub config: serde_json::Value,
 }
 
@@ -40,6 +54,10 @@ impl ConfigManager {
                         name: "arXiv".to_string(),
                         enabled: true,
                         api_key: None,
+                        collector_type: Some("api".to_string()),
+                        feed_url: None,
+                        base_url: None,
+                        selectors: None,
                         config: serde_json::json!({
                             "category": "cs.AI",
                             "max_results": 10,
@@ -50,6 +68,10 @@ impl ConfigManager {
                         name: "PubMed Central".to_string(),
                         enabled: false,
                         api_key: None,
+                        collector_type: Some("api".to_string()),
+                        feed_url: None,
+                        base_url: None,
+                        selectors: None,
                         config: serde_json::json!({}),
                     },
                     CollectorConfig {
@@ -57,7 +79,43 @@ impl ConfigManager {
                         name: "Semantic Scholar".to_string(),
                         enabled: false,
                         api_key: None,
+                        collector_type: Some("api".to_string()),
+                        feed_url: None,
+                        base_url: None,
+                        selectors: None,
                         config: serde_json::json!({}),
+                    },
+                    // Example RSS collector
+                    CollectorConfig {
+                        id: "openai_rss".to_string(),
+                        name: "OpenAI Blog RSS".to_string(),
+                        enabled: false,
+                        api_key: None,
+                        collector_type: Some("rss".to_string()),
+                        feed_url: Some("https://openai.com/blog/rss.xml".to_string()),
+                        base_url: Some("https://openai.com".to_string()),
+                        selectors: None,
+                        config: serde_json::json!({
+                            "max_results": 10,
+                        }),
+                    },
+                    // Example HTML collector
+                    CollectorConfig {
+                        id: "meta_ai_html".to_string(),
+                        name: "Meta AI Blog HTML".to_string(),
+                        enabled: false,
+                        api_key: None,
+                        collector_type: Some("html".to_string()),
+                        feed_url: None,
+                        base_url: Some("https://ai.meta.com/blog/".to_string()),
+                        selectors: Some(serde_json::json!({
+                            "article": "article",
+                            "title": "h2 a",
+                            "content": "article",
+                        })),
+                        config: serde_json::json!({
+                            "max_results": 10,
+                        }),
                     },
                 ],
                 updated_at: chrono::Utc::now().to_rfc3339(),
@@ -127,6 +185,10 @@ impl ConfigManager {
             .find(|c| c.id == collector_id) {
             collector.enabled = updates.enabled;
             collector.api_key = updates.api_key;
+            collector.collector_type = updates.collector_type;
+            collector.feed_url = updates.feed_url;
+            collector.base_url = updates.base_url;
+            collector.selectors = updates.selectors;
             collector.config = updates.config;
         } else {
             config.collectors.push(updates);
@@ -135,6 +197,9 @@ impl ConfigManager {
         self.save(&config)
     }
 }
+
+
+
 
 
 

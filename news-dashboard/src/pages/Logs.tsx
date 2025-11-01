@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, ExternalLink } from "lucide-react";
 
 interface Destination { site_id: string; site_name: string; url: string }
-interface ArticleLog { id: string; title: string; created_at: string; age_seconds: number; source: string; destinations: Destination[]; hidden: boolean }
+interface ArticleLog { id: string; title: string; created_at: string; age_seconds: number; source: string; destinations: Destination[]; hidden: boolean; featured: boolean }
 
 function formatRelative(sec: number) {
   if (sec < 60) return `${sec}s ago`;
@@ -22,17 +22,30 @@ export default function Logs() {
   const [offset, setOffset] = useState(0);
   const pageSize = 10;
 
-  const load = async () => {
+  const load = async (retries = 3) => {
     try {
       setLoading(true);
+      setError(''); // Limpar erro anterior
       const params: any = { limit: pageSize, offset };
-      const res = await axios.get('/api/logs', { params });
+      const res = await axios.get('/api/logs', { 
+        params,
+        timeout: 10000, // 10 segundos de timeout
+      });
       if (res.data?.success) {
         const batch = res.data.items || [];
         setItems(prev => offset === 0 ? batch : [...prev, ...batch]);
       }
       else setError(res.data?.error || 'Failed to load logs');
-    } catch (e:any) { setError(e.response?.data?.error || e.message); } finally { setLoading(false); }
+    } catch (e:any) {
+      // Se é erro de rede e ainda há retries, tentar novamente
+      if (retries > 0 && (!e.response || e.code === 'ECONNABORTED' || e.code === 'ERR_NETWORK')) {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Aguardar 1s antes de retry
+        return load(retries - 1);
+      }
+      setError(e.response?.data?.error || e.message || 'Failed to connect to server');
+    } finally { 
+      setLoading(false); 
+    }
   };
 
   useEffect(()=>{ load(); }, [offset]);
@@ -86,14 +99,59 @@ export default function Logs() {
                         {item.hidden && (<><span>•</span><Badge variant="destructive">Hidden</Badge></>) }
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={item.featured}
+                          onChange={async(e)=>{
+                            try{
+                              const newValue = e.target.checked;
+                              // Otimistic update - atualizar UI imediatamente
+                              setItems(prev => prev.map(it => 
+                                it.id === item.id ? { ...it, featured: newValue } : it
+                              ));
+                              
+                              await axios.put(`/api/logs/articles/${item.id}/featured`, 
+                                { featured: newValue },
+                                { timeout: 5000 }
+                              );
+                              // Recarregar para garantir sincronização
+                              await load(1); // Apenas 1 retry para reload após sucesso
+                            } catch(e:any){
+                              // Reverter otimistic update em caso de erro
+                              setItems(prev => prev.map(it => 
+                                it.id === item.id ? { ...it, featured: item.featured } : it
+                              ));
+                              setError(e.response?.data?.error || e.message || 'Failed to update featured status');
+                            }
+                          }}
+                          className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                        <span className="text-sm text-muted-foreground">Featured</span>
+                      </label>
                       <button
                         className={`inline-flex items-center gap-1 text-sm ${item.hidden ? 'text-green-600' : 'text-destructive'}`}
                         onClick={async()=>{
                           try{
-                            await axios.put(`/api/logs/articles/${item.id}/hidden`, { hidden: !item.hidden });
-                            await load();
-                          } catch(e:any){ setError(e.response?.data?.error || e.message); }
+                            const newValue = !item.hidden;
+                            // Otimistic update
+                            setItems(prev => prev.map(it => 
+                              it.id === item.id ? { ...it, hidden: newValue } : it
+                            ));
+                            
+                            await axios.put(`/api/logs/articles/${item.id}/hidden`, 
+                              { hidden: newValue },
+                              { timeout: 5000 }
+                            );
+                            await load(1);
+                          } catch(e:any){
+                            // Reverter otimistic update
+                            setItems(prev => prev.map(it => 
+                              it.id === item.id ? { ...it, hidden: item.hidden } : it
+                            ));
+                            setError(e.response?.data?.error || e.message || 'Failed to update hidden status');
+                          }
                         }}
                       >
                         {item.hidden ? 'Show' : 'Hide'}

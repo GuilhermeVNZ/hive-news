@@ -2,11 +2,9 @@ use axum::{extract::Extension, response::Json};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::sync::Arc;
-use anyhow::Result;
 use std::path::Path;
 
-use crate::utils::site_config_manager::SiteConfigManager;
-use crate::utils::site_config_manager::{WriterConfig, CollectorConfig, SocialMediaConfig, EducationSourceConfig};
+use crate::utils::site_config_manager::{SiteConfigManager, EducationSourceConfig};
 use crate::utils::env_sync;
 
 /// Get all sites configuration

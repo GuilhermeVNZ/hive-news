@@ -100,3 +100,16 @@
 4. Testar fallback quando source.txt está vazio
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+

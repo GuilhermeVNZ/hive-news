@@ -1,4 +1,3 @@
-use anyhow::Result;
 use dashmap::DashMap;
 use lazy_static::lazy_static;
 use reqwest::Client;

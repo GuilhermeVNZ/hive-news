@@ -5,6 +5,7 @@ use std::collections::HashMap;
 use crate::collectors::course_collector::CourseCollector;
 use crate::models::course::Course;
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct CourseQuery {
     pub category: Option<String>,

@@ -1,6 +1,5 @@
 use axum::response::Json;
 use serde::Serialize;
-use serde_json::json;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -48,6 +47,43 @@ pub async fn system_status() -> Json<SystemStatus> {
     let img_size = dir_size(output, Some(&images_ext));
     Json(SystemStatus{ success: true, output_size_bytes: out_size, images_size_bytes: img_size })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

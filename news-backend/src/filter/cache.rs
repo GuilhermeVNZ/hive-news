@@ -6,7 +6,7 @@ pub fn cache_dir() -> PathBuf {
 }
 
 pub fn save_doi_cache(doi: &str, valid: bool) {
-    if let Ok(dir) = fs::create_dir_all(cache_dir()) {
+    if let Ok(_dir) = fs::create_dir_all(cache_dir()) {
         let safe_doi = doi.replace("/", "_").replace(":", "_");
         let cache_file = cache_dir().join(format!("doi_{}.json", safe_doi));
         let data = serde_json::json!({ "doi": doi, "valid": valid });
@@ -14,6 +14,7 @@ pub fn save_doi_cache(doi: &str, valid: bool) {
     }
 }
 
+#[allow(dead_code)]
 pub fn load_doi_cache(doi: &str) -> Option<bool> {
     let safe_doi = doi.replace("/", "_").replace(":", "_");
     let cache_file = cache_dir().join(format!("doi_{}.json", safe_doi));
@@ -26,8 +27,9 @@ pub fn load_doi_cache(doi: &str) -> Option<bool> {
     None
 }
 
+#[allow(dead_code)]
 pub fn save_author_cache(author: &str, valid: bool) {
-    if let Ok(dir) = fs::create_dir_all(cache_dir()) {
+    if let Ok(_dir) = fs::create_dir_all(cache_dir()) {
         let safe_author = author.replace(" ", "_");
         let cache_file = cache_dir().join(format!("author_{}.json", safe_author));
         let data = serde_json::json!({ "author": author, "valid": valid });
@@ -35,6 +37,7 @@ pub fn save_author_cache(author: &str, valid: bool) {
     }
 }
 
+#[allow(dead_code)]
 pub fn load_author_cache(author: &str) -> Option<bool> {
     let safe_author = author.replace(" ", "_");
     let cache_file = cache_dir().join(format!("author_{}.json", safe_author));

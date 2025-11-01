@@ -10,6 +10,7 @@ use super::prompts::*;
 use super::prompt_compressor::*;
 use super::file_writer::{save_article, save_title, save_linkedin, save_x, save_shorts_script, save_image_categories};
 
+#[allow(dead_code)]
 pub struct WriterService {
     deepseek_client: DeepSeekClient,
     prompt_compressor: PromptCompressor,
@@ -30,6 +31,7 @@ pub struct GeneratedContent {
     pub compression_ratio: f32,
 }
 
+#[allow(dead_code)]
 impl WriterService {
     /// Creates a new WriterService, reading configuration from system_config.json
     /// Falls back to environment variables if config file is not available
@@ -260,16 +262,23 @@ impl WriterService {
                  compressed_article.compression_ratio * 100.0);
         
         println!("  🤖 Sending to DeepSeek API...");
-        let article_response = self.deepseek_client
+        let article_response = match self.deepseek_client
             .generate_article(&compressed_article.compressed_text)
             .await
-            .with_context(|| format!("Failed to generate article for {}", article_id))?;
-        
-        println!("  ✅ Article generated");
-        
-        // PHASE 3: Fetch Pixabay image (based on keywords)
-        // Images are fetched from Pixabay API using article keywords
-        // No longer extracting images from PDF - using Pixabay instead
+        {
+            Ok(response) => {
+                println!("  ✅ Article generated");
+                response
+            }
+            Err(e) => {
+                eprintln!("  ❌ Failed to generate article for {}: {}", article_id, e);
+                eprintln!("  📄 PDF: {}", pdf_path.display());
+                eprintln!("  📊 Prompt tokens: {} (compressed from {})", 
+                         compressed_article.compressed_tokens,
+                         compressed_article.original_tokens);
+                return Err(e).with_context(|| format!("Failed to generate article for {}", article_id));
+            }
+        };
         
         // 4. PHASE 2: Generate social content
         println!("  📱 Building social media prompts...");
@@ -303,14 +312,22 @@ impl WriterService {
                  compressed_social.compression_ratio * 100.0);
         
         println!("  🤖 Generating social content...");
-        let social_response = self.deepseek_client
+        let social_response = match self.deepseek_client
             .generate_social_content(&compressed_social.compressed_text)
             .await
-            .context("Failed to generate social content")?;
+        {
+            Ok(response) => {
+                println!("  ✅ Social content generated");
+                response
+            }
+            Err(e) => {
+                eprintln!("  ❌ Failed to generate social content for {}: {}", article_id, e);
+                eprintln!("  📄 PDF: {}", pdf_path.display());
+                return Err(e).context("Failed to generate social content");
+            }
+        };
         
-        println!("  ✅ Social content generated");
-        
-        // PHASE 3: Save all content (no longer fetching from Pixabay - using local images instead)
+        // PHASE 3: Save all content
         println!("  💾 Saving content to disk...");
         self.save_content(
             &output_dir,

@@ -1,13 +1,13 @@
 use anyhow::{Context, Result};
 use reqwest::Client;
 use crate::models::course::Course;
-use chrono::Utc;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 pub struct CourseCollector {
     client: Client,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct KhanAcademyCourse {
     id: String,
@@ -16,6 +16,7 @@ struct KhanAcademyCourse {
     url: Option<String>,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 struct KhanAcademyResponse {
     courses: Vec<KhanAcademyCourse>,
@@ -33,6 +34,7 @@ impl CourseCollector {
     }
 
     /// Busca cursos de IA/ML da Khan Academy
+    #[allow(dead_code)]
     pub async fn fetch_khan_academy_courses(&self) -> Result<Vec<Course>> {
         // Khan Academy tem API pública mas limitada
         // Vamos buscar informações estruturadas do site

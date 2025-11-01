@@ -1,4 +1,3 @@
-use anyhow::Result;
 use reqwest::Client;
 use std::sync::Arc;
 use std::time::Duration;
