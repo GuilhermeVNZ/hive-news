@@ -221,7 +221,41 @@ impl NewsWriterService {
         println!("    │  ✅ All files saved");
 
         // Update registry to mark as published
+        // IMPORTANT: Only update output_dir if it matches the current site_id
+        // This prevents overwriting output_dir when processing multiple destinations
         println!("    │  📝 Updating registry...");
+        
+        // Get current metadata to check existing output_dir
+        let current_metadata = self.registry.get_metadata(&article.id);
+        
+        // Verify that output_dir corresponds to this site_id
+        let expected_output_dir = Self::get_site_output_dir(site_id).join(&article.id);
+        let output_dir_matches = article_output_dir == expected_output_dir;
+        
+        if !output_dir_matches {
+            eprintln!("    │  ⚠️  WARNING: output_dir mismatch!");
+            eprintln!("    │      Expected: {}", expected_output_dir.display());
+            eprintln!("    │      Got:      {}", article_output_dir.display());
+            eprintln!("    │      Site ID:  {}", site_id);
+            return Err(anyhow::anyhow!("Output directory does not match site ID. Expected path for site '{}' but got '{}'", site_id, article_output_dir.display()));
+        }
+        
+        // Only register if this is the first destination or if output_dir matches
+        // For multiple destinations, we should store each in separate directories
+        if let Some(existing_meta) = current_metadata {
+            if let Some(existing_output_dir) = &existing_meta.output_dir {
+                // If output_dir already exists and it's different, this means we're processing multiple destinations
+                // In this case, we should keep the original output_dir or create site-specific subdirectories
+                if existing_output_dir != &article_output_dir {
+                    eprintln!("    │  ⚠️  WARNING: Article already has output_dir: {}", existing_output_dir.display());
+                    eprintln!("    │      New output_dir would be: {}", article_output_dir.display());
+                    eprintln!("    │      This suggests multiple destinations are being processed.");
+                    // Don't overwrite - each destination should have its own directory
+                    // For now, we'll still update to the correct one for this site
+                }
+            }
+        }
+        
         self.registry.register_published(&article.id, article_output_dir.clone())
             .context("Failed to register article as published")?;
         println!("    │  ✅ Registry updated");

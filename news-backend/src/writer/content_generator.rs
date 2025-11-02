@@ -8,7 +8,7 @@ use crate::utils::site_config_manager::SiteConfigManager;
 use super::deepseek_client::*;
 use super::prompts::*;
 use super::prompt_compressor::*;
-use super::file_writer::{save_article, save_title, save_linkedin, save_x, save_shorts_script, save_image_categories};
+use super::file_writer::{save_article, save_title, save_subtitle, save_linkedin, save_x, save_shorts_script, save_image_categories};
 
 #[allow(dead_code)]
 pub struct WriterService {
@@ -351,6 +351,11 @@ impl WriterService {
     ) -> Result<()> {
         // Save title (short hook for frontend)
         save_title(output_dir, &article.title).await?;
+        
+        // Save subtitle (SEO-optimized, max 2 lines)
+        if !article.subtitle.is_empty() {
+            save_subtitle(output_dir, &article.subtitle).await?;
+        }
         
         // Save article
         save_article(output_dir, &article.article_text).await?;

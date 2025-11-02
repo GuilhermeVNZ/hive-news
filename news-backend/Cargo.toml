@@ -20,6 +20,10 @@ path = "src/bin/sync_env_from_config.rs"
 name = "clean-articles"
 path = "src/bin/clean_articles.rs"
 
+[[bin]]
+name = "fix-wrong-destinations"
+path = "src/bin/fix_wrong_destinations.rs"
+
 [dependencies]
 # Web Framework
 axum = "0.7"

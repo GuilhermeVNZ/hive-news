@@ -236,7 +236,7 @@ fn test_collector() {
     println!("   Source: cs.AI (Computer Science - Artificial Intelligence)");
     println!("   Papers: 10 most recent per cycle (busca regressiva até encontrar)");
     println!("   Location: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
-    println!("   ⏰ Interval: 15 minutes (900 seconds)");
+    println!("   ⏰ Interval: 30 minutes (1800 seconds)");
     println!("\n🛡️  Security Features:");
     println!("   ✅ Using export.arxiv.org (official API)");
     println!("   ✅ Cookie-based session management");
@@ -271,30 +271,25 @@ cargo run --bin news-backend collect-enabled
 fn run_filter() {
     println!("🔍 Filter Service - Validating Scientific Papers\n");
     
-    let ps_script = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-cargo run --bin news-backend filter
-"#;
-    
-    let output = Command::new("powershell")
-        .args(&["-Command", ps_script])
-        .output()
+    // Executar cargo diretamente no diretório correto para ver output em tempo real
+    let mut child = Command::new("cargo")
+        .args(&["run", "--bin", "news-backend", "filter"])
+        .current_dir("G:\\Hive-Hub\\News-main\\news-backend")  // Definir diretório de trabalho
+        .env("RUST_LOG", "info")
+        .stdout(Stdio::inherit())  // Herdar stdout para ver em tempo real
+        .stderr(Stdio::inherit())  // Herdar stderr para ver em tempo real
+        .spawn()
         .expect("Failed to execute filter");
     
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    let stderr = String::from_utf8_lossy(&output.stderr);
+    // Aguardar processo terminar
+    let status = child.wait().expect("Failed to wait for filter");
     
-    println!("{}", stdout);
-    if !stderr.is_empty() {
-        eprintln!("{}", stderr);
-    }
-    
-    if output.status.success() {
-        println!("\n✅ Filter completed!");
+    println!("");
+    if status.success() {
+        println!("✅ [ARTICLES] Filter completed!");
         println!("   Approved: G:\\Hive-Hub\\News-main\\downloads\\filtered\\");
     } else {
-        println!("\n⚠️  Filter had issues");
+        println!("⚠️  [ARTICLES] Filter had issues (exit code: {:?})", status.code());
         println!("   Check output above for details");
     }
 }
@@ -302,17 +297,13 @@ cargo run --bin news-backend filter
 fn run_writer() {
     println!("✍️  [ARTICLES] DeepSeek Writer - Processing filtered papers\n");
     
-    let ps_script = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-$env:DEEPSEEK_API_KEY="sk-3cdb0bc989414f2c8d761ac9ee5c20ce";
-$env:WRITER_DEFAULT_SITE="AIResearch";
-cargo run --bin news-backend write 2>&1
-"#;
-    
-    // Executar com output em tempo real (sem bufferizar)
-    let mut child = Command::new("powershell")
-        .args(&["-Command", ps_script])
+    // Executar cargo diretamente no diretório correto para ver output em tempo real
+    let mut child = Command::new("cargo")
+        .args(&["run", "--bin", "news-backend", "write"])
+        .current_dir("G:\\Hive-Hub\\News-main\\news-backend")  // Definir diretório de trabalho
+        .env("RUST_LOG", "info")
+        .env("DEEPSEEK_API_KEY", "sk-3cdb0bc989414f2c8d761ac9ee5c20ce")
+        .env("WRITER_DEFAULT_SITE", "AIResearch")
         .stdout(Stdio::inherit())  // Herdar stdout para ver em tempo real
         .stderr(Stdio::inherit())  // Herdar stderr para ver em tempo real
         .spawn()
@@ -411,7 +402,7 @@ fn execute_full_pipeline() {
     
     println!("\n\n🔄 Starting Automatic Pipeline Loop");
     println!("=====================================");
-    println!("   ⏰ Interval: 15 minutes (900 seconds)");
+    println!("   ⏰ Interval: 30 minutes (1800 seconds)");
     println!("   🚀 Running continuously...");
     println!("   📄 Articles Pipeline: Active");
     println!("   📰 News Pipeline: Active (parallel)\n");
@@ -460,7 +451,7 @@ fn execute_full_pipeline() {
         println!("");
         
         let execution_time = start_time.elapsed();
-        let next_run = chrono::Local::now() + chrono::Duration::minutes(15);
+        let next_run = chrono::Local::now() + chrono::Duration::minutes(30);
         
         println!("\n{}", "=".repeat(70));
         println!("✅ Cycle #{} completed successfully!", cycle);
@@ -472,9 +463,9 @@ fn execute_full_pipeline() {
         
         cycle += 1;
         
-        // Aguardar 15 minutos antes de próxima execução
-        println!("\n⏳ Waiting 15 minutes until next cycle...\n");
-        std::thread::sleep(std::time::Duration::from_secs(900)); // 15 minutos
+        // Aguardar 30 minutos antes de próxima execução
+        println!("\n⏳ Waiting 30 minutes until next cycle...\n");
+        std::thread::sleep(std::time::Duration::from_secs(1800)); // 30 minutos
     }
 }
 
@@ -485,47 +476,26 @@ fn execute_papers_pipeline() {
     
     // FASE 1: Collector - arXiv (apenas arXiv, conforme solicitado)
     println!("📄 [ARTICLES] Phase 1: Collecting papers from arXiv...");
-    let ps_script_collect = r#"
-cd G:\Hive-Hub\News-main\news-backend;
-$env:RUST_LOG="info";
-Write-Host "[ARTICLES] Executing: cargo run --bin news-backend collect" -ForegroundColor Cyan;
-cargo run --bin news-backend collect
-"#;
-    
     let start_time = std::time::Instant::now();
     
-    let output = Command::new("powershell")
-        .args(&["-Command", ps_script_collect])
-        .output()
+    // Executar cargo diretamente no diretório correto para ver output em tempo real
+    let mut child = Command::new("cargo")
+        .args(&["run", "--bin", "news-backend", "collect"])
+        .current_dir("G:\\Hive-Hub\\News-main\\news-backend")  // Definir diretório de trabalho
+        .env("RUST_LOG", "info")
+        .stdout(Stdio::inherit())  // Herdar stdout para ver em tempo real
+        .stderr(Stdio::inherit())  // Herdar stderr para ver em tempo real
+        .spawn()
         .expect("Failed to execute collector");
     
+    // Aguardar processo terminar
+    let status = child.wait().expect("Failed to wait for collector");
     let duration = start_time.elapsed();
-    let stdout = String::from_utf8_lossy(&output.stdout);
-    let stderr = String::from_utf8_lossy(&output.stderr);
     
     println!("📄 [ARTICLES] Collection completed in {:?}", duration);
-    println!("📄 [ARTICLES] Exit code: {:?}", output.status.code());
+    println!("📄 [ARTICLES] Exit code: {:?}", status.code());
     
-    // Exibir output completo
-    if !stdout.is_empty() {
-        for line in stdout.lines() {
-            let trimmed = line.trim();
-            if !trimmed.is_empty() {
-                println!("📄 [ARTICLES] {}", line);
-            }
-        }
-    }
-    
-    if !stderr.is_empty() {
-        for line in stderr.lines() {
-            let trimmed = line.trim();
-            if !trimmed.is_empty() {
-                eprintln!("📄 [ARTICLES] ERROR: {}", line);
-            }
-        }
-    }
-    
-    let collection_success = output.status.success();
+    let collection_success = status.success();
     
     if collection_success {
         println!("\n📄 [ARTICLES] ✅ Collection completed!");

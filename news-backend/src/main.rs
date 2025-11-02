@@ -276,7 +276,7 @@ async fn main() -> anyhow::Result<()> {
         tokio::fs::create_dir_all(&date_dir).await?;
 
         // Definir target_count antes de usar nos prints
-        let target_count = 20;
+        let target_count = 10;
         let mut start_offset = 0;
         let mut downloaded_count = 0;
 
@@ -359,12 +359,15 @@ async fn main() -> anyhow::Result<()> {
                 println!("  ⚠️  Warning: Very short response, might be an error page");
             }
 
-            // Parse básico do XML com extração de título
+            // Parse básico do XML com extração de título (suporta títulos multilinha)
             let mut current_id = None;
             let mut current_title = None;
+            let mut collecting_title = false;
+            let mut title_parts = Vec::new();
             let mut articles = Vec::new();
 
             for line in xml.lines() {
+                // Extrair ID do artigo
                 if line.contains("<id>") {
                     if let Some(start) = line.find("<id>") {
                         if let Some(end) = line.find("</id>") {
@@ -393,17 +396,72 @@ async fn main() -> anyhow::Result<()> {
                         }
                     }
                 }
-                if line.contains("<title>") && line.contains("</title>") {
+                
+                // Extrair título (suporta títulos multilinha)
+                if line.contains("<title>") {
+                    collecting_title = true;
+                    title_parts.clear();
+                    
+                    // Caso 1: título completo na mesma linha
                     if let Some(start) = line.find("<title>") {
                         if let Some(end) = line.find("</title>") {
                             let title = line[start + 7..end].trim().to_string();
-                            current_title = Some(title);
+                            if !title.is_empty() {
+                                current_title = Some(title);
+                                collecting_title = false;
+                            }
+                        } else {
+                            // Caso 2: título começa na linha mas continua em outras
+                            if let Some(start) = line.find("<title>") {
+                                let title_part = line[start + 7..].trim().to_string();
+                                if !title_part.is_empty() {
+                                    title_parts.push(title_part);
+                                }
+                            }
+                        }
+                    }
+                } else if collecting_title {
+                    // Continuar coletando título até encontrar </title>
+                    if let Some(end_pos) = line.find("</title>") {
+                        // Fim do título encontrado
+                        let title_part = line[..end_pos].trim().to_string();
+                        if !title_part.is_empty() {
+                            title_parts.push(title_part);
+                        }
+                        // Combinar todas as partes do título
+                        let full_title = title_parts.join(" ").trim().to_string();
+                        if !full_title.is_empty() {
+                            current_title = Some(full_title);
+                        }
+                        collecting_title = false;
+                        title_parts.clear();
+                    } else {
+                        // Continuar coletando título
+                        let title_part = line.trim().to_string();
+                        if !title_part.is_empty() {
+                            title_parts.push(title_part);
                         }
                     }
                 }
+                
+                // Quando encontrar </entry>, finalizar artigo
                 if line.contains("</entry>") {
                     if let Some(id) = current_id.take() {
-                        let title = current_title.take().unwrap_or_else(|| "Untitled".to_string());
+                        // Se ainda estava coletando título mas não encontrou </title>, usar o que coletou
+                        if collecting_title && !title_parts.is_empty() {
+                            let full_title = title_parts.join(" ").trim().to_string();
+                            if !full_title.is_empty() {
+                                current_title = Some(full_title);
+                            }
+                            collecting_title = false;
+                            title_parts.clear();
+                        }
+                        
+                        let title = current_title.take().unwrap_or_else(|| {
+                            eprintln!("  ⚠️  WARNING: Article {} has no title - using 'Untitled'", id);
+                            "Untitled".to_string()
+                        });
+                        
                         articles.push(ArticleMetadata {
                             id: id.clone(),
                             title: title.clone(),
@@ -417,6 +475,11 @@ async fn main() -> anyhow::Result<()> {
                             content_text: None,
                             category: None,
                         });
+                    }
+                    // Reset estado para próximo artigo (se ainda estava coletando)
+                    if collecting_title {
+                        collecting_title = false;
+                        title_parts.clear();
                     }
                 }
             }
@@ -945,19 +1008,60 @@ async fn main() -> anyhow::Result<()> {
         println!("  RSS:     {} collector(s)", rss_collectors.len());
         println!("  HTML:    {} collector(s)", html_collectors.len());
 
-        // Executar collectors API
-        if use_arxiv { run_arxiv_collection_direct().await?; }
-        if use_pmc { run_pmc_collection_direct().await?; }
-        if use_ss { run_semantic_scholar_collection_direct().await?; }
-
-        // Executar collectors RSS
-        if !rss_collectors.is_empty() {
-            run_rss_collectors(&rss_collectors).await?;
+        // Check if there are enabled sites for each source before collecting
+        // This prevents unnecessary collection attempts
+        
+        // For article sources (arxiv, pmc, semantic): check if any site has enabled article collectors
+        let has_article_sites = use_arxiv || use_pmc || use_ss;
+        if has_article_sites {
+            let arxiv_sites = if use_arxiv { get_enabled_sites_for_source("arxiv") } else { Vec::new() };
+            let pmc_sites = if use_pmc { get_enabled_sites_for_source("pmc") } else { Vec::new() };
+            let semantic_sites = if use_ss { get_enabled_sites_for_source("semantic") } else { Vec::new() };
+            
+            // Only collect if at least one site has enabled collectors for that source
+            if use_arxiv && !arxiv_sites.is_empty() {
+                println!("✅ Collecting arXiv articles for {} enabled site(s)", arxiv_sites.len());
+                run_arxiv_collection_direct().await?;
+            } else if use_arxiv {
+                println!("⏭️  Skipping arXiv collection: no enabled sites");
+            }
+            
+            if use_pmc && !pmc_sites.is_empty() {
+                println!("✅ Collecting PMC articles for {} enabled site(s)", pmc_sites.len());
+                run_pmc_collection_direct().await?;
+            } else if use_pmc {
+                println!("⏭️  Skipping PMC collection: no enabled sites");
+            }
+            
+            if use_ss && !semantic_sites.is_empty() {
+                println!("✅ Collecting Semantic Scholar articles for {} enabled site(s)", semantic_sites.len());
+                run_semantic_scholar_collection_direct().await?;
+            } else if use_ss {
+                println!("⏭️  Skipping Semantic Scholar collection: no enabled sites");
+            }
+        } else {
+            println!("⏭️  Skipping article collection: no article sources enabled");
         }
 
-        // Executar collectors HTML
+        // For news sources (rss, html): check if any site has enabled news collectors
+        if !rss_collectors.is_empty() {
+            let rss_sites = get_enabled_sites_for_source("rss");
+            if !rss_sites.is_empty() {
+                println!("✅ Collecting RSS news for {} enabled site(s)", rss_sites.len());
+                run_rss_collectors(&rss_collectors).await?;
+            } else {
+                println!("⏭️  Skipping RSS collection: no enabled sites");
+            }
+        }
+        
         if !html_collectors.is_empty() {
-            run_html_collectors(&html_collectors).await?;
+            let html_sites = get_enabled_sites_for_source("html");
+            if !html_sites.is_empty() {
+                println!("✅ Collecting HTML news for {} enabled site(s)", html_sites.len());
+                run_html_collectors(&html_collectors).await?;
+            } else {
+                println!("⏭️  Skipping HTML collection: no enabled sites");
+            }
         }
 
         Ok(())
@@ -969,35 +1073,111 @@ async fn main() -> anyhow::Result<()> {
         let config_path = Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json");
         let manager = SiteConfigManager::new(config_path);
         let mut result = Vec::new();
+        
+        // Determine if source is for articles (arxiv, pmc, semantic) or news (rss, html)
+        let is_article_source = matches!(source_key, "arxiv" | "pmc" | "semantic");
+        let is_news_source = matches!(source_key, "rss" | "html");
+        
         if let Ok(sites) = manager.get_all_sites() {
             for s in sites {
                 let mut enabled_for_source = false;
+                
+                // Skip logging for optimization - only log if site has relevant collectors
+                let mut has_relevant_collectors = false;
+                
+                for c in &s.collectors {
+                    let _id = c.id.to_lowercase();
+                    let collector_type = c.collector_type.as_deref().unwrap_or("api");
+                    
+                    // Quick check: if article source, skip sites that only have news collectors
+                    if is_article_source && matches!(collector_type, "rss" | "html") {
+                        continue; // Skip news collectors when checking article sources
+                    }
+                    // Quick check: if news source, skip sites that only have article collectors
+                    if is_news_source && matches!(collector_type, "api") && !matches!(source_key, "arxiv" | "pmc" | "semantic") {
+                        // Only skip if it's an API collector that's NOT for articles (this shouldn't happen, but safety check)
+                        continue;
+                    }
+                    
+                    has_relevant_collectors = true;
+                    break; // Found at least one relevant collector, can proceed
+                }
+                
+                // Skip site entirely if it has no relevant collectors for this source type
+                if !has_relevant_collectors {
+                    continue; // Skip site - no relevant collectors for this source type
+                }
+                
+                println!("  🔍 Checking site: {} (id: {})", s.name, s.id);
+                
                 for c in s.collectors {
-                    let id = c.id.to_lowercase();
-                    if !c.enabled { continue; }
+                    let id_lower = c.id.to_lowercase();
+                    println!("    📦 Collector: {} (enabled: {}, type: {:?})", c.id, c.enabled, c.collector_type);
+                    
+                    // CRITICAL: Skip disabled collectors first (before any matching)
+                    if !c.enabled { 
+                        println!("      ⏭️  Skipping disabled collector");
+                        continue; 
+                    }
                     
                     // Check collector type if available
                     let collector_type = c.collector_type.as_deref().unwrap_or("api");
                     
                     match (source_key, collector_type) {
-                        ("arxiv", "api") if id.contains("arxiv") => enabled_for_source = true,
-                        ("pmc", "api") if id.contains("pmc") || id.contains("pubmed") => enabled_for_source = true,
-                        ("semantic", "api") if id.contains("semantic") => enabled_for_source = true,
-                        ("rss", "rss") | ("rss", _) if id.contains("rss") => enabled_for_source = true,
-                        ("html", "html") | ("html", _) if id.contains("html") => enabled_for_source = true,
+                        ("arxiv", "api") if id_lower.contains("arxiv") => {
+                            enabled_for_source = true;
+                            println!("      ✅ Matched: arxiv collector for arxiv source");
+                        },
+                        ("pmc", "api") if id_lower.contains("pmc") || id_lower.contains("pubmed") => {
+                            enabled_for_source = true;
+                            println!("      ✅ Matched: pmc/pubmed collector for pmc source");
+                        },
+                        ("semantic", "api") if id_lower.contains("semantic") => {
+                            enabled_for_source = true;
+                            println!("      ✅ Matched: semantic collector for semantic source");
+                        },
+                        ("rss", "rss") | ("rss", _) if id_lower.contains("rss") => {
+                            enabled_for_source = true;
+                            println!("      ✅ Matched: rss collector for rss source");
+                        },
+                        ("html", "html") | ("html", _) if id_lower.contains("html") => {
+                            enabled_for_source = true;
+                            println!("      ✅ Matched: html collector for html source");
+                        },
                         _ => {
                             // Fallback: check by ID pattern
-                            if source_key == "arxiv" && id.contains("arxiv") { enabled_for_source = true; }
-                            if source_key == "pmc" && (id.contains("pmc") || id.contains("pubmed")) { enabled_for_source = true; }
-                            if source_key == "semantic" && id.contains("semantic") { enabled_for_source = true; }
-                            if source_key == "rss" && (id.contains("rss") || collector_type == "rss") { enabled_for_source = true; }
-                            if source_key == "html" && (id.contains("html") || collector_type == "html") { enabled_for_source = true; }
+                            if source_key == "arxiv" && id_lower.contains("arxiv") { 
+                                enabled_for_source = true;
+                                println!("      ✅ Matched (fallback): arxiv collector for arxiv source");
+                            }
+                            if source_key == "pmc" && (id_lower.contains("pmc") || id_lower.contains("pubmed")) { 
+                                enabled_for_source = true;
+                                println!("      ✅ Matched (fallback): pmc/pubmed collector for pmc source");
+                            }
+                            if source_key == "semantic" && id_lower.contains("semantic") { 
+                                enabled_for_source = true;
+                                println!("      ✅ Matched (fallback): semantic collector for semantic source");
+                            }
+                            if source_key == "rss" && (id_lower.contains("rss") || collector_type == "rss") { 
+                                enabled_for_source = true;
+                                println!("      ✅ Matched (fallback): rss collector for rss source");
+                            }
+                            if source_key == "html" && (id_lower.contains("html") || collector_type == "html") { 
+                                enabled_for_source = true;
+                                println!("      ✅ Matched (fallback): html collector for html source");
+                            }
                         }
                     }
                 }
-                if enabled_for_source { result.push(s.id); }
+                if enabled_for_source { 
+                    result.push(s.id.clone());
+                    println!("  ✅ Site '{}' (id: {}) added to destinations for source '{}'", s.name, s.id, source_key);
+                } else {
+                    println!("  ❌ Site '{}' (id: {}) NOT enabled for source '{}'", s.name, s.id, source_key);
+                }
             }
         }
+        println!("  🎯 Final destinations for '{}': {:?}", source_key, result);
         result
     }
 

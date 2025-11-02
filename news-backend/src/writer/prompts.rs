@@ -141,6 +141,18 @@ GOOD TITLES (News-focused):
 ✓ "New Method Helps Scientists Share Data Securely Without Losing Accuracy"
 ✓ "Robots Navigate Ocean Currents Using Real-Time Weather Data"
 
+SUBTITLE REQUIREMENTS (CRITICAL):
+- **SEO-optimized**: A compelling summary optimized for search engines
+- **Maximum 2 lines**: Keep it concise and impactful
+- **Add tension**: Should create curiosity, consequence, or reason why this matters
+- **Clear value proposition**: Explain the significance in simple terms
+- **No technical jargon**: Write for general audience understanding
+
+GOOD SUBTITLES:
+✓ "A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information."
+✓ "Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements."
+✓ "Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment."
+
 EXAMPLES OF GOOD OPENING LINES (News style):
 ✓ "A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information."
 ✓ "Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements."
@@ -160,11 +172,14 @@ Format:
 CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
 {{
   "title": "Your title here",
+  "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
   "article_text": "Full article body text here - all content in one string field",
   "image_categories": ["category1", "category2", "category3"]
 }}
 
 ⚠️ IMPORTANT RULES:
+- "subtitle" MUST be a STRING field at the root level
+- "subtitle" MUST be SEO-optimized, maximum 2 lines, and create curiosity or explain significance
 - "article_text" MUST be a STRING field at the root level (NOT nested in an "article" object)
 - "article_text" MUST contain the complete article text in one string
 - DO NOT create nested objects like {{"article": {{"opening_hook": "...", "key_finding": "..."}}}}

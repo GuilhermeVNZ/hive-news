@@ -31,20 +31,27 @@ async function readArticlesFromDir(outputDir: string, isPromotional: boolean = f
         // Ler arquivos necessários
         const titlePath = path.join(articleDir, 'title.txt');
         const articlePath = path.join(articleDir, 'article.md');
+        const linkedinPostPath = path.join(articleDir, 'linkedin.txt');
         
-        const [title, articleContent, dirStats] = await Promise.all([
+        const [title, articleContent, linkedinPostContent, dirStats] = await Promise.all([
           fs.readFile(titlePath, 'utf-8').catch(() => ''),
           fs.readFile(articlePath, 'utf-8').catch(() => ''),
+          fs.readFile(linkedinPostPath, 'utf-8').catch(() => ''),
           fs.stat(articleDir), // Para obter data de modificação
         ]);
         
-        // Extrair excerpt (primeiras 3 linhas)
-        const excerpt = articleContent
-          .split('\n')
-          .filter(line => line.trim())
-          .slice(0, 3)
-          .join(' ')
-          .substring(0, 200) + '...';
+        // Usar conteúdo de linkedin.txt como excerpt (subtítulo) para AIResearch
+        // Se linkedin.txt não existir ou estiver vazio, usar fallback das primeiras linhas do artigo
+        let excerpt = linkedinPostContent.trim();
+        if (!excerpt) {
+          // Fallback: extrair excerpt das primeiras 3 linhas do artigo
+          excerpt = articleContent
+            .split('\n')
+            .filter(line => line.trim())
+            .slice(0, 3)
+            .join(' ')
+            .substring(0, 200) + '...';
+        }
         
         // Ler image categories
         const categoriesPath = path.join(articleDir, 'image_categories.txt');
