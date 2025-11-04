@@ -28,7 +28,12 @@ export default function Logs() {
     try {
       setLoading(true);
       setError(''); // Limpar erro anterior
-      const params: any = { limit: pageSize, offset };
+      const params: any = { 
+        limit: pageSize, 
+        offset,
+        ...(showFeaturedOnly && { featured: true }), // Add featured filter when checkbox is checked
+      };
+      if (query) params.q = query; // Add search query if present
       const res = await axios.get('/api/logs', { 
         params,
         timeout: 10000, // 10 segundos de timeout
@@ -63,7 +68,10 @@ export default function Logs() {
     }
   };
 
-  useEffect(()=>{ load(); }, [offset]);
+  // Reload when offset, query, or featured filter changes
+  useEffect(()=>{ 
+    load(); 
+  }, [offset, query, showFeaturedOnly]);
   
   // Reset offset when query or featured filter changes
   useEffect(() => {
@@ -112,15 +120,16 @@ export default function Logs() {
           ) : error ? (
             <div className="p-6 text-sm text-destructive">{error}</div>
           ) : (() => {
-            // Filter items based on query and featured filter
+            // Filter items based on query (featured filter is now handled by backend)
             const q = query.toLowerCase().trim();
             const tokens = q.length ? q.split(/\s+/).filter(Boolean) : [];
             let filtered = items;
             
-                // Apply featured filter first
-                if (showFeaturedOnly) {
-                  filtered = filtered.filter(it => it.featured === true);
-                }
+            // Note: Featured filter is now handled by backend, so we don't need to filter here
+            // But we keep it as a safety check in case backend doesn't filter correctly
+            if (showFeaturedOnly) {
+              filtered = filtered.filter(it => it.featured === true);
+            }
             
             // Then apply search query filter
             if (tokens.length > 0) {
@@ -284,10 +293,10 @@ export default function Logs() {
                 ))}
                 {(() => {
                   // Only show "Load more" button if:
-                  // 1. We're not filtering locally (query or featured filter)
+                  // 1. We're not filtering by search query (featured filter works with pagination)
                   // 2. There are more items to load (hasMore)
                   // 3. Not currently loading
-                  const showLoadMore = !query && !showFeaturedOnly && hasMore && !loading;
+                  const showLoadMore = !query && hasMore && !loading;
                   
                   return showLoadMore ? (
                     <div className="pt-2">

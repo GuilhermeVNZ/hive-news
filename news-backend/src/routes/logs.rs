@@ -53,12 +53,22 @@ struct ArticleLogItem {
 struct DestinationInfo { site_id: String, site_name: String, url: String }
 
 #[derive(Debug, Deserialize)]
-pub struct LogsQuery { pub q: Option<String>, pub limit: Option<usize>, pub offset: Option<usize> }
+pub struct LogsQuery { 
+    pub q: Option<String>, 
+    pub limit: Option<usize>, 
+    pub offset: Option<usize>,
+    pub featured: Option<bool>, // Filter by featured status
+}
 
 pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
     query: Option<Query<LogsQuery>>
 ) -> Json<Value> {
-    let params = query.map(|q| q.0).unwrap_or(LogsQuery{ q: None, limit: None, offset: None });
+    let params = query.map(|q| q.0).unwrap_or(LogsQuery{ 
+        q: None, 
+        limit: None, 
+        offset: None,
+        featured: None,
+    });
 
     // Carrega registry
     let registry_path = get_registry_path();
@@ -71,6 +81,27 @@ pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
         .into_iter()
         .filter(|m| m.status == ArticleStatus::Published)
         .collect::<Vec<_>>();
+
+    // Filter by featured status if requested
+    if let Some(featured_only) = params.featured {
+        if featured_only {
+            let before_count = all.len();
+            all.retain(|m| {
+                // Handle both boolean and string representations of true
+                let is_featured = match m.featured {
+                    Some(true) => true,
+                    Some(false) => false,
+                    None => false,
+                };
+                eprintln!("[Logs API] Article {} featured check: featured={:?}, result={}", 
+                    m.id, m.featured, is_featured);
+                is_featured
+            });
+            let after_count = all.len();
+            eprintln!("[Logs API] Featured filter: before={}, after={}, filtered={}", 
+                before_count, after_count, before_count - after_count);
+        }
+    }
 
     if let Some(q) = params.q.as_ref() {
         // Normalize robustly: lowercase, collapse whitespace, scrub punctuation to spaces,
