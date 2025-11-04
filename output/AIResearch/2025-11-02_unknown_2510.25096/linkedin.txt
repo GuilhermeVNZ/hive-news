@@ -1,0 +1,1 @@
+Graph neural networks can unfairly amplify biases in critical decisions like loan approvals. New research introduces FairMIB, which reduces bias by 50% while maintaining accuracy. Could this be the key to building trustworthy AI systems?

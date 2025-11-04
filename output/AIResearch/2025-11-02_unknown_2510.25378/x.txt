@@ -1,0 +1,1 @@
+AI hallucinates scientific citations! GPT-4.1 creates fake references that appear legitimate but reference non-existent papers. High-citation papers are reproduced accurately, but low-citation ones suffer significantly. This threatens trust in automated research tools.

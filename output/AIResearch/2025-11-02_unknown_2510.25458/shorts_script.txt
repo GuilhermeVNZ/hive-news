@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] Did you know AI confidence scores are systematically wrong? The numbers you trust for medical diagnosis and autonomous systems might be misleading.
+
+[VISUAL DIRECTION] [Animated text: "AI CONFIDENCE SCORES ARE WRONG" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] Current AI systems provide confidence scores alongside predictions, but new research reveals these evaluations fail to capture true reliability.
+
+[VISUAL DIRECTION] [Show medical AI interface with confidence score of 85% next to diagnosis, then red X appears over it]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Do traditional metrics actually measure what matters for real-world decisions? They found existing methods rely on problematic simplifications.
+
+[VISUAL DIRECTION] [Show traditional calibration curve vs. new framework comparison with clear visual distinction]
+
+[VOICEOVER 0:40-1:00] The discovery: Current evaluation obscures method-dependent tradeoffs. A system that appears well-calibrated by traditional metrics might still fail in critical applications.
+
+[VISUAL DIRECTION] [Zoom on Figure 2 showing distribution discrepancies between predicted and observed probabilities]
+
+[VOICEOVER 1:00-1:30] The new framework uses relative utility functions that encapsulate end-user goals. It scales efficiently across thousands of categories and unifies existing metrics for richer evaluation.
+
+[VISUAL DIRECTION] [Animated flow chart showing how utility functions map to real-world decisions]
+
+[VOICEOVER 1:30-1:50] This matters because miscalibrated AI can have serious consequences - from medical misdiagnosis to financial forecasting errors and autonomous system failures.
+
+[VISUAL DIRECTION] [Quick cuts: hospital setting, financial charts, autonomous vehicle]
+
+[VOICEOVER 1:50-2:00] The takeaway: We need AI confidence that truly reflects reality, not just numbers that look good on paper. Trust, but verify your AI's probabilities.

@@ -1,0 +1,1 @@
+AI training costs millions - but TetraJet-v2 cuts resource use by 80% while maintaining performance. This Nature-published breakthrough uses novel quantization and outlier control to make advanced AI sustainable and accessible.

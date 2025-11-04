@@ -1,0 +1,1 @@
+AI can now forget specific data without costly retraining - this breakthrough makes machine unlearning practical for real-world privacy and compliance needs.

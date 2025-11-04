@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could read your emotions with quantum precision? This isn't science fiction - it's happening now.
+[VISUAL DIRECTION] Animated text: "QUANTUM AI READS EMOTIONS" with pulsing quantum particle animation
+
+[VOICEOVER 0:05-0:20] Current AI struggles with emotion detection accuracy and transparency, limiting real-world applications in mental health and customer service.
+[VISUAL DIRECTION] Show split screen: healthcare setting on left, customer service on right with question marks over AI systems
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that not only predicts emotions accurately but explains its reasoning?
+[VISUAL DIRECTION] Zoom in on paper title: "Quantum-Inspired Neural Network with Quantum Jump for Multimodal Sentiment"
+
+[VOICEOVER 0:40-1:00] They discovered QiNN-QJ - a quantum-inspired network that simulates entanglement to capture complex emotional dependencies across audio, video, and text.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on entanglement visualization, animated connections between data types
+
+[VOICEOVER 1:00-1:30] The system encodes emotions as quantum states, using tensor products and Hamiltonian dynamics to balance expressive power with stability - avoiding overfitting while maintaining accuracy.
+[VISUAL DIRECTION] Animated diagram showing quantum state transitions with measurement projections
+
+[VOICEOVER 1:30-1:50] Results show 0.811 correlation with human emotion intensity and 46.92% accuracy on complex sentiment tasks - enabling trustworthy deployment in healthcare and education.
+[VISUAL DIRECTION] Fast cuts between key stats: "0.811 correlation" "46.92% accuracy" "CMU-MOSI" "CH-SIMS"
+
+[VOICEOVER 1:50-2:00] Quantum-inspired AI is making emotion detection reliable and transparent - a crucial step for ethical AI deployment.
+[VISUAL DIRECTION] Final hold on animated text: "TRUSTWORTHY EMOTION AI IS HERE" with quantum particle convergence

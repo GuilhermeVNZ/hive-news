@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could actually explain its reasoning instead of being a mysterious black box?
+[VISUAL DIRECTION] Animated text: "AI BLACK BOX PROBLEM" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] New research from Nature reveals how combining large language models with knowledge graphs creates AI that's both powerful AND transparent.
+[VISUAL DIRECTION] Show split screen: left side "LLM" with question marks, right side "Knowledge Graph" with connected nodes
+
+[VOICEOVER 0:20-0:40] The problem? Current AI often generates plausible but incorrect information. Researchers asked: Can we make AI more reliable and interpretable?
+[VISUAL DIRECTION] Show "Hallucinations" text with red X, transition to researcher icons with thought bubbles
+
+[VOICEOVER 0:40-1:00] They discovered a bidirectional enhancement - graphs improve AI reasoning by 10%, while AI enriches graph analysis. It's a mutually beneficial relationship.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance metrics, highlight 10% improvement
+
+[VOICEOVER 1:00-1:30] How it works: Text-attributed graphs combine explicit relationships with AI processing. In drug discovery, this means more accurate predictions. In scientific research, it grounds responses in verified knowledge.
+[VISUAL DIRECTION] Animated flow: "Text" → "Graph Structure" → "AI Processing" → "Reliable Output"
+
+[VOICEOVER 1:30-1:50] The implications are huge - from personalized recommendations that explain their logic to medical diagnostics you can trust. Everyday AI assistants become truly helpful partners.
+[VISUAL DIRECTION] Show healthcare, e-commerce, and research icons with checkmarks
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about being smart - it's about being understandable. And that changes everything.
+[VISUAL DIRECTION] Final screen: "POWERFUL + EXPLAINABLE AI" with Nature/Science logo

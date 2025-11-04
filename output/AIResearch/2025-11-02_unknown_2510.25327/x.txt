@@ -1,0 +1,1 @@
+AI delays in drones and smartphones risk safety. MMEdge slashes latency 75.83% without accuracy loss, enabling real-time responsiveness. A game-changer for on-device AI. #MMEdge

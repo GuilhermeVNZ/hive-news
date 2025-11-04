@@ -1,0 +1,1 @@
+Anthropic's Claude AI can now use computers like humans. The new 3.5 models show major coding improvements while a computer use beta lets Claude click, type, and navigate interfaces. Still experimental but promising. #AI #Tech

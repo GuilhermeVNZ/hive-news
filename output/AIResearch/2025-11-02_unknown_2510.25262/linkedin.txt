@@ -1,0 +1,1 @@
+AI just got smarter without getting more expensive. New IBNorm method improves language models by 8.75% and vision models by up to 8.17% through selective compression. This breakthrough rethinks normalization to preserve essential information while discarding noise. Read how this drop-in compatible approach advances AI efficiency.

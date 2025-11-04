@@ -1,0 +1,1 @@
+AI stock-picker delivered 167.52% returns over 5 years, beating human advisors. Multi-agent system analyzes economic data, fundamentals & news with Sharpe ratio of 1.84. Nature study shows AI's potential to reduce investment biases.

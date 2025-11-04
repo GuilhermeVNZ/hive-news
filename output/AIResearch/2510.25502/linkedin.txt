@@ -1,1 +1,0 @@
-Can AI forecast trends with zero real data? TempoPFN, a new AI model, achieves state-of-the-art time-series forecasting using only synthetic data, outperforming models that rely on large datasets. This breakthrough democratizes forecasting in data-scarce fields like healthcare and finance—imagine the possibilities!

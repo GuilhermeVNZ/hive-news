@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could stop inappropriate images from ever being created—without ruining image quality?
+[VISUAL DIRECTION] [Animated text: "AI BLOCKS BAD IMAGES - WITHOUT QUALITY LOSS" with dramatic zoom effect]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction. As text-to-image generators become more powerful, the challenge of blocking harmful content has grown exponentially.
+[VISUAL DIRECTION] [Show rapid montage of AI-generated images with red X overlays on problematic ones, fast cuts]
+
+[VOICEOVER 0:20-0:40] Traditional methods often degrade image quality when trying to block unwanted content. Researchers at KAIST asked: Can we detect and remove inappropriate elements as the image is being created?
+[VISUAL DIRECTION] [Show side-by-side comparison: blurry blocked image vs. clear original, with text: "OLD METHOD = QUALITY LOSS"]
+
+[VOICEOVER 0:40-1:00] They discovered a breakthrough approach called Vision-Language Model Guided Dynamic Negative Prompting. It achieved a 0.225 attack success rate on the P4D dataset while maintaining a CLIP score of 0.277.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance metrics, animated arrows pointing to key numbers]
+
+[VOICEOVER 1:00-1:30] Here's how it works: During the image generation process at specific timesteps, the system analyzes the partially created image and dynamically generates targeted instructions to steer the AI away from detected problems.
+[VISUAL DIRECTION] [Animated diagram showing denoising process with redirection arrows at steps 45, 23, 16, and 8, slow pan across timeline]
+
+[VOICEOVER 1:30-1:50] This means AI can now seamlessly integrate content moderation without requiring retraining or architectural changes to existing systems.
+[VISUAL DIRECTION] [Show clean transition from problematic to safe image generation, with text overlay: "SEAMLESS INTEGRATION"]
+
+[VOICEOVER 1:50-2:00] The future of AI just got safer—and smarter. Content moderation that works in real-time, without compromise.
+[VISUAL DIRECTION] [Final dramatic shot of clean AI-generated landscape with text: "SAFER AI GENERATION NOW"]

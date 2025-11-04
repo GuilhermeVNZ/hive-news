@@ -1,1 +1,0 @@
-Physics AI fails in biology. Living systems are messy, uncertain, partially observable—opposite of physics assumptions. Biology-Informed Machine Learning (BIML) tackles this with uncertainty quantification, contextualization, constrained inference. Nature paper shows how.

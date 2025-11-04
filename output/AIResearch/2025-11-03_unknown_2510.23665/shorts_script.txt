@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could learn from your photos and music files without ever unpacking them? [VISUAL DIRECTION] Animated text: "AI LEARNING WITHOUT UNPACKING?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Right now, AI systems waste enormous resources decoding compressed files before they can learn from them. [VISUAL DIRECTION] Show file icons (MP3, JPEG) being unpacked with energy consumption meters spiking
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we skip the decoding step entirely and learn directly from compressed data? [VISUAL DIRECTION] Animated flowchart showing traditional vs. proposed approach with red X over decoding step
+
+[VOICEOVER 0:40-1:00] They discovered TEMPEST - a method that processes compressed files directly, maintaining 91.92% accuracy on audio commands. [VISUAL DIRECTION] Show accuracy comparison chart: TEMPEST 91.92% vs conventional methods
+
+[VOICEOVER 1:00-1:30] How it works: Instead of decoding, TEMPEST uses lightweight networks to process compressed blocks, similar to how Vision Transformers work. [VISUAL DIRECTION] Animated diagram showing compressed blocks flowing through neural network layers
+
+[VOICEOVER 1:30-1:50] This means AI could handle millions of files with dramatically reduced energy consumption - crucial for content moderation and medical imaging. [VISUAL DIRECTION] Show applications: social media content filtering, medical scans processing
+
+[VOICEOVER 1:50-2:00] The future? AI that learns from your data without ever unpacking it first. [VISUAL DIRECTION] Final text overlay: "TEMPEST: Learning from compressed files directly" with file icons

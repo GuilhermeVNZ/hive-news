@@ -1,0 +1,1 @@
+A new neuro-symbolic system combines vision and reasoning to help drones land safely in cluttered environments, offering transparent decisions and better reliability for critical missions.

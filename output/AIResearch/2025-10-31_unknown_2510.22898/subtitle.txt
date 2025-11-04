@@ -1,0 +1,1 @@
+AI fails on real scientific problems, with accuracy dropping below 50% when faced with novel challenges. A new solution closes this gap, making AI reasoning more reliable and cost-effective for research.

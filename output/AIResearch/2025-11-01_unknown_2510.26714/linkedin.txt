@@ -1,0 +1,1 @@
+What if your AI's 'forget' button is lying? New Nature/Science study reveals single-seed evaluation distorts machine unlearning performance, risking privacy and fairness. Rethink AI testing now.

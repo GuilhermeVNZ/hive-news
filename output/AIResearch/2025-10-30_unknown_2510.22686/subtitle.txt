@@ -1,0 +1,1 @@
+AI learns to trust its own decisions by predicting all possible outcomes, not just averages. This breakthrough makes robots more reliable in uncertain situations.

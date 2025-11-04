@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know preventable hospital readmissions cost Medicare alone $15 billion annually? 
+[VISUAL DIRECTION] Animated text: $15B ANNUALLY - flashing with hospital icon
+[VOICEOVER 0:05-0:20] That's right - when patients return to the hospital within 30 days, it costs our healthcare system billions and disrupts lives. 
+[VISUAL DIRECTION] Show rotating hospital building with dollar signs flowing out
+[VOICEOVER 0:20-0:40] But what if we could predict who's most at risk? Researchers developed a machine learning approach to answer exactly that question.
+[VISUAL DIRECTION] Show question mark transforming into predictive analytics dashboard
+[VOICEOVER 0:40-1:00] Their model achieved 85% accuracy in distinguishing between patients who would and wouldn't be readmitted - significantly outperforming traditional methods.
+[VISUAL DIRECTION] Show AUC curve graph with 0.85 highlighted, comparing to logistic regression (0.659) and other methods
+[VOICEOVER 1:00-1:30] The system analyzes demographics, medical claims, pharmacy data, and comorbidities to identify high-risk patients before they leave the hospital.
+[VISUAL DIRECTION] Animated flow chart showing data inputs feeding into prediction algorithm
+[VOICEOVER 1:30-1:50] This means hospitals can implement targeted interventions like additional monitoring and care coordination for the patients who need it most.
+[VISUAL DIRECTION] Show doctor reviewing patient chart with "HIGH RISK" alert, then transitioning to home monitoring scenario
+[VOICEOVER 1:50-2:00] With 76% of these readmissions being preventable, this technology could transform patient outcomes while saving billions.
+[VISUAL DIRECTION] Final screen: "85% ACCURACY | 76% PREVENTABLE | $15B SAVINGS" with hospital icon turning green

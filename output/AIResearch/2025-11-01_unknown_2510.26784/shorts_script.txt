@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems can filter lists using reusable neural components—just like human-designed functions?
+[VISUAL DIRECTION] Animated text: "AI FILTERS LISTS LIKE HUMANS" with neural network visualization pulsing
+
+[VOICEOVER 0:05-0:20] This isn't science fiction—researchers at Northeastern University discovered how large language models internally implement abstract operations.
+[VISUAL DIRECTION] Zoom in on research paper title "LLMs Process Lists With General Filter Heads" with university logo
+
+[VOICEOVER 0:20-0:40] The key question: How do AI systems perform complex list operations without being explicitly programmed for each task?
+[VISUAL DIRECTION] Show list of mixed items (fruits, vehicles, professions) with question marks appearing
+
+[VOICEOVER 0:40-1:00] They identified specialized neural components called 'filter heads'—compact, reusable predicates that perform operations like "is fruit?" across different languages and formats.
+[VISUAL DIRECTION] Animated diagram showing filter head activation with specific neural pathways highlighted
+
+[VOICEOVER 1:00-1:30] Through activation experiments, researchers demonstrated these filter heads causally drive selection behavior. When extracted and applied to other scenarios, they trigger the same filtering behavior without retraining.
+[VISUAL DIRECTION] Show mediation analysis results with causality scores (0.863 for object filtering) and transfer learning examples
+
+[VOICEOVER 1:30-1:50] This means AI systems develop interpretable computations similar to functional primitives, enabling reliable tools for content processing, moderation, and educational applications.
+[VISUAL DIRECTION] Show real-world applications: content filtering, educational tools, concept detection with accuracy metrics
+
+[VOICEOVER 1:50-2:00] The takeaway: AI isn't just pattern matching—it's building reusable reasoning components that mirror human cognitive functions.
+[VISUAL DIRECTION] Final text overlay: "AI REASONING = HUMAN-LIKE FILTERING" with neural network and human brain side-by-side comparison

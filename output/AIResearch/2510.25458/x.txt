@@ -1,1 +1,0 @@
-AI calibration breakthrough: New framework evaluates true outcomes, not just confidence scores. Essential for trustworthy medical AI and autonomous systems. Scales to thousands of categories. #AI #MachineLearning

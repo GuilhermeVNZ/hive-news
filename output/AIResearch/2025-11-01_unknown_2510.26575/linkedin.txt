@@ -1,0 +1,1 @@
+AI systems waste 40%+ resources exploring dead ends. New InfoFlow method makes AI assistants answer faster with less computation, benefiting researchers and students. Nature paper shows how smarter guidance transforms AI efficiency.

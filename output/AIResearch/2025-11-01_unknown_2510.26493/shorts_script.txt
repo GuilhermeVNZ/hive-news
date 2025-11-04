@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could understand your intentions without constant, explicit instructions?
+[VISUAL DIRECTION] Animated text: "AI UNDERSTANDING" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As artificial intelligence becomes integrated into daily life, a critical challenge emerges: how can machines accurately grasp human intentions?
+[VISUAL DIRECTION] Show rapid montage of AI applications - voice assistants, coding tools, research platforms
+
+[VOICEOVER 0:20-0:40] Researchers examined the evolution of prompt engineering through four distinct stages, from rigid inputs in AI 1.0 to anticipated superhuman collaboration in AI 4.0.
+[VISUAL DIRECTION] Animated timeline showing AI 1.0 (1990s-2020) to AI 4.0 (speculative future)
+
+[VOICEOVER 0:40-1:00] The key finding: Advanced AI systems can now interpret human-native signals like free-form images and data, but face limitations with long-context performance and 'context overload.'
+[VISUAL DIRECTION] Show Figure 2 with zoom on interaction cost decreasing across AI generations
+
+[VOICEOVER 1:00-1:30] This works through systematic prompt engineering - designing, organizing, and providing context to reduce the effort required to translate human intentions into machine-processable representations.
+[VISUAL DIRECTION] Animated diagram showing high-entropy human intentions transforming into low-entropy machine representations
+
+[VOICEOVER 1:30-1:50] Real-world implications: More intuitive AI assistants for coding and research, but current systems may misinterpret needs and struggle with scalable storage solutions.
+[VISUAL DIRECTION] Show Google's Gemini CLI and Tongyi DeepResearch interfaces with caution symbols
+
+[VOICEOVER 1:50-2:00] The future involves developing architectures that efficiently handle long contexts and autonomously evolve throughout their lifetime.
+[VISUAL DIRECTION] Final text overlay: "AI evolution continues - are we ready for natural collaboration?"

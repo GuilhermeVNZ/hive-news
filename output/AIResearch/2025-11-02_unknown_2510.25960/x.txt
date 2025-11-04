@@ -1,0 +1,1 @@
+Robots can now be verified by their sounds—no extra hardware needed. WaveVerif achieves 85% accuracy in detecting tampering using smartphone mics. A game-changer for secure automation. #Robotics #Security

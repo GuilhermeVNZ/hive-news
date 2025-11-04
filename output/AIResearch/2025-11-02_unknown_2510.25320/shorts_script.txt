@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could solve complex problems 24.9% faster than current methods?
+[VISUAL DIRECTION] Animated text: 24.9% FASTER AI REASONING with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] Current AI systems handle multi-step tasks inefficiently, solving one step at a time. This sequential bottleneck slows everything from research analysis to customer support.
+[VISUAL DIRECTION] Show animated flowchart with sequential steps, each waiting for the previous to complete
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI plan like humans, identifying which steps can run simultaneously?
+[VISUAL DIRECTION] Split screen showing human delegating tasks vs AI waiting sequentially
+
+[VOICEOVER 0:40-1:00] They developed GAP - Graph-based Planning that models tasks as dependency graphs, achieving 0.9% accuracy improvement on multi-hop benchmarks.
+[VISUAL DIRECTION] Show dependency graph animation with parallel execution paths lighting up
+
+[VOICEOVER 1:00-1:30] GAP uses two-stage training: first learning to decompose queries, then optimizing tool invocation strategy. The system identifies which steps depend on others, enabling level-wise parallel execution.
+[VISUAL DIRECTION] Animated training process showing dependency analysis and parallel execution
+
+[VOICEOVER 1:30-1:50] This means AI assistants become more reliable and cost-effective for applications from educational tools to complex research analysis.
+[VISUAL DIRECTION] Show real-world applications: customer support, research analysis, educational tools
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just smarter - it's 24.9% more efficient.
+[VISUAL DIRECTION] Final text overlay: GAP: 24.9% faster, 0.9% more accurate

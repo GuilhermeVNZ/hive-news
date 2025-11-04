@@ -1,0 +1,1 @@
+AI agents can now impersonate humans in authentication systems - and current frameworks weren't designed to handle this. The scalability problem means users could face thousands of AI requests daily. New Nature/Science research outlines the urgent need for AI-specific identity management before breaches occur in critical infrastructure.

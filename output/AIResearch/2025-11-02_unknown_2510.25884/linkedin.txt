@@ -1,0 +1,1 @@
+AI judges often misalign with human preferences, limiting reliability. A new aggregation method improves scoring by 15% but reveals overlooked safety vulnerabilities. Read the Nature/Science study to understand how this impacts AI learning and deployment.

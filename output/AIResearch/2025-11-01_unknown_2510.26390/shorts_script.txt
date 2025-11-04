@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could see medical boundaries better than human experts? [VISUAL DIRECTION] Animated text: 94.25% ACCURACY flashes dramatically with medical scan imagery
+
+[VOICEOVER 0:05-0:20] Organ segmentation is crucial for diagnosing diseases and planning treatments, but subtle boundaries make this incredibly challenging. [VISUAL DIRECTION] Show CT/MRI scans with highlighted organ boundaries, quick cuts between different organs
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI overcome the limitations of current methods in identifying hard-to-segment organs like the gallbladder? [VISUAL DIRECTION] Zoom in on gallbladder area in medical scans, show boundary ambiguity
+
+[VOICEOVER 0:40-1:00] SPG-CDENet achieved 85.97% Similarity Coefficient on Synapse dataset and 94.25% on ACDC dataset - significantly outperforming existing systems. [VISUAL DIRECTION] Show comparison charts with SPG-CDENet vs U-Net vs Transformer methods, highlight performance gap
+
+[VOICEOVER 1:00-1:30] The two-stage network first identifies rough regions like liver and pancreas, then refines boundaries using dual encoders - mimicking how radiologists work. [VISUAL DIRECTION] Animated diagram showing two-stage process: localization → refinement, with dual encoder architecture
+
+[VOICEOVER 1:30-1:50] This means more reliable automated analyses, reduced human error, and better patient outcomes in clinical workflows. [VISUAL DIRECTION] Show hospital setting, radiologists reviewing AI-assisted scans, patient recovery imagery
+
+[VOICEOVER 1:50-2:00] AI that sees medical boundaries with unprecedented precision - changing diagnostics forever. [VISUAL DIRECTION] Final dramatic text: MEDICAL IMAGING REVOLUTION with SPG-CDENet logo

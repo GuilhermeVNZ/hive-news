@@ -1,0 +1,1 @@
+AI can now learn directly from compressed files like MP3/JPEG without decoding, achieving 91.92% accuracy while using 1000x fewer resources. This TEMPEST breakthrough eliminates the fundamental bottleneck in multimedia AI processing. How could this transform your industry's data handling?

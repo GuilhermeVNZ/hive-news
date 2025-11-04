@@ -1,0 +1,1 @@
+AI fails at basic survey analysis 25% of the time due to formatting issues, limiting healthcare and policy applications. New Nature/Science research reveals how data serialization choices impact AI reliability and provides a benchmark for systematic testing. Read how structural improvements can boost AI performance by 8.8%.

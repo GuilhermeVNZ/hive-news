@@ -1,0 +1,1 @@
+A new method integrates flexible tree structures into neural networks, enabling precise density estimation and interpretable uncertainty measures—crucial for trustworthy AI in sensitive applications.

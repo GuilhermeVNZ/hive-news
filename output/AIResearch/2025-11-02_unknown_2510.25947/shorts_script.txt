@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if everything we thought about training multilingual AI was wrong?
+[VISUAL DIRECTION] Animated text: "400 LANGUAGES - NO PERFORMANCE DROP" with question mark morphing into exclamation point
+
+[VOICEOVER 0:05-0:20] For years, AI developers assumed adding more languages would hurt model performance. But new EPFL research challenges this fundamental belief.
+[VISUAL DIRECTION] Show Figure 1 from paper - performance curves across language mixtures. Zoom in on stable performance line.
+
+[VOICEOVER 0:20-0:40] Researchers systematically tested what happens when you train models on massive multilingual datasets - up to 1,834 languages.
+[VISUAL DIRECTION] Animated world map with language dots lighting up across continents. Counter showing language count increasing.
+
+[VOICEOVER 0:40-1:00] The surprising finding: combining multiple languages doesn't inherently degrade single-language capability. Models maintained performance even when languages comprised only 10% of the mixture.
+[VISUAL DIRECTION] Show bar chart comparing performance across language proportions. Highlight the 10% mixture bar staying high.
+
+[VOICEOVER 1:00-1:30] Even more surprising - language family boundaries don't matter. Training on Russian helped Slavic languages equally, whether Polish or Czech. The key is data quality, not linguistic relationships.
+[VISUAL DIRECTION] Animated language family tree showing cross-family connections. Zoom on Slavic branch with performance metrics.
+
+[VOICEOVER 1:30-1:50] This means companies can aggressively include more languages without fearing trade-offs. Focus should shift to data cleaning rather than restrictive balancing operations.
+[VISUAL DIRECTION] Show before/after comparison: restrictive approach vs. inclusive approach with global language coverage.
+
+[VOICEOVER 1:50-2:00] The future of AI just got more inclusive - and the evidence suggests our current practices may be too conservative.
+[VISUAL DIRECTION] Final screen: "Inclusive AI: More Languages, Better Performance" with EPFL logo

@@ -1,15 +1,21 @@
 {
+  "paths": {
+    "base_dir": "G:/Hive-Hub/News-main",
+    "downloads_dir": "downloads",
+    "output_dir": "output",
+    "registry_file": "articles_registry.json"
+  },
   "sites": {
-    "airesearch": {
-      "id": "airesearch",
-      "name": "AI Research",
-      "domain": "airesearch.news",
+    "scienceai": {
+      "id": "scienceai",
+      "name": "Science AI",
+      "domain": "scienceai.news",
       "enabled": true,
       "collectors": [
         {
           "id": "arxiv",
           "name": "arXiv",
-          "enabled": true,
+          "enabled": false,
           "api_key": null,
           "collector_type": null,
           "config": {
@@ -18,25 +24,9 @@
           }
         },
         {
-          "id": "pmc",
-          "name": "PubMed Central",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": null,
-          "config": {}
-        },
-        {
-          "id": "semantic_scholar",
-          "name": "Semantic Scholar",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": null,
-          "config": {}
-        },
-        {
           "id": "rss_openai",
           "name": "OpenAI Blog RSS",
-          "enabled": false,
+          "enabled": true,
           "api_key": null,
           "collector_type": "rss",
           "feed_url": "https://openai.com/blog/rss.xml",
@@ -48,7 +38,7 @@
         {
           "id": "rss_google_ai",
           "name": "Google AI RSS",
-          "enabled": false,
+          "enabled": true,
           "api_key": null,
           "collector_type": "rss",
           "feed_url": "https://blog.research.google/feeds/posts/default",
@@ -60,10 +50,10 @@
         {
           "id": "rss_nvidia",
           "name": "NVIDIA News RSS",
-          "enabled": false,
+          "enabled": true,
           "api_key": null,
           "collector_type": "rss",
-          "feed_url": "https://nvidianews.nvidia.com/rss/all-news.xml",
+          "feed_url": "https://nvidianews.nvidia.com/rss.xml",
           "base_url": "https://nvidianews.nvidia.com",
           "config": {
             "max_results": 5
@@ -84,7 +74,7 @@
         {
           "id": "html_anthropic",
           "name": "Anthropic News",
-          "enabled": false,
+          "enabled": true,
           "api_key": null,
           "collector_type": "html",
           "base_url": "https://www.anthropic.com/news",
@@ -101,7 +91,7 @@
         {
           "id": "html_meta_ai",
           "name": "Meta AI Blog",
-          "enabled": false,
+          "enabled": true,
           "api_key": null,
           "collector_type": "html",
           "base_url": "https://ai.meta.com/blog/",
@@ -117,16 +107,471 @@
         },
         {
           "id": "html_deepseek",
-          "name": "DeepSeek News",
-          "enabled": false,
+          "name": "DeepSeek Blog",
+          "enabled": true,
           "api_key": null,
           "collector_type": "html",
-          "base_url": "https://deepseek.com/news",
+          "base_url": "https://deepseek.ai/blog",
           "selectors": {
-            "article": "article, .post, .news-item",
-            "content": ".content, article, main",
-            "link": "a[href*='/news/']",
-            "title": "h1, h2"
+            "article": "article, .post, .blog-item, .news-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/blog'], a[href*='deepseek.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_alibaba_damo",
+          "name": "Alibaba Alizila News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.alizila.com/",
+          "selectors": {
+            "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
+            "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
+            "link": "a",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_xai",
+          "name": "X.ai News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://x.ai/news",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news/'], a[href*='x.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_mistral_ai",
+          "name": "Mistral AI News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://mistral.ai/news/",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news/'], a[href*='mistral.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_cohere",
+          "name": "Cohere AI Blog",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://txt.cohere.com/",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='cohere.com'], a[href*='txt.cohere.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_perplexity",
+          "name": "Perplexity AI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.perplexity.ai/discover/tech",
+          "selectors": {
+            "article": "article, .post, .discover-item, .article-item, .top-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .discover-content",
+            "link": "a[href*='perplexity.ai/discover'], a[href*='perplexity.ai/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .discover-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_huggingface",
+          "name": "Hugging Face Blog RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://huggingface.co/blog/feed.xml",
+          "base_url": "https://huggingface.co/blog",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_stability_ai",
+          "name": "Stability AI News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://stability.ai/news",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news'], a[href*='stability.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_elevenlabs",
+          "name": "ElevenLabs Blog RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://blog.elevenlabs.io/feed",
+          "base_url": "https://blog.elevenlabs.io/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_character_ai",
+          "name": "CharacterAI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://blog.character.ai/",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='blog.character.ai'], a[href*='character.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_inflection_ai",
+          "name": "Inflection AI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://inflection.ai/blog/enterprise",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='inflection.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_microsoft_ai",
+          "name": "Microsoft AI Blog RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://blogs.microsoft.com/ai/feed/",
+          "base_url": "https://blogs.microsoft.com/ai/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_ibm_research",
+          "name": "IBM Research AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://research.ibm.com/blog/feed",
+          "base_url": "https://research.ibm.com/blog",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_apple_ml",
+          "name": "Apple Machine Learning",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://machinelearning.apple.com/highlights",
+          "selectors": {
+            "article": "article, .post, .research-item, .publication-item, .highlight-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .highlight-content",
+            "link": "a[href*='machinelearning.apple.com/highlights'], a[href*='machinelearning.apple.com/research']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .highlight-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_apple_ml_research",
+          "name": "Apple Machine Learning Research",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://machinelearning.apple.com/research",
+          "selectors": {
+            "article": "article, .post, .research-item, .publication-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='machinelearning.apple.com/research']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_intel_ai",
+          "name": "Intel AI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .spotlight-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .spotlight-content",
+            "link": "a[href*='/customer-spotlight'], a[href*='intel.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .spotlight-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_amd_ai",
+          "name": "AMD AI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.amd.com/en/developer/resources/technical-articles.html#sortCriteria=%40amd_release_date%20descending",
+          "selectors": {
+            "article": "article, .post, .article-item, .technical-article",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/developer/resources/technical-articles'], a[href*='amd.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_salesforce_ai",
+          "name": "Salesforce AI Blog RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://www.salesforce.com/news/feed/",
+          "base_url": "https://www.salesforce.com/news/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_stanford_hai",
+          "name": "Stanford HAI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://hai.stanford.edu/news?filterBy=news",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='hai.stanford.edu/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_berkeley_ai",
+          "name": "Berkeley AI Research",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://bair.berkeley.edu/blog/archive/",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='bair.berkeley.edu/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_deepmind_blog",
+          "name": "DeepMind Blog",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://deepmind.google/discover/blog/",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='deepmind.google/discover/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_techcrunch_ai",
+          "name": "TechCrunch AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+          "base_url": "https://techcrunch.com/tag/artificial-intelligence/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_venturebeat_ai",
+          "name": "VentureBeat AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://venturebeat.com/category/ai/feed/",
+          "base_url": "https://venturebeat.com/category/ai/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_the_verge_ai",
+          "name": "The Verge AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
+          "base_url": "https://www.theverge.com/tech/ai",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_wired_ai",
+          "name": "Wired AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+          "base_url": "https://www.wired.com/category/science/ai/",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_mit_tech_review_ai",
+          "name": "MIT Technology Review AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+          "base_url": "https://news.mit.edu/topic/artificial-intelligence",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "rss_nature_ai",
+          "name": "Nature AI RSS",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "rss",
+          "feed_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+          "base_url": "https://www.nature.com/subjects/artificial-intelligence",
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_science",
+          "name": "Science",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.science.org/news",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='science.org/news'], a[href*='science.org/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_hive_hub",
+          "name": "Hive Hub",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://hive-hub.com",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='hive-hub.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_menlo_ventures",
+          "name": "Menlo Ventures AI",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://menlovc.com/focus-areas/ai/",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .perspective-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/focus-areas/ai'], a[href*='menlovc.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .perspective-title"
+          },
+          "config": {
+            "max_results": 5
+          }
+        },
+        {
+          "id": "html_airesearch_news",
+          "name": "AIResearch News",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": "html",
+          "base_url": "https://www.airesearch.news/",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
           },
           "config": {
             "max_results": 5
@@ -136,7 +581,118 @@
       "writer": {
         "provider": "deepseek",
         "model": "deepseek-chat",
-        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
+        "api_key": null,
+        "base_url": "https://api.deepseek.com",
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "enabled": true,
+        "use_compressor": true
+      },
+      "education_sources": [],
+      "social_media": [
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        },
+        {
+          "id": "x",
+          "name": "X (Twitter)",
+          "enabled": false,
+          "api_key": null,
+          "api_secret": null,
+          "access_token": null,
+          "refresh_token": null,
+          "channel_id": null,
+          "username": null,
+          "config": {}
+        }
+      ],
+      "collection_frequency_minutes": 30,
+      "writing_style": "news",
+      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AIResearch in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nAIResearch is a cutting-edge AI news platform focusing on:\n- Latest breakthroughs in artificial intelligence research\n- Practical applications of ML/deep learning\n- Industry news and expert analysis\n- **News-style journalism**: Complex topics explained for general audience\n- **Simple titles**: Focus on WHAT the discovery means, not HOW it works technically\n- **Accessibility first**: Make readers understand WHY it matters\n- **Clear explanations**: Use analogies and real-world comparisons\n- Users who want technical details can read the original paper\n- Emphasis on accuracy and scientific rigor WITH simple language\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference figures from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nSUBTITLE REQUIREMENTS (CRITICAL):\n- **SEO-optimized**: A compelling summary optimized for search engines\n- **Maximum 2 lines**: Keep it concise and impactful\n- **Add tension**: Should create curiosity, consequence, or reason why this matters\n- **Clear value proposition**: Explain the significance in simple terms\n- **No technical jargon**: Write for general audience understanding\n\nGOOD SUBTITLES:\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nCRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:\n{{\n  \"title\": \"Your title here\",\n  \"subtitle\": \"SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance\",\n  \"article_text\": \"Full article body text here - all content in one string field\",\n  \"image_categories\": [\"category1\", \"category2\", \"category3\"]\n}}\n\n⚠️ IMPORTANT RULES:\n- \"subtitle\" MUST be a STRING field at the root level\n- \"subtitle\" MUST be SEO-optimized, maximum 2 lines, and create curiosity or explain significance\n- \"article_text\" MUST be a STRING field at the root level (NOT nested in an \"article\" object)\n- \"article_text\" MUST contain the complete article text in one string\n- DO NOT create nested objects like {{\"article\": {{\"opening_hook\": \"...\", \"key_finding\": \"...\"}}}}\n- All article content goes directly into the \"article_text\" string field\n- Return ONLY valid JSON - no markdown, no extra formatting\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"  \n",
+      "prompt_social": "Create a short social post summarizing the key takeaway for a tech audience with hashtags.",
+      "prompt_blog": "Compose a deep-dive blog post with sections for background, approach, results, limitations, and future work.",
+      "prompt_article_enabled": false,
+      "prompt_social_enabled": false,
+      "prompt_blog_enabled": false
+    },
+    "airesearch": {
+      "id": "airesearch",
+      "name": "AI Research",
+      "domain": "airesearch.news",
+      "enabled": true,
+      "collectors": [
+        {
+          "id": "arxiv",
+          "name": "arXiv",
+          "enabled": true,
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          }
+        },
+        {
+          "id": "pmc",
+          "name": "PubMed Central",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "filter_technology_only": true,
+            "search_terms": [
+              "artificial intelligence",
+              "machine learning",
+              "deep learning",
+              "neural network",
+              "computer vision",
+              "natural language processing",
+              "data science",
+              "computer science",
+              "software engineering",
+              "programming",
+              "algorithm",
+              "transformer",
+              "reinforcement learning"
+            ],
+            "time_range_days": 30
+          }
+        },
+        {
+          "id": "semantic_scholar",
+          "name": "Semantic Scholar",
+          "enabled": false,
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "fields_of_study": [
+              "Computer Science",
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Computer Vision",
+              "Natural Language Processing",
+              "Data Science",
+              "Software Engineering"
+            ],
+            "filter_technology_only": true,
+            "max_results": 10,
+            "query": "computer science artificial intelligence machine learning"
+          }
+        }
+      ],
+      "writer": {
+        "provider": "deepseek",
+        "model": "deepseek-chat",
+        "api_key": null,
         "base_url": "https://api.deepseek.com",
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -150,6 +706,13 @@
           "enabled": false,
           "api_key": null,
           "config": {
+            "categories": [
+              "computer-science",
+              "artificial-intelligence",
+              "data-science",
+              "programming"
+            ],
+            "filter_technology_only": true,
             "language": "en"
           }
         },
@@ -159,6 +722,11 @@
           "enabled": false,
           "api_key": null,
           "config": {
+            "departments": [
+              "Electrical-Engineering-and-Computer-Science",
+              "Computer-Science"
+            ],
+            "filter_technology_only": true,
             "language": "en"
           }
         },
@@ -168,6 +736,12 @@
           "enabled": false,
           "api_key": null,
           "config": {
+            "categories": [
+              "computer-science",
+              "ai",
+              "programming"
+            ],
+            "filter_technology_only": true,
             "language": "en"
           }
         }
@@ -234,212 +808,21 @@
           "config": {}
         }
       ],
-      "collection_frequency_minutes": null,
-      "writing_style": null,
-      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nGeneral scientific publication:\n- Clear, accurate, accessible communication\n- Emphasis on evidence-based reporting\n- Professional academic tone\n- Broad scientific audience\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference results from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n- **SEO**: Optimize the title for SEO search\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nIMPORTANT: You MUST return your response as valid JSON only (no markdown, no formatting):\n{\n  \"title\": \"...\",                           // SHORT HOOK TITLE (max 8 words, strong clickbait)\n  \"article_text\": \"...\",                    // Full article body (500-800 words)\n  \"image_categories\": [                      // Array of image categories in priority order\n    \"category1\", \"category2\", \"category3\"    // Based on: ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n  ]\n}\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"",
-      "prompt_social": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. Create viral social media content based on Nature/Science style article below\n2. **FACT-BASED ONLY**: Do not add information not in the article\n3. Start each piece with a VIRAL HOOK (surprising fact, bold question, tension)\n4. Match Nature/Science credibility - no clickbait lies\n\n---\n\n## ARTICLE (Nature/Science style - YOUR ONLY SOURCE):\n{{article_text}}\n\n## ORIGINAL PAPER TITLE:\n{{paper_title}}\n\n---\n\nDELIVERABLES:\n\n### 1. LINKEDIN POST (300 characters max)\nSTRUCTURE:\n- Line 1: VIRAL HOOK (surprising fact/question from article)\n- Line 2: Core finding in 1 sentence\n- Line 3: Thought-provoking question or call-to-action\n\nSTYLE:\n- Professional tone (Nature/Science authority)\n- No emojis, no hashtag spam\n- Fact-based (from article only)\n\nEXAMPLE HOOKS:\n✓ \"What if AI could predict every protein structure in existence?\"\n✓ \"The universe might be 2 billion years younger than we thought.\"\n✓ \"Cancer cells have a hidden escape route. Researchers just found it.\"\n\n### 2. X POST (280 characters max)\nSTRUCTURE:\n- HOOK first (stop the scroll)\n- Key insight compressed\n- Paper relevance\n\nSTYLE:\n- Match Nature/Science credibility\n- No fabrication\n- No hashtags unless natural\n\n### 3. YOUTUBE SHORTS SCRIPT (2 minutes / ~300 words)\n\nFORMAT (alternating blocks with timestamps):\n\n[VOICEOVER 0:00-0:05]\n[Viral hook - surprising statement/question from article creating immediate tension]\n\n[VISUAL DIRECTION]\n[Director note: \"Show Figure 2 with zoom on peak distribution\" OR \"Animated text: key stat\"]\n\n[VOICEOVER 0:05-0:15]\n[Setup context - why viewer should care, from article]\n\n[VISUAL DIRECTION]\n[Transition guidance, what to emphasize]\n\nSCRIPT STRUCTURE (2 minutes):\n- Hook (0:00-0:05) - Grab attention instantly\n- Context (0:05-0:20) - Why this matters\n- Problem/Question (0:20-0:40) - What researchers asked\n- Key Finding (0:40-1:00) - What they discovered\n- How It Works (1:00-1:30) - Explain the science\n- Implications (1:30-1:50) - Real-world impact FROM ARTICLE\n- Closing Hook (1:50-2:00) - Memorable takeaway\n\nVOICEOVER STYLE:\n- Conversational but intelligent\n- No AI clichés or buzzwords\n- Active voice, direct statements\n- Assume intelligent audience\n\nVISUAL REQUIREMENTS:\n- Reference specific figures from paper\n- Include zoom/pan directions\n- Suggest text overlays for key numbers\n- Indicate pacing (fast cuts vs holds)\n\nOUTPUT FORMAT (JSON):\n{\n  \"linkedin_post\": \"...\",\n  \"x_post\": \"...\",\n  \"shorts_script\": \"...\"\n}",
-      "prompt_blog": null,
-      "prompt_article_enabled": true,
+      "collection_frequency_minutes": 30,
+      "writing_style": "scientific",
+      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AIResearch in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nAIResearch is a cutting-edge AI news platform focusing on:\n- Latest breakthroughs in artificial intelligence research\n- Practical applications of ML/deep learning\n- Industry news and expert analysis\n- **News-style journalism**: Complex topics explained for general audience\n- **Simple titles**: Focus on WHAT the discovery means, not HOW it works technically\n- **Accessibility first**: Make readers understand WHY it matters\n- **Clear explanations**: Use analogies and real-world comparisons\n- Users who want technical details can read the original paper\n- Emphasis on accuracy and scientific rigor WITH simple language\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference figures from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nSUBTITLE REQUIREMENTS (CRITICAL):\n- **SEO-optimized**: A compelling summary optimized for search engines\n- **Maximum 2 lines**: Keep it concise and impactful\n- **Add tension**: Should create curiosity, consequence, or reason why this matters\n- **Clear value proposition**: Explain the significance in simple terms\n- **No technical jargon**: Write for general audience understanding\n\nGOOD SUBTITLES:\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nCRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:\n{{\n  \"title\": \"Your title here\",\n  \"subtitle\": \"SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance\",\n  \"article_text\": \"Full article body text here - all content in one string field\",\n  \"image_categories\": [\"category1\", \"category2\", \"category3\"]\n}}\n\n⚠️ IMPORTANT RULES:\n- \"subtitle\" MUST be a STRING field at the root level\n- \"subtitle\" MUST be SEO-optimized, maximum 2 lines, and create curiosity or explain significance\n- \"article_text\" MUST be a STRING field at the root level (NOT nested in an \"article\" object)\n- \"article_text\" MUST contain the complete article text in one string\n- DO NOT create nested objects like {{\"article\": {{\"opening_hook\": \"...\", \"key_finding\": \"...\"}}}}\n- All article content goes directly into the \"article_text\" string field\n- Return ONLY valid JSON - no markdown, no extra formatting\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"  \n",
+      "prompt_social": "Create a short, engaging social post highlighting the key insight and why it matters. Include 3-5 relevant hashtags.",
+      "prompt_blog": "Write a blog-style article with context, methodology, results, and implications. Use headings and keep a professional tone.",
+      "prompt_article_enabled": false,
       "prompt_social_enabled": false,
-      "prompt_blog_enabled": null
-    },
-    "scienceai": {
-      "id": "scienceai",
-      "name": "Science AI",
-      "domain": "scienceai.news",
-      "enabled": true,
-      "collectors": [
-        {
-          "id": "arxiv",
-          "name": "arXiv",
-          "enabled": false,
-          "api_key": null,
-          "collector_type": null,
-          "config": {
-            "category": "cs.AI",
-            "max_results": 10
-          }
-        },
-        {
-          "id": "rss_openai",
-          "name": "OpenAI Blog RSS",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "rss",
-          "feed_url": "https://openai.com/blog/rss.xml",
-          "base_url": "https://openai.com",
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "rss_google_ai",
-          "name": "Google AI RSS",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "rss",
-          "feed_url": "https://blog.research.google/feeds/posts/default",
-          "base_url": "https://blog.research.google",
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "rss_nvidia",
-          "name": "NVIDIA News RSS",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "rss",
-          "feed_url": "https://nvidianews.nvidia.com/rss/all-news.xml",
-          "base_url": "https://nvidianews.nvidia.com",
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "rss_alibaba_damo",
-          "name": "Alibaba DAMO RSS",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "rss",
-          "feed_url": "https://damo.alibaba.com/news/rss",
-          "base_url": "https://damo.alibaba.com",
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "html_anthropic",
-          "name": "Anthropic News",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "html",
-          "base_url": "https://www.anthropic.com/news",
-          "selectors": {
-            "article": "article",
-            "content": ".content, article, main",
-            "link": "a[href*='/news/']",
-            "title": "h1, h2"
-          },
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "html_meta_ai",
-          "name": "Meta AI Blog",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "html",
-          "base_url": "https://ai.meta.com/blog/",
-          "selectors": {
-            "article": "article, .post, .blog-post",
-            "content": ".content, article, main",
-            "link": "a[href*='/blog/']",
-            "title": "h1, h2"
-          },
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "html_deepseek",
-          "name": "DeepSeek News",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "html",
-          "base_url": "https://deepseek.com/news",
-          "selectors": {
-            "article": "article, .post, .news-item",
-            "content": ".content, article, main",
-            "link": "a[href*='/news/']",
-            "title": "h1, h2"
-          },
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "html_alibaba_damo",
-          "name": "Alibaba Alizila News",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "html",
-          "base_url": "https://www.alizila.com/",
-          "selectors": {
-            "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
-            "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
-            "link": "a",
-            "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
-          },
-          "config": {
-            "max_results": 5
-          }
-        },
-        {
-          "id": "html_xai",
-          "name": "X.ai News",
-          "enabled": true,
-          "api_key": null,
-          "collector_type": "html",
-          "base_url": "https://x.ai/news",
-          "selectors": {
-            "article": "article, .post, .news-item, .blog-item",
-            "content": ".content, .post-content, .article-content, article, main, .article-body",
-            "link": "a[href*='/news/'], a[href*='x.ai/news']",
-            "title": "h1, h2, h3, .title, .post-title, .article-title"
-          },
-          "config": {
-            "max_results": 5
-          }
-        }
-      ],
-      "writer": {
-        "provider": "deepseek",
-        "model": "deepseek-chat",
-        "api_key": "sk-3cdb0bc989414f2c8d761ac9ee5c20ce",
-        "base_url": "https://api.deepseek.com",
-        "temperature": 0.7,
-        "max_tokens": 4000,
-        "enabled": true,
-        "use_compressor": true
-      },
-      "education_sources": [],
-      "social_media": [
-        {
-          "id": "youtube",
-          "name": "YouTube",
-          "enabled": false,
-          "api_key": null,
-          "api_secret": null,
-          "access_token": null,
-          "refresh_token": null,
-          "channel_id": null,
-          "username": null,
-          "config": {}
-        },
-        {
-          "id": "x",
-          "name": "X (Twitter)",
-          "enabled": false,
-          "api_key": null,
-          "api_secret": null,
-          "access_token": null,
-          "refresh_token": null,
-          "channel_id": null,
-          "username": null,
-          "config": {}
-        }
-      ],
-      "collection_frequency_minutes": null,
-      "writing_style": null,
-      "prompt_article": null,
-      "prompt_social": null,
-      "prompt_blog": null,
-      "prompt_article_enabled": null,
-      "prompt_social_enabled": null,
-      "prompt_blog_enabled": null
+      "prompt_blog_enabled": false
     }
   },
-  "updated_at": "2025-11-01T16:41:56.892405100+00:00"
+  "loop_config": {
+    "interval_minutes": 30,
+    "filter_score_min": 0.4,
+    "max_cycles": null,
+    "enabled": false
+  },
+  "updated_at": "2025-11-03T15:07:47.294753200+00:00"
 }

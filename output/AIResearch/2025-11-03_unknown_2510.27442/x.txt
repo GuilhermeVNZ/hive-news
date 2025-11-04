@@ -1,0 +1,1 @@
+Smaller AI beats giants: CoMViT matches performance of models 5-20x larger using just 4.5M parameters. 84.5% accuracy on medical imaging with 1/10th the computational cost. Game-changer for global healthcare accessibility. Nature/Science breakthrough.

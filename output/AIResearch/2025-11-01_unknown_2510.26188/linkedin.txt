@@ -1,0 +1,1 @@
+Hospital readmissions cost Medicare $15B annually. New ML can predict who's at risk with 85% accuracy, potentially preventing 76% of avoidable readmissions through targeted interventions. Could this transform patient care?

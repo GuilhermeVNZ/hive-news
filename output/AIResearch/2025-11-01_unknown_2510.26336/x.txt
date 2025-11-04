@@ -1,0 +1,1 @@
+BREAKING: AI no longer trades breadth for depth. ACER method boosts microeconomics accuracy from 33.61% to 59.66% while maintaining general skills. The era of specialized AI without forgetting begins now.

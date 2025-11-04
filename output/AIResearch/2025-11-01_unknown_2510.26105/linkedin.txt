@@ -1,0 +1,1 @@
+AI models can generate inappropriate content even with safe prompts. New research reveals how attackers manipulate images to bypass safety filters, achieving 64% success in producing unwanted outputs. How can we ensure AI safety when current defenses fail against these attacks?

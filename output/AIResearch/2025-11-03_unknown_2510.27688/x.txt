@@ -1,0 +1,1 @@
+Stop the scroll: AI's energy bottleneck just got solved. CALM framework predicts chunks instead of single tokens, cutting computations 75% while matching performance. Nature-level breakthrough from Tencent & Tsinghua University. The future of efficient AI is here.

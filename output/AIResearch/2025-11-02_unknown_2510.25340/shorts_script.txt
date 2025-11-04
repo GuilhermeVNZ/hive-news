@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could instantly team up with complete strangers? [VISUAL DIRECTION] Animated text: "AI + STRANGERS = ?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Current AI systems require extensive training with the same teammates, limiting real-world applications. [VISUAL DIRECTION] Show AI agents failing to coordinate in traffic scenario, then red X over scene
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn to collaborate efficiently with previously unknown partners? [VISUAL DIRECTION] Zoom in on research question text overlay: "Unknown teammates?"
+
+[VOICEOVER 0:40-1:00] The answer is MARS - Multi-Agent Reinforcement Learning with Skeleton. It significantly outperforms existing methods. [VISUAL DIRECTION] Show Figure 2 comparison graphs with MARS line clearly outperforming baselines
+
+[VOICEOVER 1:00-1:30] MARS uses a graph-based approach, constructing a skeleton of essential pathways between agents. It learns how teammates should interact by observing their behaviors. [VISUAL DIRECTION] Animated network diagram showing nodes connecting and pathways lighting up
+
+[VOICEOVER 1:30-1:50] This means autonomous vehicles from different companies can navigate complex traffic together safely. Robotics teams can spontaneously coordinate. [VISUAL DIRECTION] Show autonomous cars from different brands smoothly merging in traffic
+
+[VOICEOVER 1:50-2:00] AI collaboration just got smarter - and it's happening now. [VISUAL DIRECTION] Final text overlay: "MARS: Spontaneous AI Teamwork" with Nature logo

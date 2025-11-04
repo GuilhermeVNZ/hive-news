@@ -1,0 +1,1 @@
+AI agents fail at teamwork 60% of the time without proper communication protocols. New Nature research reveals enabling bidirectional information exchange boosts collaborative success to 89.33%. Consider how transparent interaction protocols could transform your multi-agent systems.

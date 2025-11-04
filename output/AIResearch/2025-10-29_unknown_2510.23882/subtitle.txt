@@ -1,0 +1,1 @@
+AI controls greenhouses using simple language commands instead of complex code. Learn how this makes advanced automation accessible to everyone without technical expertise.

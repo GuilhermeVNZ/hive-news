@@ -1,0 +1,1 @@
+General-purpose time series models outperform specialized brain signal analysis, suggesting AI can master medical data without domain-specific training

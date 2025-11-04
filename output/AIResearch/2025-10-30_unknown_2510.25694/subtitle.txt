@@ -1,0 +1,1 @@
+AI agents struggle to fix common software setup errors, revealing a critical gap in their ability to solve real-world programming problems effectively.

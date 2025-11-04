@@ -1,0 +1,13 @@
+xAI has launched Grok Code Fast 1, a reasoning model designed to accelerate agentic coding tasks. The model aims to address the sluggishness often experienced in iterative coding loops, where AI agents call tools like grep or file editors. Built from scratch with a new architecture, it targets developers seeking faster, more responsive assistance in their daily workflows.
+
+Training involved a pre-training corpus rich in programming content and post-training datasets based on real-world pull requests. xAI collaborated with launch partners to refine the model's behavior, ensuring it integrates smoothly into platforms like GitHub Copilot and Cursor. This approach focuses on practical usability over raw benchmark performance.
+
+Grok Code Fast 1 supports common programming languages, including TypeScript, Python, and Rust, handling tasks from bug fixes to project builds. Early users report significant speed improvements, with one developer noting it forced a change in workflow due to its rapid response times. The model's efficiency allows for breaking down complex tasks into smaller, manageable prompts.
+
+Priced at $0.20 per million input tokens and $1.50 per million output tokens, xAI emphasizes affordability. The company claims the model balances performance and cost, making it suitable for routine coding without high expenses. For now, it's free on partner platforms, including Cline and Windsurf, as part of a limited-time offer.
+
+Performance evaluations blend SWE-Bench scores—where it achieved 70.8—with human assessments from developers. xAI notes that benchmarks alone don't capture real-world nuances, so they rely on feedback to guide updates. The model's speed stems from optimizations in inference and prompt caching, with cache hit rates exceeding 90% in tests.
+
+Originally released under the codename 'sonic,' Grok Code Fast 1 entered a stealth phase last week, allowing for community input and rapid iterations. xAI plans frequent updates, with a variant supporting multimodal inputs and extended context already in development. The move reflects a broader industry trend toward specialized AI for coding.
+
+Developers can access the model via the xAI API, with a prompt engineering guide available to maximize effectiveness. As agentic coding gains traction, tools like this could reshape how software is built, prioritizing speed and user experience in AI-driven environments.

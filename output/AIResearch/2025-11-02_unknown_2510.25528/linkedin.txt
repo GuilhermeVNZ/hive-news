@@ -1,0 +1,1 @@
+AI can now master both math AND creative writing without knowing right answers during training. New Zero-RL method enables AI to excel in verifiable and non-verifiable domains simultaneously. Read how this breakthrough transforms AI from calculators to capable assistants.

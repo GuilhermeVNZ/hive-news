@@ -1,0 +1,1 @@
+AI models can't forget false visual rumors, exposing privacy risks in everyday assistants. New research reveals unlearning methods fail, with erased knowledge easily recovered. Read the OFFSIDE benchmark study to understand vulnerabilities in multimodal AI systems.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could learn complex caregiving tasks just by watching, without any specialized programming?
+[VISUAL DIRECTION] Animated text: "ROBOTS LEARNING LIKE HUMANS?" with pulsing question mark. Quick cuts of robotic arms attempting caregiving motions.
+
+[VOICEOVER 0:05-0:20] As global populations age, the demand for caregiving robots is surging, but current systems often fail in unpredictable real-world environments.
+[VISUAL DIRECTION] Show aging population statistics with animated graphs. Transition to hospital setting with overworked caregivers.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that learns directly from experience, adapting to new situations without retraining?
+[VISUAL DIRECTION] Zoom on researcher at computer screen. Show PV-RNN network diagram with flowing data pathways.
+
+[VOICEOVER 0:40-1:00] They developed PV-RNN - a brain-inspired neural network that integrates vision and body position sensing to learn manipulation tasks.
+[VISUAL DIRECTION] Animated breakdown of PV-RNN architecture. Show robot successfully repositioning mannequin on different surfaces.
+
+[VOICEOVER 1:00-1:30] The system processes high-dimensional inputs through hierarchical structure, minimizing prediction errors to guide behavior - mimicking how our brains learn.
+[VISUAL DIRECTION] Visualize prediction error minimization with color-coded error signals. Show network handling degraded inputs and occluded objects.
+
+[VOICEOVER 1:30-1:50] This approach addresses critical robotics limitations, potentially leading to more reliable caregiving robots that reduce physical strain on healthcare workers.
+[VISUAL DIRECTION] Show robot assisting with patient repositioning in hospital simulation. Contrast with human caregiver strain.
+
+[VOICEOVER 1:50-2:00] The future of healthcare automation may depend on AI that learns like we do - adapting to the unpredictable nature of real caregiving.
+[VISUAL DIRECTION] Final text overlay: "BRAIN-INSPIRED ROBOTS: THE FUTURE OF CAREGIVING?" with Nature/Science logo.

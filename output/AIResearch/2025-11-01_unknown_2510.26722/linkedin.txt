@@ -1,0 +1,1 @@
+What if your phone could train AI without slowing down your network? New research shows intentionally introducing small biases in federated learning accelerates training while maintaining accuracy. This breakthrough enhances scalability for mobile/IoT applications. How could this transform your industry?

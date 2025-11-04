@@ -1,0 +1,1 @@
+What if AI could ask for help before making risky decisions? A new Nature/Science study introduces a framework where AI agents defer to human oversight in uncertain situations, ensuring safety without compromising autonomy. This breakthrough could transform healthcare and software development—imagine the possibilities.

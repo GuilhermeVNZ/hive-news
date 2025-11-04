@@ -1,0 +1,1 @@
+Reinforcement learning discovers optimal trading strategies that outperform traditional methods while balancing risk and cost in realistic market simulations

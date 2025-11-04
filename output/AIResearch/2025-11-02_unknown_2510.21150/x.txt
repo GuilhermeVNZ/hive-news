@@ -1,0 +1,1 @@
+AI just learned to flip coins fairly. New String Seed of Thought method makes LLMs follow probabilistic distributions nearly perfectly, solving bias issues in gaming and simulations. Nature-level breakthrough for AI diversity.

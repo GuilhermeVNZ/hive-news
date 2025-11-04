@@ -1,0 +1,1 @@
+AI just got smarter: new algorithm KVDA-UCT doubles decision speed in tasks like Connect4 and wildfire management by grouping actions with known differences. No extra parameters needed. From Nature/Science—game-changer for real-time AI.

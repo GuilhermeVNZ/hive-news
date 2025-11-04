@@ -1,0 +1,15 @@
+Salesforce has released a comprehensive analysis of what it calls the "Agentic Wave" - the rapid proliferation of AI agents that are fundamentally reshaping business operations. The research, published in the latest issue of Salesforce Futures Magazine, examines how autonomous systems that use tools in loops to pursue goals are becoming ubiquitous across industries.
+
+According to Salesforce Chief AI Scientist Silvio Savarese, what appears as a "series of boring breakthroughs" is actually making powerful, value-delivering AI accessible to everyone. The company notes that since the launch of Agentforce at Dreamforce just over a year ago, the landscape for AI agents has changed dramatically, moving from early exploration to widespread implementation.
+
+The research identifies three key areas where the agentic wave is creating both opportunities and challenges: agentics, robotics, and futures work practices. Salesforce argues that competitive advantage in an agent-saturated world won't come from having the most automation, but from building the best learning loops between people and machines, developing adaptable autonomic cores, and maintaining deep customer-centricity.
+
+Salesforce introduces the concept of an "Autonomic Core" - a model for reimagining business architecture around the balance between automated and intentional functions. This framework, inspired by human biological systems, offers organizations a way to think about how their structures might evolve as AI agents become more integrated into daily operations.
+
+The research includes contributions from several Salesforce experts, including Distinguished AI Architect Max Kirby on how agentic systems can amplify human ingenuity, and Melissa Forbes on how agents are helping nonprofits scale their impact in sustainability and disaster response. The team also revisits earlier predictions about personal AI futures, grading their accuracy and updating perspectives.
+
+Looking beyond current implementations, Salesforce explores how agents are beginning to leap from digital environments into the physical world through robotics. The research includes analysis of enterprise robotics trends and speculative futures that push the boundaries of what's possible when AI agents gain physical presence and capabilities.
+
+The company emphasizes that the agentic wave requires new mental models and frameworks for leadership. Salesforce argues that organizations need to develop the courage to experiment, the discipline to learn continuously, and the judgment to balance human and machine capabilities in ways that build lasting competitive advantage.
+
+Salesforce concludes that the future of business in the agentic era will be defined by organizations that can adapt constantly while keeping humans at the center of their operations. The research serves as both a map of current developments and an invitation for businesses to begin their own agentic transformations.

@@ -1,0 +1,1 @@
+Anthropic has upgraded its Claude AI models with significant coding improvements and introduced computer use capabilities. The technology allows AI to interact with digital interfaces, potentially transforming automation workflows. Early adopters report strong performance gains.

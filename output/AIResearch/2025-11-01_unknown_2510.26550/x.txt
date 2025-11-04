@@ -1,0 +1,1 @@
+AI matches GPT-5 performance while running entirely offline on edge devices. EdgeRunner achieves 95% parity across military benchmarks, enabling secure operations without internet. Critical for defense, medical, and tactical planning in disconnected environments. Nature/Science research shows edge AI is here.

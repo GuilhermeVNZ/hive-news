@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the simplest solution was actually the most effective for preventing industrial catastrophes?
+[VISUAL DIRECTION] Animated text: "SIMPLE > COMPLEX?" with industrial machinery in background
+[VOICEOVER 0:05-0:20] Industrial equipment failures can cause production stoppages, safety hazards, and massive financial losses. Current detection systems often rely on overly complex approaches.
+[VISUAL DIRECTION] Show rotating turbine with warning symbols flashing. Text overlay: "$BILLIONS LOST TO DOWNTIME"
+[VOICEOVER 0:20-0:40] Researchers questioned whether complicated algorithms were necessary. They tested multiple approaches on 1.1 million data points from high-pressure systems.
+[VISUAL DIRECTION] Show data visualization with multiple algorithm paths branching out. Zoom in on data collection timeline: July 2023-November 2024
+[VOICEOVER 0:40-1:00] The breakthrough finding: Random Forest combined with XGBoost algorithms achieved near-perfect detection with 0.976 AUC-ROC score, significantly outperforming hybrid and complex methods.
+[VISUAL DIRECTION] Animated bar chart showing Random Forest + XGBoost towering over other methods. Text: "0.976 AUC-ROC vs. 0.85-0.92 for complex hybrids"
+[VOICEOVER 1:00-1:30] These straightforward ensemble methods maintained high accuracy and reliable performance while complex approaches suffered dramatic F1-score drops and generated false alarms.
+[VISUAL DIRECTION] Show side-by-side comparison: Simple ensemble (green checkmarks) vs. Complex methods (red warning symbols). Animated text: "100% detection within time windows"
+[VOICEOVER 1:30-1:50] This means facilities worldwide can achieve better results with interpretable, straightforward solutions—preventing costly disruptions and ensuring operational safety.
+[VISUAL DIRECTION] Show global map with facility locations lighting up. Text overlay: "PRACTICAL EFFECTIVENESS IN REAL-WORLD MONITORING"
+[VOICEOVER 1:50-2:00] Sometimes, the most powerful solution is also the simplest. Complexity doesn't always mean better results.
+[VISUAL DIRECTION] Final screen with paper title: "Ensemble Hybrid Approaches for Anomaly Detection" and key stat: "0.976 AUC-ROC"]

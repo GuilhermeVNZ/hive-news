@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Physics-based AI models that predict planetary motion fail miserably at understanding cancer. Why can't our most powerful AI handle biology's messy reality?
+[VISUAL DIRECTION] [Animated text: "AI that predicts planets FAILS at cancer" with spinning planet graphic transitioning to chaotic cell animation]
+[VOICEOVER 0:05-0:20] Because biology operates in a world of uncertainty, conflicting data, and context-dependent variables that physics-based models weren't built to handle.
+[VISUAL DIRECTION] [Show overlapping data streams with question marks, transition to researcher looking at complex biological diagrams]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we evolve AI to embrace biology's complexity rather than fighting it? The answer is Biology-Informed Machine Learning.
+[VISUAL DIRECTION] [Animated flow: Physics AI → Question mark → BIML emerging, show conceptual diagram of the transition]
+[VOICEOVER 0:40-1:00] They discovered BIML adapts physics-based principles to handle biological uncertainty through four pillars: quantification, contextualization, constrained inference, and scalability.
+[VISUAL DIRECTION] [Show four pillars as animated columns, each with brief examples: confidence intervals, individual variations, signal recovery, high-dimensional data]
+[VOICEOVER 1:00-1:30] Unlike traditional models that fail with noisy biological data, BIML can infer regulatory networks from diverse sources and generalize to new interventions while maintaining interpretability.
+[VISUAL DIRECTION] [Side-by-side comparison: PIML failing on messy data vs BIML successfully mapping networks, use color-coded pathways]
+[VOICEOVER 1:30-1:50] This means more accurate drug discovery, better disease understanding, and improved ecological forecasting - vital for personalized medicine and healthcare.
+[VISUAL DIRECTION] [Quick cuts: drug molecule animation, disease pathway visualization, ecosystem monitoring graphic]
+[VOICEOVER 1:50-2:00] The future of AI in biology isn't about forcing clean physics onto messy life - it's about building AI that understands life's beautiful complexity.
+[VISUAL DIRECTION] [Final composite: BIML framework overlaid on dynamic biological system, text: "AI that understands life's complexity"]

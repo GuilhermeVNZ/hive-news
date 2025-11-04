@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the AI systems we trust for critical research could actually be dangerously unreliable? 
+[VISUAL DIRECTION] [Animated text: AI SAFETY CRISIS? with warning symbols flashing]
+[VOICEOVER 0:05-0:20] Oak Ridge National Laboratory just revealed startling vulnerabilities in large language models used for sensitive research applications.
+[VISUAL DIRECTION] [Show rotating 3D models of AI logos with question marks]
+[VOICEOVER 0:20-0:40] They tested seven major AI models including GPT-4-Mini and Claude-Sonnet-3.7 using their new SciTrust 2.0 framework across four critical dimensions.
+[VISUAL DIRECTION] [Show four pillars animation: Robustness, Safety, Ethics, Factuality with checkmarks and X marks]
+[VOICEOVER 0:40-1:00] The results? GPT-4-Mini scored highest overall, but many models showed serious deficiencies in logical reasoning and ethical judgment.
+[VISUAL DIRECTION] [Bar chart showing performance gaps between models, highlight poor performers in red]
+[VOICEOVER 1:00-1:30] The team used reflection-tuning to generate validated question-answer pairs from scientific literature, then tested against adversarial attacks and ethical scenarios.
+[VISUAL DIRECTION] [Animated pipeline showing question generation → expert validation → testing process]
+[VOICEOVER 1:30-1:50] This matters because unreliable AI in medicine or weapons research could lead to experimental failures and security breaches.
+[VISUAL DIRECTION] [Show medical lab and cybersecurity icons with warning overlays]
+[VOICEOVER 1:50-2:00] The framework is open-source on GitHub - essential for building trustworthy AI systems before deployment.
+[VISUAL DIRECTION] [GitHub logo with download arrow, final text: "Test Before You Trust"]

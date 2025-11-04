@@ -1,0 +1,1 @@
+AI instability solved: BF16 precision causes training-inference mismatch. FP16 eliminates errors, achieving 99% accuracy vs BF16's 73-88% collapse. Simple switch makes AI reliable. Nature/Science finding transforms reinforcement learning.

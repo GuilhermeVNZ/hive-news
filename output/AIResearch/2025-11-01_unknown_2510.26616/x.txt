@@ -1,0 +1,1 @@
+AI often fails at flight delay prediction due to oversimplified datasets. Aeolus, a new Nature/Science dataset, integrates schedules, weather, and networks to expose critical gaps. It shows no model excels across all tasks, highlighting the need for temporal safeguards to avoid overoptimistic results. #AI #Aviation

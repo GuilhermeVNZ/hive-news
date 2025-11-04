@@ -1,0 +1,1 @@
+AI-generated code fails 30% of safety rules in automotive/aviation. New method PRISM achieves 100% compliance with verifiable proofs, cutting manual fixes. Proof-carrying AI could revolutionize regulated domains.

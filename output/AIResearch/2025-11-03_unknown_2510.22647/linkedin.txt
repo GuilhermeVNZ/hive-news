@@ -1,0 +1,1 @@
+AI can now detect tea crop diseases with 25% higher accuracy than previous models, potentially saving a $60B global industry. This Nature-style research demonstrates how deep learning identifies Rust, Helopeltis, and Spider Mite infections before they spread. Could this technology transform agricultural disease management worldwide?

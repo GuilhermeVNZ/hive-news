@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if AI could play any video game or use any computer program exactly like a human - just by watching the screen?
+
+[VISUAL DIRECTION] [Animated text: "AI PLAYS GAMES LIKE HUMANS" with gaming controller animation]
+
+[VOICEOVER 0:05-0:20] Researchers have developed Game-TARS, an AI system that learns to interact with digital environments using the same keyboard and mouse inputs as people.
+
+[VISUAL DIRECTION] [Show Figure 2 with zoom on AI performance metrics compared to humans]
+
+[VOICEOVER 0:20-0:40] The key question: Can AI move beyond specialized programming to adapt to new environments without custom code?
+
+[VISUAL DIRECTION] [Animated transition showing AI moving between different game environments]
+
+[VOICEOVER 0:40-1:00] The findings are remarkable - Game-TARS achieves near-human performance across various tasks and outperforms leading models like GPT-5 and Gemini-2.5-Pro.
+
+[VISUAL DIRECTION] [Show benchmark comparison charts with clear performance numbers]
+
+[VOICEOVER 1:00-1:30] How does it work? The AI processes screen images and generates low-level actions like mouse movements and key presses. It uses a 'sparse-thinking' strategy, reasoning internally only at critical decision points to balance efficiency and performance.
+
+[VISUAL DIRECTION] [Animated diagram showing screen input → AI processing → action output flow]
+
+[VOICEOVER 1:30-1:50] In Minecraft, Game-TARS achieved 72% success in exploration tasks - doubling previous state-of-the-art models. It nearly matched human players in GUI productivity.
+
+[VISUAL DIRECTION] [Show Minecraft gameplay footage with AI success rate overlay]
+
+[VOICEOVER 1:50-2:00] This breakthrough suggests a clear path toward versatile AI assistants that can help with everyday computing tasks - the future of human-AI interaction is here.

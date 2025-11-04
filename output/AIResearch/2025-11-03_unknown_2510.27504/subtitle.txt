@@ -1,0 +1,1 @@
+A new method helps AI models learn from distributed data without sacrificing privacy or accuracy, achieving up to 70% better performance on image and language tasks.

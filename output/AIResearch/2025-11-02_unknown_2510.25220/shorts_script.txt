@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could have AI recommendations that are both lightning fast AND more accurate? This breakthrough just shattered the fundamental trade-off that's limited technology for years.
+[VISUAL DIRECTION] Animated text: "MILLISECOND AI" with lightning bolt animation, quick zoom on text "BREAKS SPEED-ACCURACY TRADEOFF"
+
+[VOICEOVER 0:05-0:20] In today's competitive digital landscape, every millisecond counts. Recommender systems have always faced a painful choice: either be fast but less accurate, or accurate but slow. Until now.
+[VISUAL DIRECTION] Split screen showing fast clock vs accurate target, then merging into single glowing icon. Fast cuts between loading screens and recommendation interfaces.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we eliminate this trade-off entirely? The team developed GReF—a unified generative framework that bridges the gap between generation and evaluation that has plagued traditional systems.
+[VISUAL DIRECTION] Show animated diagram of traditional two-stage system with gap, then GReF's unified flow. Zoom on "generator-evaluator gap" being bridged.
+
+[VOICEOVER 0:40-1:00] The breakthrough comes from Ordered Multi-Token Prediction, allowing the AI to predict multiple future recommendations simultaneously while preserving their sequential order. This cuts the number of decoding steps in half.
+[VISUAL DIRECTION] Animated sequence showing traditional step-by-step prediction vs OMTP's simultaneous multi-prediction. Highlight "50% fewer steps" with bold text overlay.
+
+[VOICEOVER 1:00-1:30] How does it work? The model uses a transformer architecture with an encoder that processes candidate items and a decoder that generates recommendations. Through large-scale pre-training and Rerank-DPO optimization, it learns user preferences directly from data.
+[VISUAL DIRECTION] Show simplified transformer architecture diagram with encoder/decoder flow. Animate data flowing through the system, with "300M daily users" text overlay.
+
+[VOICEOVER 1:30-1:50] Real-world impact is already measurable. At Kuaishou, serving 300 million daily users, A/B testing showed substantial improvements: watch time increased, content sharing surged, and comments rose—proving better recommendations foster more interactive experiences.
+[VISUAL DIRECTION] Show engagement metrics rising on animated charts. Quick cuts between user interaction scenarios—watching, sharing, commenting.
+
+[VOICEOVER 1:50-2:00] The era of having to choose between speed and accuracy in AI recommendations is over. This framework demonstrates that advanced AI can transform real-time services without compromise.
+[VISUAL DIRECTION] Final screen with key takeaway: "Millisecond responses + Improved accuracy = Now possible" with GReF logo style treatment.

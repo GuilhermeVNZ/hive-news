@@ -1,0 +1,1 @@
+New research reveals how changing team members and tasks cause AI systems to misassign credit, leading to coordination breakdowns and performance drops in real-world applications.

@@ -1,0 +1,1 @@
+What if AI could predict your friendships with 92% accuracy? RIDGE breakthrough: analyzes sequences AND relationships simultaneously, unlike current systems that handle only one aspect. Outperforms graph-only (44.9%) and sequence-only (75.6%) methods. Nature/Science paper shows real-world impact on Amazon recommendations and social networks.

@@ -1,0 +1,1 @@
+AI that fixes software bugs fails at real-world physical tasks. New research reveals why these systems struggle with navigation and manipulation challenges.

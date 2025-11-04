@@ -1,0 +1,1 @@
+KANs outperform traditional neural networks in scientific computing tasks like PDE solving and symbolic regression by learning mathematical functions directly on network edges. Nature/Science research shows this approach provides both efficiency gains and interpretability advantages for scientific AI applications.

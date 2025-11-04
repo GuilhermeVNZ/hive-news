@@ -1,0 +1,1 @@
+What if AI could block inappropriate images as they're being created—without sacrificing quality? KAIST researchers developed VL-DNP, a breakthrough that dynamically generates targeted prompts during image generation to remove unwanted content while maintaining fidelity. This addresses a critical challenge in text-to-image AI. How might this transform content moderation?

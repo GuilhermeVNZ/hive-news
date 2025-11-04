@@ -1,0 +1,1 @@
+Robots learning dances with ONE demo? NYU Abu Dhabi's new method uses optimal transport & geodesics to generate motions, slashing data needs. Outperforms traditional methods on stability & accuracy. Game-changer for assistive care, factories. Nature/Science paper details.

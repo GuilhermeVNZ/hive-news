@@ -1,0 +1,1 @@
+New research from Cloudflare alleges Perplexity AI circumvented website blocks to scrape content, highlighting ongoing tensions in AI data sourcing practices. The findings raise important questions about ethical web scraping standards.

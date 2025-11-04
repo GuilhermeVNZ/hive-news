@@ -1,0 +1,1 @@
+What if non-experts could uncover hidden patterns in massive social data as effectively as specialists? New Insight Agents (SIA) use LLMs to automate coordinated analysis of text, networks, and behavioral data, achieving balanced accuracy comparable to GPT-4.1. Read the Nature/Science paper to explore how this bridges the gap between complex data and actionable insights.

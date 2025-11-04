@@ -1,0 +1,1 @@
+AI automates software requirement tasks but humans must maintain decision-making authority. New HARE-SM framework integrates multiple AI models for side-by-side comparison while preventing automation bias through human validation. Transparent, auditable workflows ensure reliable software development.

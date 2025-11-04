@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could sense when to change its own learning strategy mid-training? [VISUAL DIRECTION] Animated text: "AI THAT TEACHES ITSELF BETTER" with glowing neural network background
+
+[VOICEOVER 0:05-0:20] Training deep neural networks is incredibly complex - current methods like Adam work well but can get stuck near optimal solutions, slowing progress. [VISUAL DIRECTION] Show animated loss landscape with Adam optimizer moving slowly across rugged terrain
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect when neural networks enter predictable convex regions where different optimization would work better? [VISUAL DIRECTION] Zoom on Figure 2 showing loss function structure - peaks followed by smooth declines
+
+[VOICEOVER 0:40-1:00] They discovered neural loss functions follow predictable patterns - starting convex, then increasing, then decreasing. By detecting this transition during Adam training... [VISUAL DIRECTION] Animated transition from rugged to smooth landscape with text: "CONVEXITY DETECTED"
+
+[VOICEOVER 1:00-1:30] The system automatically switches to conjugate gradient methods in convex regions. No manual parameter adjustments needed - it monitors epoch progress and switches when loss begins declining. [VISUAL DIRECTION] Show algorithm flowchart with automated switching mechanism
+
+[VOICEOVER 1:30-1:50] Results: 50% lower loss values and higher accuracy across CIFAR-10, CIFAR-100, MNIST. Vision Transformers achieved 0.0008 loss vs 0.0016 with Adam-only. [VISUAL DIRECTION] Fast cuts showing comparison charts with highlighted numbers
+
+[VOICEOVER 1:50-2:00] This could revolutionize AI training efficiency - making healthcare diagnostics and autonomous vehicles smarter, faster. [VISUAL DIRECTION] Final zoom on key stat: "0.0008 LOSS" with neural network animation

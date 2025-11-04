@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could learn from just a thumbs up or thumbs down? [VISUAL DIRECTION] Animated text: "AI Learning Revolution" with thumbs up/down icons flashing rapidly
+
+[VOICEOVER 0:05-0:20] Training AI models typically requires massive datasets and complex comparisons, making it expensive and slow. [VISUAL DIRECTION] Show data streams flowing into AI model with price tags increasing, then cross them out with red X
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we simplify this? What if models could learn from simple feedback like 'good' or 'bad' without needing detailed comparisons? [VISUAL DIRECTION] Show question marks transforming into simple rating icons, zoom in on binary feedback mechanism
+
+[VOICEOVER 0:40-1:00] They developed ELBO-KTO - a framework combining likelihood estimates with behavioral economics optimization. [VISUAL DIRECTION] Animated diagram showing ELBO and KTO components merging, highlight Monte Carlo estimation process
+
+[VOICEOVER 1:00-1:30] Here's how it works: The method uses iterative refinement and asymmetric loss optimization, requiring only forward-backward passes instead of complex training. [VISUAL DIRECTION] Show simplified training flow vs traditional complex flow, emphasize computational savings with percentage overlays
+
+[VOICEOVER 1:30-1:50] This means AI assistants can become more helpful using simpler feedback, making development faster and more scalable. [VISUAL DIRECTION] Show AI assistant icons becoming more refined with each simple rating input
+
+[VOICEOVER 1:50-2:00] The future of AI training just got simpler and smarter. [VISUAL DIRECTION] Final screen with key achievement: "Efficient preference alignment with unpaired feedback"

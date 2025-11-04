@@ -1,0 +1,1 @@
+What if AI could smoothly transition from refusing harmful requests to providing helpful answers? New research introduces activation vectors that precisely control AI behavior without retraining. This breakthrough enhances AI safety while maintaining performance. How might this transform ethical AI deployment?

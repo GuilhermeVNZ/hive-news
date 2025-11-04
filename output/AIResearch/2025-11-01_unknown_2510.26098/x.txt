@@ -1,0 +1,1 @@
+Your AI can spot buttons but can't predict what happens when you click them. New research shows vision-language models excel at perception (87% accuracy) but fail at interaction prediction (as low as 17%). The GUI-Knowledge-Bench reveals fundamental gaps in AI's practical understanding of digital interfaces. Nature/Science paper demonstrates why automation often fails.

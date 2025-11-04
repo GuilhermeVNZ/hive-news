@@ -1,0 +1,1 @@
+AI's 'black box' problem just got solved. A new technique makes AI transparent and steerable using a universal Concept Atlas—no retraining needed. This breakthrough enables safe AI deployment in healthcare and finance. Read the Nature/Science study on interpretable AI.

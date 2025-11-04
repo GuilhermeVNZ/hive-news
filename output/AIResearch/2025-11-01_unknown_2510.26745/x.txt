@@ -1,0 +1,1 @@
+AI models develop reasoning abilities without being taught. New research shows they learn complex path-finding through geometric memory, achieving 100% accuracy on massive graphs. This could transform how AI handles navigation and data retrieval.

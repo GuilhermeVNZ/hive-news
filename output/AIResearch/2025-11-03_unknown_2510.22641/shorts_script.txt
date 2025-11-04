@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your phone's AI could understand images and text 1.85 times faster without losing accuracy?
+[VISUAL DIRECTION] Animated text: "1.85x FASTER AI" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] Vision-language AI systems that generate captions and answer questions about images have been limited by slow response times on smartphones.
+[VISUAL DIRECTION] Show smartphone with loading spinner over an image, then transition to researcher working on laptop
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically speed up these AI models without compromising their accuracy?
+[VISUAL DIRECTION] Animated question mark transforming into speedometer graphic
+
+[VOICEOVER 0:40-1:00] They discovered FastVLM achieves 1.55 to 1.85 times speedup compared to existing methods while maintaining quality.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on speed comparison charts, highlight BLIP-2 and LLaVA-1.5 results
+
+[VOICEOVER 1:00-1:30] The breakthrough uses self-speculative decoding - a lightweight model generates tentative outputs quickly, then the main model refines them. This reuses key-value memory to reduce overhead.
+[VISUAL DIRECTION] Animated diagram showing SSD process: lightweight model → tentative output → main model → final output
+
+[VOICEOVER 1:30-1:50] This makes advanced AI accessible on everyday devices for real-time image descriptions, dialogue systems, and visual reasoning with lower latency.
+[VISUAL DIRECTION] Show smartphone applications: image captioning, visual Q&A, accessibility features
+
+[VOICEOVER 1:50-2:00] AI just got dramatically faster without sacrificing accuracy - changing what's possible on your phone.
+[VISUAL DIRECTION] Final screen: "FastVLM: 1.85x Speed, Same Accuracy" with smartphone graphic

@@ -1,0 +1,1 @@
+Anthropic's Claude Sonnet 4.5 represents a significant step forward in AI-assisted development. With claimed top performance on coding benchmarks, enhanced computer interaction capabilities, and improved safety alignment, this release could impact how developers approach complex software engineering tasks.

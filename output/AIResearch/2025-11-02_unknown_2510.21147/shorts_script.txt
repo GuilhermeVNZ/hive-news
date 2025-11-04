@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if an AI could consistently beat human stock pickers by over 167%? [VISUAL DIRECTION] Animated text: 167.52% RETURNS flashes dramatically with stock chart rising rapidly
+
+[VOICEOVER 0:05-0:20] Researchers from University of Science and Technology developed a multi-agent AI that's transforming investment strategies in China's volatile markets. [VISUAL DIRECTION] Show university logo transitioning to Chinese stock market ticker with rapid price movements
+
+[VOICEOVER 0:20-0:40] They asked: Can AI overcome human biases and market inefficiencies that plague traditional advising? [VISUAL DIRECTION] Split screen showing human advisors vs AI system with question marks
+
+[VOICEOVER 0:40-1:00] The AI achieved 167.52% cumulative returns from 2019-2024, significantly outperforming the CSI 300 index and state-of-the-art benchmarks. [VISUAL DIRECTION] Zoom in on performance chart showing AI line soaring above other lines
+
+[VOICEOVER 1:00-1:30] How does it work? Five specialized agents analyze different data: Macro screens economic indicators, Fundamental examines financial metrics, Technical identifies patterns, while News and Report agents process corporate disclosures using large language models. [VISUAL DIRECTION] Animated diagram showing five agents feeding into portfolio manager with data streams
+
+[VOICEOVER 1:30-1:50] This means investors get transparent, cost-effective strategies that reduce overconcentration and mitigate human biases - democratizing access to sophisticated investing. [VISUAL DIRECTION] Show diverse group of investors accessing platform on different devices
+
+[VOICEOVER 1:50-2:00] The future of investing isn't just algorithms - it's intelligent agents working together to beat the market. [VISUAL DIRECTION] Final shot of AI system dashboard with key metrics: Sharpe 1.84, Sortino 3.05

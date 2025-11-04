@@ -1,0 +1,1 @@
+Your phone can now help optimize wireless networks without compromising your location privacy. New Fed-PELAD method achieves 57% cost reduction while maintaining performance across diverse conditions. This breakthrough addresses critical 6G challenges - read the Nature/Science paper to understand how personalized AI models are transforming mobile communications.

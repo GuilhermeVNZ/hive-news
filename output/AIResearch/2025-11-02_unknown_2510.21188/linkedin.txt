@@ -1,0 +1,1 @@
+AI has a catastrophic forgetting problem - it struggles to learn new things without forgetting old ones. PLAN method achieves 87.54% accuracy on CIFAR-100 vs 83.81% for next best method. Could this enable truly adaptive AI for autonomous vehicles and medical diagnostics?

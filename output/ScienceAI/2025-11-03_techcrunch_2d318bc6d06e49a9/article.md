@@ -1,0 +1,15 @@
+At Dreamforce 2025, Salesforce CEO Marc Benioff laid out a bold vision for what he calls the "Agentic Enterprise"—organizations where AI agents work alongside humans to achieve unprecedented efficiency and capability. This isn't just another tech upgrade, Benioff argued, but a fundamental shift in how companies operate, requiring new architectures and a fresh approach to data management.
+
+Benioff emphasized that data quality is the foundation of this transformation. "You have got to get your data right," he told the audience, referencing an MIT study showing that many generative AI pilot projects fail. He cautioned against companies trying to build everything themselves, suggesting that collaboration and integrated solutions are essential for success.
+
+The conference featured practical guidance for businesses starting their AI journey. Multiple sessions stressed beginning with small, focused use cases rather than attempting enterprise-wide transformations immediately. Presenters noted the tension between AI's rapid advancement and most organizations' limited readiness, emphasizing that successful adoption requires understanding both technology and human workflows.
+
+Salesforce introduced a new 11-layer architecture designed specifically for AI agents, adding four new layers to traditional IT models. The Semantic Layer provides unified data context, the AI/ML Layer serves as a centralized intelligence hub, the Agentic Layer handles agent execution, and the Enterprise Orchestration Layer coordinates workflows across systems. This architectural shift enables agents to sense, reason, and act with increasing autonomy.
+
+The company recommended a phased implementation approach, starting with basic information retrieval and progressing to cross-domain orchestration. Real-world examples demonstrated the potential impact—Salesforce shared that its own SDR agent now handles 50,000 customer interactions weekly, addressing a long-standing challenge of missed opportunities.
+
+Agentforce 360, the latest version of Salesforce's AI platform, emerged as the centerpiece of this strategy. The platform integrates employees, operations, customers, and agents through trusted enterprise data, with Slack serving as the primary interface. Benioff described Slack as evolving into an "agentic OS" where natural language interactions replace traditional email workflows.
+
+Early adopters are already seeing results. PepsiCo reported 25-30% efficiency gains from deploying Agentforce across 1.5 million stores globally, with plans to reach 5 million stores by 2026. The company's transformation officer highlighted how the platform has accelerated their digital initiatives while maintaining operational stability.
+
+For smaller businesses, the message was equally compelling but with a different emphasis. Camping World CEO Marcus Lemonis noted that limited resources make technology adoption crucial for growth, while Petaluma Creamery's CTO described how AI helps small teams compete with larger players. The consensus: whether enterprise or SMB, the Agentic Enterprise represents the next evolution of business technology.

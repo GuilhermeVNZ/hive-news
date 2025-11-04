@@ -1,0 +1,1 @@
+Neural networks just got curved. New architecture treats them as differentiable manifolds where distances between points reflect semantic relationships - making AI more interpretable and efficient. Nature/Science research shows this geometric approach could revolutionize how we understand complex data.

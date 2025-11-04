@@ -1,0 +1,1 @@
+AI's 'black box' problem just got solved. New research shows combining language models with knowledge graphs reduces hallucinations by 10% and boosts accuracy. This Nature/Science breakthrough makes AI systems both powerful AND explainable for real-world applications.

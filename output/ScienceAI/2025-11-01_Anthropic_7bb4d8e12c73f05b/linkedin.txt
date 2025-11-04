@@ -1,0 +1,1 @@
+Anthropic has implemented ASL-3 protections for Claude Opus 4, enhancing security against sophisticated threats in AI deployment. This proactive step underscores the need for robust safety measures as capabilities advance. #AI #Security #Innovation

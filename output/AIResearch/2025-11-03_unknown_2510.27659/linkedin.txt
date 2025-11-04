@@ -1,0 +1,1 @@
+AI teams fail when members join/leave mid-task - new Nature research reveals. Multi-agent reinforcement learning struggles with dynamic environments, causing coordination breakdowns. Read how credit assignment challenges undermine real-world AI applications.

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know the AI systems recommending your next job or research paper might be fundamentally flawed, potentially masking discrimination?
+[VISUAL DIRECTION] [Animated text: "AI RECOMMENDATIONS: FAIR OR FLAWED?" with question mark pulsing]
+[VOICEOVER 0:05-0:20] These recommender systems are deployed everywhere - from high-stakes professional settings to everyday personal applications, affecting careers, education, and access to information.
+[VISUAL DIRECTION] [Quick cuts: job application screen, academic paper search, news feed - all with "AI Recommended" overlays]
+[VOICEOVER 0:20-0:40] Researchers asked: Are our current metrics for measuring AI fairness actually reliable? Or are they giving us false confidence in systems that might be unfair?
+[VISUAL DIRECTION] [Show Figure 2 with zoom on score distribution patterns, highlighting inconsistent ranges]
+[VOICEOVER 0:40-1:00] They discovered critical flaws: metrics are unstable, difficult to interpret, and can show sensitivity that creates an illusion of fairness when systems may actually be discriminatory.
+[VISUAL DIRECTION] [Animated chart showing how normalization can mask true performance, with text: "0.6 ≠ 0 - Metrics Lie"]
+[VOICEOVER 1:00-1:30] Here's how it works: Many metrics suffer from computational issues where score ranges don't reflect reality. A metric theoretically ranging 0-1 might only achieve 0.6 in practice, making interpretation impossible. Zero scores can appear regardless of actual fairness levels.
+[VISUAL DIRECTION] [Visualization of metric calculations with red flags appearing at critical failure points]
+[VOICEOVER 1:30-1:50] The real-world impact is staggering: Unfair algorithms may suggest lower-paying positions to marginalized groups. Academic citation systems could overpromote work from economically developed countries, hindering inclusive scientific development.
+[VISUAL DIRECTION] [Split screen: one side showing biased job recommendations, other showing imbalanced academic citations]
+[VOICEOVER 1:50-2:00] The takeaway? We can't trust AI fairness metrics without understanding how they operate. The quest for reliable assessment is just beginning.
+[VISUAL DIRECTION] [Final screen: "Question Your AI's Fairness" with Nature/Science branding]

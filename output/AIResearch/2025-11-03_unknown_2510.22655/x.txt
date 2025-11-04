@@ -1,0 +1,1 @@
+AI learns motion signals 20% better by projecting data onto Gabor frames, sidestepping manual adjustments. This boosts accuracy in health monitoring where data quality varies. A game-changer for wearable tech reliability.

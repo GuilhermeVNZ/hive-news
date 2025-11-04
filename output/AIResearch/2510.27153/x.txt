@@ -1,0 +1,1 @@
+AI models get stuck in local minima, missing better solutions. A new optimizer add-on explores loss valleys, increasing ImageNet accuracy to 40.86% and reducing perplexity in NLP tasks. Breakthrough from Nature/Science research.

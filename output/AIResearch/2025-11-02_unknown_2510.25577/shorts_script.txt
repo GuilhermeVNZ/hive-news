@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI was judging you not by what you say, but by how you say it?
+[VISUAL DIRECTION] Animated text: "AI judges your VOICE, not your words" with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] New research reveals that artificial intelligence systems perceive and respond differently based solely on voice quality variations like breathiness and creakiness.
+[VISUAL DIRECTION] Show animated waveform transforming between smooth and rough patterns, with labels "breathy" and "creaky" appearing
+
+[VOICEOVER 0:20-0:40] Researchers created VQ-Bench, a parallel dataset featuring identical content delivered with different voice qualities while keeping everything else constant.
+[VISUAL DIRECTION] Show split-screen comparison of same speaker with different voice quality labels, highlighting identical text content
+
+[VOICEOVER 0:40-1:00] The results were striking: breathy voices consistently received higher empathy ratings and more job offers, while creaky voices were associated with authority but less warmth.
+[VISUAL DIRECTION] Bar charts showing empathy ratings and job offer percentages for different voice qualities, with breathy voice bars significantly higher
+
+[VOICEOVER 1:00-1:30] Using state-of-the-art voice conversion technology, researchers isolated voice quality effects from speaker identity and linguistic content, proving the bias comes from how we sound, not what we say.
+[VISUAL DIRECTION] Technical diagram showing voice conversion process with arrows indicating quality transformation while speaker identity remains constant
+
+[VOICEOVER 1:30-1:50] This matters because AI is increasingly used in high-stakes domains like hiring and therapy, where voice quality biases could disproportionately disadvantage certain speakers.
+[VISUAL DIRECTION] Quick cuts showing AI interview platforms, therapy apps, and hiring software interfaces with warning symbols
+
+[VOICEOVER 1:50-2:00] Your voice quality alone could be shaping how AI evaluates your capabilities and personality. The way you speak matters more than you think.
+[VISUAL DIRECTION] Final text overlay: "Lost in Phonation: Voice Quality Shapes AI Perception" with paper citation

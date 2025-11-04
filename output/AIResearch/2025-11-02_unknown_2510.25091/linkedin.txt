@@ -1,0 +1,1 @@
+AI now predicts stock movements with 70.8% accuracy using hypergraphs that capture how sectors move together. This breakthrough addresses finance's most elusive challenge: accurate forecasting. Read the Nature/Science paper to understand how multimodal learning transforms market prediction.

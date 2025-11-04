@@ -1,0 +1,1 @@
+AI can now detect scientific misinformation 35% more accurately. New MisSynth method fine-tunes AI to spot logical fallacies in health claims, achieving F1-scores up to 0.954. This breakthrough could restore public trust in science. What implications do you see for your field?

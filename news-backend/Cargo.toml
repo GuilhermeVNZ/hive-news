@@ -17,12 +17,24 @@ name = "sync-env-from-config"
 path = "src/bin/sync_env_from_config.rs"
 
 [[bin]]
+name = "sync-collectors-config"
+path = "src/bin/sync_collectors_config.rs"
+
+[[bin]]
 name = "clean-articles"
 path = "src/bin/clean_articles.rs"
 
 [[bin]]
 name = "fix-wrong-destinations"
 path = "src/bin/fix_wrong_destinations.rs"
+
+[[bin]]
+name = "rename-article-folders"
+path = "src/bin/rename_article_folders.rs"
+
+[[bin]]
+name = "servers"
+path = "src/bin/servers.rs"
 
 [dependencies]
 # Web Framework
@@ -35,6 +47,7 @@ tower-http = { version = "0.5", features = ["cors", "trace"] }
 reqwest = { version = "0.11", features = ["json", "cookies"] }
 url = "2.5"
 regex = "1.10"
+tempfile = "3.10"
 
 # RSS/Atom parsing
 rss = "2.0"

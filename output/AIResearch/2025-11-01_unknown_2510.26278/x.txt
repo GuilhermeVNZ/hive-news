@@ -1,0 +1,1 @@
+Breakthrough: AI designs molecules optimizing 3 drug properties at once - binding affinity, synthesizability, and score. New method achieves 0.711 hypervolume vs 0.5515 for baselines. Eliminates need for iterative fine-tuning. Nature/Science research shows potential to revolutionize pharmaceutical discovery.

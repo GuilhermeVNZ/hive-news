@@ -1,0 +1,1 @@
+AI can't solve high school math competitions despite rapid progress. New AMO-Bench reveals even top models achieve only 35% accuracy on IMO-level problems, showing fundamental limitations in mathematical reasoning rather than memorization. What does this mean for AI's real-world problem-solving capabilities?

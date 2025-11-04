@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if a robot's sounds could prove it hasn't been hacked?
+[VISUAL DIRECTION] Animated text: "Robot Sounds = Security?" with a quick zoom on a robotic arm in motion.
+[VOICEOVER 0:05-0:20] As robots become vital in healthcare and logistics, ensuring they perform correctly is a major security challenge.
+[VISUAL DIRECTION] Show clips of robots in hospital and warehouse settings, with text overlay: "Critical Sectors."
+[VOICEOVER 0:20-0:40] Researchers asked: Can we verify robot actions in real time without invasive sensors?
+[VISUAL DIRECTION] Display a question mark over a robot, then transition to a smartphone icon.
+[VOICEOVER 0:40-1:00] They discovered WaveVerif—analyzing acoustic signatures from robot movements to detect tampering with 85% accuracy.
+[VISUAL DIRECTION] Show Figure 2 from the paper, zooming in on spectral centroid distributions, with text: "85% Accuracy."
+[VOICEOVER 1:00-1:30] How it works: Sounds from pick-and-place operations are captured by smartphones, processed into features like MFCCs, and classified by machine learning models to confirm intended actions.
+[VISUAL DIRECTION] Animated diagram of sound waves turning into MFCC features, then into a decision output; fast cuts between SVM, DNN, RNN, CNN icons.
+[VOICEOVER 1:30-1:50] This offers a low-cost, non-invasive method to enhance trust in automated systems, effective even with changes in speed or microphone placement.
+[VISUAL DIRECTION] Show real-world deployment scenarios with text overlays: "No Hardware Mods," "Robust to Changes."
+[VOICEOVER 1:50-2:00] Next time you hear a robot, remember—its sounds might be keeping it secure.
+[VISUAL DIRECTION] End with a close-up of a robot arm and animated text: "Trust Through Sound."

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your autonomous vehicle's AI was 93.5% confident about being dangerously wrong?
+[VISUAL DIRECTION] Animated text: "93.5% CONFIDENTLY WRONG" with warning symbols flashing
+
+[VOICEOVER 0:05-0:20] This isn't hypothetical - it's the silent failure problem threatening AI safety in critical systems like self-driving cars
+[VISUAL DIRECTION] Show CARLA simulator footage with pedestrian detection failures, highlight confidence scores
+
+[VOICEOVER 0:20-0:40] Researchers asked: How do we catch AI errors when the system gives no indication it's failing?
+[VISUAL DIRECTION] Zoom on Figure 2 showing error distribution patterns, emphasize "no failure signals"
+
+[VOICEOVER 0:40-1:00] They discovered FAME - a framework that wraps AI components with mathematical monitors
+[VISUAL DIRECTION] Animated diagram showing AI system wrapped by FAME monitoring layer
+
+[VOICEOVER 1:00-1:30] Using Signal Temporal Logic, FAME formally specifies safety requirements and synthesizes lightweight monitors that catch errors traditional testing misses
+[VISUAL DIRECTION] Show STL formula examples, transition to monitoring architecture diagram
+
+[VOICEOVER 1:30-1:50] In testing, FAME detected failures during partial occlusions and adverse weather where conventional systems degraded silently
+[VISUAL DIRECTION] Show test scenarios: glare, rain, obscured pedestrians with FAME alerts triggering
+
+[VOICEOVER 1:50-2:00] This means we can now catch AI failures precisely when confidence is highest and safety matters most
+[VISUAL DIRECTION] Final text overlay: "CATCHING AI FAILURES WHEN IT MATTERS MOST"

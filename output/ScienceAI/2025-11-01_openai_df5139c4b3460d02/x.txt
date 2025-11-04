@@ -1,0 +1,1 @@
+OpenAI just dropped gpt-oss-safeguard—AI models that let you set custom safety policies with reasoning. Game-changer for devs, but watch the compute costs. #AI #Safety #OpenSource

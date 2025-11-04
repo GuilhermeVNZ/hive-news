@@ -1,0 +1,1 @@
+Shockingly, a straightforward AI beats advanced models in liver cancer diagnosis—0.755 Dice score on scans. ResNet50 with CBAM offers high accuracy and clarity for doctors. Dive into the research for insights.

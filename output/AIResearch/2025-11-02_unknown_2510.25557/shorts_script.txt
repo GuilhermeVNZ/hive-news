@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could process information sequences like the human brain, without ever forgetting crucial details over time?
+[VISUAL DIRECTION] [Animated brain icon with flowing data streams, text overlay: "AI that remembers like humans?"]
+[VOICEOVER 0:05-0:20] Current AI systems struggle with sequential data - they lose information as they process, creating instability in everything from language translation to financial forecasting.
+[VISUAL DIRECTION] [Show fading data streams with "memory loss" text, transition to quantum circuit diagram from paper]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we combine quantum computing with neural networks to overcome this fundamental limitation?
+[VISUAL DIRECTION] [Zoom on quantum circuit components, highlight parameterized gates from paper]
+[VOICEOVER 0:40-1:00] They discovered the Quantum Recurrent Neural Network - QRNN - which uses quantum circuits to inherently preserve information, preventing the vanishing gradient problem that disrupts training.
+[VISUAL DIRECTION] [Show benchmark results from paper - IMDB accuracy: QRNN 87.2% vs LSTM 86.5%, copying tests: near-perfect accuracy]
+[VOICEOVER 1:00-1:30] Here's how it works: Quantum circuits process information in exponentially large Hilbert spaces, allowing high-capacity memory retention. The system updates unitarily, maintaining sequence information that traditional networks lose.
+[VISUAL DIRECTION] [Animated quantum states evolving, show gradient stability comparison from paper]
+[VOICEOVER 1:30-1:50] This matters because it bridges quantum computing and AI, offering a pathway to robust sequence processing for real-time translation, financial forecasting, and complex dependency handling.
+[VISUAL DIRECTION] [Show applications: language translation interface, stock market charts, weather prediction models]
+[VOICEOVER 1:50-2:00] The breakthrough: AI that processes sequences like the brain, remembering everything it learns along the way.
+[VISUAL DIRECTION] [Final zoom on QRNN architecture diagram from paper, text: "Quantum AI remembers"]

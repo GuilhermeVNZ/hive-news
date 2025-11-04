@@ -1,0 +1,1 @@
+AI's dangerous confidence problem: Models make wrong decisions with high certainty in medical diagnosis. New Variational Pólya Tree model fixes this with better uncertainty quantification, outperforming state-of-the-art methods on real datasets. This could save lives.

@@ -1,0 +1,1 @@
+6% of GPT-5 outputs fall in a 'gray zone' where faithfulness depends on interpretation. New VeriGray benchmark reveals AI's struggle with ambiguity. How do we build trustworthy systems when even state-of-the-art models can't be fully verified?

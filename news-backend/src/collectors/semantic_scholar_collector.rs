@@ -201,9 +201,12 @@ impl SemanticScholarCollector {
                     .flatten()
             });
             
+            let title = paper.title.unwrap_or_else(|| format!("Semantic Scholar Paper {}", article_id));
             articles.push(ArticleMetadata {
                 id: article_id.clone(),
-                title: paper.title.unwrap_or_else(|| format!("Semantic Scholar Paper {}", article_id)),
+                title: title.clone(), // Mantido para compatibilidade
+                original_title: Some(title), // Título original da fonte
+                generated_title: None, // Será preenchido quando o artigo for publicado
                 url: paper.url.unwrap_or_else(|| format!("https://www.semanticscholar.org/paper/{}", article_id)),
                 author: if authors_str.is_empty() { None } else { Some(authors_str) },
                 summary: paper.abstract_text,
@@ -213,6 +216,7 @@ impl SemanticScholarCollector {
                 content_html: None,
                 content_text: None,
                 category: None,
+                slug: None,
             });
         }
         

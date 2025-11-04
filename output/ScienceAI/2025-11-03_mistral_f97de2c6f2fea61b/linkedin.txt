@@ -1,0 +1,1 @@
+Mistral AI has published a groundbreaking lifecycle analysis quantifying the environmental impact of AI models. The study, conducted with Carbone 4 and ADEME, reveals how model size correlates with footprint and proposes standardized reporting metrics. This represents a significant step toward sustainable AI development and industry accountability.

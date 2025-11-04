@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if making AI characters smarter actually makes no difference to players? New research reveals a shocking truth about game NPCs.
+
+[VISUAL DIRECTION] [Animated text: "SMARTER AI = BETTER GAMES?" with question mark shaking]
+
+[VOICEOVER 0:05-0:20] Researchers at University of Regina tested whether refining large language models like GPT-4 actually improves player experience in video games. The results challenge everything we assume about AI development.
+
+[VISUAL DIRECTION] [Show lab setup with researchers observing participants, transition to game interface]
+
+[VOICEOVER 0:20-0:40] They created two types of AI characters: one with detailed behavioral rules and emotional states, and another with minimal constraints. Players interacted with both in a voice-based prototype called Interview.
+
+[VISUAL DIRECTION] [Split screen showing structured AI vs free-form AI interactions, highlight JSON schema visualization]
+
+[VOICEOVER 0:40-1:00] The finding? No significant difference in player engagement or immersion ratings. Players were largely indifferent to the underlying AI refinements.
+
+[VISUAL DIRECTION] [Show bar graph with nearly identical ratings for both conditions, zoom on "no significant improvement" text]
+
+[VOICEOVER 1:00-1:30] But here's the twist: The effects were role-dependent. Structured AI worked better for quest-givers needing reliability, while free-form AI suited roles requiring spontaneity and deception.
+
+[VISUAL DIRECTION] [Show quest-giver NPC with structured framework vs suspect NPC with flexible responses, animated arrows showing different applications]
+
+[VOICEOVER 1:30-1:50] This means game developers should stop optimizing AI in isolation. Instead, tailor constraints to specific character roles—structure for narrative anchors, freedom for unpredictable characters.
+
+[VISUAL DIRECTION] [Show game development interface with role-based AI settings, highlight "tailor to role" principle]
+
+[VOICEOVER 1:50-2:00] The real breakthrough? Success isn't about making AI smarter—it's about making AI right for the job.
+
+[VISUAL DIRECTION] [Final screen: "AI Success = Right Tool for the Right Role" with University of Regina logo]

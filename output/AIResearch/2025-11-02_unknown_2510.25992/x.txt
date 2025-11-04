@@ -1,0 +1,1 @@
+New AI method boosts math reasoning by 3.7% - no more black box thinking. Stepwise Reinforcement Learning makes AI explain its work step-by-step, reducing hallucinations. Nature paper shows smaller models can now tackle problems once reserved for giants.

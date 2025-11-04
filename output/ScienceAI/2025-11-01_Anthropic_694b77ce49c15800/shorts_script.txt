@@ -1,0 +1,23 @@
+(Visual: Close-up of computer screen with cursor moving)
+Take 1: "Your AI assistant just learned how to use a computer."
+
+(Visual: Split screen showing code editor and AI interface)
+Take 2: "Anthropic's new Claude models can click, type, and navigate."
+
+(Visual: Graph showing performance improvements)
+Take 3: "Coding performance jumped dramatically on benchmarks."
+
+(Visual: Developer working at computer)
+Take 4: "Early users say it's revolutionizing their workflow."
+
+(Visual: Warning symbol appears)
+Take 5: "But it's still experimental - sometimes it struggles."
+
+(Visual: API documentation scrolling)
+Take 6: "Available now for developers to test and build with."
+
+(Visual: Futuristic interface animation)
+Take 7: "This could change how we interact with computers forever."
+
+(Visual: Call to action screen)
+Take 8: "What would you automate with AI that can use your computer?"

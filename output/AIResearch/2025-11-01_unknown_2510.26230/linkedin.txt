@@ -1,0 +1,1 @@
+What if AI could forget sensitive data instantly without retraining? Researchers developed MPRU, enabling models to unlearn specific classes with 99.99% less computational cost, enhancing privacy and compliance. Explore how this breakthrough makes machine learning more adaptable and efficient in real-world systems.

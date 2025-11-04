@@ -1,0 +1,1 @@
+Robots can now learn caregiving tasks without specialized programming, adapting to unpredictable environments like humans. This brain-inspired AI mimics cognitive flexibility, potentially revolutionizing healthcare automation and reducing physical strain on workers. Read the Nature/Science study on scalable multitask learning.

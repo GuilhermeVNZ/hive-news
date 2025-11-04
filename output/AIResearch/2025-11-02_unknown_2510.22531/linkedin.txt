@@ -1,0 +1,1 @@
+AI can now detect unfair terms in online contracts with 89.6% accuracy. This breakthrough offers scalable protection for consumers against hidden predatory clauses. Read how transformer models are revolutionizing contract analysis.

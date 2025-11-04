@@ -1,0 +1,1 @@
+AI models waste massive computational energy on unnecessary reasoning steps, revealing a fundamental inefficiency in how they solve problems. This discovery challenges assumptions about AI intelligence and highlights a critical limitation in current systems.

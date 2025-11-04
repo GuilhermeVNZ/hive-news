@@ -1,0 +1,1 @@
+AI breakthrough: Models now learn from simple 'good/bad' ratings instead of complex training. ELBO-KTO method cuts computational costs while maintaining performance. Nature/Science research shows preference alignment without paired comparisons.

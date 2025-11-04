@@ -1,0 +1,1 @@
+AI confidence scores lie. New research shows current evaluation methods fail to capture reliability, risking misplaced trust in medical diagnosis and autonomous systems. A new calibration framework fixes this by matching probabilities to real-world utility. Trust but verify.

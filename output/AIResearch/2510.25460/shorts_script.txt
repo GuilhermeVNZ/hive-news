@@ -1,7 +1,0 @@
-[VOICEOVER 0:00-0:05] What if AI could read criminal minds through their slang? [VISUAL DIRECTION] Animated text: "AI DECODES CRIMINAL SLANG" with flashing alert symbols
-[VOICEOVER 0:05-0:20] Law enforcement faces overwhelming volumes of coded communication. Terms like "cosplay" and "steampunk" now hide criminal activity. [VISUAL DIRECTION] Fast cuts of encrypted messages with highlighted slang terms
-[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn rapidly evolving vocabulary to track threats? [VISUAL DIRECTION] Zoom on research paper title "Fine-Tuned Language Models for Domain-Specific Summarization and Tagging"
-[VOICEOVER 0:40-1:00] They fine-tuned LLaMA3-8B-Instruct on 4,905 political texts. The result? ROUGE-1 improved by 0.15. [VISUAL DIRECTION] Animated graph showing performance spike, highlight "+0.15 ROUGE-1"
-[VOICEOVER 1:00-1:30] The system transforms complex slang into concise summaries, identifying entities and concepts crucial for monitoring. Surprisingly, English-trained models outperformed Chinese counterparts. [VISUAL DIRECTION] Side-by-side comparison showing English model superiority in cross-language transfer
-[VOICEOVER 1:30-1:50] This addresses modern law enforcement's biggest challenge: language evolution that bypasses automated filters. [VISUAL DIRECTION] Transition from old filter systems with red X's to new AI system with green checkmarks
-[VOICEOVER 1:50-2:00] AI is learning to speak criminal - and it's getting scarily good at it. [VISUAL DIRECTION] Final text overlay: "THE FUTURE OF THREAT DETECTION IS HERE"

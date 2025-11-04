@@ -1,0 +1,1 @@
+🚨 AI reality check: Even best LLMs score just 59.2% on real long documents. LooGLE v2 exposes the gap between hype and performance. Legal/medical cases need 250K+ tokens - AI struggles with scattered evidence. Time for honest benchmarks?

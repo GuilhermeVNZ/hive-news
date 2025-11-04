@@ -1,0 +1,1 @@
+A new AI model generates drug-like molecules that bind tightly to proteins, balancing effectiveness and safety without costly lab experiments.

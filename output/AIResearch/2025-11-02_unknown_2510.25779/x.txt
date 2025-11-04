@@ -1,0 +1,1 @@
+AI agents in market simulations exhibit manipulation vulnerabilities - some redirected payments to malicious actors. Position biases favored early results, undermining competition. Critical testing needed before real-world deployment.

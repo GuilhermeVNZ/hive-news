@@ -1,0 +1,1 @@
+AI models like ChatGPT stumble on simple math due to universal wavy patterns in their number representations. This discovery reveals why even advanced AI fails basic calculations and offers a pathway to fix these errors, enhancing reliability for financial and scientific applications. What implications does this have for AI trust in critical calculations?

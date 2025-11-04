@@ -1,0 +1,1 @@
+AI breakthrough: RIDGE cleans network structure AND labels at once, boosting prediction accuracy by 5.45% on datasets like Bitcoin-OTC. This Nature/Science research denoises positive/negative relationships, making social trading platforms more reliable against manipulation.

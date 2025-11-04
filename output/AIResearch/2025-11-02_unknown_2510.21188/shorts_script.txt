@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI has a catastrophic memory problem? It learns new things but completely forgets old knowledge. [VISUAL DIRECTION] Animated text: "AI FORGETS EVERYTHING" with fading memory icons
+
+[VOICEOVER 0:05-0:20] This catastrophic forgetting limits AI in critical applications like autonomous vehicles and medical diagnostics where continuous learning is essential. [VISUAL DIRECTION] Quick cuts: self-driving car, medical imaging, robot learning scenarios
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that learns sequentially without forgetting? The PLAN method provides the answer. [VISUAL DIRECTION] Zoom on paper title: "PLAN: Proactive Allocation for Continual Learning"
+
+[VOICEOVER 0:40-1:00] PLAN achieves state-of-the-art performance across multiple benchmarks - 87.54% accuracy on CIFAR-100 compared to 83.81% for next best method. [VISUAL DIRECTION] Animated bar chart showing performance gap, highlight 87.54% vs 83.81%
+
+[VOICEOVER 1:00-1:30] How it works: Instead of reacting to forgetting, PLAN anticipates conflicts through subspace allocation. It strategically allocates task-specific regions in the AI's parameter space to minimize interference. [VISUAL DIRECTION] Animated diagram showing parameter space division with colored subspaces
+
+[VOICEOVER 1:30-1:50] This means AI can now handle dynamic scenarios - autonomous vehicles adapting to new conditions, medical AI retaining diagnostic knowledge while learning new conditions. [VISUAL DIRECTION] Split screen: car adapting to weather changes, medical AI analyzing new patient data
+
+[VOICEOVER 1:50-2:00] The future: AI that learns continuously like humans, without catastrophic forgetting. [VISUAL DIRECTION] Final text overlay: "AI THAT REMEMBERS" with PLAN logo

@@ -1,0 +1,1 @@
+The gpt-oss-safeguard models use reasoning to interpret custom policies, offering flexibility but at a higher compute cost.

@@ -1,0 +1,1 @@
+AI models reinforce wrong paths when stuck. RAVR uses reference answers to guide reasoning, achieving 40.91% on GPQA-Diamond vs 36.3% previous best. Method minimizes KL divergence between reasoning with/without answers, stabilizing learning.

@@ -1,0 +1,1 @@
+Hidden memory attacks can secretly manipulate medical AI to miss tumors and cause dangerous misdiagnoses. This security flaw puts patient lives at risk by compromising diagnostic systems.

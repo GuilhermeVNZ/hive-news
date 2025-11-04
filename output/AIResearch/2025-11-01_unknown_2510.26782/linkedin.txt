@@ -1,0 +1,1 @@
+AI simulations often fail after just 100 steps. New research reveals the bottleneck isn't complexity - it's geometric consistency. The GRWM method achieves near-perfect fidelity in maze environments, reducing error by 99% vs baselines. Could this make virtual worlds indistinguishable from reality?

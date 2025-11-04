@@ -1,0 +1,1 @@
+Road incidents cause over 1 million deaths globally each year, with delayed response significantly increasing risk. The DARTS system uses AI to detect incidents in real-time with 99% accuracy, identifying them 12 minutes earlier than current methods. This innovation could save countless lives and reduce congestion. How can we accelerate adoption of such life-saving technologies?

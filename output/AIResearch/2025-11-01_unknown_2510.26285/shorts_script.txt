@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Why do advanced AI models like ChatGPT consistently fail at simple arithmetic problems they should easily solve?
+[VISUAL DIRECTION] [Animated text: "AI FAILS SIMPLE MATH" with question mark pulsing]
+[VOICEOVER 0:05-0:20] This isn't just random error - researchers have discovered a fundamental flaw in how AI processes numbers that affects everything from financial calculations to scientific analysis.
+[VISUAL DIRECTION] [Show rotating 3D brain network with numbers flowing through pathways]
+[VOICEOVER 0:20-0:40] The research team probed diverse AI models including Llama and OLMo, asking: why do these sophisticated systems struggle with basic math while excelling at complex language tasks?
+[VISUAL DIRECTION] [Split screen showing math equations on left, language processing on right with checkmarks and X marks]
+[VOICEOVER 0:40-1:00] They found that all AI models represent numbers using universal sinusoidal wave-like structures in their neural layers. These consistent patterns across different architectures lead to predictable calculation errors.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on wave pattern distribution, highlight peaks and troughs]
+[VOICEOVER 1:00-1:30] Using specialized analysis techniques like Representational Similarity Analysis, researchers discovered that multiplication and division operations cause these wave patterns to diverge. By identifying and removing the problematic layers responsible for aggregation errors, they reduced multiplication mistakes by 64%.
+[VISUAL DIRECTION] [Animated visualization of wave patterns diverging during multiplication, then stabilizing when problematic layers are removed]
+[VOICEOVER 1:30-1:50] This matters because it provides a direct pathway to improve AI reliability in critical applications where numerical accuracy is essential - from financial calculations to scientific data processing.
+[VISUAL DIRECTION] [Show financial charts, scientific graphs, and medical data with accuracy percentages increasing]
+[VOICEOVER 1:50-2:00] The discovery means we can now track and fix AI's mathematical mistakes without extensive retraining, potentially preventing millions in AI-driven errors.
+[VISUAL DIRECTION] [Final screen: "FIXING AI'S MATH PROBLEMS" with wave pattern transforming into clean mathematical symbols]

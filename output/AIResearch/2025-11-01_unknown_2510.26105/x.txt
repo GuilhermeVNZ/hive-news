@@ -1,0 +1,1 @@
+Your AI photo editor could generate inappropriate content even with safe prompts. New Nature study shows attackers manipulate images to bypass safety filters, achieving 64% success rates. Current defenses can't detect these attacks.

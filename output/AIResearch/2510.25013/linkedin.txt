@@ -1,1 +1,0 @@
-AI can master complex tasks with just 2 attention heads—no extra components needed. New research reveals how minimal transformers achieve 100% accuracy on language tasks through elegant, interpretable mechanisms. Could this simplicity be the key to building trustworthy AI systems?

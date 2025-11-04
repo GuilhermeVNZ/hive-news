@@ -1,0 +1,1 @@
+BREAKING: AI generates CT-quality images from PET scans alone - cutting radiation exposure while maintaining diagnostic precision. Nature study shows 32 HU accuracy using diffusion models. Medical imaging just got safer.

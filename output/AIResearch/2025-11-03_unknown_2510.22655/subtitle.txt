@@ -1,0 +1,1 @@
+A new method uses mathematical transformations to boost AI performance on health and activity data by up to 20%, eliminating the need for manual data tweaks and improving reliability.

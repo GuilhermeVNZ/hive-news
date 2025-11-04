@@ -1,0 +1,1 @@
+AI can now automatically rename cryptic logic code into human-readable terms! New research shows LLMs transform obscure predicates like 'h0' into 'parent' or 'grandparent,' making automated reasoning interpretable. A game-changer for explainable AI and bioinformatics.

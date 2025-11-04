@@ -1,0 +1,1 @@
+Hugging Face's new voice consent gate requires explicit verbal permission before cloning voices, addressing deepfake concerns while maintaining ethical AI development. The system transforms consent from abstract principle to technical requirement.

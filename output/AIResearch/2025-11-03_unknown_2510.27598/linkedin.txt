@@ -1,0 +1,1 @@
+AI models like GPT-5 score 60.07 on InnovatorBench but fail at long-term reasoning. They launch conflicting processes on the same GPU and terminate training prematurely. Can AI truly innovate beyond templates? Read the Nature study on AI's struggle with genuine scientific inquiry.

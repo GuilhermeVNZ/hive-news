@@ -1,0 +1,1 @@
+Did you know AI can now measure algorithm similarity beyond just code structure? Researchers developed EMOC framework that evaluates algorithms by function, usage, data, and complexity - achieving 95% accuracy in classification. This breakthrough could transform plagiarism detection and AI development. How might this impact your work with algorithms?

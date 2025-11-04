@@ -70,9 +70,10 @@ fn main() -> Result<()> {
                         println!("  ✅ Migrating published: {} - {}", article_id, title);
                         
                         // Criar metadata completo
+                        let title_trimmed = title.trim().to_string();
                         let mut metadata = ArticleMetadata {
                             id: article_id.to_string(),
-                            title: title.trim().to_string(),
+                            title: title_trimmed.clone(),
                             arxiv_url: arxiv_url.clone(),
                             pdf_url: pdf_url.clone(),
                             status: ArticleStatus::Published,
@@ -87,6 +88,8 @@ fn main() -> Result<()> {
                             hidden: Some(false),
                             featured: Some(false),
                             destinations: None,
+                            original_title: Some(title_trimmed.clone()),
+                            generated_title: None, // Será lido do title.txt se existir
                         };
 
                         // Tentar ler categoria se existir
@@ -157,6 +160,8 @@ fn main() -> Result<()> {
                                 hidden: Some(false),
                                 featured: Some(false),
                                 destinations: None,
+                                original_title: Some("Untitled (from migration)".to_string()),
+                                generated_title: None,
                             };
                             
                             registry.articles.insert(article_id.to_string(), metadata);
@@ -208,6 +213,8 @@ fn main() -> Result<()> {
                         hidden: Some(false),
                         featured: Some(false),
                         destinations: None,
+                        original_title: Some("Untitled (from migration)".to_string()),
+                        generated_title: None,
                     };
                     
                     registry.articles.insert(article_id.to_string(), metadata);

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could predict exactly how a new drug or policy would work, even when crucial information is missing?
+[VISUAL DIRECTION] [Animated text: "HIDDEN FACTORS? AI CAN STILL PREDICT" with pulsing effect]
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's a breakthrough from Nature/Science that solves one of the biggest challenges in medicine and economics.
+[VISUAL DIRECTION] [Show medical and policy imagery fading between each other]
+[VOICEOVER 0:20-0:40] Researchers asked: How can we estimate treatment effects when we can't see all the factors that influence outcomes?
+[VISUAL DIRECTION] [Animated diagram showing hidden confounders with question marks]
+[VOICEOVER 0:40-1:00] They discovered that by using proxy variables across multiple environments, AI can mathematically identify true causal effects.
+[VISUAL DIRECTION] [Show simulation results graph with convergence to true values]
+[VOICEOVER 1:00-1:30] The method works by leveraging measurable stand-ins for hidden factors and analyzing how they vary across different settings.
+[VISUAL DIRECTION] [Animated flow chart showing proxy variables connecting to outcomes across environments]
+[VOICEOVER 1:30-1:50] This means we can now make reliable decisions about medications and policies without costly randomized trials.
+[VISUAL DIRECTION] [Show Expedia dataset example with hotel ranking confidence intervals]
+[VOICEOVER 1:50-2:00] AI just got smarter at seeing what's hidden - transforming how we test treatments and policies forever.

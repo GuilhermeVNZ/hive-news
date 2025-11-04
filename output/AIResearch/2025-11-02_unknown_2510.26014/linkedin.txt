@@ -1,0 +1,1 @@
+AI can now predict breast cancer survival with unprecedented accuracy. New dual mixture-of-experts AI analyzes tumor characteristics and genetic markers, achieving 90% accuracy across multiple datasets. This breakthrough enables personalized treatment decisions rather than relying on population averages. How might this transform oncology care?

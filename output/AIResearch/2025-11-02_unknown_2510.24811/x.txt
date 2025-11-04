@@ -1,0 +1,1 @@
+BREAKING: AI can now reason with 71% less computation while providing verified answers. ProofSketch method cuts token requirements 37-71% and delivers 84% certified responses - crucial for medical AI and customer service where wrong answers carry serious consequences. Nature paper shows path to trustworthy, efficient AI.

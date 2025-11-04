@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if an artist's work could continue evolving after they're gone?
+[VISUAL DIRECTION] Animated text: "ART BEYOND DEATH" with fading artist silhouette
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - researchers have created an AI that can extend an artist's creative legacy.
+[VISUAL DIRECTION] Show exhibition space with multiple speakers, pan across immersive audio setup
+
+[VOICEOVER 0:20-0:40] The challenge: how to preserve performance art that's tied to specific spaces and moments? Traditional archiving fails to capture the essence.
+[VISUAL DIRECTION] Quick cuts of traditional museum archives vs. dynamic performance spaces
+
+[VOICEOVER 0:40-1:00] Using artist Evala's 200 past sound artworks as training data, the AI learned his distinctive acoustic characteristics and spatialization preferences.
+[VISUAL DIRECTION] Show spectrogram visualizations with zoom on unique patterns
+
+[VOICEOVER 1:00-1:30] The technical breakthrough: SpecMaskGIT processing spectrograms and raw waveforms, with optimized Transformer architecture reducing parameters by 89% while maintaining quality.
+[VISUAL DIRECTION] Animated diagrams showing AI architecture, highlight parameter reduction
+
+[VOICEOVER 1:30-1:50] For three months at Tokyo's NTT InterCommunication Center, the AI generated continuous, seamless sound - both preserving Evala's style and introducing novel elements.
+[VISUAL DIRECTION] Show exhibition visitors experiencing the immersive audio environment
+
+[VOICEOVER 1:50-2:00] This living archive doesn't just document the past - it actively continues the creative process, offering a new form of digital immortality.
+[VISUAL DIRECTION] Final text overlay: "ART EVOLVING BEYOND LIFETIME" with subtle AI-generated waveform

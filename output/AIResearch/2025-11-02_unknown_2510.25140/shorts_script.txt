@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could detect objects with 88.6% higher accuracy using only 5,233 training images instead of thousands?
+[VISUAL DIRECTION] [Animated text: 88.6% BETTER ACCURACY with 5,233 IMAGES - bold white text on black background with count-up animation]
+[VOICEOVER 0:05-0:20] For engineers in construction, autonomous vehicles, and infrastructure monitoring, collecting thousands of labeled images is prohibitively expensive and impractical.
+[VISUAL DIRECTION] [Show rapid cuts of construction sites, autonomous vehicles, and bridge inspections with red X overlays on expensive camera setups]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we leverage self-supervised pre-training to overcome this data scarcity problem in object detection?
+[VISUAL DIRECTION] [Show animated diagram of traditional AI training requiring massive labeled datasets vs new approach with minimal labels]
+[VOICEOVER 0:40-1:00] They discovered that strategically injecting DINOv3's pre-trained transformer weights at input preprocessing and mid-backbone stages boosts accuracy dramatically in data-limited scenarios.
+[VISUAL DIRECTION] [Zoom on Figure 2 showing performance curves - highlight the 72.06% mAP vs baseline performance gap]
+[VOICEOVER 1:00-1:30] The method works by leveraging 1.7 billion unlabeled images to extract robust features, then fine-tuning with minimal labeled data. Systematic testing across YOLO scales showed this approach enhances both low-level primitives and mid-level abstractions without destabilizing the network.
+[VISUAL DIRECTION] [Animated network diagram showing transformer weight injection points P0 and P3 with glowing connections]
+[VOICEOVER 1:30-1:50] This means real-world applications like construction site monitoring and vehicle navigation can now achieve high accuracy with 30-47 FPS on standard GPUs, reducing deployment costs from $50,000 to $15,000-20,000.
+[VISUAL DIRECTION] [Show side-by-side comparison: expensive multi-camera setup vs single camera with DINO-YOLO output]
+[VOICEOVER 1:50-2:00] The breakthrough: AI that performs better with less data, making advanced object detection accessible where it was previously impossible.

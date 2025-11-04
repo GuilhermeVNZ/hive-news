@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could describe images with human-like detail using just 11 million parameters?
+[VISUAL DIRECTION] [Animated text: "11M PARAMETERS" with question mark, fast zoom]
+
+[VOICEOVER 0:05-0:20] Current AI faces a critical trade-off: accuracy vs efficiency. For real-time applications like assistive tech, this limitation is unacceptable.
+[VISUAL DIRECTION] [Split screen showing detailed caption vs fast processing, animated arrows showing trade-off]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we capture fine-grained details without sacrificing speed? DualCap's breakthrough approach separates content gathering into two streams.
+[VISUAL DIRECTION] [Flowchart animation showing dual retrieval paths, highlight "GENERAL CONTENT" and "SPECIFIC OBJECTS" streams]
+
+[VOICEOVER 0:40-1:00] The results? 3.26% higher BLEU-4 scores on COCO benchmarks while reducing inference time to just 0.25 seconds per image.
+[VISUAL DIRECTION] [Bar chart animation showing performance gains, text overlay: "3.26% HIGHER SCORES", "0.25s INFERENCE"]
+
+[VOICEOVER 1:00-1:30] How it works: One stream retrieves general captions, the other extracts specific objects and actions. The Semantic Fusion Network integrates both for precise descriptions without unnecessary complexity.
+[VISUAL DIRECTION] [Animated diagram showing dual streams merging, highlight "SEMANTIC FUSION NETWORK", example image with object detection overlays]
+
+[VOICEOVER 1:30-1:50] This means affordable AI for mobile apps, better assistive tech for visually impaired, and efficient content moderation systems that don't require expensive hardware.
+[VISUAL DIRECTION] [Quick cuts: smartphone app interface, accessibility symbol, content moderation dashboard]
+
+[VOICEOVER 1:50-2:00] The future of lightweight AI is here - detailed understanding without the computational cost.
+[VISUAL DIRECTION] [Final text overlay: "DETAILED AI, LIGHTWEIGHT FOOTPRINT", paper title "DualCap: Enhancing Lightweight Image Captioning"]

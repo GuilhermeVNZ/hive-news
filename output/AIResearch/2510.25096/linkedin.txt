@@ -1,1 +1,0 @@
-What if AI could eliminate bias without sacrificing accuracy? FairMIB's new approach separates bias into three distinct views—feature, structural, and diffusion—achieving up to 10% F1-score improvement on bail decisions while maintaining predictive performance. This breakthrough could transform high-stakes AI applications in finance and justice systems.

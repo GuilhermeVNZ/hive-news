@@ -2,6 +2,7 @@ import { Search, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import icon from "@/assets/airesearch-icon.png";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Header = () => {
   return (
@@ -38,12 +39,6 @@ const Header = () => {
           >
             Education
           </Link>
-          <Link
-            href="#"
-            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
-          >
-            Categories
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -51,6 +46,7 @@ const Header = () => {
             <Search className="h-4 w-4" />
             <span>Search</span>
           </button>
+          <ThemeToggle size="compact" />
           <button className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-accent rounded-lg">
             <Menu className="h-5 w-5" />
           </button>

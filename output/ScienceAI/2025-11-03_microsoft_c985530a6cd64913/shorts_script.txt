@@ -1,0 +1,8 @@
+Take 1: Ever thought farms could run on AI? Microsoft just open-sourced tools to make it happen. (Visual: Drone flying over fields)
+Take 2: Meet Andrew Nelson, a farmer using data from sensors and drones. (Visual: Farmer checking tablet)
+Take 3: They're tackling climate change and food shortages. (Visual: Global map with crop icons)
+Take 4: Tools like FarmVibes.AI spot weeds and save money. (Visual: AI highlighting weeds on screen)
+Take 5: It's all on GitHub for developers to build on. (Visual: GitHub logo)
+Take 6: Helping farmers worldwide grow smarter. (Visual: Diverse farmers in fields)
+Take 7: This could double food production by 2050. (Visual: Graph showing growth)
+Take 8: Tech meets soil for a sustainable future. (Visual: Sunset over farm)

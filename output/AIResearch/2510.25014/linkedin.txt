@@ -1,1 +1,0 @@
-AI characters now follow game rules with 99.6% accuracy - how does this transform virtual interactions? Amazon's ASTP breakthrough makes AI decision-making explicit while maintaining engagement. This could revolutionize how we deploy LLMs in rule-governed environments.

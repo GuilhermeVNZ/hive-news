@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if every piece of data used to train AI could secretly prove it was stolen?
+[VISUAL DIRECTION] [Animated text: "STOLEN AI DATA?" with question mark pulsing, dark background with data streams]
+
+[VOICEOVER 0:05-0:20] AI systems are increasingly built on valuable datasets, creating serious copyright concerns. When companies train models on protected content, creators often have no way to prove infringement.
+[VISUAL DIRECTION] [Show Figure 1 from paper - data flow diagram with red "UNAUTHORIZED USE" arrows crossing boundaries]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we embed invisible proof directly into data that survives AI processing? The challenge was creating watermarks that don't degrade data quality while remaining detectable after model training.
+[VISUAL DIRECTION] [Zoom on Table I showing accuracy comparisons, highlight 97.86% verification rate]
+
+[VOICEOVER 0:40-1:00] They developed SSCL-BW - clean-label backdoor watermarking that generates unique, imperceptible markers for each sample. Unlike previous methods using identical patterns, this approach maintains data consistency while embedding verification information.
+[VISUAL DIRECTION] [Show U-Net architecture diagram with animated flow through generator components]
+
+[VOICEOVER 1:00-1:30] The system uses three key components: target reinforcement ensures watermarked data isn't misclassified, non-target protection maintains other class integrity, and perceptual similarity preserves data fidelity. Only 1-10% of datasets need watermarking for full protection.
+[VISUAL DIRECTION] [Fast cuts between the three component diagrams with text labels: "TARGET REINFORCEMENT", "NON-TARGET PROTECTION", "PERCEPTUAL SIMILARITY"]
+
+[VOICEOVER 1:30-1:50] Testing on CIFAR-10, Sub-ImageNet, and MNIST showed 97.86% verification accuracy with p-values significantly below 0.001. The method outperforms previous approaches that suffered from detectable inconsistencies or failed with high-resolution images.
+[VISUAL DIRECTION] [Show Table II verification results with confidence scores highlighted, LPIPS values showing minimal distortion]
+
+[VOICEOVER 1:50-2:00] This means creators can now share data publicly while maintaining proof of ownership - crucial as AI's hunger for training data grows exponentially.
+[VISUAL DIRECTION] [Final screen: "INVISIBLE PROOF IN EVERY DATASET" with paper citation and data protection symbol]

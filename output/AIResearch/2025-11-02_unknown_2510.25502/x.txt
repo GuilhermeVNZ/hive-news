@@ -1,0 +1,1 @@
+This AI predicts future trends without ever seeing real historical data. TempoPFN's zero-shot forecasting achieves CRPS 0.544, outperforming existing models while protecting privacy. A breakthrough for finance and climate science.

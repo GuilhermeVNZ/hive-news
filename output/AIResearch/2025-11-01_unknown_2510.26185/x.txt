@@ -1,0 +1,1 @@
+AI's reliability hinges on understanding data influence—ACC-SGD-IE fixes flawed methods, boosting ranking accuracy by up to 38.46% and cutting misclassification by 30%. From Nature/Science: a leap for trustworthy AI in high-stakes applications.

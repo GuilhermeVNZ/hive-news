@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI characters in games could actually follow the rules 99% of the time instead of breaking them?
+[VISUAL DIRECTION] [Animated text: 99% RULE ACCURACY vs 78% - shocking comparison with arrow showing dramatic improvement]
+[VOICEOVER 0:05-0:20] Right now, AI NPCs in games often fail to follow essential sequences, breaking player trust and game integrity.
+[VISUAL DIRECTION] [Show glitching NPC character with red X over broken interactions]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make creative AI conversations coexist with reliable rule-following?
+[VISUAL DIRECTION] [Split screen: creative dialogue bubbles vs structured workflow diagrams]
+[VOICEOVER 0:40-1:00] They developed ASTP - Autoregressive State-Tracking Prompting - forcing AI to identify its current step before responding.
+[VISUAL DIRECTION] [Animated flowchart showing Prime-Guide-Enforce workflow with checkpoints]
+[VOICEOVER 1:00-1:30] Instead of guessing, the AI must explicitly track: "I'm at step 3 - review phase" then generate appropriate responses. Plus placeholder calculations boost precision to 99.3%.
+[VISUAL DIRECTION] [Zoom on numerical calculations replacing placeholders with actual values]
+[VOICEOVER 1:30-1:50] This means smaller AI models now match larger ones in reliability - crucial for real gaming applications where trust matters.
+[VISUAL DIRECTION] [Show smaller model icon matching larger model performance with equal sign]
+[VOICEOVER 1:50-2:00] The future? AI partners you can actually count on to play by the rules while staying brilliantly creative.
+[VISUAL DIRECTION] [Final shot: seamless NPC interaction with green checkmark overlay]

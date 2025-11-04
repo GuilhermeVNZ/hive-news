@@ -1,0 +1,1 @@
+New AI learns effectively with mostly unlabeled data - CSMPU method cuts annotation burdens while maintaining 90%+ accuracy in medical imaging and astronomy. Nature/Science breakthrough for data-scarce environments.

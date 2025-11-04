@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could smoothly transition from refusing dangerous requests to providing helpful answers with just a simple adjustment?
+[VISUAL DIRECTION] Animated text: "AI REFUSAL CONTROL" with rotating arrows showing transition
+
+[VOICEOVER 0:05-0:20] As AI becomes more capable, controlling its behavior is critical for safety. Current methods often require complete retraining, compromising performance.
+[VISUAL DIRECTION] Show AI model diagram with "retraining" crossed out, then highlight specific activation vectors
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we precisely control when AI refuses requests without losing its helpful capabilities?
+[VISUAL DIRECTION] Split screen showing harmful request vs helpful request scenarios
+
+[VOICEOVER 0:40-1:00] They discovered activation vectors in a 2D subspace that smoothly modulate AI compliance. By rotating these vectors, they control refusal behavior.
+[VISUAL DIRECTION] Animated 2D plane with vectors rotating, showing transition from refusal to compliance
+
+[VOICEOVER 1:00-1:30] The technique works by identifying directions associated with target behaviors. Using principal components, they create rotations that adjust refusal levels while preserving other capabilities.
+[VISUAL DIRECTION] Zoom on vector diagrams showing angle adjustments, with text overlays: "15° rotation = explicit refusal", "200° rotation = helpful answer"
+
+[VOICEOVER 1:30-1:50] Experiments on models like Qwen and Llama showed effective behavior control with minimal performance degradation on benchmarks like ARC and MMLU.
+[VISUAL DIRECTION] Show performance charts with minimal change, fast cuts between different model outputs
+
+[VOICEOVER 1:50-2:00] This geometric approach provides a flexible, interpretable mechanism for AI safety - potentially transforming content moderation and ethical AI deployment.
+[VISUAL DIRECTION] Final text overlay: "Precise AI Control Without Compromise" with rotating vector animation

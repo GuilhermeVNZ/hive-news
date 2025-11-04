@@ -1,0 +1,1 @@
+AI predicts helpful fact-checking with 92% accuracy, but struggles with unhelpful notes (67.7% F1). New Nature study shows automated systems could surface effective clarifications faster, reducing misinformation spread.

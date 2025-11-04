@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems are fabricating scientific citations that look completely real but reference papers that don't exist?
+[VISUAL DIRECTION] Animated text: "AI FAKES SCIENTIFIC PAPERS" with question mark appearing dramatically
+
+[VOICEOVER 0:05-0:20] This isn't random error - it's a systematic flaw in how AI handles scientific knowledge. When researchers tested GPT-4.1's ability to recommend papers, it generated plausible but completely fabricated citations.
+[VISUAL DIRECTION] Show AI brain graphic with "citation generation" highlighted, then transition to fake paper examples scrolling rapidly
+
+[VOICEOVER 0:20-0:40] The researchers manually verified every citation GPT-4.1 produced. They found AI merges elements from real sources into fictitious citations - complete with made-up author names, journal titles, and publication details.
+[VISUAL DIRECTION] Zoom in on specific fake citation example, highlighting fabricated author "Raghunathan et al." and non-existent journal name
+
+[VOICEOVER 0:40-1:00] Here's the critical finding: AI reproduces high-citation papers accurately, but low-citation papers suffer significantly. The team analyzed citation frequency and found a clear pattern.
+[VISUAL DIRECTION] Show Figure 2 with zoom on distribution - highlight the stark difference between high and low citation performance
+
+[VOICEOVER 1:00-1:30] Using statistical analysis and semantic similarity measures with Sentence-BERT embeddings, they quantified how closely AI outputs matched real metadata. The results were definitive - low-citation papers had significantly worse accuracy.
+[VISUAL DIRECTION] Animated chart showing t(98) = -5.12, p < .001 statistic with dramatic emphasis on the significance
+
+[VOICEOVER 1:30-1:50] This means AI recommendation systems are fundamentally biased toward well-known papers, creating a dangerous gap in scientific discovery and threatening trust in automated research tools.
+[VISUAL DIRECTION] Show researcher at computer looking concerned, then transition to broken trust symbol with scientific papers
+
+[VOICEOVER 1:50-2:00] The takeaway? We need to address AI's citation hallucinations before they undermine the very foundation of scientific research and discovery.
+[VISUAL DIRECTION] Final screen with bold text: "AI CITATION HALLUCINATIONS: A CRITICAL FLAW DEMANDING ATTENTION"

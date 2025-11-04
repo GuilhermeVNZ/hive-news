@@ -1,0 +1,1 @@
+AI models achieve 76% accuracy on English tasks but drop to 60% on Indian cultural domains like Ayurveda. This performance gap affects millions relying on AI for agriculture and healthcare. We need inclusive AI that understands local knowledge systems. Read the BhashaBench V1 study in Nature/Science.

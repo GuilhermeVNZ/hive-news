@@ -1,0 +1,1 @@
+AI video models like Sora and Veo can create stunning visuals but fail at basic reasoning tasks. New research reveals they struggle with logic, physics, and long-term consistency - crucial limitations for scientific applications. Read the Nature paper to understand why generative prowess doesn't equal true understanding.

@@ -1,0 +1,1 @@
+AI recommendation systems used in hiring and education may be fundamentally flawed, masking discrimination through unreliable metrics. New Nature research reveals these tools can give false impressions of fairness while actually being unstable and difficult to interpret. Read the paper to understand why we need better assessment of AI performance in high-stakes contexts.

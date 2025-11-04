@@ -125,6 +125,7 @@ REQUIRED ARTICLE STRUCTURE:
 6. **Limitations** (what remains unknown - from paper's limitations section)
 
 TITLE REQUIREMENTS (CRITICAL):
+- **CRITICAL**: The generated title MUST be DIFFERENT from the original title in the paper. NEVER use the same title as the original source.
 - **News-focused**: Explain what the breakthrough means to everyday readers
 - **Simple language**: Avoid technical jargon, write for general audience
 - **Active voice**: Make it engaging and accessible
@@ -187,6 +188,7 @@ CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
 - Return ONLY valid JSON - no markdown, no extra formatting
 
 TITLE REQUIREMENTS (CRITICAL):
+- **CRITICAL**: The generated title MUST be DIFFERENT from the original title in the paper. NEVER use the same title as the original source.
 - MAXIMUM 8 WORDS (short, punchy, viral)
 - STRONG HOOK to make users WANT to click and read
 - Create curiosity, tension, or surprise

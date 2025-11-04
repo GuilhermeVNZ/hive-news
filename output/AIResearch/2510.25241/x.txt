@@ -1,1 +1,0 @@
-Robots learning dance moves from YouTube? New research shows humanoid robots can master complex behaviors like dancing and basketball using just walking videos as a starting point. The geodesic-based method generates realistic movements without expensive motion capture equipment. Game-changer for robotics deployment in real-world environments.

@@ -1,0 +1,1 @@
+AI teams formed through conversation graphs rival expert-curated groups in math and medical benchmarks. Nature study reveals language model dialogues can automatically identify synergistic collaborations, enabling efficient AI deployment without proprietary details.

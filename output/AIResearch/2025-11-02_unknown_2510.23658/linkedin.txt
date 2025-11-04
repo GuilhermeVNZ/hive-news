@@ -1,0 +1,1 @@
+What if AI could learn from simple 'good' or 'bad' ratings instead of complex training? New Nature/Science research introduces ELBO-KTO, enabling diffusion language models to align with preferences using only unpaired feedback. This breakthrough makes AI training more efficient - read how this could transform how we develop helpful assistants.

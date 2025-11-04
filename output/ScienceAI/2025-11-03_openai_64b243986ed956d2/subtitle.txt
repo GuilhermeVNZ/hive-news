@@ -1,0 +1,1 @@
+Multi-year strategic alliance gives OpenAI access to hundreds of thousands of NVIDIA GPUs on AWS infrastructure, accelerating AI development and deployment.

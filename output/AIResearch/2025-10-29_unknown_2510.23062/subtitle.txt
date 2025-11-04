@@ -1,0 +1,1 @@
+AI can now assess students across all subjects with one system, helping educators spot strengths and weaknesses faster. This breakthrough uses transfer learning to give a complete view of student abilities without multiple tests.

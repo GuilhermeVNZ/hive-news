@@ -1,0 +1,1 @@
+A 3.8B-parameter model achieves GPT-4o equivalent performance at 1/19th the cost. This breakthrough challenges the 'bigger is better' AI assumption through directed reasoning techniques. How might this reshape AI accessibility?

@@ -1,0 +1,1 @@
+AI struggles to predict flight delays accurately, costing billions. A new Nature/Science dataset, Aeolus, reveals AI oversimplifies real-world complexities like interconnected flight networks. This breakthrough pushes for robust AI solutions to reduce economic losses and emissions. Let's discuss how multi-modal data can transform aviation reliability.

@@ -1,1 +1,0 @@
-Surprising finding: Sometimes simpler AI beats cutting-edge methods. New research shows established ResNet-UNet3+ with CBAM outperforms newer architectures in liver tumor detection, achieving 0.925 accuracy. What if reliable AI solutions are already here?

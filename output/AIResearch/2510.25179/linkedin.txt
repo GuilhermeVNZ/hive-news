@@ -1,1 +1,0 @@
-AI systems can now be tricked by combining seemingly harmless images and text. A new multi-agent framework called Agentic Moderation enhances safety without sacrificing utility, reducing attack success by up to 19%. How can we balance AI security and responsiveness in real-world applications? Based on Nature/Science research.

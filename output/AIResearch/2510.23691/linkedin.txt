@@ -1,1 +1,0 @@
-An AI can now outperform humans in complex games it's never seen before. Game-TARS achieves twice the success rate of previous AI systems using only keyboard/mouse inputs. This breakthrough in general-purpose AI could revolutionize how we interact with computers. What everyday computer task would you want an AI assistant to handle?

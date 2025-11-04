@@ -1,0 +1,1 @@
+AI can now learn from mostly unlabeled data, slashing annotation costs by up to 80% in medical imaging and astronomy. CSMPU method achieves 90%+ accuracy with minimal labeled examples, revolutionizing data-scarce fields. Read the Nature/Science study to see how this advances AI accessibility.

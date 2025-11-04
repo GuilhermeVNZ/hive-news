@@ -1,0 +1,1 @@
+AI can now train on sensitive data without sharing it. New DP-FedPGN method achieves 70.72% accuracy on CIFAR-10 with privacy protection - 25% improvement over baselines. Game-changer for medical AI. What industries need this most?

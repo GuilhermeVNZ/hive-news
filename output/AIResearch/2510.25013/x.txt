@@ -1,1 +1,0 @@
-Surprising AI finding: Just 2 attention heads can perfectly solve language tasks without complex components. This minimal approach offers a blueprint for more transparent, trustworthy AI systems. Nature research reveals how simplicity beats complexity.

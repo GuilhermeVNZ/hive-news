@@ -1,0 +1,7 @@
+Take 1: (Visual: Quick cuts of code and AI icons) Hey, ever wish AI could follow YOUR rules? OpenAI's new models do just that.
+Take 2: (Visual: Policy document on screen) They use reasoning to interpret custom safety policies in real-time.
+Take 3: (Visual: Developer at computer) You can tweak policies without retraining—super flexible for apps.
+Take 4: (Visual: Gaming forum example) Like flagging cheating posts or fake reviews with your own definitions.
+Take 5: (Visual: Compute graph rising) But it's compute-heavy, so scaling might be tricky.
+Take 6: (Visual: Hugging Face logo) Download them now and start building safer AI.
+Take 7: (Visual: Community collaboration image) Join the open-source community to shape the future of AI safety.

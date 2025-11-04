@@ -1,0 +1,1 @@
+AI's quest for consistency is making it culturally ignorant. New research shows alignment techniques systematically degrade accuracy in non-English languages by 3.4%, forcing generic Western-centric answers. The Nature paper reveals how surgical interventions could preserve local knowledge while maintaining cross-lingual transfer.

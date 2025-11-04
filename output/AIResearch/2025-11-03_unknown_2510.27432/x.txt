@@ -1,0 +1,1 @@
+Video search AI often groups unrelated clips—undermining results. Researchers tackle 'semantic collapse' with TCPL, maintaining query relationships for better accuracy. A breakthrough for content retrieval.

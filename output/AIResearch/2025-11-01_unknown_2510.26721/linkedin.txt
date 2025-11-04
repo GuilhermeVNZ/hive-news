@@ -1,0 +1,1 @@
+AI systems favor text over images, creating a hidden bias in critical applications. This study reveals multimodal AI's intrinsic text preference, limiting its ability to process visual data effectively. Understand the architectural flaw and its implications for AI reliability.

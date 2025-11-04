@@ -1,0 +1,1 @@
+AI tools in safety-critical domains often produce code that violates 30% of compliance rules, requiring costly manual fixes. PRISM combines LLMs with model-driven engineering to generate 100% verifiably correct artifacts with machine-checkable proofs. How might this transform AI adoption in regulated industries?

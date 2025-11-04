@@ -1,0 +1,1 @@
+New AI KnowCoder-A1 uses outcome-only supervision, scoring 80.5% F1 on GrailQA with just one-twelfth the training data. It adapts broadly, avoiding rigid paths. A leap for flexible AI assistants.

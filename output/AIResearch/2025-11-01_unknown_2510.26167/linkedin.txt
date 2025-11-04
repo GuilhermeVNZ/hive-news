@@ -1,0 +1,1 @@
+AI tools often fail to evaluate their own accuracy—a critical limitation for autonomy. New ToolRM reward model achieves 14.28% improvement in task accuracy through self-critique. Could this be the key to reliable AI agents? Read the Nature/Science study.

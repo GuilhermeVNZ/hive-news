@@ -1,0 +1,1 @@
+AI struggles to simplify complex code, failing over 40% of the time. This limitation could slow down software development and automation efforts.

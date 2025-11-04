@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your AI security system couldn't recognize the same person from different camera angles? [VISUAL DIRECTION] Animated text: 'AI FAILS AT BASIC RECOGNITION' with question mark overlay
+
+[VOICEOVER 0:05-0:20] New research reveals AI systems struggle dramatically when viewpoint changes - a critical flaw affecting everything from autonomous vehicles to surveillance. [VISUAL DIRECTION] Quick cuts: security camera footage, self-driving car interior, robot navigating space
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can current video AI models maintain consistent understanding when perspective shifts between first-person and third-person views? [VISUAL DIRECTION] Split screen showing same action from ego vs exo viewpoints with question mark between them
+
+[VOICEOVER 0:40-1:00] The answer shocked them - AI accuracy drops to just 50% on cross-view tasks. Even fine-tuning provided minimal improvement. [VISUAL DIRECTION] Zoom on Figure 2 accuracy charts showing dramatic performance drop between single-view and cross-view conditions
+
+[VOICEOVER 1:00-1:30] Using the new EgoExo-Con benchmark, they tested Video-LLMs on paired videos from multiple angles. The models failed to maintain stable interpretations despite seeing the same events. [VISUAL DIRECTION] Animated diagram showing benchmark methodology with arrows connecting different viewpoint pairs
+
+[VOICEOVER 1:30-1:50] This means real consequences - autonomous systems making dangerous misidentifications, security cameras missing critical events, robots failing in dynamic environments. [VISUAL DIRECTION] Red warning symbols over autonomous vehicle, security footage, robotic applications
+
+[VOICEOVER 1:50-2:00] The fundamental challenge: building AI that understands reality consistently, no matter the viewpoint. [VISUAL DIRECTION] Final text overlay: 'VIEWPOINT-INVARIANT AI: THE UNSOLVED PROBLEM'

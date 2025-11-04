@@ -1,0 +1,1 @@
+Google Research has introduced AutoBNN, an open-source package that advances time series forecasting by combining Bayesian neural networks with compositional structures. This approach offers scalable uncertainty estimation for applications from finance to climate science. #AI #DataScience #MachineLearning

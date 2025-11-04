@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if steel mills could predict breakdowns before they cost $20,000 per hour in lost production?
+[VISUAL DIRECTION] [Animated text: $20K/HOUR LOST - CAN AI STOP IT? with industrial background]
+[VOICEOVER 0:05-0:20] Steel facilities face constant threats that can halt operations for hours, costing millions in lost revenue. Traditional sensors often miss the subtle patterns that lead to catastrophic failures.
+[VISUAL DIRECTION] [Show steel mill operations with red warning indicators flashing on critical components]
+[VOICEOVER 0:20-0:40] Researchers asked: Can computer vision detect these failure patterns that humans and conventional sensors overlook?
+[VISUAL DIRECTION] [Close-up on steel rollers and mechanisms with question marks appearing]
+[VOICEOVER 0:40-1:00] Their AI system analyzes vibration patterns and material flow in real-time, capturing data every 45 seconds from strategically placed cameras.
+[VISUAL DIRECTION] [Show camera placements and data streams flowing into AI system]
+[VOICEOVER 1:00-1:30] The system tracks multiple parameters simultaneously - monitoring vertical displacement, identifying position deviations, and measuring mechanical displacement. It combines sensor data with Program Logic Controllers to maintain 280 millisecond latency.
+[VISUAL DIRECTION] [Animated diagrams showing parameter tracking with real-time data visualization]
+[VOICEOVER 1:30-1:50] During six-month deployment, it processed 28,000 labeled scenarios, achieving 92.5% recall in detecting failures. Most significantly, it prevented all production stoppages that previously occurred approximately 3 times monthly.
+[VISUAL DIRECTION] [Show statistics: 92.5% recall, 280ms latency, 3 stoppages prevented monthly]
+[VOICEOVER 1:50-2:00] This represents a fundamental shift from reactive maintenance to proactive prevention - saving $20,000 every hour of avoided downtime.
+[VISUAL DIRECTION] [Final screen: PROACTIVE MAINTENANCE IS HERE with rotating steel mill machinery]

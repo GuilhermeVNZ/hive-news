@@ -1,0 +1,1 @@
+AI just solved science's data bottleneck: New method compresses datasets 30% better while guaranteeing accuracy. LLMC-OMP treats data like language, preserving spatial relationships. Enables sharing massive weather/ocean datasets without precision loss. #ScienceBreakthrough

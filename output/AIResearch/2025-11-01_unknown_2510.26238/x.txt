@@ -1,0 +1,1 @@
+AI gets survey analysis wrong 25% of the time - formatting is the culprit. New research shows Turtle format boosts accuracy 8.8% while poor choices degrade performance 16-24%. Critical for healthcare and policy decisions where reliability matters.

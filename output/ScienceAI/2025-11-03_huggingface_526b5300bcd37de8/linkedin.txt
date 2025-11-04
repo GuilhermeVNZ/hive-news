@@ -1,0 +1,1 @@
+Hugging Face has released version 1.0 of its huggingfacehub library, marking a major milestone for open-source machine learning infrastructure. The update brings httpx migration, Xet file transfers, and enhanced CLI tools to support the next decade of AI development. #MachineLearning #AI #DeveloperTools

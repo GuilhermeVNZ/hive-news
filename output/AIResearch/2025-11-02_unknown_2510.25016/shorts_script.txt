@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could automate 80% of software development's most error-prone phase?
+[VISUAL DIRECTION] Animated text: "80% AUTOMATION" with question mark pulsing
+[VOICEOVER 0:05-0:20] Software requirements engineering - defining what software should actually do - remains bottleneck where critical errors occur
+[VISUAL DIRECTION] Show flowchart with "Requirements" section highlighted in red, error symbols appearing
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI assist without compromising reliability when human oversight remains essential?
+[VISUAL DIRECTION] Split screen showing AI brain icon and human silhouette with connecting arrows
+[VOICEOVER 0:40-1:00] They developed HARE-SM framework integrating Flan-T5 and LLaMA-3 models for side-by-side comparison selection
+[VISUAL DIRECTION] Show two AI model outputs side-by-side with selection interface, highlight "comparison"
+[VOICEOVER 1:00-1:30] The system automates repetitive documentation tasks while humans validate decisions, preventing automation bias
+[VISUAL DIRECTION] Animated workflow showing AI processing documents, human approval step, audit trail visualization
+[VOICEOVER 1:30-1:50] This balances efficiency with reliability - teams spend less time on routine tasks while maintaining critical oversight
+[VISUAL DIRECTION] Show efficiency vs reliability scale balancing, team collaboration scene
+[VOICEOVER 1:50-2:00] AI assists, but humans decide - the future of reliable software development
+[VISUAL DIRECTION] Final text overlay: "HUMAN DECISION AUTHORITY REMAINS ESSENTIAL" with framework diagram

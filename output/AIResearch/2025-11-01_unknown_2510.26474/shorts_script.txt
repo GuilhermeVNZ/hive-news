@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems learning from their own outputs get trapped in cycles of simplicity, struggling with complex problems?
+[VISUAL DIRECTION] Animated text: "AI Trapped in Simplicity Cycles" with swirling vortex animation
+[VOICEOVER 0:05-0:20] This is the 'Matthew Effect' in AI self-improvement - where systems prioritize what they're already good at, creating an imbalance that hinders real progress.
+[VISUAL DIRECTION] Show Figure 2 with zoom on peak distribution of simple responses vs complex ones
+[VOICEOVER 0:20-0:40] Fudan University researchers investigated why AI systems plateau during self-learning, discovering they generate predominantly simple training data while struggling with complex problems.
+[VISUAL DIRECTION] Animated bar chart showing 98.5% simple responses vs 1.5% complex responses
+[VOICEOVER 0:40-1:00] They found AI responses became significantly shorter - averaging 277 tokens versus 395 in original datasets - and skipped reasoning steps, delivering conclusions directly.
+[VISUAL DIRECTION] Side-by-side comparison of detailed vs abbreviated AI reasoning processes
+[VOICEOVER 1:00-1:30] The solution? A four-pronged 'head-tail re-balancing' approach that includes distribution reshaping, threshold clipping, and trajectory resampling to ensure all difficulty levels appear equally.
+[VISUAL DIRECTION] Animated flowchart showing the four methodology components with checkmarks
+[VOICEOVER 1:30-1:50] This approach achieved 43.94% improvements on certain tasks with minimal additional cost, crucial for eliminating reliance on human annotations and promoting real-world alignment.
+[VISUAL DIRECTION] Show performance improvement graphs with 43.94% highlighted
+[VOICEOVER 1:50-2:00] The takeaway: Scaling resources alone won't fix AI's complexity bottlenecks - we need smarter self-learning approaches to ensure AI evolves beyond its comfort zone.

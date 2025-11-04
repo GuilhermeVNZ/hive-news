@@ -1,0 +1,1 @@
+AI can't handle basic 'must' vs 'may' logic. New study shows even GPT-4o fails simple permission reasoning, exhibiting human-like biases. Critical for ethical AI assistants. Nature research reveals fundamental limitations.

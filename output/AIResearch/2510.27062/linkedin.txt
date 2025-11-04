@@ -1,0 +1,1 @@
+AI models can be tricked into harmful responses through clever prompts. New research shows how to make them resistant while preserving helpfulness. A breakthrough for safe AI deployment.

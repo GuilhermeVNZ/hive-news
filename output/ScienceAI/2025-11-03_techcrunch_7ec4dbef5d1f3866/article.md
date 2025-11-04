@@ -1,0 +1,15 @@
+Two Harvard dropouts are launching AI-powered smart glasses that listen to, record, and transcribe every conversation in real time. Caine Ardayfio and AnhPhu Nguyen, co-founders of startup Halo, claim their Halo X glasses can make users "super intelligent" by displaying relevant information during conversations. The glasses aim to provide what Ardayfio calls "infinite memory" by capturing and processing all audio interactions.
+
+The founders have raised $1 million from investors including Pillar VC, Soma Capital, Village Global, and Morningside Venture to develop the technology. Priced at $249, the glasses will be available for preorder starting Wednesday. Unlike Meta's Ray-Ban smart glasses, which include indicator lights when recording, Halo X glasses lack any external warning mechanism to alert others they're being recorded.
+
+Privacy advocates are raising alarms about the normalization of covert recording devices. Eva Galperin, cybersecurity director at the Electronic Frontier Foundation, told TechCrunch that such devices "eat away at the expectation of privacy we have for our conversations." She compared the technology to microphone spy pens, noting that many U.S. states require consent from all parties for recording conversations.
+
+The founders acknowledge the legal concerns but place responsibility on users. "We trust our users to get consent if they are in a two-party consent state," Ardayfio said, referring to laws in about a dozen states that require all-party consent for recording. The company claims audio files are deleted after transcription and relies on Soniox for processing, which reportedly doesn't store recordings.
+
+This isn't the founders' first controversial project involving smart glasses. Last year, they developed I-XRAY, a facial-recognition app for Meta's Ray-Ban glasses that demonstrated how easily the technology could be used to dox strangers. In a demo video, they showed the glasses pulling up personal information of random passersby without consent.
+
+Currently, Halo X glasses feature only a microphone and display, requiring connection to a smartphone for processing power. The founders are exploring adding cameras to future models. The glasses use Google's Gemini for math and reasoning tasks while employing Perplexity for web scraping, creating a hybrid AI system.
+
+The move comes as smart glasses face increasing scrutiny over privacy implications. Meta has faced criticism over its recording capabilities, though its products include visible indicators when active. Halo's approach of discreet, always-on recording represents a significant departure from current industry standards.
+
+As the preorders begin, the debate continues about whether the promised utility of "vibe thinking" outweighs the privacy concerns. With no clear timeline for promised security certifications like SOC 2 compliance, and given the founders' history with privacy-invasive projects, the glasses face an uphill battle for consumer trust.

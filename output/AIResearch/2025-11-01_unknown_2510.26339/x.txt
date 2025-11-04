@@ -1,0 +1,1 @@
+AI can now read unreadable text in medical images AND maintain visual quality - something previous methods failed at. GLYPH-SR's dual-branch architecture prevents hallucinated text while achieving competitive perceptual scores. Critical for healthcare efficiency.

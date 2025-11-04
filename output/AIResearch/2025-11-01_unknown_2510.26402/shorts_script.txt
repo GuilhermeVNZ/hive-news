@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could grade assignments with the same insight as expert teaching assistants?
+[VISUAL DIRECTION] Animated text: "AI GRADES LIKE HUMANS?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As education expands globally, traditional grading systems leave learners frustrated with simple pass/fail results. Students can't understand their mistakes.
+[VISUAL DIRECTION] Show frustrated student at computer, zoom on confusing "FAIL" message
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI provide the rich feedback of human tutors at massive scale?
+[VISUAL DIRECTION] Split screen: human tutor vs thousands of students waiting for feedback
+
+[VOICEOVER 0:40-1:00] Autograder+ achieves F1 score 0.7658 compared to written teaching assistants - strong alignment with expert instruction.
+[VISUAL DIRECTION] Show performance comparison chart with F1 score highlighted in bold
+
+[VOICEOVER 1:00-1:30] The system combines multiple AI approaches: static analysis examines code structure, dynamic analysis runs code in secure containers. Two specialized language models generate detailed explanations and organize performance patterns.
+[VISUAL DIRECTION] Animated pipeline showing code flowing through analysis modules, with "Docker containers" and "prompt pooling" callouts
+
+[VOICEOVER 1:30-1:50] In testing, it identified not just surface errors but deeper conceptual misunderstandings - like logical flaws in Fibonacci sequence implementations.
+[VISUAL DIRECTION] Show Fibonacci code with highlighted logical error, then correction animation
+
+[VOICEOVER 1:50-2:00] This represents a critical advancement for scalable education - AI that tutors while it grades.
+[VISUAL DIRECTION] Final screen: "Autograder+: When AI becomes your personal tutor" with UMAP visualization of class patterns

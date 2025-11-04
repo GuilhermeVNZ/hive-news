@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could read millions of scientific papers and tell us exactly what we're missing?
+[VISUAL DIRECTION] Animated text: "83.3% ACCURACY" flashes dramatically with question marks transforming into lightbulbs
+[VOICEOVER 0:05-0:20] With millions of papers published annually, crucial knowledge often goes unnoticed. Scientific progress depends on identifying what we don't know.
+[VISUAL DIRECTION] Rapid scrolling through scientific paper abstracts, slowing to highlight key phrases with glowing borders
+[VOICEOVER 0:20-0:40] Researchers tested whether large language models could systematically detect both explicitly stated knowledge gaps and those that must be inferred from context.
+[VISUAL DIRECTION] Split screen showing "EXPLICIT GAPS" vs "IMPLIED GAPS" with simple diagrams illustrating the difference
+[VOICEOVER 0:40-1:00] GPT-4o achieved 83.3% accuracy in identifying factually true knowledge gaps, processing articles in 1000-word chunks using advanced inference techniques.
+[VISUAL DIRECTION] Show precision/recall metrics (0.78-0.86) animating onto screen, then zoom into the TABI framework diagram showing Claim-Grounds-Warrant structure
+[VOICEOVER 1:00-1:30] The methodology involved testing multiple models across different datasets. For implicit gap detection, they developed the TABI framework - systematically validating claims, evidence, and reasoning connections.
+[VISUAL DIRECTION] Quick cuts between different model performance comparisons (GPT-4o vs Llama-3.3-70B), highlighting top performers with gold badges
+[VOICEOVER 1:30-1:50] When researchers tested the AI on their own work, they agreed with the model's conclusions and believed addressing these gaps could significantly advance their fields.
+[VISUAL DIRECTION] Show percentage stats: "65% of researchers found gaps difficult to address" with concerned researcher expressions
+[VOICEOVER 1:50-2:00] AI is now reading between the lines of science - accelerating how we identify what matters most for human progress.
+[VISUAL DIRECTION] Final shot of AI brain icon connecting to scientific breakthrough symbols (DNA helix, microscope, data charts) with optimistic upward trajectory

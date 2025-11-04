@@ -1,0 +1,1 @@
+Stop scrolling: AI can filter lists using specialized neural components that mirror human functions. Researchers found reusable 'filter heads' in LLMs that work across languages without retraining—revealing how AI implements abstract reasoning internally. Nature/Science-level discovery.

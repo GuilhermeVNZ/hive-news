@@ -1,0 +1,1 @@
+Shocking: Even top AI models fail basic safety tests. Oak Ridge's SciTrust 2.0 reveals GPT-4-Mini leads in trustworthiness, while others show critical vulnerabilities in ethics and reasoning. Essential reading for AI researchers and policymakers. Full study available on GitHub.

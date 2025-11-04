@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could discover materials 63% faster than human scientists?
+[VISUAL DIRECTION] Animated text: "63% MORE MATERIALS DISCOVERED" with explosive particle effects
+
+[VOICEOVER 0:05-0:20] Materials discovery has been painfully slow - taking years to develop new alloys, semiconductors, and aerospace components through trial and error.
+[VISUAL DIRECTION] Show timeline animation of traditional materials development process with "YEARS" labels
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we combine AI's pattern recognition with chemistry principles to accelerate this process?
+[VISUAL DIRECTION] Split screen showing traditional lab equipment vs. AI neural network visualization
+
+[VOICEOVER 0:40-1:00] They developed LLEMA - an AI system that generated chemically plausible, thermodynamically stable materials meeting multiple competing objectives.
+[VISUAL DIRECTION] Show molecular structures forming and stabilizing with green "STABLE" indicators
+
+[VOICEOVER 1:00-1:30] The system uses language models to propose materials, then applies chemistry rules for substitutions while preserving stoichiometry. Each candidate gets evaluated for band gap, formation energy, and mechanical properties.
+[VISUAL DIRECTION] Animated flowchart showing LLM proposal → chemistry rules → property prediction → scoring cycle
+
+[VOICEOVER 1:30-1:50] This means faster development of lightweight aerospace alloys, efficient solar cell materials, and safer battery electrolytes - potentially accelerating clean energy and space exploration.
+[VISUAL DIRECTION] Quick cuts showing airplane wings, solar panels, and batteries with performance metrics improving
+
+[VOICEOVER 1:50-2:00] AI isn't replacing scientists - it's giving them superpowers to discover what was previously impossible.
+[VISUAL DIRECTION] Final text overlay: "63.46% SUCCESS RATE ACROSS 14 MATERIAL TASKS" with Nature journal logo

@@ -1,0 +1,1 @@
+Self-driving cars can now justify their decisions using formal legal logic. New research integrates symbolic reasoning with neural networks, creating defensible AI that follows traffic regulations and explains its choices in accident scenarios. How should we hold autonomous systems accountable?

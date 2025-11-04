@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could shrink massive scientific datasets by 30% without losing a single decimal of accuracy?
+[VISUAL DIRECTION] Animated text: "30% BETTER COMPRESSION" with glowing percentage
+[VOICEOVER 0:05-0:20] Scientists face a critical bottleneck: high-resolution simulations generate terabytes of data that are impossible to store and share efficiently.
+[VISUAL DIRECTION] Show data centers with overflowing storage icons, transition to frustrated researcher at computer
+[VOICEOVER 0:20-0:40] Researchers asked: Can we use language models to compress scientific data while guaranteeing mathematical precision?
+[VISUAL DIRECTION] Show question mark transforming into AI brain icon, then into compression symbol
+[VOICEOVER 0:40-1:00] They discovered LLMC-OMP - a method that converts continuous data into discrete tokens, similar to how language models process words.
+[VISUAL DIRECTION] Show data streams transforming into token sequences with Z-order spatial arrangement
+[VOICEOVER 1:00-1:30] Here's how it works: The system predicts each data step and only stores corrections when predictions differ, ensuring decompressed data stays within 0.0001 tolerance of original values.
+[VISUAL DIRECTION] Animated flow diagram showing prediction-correction cycle with precision bounds highlighted
+[VOICEOVER 1:30-1:50] This means weather centers can share massive ERA5 reanalysis datasets efficiently, leading to more accurate forecasts and better disaster preparedness.
+[VISUAL DIRECTION] Show global weather maps with compression ratios displayed, transition to disaster response teams
+[VOICEOVER 1:50-2:00] AI isn't just understanding language - it's now speaking the language of science itself, compressing our world's data with unprecedented precision.

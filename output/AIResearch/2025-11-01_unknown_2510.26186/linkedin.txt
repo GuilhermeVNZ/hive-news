@@ -1,0 +1,1 @@
+AI often fails in unexpected ways due to biased training data. Researchers developed ConceptScope to automatically detect and quantify these biases, improving reliability in critical fields like healthcare. Let's build more robust AI systems.

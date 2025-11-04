@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI training wastes over 50% of resources on tasks that are either too easy or impossible to solve?
+[VISUAL DIRECTION] [Animated text: "50% WASTED" with dramatic red X through it, fast zoom]
+[VOICEOVER 0:05-0:20] This inefficiency has been slowing down AI development for years, making training large language models costly and slow.
+[VISUAL DIRECTION] [Show Figure 2 from paper - distribution of task difficulties with peaks at easy/impossible ends, pan across graph]
+[VOICEOVER 0:20-0:40] Researchers at Alibaba asked: What if AI could dynamically select only the most informative challenges during training?
+[VISUAL DIRECTION] [Animated text: "THE RIGHT CHALLENGE" with question mark transforming into lightbulb]
+[VOICEOVER 0:40-1:00] They discovered that targeting tasks with exactly 50% success probability maximizes learning efficiency.
+[VISUAL DIRECTION] [Zoom on peak at 0.5 probability in Figure 2, highlight with glowing circle]
+[VOICEOVER 1:00-1:30] BOTS uses Bayesian inference to continuously estimate task difficulty and Thompson sampling to balance exploration with exploitation.
+[VISUAL DIRECTION] [Animated diagram showing task selection process, fast cuts between different evidence sources]
+[VOICEOVER 1:30-1:50] The result: 36% faster training to reach baseline performance and 5% better final results.
+[VISUAL DIRECTION] [Show TTB 0.64 and BSF 1.05 stats in bold text, hold for 3 seconds]
+[VOICEOVER 1:50-2:00] This breakthrough means smarter AI assistants could be developed faster and more efficiently than ever before.
+[VISUAL DIRECTION] [Final text overlay: "SMARTER AI, FASTER TRAINING" with Alibaba logo]

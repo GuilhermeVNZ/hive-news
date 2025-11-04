@@ -1,0 +1,1 @@
+New method enables AI models to process long sequences with constant memory while maintaining complex data relationships, overcoming a fundamental bottleneck in modern AI systems.

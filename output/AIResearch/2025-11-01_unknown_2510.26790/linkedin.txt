@@ -1,0 +1,1 @@
+AI struggles to extract core functionality from codebases - new Gistify benchmark reveals state-of-the-art systems achieve only 36.5% success rate. This critical limitation impacts real-world development workflows. How will your team adapt?

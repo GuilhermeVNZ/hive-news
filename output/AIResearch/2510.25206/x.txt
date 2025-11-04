@@ -1,1 +1,0 @@
-AI breakthrough: RAVR teaches AI to reason backward from correct answers, achieving 40.91 on GPQA-Diamond—5.56 points higher than previous methods. This could revolutionize how AI learns complex tasks.

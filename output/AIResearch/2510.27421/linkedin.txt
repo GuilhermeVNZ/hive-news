@@ -1,0 +1,1 @@
+AI medical imaging tools perform significantly worse for patients under 40, new Nature study reveals. These algorithms detect tumors with lower quality and accuracy in younger demographics, even when training data is balanced. As healthcare increasingly adopts AI, how do we ensure these technologies serve all patients equitably?

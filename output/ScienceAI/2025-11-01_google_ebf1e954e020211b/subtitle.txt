@@ -1,0 +1,1 @@
+A compact 5B-parameter vision-language model sets new benchmarks for interpreting screens and charts, potentially reshaping how AI interacts with digital interfaces.

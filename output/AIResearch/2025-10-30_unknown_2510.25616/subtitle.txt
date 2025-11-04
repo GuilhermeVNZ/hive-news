@@ -1,0 +1,1 @@
+AI robots lose their ability to recognize objects when learning physical tasks, creating dangerous blind spots in real-world environments. A simple new method prevents this 'forgetting' problem, making robots more reliable when encountering unfamiliar situations.

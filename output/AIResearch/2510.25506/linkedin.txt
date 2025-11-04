@@ -1,1 +1,0 @@
-Only 5% of AI studies can be reproduced. Scientists analyzed 86 recent LLM papers—none produced identical results when retested. This reproducibility crisis threatens AI research credibility. Read the Nature/Science analysis on why we need more transparent AI research.

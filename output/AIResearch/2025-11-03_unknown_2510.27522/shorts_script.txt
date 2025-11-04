@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI models trained on weather and stock market data could outperform specialized medical brain scanners?
+[VISUAL DIRECTION] Animated text: "AI BEATS MEDICAL SPECIALISTS" with shocking question mark
+
+[VOICEOVER 0:05-0:20] Brain-computer interfaces face critical barriers: small datasets, high costs, and difficulty generalizing across individuals. Traditional AI requires expensive medical data collection.
+[VISUAL DIRECTION] Show EEG headset with red X through it, transition to data scarcity visualization
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can general-purpose AI models, originally developed for completely different applications, effectively analyze brain signals?
+[VISUAL DIRECTION] Zoom on research question text overlay with thinking animation
+
+[VOICEOVER 0:40-1:00] The breakthrough: Foundation models pretrained on diverse time series data matched or exceeded specialized EEG analysis systems across multiple benchmarks.
+[VISUAL DIRECTION] Show comparative performance charts from paper with highlighted 64.43% vs 58.14% accuracy
+
+[VOICEOVER 1:00-1:30] How it works: Models like CBraMod and Mantis, tested against EEGNet, used pretrained checkpoints from non-medical domains. Even synthetic data from mathematical algorithms performed competitively.
+[VISUAL DIRECTION] Animated flow diagram showing pretraining → adaptation → superior performance
+
+[VOICEOVER 1:30-1:50] This could transform medical AI - enabling accurate sleep disorder diagnosis without extensive data collection and creating accessible brain-computer interfaces for paralyzed patients.
+[VISUAL DIRECTION] Show potential applications: sleep monitoring, patient communication interfaces
+
+[VOICEOVER 1:50-2:00] The future of medical AI may not require medical data at all. Foundation models are breaking domain barriers.
+[VISUAL DIRECTION] Final text overlay: "GENERAL AI > SPECIALIZED MEDICAL AI" with Nature/Science branding

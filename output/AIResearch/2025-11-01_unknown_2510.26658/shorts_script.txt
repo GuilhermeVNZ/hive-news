@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could work together like a team of experts instead of thinking alone? [VISUAL DIRECTION] Animated text: "AI TEAMWORK BREAKTHROUGH" with rotating gears forming collaborative network
+
+[VOICEOVER 0:05-0:20] Current AI methods often struggle with slow, step-by-step reasoning. Microsoft Research asked: Can we make AI think more like human teams? [VISUAL DIRECTION] Show sequential vs parallel processing diagrams - single file vs multiple paths
+
+[VOICEOVER 0:20-0:40] They developed AsyncThink - a new paradigm where language models organize their reasoning processes concurrently, much like experts tackling different parts of a problem simultaneously. [VISUAL DIRECTION] Zoom on Figure 2 showing concurrent worker distribution
+
+[VOICEOVER 0:40-1:00] The results? 28% reduction in critical-path latency while improving accuracy. On math countdown problems, AsyncThink achieved correct solutions where baselines failed. [VISUAL DIRECTION] Animated text: "28% FASTER" with countdown timer comparison
+
+[VOICEOVER 1:00-1:30] How does it work? First, supervised learning delegates sub-problems to workers. Then, reinforcement learning optimizes for answer correctness and concurrency - encouraging multiple thought streams simultaneously without architecture changes. [VISUAL DIRECTION] Show worker coordination diagram with arrows connecting sub-problem solutions
+
+[VOICEOVER 1:30-1:50] This means AI can now tackle complex problems by breaking them into manageable parts, mimicking collaborative human strategies. Applications span scientific research, education, and logistics. [VISUAL DIRECTION] Fast cuts: lab research, classroom, supply chain logistics
+
+[VOICEOVER 1:50-2:00] AI just learned the power of teamwork - and it's solving problems faster than ever before. [VISUAL DIRECTION] Final text overlay: "TEAMWORK MAKES THE AI DREAM WORK" with collaborative network animation

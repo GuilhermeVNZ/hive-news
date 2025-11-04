@@ -1,0 +1,1 @@
+AI's inner workings are no longer a mystery. New research creates a Concept Atlas that makes AI transparent and controllable—achieving near-perfect concept retrieval (MRR 0.94). This could revolutionize how we trust and deploy AI in critical fields.

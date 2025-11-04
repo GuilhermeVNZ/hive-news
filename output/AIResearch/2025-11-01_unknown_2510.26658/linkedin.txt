@@ -1,0 +1,1 @@
+AI teams now solve problems 28% faster than solo models? Microsoft's AsyncThink enables language models to collaborate like expert teams, distributing sub-problems concurrently. This breakthrough in organizational reasoning could transform scientific research and complex problem-solving. What collaborative challenges could this approach tackle in your field?

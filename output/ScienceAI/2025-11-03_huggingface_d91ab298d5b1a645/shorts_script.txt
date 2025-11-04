@@ -1,0 +1,23 @@
+(Visual: Close-up of computer screen showing Hugging Face interface)
+Take 1: "Every single AI model on Hugging Face..."
+
+(Visual: VirusTotal logo appears)
+Take 2: "...is now being scanned for malware."
+
+(Visual: Animation showing files being scanned)
+Take 3: "2.2 million models and datasets..."
+
+(Visual: Security shield icon appears)
+Take 4: "...protected in real-time."
+
+(Visual: Developer looking at security report)
+Take 5: "See security ratings before you download."
+
+(Visual: Split screen showing both company logos)
+Take 6: "Hugging Face plus VirusTotal..."
+
+(Visual: Security checkmarks appearing)
+Take 7: "...equals safer AI for everyone."
+
+(Visual: Call to action screen)
+Take 8: "Check the link in our bio for details!"

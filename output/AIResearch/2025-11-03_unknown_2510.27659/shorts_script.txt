@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] AI teams fail spectacularly when members join or leave mid-task - new research reveals why. [VISUAL DIRECTION] Animated text: AI TEAM FAILURE with crashing robot graphics
+
+[VOICEOVER 0:05-0:20] In real-world applications from autonomous vehicles to smart grids, AI agents constantly enter and exit teams. [VISUAL DIRECTION] Show rotating car fleet and power grid animations
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can multi-agent AI handle dynamic team composition? [VISUAL DIRECTION] Zoom on research paper title "Challenges in Credit Assignment for Multi-Agent Reinforcement Learning"
+
+[VOICEOVER 0:40-1:00] They discovered three types of openness destroy coordination: agents joining/leaving, tasks appearing/disappearing, and capabilities changing. [VISUAL DIRECTION] Show three animated categories with icons for each type
+
+[VOICEOVER 1:00-1:30] Using Deep Q-Networks and Proximal Policy Optimization, they tested firefighter coordination scenarios. Performance dropped sharply when team members changed mid-operation. [VISUAL DIRECTION] Show simulation graphs with performance curves crashing
+
+[VOICEOVER 1:30-1:50] This means real systems like ride-sharing or disaster response could fail when team composition shifts unexpectedly. [VISUAL DIRECTION] Show ride-sharing app with driver changes and emergency response scenarios
+
+[VOICEOVER 1:50-2:00] Dynamic environments break AI teamwork - a critical challenge for real-world deployment. [VISUAL DIRECTION] Final text overlay: AI COORDINATION BREAKS IN DYNAMIC TEAMS

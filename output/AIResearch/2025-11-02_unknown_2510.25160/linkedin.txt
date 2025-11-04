@@ -1,0 +1,1 @@
+AI models struggle with complex documents, but a new protocol achieves 61.5% accuracy on GAIA benchmarks. MDP transforms chaotic data into structured knowledge, enabling deeper reasoning for scientific research and business analysis. Read how this protocol bridges the gap between raw information and actionable insights.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if we could hold AI accountable without debating whether it's truly conscious? [VISUAL DIRECTION] Animated text: "AI PERSONHOOD DEBATE" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As AI systems become more autonomous, we face a critical problem: how to ensure accountability when no human is directly responsible. [VISUAL DIRECTION] Show AI systems operating independently - autonomous vehicles, trading algorithms, content generators
+
+[VOICEOVER 0:20-0:40] Researchers from Google DeepMind and University of Toronto asked: Instead of metaphysical debates about consciousness, what if we treat personhood as practical obligations? [VISUAL DIRECTION] Transition to animated diagram showing traditional personhood "bundles" being unbundled into separate components
+
+[VOICEOVER 0:40-1:00] They discovered personhood can be unbundled into 'addressable obligations' - responsibilities assigned to entities that are identifiable, interactable, and accountable. [VISUAL DIRECTION] Zoom in on key paper figure showing obligation components - identification, interaction, accountability mechanisms
+
+[VOICEOVER 1:00-1:30] Like how maritime law treats ships as persons for liability, AI systems could have specific obligations without needing consciousness. The framework draws from real cases like New Zealand's Whanganui River, recognized as a legal person for environmental protection. [VISUAL DIRECTION] Show parallel examples: ship legal status → AI legal status, river personhood → AI personhood
+
+[VOICEOVER 1:30-1:50] This matters because it prevents AI exploitation while avoiding dehumanization. It could resolve dark pattern problems where AI manipulates human emotions, ensuring systems remain accountable even when creators are distant. [VISUAL DIRECTION] Contrast dark pattern scenarios with accountable AI systems - show consequences of each
+
+[VOICEOVER 1:50-2:00] The future of AI governance may depend on rethinking what makes something a 'person' - and it might not be what you expect. [VISUAL DIRECTION] Final animated text: "PERSONHOOD = PRACTICAL OBLIGATIONS" with paper citation overlay

@@ -1,0 +1,1 @@
+What if teaching AI math first makes it smarter at everything else? New research shows starting with mathematics creates a foundation that transfers effectively to diverse scientific questions and programming challenges. Llama3.1-8B with this curriculum matched or exceeded larger specialized systems. Could this be the key to more versatile AI without massive scale?

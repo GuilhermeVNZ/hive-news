@@ -1,0 +1,1 @@
+What if AI training didn't slow down for the weakest participant? New MU-SplitFed AI achieves linear speedup by eliminating bottleneck delays, reducing communication by 33% while improving accuracy. How will this transform federated learning in real-world applications?

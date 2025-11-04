@@ -1,0 +1,1 @@
+Google just released AutoBNN - an AI tool that makes time series forecasting both accurate AND interpretable. It combines neural network power with Bayesian uncertainty for predictions you can actually trust. #AI #MachineLearning #DataScience

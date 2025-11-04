@@ -1,0 +1,1 @@
+AI systems favor text over images, limiting their ability to understand visual content accurately. This bias affects critical areas like medical imaging and autonomous driving.

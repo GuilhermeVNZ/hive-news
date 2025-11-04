@@ -1,0 +1,1 @@
+Surprising finding: Simple algorithms beat complex ones for industrial failure detection. Random Forest + XGBoost reached 0.976 AUC-ROC, preventing costly downtime. Why overcomplicate when straightforward works better?

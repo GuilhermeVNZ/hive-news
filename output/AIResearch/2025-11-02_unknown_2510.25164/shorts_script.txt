@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Radiologists interpret thousands of MRIs daily—but what if AI could generate accurate, detailed reports automatically?
+[VISUAL DIRECTION] [Animated text: "Thousands of MRIs daily" with MRI scan imagery]
+[VOICEOVER 0:05-0:20] This overwhelming burden on radiologists affects hospital efficiency and patient care. Current systems often produce vague descriptions, missing critical anatomical details.
+[VISUAL DIRECTION] [Show radiologist reviewing multiple scans, transition to blurry text representing vague reports]
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI create clinically relevant MRI descriptions that match human accuracy while being more efficient?
+[VISUAL DIRECTION] [Animated question mark with MRI brain scan, zoom into specific regions]
+[VOICEOVER 0:40-1:00] Their breakthrough AI combines a transformer-based encoder (DEiT) with MediCareBERT for medical terminology and an LSTM decoder. It achieved ROUGE-L 0.39 on brain MRIs, outperforming BLIP-GPT2 (0.32) and traditional methods.
+[VISUAL DIRECTION] [Show Figure 2 comparison charts, zoom on ROUGE-L scores, highlight 0.39 vs 0.32]
+[VOICEOVER 1:00-1:30] The system analyzes relationships between image patches simultaneously, capturing long-range patterns crucial for diagnosis. With only 22 million parameters versus 86 million in standard transformers, it's designed for efficient hospital use.
+[VISUAL DIRECTION] [Animated diagram showing transformer processing image patches, highlight parameter count comparison]
+[VOICEOVER 1:30-1:50] This means radiologists can prioritize complex cases while AI handles preliminary reports, maintaining accuracy with consistent documentation across facilities.
+[VISUAL DIRECTION] [Show hospital workflow diagram with AI integration, fast cuts between different medical imaging types]
+[VOICEOVER 1:50-2:00] AI isn't replacing radiologists—it's giving them superpowers to handle the overwhelming MRI burden more effectively.
+[VISUAL DIRECTION] [Final text overlay: "AI + Radiologists = Better Patient Care" with MRI scan background]

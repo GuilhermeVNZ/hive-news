@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if self-driving cars could not just avoid obstacles, but actually understand and follow traffic laws - and explain their decisions in court?
+[VISUAL DIRECTION] [Animated text: "SELF-DRIVING CARS THAT UNDERSTAND LAWS" with law book and car icons colliding]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's the critical gap in autonomous driving systems that researchers just addressed. Current AI can navigate, but can't justify its choices when accidents happen.
+[VISUAL DIRECTION] [Show Figure 1 from paper - neural-symbolic architecture diagram with zoom on integration points]
+
+[VOICEOVER 0:20-0:40] The big question: How do we create AI that makes legally compliant decisions AND can defend them in legal proceedings?
+[VISUAL DIRECTION] [Animated courtroom scene with AI car in witness box, text overlay: "CAN AI EXPLAIN ITS CHOICES?"
+
+[VOICEOVER 0:40-1:00] The breakthrough comes from Neural-Symbolic Energy-Based Models that integrate legal knowledge directly into AI systems. These hybrid approaches combine deep learning with symbolic logic constraints.
+[VISUAL DIRECTION] [Show Robust Logic-infused Learning framework diagram, highlight automatic feature extraction]
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system uses formal specifications like Linear Temporal Logic to encode traffic rules. Think "if you approach an intersection, you must eventually stop." The AI checks whether its planned trajectory satisfies these encoded legal rules.
+[VISUAL DIRECTION] [Animated sequence showing car approaching intersection, LTL rules appearing as text overlays, green checkmarks when satisfied]
+
+[VOICEOVER 1:30-1:50] The real impact? These systems develop "rulebooks" that prioritize conflicting regulations, similar to how humans choose the "lesser evil" in complex situations. They increase semantic consistency by 30% in perception tasks.
+[VISUAL DIRECTION] [Show Knowledge-Refined Prediction Sets results, zoom on 30% improvement metric]
+
+[VOICEOVER 1:50-2:00] The future of autonomous vehicles isn't just about better sensors - it's about creating AI that understands and follows our laws, making them truly accountable partners on our roads.
+[VISUAL DIRECTION] [Final shot: Clean animation of autonomous car following traffic rules with legal compliance indicators]

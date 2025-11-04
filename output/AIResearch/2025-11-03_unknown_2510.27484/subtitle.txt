@@ -1,0 +1,1 @@
+Resampling methods uncover that AI's stated reasons often don't drive decisions, challenging assumptions about model behavior and interpretability in high-stakes scenarios.

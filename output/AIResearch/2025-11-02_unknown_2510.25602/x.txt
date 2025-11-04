@@ -1,0 +1,1 @@
+🚨 AI breakthrough: INT8 beats FP8 in accuracy & efficiency! Study shows MXINT8 format cuts costs up to 37% while matching BF16 performance. Challenges everything we thought about quantization. #AI #MachineLearning

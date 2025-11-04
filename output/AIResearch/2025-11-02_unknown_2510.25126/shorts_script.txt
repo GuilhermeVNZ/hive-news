@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could predict your friendships with 92% accuracy - outperforming current methods by nearly 50%?
+[VISUAL DIRECTION] [Animated text: 92% FRIENDSHIP PREDICTION ACCURACY with dramatic zoom effect]
+
+[VOICEOVER 0:05-0:20] Most human activities - from social interactions to online shopping - involve time-ordered sequences AND complex relationships. Yet current AI systems typically handle only one aspect at a time.
+[VISUAL DIRECTION] [Show alternating visuals: timeline sequences vs network diagrams, highlighting the separation]
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can machines process both sequences and relationships simultaneously, like humans naturally do?
+[VISUAL DIRECTION] [Animated brain diagram showing simultaneous processing pathways]
+
+[VOICEOVER 0:40-1:00] They developed RIDGE - an architecture that jointly learns from graphs and sequences without compromising either type of information.
+[VISUAL DIRECTION] [Show RIDGE architecture diagram with components highlighted: encoder for ordered events + XATTN for connected sequences]
+
+[VOICEOVER 1:00-1:30] Unlike systems that force all information into single vectors, RIDGE maintains detail while modeling how different entities connect. This means understanding that your recent purchases might be influenced by friends' activities, while preserving the order of events.
+[VISUAL DIRECTION] [Animated flow showing how sequences and relationships interact in real-time]
+
+[VOICEOVER 1:30-1:50] The impact is substantial: 92% accuracy on Brightkite friendship prediction, and significant improvements across Amazon's Musical, Clothing, and Electronics categories for review detection.
+[VISUAL DIRECTION] [Show bar charts comparing RIDGE (92%) vs graph-only (44.9%) vs sequence-only (75.6%) methods]
+
+[VOICEOVER 1:50-2:00] This breakthrough means AI can finally process information the way humans naturally do - considering both what happens and who's involved.
+[VISUAL DIRECTION] [Final screen: "RIDGE: When AI Thinks Like Humans Do" with Nature/Science logo]

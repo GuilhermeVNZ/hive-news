@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you a model 19 times cheaper than GPT-4o can match its performance on critical reasoning tasks?
+[VISUAL DIRECTION] Animated text: "19x CHEAPER = SAME PERFORMANCE" with dramatic reveal animation
+
+[VOICEOVER 0:05-0:20] For years, we've assumed bigger AI models mean better performance. But new research in Nature challenges this fundamental belief.
+[VISUAL DIRECTION] Show scale animation: small model vs giant model, then equal sign between them
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can smaller models compete with giants like GPT-4o on complex reasoning tasks? The FACTS benchmark with 500 questions became their testing ground.
+[VISUAL DIRECTION] Show FACTS benchmark visualization with question distribution
+
+[VOICEOVER 0:40-1:00] The Humains-Junior model achieved 72.7% accuracy - statistically equivalent to GPT-4o's 73.5% within the ±5% margin. Statistical equivalence confirmed using gold-standard Two One-Sided Tests.
+[VISUAL DIRECTION] Show accuracy comparison chart with overlapping confidence intervals
+
+[VOICEOVER 1:00-1:30] The secret? Reasoning - a cognitive approach forcing the model to engage explicit meta-cognitive processing. It activates internal knowledge, compares against context, and exercises epistemic humility.
+[VISUAL DIRECTION] Animated flowchart showing reasoning steps: knowledge activation → context comparison → belief prioritization
+
+[VOICEOVER 1:30-1:50] Real impact: $0.00033 per 1,000 queries vs GPT-4o's $0.00625. Self-hosted deployments have near-zero marginal inference costs. This democratizes frontier AI capabilities.
+[VISUAL DIRECTION] Show cost comparison with dramatic price difference visualization
+
+[VOICEOVER 1:50-2:00] The era of massive models may be ending. Small, smart, and efficient AI is here to stay.
+[VISUAL DIRECTION] Final text overlay: "SMALLER ≠ WEAKER" with model architecture diagram

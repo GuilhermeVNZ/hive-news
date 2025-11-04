@@ -100,6 +100,30 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             .and_then(|s| s.to_str())
             .unwrap_or("");
 
+        // Verificar se o artigo existe no registry antes de tentar atualizar
+        // Se não existir, criar uma entrada básica primeiro
+        if !registry.is_article_registered(article_id) {
+            // Criar entrada básica no registry se não existir
+            // Isso pode acontecer se o PDF foi descoberto antes do registro ser concluído
+            let pdf_url = pdf_path.to_string_lossy().to_string();
+            let arxiv_url = if article_id.contains(".") {
+                format!("https://arxiv.org/abs/{}", article_id)
+            } else {
+                pdf_url.clone()
+            };
+            
+            if let Err(e) = registry.register_collected(
+                article_id.to_string(),
+                result.doc.title.clone(),
+                arxiv_url,
+                pdf_url,
+            ) {
+                eprintln!("   ⚠️  Failed to create registry entry for article {}: {}", article_id, e);
+                stats.rejected += 1;
+                continue;
+            }
+        }
+
         // Arredondar score para 2 casas decimais para evitar problemas de precisão float
         // Se arredondado for >= 0.40, aprovar
         let rounded_score = (score * 100.0).round() / 100.0;
@@ -130,6 +154,7 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             let reason = format!("Score {:.2} below threshold {:.2}", score, FILTER_THRESHOLD);
             if let Err(e) = registry.register_rejected(article_id, score as f64, reason.clone()) {
                 eprintln!("   ⚠️  Failed to register rejected article: {}", e);
+                // Se falhou porque o artigo não existe, já foi tratado acima
             }
 
             // Verificar se o arquivo ainda existe antes de tentar mover

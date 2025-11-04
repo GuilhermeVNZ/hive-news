@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems fail at basic code comprehension tasks 63.5% of the time? 
+[VISUAL DIRECTION] Animated text: "AI FAILS 63.5%" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] New research reveals a critical gap in AI's ability to understand and simplify complex codebases - something developers rely on daily.
+[VISUAL DIRECTION] Show code repository interface with AI assistant panel, quick cuts between different programming environments
+
+[VOICEOVER 0:20-0:40] Researchers created the Gistify benchmark to test whether AI can extract minimal, self-contained files that reproduce functionality from larger codebases.
+[VISUAL DIRECTION] Animated diagram showing codebase → AI processing → simplified file, with question marks appearing
+
+[VOICEOVER 0:40-1:00] The results were startling: even combining top AI frameworks like GPT-5 and Claude-3.7-Sonnet achieved only 36.5% success rate.
+[VISUAL DIRECTION] Bar chart showing 36.5% success rate highlighted in red, with failure reasons appearing as text overlays
+
+[VOICEOVER 1:00-1:30] The AI made critical errors - missing imports, modifying functions despite instructions, and failing to preserve essential components needed for execution.
+[VISUAL DIRECTION] Show code comparison with red highlights on errors, fast cuts between different failure examples
+
+[VOICEOVER 1:30-1:50] This matters because AI is increasingly deployed in real-world development for debugging, code review, and sharing applications.
+[VISUAL DIRECTION] Show developers working with AI tools, with warning symbols appearing over AI assistance features
+
+[VOICEOVER 1:50-2:00] The takeaway? Current AI still lacks fundamental understanding of code structure and functionality.
+[VISUAL DIRECTION] Final screen with text: "AI Code Comprehension: Still Has Critical Gaps" with research citation

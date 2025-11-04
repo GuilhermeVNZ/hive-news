@@ -1,0 +1,1 @@
+Researchers discover a method to make any AI model interpretable by aligning it with a universal 'concept atlas', enabling control and transparency without costly retraining.

@@ -1,0 +1,1 @@
+What if analyzing complex cause-and-effect relationships could be 10x faster? Researchers developed Gibby, a new algorithm that accelerates DAG analysis from microseconds to 0.014 microseconds, enabling breakthroughs in medicine and climate science. How could faster causal discovery transform your field?

@@ -1,0 +1,1 @@
+What if AI could clean both network structure AND labels simultaneously? New RIDGE AI denoises signed graphs with positive/negative relationships, achieving 5.45% prediction accuracy improvement. This breakthrough from Nature/Science research makes social trading platforms more trustworthy. How could this transform your industry's data reliability?

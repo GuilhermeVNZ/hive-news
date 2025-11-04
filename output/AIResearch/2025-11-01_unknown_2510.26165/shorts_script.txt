@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could manage your investments better than humans, without even knowing your goals?
+[VISUAL DIRECTION] Animated text: "AI MANAGES PORTFOLIOS WITHOUT KNOWING YOUR GOALS" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Oxford University and J.P. Morgan researchers just made this reality. They discovered most investment funds operate with far more complex constraints than traditional models suggest.
+[VISUAL DIRECTION] Show university and bank logos, transition to animated chart showing multiple constraint lines intersecting
+
+[VOICEOVER 0:20-0:40] The big question: How do real fund managers actually make decisions when they face competing goals that go beyond simple risk-return trade-offs?
+[VISUAL DIRECTION] Split screen showing traditional risk-return chart vs. complex multi-constraint visualization
+
+[VOICEOVER 0:40-1:00] Their finding: Four-fifths of active funds show consistent Markowitz-like optimization, but with substantial variation in implementation. The AI learned this directly from observing 1,436 U.S. mutual funds over 14 years.
+[VISUAL DIRECTION] Show Figure 2 with zoom on distribution peaks, highlight "4/5 funds" with bold text overlay
+
+[VOICEOVER 1:00-1:30] How it works: They used a generative adversarial network that learns the conditional probability distribution of portfolio weights. Unlike traditional AI that needs specified rewards, this learns directly from observed fund manager behavior.
+[VISUAL DIRECTION] Animated diagram showing GAN architecture components: universe generator, encoder, allocator with data flowing between them
+
+[VOICEOVER 1:30-1:50] Why this matters: This provides a new way to understand and simulate financial markets. Traditional agent-based models rely on hand-crafted utility functions, but this data-driven approach creates more realistic, diverse market simulations.
+[VISUAL DIRECTION] Side-by-side comparison: simple utility functions vs. complex learned behaviors, with performance metrics showing superiority
+
+[VOICEOVER 1:50-2:00] The takeaway: AI can now replicate complex investment behavior we didn't even fully understand ourselves. What does this mean for the future of portfolio management?
+[VISUAL DIRECTION] Final screen with key stat: "0.0047 difference in Herfindahl indices" and paper title overlay

@@ -1,0 +1,29 @@
+[Visual: Fast-paced montage of semiconductor manufacturing footage]
+Take 1: "NVIDIA and Samsung are building something massive..."
+
+[Visual: Animation showing thousands of GPUs working together]
+Take 2: "...an AI factory with 50,000 GPUs..."
+
+[Visual: Digital twin simulation of factory operations]
+Take 3: "...using digital twins to simulate everything..."
+
+[Visual: Robotics arms working in manufacturing setting]
+Take 4: "...and robots that learn in real-time."
+
+[Visual: Jensen Huang speaking at announcement]
+Take 5: "They're calling it the AI industrial revolution..."
+
+[Visual: Chip manufacturing process close-ups]
+Take 6: "...and it could change how we make everything."
+
+[Visual: Split screen showing current vs future manufacturing]
+Take 7: "From predictive maintenance..."
+
+[Visual: Data visualization of efficiency improvements]
+Take 8: "...to 20x faster chip design..."
+
+[Visual: Global map showing potential impact]
+Take 9: "...this could set new standards worldwide."
+
+[Visual: Call to action screen]
+Take 10: "What do you think about AI factories?"

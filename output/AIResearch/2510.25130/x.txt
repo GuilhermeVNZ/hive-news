@@ -1,1 +1,0 @@
-BREAKING: AI can now be made fundamentally attack-resistant. New technique selectively replaces vulnerable components, making systems immune to malicious data manipulations while maintaining performance. Critical for autonomous vehicles and medical AI. Nature/Science paper reveals how.

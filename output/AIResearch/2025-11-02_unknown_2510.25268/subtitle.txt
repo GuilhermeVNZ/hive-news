@@ -1,0 +1,1 @@
+AI turns simple commands into realistic hand movements, enabling robots to handle complex objects like scissors and cabinets with human-like precision.

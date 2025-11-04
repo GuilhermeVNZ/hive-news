@@ -1,0 +1,29 @@
+[Visual: Person looking confused at phone]
+Take 1: "Your voice can be cloned with just seconds of audio..."
+
+[Visual: AI interface showing consent prompt]
+Take 2: "But what if the AI needed your permission first?"
+
+[Visual: Person speaking into microphone]
+Take 3: "Hugging Face is testing exactly that..."
+
+[Visual: Text overlay: "I consent to voice cloning"]
+Take 4: "A system that won't clone your voice..."
+
+[Visual: Checkmark animation]
+Take 5: "Unless you explicitly say 'I consent'"
+
+[Visual: Split screen showing ethical vs malicious use]
+Take 6: "It could help prevent deepfake scams..."
+
+[Visual: Medical communication scenario]
+Take 7: "While still helping people who've lost their voice"
+
+[Visual: Global map with question marks]
+Take 8: "But enforcement across borders remains tricky"
+
+[Visual: Person thinking expression]
+Take 9: "What do you think about consent-based AI?"
+
+[Visual: Call to action: Follow for more tech news]
+Take 10: "Sound off in the comments below!"

@@ -1,0 +1,1 @@
+A new AI model reads emotional brain signals across datasets without retraining, boosting accuracy by 11.9% and enabling privacy-safe emotion analysis for mental health and brain-computer interfaces.

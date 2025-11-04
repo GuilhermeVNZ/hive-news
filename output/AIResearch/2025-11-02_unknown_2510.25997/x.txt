@@ -1,0 +1,1 @@
+AI just solved a major data analysis problem: translating everyday language into charts with 91.4% accuracy vs 28.6% for existing systems. The breakthrough? Orchestration—combining planning, error recovery, and visualization—makes complex queries accessible to non-experts. Nature/Science-level research shows the path forward.

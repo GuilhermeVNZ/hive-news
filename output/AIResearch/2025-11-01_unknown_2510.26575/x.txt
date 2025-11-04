@@ -1,0 +1,1 @@
+AI agents waste massive resources on dead-end searches. InfoFlow cuts trajectory length by 40%, making AI assistants faster and more efficient. Nature research reveals breakthrough in search optimization.

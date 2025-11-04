@@ -1,0 +1,1 @@
+A new method creates realistic 3D molecular structures while respecting physical symmetries, achieving top performance on key benchmarks and enabling precise control for drug discovery.

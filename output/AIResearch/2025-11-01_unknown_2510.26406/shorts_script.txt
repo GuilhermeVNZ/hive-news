@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could master complex manipulation tasks in hours instead of months?
+[VISUAL DIRECTION] Animated text: "HOURS vs MONTHS" with dramatic transition
+
+[VOICEOVER 0:05-0:20] Traditional robot training requires extensive trial-and-error over months. But new research reveals a smarter approach.
+[VISUAL DIRECTION] Show robot struggling with insertion task, then transition to Hi-ORS framework diagram
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we eliminate wasted training time by filtering out failed attempts?
+[VISUAL DIRECTION] Animated text: "FILTERING FAILURES" with X marks over negative attempts
+
+[VOICEOVER 0:40-1:00] Hi-ORS achieves 23.3% higher success rates by discarding negative rollouts and retaining only optimal episodes judged by a golden model.
+[VISUAL DIRECTION] Show success rate comparison chart highlighting 23.3% improvement
+
+[VOICEOVER 1:00-1:30] The system works through two phases: evaluation and improvement. It generates attempts, applies reward-based filtering, and only trains on episodes that exceed progressively increasing thresholds.
+[VISUAL DIRECTION] Animated flowchart showing evaluation → filtering → improvement cycle
+
+[VOICEOVER 1:30-1:50] This means manufacturing facilities can deploy robots faster, adapting quickly to new assembly tasks that were previously impractical.
+[VISUAL DIRECTION] Show factory assembly line with robots performing complex insertions
+
+[VOICEOVER 1:50-2:00] Robots that learn faster by forgetting their failures - that's the future of automation.
+[VISUAL DIRECTION] Final text overlay: "SMARTER TRAINING = FASTER AUTOMATION"

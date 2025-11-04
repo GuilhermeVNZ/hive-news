@@ -1,0 +1,1 @@
+AI struggles with 98.5% of complex data tasks. New research shows RAG systems score just 1.51% on queries like finding top authors across entire datasets. Discover the breakthrough in Nature/Science paper 'Towards Global Retrieval Augmented Generation: Benchmark'.

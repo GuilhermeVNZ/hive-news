@@ -1,0 +1,1 @@
+What if your navigation app is secretly making traffic worse for everyone? New Nature research reveals multi-agent reinforcement learning can coordinate vehicle routing, reducing travel times by 28% compared to current systems. This network-aware approach could transform urban mobility—read the study to understand how smarter algorithms might solve our traffic crisis.

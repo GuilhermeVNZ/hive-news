@@ -1,0 +1,1 @@
+AI bias alert: Current models fail where data is sparse. New LoCal Nets fix this by ensuring predictions match reality locally. 2.7% accuracy boost on medical imaging shows real impact. Trustworthy AI is here.

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could explain its decisions 42% faster without losing accuracy?
+[VISUAL DIRECTION] Animated text: "42% FASTER AI EXPLANATIONS" with pulsing effect
+[VOICEOVER 0:05-0:20] As AI systems become more complex, understanding how they make decisions is crucial for trust and ethics.
+[VISUAL DIRECTION] Show AI decision flow diagram with question marks at key decision points
+[VOICEOVER 0:20-0:40] But traditional methods to analyze AI behavior require massive computational resources, making transparency prohibitively expensive.
+[VISUAL DIRECTION] Animated chart showing computational cost curve rising steeply
+[VOICEOVER 0:40-1:00] Researchers developed advanced sampling techniques that carefully select data subsets to estimate influence functions with dramatically reduced demands.
+[VISUAL DIRECTION] Show sampling process animation with selected data points highlighted
+[VOICEOVER 1:00-1:30] The method uses feature-based samplers and LiSSA approximation to compute inverse-Hessian-vector products efficiently, maintaining accuracy while cutting costs.
+[VISUAL DIRECTION] Technical diagram showing sampling and approximation process with key metrics
+[VOICEOVER 1:30-1:50] This enables practical AI interpretability for identifying biases, supporting model improvement, and ensuring ethical AI development.
+[VISUAL DIRECTION] Show real-world AI applications with transparency overlays
+[VOICEOVER 1:50-2:00] Making AI transparent just became 42% more efficient - a crucial step toward trustworthy artificial intelligence.
+[VISUAL DIRECTION] Final screen with key statistic: "42.2% cost reduction | Same accuracy"

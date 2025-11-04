@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could read your emotions directly from your brain signals - and do it accurately across different devices without needing recalibration? [VISUAL DIRECTION] [Animated text: 'AI Reads Your Emotions' with brain wave animation pulsing]
+
+[VOICEOVER 0:05-0:20] For years, emotion recognition from EEG data has been limited by differences in how data is collected across studies and devices. [VISUAL DIRECTION] [Show multiple EEG setups with red X marks, transition to confused emotion icons]
+
+[VOICEOVER 0:20-0:40] The challenge: how to create an AI system that works reliably across varying EEG setups while maintaining accuracy for mental health applications? [VISUAL DIRECTION] [Show question mark over brain scan, then zoom into EEG signal patterns]
+
+[VOICEOVER 0:40-1:00] Researchers developed the multi-dataset joint pre-training method, achieving 11.9% higher accuracy on average and boosting AUROC performance significantly. [VISUAL DIRECTION] [Show bar chart comparing mdJPT vs state-of-the-art with 11.9% highlight, fast zoom on improved metrics]
+
+[VOICEOVER 1:00-1:30] The system uses cross-dataset loss to harmonize covariance patterns and contrastive learning to align signals from different subjects experiencing emotional stimuli. A Mamba-like architecture with only 2 million parameters captures long-term dependencies efficiently. [VISUAL DIRECTION] [Animated diagram showing cross-dataset alignment, then Mamba architecture visualization with parameter count callout]
+
+[VOICEOVER 1:30-1:50] This means real-world mental health monitoring becomes feasible - healthcare devices and consumer applications can use EEG without constant recalibration. [VISUAL DIRECTION] [Show healthcare monitoring scenarios, wearable EEG devices in real settings]
+
+[VOICEOVER 1:50-2:00] Emotion-reading AI just became 11.9% more accurate and far more practical for real-world mental health applications. [VISUAL DIRECTION] [Final shot: brain icon with 11.9% accuracy text overlay, hold for impact]

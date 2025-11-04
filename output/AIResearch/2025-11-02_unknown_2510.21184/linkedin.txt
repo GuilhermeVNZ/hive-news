@@ -1,0 +1,1 @@
+AI can now reduce harmful outputs by 90% without sacrificing performance. New RePULSe technique explicitly targets undesirable sequences during training. How will this transform AI safety standards? Based on Nature paper 'Reducing Undesirable Outputs'.

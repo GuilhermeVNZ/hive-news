@@ -1,0 +1,1 @@
+AI screens for multiple mental disorders in conversation. PsyCoTalk dataset enables models to detect depression, anxiety, ADHD simultaneously with improved accuracy. Nature/Science research shows potential to transform mental healthcare diagnosis.

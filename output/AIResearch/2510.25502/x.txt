@@ -1,1 +1,0 @@
-AI forecasts trends without any real data. TempoPFN model uses synthetic training, beats existing methods in accuracy. Opens doors for privacy-sensitive fields. #AI #Forecasting

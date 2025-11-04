@@ -1,1 +1,0 @@
-AI now translates everyday commands into realistic human movements for objects like scissors and cabinets. SynHLMA's breakthrough improves motion quality by 19.969% in diversity, enabling precise, articulation-aware tasks. Discover the ICLR 2026 paper on this robotics leap.

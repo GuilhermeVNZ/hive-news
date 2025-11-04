@@ -1,0 +1,1 @@
+New method shifts from token-by-token to vector-by-vector prediction, slashing computational costs while maintaining accuracy, potentially making powerful AI more accessible and sustainable.

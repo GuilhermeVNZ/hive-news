@@ -1,0 +1,1 @@
+Thyroid cancer diagnoses tripled in recent decades, but AI reveals most incidental findings are harmless. New Nature/Science research shows 92.9% of thyroid nodules found during unrelated scans average just 1.2cm. This AI analysis quantifies the 'incidentaloma' epidemic, where detection often leads to unnecessary procedures. Should we rethink how we handle incidental findings?

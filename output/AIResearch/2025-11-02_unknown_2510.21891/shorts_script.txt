@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if you could instantly detect when AI is making things up? New research reveals a breakthrough method that spots AI hallucinations in seconds.
+[VISUAL DIRECTION] [Animated text: "AI HALLUCINATIONS DETECTED INSTANTLY" with pulsing alert icon]
+[VOICEOVER 0:05-0:20] As large language models enter medicine and law, their accuracy becomes critical. Current fact-checking methods struggle with long, open-ended responses, creating barriers to trustworthy AI deployment.
+[VISUAL DIRECTION] [Show medical and legal symbols fading into question marks, then transition to Figure 2 showing embedding distributions]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we quickly identify when AI generates nonfactual content without expensive fact-checking? The answer lies in how AI represents information.
+[VISUAL DIRECTION] [Zoom on Figure 2 showing tight clustering vs dispersed embeddings, highlight angular dispersion with animated arrows]
+[VOICEOVER 0:40-1:00] They discovered that when LLMs produce factual content, their response embeddings cluster tightly on a unit sphere. But when they hallucinate, the embeddings spread out, increasing angular dispersion.
+[VISUAL DIRECTION] [Animated visualization of embeddings moving from clustered to dispersed state, show Neumann entropy calculation overlay]
+[VOICEOVER 1:00-1:30] This isotropy measure uses kernel entropy from embeddings to signal consistency. The method is model-agnostic, requires no fine-tuning, and works with any off-the-shelf encoder. For long responses, Segment-Score decomposes content into atomic claims for verification.
+[VISUAL DIRECTION] [Show workflow diagram: LLM responses → embedding → isotropy calculation → trust score, fast cuts between steps]
+[VOICEOVER 1:30-1:50] In real-world tests, isotropy achieved state-of-the-art performance, explaining 65% of variance in FactScore-Bio and outperforming perplexity and entropy-based measures. It reduces computational costs from minutes to seconds per topic.
+[VISUAL DIRECTION] [Show benchmark comparison chart with isotropy outperforming other methods, highlight R² 0.65 result]
+[VOICEOVER 1:50-2:00] This innovation enables scalable trust assessment for AI in critical applications, making reliable AI deployment feasible for everyday decisions.
+[VISUAL DIRECTION] [Final screen with key takeaway: "Isotropy: Instant AI Trust Detection" with Nature/Science branding]

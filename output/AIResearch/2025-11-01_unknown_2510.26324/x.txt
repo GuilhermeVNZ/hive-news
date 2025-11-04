@@ -1,0 +1,1 @@
+New AI generates realistic medical images without seeing patient data. Combines diffusion models & Langevin dynamics for robust sampling—key for MRI reconstruction & privacy. Nature/Science breakthrough.

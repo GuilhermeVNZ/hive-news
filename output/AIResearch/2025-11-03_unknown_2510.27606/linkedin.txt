@@ -1,0 +1,1 @@
+AI can now teach itself spatial reasoning using only ordinary images - no expensive 3D data required. New Spatial-SSRL technique achieves 7-point gains on complex spatial tasks while maintaining general AI capabilities. This breakthrough makes advanced spatial intelligence scalable for robotics and autonomous vehicles. What applications could this unlock?

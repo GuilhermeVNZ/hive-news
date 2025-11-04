@@ -1,0 +1,1 @@
+AI can now spontaneously collaborate with unknown partners! New MARS method enables AI to efficiently team up without prior training. This breakthrough transforms autonomous driving and robotics. Read the Nature paper to understand how this changes multi-agent systems.

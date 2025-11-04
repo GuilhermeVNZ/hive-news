@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if the next security breach comes from an AI agent that authentication systems can't distinguish from a human user?
+
+[VISUAL DIRECTION] Animated text: "AI IMPERSONATION CRISIS" with red alert symbols flashing
+
+[VOICEOVER 0:05-0:20] As AI shifts from simple chatbots to autonomous decision-makers in finance and healthcare, current identity frameworks are fundamentally broken.
+
+[VISUAL DIRECTION] Show transition from simple chatbot interface to complex AI agent network diagram
+
+[VOICEOVER 0:20-0:40] Researchers identified that today's authentication systems work fine for single AI agents, but fail completely when AI delegates tasks to other AI agents in complex chains.
+
+[VISUAL DIRECTION] Animated flowchart showing recursive delegation between multiple AI agents with red X marks over authentication points
+
+[VOICEOVER 0:40-1:00] The study reveals three critical gaps: user impersonation where AI acts indistinguishably from humans, fragmentation between proprietary systems, and scalability problems where users face thousands of AI requests.
+
+[VISUAL DIRECTION] Show three columns: "Impersonation Risk" "Fragmentation" "Scalability Crisis" with rising numbers
+
+[VOICEOVER 1:00-1:30] Current solutions like Single Sign-On and the Model Context Protocol help, but can't handle recursive delegation where AI agents create sub-agents. Browser-based interfaces and API controls break down in these ecosystems.
+
+[VISUAL DIRECTION] Zoom on protocol diagrams showing where authentication chains break in multi-agent scenarios
+
+[VOICEOVER 1:30-1:50] Without proper management, risks range from data breaches to unauthorized actions with real-world consequences in critical infrastructure.
+
+[VISUAL DIRECTION] Show healthcare, finance, and infrastructure icons with warning symbols
+
+[VOICEOVER 1:50-2:00] The transition to autonomous AI requires completely rethinking how we establish identity in digital systems - before it's too late.
+
+[VISUAL DIRECTION] Final screen: "RETHINK AI AUTHENTICATION NOW" with Nature/Science branding

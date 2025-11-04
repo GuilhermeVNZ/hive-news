@@ -1,0 +1,1 @@
+AI blindness causes inefficiency in navigation. New GEPO method maps environments, improving success rates by +10.9% in tests like WebShop. A Nature/Science breakthrough for reliable AI agents.

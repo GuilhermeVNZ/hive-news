@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if we could design life-saving drugs in days instead of decades? [VISUAL DIRECTION] Animated text: "DRUG DISCOVERY: 10+ YEARS → DAYS?" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] Traditional drug development takes over a decade and billions of dollars per treatment. The bottleneck? Finding molecules that both work and are safe. [VISUAL DIRECTION] Show timeline graphic: "Discovery → Testing → Approval = 10+ years" with dollar signs accumulating
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI design better drug candidates by understanding both protein structures and molecular sequences simultaneously? [VISUAL DIRECTION] Split screen showing protein 3D structure on left, molecular sequences on right, with question mark between them
+
+[VOICEOVER 0:40-1:00] MolChord achieved 74.6% accuracy in generating known effective ligands while maintaining excellent drug-likeness scores. [VISUAL DIRECTION] Large text overlay: "74.6% ACCURACY" with molecular structures appearing rapidly
+
+[VOICEOVER 1:00-1:30] The system aligns 3D protein structures with sequence data using diffusion models and autoregressive generation. It creates compounds specifically tailored to protein pockets. [VISUAL DIRECTION] Animated diagram showing protein pocket with molecules fitting perfectly like puzzle pieces
+
+[VOICEOVER 1:30-1:50] This means faster development of therapies with reduced risk of late-stage failures. The AI optimizes multiple properties simultaneously. [VISUAL DIRECTION] Show comparison: MolChord molecules (simple rings) vs traditional methods (overly complex structures)
+
+[VOICEOVER 1:50-2:00] Drug discovery just got a massive AI-powered acceleration. The future of medicine is being rewritten. [VISUAL DIRECTION] Final text: "SCIENCE ACCELERATING MEDICINE" with molecular structures forming medicine capsule

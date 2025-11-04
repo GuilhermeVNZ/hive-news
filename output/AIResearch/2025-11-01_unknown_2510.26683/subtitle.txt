@@ -1,0 +1,1 @@
+AI models struggle in medicine due to limited data. Now, they can teach themselves using logic, improving exam scores by 3.7% without human input.

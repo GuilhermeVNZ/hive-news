@@ -1,0 +1,1 @@
+AI models trained on non-medical data outperform specialized brain-computer interfaces by significant margins. Nature study reveals foundation models achieve 64.43% accuracy vs EEGNet's 58.14% on brain-computer interface tasks. Potential to revolutionize medical AI without domain-specific training.

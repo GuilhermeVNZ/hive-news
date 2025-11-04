@@ -1,0 +1,1 @@
+AI systems learning from their own outputs get trapped in cycles of simplicity, struggling with complex problems. This 'Matthew Effect' in self-improvement reveals a critical bottleneck in AI advancement. How can we ensure AI evolves beyond its comfort zone?

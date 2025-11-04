@@ -1,0 +1,1 @@
+AI can now generate medical images without accessing original patient data—revolutionizing privacy in healthcare. This breakthrough combines diffusion models with Langevin dynamics for robust posterior sampling, enabling safer diagnostics. How will this transform medical imaging?

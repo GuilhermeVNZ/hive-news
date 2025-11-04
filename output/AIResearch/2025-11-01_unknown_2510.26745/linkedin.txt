@@ -1,0 +1,1 @@
+AI models can spontaneously develop reasoning abilities they were never explicitly taught. Carnegie Mellon/Google research reveals Transformers learn complex path-finding through geometric memory structures, achieving 100% accuracy on graphs up to 10,000 nodes. This challenges the view that AI merely memorizes. What does this mean for real-world navigation systems?

@@ -19,10 +19,16 @@ pub enum ArticleStatus {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ArticleMetadata {
     pub id: String,
-    pub title: String,
+    pub title: String, // Mantido para compatibilidade, mas será descontinuado
     pub arxiv_url: String,
     pub pdf_url: String,
     pub status: ArticleStatus,
+    
+    // Títulos: original (da fonte) e gerado (pelo DeepSeek)
+    #[serde(default)]
+    pub original_title: Option<String>, // Título original da notícia/artigo (do arXiv ou fonte)
+    #[serde(default)]
+    pub generated_title: Option<String>, // Título gerado pelo DeepSeek (do title.txt)
     
     // Dados do filtro (se aplicável)
     pub filter_score: Option<f64>,
@@ -220,8 +226,11 @@ impl ArticleRegistry {
         }
     }
 
-    /// Salva o registry no arquivo JSON
+    /// Salva o registry no arquivo JSON usando escrita atômica (tempfile + rename)
     pub fn save(&self, registry_path: &Path) -> Result<()> {
+        use tempfile::NamedTempFile;
+        use std::io::Write;
+        
         // Criar diretório se não existir
         if let Some(parent) = registry_path.parent() {
             fs::create_dir_all(parent)
@@ -231,9 +240,28 @@ impl ArticleRegistry {
         let content = serde_json::to_string_pretty(self)
             .context("Failed to serialize registry")?;
 
-        fs::write(registry_path, content)
-            .context("Failed to write registry file")?;
-
+        // Criar arquivo temporário no mesmo diretório do arquivo final
+        let parent_dir = registry_path.parent()
+            .ok_or_else(|| anyhow::anyhow!("Registry path has no parent directory"))?;
+        
+        let mut tmp = NamedTempFile::new_in(parent_dir)
+            .context("Failed to create temporary file")?;
+        
+        // Escrever conteúdo no arquivo temporário
+        tmp.as_file_mut()
+            .write_all(content.as_bytes())
+            .context("Failed to write to temporary file")?;
+        
+        // Forçar sincronização física (flush to disk)
+        tmp.as_file_mut().sync_all()
+            .context("Failed to sync temporary file to disk")?;
+        
+        // Rename atômico (move temp -> final)
+        tmp.persist(registry_path)
+            .context("Failed to persist temporary file to final location")?;
+        
+        eprintln!("[ArticleRegistry] ✅ Successfully saved registry atomically to: {:?}", registry_path);
+        
         Ok(())
     }
 
@@ -260,10 +288,12 @@ impl ArticleRegistry {
     ) {
         let metadata = ArticleMetadata {
             id: article_id.clone(),
-            title,
+            title: title.clone(), // Mantido para compatibilidade
             arxiv_url,
             pdf_url,
             status: ArticleStatus::Collected,
+            original_title: Some(title.clone()), // Título original da fonte
+            generated_title: None, // Será preenchido quando o artigo for publicado
             filter_score: None,
             category: None,
             rejection_reason: None,
@@ -343,7 +373,18 @@ impl ArticleRegistry {
 
         metadata.status = ArticleStatus::Published;
         metadata.published_at = Some(Utc::now());
-        metadata.output_dir = Some(output_dir);
+        metadata.output_dir = Some(output_dir.clone());
+
+        // Tenta ler o título gerado do title.txt no output_dir
+        let title_txt = output_dir.join("title.txt");
+        if title_txt.exists() {
+            if let Ok(title_content) = fs::read_to_string(&title_txt) {
+                let generated_title = title_content.trim().to_string();
+                if !generated_title.is_empty() {
+                    metadata.generated_title = Some(generated_title);
+                }
+            }
+        }
 
         Ok(())
     }
@@ -459,6 +500,42 @@ impl RegistryManager {
         Ok(())
     }
 
+    /// Atualiza o título gerado (do title.txt) para um artigo
+    #[allow(dead_code)]
+    pub fn set_generated_title(
+        &self,
+        article_id: &str,
+        generated_title: String,
+    ) -> Result<()> {
+        let mut registry = self.registry.lock().unwrap();
+        let metadata = registry.articles
+            .get_mut(article_id)
+            .context(format!("Article {} not found in registry", article_id))?;
+        metadata.generated_title = Some(generated_title);
+        drop(registry);
+        
+        self.save()?;
+        Ok(())
+    }
+
+    /// Atualiza o título original (da fonte) para um artigo
+    #[allow(dead_code)]
+    pub fn set_original_title(
+        &self,
+        article_id: &str,
+        original_title: String,
+    ) -> Result<()> {
+        let mut registry = self.registry.lock().unwrap();
+        let metadata = registry.articles
+            .get_mut(article_id)
+            .context(format!("Article {} not found in registry", article_id))?;
+        metadata.original_title = Some(original_title);
+        drop(registry);
+        
+        self.save()?;
+        Ok(())
+    }
+
     /// Obtém metadados de um artigo
     pub fn get_metadata(&self, article_id: &str) -> Option<ArticleMetadata> {
         let registry = self.registry.lock().unwrap();
@@ -483,14 +560,27 @@ impl RegistryManager {
 
     /// Atualiza o status featured de um artigo
     pub fn set_featured(&self, article_id: &str, featured: bool) -> Result<()> {
+        eprintln!("[RegistryManager] set_featured called: article_id={}, featured={}", article_id, featured);
+        eprintln!("[RegistryManager] Registry path: {:?}", self.registry_path);
         let mut registry = self.registry.lock().unwrap();
         if let Some(meta) = registry.articles.get_mut(article_id) {
+            eprintln!("[RegistryManager] Found article, old featured value: {:?}", meta.featured);
             meta.featured = Some(featured);
+            eprintln!("[RegistryManager] Updated featured to: {:?}", meta.featured);
             drop(registry); // Liberar lock antes de salvar
-            self.save()?;
-            Ok(())
+            match self.save() {
+                Ok(_) => {
+                    eprintln!("[RegistryManager] ✅ Successfully saved registry with featured={} for article {}", featured, article_id);
+                    Ok(())
+                },
+                Err(e) => {
+                    eprintln!("[RegistryManager] ❌ Failed to save registry: {}", e);
+                    Err(e)
+                }
+            }
         } else {
             drop(registry);
+            eprintln!("[RegistryManager] ❌ Article '{}' not found in registry", article_id);
             Err(anyhow::anyhow!("Article with ID '{}' not found", article_id))
         }
     }

@@ -1,0 +1,1 @@
+What if AI could compress scientific data 30% better without losing accuracy? New LLMC-OMP method converts data into language tokens, maintaining precision within 10^-4 bounds. This breakthrough enables efficient sharing of multi-terabyte datasets. Read how this accelerates discoveries in weather forecasting and oceanography.

@@ -1,0 +1,1 @@
+AI can now be precisely controlled to refuse harmful requests while maintaining helpful capabilities - no retraining needed. New activation vectors create smooth behavior transitions, addressing critical safety challenges. Research shows minimal performance impact on benchmarks.

@@ -1,0 +1,1 @@
+Salesforce just launched 'vibe coding' - build enterprise apps by simply describing what you want. Agentforce Vibes uses AI to turn natural language into functional code. Could this transform how businesses develop software? #AI #LowCode #Salesforce

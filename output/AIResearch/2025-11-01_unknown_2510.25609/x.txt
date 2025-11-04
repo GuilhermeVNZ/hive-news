@@ -1,0 +1,1 @@
+BOLT-GAN cuts AI image generation errors by up to 60% using Bayes-optimal thresholds. This Nature/Science breakthrough means more stable, realistic scenes for digital art and science.

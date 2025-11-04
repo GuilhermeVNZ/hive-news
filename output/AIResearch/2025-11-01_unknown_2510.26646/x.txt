@@ -1,0 +1,1 @@
+Robots fail when environments change rapidly. New AI combines DQN for strategy + TD3 for precision, enabling true autonomy. Nature/Science breakthrough for search-and-rescue, warehouses.

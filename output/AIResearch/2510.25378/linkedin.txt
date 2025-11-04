@@ -1,1 +1,0 @@
-AI systems generate fake scientific references 300x more often for low-citation papers. New Nature research reveals systematic bias in AI bibliographic recommendations, raising reliability concerns for academic applications. Read the findings to understand limitations in AI-assisted literature review.

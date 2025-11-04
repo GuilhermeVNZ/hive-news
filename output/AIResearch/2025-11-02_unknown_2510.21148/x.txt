@@ -1,0 +1,1 @@
+AI just learned to write its own prompts—outperforming experts by 12.61% in healthcare predictions. Smaller models now match expensive ones at 20% the cost. The future of AI is self-optimizing.

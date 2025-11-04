@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your next ride-share arrived 27% faster while cutting empty driving by 12.5%?
+[VISUAL DIRECTION] Animated text: 27% FASTER PICKUPS • 12.5% FEWER EMPTY MILES
+
+[VOICEOVER 0:05-0:20] Traditional ride-sharing AI makes short-sighted decisions, focusing only on immediate requests. This leads to inefficient routing and longer wait times.
+[VISUAL DIRECTION] Show map with myopic vehicle paths crisscrossing inefficiently
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI consider future demand patterns to make smarter matching decisions?
+[VISUAL DIRECTION] Zoom in on research paper title: "Non-myopic Matching and Rebalancing for Large-Scale Ride-Sharing"
+
+[VOICEOVER 0:40-1:00] They discovered a temporal difference learning algorithm that boosts ride acceptance rates by 8.4% over traditional methods.
+[VISUAL DIRECTION] Animated chart showing 8.4% improvement in acceptance rates
+
+[VOICEOVER 1:00-1:30] The system learns trip patterns and proactively repositions vehicles to high-demand zones, using offline value tables and real-time matching.
+[VISUAL DIRECTION] Show Figure 2 with zoom on peak distribution patterns, animated vehicles moving to commercial districts
+
+[VOICEOVER 1:30-1:50] Testing with NYC data shows significant reductions in passenger waiting and vehicle travel time while maintaining service quality.
+[VISUAL DIRECTION] Fast cuts between waiting passenger, moving vehicle, satisfaction metrics
+
+[VOICEOVER 1:50-2:00] This AI breakthrough means shorter waits, less congestion, and more sustainable transportation for millions of users.
+[VISUAL DIRECTION] Final text overlay: SMARTER AI = BETTER RIDES FOR EVERYONE

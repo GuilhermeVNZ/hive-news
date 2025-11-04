@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if an AI could stop a panic attack in just 3 conversations?
+[VISUAL DIRECTION] Animated text: "3 TURNS" flashes dramatically with heartbeat pulse effect
+[VOICEOVER 0:05-0:20] For millions who suddenly can't breathe, convinced they're dying, help often comes too late. Human therapists can't be available 24/7.
+[VISUAL DIRECTION] Show person clutching chest, rapid cuts of clock ticking, therapist office closed sign
+[VOICEOVER 0:20-0:40] Researchers asked: Could AI provide immediate, effective crisis counseling during these terrifying episodes?
+[VISUAL DIRECTION] Zoom in on research paper title "PanicToCalm" with question mark animation
+[VOICEOVER 0:40-1:00] They discovered PACER—a counseling agent trained exclusively on panic attack scenarios using 8,000 synthetic dialogues grounded in real experiences.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance metrics, highlight "8,000 dialogues" text overlay
+[VOICEOVER 1:00-1:30] PACER combines supervised learning with preference alignment. First it learned from high-quality examples, then refined through simulated panic interactions. The AI guides breathing, offers reassurance, and provides clear directives without overwhelming users.
+[VISUAL DIRECTION] Animated flow chart showing training process, fast cuts of breathing exercise demonstrations
+[VOICEOVER 1:30-1:50] Experimental results show PACER outperforms all alternatives. It achieved 4.96/5 clarity scores, reduced distress sharply, and increased positive emotions like determination. Human evaluations confirmed people consistently prefer PACER over other AI systems.
+[VISUAL DIRECTION] Bar chart animation comparing PACER vs GPT-4o vs human therapists, highlight "4.96/5 clarity"
+[VOICEOVER 1:50-2:00] This breakthrough means 24/7 panic attack support that actually works—transforming how we handle mental health emergencies.
+[VISUAL DIRECTION] Final screen: "PACER: Crisis support when every second counts" with Nature/Science logo

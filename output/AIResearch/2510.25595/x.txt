@@ -1,1 +1,0 @@
-AI fails at teamwork: New study shows large language models struggle to collaborate efficiently, making errors in reasoning and coordination. Communication verification boosts performance by 40 percentage points, critical for real-world applications like robotics and software development. Nature research underscores the need for transparent AI interactions.

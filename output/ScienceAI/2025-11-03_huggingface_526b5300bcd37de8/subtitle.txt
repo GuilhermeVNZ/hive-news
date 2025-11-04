@@ -1,0 +1,1 @@
+After five years and 35 releases, the foundational machine learning library gets its first major version with httpx migration, Xet file transfers, and enhanced CLI tools.

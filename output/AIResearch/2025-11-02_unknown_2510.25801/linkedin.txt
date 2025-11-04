@@ -1,0 +1,1 @@
+AI that teaches itself before formal training achieves 20% performance gains on complex benchmarks. SPECS method decouples learning stages to overcome 'in-distribution stuckness' where models get trapped in familiar patterns. How might this transform AI reliability in education and research?

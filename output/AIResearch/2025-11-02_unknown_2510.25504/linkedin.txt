@@ -1,0 +1,1 @@
+What if AI could balance competing priorities like safety vs speed in real-time? New multi-objective search algorithms enable vehicles to navigate thousands of trade-offs simultaneously. This breakthrough is already handling 40,000 trip requests in Portland alone. How will this transform urban mobility?

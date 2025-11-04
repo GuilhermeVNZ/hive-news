@@ -1,0 +1,1 @@
+AI models often treat all reasoning steps equally, leading to inefficiencies. VCORE reweights step importance during training, boosting math and code performance by 31.03% on average. Could smarter step weighting be the key to more reliable AI?

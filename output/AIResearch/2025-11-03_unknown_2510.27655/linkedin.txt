@@ -1,0 +1,1 @@
+AI often makes decisions using coordinated groups of features, not isolated variables—revealing hidden bias patterns. New Modules of Influence method transforms AI auditing by identifying these clusters, enabling targeted interventions that reduced bias by 23% while maintaining accuracy. Essential reading for AI practitioners deploying transparent systems.

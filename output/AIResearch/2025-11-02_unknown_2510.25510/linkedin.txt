@@ -1,0 +1,1 @@
+AI that can debug its own SQL code? A new framework enables AI to test and refine translations like human programmers, achieving state-of-the-art performance with smaller models. This could transform how non-experts interact with databases. What business applications excite you most?

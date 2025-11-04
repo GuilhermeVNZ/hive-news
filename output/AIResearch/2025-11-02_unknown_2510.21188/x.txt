@@ -1,0 +1,1 @@
+AI's catastrophic forgetting problem just got solved. PLAN method reaches 87.54% accuracy on CIFAR-100, beating all competitors. This breakthrough means AI can finally learn continuously like humans - crucial for self-driving cars and medical AI that retains diagnostic knowledge.

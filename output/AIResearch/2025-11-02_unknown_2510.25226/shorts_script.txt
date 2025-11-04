@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could learn effectively using mostly unlabeled data, cutting annotation costs by 80%?
+[VISUAL DIRECTION] Animated text: "80% LESS LABELING" with medical and space imagery flashing rapidly
+
+[VOICEOVER 0:05-0:20] In fields like medical imaging and astronomical discovery, obtaining fully labeled datasets is prohibitively expensive and often impractical.
+[VISUAL DIRECTION] Show medical scans with only 1-2 labeled examples, then telescope images with sparse annotations
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn accurately when most data remains unlabeled, with only a few positive examples?
+[VISUAL DIRECTION] Zoom on Figure 2 showing data distribution - highlight the small labeled portion versus large unlabeled pool
+
+[VOICEOVER 0:40-1:00] They discovered CSMPU - a cost-sensitive multi-class method that achieves 90.2% accuracy on MNIST with just 20% labeled data, outperforming baseline methods by over 11%.
+[VISUAL DIRECTION] Show MNIST digit recognition results comparison chart - CSMPU at 90.2% vs baseline at 79.03%
+
+[VOICEOVER 1:00-1:30] CSMPU assigns data-dependent weights to prevent instability and overfitting, using ReLU-based corrections during optimization. It works with neural encoders like ResNet without needing additional supervision.
+[VISUAL DIRECTION] Animated diagram showing weight assignment process and ReLU corrections flowing through network architecture
+
+[VOICEOVER 1:30-1:50] This means faster disease detection from limited medical images, better astronomical pattern recognition, and improved content moderation - all with dramatically reduced labeling requirements.
+[VISUAL DIRECTION] Fast cuts: doctor analyzing medical scans, astronomer identifying celestial objects, platform filtering content
+
+[VOICEOVER 1:50-2:00] AI that learns effectively with minimal labeling - accelerating innovation while cutting costs.
+[VISUAL DIRECTION] Final text overlay: "CSMPU: Learning More with Less Labeling" with Nature/Science journal branding

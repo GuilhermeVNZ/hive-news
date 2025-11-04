@@ -1,0 +1,1 @@
+New research reveals that large language models make frequent errors in judging text quality, with error rates up to 50%—challenging their use in critical evaluations without ground truth.

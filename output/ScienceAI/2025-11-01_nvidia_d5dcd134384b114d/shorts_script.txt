@@ -1,0 +1,29 @@
+[Visual: Fast-paced montage of semiconductor manufacturing and AI visuals]
+Take 1: "NVIDIA and SK Group are building something massive in South Korea."
+
+[Visual: Animation showing thousands of GPUs stacking up]
+Take 2: "An AI factory with over 50,000 GPUs."
+
+[Visual: Digital twin simulation of semiconductor factory]
+Take 3: "It will power digital twins and AI agents."
+
+[Visual: Close-up of semiconductor chip]
+Take 4: "Transforming how chips are designed and made."
+
+[Visual: Timeline animation showing 2027 completion]
+Take 5: "First phase completes by late 2027."
+
+[Visual: SK hynix factory footage]
+Take 6: "Helping 40,000 workers collaborate better."
+
+[Visual: AI agent interface mockup]
+Take 7: "With AI agents built on NVIDIA tech."
+
+[Visual: South Korea map with tech highlights]
+Take 8: "Positioning Korea as an AI leader."
+
+[Visual: Call to action with SK AI Summit dates]
+Take 9: "Learn more at the SK AI Summit."
+
+[Visual: Closing shot of futuristic factory]
+Take 10: "The future of manufacturing is here."

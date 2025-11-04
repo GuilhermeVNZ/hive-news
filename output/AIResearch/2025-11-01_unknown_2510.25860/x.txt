@@ -1,0 +1,1 @@
+AI evaluators fall short on nuanced human thinking. New method infers 'thinking traces'—internal reasoning steps—to align AI with expert judgments, boosting consistency in scoring and moderation. Nature/Science study shows significant improvements in fairness and reliability.

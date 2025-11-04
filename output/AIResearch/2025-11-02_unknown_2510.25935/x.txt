@@ -1,0 +1,1 @@
+New AI predicts software project delays with 93% accuracy - spotting bottlenecks before they derail development. CodeSight analyzes GitHub data to forecast when pull requests will complete, helping teams stay on track. Published in Nature/Science.

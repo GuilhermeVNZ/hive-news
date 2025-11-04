@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems waste tens of millions of dollars every year generating predictable 'thank you' and 'sorry' messages? [VISUAL DIRECTION] Animated text: "AI WASTES $TENS OF MILLIONS/YEAR ON 'YOU'RE WELCOME'" with money animation flowing into trash can
+
+[VOICEOVER 0:05-0:20] This inefficiency represents a major challenge as AI becomes integrated into daily life, driving up both financial and environmental costs without adding value to user interactions. [VISUAL DIRECTION] Show rising cost graphs with environmental impact icons (CO2 emissions, energy consumption)
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect these wasteful responses before they're fully generated? The answer transforms how we think about AI efficiency. [VISUAL DIRECTION] Split screen showing AI generating "You're welcome" vs researcher analyzing patterns
+
+[VOICEOVER 0:40-1:00] They developed a system that analyzes the initial probability distributions AI models consider, classifying content as boilerplate versus substantive conversations with near-perfect accuracy. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on distribution peaks for refusal patterns
+
+[VOICEOVER 1:00-1:30] Using lightweight k-Nearest Neighbors classifiers, the system identifies four response types: Refusals, Thanks, Greetings, and substantive Chat. Experiments across multiple models achieved F1 scores up to 1.000. [VISUAL DIRECTION] Animated chart showing F1 scores: 0.997 for Llama-3.2-3B, 1.000 for Qwen2.5-1.5B, 0.999 for reasoning models
+
+[VOICEOVER 1:30-1:50] The practical impact? Companies can redirect detected boilerplate queries to smaller, cheaper models or skip generation entirely, dramatically reducing operating costs while maintaining quality. [VISUAL DIRECTION] Flowchart animation showing detection → redirection to efficient processing
+
+[VOICEOVER 1:50-2:00] This research proves we can make AI faster, cheaper, and more sustainable by eliminating wasteful overhead - critical for the future of AI integration. [VISUAL DIRECTION] Final text overlay: "STOP NOW: Detecting Boilerplate Responses" with paper title and efficiency metrics

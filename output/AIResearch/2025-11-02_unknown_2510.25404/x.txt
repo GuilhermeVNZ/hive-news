@@ -1,0 +1,1 @@
+AI just beat established optimizers at their own game. GPTOpt fine-tunes LLMs to solve black-box problems autonomously, achieving superior results in scientific optimization tasks. The future of discovery is here.

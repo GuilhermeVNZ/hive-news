@@ -1,0 +1,12 @@
+[Visual: Quick cuts of code scrolling on a screen]
+Take 1: "Tired of slow AI coding assistants?" (5 sec)
+[Visual: Zoom into a terminal with rapid tool calls]
+Take 2: "Grok Code Fast 1 just dropped." (5 sec)
+[Visual: Developer typing, model responding instantly]
+Take 3: "It's built for speed in agentic workflows." (5 sec)
+[Visual: Split screen showing multiple languages—Python, TypeScript]
+Take 4: "Handles your stack, from bugs to builds." (5 sec)
+[Visual: Free platform logos—GitHub Copilot, Cursor]
+Take 5: "And it's free for a limited time." (5 sec)
+[Visual: Developer giving thumbs-up]
+Take 6: "Try it and code faster today." (5 sec)

@@ -1,0 +1,1 @@
+AI now generates precise medical imaging reports! PETAR-4B focuses on individual abnormalities, achieving 56% better performance than previous methods. Could this be the solution to radiologist burnout in oncology?

@@ -1,0 +1,1 @@
+New AI testing method SIRAJ finds 2.5x more vulnerabilities in AI agents. Smaller models trained with this approach achieved 100% improvement, surpassing billion-parameter models. Critical for ensuring AI safety in everyday applications.

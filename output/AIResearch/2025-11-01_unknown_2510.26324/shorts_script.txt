@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could generate perfect medical images without ever seeing your private data? [VISUAL DIRECTION] Animated text: "AI sees nothing, creates everything" with MRI brain scan silhouette
+
+[VOICEOVER 0:05-0:20] This isn't science fiction—it's a breakthrough from Nature/Science that solves a critical challenge in medical AI. [VISUAL DIRECTION] Show lab setting with researchers, transition to hospital imagery
+
+[VOICEOVER 0:20-0:40] Traditional AI methods risk patient privacy when reconstructing medical images. Researchers asked: can we generate realistic samples without accessing original data? [VISUAL DIRECTION] Split screen: left shows traditional AI with data flow arrows, right shows new method with blocked data flow
+
+[VOICEOVER 0:40-1:00] They combined diffusion models with Langevin dynamics, creating a multi-step annealing process that refines distributions without perfect information. [VISUAL DIRECTION] Animated diagram showing diffusion process merging with dynamic sampling arrows
+
+[VOICEOVER 1:00-1:30] The algorithm starts with rough estimates and gradually refines them through stochastic differential equations, ensuring robustness even with imperfect data. [VISUAL DIRECTION] Zoom on Figure 2 showing distribution peaks converging, with L2 distance decreasing
+
+[VOICEOVER 1:30-1:50] This means hospitals can generate synthetic medical data for analysis without compromising patient privacy—transforming MRI reconstruction and diagnostics. [VISUAL DIRECTION] Show hospital MRI machine with "PRESERVED PRIVACY" overlay text
+
+[VOICEOVER 1:50-2:00] AI that protects while it creates—the future of medical imaging is here. [VISUAL DIRECTION] Final shot: clear medical image with lock icon overlay, text: "Posterior Sampling Breakthrough"

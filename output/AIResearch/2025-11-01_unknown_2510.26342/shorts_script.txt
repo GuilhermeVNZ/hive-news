@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could discover causal relationships with human-like accuracy while never contradicting established scientific facts? [VISUAL DIRECTION] Animated text: 'AI + Human Knowledge = Better Discovery' with glowing neural network background
+
+[VOICEOVER 0:05-0:20] In fields from medicine to economics, understanding cause and effect is fundamental - but current AI methods often struggle with noisy data and can reach incorrect conclusions. [VISUAL DIRECTION] Show split screen: left side shows medical research lab, right side shows economic charts with question marks
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that discovers causal relationships while respecting what we already know to be true? [VISUAL DIRECTION] Zoom in on paper title 'Interventional Constraints' with animated arrows pointing to key terms
+
+[VOICEOVER 0:40-1:00] They developed 'interventional constraints' - a method that ensures AI's conclusions align with established facts. For example, in biology, AI is constrained to reflect that PIP3 activates Akt, not inhibits it. [VISUAL DIRECTION] Animated biological pathway showing PIP3 → Akt with green checkmark and red X over reverse arrow
+
+[VOICEOVER 1:00-1:30] How it works: The method uses gradient-based algorithms and sequential quadratic programming to refine AI models, ensuring they satisfy both data and prior knowledge constraints. [VISUAL DIRECTION] Show flowchart of algorithm process with mathematical symbols and converging arrows
+
+[VOICEOVER 1:30-1:50] This means in healthcare, we can get better treatment insights without compromising privacy. Economists can reliably study tax impacts using existing data. [VISUAL DIRECTION] Split screen: hospital scene on left, economic dashboard on right, both with upward trending arrows
+
+[VOICEOVER 1:50-2:00] AI that discovers truth while respecting truth - the future of scientific discovery is here. [VISUAL DIRECTION] Final screen with paper title and university logo, text overlay: 'Trustworthy AI Discovery'

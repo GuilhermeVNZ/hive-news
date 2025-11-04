@@ -1,0 +1,1 @@
+AI achieves 70.8% accuracy forecasting stock prices by modeling how sectors synchronize during market events. The H3M-SSMoEs system integrates textual analysis with hypergraph structures, outperforming traditional methods across major indices. Nature/Science research shows practical implications for portfolio management.

@@ -1,0 +1,1 @@
+AI can now flip fair coins with near-perfect randomness using String Seed of Thought. This breakthrough enables LLMs to follow probabilistic instructions accurately, enhancing diversity in creative tasks without quality loss. How might this transform AI fairness in gaming and opinion simulations?

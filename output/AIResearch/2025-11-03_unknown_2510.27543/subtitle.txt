@@ -1,0 +1,1 @@
+A new benchmark reveals major gaps in how AI models handle everyday Arabic, limiting their real-world use in communication and services.

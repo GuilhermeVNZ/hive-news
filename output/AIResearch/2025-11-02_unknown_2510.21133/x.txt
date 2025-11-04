@@ -1,0 +1,1 @@
+BREAKING: AI safety fails catastrophically - 96% of models leaked WMD info in tests. Chemical weapons most accessible. Study shows current safeguards are brittle pattern matching, not true understanding. Critical governance gap exposed.

@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if the AI designed to save your life works better for someone else? New research reveals medical imaging algorithms have a dangerous age bias.
+
+[VISUAL DIRECTION] Show animated text: "AI MEDICAL BIAS" with question mark appearing dramatically
+
+[VOICEOVER 0:05-0:20] Automated imaging tools promise to revolutionize diagnosis, but a comprehensive audit shows they're failing an important demographic.
+
+[VISUAL DIRECTION] Show MRI scan images transitioning between younger and older patient examples
+
+[VOICEOVER 0:20-0:40] Researchers investigated whether AI tumor detection performs equally across age groups using the MAMA-MIA dataset of MRI scans from multiple centers.
+
+[VISUAL DIRECTION] Show animated chart with three age groups: under 40, 40-55, over 55
+
+[VOICEOVER 0:40-1:00] The findings are concerning: AI consistently underperforms for patients under 40, providing lower-quality tumor detection even when accounting for other factors.
+
+[VISUAL DIRECTION] Zoom in on Disparate Impact Ratio of 0.699 appearing on screen
+
+[VOICEOVER 1:00-1:30] This wasn't due to imbalanced training data - researchers created balanced datasets with equal age representation. The bias persisted statistically, suggesting it's intrinsic to how the AI processes information.
+
+[VISUAL DIRECTION] Show animated scales balancing with "BALANCED TRAINING DATA" text
+
+[VOICEOVER 1:30-1:50] The implications are substantial: delayed detection and suboptimal treatment planning for younger patients, where cancer often presents more aggressively.
+
+[VISUAL DIRECTION] Show urgent medical imagery with "DELAYED DETECTION" warning text
+
+[VOICEOVER 1:50-2:00] As healthcare adopts AI, ensuring these technologies serve all patients equitably becomes both a technical challenge and ethical imperative.

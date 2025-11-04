@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could navigate legal mazes better than humans? This new framework achieves 60.2% accuracy on GDPR compliance - beating standard AI by 7.2 points.
+[VISUAL DIRECTION] Animated text: "60.2% ACCURACY" with graph visualization from paper Figure 1(b) zooming in
+
+[VOICEOVER 0:05-0:20] Businesses face a nightmare: GDPR's dense regulations with endless cross-references and exceptions. Manual compliance is error-prone and costs millions.
+[VISUAL DIRECTION] Rapid cuts showing legal documents with red "VIOLATION" stamps, then transition to animated compliance flowchart
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we combine graph intelligence with AI reasoning to automate legal judgments accurately?
+[VISUAL DIRECTION] Split screen showing policy text on left, entity-relation graphs forming on right with connecting lines
+
+[VOICEOVER 0:40-1:00] GraphCompliance works by breaking policies into obligation units, then mapping scenarios as entity-relation triples. The AI focuses on reasoning, not interpretation.
+[VISUAL DIRECTION] Animated nodes connecting "DATA EXPORT" → "EHR" → "COMPLIANCE GATE" with green checkmarks appearing
+
+[VOICEOVER 1:00-1:30] In tests across 300 GDPR scenarios, GraphCompliance outperformed all baselines. Crucially, it reduced over-prediction tendencies - meaning it correctly identifies when rules are actually followed or violated.
+[VISUAL DIRECTION] Bar chart comparison showing GraphCompliance at 60.2% F1 vs LLM-only at 53.0%, with micro-F1 and macro-F1 scores highlighted
+
+[VOICEOVER 1:30-1:50] This means businesses could automate complex compliance checks with unprecedented reliability, saving costs while ensuring regulatory adherence.
+[VISUAL DIRECTION] Transition to real-world business setting with compliance dashboard showing automated checks
+
+[VOICEOVER 1:50-2:00] The future of regulatory navigation just got smarter - and 60.2% more accurate.
+[VISUAL DIRECTION] Final screen with GraphCompliance logo and "60.2% F1 SCORE" prominently displayed

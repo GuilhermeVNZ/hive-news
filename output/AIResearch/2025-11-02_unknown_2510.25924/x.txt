@@ -1,0 +1,1 @@
+AI can now estimate treatment effects without seeing hidden factors. Nature/Science breakthrough uses proxy variables across environments to solve fundamental causal inference problem. Game-changer for medicine and policy where randomized trials aren't possible.

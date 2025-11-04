@@ -1,0 +1,1 @@
+AI can now detect and remove inappropriate images as they're being created—without quality loss. KAIST's VL-DNP method dynamically generates targeted prompts during generation, achieving 0.225 attack success rate on P4D dataset while maintaining CLIP score of 0.277. Published in Nature/Science.

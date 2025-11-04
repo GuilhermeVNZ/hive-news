@@ -1,0 +1,1 @@
+AI often wastes 20-30% of actions due to 'blindness' in complex environments. JD.com's GEPO method overcomes this by mapping surroundings, boosting task success by +10.9% in benchmarks. How might this enhance your industry's automation?

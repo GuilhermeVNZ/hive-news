@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could write scientific literature reviews as well as human researchers?
+[VISUAL DIRECTION] Animated text: "AI Writes Science Papers" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Scientists are drowning in new research - over 2.5 million papers published annually. Keeping up is becoming impossible.
+[VISUAL DIRECTION] Show paper icons flooding screen, overwhelming a researcher silhouette
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI systematically synthesize thousands of publications into coherent literature reviews?
+[VISUAL DIRECTION] Zoom in on AutoSurvey2 architecture diagram from paper, highlight "multi-stage pipeline"
+
+[VOICEOVER 0:40-1:00] AutoSurvey2 achieves 4.5/5 quality scores - matching human-written reviews in coverage, structure, and coherence.
+[VISUAL DIRECTION] Show quality score comparison chart: AutoSurvey2 (4.5) vs Human (4.43) vs Baselines (4.23)
+
+[VOICEOVER 1:00-1:30] The system works in four coordinated stages: retrieves relevant papers, plans structure, synthesizes content, and formats for publication.
+[VISUAL DIRECTION] Animated flow diagram showing four stages with transformer encoders creating 768-dimensional embeddings
+
+[VOICEOVER 1:30-1:50] This means researchers can quickly synthesize entire fields of study while maintaining scientific rigor and reducing outdated information risks.
+[VISUAL DIRECTION] Show researcher using AutoSurvey2 interface, fast cuts of generated survey sections
+
+[VOICEOVER 1:50-2:00] AI is now writing science reviews as well as humans - transforming how we handle information overload.
+[VISUAL DIRECTION] Final text overlay: "AutoSurvey2: Scientific Synthesis at Human Level"

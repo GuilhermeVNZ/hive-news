@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could predict coastal flooding in seconds instead of weeks?
+[VISUAL DIRECTION] Animated text: "FLOOD PREDICTION: WEEKS → SECONDS" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] Coastal cities face escalating sea-level threats, endangering millions and critical infrastructure. Traditional methods take days to simulate, delaying protective measures.
+[VISUAL DIRECTION] Show global map with coastal cities highlighted in red, zoom into urban flooding footage
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI accelerate flood prediction while maintaining accuracy?
+[VISUAL DIRECTION] Show side-by-side comparison: traditional simulation (slow loading bar) vs AI (instant result)
+
+[VOICEOVER 0:40-1:00] They developed CASPIAN-v2, a deep learning model that reduces absolute depth predictions by nearly 20% compared to state-of-the-art techniques.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on accuracy metrics, highlight 20% improvement
+
+[VOICEOVER 1:00-1:30] Using convolutional neural networks trained on hydrodynamic simulations, it processes shoreline data to output high-resolution inundation maps in under a second.
+[VISUAL DIRECTION] Animated diagram showing CNN architecture processing coastal data into flood maps
+
+[VOICEOVER 1:30-1:50] This enables planners to evaluate hundreds of defense strategies quickly - something previously impossible due to computational limits.
+[VISUAL DIRECTION] Show rapid iteration of different seawall designs with flood predictions updating instantly
+
+[VOICEOVER 1:50-2:00] Climate adaptation just got a powerful new tool that could save coastal communities worldwide.
+[VISUAL DIRECTION] Final shot: animated text "SECONDS TO SAVE CITIES" with CASPIAN-v2 logo

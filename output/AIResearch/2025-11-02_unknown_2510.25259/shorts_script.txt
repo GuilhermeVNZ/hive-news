@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your streaming service could predict exactly what you want to watch next - with 7.49% more accuracy than ever before?
+[VISUAL DIRECTION] Animated text: "7.49% MORE ACCURATE RECOMMENDATIONS" with pulsing effect
+
+[VOICEOVER 0:05-0:20] Right now, recommender systems shape everything from your Netflix queue to your Amazon shopping, but they often struggle to keep up with our evolving preferences efficiently.
+[VISUAL DIRECTION] Quick cuts of streaming platform interfaces, shopping carts, and music apps with loading animations
+
+[VOICEOVER 0:20-0:40] Researchers at KAIST asked: Can we create a system that not only understands what you like, but also how your preferences change over time?
+[VISUAL DIRECTION] Show animated timeline with user interactions evolving over time, question mark appearing
+
+[VOICEOVER 0:40-1:00] They discovered TV-Rec - a method that captures complex, position-dependent variations in user interactions that traditional models miss.
+[VISUAL DIRECTION] Zoom on Figure 2 showing interaction patterns, highlight position-dependent variations
+
+[VOICEOVER 1:00-1:30] Unlike standard approaches that apply the same processing everywhere, TV-Rec uses time-variant filters to emphasize relevant interactions at different stages. It reinterprets sequences as graphs and applies node-variant filters, eliminating positional embeddings and reducing computational overhead.
+[VISUAL DIRECTION] Animated diagram showing traditional vs TV-Rec processing, with dynamic filters adapting to different positions
+
+[VOICEOVER 1:30-1:50] This means faster, more accurate recommendations for your streaming, shopping, and music platforms - a practical advancement for real-time applications.
+[VISUAL DIRECTION] Show real-world applications: faster loading recommendations, more relevant suggestions
+
+[VOICEOVER 1:50-2:00] The future of AI-driven recommendations just got smarter - and 7.49% more accurate.
+[VISUAL DIRECTION] Final screen with key stat: "7.49% accuracy improvement across 6 benchmarks" and KAIST logo

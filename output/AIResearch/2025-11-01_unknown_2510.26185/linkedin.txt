@@ -1,0 +1,1 @@
+What if AI could accurately trace which data points shape its decisions? A new method, ACC-SGD-IE, tracks individual data influence in AI training, improving reliability in critical fields like healthcare and finance. Explore how this Nature/Science-backed innovation enhances AI accountability and performance.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could tell when two algorithms are truly the same, even if they look completely different on the surface?
+[VISUAL DIRECTION] [Animated text: "95% ACCURACY" with algorithm code morphing between different visual representations]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - researchers have solved a fundamental challenge in computer science that affects everything from search engines to medical diagnostics.
+[VISUAL DIRECTION] [Show rapid montage: search bar, medical imaging, AI models processing data]
+
+[VOICEOVER 0:20-0:40] The core problem? Current methods can't distinguish between algorithms that perform the same function versus those that are fundamentally different. How do you measure true similarity?
+[VISUAL DIRECTION] [Show two different sorting algorithms side by side - one efficient, one inefficient - with performance metrics diverging]
+
+[VOICEOVER 0:40-1:00] The breakthrough is EMOC - a framework that embeds any algorithm into a numeric vector based on four components: evaluation, usage, data used, and complexity.
+[VISUAL DIRECTION] [Animated diagram showing EMOC framework with four components branching out from algorithm input]
+
+[VOICEOVER 1:00-1:30] Here's how it works: Instead of just comparing code structure, EMOC tests functional equivalence, measures runtime scaling, and counts distinct operations. It creates a consistent representation that's not fooled by trivial changes like renaming variables.
+[VISUAL DIRECTION] [Show code examples where variable names change but structure remains identical, then show EMOC detecting true functional differences]
+
+[VOICEOVER 1:30-1:50] The real-world impact is huge - this enables reliable plagiarism detection, helps identify inefficient code in critical systems, and provides a standardized way to assess AI-generated algorithms.
+[VISUAL DIRECTION] [Show applications: code review interface, AI model generating algorithms, security systems]
+
+[VOICEOVER 1:50-2:00] Next time you encounter two algorithms that look different, remember: true similarity goes much deeper than the code you see.
+[VISUAL DIRECTION] [Final text overlay: "EMOC: Measuring What Matters in Algorithms" with Nature/Science journal branding]

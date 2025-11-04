@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could instantly decode criminal slang that evades traditional monitoring systems?
+[VISUAL DIRECTION] Animated text: "CRIMINAL SLANG DECODED" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Criminals increasingly use specialized vocabularies and codewords like "steampunk" to bypass automated filters, creating a critical challenge for law enforcement.
+[VISUAL DIRECTION] Show rapid-fire examples of coded terms with red X marks through them
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we train AI to understand these domain-specific languages that traditional systems struggle with?
+[VISUAL DIRECTION] Zoom in on researcher analyzing communication patterns
+
+[VOICEOVER 0:40-1:00] The breakthrough: Fine-tuned language models achieved dramatic 39.7 ROUGE-1 score improvement in understanding specialized vocabularies.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance metrics, highlight 39.7% improvement
+
+[VOICEOVER 1:00-1:30] Using LLaMA-Factory framework, researchers fine-tuned models on political domain data, enabling them to categorize and summarize massive communication volumes.
+[VISUAL DIRECTION] Animated flow chart showing training process and data processing
+
+[VOICEOVER 1:30-1:50] This means law enforcement can quickly identify critical threats in vast information streams, enhancing decision-making and resource allocation.
+[VISUAL DIRECTION] Show law enforcement dashboard with flagged communications
+
+[VOICEOVER 1:50-2:00] AI that understands criminal slang - transforming digital surveillance one decoded message at a time.
+[VISUAL DIRECTION] Final text overlay: "39.7% IMPROVEMENT IN SLANG DETECTION"

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI can create amazing short videos but completely fails when trying to tell longer stories?
+[VISUAL DIRECTION] Animated text: "AI's Storytelling Secret" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] This isn't just about video quality - it's about whether AI can actually understand and maintain complex narratives that humans connect with.
+[VISUAL DIRECTION] Quick cuts showing AI-generated short clips vs longer videos with obvious inconsistencies
+
+[VOICEOVER 0:20-0:40] Researchers from Harbin Institute of Technology and University of Hong Kong created LoCoT2V-Bench to answer: Can AI maintain coherence in extended storytelling?
+[VISUAL DIRECTION] Show paper title animation with researcher affiliations
+
+[VOICEOVER 0:40-1:00] They tested 240 real YouTube videos and found AI performs well on short-term consistency but fails at long-range coherence and emotional development.
+[VISUAL DIRECTION] Bar chart showing performance drop as complexity increases, zoom on "HERD score" decline
+
+[VOICEOVER 1:00-1:30] The problem isn't visual quality - AI can make beautiful frames. The issue is semantic understanding: AI struggles to interpret intricate instructions and maintain character arcs.
+[VISUAL DIRECTION] Split screen: left shows high-quality individual frames, right shows narrative inconsistencies
+
+[VOICEOVER 1:30-1:50] This matters because educational content, documentaries, and communication tools need coherent extended narratives - something current AI can't reliably deliver.
+[VISUAL DIRECTION] Quick montage of educational videos, documentaries, training materials
+
+[VOICEOVER 1:50-2:00] So while AI excels at short clips, creating meaningful extended stories remains a fundamental challenge we need to solve.
+[VISUAL DIRECTION] Final text overlay: "AI: Great at clips, fails at stories" with research paper citation

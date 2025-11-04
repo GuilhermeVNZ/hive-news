@@ -1,0 +1,1 @@
+Tiny input tweaks can break AI decisions. Lipschitz-aware grafting cuts instability by over 50%, boosting certified robustness without major accuracy loss. Nature/Science study shows path to safer AI.

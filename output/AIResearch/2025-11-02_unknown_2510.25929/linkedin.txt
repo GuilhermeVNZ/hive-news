@@ -1,0 +1,1 @@
+AI trading agents naturally compete rather than collude, achieving 75% market share in zero-sum scenarios. New Nature research reveals how different AI incentives create stable or aggressive market behaviors, offering regulators a framework for ethical algorithmic finance. What does this mean for market stability?

@@ -1,0 +1,1 @@
+Stop the scroll: AI just solved catastrophic forgetting. NuSA-CL enables continuous learning without memory buffers, achieving 70.3% accuracy. This breakthrough makes AI practical for robotics and on-device applications. The future of adaptive AI is here.

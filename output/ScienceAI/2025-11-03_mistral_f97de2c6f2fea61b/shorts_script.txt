@@ -1,0 +1,13 @@
+Take 1: (Visual: AI model visualization with environmental impact overlays) Did you know training AI models has a massive environmental cost?
+
+Take 2: (Visual: Mistral AI logo with data charts) Mistral AI just released the first comprehensive study of AI's environmental impact.
+
+Take 3: (Visual: GPU servers with energy consumption graphics) Their research measured greenhouse gases, water use, and resource depletion.
+
+Take 4: (Visual: Comparison of small vs large model footprints) Bigger models create exponentially larger environmental footprints.
+
+Take 5: (Visual: Transparency and standards imagery) They're calling for industry-wide transparency and standardized reporting.
+
+Take 6: (Visual: Sustainable technology future vision) This could change how we build and choose AI models forever.
+
+Take 7: (Visual: Call to action screen) What do you think about AI's environmental impact? Share your thoughts below!

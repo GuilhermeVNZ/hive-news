@@ -1,1 +1,0 @@
-AI training just got 508.6% more efficient. Tsinghua University's MoGE method helps AI agents discover optimal strategies by generating novel, physically plausible scenarios. This breakthrough could revolutionize how we train AI systems. What applications excite you most?

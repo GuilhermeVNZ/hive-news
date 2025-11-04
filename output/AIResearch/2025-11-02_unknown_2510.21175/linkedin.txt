@@ -1,0 +1,1 @@
+AI can now learn continuously without forgetting - a breakthrough solving catastrophic forgetting. NuSA-CL confines updates to the model's 'null space,' achieving 70.3% accuracy without memory buffers. This enables sustainable AI for robotics and personalized assistants. How will continuous learning transform your industry?

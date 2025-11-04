@@ -1,0 +1,1 @@
+New method cuts AI training costs by over 50% while maintaining accuracy, addressing the massive energy demands of large language models.

@@ -1,1 +1,0 @@
-AI video restoration just got smarter: Neuroscience-inspired method reduces flickering by 48.87% on DAVIS dataset. No expensive retraining needed - uses ensemble sampling to stabilize frames. Game-changer for security footage and medical imaging.

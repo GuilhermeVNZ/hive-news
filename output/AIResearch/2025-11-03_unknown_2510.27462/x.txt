@@ -1,0 +1,1 @@
+AI models treat every reasoning step equally—but what if some matter more? VCORE reweights step importance, boosting math/code performance by 31.03% on benchmarks like Qwen3 and LLaMA-3.1-8B-Instruct. Smarter AI reasoning is here.

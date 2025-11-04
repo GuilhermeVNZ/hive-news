@@ -1,1 +1,0 @@
-AI can now predict your preferences without tracking your history, boosting accuracy by 7.49% on average. Developed by KAIST, TV-Rec uses signal processing to adapt to evolving tastes. How might this transform digital privacy and efficiency?

@@ -1,0 +1,1 @@
+AI just got more transparent: Researchers found transformers can track objects perfectly using only 2 attention heads—no complex networks required. Nature study reveals specialized 'reference detector' and 'contrastive suppressor' circuits working together. This could revolutionize how we debug and optimize AI systems.

@@ -1,0 +1,1 @@
+What if AI could read millions of scientific papers and pinpoint exactly where knowledge is missing? New research shows GPT-4o can identify both explicitly stated and inferred knowledge gaps with 83.3% accuracy. This could revolutionize how we prioritize research. What critical gaps should we address first?

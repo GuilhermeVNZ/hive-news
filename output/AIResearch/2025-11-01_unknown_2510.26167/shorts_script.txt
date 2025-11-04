@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could recognize its own mistakes? Current AI tools often fail to evaluate their accuracy, limiting progress toward autonomous agents.
+[VISUAL DIRECTION] Animated text: "AI CAN'T TELL WHEN IT'S WRONG" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] This fundamental limitation has hindered development of capable AI systems that can work independently without human oversight.
+[VISUAL DIRECTION] Show AI agent making errors with red X marks appearing, transition to researcher looking concerned
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that effectively critiques its own behavior? The team developed ToolRM, a specialized reward model designed specifically for tool-using scenarios.
+[VISUAL DIRECTION] Zoom on paper title "ONE MODEL TO CRITIQUE THEM ALL", show animated flowchart of AI self-evaluation process
+
+[VOICEOVER 0:40-1:00] Their finding: ToolRM substantially outperforms existing systems, achieving 14.28% increase in task accuracy compared to baselines like OpenAI's models.
+[VISUAL DIRECTION] Show bar graph comparison with ToolRM bar significantly higher, animated text: "14.28% MORE ACCURATE"
+
+[VOICEOVER 1:00-1:30] How it works: Two-stage process using curated datasets and novel training pipeline. ToolRM enables AI to distinguish between correct and incorrect interactions through self-correction.
+[VISUAL DIRECTION] Show Figure 2 with zoom on trajectory segments, animated arrows showing correction process
+
+[VOICEOVER 1:30-1:50] Real impact: This brings us closer to reliable AI assistants for booking flights, data retrieval, and other real-world applications where accuracy matters.
+[VISUAL DIRECTION] Fast cuts showing AI successfully completing travel booking, data analysis tasks with green checkmarks
+
+[VOICEOVER 1:50-2:00] The breakthrough: AI that can truly critique itself, moving us toward autonomous agents we can actually trust.
+[VISUAL DIRECTION] Final screen with ToolRM logo and text: "AI THAT KNOWS WHEN IT'S WRONG"

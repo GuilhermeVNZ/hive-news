@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could make decisions that balance competing priorities like safety versus speed in real-time?
+[VISUAL DIRECTION] Animated text: "SAFETY vs SPEED" with pulsing question mark. Fast cuts between car braking and accelerating.
+
+[VOICEOVER 0:05-0:20] Traditional AI optimization focuses on single goals, but real-world decisions require balancing multiple, often contradictory requirements.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on Pareto front distribution. Animated arrows showing trade-offs between objectives.
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can we systematically navigate thousands of possible solutions when every choice involves trade-offs?
+[VISUAL DIRECTION] Network diagram with thousands of vertices. Highlight multiple paths with different cost metrics.
+
+[VOICEOVER 0:40-1:00] They discovered the Pareto front - the exact set of solutions where no objective can be improved without worsening another.
+[VISUAL DIRECTION] Animated text: "PARETO FRONT" with moving dots settling on optimal curve. Zoom on specific trade-off points.
+
+[VOICEOVER 1:00-1:30] New algorithms like NAMOA-dr and BOA* efficiently compute these optimal trade-offs, with parallel versions achieving near-linear speedups on multi-core processors.
+[VISUAL DIRECTION] Code snippets with highlighted algorithm names. Processor cores lighting up sequentially showing parallel processing.
+
+[VOICEOVER 1:30-1:50] This is already deployed in multi-modal journey planners like OpenTripPlanner, handling 40,000 trip requests in Portland alone for walking, cycling, and public transit.
+[VISUAL DIRECTION] Map of Portland with animated trip routes. Counter showing "40,000+ trips optimized".
+
+[VOICEOVER 1:50-2:00] The future of urban mobility just got smarter - where every decision balances what matters most.
+[VISUAL DIRECTION] Final shot of smart city with optimized traffic flow. Text overlay: "Balancing what matters"

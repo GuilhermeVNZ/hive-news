@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the AI analyzing your medical surveys or policy polls is wrong 25% of the time?
+[VISUAL DIRECTION] Animated text: "25% AI ERROR RATE" with shocked emoji face
+
+[VOICEOVER 0:05-0:20] New research reveals that artificial intelligence consistently fails at basic survey analysis, and the problem comes down to how data is formatted.
+[VISUAL DIRECTION] Show survey forms morphing into different formats - JSON, XML, HTML with question marks
+
+[VOICEOVER 0:20-0:40] Researchers asked: Why do large language models perform so inconsistently when analyzing identical survey data?
+[VISUAL DIRECTION] Split screen showing same survey questions with different formatting styles
+
+[VOICEOVER 0:40-1:00] They discovered that using Turtle format boosted AI accuracy by 8.8% compared to suboptimal formats, while poor choices degraded performance by 16-24%.
+[VISUAL DIRECTION] Bar chart animation showing performance differences between formats, Turtle format highlighted
+
+[VOICEOVER 1:00-1:30] The science shows that one-shot prompting - where AI sees a worked example - reduces errors by 25% for multi-step reasoning. Adding structural self-augmentation improved performance another 3-4%, particularly for complex data lookups.
+[VISUAL DIRECTION] Animated flow diagram showing one-shot prompting process with accuracy percentages
+
+[VOICEOVER 1:30-1:50] This matters because unreliable AI survey analysis affects critical decisions in healthcare and public policy where accuracy is non-negotiable.
+[VISUAL DIRECTION] Quick cuts: medical chart, policy document, survey results with "RELIABLE?" overlay
+
+[VOICEOVER 1:50-2:00] The takeaway: How we format data determines whether AI helps or hinders our most important decisions.
+[VISUAL DIRECTION] Final screen: "FORMAT MATTERS" with Nature/Science journal logos

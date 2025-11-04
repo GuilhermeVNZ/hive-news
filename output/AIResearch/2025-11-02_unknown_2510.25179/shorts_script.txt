@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could defend itself against attacks that bypass all conventional safeguards?
+[VISUAL DIRECTION] Animated text: "AI UNDER ATTACK" with shield icon breaking, fast cuts showing distorted AI-generated images
+[VOICEOVER 0:05-0:20] As AI becomes more capable with images and text, it's also becoming more vulnerable to sophisticated manipulation that can make it generate harmful content.
+[VISUAL DIRECTION] Show Figure 2 from paper zooming on attack success rates, animated arrows showing increasing vulnerability
+[VOICEOVER 0:20-0:40] Researchers asked: How can we create AI systems that detect and respond to these complex threats without blocking legitimate requests?
+[VISUAL DIRECTION] Split screen showing malicious prompts vs safe prompts, question mark animation
+[VOICEOVER 0:40-1:00] They developed a multi-agent framework where four specialized AI agents—Shield, Responder, Evaluator, and Reflector—collaborate to dynamically moderate content.
+[VISUAL DIRECTION] Animated diagram showing four agent icons working together, with Coordinator in center managing flow
+[VOICEOVER 1:00-1:30] Shield performs initial screening across 45 categories, Responder generates alternatives, Evaluator validates outputs, and Reflector diagnoses failures for regeneration.
+[VISUAL DIRECTION] Step-by-step animation of the moderation process, zoom on classification categories and decision paths
+[VOICEOVER 1:30-1:50] Experimental results across multiple adversarial datasets show significant improvements—reducing harmful completions while increasing meaningless refusals instead of blocking useful functionality.
+[VISUAL DIRECTION] Show bar charts comparing attack success rates before and after implementation, highlight LLaVA's substantial improvements
+[VOICEOVER 1:50-2:00] This collaborative approach demonstrates how multiple AI agents working together can create safer, more robust AI systems for real-world applications.
+[VISUAL DIRECTION] Final shot showing all four agents icons forming protective shield around AI system, text overlay: "Collaborative Defense"

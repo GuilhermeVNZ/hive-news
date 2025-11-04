@@ -1,0 +1,1 @@
+Brain-inspired AI enables robots to learn caregiving tasks directly from raw data, no handcrafted features needed. PV-RNN integrates vision & proprioception, generalizing across simulations. Could this solve robotics' limitations in unpredictable healthcare settings? Study in Nature/Science.

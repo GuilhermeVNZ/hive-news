@@ -1,0 +1,1 @@
+AI training wastes 50%+ resources on tasks that are either too easy or impossible. Alibaba's BOTS framework dynamically selects 'just right' challenges, cutting training time by 36% while boosting reasoning. This breakthrough could revolutionize how we develop smarter AI assistants. Based on Nature/Science research.

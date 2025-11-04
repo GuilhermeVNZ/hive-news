@@ -1,1 +1,0 @@
-AI that remembers sequences forever? Quantum-classical hybrid QRNN maintains coherent memory across 400+ timesteps, beating LSTMs in sentiment analysis (86.5% vs 84.05%) and showing near-perfect copying. No vanishing gradients. Quantum computing could solve AI's memory problem.

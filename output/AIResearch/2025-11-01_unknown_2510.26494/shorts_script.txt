@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could simulate how social media actually changes voting behavior—without experimenting on real people?
+[VISUAL DIRECTION] [Animated text: "AI SIMULATES VOTING BEHAVIOR" with network visualization background]
+
+[VOICEOVER 0:05-0:20] Stanford researchers built an unprecedented AI simulator to understand how political messages spread through social networks and influence real-world outcomes.
+[VISUAL DIRECTION] [Show LLM-SocioPol interface mockup with demographic profiles and network connections]
+
+[VOICEOVER 0:20-0:40] They asked: Do messages showing friends' voting intentions work better than generic get-out-the-vote prompts?
+[VISUAL DIRECTION] [Split screen: "Social proof messages" vs "Pure information messages" with question marks]
+
+[VOICEOVER 0:40-1:00] The finding: Social proof messages increased turnout by 5.6% across multiple simulation runs. Pure information showed minimal effects.
+[VISUAL DIRECTION] [Show bar chart: "+5.6% turnout" highlighted in red, "Minimal effect" in gray]
+
+[VOICEOVER 1:00-1:30] How it works: The simulator combines U.S. Census data, Twitter network structures, and sophisticated AI models representing 20,000 individuals. Each simulated person receives messages, sees likes and replies, and decides whether to vote.
+[VISUAL DIRECTION] [Animated flow: Census data → Network structure → AI decision-making → Voting behavior]
+
+[VOICEOVER 1:30-1:50] The real-world implication: This allows political strategists and platform designers to test interventions that would be ethically problematic with real users.
+[VISUAL DIRECTION] [Show policymakers and platform designers considering simulation results]
+
+[VOICEOVER 1:50-2:00] Key takeaway: Network exposure to social proof messages gradually builds influence as election day approaches—changing how we understand digital political mobilization.
+[VISUAL DIRECTION] [Final screen: "Social proof drives political behavior" with network visualization]

@@ -9,6 +9,39 @@ import Image from "next/image";
 import fs from 'fs/promises';
 import path from 'path';
 
+// Extract arXiv ID from folder name
+// Handles formats:
+// - YYYY-MM-DD_source_ID (e.g., "2025-11-02_unknown_2510.25319" -> "2510.25319")
+// - Direct ID (e.g., "2510.25319" -> "2510.25319")
+function extractArxivId(folderName: string): string {
+  // First, try to find arXiv ID pattern (YYYY.NNNNN or YYYY.NNNNNN)
+  // arXiv IDs are typically 4 digits, dot, 4-6 digits (e.g., 2510.25319, 2510.123456)
+  const arxivIdMatch = folderName.match(/\d{4}\.\d{4,6}/);
+  if (arxivIdMatch) {
+    return arxivIdMatch[0];
+  }
+  
+  // If no pattern found, split by underscore and get the last segment
+  const parts = folderName.split('_');
+  if (parts.length >= 3) {
+    // Format: YYYY-MM-DD_source_ID
+    // The ID is the last part after removing date and source
+    const lastPart = parts[parts.length - 1];
+    // Check if last part looks like an arXiv ID
+    if (lastPart.match(/^\d{4}\.\d{4,6}$/)) {
+      return lastPart;
+    }
+  } else if (parts.length === 1) {
+    // Single segment - might be direct ID
+    if (folderName.match(/^\d{4}\.\d{4,6}$/)) {
+      return folderName;
+    }
+  }
+  
+  // Fallback: return as-is if no pattern found
+  return folderName;
+}
+
 // Map category values to display labels
 const categoryLabels: Record<string, string> = {
   ai: 'AI',
@@ -253,7 +286,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 asChild
               >
                 <a 
-                  href={`https://arxiv.org/pdf/${article.id}.pdf`}
+                  href={`https://arxiv.org/pdf/${extractArxivId(article.id)}.pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

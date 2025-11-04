@@ -1,0 +1,1 @@
+New framework detects 93.5% of AI errors that would otherwise go unnoticed in critical systems like autonomous vehicles, providing verifiable reliability without slowing performance.

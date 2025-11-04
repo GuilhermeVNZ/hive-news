@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could write your code, test your software, and even collaborate with your team? By 2030, 'Prompt Architects' might be a new profession reshaping how we build technology.
+[VISUAL DIRECTION] [Animated text: "AI is Reshaping Software Engineering" with pulsing effect]
+[VOICEOVER 0:05-0:20] Software underpins everything from healthcare to finance, and AI augmentation promises to automate routine tasks while introducing new applications previously considered infeasible.
+[VISUAL DIRECTION] [Show rapid cuts of software interfaces, medical devices, financial dashboards with AI overlay effects]
+[VOICEOVER 0:20-0:40] But this transformation raises critical questions: How do we maintain accountability when AI suggests code? What about security vulnerabilities in AI-generated solutions?
+[VISUAL DIRECTION] [Show question marks appearing over code editor, security shield icons with cracks]
+[VOICEOVER 0:40-1:00] Research identifies four distinct forms of AI augmentation: Copilots assist developers, GenAIware provides core functionality, Teammates collaborate in workflows, and Robots deliver independently.
+[VISUAL DIRECTION] [Show four quadrants with animated icons representing each category - coding assistant, AI core, team collaboration, autonomous delivery]
+[VOICEOVER 1:00-1:30] These AI systems enhance productivity by reducing errors and automating repetitive activities, but they also reverse aspects of trustworthiness and introduce new challenges in maintaining accountability.
+[VISUAL DIRECTION] [Show productivity graph rising while trust meter fluctuates, with AI code suggestions appearing and being verified]
+[VOICEOVER 1:30-1:50] The implications are profound - organizations must adapt to AI's autonomy, necessitating stronger regulations and new approaches to software development as traditional methods face potential obsolescence.
+[VISUAL DIRECTION] [Show organizational chart transforming, regulatory documents appearing, traditional coding methods fading to background]
+[VOICEOVER 1:50-2:00] The future of software engineering isn't just about writing code - it's about orchestrating AI systems that will fundamentally reshape how we build the technology that powers our world.
+[VISUAL DIRECTION] [Final shot of developer working alongside multiple AI interfaces with text: "The Future is AI-Augmented"]

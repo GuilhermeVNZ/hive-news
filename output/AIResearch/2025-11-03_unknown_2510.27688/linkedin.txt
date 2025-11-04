@@ -1,0 +1,1 @@
+AI models generate one token at a time, consuming massive energy. Tencent & Tsinghua's CALM framework predicts chunks simultaneously, cutting computations by 75% while maintaining performance. This breakthrough addresses environmental concerns while accelerating AI development. What other bottlenecks could this approach solve?

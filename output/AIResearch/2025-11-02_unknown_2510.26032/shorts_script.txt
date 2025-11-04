@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if most thyroid cancer diagnoses aren't actually dangerous cancers? AI just revealed the shocking truth about incidental findings.
+
+[VISUAL DIRECTION] Animated text: "THYROID CANCER TRIPLED" with question mark appearing, then "AI REVEALS THE TRUTH"
+
+[VOICEOVER 0:05-0:20] Thyroid cancer cases have tripled in recent decades, but new research shows this isn't what it seems. Most are found accidentally during scans for completely unrelated issues.
+
+[VISUAL DIRECTION] Show CT scan image with thyroid circled in red, then transition to graph showing tripling trend
+
+[VOICEOVER 0:20-0:40] Researchers asked: Are these incidental findings actually dangerous? They analyzed 115,000 medical records using artificial intelligence to find out.
+
+[VISUAL DIRECTION] Animated flow chart showing data processing through AI system
+
+[VOICEOVER 0:40-1:00] The findings are startling: 92.9% of these incidental nodules average just 1.2 centimeters. Most are too small to cause harm, yet detection triggers a cascade of tests and procedures.
+
+[VISUAL DIRECTION] Show size comparison: 1.2cm nodule next to common objects for scale, then cascade animation of tests
+
+[VOICEOVER 1:00-1:30] The AI system used BioClinicalBERT to classify findings and extract attributes with 97% accuracy. It revealed that women have nearly double the odds of incidental detection, and older age and higher BMI are linked to finding these harmless nodules.
+
+[VISUAL DIRECTION] Show AI architecture diagram, then demographic breakdown charts
+
+[VOICEOVER 1:30-1:50] The real impact? 20.2% of patients underwent follow-up ultrasounds, and many received biopsies or even thyroidectomies for findings that rarely progressed to actual cancer. This highlights massive variability in clinical practice.
+
+[VISUAL DIRECTION] Show statistics overlaying medical procedure footage
+
+[VOICEOVER 1:50-2:00] The takeaway: We're detecting too many harmless nodules, creating unnecessary patient burden. Maybe we need to rethink how we handle incidental findings.

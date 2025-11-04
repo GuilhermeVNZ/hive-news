@@ -33,11 +33,16 @@ pub struct CreateRawDocument {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ArticleMetadata {
     pub id: String,
-    pub title: String,
+    pub title: String, // Mantido para compatibilidade
     pub url: String,
     pub published_date: Option<DateTime<Utc>>,
     pub author: Option<String>,
     pub summary: Option<String>,
+    // Títulos: original (da fonte) e gerado (pelo DeepSeek)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub original_title: Option<String>, // Título original da notícia/artigo (do arXiv ou fonte)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub generated_title: Option<String>, // Título gerado pelo DeepSeek (do title.txt)
     // New fields for web scraping
     #[serde(skip_serializing_if = "Option::is_none")]
     pub image_url: Option<String>,      // Thumbnail/main image
@@ -49,6 +54,9 @@ pub struct ArticleMetadata {
     pub content_text: Option<String>,    // Extracted text
     #[serde(skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,       // Article category
+    // SEO-friendly slug for public URLs (independent of folder name)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub slug: Option<String>,          // Public URL slug (e.g., "a-conversation-with-kevin-scot")
 }
 
 #[allow(dead_code)]

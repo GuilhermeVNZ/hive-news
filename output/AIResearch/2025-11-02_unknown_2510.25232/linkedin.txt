@@ -1,0 +1,1 @@
+AI can now screen for multiple mental health disorders simultaneously through conversation. PsyCoTalk's simulated doctor-patient dialogues enable models to detect comorbid conditions like depression, anxiety, and ADHD with higher accuracy than baseline methods. This breakthrough from Shanghai Jiao Tong University could revolutionize mental healthcare training worldwide.

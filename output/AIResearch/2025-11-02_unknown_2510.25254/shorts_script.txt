@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if understanding complex cause-and-effect relationships could suddenly become 10 times faster? [VISUAL DIRECTION] Animated text: "10X FASTER CAUSAL DISCOVERY" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] For scientists studying everything from disease risk to climate patterns, analyzing cause-and-effect has been computationally slow, limiting what we can discover. [VISUAL DIRECTION] Show rotating network diagrams with slow loading animations
+
+[VOICEOVER 0:20-0:40] Researchers from University of Helsinki, ETH Zurich, and University of Basel asked: Can we dramatically speed up how we analyze these complex relationships? [VISUAL DIRECTION] University logos appear with question mark animation
+
+[VOICEOVER 0:40-1:00] They developed Gibby - a new algorithm that reduces computation time from 0.14 microseconds to just 0.014 microseconds. [VISUAL DIRECTION] Large counter showing 0.14 → 0.014 with speed lines
+
+[VOICEOVER 1:00-1:30] Using enhanced MCMC techniques, Gibby avoids proposing low-scoring graphs and streamlines calculations while maintaining accuracy. [VISUAL DIRECTION] Animated flowchart showing the rejection-based sampling process
+
+[VOICEOVER 1:30-1:50] This means scientists can now analyze larger networks to uncover patterns in healthcare risk factors and climate dependencies that were previously hidden. [VISUAL DIRECTION] Show expanding network diagrams with medical and climate icons
+
+[VOICEOVER 1:50-2:00] The future of causal discovery just got dramatically faster. [VISUAL DIRECTION] Final screen with text: "FASTER DISCOVERY, DEEPER INSIGHTS"

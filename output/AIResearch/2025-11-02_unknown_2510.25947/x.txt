@@ -1,0 +1,1 @@
+Training AI on 400 languages doesn't degrade performance - EPFL study overturns fundamental beliefs about multilingual data mixtures. Common practices may be unnecessarily restrictive.

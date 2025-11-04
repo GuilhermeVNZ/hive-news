@@ -1,0 +1,1 @@
+AI learns without human labels, breaking a major bottleneck in development. This could make AI systems faster and cheaper to build for various industries.

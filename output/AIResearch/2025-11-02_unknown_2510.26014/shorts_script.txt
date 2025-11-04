@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could tell you exactly how long a breast cancer patient will survive? [VISUAL DIRECTION] Animated text: "90% ACCURACY" flashes dramatically on dark background
+
+[VOICEOVER 0:05-0:20] Traditional survival prediction methods often fall short, leaving doctors and patients with uncertainty. [VISUAL DIRECTION] Show blurry medical charts transitioning to clear AI visualization
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an AI that understands how different tumor characteristics affect survival over time? [VISUAL DIRECTION] Zoom in on different breast cancer cell types with labels: ER+, HER2+
+
+[VOICEOVER 0:40-1:00] They developed a dual mixture-of-experts AI that automatically identifies patient subgroups and tracks how their risk profiles evolve. [VISUAL DIRECTION] Show Figure 2 with zoom on distinct subgroup distributions
+
+[VOICEOVER 1:00-1:30] The system analyzes nearly 4,000 patient records, using two specialized models: one for tumor characteristics, another for time progression. [VISUAL DIRECTION] Animated flow chart showing dual AI pathways merging
+
+[VOICEOVER 1:30-1:50] This means doctors can now tailor therapies specifically to each patient's risk profile, moving beyond one-size-fits-all approaches. [VISUAL DIRECTION] Show personalized treatment plan emerging from AI analysis
+
+[VOICEOVER 1:50-2:00] The future of cancer care just got more precise, more personal, and more hopeful. [VISUAL DIRECTION] Final text overlay: "Precision Oncology Is Here"

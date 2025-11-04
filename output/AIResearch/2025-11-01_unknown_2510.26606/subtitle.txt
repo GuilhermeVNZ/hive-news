@@ -1,0 +1,1 @@
+AI models are failing basic logic tests, making mistakes that could lead to unreliable decisions in real life. Understanding these flaws is key to building trustworthy artificial intelligence.

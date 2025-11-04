@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI's real danger isn't taking your job, but draining your purpose?
+[VISUAL DIRECTION] [Animated text: "AI's Hidden Threat: Loss of Meaning" with pulsing alert icon]
+
+[VOICEOVER 0:05-0:20] As artificial intelligence transforms workplaces, the critical question isn't whether machines will replace humans, but whether we can adapt fast enough to thrive alongside them.
+[VISUAL DIRECTION] [Show rapid cuts of AI interfaces in workplaces - chatbots, analytics dashboards, automation tools]
+
+[VOICEOVER 0:20-0:40] Researchers asked: What protects us from AI-induced stress, alienation, and loss of meaning?
+[VISUAL DIRECTION] [Show silhouettes of stressed workers with AI overlays, then transition to question mark animation]
+
+[VOICEOVER 0:40-1:00] They discovered resilience operates across three interconnected layers: individual skills, community coordination, and system safeguards that prevent degradation.
+[VISUAL DIRECTION] [Animated diagram showing three concentric circles labeled "Individual - Community - System" with connecting arrows]
+
+[VOICEOVER 1:00-1:30] This isn't just a trait—it's a trainable capacity. In experiments, professionals using AI writing assistance improved completion times while maintaining quality. Customer support agents saw biggest benefits when less experienced. Most strikingly, AI-scaffolded interventions increased empathy responses by 38.9%.
+[VISUAL DIRECTION] [Show bar charts animating upward: "38.9% empathy increase" "Faster completion" "Quality maintained"]
+
+[VOICEOVER 1:30-1:50] This shifts the conversation from displacement to adaptation. The framework offers practical guidance for students navigating AI-driven careers, employers designing human-centered workplaces, and policymakers concerned with societal cohesion.
+[VISUAL DIRECTION] [Show three columns: Students - Employers - Policymakers with relevant icons]
+
+[VOICEOVER 1:50-2:00] Resilience isn't about resisting AI—it's about learning to navigate disruption while preserving what makes us human.
+[VISUAL DIRECTION] [Final screen: "Resilience: Your Competitive Edge in the AI Era" with Nature/Science logos]

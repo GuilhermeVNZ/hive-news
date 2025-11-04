@@ -1,0 +1,1 @@
+AI trading algorithms just achieved what human traders couldn't: strategically timing trades to save millions. Research shows AI execution reduces slippage by 6.84% vs traditional methods by avoiding market spikes and concentrating activity in high-volume windows. Nature/Science study reveals how market simulation-based RL optimizes billion-dollar institutional trades.

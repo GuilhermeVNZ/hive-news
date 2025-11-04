@@ -1,0 +1,1 @@
+Machines can now interpret human-native signals like free-form images, but current systems face 'context overload' where irrelevant information distracts models. The evolution of prompt engineering is making human-AI collaboration more natural and efficient.

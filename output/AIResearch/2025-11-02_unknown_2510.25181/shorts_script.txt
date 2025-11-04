@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your phone could make mobile networks faster AND more private at the same time? [VISUAL DIRECTION] Animated text: "FASTER + PRIVATE = IMPOSSIBLE?" with question mark shaking dramatically
+
+[VOICEOVER 0:05-0:20] Right now, 5G networks face a critical trade-off: better performance means sharing your location data with central servers, compromising privacy. [VISUAL DIRECTION] Show animated diagram of phone transmitting location data to tower with privacy lock icon breaking
+
+[VOICEOVER 0:20-0:40] Massive MIMO technology, the backbone of future 6G networks, makes this problem worse. More antennas mean more signaling overhead and privacy risks. [VISUAL DIRECTION] Zoom on Figure 1 showing antenna array complexity with overhead cost numbers flashing red
+
+[VOICEOVER 0:40-1:00] The breakthrough? Fed-PELAD - a novel framework where each device maintains its own personalized encoder. [VISUAL DIRECTION] Animated diagram showing multiple phones with individual "personal encoders" connecting to shared decoder
+
+[VOICEOVER 1:00-1:30] Here's the science: Using Low-Rank Adaptation, devices transmit only compact updates instead of full model data. This reduces costs by over 57% while maintaining performance across both indoor and outdoor scenarios. [VISUAL DIRECTION] Show Figure 3 results with 57% cost reduction highlighted in green, fast cuts between different environment simulations
+
+[VOICEOVER 1:30-1:50] Real impact? Your phone collaborates to enhance network feedback without constantly transmitting your movement patterns. This means better service without privacy compromises as we move toward 6G. [VISUAL DIRECTION] Show phone icon with shield symbol, then transition to 6G network visualization
+
+[VOICEOVER 1:50-2:00] The future is here: collective intelligence without sacrificing individual privacy. [VISUAL DIRECTION] Final text overlay: "57% COST REDUCTION + MAINTAINED PRIVACY" with Nature/Science logo

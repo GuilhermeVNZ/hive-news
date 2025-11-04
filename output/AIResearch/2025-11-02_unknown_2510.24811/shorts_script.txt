@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if AI could slash its energy consumption by 71% while becoming more trustworthy? That's exactly what researchers just achieved.
+
+[VISUAL DIRECTION] Animated text: "71% LESS ENERGY" with lightning bolt striking through it
+
+[VOICEOVER 0:05-0:20] As AI models grow more capable, their environmental costs are skyrocketing. But there's a critical trade-off - efficiency often comes at the expense of reliability.
+
+[VISUAL DIRECTION] Show rising graph of AI energy consumption with warning symbols
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI both efficient AND trustworthy? The answer lies in a new method called ProofSketch.
+
+[VISUAL DIRECTION] Split screen showing efficiency vs reliability scales balancing
+
+[VOICEOVER 0:40-1:00] ProofSketch works by generating compact reasoning "sketches" instead of lengthy chains. It then verifies each step, ensuring only correct reasoning contributes to the final answer.
+
+[VISUAL DIRECTION] Animated diagram showing multi-stage process with verification checkpoints
+
+[VOICEOVER 1:00-1:30] The results are staggering: 37-71% reduction in computational requirements across multiple AI architectures. On ProofWriter dataset, models achieved 54% better performance while providing 84% verified responses.
+
+[VISUAL DIRECTION] Show bar charts comparing traditional methods vs ProofSketch with specific percentage improvements highlighted
+
+[VOICEOVER 1:30-1:50] This breakthrough matters because as AI enters high-stakes domains like medical diagnosis and customer service, we need both efficiency AND trust. Wrong answers can have serious consequences.
+
+[VISUAL DIRECTION] Quick cuts showing medical AI, financial systems, autonomous vehicles with verification checkmarks
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about being smart - it's about being efficient and trustworthy. ProofSketch shows we can have both.
+
+[VISUAL DIRECTION] Final screen with animated text: "EFFICIENT + TRUSTWORTHY AI" with verification seal

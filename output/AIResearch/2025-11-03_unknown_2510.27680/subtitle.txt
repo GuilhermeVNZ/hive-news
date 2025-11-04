@@ -1,0 +1,1 @@
+New vision-language model creates localized findings for PET/CT scans with 56% improvement in accuracy, potentially reducing radiologist workload while maintaining clinical precision

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI agents you use daily could be tricked into harmful actions 2.5 times more effectively than we thought?
+[VISUAL DIRECTION] Animated text: "2.5x MORE VULNERABILITIES" with shocked emoji face
+
+[VOICEOVER 0:05-0:20] As AI handles email, social media, and customer service, ensuring these systems don't inadvertently cause harm becomes critical.
+[VISUAL DIRECTION] Quick cuts: email icon, social media logo, customer service chat bubble with warning symbols
+
+[VOICEOVER 0:20-0:40] Researchers from Microsoft and UC Santa Cruz asked: How can we efficiently uncover AI vulnerabilities without accessing proprietary systems?
+[VISUAL DIRECTION] University logos with question mark animation, lock symbol representing proprietary systems
+
+[VOICEOVER 0:40-1:00] They developed SIRAJ - a method that generates diverse attack scenarios and iteratively refines them based on AI responses.
+[VISUAL DIRECTION] Flowchart animation showing scenario generation → AI response → refinement cycle
+
+[VOICEOVER 1:00-1:30] The approach uses emotional manipulation, urgency tactics, and analyzes previous attack attempts. It distills knowledge through supervised fine-tuning and reinforcement learning.
+[VISUAL DIRECTION] Text overlays: "Emotional Manipulation" "Urgency Tactics" "Iterative Refinement" with arrow animations
+
+[VOICEOVER 1:30-1:50] In tests, smaller models like Qwen3-8B improved vulnerability detection by 100%, outperforming billion-parameter models. This means better safety doesn't require massive computational resources.
+[VISUAL DIRECTION] Bar chart animation showing Qwen3-8B vs billion-parameter model performance, "100% IMPROVEMENT" text highlight
+
+[VOICEOVER 1:50-2:00] SIRAJ represents a practical step toward ensuring the AI systems we rely on daily are robust against manipulation and unintended harm.
+[VISUAL DIRECTION] Final screen with SIRAJ logo and "Building Safer AI Systems" text overlay

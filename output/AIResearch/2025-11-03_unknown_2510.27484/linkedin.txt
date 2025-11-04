@@ -1,0 +1,1 @@
+AI's stated reasons for decisions are often misleading rationalizations, not true drivers. New research reveals chain-of-thought analysis fails to interpret AI reasoning—biases like mentioning 'overqualified' decrease hiring likelihood without explicit reasoning. Essential reading for AI ethics and safety professionals.

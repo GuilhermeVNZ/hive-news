@@ -1,0 +1,1 @@
+New method stops AI from mixing up video scenes, improving search accuracy for untrimmed footage by preserving semantic relationships—crucial for education and surveillance applications.

@@ -1,0 +1,1 @@
+What if a robot's sounds could verify its trustworthiness? WaveVerif uses acoustic side-channel analysis to detect tampering in robotic workflows with 85% accuracy using standard smartphones. This non-invasive method enhances security without hardware modifications. How will this transform automation trust?

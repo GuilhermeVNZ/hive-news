@@ -1,1 +1,0 @@
-AI's 'black box' problem limits its use in healthcare—doctors can't trust automated diagnoses. FaCT solves this by making AI decisions transparent, tracking concepts like 'color' or 'shapes' for clear explanations. Game-changer for real-world AI.

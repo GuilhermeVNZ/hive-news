@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI doctor was 95% confident about a wrong diagnosis? This happens because current AI models struggle with uncertainty in critical tasks.
+[VISUAL DIRECTION] Animated text: "95% CONFIDENT WRONG DIAGNOSIS" with medical cross icon shaking with question marks
+
+[VOICEOVER 0:05-0:20] In high-stakes applications like medical diagnosis and autonomous navigation, AI's inability to properly quantify uncertainty makes them unreliable when we need them most.
+[VISUAL DIRECTION] Quick cuts: medical imaging scan, self-driving car footage, radiation symbol - all with uncertainty question marks overlaying
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that knows when it doesn't know? The challenge was creating models that estimate full probability distributions without relying on oversimplified assumptions.
+[VISUAL DIRECTION] Animated flowchart showing traditional AI outputting single answers vs new approach outputting probability distributions
+
+[VOICEOVER 0:40-1:00] They discovered the Variational Pólya Tree model - a nonparametric Bayesian approach that recursively splits intervals and assigns probabilities using Beta distributions at each branch.
+[VISUAL DIRECTION] Animated tree structure growing with Beta distribution curves at each node, zooming in on distribution shapes
+
+[VOICEOVER 1:00-1:30] Here's how it works: VPT captures complex patterns by building hierarchical dependencies through variational inference, updating each node via backpropagation while maintaining computational efficiency.
+[VISUAL DIRECTION] Technical animation showing backpropagation flowing through tree structure, with computational cost metrics showing minimal overhead
+
+[VOICEOVER 1:30-1:50] On real-world datasets like HEPMASS and MINIBOONE, VPT achieved log-likelihoods of 0.62, outperforming state-of-the-art methods. For image data, it reduced bits-per-dimension on MNIST while improving calibration.
+[VISUAL DIRECTION] Bar charts comparing VPT performance against Block-NAF and other methods, with key metrics highlighted
+
+[VOICEOVER 1:50-2:00] This breakthrough enables AI systems to progress from coarse to fine understanding, making them reliably uncertain when they should be - potentially saving lives in medical and safety-critical applications.
+[VISUAL DIRECTION] Final composite showing medical AI interface with proper uncertainty indicators, text overlay: "RELIABLY UNCERTAIN AI"

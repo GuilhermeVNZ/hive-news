@@ -1,0 +1,1 @@
+Hugging Face's latest streaming enhancements eliminate hours of download time for terabyte-scale AI datasets. With 100x fewer requests and doubled throughput, these improvements address critical bottlenecks in large-scale model training workflows.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI can only automate 2.5% of real-world work tasks? That means 97% of professional work still requires human skill.
+[VISUAL DIRECTION] Animated text: "2.5% AI Success Rate" with dramatic reveal
+
+[VOICEOVER 0:05-0:20] As artificial intelligence advances rapidly, new research provides crucial evidence about what AI can actually accomplish in practical work environments.
+[VISUAL DIRECTION] Show scrolling text of various professions: animation, graphic design, architecture, software development
+
+[VOICEOVER 0:20-0:40] Researchers created the Remote Labor Index to measure AI's ability to handle economically valuable tasks. They asked: Can AI actually replace human professionals in real work scenarios?
+[VISUAL DIRECTION] Show RLI methodology diagram with arrows connecting freelancer projects to AI evaluation
+
+[VOICEOVER 0:40-1:00] The findings are striking: Even the highest-performing AI agents, including ChatGPT and Gemini Pro, achieved only 2.5% success rate across 240 real projects from freelancing platforms.
+[VISUAL DIRECTION] Show bar chart comparing AI 2.5% vs Human 97% performance with dramatic visual contrast
+
+[VOICEOVER 1:00-1:30] How did they test this? They sourced actual freelancer projects covering diverse fields, then had AI generate deliverables using the same inputs. Professional evaluators compared AI outputs against human standards.
+[VISUAL DIRECTION] Split screen showing AI-generated corrupted files vs clean human deliverables
+
+[VOICEOVER 1:30-1:50] Common AI failures included producing corrupted deliverables, poor-quality outputs, and child-like drawings. In architecture, AI submitted truncated designs. This demonstrates AI cannot autonomously handle complex, creative, or technical tasks.
+[VISUAL DIRECTION] Show examples of AI failures: corrupted video files, incomplete architectural designs
+
+[VOICEOVER 1:50-2:00] While AI shows gradual improvement, the gap remains vast. This research provides essential data for understanding AI's real limitations in the workforce.
+[VISUAL DIRECTION] Final screen: "97% of work still requires human expertise" with paper citation

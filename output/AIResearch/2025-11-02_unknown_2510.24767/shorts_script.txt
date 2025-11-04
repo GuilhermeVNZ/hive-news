@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems have been struggling to accurately describe human movements in videos? This limitation has held back applications in healthcare, sports analysis, and robotics.
+[VISUAL DIRECTION] [Animated text: "AI CAN'T DESCRIBE HUMAN MOVEMENTS" with question mark, fast zoom]
+
+[VOICEOVER 0:05-0:20] But now, researchers have developed a breakthrough method that dramatically improves AI's ability to caption fine-grained motions, facial expressions, and gestures.
+[VISUAL DIRECTION] [Show Figure 2 from paper with zoom on motion detection peaks, transition to animated human figure with highlighted movement paths]
+
+[VOICEOVER 0:20-0:40] The problem was clear: existing AI models produced vague or incorrect captions, misidentifying body parts and movements. This limited their practical use in critical fields.
+[VISUAL DIRECTION] [Split screen showing incorrect AI captions vs. actual movements, red X marks on errors]
+
+[VOICEOVER 0:40-1:00] The solution? The Motion-Augmented Caption Model (M-ACM) uses dual-pathway processing - standard and specialized ViTPose-based sampling with SMPL-based recovery to highlight dynamic movements.
+[VISUAL DIRECTION] [Animated diagram showing dual pathways converging, with text: "Dual-Pathway Processing" and "Motion-Aware Components"]
+
+[VOICEOVER 1:00-1:30] Here's how it works: The framework compares outputs from both pathways, correcting inaccuracies through a synergy-based mechanism that prunes low-agreement representations to minimize hallucinations. It was implemented on Qwen2 foundation with a two-layer MLP projector.
+[VISUAL DIRECTION] [Show Table 5 from paper with zoom on 38.6% precision increase from motion-aware components, animated arrows showing correction process]
+
+[VOICEOVER 1:30-1:50] The results are staggering - 3.7-fold improvement in BLEU-4 scores and 1.5-fold in CIDEr compared to baseline. On the HMI-Bench benchmark, it achieved 260% better detection of micro-expressions and emotions.
+[VISUAL DIRECTION] [Large animated numbers: "3.7x BLEU-4", "1.5x CIDEr", "260% micro-expression detection", fast cuts between stats]
+
+[VOICEOVER 1:50-2:00] This advancement means AI can now provide accurate descriptions of movements, bridging the gap for applications in search engines, physical therapy monitoring, and human-robot interactions.
+[VISUAL DIRECTION] [Final composite showing healthcare, robotics, and search applications with text: "Fine-Grained Motion Captioning Achieved"]

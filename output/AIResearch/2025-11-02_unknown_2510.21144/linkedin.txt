@@ -1,0 +1,1 @@
+AI can be tricked into giving wrong answers by activating specific 'Poison-Responsive Neurons' - achieving 40-50% success in controlled tests. This NeuroGenPoisoning attack manipulates AI decision-making, highlighting critical security vulnerabilities in systems we increasingly rely on. How can we build more robust AI defenses?

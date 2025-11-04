@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if you could test GPT-4's capabilities for 90% less cost? This new breakthrough just made AI research accessible to everyone.
+
+[VISUAL DIRECTION] Animated text: "TEST GPT-4 FOR 90% LESS?" with dramatic particle effects
+
+[VOICEOVER 0:05-0:20] Currently, evaluating large language models requires massive computational resources, costing hundreds of thousands of dollars and limiting research to well-funded organizations.
+
+[VISUAL DIRECTION] Show rising cost graphs with dollar signs, then transition to researchers looking frustrated at limited access
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we accurately evaluate AI models without breaking the budget? The challenge was finding the smallest possible test set that still gives reliable results.
+
+[VISUAL DIRECTION] Animated question mark transforming into a magnifying glass scanning test items
+
+[VOICEOVER 0:40-1:00] They discovered Scales++ - a method that selects tiny, representative subsets by analyzing items' intrinsic demands across 16 dimensions like logic and reasoning.
+
+[VISUAL DIRECTION] Show clustering visualization with items grouping by knowledge domains, highlight diverse selection
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, annotate test items across reasoning dimensions. Then create embeddings and cluster them to identify the most diverse subset. Finally, use their GNN predictor to estimate performance without expensive API calls.
+
+[VISUAL DIRECTION] Step-by-step animation: annotation → embedding → clustering → selection, with cost savings counter dropping rapidly
+
+[VOICEOVER 1:30-1:50] The impact? Smaller organizations can now benchmark AI models efficiently. Research accelerates with rapid testing cycles. In experiments, they maintained accuracy rates across models up to 65 billion parameters.
+
+[VISUAL DIRECTION] Show diverse research teams celebrating, rapid testing cycles visualized as spinning wheels
+
+[VOICEOVER 1:50-2:00] Next time you hear about AI breakthroughs, remember - this method ensures they're tested fairly and affordably for all.
+
+[VISUAL DIRECTION] Final text overlay: "Democratizing AI Research" with the Scales++ logo

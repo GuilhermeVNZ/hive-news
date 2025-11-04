@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know even the most advanced AI can't solve high school math competitions?
+[VISUAL DIRECTION] [Animated text: "AI FAILS HIGH SCHOOL MATH" with shocked emoji, fast zoom]
+
+[VOICEOVER 0:05-0:20] Despite rapid progress in artificial intelligence, new research reveals significant gaps in true mathematical understanding.
+[VISUAL DIRECTION] [Show AI brain graphic with question marks, transition to calculator with red X]
+
+[VOICEOVER 0:20-0:40] Researchers created AMO-Bench - 50 original problems exceeding International Mathematical Olympiad standards to test if AI can reason or just memorize.
+[VISUAL DIRECTION] [Show IMO logo, then AMO-Bench title with "50 ORIGINAL PROBLEMS" text overlay]
+
+[VOICEOVER 0:40-1:00] The results? Even the highest-performing model, GPT-5-Thinking, achieved only 35% accuracy. Most models scored much lower.
+[VISUAL DIRECTION] [Bar chart showing 35% accuracy vs 90%+ on standard benchmarks, dramatic red highlight on 35%]
+
+[VOICEOVER 1:00-1:30] AI required 5x more computation - approximately 20,000 tokens versus only 4,000 for standard problems. The benchmark prevented data leakage through expert-created, independently reviewed problems across algebra, functions, geometry, number theory, and combinatorics.
+[VISUAL DIRECTION] [Animated token counter: 20,000 vs 4,000 with scaling animation, show pie chart of problem categories]
+
+[VOICEOVER 1:30-1:50] This matters because if AI can't handle high school mathematics, current systems may not be ready for real-world problem-solving requiring true understanding and pattern recognition.
+[VISUAL DIRECTION] [Transition from math symbols to real-world scenarios: medical diagnosis, financial analysis, engineering designs with question marks]
+
+[VOICEOVER 1:50-2:00] The struggle with high school math reveals AI's fundamental limitations - and the path forward for developing true reasoning systems.
+[VISUAL DIRECTION] [Final text: "AI: SMART BUT CAN'T DO HOMEWORK" with paper available symbol, hold 2 seconds]

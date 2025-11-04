@@ -1,1 +1,0 @@
-AI that shapes its own geometry? Neural Differential Manifold learns on curved spaces, making decisions clearer and more reliable. A breakthrough for trustworthy AI in science.

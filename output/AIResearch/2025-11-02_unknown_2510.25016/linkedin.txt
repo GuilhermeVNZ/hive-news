@@ -1,0 +1,1 @@
+AI can automate 80% of software requirement tasks, but human oversight remains essential for reliability. New Human-AI Requirements Engineering Synergy Model (HARE-SM) combines Flan-T5 and LLaMA-3 for side-by-side comparison, ensuring auditable, transparent workflows. Read how this balances efficiency with critical human judgment in software development.

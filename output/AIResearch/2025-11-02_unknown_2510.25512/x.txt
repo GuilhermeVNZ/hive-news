@@ -1,0 +1,1 @@
+AI's 'black box' problem solved? FaCT reveals how AI thinks—decomposing decisions into human-interpretable concepts (e.g., 'yellow color' for a school bus) and tracing them faithfully. More reliable for healthcare, autonomous driving. Paper: Nature/Science style.

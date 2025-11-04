@@ -1,0 +1,1 @@
+BREAKING: AWS and OpenAI announce $38B partnership 🤝 OpenAI gets access to hundreds of thousands of NVIDIA GPUs on AWS infrastructure to power ChatGPT and train next-gen AI models. The AI compute arms race just escalated. #AI #CloudComputing #OpenAI #AWS

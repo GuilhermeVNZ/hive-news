@@ -1,0 +1,1 @@
+AI now generates detailed MRI reports with 0.39 ROUGE-L score, beating traditional methods. This breakthrough uses transformers to capture long-range patterns crucial for diagnosis, reducing radiologist workload while maintaining accuracy.

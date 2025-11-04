@@ -1,0 +1,1 @@
+AI can't tell if it's watching the same action from different angles. New research shows video AI models drop to 50% accuracy when perspective changes - a critical flaw for autonomous systems and security. Nature/Science study reveals the viewpoint-invariant problem.

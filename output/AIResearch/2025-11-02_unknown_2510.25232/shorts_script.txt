@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could detect multiple mental health conditions in a single conversation?
+[VISUAL DIRECTION] Animated text: "AI Mental Health Screening" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Mental disorders affect millions globally, but diagnosing multiple conditions at once remains challenging for healthcare professionals.
+[VISUAL DIRECTION] Show global mental health statistics with animated map, zoom into healthcare professional consulting patient
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that understands the complexity of comorbid conditions like depression, bipolar disorder, and ADHD?
+[VISUAL DIRECTION] Show overlapping circles representing comorbid conditions, transition to researcher at computer
+
+[VOICEOVER 0:40-1:00] They developed PsyCoTalk - a dataset of simulated doctor-patient dialogues that mimics real clinical interactions.
+[VISUAL DIRECTION] Show animated conversation flow between doctor and patient avatars, highlight dialogue bubbles
+
+[VOICEOVER 1:00-1:30] Using a hierarchical state machine framework, the AI follows clinical interview protocols, asking targeted questions and incorporating patient history dynamically.
+[VISUAL DIRECTION] Show HDSM framework diagram with step-by-step progression, zoom on question hierarchy
+
+[VOICEOVER 1:30-1:50] Results show improved exact-match cases and higher F1 scores for anxiety detection, validated by licensed psychiatrists.
+[VISUAL DIRECTION] Show performance metrics comparison chart, highlight improved scores over baseline methods
+
+[VOICEOVER 1:50-2:00] This breakthrough could transform how we train healthcare professionals to diagnose complex mental health conditions.
+[VISUAL DIRECTION] Final screen with key takeaway text: "AI-powered mental health screening is here"

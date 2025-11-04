@@ -154,7 +154,16 @@ impl HtmlCollector {
     /// true se o collector precisa de JavaScript rendering
     fn needs_js_rendering(collector_id: Option<&str>) -> bool {
         // Lista de collectors que precisam de JavaScript rendering
-        const JS_COLLECTORS: &[&str] = &["html_meta_ai", "html_anthropic", "html_alibaba_damo", "html_xai", "html_deepseek"];
+        const JS_COLLECTORS: &[&str] = &[
+            "html_meta_ai", 
+            "html_anthropic", 
+            "html_alibaba_damo", 
+            "html_xai", 
+            "html_deepseek",
+            "html_mistral_ai",  // 308 redirect, precisa JS
+            "html_character_ai", // 308 redirect, precisa JS
+            "html_intel_ai",     // 403, precisa JS
+        ];
         
         if let Some(id) = collector_id {
             JS_COLLECTORS.contains(&id)
@@ -1114,7 +1123,7 @@ impl HtmlCollector {
     }
 
     /// Busca conteúdo completo do artigo pela URL
-    async fn fetch_full_article(
+    pub async fn fetch_full_article(
         &self,
         article_url: &str,
         selectors: Option<&HashMap<String, String>>,
@@ -1124,7 +1133,11 @@ impl HtmlCollector {
             || article_url.contains("anthropic.com")
             || article_url.contains("alizila.com")
             || article_url.contains("x.ai")
-            || article_url.contains("deepseek.ai");
+            || article_url.contains("deepseek.ai")
+            || article_url.contains("time.com")
+            || article_url.contains("mistral.ai")
+            || article_url.contains("character.ai")
+            || article_url.contains("intel.com");
         
         let html_content = if needs_js {
             // Usar Playwright para renderizar JavaScript

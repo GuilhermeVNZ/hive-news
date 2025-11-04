@@ -1,0 +1,1 @@
+AI decision trees waste effort on equivalent actions. IPA-UCT prunes redundancies, cutting resource use while maintaining performance. Faster, efficient AI for real-time applications is here.

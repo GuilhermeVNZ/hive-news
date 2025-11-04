@@ -1,0 +1,1 @@
+AI hallucinations detected instantly using embedding isotropy. When LLMs generate factual content, embeddings cluster tightly; hallucinations show dispersion. New method outperforms existing approaches, achieving R² 0.65 on FactScore-Bio with only 5 samples. Essential for trustworthy AI in high-stakes fields. Nature/Science research.

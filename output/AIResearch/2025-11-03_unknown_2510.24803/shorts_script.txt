@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI agents could judge their own conversations to solve problems more efficiently? [VISUAL DIRECTION] Animated text: "AI JUDGES ITSELF" with question mark, fast zoom in
+
+[VOICEOVER 0:05-0:20] Multi-agent AI systems promise to tackle complex tasks, but often waste computation on unproductive conversations. [VISUAL DIRECTION] Show multiple AI agent icons with crossed-out conversation bubbles, transition to frustrated emoji faces
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to evaluate which conversation steps actually advance toward solutions? [VISUAL DIRECTION] Show thought bubble with "Which path works?" over branching conversation tree diagram
+
+[VOICEOVER 0:40-1:00] They discovered MASPRM - a method that lets AI agents estimate progress mid-conversation, boosting math problem accuracy by 30.7 percentage points. [VISUAL DIRECTION] Show GSM8K dataset graph zooming from 43.9% to 74.6%, highlight the 30.7-point jump
+
+[VOICEOVER 1:00-1:30] Using Monte Carlo Tree Search, the system simulates conversations and learns which actions contribute to progress, not just final outcomes. [VISUAL DIRECTION] Animated MCTS tree expanding, with green highlights on successful paths, red X's on dead ends
+
+[VOICEOVER 1:30-1:50] This means more reliable AI assistants for education, coding, and complex problem-solving scenarios. [VISUAL DIRECTION] Quick cuts: classroom setting, code editor, research lab - all with AI assistant icons
+
+[VOICEOVER 1:50-2:00] AI that can judge its own progress - the future of collaborative problem-solving is here. [VISUAL DIRECTION] Final text overlay: "74.6% ACCURACY" with Nature/Science logo, slow fade

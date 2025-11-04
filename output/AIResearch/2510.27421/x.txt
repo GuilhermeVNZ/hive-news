@@ -1,0 +1,1 @@
+Medical AI fails younger patients: Tumor detection algorithms perform substantially worse for people under 40, new research shows. This age bias persists even with balanced training data, raising serious concerns about equitable healthcare technology deployment.

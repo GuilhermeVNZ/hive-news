@@ -1,0 +1,1 @@
+What if training AI on 400 languages doesn't degrade performance? EPFL research overturns conventional wisdom: multilingual data mixtures don't inherently harm single-language capability. Should we rethink how we train inclusive AI systems?

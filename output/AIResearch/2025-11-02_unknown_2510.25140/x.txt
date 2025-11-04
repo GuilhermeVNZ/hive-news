@@ -1,0 +1,1 @@
+AI breakthrough: DINO-YOLO achieves 88.6% better object detection with just 5,233 training images by strategically injecting pre-trained transformer weights. This Nature/Science study shows how self-supervised learning overcomes data scarcity in engineering applications while maintaining real-time performance.

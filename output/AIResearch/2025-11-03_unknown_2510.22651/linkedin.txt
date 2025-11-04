@@ -1,0 +1,1 @@
+AI systems often make confident wrong decisions in critical applications like medical diagnosis. The new Variational Pólya Tree model addresses this by quantifying uncertainty through nonparametric Bayesian deep learning, achieving state-of-the-art performance on real-world datasets. How might this transform high-stakes AI reliability?

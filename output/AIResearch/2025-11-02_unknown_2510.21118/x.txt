@@ -1,0 +1,1 @@
+AI's hidden danger: 6% of GPT-5 outputs exist in a 'gray zone' where truth depends on interpretation. New research shows even advanced models struggle with ambiguity. The VeriGray benchmark exposes fundamental verification challenges.

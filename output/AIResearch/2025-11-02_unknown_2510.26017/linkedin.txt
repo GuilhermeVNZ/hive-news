@@ -1,0 +1,1 @@
+AI can now predict coastal flooding in seconds instead of weeks. CASPIAN-v2, a deep learning model, reduces prediction errors by nearly 20% and achieves 99% accuracy in identifying non-flooded areas. How might this transform urban climate resilience planning?

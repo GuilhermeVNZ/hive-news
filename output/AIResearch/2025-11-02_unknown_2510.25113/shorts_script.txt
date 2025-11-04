@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if neural networks could learn their own geometry, creating curved spaces where distance actually means something?
+[VISUAL DIRECTION] Animated text: "NEURAL NETWORKS WITH CURVATURE" with geometric shapes morphing from flat to curved surfaces
+
+[VOICEOVER 0:05-0:20] Conventional neural networks operate in flat Euclidean spaces, limiting their ability to model complex relationships in data. This fundamental design constraint affects everything from AI interpretability to efficiency.
+[VISUAL DIRECTION] Show comparison animation: flat grid vs curved manifold surface, with data points clustering differently on each
+
+[VOICEOVER 0:20-0:40] Researchers asked: What if we could embed geometric structure directly into neural networks, making distance meaningful?
+[VISUAL DIRECTION] Zoom on Figure 2 showing coordinate transitions between layers, with arrows indicating invertible transformations
+
+[VOICEOVER 0:40-1:00] They discovered the Neural Differential Manifold - an architecture that treats networks as curved spaces where each point has its own Riemannian metric defining local distances.
+[VISUAL DIRECTION] Animated text: "NEURAL DIFFERENTIAL MANIFOLD" with rotating 3D manifold showing local coordinate charts
+
+[VOICEOVER 1:00-1:30] The system works through three synergistic layers: Coordinate layers handle transitions, Metric layers generate Riemannian tensors, and Evolution layers optimize both task performance and geometric properties.
+[VISUAL DIRECTION] Show architectural diagram with three layers highlighted, zooming into the auxiliary sub-networks generating positive-definite tensors
+
+[VOICEOVER 1:30-1:50] This means AI systems could become more interpretable - distances on the manifold reflect semantic similarities, and the architecture naturally discourages overfitting through geometric regularization.
+[VISUAL DIRECTION] Show regions of manifold corresponding to stable concepts, with text overlays: "SEMANTIC DISTANCE = MANIFOLD DISTANCE"
+
+[VOICEOVER 1:50-2:00] The result? AI that doesn't just process information, but understands it through geometry - making systems both powerful and transparent.
+[VISUAL DIRECTION] Final shot of manifold with geodesic paths connecting concepts, text: "GEOMETRIC AI IS HERE"

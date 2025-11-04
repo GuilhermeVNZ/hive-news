@@ -1,0 +1,1 @@
+What if AI could achieve near-lossless performance while using 80% fewer resources? TetraJet-v2 enables highly efficient, low-precision training that slashes costs without sacrificing quality. This breakthrough makes advanced AI accessible and sustainable. Read the Nature paper to understand how this transforms AI development.

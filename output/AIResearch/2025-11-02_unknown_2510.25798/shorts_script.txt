@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems lose 30% of their knowledge every time they update? This catastrophic forgetting makes them unreliable for critical applications.
+[VISUAL DIRECTION] Animated text: "AI FORGETS 30%" with crumbling memory icons
+[VOICEOVER 0:05-0:20] As misinformation spreads rapidly, we need AI that stays accurate over time without constant retraining. Current systems distort previous knowledge when learning new information.
+[VISUAL DIRECTION] Show news headlines changing rapidly with "OUTDATED" stamps
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that updates knowledge like the human brain - selectively and without interference?
+[VISUAL DIRECTION] Split screen showing brain activity vs traditional AI architecture
+[VOICEOVER 0:40-1:00] They discovered MemEIC - a framework that mimics brain lateralization, using separate modules for language and visual processing connected by a callosum-like connector.
+[VISUAL DIRECTION] Animated diagram showing dual-LoRA adapters with selective integration
+[VOICEOVER 1:00-1:30] MemEIC decomposes queries into components, editing only what's needed. In tests updating Boris Johnson to Donald Trump labels, it maintained 99% accuracy through 100 sequential updates while baselines dropped to 30% reliability.
+[VISUAL DIRECTION] Show CCKEB benchmark results with 98.93% vs baseline numbers
+[VOICEOVER 1:30-1:50] This enables real-time fact-checking, educational updates, and media moderation as information evolves - reducing computational costs by 90% compared to retraining.
+[VISUAL DIRECTION] Fast cuts showing applications: news correction, educational content updating
+[VOICEOVER 1:50-2:00] MemEIC represents a step toward AI that learns continuously without forgetting - essential for responsible deployment in our dynamic information landscape.

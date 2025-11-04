@@ -1,0 +1,1 @@
+Self-driving cars stumble in just 0.03% of scenarios—like avoiding sudden road hazards. Waymo's WOD-E2E dataset reveals current AI struggles with rare but critical events, pushing for safer, human-like decision-making. Dive into the Nature/Science findings.

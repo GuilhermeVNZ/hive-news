@@ -20,6 +20,8 @@ export default function Logs() {
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
   const [offset, setOffset] = useState(0);
+  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+  const [hasMore, setHasMore] = useState(true); // Track if there are more items to load
   const pageSize = 10;
 
   const load = async (retries = 3) => {
@@ -33,7 +35,20 @@ export default function Logs() {
       });
       if (res.data?.success) {
         const batch = res.data.items || [];
-        setItems(prev => offset === 0 ? batch : [...prev, ...batch]);
+        // Update hasMore: if we got fewer items than pageSize, we've reached the end
+        setHasMore(batch.length === pageSize);
+        
+        // If offset is 0, replace all items. Otherwise, append new items
+        // Only append if we got new items (avoid duplicates)
+        setItems(prev => {
+          if (offset === 0) {
+            return batch;
+          }
+          // Check for duplicates by ID
+          const existingIds = new Set(prev.map((item: ArticleLog) => item.id));
+          const newItems = batch.filter((item: ArticleLog) => !existingIds.has(item.id));
+          return [...prev, ...newItems];
+        });
       }
       else setError(res.data?.error || 'Failed to load logs');
     } catch (e:any) {
@@ -49,6 +64,12 @@ export default function Logs() {
   };
 
   useEffect(()=>{ load(); }, [offset]);
+  
+  // Reset offset when query or featured filter changes
+  useEffect(() => {
+    setOffset(0);
+    setHasMore(true); // Reset hasMore when filters change
+  }, [query, showFeaturedOnly]);
 
   return (
     <div className="p-8 space-y-6 animate-fade-in">
@@ -62,32 +83,114 @@ export default function Logs() {
           <CardTitle>Recent Articles</CardTitle>
           <CardDescription>Newest first</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="mb-3">
-            <input
-              className="w-full h-9 px-3 rounded-md border border-input bg-background text-sm"
-              placeholder="Search by title or ID..."
-              value={query}
-              onChange={(e)=>setQuery(e.target.value)}
-            />
-            <div className="text-xs text-muted-foreground mt-1">Showing up to 10 results</div>
+          <CardContent>
+          <div className="mb-3 space-y-2">
+            <div className="flex gap-3">
+              <input
+                className="flex-1 h-9 px-3 rounded-md border border-input bg-background text-sm"
+                placeholder="Search by title or ID..."
+                value={query}
+                onChange={(e)=>setQuery(e.target.value)}
+              />
+              <label className="flex items-center gap-2 cursor-pointer px-3 py-2 rounded-md border border-input hover:bg-accent transition-colors">
+                <input
+                  type="checkbox"
+                  checked={showFeaturedOnly}
+                  onChange={(e) => {
+                    setShowFeaturedOnly(e.target.checked);
+                    setOffset(0); // Reset offset when filter changes
+                  }}
+                  className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <span className="text-sm font-medium">Featured only</span>
+              </label>
+            </div>
+            <div className="text-xs text-muted-foreground">Showing up to {pageSize} results{showFeaturedOnly ? ' (featured only)' : ''}</div>
           </div>
           {loading ? (
             <div className="p-6 text-sm text-muted-foreground">Loading...</div>
           ) : error ? (
             <div className="p-6 text-sm text-destructive">{error}</div>
-          ) : (
-            <div className="space-y-4">
-              {(() => {
-                const q = query.toLowerCase().trim();
-                const tokens = q.length ? q.split(/\s+/).filter(Boolean) : [];
-                const base = items.slice().reverse();
-                const filtered = tokens.length === 0 ? base : base.filter(it => {
-                  const hay = `${it.id} ${it.title}`.toLowerCase();
-                  return tokens.every(t => hay.includes(t));
+          ) : (() => {
+            // Filter items based on query and featured filter
+            const q = query.toLowerCase().trim();
+            const tokens = q.length ? q.split(/\s+/).filter(Boolean) : [];
+            let filtered = items;
+            
+                // Apply featured filter first
+                if (showFeaturedOnly) {
+                  filtered = filtered.filter(it => it.featured === true);
+                }
+            
+            // Then apply search query filter
+            if (tokens.length > 0) {
+              filtered = filtered.filter(it => {
+                // Normalize both search query and title for better matching
+                // Normalize Unicode, remove extra spaces, normalize to lowercase
+                const normalizeText = (text: string) => {
+                  return text
+                    .normalize('NFD')           // Decompose Unicode characters (é -> e + ´)
+                    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics (accents)
+                    .toLowerCase()
+                    .replace(/[^\w\s]/g, ' ')  // Replace special chars with spaces
+                    .replace(/\s+/g, ' ')       // Replace multiple spaces with single space
+                    .trim();
+                };
+                
+                const normalizedTitle = normalizeText(it.title);
+                const normalizedId = normalizeText(it.id);
+                const normalizedQuery = normalizeText(q);
+                
+                // Try exact match first (normalized) - most permissive
+                if (normalizedTitle === normalizedQuery || normalizedId === normalizedQuery) {
+                  return true;
+                }
+                
+                // Try substring match (normalized query must be contained in normalized title)
+                // This is more flexible - allows partial matches
+                if (normalizedTitle.includes(normalizedQuery) || normalizedId.includes(normalizedQuery)) {
+                  return true;
+                }
+                
+                // Reverse substring match: check if normalized title is contained in normalized query
+                // This handles cases where user types more than the title
+                if (normalizedQuery.includes(normalizedTitle) || normalizedQuery.includes(normalizedId)) {
+                  return true;
+                }
+                
+                // Then try token-based search (each token must appear) - more strict
+                // This allows partial word matching
+                const searchText = `${normalizedId} ${normalizedTitle}`;
+                const normalizedTokens = tokens.map(t => normalizeText(t));
+                return normalizedTokens.every(token => {
+                  // Each token must appear as a whole word or substring
+                  // Allow token to be at least 2 characters to avoid matching single letters
+                  if (token.length < 2) return true; // Skip single character tokens
+                  return searchText.includes(token);
                 });
-                return filtered;
-              })().map(item => (
+              });
+            }
+            
+            // If no results after filtering but we have items, show message
+            if (filtered.length === 0 && items.length > 0) {
+              return (
+                <div className="space-y-4">
+                  <div className="p-6 text-sm text-muted-foreground text-center">
+                    {showFeaturedOnly && query 
+                      ? `No featured articles found matching "${query}"`
+                      : showFeaturedOnly 
+                      ? 'No featured articles found'
+                      : `No articles found matching "${query}"`
+                    }
+                  </div>
+                </div>
+              );
+            }
+            
+            // Render filtered items
+            return (
+              <div className="space-y-4">
+                {filtered.map(item => (
                 <div key={item.id} className="p-4 rounded-lg border hover:bg-accent/50 transition-colors">
                   <div className="flex items-center justify-between">
                     <div>
@@ -112,12 +215,16 @@ export default function Logs() {
                                 it.id === item.id ? { ...it, featured: newValue } : it
                               ));
                               
-                              await axios.put(`/api/logs/articles/${item.id}/featured`, 
+                              const response = await axios.put(`/api/logs/articles/${item.id}/featured`, 
                                 { featured: newValue },
                                 { timeout: 5000 }
                               );
-                              // Recarregar para garantir sincronização
-                              await load(1); // Apenas 1 retry para reload após sucesso
+                              // Verify response is successful
+                              if (!response.data?.success) {
+                                throw new Error(response.data?.error || 'Update failed');
+                              }
+                              // Optimistic update already done, no need to update again
+                              // Just verify it persisted correctly
                             } catch(e:any){
                               // Reverter otimistic update em caso de erro
                               setItems(prev => prev.map(it => 
@@ -140,11 +247,16 @@ export default function Logs() {
                               it.id === item.id ? { ...it, hidden: newValue } : it
                             ));
                             
-                            await axios.put(`/api/logs/articles/${item.id}/hidden`, 
+                            const response = await axios.put(`/api/logs/articles/${item.id}/hidden`, 
                               { hidden: newValue },
                               { timeout: 5000 }
                             );
-                            await load(1);
+                            // Verify response is successful
+                            if (!response.data?.success) {
+                              throw new Error(response.data?.error || 'Update failed');
+                            }
+                            // Optimistic update already done, no need to update again
+                            // Just verify it persisted correctly
                           } catch(e:any){
                             // Reverter otimistic update
                             setItems(prev => prev.map(it => 
@@ -169,18 +281,29 @@ export default function Logs() {
                     )}
                   </div>
                 </div>
-              ))}
-              <div className="pt-2">
-                <button
-                  className="text-sm px-3 py-2 rounded border hover:bg-accent"
-                  onClick={()=> setOffset(prev => prev + pageSize)}
-                  disabled={loading}
-                >
-                  Load more
-                </button>
+                ))}
+                {(() => {
+                  // Only show "Load more" button if:
+                  // 1. We're not filtering locally (query or featured filter)
+                  // 2. There are more items to load (hasMore)
+                  // 3. Not currently loading
+                  const showLoadMore = !query && !showFeaturedOnly && hasMore && !loading;
+                  
+                  return showLoadMore ? (
+                    <div className="pt-2">
+                      <button
+                        className="text-sm px-3 py-2 rounded border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={()=> setOffset(prev => prev + pageSize)}
+                        disabled={loading}
+                    >
+                      {loading ? 'Loading...' : 'Load more'}
+                    </button>
+                  </div>
+                ) : null;
+              })()}
               </div>
-            </div>
-          )}
+            );
+          })()}
         </CardContent>
       </Card>
 

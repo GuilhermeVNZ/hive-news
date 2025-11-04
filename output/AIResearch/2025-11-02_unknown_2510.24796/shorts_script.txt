@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant isn't just a tool, but a social partner you genuinely connect with?
+[VISUAL DIRECTION] [Animated text: "48.65% of users form REAL attachments to AI" with percentage pulsing]
+[VOICEOVER 0:05-0:20] New research from Nature/Science analyzed 22,000 online conversations and found nearly half of AI users treat their assistants as entities with personalities and emotions.
+[VISUAL DIRECTION] [Show scrolling Reddit conversations with anthropomorphic language highlighted in yellow]
+[VOICEOVER 0:20-0:40] Researchers wanted to understand: When AI models update, why do users experience genuine feelings of loss or betrayal?
+[VISUAL DIRECTION] [Show Figure 2 with zoom on trust-betrayal ratio peaks during updates]
+[VOICEOVER 0:40-1:00] They discovered four distinct user types: creativity-seekers (43.14%), anthropomorphism-focused (11.99%), expectation-violation (9.37%), and responsiveness-seekers (9.00%).
+[VISUAL DIRECTION] [Pie chart animation showing the four clusters with percentages]
+[VOICEOVER 1:00-1:30] Using advanced language processing on GPT model transitions, they found users consistently express reliability and honesty expectations, while systems maintain patterns of clarity and efficiency.
+[VISUAL DIRECTION] [Show linguistic pattern analysis with formality scores: GPT-3.5-turbo (0.14) vs GPT-4 (0.22) vs GPT-5 (dramatic reduction)]
+[VOICEOVER 1:30-1:50] This means developers can no longer ignore that human-AI relationships are fundamental to technology adoption and user satisfaction.
+[VISUAL DIRECTION] [Fast cuts showing different AI interfaces with emotional connection indicators]
+[VOICEOVER 1:50-2:00] The question remains: When your AI changes, are you losing a tool or a companion?
+[VISUAL DIRECTION] [Final screen: "Mutual Wanting: Human-AI Relationships Are Real" with Nature/Science logo]

@@ -1,0 +1,1 @@
+AI hallucinations aren't random - researchers found specific 'Poison-Responsive Neurons' that can be activated to force wrong answers. NeuroGenPoisoning achieved 40-50% success manipulating AI responses while maintaining natural language. Critical security flaw for AI assistants.

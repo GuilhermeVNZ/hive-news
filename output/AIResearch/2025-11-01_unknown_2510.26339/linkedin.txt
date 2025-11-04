@@ -1,0 +1,1 @@
+Medical imaging text often becomes unreadable - with dangerous consequences. GLYPH-SR AI achieves what previous methods couldn't: restoring both visual quality AND text accuracy simultaneously. This breakthrough improves text recognition by +15.18 percentage points over baseline methods. How could this transform your industry?

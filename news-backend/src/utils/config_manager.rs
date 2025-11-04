@@ -164,6 +164,7 @@ impl ConfigManager {
     }
 
     /// Update collector status (enabled/disabled)
+    #[allow(dead_code)]
     pub fn update_collector_status(&self, collector_id: &str, enabled: bool) -> Result<()> {
         let mut config = self.load()?;
         
@@ -195,6 +196,97 @@ impl ConfigManager {
         }
         
         self.save(&config)
+    }
+
+    /// Sync collectors_config.json from system_config.json
+    /// This reads all enabled collectors from all enabled sites in system_config.json
+    /// and generates/updates collectors_config.json
+    pub fn sync_from_system_config(system_config_path: &Path, collectors_config_path: &Path) -> Result<()> {
+        use crate::utils::site_config_manager::SiteConfigManager;
+        use std::collections::HashMap;
+
+        eprintln!("🔄 [SYNC] Syncing collectors_config.json from system_config.json...");
+        eprintln!("🔍 [DEBUG] system_config_path: {} (exists: {})", system_config_path.display(), system_config_path.exists());
+        eprintln!("🔍 [DEBUG] collectors_config_path: {} (exists: {})", collectors_config_path.display(), collectors_config_path.exists());
+        
+        // Verify system_config.json exists
+        if !system_config_path.exists() {
+            return Err(anyhow::anyhow!(
+                "system_config.json not found at: {}. Please ensure the file exists.",
+                system_config_path.display()
+            ));
+        }
+        
+        // Load system_config.json
+        let system_manager = SiteConfigManager::new(system_config_path);
+        let system_config = system_manager.load()
+            .context(format!("Failed to load system_config.json from: {}", system_config_path.display()))?;
+        
+        eprintln!("🔄 [SYNC] Loaded system_config.json with {} sites", system_config.sites.len());
+        
+        // Extract all enabled collectors from all enabled sites
+        let mut collectors_map: HashMap<String, CollectorConfig> = HashMap::new();
+        
+        for (site_id, site) in &system_config.sites {
+            if site.enabled {
+                eprintln!("🔄 [SYNC] Processing site: {} ({} collectors)", site_id, site.collectors.len());
+                for site_collector in &site.collectors {
+                    eprintln!("🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?})", site_collector.id, site_collector.enabled, site_collector.collector_type);
+                    let collector_id = site_collector.id.clone();
+                    
+                    // Convert from site_config_manager::CollectorConfig to config_manager::CollectorConfig
+                    // Note: config_manager::CollectorConfig doesn't have destinations field
+                    let config_collector = CollectorConfig {
+                        id: site_collector.id.clone(),
+                        name: site_collector.name.clone(),
+                        enabled: site_collector.enabled,
+                        api_key: site_collector.api_key.clone(),
+                        collector_type: site_collector.collector_type.clone(),
+                        feed_url: site_collector.feed_url.clone(),
+                        base_url: site_collector.base_url.clone(),
+                        selectors: site_collector.selectors.clone(),
+                        config: site_collector.config.clone(),
+                    };
+                    
+                    // Deduplicate by ID (if same collector appears in multiple sites, keep first found)
+                    if !collectors_map.contains_key(&collector_id) {
+                        collectors_map.insert(collector_id.clone(), config_collector);
+                        eprintln!("🔄 [SYNC]     ✅ Added collector: {}", collector_id);
+                    } else {
+                        // If already exists, but new one is enabled and old one is not, update status
+                        if let Some(existing) = collectors_map.get_mut(&collector_id) {
+                            if site_collector.enabled && !existing.enabled {
+                                existing.enabled = true;
+                                eprintln!("🔄 [SYNC] Updated collector '{}' status to enabled", collector_id);
+                            }
+                        }
+                    }
+                }
+            } else {
+                eprintln!("🔄 [SYNC] Skipping disabled site: {}", site_id);
+            }
+        }
+        
+        // Convert HashMap to Vec
+        let all_collectors: Vec<CollectorConfig> = collectors_map.into_values().collect();
+        
+        eprintln!("🔄 [SYNC] Extracted {} collectors (deduplicated)", all_collectors.len());
+        eprintln!("🔄 [SYNC] Enabled collectors: {}", all_collectors.iter().filter(|c| c.enabled).count());
+        
+        // Create CollectorsConfig
+        let collectors_config = CollectorsConfig {
+            collectors: all_collectors,
+            updated_at: chrono::Utc::now().to_rfc3339(),
+        };
+        
+        // Save to collectors_config.json
+        let collectors_manager = ConfigManager::new(collectors_config_path);
+        collectors_manager.save(&collectors_config)
+            .context(format!("Failed to save collectors_config.json: {}", collectors_config_path.display()))?;
+        
+        eprintln!("✅ [SYNC] Successfully synced collectors_config.json from system_config.json");
+        
+        Ok(())
     }
 }
 

@@ -1,0 +1,13 @@
+Anthropic has unveiled a new funding program to support third-party organizations in developing evaluations for AI models. This move targets the growing demand for robust testing methods that can accurately measure capabilities and safety risks in advanced systems. The initiative comes as the AI industry grapples with inconsistent evaluation standards that often fail to keep pace with rapid technological advancements.
+
+The program focuses on three key areas: AI Safety Levels (ASLs) assessments, advanced capability metrics, and tools to streamline evaluation infrastructure. ASLs, part of Anthropic's Responsible Scaling Policy, define safety requirements based on model capabilities, ensuring responsible development and deployment. By funding external evaluations, Anthropic aims to create a more independent and reliable testing ecosystem.
+
+Developing high-quality evaluations is notoriously difficult, with common pitfalls including reliance on memorized training data and insufficient difficulty. Anthropic's guidelines emphasize the need for tests that are scalable, diverse in format, and validated by domain experts. For instance, evaluations should avoid multiple-choice-only formats and incorporate task-based scenarios like code testing or human trials.
+
+The initiative encourages submissions that are efficient, well-documented, and reproducible, using standards such as Inspect or METR. Proposals should start small, with iterative refinements based on model performance feedback. This approach helps identify flaws early, ensuring evaluations accurately reflect real-world risks and capabilities.
+
+Anthropic will provide funding and expert guidance from teams like the Frontier Red Team and Trust Safety, offering tailored support for selected projects. Submissions will be reviewed on a rolling basis, with opportunities for direct collaboration to enhance evaluation impact. The goal is to foster a community-driven effort that elevates AI safety standards across the industry.
+
+This initiative aligns with broader industry trends toward third-party oversight, as AI models become more powerful and integrated into critical systems. By investing in external evaluations, Anthropic seeks to mitigate risks and build trust, though the effectiveness will depend on widespread adoption and rigorous implementation.
+
+Ultimately, the program aims to catalyze progress toward comprehensive AI evaluation as an industry norm. As models evolve, standardized assessments could play a crucial role in ensuring safety and accountability, benefiting developers, regulators, and users alike.

@@ -1,0 +1,1 @@
+What if we could decode what someone sees directly from brain activity? EBRA achieves universal visual decoding without subject-specific fine-tuning, advancing scalable neurotechnology. Read the NeurIPS 2025 study.

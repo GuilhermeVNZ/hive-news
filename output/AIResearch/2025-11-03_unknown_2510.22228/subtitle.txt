@@ -1,0 +1,1 @@
+Removing even one layer from large language models severely impairs their ability to solve complex problems, revealing a critical trade-off between efficiency and intelligence.

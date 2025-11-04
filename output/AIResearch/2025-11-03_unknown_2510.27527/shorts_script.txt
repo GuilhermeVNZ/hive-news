@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could achieve near-lossless performance while using 80% fewer resources?
+[VISUAL DIRECTION] Animated text: "80% FEWER RESOURCES" with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] Training large language models costs millions, creating barriers for researchers and companies developing next-generation AI systems.
+[VISUAL DIRECTION] Show rising cost graphs with dollar amounts, transition to researchers looking frustrated
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we train AI models with simplified representations without losing performance?
+[VISUAL DIRECTION] Animated question mark transforming into simplified neural network diagram
+
+[VOICEOVER 0:40-1:00] TetraJet-v2 achieves near-lossless results through full quantization at 4-bit precision, with activation outliers controlled.
+[VISUAL DIRECTION] Show Figure 2 with zoom on peak distribution, highlight outlier regions being contained
+
+[VOICEOVER 1:00-1:30] The system uses double-block design with NVFP4 format and OsciReset algorithm to suppress weight oscillation. OutControl retains critical channels at higher precision during forward and backward passes.
+[VISUAL DIRECTION] Animated diagram showing double-block architecture, oscillating weights being stabilized, critical channels highlighted in different colors
+
+[VOICEOVER 1:30-1:50] In experiments, TetraJet-v2 reduced resource use by 80% while achieving 43.41% on ARC test and 18.52 perplexity on Wikitext-103.
+[VISUAL DIRECTION] Fast cuts between benchmark results, show comparison charts with traditional methods vs TetraJet-v2
+
+[VOICEOVER 1:50-2:00] This breakthrough makes advanced AI accessible and sustainable for everyone.
+[VISUAL DIRECTION] Final text overlay: "AI FOR ALL" with the Nature logo, slow fade out

@@ -1,0 +1,1 @@
+Shocking AI fairness gap: Distilling large models to smaller ones undermines bias mitigation, increasing susceptibility by 12.5 percentage points. New research reveals critical risks for hiring and healthcare AI systems.

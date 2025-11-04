@@ -1,0 +1,1 @@
+New AI breakthrough: DualCap generates accurate image captions using only 11M parameters. Outperforms existing methods by 3.26% BLEU-4 scores while cutting inference time to 0.25 seconds. Could transform real-time assistive tech and content moderation systems.

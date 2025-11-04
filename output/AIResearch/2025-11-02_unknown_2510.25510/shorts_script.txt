@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could debug its own mistakes like a human programmer?
+[VISUAL DIRECTION] Animated text: "AI DEBUGS ITSELF" with glitching code animation
+
+[VOICEOVER 0:05-0:20] Researchers just developed MTIR-SQL, a framework where AI tests and refines SQL translations through iterative corrections.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance metrics - fast cuts between accuracy charts
+
+[VOICEOVER 0:20-0:40] The problem? Current AI tools often produce flawed SQL code that can't self-correct, leading to unreliable analytics.
+[VISUAL DIRECTION] Animation of broken SQL queries with red X marks - hold on error examples
+
+[VOICEOVER 0:40-1:00] Their breakthrough: A 4-billion-parameter model outperformed existing 175-billion parameter systems on BIRD and SPIDER benchmarks.
+[VISUAL DIRECTION] Side-by-side comparison showing smaller model outperforming larger one - text overlay: "4B > 175B"
+
+[VOICEOVER 1:00-1:30] How? The AI executes SQL in test environments, learns from incorrect outputs, and adjusts queries rather than starting from scratch.
+[VISUAL DIRECTION] Flowchart animation showing iterative correction process - pan across decision paths
+
+[VOICEOVER 1:30-1:50] This means non-experts could soon use natural language for complex database queries without technical intervention.
+[VISUAL DIRECTION] Show customer support dashboard transforming with AI assistance - fast cuts to business applications
+
+[VOICEOVER 1:50-2:00] Self-correcting AI isn't just smarter—it's fundamentally more reliable for real-world data tasks.
+[VISUAL DIRECTION] Final text overlay: "AI THAT LEARNS FROM ITS MISTAKES" with database visualization

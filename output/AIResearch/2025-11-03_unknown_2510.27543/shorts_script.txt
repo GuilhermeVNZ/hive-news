@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems perform as poorly as random guessing when tested on Arabic dialects like Moroccan or Egyptian?
+[VISUAL DIRECTION] [Animated text: AI FAILS ARABIC DIALECTS - NEAR RANDOM GUESSING] with shocked emoji face
+
+[VOICEOVER 0:05-0:20] This isn't just a technical problem - it affects millions of people who rely on AI for daily communication, customer service, and regional interactions.
+[VISUAL DIRECTION] [Show map of Arabic-speaking regions with population numbers flashing: 400+ MILLION PEOPLE AFFECTED]
+
+[VOICEOVER 0:20-0:40] Researchers created IALECTAL MMLU, manually translating 3,135 questions into five major Arabic dialects to test 19 different language models.
+[VISUAL DIRECTION] [Show animated bar chart of dialects tested: Egyptian, Moroccan, Syrian, Emirati, Saudi] with translation process visualization
+
+[VOICEOVER 0:40-1:00] The results were shocking - even advanced models like jais-13b-chat and gemma-3-12b-it showed significant performance drops compared to Modern Standard Arabic and English.
+[VISUAL DIRECTION] [Show Figure 2 comparison chart with dramatic red arrows pointing downward for dialect performance]
+
+[VOICEOVER 1:00-1:30] The methodology ensured high-quality translations, with most scoring 5 out of 5 on naturalness scales. Models were tested across domains including history and science to measure true comprehension.
+[VISUAL DIRECTION] [Zoom in on sample question-answer pairs showing dialect vs MSA differences with quality ratings displayed]
+
+[VOICEOVER 1:30-1:50] This gap has real consequences - imagine a tutor chatbot misunderstanding a student's dialect query, or healthcare AI giving incorrect responses to patients.
+[VISUAL DIRECTION] [Show split screen: left side shows AI misunderstanding dialect query, right side shows correct MSA understanding with X marks and checkmarks]
+
+[VOICEOVER 1:50-2:00] The digital divide is widening - we need dialect-aware AI strategies now to ensure everyone benefits from technological advancements.
+[VISUAL DIRECTION] [Final screen: CALL TO ACTION - WE NEED DIALECT-AWARE AI with paper title: DIALECTAL ARABIC MMLU: Benchmarking Dialectal Capabilities]

@@ -59,6 +59,145 @@ pub async fn get_site_config(
     }
 }
 
+/// Get the actual prompt that will be used for article generation
+/// Returns the exact prompt as it will be sent to the API (custom or default)
+pub async fn get_article_prompt(
+    Extension(_db): Extension<Arc<crate::db::connection::Database>>,
+    axum::extract::Path(site_id): axum::extract::Path<String>,
+) -> Json<Value> {
+    let config_path = Path::new("system_config.json");
+    let config_manager = SiteConfigManager::new(config_path);
+
+    match config_manager.get_site_config(&site_id) {
+        Ok(Some(site)) => {
+            // ALWAYS return the FULL default prompt (get_default_article_prompt_template) to the dashboard
+            // This is the REAL prompt that gets sent to DeepSeek API when prompt_article_enabled is false
+            // 
+            // Flow in content_generator.rs (lines 242-252):
+            // - If prompt_article_enabled == true AND prompt_article exists: uses prompt_article (custom)
+            // - Otherwise: uses build_article_prompt() (default from prompts.rs) <- THIS IS THE DEFAULT
+            //
+            // Dashboard ALWAYS shows the default prompt for editing, regardless of custom status
+            // User can edit the default prompt and save it to system_config.json
+            // If custom is enabled, it's shown separately as information
+            // Use the default template from site_config_manager with correct site name
+            let default_prompt = crate::utils::site_config_manager::SiteConfigManager::get_default_article_prompt_template(&site.id, &site.name);
+            let is_custom_enabled = site.prompt_article_enabled.unwrap_or(false) && site.prompt_article.is_some();
+            
+            // Format custom prompt if enabled (for info display)
+            let custom_formatted = if is_custom_enabled {
+                let custom_prompt = site.prompt_article.as_ref().unwrap();
+                if custom_prompt.contains("{{paper_text}}") {
+                    custom_prompt.clone()
+                } else {
+                    format!("{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{{{paper_text}}}}", custom_prompt)
+                }
+            } else {
+                String::new()
+            };
+            
+            Json(json!({
+                "success": true,
+                "prompt": default_prompt,  // ALWAYS the FULL default prompt (build_article_prompt) for editing
+                "is_custom": is_custom_enabled,
+                "custom_prompt": if is_custom_enabled { Some(custom_formatted) } else { None },  // Custom if enabled (info only)
+            }))
+        }
+        Ok(None) => Json(json!({
+            "success": false,
+            "error": format!("Site not found: {}", site_id),
+        })),
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to load config: {}", e),
+        })),
+    }
+}
+
+/// Get the actual prompt that will be used for social content generation
+/// ALWAYS returns the FULL default prompt (build_social_script_prompt) for editing
+pub async fn get_social_prompt(
+    Extension(_db): Extension<Arc<crate::db::connection::Database>>,
+    axum::extract::Path(site_id): axum::extract::Path<String>,
+) -> Json<Value> {
+    let config_path = Path::new("system_config.json");
+    let config_manager = SiteConfigManager::new(config_path);
+
+    match config_manager.get_site_config(&site_id) {
+        Ok(Some(site)) => {
+            use crate::writer::prompts::build_social_script_prompt;
+            
+            // ALWAYS return the FULL default prompt (build_social_script_prompt) to the dashboard
+            // This is the REAL prompt that gets sent to DeepSeek API when prompt_social_enabled is false
+            let default_prompt = build_social_script_prompt("{{{{article_text}}}}", "{{{{paper_title}}}}");
+            let is_custom_enabled = site.prompt_social_enabled.unwrap_or(false) && site.prompt_social.is_some();
+            
+            // Format custom prompt if enabled (for info display)
+            let custom_formatted = if is_custom_enabled {
+                site.prompt_social.as_ref().unwrap().clone()
+            } else {
+                String::new()
+            };
+            
+            Json(json!({
+                "success": true,
+                "prompt": default_prompt,  // ALWAYS the FULL default prompt for editing
+                "is_custom": is_custom_enabled,
+                "custom_prompt": if is_custom_enabled { Some(custom_formatted) } else { None },
+            }))
+        }
+        Ok(None) => Json(json!({
+            "success": false,
+            "error": format!("Site not found: {}", site_id),
+        })),
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to load config: {}", e),
+        })),
+    }
+}
+
+/// Get the actual prompt that will be used for news/blog content generation
+/// ALWAYS returns the FULL default prompt (NewsWriterService::default_blog_prompt) for editing
+pub async fn get_news_prompt(
+    Extension(_db): Extension<Arc<crate::db::connection::Database>>,
+    axum::extract::Path(site_id): axum::extract::Path<String>,
+) -> Json<Value> {
+    let config_path = Path::new("system_config.json");
+    let config_manager = SiteConfigManager::new(config_path);
+
+    match config_manager.get_site_config(&site_id) {
+        Ok(Some(site)) => {
+            // ALWAYS return the FULL default prompt (NewsWriterService::default_blog_prompt) to the dashboard
+            // This is the REAL prompt that gets sent to DeepSeek API when prompt_blog_enabled is false
+            let default_prompt = crate::writer::news_writer::NewsWriterService::default_blog_prompt();
+            let is_custom_enabled = site.prompt_blog_enabled.unwrap_or(false) && site.prompt_blog.is_some();
+            
+            // Format custom prompt if enabled (for info display)
+            let custom_formatted = if is_custom_enabled {
+                site.prompt_blog.as_ref().unwrap().clone()
+            } else {
+                String::new()
+            };
+            
+            Json(json!({
+                "success": true,
+                "prompt": default_prompt,  // ALWAYS the FULL default prompt for editing
+                "is_custom": is_custom_enabled,
+                "custom_prompt": if is_custom_enabled { Some(custom_formatted) } else { None },
+            }))
+        }
+        Ok(None) => Json(json!({
+            "success": false,
+            "error": format!("Site not found: {}", site_id),
+        })),
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to load config: {}", e),
+        })),
+    }
+}
+
 /// Update writer configuration for a site
 #[derive(Debug, Deserialize)]
 pub struct UpdateWriterRequest {
@@ -79,6 +218,10 @@ pub struct UpdateWriterRequest {
     pub prompt_article_enabled: Option<bool>,
     pub prompt_social_enabled: Option<bool>,
     pub prompt_blog_enabled: Option<bool>,
+    // Temperature per prompt channel
+    pub temperature_article: Option<f64>,
+    pub temperature_social: Option<f64>,
+    pub temperature_blog: Option<f64>,
 }
 
 pub async fn update_writer_config(
@@ -152,6 +295,9 @@ pub async fn update_writer_config(
     if let Some(e) = request.prompt_article_enabled { current_site.prompt_article_enabled = Some(e); }
     if let Some(e) = request.prompt_social_enabled { current_site.prompt_social_enabled = Some(e); }
     if let Some(e) = request.prompt_blog_enabled { current_site.prompt_blog_enabled = Some(e); }
+    if let Some(t) = request.temperature_article { current_site.temperature_article = Some(t); }
+    if let Some(t) = request.temperature_social { current_site.temperature_social = Some(t); }
+    if let Some(t) = request.temperature_blog { current_site.temperature_blog = Some(t); }
 
     // Save both writer and possibly updated site fields
     current_site.writer = writer.clone();

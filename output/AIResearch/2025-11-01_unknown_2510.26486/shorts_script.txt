@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could see criminal networks that human analysts miss? [VISUAL DIRECTION] Animated text: "45% CLEANER NETWORK MAPS" with crime network diagram in background
+
+[VOICEOVER 0:05-0:20] Human smuggling networks operate covertly, exploiting legal loopholes and evading detection. Analyzing these complex systems is crucial for security, but critical insights get buried in thousands of pages of court documents and field reports. [VISUAL DIRECTION] Show rapid scrolling through dense legal documents, then transition to blurred criminal network diagram
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI automatically extract and map these networks more accurately than current methods? [VISUAL DIRECTION] Show side-by-side comparison: messy network diagram vs clean organized one
+
+[VOICEOVER 0:40-1:00] They discovered LINK-KG reduces irrelevant entities in knowledge graphs by 45.21% and cuts errors by 32.22% compared to existing systems. [VISUAL DIRECTION] Animated bar chart showing performance comparison between LINK-KG, GraphRAG, and CORE-KG
+
+[VOICEOVER 1:00-1:30] Here's how it works: Three AI stages process documents. First, identifies people and locations. Second, builds context to distinguish roles like "driver" vs "defendant." Third, rewrites text for consistency. This avoids the "loss-in-the-middle" problem where standard systems miss key mid-document information. [VISUAL DIRECTION] Animated flow diagram showing the three-stage process with example text transformations
+
+[VOICEOVER 1:30-1:50] In real cases, LINK-KG correctly identified smugglers that other methods missed, creating reliable network structures for investigators. This means law enforcement can analyze complex criminal operations more effectively. [VISUAL DIRECTION] Show case study example with before/after network maps
+
+[VOICEOVER 1:50-2:00] AI isn't just predicting the future—it's revealing hidden criminal networks operating today. [VISUAL DIRECTION] Final screen with LINK-KG logo and "45% CLEANER NETWORK ANALYSIS"

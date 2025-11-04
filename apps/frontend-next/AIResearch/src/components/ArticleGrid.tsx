@@ -14,6 +14,7 @@ interface Article {
   category: string;
   readTime: number;
   imageCategories: string[];
+  featured?: boolean; // Featured status from registry
 }
 
 interface ArticleGridProps {
@@ -29,9 +30,17 @@ const ArticleGrid = ({ selectedCategory, searchQuery }: ArticleGridProps) => {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const response = await fetch('/api/articles');
+        // Add cache-busting to ensure fresh data
+        const response = await fetch('/api/articles?' + new Date().getTime());
         const data = await response.json();
-        setArticles(data.articles || []);
+        const articles = data.articles || [];
+        
+        // Debug: Log featured articles
+        const featuredArticles = articles.filter((a: Article) => a.featured === true);
+        console.log(`[AIResearch ArticleGrid] Fetched ${articles.length} articles, ${featuredArticles.length} featured:`, 
+          featuredArticles.map((a: Article) => ({ id: a.id, title: a.title.substring(0, 50), featured: a.featured })));
+        
+        setArticles(articles);
       } catch (error) {
         console.error('Error fetching articles:', error);
       } finally {
@@ -59,9 +68,32 @@ const ArticleGrid = ({ selectedCategory, searchQuery }: ArticleGridProps) => {
     ? normalize(searchQuery as string).split(" ")
     : [];
 
-  const byCategory = selectedCategory
+  // Filter by category first
+  let byCategory = selectedCategory
     ? articles.filter(a => a.imageCategories && a.imageCategories.includes(selectedCategory.toLowerCase()))
     : articles;
+  
+  // If no category selected and no search, prioritize featured articles
+  // Articles are already sorted by backend (featured first), but ensure they stay that way
+  if (!selectedCategory && words.length === 0) {
+    // Debug: Log featured articles
+    if (process.env.NODE_ENV === 'development') {
+      const featuredArticles = byCategory.filter(a => a.featured === true);
+      console.log(`[AIResearch ArticleGrid] Featured articles found: ${featuredArticles.length}`, 
+        featuredArticles.map(a => ({ id: a.id, title: a.title.substring(0, 50), featured: a.featured })));
+    }
+    // Sort by featured first, then by date (most recent first)
+    // This ensures featured articles appear at the top
+    byCategory = [...byCategory].sort((a, b) => {
+      const aFeatured = a.featured === true;
+      const bFeatured = b.featured === true;
+      if (aFeatured !== bFeatured) {
+        return aFeatured ? -1 : 1; // Featured first
+      }
+      // If both featured or both not featured, sort by date
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    });
+  }
 
   const filteredArticles = words.length === 0
     ? byCategory
@@ -72,6 +104,7 @@ const ArticleGrid = ({ selectedCategory, searchQuery }: ArticleGridProps) => {
       });
   
   // Display only first N articles
+  // Featured articles should be at the top due to sorting above
   const displayedArticles = filteredArticles.slice(0, displayedCount);
   const hasMore = filteredArticles.length > displayedCount;
 

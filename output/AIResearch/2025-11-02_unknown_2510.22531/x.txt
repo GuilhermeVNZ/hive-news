@@ -1,0 +1,1 @@
+AI detects unfair contract terms with 89.6% accuracy. New research shows BERT and DistilBERT outperform GPT-4o, offering scalable protection against hidden predatory clauses. #AI #ConsumerProtection

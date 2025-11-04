@@ -1,0 +1,1 @@
+AI systems are getting trapped in cycles of self-reinforcing simplicity, hindering their ability to solve complex problems. This fundamental limitation reveals why AI struggles to improve itself over time.

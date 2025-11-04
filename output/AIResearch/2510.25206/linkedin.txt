@@ -1,1 +1,0 @@
-What if AI could learn by seeing the answer first? RAVR breakthrough lets AI work backward from correct answers, boosting reasoning accuracy by 5.56 points on GPQA-Diamond. How might this transform AI education and research?

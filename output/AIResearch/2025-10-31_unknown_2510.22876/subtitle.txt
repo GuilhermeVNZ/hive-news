@@ -1,0 +1,1 @@
+AI's hidden flaw in fast text generation causes incorrect outputs, but a new fix ensures accuracy without sacrificing speed for millions of users.

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI models like GPT-5 score just 60.07 on innovation benchmarks and fail at long-term reasoning?
+[VISUAL DIRECTION] [Animated text: "AI Innovation Score: 60.07" with red arrow pointing down]
+[VOICEOVER 0:05-0:20] Researchers created InnovatorBench to test AI's ability to handle end-to-end scientific tasks—from hypothesis to code execution.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance distribution across models]
+[VOICEOVER 0:20-0:40] They asked: Can AI move beyond simple replication to genuine innovation?
+[VISUAL DIRECTION] [Fast cuts: lab setup, code running, then a red X over "Replication"]
+[VOICEOVER 0:40-1:00] Findings: AI excels at data tasks but struggles with algorithm design and resource management. For example, it launches conflicting processes on the same GPU.
+[VISUAL DIRECTION] [Show Figure 4(b) with zoom on GPU conflict diagram]
+[VOICEOVER 1:00-1:30] How it works: InnovatorBench uses ReAct-based ResearchGym across six domains, assessing correctness and uncertainty without ground-truth solutions.
+[VISUAL DIRECTION] [Animated flowchart: Hypothesis → Code → Analysis → Evaluation]
+[VOICEOVER 1:30-1:50] Implications: AI's fragility in extended scenarios limits its use in fields like medicine and climate science, where human-like reasoning is crucial.
+[VISUAL DIRECTION] [Hold on split screen: AI template vs. human brainstorm]
+[VOICEOVER 1:50-2:00] AI can replicate, but can it innovate? The frontier demands systems that handle real-world complexity.
+[VISUAL DIRECTION] [Text overlay: "Innovation Requires More Than Code"]

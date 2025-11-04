@@ -1,0 +1,1 @@
+Breakthrough: New algorithm analyzes cause-and-effect relationships 10x faster than existing methods. Gibby achieves 0.014 microsecond sampling vs 0.14 microseconds, accelerating discoveries in healthcare and climate science from Nature/Science research.

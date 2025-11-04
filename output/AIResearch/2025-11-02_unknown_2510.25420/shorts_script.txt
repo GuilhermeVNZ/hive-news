@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could eliminate video flickering and jitter instantly without expensive retraining? [VISUAL DIRECTION] [Animated text: 'ELIMINATE VIDEO FLICKERING - NO RETRAINING' with pulsing effect]
+
+[VOICEOVER 0:05-0:20] Current AI video enhancement often produces inconsistent, flickering results that degrade quality. This affects everything from security footage to entertainment streaming. [VISUAL DIRECTION] [Show side-by-side comparison of flickering video vs stable video, with 'PROBLEM' label on left, 'GOAL' on right]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we fix video artifacts without costly model updates? The challenge was addressing texture flicker and jitter in pre-trained models. [VISUAL DIRECTION] [Zoom on Figure 4 from paper showing baseline flickering artifacts, with red circles highlighting problem areas]
+
+[VOICEOVER 0:40-1:00] They discovered two training-free methods: PSG applies neuroscience straightening principles to reduce sequence curvature, while MPES uses multi-path sampling to reduce stochastic variations. [VISUAL DIRECTION] [Animated diagram showing neural pathways straightening video sequences, then ensemble sampling paths converging]
+
+[VOICEOVER 1:00-1:30] PSG penalizes curvature in video sequences using retinal and V1 complex response simulations. MPES generates multiple reconstructions and fuses them in latent space, achieving fidelity gains without sacrificing sharpness. [VISUAL DIRECTION] [Show Figure 2 with zoom on curvature metrics, then transition to ensemble sampling visualization with multiple paths merging]
+
+[VOICEOVER 1:30-1:50] On DAVIS and REDS4 datasets, PSG improved FVD scores by aligning evolution patterns, while MPES boosted PSNR in challenging blur restoration. Visual comparisons confirm clearer, more stable frames. [VISUAL DIRECTION] [Fast cuts between before/after frames from paper's figures, with PSNR and FVD score overlays]
+
+[VOICEOVER 1:50-2:00] This breakthrough makes high-quality video enhancement accessible without costly updates - transforming how we restore everything from security footage to entertainment content. [VISUAL DIRECTION] [Final split screen: security camera footage on left, streaming video on right, both showing stable enhancement with 'TRAINING-FREE' text overlay]

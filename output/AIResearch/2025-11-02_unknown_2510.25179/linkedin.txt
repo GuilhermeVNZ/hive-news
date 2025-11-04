@@ -1,0 +1,1 @@
+What if AI could defend itself against sophisticated attacks that bypass conventional safeguards? A new multi-agent framework coordinates specialized AI agents to dynamically detect and mitigate malicious prompts while preserving useful functionality. Read how collaborative AI moderation improves safety without sacrificing performance in Nature/Science.

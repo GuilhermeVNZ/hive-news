@@ -1,0 +1,1 @@
+AI can now explain its decisions 42% faster without losing accuracy. New research develops advanced sampling methods that dramatically reduce computational demands while maintaining precise influence function calculations. How will this breakthrough accelerate responsible AI development in your industry?

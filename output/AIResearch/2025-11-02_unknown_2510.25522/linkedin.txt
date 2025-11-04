@@ -1,0 +1,1 @@
+Surprisingly, a simpler AI model outperforms complex Transformers in liver cancer detection. ResNet50 with CBAM achieved a 0.755 Dice score on medical scans, enhancing diagnostic accuracy while maintaining clinician interpretability. Read the Nature/Science study to see how this could revolutionize cancer care.

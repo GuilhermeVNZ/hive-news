@@ -1,0 +1,1 @@
+AI forgets 30% after updates. MemEIC maintains 99% accuracy using brain-like lateralization. Critical for real-time fact-checking as information evolves. Nature study shows breakthrough in continual learning.

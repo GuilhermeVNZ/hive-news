@@ -1,0 +1,1 @@
+AI teaches itself first → 20% performance boost. New SPECS method decouples learning stages, solving 'in-distribution stuckness' where models get trapped in familiar patterns. Game-changer for AI reliability in real-world applications.

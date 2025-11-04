@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI can now solve 89% of failed e-commerce searches, even when you make typos or mix languages?
+[VISUAL DIRECTION] Animated text: "89% search failures SOLVED" with shocked shopper emoji
+
+[VOICEOVER 0:05-0:20] This addresses a fundamental problem affecting millions daily - search engines failing to find what people actually want.
+[VISUAL DIRECTION] Show frustrated shopper searching on phone, red X marks over failed results
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI overcome the messy reality of real-world searches with misspellings, abbreviations, and mixed languages?
+[VISUAL DIRECTION] Animated text examples: "blak dress" "phone charger español" with question marks
+
+[VOICEOVER 0:40-1:00] They discovered that properly adapted large language models achieve 89.14% accuracy for query categorization and 88.45% for item matching.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance peaks, highlight F1 scores
+
+[VOICEOVER 1:00-1:30] The method uses task-adaptive pre-training and translation techniques that maintain original meaning across 20 languages without extensive retraining.
+[VISUAL DIRECTION] Animated flow diagram showing two-stage process with language translation steps
+
+[VOICEOVER 1:30-1:50] This breakthrough makes digital marketplaces truly accessible, especially in emerging markets where search queries are often noisy and mixed-language.
+[VISUAL DIRECTION] Global map highlighting 100 countries, zoom on emerging markets
+
+[VOICEOVER 1:50-2:00] The future of online shopping: AI that understands what you mean, not just what you type.
+[VISUAL DIRECTION] Final text overlay: "AI understands your intent" with shopping cart transforming into checkmark

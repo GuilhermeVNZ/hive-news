@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know that artificial intelligence isn't one evolving technology but actually two fundamentally different lineages? [VISUAL DIRECTION] [Animated text: "AI ISN'T ONE TECHNOLOGY" with splitting arrows showing Symbolic vs Neural pathways]
+
+[VOICEOVER 0:05-0:20] This confusion has been obscuring AI's true capabilities and limiting effective development. Researchers analyzed 90 studies from 2018-2025 to clarify the field. [VISUAL DIRECTION] [Show timeline from 2018-2025 with study count increasing, zoom on systematic review methodology]
+
+[VOICEOVER 0:20-0:40] The key question: How do different AI approaches perform in real-world applications like healthcare and finance? [VISUAL DIRECTION] [Split screen showing hospital setting vs financial trading floor, with question marks over both]
+
+[VOICEOVER 0:40-1:00] They discovered a clear paradigm-market fit: Symbolic AI, rooted in Markov Decision Processes, dominates safety-critical domains requiring verifiability. Neural AI, powered by LLMs, excels in adaptive, data-rich environments. [VISUAL DIRECTION] [Show Figure 2 comparison chart, zoom on performance metrics for each domain]
+
+[VOICEOVER 1:00-1:30] Symbolic systems use pre-defined protocols for coordination in healthcare, ensuring HIPAA compliance through traceable decisions. Neural systems use conversation-based mechanisms where LLM orchestrators dynamically manage workflows in finance. [VISUAL DIRECTION] [Animated flowcharts showing Symbolic's structured protocols vs Neural's dynamic coordination]
+
+[VOICEOVER 1:30-1:50] This directly impacts real applications: Healthcare needs Symbolic's auditability, while finance requires Neural's flexibility. The ethical challenges also diverge - bias in hand-coded rules versus training misalignment. [VISUAL DIRECTION] [Show healthcare compliance symbols vs financial market adaptability indicators]
+
+[VOICEOVER 1:50-2:00] The future isn't one or the other - it's hybrid systems that combine reasoning verifiability with neural adaptability for scientific discovery and infrastructure. [VISUAL DIRECTION] [Merge the two pathways into hybrid architecture, end with compelling fusion animation]

@@ -1,0 +1,1 @@
+Phones training AI together usually slow networks. New method: add small biases = faster training, same accuracy. Game-changer for mobile/IoT. Read the science.

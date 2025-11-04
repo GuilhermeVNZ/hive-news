@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know some AI models cost 10 times more than others for the exact same performance?
+[VISUAL DIRECTION] Animated text: "10X COST DIFFERENCE" with shocked emoji face
+
+[VOICEOVER 0:05-0:20] As AI becomes embedded in healthcare and daily apps, a critical question emerges: Can we afford to run these powerful systems at scale?
+[VISUAL DIRECTION] Show healthcare AI applications montage - diagnosis tools, medical imaging, patient apps
+
+[VOICEOVER 0:20-0:40] Researchers asked: What's the real cost of running AI systems, and is bigger always better?
+[VISUAL DIRECTION] Show question marks transitioning to dollar signs and AI model icons
+
+[VOICEOVER 0:40-1:00] They discovered AI follows predictable economic patterns with diminishing returns. WiNGPT-3.5 emerged as the most cost-effective option at just $0.31 per run.
+[VISUAL DIRECTION] Show bar chart comparing $0.31 vs $3.47 with dramatic difference highlighted
+
+[VOICEOVER 1:00-1:30] Using WiNEval-3.0 benchmark with 2,993 professional scenarios, they calculated real operating costs including electricity, depreciation, and maintenance.
+[VISUAL DIRECTION] Show animated workflow of AI inference process with cost components popping up
+
+[VOICEOVER 1:30-1:50] The finding: There's no 'best' model - instead, different scenarios require different economic sweet spots.
+[VISUAL DIRECTION] Show "LLM Production Frontier" curve with sweet spot highlighted
+
+[VOICEOVER 1:50-2:00] Remember: When deploying AI, bigger doesn't always mean better - economics matter.
+[VISUAL DIRECTION] Final screen: "AI ECONOMICS: Bigger ≠ Better" with Nature/Science logos

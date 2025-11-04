@@ -137,7 +137,6 @@ impl ArxivCollector {
                     let title = current_title
                         .take()
                         .unwrap_or_else(|| "Untitled".to_string());
-                    let title_clone = title.clone();
                     let summary = current_summary.take().unwrap_or_default();
                     let published = current_published
                         .take()
@@ -146,7 +145,9 @@ impl ArxivCollector {
 
                     papers.push(ArticleMetadata {
                         id: paper_id.clone(),
-                        title,
+                        title: title.clone(), // Mantido para compatibilidade
+                        original_title: Some(title.clone()), // Título original da fonte
+                        generated_title: None, // Será preenchido quando o artigo for publicado
                         url: page_url,
                         published_date: published,
                         author: Some("arXiv".to_string()),
@@ -156,9 +157,10 @@ impl ArxivCollector {
                         content_html: None,
                         content_text: None,
                         category: None,
+                        slug: None,
                     });
 
-                    info!(paper_id = %paper_id, title = %title_clone, "Found paper");
+                    info!(paper_id = %paper_id, title = %title, "Found paper");
                 }
             }
         }

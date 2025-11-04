@@ -1,0 +1,1 @@
+AI excels at math competitions but fails dramatically in real research - dropping from 88% to just 10.3% success. RLMEval reveals the critical gap between curated problems and genuine scientific work. This challenges our assumptions about AI's research capabilities. What does this mean for AI-assisted science?

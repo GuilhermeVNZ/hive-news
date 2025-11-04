@@ -1,0 +1,1 @@
+AI coordination collapses when agents join/leave mid-operation. Nature study shows dynamic environments cause misattribution of performance, leading to unstable teamwork. Critical for autonomous vehicles to ride-sharing systems.

@@ -1,0 +1,1 @@
+AI can now predict which fact-checking explanations will actually help users (92% accuracy) - but identifying unhelpful ones remains challenging. Could this automated approach finally stem the tide of misinformation spreading across social platforms?

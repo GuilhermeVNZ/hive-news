@@ -1,0 +1,1 @@
+AI just learned to solve complex math AND write creatively without being told what's 'correct' during training. The Zero-RL breakthrough enables true multi-domain intelligence - outperforming specialized models across STEM, reasoning, and writing tasks.

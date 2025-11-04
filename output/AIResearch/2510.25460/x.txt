@@ -1,1 +1,0 @@
-AI now decodes criminal slang that evades traditional filters. Fine-tuned LLaMA3-8B-Instruct understands terms like "cosplay" and "steampunk," improving ROUGE-1 by 0.15. English-trained models outperformed Chinese counterparts in cross-language transfer.

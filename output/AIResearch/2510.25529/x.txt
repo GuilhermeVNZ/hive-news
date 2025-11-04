@@ -1,1 +1,0 @@
-Stop wasting AI training time: New method achieves 508.6% improvement on Humanoid-walk benchmark. MoGE generates unexplored but promising scenarios, outperforming traditional approaches in high-dimensional environments. Nature/Science-level breakthrough.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could predict software project delays with 93% accuracy before they happen?
+[VISUAL DIRECTION] Animated text: "93% ACCURACY" with pulsing effect
+
+[VOICEOVER 0:05-0:20] Software development teams lose billions to missed deadlines and derailed projects every year. Traditional methods often fail to catch bottlenecks until it's too late.
+[VISUAL DIRECTION] Show timeline visualization with red warning flags at delay points
+
+[VOICEOVER 0:20-0:40] Researchers at Inverbis Analytics asked: Can we use AI to forecast project delays by analyzing development workflows in real-time?
+[VISUAL DIRECTION] Show GitHub interface with data flowing into analysis system
+
+[VOICEOVER 0:40-1:00] They discovered CodeSight - an AI system that analyzes GitHub logs to predict pull request completion with 93% accuracy and identifies non-compliant requests with 0.963 F1-score.
+[VISUAL DIRECTION] Show F1-score metric with confidence indicator rising to 96.3%
+
+[VOICEOVER 1:00-1:30] The system uses process mining and LSTM neural networks to treat each pull request as a sequence of activities. It processes file modifications and predicts remaining time to completion within 8.8 hours - roughly one workday.
+[VISUAL DIRECTION] Animated diagram showing LSTM network processing sequential data
+
+[VOICEOVER 1:30-1:50] This means teams can spot potential deadline breaches early and intervene before projects derail, reducing costs and improving DevOps efficiency.
+[VISUAL DIRECTION] Show dashboard with risk alerts and intervention suggestions
+
+[VOICEOVER 1:50-2:00] AI isn't just writing code anymore - it's predicting when your projects will actually get done.
+[VISUAL DIRECTION] Final text overlay: "Predicting Delays Before They Happen"

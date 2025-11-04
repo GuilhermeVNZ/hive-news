@@ -164,9 +164,12 @@ impl RssCollector {
             let article_id = WebParser::generate_id_from_url(&url)
                 .unwrap_or_else(|| WebParser::generate_id_from_title(&title));
             
+            let title_clone = title.clone();
             let mut article = ArticleMetadata {
                 id: article_id,
-                title,
+                title: title_clone.clone(), // Mantido para compatibilidade
+                original_title: Some(title_clone), // Título original da fonte
+                generated_title: None, // Será preenchido quando o artigo for publicado
                 url: url.clone(),
                 published_date,
                 author,
@@ -176,6 +179,7 @@ impl RssCollector {
                 content_html: None,
                 content_text: None,
                 category: None,
+                slug: None,
             };
 
             // Fetch full article content from URL - REQUIRED

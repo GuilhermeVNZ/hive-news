@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know Android ransomware attacks are surging globally, compromising personal data and locking devices?
+[VISUAL DIRECTION] Animated text: "ANDROID RANSOMWARE SURGING" with alarming red arrow shooting upward
+
+[VOICEOVER 0:05-0:20] This isn't just about inconvenience - we're talking about financial, medical, and personal data at risk on the world's most popular mobile platform.
+[VISUAL DIRECTION] Show Android architecture diagram with vulnerable points highlighted in red
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we develop a method that significantly outperforms existing approaches to detect this malware before it causes irreversible damage?
+[VISUAL DIRECTION] Split screen showing traditional detection methods vs new approach with question marks
+
+[VOICEOVER 0:40-1:00] The breakthrough finding: Combining static, dynamic, and hybrid analysis achieves superior detection with the lowest error rates ever recorded.
+[VISUAL DIRECTION] Show RMSE and MAPE metrics comparison - new method clearly outperforming others
+
+[VOICEOVER 1:00-1:30] Here's how it works: Static analysis examines code without execution, dynamic monitors runtime behavior, and hybrid integrates both strengths while mitigating weaknesses.
+[VISUAL DIRECTION] Animated flowchart showing the three analysis methods working together
+
+[VOICEOVER 1:30-1:50] The real impact: This could protect millions of smartphone users from ransomware that locks devices and demands payment to restore access.
+[VISUAL DIRECTION] Show statistics of Android users worldwide with protective shield animation
+
+[VOICEOVER 1:50-2:00] The takeaway: Superior malware detection is now possible by combining analysis techniques, offering reliable protection against growing cyber threats.
+[VISUAL DIRECTION] Final screen with key stat: "Lowest error rates achieved" and protective shield icon

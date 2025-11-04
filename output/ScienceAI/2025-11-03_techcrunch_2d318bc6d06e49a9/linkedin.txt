@@ -1,0 +1,1 @@
+At Dreamforce 2025, Salesforce introduced its vision for the Agentic Enterprise—organizations where AI agents and humans collaborate for unprecedented efficiency. The new 11-layer architecture and Agentforce 360 platform represent a fundamental shift in enterprise technology, with early adopters like PepsiCo reporting significant ROI.

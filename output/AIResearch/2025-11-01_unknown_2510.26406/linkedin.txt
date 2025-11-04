@@ -1,0 +1,1 @@
+Robots can now master complex manipulation tasks in hours instead of months. Hi-ORS achieves 23.3% higher success rates by filtering out negative attempts and retaining only optimal episodes. This breakthrough could revolutionize manufacturing automation. What industries could this transform first?

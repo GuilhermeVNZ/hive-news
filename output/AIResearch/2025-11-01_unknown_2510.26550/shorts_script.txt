@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could match GPT-5's performance while running entirely offline on your device?
+[VISUAL DIRECTION] [Animated text: "AI MATCHES GPT-5 OFFLINE" with glowing edge device graphic]
+
+[VOICEOVER 0:05-0:20] In critical operations where network failure isn't an option, reliance on cloud AI poses serious security risks.
+[VISUAL DIRECTION] [Show network failure animation transitioning to secure military environment]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that performs like GPT-5 but runs locally on edge devices?
+[VISUAL DIRECTION] [Zoom on research question text with question mark animation]
+
+[VOICEOVER 0:40-1:00] They discovered EdgeRunner AI achieves 95% parity with GPT-5 across military benchmarks while running on Nvidia RTX hardware.
+[VISUAL DIRECTION] [Show benchmark comparison chart with 95% highlighted, zoom on statistical significance markers]
+
+[VOICEOVER 1:00-1:30] Using a specialized 20-billion parameter model fine-tuned on military documentation, EdgeRunner maintains competitive performance without cloud dependency.
+[VISUAL DIRECTION] [Animated pipeline showing data extraction, training process, and optimization parameters]
+
+[VOICEOVER 1:30-1:50] This enables battlefield planning, medical advice, and tactical operations in air-gapped environments with zero cloud costs.
+[VISUAL DIRECTION] [Show military, medical, and tactical scenarios with "NO INTERNET REQUIRED" overlay]
+
+[VOICEOVER 1:50-2:00] The future of secure AI isn't in the cloud—it's running right here on the edge.
+[VISUAL DIRECTION] [Final shot of edge device with "SECURE OFFLINE AI" text overlay]

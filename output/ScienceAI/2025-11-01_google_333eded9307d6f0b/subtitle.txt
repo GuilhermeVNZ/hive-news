@@ -1,0 +1,1 @@
+Google's new open-source package combines neural network power with Bayesian uncertainty for more reliable forecasting of everything from weather to financial markets.

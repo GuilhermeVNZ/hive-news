@@ -1,0 +1,1 @@
+AI fills in missing cellular details from blurry microscope images—with quantified uncertainty. ResMatching boosts signal-to-noise by 4x, helping scientists avoid overconfident predictions in disease research. Nature/Science breakthrough.

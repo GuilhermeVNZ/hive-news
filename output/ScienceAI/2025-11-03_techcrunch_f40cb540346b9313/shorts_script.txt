@@ -1,0 +1,27 @@
+TAKE 1 (5 seconds): "AI startup Perplexity is accused of something pretty shady..."
+
+TAKE 2 (5 seconds): "Cloudflare says they're scraping sites that explicitly said NO."
+
+TAKE 3 (5 seconds): "They allegedly changed their identity to bypass blocks."
+
+TAKE 4 (5 seconds): "Millions of requests daily across thousands of sites."
+
+TAKE 5 (5 seconds): "Perplexity says it's not their bot and calls it a sales pitch."
+
+TAKE 6 (5 seconds): "This isn't their first scraping controversy either."
+
+TAKE 7 (5 seconds): "Last year, news outlets accused them of plagiarism."
+
+TAKE 8 (5 seconds): "Their CEO couldn't define plagiarism when asked."
+
+TAKE 9 (5 seconds): "Cloudflare is now blocking their bots completely."
+
+TAKE 10 (5 seconds): "The battle over AI training data is heating up."
+
+TAKE 11 (5 seconds): "Who controls what AI companies can scrape?"
+
+TAKE 12 (5 seconds): "This could set important precedents for the industry."
+
+TAKE 13 (5 seconds): "What do you think about AI scraping practices?"
+
+TAKE 14 (5 seconds): "Comment your thoughts below!"

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could read text that's completely unreadable in medical images - without making up fake information?
+[VISUAL DIRECTION] [Animated text: UNREADABLE MEDICAL TEXT → DANGEROUS CONSEQUENCES with red warning symbols]
+[VOICEOVER 0:05-0:20] When cameras capture medical imaging with blurry text, the consequences range from frustrating to dangerous. Traditional super-resolution often creates hallucinated text.
+[VISUAL DIRECTION] [Show side-by-side comparison: blurry medical label vs AI-generated incorrect text with X marks]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we achieve both high-quality image restoration AND accurate text recovery simultaneously?
+[VISUAL DIRECTION] [Animated question: HIGH QUALITY + ACCURATE TEXT = ? with rotating gears]
+[VOICEOVER 0:40-1:00] GLYPH-SR's breakthrough framework uses a dual-branch architecture - one for overall image quality, another specialized for text recovery.
+[VISUAL DIRECTION] [Show diagram of dual-branch architecture with arrows between text-centric and image-centric branches]
+[VOICEOVER 1:00-1:30] The "ping-pong" scheduler alternates between focusing on text and image quality during generation, converting text positions into structured prompts.
+[VISUAL DIRECTION] [Animated ping-pong ball bouncing between TEXT and IMAGE labels with structured prompts appearing]
+[VOICEOVER 1:30-1:50] Results show +15.18 percentage point improvement in F1 score accuracy while maintaining competitive perceptual quality - even at challenging magnification scales.
+[VISUAL DIRECTION] [Show bar chart with +15.18% improvement highlighted in green, zoom on SVT dataset results]
+[VOICEOVER 1:50-2:00] This means reliable text reading in autonomous driving, medical imaging, and document analysis - without the risk of hallucinated information.
+[VISUAL DIRECTION] [Fast cuts: medical equipment labels, street signs, document text all clearly readable with GLYPH-SR logo overlay]

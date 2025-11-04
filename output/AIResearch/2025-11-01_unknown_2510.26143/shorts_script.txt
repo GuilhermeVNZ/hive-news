@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if teaching AI math first makes it smarter at everything else?
+[VISUAL DIRECTION] Animated text: "MATH FIRST AI" with question mark, fast zoom
+
+[VOICEOVER 0:05-0:20] Most AI systems focus narrowly on single domains like mathematics, limiting their broader capabilities.
+[VISUAL DIRECTION] Show multiple domains fading in/out: math, science, programming - with math highlighted
+
+[VOICEOVER 0:20-0:40] Researchers asked: Could starting with mathematics create a foundation that transfers to other scientific and programming challenges?
+[VISUAL DIRECTION] Animated flowchart showing math → multiple domains transition
+
+[VOICEOVER 0:40-1:00] They discovered a three-stage curriculum beginning with mathematics learning produces compact models that match or exceed larger specialized systems.
+[VISUAL DIRECTION] Show three-stage process visualization: 1) Math problems 2) DAPO training 3) Multi-domain testing
+
+[VOICEOVER 1:00-1:30] Using Llama3.1-8B, they achieved competitive results: 86.0% on MATH500 versus 77.25% for baseline models, and 39.60% on HumanEval coding tasks.
+[VISUAL DIRECTION] Bar charts comparing performance metrics, zoom on key numbers
+
+[VOICEOVER 1:30-1:50] Analysis revealed increased backtracking and verification - mathematical reasoning serves as effective cognitive transfer for practical applications.
+[VISUAL DIRECTION] Show backtracking visualization with verification steps highlighted
+
+[VOICEOVER 1:50-2:00] This means AI systems can become more versatile without massive scale - starting with the right foundation matters.
+[VISUAL DIRECTION] Final text overlay: "Math First = Smarter AI" with key stats

@@ -1,0 +1,1 @@
+A new method trains AI models to prioritize the most important reasoning steps, boosting accuracy on complex math and coding tasks without relying on guesswork or external guidance.

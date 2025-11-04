@@ -1,0 +1,32 @@
+VISUAL: Quick cuts of Dreamforce stage, audience reactions
+TAKE 1: "Salesforce just dropped their biggest AI vision yet..."
+
+VISUAL: Marc Benioff on stage pointing to screen
+TAKE 2: "...the Agentic Enterprise is here."
+
+VISUAL: Animation showing 11-layer architecture
+TAKE 3: "They built an 11-layer AI system..."
+
+VISUAL: Data flowing between layers
+TAKE 4: "...that makes companies super smart."
+
+VISUAL: PepsiCo store footage
+TAKE 5: "PepsiCo's already seeing 30% efficiency gains."
+
+VISUAL: Slack interface demo
+TAKE 6: "Slack becomes your AI command center."
+
+VISUAL: Small business owner using tablet
+TAKE 7: "Even small teams can compete now."
+
+VISUAL: Data visualization graphics
+TAKE 8: "But it all starts with clean data."
+
+VISUAL: Human and AI handshake animation
+TAKE 9: "This isn't about replacing people..."
+
+VISUAL: Team collaboration scene
+TAKE 10: "...it's about making teams unstoppable."
+
+VISUAL: Salesforce logo with "Agentic Enterprise" text
+TAKE 11: "The future of work just got an upgrade."

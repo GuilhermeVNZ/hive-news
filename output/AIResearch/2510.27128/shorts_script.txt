@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if we could see through someone else's eyes—directly from their brain activity? [VISUAL DIRECTION] Animated text: "Brain Camera?" with a pulsing brain graphic. Fast zoom into visual cortex area.
+
+[VOICEOVER 0:05-0:20] Current methods require extensive individual calibration, making real-world use impractical. [VISUAL DIRECTION] Show Figure 1 from paper - highlight the fine-tuning requirement with red X through it. Quick cuts between confused faces and technical equipment.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create a universal brain decoder that works across different people? [VISUAL DIRECTION] Animated question mark transforming into multiple subject silhouettes. Show Table 1 baseline comparison stats briefly.
+
+[VOICEOVER 0:40-1:00] EBRA disentangles brain activity into subject-invariant and semantic components. [VISUAL DIRECTION] Animated diagram showing brain signals splitting into two streams. Zoom on Figure 2 decomposition visualization.
+
+[VOICEOVER 1:00-1:30] Using adversarial training and CLIP embeddings, EBRA isolates what people see from who they are. [VISUAL DIRECTION] Show Vision Transformer encoder schematic. Fast cuts between CLIP embeddings and reconstructed images from Figure 3.
+
+[VOICEOVER 1:30-1:50] This means neurorehabilitation and brain-computer interfaces could work immediately for new patients. [VISUAL DIRECTION] Show medical application scenarios. Highlight Table 2 performance improvements - hold on PixCorr 0.153 vs 0.069.
+
+[VOICEOVER 1:50-2:00] Universal brain decoding is no longer science fiction—it's neuroscience reality. [VISUAL DIRECTION] Final composite of EBRA reconstructed images. Text overlay: "EBRA: Generalization Achieved"

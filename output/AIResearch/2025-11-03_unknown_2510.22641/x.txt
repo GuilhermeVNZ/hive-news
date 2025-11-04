@@ -1,0 +1,1 @@
+AI just got 1.85x faster at understanding images & text. FastVLM achieves speedup while maintaining accuracy, making advanced AI accessible on smartphones. Real-time image descriptions, dialogue systems, and reasoning now possible.

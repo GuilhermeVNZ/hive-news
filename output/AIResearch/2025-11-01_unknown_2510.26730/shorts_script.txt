@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could respond instantly without expensive hardware upgrades? ExpertFlow just made this possible by cutting memory delays by 99.9%.
+[VISUAL DIRECTION] Animated text: "99.9% FEWER DELAYS" with dramatic countdown effect
+[VOICEOVER 0:05-0:20] Large AI models like GPT-4 face a critical bottleneck: constantly moving data between processors creates frustrating delays. This limits real-time applications from virtual assistants to analysis tools.
+[VISUAL DIRECTION] Show animated diagram of data bouncing between CPU/GPU with "WAITING" labels and loading bars
+[VOICEOVER 0:20-0:40] The problem? Mixture-of-Experts systems activate only specific neural networks for each input, but conventional methods can't predict which experts will be needed, causing constant data transfers and inefficiencies.
+[VISUAL DIRECTION] Zoom on MoE architecture diagram highlighting expert selection process with question marks over inactive experts
+[VOICEOVER 0:40-1:00] ExpertFlow solves this with intelligent prediction. By analyzing input patterns and activation statistics, it anticipates which neural experts will be needed and prefetches them in advance.
+[VISUAL DIRECTION] Show predictive algorithm flowchart with "EXPERT SELECTION PREDICTION" overlay and checkmarks appearing before requests
+[VOICEOVER 1:00-1:30] The method uses adaptive scheduling that dynamically adjusts based on real-time feedback. Instead of fixed intervals, it determines optimal transfer sizes and timing, plus a two-level architecture that prioritizes frequently used experts.
+[VISUAL DIRECTION] Animated timeline showing dynamic scheduling vs static scheduling comparison with performance metrics
+[VOICEOVER 1:30-1:50] Results show near-total elimination of memory stalls across NVIDIA GPUs and Ascend hardware. Latency was cut significantly, making AI applications faster and more responsive without costly upgrades.
+[VISUAL DIRECTION] Show performance comparison charts with ExpertFlow vs baseline, highlighting 99.9% reduction in delays
+[VOICEOVER 1:50-2:00] This means smarter, faster AI that works better on existing hardware - a breakthrough for deploying large models in resource-limited environments.
+[VISUAL DIRECTION] Final screen: "EXPERTFLOW: INSTANT AI, NO UPGRADES NEEDED" with spinning processor icon

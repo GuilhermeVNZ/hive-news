@@ -101,3 +101,11 @@ pub async fn save_source(
     fs::write(output_dir.join("source.txt"), source).await?;
     Ok(())
 }
+
+pub async fn save_slug(
+    output_dir: &Path,
+    slug: &str,
+) -> Result<()> {
+    fs::write(output_dir.join("slug.txt"), slug).await?;
+    Ok(())
+}

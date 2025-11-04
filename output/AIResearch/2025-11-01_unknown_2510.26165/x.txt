@@ -1,0 +1,7 @@
+🤯 AI learns to manage portfolios WITHOUT knowing investor goals
+
+Oxford/J.P. Morgan study shows most funds use complex constraints, not just risk-return
+
+GAN architecture achieved superior performance by learning from 1,436 mutual funds
+
+Traditional agent-based models may be too simplistic

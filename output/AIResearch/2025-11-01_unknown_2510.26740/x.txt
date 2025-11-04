@@ -1,0 +1,1 @@
+AI fairness breakthrough: New method adjusts AI incentives to reduce inequality without retraining. Outperforms baselines in ridesharing and homelessness prevention, lowering Gini index significantly. Nature/Science paper details.

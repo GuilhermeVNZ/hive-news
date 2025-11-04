@@ -1,0 +1,1 @@
+Robots now coordinate both arms with human-like efficiency, mastering complex two-handed tasks that previously challenged automation. This breakthrough enables robots to intelligently decide when to use arms independently or together, just like humans do.

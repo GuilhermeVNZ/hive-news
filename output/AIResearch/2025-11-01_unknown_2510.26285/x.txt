@@ -1,0 +1,1 @@
+Why do AI models fail at simple math? New research uncovers universal wavy patterns in number representations across models, causing predictable errors. Removing problematic layers reduced multiplication errors by 64%. This breakthrough could make AI more reliable for critical calculations.

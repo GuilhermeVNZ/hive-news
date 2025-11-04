@@ -1,0 +1,1 @@
+AI systems can identify 87% of interface elements but predict only 17% of user interactions correctly. New research reveals fundamental gaps in AI's understanding of everyday digital tasks. This Nature/Science study exposes critical limitations in automation reliability. Read the findings to understand why your AI assistant struggles with basic computer operations.

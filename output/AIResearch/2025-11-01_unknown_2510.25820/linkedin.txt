@@ -1,0 +1,1 @@
+Surprising AI research: Making game NPCs smarter with detailed prompts doesn't actually improve player experience. University of Regina study shows players indifferent to LLM refinements. The key? Tailor AI to specific roles—structure for reliability, freedom for spontaneity. Rethink how we evaluate AI success in interactive systems.

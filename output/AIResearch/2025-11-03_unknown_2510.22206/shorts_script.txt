@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could save financial institutions millions by simply timing trades better than any human ever could?
+[VISUAL DIRECTION] Animated text: "AI Saves Millions" with dollar signs falling, quick zoom on trading floor simulation
+
+[VOICEOVER 0:05-0:20] In financial markets, milliseconds mean millions. Algorithms execute trades worth billions daily, but traditional methods leave money on the table through slippage - the difference between expected and actual trade prices.
+[VISUAL DIRECTION] Show clock ticking with millisecond precision, transition to Figure 2 from paper showing execution timing distribution
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI discover better trading patterns than conventional algorithms like VWAP and TWAP?
+[VISUAL DIRECTION] Split screen showing traditional algorithm vs AI approach, animated question marks
+
+[VOICEOVER 0:40-1:00] The breakthrough came from combining realistic market simulations with reinforcement learning. The AI agent learned to strategically place trades during optimal periods.
+[VISUAL DIRECTION] Show Simudyne Pulse simulation interface, zoom on agent-based market recreation
+
+[VOICEOVER 1:00-1:30] Using the REINFORCE algorithm, the AI was trained on Hong Kong Stock Exchange data. It learned to avoid post-lunch price spikes and concentrate activity in high-volume windows.
+[VISUAL DIRECTION] Animated timeline showing post-lunch spike avoidance, highlight high-volume concentration periods in Figure 2
+
+[VOICEOVER 1:30-1:50] Results show AI strategies reduce slippage by 6.84% versus VWAP and 5.33% versus TWAP. For billion-dollar trades, even small percentages translate to substantial savings.
+[VISUAL DIRECTION] Show Table 1 comparison with highlighted -6.84% and -5.33% numbers, zoom on Almgren-Chriss frontier from Figure 4
+
+[VOICEOVER 1:50-2:00] AI isn't just predicting markets - it's optimizing execution in ways humans never could, saving millions through smarter timing.
+[VISUAL DIRECTION] Final screen with key stat: "6.84% better than traditional methods" with Nature/Science logo

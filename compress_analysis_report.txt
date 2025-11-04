@@ -1,0 +1,113 @@
+================================================================================
+ANÁLISE ESTATÍSTICA DOS RESULTADOS DO COMPRESSOR
+================================================================================
+
+📊 RESUMO GERAL
+--------------------------------------------------------------------------------
+Total de amostras: 80
+  - Compressões de artigo: 40
+  - Compressões sociais: 40
+
+💾 ESTATÍSTICAS DE ECONOMIA (%)
+--------------------------------------------------------------------------------
+Média: 36.50%
+Mediana: 36.35%
+Desvio padrão: 2.58%
+Mínimo: 31.50% (arquivo #20, social)
+Máximo: 48.40% (arquivo #8, article)
+Amplitude: 16.90%
+
+📉 RATIO DE COMPRESSÃO
+--------------------------------------------------------------------------------
+Média: 0.6350 (63.50% do original)
+Mediana: 0.6365 (63.65% do original)
+Desvio padrão: 0.0258
+Mínimo: 0.5160 (51.60% do original)
+Máximo: 0.6850 (68.50% do original)
+
+📏 TAMANHO ORIGINAL DOS PROMPTS
+--------------------------------------------------------------------------------
+Média: 10738 tokens
+Mediana: 3984 tokens
+Desvio padrão: 11112 tokens
+Mínimo: 1250 tokens
+Máximo: 47983 tokens
+
+🔀 COMPARAÇÃO POR FASE
+--------------------------------------------------------------------------------
+Artigos:
+  - Média de economia: 36.27%
+  - Mediana: 36.15%
+  - Desvio padrão: 2.81%
+  - Amostras: 40
+Mídias sociais:
+  - Média de economia: 36.73%
+  - Mediana: 36.70%
+  - Desvio padrão: 2.35%
+  - Amostras: 40
+Diferença: -0.47% (artigos menos compressíveis que sociais)
+
+🔝 CASOS EXTREMOS
+--------------------------------------------------------------------------------
+MAIOR ECONOMIA:
+  Arquivo #8 (article)
+  Original: 35,703 tokens
+  Comprimido: 18,419 tokens
+  Economia: 48.40%
+  Ratio: 0.5160 (51.60% do original)
+
+MENOR ECONOMIA:
+  Arquivo #20 (social)
+  Original: 1,503 tokens
+  Comprimido: 1,029 tokens
+  Economia: 31.50%
+  Ratio: 0.6850 (68.50% do original)
+
+🔗 ANÁLISES DE CORRELAÇÃO
+--------------------------------------------------------------------------------
+Correlação Tamanho Original vs Economia: 0.0489
+  → Correlação fraca ou inexistente
+  → Tamanho do prompt NÃO está relacionado com economia
+
+⏱️  ANÁLISE POR ORDEM DE PROCESSAMENTO
+--------------------------------------------------------------------------------
+Primeira metade dos arquivos (40 amostras):
+  - Média de economia: 36.27%
+Segunda metade dos arquivos (40 amostras):
+  - Média de economia: 36.73%
+Diferença: +0.47%
+  → Compressão consistente ao longo do tempo
+
+🏆 TOP 5 ARQUIVOS COM MAIOR ECONOMIA (média artigo + social)
+--------------------------------------------------------------------------------
+1. Arquivo #8: 41.45%
+2. Arquivo #4: 39.60%
+3. Arquivo #6: 38.95%
+4. Arquivo #37: 38.70%
+5. Arquivo #31: 38.35%
+
+📉 TOP 5 ARQUIVOS COM MENOR ECONOMIA (média artigo + social)
+--------------------------------------------------------------------------------
+1. Arquivo #11: 34.05%
+2. Arquivo #21: 33.90%
+3. Arquivo #15: 33.75%
+4. Arquivo #29: 33.20%
+5. Arquivo #20: 32.65%
+
+🔍 ANÁLISE: QUANDO OCORREM MAIORES COMPRESSÕES?
+--------------------------------------------------------------------------------
+Compressões acima de 40%: 6 amostras (7.5% do total)
+  Média de tokens original: 10737
+  Média de tokens original (geral): 10738
+  Distribuição por fase:
+    - Artigos: 2
+    - Sociais: 4
+
+Compressões abaixo de 32.5%: 4 amostras (5.0% do total)
+  Média de tokens original: 8214
+  Média de tokens original (geral): 10738
+  Distribuição por fase:
+    - Artigos: 2
+    - Sociais: 2
+
+================================================================================

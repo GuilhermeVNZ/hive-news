@@ -1,0 +1,1 @@
+AI delays can compromise safety in autonomous driving and health monitoring. MMEdge from HKUST cuts latency by 75.83% while maintaining accuracy. How will this transform real-time AI applications?

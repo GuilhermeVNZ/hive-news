@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems waste nearly a third of their computational resources through inefficiency and errors?
+[VISUAL DIRECTION] Animated text: "30% WASTED" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] As artificial intelligence grows more autonomous and complex, it becomes inefficient, wasting vast resources and increasing risk of errors across scientific and everyday applications.
+[VISUAL DIRECTION] Show chaotic network diagram with red error markers flashing
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we supervise these systems in real-time to cut waste without sacrificing performance?
+[VISUAL DIRECTION] Zoom in on question mark transforming into SUPERVISOR AGENT schematic
+
+[VOICEOVER 0:40-1:00] They discovered a lightweight meta-agent that intervenes only at critical junctures, reducing average consumption by 30% while maintaining competitive success rates.
+[VISUAL DIRECTION] Show Figure 2 with zoom on resource consumption comparison charts
+
+[VOICEOVER 1:00-1:30] The SUPERVISOR AGENT uses memory-augmented monitoring between agents, proactively correcting errors and purifying inefficient behaviors without altering core AI functionality.
+[VISUAL DIRECTION] Animated flow diagram showing intervention points with green checkmarks
+
+[VOICEOVER 1:30-1:50] Results show 32.39% savings on GAIA validation and 23.74% on HumanEval - proving model-agnostic effectiveness across GPT-4.1, Gemini-2.5-pro, and Qwen3.
+[VISUAL DIRECTION] Fast cuts showing percentage stats with corresponding benchmark logos
+
+[VOICEOVER 1:50-2:00] This breakthrough addresses the critical barrier to deploying AI in cost-sensitive applications, from scientific research to everyday digital assistants.
+[VISUAL DIRECTION] Final hold on "30% SAVINGS" with research paper title overlay

@@ -1,0 +1,1 @@
+AI systems can't understand the same events from different camera angles, raising serious concerns about their reliability in security and autonomous navigation.

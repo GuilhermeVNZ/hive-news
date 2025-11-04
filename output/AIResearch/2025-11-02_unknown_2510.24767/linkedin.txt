@@ -1,0 +1,1 @@
+AI can now describe human movements with 3.7x more accuracy than previous models. This breakthrough in fine-grained motion captioning could revolutionize healthcare monitoring and human-robot interactions. Read how the Motion-Augmented Caption Model bridges the gap between AI and real-world applications.

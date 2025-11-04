@@ -1,0 +1,1 @@
+AI systems forget 30% of knowledge after updates. MemEIC mimics brain lateralization to maintain 99% accuracy through compositional editing. Essential for fact-checking and media moderation. Read how brain-inspired AI prevents catastrophic forgetting.

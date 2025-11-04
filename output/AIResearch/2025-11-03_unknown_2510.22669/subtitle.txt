@@ -1,0 +1,1 @@
+New LiDAR-visual method achieves 28.73 PSNR score, enabling robots to navigate complex environments while filtering out moving objects

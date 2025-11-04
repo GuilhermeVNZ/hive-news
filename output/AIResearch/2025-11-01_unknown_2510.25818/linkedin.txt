@@ -1,0 +1,1 @@
+AI can now generate ultra-high-resolution images in seconds without additional training. ScaleDiff's breakthrough method achieves state-of-the-art quality at 2048x2048 resolution while cutting generation time from 103 to just seconds. How will this transform creative industries?

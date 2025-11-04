@@ -1,0 +1,1 @@
+AI still fails at chess, exposing major flaws in reasoning and planning. This weakness could affect real-world decisions, showing that even advanced models struggle with complex strategic thinking.

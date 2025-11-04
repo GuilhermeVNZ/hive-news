@@ -1,0 +1,1 @@
+A new method accelerates AI that understands images and text by 1.55 to 1.85 times, making advanced vision-language models practical for everyday devices without sacrificing performance.

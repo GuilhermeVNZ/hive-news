@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your AI could autonomously write code, deploy sub-agents, and access production APIs - completely unsupervised? [VISUAL DIRECTION] Animated text: "AI CAN WRITE CODE AUTONOMOUSLY" with pulsing red alert symbol
+
+[VOICEOVER 0:05-0:20] As artificial intelligence performs increasingly complex tasks, we face unprecedented risks that traditional security tools simply can't handle. [VISUAL DIRECTION] Show traditional security shield shattering when confronted with AI agent diagram
+
+[VOICEOVER 0:20-0:40] Researchers asked: How do we control AI systems that operate at machine speed with improvisational capabilities? [VISUAL DIRECTION] Fast-paced montage of AI agents rapidly executing tasks with warning symbols
+
+[VOICEOVER 0:40-1:00] They developed AAGATE - the first Kubernetes-native control plane specifically designed for AI safety, operationalizing the NIST AI Risk Management Framework. [VISUAL DIRECTION] Show AAGATE architecture diagram with key components highlighted
+
+[VOICEOVER 1:00-1:30] It works through critical innovations: Tool-Gateway creates a single auditable boundary, Shadow-Monitor-Agent re-evaluates planned actions, and zero-trust service ensures mathematically verifiable compliance. [VISUAL DIRECTION] Animated flow showing AI actions funneling through Tool-Gateway with real-time monitoring
+
+[VOICEOVER 1:30-1:50] This enables continuous, automated protection against emerging threats like logic-layer injection and cognitive degradation - essential for any production AI deployment. [VISUAL DIRECTION] Show threat detection alerts stopping malicious AI behavior in real-time
+
+[VOICEOVER 1:50-2:00] The reality: AI autonomy is here. The question: Is your organization prepared to control it safely? [VISUAL DIRECTION] Final text overlay: "AI AUTONOMY REQUIRES NEW SECURITY" with AAGATE logo

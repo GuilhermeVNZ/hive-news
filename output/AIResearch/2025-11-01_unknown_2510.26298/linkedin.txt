@@ -1,0 +1,1 @@
+AI excels at Sudoku but fails at Flappy Bird? New Nature study reveals ChatGPT Atlas's cognitive limitations in dynamic environments. While solving puzzles in seconds, it achieved only 11.7% baseline in coordination games. This critical gap shows why current AI struggles with real-world unpredictability. Read the full findings.

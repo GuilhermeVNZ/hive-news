@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could flip a coin with perfect 50/50 randomness? Until now, it couldn't - but that just changed dramatically.
+[VISUAL DIRECTION] [Animated coin spinning with 50/50 split graphic, quick cuts showing heads/tails]
+
+[VOICEOVER 0:05-0:20] Large language models excel at giving correct answers but struggle with probabilistic tasks like simulating fair coin flips or diverse opinions. This limitation creates biased outputs in critical applications.
+[VISUAL DIRECTION] [Show LLM architecture diagram with 'bias' warning symbols, transition to gaming and simulation scenarios]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI follow probability distributions as accurately as pseudo-random generators while maintaining response quality?
+[VISUAL DIRECTION] [Zoom on research question text, show distribution charts with current AI deviations]
+
+[VOICEOVER 0:40-1:00] The breakthrough: String Seed of Thought. This simple prompting method instructs LLMs to generate unpredictable strings, then deterministically map them to desired distributions.
+[VISUAL DIRECTION] [Animated flow: LLM → Random String → Deterministic Mapping → Perfect Distribution, highlight Jensen-Shannon divergence dropping]
+
+[VOICEOVER 1:00-1:30] How it works: First, the AI generates complex strings like '7fG2#kL9!pY4@zR6'. Then, using ASCII sums and mathematical operations, it creates responses following exact probability distributions. No retraining needed.
+[VISUAL DIRECTION] [Show string generation process, ASCII calculation animation, distribution curves approaching ideal]
+
+[VOICEOVER 1:30-1:50] Real impact: AI players in games can now use mixed strategies that resist exploitation. Opinion simulations reflect true diversity. Creative tasks generate distinct ideas without quality loss.
+[VISUAL DIRECTION] [Show gaming scenarios with balanced strategies, diverse opinion bubbles, creative brainstorming sessions]
+
+[VOICEOVER 1:50-2:00] AI just learned true randomness - and it's about to make every probabilistic application fundamentally fairer.
+[VISUAL DIRECTION] [Final coin landing perfectly balanced, text overlay: 'Perfect Probability Achieved']

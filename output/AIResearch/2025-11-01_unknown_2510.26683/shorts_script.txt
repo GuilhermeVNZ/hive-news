@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could study and correct its own mistakes, without any new human input?
+[VISUAL DIRECTION] [Animated text: 'AI Self-Evolution' with a glowing brain icon, fast zoom-in]
+[VOICEOVER 0:05-0:20] In fields like medicine, privacy rules limit data for training AI, creating a bottleneck for accuracy.
+[VISUAL DIRECTION] [Show lock icons over medical charts, transition to a graph showing data scarcity, emphasize with red arrows]
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI use its existing knowledge to find and fix its own errors?
+[VISUAL DIRECTION] [Animated question mark morphing into a magnifying glass scanning text, hold on 'inconsistencies' highlighted]
+[VOICEOVER 0:40-1:00] They discovered AI can self-evolve by extracting its internal knowledge structure, checking for contradictions, and fine-tuning on corrections.
+[VISUAL DIRECTION] [Show Figure 2-like ontology tree with nodes connecting concepts, zoom on a flagged inconsistency like 'Cell' conflict, fast cuts]
+[VOICEOVER 1:00-1:30] Here's how it works: First, the AI maps its knowledge hierarchy. Then, rules detect flaws, like conflicting facts. Finally, it reinforces corrected data in targeted training.
+[VISUAL DIRECTION] [Step-by-step animation: 1. Tree diagram build, 2. Red 'X' on contradiction, 3. Green check with fine-tuning arrows, pacing: rapid for steps, hold on result]
+[VOICEOVER 1:30-1:50] This means AI can become more accurate in sensitive areas—imagine better diagnostics without violating patient privacy, or smarter finance AI under strict regulations.
+[VISUAL DIRECTION] [Split screen: left shows hospital icon with shield, right shows finance graph ascending, text overlay: '3.7% gain on exams']
+[VOICEOVER 1:50-2:00] AI isn't just learning from us anymore; it's learning from itself, opening new paths for intelligent systems where data is scarce.
+[VISUAL DIRECTION] [Final shot: AI brain icon self-illuminating, text: 'Self-Evolution Breakthrough', slow fade]

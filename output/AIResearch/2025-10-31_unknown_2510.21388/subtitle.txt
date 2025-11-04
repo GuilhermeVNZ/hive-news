@@ -1,0 +1,1 @@
+AI audio models shrink by 80% without losing accuracy, making them perfect for phones and smart devices. This breakthrough reduces energy use and carbon emissions while keeping performance high.

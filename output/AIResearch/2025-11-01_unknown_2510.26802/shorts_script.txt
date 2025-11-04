@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] These AI videos look incredibly realistic, but can they actually reason about the world? The answer might surprise you.
+[VISUAL DIRECTION] Show rapid cuts of stunning AI-generated videos from Sora, Veo, Kling - then freeze frame with question mark overlay
+
+[VOICEOVER 0:05-0:20] As AI video generation explodes, researchers are asking a critical question: Can these models truly understand what they're creating, or are they just good at mimicking patterns?
+[VISUAL DIRECTION] Show researchers at computers, data visualizations, transition to paper title "Are Video Generation Models Ready as Zero-Shot Reasoners?"
+
+[VOICEOVER 0:20-0:40] Scientists tested leading models including Veo-3, Sora-2, and Kling on 59 reasoning tasks across 12 categories - from spatial logic to physics simulations.
+[VISUAL DIRECTION] Animated text showing model names, then grid of 12 category icons (spatial, geometric, physical, temporal, etc.)
+
+[VOICEOVER 0:40-1:00] The results? While models excelled at short tasks like counting objects, they consistently failed at long-term reasoning and physical simulations.
+[VISUAL DIRECTION] Show success on simple counting task (100% score), then failure on physics simulation with red X overlay
+
+[VOICEOVER 1:00-1:30] When asked to simulate reflections or friction, models violated basic physics laws. They struggled to maintain consistency across multiple frames and couldn't handle complex logical constraints.
+[VISUAL DIRECTION] Show AI video of reflection that breaks physics, with conservation law equations appearing and crossing out
+
+[VOICEOVER 1:30-1:50] This matters because these models are being proposed for scientific simulations and educational tools. The gap between generating pretty videos and true understanding is real.
+[VISUAL DIRECTION] Show applications in science and education, then split screen showing generation vs understanding with gap between them
+
+[VOICEOVER 1:50-2:00] So next time you see an amazing AI video, remember: creation doesn't equal comprehension. The reasoning revolution still has work to do.
+[VISUAL DIRECTION] Final shot of stunning AI video with text overlay: "Generation ≠ Understanding"

@@ -1,0 +1,1 @@
+AI agents in simulated markets show severe biases at scale - first proposals get accepted regardless of quality. New 'Magentic Marketplace' reveals vulnerabilities before deployment. How will we ensure AI-driven markets remain equitable?

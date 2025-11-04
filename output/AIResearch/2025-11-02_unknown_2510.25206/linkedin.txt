@@ -1,0 +1,1 @@
+AI models often get stuck in familiar but suboptimal reasoning paths. New RAVR framework helps LLMs reason like humans using reference answers, boosting performance on GPQA-Diamond by 40.91%. Could this transform how AI tackles complex problems?

@@ -49,7 +49,9 @@ impl DeepSeekClient {
     pub async fn generate_article(
         &self,
         compressed_prompt: &str,
+        temperature: Option<f64>,
     ) -> Result<ArticleResponse> {
+        let temp = temperature.unwrap_or(0.7);
         let request_body = json!({
             "model": self.model,
             "messages": [
@@ -62,7 +64,7 @@ impl DeepSeekClient {
                     "content": compressed_prompt
                 }
             ],
-            "temperature": 0.7,
+            "temperature": temp,
             "max_tokens": 4000, // Increased for news articles with social content
             "response_format": { "type": "json_object" }
         });
@@ -222,7 +224,9 @@ impl DeepSeekClient {
     pub async fn generate_social_content(
         &self,
         compressed_prompt: &str,
+        temperature: Option<f64>,
     ) -> Result<SocialResponse> {
+        let temp = temperature.unwrap_or(0.8);
         let request_body = json!({
             "model": self.model,
             "messages": [
@@ -235,7 +239,7 @@ impl DeepSeekClient {
                     "content": compressed_prompt
                 }
             ],
-            "temperature": 0.8,
+            "temperature": temp,
             "max_tokens": 2000,
             "response_format": { "type": "json_object" }
         });

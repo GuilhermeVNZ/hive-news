@@ -1,0 +1,1 @@
+OpenAI drops new open-weight AI models for content safety—gpt-oss-safeguard-120b and -20b. They reason from policies to label content, with safety checks in place. #AI #OpenSource #TechNews

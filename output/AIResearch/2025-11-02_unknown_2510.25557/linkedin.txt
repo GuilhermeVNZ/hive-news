@@ -1,0 +1,1 @@
+What if AI could process sequences like the human brain without losing information over time? New quantum-classical neural networks achieve near-perfect accuracy in long-term memory tasks, outperforming traditional methods. Could this be the key to real-time translation and financial forecasting?

@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if making AI faster actually breaks its ability to think? New research reveals a catastrophic flaw in how we optimize large language models.
+
+[VISUAL DIRECTION] [Animated text: FASTER AI = BROKEN THINKING? with dramatic background]
+
+[VOICEOVER 0:05-0:20] When researchers remove layers to speed up models, they discovered something alarming: complex reasoning collapses while simple knowledge remains intact.
+
+[VISUAL DIRECTION] [Show Figure 2 with zoom on accuracy drop distribution - highlight the dramatic performance gap]
+
+[VOICEOVER 0:20-0:40] The team tested three pruning methods on advanced models like Qwen3-8B. They wanted to know: does making AI more efficient come at a cost to its reasoning power?
+
+[VISUAL DIRECTION] [Animated diagram showing layer removal process with red X marks over deleted layers]
+
+[VOICEOVER 0:40-1:00] The results were shocking. On the AIME24 math benchmark, accuracy dropped by up to 50% after pruning. Models could handle simple facts but failed at multi-step problems requiring chain-of-thought reasoning.
+
+[VISUAL DIRECTION] [Show bar chart comparing performance on simple vs complex tasks - dramatic visual gap]
+
+[VOICEOVER 1:00-1:30] Here's why: Layer pruning disproportionately damages the mechanisms that allow AI to allocate computation during complex reasoning. The models lose their ability to maintain extended thought chains while keeping basic knowledge.
+
+[VISUAL DIRECTION] [Animated visualization of chain-of-thought breaking as layers are removed - show thought chain disintegrating]
+
+[VOICEOVER 1:30-1:50] This has huge implications for scientific discovery and mathematical problem-solving. If we optimize AI for speed without understanding these vulnerabilities, we risk creating models that can't handle real-world complexity.
+
+[VISUAL DIRECTION] [Show real-world applications fading out - scientific papers, math problems, research tools]
+
+[VOICEOVER 1:50-2:00] The takeaway? Sometimes making AI faster means breaking its ability to think deeply. Fewer layers can indeed break more chains of reasoning.
+
+[VISUAL DIRECTION] [Final screen: "WHEN FEWER LAYERS BREAK MORE CHAINS" with paper citation and key statistic: "50% accuracy drop on complex reasoning"]

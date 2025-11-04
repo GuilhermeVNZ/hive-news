@@ -1,0 +1,1 @@
+AI's quadratic growth in computational cost with input length just got solved. Higher-order Linear Attention (HLA) achieves linear-time complexity, allowing constant resource use for streaming data. Dive into the Princeton/UCLA study to see how this enables efficient long-context AI.

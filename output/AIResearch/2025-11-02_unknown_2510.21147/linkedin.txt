@@ -1,0 +1,1 @@
+AI achieved 167.52% cumulative returns in China's A-share market from 2019-2024, outperforming human advisors. This multi-agent framework from University of Science and Technology integrates macroeconomic trends, firm fundamentals, and news analysis to construct portfolios. How might transparent AI systems democratize access to sophisticated investment strategies?

@@ -1,0 +1,1 @@
+Poor prompts make AI write vulnerable code, increasing security risks by over 150%. Clear instructions are crucial to prevent hidden dangers in automated programming.

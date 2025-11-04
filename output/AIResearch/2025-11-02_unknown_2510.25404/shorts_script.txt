@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could optimize complex scientific systems that normally take days and require expert knowledge?
+[VISUAL DIRECTION] Animated text: "AI BEATS TRADITIONAL OPTIMIZERS" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] Scientific discovery often relies on costly experiments and optimization problems where the relationship between inputs and outputs is unknown. Traditional methods require extensive expert intervention, limiting accessibility and efficiency.
+[VISUAL DIRECTION] Show laboratory scenes with scientists working on complex equipment, transition to mathematical equations floating on screen
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can large language models be fine-tuned to tackle these black-box optimization challenges autonomously?
+[VISUAL DIRECTION] Zoom in on question mark transforming into GPTOpt logo, show neural network diagrams
+
+[VOICEOVER 0:40-1:00] They discovered GPTOpt consistently outperformed established optimizers like Bayesian optimization and evolutionary strategies across various benchmarks. In 5D tests, it achieved superior normalized scores indicating efficient objective minimization.
+[VISUAL DIRECTION] Show Figure 3 with zoom on performance comparison charts, highlight GPTOpt's superior position with glowing effect
+
+[VOICEOVER 1:00-1:30] How it works: The team generated a massive dataset of synthetic functions mimicking real-world scenarios, then fine-tuned a Llama model using low-rank adaptation. This enables the LLM to learn expert-like optimization sequences from data.
+[VISUAL DIRECTION] Animated flow diagram showing data generation → fine-tuning → optimization process, highlight LoRA adaptation step
+
+[VOICEOVER 1:30-1:50] The implications are huge: This could accelerate scientific and engineering breakthroughs in climate modeling, drug discovery, and materials science by reducing the need for manual adjustments and expert intervention.
+[VISUAL DIRECTION] Quick cuts showing applications: climate models, molecular structures, engineering designs with GPTOpt optimization overlays
+
+[VOICEOVER 1:50-2:00] The future of scientific optimization is here - and it speaks the language of AI.
+[VISUAL DIRECTION] Final shot of GPTOpt outperforming classical methods on BBOB benchmark (Figure 4) with text: "ACCELERATING DISCOVERY"

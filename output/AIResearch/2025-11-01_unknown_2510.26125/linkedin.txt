@@ -1,0 +1,1 @@
+Autonomous vehicles fail in 0.03% of daily driving—the rare, high-risk moments that matter most. A new Waymo dataset exposes this safety gap, urging a shift to human-aligned evaluation for robust self-driving tech. Read the Nature/Science insights to grasp the critical need for handling unpredictability.

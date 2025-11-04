@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if a robot could learn to dance perfectly after watching you just once?
+[VISUAL DIRECTION] [Animated text: "ONE DEMO" with robot silhouette transitioning to dance pose]
+
+[VOICEOVER 0:05-0:20] Training humanoid robots for complex tasks like dancing or punching typically requires thousands of motion samples - a costly, time-consuming bottleneck in robotics development.
+[VISUAL DIRECTION] [Show rapid montage of motion capture sessions with timestamps and sample counts climbing]
+
+[VOICEOVER 0:20-0:40] Researchers at NYU Abu Dhabi asked: Can we teach robots complex behaviors with minimal demonstration data while maintaining stability and performance?
+[VISUAL DIRECTION] [Split screen: left shows traditional method requiring many samples, right shows new method with single demonstration]
+
+[VOICEOVER 0:40-1:00] They discovered a method that generates synthetic motions by aligning multiple action sources using optimal transport, then creating new skeleton poses along mathematical geodesics.
+[VISUAL DIRECTION] [Animated diagram showing motion alignment and geodesic path generation between skeleton poses]
+
+[VOICEOVER 1:00-1:30] The system preserves chronological structure while optimizing for physical feasibility through differentiable routines that adjust joint rotations. In simulations using Unitree H1 robot, it consistently outperformed traditional methods - achieving episode lengths of 1501.99 (indicating no falls) versus frequent failures in conventional approaches.
+[VISUAL DIRECTION] [Show comparison metrics: "Episode Length: 1501.99 vs Traditional: Frequent Falls" with robot performing stable punch motion]
+
+[VOICEOVER 1:30-1:50] This breakthrough means robots can quickly adapt to diverse real-world tasks - from factory work to hazardous environments and assistive care - without exhaustive data collection.
+[VISUAL DIRECTION] [Quick cuts: factory robot, rescue robot, healthcare assistant robot all performing learned motions]
+
+[VOICEOVER 1:50-2:00] One demonstration. Infinite possibilities. The future of adaptable robotics is here.
+[VISUAL DIRECTION] [Final shot: robot seamlessly transitioning between dance, punch, and wash motions with text overlay: "Single Demo Learning"]

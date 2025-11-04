@@ -1,0 +1,1 @@
+AI breakthrough: GraphCompliance achieves 60.2% F1 score on GDPR scenarios, beating LLMs by 7.2 points. Graph alignment + LLM reasoning = automated compliance that actually works. Nature research shows the future of regulatory tech is here.

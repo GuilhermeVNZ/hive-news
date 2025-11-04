@@ -1,1 +1,0 @@
-Robots can now learn multiple complex tasks without traditional programming. A new brain-inspired network processes 30,000+ visual dimensions simultaneously, mastering both rigid-body manipulation and flexible object interaction. Nature/Science breakthrough could transform healthcare robotics.

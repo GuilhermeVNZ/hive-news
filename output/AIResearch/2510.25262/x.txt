@@ -1,1 +1,0 @@
-What if AI could learn better by forgetting? New IBNorm technique improves LLaMA performance by 9.51% by selectively discarding unimportant information. Inspired by Information Bottleneck principle, it compresses features without adding complexity. Nature/Science breakthrough.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could master complex reasoning with just 2 simple components?
+[VISUAL DIRECTION] Animated text: "2 ATTENTION HEADS = PERFECT OBJECT TRACKING" with glowing neural network visualization
+
+[VOICEOVER 0:05-0:20] As AI grows increasingly complex, its inner workings remain mysterious black boxes. Understanding how these systems make decisions has become one of computer science's most pressing challenges.
+[VISUAL DIRECTION] Show black box diagram with question marks, then transition to transformer architecture schematic
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can simple AI models perform complex tasks we thought required massive architectures?
+[VISUAL DIRECTION] Zoom in on simplified transformer model with only 2 attention heads highlighted
+
+[VOICEOVER 0:40-1:00] They built a stripped-down transformer and tested it on object identification. The results were stunning—perfect performance with minimal components.
+[VISUAL DIRECTION] Show accuracy graph hitting 100% with simple circuit diagram overlay
+
+[VOICEOVER 1:00-1:30] How does it work? One head acts as a 'reference detector' identifying potential candidates, while the second serves as a 'contrastive suppressor' eliminating wrong options. Through spectral analysis, they revealed distinct functional signatures.
+[VISUAL DIRECTION] Animated split-screen showing detector head (green activation) and suppressor head (red suppression) with spectral analysis charts
+
+[VOICEOVER 1:30-1:50] This discovery provides a roadmap for making AI systems transparent and trustworthy. It could enable better debugging, testing, and optimization of complex models.
+[VISUAL DIRECTION] Show roadmap graphic with arrows pointing to "Transparency" and "Trustworthy AI"
+
+[VOICEOVER 1:50-2:00] AI transparency might be simpler than we thought—sometimes less really is more.
+[VISUAL DIRECTION] Final text overlay: "MINIMAL CIRCUITS, MAXIMAL INSIGHT" with Nature/Science logos

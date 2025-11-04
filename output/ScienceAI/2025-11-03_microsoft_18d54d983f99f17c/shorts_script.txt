@@ -1,0 +1,23 @@
+(Visual: Quick cuts showing frustrated customer on phone, then happy customer using mobile app)
+Take 1: "Tired of repeating your story to every bank agent?" (5 seconds)
+
+(Visual: Animation showing data flowing between different systems)
+Take 2: "Financial contact centers used to be disconnected messes." (5 seconds)
+
+(Visual: Microsoft Dynamics 365 interface demo)
+Take 3: "Now AI is unifying everything into one smart platform." (5 seconds)
+
+(Visual: Split screen showing virtual assistant and human agent working together)
+Take 4: "Bots handle simple questions, humans focus on complex cases." (5 seconds)
+
+(Visual: Security shield animation over cloud infrastructure)
+Take 5: "And it's all secure in Microsoft's Azure cloud." (5 seconds)
+
+(Visual: Customer happily resolving issue on mobile)
+Take 6: "The result? Faster, smarter customer service." (5 seconds)
+
+(Visual: Bank logo transforming into heart icon)
+Take 7: "Turning cost centers into customer experience hubs." (5 seconds)
+
+(Visual: Call to action screen)
+Take 8: "This is the future of financial customer support." (5 seconds)

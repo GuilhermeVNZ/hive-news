@@ -1,0 +1,1 @@
+A new method trains AI to understand 3D space using only images, boosting accuracy by up to 12% and cutting costs for robotics and autonomous systems.

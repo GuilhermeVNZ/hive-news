@@ -1,0 +1,1 @@
+Your AI job recommendations might be lying about fairness. New research shows recommender systems can mask discrimination through flawed metrics that give illusion of fairness. Critical for careers, education, and scientific development.

@@ -1,0 +1,1 @@
+AI decisions can fail with tiny input changes, risking safety. New Lipschitz-aware grafting makes AI reliably robust, proven on CIFAR-10 with 50% easier certification. Read the Nature/Science paper to see how this advances trustworthy AI.

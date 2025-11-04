@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could cut through the noise of complex security documents and reveal the true patterns hidden within?
+[VISUAL DIRECTION] [Animated text: "73.33% REDUCTION" with dramatic reveal effect]
+
+[VOICEOVER 0:05-0:20] Security analysts face a critical challenge: human operations documents are notoriously dense and ambiguous, making automated analysis nearly impossible.
+[VISUAL DIRECTION] [Show rapidly scrolling legal text with red "CONFUSING" overlays, then transition to cluttered network graph]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we systematically clean up these messy knowledge graphs while preserving critical insights?
+[VISUAL DIRECTION] [Zoom in on tangled graph nodes, then show question mark animation]
+
+[VOICEOVER 0:40-1:00] They discovered CORE-KG - an AI method that reduces duplication by 73.33% while increasing relationship clarity.
+[VISUAL DIRECTION] [Show before/after comparison: cluttered graph transforms into clean, interconnected structure with relationship-to-node ratio of 2.88 highlighted]
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, large language models consolidate references - unifying 'Defendant Lewis' and 'Lewis' into single nodes. Then, domain-specific instructions suppress boilerplate and focus only on relevant entities like Location and Route.
+[VISUAL DIRECTION] [Animated sequence showing entity consolidation process, with irrelevant details fading out and key connections strengthening]
+
+[VOICEOVER 1:30-1:50] This means security agencies can now accurately map complex smuggling operations, identifying key routes and actors with unprecedented clarity.
+[VISUAL DIRECTION] [Show practical application: animated map with smuggling routes highlighted, key actors connected]
+
+[VOICEOVER 1:50-2:00] The future of security analysis just got 73.33% clearer - and that changes everything.
+[VISUAL DIRECTION] [Final zoom on clean graph structure with "73.33% CLEARER" text overlay]

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI training could continue even when some participants have slow networks or limited resources?
+[VISUAL DIRECTION] Animated text: "AI Training Without Waiting" with pulsing network nodes
+
+[VOICEOVER 0:05-0:20] Traditional federated learning hits a fundamental bottleneck - the entire system slows down to match the slowest participant. This has limited AI's scalability in real-world applications.
+[VISUAL DIRECTION] Show traditional system with one slow node dragging down entire network speed, animated arrows slowing down
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we decouple progress from delays and eliminate this bottleneck entirely? The challenge was maintaining accuracy while allowing faster participants to continue computing.
+[VISUAL DIRECTION] Zoom in on bottleneck point with question mark overlay, show computational delays stacking up
+
+[VOICEOVER 0:40-1:00] The breakthrough: MU-SplitFed achieves what they call "linear speedup" - allowing multiple complete computations per round while eliminating complex backpropagation calculations.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance curves, highlight "linear speedup" label with arrow
+
+[VOICEOVER 1:00-1:30] How it works: By combining smart scheduling with zeroth-order optimization, the system splits neural networks between clients and servers. Faster participants can perform multiple computations while slower ones catch up.
+[VISUAL DIRECTION] Animated diagram showing network split, fast nodes continuing computations while slow nodes process at their pace
+
+[VOICEOVER 1:30-1:50] Real impact: In experiments across CIFAR-10, Fashion-MNIST, and CINIC-10 datasets, it reduced communication by 33% while maintaining or improving accuracy. For language models, it cut client-side requirements from 8.02 GB to just 1.05 GB.
+[VISUAL DIRECTION] Fast cuts between dataset logos, show 33% reduction statistic in bold text, then memory comparison 8.02GB → 1.05GB
+
+[VOICEOVER 1:50-2:00] The result: AI that works efficiently across diverse hardware - from smartphones to IoT devices - without waiting for the slowest participant.
+[VISUAL DIRECTION] Final montage of different devices (phone, tablet, IoT sensor) with MU-SplitFed logo overlay, hold on final frame

@@ -101,9 +101,12 @@ impl PmcCollector {
         
         // Convert PMC IDs to article metadata
         for pmc_id in ids.iter().take(limit) {
+            let title = format!("Paper ID: {}", pmc_id);
             articles.push(ArticleMetadata {
                 id: format!("PMC{}", pmc_id),
-                title: format!("Paper ID: {}", pmc_id),
+                title: title.clone(), // Mantido para compatibilidade
+                original_title: Some(title), // Título original da fonte
+                generated_title: None, // Será preenchido quando o artigo for publicado
                 url: format!("https://www.ncbi.nlm.nih.gov/pmc/articles/PMC{}", pmc_id),
                 author: Some("PMC Paper".to_string()),
                 summary: Some("PubMed Central paper".to_string()),
@@ -113,6 +116,7 @@ impl PmcCollector {
                 content_html: None,
                 content_text: None,
                 category: None,
+                slug: None,
             });
         }
         

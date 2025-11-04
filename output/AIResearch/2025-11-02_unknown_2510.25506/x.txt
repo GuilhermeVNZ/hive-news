@@ -1,0 +1,1 @@
+🚨 AI reproducibility crisis: 0/86 LLM studies fully replicable. Researchers found only 5 even attempted reproduction, none matched original results. Translation accuracy dropped from 79.9% to 0%. How can science progress without verification?

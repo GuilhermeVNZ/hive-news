@@ -1,0 +1,15 @@
+Hugging Face has released version 1.0 of its huggingfacehub library, marking a significant milestone for the open-source machine learning infrastructure that powers model sharing and collaboration across the AI ecosystem. The update brings substantial performance improvements and modernized architecture after five years of development and 35 previous releases.
+
+The v1.0 release represents a strategic shift in how developers interact with the Hugging Face Hub. The most significant change is the migration from the requests library to httpx as the HTTP backend, bringing native HTTP/2 support, improved thread safety, and unified synchronous/asynchronous APIs. This architectural upgrade positions the library to better handle the scaling demands of modern AI workflows.
+
+File transfer operations have been overhauled with hfxet becoming the default package, replacing the legacy hftransfer system. The Xet protocol operates at the chunk level rather than file level, meaning only changed portions of large files need uploading or downloading. This follows a massive migration that moved 77 petabytes across 6 million repositories to the new backend without disrupting user workflows.
+
+The command-line interface has been completely redesigned with the new hf command replacing the deprecated huggingface-cli. Built on Typer with a modern resource-action pattern, the CLI now includes autocompletion, cross-platform installation, and expanded functionality for managing machine learning operations directly from the terminal.
+
+Recent additions like Model Context Protocol (MCP) integration and tiny-agents continue to shape how developers build AI applications. The MCPClient provides standardized tool interaction for AI agents, while tiny-agents enables running agents directly from the Hub with minimal code. These features build on the existing InferenceClient and its support for multiple inference providers.
+
+Version 1.0 removes several legacy patterns that were limiting development progress. The Git-based Repository class has been eliminated in favor of HTTP-based methods like upload_file() and create_commit(). Token management has been streamlined with explicit login/logout functions, and the older InferenceApi class has been superseded by the more comprehensive InferenceClient.
+
+The breaking changes were carefully planned with extensive migration guidance and backward compatibility considerations. Most deprecations were announced months in advance, and the library maintains compatibility layers where possible. Previous v0.x versions will remain available on PyPI but will only receive security updates going forward.
+
+Hugging Face acknowledges 280 contributors who helped build the library over its five-year journey. The huggingfacehub library now serves as a dependency for over 200,000 GitHub repositories and 3,000 PyPI packages, powering everything from major frameworks like Keras and LangChain to countless specialized tools across the machine learning landscape.

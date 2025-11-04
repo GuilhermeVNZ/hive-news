@@ -1,0 +1,1 @@
+AI agents just got smarter at teamwork. New method lets them evaluate conversation steps, boosting math problem-solving accuracy by 30.7% without extra computation. Nature/Science research shows this could make multi-agent systems reliable for real-world applications.

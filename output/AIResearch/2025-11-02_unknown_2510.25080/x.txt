@@ -1,0 +1,1 @@
+AI achieves near-perfect performance in complex financial negotiation games using modified Counterfactual Regret Minimization. Research demonstrates existing methods can master bounded one-sided interactions crucial for cybersecurity and markets.

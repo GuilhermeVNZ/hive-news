@@ -1,0 +1,1 @@
+Stop the scroll: AI now solves impossible trade-offs. Vehicles can optimize speed AND safety simultaneously using Pareto fronts. Already deployed in Portland handling 40k trips. This changes everything for urban planning.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could see inside AI's 'black box' and control what it thinks?
+[VISUAL DIRECTION] Animated text: "AI BLACK BOX SOLVED?" with glowing neural network animation
+
+[VOICEOVER 0:05-0:20] AI is making critical decisions in healthcare and finance, but we can't see how it reaches conclusions. This lack of transparency creates serious safety risks.
+[VISUAL DIRECTION] Quick cuts: medical AI diagnosis, financial trading algorithms, then red warning symbols over opaque AI systems
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make AI interpretable without starting from scratch?
+[VISUAL DIRECTION] Zoom on question mark transforming into lightbulb, show scientists examining AI models
+
+[VOICEOVER 0:40-1:00] They discovered different AIs encode concepts in similar ways, creating a universal Concept Atlas. This serves as a reference map for understanding AI thinking.
+[VISUAL DIRECTION] Animated Concept Atlas diagram with interconnected nodes, highlight "universal reference" text overlay
+
+[VOICEOVER 1:00-1:30] Using mathematical transformations called Procrustes, they align any AI to this atlas—no retraining needed. Just feed data and compare mappings to identify concepts like 'secrets' or 'deception.'
+[VISUAL DIRECTION] Show Procrustes transformation animation: chaotic AI activations aligning neatly with Concept Atlas, zoom on mathematical equations
+
+[VOICEOVER 1:30-1:50] Results: Near-perfect concept retrieval (MRR 0.94) and significantly outperformed baselines. This enables practical AI safety in real deployments.
+[VISUAL DIRECTION] Fast cuts: precision metrics (0.40-0.49 vs 0.046 baseline), MRR 0.94 in bold, then transition to safe AI in medical and financial settings
+
+[VOICEOVER 1:50-2:00] AI transparency is no longer a dream—it's a solvable engineering problem with immediate real-world impact.
+[VISUAL DIRECTION] Final text overlay: "AI INTERPRETABILITY: SOLVED" with Concept Atlas visualization fading in background

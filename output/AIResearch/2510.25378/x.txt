@@ -1,1 +1,0 @@
-AI hallucinates fake references 300x more for obscure papers. Nature study shows GPT-4.1's citation accuracy plummets with low-citation works—systematic bias threatens academic reliability. Critical for researchers using AI tools.

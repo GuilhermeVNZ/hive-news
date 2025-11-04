@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant knew exactly when to stop talking? New research reveals AI can now achieve 92% accuracy in terminating conversations at the perfect moment.
+
+[VISUAL DIRECTION] Animated text: "92% ACCURACY" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] In high-stakes fields like healthcare and finance, current AI often fails by either asking too many questions or stopping too soon. This limitation prevents AI from becoming true collaborative partners.
+
+[VISUAL DIRECTION] Show split screen: pharmacist consultation vs financial advisor meeting with question marks appearing
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to master both asking the right questions AND knowing when to stop? The challenge was bridging the "reality gap" between simulated training and real-world performance.
+
+[VISUAL DIRECTION] Zoom in on "reality gap" text with bridging animation
+
+[VOICEOVER 0:40-1:00] They discovered Learn-to-Ask - a framework that triples AI's ability to ask precise, goal-oriented questions. Using real pharmacist-patient interactions from the RealMedConv dataset, the system learns from expert conversations without simulations.
+
+[VISUAL DIRECTION] Show data flow diagram: Real conversations → Micro-goals → Macro-goals → AI learning
+
+[VOICEOVER 1:00-1:30] Here's how it works: The AI analyzes existing expert conversations to extract "micro-goals" - what to ask next - and "macro-goals" - whether to continue or stop. Using Automated Prompt Calibration and Relative Policy Optimization, it learns nuanced conversation strategies directly from real behavior.
+
+[VISUAL DIRECTION] Animated sequence showing conversation analysis, goal extraction, and calibration process with technical details highlighted
+
+[VOICEOVER 1:30-1:50] In real-world deployment, a Learn-to-Ask-trained Medication Assistant achieved 93% conversation completeness and boosted business conversion rates by 1.87-fold. This translates academic research into tangible benefits for critical services.
+
+[VISUAL DIRECTION] Show deployment statistics with upward trend arrows and real application screens
+
+[VOICEOVER 1:50-2:00] The future? AI that doesn't just respond to queries, but strategically engages as a true partner in our most important conversations.
+
+[VISUAL DIRECTION] Final text overlay: "From responder to partner" with AI-human collaboration imagery

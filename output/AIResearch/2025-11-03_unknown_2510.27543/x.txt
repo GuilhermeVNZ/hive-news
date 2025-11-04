@@ -1,0 +1,1 @@
+AI struggles with Arabic dialects, performing near random guessing in new IALECTAL MMLU benchmark. Affects millions in education, healthcare, business. Time for dialect-aware AI strategies.

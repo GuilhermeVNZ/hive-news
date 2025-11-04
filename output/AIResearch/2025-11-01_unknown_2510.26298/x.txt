@@ -1,0 +1,1 @@
+AI solves Sudoku in 28 seconds but can't play Flappy Bird 🎮 New research shows ChatGPT Atlas excels at logic but fails at coordination - achieving just 11.7% baseline performance. The cognitive divide reveals why AI struggles with dynamic environments.

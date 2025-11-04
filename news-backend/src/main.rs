@@ -20,8 +20,114 @@ mod utils;
 mod writer;
 
 use db::connection::Database;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use crate::utils::article_registry::RegistryManager;
+use crate::utils::site_config_manager::{SiteConfigManager, PathsConfig};
+use anyhow::Context;
+
+/// Get system config path (tries multiple locations)
+fn get_system_config_path() -> PathBuf {
+    // Try to get absolute path from current working directory first
+    let current_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+    
+    let possible_paths = vec![
+        current_dir.join("system_config.json"),
+        current_dir.join("news-backend/system_config.json"),
+        current_dir.parent().map(|p| p.join("system_config.json")).unwrap_or_else(|| PathBuf::from("system_config.json")),
+        PathBuf::from("system_config.json"),
+        PathBuf::from("news-backend/system_config.json"),
+        PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"),
+        PathBuf::from("G:/Hive-Hub/News-main/system_config.json"),
+    ];
+    
+    // Try to find existing file
+    if let Some(path) = possible_paths.iter().find(|p| p.exists()) {
+        // Convert to absolute path if it's relative
+        if path.is_relative() {
+            current_dir.join(path).canonicalize().unwrap_or_else(|_| path.clone())
+        } else {
+            path.clone()
+        }
+    } else {
+        // Default to absolute path in news-backend directory
+        let default_path = PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json");
+        if default_path.exists() {
+            default_path
+        } else {
+            // Fallback to relative path in current directory
+            current_dir.join("system_config.json")
+        }
+    }
+}
+
+/// Get paths configuration from system_config.json
+fn get_paths_config() -> anyhow::Result<PathsConfig> {
+    let config_path = get_system_config_path();
+    let config_manager = SiteConfigManager::new(&config_path);
+    config_manager.get_paths()
+        .context("Failed to load paths from system_config.json")
+}
+
+/// Get base directory path
+fn get_base_dir() -> PathBuf {
+    std::env::var("NEWS_BASE_DIR")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            get_paths_config()
+                .map(|p| PathBuf::from(&p.base_dir))
+                .unwrap_or_else(|_| PathBuf::from("G:/Hive-Hub/News-main"))
+        })
+}
+
+/// Get downloads directory path
+fn get_downloads_dir() -> PathBuf {
+    let base = get_base_dir();
+    get_paths_config()
+        .map(|p| base.join(&p.downloads_dir))
+        .unwrap_or_else(|_| base.join("downloads"))
+}
+
+/// Get output directory path
+fn get_output_dir() -> PathBuf {
+    let base = get_base_dir();
+    get_paths_config()
+        .map(|p| base.join(&p.output_dir))
+        .unwrap_or_else(|_| base.join("output"))
+}
+
+/// Get registry file path
+fn get_registry_path() -> PathBuf {
+    let base = get_base_dir();
+    get_paths_config()
+        .map(|p| base.join(&p.registry_file))
+        .unwrap_or_else(|_| base.join("articles_registry.json"))
+}
+
+/// Get output directory for a specific site
+fn get_site_output_dir(site_id: &str) -> PathBuf {
+    // Convert site_id to output format (e.g., "airesearch" -> "AIResearch")
+    let site_name: String = match site_id.to_lowercase().as_str() {
+        "airesearch" => "AIResearch".to_string(),
+        "scienceai" => "ScienceAI".to_string(),
+        id => {
+            // Capitalize first letter of each word
+            let mut result = String::new();
+            for (i, word) in id.split('_').enumerate() {
+                if i > 0 { result.push(' '); }
+                if !word.is_empty() {
+                    let mut chars = word.chars();
+                    if let Some(first) = chars.next() {
+                        result.push(first.to_uppercase().next().unwrap_or(first));
+                        result.push_str(&chars.as_str());
+                    }
+                }
+            }
+            result.replace(' ', "")
+        }
+    };
+    
+    get_output_dir().join(&site_name)
+}
 
 #[allow(dead_code)]
 fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
@@ -173,7 +279,7 @@ async fn main() -> anyhow::Result<()> {
         println!("=====================================\n");
         
         // Run filter pipeline
-        let filter_result = filter::pipeline::run_filter_pipeline(Path::new("G:/Hive-Hub/News-main/downloads")).await?;
+        let filter_result = filter::pipeline::run_filter_pipeline(&get_downloads_dir()).await?;
         
         println!("\n✅ Filter completed!");
         println!("   Approved: {}", filter_result.approved);
@@ -199,9 +305,19 @@ async fn main() -> anyhow::Result<()> {
     }
 
     if run_pipeline {
+        eprintln!("🔍 [DEBUG] main() - run_pipeline=true, calling run_news_pipeline()");
         println!("🔄 News Pipeline - Complete Processing Flow");
         println!("==========================================\n");
-        run_news_pipeline().await?;
+        match run_news_pipeline().await {
+            Ok(_) => {
+                eprintln!("🔍 [DEBUG] main() - run_news_pipeline() completed successfully");
+            },
+            Err(e) => {
+                eprintln!("🔍 [DEBUG] main() - run_news_pipeline() failed: {}", e);
+                eprintln!("🔍 [DEBUG] Error chain: {:?}", e.chain().collect::<Vec<_>>());
+                return Err(e);
+            }
+        }
         return Ok(());
     }
 
@@ -245,10 +361,64 @@ async fn main() -> anyhow::Result<()> {
     async fn run_arxiv_collection_direct() -> anyhow::Result<()> {
         use crate::collectors::arxiv_collector::ArxivCollector;
         use crate::models::raw_document::ArticleMetadata;
-        use std::path::Path;
+        use crate::utils::site_config_manager::SiteConfigManager;
+
+        // Load arxiv configuration from system_config.json
+        eprintln!("🔍 [DEBUG] Loading arxiv configuration from system_config.json...");
+        let config_path = get_system_config_path();
+        eprintln!("🔍 [DEBUG] Config path: {}", config_path.display());
+        eprintln!("🔍 [DEBUG] Config path exists: {}", config_path.exists());
+        eprintln!("🔍 [DEBUG] Current working directory: {:?}", std::env::current_dir());
+        
+        if !config_path.exists() {
+            return Err(anyhow::anyhow!(
+                "system_config.json not found at: {}. Please ensure the file exists.",
+                config_path.display()
+            ));
+        }
+        
+        let config_manager = SiteConfigManager::new(&config_path);
+        let system_config = config_manager.load()
+            .context(format!("Failed to load system_config.json from: {}", config_path.display()))?;
+        
+        // Find arxiv collector configuration from all enabled sites
+        let mut arxiv_category = "cs.AI".to_string(); // Default
+        let mut arxiv_max_results = 10u32; // Default
+        
+        for (_site_id, site) in &system_config.sites {
+            if !site.enabled {
+                continue;
+            }
+            
+            for collector in &site.collectors {
+                if collector.id == "arxiv" && collector.enabled {
+                    eprintln!("🔍 [DEBUG] Found arxiv collector in site: {}", _site_id);
+                    
+                    // Read category from config
+                    if let Some(category) = collector.config.get("category") {
+                        if let Some(cat_str) = category.as_str() {
+                            arxiv_category = cat_str.to_string();
+                            eprintln!("🔍 [DEBUG] Arxiv category from config: {}", arxiv_category);
+                        }
+                    }
+                    
+                    // Read max_results from config
+                    if let Some(max_results) = collector.config.get("max_results") {
+                        if let Some(max_val) = max_results.as_u64() {
+                            arxiv_max_results = max_val as u32;
+                            eprintln!("🔍 [DEBUG] Arxiv max_results from config: {}", arxiv_max_results);
+                        }
+                    }
+                    
+                    break; // Found first enabled arxiv collector, use its config
+                }
+            }
+        }
+        
+        eprintln!("✅ [DEBUG] Arxiv configuration: category={}, max_results={}", arxiv_category, arxiv_max_results);
 
         // Inicializar registry
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
         
         // Debug: verificar quantos artigos foram carregados
@@ -264,7 +434,7 @@ async fn main() -> anyhow::Result<()> {
         }
 
         // Criar temp dir e download dir
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let temp_dir = base_dir.join("temp");
         let temp_dir_clone = temp_dir.clone();
         let _arxiv_collector = ArxivCollector::new(temp_dir_clone);
@@ -275,8 +445,8 @@ async fn main() -> anyhow::Result<()> {
         let date_dir = download_dir.join(&date);
         tokio::fs::create_dir_all(&date_dir).await?;
 
-        // Definir target_count antes de usar nos prints
-        let target_count = 10;
+        // Use max_results from config (not hardcoded)
+        let target_count = arxiv_max_results;
         let mut start_offset = 0;
         let mut downloaded_count = 0;
 
@@ -295,9 +465,11 @@ async fn main() -> anyhow::Result<()> {
             .build()?;
 
         // Fazer uma requisição inicial ao arXiv para estabelecer sessão e obter cookies
+        // Use category from config (not hardcoded)
         println!("🔐 Establishing session with arXiv...");
-        match client.get("https://arxiv.org/list/cs.AI/recent").send().await {
-            Ok(_) => println!("   Session established ✓"),
+        let session_url = format!("https://arxiv.org/list/{}/recent", arxiv_category);
+        match client.get(&session_url).send().await {
+            Ok(_) => println!("   Session established ✓ (category: {})", arxiv_category),
             Err(e) => println!("   Warning: Could not establish session: {}", e),
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
@@ -327,8 +499,10 @@ async fn main() -> anyhow::Result<()> {
 
             // URL correta do arXiv API (não use DeepSeek aqui!)
             // Usar submittedDate antiga para evitar reCAPTCHA
+            // Use category from config (not hardcoded)
             let url = format!(
-                "https://export.arxiv.org/api/query?search_query=cat:cs.AI+AND+submittedDate:[20240101*+TO+{}]&start={}&max_results={}&sortBy=submittedDate&sortOrder=descending",
+                "https://export.arxiv.org/api/query?search_query=cat:{}+AND+submittedDate:[20240101*+TO+{}]&start={}&max_results={}&sortBy=submittedDate&sortOrder=descending",
+                arxiv_category,
                 chrono::Utc::now().format("%Y%m%d"),
                 start_offset,
                 target_count * 2 // Buscar mais para garantir que achamos novos
@@ -462,9 +636,12 @@ async fn main() -> anyhow::Result<()> {
                             "Untitled".to_string()
                         });
                         
+                        let title_clone = title.clone();
                         articles.push(ArticleMetadata {
                             id: id.clone(),
-                            title: title.clone(),
+                            title: title_clone.clone(),
+                            original_title: Some(title_clone),
+                            generated_title: None,
                             url: format!("https://arxiv.org/abs/{}", id),
                             author: Some("Unknown".to_string()),
                             summary: Some("No summary available".to_string()),
@@ -474,6 +651,7 @@ async fn main() -> anyhow::Result<()> {
                             content_html: None,
                             content_text: None,
                             category: None,
+                            slug: None,
                         });
                     }
                     // Reset estado para próximo artigo (se ainda estava coletando)
@@ -715,7 +893,7 @@ async fn main() -> anyhow::Result<()> {
         println!("   (Blogs and non-scientific sources will be skipped)");
 
         let filter_result =
-            filter::pipeline::run_filter_pipeline(Path::new("G:/Hive-Hub/News-main/downloads"))
+            filter::pipeline::run_filter_pipeline(&get_downloads_dir())
                 .await?;
 
         println!("\n✅ Filter completed!");
@@ -739,12 +917,11 @@ async fn main() -> anyhow::Result<()> {
     async fn run_pmc_collection_direct() -> anyhow::Result<()> {
         use crate::collectors::pmc_collector::PmcCollector;
         use crate::models::raw_document::ArticleMetadata;
-        use std::path::Path;
 
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let pmc_dir = base_dir.join("pmc");
         ensure_dir(&pmc_dir).await?;
         let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
@@ -802,12 +979,11 @@ async fn main() -> anyhow::Result<()> {
     async fn run_semantic_scholar_collection_direct() -> anyhow::Result<()> {
         use crate::collectors::semantic_scholar_collector::SemanticScholarCollector;
         use crate::models::raw_document::ArticleMetadata;
-        use std::path::Path;
 
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let ss_dir = base_dir.join("semantic_scholar");
         ensure_dir(&ss_dir).await?;
         let date = chrono::Utc::now().format("%Y-%m-%d").to_string();
@@ -863,131 +1039,150 @@ async fn main() -> anyhow::Result<()> {
     }
 
     async fn run_collect_enabled_from_config() -> anyhow::Result<()> {
-        use std::path::Path;
         use crate::utils::config_manager::ConfigManager;
-        use crate::utils::site_config_manager::SiteConfigManager;
 
-        // Primeiro tentar ler do collectors_config.json (prioridade)
-        // Se não existir, ler do system_config.json (compatibilidade)
-        let possible_config_paths = vec![
-            Path::new("collectors_config.json"),
-            Path::new("G:/Hive-Hub/News-main/news-backend/collectors_config.json"),
-            Path::new("G:/Hive-Hub/News-main/collectors_config.json"),
-        ];
+        // CRITICAL: Always sync collectors_config.json from system_config.json first
+        // system_config.json is the source of truth
+        eprintln!("🔄 [SYNC] Syncing collectors_config.json from system_config.json...");
+        let config_path = get_system_config_path();
+        
+        let current_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
         
         let possible_system_paths = vec![
-            Path::new("system_config.json"),
-            Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-            Path::new("G:/Hive-Hub/News-main/system_config.json"),
+            config_path.clone(),
+            current_dir.join("system_config.json"),
+            current_dir.join("news-backend/system_config.json"),
+            current_dir.parent().map(|p| p.join("system_config.json")).unwrap_or_else(|| PathBuf::from("system_config.json")),
+            PathBuf::from("system_config.json"),
+            PathBuf::from("news-backend/system_config.json"),
+            PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"),
+            PathBuf::from("G:/Hive-Hub/News-main/system_config.json"),
         ];
         
-        let mut config = None;
-        let mut config_path_used = None;
-        let mut use_system_config = false;
+        let base = get_base_dir();
+        eprintln!("🔍 [DEBUG] Base directory: {}", base.display());
         
-        // Tentar collectors_config.json primeiro
-        for path in &possible_config_paths {
+        let possible_collectors_config_paths = vec![
+            base.join("collectors_config.json"),
+            current_dir.join("collectors_config.json"),
+            current_dir.join("news-backend/collectors_config.json"),
+            PathBuf::from("collectors_config.json"),
+            PathBuf::from("news-backend/collectors_config.json"),
+            PathBuf::from("G:/Hive-Hub/News-main/news-backend/collectors_config.json"),
+            PathBuf::from("G:/Hive-Hub/News-main/collectors_config.json"),
+        ];
+        
+        // Find system_config.json
+        let mut system_config_path = None;
+        for path in &possible_system_paths {
             if path.exists() {
-                let manager = ConfigManager::new(path);
-                match manager.load() {
-                    Ok(c) => {
-                        config = Some(c.collectors);
-                        config_path_used = Some(path.to_path_buf());
-                        break;
-                    }
-                    Err(_) => continue,
-                }
+                system_config_path = Some(path.to_path_buf());
+                eprintln!("🔄 [SYNC] Found system_config.json: {}", path.display());
+                break;
             }
         }
         
-        // Se não encontrou collectors_config.json, tentar system_config.json
-        if config.is_none() {
-            for path in &possible_system_paths {
-                if path.exists() {
-                    let manager = SiteConfigManager::new(path);
-                    match manager.load() {
-                        Ok(system_config) => {
-                            // Pegar coletores de todos os sites habilitados e converter para CollectorConfig do config_manager
-                            use crate::utils::config_manager::CollectorConfig as ConfigCollectorConfig;
-                            let mut all_collectors: Vec<ConfigCollectorConfig> = Vec::new();
-                            for (_site_id, site) in &system_config.sites {
-                                if site.enabled {
-                                    for site_collector in &site.collectors {
-                                        // Converter de site_config_manager::CollectorConfig para config_manager::CollectorConfig
-                                        all_collectors.push(ConfigCollectorConfig {
-                                            id: site_collector.id.clone(),
-                                            name: site_collector.name.clone(),
-                                            enabled: site_collector.enabled,
-                                            api_key: site_collector.api_key.clone(),
-                                            collector_type: site_collector.collector_type.clone(),
-                                            feed_url: site_collector.feed_url.clone(),
-                                            base_url: site_collector.base_url.clone(),
-                                            selectors: site_collector.selectors.clone(),
-                                            config: site_collector.config.clone(),
-                                        });
-                                    }
-                                }
-                            }
-                            config = Some(all_collectors);
-                            config_path_used = Some(path.to_path_buf());
-                            use_system_config = true;
-                            break;
-                        }
-                        Err(_) => continue,
-                    }
-                }
-            }
+        if system_config_path.is_none() {
+            eprintln!("⚠️  [SYNC] system_config.json not found in any of the checked paths");
         }
         
-        let collectors = match config {
-            Some(c) => c,
-            None => {
-                anyhow::bail!("No config file found (collectors_config.json or system_config.json). Please configure collectors first.");
+        // Find collectors_config.json path (use first existing or default to current dir)
+        let collectors_config_path = possible_collectors_config_paths.iter()
+            .find(|p| p.exists())
+            .cloned()
+            .unwrap_or_else(|| PathBuf::from("collectors_config.json"));
+        
+        // Sync collectors_config.json from system_config.json
+        if let Some(sys_path) = &system_config_path {
+            if let Err(e) = ConfigManager::sync_from_system_config(sys_path, &collectors_config_path) {
+                eprintln!("⚠️  [SYNC] Failed to sync collectors_config.json: {}", e);
+                eprintln!("🔄 [SYNC] Continuing with existing collectors_config.json if available...");
+            } else {
+                eprintln!("✅ [SYNC] Successfully synced collectors_config.json");
+            }
+        } else {
+            eprintln!("⚠️  [SYNC] system_config.json not found, skipping sync");
+        }
+        
+        // Now read collectors_config.json (which should be up-to-date)
+        let manager = ConfigManager::new(&collectors_config_path);
+        let (collectors, config_path_used) = match manager.load() {
+            Ok(c) => (c.collectors, collectors_config_path.clone()),
+            Err(e) => {
+                eprintln!("❌ Failed to load collectors_config.json: {}", e);
+                anyhow::bail!("Failed to load collectors_config.json: {}", e);
             }
         };
         
-        if let Some(path) = config_path_used {
-            println!("  Using config from: {}", path.display());
-            if use_system_config {
-                println!("  (Reading from system_config.json - all enabled sites)");
-            }
-        }
+        println!("  Using config from: {}", config_path_used.display());
+        println!("  (Synced from system_config.json - source of truth)");
 
         // Determinar fontes habilitadas a partir dos collectors habilitados
         let mut use_arxiv = false;
         let mut use_pmc = false;
         let mut use_ss = false;
+        
+        // Usar HashSet para deduplicar RSS e HTML collectors por ID
+        use std::collections::HashSet;
+        let mut rss_collector_ids = HashSet::new();
+        let mut html_collector_ids = HashSet::new();
+        
         let mut rss_collectors = Vec::new();
         let mut html_collectors = Vec::new();
 
         for c in &collectors {
             if !c.enabled { continue; }
             
-            let collector_type = c.collector_type.as_deref().unwrap_or("api");
+            // INFER collector_type from fields if not explicitly set
+            // Priority: explicit type > inferred from fields > default to "api"
+            let collector_type = if let Some(ct) = c.collector_type.as_deref() {
+                // Use explicit type if set
+                ct
+            } else {
+                // INFER type from fields:
+                // - If has feed_url → RSS
+                // - If has base_url + selectors → HTML
+                // - Otherwise → API
+                if c.feed_url.is_some() {
+                    "rss"
+                } else if c.base_url.is_some() && c.selectors.is_some() {
+                    "html"
+                } else {
+                    "api"
+                }
+            };
             
             match collector_type {
                 "rss" => {
+                    // Deduplicar por ID antes de adicionar
+                    if rss_collector_ids.contains(&c.id) {
+                        continue;
+                    }
+                    
                     if let Some(feed_url) = &c.feed_url {
                         let base_url = c.base_url.clone();
                         let max_results = c.config.get("max_results")
                             .and_then(|v| v.as_u64())
                             .map(|v| v as u32);
+                        rss_collector_ids.insert(c.id.clone());
                         rss_collectors.push((c.id.clone(), feed_url.clone(), base_url, max_results));
                     }
                 }
                 "html" => {
+                    // Deduplicar por ID antes de adicionar
+                    if html_collector_ids.contains(&c.id) {
+                        continue;
+                    }
+                    
                     if let Some(base_url) = &c.base_url {
                         let selectors = c.selectors.as_ref().and_then(|s| {
                             use std::collections::HashMap;
-                            if let Ok(map) = serde_json::from_value::<HashMap<String, String>>(s.clone()) {
-                                Some(map)
-                            } else {
-                                None
-                            }
+                            serde_json::from_value::<HashMap<String, String>>(s.clone()).ok()
                         });
                         let max_results = c.config.get("max_results")
                             .and_then(|v| v.as_u64())
                             .map(|v| v as u32);
+                        html_collector_ids.insert(c.id.clone());
                         html_collectors.push((c.id.clone(), base_url.clone(), selectors, max_results));
                     }
                 }
@@ -1001,12 +1196,24 @@ async fn main() -> anyhow::Result<()> {
             }
         }
         
-        println!("Enabled sources summary:");
-        println!("  arXiv:   {}", if use_arxiv { "ON" } else { "OFF" });
-        println!("  PMC:     {}", if use_pmc { "ON" } else { "OFF" });
-        println!("  Semantic:{}", if use_ss { "ON" } else { "OFF" });
-        println!("  RSS:     {} collector(s)", rss_collectors.len());
-        println!("  HTML:    {} collector(s)", html_collectors.len());
+        
+        println!("\n═══════════════════════════════════════════════════════════");
+        println!("📊 ENABLED SOURCES SUMMARY:");
+        println!("═══════════════════════════════════════════════════════════");
+        println!("  📄 Article Sources:");
+        println!("    - arXiv:   {}", if use_arxiv { "✅ ON" } else { "❌ OFF" });
+        println!("    - PMC:     {}", if use_pmc { "✅ ON" } else { "❌ OFF" });
+        println!("    - Semantic:{}", if use_ss { "✅ ON" } else { "❌ OFF" });
+        println!("  📰 News Sources:");
+        println!("    - RSS:     {} collector(s) {}", rss_collectors.len(), if rss_collectors.is_empty() { "❌" } else { "✅" });
+        if !rss_collectors.is_empty() {
+            println!("      IDs: {:?}", rss_collectors.iter().map(|(id, _, _, _)| id.clone()).collect::<Vec<_>>());
+        }
+        println!("    - HTML:    {} collector(s) {}", html_collectors.len(), if html_collectors.is_empty() { "❌" } else { "✅" });
+        if !html_collectors.is_empty() {
+            println!("      IDs: {:?}", html_collectors.iter().map(|(id, _, _, _)| id.clone()).collect::<Vec<_>>());
+        }
+        println!("═══════════════════════════════════════════════════════════\n");
 
         // Check if there are enabled sites for each source before collecting
         // This prevents unnecessary collection attempts
@@ -1043,34 +1250,129 @@ async fn main() -> anyhow::Result<()> {
             println!("⏭️  Skipping article collection: no article sources enabled");
         }
 
-        // For news sources (rss, html): check if any site has enabled news collectors
+        // For news sources (rss, html): Process ALL enabled collectors
         if !rss_collectors.is_empty() {
-            let rss_sites = get_enabled_sites_for_source("rss");
-            if !rss_sites.is_empty() {
-                println!("✅ Collecting RSS news for {} enabled site(s)", rss_sites.len());
-                run_rss_collectors(&rss_collectors).await?;
-            } else {
-                println!("⏭️  Skipping RSS collection: no enabled sites");
-            }
+            println!("✅ Collecting RSS news from {} enabled collector(s)", rss_collectors.len());
+            run_rss_collectors(&rss_collectors).await?;
+        } else {
+            println!("⏭️  Skipping RSS collection: no enabled RSS collectors");
         }
         
         if !html_collectors.is_empty() {
-            let html_sites = get_enabled_sites_for_source("html");
-            if !html_sites.is_empty() {
-                println!("✅ Collecting HTML news for {} enabled site(s)", html_sites.len());
-                run_html_collectors(&html_collectors).await?;
-            } else {
-                println!("⏭️  Skipping HTML collection: no enabled sites");
+            println!("✅ Collecting HTML news from {} enabled collector(s)", html_collectors.len());
+            run_html_collectors(&html_collectors).await?;
+        } else {
+            println!("⏭️  Skipping HTML collection: no enabled HTML collectors");
+        }
+        Ok(())
+    }
+
+    /// Collect ONLY news sources (RSS/HTML) - excludes arXiv, PMC, Semantic Scholar
+    /// This is used by the news pipeline to avoid conflicts with articles pipeline
+    async fn run_collect_news_only() -> anyhow::Result<()> {
+        use crate::utils::config_manager::ConfigManager;
+
+        // Sync collectors_config.json from system_config.json first
+        let config_path = get_system_config_path();
+        let base = get_base_dir();
+        
+        let collectors_config_path = base.join("collectors_config.json");
+        
+        // Sync collectors_config.json from system_config.json
+        if config_path.exists() {
+            if let Err(e) = ConfigManager::sync_from_system_config(&config_path, &collectors_config_path) {
+                eprintln!("⚠️  [SYNC] Failed to sync collectors_config.json: {}", e);
             }
+        }
+        
+        // Load collectors
+        let manager = ConfigManager::new(&collectors_config_path);
+        let config = manager.load()
+            .map_err(|e| anyhow::anyhow!("Failed to load collectors_config.json: {}", e))?;
+        let collectors = config.collectors;
+
+        // Only collect RSS and HTML sources (exclude arXiv, PMC, Semantic Scholar)
+        use std::collections::HashSet;
+        let mut rss_collector_ids = HashSet::new();
+        let mut html_collector_ids = HashSet::new();
+        let mut rss_collectors = Vec::new();
+        let mut html_collectors = Vec::new();
+
+        for c in &collectors {
+            if !c.enabled { continue; }
+            
+            let collector_type = if let Some(ct) = c.collector_type.as_deref() {
+                ct
+            } else {
+                if c.feed_url.is_some() {
+                    "rss"
+                } else if c.base_url.is_some() && c.selectors.is_some() {
+                    "html"
+                } else {
+                    continue; // Skip API collectors (arXiv, PMC, etc.)
+                }
+            };
+            
+            match collector_type {
+                "rss" => {
+                    if rss_collector_ids.contains(&c.id) { continue; }
+                    if let Some(feed_url) = &c.feed_url {
+                        let base_url = c.base_url.clone();
+                        let max_results = c.config.get("max_results")
+                            .and_then(|v| v.as_u64())
+                            .map(|v| v as u32);
+                        rss_collector_ids.insert(c.id.clone());
+                        rss_collectors.push((c.id.clone(), feed_url.clone(), base_url, max_results));
+                    }
+                }
+                "html" => {
+                    if html_collector_ids.contains(&c.id) { continue; }
+                    if let Some(base_url) = &c.base_url {
+                        let selectors = c.selectors.as_ref().and_then(|s| {
+                            use std::collections::HashMap;
+                            serde_json::from_value::<HashMap<String, String>>(s.clone()).ok()
+                        });
+                        let max_results = c.config.get("max_results")
+                            .and_then(|v| v.as_u64())
+                            .map(|v| v as u32);
+                        html_collector_ids.insert(c.id.clone());
+                        html_collectors.push((c.id.clone(), base_url.clone(), selectors, max_results));
+                    }
+                }
+                _ => continue, // Skip API collectors
+            }
+        }
+        
+        println!("\n═══════════════════════════════════════════════════════════");
+        println!("📰 NEWS COLLECTION (RSS/HTML only)");
+        println!("═══════════════════════════════════════════════════════════");
+        println!("  📰 News Sources:");
+        println!("    - RSS:     {} collector(s) {}", rss_collectors.len(), if rss_collectors.is_empty() { "❌" } else { "✅" });
+        println!("    - HTML:    {} collector(s) {}", html_collectors.len(), if html_collectors.is_empty() { "❌" } else { "✅" });
+        println!("═══════════════════════════════════════════════════════════\n");
+
+        // Collect RSS news
+        if !rss_collectors.is_empty() {
+            println!("✅ Collecting RSS news from {} enabled collector(s)", rss_collectors.len());
+            run_rss_collectors(&rss_collectors).await?;
+        } else {
+            println!("⏭️  Skipping RSS collection: no enabled RSS collectors");
+        }
+        
+        // Collect HTML news
+        if !html_collectors.is_empty() {
+            println!("✅ Collecting HTML news from {} enabled collector(s)", html_collectors.len());
+            run_html_collectors(&html_collectors).await?;
+        } else {
+            println!("⏭️  Skipping HTML collection: no enabled HTML collectors");
         }
 
         Ok(())
     }
 
     fn get_enabled_sites_for_source(source_key: &str) -> Vec<String> {
-        use std::path::Path;
         use crate::utils::site_config_manager::SiteConfigManager;
-        let config_path = Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json");
+        let config_path = get_system_config_path();
         let manager = SiteConfigManager::new(config_path);
         let mut result = Vec::new();
         
@@ -1186,20 +1488,19 @@ async fn main() -> anyhow::Result<()> {
     ) -> anyhow::Result<()> {
         use crate::collectors::rss_collector::RssCollector;
         use crate::utils::article_registry::RegistryManager;
-        use std::path::{Path, PathBuf};
         use serde_json;
 
         println!("\n📡 Starting RSS collectors...\n");
 
         // Inicializar registry
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
-        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        let temp_dir = get_downloads_dir().join("temp");
         tokio::fs::create_dir_all(&temp_dir).await?;
 
         // Criar diretório para salvar artigos raw
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let raw_dir = base_dir.join("raw");
         tokio::fs::create_dir_all(&raw_dir).await?;
         
@@ -1208,12 +1509,12 @@ async fn main() -> anyhow::Result<()> {
         tokio::fs::create_dir_all(&date_dir).await?;
 
         // Inicializar filtro de notícias (verifica no registry)
-        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let rejected_dir = base_dir.join("rejected");
         let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
         news_filter.check_registry()?;
 
-        let rss_collector = RssCollector::new(temp_dir);
+        let rss_collector = RssCollector::new(temp_dir.clone());
         let mut total_saved = 0;
         let mut total_rejected = 0;
 
@@ -1306,6 +1607,10 @@ async fn main() -> anyhow::Result<()> {
 
                         // Registrar no registry (usando url como pdf_url para compatibilidade)
                         println!("    │  📝 Registering in registry...");
+                        println!("    │     Article ID: {}", article.id);
+                        println!("    │     Title: {}", article.title);
+                        println!("    │     URL: {}", article.url);
+                        
                         if let Err(e) = registry.register_collected(
                             article.id.clone(),
                             article.title.clone(),
@@ -1313,18 +1618,55 @@ async fn main() -> anyhow::Result<()> {
                             article.url.clone(), // Web articles não têm PDF, usar URL como pdf_url
                         ) {
                             eprintln!("    │  ❌ Failed to register: {}", e);
+                            eprintln!("    │     Error details: {:?}", e);
                             println!("    └─\n");
                             continue;
                         }
                         println!("    │  ✅ Registered successfully");
+                        
+                        // Verificar se foi realmente registrado
+                        if let Some(meta) = registry.get_metadata(&article.id) {
+                            println!("    │     Registry status: {:?}", meta.status);
+                            if let Some(collected_at) = &meta.collected_at {
+                                println!("    │     Collected at: {}", collected_at);
+                            }
+                        } else {
+                            eprintln!("    │  ⚠️  WARNING: Article registered but not found when verifying");
+                        }
 
                         // Definir destinos baseado nos sites que têm RSS/HTML collectors habilitados
                         println!("    │  🎯 Setting destinations...");
                         let destinations = get_enabled_sites_for_source("rss");
-                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
-                            eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                        println!("    │     Found {} enabled site(s) for RSS source", destinations.len());
+                        if destinations.is_empty() {
+                            eprintln!("    │  ⚠️  WARNING: No sites enabled for RSS source!");
+                            eprintln!("    │     This article will not be processed by the writer.");
+                            eprintln!("    │     Check system_config.json to enable sites for RSS source.");
                         } else {
-                            println!("    │  ✅ Destinations set: {:?}", destinations);
+                            for (idx, dest) in destinations.iter().enumerate() {
+                                println!("    │     {}. {}", idx + 1, dest);
+                            }
+                        }
+                        
+                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                            eprintln!("    │  ❌ Failed to set destinations: {}", e);
+                            eprintln!("    │     Error details: {:?}", e);
+                            eprintln!("    │     Article ID: {}", article.id);
+                            eprintln!("    │     Destinations: {:?}", destinations);
+                        } else {
+                            println!("    │  ✅ Destinations set successfully");
+                            
+                            // Verificar se foram realmente configuradas
+                            if let Some(meta) = registry.get_metadata(&article.id) {
+                                if let Some(set_destinations) = &meta.destinations {
+                                    println!("    │     Verified destinations: {:?}", set_destinations);
+                                    if set_destinations.is_empty() {
+                                        eprintln!("    │  ⚠️  WARNING: Destinations set but empty when verifying!");
+                                    }
+                                } else {
+                                    eprintln!("    │  ⚠️  WARNING: Destinations set but not found when verifying!");
+                                }
+                            }
                         }
 
                         total_saved += 1;
@@ -1332,7 +1674,119 @@ async fn main() -> anyhow::Result<()> {
                     }
                 }
                 Err(e) => {
-                    println!("    ❌ Error: {}", e);
+                    let error_str = e.to_string();
+                    println!("    ❌ RSS Error: {}", error_str);
+                    
+                    // Se o erro for 404, 403, 308 ou similar, tentar como HTML collector com JS rendering
+                    if error_str.contains("404") || error_str.contains("403") || error_str.contains("308") || error_str.contains("Redirect") {
+                        println!("    🔄 RSS failed, attempting as HTML collector with JS rendering...\n");
+                        
+                        // Tentar coletar usando HTML collector
+                        use crate::collectors::html_collector::HtmlCollector;
+                        use std::collections::HashMap;
+                        
+                        let html_collector = HtmlCollector::new(temp_dir.clone());
+                        let mut html_selectors = HashMap::new();
+                        html_selectors.insert("link".to_string(), "a".to_string());
+                        html_selectors.insert("title".to_string(), "h1, h2, h3".to_string());
+                        html_selectors.insert("content".to_string(), "article, main, .content".to_string());
+                        
+                        match html_collector.fetch_page(
+                            feed_url,
+                            Some(&html_selectors),
+                            *max_results,
+                            Some(collector_id), // Passar collector_id para JS rendering se necessário
+                        ).await {
+                            Ok(articles) => {
+                                println!("    ✅ HTML fallback successful! Found {} articles", articles.len());
+                                
+                                if articles.is_empty() {
+                                    eprintln!("    ⚠️  [WARNING] HTML fallback for '{}' also returned 0 articles!", collector_id);
+                                    eprintln!("    📋 [DIAGNOSTIC] Failed URL: {}", feed_url);
+                                    eprintln!("    💡 [TROUBLESHOOTING] Website may require:");
+                                    eprintln!("       - Different selectors");
+                                    eprintln!("       - JavaScript rendering (playwright)");
+                                    eprintln!("       - Different user-agent or headers");
+                                    eprintln!("       - Authentication");
+                                    eprintln!("    └─ ❌ Both RSS and HTML collection failed\n");
+                                    continue;
+                                }
+                                
+                                println!("    🔄 Processing {} articles from HTML fallback...\n", articles.len());
+                                
+                                // Processar artigos (mesmo código de processamento)
+                                for (art_idx, article) in articles.iter().enumerate() {
+                                    println!("    ┌─ [ARTICLE {}/{}] {}", art_idx + 1, articles.len(), article.id);
+                                    println!("    │  📝 Title: {}", article.title);
+                                    println!("    │  🔗 URL: {}", article.url);
+                                    
+                                    if registry.is_article_registered(&article.id) {
+                                        println!("    │  ⏭️  Already registered - skipping");
+                                        println!("    └─\n");
+                                        continue;
+                                    }
+                                    
+                                    if news_filter.is_duplicate(&article.id, &article.url) {
+                                        println!("    │  ⚠️  Duplicate detected");
+                                        println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
+                                        
+                                        let json_path = date_dir.join(format!("{}.json", article.id));
+                                        if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                            if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                                println!("    └─\n");
+                                                continue;
+                                            }
+                                        }
+                                        
+                                        if let Err(e) = news_filter.reject_news(&json_path).await {
+                                            eprintln!("    │  ❌ Failed to reject: {}", e);
+                                            let _ = tokio::fs::remove_file(&json_path).await;
+                                        }
+                                        
+                                        println!("    └─ ❌ REJECTED\n");
+                                        total_rejected += 1;
+                                        continue;
+                                    }
+                                    
+                                    let json_path = date_dir.join(format!("{}.json", article.id));
+                                    if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                        if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                            eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                            println!("    └─\n");
+                                            continue;
+                                        }
+                                        println!("    │  ✅ JSON saved: {}", json_path.display());
+                                    }
+                                    
+                                    if let Err(e) = registry.register_collected(
+                                        article.id.clone(),
+                                        article.title.clone(),
+                                        article.url.clone(),
+                                        article.url.clone(),
+                                    ) {
+                                        eprintln!("    │  ❌ Failed to register: {}", e);
+                                        println!("    └─\n");
+                                        continue;
+                                    }
+                                    println!("    │  ✅ Registered successfully");
+                                    
+                                    let destinations = get_enabled_sites_for_source("rss");
+                                    if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                                        eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                                    } else {
+                                        println!("    │  ✅ Destinations set: {:?}", destinations);
+                                    }
+                                    
+                                    total_saved += 1;
+                                    println!("    └─ ✅ SAVED: {} - {}\n", article.id, article.title);
+                                }
+                            }
+                            Err(html_err) => {
+                                println!("    ❌ HTML fallback also failed: {}", html_err);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1350,20 +1804,19 @@ async fn main() -> anyhow::Result<()> {
     ) -> anyhow::Result<()> {
         use crate::collectors::html_collector::HtmlCollector;
         use crate::utils::article_registry::RegistryManager;
-        use std::path::{Path, PathBuf};
         use serde_json;
 
         println!("\n🌐 Starting HTML collectors...\n");
 
         // Inicializar registry
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
-        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        let temp_dir = get_downloads_dir().join("temp");
         tokio::fs::create_dir_all(&temp_dir).await?;
 
         // Criar diretório para salvar artigos raw
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let raw_dir = base_dir.join("raw");
         tokio::fs::create_dir_all(&raw_dir).await?;
         
@@ -1372,7 +1825,7 @@ async fn main() -> anyhow::Result<()> {
         tokio::fs::create_dir_all(&date_dir).await?;
 
         // Inicializar filtro de notícias (verifica no registry)
-        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let rejected_dir = base_dir.join("rejected");
         let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
         news_filter.check_registry()?;
@@ -1404,6 +1857,28 @@ async fn main() -> anyhow::Result<()> {
                     let fetch_duration = fetch_start.elapsed();
                     println!("  ✅ Fetch completed in {:?}", fetch_duration);
                     println!("  📄 Found {} articles from {}", articles.len(), collector_id);
+                    
+                    // Log detalhado se nenhum artigo foi encontrado
+                    if articles.is_empty() {
+                        eprintln!("  ⚠️  [WARNING] HTML Collector '{}' returned 0 articles!", collector_id);
+                        eprintln!("  📋 [DIAGNOSTIC] Collector details:");
+                        eprintln!("     - URL: {}", base_url);
+                        eprintln!("     - Selectors: {:?}", selectors.as_ref().map(|s| s.keys().collect::<Vec<_>>()));
+                        eprintln!("     - Max results: {:?}", max_results);
+                        eprintln!("     - Fetch duration: {:?}", fetch_duration);
+                        eprintln!("  💡 [TROUBLESHOOTING] Possible reasons:");
+                        eprintln!("     1. CSS selectors may not match current website structure");
+                        eprintln!("     2. Website requires JavaScript rendering (may need playwright)");
+                        eprintln!("     3. Website is blocking scrapers (HTTP 403/429)");
+                        eprintln!("     4. Website is temporarily down or changed");
+                        eprintln!("     5. No new articles available since last collection");
+                        eprintln!("     6. Selectors need to be updated for this site");
+                        eprintln!("  🔍 [ACTION] Check website manually: {}", base_url);
+                        eprintln!("     → Inspect page source and update selectors if needed");
+                        eprintln!("     → Verify if site requires JS rendering (try with playwright)");
+                        println!("  └─ ⏭️  Skipping processing (0 articles)\n");
+                        continue;
+                    }
                     
                     // Salvar artigos coletados
                     println!("  🔄 Processing {} articles...\n", articles.len());
@@ -1471,6 +1946,10 @@ async fn main() -> anyhow::Result<()> {
 
                         // Registrar no registry (usando url como pdf_url para compatibilidade)
                         println!("    │  📝 Registering in registry...");
+                        println!("    │     Article ID: {}", article.id);
+                        println!("    │     Title: {}", article.title);
+                        println!("    │     URL: {}", article.url);
+                        
                         if let Err(e) = registry.register_collected(
                             article.id.clone(),
                             article.title.clone(),
@@ -1478,18 +1957,55 @@ async fn main() -> anyhow::Result<()> {
                             article.url.clone(), // Web articles não têm PDF, usar URL como pdf_url
                         ) {
                             eprintln!("    │  ❌ Failed to register: {}", e);
+                            eprintln!("    │     Error details: {:?}", e);
                             println!("    └─\n");
                             continue;
                         }
                         println!("    │  ✅ Registered successfully");
+                        
+                        // Verificar se foi realmente registrado
+                        if let Some(meta) = registry.get_metadata(&article.id) {
+                            println!("    │     Registry status: {:?}", meta.status);
+                            if let Some(collected_at) = &meta.collected_at {
+                                println!("    │     Collected at: {}", collected_at);
+                            }
+                        } else {
+                            eprintln!("    │  ⚠️  WARNING: Article registered but not found when verifying");
+                        }
 
                         // Definir destinos baseado nos sites que têm RSS/HTML collectors habilitados
                         println!("    │  🎯 Setting destinations...");
                         let destinations = get_enabled_sites_for_source("html");
-                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
-                            eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                        println!("    │     Found {} enabled site(s) for HTML source", destinations.len());
+                        if destinations.is_empty() {
+                            eprintln!("    │  ⚠️  WARNING: No sites enabled for HTML source!");
+                            eprintln!("    │     This article will not be processed by the writer.");
+                            eprintln!("    │     Check system_config.json to enable sites for HTML source.");
                         } else {
-                            println!("    │  ✅ Destinations set: {:?}", destinations);
+                            for (idx, dest) in destinations.iter().enumerate() {
+                                println!("    │     {}. {}", idx + 1, dest);
+                            }
+                        }
+                        
+                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                            eprintln!("    │  ❌ Failed to set destinations: {}", e);
+                            eprintln!("    │     Error details: {:?}", e);
+                            eprintln!("    │     Article ID: {}", article.id);
+                            eprintln!("    │     Destinations: {:?}", destinations);
+                        } else {
+                            println!("    │  ✅ Destinations set successfully");
+                            
+                            // Verificar se foram realmente configuradas
+                            if let Some(meta) = registry.get_metadata(&article.id) {
+                                if let Some(set_destinations) = &meta.destinations {
+                                    println!("    │     Verified destinations: {:?}", set_destinations);
+                                    if set_destinations.is_empty() {
+                                        eprintln!("    │  ⚠️  WARNING: Destinations set but empty when verifying!");
+                                    }
+                                } else {
+                                    eprintln!("    │  ⚠️  WARNING: Destinations set but not found when verifying!");
+                                }
+                            }
                         }
 
                         total_saved += 1;
@@ -1512,17 +2028,16 @@ async fn main() -> anyhow::Result<()> {
 
     async fn run_news_writer() -> anyhow::Result<()> {
         use crate::writer::news_writer::NewsWriterService;
-        use std::path::{Path, PathBuf};
 
         println!("📰 Processing collected news articles...\n");
 
         // Inicializar news writer
-        let output_base = PathBuf::from("G:/Hive-Hub/News-main/output");
-        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let output_base = get_output_dir();
+        let registry_path = get_registry_path();
         let news_writer = NewsWriterService::new(output_base, registry_path)?;
 
         // Encontrar todos os artigos coletados em downloads/raw/
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let raw_dir = base_dir.join("raw");
         
         if !raw_dir.exists() {
@@ -1559,6 +2074,39 @@ async fn main() -> anyhow::Result<()> {
 
         println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
         println!("📄 Found {} news articles to process", all_articles.len());
+        println!("📂 Scanning from: {}", raw_dir.display());
+        println!("");
+        
+        // Verificar registry antes de processar
+        println!("🔍 Verifying registry status...");
+        let registry_path = get_registry_path();
+        println!("   Registry path: {}", registry_path.display());
+        if !registry_path.exists() {
+            eprintln!("   ⚠️  WARNING: Registry file not found!");
+            eprintln!("   This may cause issues processing articles.");
+        } else {
+            println!("   ✅ Registry file found");
+            
+            // Contar artigos no registry
+            let registry = RegistryManager::new(registry_path)?;
+            let total_registered = registry.get_all_articles().len();
+            println!("   📊 Total articles in registry: {}", total_registered);
+            
+            // Contar artigos com destinations
+            let articles_with_destinations_count = registry.get_all_articles()
+                .iter()
+                .filter(|meta| {
+                    meta.destinations.as_ref().map(|d| !d.is_empty()).unwrap_or(false)
+                })
+                .count();
+            println!("   🎯 Articles with destinations configured: {}", articles_with_destinations_count);
+            
+            if articles_with_destinations_count < total_registered {
+                let missing = total_registered - articles_with_destinations_count;
+                eprintln!("   ⚠️  WARNING: {} articles without destinations configured", missing);
+            }
+        }
+        println!("");
         println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
 
         let mut processed = 0;
@@ -1643,13 +2191,12 @@ async fn main() -> anyhow::Result<()> {
     async fn run_cleanup_news() -> anyhow::Result<()> {
         use crate::writer::news_writer::NewsWriterService;
         use crate::utils::article_registry::RegistryManager;
-        use std::path::{Path, PathBuf};
 
         println!("🧹 Running cleanup on already processed articles...\n");
 
         // Inicializar news writer
-        let output_base = PathBuf::from("G:/Hive-Hub/News-main/output");
-        let registry_path = PathBuf::from("G:/Hive-Hub/News-main/articles_registry.json");
+        let output_base = get_output_dir();
+        let registry_path = get_registry_path();
         
         let registry = RegistryManager::new(&registry_path)?;
         let news_writer = NewsWriterService::new(output_base, registry_path)?;
@@ -1661,7 +2208,7 @@ async fn main() -> anyhow::Result<()> {
         for metadata in registry_data {
             if let Some(_output_dir) = &metadata.output_dir {
                 // Verificar se o artigo tem um JSON correspondente na pasta raw
-                let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+                let base_dir = get_downloads_dir();
                 let raw_dir = base_dir.join("raw");
                 
                 // Procurar o JSON em todas as pastas de data
@@ -1692,7 +2239,7 @@ async fn main() -> anyhow::Result<()> {
                 }
             } else {
                 // Even if no output_dir, check if JSON exists in raw/ (orphaned files)
-                let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+                let base_dir = get_downloads_dir();
                 let raw_dir = base_dir.join("raw");
                 
                 if raw_dir.exists() {
@@ -1709,6 +2256,46 @@ async fn main() -> anyhow::Result<()> {
                             processed_articles.push(json_path);
                             println!("  📄 Found orphaned JSON for {}: {}", metadata.id, path_display);
                             break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Also check for orphaned JSON files that aren't in registry
+        let base_dir = get_downloads_dir();
+        let raw_dir = base_dir.join("raw");
+        
+        if raw_dir.exists() {
+            let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
+            while let Some(date_entry) = date_entries.next_entry().await? {
+                let date_dir = date_entry.path();
+                if !date_dir.is_dir() {
+                    continue;
+                }
+                
+                let mut json_entries = tokio::fs::read_dir(&date_dir).await?;
+                while let Some(json_entry) = json_entries.next_entry().await? {
+                    let json_path = json_entry.path();
+                    
+                    if json_path.extension().and_then(|s| s.to_str()) == Some("json") {
+                        let article_id = json_path
+                            .file_stem()
+                            .and_then(|s| s.to_str())
+                            .unwrap_or("unknown");
+                        
+                        // Check if article exists in registry
+                        let registry_data = registry.get_all_articles();
+                        if let Some(metadata) = registry_data.iter().find(|m| m.id == article_id) {
+                            // If article has output_dir, it's processed - add to cleanup list
+                            if metadata.output_dir.is_some() && !processed_articles.contains(&json_path) {
+                                processed_articles.push(json_path.clone());
+                                println!("  📄 Found processed JSON for {}: {}", article_id, json_path.display());
+                            }
+                        } else {
+                            // Article not in registry - it's orphaned, add to cleanup list
+                            processed_articles.push(json_path.clone());
+                            println!("  📄 Found orphaned JSON (not in registry): {}", json_path.display());
                         }
                     }
                 }
@@ -1740,6 +2327,7 @@ async fn main() -> anyhow::Result<()> {
     }
 
     async fn run_news_pipeline() -> anyhow::Result<()> {
+        eprintln!("🔍 [DEBUG] run_news_pipeline() STARTED");
         let pipeline_start = std::time::Instant::now();
         
         println!("╔═══════════════════════════════════════════════════════════════╗");
@@ -1753,7 +2341,7 @@ async fn main() -> anyhow::Result<()> {
         println!("╚═══════════════════════════════════════════════════════════════╝");
         println!("");
         let collect_start = std::time::Instant::now();
-        run_collect_enabled_from_config().await?;
+        run_collect_news_only().await?;
         let collect_duration = collect_start.elapsed();
         println!("");
         println!("✅ STEP 1 completed in {:?}\n", collect_duration);
@@ -1924,17 +2512,16 @@ async fn main() -> anyhow::Result<()> {
     async fn run_rss_collector_test() -> anyhow::Result<()> {
         use crate::collectors::rss_collector::RssCollector;
         use crate::utils::article_registry::RegistryManager;
-        use std::path::{Path, PathBuf};
         use serde_json;
 
         println!("📡 Testing RSS Collector with real feeds...\n");
 
         // Inicializar registry
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
         // Criar diretório para salvar artigos raw
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let raw_dir = base_dir.join("raw");
         tokio::fs::create_dir_all(&raw_dir).await?;
         
@@ -1942,7 +2529,7 @@ async fn main() -> anyhow::Result<()> {
         let date_dir = raw_dir.join(&date);
         tokio::fs::create_dir_all(&date_dir).await?;
 
-        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        let temp_dir = get_downloads_dir().join("temp");
         tokio::fs::create_dir_all(&temp_dir).await?;
 
         let collector = RssCollector::new(temp_dir);
@@ -2015,17 +2602,16 @@ async fn main() -> anyhow::Result<()> {
         use crate::collectors::html_collector::HtmlCollector;
         use crate::utils::article_registry::RegistryManager;
         use std::collections::HashMap;
-        use std::path::{Path, PathBuf};
         use serde_json;
 
-        println!("🌐 Testing HTML Collector with real pages...\n");
+        println!("🌐 Testing HTML Collector - Collecting specific URL...\n");
 
         // Inicializar registry
-        let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+        let registry_path = get_registry_path();
         let registry = RegistryManager::new(registry_path)?;
 
         // Criar diretório para salvar artigos raw
-        let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+        let base_dir = get_downloads_dir();
         let raw_dir = base_dir.join("raw");
         tokio::fs::create_dir_all(&raw_dir).await?;
         
@@ -2033,48 +2619,63 @@ async fn main() -> anyhow::Result<()> {
         let date_dir = raw_dir.join(&date);
         tokio::fs::create_dir_all(&date_dir).await?;
 
-        let temp_dir = PathBuf::from("G:/Hive-Hub/News-main/downloads/temp");
+        let temp_dir = get_downloads_dir().join("temp");
         tokio::fs::create_dir_all(&temp_dir).await?;
 
         let collector = HtmlCollector::new(temp_dir);
 
-        // Test 1: TechCrunch (HTML scraping friendly)
-        println!("1️⃣  TechCrunch - HTML Articles");
-        println!("   URL: https://techcrunch.com/\n");
+        // Coletar URL específica do Time.com usando fetch_full_article (melhor para URLs individuais)
+        let target_url = "https://time.com/7265415/alibaba-model-ai-china-deepseek/";
+        println!("1️⃣  Time.com - Specific Article");
+        println!("   URL: {}\n", target_url);
 
-        // Seletores para TechCrunch (site mais acessível para scraping)
-        let mut techcrunch_selectors = HashMap::new();
-        techcrunch_selectors.insert("article".to_string(), "article.post-block".to_string());
-        techcrunch_selectors.insert("title".to_string(), "a.post-block__title__link".to_string());
-        techcrunch_selectors.insert("content".to_string(), ".article-content".to_string());
+        // Seletores mais genéricos para Time.com
+        // Se os seletores específicos não funcionarem, usar seletores genéricos que pegam qualquer conteúdo
+        let mut selectors = HashMap::new();
+        // Título: múltiplas opções
+        selectors.insert("title".to_string(), "[data-module='ArticleHeader'] h1, h1.headline, h1, .headline, article h1".to_string());
+        // Conteúdo: começar específico, depois genérico
+        selectors.insert("content".to_string(), "[data-module='ArticleBody'], article, main, .article-content, .article-body, body".to_string());
+        selectors.insert("author".to_string(), "[data-module='ArticleHeader'] .author, .byline, .author-name, meta[name='author']".to_string());
 
-        match collector.fetch_page(
-            "https://techcrunch.com/",
-            Some(&techcrunch_selectors),
-            Some(3), // Apenas 3 artigos para teste
-            None, // TechCrunch não precisa de JS rendering
+        println!("   🔍 Fetching article content from URL directly...\n");
+        
+        // Usar fetch_full_article que é melhor para URLs individuais
+        match collector.fetch_full_article(
+            target_url,
+            Some(&selectors),
         ).await {
-            Ok(articles) => {
-                println!("   ✅ Collected {} articles:", articles.len());
+            Ok(article) => {
+                println!("   ✅ Article collected!");
                 let mut saved_count = 0;
                 
+                // Convert single article to Vec for processing
+                let articles = vec![article];
+                
                 for article in articles {
+                    println!("      📄 Article: {} - {}", article.id, article.title);
+                    println!("         Content length: {} chars", article.content_text.as_ref().map(|s| s.len()).unwrap_or(0));
+                    println!("         URL: {}", article.url);
+                    
                     // Verificar se já está registrado
                     if registry.is_article_registered(&article.id) {
-                        println!("      ⏭️  Skipped (already registered): {}", article.id);
-                        continue;
+                        println!("      ⏭️  Already registered, will overwrite for test");
+                        // Continuar mesmo se já estiver registrado para testar writer
                     }
 
                     // Salvar JSON em downloads/raw/{date}/{id}.json
+                    println!("      💾 Saving JSON...");
                     let json_path = date_dir.join(format!("{}.json", article.id));
                     if let Ok(json_str) = serde_json::to_string_pretty(&article) {
                         if let Err(e) = tokio::fs::write(&json_path, json_str).await {
                             eprintln!("      ⚠️  Failed to save JSON for {}: {}", article.id, e);
                             continue;
                         }
+                        println!("      ✅ JSON saved: {}", json_path.display());
                     }
 
-                    // Registrar no registry
+                    // Registrar no registry (mesmo que já esteja, atualizar)
+                    println!("      📝 Registering in registry...");
                     if let Err(e) = registry.register_collected(
                         article.id.clone(),
                         article.title.clone(),
@@ -2082,22 +2683,25 @@ async fn main() -> anyhow::Result<()> {
                         article.url.clone(),
                     ) {
                         eprintln!("      ⚠️  Failed to register {}: {}", article.id, e);
-                        continue;
+                    } else {
+                        println!("      ✅ Registered");
                     }
 
                     // Definir destinos
-                    let destinations = get_enabled_sites_for_source("html");
-                    if let Err(e) = registry.set_destinations(&article.id, destinations) {
+                    println!("      🎯 Setting destinations...");
+                    let destinations = vec!["scienceai".to_string()]; // Para teste, enviar para ScienceAI
+                    if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
                         eprintln!("      ⚠️  Failed to set destinations for {}: {}", article.id, e);
+                    } else {
+                        println!("      ✅ Destinations set: {:?}", destinations);
                     }
 
                     saved_count += 1;
-                    println!("      ✅ Saved: {} - {}", article.id, article.title);
-                    println!("         Content: {} chars", article.content_text.as_ref().map(|s| s.len()).unwrap_or(0));
-                    println!("         URL: {}", article.url);
+                    println!("      ✅ Ready for writer: {} - {}\n", article.id, article.title);
                 }
                 
-                println!("\n   📊 Saved {} new articles to {}", saved_count, date_dir.display());
+                println!("\n   📊 Saved {} articles to {}", saved_count, date_dir.display());
+                println!("   📋 Next: Run 'cargo run --release --bin news-backend write-news' to process with new rules\n");
             }
             Err(e) => {
                 println!("   ❌ Error: {}", e);
@@ -2205,6 +2809,9 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/collectors/:id/sites", put(routes::collectors::update_collector_sites))
         .route("/api/sites", get(routes::sites::get_all_sites))
         .route("/api/sites/:site_id", get(routes::sites::get_site_config))
+        .route("/api/sites/:site_id/prompt/article", get(routes::sites::get_article_prompt))
+        .route("/api/sites/:site_id/prompt/social", get(routes::sites::get_social_prompt))
+        .route("/api/sites/:site_id/prompt/news", get(routes::sites::get_news_prompt))
         .route("/api/sites/:site_id/writer", put(routes::sites::update_writer_config))
         .route("/api/sites/:site_id/collectors/:collector_id/status", put(routes::sites::update_collector_status))
         .route("/api/sites/:site_id/social/:social_id/status", put(routes::sites::update_social_status))
@@ -2226,6 +2833,13 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/logs/enrich-titles", post(routes::logs::enrich_titles_from_arxiv))
         .route("/api/health", get(routes::system::health))
         .route("/api/system/status", get(routes::system::system_status))
+        .route("/api/system/config", get(routes::system::get_system_config))
+        .route("/api/system/loop/start", post(routes::system::start_loop))
+        .route("/api/system/loop/stop", post(routes::system::stop_loop))
+        .route("/api/system/servers/refresh", post(routes::system::refresh_servers))
+        .route("/api/system/collection/status", get(routes::system::get_collection_status))
+        .route("/api/system/loop/stats", get(routes::system::get_loop_stats))
+        .route("/api/system/services/status", get(routes::system::get_services_status))
         .nest("/api/courses", routes::courses::router())
         .route(
             "/api/collector/start",
@@ -2256,10 +2870,9 @@ async fn main() -> anyhow::Result<()> {
 async fn run_writer_pipeline() -> anyhow::Result<()> {
     use crate::writer::WriterService;
     use crate::utils::site_config_manager::SiteConfigManager;
-    use std::path::Path;
     
     // Inicializar registry
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+    let registry_path = get_registry_path();
     let registry = RegistryManager::new(registry_path)?;
     
     // Try to determine which site to use from config or env
@@ -2283,8 +2896,8 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
     let writer = WriterService::new_with_site(Some(&site_id))?;
     
     // Scan filtered directory for approved PDFs
-    let filtered_dir = Path::new("G:/Hive-Hub/News-main/downloads/filtered");
-    let all_approved_pdfs = scan_filtered_directory(filtered_dir)?;
+    let filtered_dir = get_downloads_dir().join("filtered");
+    let all_approved_pdfs = scan_filtered_directory(&filtered_dir)?;
     
     println!("📄 Found {} approved documents in filtered/\n", all_approved_pdfs.len());
     
@@ -2360,7 +2973,8 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
     }
     
     println!("✅ Writer pipeline completed!");
-    println!("   Output: G:\\Hive-Hub\\News-main\\output\\{}\\", site);
+    let output_dir = get_site_output_dir(&site.to_lowercase());
+    println!("   Output: {}", output_dir.display());
     
     Ok(())
 }
@@ -2392,14 +3006,13 @@ fn scan_filtered_directory(base_dir: &Path) -> anyhow::Result<Vec<std::path::Pat
 
 fn run_registry_migration() -> anyhow::Result<()> {
     use crate::utils::article_registry::{ArticleRegistry, ArticleMetadata, ArticleStatus};
-    use std::path::Path;
     use std::fs;
     use chrono::Utc;
 
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+    let registry_path = get_registry_path();
     
     // Carregar registry existente (ou criar novo)
-    let mut registry = match ArticleRegistry::load(registry_path) {
+    let mut registry = match ArticleRegistry::load(&registry_path) {
         Ok(r) => r,
         Err(_) => {
             println!("   Creating new registry...");
@@ -2411,8 +3024,8 @@ fn run_registry_migration() -> anyhow::Result<()> {
 
     println!("📂 Scanning existing articles...\n");
 
-    let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
-    let output_dir = Path::new("G:/Hive-Hub/News-main/output/AIResearch");
+    let base_dir = get_downloads_dir();
+    let output_dir = get_site_output_dir("airesearch");
     
     let mut migrated_count = 0;
     let mut skipped_count = 0;
@@ -2450,9 +3063,12 @@ fn run_registry_migration() -> anyhow::Result<()> {
                         println!("  ✅ Migrating published: {} - {}", article_id, title);
                         
                         // Criar metadata completo
+                        let title_trimmed = title.trim().to_string();
                         let mut metadata = ArticleMetadata {
                             id: article_id.to_string(),
-                            title: title.trim().to_string(),
+                            title: title_trimmed.clone(),
+                            original_title: Some(title_trimmed),
+                            generated_title: None,
                             arxiv_url: arxiv_url.clone(),
                             pdf_url: pdf_url.clone(),
                             status: ArticleStatus::Published,
@@ -2523,6 +3139,8 @@ fn run_registry_migration() -> anyhow::Result<()> {
                             let metadata = ArticleMetadata {
                                 id: article_id.to_string(),
                                 title: "Untitled (from migration)".to_string(),
+                                original_title: Some("Untitled (from migration)".to_string()),
+                                generated_title: None,
                                 arxiv_url,
                                 pdf_url,
                                 status: ArticleStatus::Filtered,
@@ -2574,6 +3192,8 @@ fn run_registry_migration() -> anyhow::Result<()> {
                     let metadata = ArticleMetadata {
                         id: article_id.to_string(),
                         title: "Untitled (from migration)".to_string(),
+                        original_title: Some("Untitled (from migration)".to_string()),
+                        generated_title: None,
                         arxiv_url,
                         pdf_url,
                         status: ArticleStatus::Rejected,
@@ -2601,7 +3221,7 @@ fn run_registry_migration() -> anyhow::Result<()> {
 
     // Salvar registry
     println!("\n💾 Saving registry...");
-    registry.save(registry_path)?;
+    registry.save(&registry_path)?;
 
     println!("\n✅ Migration completed!");
     println!("   Migrated: {} articles", migrated_count);
@@ -2617,15 +3237,15 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                         fake_detector::calculate_fake_penalty, validator::validate_dois,
                         authors::validate_authors, scorer::{FilterResult, calculate_score},
                         categorizer::categorize};
-    use std::path::Path;
     use std::fs;
 
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
-    let registry = RegistryManager::new(registry_path)?;
+    let registry_path = get_registry_path();
+    let registry_path_ref = &registry_path;
+    let registry = RegistryManager::new(registry_path_ref)?;
 
     println!("📂 Scanning registry for incomplete articles...\n");
 
-    let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
+    let base_dir = get_downloads_dir();
     let mut enriched_count = 0;
     let mut not_found_count = 0;
 
@@ -2668,7 +3288,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
         
         // Atualizar categoria mesmo se não passar nos filtros
         {
-            let mut reg = ArticleRegistry::load(registry_path)?;
+            let mut reg = ArticleRegistry::load(&registry_path)?;
             if let Some(metadata) = reg.articles.get_mut(&article.id) {
                 if metadata.category.is_none() {
                     metadata.category = Some(category.clone());
@@ -2679,7 +3299,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                 if metadata.rejected_at.is_none() {
                     metadata.rejected_at = Some(chrono::Utc::now());
                 }
-                reg.save(registry_path)?;
+                reg.save(&registry_path)?;
             }
         }
         
@@ -2711,7 +3331,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
         let score = calculate_score(&result);
 
         // Atualizar registry
-        let mut reg = ArticleRegistry::load(registry_path)?;
+        let mut reg = ArticleRegistry::load(&registry_path)?;
         if let Some(metadata) = reg.articles.get_mut(&article.id) {
             metadata.title = title.clone();
             metadata.filter_score = Some(score as f64);
@@ -2724,7 +3344,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                 metadata.rejected_at = Some(chrono::Utc::now());
             }
         }
-        reg.save(registry_path)?;
+        reg.save(&registry_path)?;
 
         println!("     ✅ Updated: {} - Score: {:.2}, Category: {}", title, score, category);
         enriched_count += 1;
@@ -2795,7 +3415,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
         let score = calculate_score(&result);
 
         // Atualizar registry
-        let mut reg = ArticleRegistry::load(registry_path)?;
+        let mut reg = ArticleRegistry::load(&registry_path)?;
         if let Some(metadata) = reg.articles.get_mut(&article.id) {
             metadata.title = title.clone();
             metadata.filter_score = Some(score as f64);
@@ -2805,7 +3425,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                 metadata.filtered_at = Some(chrono::Utc::now());
             }
         }
-        reg.save(registry_path)?;
+        reg.save(&registry_path)?;
 
         println!("     ✅ Updated: {} - Score: {:.2}, Category: {}", title, score, category);
         enriched_count += 1;
@@ -2815,7 +3435,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
     let published_articles = registry.list_by_status(ArticleStatus::Published);
     println!("\n📄 Processing {} published articles with missing info...", published_articles.len());
 
-    let output_dir = Path::new("G:/Hive-Hub/News-main/output/AIResearch");
+    let output_dir = get_site_output_dir("airesearch");
 
     for article in &published_articles {
         // Verificar se precisa enriquecer
@@ -2832,7 +3452,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
         // Se tem output_dir, tentar ler categoria do arquivo image_categories.txt
         if article_dir.exists() {
             let category_file = article_dir.join("image_categories.txt");
-            let mut reg = ArticleRegistry::load(registry_path)?;
+            let mut reg = ArticleRegistry::load(&registry_path)?;
             if let Some(metadata) = reg.articles.get_mut(&article.id) {
                 let mut updated = false;
                 
@@ -2871,7 +3491,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                 }
                 
                 if updated {
-                    reg.save(registry_path)?;
+                    reg.save(&registry_path)?;
                     println!("  ✅ Enriched from output/: {}", article.id);
                     enriched_count += 1;
                 }
@@ -2882,7 +3502,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
     // 4. Passo final: preencher categorias e datas faltantes para TODOS os artigos
     println!("\n📋 Final pass: filling missing categories and dates for all articles...");
     
-    let mut reg = ArticleRegistry::load(registry_path)?;
+    let mut reg = ArticleRegistry::load(&registry_path)?;
     let now = chrono::Utc::now();
     
     for (id, metadata) in reg.articles.iter_mut() {
@@ -2933,7 +3553,7 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
         }
     }
     
-    reg.save(registry_path)?;
+    reg.save(&registry_path)?;
     
     println!("\n✅ Enrichment completed!");
     println!("   Enriched: {} articles", enriched_count);

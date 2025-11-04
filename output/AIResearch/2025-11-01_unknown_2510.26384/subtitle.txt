@@ -1,0 +1,1 @@
+AI can now evaluate itself accurately with minimal data, slashing testing costs by over 18 times. This breakthrough accelerates AI development and makes advanced model assessment accessible to all researchers.

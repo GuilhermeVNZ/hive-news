@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could read license plates with near-perfect accuracy, even when humans can't?
+[VISUAL DIRECTION] Animated text: "99.2% ACCURACY" with dramatic zoom effect.
+[VOICEOVER 0:05-0:20] This isn't science fiction—it's a real breakthrough in automated license plate recognition technology that could transform how we manage traffic worldwide.
+[VISUAL DIRECTION] Show fast cuts of blurry, angled license plate images from the paper's dataset.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI reliably identify plates in challenging conditions like poor lighting, dust, and high speeds?
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on performance metrics.
+[VOICEOVER 0:40-1:00] They discovered a system that achieves 99.2% recall—correctly identifying nearly every plate with few mistakes.
+[VISUAL DIRECTION] Animated comparison chart showing 99.2% vs. existing 80% accuracy.
+[VOICEOVER 1:00-1:30] How? By combining DINO vision-language models with pseudo-labeled supervision—using AI to annotate images efficiently without expensive human labeling.
+[VISUAL DIRECTION] Show simplified diagram of the AI architecture with zoom on key components.
+[VOICEOVER 1:30-1:50] This means more reliable traffic enforcement, automated toll collection, and better security systems that work in real-world conditions.
+[VISUAL DIRECTION] Show real-world traffic footage with AI detection overlays.
+[VOICEOVER 1:50-2:00] AI is reading what we can't—and it's changing transportation forever.
+[VISUAL DIRECTION] Final shot of clear license plate recognition with "99.2% ACCURACY" text overlay.

@@ -1,0 +1,1 @@
+AI breakthrough: New algorithm detects when neural networks enter convex regions and automatically switches optimization methods. Outperforms Adam-only training, achieving 0.0008 loss vs 0.0016 on CIFAR-10 with Vision Transformers. Published in Nature.

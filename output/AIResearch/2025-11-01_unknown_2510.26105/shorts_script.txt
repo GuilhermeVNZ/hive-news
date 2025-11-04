@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI photo editor generated inappropriate content even when you gave it completely safe instructions?
+[VISUAL DIRECTION] Animated text: "SAFE PROMPT" with question mark, then red "UNSAFE OUTPUT" flashing
+
+[VOICEOVER 0:05-0:20] Researchers discovered a critical vulnerability in multi-modal AI models that process both text and images. These systems, used in professional editing tools, can be manipulated to produce disturbing content while bypassing standard safety checks.
+[VISUAL DIRECTION] Show Figure 4 from paper - harmless prompt with manipulated output, zoom on the discrepancy
+
+[VOICEOVER 0:20-0:40] The team developed a new attack method called PReMA that directly manipulates image pixels rather than changing prompts. This exploits the gap between how AI models process text versus images.
+[VISUAL DIRECTION] Animated diagram showing text processing vs image processing pathways diverging
+
+[VOICEOVER 0:40-1:00] Their comprehensive testing revealed alarming results: 64% success rate in inducing inappropriate content during inpainting tasks, and up to 70% in style transfer scenarios across models like Stable Diffusion and Kandinsky.
+[VISUAL DIRECTION] Show Table with success rates, highlight the 64% and 70% numbers with bold animation
+
+[VOICEOVER 1:00-1:30] The attack works by iteratively adjusting input images to minimize differences from a target image, effectively tricking the AI into producing unwanted outputs. This occurs because current safety checkers only analyze generated images, not the input manipulation.
+[VISUAL DIRECTION] Show optimization process animation - pixels changing gradually toward target
+
+[VOICEOVER 1:30-1:50] This poses real security threats for applications where users rely on AI editing without expecting inappropriate results. Current defenses are ill-equipped to detect these attacks, highlighting the urgent need for better multi-modal alignment.
+[VISUAL DIRECTION] Show real-world editing app interface with warning symbol overlay
+
+[VOICEOVER 1:50-2:00] The next time you use AI for image editing, remember: safe prompts don't guarantee safe outputs when attackers can manipulate what the AI sees.
+[VISUAL DIRECTION] Final screen with paper title: "Security Risk of Misalignment Between Text and Image Modalities"

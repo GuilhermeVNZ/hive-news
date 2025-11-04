@@ -1,0 +1,1 @@
+OpenAI has released gpt-oss-safeguard-120b and -20b, open-weight reasoning models for policy-based content classification. These AI tools support chain-of-thought and structured outputs, emphasizing safety and customization in enterprise applications. #ArtificialIntelligence #Innovation #ContentModeration

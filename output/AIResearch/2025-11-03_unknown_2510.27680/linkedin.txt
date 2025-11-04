@@ -1,0 +1,1 @@
+What if AI could automatically generate precise medical imaging reports? PETAR-4B AI achieves 56% METEOR score improvement, creating localized PET/CT findings. This breakthrough could ease radiologist burnout while maintaining diagnostic accuracy. How might this transform oncology workflows?

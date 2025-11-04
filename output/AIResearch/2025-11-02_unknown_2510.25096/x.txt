@@ -1,0 +1,1 @@
+AI bias breakthrough: FairMIB cuts GNN discrimination by 50% while keeping performance competitive. This method isolates bias sources in network data, making systems fairer for loan approvals and criminal sentencing. #AIethics #FairAI

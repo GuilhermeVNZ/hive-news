@@ -1,0 +1,1 @@
+AI breakthrough: MU-SplitFed eliminates slowest-participant bottleneck, achieving linear speedup. Reduces communication 33% while maintaining accuracy across CIFAR-10, Fashion-MNIST datasets. Makes federated learning practical for diverse hardware.

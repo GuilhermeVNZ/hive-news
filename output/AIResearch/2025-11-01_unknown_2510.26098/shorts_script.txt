@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Your AI assistant can identify buttons on your screen but has no idea what happens when you click them. [VISUAL DIRECTION] Show animated text: "87% vs 17%" with dramatic contrast
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's the reality revealed by new research testing AI systems on everyday computer tasks. [VISUAL DIRECTION] Quick cuts of common interface elements: buttons, icons, menus across different operating systems
+
+[VOICEOVER 0:20-0:40] Researchers created GUI-Knowledge-Bench to test six major AI models on Windows, MacOS, Linux, Android, iOS and web applications. [VISUAL DIRECTION] Show grid of operating system logos with checkmarks and X marks
+
+[VOICEOVER 0:40-1:00] The results were startling: while AI excels at recognizing interface elements, it fails dramatically at predicting user interactions and judging task completion. [VISUAL DIRECTION] Zoom in on bar chart showing perception vs interaction accuracy gap
+
+[VOICEOVER 1:00-1:30] Even top models like GPT-5 reached 87% accuracy for identifying components but dropped to 67% for predicting outcomes, frequently confusing clicks with double-clicks or right-clicks. [VISUAL DIRECTION] Animated sequence showing mouse clicks with wrong predictions
+
+[VOICEOVER 1:30-1:50] This has real consequences - AI failed at simple tasks like formatting PowerPoint notes or determining if files were successfully deleted. [VISUAL DIRECTION] Show failed automation attempts with red X overlays
+
+[VOICEOVER 1:50-2:00] The fundamental gap: AI sees the interface but doesn't understand the interaction. [VISUAL DIRECTION] Final screen with text: "Seeing ≠ Understanding" and Nature/Science logo

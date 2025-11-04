@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the AI assistants making critical decisions can't understand basic 'must' vs 'may' logic?
+[VISUAL DIRECTION] [Animated text: AI CAN'T UNDERSTAND 'MUST' vs 'MAY' with question mark, fast zoom]
+
+[VOICEOVER 0:05-0:20] Researchers from Keio University systematically tested AI reasoning capabilities - and the results challenge everything we assume about reliable AI.
+[VISUAL DIRECTION] [Show university lab setting, transition to animated brain with logic symbols]
+
+[VOICEOVER 0:20-0:40] They created a comprehensive dataset testing 8 deontic reasoning patterns - how AI handles permissions, obligations, and prohibitions. The question: Can AI consistently reason about what's allowed versus required?
+[VISUAL DIRECTION] [Show dataset visualization with 8 pattern categories highlighted, quick cuts between them]
+
+[VOICEOVER 0:40-1:00] The findings were striking. Even top models like GPT-4o failed basic permission inferences. For example, given 'You must take care of your health,' AI incorrectly concluded 'You can choose not to take care of your health' - a fundamental logic failure.
+[VISUAL DIRECTION] [Zoom on specific failure example with animated logic flow showing the incorrect inference path]
+
+[VOICEOVER 1:00-1:30] Testing five major models using chain-of-thought prompting revealed systematic weaknesses. The Mu-Mi pattern - where obligation should imply permission - proved particularly challenging. Only Llama-3.3-70B-Instruct achieved reasonable accuracy, while others performed poorly.
+[VISUAL DIRECTION] [Show comparative performance chart with models ranked, highlight Llama-3.3 peak performance]
+
+[VOICEOVER 1:30-1:50] This matters because AI assistants making medical, legal, or ethical decisions need reliable reasoning. The study found AI exhibits human-like believability bias - accepting statements that sound reasonable regardless of logical validity.
+[VISUAL DIRECTION] [Show real-world application scenarios: medical AI, legal assistant, ethical decision-making]
+
+[VOICEOVER 1:50-2:00] The takeaway: Even advanced AI struggles with fundamental reasoning we take for granted. Before trusting AI with critical decisions, we need to address these basic logic gaps.
+[VISUAL DIRECTION] [Final text overlay: 'AI REASONING GAPS NEED FIXING' with Nature journal logo]

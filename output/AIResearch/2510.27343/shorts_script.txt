@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could see exactly why some business workflows lead to success while others cause costly delays and waste?
+[VISUAL DIRECTION] Animated text: "WHY DO PROCESSES FAIL?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Businesses generate massive amounts of operational data, but understanding what drives success versus failure has remained a major challenge.
+[VISUAL DIRECTION] Show flowing data streams with some paths turning red (failure) and others green (success)
+
+[VOICEOVER 0:20-0:40] Researchers from RWTH University asked: Can we automatically discover the critical differences between efficient and problematic workflows?
+[VISUAL DIRECTION] Zoom in on researcher figures analyzing workflow diagrams
+
+[VOICEOVER 0:40-1:00] They developed an AI framework that analyzes event logs to pinpoint exactly which process patterns lead to good versus bad outcomes.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on constraint violation patterns
+
+[VOICEOVER 1:00-1:30] The system encodes workflows using declarative constraints - rules like 'if A occurs, B must follow.' Machine learning models then extract decision rules that capture complex patterns. These are clustered to identify the most critical differences.
+[VISUAL DIRECTION] Animated flow: Constraints → ML Models → Clustering → Critical Patterns
+
+[VOICEOVER 1:30-1:50] In real tests, this identified violations like 'activity l not followed by p' that consistently led to process failures. Companies can now fix specific bottlenecks rather than applying one-size-fits-all solutions.
+[VISUAL DIRECTION] Show before/after workflow diagrams with problematic steps highlighted and fixed
+
+[VOICEOVER 1:50-2:00] The ability to automatically distinguish successful from failing processes could revolutionize how businesses optimize operations across logistics, healthcare, and billing systems.
+[VISUAL DIRECTION] Final text overlay: "AI that sees why processes work - and why they don't"

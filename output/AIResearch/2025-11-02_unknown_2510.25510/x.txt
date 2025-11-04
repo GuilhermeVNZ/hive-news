@@ -1,0 +1,1 @@
+AI now teaches itself to fix SQL errors mid-translation, outperforming models 40x larger. This self-correcting capability could revolutionize data analytics for everyday users.

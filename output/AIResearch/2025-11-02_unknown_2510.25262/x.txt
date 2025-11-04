@@ -1,0 +1,1 @@
+AI breakthrough: New method boosts language models 8.75% and vision accuracy 8.17% without increasing costs. IBNorm's selective compression preserves task-critical information while reducing variability. Nature/Science research shows drop-in compatibility with existing architectures.

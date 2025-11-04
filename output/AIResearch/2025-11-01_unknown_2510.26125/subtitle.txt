@@ -1,0 +1,1 @@
+Self-driving cars are failing in rare but critical scenarios, revealing a dangerous gap in AI's ability to handle real-world emergencies on the road.

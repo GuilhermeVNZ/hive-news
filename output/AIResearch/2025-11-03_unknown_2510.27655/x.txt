@@ -1,0 +1,1 @@
+AI doesn't think in single features—it uses coordinated groups. New research reveals these hidden modules, exposing bias patterns traditional methods miss. The result? Targeted interventions that cut bias 23% without sacrificing accuracy. Critical for trustworthy AI deployment.

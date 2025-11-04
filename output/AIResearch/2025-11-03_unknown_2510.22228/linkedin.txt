@@ -1,0 +1,1 @@
+Removing layers to speed up LLMs catastrophically breaks complex reasoning. New research shows layer pruning causes up to 50% accuracy drops on math benchmarks while simple tasks remain stable. This reveals critical vulnerabilities in AI optimization—read the Nature paper to understand why fewer layers break more chains of thought.

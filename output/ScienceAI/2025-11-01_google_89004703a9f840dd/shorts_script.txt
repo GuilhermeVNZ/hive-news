@@ -1,0 +1,23 @@
+(Visual: CT scan rotating on screen)
+Take 1: Lung cancer kills 1.8 million people yearly.
+
+(Visual: Radiologist looking at screen)
+Take 2: But screening has a big problem: false positives.
+
+(Visual: AI highlighting areas on CT scan)
+Take 3: Google's new AI helps radiologists spot the difference.
+
+(Visual: Graph showing 57% improvement)
+Take 4: It boosts accuracy by 57% in new study.
+
+(Visual: Patient looking relieved)
+Take 5: That means fewer unnecessary procedures.
+
+(Visual: Multiple countries on map)
+Take 6: Tested across US and Japan with 12 radiologists.
+
+(Visual: Code scrolling on screen)
+Take 7: And they're open-sourcing the tech.
+
+(Visual: Doctor and patient high-fiving)
+Take 8: Making early detection better for everyone.

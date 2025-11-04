@@ -1,0 +1,1 @@
+AI fails basic comprehension in Arabic dialects, scoring close to random guessing. New IALECTAL MMLU benchmark reveals critical gap affecting millions who rely on AI for education, healthcare, and business. This demands dialect-aware strategies for equitable AI deployment.

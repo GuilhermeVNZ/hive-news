@@ -1,0 +1,1 @@
+AI spends millions on 'sorry I can't help' messages. New technique detects boilerplate responses instantly with 99.7% accuracy, cutting waste without retraining models. The future of efficient AI is here.

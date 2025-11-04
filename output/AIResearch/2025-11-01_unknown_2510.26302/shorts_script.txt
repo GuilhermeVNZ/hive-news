@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Why do AI systems that match images with text fail at basic reasoning, like confusing 'a cat on grass' with 'grass on a cat'? [VISUAL DIRECTION] Animated text: "AI Fails Basic Reasoning" with a quick flash of a cat on grass and grass on a cat side by side, then a question mark.
+
+[VOICEOVER 0:05-0:20] This isn't just a quirky error—it's a fundamental flaw that limits AI reliability in critical technologies like autonomous vehicles and medical imaging. [VISUAL DIRECTION] Show brief clips of a self-driving car and a medical scan, with text overlay: "Affects real-world tech."
+
+[VOICEOVER 0:20-0:40] Researchers asked: Why do models like CLIP, which excel at matching, stumble on simple tasks? They analyzed the training process where AI minimizes loss but can't differentiate optimal solutions. [VISUAL DIRECTION] Zoom in on a simplified diagram of CLIP's training objective, highlighting the loss minimization step with arrows pointing to multiple solutions.
+
+[VOICEOVER 0:40-1:00] They discovered non-identifiability—where encoders achieve the same performance but differ in reasoning. For example, 'a light bulb on a table' and 'a table on a light bulb' might be treated as equivalent. [VISUAL DIRECTION] Show Figure 2 from the paper with a zoom on the distribution of solutions, then animate text: "Non-identifiability = same performance, wrong reasoning."
+
+[VOICEOVER 1:00-1:30] How does it work? The team developed structural causal models that treat text as sequences of tokens, not single vectors. This approach, backed by theorems, proves contrastive learning can recover modal-invariant variables for better structure understanding. [VISUAL DIRECTION] Animate a transition from a single vector representation to a sequence of tokens, with overlays showing "SWAP," "REPLACE," "ADD" categories from the paper's theorems.
+
+[VOICEOVER 1:30-1:50] Implications: This explains everyday AI misinterpretations and offers a path to robust systems. Experiments on benchmarks like ARO and VALSE showed accuracy improvements, such as a 1.84-point gain on CC3M data. [VISUAL DIRECTION] Fast cuts of Table results from the paper, highlighting the accuracy numbers with zoom-ins, and text: "Real-world improvements confirmed."
+
+[VOICEOVER 1:50-2:00] The takeaway? Fixing this flaw could make AI more reliable in tech we depend on, from cars to healthcare. [VISUAL DIRECTION] Hold on a final screen with text: "Robust AI starts with better learning." and a subtle reference to the Nature/Science article.

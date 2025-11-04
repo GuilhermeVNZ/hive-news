@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could bend and reshape reality itself to learn better?
+[VISUAL DIRECTION] Animated text: "AI RESHAPING REALITY" with warping geometric shapes
+
+[VOICEOVER 0:05-0:20] Current AI systems are limited by fixed learning spaces, forcing them to work within predefined geometries that don't match real-world complexity.
+[VISUAL DIRECTION] Show rigid grid structure with data points struggling to fit, then transition to flexible mesh
+
+[VOICEOVER 0:20-0:40] Researchers asked: What if AI could dynamically reshape its learning environment during training?
+[VISUAL DIRECTION] Animated question mark transforming into flexible geometric surface
+
+[VOICEOVER 0:40-1:00] They discovered AI can treat the underlying manifold as a malleable entity, optimizing the geometry itself rather than just parameters.
+[VISUAL DIRECTION] Show Figure 2 with zoom on how the manifold adapts to data distribution
+
+[VOICEOVER 1:00-1:30] The system uses a carefully designed function that balances data fidelity with geometric simplicity, preventing overfitting while capturing complex patterns.
+[VISUAL DIRECTION] Animated text: "FIDELITY + SIMPLICITY" with balancing scales visualization
+
+[VOICEOVER 1:30-1:50] This enables AI to automatically reveal physical laws from data and create models resistant to noise and adversarial attacks.
+[VISUAL DIRECTION] Show scientific equations emerging from data points, then shield forming around model
+
+[VOICEOVER 1:50-2:00] AI is no longer just learning within reality—it's learning to reshape it.
+[VISUAL DIRECTION] Final shot of flexible manifold perfectly adapting to complex data pattern

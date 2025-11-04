@@ -1,1 +1,0 @@
-AI reproducibility crisis: 86 studies analyzed, 0 produced identical results when retested. Commercial LLMs like ChatGPT show dramatic inconsistencies, undermining scientific foundation. The research reveals structural flaws in AI transparency.

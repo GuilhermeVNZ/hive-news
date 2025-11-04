@@ -1,0 +1,20 @@
+[Visual: Developer typing code in IDE with AI suggestions appearing]
+Take 1: "Meet Codestral 25.08 - Mistral's new AI coding model that claims to cut runaway generations in half."
+
+[Visual: Split screen showing cloud vs on-prem deployment diagrams]
+Take 2: "Unlike many coding assistants, this one works anywhere - cloud, VPC, or fully on-prem."
+
+[Visual: Code search interface finding patterns across multiple files]
+Take 3: "It can search your entire codebase using natural language queries."
+
+[Visual: AI agent automatically generating pull requests]
+Take 4: "And it goes beyond autocomplete to handle cross-file refactors and PR generation."
+
+[Visual: Security badges and compliance symbols]
+Take 5: "All while keeping your code private and compliant with enterprise security needs."
+
+[Visual: Quick montage of company logos - Capgemini, Abanca, SNCF]
+Take 6: "Already being used by major companies in finance, defense, and transportation."
+
+[Visual: Call to action - "Try Mistral Code in VS Code or JetBrains"]
+Take 7: "Available now for enterprises ready to upgrade their development workflow."

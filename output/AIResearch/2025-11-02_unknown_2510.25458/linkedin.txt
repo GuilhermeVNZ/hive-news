@@ -1,0 +1,1 @@
+AI confidence scores are systematically wrong? New research reveals current evaluation methods fail to capture reliability, potentially leading to misplaced trust in critical applications like medical diagnosis. This framework ensures AI probabilities reflect real-world decision needs. How will you verify your AI's confidence?

@@ -1,0 +1,1 @@
+AI that asks for help? A new study shows AI agents can defer decisions to humans in risky scenarios, preventing violations while maintaining performance. This framework, tested in a sandbox, ensures safer AI in critical fields like healthcare. Game-changing safety.

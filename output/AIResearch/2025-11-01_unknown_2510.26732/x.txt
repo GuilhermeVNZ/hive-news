@@ -1,0 +1,1 @@
+Smaller AI beats massive models: Hermes-4-70B (70B params) scored 0.598 accuracy vs 405B model's 0.573. Efficiency paradox shows bigger ≠ smarter. Could transform AI development with lower costs and energy use.

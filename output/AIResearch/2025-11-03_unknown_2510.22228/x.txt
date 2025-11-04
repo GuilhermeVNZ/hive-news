@@ -1,0 +1,1 @@
+Want faster AI? Removing layers destroys complex reasoning. New study: Layer pruning causes 50% accuracy collapse on math problems while simple tasks survive. Critical vulnerability in LLM optimization revealed in Nature paper.

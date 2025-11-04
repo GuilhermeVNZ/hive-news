@@ -1,0 +1,1 @@
+What if AI could make decisions twice as fast without losing accuracy? A new Nature/Science study introduces KVDA-UCT, an algorithm that groups actions with known value differences, boosting efficiency in robotics and gaming. Explore how this lossless abstraction could revolutionize autonomous systems.

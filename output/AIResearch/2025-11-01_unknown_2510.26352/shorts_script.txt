@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could choose its own dream team? New research shows conversation-based mapping creates AI collaborations that outperform manually selected groups.
+[VISUAL DIRECTION] [Animated text: "AI DREAM TEAMS" with pulsing glow effect]
+[VOICEOVER 0:05-0:20] Current AI methods struggle to identify which models work best together for complex tasks like medical diagnosis or mathematical reasoning.
+[VISUAL DIRECTION] [Show Figure 1 from paper - language graph visualization with nodes and edges pulsing]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we automatically form effective AI teams by analyzing how language models converse?
+[VISUAL DIRECTION] [Animated diagram showing two AI icons with speech bubbles connecting]
+[VOICEOVER 0:40-1:00] They discovered that mapping conversation coherence reveals natural synergies. Graph-based teams achieved 2nd-highest accuracy in math benchmarks, closely rivaling expert-curated groups.
+[VISUAL DIRECTION] [Show Figure 2 bar chart comparing graph-based vs manual team performance]
+[VOICEOVER 1:00-1:30] How it works: Generate conversations between LLMs, compute semantic similarity, build language graphs, then apply community detection algorithms to find high-affinity teams.
+[VISUAL DIRECTION] [Animated flow: Conversations → Similarity Scores → Graph → Communities → Teams]
+[VOICEOVER 1:30-1:50] This enables automatic formation of competent AI teams without needing proprietary model details, potentially transforming healthcare analysis and scientific research.
+[VISUAL DIRECTION] [Quick cuts: Medical lab, research facility, data center]
+[VOICEOVER 1:50-2:00] The future of AI collaboration isn't manual curation - it's conversation mapping.
+[VISUAL DIRECTION] [Final text overlay: "Geometry of Dialogue: Graphing Language Models Reveal Synergistic Communities"]

@@ -1,0 +1,1 @@
+AI models can achieve 37% cost savings without accuracy loss? New Nature/Science study reveals INT8 quantization outperforms FP8 in most scenarios. MXINT8 format demonstrated superior signal preservation (QSNR 34.50 vs 31.50). This challenges industry's preference for floating-point formats. What does this mean for your AI deployment strategy?

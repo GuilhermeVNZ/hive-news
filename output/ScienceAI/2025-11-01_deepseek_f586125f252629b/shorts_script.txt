@@ -1,0 +1,23 @@
+(Visual: Animated neural network diagram with flowing data)
+Take 1: "This is deep learning AI—and it's changing everything."
+
+(Visual: Quick cuts showing medical imaging, self-driving car, voice assistant)
+Take 2: "From diagnosing diseases to driving cars..."
+
+(Visual: Close-up of GPU hardware)
+Take 3: "...it uses neural networks with thousands of layers."
+
+(Visual: Data flowing through network nodes)
+Take 4: "But here's the catch: it needs massive data."
+
+(Visual: Warning symbols over biased data examples)
+Take 5: "And bad data means bad decisions."
+
+(Visual: Researcher working on computer)
+Take 6: "Still, the potential is enormous."
+
+(Visual: Futuristic cityscape with AI elements)
+Take 7: "This is just the beginning of the AI revolution."
+
+(Visual: Call to action screen)
+Take 8: "Want to understand how it works? Follow for more!"

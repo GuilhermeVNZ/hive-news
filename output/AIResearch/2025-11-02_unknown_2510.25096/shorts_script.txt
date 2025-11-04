@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know the AI systems deciding your loan applications might be unfairly biased against you?
+[VISUAL DIRECTION] Animated text: "YOUR LOAN DENIED?" with question mark pulsing. Quick cut to graph network visualization with red bias pathways highlighted.
+
+[VOICEOVER 0:05-0:20] Graph neural networks power everything from social media recommendations to critical decisions in banking and justice systems. But they often amplify existing societal biases.
+[VISUAL DIRECTION] Show real-world applications: loan application form, courtroom scene, social media feed. Transition to network diagram with biased connections glowing red.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that makes fair decisions without sacrificing accuracy?
+[VISUAL DIRECTION] Split screen showing biased outcomes vs fair outcomes. Animated question mark transforming into FairMIB logo.
+
+[VOICEOVER 0:40-1:00] They discovered FairMIB - a method that decomposes data to isolate and mitigate bias sources. In tests, it reduced bias by 50% compared to standard GNNs.
+[VISUAL DIRECTION] Show bias reduction chart from paper - 50% decrease highlighted. Zoom in on German Credit dataset results showing maintained accuracy.
+
+[VOICEOVER 1:00-1:30] Here's how it works: FairMIB separates data into three independent components - feature attributes, structural patterns, and bias modeling. Each gets processed separately with specialized encoders.
+[VISUAL DIRECTION] Animated diagram showing data separation into three streams. Show bottleneck compression minimizing bias leakage while preserving useful information.
+
+[VOICEOVER 1:30-1:50] This means fairer loan approvals, criminal sentencing, and social recommendations that don't discriminate against protected groups.
+[VISUAL DIRECTION] Show positive outcomes: approved loan application, fair courtroom decision, unbiased social media feed. Quick cuts between scenarios.
+
+[VOICEOVER 1:50-2:00] The future of AI just got fairer - one network at a time.
+[VISUAL DIRECTION] Final screen with FairMIB logo and text: "Building Trustworthy AI Systems". Fade to black.

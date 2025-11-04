@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could turn scattered clinical data into a clear picture of rare disease progression?
+[VISUAL DIRECTION] Animated text: "AI Unlocks Rare Disease Tracking" with a quick zoom on a fragmented chart morphing into a unified graph.
+[VOICEOVER 0:05-0:20] For diseases like spinal muscular atrophy, tracking progression is tough because doctors use different tests over time, making it hard to assess treatments.
+[VISUAL DIRECTION] Show a split screen: one side with varied medical instruments (e.g., function tests), the other with confused expressions; fast cuts between them.
+[VOICEOVER 0:20-0:40] Researchers asked: Can we align diverse clinical measures into one framework to accurately analyze disease changes, even with limited data?
+[VISUAL DIRECTION] Display a question mark transforming into a data integration symbol; pan across a timeline with labeled switches.
+[VOICEOVER 0:40-1:00] They discovered that combining variational autoencoders and mixed-effects regression creates a low-dimensional representation, capturing disease characteristics from multiple instruments.
+[VISUAL DIRECTION] Zoom in on a VAE diagram from the paper, highlighting data compression; overlay text: "Integrates CHOP-INTEND, HINE-2."
+[VOICEOVER 1:00-1:30] Here's how it works: VAEs compress item-level data into a unified outcome, while regression accounts for factors like age and treatment switches, allowing longitudinal integration.
+[VISUAL DIRECTION] Animated flow: data inputs → VAE compression → regression model → output; hold on key steps with text labels.
+[VOICEOVER 1:30-1:50] In SMA applications, this improved detection of treatment effects, showing it's crucial for rare disease research where every data point counts.
+[VISUAL DIRECTION] Show a bar graph comparing predicted vs. actual switches; fast cut to a hopeful patient image with text: "17.3 measures per patient."
+[VOICEOVER 1:50-2:00] AI is transforming rare disease tracking—turning complexity into clarity for better decisions.
+[VISUAL DIRECTION] End with the unified graph from the start, now stable; animated text: "Precision in Small Numbers."

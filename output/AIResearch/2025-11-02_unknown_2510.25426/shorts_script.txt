@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could understand what you really mean, even when you don't say it directly?
+[VISUAL DIRECTION] Animated text: "AI Reads Between the Lines" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As AI becomes central to how we interact with technology, its ability to grasp unspoken meaning has been a major hurdle - until now.
+[VISUAL DIRECTION] Show rapid cuts of people using digital assistants, chatbots, and AI interfaces
+
+[VOICEOVER 0:20-0:40] Researchers tested whether large language models could interpret conversational implicature - the hidden meaning behind our words.
+[VISUAL DIRECTION] Zoom in on research paper title "Implicature Interaction: Understanding Improves"
+
+[VOICEOVER 0:40-1:00] The results are striking: GPT-4o achieved 76.67% accuracy in matching human interpretations, while smaller models struggled at 40-60%.
+[VISUAL DIRECTION] Show bar chart comparing model performance with GPT-4o highlighted
+
+[VOICEOVER 1:00-1:30] The secret? Simple prompt adjustments that guide AI to recognize when you're seeking information, direction, or emotional support.
+[VISUAL DIRECTION] Animated examples showing before/after responses to indirect requests
+
+[VOICEOVER 1:30-1:50] This breakthrough means more natural conversations with AI assistants in healthcare, education, and customer service.
+[VISUAL DIRECTION] Show AI applications in medical, educational, and service contexts
+
+[VOICEOVER 1:50-2:00] AI is learning to understand not just what we say, but what we mean.
+[VISUAL DIRECTION] Final text overlay: "The Future of Conversation is Here"

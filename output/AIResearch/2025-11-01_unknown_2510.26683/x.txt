@@ -1,0 +1,1 @@
+AI teaches itself: New research shows large language models can self-improve by identifying and fixing internal inconsistencies, achieving gains of up to 3.7% on medical exams. A breakthrough for data-scarce domains.

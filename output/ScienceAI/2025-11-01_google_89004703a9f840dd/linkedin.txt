@@ -1,0 +1,1 @@
+Google Research's assistive AI system demonstrates a 57% improvement in lung cancer screening specificity across multinational studies. The technology helps radiologists reduce false positives while maintaining sensitivity, potentially transforming early detection programs as screening access expands globally.

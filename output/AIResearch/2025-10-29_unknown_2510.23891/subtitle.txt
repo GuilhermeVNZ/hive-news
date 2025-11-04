@@ -1,0 +1,1 @@
+New AI watermarking breakthrough ensures AI-generated text can always be identified, even after modifications. This protects against misuse while maintaining content quality for open-source models.

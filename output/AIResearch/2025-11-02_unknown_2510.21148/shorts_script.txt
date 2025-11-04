@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could write its own instructions and outperform human experts by 12.61%?
+[VISUAL DIRECTION] Animated text: "AI Writes Its Own Instructions" with glowing neural network background
+
+[VOICEOVER 0:05-0:20] Researchers just made this reality with EGO-Prompt—an optimization framework that lets AI design optimal reasoning processes for specialized tasks.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance comparison charts, highlight the 12.61% improvement
+
+[VOICEOVER 0:20-0:40] The fundamental challenge? General AI models struggle with domain expertise. How can we make them adapt without massive retraining?
+[VISUAL DIRECTION] Split screen: left shows generic AI output, right shows specialized medical/traffic scenarios
+
+[VOICEOVER 0:40-1:00] They discovered AI can optimize itself using semantic graphs and evolutionary algorithms, starting from expert templates and iteratively improving.
+[VISUAL DIRECTION] Animated evolution of prompt structure, showing refinement over generations
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system represents domain knowledge as interconnected concepts, then uses feedback-driven evolution to refine the underlying reasoning structure.
+[VISUAL DIRECTION] Zoom on semantic graph visualization, show connections between concepts pulsing with data flow
+
+[VOICEOVER 1:30-1:50] Real impact: Pandemic prediction accuracy jumped from 0.347 to 0.399 F1 score. Traffic analysis improved from 0.247 to 0.333. Smaller models now perform like expensive ones.
+[VISUAL DIRECTION] Fast cuts between healthcare dashboards, traffic flow visualizations, cost comparison charts
+
+[VOICEOVER 1:50-2:00] The future? AI systems that continuously self-improve their reasoning—transforming how we predict, analyze, and optimize complex systems.
+[VISUAL DIRECTION] Final shot of evolving AI architecture with text overlay: "Self-Optimizing AI Is Here"

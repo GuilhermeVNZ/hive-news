@@ -1,0 +1,1 @@
+AI learns to solve complex problems by studying correct answers first, mimicking how humans think and learn. This method helps AI overcome stuck patterns and generate better reasoning for previously unsolvable challenges.

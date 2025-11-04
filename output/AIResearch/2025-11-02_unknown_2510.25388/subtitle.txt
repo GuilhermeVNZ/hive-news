@@ -1,0 +1,1 @@
+AI learns faster by grouping different actions together, slashing training time without added complexity. This could revolutionize how robots and game systems master complex tasks efficiently.

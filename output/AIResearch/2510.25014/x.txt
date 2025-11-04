@@ -1,1 +1,0 @@
-AI game characters just got a major upgrade: 99.6% rule compliance. Amazon's new method solves the fundamental tension between LLM flexibility and necessary constraints. The future of trustworthy AI interactions starts here.

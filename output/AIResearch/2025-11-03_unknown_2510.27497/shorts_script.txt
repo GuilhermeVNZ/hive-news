@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could design perfect molecules with 99.3% stability?
+[VISUAL DIRECTION] [Animated text: 99.3% STABLE MOLECULES - HIGHEST EVER]
+[VOICEOVER 0:05-0:20] For years, AI struggled with generating chemically valid molecular structures. Invalid designs wasted research time and resources.
+[VISUAL DIRECTION] [Show molecular structures with red X marks over invalid ones]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an AI that understands molecular geometry and generates only plausible structures?
+[VISUAL DIRECTION] [Show rotating 3D molecular models with question marks]
+[VOICEOVER 0:40-1:00] InertialAR achieves state-of-the-art results - 94.7% validity on QM9 dataset and 87.2% on complex GEOM-Drugs.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on validity metrics comparison]
+[VOICEOVER 1:00-1:30] The secret? Geometric Rotary Positional Encoding that lets AI perceive spatial relationships between atoms, plus a tokenization strategy that handles molecular rotations and translations.
+[VISUAL DIRECTION] [Animated diagram showing GeoRoPE mechanism with atom connections]
+[VOICEOVER 1:30-1:50] This means faster identification of drug candidates and reduced experimental trials - accelerating real-world medical breakthroughs.
+[VISUAL DIRECTION] [Show drug molecule transforming into medicine bottle]
+[VOICEOVER 1:50-2:00] AI just solved molecular design's biggest challenge. The future of drug discovery is here.

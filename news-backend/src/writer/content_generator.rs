@@ -13,10 +13,14 @@ use super::file_writer::{save_article, save_title, save_subtitle, save_linkedin,
 #[allow(dead_code)]
 pub struct WriterService {
     deepseek_client: DeepSeekClient,
-    prompt_compressor: PromptCompressor,
+    prompt_compressor: Option<PromptCompressor>,
     output_base: PathBuf,
     site: String,
     site_id: String,
+    use_compressor: bool,
+    // Temperature per prompt channel
+    temperature_article: f64,
+    temperature_social: f64,
     // Custom prompts from config (if enabled)
     prompt_article: Option<String>,
     prompt_social: Option<String>,
@@ -46,7 +50,7 @@ impl WriterService {
         let config_manager = SiteConfigManager::new(config_path);
         
         // Try to load config from JSON file
-        let (api_key, base_url, model, site_name, prompt_article, prompt_social, prompt_blog) = if let Some(site_id) = site_id {
+        let (api_key, base_url, model, site_name, use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog) = if let Some(site_id) = site_id {
             match config_manager.get_site_config(site_id) {
                 Ok(Some(site_config)) => {
                     let writer_config = &site_config.writer;
@@ -60,6 +64,13 @@ impl WriterService {
                                 .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
                         
                         let model = writer_config.model.clone();
+                        
+                        // Load compressor setting from config
+                        let use_compressor = writer_config.use_compressor.unwrap_or(false);
+                        
+                        // Load temperature per prompt from config
+                        let temperature_article = site_config.temperature_article.unwrap_or(0.7);
+                        let temperature_social = site_config.temperature_social.unwrap_or(0.8);
                         
                         // Load custom prompts if enabled
                         let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
@@ -89,8 +100,10 @@ impl WriterService {
                         if prompt_blog.is_some() {
                             println!("   📄 Using custom blog prompt");
                         }
+                        println!("   🗜️  Compressor: {}", if use_compressor { "enabled" } else { "disabled" });
+                        println!("   🌡️  Temperature - Article: {:.2}, Social: {:.2}", temperature_article, temperature_social);
                         
-                        (api_key, base_url, model, site_config.name.clone(), prompt_article, prompt_social, prompt_blog)
+                        (api_key, base_url, model, site_config.name.clone(), use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog)
                     } else {
                         anyhow::bail!("Writer is disabled for site: {}", site_id);
                     }
@@ -98,12 +111,12 @@ impl WriterService {
                 Ok(None) => {
                     println!("⚠️  Site {} not found in config, using environment variables", site_id);
                     let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
-                    (api_key, base_url, model, site_name, None, None, None)
+                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
                 }
                 Err(e) => {
                     println!("⚠️  Failed to load config for site {}: {}, using environment variables", site_id, e);
                     let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
-                    (api_key, base_url, model, site_name, None, None, None)
+                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
                 }
             }
         } else {
@@ -124,6 +137,13 @@ impl WriterService {
                                 .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
                         
                         let model = writer_config.model.clone();
+                        
+                        // Load compressor setting from config
+                        let use_compressor = writer_config.use_compressor.unwrap_or(false);
+                        
+                        // Load temperature per prompt from config
+                        let temperature_article = site_config.temperature_article.unwrap_or(0.7);
+                        let temperature_social = site_config.temperature_social.unwrap_or(0.8);
                         
                         // Load custom prompts if enabled
                         let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
@@ -153,17 +173,19 @@ impl WriterService {
                         if prompt_blog.is_some() {
                             println!("   📄 Using custom blog prompt");
                         }
+                        println!("   🗜️  Compressor: {}", if use_compressor { "enabled" } else { "disabled" });
+                        println!("   🌡️  Temperature - Article: {:.2}, Social: {:.2}", temperature_article, temperature_social);
                         
-                        (api_key, base_url, model, site_config.name.clone(), prompt_article, prompt_social, prompt_blog)
+                        (api_key, base_url, model, site_config.name.clone(), use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog)
                     } else {
                         let (api_key, base_url, model, site_name) = Self::from_env(site_config.name.clone())?;
-                        (api_key, base_url, model, site_name, None, None, None)
+                        (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
                     }
                 }
                 _ => {
                     println!("⚠️  Default site {} not found in config, using environment variables", default_site_id);
                     let (api_key, base_url, model, site_name) = Self::from_env("AIResearch".to_string())?;
-                    (api_key, base_url, model, site_name, None, None, None)
+                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
                 }
             }
         };
@@ -181,10 +203,13 @@ impl WriterService {
         
         Ok(Self {
             deepseek_client: DeepSeekClient::new(api_key, base_url, model),
-            prompt_compressor: PromptCompressor::new()?,
+            prompt_compressor: if use_compressor { Some(PromptCompressor::new()?) } else { None },
             output_base,
             site: site_name.clone(),
             site_id: actual_site_id,
+            use_compressor,
+            temperature_article,
+            temperature_social,
             prompt_article,
             prompt_social,
             prompt_blog,
@@ -251,19 +276,34 @@ impl WriterService {
             build_article_prompt(&parsed.text, &[], &self.site)
         };
         
+        let (final_article_prompt, original_tokens, compressed_tokens, compression_ratio) = if self.use_compressor {
+            if let Some(ref compressor) = self.prompt_compressor {
         let estimated_tokens = article_prompt.len() / 4;
         println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
         
-        let compressed_article = self.prompt_compressor.compress(&article_prompt)
+                let compressed_article = compressor.compress(&article_prompt)
             .context("Failed to compress article prompt")?;
         
         println!("  ✅ Compressed to {} tokens ({:.1}% savings)", 
                  compressed_article.compressed_tokens,
                  compressed_article.compression_ratio * 100.0);
+                
+                (compressed_article.compressed_text, compressed_article.original_tokens, compressed_article.compressed_tokens, compressed_article.compression_ratio)
+            } else {
+                // Fallback if compressor is None despite use_compressor being true
+                println!("  ⚠️  Compressor enabled but not initialized, using uncompressed prompt");
+                let tokens = article_prompt.len() / 4;
+                (article_prompt, tokens, tokens, 0.0)
+            }
+        } else {
+            println!("  ⏭️  Prompt compression disabled");
+            let tokens = article_prompt.len() / 4;
+            (article_prompt, tokens, tokens, 0.0)
+        };
         
         println!("  🤖 Sending to DeepSeek API...");
         let article_response = match self.deepseek_client
-            .generate_article(&compressed_article.compressed_text)
+            .generate_article(&final_article_prompt, Some(self.temperature_article))
             .await
         {
             Ok(response) => {
@@ -274,8 +314,8 @@ impl WriterService {
                 eprintln!("  ❌ Failed to generate article for {}: {}", article_id, e);
                 eprintln!("  📄 PDF: {}", pdf_path.display());
                 eprintln!("  📊 Prompt tokens: {} (compressed from {})", 
-                         compressed_article.compressed_tokens,
-                         compressed_article.original_tokens);
+                         compressed_tokens,
+                         original_tokens);
                 return Err(e).with_context(|| format!("Failed to generate article for {}", article_id));
             }
         };
@@ -301,19 +341,33 @@ impl WriterService {
             )
         };
         
+        let (final_social_prompt, social_original_tokens, social_compressed_tokens, social_compression_ratio) = if self.use_compressor {
+            if let Some(ref compressor) = self.prompt_compressor {
         let estimated_social_tokens = social_prompt.len() / 4;
         println!("  🗜️  Compressing social prompt (~{} tokens)...", estimated_social_tokens);
         
-        let compressed_social = self.prompt_compressor.compress(&social_prompt)
+                let compressed_social = compressor.compress(&social_prompt)
             .context("Failed to compress social prompt")?;
         
         println!("  ✅ Compressed to {} tokens ({:.1}% savings)", 
                  compressed_social.compressed_tokens,
                  compressed_social.compression_ratio * 100.0);
+                
+                (compressed_social.compressed_text, compressed_social.original_tokens, compressed_social.compressed_tokens, compressed_social.compression_ratio)
+            } else {
+                println!("  ⚠️  Compressor enabled but not initialized, using uncompressed prompt");
+                let tokens = social_prompt.len() / 4;
+                (social_prompt, tokens, tokens, 0.0)
+            }
+        } else {
+            println!("  ⏭️  Social prompt compression disabled");
+            let tokens = social_prompt.len() / 4;
+            (social_prompt, tokens, tokens, 0.0)
+        };
         
         println!("  🤖 Generating social content...");
         let social_response = match self.deepseek_client
-            .generate_social_content(&compressed_social.compressed_text)
+            .generate_social_content(&final_social_prompt, Some(self.temperature_social))
             .await
         {
             Ok(response) => {
@@ -337,9 +391,9 @@ impl WriterService {
         
         Ok(GeneratedContent {
             output_dir,
-            original_tokens: compressed_article.original_tokens + compressed_social.original_tokens,
-            compressed_tokens: compressed_article.compressed_tokens + compressed_social.compressed_tokens,
-            compression_ratio: (compressed_article.compression_ratio + compressed_social.compression_ratio) / 2.0,
+            original_tokens: original_tokens + social_original_tokens,
+            compressed_tokens: compressed_tokens + social_compressed_tokens,
+            compression_ratio: (compression_ratio + social_compression_ratio) / 2.0,
         })
     }
     

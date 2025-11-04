@@ -1,0 +1,1 @@
+BREAKING: 3.8B model matches GPT-4o's 73.5% accuracy at 1/19th the cost. The 'bigger is better' AI myth is officially challenged. Nature paper reveals small models can compete at frontier tasks with proper reasoning techniques.

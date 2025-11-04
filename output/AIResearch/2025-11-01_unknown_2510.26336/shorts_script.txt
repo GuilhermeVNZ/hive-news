@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could become an expert in economics or psychology without forgetting everything else it knows?
+[VISUAL DIRECTION] Animated text: "AI EXPERTISE WITHOUT FORGETTING" with question mark morphing into lightbulb
+
+[VOICEOVER 0:05-0:20] Current large language models struggle with deep domain knowledge - they either remain generalists or lose their broad capabilities when specialized.
+[VISUAL DIRECTION] Show split screen: left side "GENERALIST AI" with broad but shallow knowledge, right side "SPECIALIST AI" with deep but narrow focus
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that masters complex subjects like economics while maintaining its general intelligence?
+[VISUAL DIRECTION] Animated flowchart showing AI progression from amateur to master with question marks at each transition
+
+[VOICEOVER 0:40-1:00] The breakthrough is ACER - Automated Curriculum-Enhanced Regimen. On the MMLU benchmark, it boosted microeconomics accuracy from just 33.61% to 59.66%.
+[VISUAL DIRECTION] Show bar chart animation: left bar at 33.61%, right bar growing to 59.66% with "+26%" overlay
+
+[VOICEOVER 1:00-1:30] Here's how it works: ACER generates textbook-style questions organized by difficulty using Bloom's taxonomy, creating a synthetic curriculum. The AI undergoes continual pretraining to prevent over-specialization.
+[VISUAL DIRECTION] Animated progression: basic questions → intermediate → advanced analysis, with "Bloom's Taxonomy" overlay and arrows showing learning progression
+
+[VOICEOVER 1:30-1:50] This means AI can now reliably handle complex, knowledge-intensive tasks in research and professional services without catastrophic forgetting of other skills.
+[VISUAL DIRECTION] Show rotating icons: research papers, financial charts, psychology diagrams, all connected by neural network lines
+
+[VOICEOVER 1:50-2:00] The era of AI that learns like humans - building expertise without losing its foundation - has arrived.
+[VISUAL DIRECTION] Final text overlay: "FROM AMATEUR TO MASTER" with ACER logo animation

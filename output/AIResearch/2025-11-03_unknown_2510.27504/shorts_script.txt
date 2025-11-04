@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could learn from your medical records without ever seeing them?
+[VISUAL DIRECTION] Animated text: "AI learning your secrets?" with hospital icon fading in
+
+[VOICEOVER 0:05-0:20] Federated learning allows AI training across hospitals and smartphones without sharing sensitive data directly, but privacy protection often destroys performance.
+[VISUAL DIRECTION] Show multiple devices (phones, tablets) connected to central server with data icons flowing between them
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we protect privacy without sacrificing accuracy? Current methods degrade performance by up to 35%.
+[VISUAL DIRECTION] Graph showing performance drop from 70% to 45% with privacy protection
+
+[VOICEOVER 0:40-1:00] They discovered DP-FedPGN - a method that finds global flat minima in the loss landscape, reducing sensitivity to noise and clipping.
+[VISUAL DIRECTION] Show Figure 2 from paper - loss landscape visualization with sharp peaks vs flat surfaces
+
+[VOICEOVER 1:00-1:30] By penalizing gradient norms during training, it guides models to robust regions. Momentum updates smooth global objectives, reducing client divergence.
+[VISUAL DIRECTION] Animated diagram showing gradient flow and penalty application with mathematical symbols
+
+[VOICEOVER 1:30-1:50] Results: 61.80% accuracy on CIFAR-100 vs 45.53% baseline. 70.72% on CIFAR-10 with ResNet-18 - requiring only half the communication rounds.
+[VISUAL DIRECTION] Fast cuts between accuracy numbers: 45.53% → 61.80% → 70.72% with checkmarks
+
+[VOICEOVER 1:50-2:00] This enables reliable AI in healthcare and finance while protecting your data. Privacy and performance, finally balanced.
+[VISUAL DIRECTION] Final screen: medical and finance icons with text "Your data stays private. AI gets smarter."

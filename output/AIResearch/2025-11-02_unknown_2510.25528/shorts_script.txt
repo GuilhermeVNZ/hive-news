@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if AI could master both complex mathematics AND creative writing without ever being told what's right or wrong during training?
+
+[VISUAL DIRECTION] Animated text: "AI Learning Without Right Answers" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Current AI systems struggle in areas where there aren't clear right or wrong answers, limiting their real-world applications. This is why most AI assistants fail at open-ended questions and creative tasks.
+
+[VISUAL DIRECTION] Split screen showing math equations on left, creative writing on right, with red X over creative side
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we train AI to excel in both verifiable domains like mathematics AND non-verifiable domains like creative writing simultaneously?
+
+[VISUAL DIRECTION] Show animated brain with both analytical and creative hemispheres lighting up
+
+[VOICEOVER 0:40-1:00] They discovered Zero-RL - a method that combines multiple training signals. The AI learns from both accuracy-based rewards for math problems AND generative quality assessments for creative tasks.
+
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on performance distribution across domains
+
+[VOICEOVER 1:00-1:30] The key innovation? Using token-level gradients instead of sequence-level loss, plus a length penalty that prevents AI from gaming the system through verbosity. The model was trained on 178,535 math examples and 125,798 STEM samples.
+
+[VISUAL DIRECTION] Animated diagram showing token-level optimization vs traditional methods
+
+[VOICEOVER 1:30-1:50] Results are staggering: 59.7% on MATH-500, outperforming even larger specialized models. Most impressively, it achieved state-of-the-art performance in creative writing benchmarks while maintaining math excellence.
+
+[VISUAL DIRECTION] Fast cuts showing benchmark scores: MATH-500: 59.7%, AIME24: 45.3%, WritingBench: SOTA
+
+[VOICEOVER 1:50-2:00] This isn't just better AI - it's the first step toward true multi-domain intelligence that can actually help with real-world problems, not just calculations.

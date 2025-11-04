@@ -1,0 +1,1 @@
+AI can't reliably answer 'what if' questions about its own decisions. This critical limitation affects high-stakes fields like healthcare and finance where hypothetical reasoning matters.

@@ -1,0 +1,1 @@
+What if AI could design drugs in days instead of decades? MolChord's AI framework generates drug candidates with 74.6% accuracy while maintaining optimal drug-likeness. This breakthrough could revolutionize therapeutic development. Read the Nature paper to explore how structural-sequence alignment accelerates precision medicine.

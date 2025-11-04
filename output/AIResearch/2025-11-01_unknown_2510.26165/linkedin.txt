@@ -1,0 +1,1 @@
+AI can now learn to manage investment portfolios without knowing investor objectives. Oxford researchers developed a GAN that mimics real fund manager behavior, revealing most operate on complex constraints beyond simple risk-return trade-offs. This transforms how we simulate financial markets. What does this mean for traditional portfolio theory?

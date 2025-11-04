@@ -1,0 +1,1 @@
+Hugging Face is testing a voice cloning system that won't work unless you explicitly say "I consent." The AI ethics approach could help prevent deepfake misuse while enabling legitimate applications. #AIethics #VoiceCloning

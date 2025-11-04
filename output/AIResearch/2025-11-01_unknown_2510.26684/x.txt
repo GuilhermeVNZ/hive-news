@@ -1,0 +1,1 @@
+AI prevents steel mill breakdowns before they happen: 92.5% detection rate, 280ms latency. Traditional sensors miss subtle anomalies that cost $20K/hour in downtime. Proactive maintenance is here.

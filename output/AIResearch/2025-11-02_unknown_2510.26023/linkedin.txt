@@ -1,0 +1,1 @@
+Self-driving cars get stuck in complex situations, causing delays. New AI 'StuckSolver' enables vehicles to self-recover from immobilization using LLM reasoning, boosting reliability. How will this transform autonomous mobility?

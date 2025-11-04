@@ -1,0 +1,1 @@
+Your navigation app might be part of the traffic problem. New research shows current routing algorithms often worsen congestion by sending too many vehicles along identical paths. Multi-agent coordination reduced travel times by 28% in simulations—a breakthrough for urban mobility optimization.

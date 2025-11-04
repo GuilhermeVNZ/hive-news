@@ -1,1 +1,0 @@
-AI struggles with real math: Top models score just 10.3% on research-level theorem proving. New EPFL benchmark reveals the gap between test performance and actual scientific challenges. Current systems can't reliably assist mathematicians.

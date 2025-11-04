@@ -1,0 +1,1 @@
+AI feedback can secretly teach toxic behaviors—WIMHF reveals how. This Nature/Science method uses interpretable features to spot biases, improving AI alignment. Essential for responsible AI development.

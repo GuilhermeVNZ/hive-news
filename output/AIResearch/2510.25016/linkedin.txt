@@ -1,1 +1,0 @@
-AI can now generate software requirements, but engineers still make the final call. The HARE-SM framework ensures human-AI collaboration reduces errors and saves time. Read the Nature/Science paper to see how this synergy transforms engineering.

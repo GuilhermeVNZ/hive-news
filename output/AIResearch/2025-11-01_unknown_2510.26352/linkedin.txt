@@ -1,0 +1,1 @@
+AI teams selected by conversation graphs outperform manually curated ones in specialized tasks. New Nature research maps LLM dialogues to identify synergistic collaborations, achieving near-expert accuracy in math and medicine. This could revolutionize how we deploy AI for complex problem-solving.

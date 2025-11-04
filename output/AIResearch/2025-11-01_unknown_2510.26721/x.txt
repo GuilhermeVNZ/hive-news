@@ -1,0 +1,1 @@
+AI secretly prefers text over images, causing bias in everything from medical imaging to autonomous vehicles. New research exposes this intrinsic flaw in multimodal AI systems. Read the science behind the bias.

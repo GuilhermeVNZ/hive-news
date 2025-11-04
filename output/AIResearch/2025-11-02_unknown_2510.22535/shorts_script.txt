@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI models can't forget false images, making them vulnerable to privacy attacks?
+[VISUAL DIRECTION] Animated text: 'AI CAN'T FORGET FALSE IMAGES' with a striking red X over an image icon.
+[VOICEOVER 0:05-0:20] Multimodal large language models handle images and text in apps, but new research shows they struggle to unlearn misinformation, raising security concerns.
+[VISUAL DIRECTION] Show a split screen: one side with a news app, the other with a personal assistant interface, highlighting data flow arrows.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI reliably erase false visual rumors without losing other knowledge? They tested unlearning methods on models like Qwen2.5-VL.
+[VISUAL DIRECTION] Display a simple diagram of a model with 'FALSE INFO' input and 'ERASE?' output, with question marks and warning symbols.
+[VOICEOVER 0:40-1:00] Findings: Unlearning caused significant knowledge drops, and erased info easily bounced back with simple attacks, failing in selective scenarios.
+[VISUAL DIRECTION] Zoom in on a graph from the paper showing accuracy decline, with text overlay: 'KNOWLEDGE DROP: 30%+'. Use fast cuts between data points.
+[VOICEOVER 1:00-1:30] How it works: The OFFSIDE benchmark used football player data to test unlearning—models couldn't precisely remove private details without disrupting facts.
+[VISUAL DIRECTION] Animate text overlays: 'OFFSIDE BENCHMARK', 'FOOTBALL DATA', and 'PRECISION FAILS'. Pan across sample records with highlights on erased attributes.
+[VOICEOVER 1:30-1:50] Implications: This affects real-world uses like AI assistants and media, where unreliable unlearning could spread misinformation or leak data.
+[VISUAL DIRECTION] Show quick clips: a smartphone assistant, a news website, and a lock icon with a crack. Emphasize urgency with bold text: 'SECURITY RISK'.
+[VOICEOVER 1:50-2:00] AI's memory isn't safe—deleted visual rumors can resurface, demanding better safeguards for trustworthy systems.
+[VISUAL DIRECTION] End with the opening text 'AI CAN'T FORGET FALSE IMAGES' fading to a call-to-action: 'Learn more in OFFSIDE study'. Hold for impact.

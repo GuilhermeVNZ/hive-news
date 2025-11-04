@@ -1,0 +1,1 @@
+AI that learns from outcomes, not steps, achieves 80.5% F1 score on GrailQA—3.3% higher than prior state-of-the-art. This breakthrough in outcome-only supervision enables robust AI assistants. How will this transform real-world AI deployment?

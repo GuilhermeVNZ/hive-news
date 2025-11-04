@@ -1,0 +1,7 @@
+🚨 BREAKING: New method evaluates LLMs like GPT-4 with 90% less cost
+
+Scales++ selects tiny test subsets preserving accuracy
+
+Game-changer for AI research accessibility
+
+Nature study shows 2.9% error margin on Open LLM Leaderboard

@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] Did you know that ZERO out of 86 AI research studies could be fully reproduced? This isn't just a problem - it's a crisis threatening the very foundation of AI science.
+
+[VISUAL DIRECTION] Animated text "0/86 REPRODUCIBLE" flashes dramatically with warning symbols
+
+[VOICEOVER 0:05-0:20] European researchers systematically analyzed studies from top AI conferences and found a startling reality: even studies that claimed success couldn't be verified when others tried to replicate them.
+
+[VISUAL DIRECTION] Show conference logos (ICSE, ASE 2024) with red X marks through them
+
+[VOICEOVER 0:20-0:40] The researchers developed a containerized framework to test reproducibility, running experiments up to 15 times to account for LLM variability. They used Bayesian bootstrapping for rigorous confidence intervals.
+
+[VISUAL DIRECTION] Show animated diagram of container architecture with statistical curves
+
+[VOICEOVER 0:40-1:00] The findings were stark: only 5 studies even had suitable attempts at reproduction, and none yielded matching results. Translation accuracy that claimed 79.9% success dropped to zero in reproduction attempts.
+
+[VISUAL DIRECTION] Show bar chart dropping from 79.9% to 0% with dramatic animation
+
+[VOICEOVER 1:00-1:30] The problems included missing code, dependency conflicts, and deprecated models. Even ACM artifact badges, designed to ensure reliability, failed - badged studies were often non-functional or poorly documented.
+
+[VISUAL DIRECTION] Show broken chain animation representing failed reproducibility
+
+[VOICEOVER 1:30-1:50] This reproducibility crisis means billions in research funding might be wasted on irreproducible findings. It hinders cumulative knowledge and threatens AI's credibility as a scientific field.
+
+[VISUAL DIRECTION] Show money symbols fading away with question marks
+
+[VOICEOVER 1:50-2:00] The truth is clear: without reproducibility, AI breakthroughs may be built on sand. The scientific community must address this now.

@@ -1,0 +1,1 @@
+New method processes compressed audio and images without decoding, cutting computational costs while maintaining accuracy—opening doors for faster, more efficient AI systems.

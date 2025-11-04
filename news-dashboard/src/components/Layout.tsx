@@ -82,7 +82,7 @@ export default function Layout({ children }: LayoutProps) {
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border space-y-2">
+        <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2">
           <div className={`flex items-center gap-3 px-4 py-2 rounded-lg text-muted-foreground ${sidebarOpen ? "block" : "hidden"}`}>
             <User size={16} />
             <span className="text-sm font-medium">{user?.username || 'Admin'}</span>

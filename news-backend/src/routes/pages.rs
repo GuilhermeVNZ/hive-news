@@ -149,6 +149,7 @@ pub async fn create_page(
                         feed_url: collector.feed_url,
                         base_url: collector.base_url,
                         selectors: collector.selectors,
+                        destinations: None, // config_manager::CollectorConfig doesn't have destinations, default to None
                         config: collector.config,
                     }
                 })
@@ -206,12 +207,15 @@ pub async fn create_page(
         ],
         collection_frequency_minutes: request.frequency_minutes.or(Some(60)),
         writing_style: request.writing_style.or(Some("scientific".to_string())),
-        prompt_article: Some("You are an expert writer. Generate a concise, factual summary.".to_string()),
+        prompt_article: Some(crate::utils::site_config_manager::SiteConfigManager::get_default_article_prompt_template(&request.id, &request.name)),
         prompt_social: Some("Create a short, engaging social post with hashtags.".to_string()),
         prompt_blog: Some("Write a blog-style article with sections and professional tone.".to_string()),
         prompt_article_enabled: Some(true),
         prompt_social_enabled: Some(false),
         prompt_blog_enabled: Some(false),
+        temperature_article: Some(0.7),
+        temperature_social: Some(0.8),
+        temperature_blog: Some(0.7),
     };
     
     match site_manager.update_site_config(&request.id, new_site) {
@@ -228,14 +232,38 @@ pub async fn create_page(
 
 pub async fn get_page(
     Extension(_db): Extension<std::sync::Arc<Database>>,
-    Path(id): Path<i32>,
+    Path(id): Path<String>,
 ) -> Json<Value> {
-    // TODO: Implement get page logic
-    Json(serde_json::json!({ "message": format!("Get page {} endpoint", id) }))
+    let config_path = FsPath::new("system_config.json");
+    let site_manager = SiteConfigManager::new(config_path);
+    
+    match site_manager.get_site_config(&id) {
+        Ok(Some(site)) => Json(json!({
+            "success": true,
+            "site": {
+                "id": site.id,
+                "name": site.name,
+                "domain": site.domain,
+                "enabled": site.enabled,
+                "frequency_minutes": site.collection_frequency_minutes,
+                "writing_style": site.writing_style,
+            },
+        })),
+        Ok(None) => Json(json!({
+            "success": false,
+            "error": format!("Site not found: {}", id),
+        })),
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to load site: {}", e),
+        })),
+    }
 }
 
 #[derive(Debug, Deserialize)]
 pub struct UpdatePageRequest {
+    pub name: Option<String>,
+    pub domain: Option<String>,
     pub frequency_minutes: Option<u32>,
     pub writing_style: Option<String>,
     pub enabled: Option<bool>,
@@ -266,6 +294,18 @@ pub async fn update_page(
     };
     
     // Update fields
+    if let Some(name) = request.name {
+        if name.trim().is_empty() {
+            return Json(json!({
+                "success": false,
+                "error": "Site name cannot be empty",
+            }));
+        }
+        site.name = name.trim().to_string();
+    }
+    if let Some(domain) = request.domain {
+        site.domain = if domain.trim().is_empty() { None } else { Some(domain.trim().to_string()) };
+    }
     if let Some(frequency) = request.frequency_minutes {
         site.collection_frequency_minutes = Some(frequency);
     }
@@ -290,8 +330,75 @@ pub async fn update_page(
 
 pub async fn delete_page(
     Extension(_db): Extension<std::sync::Arc<Database>>,
-    Path(id): Path<i32>,
+    Path(id): Path<String>,
 ) -> Json<Value> {
-    // TODO: Implement delete page logic
-    Json(serde_json::json!({ "message": format!("Delete page {} endpoint", id) }))
+    // Log for debugging
+    eprintln!("[DELETE PAGE] Received DELETE request for site: '{}'", id);
+    eprintln!("[DELETE PAGE] ID type: String, length: {}", id.len());
+    
+    let config_path = FsPath::new("system_config.json");
+    let site_manager = SiteConfigManager::new(config_path);
+    
+    // Check if site exists
+    match site_manager.get_site_config(&id) {
+        Ok(Some(site)) => {
+            eprintln!("[DELETE PAGE] Site found: {} ({})", site.id, site.name);
+            // Site exists, proceed with deletion
+        }
+        Ok(None) => {
+            eprintln!("[DELETE PAGE] Site not found: {}", id);
+            return Json(json!({
+                "success": false,
+                "error": format!("Site not found: {}", id),
+            }));
+        }
+        Err(e) => {
+            eprintln!("[DELETE PAGE] Error loading site: {}", e);
+            return Json(json!({
+                "success": false,
+                "error": format!("Failed to load site: {}", e),
+            }));
+        }
+    }
+    
+    // Load config, remove site, and save
+    match site_manager.load() {
+        Ok(mut config) => {
+            eprintln!("[DELETE PAGE] Config loaded, sites before: {}", config.sites.len());
+            
+            // Remove site from HashMap
+            let removed = config.sites.remove(&id);
+            
+            if removed.is_some() {
+                eprintln!("[DELETE PAGE] Site removed from config, sites after: {}", config.sites.len());
+            } else {
+                eprintln!("[DELETE PAGE] WARNING: Site '{}' was not in config.sites", id);
+            }
+            
+            // Save updated config
+            match site_manager.save(&config) {
+                Ok(_) => {
+                    eprintln!("[DELETE PAGE] Config saved successfully");
+                    Json(json!({
+                        "success": true,
+                        "message": format!("Site '{}' deleted successfully", id),
+                    }))
+                }
+                Err(e) => {
+                    eprintln!("[DELETE PAGE] Error saving config: {}", e);
+                    Json(json!({
+                        "success": false,
+                        "error": format!("Failed to save config after deletion: {}", e),
+                    }))
+                }
+            }
+        }
+        Err(e) => {
+            eprintln!("[DELETE PAGE] Error loading config: {}", e);
+            Json(json!({
+                "success": false,
+                "error": format!("Failed to load config: {}", e),
+            }))
+        }
+    }
 }

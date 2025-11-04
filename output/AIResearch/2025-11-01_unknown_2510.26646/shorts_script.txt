@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if robots could think on their feet in unpredictable environments? [VISUAL DIRECTION] Animated text: 'ROBOTS FAIL WHEN THINGS CHANGE' with emergency red background
+
+[VOICEOVER 0:05-0:20] Currently, robots in warehouses and search missions struggle when obstacles move or conditions shift rapidly. [VISUAL DIRECTION] Show warehouse robot colliding with moving obstacle, then search robot stuck in rubble
+
+[VOICEOVER 0:20-0:40] Traditional methods rely on pre-built maps and fixed algorithms, making them slow and inflexible. The question: Can we create robots that adapt autonomously? [VISUAL DIRECTION] Side-by-side comparison: traditional robot vs new approach, highlight 'FIXED ALGORITHMS' vs 'ADAPTIVE'
+
+[VOICEOVER 0:40-1:00] Researchers developed a hybrid AI framework that combines two techniques: DQN for strategic choices and TD3 for precise control. [VISUAL DIRECTION] Animated diagram showing DQN (brain icon) + TD3 (gears icon) merging into single system
+
+[VOICEOVER 1:00-1:30] The DQN handles high-level decisions like direction selection, while TD3 manages continuous movements and obstacle avoidance. Together, they address each method's limitations. [VISUAL DIRECTION] Split screen: left shows DQN making path decisions, right shows TD3 executing smooth movements
+
+[VOICEOVER 1:30-1:50] After 10,000 training episodes, the system demonstrated consistent performance with near-zero collision rates and smooth trajectories. [VISUAL DIRECTION] Show training metrics graph with convergence to optimal performance, highlight '10,000 EPISODES'
+
+[VOICEOVER 1:50-2:00] This breakthrough means robots can finally navigate dynamic environments without constant human intervention. [VISUAL DIRECTION] Final shot: robot successfully navigating complex, changing environment with text: 'AUTONOMOUS ADAPTATION ACHIEVED'

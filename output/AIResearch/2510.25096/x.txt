@@ -1,1 +1,0 @@
-AI can now learn fair representations without losing accuracy. FairMIB separates bias into feature, structural, and diffusion views, achieving 10% F1-score gains on bail decisions. Published in Nature/Science, this method addresses bias at its source for real-world AI systems.

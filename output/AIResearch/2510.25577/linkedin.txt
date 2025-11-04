@@ -1,1 +1,0 @@
-AI judges your competence by your voice tone alone. New research reveals foundation models systematically rate creaky voices as less authoritative and empathetic than normal voices—reproducing human biases in AI systems used for hiring and healthcare. This could amplify stereotypes in real-world applications. Read the Nature paper to understand the implications.

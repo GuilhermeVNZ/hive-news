@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know road incidents cause over 1 million deaths globally each year, and delayed response dramatically increases the risk?
+[VISUAL DIRECTION] Animated text: "1 MILLION DEATHS YEARLY" with emergency vehicle lights flashing in background
+
+[VOICEOVER 0:05-0:20] Current detection methods like CCTV often miss incidents until it's too late, especially in low visibility conditions.
+[VISUAL DIRECTION] Quick cuts of blurry dashcam footage, traffic congestion, emergency response delays
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect traffic incidents faster and more accurately to save lives?
+[VISUAL DIRECTION] Scientist at computer screen, drone footage of highway, question mark animation
+
+[VOICEOVER 0:40-1:00] They developed DARTS - a drone-based AI system that analyzes vehicle trajectories in real-time.
+[VISUAL DIRECTION] Animated diagram showing drone capturing footage, AI processing data streams
+
+[VOICEOVER 1:00-1:30] Using a lightweight learning model called TCD-Net, DARTS distinguishes between normal traffic and actual incidents with 99% accuracy. In Florida tests, it detected incidents 12 minutes earlier than existing methods.
+[VISUAL DIRECTION] Zoom on AI detection algorithm, side-by-side comparison showing 12-minute time difference, accuracy percentage flashing
+
+[VOICEOVER 1:30-1:50] This means faster medical response, reduced congestion propagation, and potentially thousands of lives saved annually.
+[VISUAL DIRECTION] Quick response teams deploying, traffic rerouting animations, life counter increasing
+
+[VOICEOVER 1:50-2:00] Road incidents don't have to be deadly. AI-powered detection could revolutionize how we respond to emergencies.
+[VISUAL DIRECTION] Final text overlay: "99% Accuracy • 12 Minutes Faster • Lives Saved" with drone ascending into sky

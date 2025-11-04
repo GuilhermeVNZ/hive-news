@@ -1,0 +1,1 @@
+AI detects scientific misinformation 35% better. MisSynth fine-tuning boosts accuracy to F1-scores of 0.954 on logical fallacies. Could this restore trust in science?

@@ -1,0 +1,1 @@
+What if AI could learn from your medical data without ever seeing it? DP-FedPGN enables federated learning with differential privacy while achieving 61.80% accuracy on CIFAR-100 vs 45.53% baseline. This breakthrough balances privacy and performance for healthcare applications. How could this transform patient data security?

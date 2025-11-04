@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if drones could work together to find radioactive threats 83% faster than working alone?
+[VISUAL DIRECTION] Animated text: "83% FASTER RADIATION DETECTION" with drone swarm animation
+[VOICEOVER 0:05-0:20] In nuclear accidents or industrial settings, quickly locating radioactive leaks becomes critical for safety. Current methods using heavy ground equipment struggle in difficult terrain.
+[VISUAL DIRECTION] Show nuclear facility diagram transitioning to disaster scenario with limited access areas
+[VOICEOVER 0:20-0:40] Researchers asked: Can lightweight drones cooperate to overcome these limitations and provide faster, more accurate radiation mapping?
+[VISUAL DIRECTION] Animated question mark transforming into three micro aerial vehicles (MAVs)
+[VOICEOVER 0:40-1:00] They discovered that three cooperating drones pinpointed radioactive sources with median error of just 3.5 meters - a 300% improvement over single drones working alone.
+[VISUAL DIRECTION] Show localization accuracy comparison: single drone (20.3m error) vs swarm (3.5m error) with clear visual contrast
+[VOICEOVER 1:00-1:30] How does it work? Each drone carries a miniature radiation detector weighing only grams. By taking measurements from multiple viewpoints simultaneously and organizing in circular formations, they continuously update their position estimates.
+[VISUAL DIRECTION] Animated diagram showing drone swarm formation and radiation detection cones converging on source
+[VOICEOVER 1:30-1:50] This means faster response in disaster zones, confined spaces, and areas where ground vehicles can't reach - making nuclear safety more accessible worldwide.
+[VISUAL DIRECTION] Show real-world applications: disaster response, industrial monitoring, transport security
+[VOICEOVER 1:50-2:00] Cooperative drone swarms: transforming how we monitor and respond to radiation threats.
+[VISUAL DIRECTION] Final shot of drone swarm with text overlay: "Science making safety smarter"

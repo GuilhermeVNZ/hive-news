@@ -1,40 +1,59 @@
 {
   "collectors": [
     {
-      "id": "arxiv",
-      "name": "arXiv",
+      "id": "html_apple_ml",
+      "name": "Apple Machine Learning",
       "enabled": true,
       "api_key": null,
-      "collector_type": null,
+      "collector_type": "html",
+      "base_url": "https://machinelearning.apple.com/highlights",
+      "selectors": {
+        "article": "article, .post, .research-item, .publication-item, .highlight-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .highlight-content",
+        "link": "a[href*='machinelearning.apple.com/highlights'], a[href*='machinelearning.apple.com/research']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .highlight-title"
+      },
       "config": {
-        "category": "cs.AI",
-        "max_results": 10
+        "max_results": 5
       }
     },
     {
-      "id": "pmc",
-      "name": "PubMed Central",
-      "enabled": false,
-      "api_key": null,
-      "collector_type": null,
-      "config": {}
-    },
-    {
-      "id": "semantic_scholar",
-      "name": "Semantic Scholar",
-      "enabled": false,
-      "api_key": null,
-      "collector_type": null,
-      "config": {}
-    },
-    {
-      "id": "rss_openai",
-      "name": "OpenAI Blog RSS",
+      "id": "rss_venturebeat_ai",
+      "name": "VentureBeat AI RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://openai.com/blog/rss.xml",
-      "base_url": "https://openai.com",
+      "feed_url": "https://venturebeat.com/category/ai/feed/",
+      "base_url": "https://venturebeat.com/category/ai/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_alibaba_damo",
+      "name": "Alibaba DAMO RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://damo.alibaba.com/news/rss",
+      "base_url": "https://damo.alibaba.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_cohere",
+      "name": "Cohere AI Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://txt.cohere.com/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='cohere.com'], a[href*='txt.cohere.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
       "config": {
         "max_results": 5
       }
@@ -52,13 +71,169 @@
       }
     },
     {
-      "id": "rss_nvidia",
-      "name": "NVIDIA News RSS",
+      "id": "html_apple_ml_research",
+      "name": "Apple Machine Learning Research",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://machinelearning.apple.com/research",
+      "selectors": {
+        "article": "article, .post, .research-item, .publication-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='machinelearning.apple.com/research']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_hive_hub",
+      "name": "Hive Hub",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://hive-hub.com",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='hive-hub.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_deepmind_blog",
+      "name": "DeepMind Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://deepmind.google/discover/blog/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='deepmind.google/discover/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_inflection_ai",
+      "name": "Inflection AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://inflection.ai/blog/enterprise",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='inflection.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "semantic_scholar",
+      "name": "Semantic Scholar",
+      "enabled": false,
+      "api_key": null,
+      "collector_type": null,
+      "config": {
+        "fields_of_study": [
+          "Computer Science",
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Computer Vision",
+          "Natural Language Processing",
+          "Data Science",
+          "Software Engineering"
+        ],
+        "filter_technology_only": true,
+        "max_results": 10,
+        "query": "computer science artificial intelligence machine learning"
+      }
+    },
+    {
+      "id": "pmc",
+      "name": "PubMed Central",
+      "enabled": false,
+      "api_key": null,
+      "collector_type": null,
+      "config": {
+        "filter_technology_only": true,
+        "search_terms": [
+          "artificial intelligence",
+          "machine learning",
+          "deep learning",
+          "neural network",
+          "computer vision",
+          "natural language processing",
+          "data science",
+          "computer science",
+          "software engineering",
+          "programming",
+          "algorithm",
+          "transformer",
+          "reinforcement learning"
+        ],
+        "time_range_days": 30
+      }
+    },
+    {
+      "id": "html_airesearch_news",
+      "name": "AIResearch News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.airesearch.news/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_microsoft_ai",
+      "name": "Microsoft AI Blog RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://nvidianews.nvidia.com/rss.xml",
-      "base_url": "https://nvidianews.nvidia.com",
+      "feed_url": "https://blogs.microsoft.com/ai/feed/",
+      "base_url": "https://blogs.microsoft.com/ai/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_the_verge_ai",
+      "name": "The Verge AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
+      "base_url": "https://www.theverge.com/tech/ai",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_ibm_research",
+      "name": "IBM Research AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://research.ibm.com/blog/feed",
+      "base_url": "https://research.ibm.com/blog",
       "config": {
         "max_results": 5
       }
@@ -81,6 +256,81 @@
       }
     },
     {
+      "id": "html_perplexity",
+      "name": "Perplexity AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.perplexity.ai/discover/tech",
+      "selectors": {
+        "article": "article, .post, .discover-item, .article-item, .top-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .discover-content",
+        "link": "a[href*='perplexity.ai/discover'], a[href*='perplexity.ai/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .discover-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_science",
+      "name": "Science",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.science.org/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='science.org/news'], a[href*='science.org/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_intel_ai",
+      "name": "Intel AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .spotlight-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .spotlight-content",
+        "link": "a[href*='/customer-spotlight'], a[href*='intel.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .spotlight-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_nvidia",
+      "name": "NVIDIA News RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://nvidianews.nvidia.com/rss.xml",
+      "base_url": "https://nvidianews.nvidia.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_elevenlabs",
+      "name": "ElevenLabs Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://blog.elevenlabs.io/feed",
+      "base_url": "https://blog.elevenlabs.io/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
       "id": "html_anthropic",
       "name": "Anthropic News",
       "enabled": true,
@@ -98,34 +348,75 @@
       }
     },
     {
-      "id": "html_meta_ai",
-      "name": "Meta Newsroom",
+      "id": "html_stability_ai",
+      "name": "Stability AI News",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://about.fb.com/news/",
+      "base_url": "https://stability.ai/news",
       "selectors": {
-        "article": "article, [data-testid*='article'], .news-item",
+        "article": "article, .post, .news-item, .blog-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/news/'], a[href*='about.fb.com/news/']",
-        "title": "h2, h3, h1, .title, .post-title, .article-title"
+        "link": "a[href*='/news'], a[href*='stability.ai/news']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
         "max_results": 5
       }
     },
     {
-      "id": "html_deepseek",
-      "name": "DeepSeek Blog",
+      "id": "rss_salesforce_ai",
+      "name": "Salesforce AI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.salesforce.com/news/feed/",
+      "base_url": "https://www.salesforce.com/news/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_stanford_hai",
+      "name": "Stanford HAI",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://deepseek.ai/blog",
+      "base_url": "https://hai.stanford.edu/news?filterBy=news",
       "selectors": {
-        "article": "article, .post, .blog-item, .news-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body, .blog-content",
-        "link": "a[href*='/blog/'], a[href*='deepseek.ai/blog']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .blog-title"
+        "article": "article, .post, .news-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='hai.stanford.edu/news']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_techcrunch_ai",
+      "name": "TechCrunch AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+      "base_url": "https://techcrunch.com/tag/artificial-intelligence/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_menlo_ventures",
+      "name": "Menlo Ventures AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://menlovc.com/focus-areas/ai/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .perspective-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/focus-areas/ai'], a[href*='menlovc.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .perspective-title"
       },
       "config": {
         "max_results": 5
@@ -147,7 +438,180 @@
       "config": {
         "max_results": 5
       }
+    },
+    {
+      "id": "html_mistral_ai",
+      "name": "Mistral AI News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://mistral.ai/news/",
+      "selectors": {
+        "article": "article, .post, .news-item, .blog-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/news/'], a[href*='mistral.ai/news']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_wired_ai",
+      "name": "Wired AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+      "base_url": "https://www.wired.com/category/science/ai/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_nature_ai",
+      "name": "Nature AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+      "base_url": "https://www.nature.com/subjects/artificial-intelligence",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_mit_tech_review_ai",
+      "name": "MIT Technology Review AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+      "base_url": "https://news.mit.edu/topic/artificial-intelligence",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_openai",
+      "name": "OpenAI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://openai.com/blog/rss.xml",
+      "base_url": "https://openai.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_berkeley_ai",
+      "name": "Berkeley AI Research",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://bair.berkeley.edu/blog/archive/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='bair.berkeley.edu/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_character_ai",
+      "name": "CharacterAI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://blog.character.ai/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='blog.character.ai'], a[href*='character.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_amd_ai",
+      "name": "AMD AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.amd.com/en/developer/resources/technical-articles.html#sortCriteria=%40amd_release_date%20descending",
+      "selectors": {
+        "article": "article, .post, .article-item, .technical-article",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/developer/resources/technical-articles'], a[href*='amd.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": null,
+      "config": {
+        "category": "cs.AI",
+        "max_results": 10
+      }
+    },
+    {
+      "id": "html_deepseek",
+      "name": "DeepSeek Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://deepseek.ai/blog",
+      "selectors": {
+        "article": "article, .post, .blog-item, .news-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/blog'], a[href*='deepseek.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_huggingface",
+      "name": "Hugging Face Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://huggingface.co/blog/feed.xml",
+      "base_url": "https://huggingface.co/blog",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_meta_ai",
+      "name": "Meta AI Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://ai.meta.com/blog/",
+      "selectors": {
+        "article": "article, .post, .blog-post",
+        "content": ".content, article, main",
+        "link": "a[href*='/blog/']",
+        "title": "h1, h2"
+      },
+      "config": {
+        "max_results": 5
+      }
     }
   ],
-  "updated_at": "2025-11-01T16:56:24.274361300+00:00"
+  "updated_at": "2025-11-04T05:23:47.319289800+00:00"
 }

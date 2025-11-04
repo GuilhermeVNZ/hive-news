@@ -82,9 +82,12 @@ impl WebParser {
             Self::generate_id_from_title(&title)
         });
 
+        let title_clone = title.clone();
         Ok(ArticleMetadata {
             id,
-            title,
+            title: title_clone.clone(), // Mantido para compatibilidade
+            original_title: Some(title_clone), // Título original da fonte
+            generated_title: None, // Será preenchido quando o artigo for publicado
             url,
             published_date,
             author,
@@ -94,6 +97,7 @@ impl WebParser {
             content_html: None,
             content_text: summary,
             category: None,
+            slug: None,
         })
     }
 
@@ -192,7 +196,9 @@ impl WebParser {
 
         ArticleMetadata {
             id: article_id,
-            title: article.title,
+            title: article.title.clone(), // Mantido para compatibilidade
+            original_title: Some(article.title.clone()), // Título original da fonte
+            generated_title: None, // Será preenchido quando o artigo for publicado
             url: article.url,
             published_date: article.published_date,
             author: article.author,
@@ -202,6 +208,7 @@ impl WebParser {
             content_html: Some(cleaned_html),
             content_text: Some(cleaned_text),
             category: None,
+            slug: None,
         }
     }
 
@@ -351,43 +358,11 @@ impl WebParser {
         url.hash(&mut hasher);
         let hash = hasher.finish();
         
-        // Also create a readable prefix from URL parts
-        let readable_prefix = url::Url::parse(url)
-            .ok()
-            .and_then(|parsed| {
-                let mut parts = Vec::<String>::new();
-                if let Some(domain) = parsed.domain() {
-                    // Get main domain (e.g., "openai" from "openai.com")
-                    let domain_parts: Vec<&str> = domain.split('.').collect();
-                    if let Some(main_domain) = domain_parts.first() {
-                        parts.push(main_domain.to_string());
-                    }
-                }
-                if let Some(path_segments) = parsed.path_segments() {
-                    // Get last meaningful segment (usually the article slug)
-                    let segments: Vec<&str> = path_segments.filter(|s| !s.is_empty()).collect();
-                    if let Some(last_segment) = segments.last() {
-                        // Take first 30 chars of last segment for readability
-                        parts.push(last_segment.chars().take(30).collect::<String>());
-                    }
-                }
-                if !parts.is_empty() {
-                    Some(parts.join("_"))
-                } else {
-                    None
-                }
-            })
-            .unwrap_or_else(|| "article".to_string());
+        // Return only numeric hash (pure numeric ID)
+        // Format: decimal representation of hash (up to 20 digits for maximum uniqueness)
+        let numeric_id = hash.to_string();
         
-        // Combine readable prefix with hash for uniqueness
-        // Format: {prefix}_{hash} where hash is first 8 chars of hex
-        Some(format!("{}_{:x}", 
-            readable_prefix.to_lowercase()
-                .chars()
-                .filter(|c| c.is_alphanumeric() || *c == '-' || *c == '_')
-                .collect::<String>(),
-            hash
-        ))
+        Some(numeric_id)
     }
 
     /// Generate ID from URL (public for use in RSS collector)
@@ -409,18 +384,9 @@ impl WebParser {
         title.to_lowercase().hash(&mut hasher);
         let hash = hasher.finish();
         
-        // Create readable prefix from title
-        let readable = title
-            .chars()
-            .take(40)
-            .collect::<String>()
-            .to_lowercase()
-            .replace(' ', "-")
-            .chars()
-            .filter(|c| c.is_alphanumeric() || *c == '-' || *c == '_')
-            .collect::<String>();
-        
-        format!("{}_{:x}", readable, hash)
+        // Return only numeric hash (pure numeric ID)
+        // Format: decimal representation of hash (up to 20 digits for maximum uniqueness)
+        hash.to_string()
     }
 }
 

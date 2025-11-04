@@ -1,0 +1,1 @@
+AI agents can be tricked into harmful actions 2.5x more effectively with new testing method SIRAJ. This breakthrough in red-teaming uncovers vulnerabilities without accessing internal systems, crucial for safe AI deployment. How do we ensure AI safety before widespread adoption?

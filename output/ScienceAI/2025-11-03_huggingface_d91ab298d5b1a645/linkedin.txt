@@ -1,0 +1,1 @@
+Hugging Face has partnered with VirusTotal to implement continuous malware scanning across its entire platform of 2.2 million public AI models and datasets. This collaboration addresses critical security concerns in the open-source AI ecosystem, providing real-time threat detection for developers and enterprises.

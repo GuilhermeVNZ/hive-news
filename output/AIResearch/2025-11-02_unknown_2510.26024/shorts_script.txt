@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if making AI more consistent actually makes it worse at understanding your culture? [VISUAL DIRECTION] Animated text: 'AI CONSISTENCY = CULTURAL IGNORANCE?' with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As AI like ChatGPT spreads globally, researchers discovered a troubling trade-off. The very techniques designed to make AI work uniformly across languages are erasing cultural nuances. [VISUAL DIRECTION] Show globe with AI nodes connecting, then cultural symbols fading out
+
+[VOICEOVER 0:20-0:40] The team asked: Can we make AI consistent without sacrificing cultural accuracy? They developed a framework to measure both cross-lingual transfer and localization. [VISUAL DIRECTION] Show Figure 1 framework diagram with transfer vs localization axes
+
+[VOICEOVER 0:40-1:00] The findings were stark. Across Korean, Greek, and Arabic, alignment improved information sharing but reduced cultural accuracy by 3.4%. The more aggressive the technique, the more local knowledge was lost. [VISUAL DIRECTION] Zoom on Figure 2 showing accuracy drop across languages, highlight -3.4% statistic
+
+[VOICEOVER 1:00-1:30] Here's why it happens. The team found AI stores universal knowledge in middle layers around layer 20, while cultural specifics operate deeper around layer 28. This separation allowed them to develop 'Surgical Steering' - targeted interventions at specific network points. [VISUAL DIRECTION] Animated neural network diagram showing layer separation, surgical interventions at specific points
+
+[VOICEOVER 1:30-1:50] This matters for real applications. In healthcare, tourism, and business, AI needs accurate local information, not generic Western answers. The trade-off affects how we deploy AI globally. [VISUAL DIRECTION] Fast cuts: medical AI, travel app, business dashboard with cultural context indicators
+
+[VOICEOVER 1:50-2:00] The solution isn't less alignment - it's smarter alignment that preserves what makes each culture unique. [VISUAL DIRECTION] Final text overlay: 'SMART ALIGNMENT PRESERVES CULTURE' with globe showing diverse cultural symbols intact

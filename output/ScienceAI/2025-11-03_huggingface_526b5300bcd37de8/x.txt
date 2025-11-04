@@ -1,0 +1,1 @@
+Hugging Face Hub v1.0 is here! 🚀 After 5 years and 35 releases, the foundational ML library gets httpx migration, Xet file transfers, and a redesigned CLI. This could change how you build AI applications. #MachineLearning #AI #OpenSource

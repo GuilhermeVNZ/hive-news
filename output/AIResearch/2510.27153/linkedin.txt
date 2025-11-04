@@ -1,0 +1,1 @@
+AI models often settle for suboptimal solutions, limiting real-world accuracy. Researchers developed a simple optimizer add-on that boosts performance by exploring better minima, achieving top-1 ImageNet accuracy of 40.86%. How can this innovation reshape deep learning efficiency?

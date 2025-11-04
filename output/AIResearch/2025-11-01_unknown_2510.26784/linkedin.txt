@@ -1,0 +1,1 @@
+AI systems can now filter lists using reusable neural components—just like human-designed functions. Researchers discovered 'filter heads' in LLMs that perform abstract operations across languages without retraining. This reveals how AI internally implements reasoning mechanisms. What does this mean for transparent AI design?

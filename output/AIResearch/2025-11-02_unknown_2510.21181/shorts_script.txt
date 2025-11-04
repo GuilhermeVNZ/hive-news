@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could find hidden causes in your data with just a handful of samples?
+[VISUAL DIRECTION] Animated text: 'Few-Shot Causal Discovery' with a quick zoom effect.
+[VOICEOVER 0:05-0:20] In fields like neuroscience and climate science, researchers often struggle with limited data, making it hard to pinpoint what drives changes.
+[VISUAL DIRECTION] Show a split screen: one side with brain fMRI scans, the other with Arctic ice melt graphs; fast cuts between them.
+[VOICEOVER 0:20-0:40] Scientists asked: Can we build an AI that works without massive datasets and unrealistic assumptions?
+[VISUAL DIRECTION] Display a question mark morphing into the Shylock AI logo; hold for 2 seconds.
+[VOICEOVER 0:40-1:00] They created Shylock, which uses attention mechanisms and directed acyclic graphs to identify causal links accurately.
+[VISUAL DIRECTION] Zoom in on a diagram from the paper showing causal pathways; overlay text: 'F1 Score: 0.57 vs. 0.18 for NOTEARS'.
+[VOICEOVER 1:00-1:30] It combines focusing on key variables and avoiding circular reasoning, reducing parameters exponentially for efficiency.
+[VISUAL DIRECTION] Animate arrows connecting nodes with constraints; fast cuts to emphasize simplicity.
+[VOICEOVER 1:30-1:50] This means better insights into brain activity, land degradation, and historical events, even with sparse data.
+[VISUAL DIRECTION] Show real-world images: fMRI brain regions, drought-affected land, and old maps; hold each for 3 seconds.
+[VOICEOVER 1:50-2:00] Shylock unlocks causal truths from minimal data—imagine the possibilities for science.
+[VISUAL DIRECTION] End with the Shylock logo and text: 'Discover More with Less'; slow fade out.

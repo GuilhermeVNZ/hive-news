@@ -1,0 +1,1 @@
+Robots now navigate like humans by imagining possible futures before acting. This breakthrough enables better performance in unpredictable environments like search-and-rescue missions.

@@ -1,0 +1,1 @@
+AI can now learn from encrypted data without ever seeing sensitive information, revolutionizing privacy in healthcare and finance. This breakthrough enables secure machine learning with minimal accuracy loss.

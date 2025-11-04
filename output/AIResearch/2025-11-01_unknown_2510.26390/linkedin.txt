@@ -1,0 +1,1 @@
+AI now segments organs with 94.25% accuracy - outperforming human experts on complex boundaries. SPG-CDENet's dual-network approach mimics radiologist workflow, reducing diagnostic errors. How will this transform medical imaging?

@@ -1,0 +1,1 @@
+AI can now generate CT-quality images directly from PET scans, reducing radiation exposure while maintaining diagnostic accuracy. This Nature-published breakthrough uses conditional diffusion models to create pseudo-CT images with 32 Hounsfield Units average accuracy. How might this transform medical imaging safety protocols?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could teach itself before formal training and achieve 20% better performance on complex tasks?
+[VISUAL DIRECTION] Animated text: "20% PERFORMANCE BOOST" with glowing effect
+
+[VOICEOVER 0:05-0:20] Researchers discovered AI often gets stuck in familiar patterns, a problem called 'in-distribution stuckness' that limits real-world reliability.
+[VISUAL DIRECTION] Show AI model trapped in looping patterns animation, then breaking free
+
+[VOICEOVER 0:20-0:40] The SPECS method addresses this by decoupling learning into three distinct stages, letting AI build foundational skills before advanced reasoning.
+[VISUAL DIRECTION] Three-stage flowchart animation: Self-distillation → DPO alignment → Fine-tuning
+
+[VOICEOVER 0:40-1:00] First, AI generates its own question-answer pairs through self-distillation, learning correct formatting and reasoning without external teachers.
+[VISUAL DIRECTION] Zoom on AI generating and evaluating its own responses
+
+[VOICEOVER 1:00-1:30] Then Direct Preference Optimization aligns the model with preferred responses, focusing on structure over memorization. Finally, reinforcement learning fine-tunes for accuracy.
+[VISUAL DIRECTION] Fast cuts showing preference optimization and reward mechanisms
+
+[VOICEOVER 1:30-1:50] This approach not only boosts performance on benchmarks like MEGA-Bench and MathVista but increases training efficiency and generalization.
+[VISUAL DIRECTION] Show benchmark performance charts with SPECS outperforming standard methods
+
+[VOICEOVER 1:50-2:00] The result: AI that learns more like humans - building foundational knowledge before tackling complex problems.
+[VISUAL DIRECTION] Final text overlay: "AI TEACHING ITSELF = BETTER REAL-WORLD PERFORMANCE"

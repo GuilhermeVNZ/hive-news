@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI can now detect scientific misinformation 35% more accurately?
+[VISUAL DIRECTION] Animated text: "35% MORE ACCURATE" with pulsing effect
+[VOICEOVER 0:05-0:20] Health misinformation spreads faster than truth online, eroding public trust in science. Researchers developed a breakthrough solution.
+[VISUAL DIRECTION] Show rapid-fire images of misleading health headlines with red X overlays
+[VOICEOVER 0:20-0:40] They asked: Can we train AI to better identify when scientific findings are distorted or misrepresented?
+[VISUAL DIRECTION] Show question mark transforming into AI brain icon
+[VOICEOVER 0:40-1:00] The answer is MisSynth - a method that dramatically improves AI's ability to detect logical fallacies in scientific arguments.
+[VISUAL DIRECTION] Show F1-score improvements: 0.218 → 0.681 for LLaMA, with specific fallacy examples highlighted
+[VOICEOVER 1:00-1:30] Here's how it works: First, AI retrieves authentic source passages. Then it generates realistic misrepresentations. Finally, using efficient LoRA fine-tuning, it learns to spot the flaws.
+[VISUAL DIRECTION] Animated flowchart showing retrieval → generation → fine-tuning process
+[VOICEOVER 1:30-1:50] The impact? AI now achieves near-perfect detection of fallacies like False Dilemma (0.812) and Fallacy Exclusion (0.954).
+[VISUAL DIRECTION] Show bar charts comparing before/after scores for different fallacy types
+[VOICEOVER 1:50-2:00] This breakthrough could be the key to restoring trust in science when we need it most.
+[VISUAL DIRECTION] Final screen: "AI vs Misinformation" with checkmark icon

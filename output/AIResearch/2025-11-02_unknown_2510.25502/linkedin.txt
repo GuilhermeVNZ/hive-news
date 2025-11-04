@@ -1,0 +1,1 @@
+AI can now forecast trends with high accuracy without ever seeing real historical data. TempoPFN achieves state-of-the-art zero-shot forecasting using only synthetic training, revolutionizing privacy-sensitive domains like finance and climate science. How will this transform data-scarce industries?

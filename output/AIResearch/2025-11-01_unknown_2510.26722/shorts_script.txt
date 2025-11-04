@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your phone could train AI without draining your battery or slowing your network? [VISUAL DIRECTION] Animated text: "AI Training on Your Phone" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Federated learning lets smartphones collaborate on AI training without sharing private data, but it's notoriously slow due to network bottlenecks. [VISUAL DIRECTION] Show network diagram with slow-moving data packets, red slowdown indicators
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we speed this up without sacrificing accuracy? Traditional methods enforce zero bias, but that causes major slowdowns. [VISUAL DIRECTION] Zoom in on mathematical equations showing zero-bias constraint with loading spinner
+
+[VOICEOVER 0:40-1:00] The breakthrough: intentionally introducing small, controlled biases during aggregation actually accelerates convergence while maintaining performance. [VISUAL DIRECTION] Animated graph showing convergence curves - SCA-optimized method reaching target faster
+
+[VOICEOVER 1:00-1:30] How it works: By optimizing the bias-variance trade-off and using power-control optimization, the method reduces reliance on perfect synchronization between devices. [VISUAL DIRECTION] Show stochastic gradient descent framework with bias-variance trade-off visualization
+
+[VOICEOVER 1:30-1:50] This means faster AI training for mobile apps, IoT devices, and any system where devices have different capabilities and network conditions. [VISUAL DIRECTION] Show diverse devices (phones, sensors) connecting with green fast-connection indicators
+
+[VOICEOVER 1:50-2:00] The future of collaborative AI just got faster - by embracing imperfection. [VISUAL DIRECTION] Final text overlay: "Faster AI Training Through Controlled Bias" with Nature/Science style branding

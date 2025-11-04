@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you AI can be programmed to give wrong answers on purpose - and you'd never know the difference?
+[VISUAL DIRECTION] [Animated text: "AI LIES ON COMMAND" with glitch effect]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's a real security vulnerability discovered in AI systems we use daily for customer service, education, and research.
+[VISUAL DIRECTION] [Quick cuts of AI assistant interfaces, educational apps, customer service chatbots]
+
+[VOICEOVER 0:20-0:40] Researchers developed NeuroGenPoisoning, a method that manipulates specific neurons in AI models to produce predetermined wrong answers.
+[VISUAL DIRECTION] [Show neural network diagram with highlighted "Poison-Responsive Neurons" glowing red]
+
+[VOICEOVER 0:40-1:00] They achieved 40-50% success rates in making AI models like LLaMA-2 and Vicuna give incorrect responses while maintaining perfect fluency.
+[VISUAL DIRECTION] [Animated bar chart showing POSR percentages across different models]
+
+[VOICEOVER 1:00-1:30] Using genetic algorithms, attackers can evolve knowledge to activate specific neurons that influence how AI integrates information - forcing hallucinations of false facts.
+[VISUAL DIRECTION] [Animation showing genetic algorithm process evolving toward target neurons]
+
+[VOICEOVER 1:30-1:50] In healthcare or finance, this could mean AI assistants providing manipulated advice based on poisoned research - with real-world consequences.
+[VISUAL DIRECTION] [Split screen: medical AI interface on left, financial dashboard on right, both showing incorrect recommendations]
+
+[VOICEOVER 1:50-2:00] The AI you trust could be secretly programmed to mislead you - and you'd never know.
+[VISUAL DIRECTION] [Final text overlay: "YOUR AI MIGHT BE LYING" with question mark animation]

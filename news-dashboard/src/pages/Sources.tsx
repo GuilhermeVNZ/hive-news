@@ -14,6 +14,10 @@ interface Collector {
   enabled: boolean;
   api_key: string | null;
   config: any;
+  collector_type?: string | null; // "rss", "html", "api", null
+  feed_url?: string | null; // RSS feed URL
+  base_url?: string | null; // Base URL for HTML scraping
+  selectors?: any; // CSS selectors for HTML scraping
   assigned_sites?: Array<{ id: string; name: string }>;
 }
 
@@ -271,33 +275,81 @@ export default function Sources() {
                 </CardTitle>
               </div>
               <CardDescription>
-                ID: <code className="text-xs bg-muted px-1 rounded">{collector.id}</code>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span>ID: <code className="text-xs bg-muted px-1 rounded">{collector.id}</code></span>
+                  {collector.collector_type && (
+                    <Badge variant="outline" className="text-xs">
+                      {collector.collector_type.toUpperCase()}
+                    </Badge>
+                  )}
+                </div>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex flex-col gap-2">
-                {/* APIs públicas não precisam de API key */}
-                {['arxiv', 'pmc'].includes(collector.id.toLowerCase()) ? (
+                {/* Collector Type Information */}
+                {collector.collector_type === 'rss' && collector.feed_url && (
                   <div className="text-sm text-muted-foreground">
-                    API Key: <span className="text-green-600 dark:text-green-400">✓ Public API (not required)</span>
+                    <div className="flex items-center gap-1 mb-1">
+                      <FileText className="w-3 h-3" />
+                      <span className="font-medium">RSS Feed:</span>
+                    </div>
+                    <a 
+                      href={collector.feed_url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline break-all text-xs"
+                    >
+                      {collector.feed_url}
+                    </a>
                   </div>
-                ) : collector.id.toLowerCase() === 'semantic_scholar' ? (
-                  collector.api_key ? (
+                )}
+                
+                {collector.collector_type === 'html' && collector.base_url && (
+                  <div className="text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1 mb-1">
+                      <Globe className="w-3 h-3" />
+                      <span className="font-medium">Base URL:</span>
+                    </div>
+                    <a 
+                      href={collector.base_url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline break-all text-xs"
+                    >
+                      {collector.base_url}
+                    </a>
+                  </div>
+                )}
+                
+                {/* APIs públicas não precisam de API key */}
+                {collector.collector_type === 'api' || collector.collector_type === null ? (
+                  ['arxiv', 'pmc'].includes(collector.id.toLowerCase()) ? (
                     <div className="text-sm text-muted-foreground">
-                      API Key: <span className="text-green-600 dark:text-green-400">✓ Configured (optional, increases rate limit)</span>
+                      API Key: <span className="text-green-600 dark:text-green-400">✓ Public API (not required)</span>
+                    </div>
+                  ) : collector.id.toLowerCase() === 'semantic_scholar' ? (
+                    collector.api_key ? (
+                      <div className="text-sm text-muted-foreground">
+                        API Key: <span className="text-green-600 dark:text-green-400">✓ Configured (optional, increases rate limit)</span>
+                      </div>
+                    ) : (
+                      <div className="text-sm text-muted-foreground">
+                        API Key: <span className="text-blue-600 dark:text-blue-400">○ Public API (optional key available)</span>
+                      </div>
+                    )
+                  ) : collector.api_key ? (
+                    <div className="text-sm text-muted-foreground">
+                      API Key: <span className="text-green-600 dark:text-green-400">✓ Configured</span>
                     </div>
                   ) : (
                     <div className="text-sm text-muted-foreground">
-                      API Key: <span className="text-blue-600 dark:text-blue-400">○ Public API (optional key available)</span>
+                      API Key: <span className="text-orange-600 dark:text-orange-400">✗ Not set</span>
                     </div>
                   )
-                ) : collector.api_key ? (
-                  <div className="text-sm text-muted-foreground">
-                    API Key: <span className="text-green-600 dark:text-green-400">✓ Configured</span>
-                  </div>
                 ) : (
                   <div className="text-sm text-muted-foreground">
-                    API Key: <span className="text-orange-600 dark:text-orange-400">✗ Not set</span>
+                    API Key: <span className="text-green-600 dark:text-green-400">✓ Not required ({collector.collector_type} collector)</span>
                   </div>
                 )}
               </div>

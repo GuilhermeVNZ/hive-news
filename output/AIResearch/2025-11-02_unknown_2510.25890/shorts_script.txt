@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI tools in automotive and aviation produce code that violates up to 30% of safety-critical rules?
+[VISUAL DIRECTION] Animated text: "30% RULE VIOLATIONS" with warning symbols flashing
+[VOICEOVER 0:05-0:20] This means every AI-generated artifact requires expensive manual verification before it can be used in safety-critical systems.
+[VISUAL DIRECTION] Show flowchart of current process with "MANUAL FIXES" highlighted in red
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that generates provably correct code from the start?
+[VISUAL DIRECTION] Animated question mark transforming into checkmark symbol
+[VOICEOVER 0:40-1:00] They developed PRISM - a method that combines large language models with model-driven engineering to produce artifacts with 100% compliance.
+[VISUAL DIRECTION] Show PRISM architecture diagram with LLM and verification components
+[VOICEOVER 1:00-1:30] PRISM uses constraint-guided generation with two verification layers and can automatically repair violations in one iteration, producing machine-checkable proof certificates.
+[VISUAL DIRECTION] Animated layers showing token-by-token validation and post-generation logical checks
+[VOICEOVER 1:30-1:50] This means AI-generated code in automotive and aviation can now be trusted immediately, reducing verification effort by 46.7% while ensuring perfect rule satisfaction.
+[VISUAL DIRECTION] Show comparison chart: "46.7% EFFICIENCY GAIN"
+[VOICEOVER 1:50-2:00] Proof-carrying AI is here - and it could transform how we build safety-critical systems forever.

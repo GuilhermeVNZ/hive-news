@@ -1,0 +1,1 @@
+AI making critical decisions often fails in data-sparse regions, creating biased outcomes. New research introduces LoCal Nets, ensuring AI predictions match real-world frequencies locally. This breakthrough enhances fairness in healthcare and beyond—essential for trustworthy AI systems.

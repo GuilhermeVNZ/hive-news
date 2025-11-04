@@ -1,0 +1,1 @@
+AI can now understand 3D scenes instantly without custom training. This leap could accelerate robots and smart assistants that interact with our physical world.

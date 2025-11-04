@@ -1,0 +1,1 @@
+AI systems fail to recognize the same action when viewed from different angles, achieving only 50% accuracy. This fundamental limitation affects autonomous navigation and security systems where consistent interpretation is critical. The new EgoExo-Con benchmark reveals why viewpoint-invariant AI remains an unsolved challenge.

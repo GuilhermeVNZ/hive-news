@@ -1,0 +1,1 @@
+Shocking: Top LLMs achieve only 59.2% accuracy on real-world long documents. New LooGLE v2 benchmark reveals the gap between claimed context windows and practical performance. Can we trust AI with complex legal and medical cases?

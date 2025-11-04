@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could predict your health outcomes without expensive clinical trials?
+[VISUAL DIRECTION] Animated text: 'AI Predicts Health Outcomes' with a question mark, fast zoom-in.
+[VOICEOVER 0:05-0:20] Personalized medicine aims to tailor treatments, but predicting outcomes has been held back by high costs and limited trial data.
+[VISUAL DIRECTION] Show a split screen: one side with 'High Cost Trials' and dollar signs, the other with 'Limited Data' icons, transitioning smoothly.
+[VOICEOVER 0:20-0:40] Researchers asked: Can we use AI to overcome this, especially for conditions like COPD where treatment options vary widely?
+[VISUAL DIRECTION] Display a simple diagram of a patient with COPD, with arrows pointing to uncertain outcomes, hold for emphasis.
+[VOICEOVER 0:40-1:00] They discovered CFKD-AFN, an AI method that improved prediction accuracy by 74.55% in mean squared error and 51.54% in mean absolute percentage error.
+[VISUAL DIRECTION] Show a bar graph from the paper comparing CFKD-AFN to baseline methods, with text overlays highlighting the percentages, fast cuts between stats.
+[VOICEOVER 1:00-1:30] How it works: CFKD-AFN uses dual-channel knowledge distillation to extract and fuse complementary data from trials and real-world sources, with attention mechanisms to focus on key features.
+[VISUAL DIRECTION] Animated flow chart illustrating dual channels merging, with zoom on 'attention-guided fusion' and text: 'Stable in Small Samples'.
+[VOICEOVER 1:30-1:50] This means more reliable predictions for diseases like COPD, speeding up therapy development and improving patient care with tailored treatments.
+[VISUAL DIRECTION] Show a hopeful image of a diverse group of patients, with text overlay: 'Better-Tailored Therapies', slow pan to emphasize impact.
+[VOICEOVER 1:50-2:00] AI is making personalized medicine a reality, even with limited data—imagine the future of healthcare.
+[VISUAL DIRECTION] End with the Nature/Science journal logo and animated text: 'Explore the Study', hold for final takeaway.

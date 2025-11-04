@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI models that ace English tasks completely stumble when dealing with Indian cultural knowledge like Ayurveda? 
+[VISUAL DIRECTION] Animated text: "AI: 76% English vs 60% Ayurveda" with dramatic contrast visuals
+
+[VOICEOVER 0:05-0:20] This isn't just an academic problem - it affects over 100 million people in India's agriculture sector alone, with billions in economic impact across healthcare and legal domains.
+[VISUAL DIRECTION] Show map of India with agricultural regions highlighted, transition to healthcare settings
+
+[VOICEOVER 0:20-0:40] Researchers created BhashaBench V1 to test AI on real Indian challenges. They asked: Can today's best AI models handle culturally specific knowledge?
+[VISUAL DIRECTION] Show benchmark creation process - data collection from government sources, OCR processing
+
+[VOICEOVER 0:40-1:00] The results were stark. Even top-performing models like Qwen3-235B dropped to 59.74% accuracy on Ayurveda versus 76.49% on standard domains.
+[VISUAL DIRECTION] Show performance comparison charts with clear percentage drops, highlight agricultural research subdomain
+
+[VOICEOVER 1:00-1:30] The benchmark includes 74,166 authentic questions across agriculture, legal, finance, and Ayurveda - from soil health to Panchakarma treatments. It's not just about language translation.
+[VISUAL DIRECTION] Quick cuts showing different domain examples - farming practices, legal documents, financial systems
+
+[VOICEOVER 1:30-1:50] This gap has real consequences: farmers getting wrong agricultural advice, patients misunderstanding Ayurvedic treatments. Cultural context matters.
+[VISUAL DIRECTION] Show real-world impact scenarios - farmers in fields, healthcare settings
+
+[VOICEOVER 1:50-2:00] The takeaway? Building better AI requires understanding local knowledge, not just translating English.
+[VISUAL DIRECTION] Final text overlay: "AI needs cultural intelligence" with BhashaBench logo

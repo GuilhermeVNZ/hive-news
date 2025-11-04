@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Why do AI simulations fail after just 100 steps? The answer will change how we build virtual worlds.
+[VISUAL DIRECTION] Animated text: "AI FAILS AFTER 100 STEPS" with crashing simulation graphic
+
+[VOICEOVER 0:05-0:20] Most AI models for robotics and gaming accumulate errors rapidly, causing simulations to diverge from reality. This limits everything from autonomous planning to virtual environments.
+[VISUAL DIRECTION] Show diverging simulation paths with accumulating error meters
+
+[VOICEOVER 0:20-0:40] Researchers discovered the primary bottleneck isn't complex representations - it's enforcing geometric regularities in the model's internal systems.
+[VISUAL DIRECTION] Zoom on "GEOMETRIC REGULARITIES" text with architectural diagram
+
+[VOICEOVER 0:40-1:00] The Geometrically-Regularized World Model (GRWM) integrates temporal slowness and uniformity losses, achieving near-perfect fidelity in maze environments.
+[VISUAL DIRECTION] Show GRWM architecture with highlighted regularization components
+
+[VOICEOVER 1:00-1:30] On M9x9-DET datasets, GRWM maintained stable predictions while baselines accumulated massive errors. The model reduced mean squared error by 99% compared to oracle ground-truth states.
+[VISUAL DIRECTION] Show comparison graphs with GRWM vs baseline error curves
+
+[VOICEOVER 1:30-1:50] This breakthrough enables reliable AI agents for robotics development and consistent content generation, reducing catastrophic failure risks in dynamic systems.
+[VISUAL DIRECTION] Show robotics and gaming applications with stable simulations
+
+[VOICEOVER 1:50-2:00] The future of AI simulation just got more stable - and more real.
+[VISUAL DIRECTION] Final text overlay: "NEAR-PERFECT FIDELITY ACHIEVED"

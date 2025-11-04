@@ -1,0 +1,1 @@
+Mistral AI just dropped Codestral 25.08 - their latest code generation model promising 50% fewer runaway generations and improved enterprise deployment. Could this be the private coding assistant enterprises have been waiting for? #AI #coding #enterprise

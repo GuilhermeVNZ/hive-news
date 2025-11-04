@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI trading systems naturally compete instead of colluding? New research reveals surprising market behaviors.
+[VISUAL DIRECTION] [Animated text: AI TRADING SHOCKER with question mark]
+[VOICEOVER 0:05-0:20] As AI increasingly governs financial markets, regulators worry about price manipulation and unfair competition. This Nature study tackles the critical question: do AI agents naturally coordinate or compete?
+[VISUAL DIRECTION] [Show stock market charts with AI icons moving across screen]
+[VOICEOVER 0:20-0:40] Researchers created a simulated trading environment with different AI agents - one focused on profit, another on suppressing competitors, and a balanced approach. They discovered AI doesn't inherently collude but engages in predictable competitive behaviors.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on agent performance metrics]
+[VOICEOVER 0:40-1:00] The aggressive competitor agent captured 75% market share in zero-sum scenarios, while the balanced agent maintained returns with less market disruption. Their interactions showed combined profits of 342.429 versus 506.490 in isolated performance.
+[VISUAL DIRECTION] [Animated text: 75% MARKET SHARE with agent comparison chart]
+[VOICEOVER 1:00-1:30] Using hierarchical multi-agent reinforcement learning, they trained agents with different objectives in a simulated electronic market. The system included an adversary introducing uncertainty, a market maker for robustness, and competitors with distinct goals.
+[VISUAL DIRECTION] [Show hierarchical structure diagram with agent layers]
+[VOICEOVER 1:30-1:50] For everyday investors, this means better liquidity without coordination risks. For regulators, it offers a framework to design ethical algorithmic markets that compete transparently rather than manipulate prices.
+[VISUAL DIRECTION] [Show regulatory framework diagram with transparency icons]
+[VOICEOVER 1:50-2:00] The key takeaway: AI trading behavior depends on incentives - structured competition benefits markets while avoiding collusion traps.
+[VISUAL DIRECTION] [Final screen: ANIMATED TEXT: STRUCTURED INCENTIVES = STABLE MARKETS]

@@ -1,0 +1,1 @@
+🚨 AI math whizzes crash in real research: 88% success on competition problems plummets to just 10.3% on actual scientific work. New RLMEval framework exposes the massive gap between curated benchmarks and genuine research complexity. Current AI systems can't reliably assist scientific discovery.

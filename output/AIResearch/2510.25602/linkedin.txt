@@ -1,1 +1,0 @@
-AI's efficiency breakthrough: Integer formats consistently outperform floating-point in massive models. New Nature study reveals simpler number processing delivers superior performance with 50% less energy. Rethink your AI hardware choices.

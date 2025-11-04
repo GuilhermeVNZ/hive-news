@@ -1,1 +1,0 @@
-AI can outperform humans but remains a 'black box'—untrustworthy for critical decisions. FaCT makes AI transparent by tracking concepts like 'wheels' or 'animal eyes' throughout its process, enabling doctors to verify diagnoses. Trust AI? Read the Nature/Science paper.

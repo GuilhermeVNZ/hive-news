@@ -1,0 +1,1 @@
+New AI generates fake data that preserves real patterns without exposing private information. This enables secure research collaboration while protecting sensitive data.

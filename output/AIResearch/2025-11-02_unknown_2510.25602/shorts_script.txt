@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you the AI industry has been using the WRONG number format for years?
+[VISUAL DIRECTION] Animated text: "WRONG FORMAT?" with question mark shaking dramatically
+
+[VOICEOVER 0:05-0:20] AI models consume massive computational resources, but new research reveals we can make them 37% more efficient without sacrificing accuracy
+[VISUAL DIRECTION] Show computational cost chart zooming in on 37% reduction highlight
+
+[VOICEOVER 0:20-0:40] Researchers asked: Do integer formats really perform worse than floating-point for AI? The industry assumes FP8 is superior, but is this true across all scenarios?
+[VISUAL DIRECTION] Split screen showing INT vs FP symbols with question marks between them
+
+[VOICEOVER 0:40-1:00] They discovered MXINT8 consistently outperforms MXFP8! In comprehensive testing across Llama and Qwen architectures, INT8 maintained better signal preservation
+[VISUAL DIRECTION] Show QSNR comparison chart: MXINT8 34.50 vs MXFP8 31.50 with clear winner highlight
+
+[VOICEOVER 1:00-1:30] How does it work? INT8 uses integer numbers while FP8 uses floating-point. The study developed new metrics showing INT8 preserves data fidelity better in most AI operations
+[VISUAL DIRECTION] Animated diagram showing data flow through INT8 vs FP8 pathways
+
+[VOICEOVER 1:30-1:50] This means AI deployment becomes more accessible - lower costs, same accuracy. Accelerators can now optimize for INT8+NVINT4 configurations
+[VISUAL DIRECTION] Show cost savings chart with real-world deployment scenarios
+
+[VOICEOVER 1:50-2:00] The takeaway? Sometimes the simplest solution - integers - beats complex floating-point for AI efficiency
+[VISUAL DIRECTION] Final text overlay: "INT8 > FP8" with checkmark animation

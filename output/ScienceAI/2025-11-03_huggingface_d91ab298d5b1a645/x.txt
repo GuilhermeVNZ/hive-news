@@ -1,0 +1,1 @@
+Hugging Face just partnered with VirusTotal to scan ALL 2.2M public AI models & datasets for malware. Every file on the platform now gets continuous security checks. Game-changer for open-source AI safety. #AISecurity #MachineLearning

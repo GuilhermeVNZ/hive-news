@@ -1,0 +1,1 @@
+AI NPCs now follow game rules with 99% accuracy - up from just 78%. New ASTP method ensures LLMs maintain creativity while adhering to structured workflows. Could this be the key to trustworthy AI assistants in gaming and beyond?

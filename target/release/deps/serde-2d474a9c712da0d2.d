@@ -1,0 +1,14 @@
+G:\Hive-Hub\News-main\target\release\deps\serde-2d474a9c712da0d2.d: C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs G:\Hive-Hub\News-main\target\release\build\serde-a09402850eab3e9f\out/private.rs
+
+G:\Hive-Hub\News-main\target\release\deps\libserde-2d474a9c712da0d2.rlib: C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs G:\Hive-Hub\News-main\target\release\build\serde-a09402850eab3e9f\out/private.rs
+
+G:\Hive-Hub\News-main\target\release\deps\libserde-2d474a9c712da0d2.rmeta: C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs G:\Hive-Hub\News-main\target\release\build\serde-a09402850eab3e9f\out/private.rs
+
+C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\Guilherme\ Edit\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+G:\Hive-Hub\News-main\target\release\build\serde-a09402850eab3e9f\out/private.rs:
+
+# env-dep:OUT_DIR=G:\\Hive-Hub\\News-main\\target\\release\\build\\serde-a09402850eab3e9f\\out

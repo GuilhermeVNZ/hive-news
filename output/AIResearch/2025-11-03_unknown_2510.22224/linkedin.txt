@@ -1,0 +1,1 @@
+AI systems in autonomous vehicles fail silently with 93.5% confidence in wrong answers. New FAME framework detects these dangerous failures traditional methods miss, catching errors precisely when safety matters most. Read how formal verification is closing critical gaps in AI reliability.

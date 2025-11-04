@@ -1,0 +1,1 @@
+AI feedback often contains hidden biases—like penalizing refusals—leading to undesirable behaviors. A new Nature/Science study introduces WIMHF, a method that uncovers these subtle signals using sparse features. Discover how this tool can help developers create fairer AI systems.

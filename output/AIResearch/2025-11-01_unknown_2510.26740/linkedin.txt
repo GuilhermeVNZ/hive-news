@@ -1,0 +1,1 @@
+AI can now ensure fair resource allocation without costly retraining. A new framework, Incentives-based Fairness (GIFF), tweaks AI decision-making to promote equity in critical applications like ridesharing and housing. How might this reshape trust in AI systems?

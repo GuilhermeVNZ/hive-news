@@ -1,0 +1,1 @@
+AI plays games & uses computers exactly like humans - just by watching the screen. Game-TARS achieves 72% success in Minecraft, doubles previous models, matches human GUI productivity. The future of general AI assistants is here.

@@ -1,1 +1,0 @@
-Physics-informed AI works perfectly for physics but fails in biology. Why? Living systems are messy, uncertain, and partially observable—fundamentally different from physics laws. Biology-Informed Machine Learning (BIML) adapts AI to handle biological complexity through uncertainty quantification and contextualization. Read the Nature paper to rethink AI evaluation for biology.

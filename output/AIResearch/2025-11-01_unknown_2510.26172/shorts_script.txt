@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if anyone could uncover hidden patterns in massive social media data without being an expert?
+[VISUAL DIRECTION] Animated text: "ANYONE CAN ANALYZE SOCIAL DATA?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Social platforms generate vast data daily, but extracting meaningful insights has always required specialized expertise.
+[VISUAL DIRECTION] Rapid cuts of social media icons with data streams flowing, then transition to confused person looking at complex charts
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we bridge this gap between complex data and non-expert analysis?
+[VISUAL DIRECTION] Split screen showing complex network diagrams on one side, simple dashboard on the other
+
+[VOICEOVER 0:40-1:00] They developed Insight Agents - AI systems that automate coordinated analysis across text, networks, and behavioral data.
+[VISUAL DIRECTION] Animated workflow showing data flowing through different analysis modules, with text overlays: "TEXT ANALYSIS → NETWORK MINING → BEHAVIOR TRACKING"
+
+[VOICEOVER 1:00-1:30] The system integrates multiple data types into consistent representations, using techniques like Latent Dirichlet Allocation for topic modeling and graph visualization.
+[VISUAL DIRECTION] Zoom on Figure 2 showing topic evolution over time, with animated arrows connecting different data types
+
+[VOICEOVER 1:30-1:50] In validation studies, SIA identified election discussion leaders and tracked COVID-19 phases with balanced accuracy comparable to GPT-4.1.
+[VISUAL DIRECTION] Fast cuts between election network clusters and COVID-19 discussion timeline, with accuracy percentage (88%+) highlighted
+
+[VOICEOVER 1:50-2:00] Now anyone can explore complex social patterns that previously required expert knowledge.
+[VISUAL DIRECTION] Final shot of simple dashboard interface with clear insights, animated text: "COMPLEX DATA → CLEAR INSIGHTS"

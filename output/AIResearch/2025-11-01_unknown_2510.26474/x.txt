@@ -1,0 +1,1 @@
+AI systems learning from themselves get trapped in simplicity cycles - generating 1.5% complex responses vs 98.5% simple ones. New research reveals this 'Matthew Effect' bottleneck and how to fix it.

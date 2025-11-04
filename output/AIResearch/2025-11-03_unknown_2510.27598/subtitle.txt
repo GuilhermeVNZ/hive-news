@@ -1,0 +1,1 @@
+A new benchmark reveals that even advanced AI models falter in long-term, complex research tasks, highlighting critical gaps in planning and resource management.

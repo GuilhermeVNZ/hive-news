@@ -1,1 +1,0 @@
-What if analyzing complex networks could be 1000x faster? New 'Gibby' method accelerates Bayesian graph sampling from weeks to hours, enabling analysis of hundreds of nodes. This breakthrough makes large-network analysis accessible for genetics and healthcare. Read how computational efficiency transforms evidence-based decision-making.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know 6% of GPT-5 outputs exist in a truth gray zone where correctness depends entirely on interpretation?
+[VISUAL DIRECTION] Animated text: "6% of GPT-5 = TRUTH GRAY ZONE" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As AI increasingly shapes our information landscape, from medical queries to financial analysis, this ambiguity becomes critical.
+[VISUAL DIRECTION] Quick cuts: medical chart, financial graph, news headline - all with AI icon overlay
+
+[VOICEOVER 0:20-0:40] Researchers asked: How do we detect when AI-generated content isn't explicitly wrong but isn't fully faithful either?
+[VISUAL DIRECTION] Show researcher icons with thought bubbles containing question marks
+
+[VOICEOVER 0:40-1:00] They discovered most advanced AI struggle with ambiguity, developing a novel framework that categorizes outputs into seven distinct classes.
+[VISUAL DIRECTION] Animated chart showing 7 categories expanding from center
+
+[VOICEOVER 1:00-1:30] The team constructed VeriGray - a benchmark dataset of 2,044 sentences across 412 documents specifically designed to test faithfulness. Using rigorous assisted attribution, they classified content from Explicitly-Supported to Fabricated.
+[VISUAL DIRECTION] Show dataset visualization with text samples, zoom on classification process
+
+[VOICEOVER 1:30-1:50] The implications are profound: in medical and financial contexts, potentially unfaithful content could impact critical decisions. Current detectors achieve only modest accuracy, dropping significantly in ambiguous cases.
+[VISUAL DIRECTION] Medical and financial warning symbols with detector accuracy percentages fading
+
+[VOICEOVER 1:50-2:00] The fundamental challenge remains: we lack proper methods to evaluate AI content when truth depends on interpretation.
+[VISUAL DIRECTION] Final text overlay: "When AI can't be verified, can it be trusted?"

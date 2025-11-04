@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could automatically translate cryptic computer code into human-readable language? [VISUAL DIRECTION] Animated text: "CRYPTIC CODE → HUMAN READABLE" with fast zoom effect
+
+[VOICEOVER 0:05-0:20] Logic programming is powerful for modeling complex systems, but machine-invented predicates often remain obscure, hindering interpretation and debugging. [VISUAL DIRECTION] Show flowchart of logic programming with question marks over unnamed predicates
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can large language models automatically assign meaningful names to these cryptic predicates? [VISUAL DIRECTION] Zoom in on ChatGPT-4o and ChatGPT-o3mini logos with animated arrows pointing to logic code
+
+[VOICEOVER 0:40-1:00] They discovered that LLMs can effectively rename unnamed logic theories—transforming 'h0' into 'parent' and 'h1' into 'grandparent' in family relationship studies. [VISUAL DIRECTION] Show side-by-side comparison: cryptic code vs renamed code with green checkmarks
+
+[VOICEOVER 1:00-1:30] The method uses a pipeline of multiple LLMs prompted to suggest names that reflect intended relationships. ChatGPT-o3mini performed best, correctly renaming most predicates in studies like family relationships and mathematical operations. [VISUAL DIRECTION] Animated pipeline diagram showing LLM workflow with success percentages
+
+[VOICEOVER 1:30-1:50] This breakthrough makes automated reasoning more practical for bioinformatics and explainable AI, helping scientists work with computer-generated programs. [VISUAL DIRECTION] Show applications in bioinformatics and AI debugging scenarios
+
+[VOICEOVER 1:50-2:00] AI is now learning to speak our language—transforming cryptic code into interpretable knowledge. [VISUAL DIRECTION] Final text overlay: "FROM MACHINE CODE TO HUMAN UNDERSTANDING" with paper title citation

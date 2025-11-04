@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could ask AI any question in plain English and get back perfect charts and maps instantly?
+[VISUAL DIRECTION] Animated text: "91.4% ACCURACY" flashes dramatically with question mark transforming into chart icon
+
+[VOICEOVER 0:05-0:20] Most AI systems fail at translating everyday language into data visualizations, but new research from University of Kansas reveals a breakthrough approach.
+[VISUAL DIRECTION] Show side-by-side comparison: traditional system error messages vs new system generating clean charts. Fast cuts between failure and success states.
+
+[VOICEOVER 0:20-0:40] The problem? Semantic mismatches—how people phrase questions vs how databases store information. Existing systems convert directly to SQL and fail.
+[VISUAL DIRECTION] Animated diagram showing language query → SQL conversion → ERROR. Zoom on "semantic mismatch" text overlay.
+
+[VOICEOVER 0:40-1:00] The solution: An AI that decomposes queries into sub-problems, matches terminology, recovers from errors, and selects appropriate visualizations.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on the orchestration pipeline. Animated arrows flowing through planning, retrieval, execution, and visualization stages.
+
+[VOICEOVER 1:00-1:30] Using ReAct-style reasoning around Mistral models, this AI handles six specialized tasks: retrieval, query execution, reading, plotting, mapping, and error recovery.
+[VISUAL DIRECTION] Split screen showing six animated icons representing each capability. Quick pans across each function with brief examples.
+
+[VOICEOVER 1:30-1:50] Real impact: When asked about "nightlife" activity, it identifies relevant categories like "Nightclub" and "Bar." For laundromat locations, it finds entries under "Laundry Service."
+[VISUAL DIRECTION] Show actual query examples from testing. Map visualization zooming in on location results. Text overlay: "100% accuracy on multi-step aggregation queries"
+
+[VOICEOVER 1:50-2:00] This represents a fundamental shift—making data analysis accessible to everyone, not just database experts.
+[VISUAL DIRECTION] Final screen: Side-by-side stats "91.4% vs 28.6%" with paper title overlay: "From Queries to Insights: Agentic LLM Pipelines"

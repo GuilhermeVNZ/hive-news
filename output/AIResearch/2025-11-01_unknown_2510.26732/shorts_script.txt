@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if everything we thought about AI scaling was wrong? What if smaller models could actually outperform massive ones?
+[VISUAL DIRECTION] [Animated text: SMALLER AI BEATS GIANT MODELS? with question mark growing]
+[VOICEOVER 0:05-0:20] For years, the assumption has been clear: bigger AI models mean better performance. But new research from Nature/Science reveals a surprising efficiency paradox that challenges this fundamental belief.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on accuracy distribution across model sizes, highlighting the outliers]
+[VOICEOVER 0:20-0:40] Researchers evaluated 6 foundation models across 79 complex problems spanning physics, mathematics, chemistry, economics, biology, statistics, calculus, and optimization. They wanted to know: does model size truly determine reasoning capability?
+[VISUAL DIRECTION] [Fast cuts showing different domain icons with accuracy scores appearing]
+[VOICEOVER 0:40-1:00] The results were stunning. Hermes-4-70B, with just 70 billion parameters, achieved the highest overall accuracy at 0.598, outperforming its 405-billion-parameter counterpart at 0.573. Similarly, the 14-billion-parameter Phi-4-mini beat the 42-billion-parameter Phi-3.5-MoE.
+[VISUAL DIRECTION] [Side-by-side comparison: 70B vs 405B with accuracy scores highlighted in contrasting colors]
+[VOICEOVER 1:00-1:30] How does this work? The key isn't just size - it's about efficient training, better architecture, and smarter data usage. Researchers measured both step-by-step accuracy and solution similarity across different computing environments, finding only 3% variance between infrastructures.
+[VISUAL DIRECTION] [Animated diagram showing training efficiency vs model size, with optimal zone highlighted]
+[VOICEOVER 1:30-1:50] This has huge implications: lower development costs, reduced energy consumption, and potentially better AI for education and scientific research. We could see more specialized models tailored to specific domains rather than one-size-fits-all giants.
+[VISUAL DIRECTION] [Show domain-specific performance highlights: Calculus peak at 0.717, Optimization lowest at 0.408 average]
+[VOICEOVER 1:50-2:00] The takeaway? In AI, bigger isn't always better. Sometimes, the smartest solution comes in a smaller package.
+[VISUAL DIRECTION] [Final text overlay: EFFICIENCY > SIZE with Hermes-4-70B accuracy score flashing]

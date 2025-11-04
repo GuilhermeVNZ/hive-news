@@ -1,0 +1,1 @@
+AI learns to think like humans by comparing options before answering. This stops chatbots from making embarrassing mistakes on tricky questions.

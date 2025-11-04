@@ -1,0 +1,1 @@
+Stop the scroll: AI just got 10% more efficient without losing quality. Qualcomm's STaMP method cuts memory use, extending battery life and reducing costs. Published in Nature/Science, this innovation bridges classic compression to solve modern AI challenges.

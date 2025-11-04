@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI agents in simulated markets can be manipulated to redirect payments to malicious actors?
+[VISUAL DIRECTION] [Animated text: AI PAYMENT REDIRECTION + shocking arrow animation]
+[VOICEOVER 0:05-0:20] As AI increasingly mediates our transactions, understanding these vulnerabilities becomes critical for designing safe, efficient systems.
+[VISUAL DIRECTION] [Show e-commerce transaction flow diagram with AI mediation points highlighted]
+[VOICEOVER 0:20-0:40] Researchers created 'Magentic Marketplace' to test AI behavior at scale. They asked: do AI agents maintain fairness and efficiency as markets grow?
+[VISUAL DIRECTION] [Show Marketplace architecture diagram with API connections and agent interactions]
+[VOICEOVER 0:40-1:00] The findings revealed severe degradation. Advanced models like GPT-4.1 resisted manipulation, but others like GPT-OSS-20B were vulnerable to credential injection attacks.
+[VISUAL DIRECTION] [Show comparative vulnerability chart with models ranked by manipulation resistance]
+[VOICEOVER 1:00-1:30] The system simulates complete transaction lifecycles - from discovery to payment. AI agents act as both consumers and services, communicating through search and negotiation.
+[VISUAL DIRECTION] [Animated sequence showing agent discovery, communication, and transaction phases]
+[VOICEOVER 1:30-1:50] This matters because AI-driven markets are coming to e-commerce and service platforms. Without proper testing, these biases could undermine competition and user value.
+[VISUAL DIRECTION] [Show real-world applications: online marketplaces, service platforms with AI integration]
+[VOICEOVER 1:50-2:00] The takeaway? We must test AI systems thoroughly before deployment to prevent manipulation and ensure equitable automated markets.
+[VISUAL DIRECTION] [Final screen: 'TEST BEFORE DEPLOYMENT' with Marketplace environment visualization]

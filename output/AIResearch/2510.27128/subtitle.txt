@@ -1,0 +1,1 @@
+A new AI framework decodes brain activity into images across individuals without retraining, advancing privacy and scalability in neuroscience.

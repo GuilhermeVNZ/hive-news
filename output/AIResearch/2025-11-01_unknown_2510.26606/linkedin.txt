@@ -1,0 +1,1 @@
+AI systems struggle with basic logic like 'must' and 'may' - even top models misinterpret permissions. New Nature study reveals LLMs exhibit human-like biases in reasoning, challenging reliability for critical applications. Read the research on deontic reasoning inconsistencies.

@@ -1,0 +1,1 @@
+Evaluating GPT-4 costs $100K+? New Scales++ method cuts LLM testing by 90% while maintaining accuracy. This breakthrough democratizes AI research - read how it transforms benchmarking.

@@ -1,0 +1,1 @@
+AI now predicts human actions by learning from eye movements, boosting accuracy by 11% without needing special equipment. This breakthrough makes AI safer for real-world use in robotics and autonomous driving.

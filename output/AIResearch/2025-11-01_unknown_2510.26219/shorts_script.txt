@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could instantly become safer and more helpful without expensive retraining?
+[VISUAL DIRECTION] [Animated text: "AI that self-aligns in real-time?" with glowing effect]
+
+[VOICEOVER 0:05-0:20] Traditional AI alignment requires massive computational resources and fine-tuning cycles, slowing down deployment of reliable systems.
+[VISUAL DIRECTION] [Show Figure 1 from paper - computational cost comparison chart with RLHF vs AISP]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we optimize large language models during actual use, not just during training?
+[VISUAL DIRECTION] [Animated diagram showing inference vs training phases with question marks]
+
+[VOICEOVER 0:40-1:00] They discovered AISP - Adaptive Importance Sampling Pre-logits - which applies smart perturbations to model outputs and achieves 40% better alignment than traditional methods.
+[VISUAL DIRECTION] [Zoom on Figure 2 showing performance comparison - highlight the 40% improvement over Best-of-N sampling]
+
+[VOICEOVER 1:00-1:30] Here's how it works: The method injects controlled noise into pre-logit outputs, then uses adaptive sampling to focus on high-reward responses that maximize helpfulness and safety.
+[VISUAL DIRECTION] [Animated flowchart showing perturbation → evaluation → optimization cycle with KL-divergence constraint]
+
+[VOICEOVER 1:30-1:50] This means faster deployment of reliable AI for customer service, content moderation, and healthcare applications - with significantly reduced computational costs.
+[VISUAL DIRECTION] [Quick cuts: medical AI interface, customer service chat, content moderation dashboard]
+
+[VOICEOVER 1:50-2:00] Real-time AI alignment is no longer science fiction - it's happening now, making AI safer and more accessible.
+[VISUAL DIRECTION] [Final text overlay: "40% better alignment | No expensive retraining | Real-time optimization"]

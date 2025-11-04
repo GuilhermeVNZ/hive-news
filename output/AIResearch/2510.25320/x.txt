@@ -1,1 +1,0 @@
-AI struggles with multi-step tasks, leading to slow performance. GAP: Graph-based Agent Planning lets AI plan like humans, reducing tool use by 32.3% and speeding up responses. A game-changer for AI efficiency—imagine the applications in customer support and data analysis.

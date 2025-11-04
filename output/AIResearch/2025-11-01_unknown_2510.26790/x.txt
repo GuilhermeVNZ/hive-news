@@ -1,0 +1,1 @@
+🚨 AI can't simplify code: New Gistify benchmark shows even top AI systems fail 63.5% of time at extracting minimal functional code from repositories. Critical for debugging & code review workflows. #AI #SoftwareEngineering

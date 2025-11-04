@@ -1,0 +1,1 @@
+What if smaller AI could outperform models 20x larger? New CoMViT transformer achieves 84.5% accuracy on medical imaging with just 4.5M parameters, revolutionizing AI accessibility for resource-limited hospitals. Read how compact design beats the 'bigger is better' assumption.

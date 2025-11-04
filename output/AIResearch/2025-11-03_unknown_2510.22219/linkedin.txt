@@ -1,0 +1,1 @@
+AI models can't consistently rank content - their judgments flip-flop up to 39% of the time. New research reveals LLMs fail at reliable comparisons, especially as options increase. Should we trust AI for high-stakes decisions without validation?

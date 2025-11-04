@@ -1,0 +1,1 @@
+AI can now show doctors exactly how it spots pneumonia on X-rays. New MedSAE method makes medical AI interpretable by identifying neurons that respond to specific conditions. 82% accuracy in generating human-readable descriptions like 'severe air trapping.' The future of trustworthy medical AI is here.

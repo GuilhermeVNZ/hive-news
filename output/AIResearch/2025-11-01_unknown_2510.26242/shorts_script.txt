@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if every second an ambulance is stuck at a red light could mean the difference between life and death?
+[VISUAL DIRECTION] [Emergency vehicle at red light with dramatic timer counting up: 54.17 seconds]
+
+[VOICEOVER 0:05-0:20] Inefficient traffic signals cause dangerous delays for emergency vehicles, putting lives at risk every day.
+[VISUAL DIRECTION] [Show chaotic traffic intersection with emergency vehicle trying to get through]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI dynamically optimize traffic lights to prioritize emergency vehicles without disrupting overall flow?
+[VISUAL DIRECTION] [Animated question mark over intersection diagram]
+
+[VOICEOVER 0:40-1:00] The breakthrough: REG-TSC AI reduces emergency vehicle delays by 42% and queue length by 62% while maintaining shortest travel times for all.
+[VISUAL DIRECTION] [Bold text overlay: 42% FEWER DELAYS, 62% SHORTER QUEUES]
+
+[VOICEOVER 1:00-1:30] How it works: The AI uses emergency-aware reasoning, learning from historical scenarios to make reliable decisions in just 4.07 seconds.
+[VISUAL DIRECTION] [Animated flow diagram showing AI processing traffic data and adjusting signals]
+
+[VOICEOVER 1:30-1:50] Real impact: Tested across 177 intersections, this technology could save lives by ensuring faster emergency response while reducing emissions.
+[VISUAL DIRECTION] [Map showing multiple intersections with green pathways for emergency vehicles]
+
+[VOICEOVER 1:50-2:00] The future of traffic control is here - where AI saves seconds that save lives.
+[VISUAL DIRECTION] [Final powerful image: Emergency vehicle moving smoothly through green-lit intersection]

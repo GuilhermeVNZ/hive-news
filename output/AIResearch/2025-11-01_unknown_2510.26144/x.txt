@@ -1,0 +1,1 @@
+AI just solved math puzzles autonomously, achieving a 43.56% medal rate on Kaggle—no human input needed. This Nature/Science breakthrough uses LLMs and evolution to automate research, boosting GPU speeds and model designs. The future of science is self-driving.

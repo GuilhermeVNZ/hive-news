@@ -1,0 +1,1 @@
+AI systems waste 30% of resources through inefficiency. New research introduces a SUPERVISOR AGENT that cuts consumption by nearly one-third while maintaining performance. This breakthrough makes AI deployment viable for cost-sensitive applications. How will this reshape scientific computing?

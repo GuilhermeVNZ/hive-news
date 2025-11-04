@@ -1,0 +1,1 @@
+AI can now navigate GDPR's complex web with 60.2% accuracy - outperforming LLMs by up to 7.2 points. GraphCompliance's novel graph+LLM framework automates compliance judgments, reducing costly errors. Could this transform regulatory navigation?

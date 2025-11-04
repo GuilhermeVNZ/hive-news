@@ -1,0 +1,1 @@
+AI often misinterprets images because of a fundamental learning flaw, confusing objects and their relationships. Uncover how solving this could lead to more trustworthy AI for visual tasks.

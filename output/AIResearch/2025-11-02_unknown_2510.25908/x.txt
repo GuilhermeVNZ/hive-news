@@ -1,0 +1,1 @@
+BREAKING: AI safety crisis exposed. New study finds major LLMs fail ethics tests, with some models performing poorly in identifying unethical scenarios. GPT-4-Mini most trustworthy, but vulnerabilities widespread. Critical for sensitive applications.

@@ -1,0 +1,1 @@
+AI learns to filter out speech recognition errors, dramatically improving accuracy for names and technical terms. This breakthrough makes virtual assistants and transcription services far more reliable.

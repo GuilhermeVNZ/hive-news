@@ -1,0 +1,1 @@
+AI generates synthetic data that preserves statistical patterns while protecting individual privacy, solving the data sharing dilemma. This enables secure research collaboration without exposing sensitive information.

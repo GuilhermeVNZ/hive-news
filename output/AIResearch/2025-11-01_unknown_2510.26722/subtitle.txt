@@ -1,0 +1,1 @@
+AI learns faster by allowing small, controlled biases in data aggregation. This speeds up training on devices without compromising accuracy or privacy.

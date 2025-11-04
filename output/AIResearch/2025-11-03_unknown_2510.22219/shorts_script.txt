@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if the AI judging your job application flips its decision 39% of the time?
+[VISUAL DIRECTION] Animated text "39% FLIP-FLOP RATE" with shocking red background
+[VOICEOVER 0:05-0:20] New research from Nature reveals that large language models like ChatGPT and Gemini can't provide consistent rankings
+[VISUAL DIRECTION] Show rotating logos of major AI models with question marks
+[VOICEOVER 0:20-0:40] Researchers tested how well AI models compare texts - from job applications to scientific abstracts
+[VISUAL DIRECTION] Quick cuts between document types: resumes, research papers, ads
+[VOICEOVER 0:40-1:00] They discovered these models show significant inconsistency, with preference reversals averaging 39%
+[VISUAL DIRECTION] Show Figure 2 matrix visualization with red highlighting inconsistent pairs
+[VOICEOVER 1:00-1:30] The more options AI compares, the worse it gets - performance drops to near-random levels
+[VISUAL DIRECTION] Animated graph showing performance decline as comparison count increases
+[VOICEOVER 1:30-1:50] This matters for hiring systems, scientific reviews - unreliable judgments could bias outcomes
+[VISUAL DIRECTION] Show real-world scenarios: job application screening, research paper evaluation
+[VOICEOVER 1:50-2:00] AI ranking isn't reliable - validation is essential before trusting automated decisions
+[VISUAL DIRECTION] Final text overlay: "VALIDATE AI JUDGMENTS" with warning symbol

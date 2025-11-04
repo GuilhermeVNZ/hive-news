@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could master complex financial negotiations with near-perfect accuracy?
+[VISUAL DIRECTION] [Animated text: NEAR-PERFECT AI NEGOTIATION? Bold, attention-grabbing typography with financial chart background]
+
+[VOICEOVER 0:05-0:20] New research reveals AI can now navigate intricate give-and-take scenarios where one party initiates action within strict constraints.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance convergence curve - emphasize steady decline in exploitability metric]
+
+[VOICEOVER 0:20-0:40] The challenge: Can existing AI methods handle bounded one-sided response games that mirror real financial markets and cybersecurity negotiations?
+[VISUAL DIRECTION] [Animated flowchart showing party A → constraints → party B interaction pattern with timing indicators]
+
+[VOICEOVER 0:40-1:00] Using a modified Monopoly Deal card game as a benchmark, researchers applied Counterfactual Regret Minimization with Monte Carlo rollouts.
+[VISUAL DIRECTION] [Show card game interface with AI decision points highlighted, fast cuts between different game states]
+
+[VOICEOVER 1:00-1:30] The AI trained for just 19 minutes on a single workstation, playing thousands of simulated games against itself. Through counterfactual regret minimization, it progressively improved its strategy.
+[VISUAL DIRECTION] [Animated timeline showing 20,000 iterations, zoom on regret minimization process with mathematical formulas simplified]
+
+[VOICEOVER 1:30-1:50] The system achieved near-perfect performance against heuristic opponents, demonstrating potential applications in time-sensitive options trading and regulatory compliance workflows.
+[VISUAL DIRECTION] [Split screen: left shows financial trading interface, right shows cybersecurity negotiation scenario - hold for impact]
+
+[VOICEOVER 1:50-2:00] This breakthrough establishes a crucial testing ground for AI systems that must navigate high-stakes decision-making with real-world constraints.
+[VISUAL DIRECTION] [Final screen: Paper title 'Monopoly Deal: Benchmark Environment for Bounded One-Sided Response Games' with key performance metrics displayed]

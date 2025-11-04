@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the networks you trust are actually corrupted by hidden errors and manipulation?
+[VISUAL DIRECTION] Animated text: "CORRUPTED NETWORKS?" with glitching network diagram
+
+[VOICEOVER 0:05-0:20] Social trading platforms and review sites rely on accurate network data, but errors often corrupt both the connections and the labels we depend on.
+[VISUAL DIRECTION] Show Bitcoin trading platform interface with red error indicators flashing on connections
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we clean both network structure AND relationship labels simultaneously to restore trust?
+[VISUAL DIRECTION] Split screen showing corrupted network on left, clean network on right with question mark between them
+
+[VOICEOVER 0:40-1:00] They developed RIDGE - an AI that denoises signed graphs, handling both positive relationships like trust and negative ones like distrust.
+[VISUAL DIRECTION] Show RIDGE architecture diagram with arrows indicating simultaneous structure and label cleaning
+
+[VOICEOVER 1:00-1:30] Using Graph Information Bottleneck principles, RIDGE compresses task-irrelevant noise while preserving essential signals. It combines feature masking, substructure sampling, and high-confidence labels to distill clean networks.
+[VISUAL DIRECTION] Animated flow of corrupted data through RIDGE system, showing noise being filtered out and clean signals emerging
+
+[VOICEOVER 1:30-1:50] On Bitcoin-OTC and other datasets, RIDGE achieved 5.45% improvement in prediction accuracy even with 25% corruption, making trading platforms more resilient.
+[VISUAL DIRECTION] Show performance comparison chart with RIDGE outperforming traditional methods, highlight 5.45% improvement
+
+[VOICEOVER 1:50-2:00] This breakthrough means the networks we rely on for trust and recommendations can finally be cleaned of hidden corruption.
+[VISUAL DIRECTION] Final shot of clean, reliable network diagram with text overlay: "TRUST RESTORED"

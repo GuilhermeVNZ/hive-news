@@ -1,0 +1,1 @@
+AI struggles with high school math: Top models score just 35% on IMO-level problems. New AMO-Bench shows 5x more computation needed vs standard tests. The gap between AI advancement and true understanding is real.

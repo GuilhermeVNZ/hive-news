@@ -1,0 +1,1 @@
+AI video search often fails because models incorrectly group unrelated clips together—a problem called 'semantic collapse.' New research introduces TCPL to preserve query relationships, improving accuracy. How might this transform content retrieval in your field?

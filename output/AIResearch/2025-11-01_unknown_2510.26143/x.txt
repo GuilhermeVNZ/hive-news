@@ -1,0 +1,1 @@
+Teaching AI math first makes it better at coding & science. New study: Math curriculum foundation transfers to diverse domains. Llama3.1-8B matched larger specialized systems. 86.0% MATH500 vs 77.25% baseline. Mathematical reasoning serves as effective cognitive transfer.

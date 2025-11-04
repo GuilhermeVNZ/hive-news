@@ -1,0 +1,1 @@
+Every one of the platform's 2.2 million public models and datasets will now be continuously scanned against VirusTotal's malware database, adding crucial protection for the open-source AI ecosystem.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know even the most advanced AI models fail nearly half the time on real-world long documents? [VISUAL DIRECTION] Animated text: "59.2% ACCURACY" flashes dramatically with question mark
+
+[VOICEOVER 0:05-0:20] When AI processes legal cases or medical reports spanning hundreds of thousands of words, the results are concerning. [VISUAL DIRECTION] Show rapid cuts of legal documents, medical charts, and research papers stacking up
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can today's LLMs actually handle the complex, scattered evidence in real documents? The LooGLE v2 benchmark tested 1,934 real-world scenarios. [VISUAL DIRECTION] Zoom in on research methodology flowchart from paper, highlight "1,934 question-answer instances"
+
+[VOICEOVER 0:40-1:00] The finding? Performance degrades as document length increases. Even GPT-4.1 struggles - dropping to 69% on article extraction and worse on code analysis. [VISUAL DIRECTION] Show performance graph declining as document length increases, highlight "69.35%" in red
+
+[VOICEOVER 1:00-1:30] The problem? AI can't effectively connect dispersed evidence across documents. Calculating margins or comparing reports requires integrating multiple sections that current models miss. [VISUAL DIRECTION] Animated diagram showing scattered text fragments failing to connect
+
+[VOICEOVER 1:30-1:50] This means real-world applications in law, medicine, and research face serious limitations. Retrieval-augmented methods and chain-of-thought don't consistently help. [VISUAL DIRECTION] Show real-world scenarios: legal document review, medical diagnosis, research analysis
+
+[VOICEOVER 1:50-2:00] The takeaway? Bigger context windows don't guarantee comprehension. We need AI that truly understands, not just processes. [VISUAL DIRECTION] Final text overlay: "MORE CONTEXT ≠ BETTER UNDERSTANDING" with LooGLE v2 citation

@@ -1,0 +1,1 @@
+Did you know AI can now explain its X-ray diagnoses in human terms? New MedSAE method makes medical AI transparent by identifying specific neurons that detect conditions like pneumonia. This breakthrough bridges the gap between AI performance and clinical trust. What other medical fields could benefit from interpretable AI?

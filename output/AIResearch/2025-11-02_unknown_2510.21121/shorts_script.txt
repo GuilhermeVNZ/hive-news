@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could master complex tasks after watching just ONE demonstration?
+[VISUAL DIRECTION] Animated text: "ONE DEMO = ROBOT EXPERT" with robot silhouette transforming
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's the reality of a breakthrough that solves robotics' biggest challenge: teaching machines to adapt without constant retraining.
+[VISUAL DIRECTION] Show lab setting with multiple robots, fast cuts between different environments
+
+[VOICEOVER 0:20-0:40] The fundamental problem? Traditional robots need massive data for every new situation. But what if they could learn reusable skills like humans do?
+[VISUAL DIRECTION] Animated comparison: traditional robot struggling vs new approach smoothly adapting
+
+[VOICEOVER 0:40-1:00] Researchers developed Generalizable Hierarchical Skill Learning - achieving 91.5% success averaging just one demonstration per task, outperforming all baseline methods.
+[VISUAL DIRECTION] Show Figure 2 results with zoom on 91.5% success rate, highlight comparison bars
+
+[VOICEOVER 1:00-1:30] How? It works through object-centric primitives - breaking complex tasks into reusable skills that maintain semantic understanding while adapting to new arrangements and appearances.
+[VISUAL DIRECTION] Animated diagram showing hierarchical decomposition, object masks transforming
+
+[VOICEOVER 1:30-1:50] The implications are massive: from manufacturing where robots can handle small-batch production to household assistance adapting to dynamic environments.
+[VISUAL DIRECTION] Show real-world applications: factory setting, home assistance scenarios
+
+[VOICEOVER 1:50-2:00] One demonstration. Unlimited adaptability. The future of robotics is here.
+[VISUAL DIRECTION] Final shot: robot successfully completing multiple different tasks in sequence

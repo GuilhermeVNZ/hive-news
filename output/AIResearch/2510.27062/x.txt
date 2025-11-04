@@ -1,0 +1,1 @@
+AI tricked into harmful responses? New study teaches models to resist attacks while staying helpful. Critical for real-world AI safety.

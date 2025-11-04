@@ -1,0 +1,1 @@
+A new system teaches AI teams to allocate computational effort intelligently, boosting accuracy on complex math problems by up to 30% without extra resources—transforming how multi-agent systems reason and collaborate.

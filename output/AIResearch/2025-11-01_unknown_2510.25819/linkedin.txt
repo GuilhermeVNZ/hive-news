@@ -1,0 +1,1 @@
+AI agents will soon make thousands of autonomous decisions daily - but current authentication systems can't distinguish them from humans. As AI shifts from chatbots to active decision-makers in finance and healthcare, we urgently need new identity frameworks. Read the Nature/Science paper on rethinking authentication for autonomous AI systems.

@@ -1,0 +1,23 @@
+(Visual: Quick cuts showing weather charts, stock market graphs, traffic flow diagrams)
+Take 1: "Tired of AI predictions you can't trust?" (5 seconds)
+
+(Visual: Close-up of code snippet with Bayesian neural network highlighted)
+Take 2: "Google's new AutoBNN changes everything." (5 seconds)
+
+(Visual: Animation showing traditional vs Bayesian neural network differences)
+Take 3: "It combines neural network power with statistical confidence." (5 seconds)
+
+(Visual: Time series chart with uncertainty bands widening into future)
+Take 4: "So you get forecasts that show how certain they are." (5 seconds)
+
+(Visual: Quick demo of financial data analysis)
+Take 5: "Perfect for weather, stocks, traffic predictions." (5 seconds)
+
+(Visual: Open-source logo with GitHub symbol)
+Take 6: "And it's completely open source." (5 seconds)
+
+(Visual: Scientist looking at complex data visualization)
+Take 7: "Finally, AI forecasts you can actually rely on." (5 seconds)
+
+(Visual: Call to action screen with "Try AutoBNN" text)
+Take 8: "Check the link in our bio to learn more!" (5 seconds)

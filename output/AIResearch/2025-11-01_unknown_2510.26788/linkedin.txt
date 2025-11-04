@@ -1,0 +1,1 @@
+Did you know the AI instability mystery is solved? Reinforcement learning fails due to BF16 precision errors. Switching to FP16 eliminates mismatch, achieving 99% accuracy vs BF16's 73-88%. This simple fix makes AI reliable without changing architectures. Engineers: adopt FP16 for stable AI systems.

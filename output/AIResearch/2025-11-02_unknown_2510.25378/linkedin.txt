@@ -1,0 +1,1 @@
+AI systems fabricate scientific citations that look real but reference non-existent papers. GPT-4.1 generates plausible but fake bibliographic entries, undermining trust in automated tools. This critical flaw demands immediate attention for reliable AI in scientific domains.

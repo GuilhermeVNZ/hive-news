@@ -1,0 +1,1 @@
+AI coding tools fail spectacularly on real code: 84-89% success on synthetic benchmarks drops to just 25-34% with actual projects. The 53-62 percentage point gap shows LLMs can't handle complex codebases despite excelling at simple tasks. Nature/Science research reveals critical limitations in AI-assisted development.

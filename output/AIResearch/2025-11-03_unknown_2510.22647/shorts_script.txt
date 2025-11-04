@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could save your morning cup of tea from complete crop destruction?
+[VISUAL DIRECTION] Animated text: "AI vs Tea Crop Diseases" with dramatic zoom on diseased tea leaf
+
+[VOICEOVER 0:05-0:20] Tea production faces constant threats from diseases that rapidly destroy entire crops, threatening a $60 billion global industry and millions of livelihoods.
+[VISUAL DIRECTION] Show map highlighting Assam, India with tea plantation footage, fast cuts between healthy and diseased plants
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can artificial intelligence provide early warning before these pathogens spread?
+[VISUAL DIRECTION] Zoom on research paper title "Critical Study Leaf Disease Detection Deep Learning" with question mark animation
+
+[VOICEOVER 0:40-1:00] They discovered a deep learning system that automatically detects three major diseases—Rust, Helopeltis, and Spider Mite—with 25% higher accuracy than previous models.
+[VISUAL DIRECTION] Show side-by-side comparison: Faster R-CNN model vs MobileNet performance metrics (25% mAP vs 20% mAP)
+
+[VOICEOVER 1:00-1:30] How it works: The system analyzes high-resolution images from tea gardens, using object detection architectures trained on 4000x3000 pixel images collected in daylight conditions.
+[VISUAL DIRECTION] Animated flow: Camera capture → Image augmentation → Deep learning detection → Disease identification with bounding boxes
+
+[VOICEOVER 1:30-1:50] This means farmers can identify infections before they spread to healthy plants, target treatments effectively, and prevent economic losses in the world's second-largest tea producer.
+[VISUAL DIRECTION] Show timeline: Early detection → Targeted treatment → Saved crops → Protected livelihoods
+
+[VOICEOVER 1:50-2:00] AI isn't just changing technology—it's protecting the simple pleasure of your morning tea.
+[VISUAL DIRECTION] Final shot: Steaming cup of tea with text overlay "Protected by AI detection"
