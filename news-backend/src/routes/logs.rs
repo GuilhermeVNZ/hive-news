@@ -58,6 +58,7 @@ pub struct LogsQuery {
     pub limit: Option<usize>, 
     pub offset: Option<usize>,
     pub featured: Option<bool>, // Filter by featured status
+    pub site: Option<String>, // Filter by site (e.g., "airesearch", "scienceai")
 }
 
 pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
@@ -68,6 +69,7 @@ pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
         limit: None, 
         offset: None,
         featured: None,
+        site: None,
     });
 
     // Carrega registry
@@ -100,6 +102,29 @@ pub async fn list_logs(Extension(_db): Extension<std::sync::Arc<Database>>,
             let after_count = all.len();
             eprintln!("[Logs API] Featured filter: before={}, after={}, filtered={}", 
                 before_count, after_count, before_count - after_count);
+        }
+    }
+
+    // Filter by site if requested
+    if let Some(ref site_filter) = params.site {
+        if !site_filter.is_empty() && site_filter.to_lowercase() != "all" {
+            let before_count = all.len();
+            let site_filter_lower = site_filter.to_lowercase();
+            all.retain(|m| {
+                // Check if article has this site in destinations array
+                let has_site = if let Some(ref destinations) = m.destinations {
+                    destinations.iter()
+                        .any(|d| d.to_lowercase() == site_filter_lower)
+                } else {
+                    false
+                };
+                eprintln!("[Logs API] Article {} site check: site={}, destinations={:?}, result={}", 
+                    m.id, site_filter, m.destinations, has_site);
+                has_site
+            });
+            let after_count = all.len();
+            eprintln!("[Logs API] Site filter ({:?}): before={}, after={}, filtered={}", 
+                site_filter, before_count, after_count, before_count - after_count);
         }
     }
 

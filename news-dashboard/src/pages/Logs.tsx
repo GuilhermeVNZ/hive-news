@@ -21,6 +21,7 @@ export default function Logs() {
   const [query, setQuery] = useState('');
   const [offset, setOffset] = useState(0);
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+  const [selectedSite, setSelectedSite] = useState<string>('all'); // Filter by site
   const [hasMore, setHasMore] = useState(true); // Track if there are more items to load
   const pageSize = 10;
 
@@ -32,6 +33,7 @@ export default function Logs() {
         limit: pageSize, 
         offset,
         ...(showFeaturedOnly && { featured: true }), // Add featured filter when checkbox is checked
+        ...(selectedSite && selectedSite !== 'all' && { site: selectedSite }), // Add site filter when not 'all'
       };
       if (query) params.q = query; // Add search query if present
       const res = await axios.get('/api/logs', { 
@@ -68,16 +70,16 @@ export default function Logs() {
     }
   };
 
-  // Reload when offset, query, or featured filter changes
+  // Reload when offset, query, featured filter, or site filter changes
   useEffect(()=>{ 
     load(); 
-  }, [offset, query, showFeaturedOnly]);
+  }, [offset, query, showFeaturedOnly, selectedSite]);
   
-  // Reset offset when query or featured filter changes
+  // Reset offset when query, featured filter, or site filter changes
   useEffect(() => {
     setOffset(0);
     setHasMore(true); // Reset hasMore when filters change
-  }, [query, showFeaturedOnly]);
+  }, [query, showFeaturedOnly, selectedSite]);
 
   return (
     <div className="p-8 space-y-6 animate-fade-in">
@@ -100,6 +102,18 @@ export default function Logs() {
                 value={query}
                 onChange={(e)=>setQuery(e.target.value)}
               />
+              <select
+                className="h-9 px-3 rounded-md border border-input bg-background text-sm cursor-pointer hover:bg-accent transition-colors"
+                value={selectedSite}
+                onChange={(e) => {
+                  setSelectedSite(e.target.value);
+                  setOffset(0); // Reset offset when filter changes
+                }}
+              >
+                <option value="all">All Sites</option>
+                <option value="airesearch">AIResearch</option>
+                <option value="scienceai">ScienceAI</option>
+              </select>
               <label className="flex items-center gap-2 cursor-pointer px-3 py-2 rounded-md border border-input hover:bg-accent transition-colors">
                 <input
                   type="checkbox"
@@ -113,7 +127,11 @@ export default function Logs() {
                 <span className="text-sm font-medium">Featured only</span>
               </label>
             </div>
-            <div className="text-xs text-muted-foreground">Showing up to {pageSize} results{showFeaturedOnly ? ' (featured only)' : ''}</div>
+            <div className="text-xs text-muted-foreground">
+              Showing up to {pageSize} results
+              {showFeaturedOnly ? ' (featured only)' : ''}
+              {selectedSite !== 'all' ? ` (${selectedSite === 'airesearch' ? 'AIResearch' : 'ScienceAI'} only)` : ''}
+            </div>
           </div>
           {loading ? (
             <div className="p-6 text-sm text-muted-foreground">Loading...</div>
