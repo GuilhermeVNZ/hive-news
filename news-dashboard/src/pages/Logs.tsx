@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Clock, ExternalLink } from "lucide-react";
 
 interface Destination { site_id: string; site_name: string; url: string }
@@ -70,6 +71,22 @@ export default function Logs() {
     }
   };
 
+  // Preserve scroll position when loading more items
+  useEffect(() => {
+    // Only preserve scroll if we're loading more (offset > 0)
+    if (offset > 0 && !loading) {
+      // Store scroll position before any potential re-render
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      
+      // Restore scroll position after a short delay to ensure DOM has updated
+      const timeoutId = setTimeout(() => {
+        window.scrollTo(0, scrollY);
+      }, 100);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [items, offset, loading]);
+
   // Reload when offset, query, featured filter, or site filter changes
   useEffect(()=>{ 
     load(); 
@@ -128,9 +145,10 @@ export default function Logs() {
               </label>
             </div>
             <div className="text-xs text-muted-foreground">
-              Showing up to {pageSize} results
+              Showing {items.length} {items.length === 1 ? 'result' : 'results'}
               {showFeaturedOnly ? ' (featured only)' : ''}
               {selectedSite !== 'all' ? ` (${selectedSite === 'airesearch' ? 'AIResearch' : 'ScienceAI'} only)` : ''}
+              {hasMore && !query && <span className="text-primary"> • More available</span>}
             </div>
           </div>
           {loading ? (
@@ -309,28 +327,32 @@ export default function Logs() {
                   </div>
                 </div>
                 ))}
-                {(() => {
-                  // Only show "Load more" button if:
-                  // 1. We're not filtering by search query (featured filter works with pagination)
-                  // 2. There are more items to load (hasMore)
-                  // 3. Not currently loading
-                  const showLoadMore = !query && hasMore && !loading;
-                  
-                  return showLoadMore ? (
-                    <div className="pt-2">
-                      <button
-                        className="text-sm px-3 py-2 rounded border hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={()=> setOffset(prev => prev + pageSize)}
-                        disabled={loading}
-                    >
-                      {loading ? 'Loading...' : 'Load more'}
-                    </button>
-                  </div>
-                ) : null;
-              })()}
               </div>
             );
           })()}
+          {/* Load More Button - Outside the IIFE for better event handling */}
+          {!query && hasMore && !loading && (
+            <div className="pt-4 pb-2 flex justify-center">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={(e) => {
+                  // Prevent default button behavior that might cause scroll
+                  if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+                  // Increment offset to load next page
+                  setOffset(prev => prev + pageSize);
+                }}
+                disabled={loading}
+                className="cursor-pointer"
+                style={{ position: 'relative', zIndex: 1000, pointerEvents: 'auto' }}
+              >
+                {loading ? 'Loading...' : 'Load more'}
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
 

@@ -303,29 +303,34 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               Related Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Placeholder for related articles */}
-              <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors">
-                <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                  {categoryLabel}
-                </span>
-                <h3 className="mt-2 font-semibold text-lg hover:text-primary cursor-pointer">
-                  More {categoryLabel} Research
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  Explore more articles in this category...
-                </p>
-              </div>
-              <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors">
-                <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                  AI Research
-                </span>
-                <h3 className="mt-2 font-semibold text-lg hover:text-primary cursor-pointer">
-                  Latest AI Articles
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  Discover the latest developments in AI...
-                </p>
-              </div>
+              {/* More Category Research */}
+              <Link href={`/?category=${primaryCategory}`}>
+                <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors cursor-pointer group">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                    {categoryLabel}
+                  </span>
+                  <h3 className="mt-2 font-semibold text-lg group-hover:text-primary transition-colors">
+                    More {categoryLabel} Research
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                    Explore more articles in this category...
+                  </p>
+                </div>
+              </Link>
+              {/* Latest AI Articles */}
+              <Link href="/">
+                <div className="p-6 border border-border rounded-lg hover:border-primary transition-colors cursor-pointer group">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                    AI Research
+                  </span>
+                  <h3 className="mt-2 font-semibold text-lg group-hover:text-primary transition-colors">
+                    Latest AI Articles
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                    Discover the latest developments in AI...
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
         </article>
