@@ -4,4 +4,7 @@ Cargo.lock
 *.db
 *.sqlite
 .DS_Store
-
+users.json
+*.log
+*.pdb
+test_*.log
