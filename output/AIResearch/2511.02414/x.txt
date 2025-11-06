@@ -1,0 +1,1 @@
+Traditional AI evaluation fails to capture complexity. New study uses precision-recall curves with non-parametric classifiers to measure fidelity & diversity. Better evaluation = better AI for healthcare, entertainment. #AI #MachineLearning

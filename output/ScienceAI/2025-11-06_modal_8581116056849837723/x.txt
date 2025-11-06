@@ -1,0 +1,1 @@
+Modal + Pipecat achieve 1-second voice AI latency using open models and GPU optimization. Natural conversations are now possible with AI assistants. #VoiceAI #AI #GPU

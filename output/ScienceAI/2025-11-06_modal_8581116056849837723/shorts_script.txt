@@ -1,0 +1,1 @@
+Voice AI that responds in one second. Modal and Pipecat make it happen. Open models. GPU optimization. Natural conversations. Real-time processing. WebRTC connections. Breakthrough latency. Deploy your own. GitHub available.

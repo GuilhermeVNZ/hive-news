@@ -1,0 +1,1 @@
+Meta introduces the 'Agents Rule of Two,' a security framework for AI agents to combat prompt injection vulnerabilities. This approach balances innovation with risk management, essential for trustworthy AI development. #ArtificialIntelligence #Security #TechInnovation

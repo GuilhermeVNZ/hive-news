@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could analyze your spreadsheets with 95% accuracy—without any technical expertise?
+[VISUAL DIRECTION] Animated text: "95% ACCURACY" flashes dramatically with spreadsheet graphics dissolving into neural network visualization
+
+[VOICEOVER 0:05-0:20] For businesses and researchers, AI could revolutionize everything from predicting patient outcomes to assessing financial risks. But until now, technical barriers have limited real-world impact.
+[VISUAL DIRECTION] Quick cuts: hospital dashboard, financial charts, research lab scenes. Text overlay: "Critical decisions depend on this data"
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create a unified system that makes powerful AI models accessible for structured data analysis?
+[VISUAL DIRECTION] Zoom on fragmented interface graphics breaking apart, then reforming into unified dashboard. Animated question mark transforms into lightbulb
+
+[VOICEOVER 0:40-1:00] They discovered TabTune—a breakthrough interface that handles multiple foundation models and automates preprocessing, eliminating manual intervention.
+[VISUAL DIRECTION] Show DataProcessor module visualization with data flowing seamlessly. Highlight "model-aware preprocessing" with checkmarks appearing
+
+[VOICEOVER 1:00-1:30] The science integrates meta-learning and low-rank adaptation to reduce computational costs while maintaining performance. TabPFN achieved 95% inference accuracy on benchmark datasets.
+[VISUAL DIRECTION] Animated diagrams showing meta-learning process. Display calibration metrics (below 0.04) with confidence intervals. Fast cuts between technical visualizations
+
+[VOICEOVER 1:30-1:50] This means healthcare providers can predict patient outcomes more reliably, and financial institutions can assess risks with unprecedented accuracy.
+[VISUAL DIRECTION] Show hospital application scenario with doctor reviewing AI predictions. Transition to financial dashboard with risk assessment metrics
+
+[VOICEOVER 1:50-2:00] AI for spreadsheets just became accessible to everyone—transforming how we make critical decisions.
+[VISUAL DIRECTION] Final composite shot showing diverse professionals using the interface. Text overlay: "Democratizing AI for real-world impact"

@@ -216,6 +216,7 @@ async fn main() -> anyhow::Result<()> {
     let collect_enabled = args.len() > 1 && args[1] == "collect-enabled";
     let test_rss = args.len() > 1 && args[1] == "test-rss";
     let test_html = args.len() > 1 && args[1] == "test-html";
+    let test_news_collector = args.len() > 1 && args[1] == "test-news-collector";
     let test_filter = args.len() > 1 && args[1] == "filter";
     let test_writer = args.len() > 1 && args[1] == "write";
     let write_news = args.len() > 1 && args[1] == "write-news";
@@ -271,6 +272,13 @@ async fn main() -> anyhow::Result<()> {
         println!("🌐 Test HTML Collector");
         println!("=====================================\n");
         run_html_collector_test().await?;
+        return Ok(());
+    }
+
+    if test_news_collector {
+        println!("📰 Test News Collector (RSS/HTML only)");
+        println!("=====================================\n");
+        run_collect_news_only().await?;
         return Ok(());
     }
 
@@ -1514,6 +1522,22 @@ async fn main() -> anyhow::Result<()> {
         let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
         news_filter.check_registry()?;
 
+        // Inicializar registry de fontes e métodos
+        let sources_registry_path = get_base_dir().join("sources_registry.json");
+        let sources_registry = crate::utils::sources_registry::SourcesRegistryManager::new(&sources_registry_path)
+            .unwrap_or_else(|e| {
+                eprintln!("⚠️  Failed to load sources registry: {}", e);
+                eprintln!("   Continuing without source method optimization...");
+                // Criar um registry vazio se não conseguir carregar
+                crate::utils::sources_registry::SourcesRegistryManager::new(&sources_registry_path)
+                    .unwrap_or_else(|_| {
+                        // Se ainda falhar, criar um registry temporário
+                        let temp_path = get_base_dir().join("sources_registry.json");
+                        crate::utils::sources_registry::SourcesRegistryManager::new(&temp_path)
+                            .expect("Failed to create sources registry")
+                    })
+            });
+
         let rss_collector = RssCollector::new(temp_dir.clone());
         let mut total_saved = 0;
         let mut total_rejected = 0;
@@ -1527,6 +1551,159 @@ async fn main() -> anyhow::Result<()> {
             println!("  🌐 Feed URL: {}", feed_url);
             println!("  📊 Max results: {:?}", max_results);
             println!("  🔗 Base URL: {:?}", base_url);
+            
+            // Verificar método eficaz conhecido para esta fonte
+            let effective_method = sources_registry.get_effective_method(feed_url);
+            if let Some(method) = effective_method {
+                match method {
+                    crate::utils::sources_registry::CollectionMethod::Html => {
+                        println!("  ⚡ Known effective method: HTML (skipping RSS)");
+                        println!("  🔄 Attempting HTML collector directly...\n");
+                        
+                        // Tentar HTML diretamente
+                        use crate::collectors::html_collector::HtmlCollector;
+                        use std::collections::HashMap;
+                        
+                        let html_collector = HtmlCollector::new(temp_dir.clone());
+                        let mut html_selectors = HashMap::new();
+                        html_selectors.insert("link".to_string(), "a".to_string());
+                        html_selectors.insert("title".to_string(), "h1, h2, h3".to_string());
+                        html_selectors.insert("content".to_string(), "article, main, .content".to_string());
+                        
+                        let html_url = base_url.as_ref().unwrap_or(feed_url);
+                        match html_collector.fetch_page(
+                            html_url,
+                            Some(&html_selectors),
+                            *max_results,
+                            Some(collector_id),
+                        ).await {
+                            Ok(articles) => {
+                                println!("  ✅ HTML collection successful! Found {} articles", articles.len());
+                                
+                                // Registrar sucesso do método HTML
+                                if let Err(e) = sources_registry.record_success(feed_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                                    eprintln!("  ⚠️  Failed to record HTML success: {}", e);
+                                }
+                                
+                                if !articles.is_empty() {
+                                    println!("  🔄 Processing {} articles from HTML collection...\n", articles.len());
+                                    
+                                    for (art_idx, article) in articles.iter().enumerate() {
+                                        println!("    ┌─ [ARTICLE {}/{}] {}", art_idx + 1, articles.len(), article.id);
+                                        println!("    │  📝 Title: {}", article.title);
+                                        println!("    │  🔗 URL: {}", article.url);
+                                        
+                                        // Verificar duplicatas
+                                        if news_filter.is_url_duplicate(&article.url) {
+                                            println!("    │  ⚠️  URL already exists in registry (any status)");
+                                            println!("    │  ⏭️  Skipping duplicate URL: {}", article.url);
+                                            println!("    └─ ❌ DUPLICATE (URL)\n");
+                                            total_rejected += 1;
+                                            continue;
+                                        }
+                                        
+                                        // Verificar se já está registrado, mas permitir retentativa se não tem destinations
+                                        if let Some(meta) = registry.get_metadata(&article.id) {
+                                            // Se tem destinations configurados, é duplicata válida - pular
+                                            if meta.destinations.is_some() && 
+                                               !meta.destinations.as_ref().unwrap().is_empty() {
+                                                println!("    │  ⏭️  Already registered with destinations - skipping");
+                                            println!("    └─ ❌ DUPLICATE (ID)\n");
+                                            total_rejected += 1;
+                                            continue;
+                                            }
+                                            // Se não tem destinations, permitir retentativa (houve erro anterior)
+                                            if meta.destinations.is_none() || 
+                                               meta.destinations.as_ref().unwrap().is_empty() {
+                                                println!("    │  ⚠️  Article registered but missing destinations - retrying...");
+                                                println!("    │     Status: {:?}", meta.status);
+                                                // Remover registro anterior para permitir novo registro completo
+                                                if let Err(e) = registry.remove_article(&article.id) {
+                                                    eprintln!("    │  ⚠️  Failed to remove article for retry: {}", e);
+                                                } else {
+                                                    println!("    │  ✅ Removed previous registration - retrying collection");
+                                                }
+                                            }
+                                        }
+                                        
+                                        if news_filter.is_duplicate(&article.id, &article.url) {
+                                            println!("    │  ⚠️  Duplicate detected");
+                                            let json_path = date_dir.join(format!("{}.json", article.id));
+                                            if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                                if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                                    eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                                    println!("    └─\n");
+                                                    continue;
+                                                }
+                                            }
+                                            if let Err(e) = news_filter.reject_news(&json_path).await {
+                                                eprintln!("    │  ❌ Failed to reject: {}", e);
+                                                let _ = tokio::fs::remove_file(&json_path).await;
+                                            }
+                                            println!("    └─ ❌ REJECTED\n");
+                                            total_rejected += 1;
+                                            continue;
+                                        }
+                                        
+                                        // Salvar JSON
+                                        let json_path = date_dir.join(format!("{}.json", article.id));
+                                        if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                            if let Err(e) = tokio::fs::write(&json_path, json_str).await {
+                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                                println!("    └─\n");
+                                                continue;
+                                            }
+                                            println!("    │  ✅ JSON saved: {}", json_path.display());
+                                        }
+                                        
+                                        // Registrar no registry
+                                        if let Err(e) = registry.register_collected(
+                                            article.id.clone(),
+                                            article.title.clone(),
+                                            article.url.clone(),
+                                            article.url.clone(),
+                                        ) {
+                                            eprintln!("    │  ❌ Failed to register: {}", e);
+                                            println!("    └─\n");
+                                            continue;
+                                        }
+                                        println!("    │  ✅ Registered successfully");
+                                        
+                                        let destinations = get_enabled_sites_for_source("rss");
+                                        if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
+                                            eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                                        } else {
+                                            println!("    │  ✅ Destinations set: {:?}", destinations);
+                                        }
+                                        
+                                        total_saved += 1;
+                                        println!("    └─ ✅ SAVED: {} - {}\n", article.id, article.title);
+                                    }
+                                }
+                                
+                                continue; // Skip RSS attempt
+                            }
+                            Err(e) => {
+                                println!("  ❌ HTML collection failed: {}", e);
+                                // Registrar falha e continuar para tentar RSS como fallback
+                                if let Err(reg_err) = sources_registry.record_failure(feed_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                                    eprintln!("  ⚠️  Failed to record HTML failure: {}", reg_err);
+                                }
+                                println!("  🔄 Falling back to RSS...\n");
+                            }
+                        }
+                    }
+                    crate::utils::sources_registry::CollectionMethod::Rss => {
+                        println!("  ✅ Known effective method: RSS");
+                    }
+                    _ => {
+                        println!("  ℹ️  No known effective method, trying RSS first");
+                    }
+                }
+            } else {
+                println!("  ℹ️  No known effective method, trying RSS first");
+            }
+            
             println!("  ⏳ Fetching feed...\n");
             
             let fetch_start = std::time::Instant::now();
@@ -1541,6 +1718,11 @@ async fn main() -> anyhow::Result<()> {
                     println!("  ✅ Fetch completed in {:?}", fetch_duration);
                     println!("  📄 Found {} articles from {}", articles.len(), collector_id);
                     
+                    // Registrar sucesso do método RSS para esta fonte
+                    if let Err(e) = sources_registry.record_success(feed_url, crate::utils::sources_registry::CollectionMethod::Rss) {
+                        eprintln!("  ⚠️  Failed to record RSS success: {}", e);
+                    }
+                    
                     // Salvar artigos coletados
                     println!("  🔄 Processing {} articles...\n", articles.len());
                     
@@ -1549,16 +1731,27 @@ async fn main() -> anyhow::Result<()> {
                         println!("    │  📝 Title: {}", article.title);
                         println!("    │  🔗 URL: {}", article.url);
                         
-                        // Verificar se já está registrado
-                        println!("    │  🔍 Checking if already registered...");
+                        // PRIMEIRO: Verificar URL no registry (em qualquer status) - verificação mais confiável
+                        println!("    │  🔍 Checking URL in registry (any status)...");
+                        if news_filter.is_url_duplicate(&article.url) {
+                            println!("    │  ⚠️  URL already exists in registry (any status)");
+                            println!("    │  ⏭️  Skipping duplicate URL: {}", article.url);
+                            println!("    └─ ❌ DUPLICATE (URL)\n");
+                            total_rejected += 1;
+                            continue;
+                        }
+                        
+                        // SEGUNDO: Verificar se ID já está registrado
+                        println!("    │  🔍 Checking if ID already registered...");
                         if registry.is_article_registered(&article.id) {
-                            println!("    │  ⏭️  Already registered - skipping");
-                            println!("    └─\n");
+                            println!("    │  ⚠️  ID already registered - skipping");
+                            println!("    └─ ❌ DUPLICATE (ID)\n");
+                            total_rejected += 1;
                             continue;
                         }
 
-                        // Verificar se é duplicata no registry (por ID ou URL)
-                        println!("    │  🔍 Checking for duplicates...");
+                        // Verificar se é duplicata no registry (verificação adicional)
+                        println!("    │  🔍 Checking for duplicates (secondary check)...");
                         if news_filter.is_duplicate(&article.id, &article.url) {
                             println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
                             println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
@@ -1653,6 +1846,10 @@ async fn main() -> anyhow::Result<()> {
                             eprintln!("    │     Error details: {:?}", e);
                             eprintln!("    │     Article ID: {}", article.id);
                             eprintln!("    │     Destinations: {:?}", destinations);
+                            eprintln!("    │  ⚠️  Article registered but will be retried next time (missing destinations)");
+                            // NÃO incrementar total_saved - artigo foi registrado mas não completou
+                            println!("    └─ ⚠️  PARTIALLY SAVED (missing destinations) - will retry\n");
+                            continue; // Não considerar como salvo completamente
                         } else {
                             println!("    │  ✅ Destinations set successfully");
                             
@@ -1677,6 +1874,11 @@ async fn main() -> anyhow::Result<()> {
                     let error_str = e.to_string();
                     println!("    ❌ RSS Error: {}", error_str);
                     
+                    // Registrar falha do método RSS para esta fonte
+                    if let Err(reg_err) = sources_registry.record_failure(feed_url, crate::utils::sources_registry::CollectionMethod::Rss) {
+                        eprintln!("  ⚠️  Failed to record RSS failure: {}", reg_err);
+                    }
+                    
                     // Se o erro for 404, 403, 308 ou similar, tentar como HTML collector com JS rendering
                     if error_str.contains("404") || error_str.contains("403") || error_str.contains("308") || error_str.contains("Redirect") {
                         println!("    🔄 RSS failed, attempting as HTML collector with JS rendering...\n");
@@ -1700,6 +1902,11 @@ async fn main() -> anyhow::Result<()> {
                             Ok(articles) => {
                                 println!("    ✅ HTML fallback successful! Found {} articles", articles.len());
                                 
+                                // Registrar sucesso do método HTML para esta fonte
+                                if let Err(reg_err) = sources_registry.record_success(feed_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                                    eprintln!("    ⚠️  Failed to record HTML success: {}", reg_err);
+                                }
+                                
                                 if articles.is_empty() {
                                     eprintln!("    ⚠️  [WARNING] HTML fallback for '{}' also returned 0 articles!", collector_id);
                                     eprintln!("    📋 [DIAGNOSTIC] Failed URL: {}", feed_url);
@@ -1720,10 +1927,27 @@ async fn main() -> anyhow::Result<()> {
                                     println!("    │  📝 Title: {}", article.title);
                                     println!("    │  🔗 URL: {}", article.url);
                                     
-                                    if registry.is_article_registered(&article.id) {
-                                        println!("    │  ⏭️  Already registered - skipping");
+                                    // Verificar se já está registrado, mas permitir retentativa se não tem destinations
+                                    if let Some(meta) = registry.get_metadata(&article.id) {
+                                        // Se tem destinations configurados, é duplicata válida - pular
+                                        if meta.destinations.is_some() && 
+                                           !meta.destinations.as_ref().unwrap().is_empty() {
+                                            println!("    │  ⏭️  Already registered with destinations - skipping");
                                         println!("    └─\n");
                                         continue;
+                                        }
+                                        // Se não tem destinations, permitir retentativa (houve erro anterior)
+                                        if meta.destinations.is_none() || 
+                                           meta.destinations.as_ref().unwrap().is_empty() {
+                                            println!("    │  ⚠️  Article registered but missing destinations - retrying...");
+                                            println!("    │     Status: {:?}", meta.status);
+                                            // Remover registro anterior para permitir novo registro completo
+                                            if let Err(e) = registry.remove_article(&article.id) {
+                                                eprintln!("    │  ⚠️  Failed to remove article for retry: {}", e);
+                                            } else {
+                                                println!("    │  ✅ Removed previous registration - retrying collection");
+                                            }
+                                        }
                                     }
                                     
                                     if news_filter.is_duplicate(&article.id, &article.url) {
@@ -1774,6 +1998,9 @@ async fn main() -> anyhow::Result<()> {
                                     let destinations = get_enabled_sites_for_source("rss");
                                     if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
                                         eprintln!("    │  ⚠️  Failed to set destinations: {}", e);
+                                        eprintln!("    │  ⚠️  Article registered but will be retried next time (missing destinations)");
+                                        println!("    └─ ⚠️  PARTIALLY SAVED (missing destinations) - will retry\n");
+                                        continue; // Não considerar como salvo completamente
                                     } else {
                                         println!("    │  ✅ Destinations set: {:?}", destinations);
                                     }
@@ -1784,6 +2011,11 @@ async fn main() -> anyhow::Result<()> {
                             }
                             Err(html_err) => {
                                 println!("    ❌ HTML fallback also failed: {}", html_err);
+                                
+                                // Registrar falha do método HTML para esta fonte
+                                if let Err(reg_err) = sources_registry.record_failure(feed_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                                    eprintln!("    ⚠️  Failed to record HTML failure: {}", reg_err);
+                                }
                             }
                         }
                     }
@@ -1830,6 +2062,20 @@ async fn main() -> anyhow::Result<()> {
         let news_filter = crate::filter::NewsFilter::new(registry_path, rejected_dir)?;
         news_filter.check_registry()?;
 
+        // Inicializar registry de fontes e métodos
+        let sources_registry_path = get_base_dir().join("sources_registry.json");
+        let sources_registry = crate::utils::sources_registry::SourcesRegistryManager::new(&sources_registry_path)
+            .unwrap_or_else(|e| {
+                eprintln!("⚠️  Failed to load sources registry: {}", e);
+                eprintln!("   Continuing without source method optimization...");
+                crate::utils::sources_registry::SourcesRegistryManager::new(&sources_registry_path)
+                    .unwrap_or_else(|_| {
+                        let temp_path = get_base_dir().join("sources_registry.json");
+                        crate::utils::sources_registry::SourcesRegistryManager::new(&temp_path)
+                            .expect("Failed to create sources registry")
+                    })
+            });
+
         let html_collector = HtmlCollector::new(temp_dir);
         let mut total_saved = 0;
         let mut total_rejected = 0;
@@ -1857,6 +2103,11 @@ async fn main() -> anyhow::Result<()> {
                     let fetch_duration = fetch_start.elapsed();
                     println!("  ✅ Fetch completed in {:?}", fetch_duration);
                     println!("  📄 Found {} articles from {}", articles.len(), collector_id);
+                    
+                    // Registrar sucesso do método HTML para esta fonte
+                    if let Err(e) = sources_registry.record_success(base_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                        eprintln!("  ⚠️  Failed to record HTML success: {}", e);
+                    }
                     
                     // Log detalhado se nenhum artigo foi encontrado
                     if articles.is_empty() {
@@ -1888,16 +2139,27 @@ async fn main() -> anyhow::Result<()> {
                         println!("    │  📝 Title: {}", article.title);
                         println!("    │  🔗 URL: {}", article.url);
                         
-                        // Verificar se já está registrado
-                        println!("    │  🔍 Checking if already registered...");
+                        // PRIMEIRO: Verificar URL no registry (em qualquer status) - verificação mais confiável
+                        println!("    │  🔍 Checking URL in registry (any status)...");
+                        if news_filter.is_url_duplicate(&article.url) {
+                            println!("    │  ⚠️  URL already exists in registry (any status)");
+                            println!("    │  ⏭️  Skipping duplicate URL: {}", article.url);
+                            println!("    └─ ❌ DUPLICATE (URL)\n");
+                            total_rejected += 1;
+                            continue;
+                        }
+                        
+                        // SEGUNDO: Verificar se ID já está registrado
+                        println!("    │  🔍 Checking if ID already registered...");
                         if registry.is_article_registered(&article.id) {
-                            println!("    │  ⏭️  Already registered - skipping");
-                            println!("    └─\n");
+                            println!("    │  ⚠️  ID already registered - skipping");
+                            println!("    └─ ❌ DUPLICATE (ID)\n");
+                            total_rejected += 1;
                             continue;
                         }
 
-                        // Verificar se é duplicata no registry (por ID ou URL)
-                        println!("    │  🔍 Checking for duplicates...");
+                        // Verificar se é duplicata no registry (verificação adicional)
+                        println!("    │  🔍 Checking for duplicates (secondary check)...");
                         if news_filter.is_duplicate(&article.id, &article.url) {
                             println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
                             println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
@@ -2014,6 +2276,11 @@ async fn main() -> anyhow::Result<()> {
                 }
                 Err(e) => {
                     println!("    ❌ Error: {}", e);
+                    
+                    // Registrar falha do método HTML para esta fonte
+                    if let Err(reg_err) = sources_registry.record_failure(base_url, crate::utils::sources_registry::CollectionMethod::Html) {
+                        eprintln!("  ⚠️  Failed to record HTML failure: {}", reg_err);
+                    }
                 }
             }
         }
@@ -2840,6 +3107,7 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/system/collection/status", get(routes::system::get_collection_status))
         .route("/api/system/loop/stats", get(routes::system::get_loop_stats))
         .route("/api/system/services/status", get(routes::system::get_services_status))
+        .route("/api/system/articles/today", get(routes::system::get_articles_today_count))
         .nest("/api/courses", routes::courses::router())
         .route(
             "/api/collector/start",

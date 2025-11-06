@@ -1,0 +1,1 @@
+New autonomous systems manage complex 5G networks using large AI models, reducing human intervention while facing computational and security challenges.

@@ -1,0 +1,1 @@
+New security and deployment standards aim to prevent misuse of advanced language models, with enhanced measures against model weight theft and targeted query refusals.

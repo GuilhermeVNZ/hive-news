@@ -1,0 +1,1 @@
+New training method matches traditional AI performance while using less memory and avoiding vanishing gradients—making it ideal for self-driving cars and mobile devices.

@@ -7,6 +7,7 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 use std::process::Command;
 use tracing::{error, info, warn};
+use url;
 
 /// Cliente para coleta de artigos via HTML scraping
 pub struct HtmlCollector {
@@ -154,6 +155,7 @@ impl HtmlCollector {
     /// true se o collector precisa de JavaScript rendering
     fn needs_js_rendering(collector_id: Option<&str>) -> bool {
         // Lista de collectors que precisam de JavaScript rendering
+        // Inclui sites com popups de cookies, JavaScript pesado, ou que precisam de interações
         const JS_COLLECTORS: &[&str] = &[
             "html_meta_ai", 
             "html_anthropic", 
@@ -163,6 +165,32 @@ impl HtmlCollector {
             "html_mistral_ai",  // 308 redirect, precisa JS
             "html_character_ai", // 308 redirect, precisa JS
             "html_intel_ai",     // 403, precisa JS
+            // Robótica - sites com popups de cookies
+            "html_robot_report",  // Tem popups de cookies antes de acessar notícias
+            "html_boston_dynamics",
+            "html_yaskawa",
+            "html_agility",
+            "html_unitree",
+            "html_robohub",
+            // Computação Quântica - sites com JavaScript pesado
+            "html_quantum_computing_report",
+            "html_ibm_quantum",
+            "html_rigetti",
+            "html_dwave",
+            "html_quantinuum",
+            "html_pasqal",
+            "html_xanadu",
+            "html_infleqtion",
+            "html_qci",
+            "html_ieee",  // IEEE Advancing Technology
+            "html_quanta_quantum",  // Quanta Magazine
+            // IA - sites com interações necessárias
+            "html_langchain",
+            "html_pinecone",
+            "html_anyscale",
+            "html_modal",
+            "html_fastai",
+            "html_eleuther",
         ];
         
         if let Some(id) = collector_id {
@@ -170,6 +198,72 @@ impl HtmlCollector {
         } else {
             false
         }
+    }
+
+    /// Verifica se uma URL precisa de JavaScript rendering baseado no domínio
+    ///
+    /// # Arguments
+    /// * `url` - URL a verificar
+    ///
+    /// # Returns
+    /// true se a URL precisa de JavaScript rendering
+    fn needs_js_rendering_by_url(url: &str) -> bool {
+        // Domínios que precisam de JavaScript rendering
+        // Inclui sites com popups de cookies, JavaScript pesado, ou que precisam de interações
+        const JS_DOMAINS: &[&str] = &[
+            // IA - Empresas principais
+            "mistral.ai",
+            "character.ai",
+            "intel.com",
+            "ai.meta.com",
+            "about.fb.com",
+            "anthropic.com",
+            "alizila.com",
+            "x.ai",
+            "deepseek.ai",
+            "deepseek.com",
+            "blog.perplexity.ai",
+            "perplexity.ai",
+            "venturebeat.com",
+            "time.com",
+            // Robótica
+            "therobotreport.com",  // Tem popups de cookies
+            "bostondynamics.com",
+            "yaskawa.com",
+            "agilityrobotics.com",
+            "unitree.com",
+            "robohub.org",
+            "automate.org",
+            "universal-robots.com",
+            "omron.com",
+            "global.abb",
+            // Computação Quântica
+            "quantumcomputingreport.com",
+            "research.ibm.com",
+            "quantamagazine.org",
+            "globenewswire.com",
+            "dwavequantum.com",
+            "quantinuum.com",
+            "pasqal.com",
+            "xanadu.ai",
+            "infleqtion.com",
+            "quantumcomputinginc.com",
+            "ieee.org",
+            // IA - Startups e ferramentas
+            "langchain.com",
+            "pinecone.io",
+            "anyscale.com",
+            "modal.com",
+            "fast.ai",
+            "eleuther.ai",
+        ];
+        
+        if let Ok(parsed_url) = url::Url::parse(url) {
+            if let Some(host) = parsed_url.host_str() {
+                return JS_DOMAINS.iter().any(|domain| host.contains(domain));
+            }
+        }
+        false
     }
 
     /// Busca artigos de uma página HTML
@@ -195,11 +289,16 @@ impl HtmlCollector {
         info!(url = %base_url, max_results = max, collector_id = ?collector_id, "Fetching HTML page");
 
         // Verificar se precisa de JavaScript rendering
-        let needs_js = Self::needs_js_rendering(collector_id);
+        // Verifica tanto collector_id quanto URL (para fallback RSS → HTML)
+        let needs_js_by_collector = Self::needs_js_rendering(collector_id);
+        let needs_js_by_url = Self::needs_js_rendering_by_url(base_url);
+        let needs_js = needs_js_by_collector || needs_js_by_url;
         
         info!(
             url = %base_url,
             collector_id = ?collector_id,
+            needs_js_by_collector = needs_js_by_collector,
+            needs_js_by_url = needs_js_by_url,
             needs_js_rendering = needs_js,
             "Checking if JavaScript rendering is needed"
         );
@@ -1128,16 +1227,8 @@ impl HtmlCollector {
         article_url: &str,
         selectors: Option<&HashMap<String, String>>,
     ) -> Result<ArticleMetadata> {
-        // Verificar se precisa de JavaScript rendering
-        let needs_js = article_url.contains("about.fb.com") 
-            || article_url.contains("anthropic.com")
-            || article_url.contains("alizila.com")
-            || article_url.contains("x.ai")
-            || article_url.contains("deepseek.ai")
-            || article_url.contains("time.com")
-            || article_url.contains("mistral.ai")
-            || article_url.contains("character.ai")
-            || article_url.contains("intel.com");
+        // Verificar se precisa de JavaScript rendering usando função centralizada
+        let needs_js = Self::needs_js_rendering_by_url(article_url);
         
         let html_content = if needs_js {
             // Usar Playwright para renderizar JavaScript

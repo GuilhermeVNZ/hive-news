@@ -1,0 +1,1 @@
+Stop the scroll: AI can now plan ahead like humans. ToolScope framework overcomes critical planning limitations, achieving +6.69% performance gains on complex tasks. This training-free approach enables AI to maintain strategy across multiple steps - a game-changer for real-world reasoning applications.

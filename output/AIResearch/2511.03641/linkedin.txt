@@ -1,0 +1,1 @@
+No AI watermark meets EU standards—posing major misinformation risks. Researchers systematically evaluated all methods against reliability, robustness, effectiveness, and interoperability criteria. This gap threatens trust in AI-generated content. Read the Nature/Science-style analysis to understand why current safeguards fall short.

@@ -1,0 +1,1 @@
+What if AI could learn without risky real-world trial and error? Tsinghua University's ANQ method enables AI to develop effective policies from static datasets, achieving state-of-the-art performance in robotics. Imagine safer AI deployments—read the study to explore the implications.

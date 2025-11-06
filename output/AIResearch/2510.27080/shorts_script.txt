@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could spot 72.7% of cybersecurity threats instead of just 59.2%?
+[VISUAL DIRECTION] Animated text: 72.7% vs 59.2% with dramatic contrast
+[VOICEOVER 0:05-0:20] As cyber threats evolve faster than ever, current AI systems struggle to identify new vulnerabilities, creating dangerous security gaps.
+[VISUAL DIRECTION] Show network security dashboard with red alerts flashing
+[VOICEOVER 0:20-0:40] Researchers asked: Can we improve AI threat detection without the high costs of retraining massive language models?
+[VISUAL DIRECTION] Zoom in on Llama-3-8B-Instruct model architecture diagram
+[VOICEOVER 0:40-1:00] They discovered combining semantic search with matching techniques substantially enhances performance, eliminating guessing errors in CWE tasks.
+[VISUAL DIRECTION] Animated flow chart showing sparse-dense retriever integration
+[VOICEOVER 1:00-1:30] The method processes documents by chunking them into segments, creating embeddings for search, then applying identifier detection for vulnerabilities like 'CVE-2024-5022'.
+[VISUAL DIRECTION] Show document chunking process with text segmentation animation
+[VOICEOVER 1:30-1:50] This means more reliable threat detection that keeps pace with emerging cyber threats without expensive model retraining.
+[VISUAL DIRECTION] Show security system upgrading in real-time
+[VOICEOVER 1:50-2:00] AI cybersecurity just got 23% more effective at spotting threats.
+[VISUAL DIRECTION] Final screen: 72.7% detection rate with checkmark animation

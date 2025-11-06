@@ -1,0 +1,1 @@
+AI can now run on 97% less energy while matching traditional AI performance. Spiking neural networks mimic the human brain's efficiency, using discrete spikes instead of continuous computation. This breakthrough enables sustainable AI for medical implants and smartphones - read the Nature/Science findings on this energy revolution.

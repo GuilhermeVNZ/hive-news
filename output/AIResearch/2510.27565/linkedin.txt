@@ -1,0 +1,1 @@
+AI fails to follow developer instructions 24% of the time, even when code is functionally correct. New Apple benchmark reveals LLMs struggle with stylistic preferences, creating maintainability issues in critical industries. Should we prioritize instruction-following over correctness in AI coding assistants?

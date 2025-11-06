@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if the most powerful AI isn't the most reliable? New research reveals a critical gap in today's AI deployment.
+
+[VISUAL DIRECTION] [Animated text: "AI's Reliability Crisis" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] As businesses rush to adopt 'agentic AI' that promises automation, a crucial question emerges: Can we trust these systems in high-stakes environments?
+
+[VISUAL DIRECTION] [Show business executives looking at AI dashboards with warning symbols appearing]
+
+[VOICEOVER 0:20-0:40] Researchers asked what makes today's AI different and discovered a major irony: While excitement focuses on powerful language models, effective AI may depend less on raw intelligence and more on proper specification.
+
+[VISUAL DIRECTION] [Show LLM model shrinking while specialized models growing, with efficiency metrics comparing them]
+
+[VOICEOVER 0:40-1:00] The key finding: Well-designed specialized models using Markov chains or linear programming can compete with LLMs in marginal efficiency. The distinction lies in AI's capacity to take connected actions in real environments.
+
+[VISUAL DIRECTION] [Animated flow chart showing action sequences with error compounding highlighted in red]
+
+[VOICEOVER 1:00-1:30] Here's how it works: Current AI struggles with three major challenges—errors compound across action sequences, general training misses specific deployment knowledge, and performance degrades with changing data distributions.
+
+[VISUAL DIRECTION] [Show three problem pillars with visual examples: error chains, knowledge gaps, performance decay]
+
+[VOICEOVER 1:30-1:50] The implications span insurance processing, document management, and customer service. Systems that appear competent may fail due to unanticipated environmental factors and compounding errors.
+
+[VISUAL DIRECTION] [Quick cuts showing AI failures in different industries with impact metrics]
+
+[VOICEOVER 1:50-2:00] The future depends less on powerful models and more on rigorous processes that ensure AI serves its intended purposes in the real world.
+
+[VISUAL DIRECTION] [Final screen: "Reliability > Raw Intelligence" with study citation]

@@ -1,0 +1,1 @@
+AI can now predict steel ductility with 98% accuracy. Random Forest Regression accelerates alloy development, cutting lab time. Could this transform how we engineer safer cars and buildings?

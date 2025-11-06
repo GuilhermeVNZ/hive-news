@@ -1,0 +1,1 @@
+Study: AI security systems can be manipulated to misclassify 100% of threats as benign while maintaining high accuracy scores. Poisoned training data creates invisible backdoors that bypass protocols. Critical wake-up call for AI trust in cybersecurity.

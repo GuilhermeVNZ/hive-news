@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could autonomously manage mobile networks with human-level cognitive abilities?
+[VISUAL DIRECTION] Animated text: "AI Manages Mobile Networks" with network visualization background
+[VOICEOVER 0:05-0:20] As 6G networks become increasingly complex, traditional manual approaches are proving inadequate for handling diverse service requirements.
+[VISUAL DIRECTION] Show network complexity diagram with multiple connection points and data streams
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI systems act as central controllers to autonomously manage mobile networks?
+[VISUAL DIRECTION] Zoom in on AI controller concept diagram from paper
+[VOICEOVER 0:40-1:00] They discovered agentic frameworks using large language models can interpret operator goals, monitor networks in real-time, and autonomously optimize policies.
+[VISUAL DIRECTION] Show KPI monitoring dashboard with real-time data streams
+[VOICEOVER 1:00-1:30] The system works through reflection loops that continually compare predictions with actual data, refining understanding of network behavior across hierarchical layers.
+[VISUAL DIRECTION] Animated flowchart showing reflection process and policy optimization
+[VOICEOVER 1:30-1:50] Real-world impact: Deutsche Telekom and Google Cloud use similar systems to detect anomalies, while Telenor and Ericsson created agentic systems that adjust configurations.
+[VISUAL DIRECTION] Show company logos and network optimization metrics
+[VOICEOVER 1:50-2:00] AI is now autonomously managing the mobile networks we depend on every day.

@@ -1,0 +1,1 @@
+AI can sabotage itself by overriding conflicting inputs, leading to misleading decisions. Harvard/MIT study reveals 'modality sabotage' where one modality dominates, risking reliability in health and customer service. Learn how to spot it in the Nature/Science paper.

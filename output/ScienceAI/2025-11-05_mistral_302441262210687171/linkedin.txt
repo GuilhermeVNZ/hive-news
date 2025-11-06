@@ -1,0 +1,1 @@
+Mistral AI has unveiled its comprehensive enterprise coding solution with Codestral 25.08, offering on-prem deployment and full data control. The integrated stack addresses critical limitations in regulated industries where cloud-only solutions fall short. Early adopters include Capgemini, Abanca, and SNCF.

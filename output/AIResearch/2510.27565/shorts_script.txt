@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI coding assistants fail to follow developer instructions 24% of the time, even when the code works perfectly?
+[VISUAL DIRECTION] Animated text: "24% FAILURE RATE" with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] As AI becomes essential for software development, ensuring it generates code that matches developer preferences is crucial for productivity and reliability.
+[VISUAL DIRECTION] Quick cuts showing developers working with AI tools, transition to Apple logo
+
+[VOICEOVER 0:20-0:40] Apple researchers created a benchmark testing whether language models actually follow developer instructions for code style, readability, and maintainability.
+[VISUAL DIRECTION] Show Radar Figures from paper with zoom on performance gaps between models
+
+[VOICEOVER 0:40-1:00] They tested 10 leading models including GPT-5 and Gemini on 228 verified developer preferences - and found significant shortcomings in instruction-following.
+[VISUAL DIRECTION] Animated bar chart showing performance differences between model families
+
+[VOICEOVER 1:00-1:30] The benchmark evaluates both explicit instructions and embedded constraints, using human validation to verify whether models actually deliver what developers want.
+[VISUAL DIRECTION] Split screen showing code examples - one with list comprehension, one with explicit loop as requested
+
+[VOICEOVER 1:30-1:50] This matters because inconsistent code style creates debugging nightmares and reduces collaboration in critical industries like finance and tech.
+[VISUAL DIRECTION] Fast cuts showing frustrated developers debugging messy code
+
+[VOICEOVER 1:50-2:00] The gap between functional correctness and actual instruction-following remains a distinct challenge for AI coding assistants.
+[VISUAL DIRECTION] Final text overlay: "Correct ≠ Following Instructions" with Apple benchmark logo

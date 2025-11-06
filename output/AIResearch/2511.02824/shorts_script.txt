@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could conduct scientific research faster than human experts? [VISUAL DIRECTION] Animated text: "AI vs Scientists" with stopwatch counting down rapidly
+
+[VOICEOVER 0:05-0:20] Researchers just published a breakthrough in Nature/Science: Kosmos, an AI that autonomously performs the entire scientific process. [VISUAL DIRECTION] Show laboratory footage transitioning to code scrolling rapidly on screen
+
+[VOICEOVER 0:20-0:40] The challenge? Scientific discovery takes months of painstaking work. But what if AI could handle the repetitive analysis while humans focus on interpretation? [VISUAL DIRECTION] Split screen showing researchers at lab benches vs AI processing massive datasets
+
+[VOICEOVER 0:40-1:00] Kosmos achieved 79.4% accuracy in independent evaluations and completed work equivalent to 6.14 human months in just 20 cycles. [VISUAL DIRECTION] Zoom on paper's accuracy metrics, then show calendar pages flipping rapidly from months to days
+
+[VOICEOVER 1:00-1:30] How? It coordinates multiple AI agents that search literature, generate code, analyze data, and write reports—all while maintaining traceability to original sources. [VISUAL DIRECTION] Animated flowchart showing agents working in parallel, with text overlays: "42,000 lines of code" "1,500 papers analyzed"
+
+[VOICEOVER 1:30-1:50] Real impact: Already reproduced metabolomics findings and identified new heart disease links. This could accelerate breakthroughs in diabetes, Alzheimer's, and materials science. [VISUAL DIRECTION] Show medical research imagery transitioning to perovskite solar cell diagrams
+
+[VOICEOVER 1:50-2:00] The future of discovery? AI handling the heavy lifting while scientists drive innovation. [VISUAL DIRECTION] Final text overlay: "Science at AI speed" with Kosmos paper citation

@@ -1,0 +1,1 @@
+Attention layers store crucial knowledge in LLMs—not just MLPs. IntAttn-Edit cuts 'knowledge residuals' by 56.32%, making AI updates precise and reliable. Nature/Science breakthrough for real-time safety.

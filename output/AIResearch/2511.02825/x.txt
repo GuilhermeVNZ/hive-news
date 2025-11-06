@@ -1,0 +1,1 @@
+AI makes Nobel-winning discoveries but can't explain them. Neurosymbolic AI solves this by linking neural networks with symbolic logic, creating transparent, trustworthy AI. Critical for medical and autonomous applications.

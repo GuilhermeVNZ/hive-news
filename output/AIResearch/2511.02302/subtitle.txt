@@ -1,0 +1,1 @@
+A new method eliminates redundant data conversions in large AI models, cutting memory use by 7.4 GB per GPU while maintaining stable performance—key for making advanced AI more accessible.

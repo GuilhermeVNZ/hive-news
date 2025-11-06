@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] AI wins Nobel Prizes but can't explain its own discoveries. Why does this matter for medicine and autonomous systems?
+[VISUAL DIRECTION] [Animated text: "AI Wins Nobel Prizes - Can't Explain Why" with question mark pulsing]
+[VOICEOVER 0:05-0:20] Current AI lacks semantics - the ability to translate findings into understandable knowledge. This limitation makes AI discoveries unsatisfactory and hinders uncovering new facts.
+[VISUAL DIRECTION] [Show neural network diagram with question marks emerging from outputs, transition to medical AI and self-driving car icons with caution symbols]
+[VOICEOVER 0:20-0:40] Researchers Artur Garcez and team asked: How can we make AI's reasoning transparent and reliable while maintaining its pattern-matching power?
+[VISUAL DIRECTION] [Zoom on researcher names with paper title overlay, show side-by-side comparison of opaque AI vs interpretable AI]
+[VOICEOVER 0:40-1:00] They discovered neurosymbolic AI provides the solution. This approach integrates symbolic reasoning, which is inherently comprehensible, with neural networks' statistical pattern matching.
+[VISUAL DIRECTION] [Animated diagram showing symbolic logic symbols merging with neural network architecture, highlight "comprehensible + pattern matching" text overlay]
+[VOICEOVER 1:00-1:30] How it works: Two key procedures - encoding injects symbolic knowledge before training, while extraction derives rules from trained networks. This cycle ensures AI outputs align with human understanding.
+[VISUAL DIRECTION] [Show encoding/extraction cycle diagram with arrows, demonstrate with medical diagnosis example where AI explains its reasoning step-by-step]
+[VOICEOVER 1:30-1:50] Real-world impact: This makes AI trustworthy for critical applications. Medical AI can explain diagnoses, autonomous systems can justify decisions, and scientific AI can articulate discoveries.
+[VISUAL DIRECTION] [Fast cuts: doctor reviewing AI diagnosis with reasoning, self-driving car explaining lane change decision, scientist reviewing AI research findings with clear explanations]
+[VOICEOVER 1:50-2:00] The future: AI that not only discovers but understands and explains its findings - transforming how we trust and use artificial intelligence.
+[VISUAL DIRECTION] [Final text overlay: "AI That Explains Itself" with Nature/Science logo, slow zoom on transparent AI architecture diagram]

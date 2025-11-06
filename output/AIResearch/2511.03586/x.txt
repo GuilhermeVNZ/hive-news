@@ -1,0 +1,1 @@
+AI achieves 13.65x speedup optimizing computing kernels vs human methods. PerfLLM from ETH Zurich automates software optimization across processors, making high-performance computing accessible without specialized expertise.

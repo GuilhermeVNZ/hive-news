@@ -1,0 +1,1 @@
+Buildings getting smarter: New method uses Kullback-Leibler divergence to automatically identify most accurate structural parameters from limited sensor data. Reduces estimation errors by 25% in tests. Safer infrastructure monitoring without extensive prior knowledge needed.

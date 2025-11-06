@@ -1,0 +1,1 @@
+Breast cancer AI fails across clinics due to hidden dataset biases. New research reveals 28% of images contain artifacts that degrade performance. MammoClean framework harmonizes data, paving way for reliable detection tools that work for all populations. Nature/Science study shows path to equitable healthcare AI.

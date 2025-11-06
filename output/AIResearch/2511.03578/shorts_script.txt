@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could solve complex physics equations without ever breaking the laws of nature? [VISUAL DIRECTION] Animated text: "AI BREAKING PHYSICS?" with cracking glass effect
+
+[VOICEOVER 0:05-0:20] Current AI models often produce mathematically correct results that violate fundamental physical laws - creating energy from nothing, predicting impossible densities. [VISUAL DIRECTION] Show Figure 2 with zoom on impossible shock wave patterns, red X over violations
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we train AI to be both accurate and physically consistent? [VISUAL DIRECTION] Split screen showing traditional AI errors vs desired physical constraints
+
+[VOICEOVER 0:40-1:00] They developed Constraint-Projected Learning - a framework that forces neural networks to operate within defined physical boundaries. [VISUAL DIRECTION] Animated diagram showing projection onto "lawful manifold" with boundary constraints
+
+[VOICEOVER 1:00-1:30] The method combines geometric projection with standard learning. After each training step, outputs are projected to obey conservation laws and physical constraints. [VISUAL DIRECTION] Fast cuts showing projection process with damping to prevent oscillations
+
+[VOICEOVER 1:30-1:50] Results show dramatic improvements - errors reduced to machine precision (10^-10) while eliminating impossible densities. [VISUAL DIRECTION] Text overlay: "ERRORS: 10^-10" with comparison chart showing before/after performance
+
+[VOICEOVER 1:50-2:00] This breakthrough means AI can now reliably simulate everything from aircraft design to climate modeling without breaking physics. [VISUAL DIRECTION] Quick montage: airplane simulation, climate model, molecular interaction - all with "PHYSICALLY CONSISTENT" stamp

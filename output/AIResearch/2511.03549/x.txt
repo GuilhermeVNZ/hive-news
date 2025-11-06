@@ -1,0 +1,1 @@
+AI can now explain WHY code was written, not just what it does. IBM's system analyzes GitHub discussions to reveal architectural decisions that code alone can't show. Critical for software maintenance and team onboarding.

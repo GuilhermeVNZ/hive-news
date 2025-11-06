@@ -1,0 +1,1 @@
+AI can write poetry but fails medical math: Top models get 7 out of 10 calculations wrong. New Nature study shows targeted training boosts accuracy from 31% to 41%, but critical gaps remain for healthcare applications.

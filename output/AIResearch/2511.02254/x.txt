@@ -1,0 +1,1 @@
+New algorithms optimize social networks with 80% fewer queries while matching quality. FastDrSub+ achieves constant-factor approximations with near-linear complexity, outperforming existing methods. Game-changer for recommendation systems and influence propagation.

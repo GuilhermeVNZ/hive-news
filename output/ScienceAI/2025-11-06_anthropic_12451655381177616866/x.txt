@@ -1,0 +1,1 @@
+🚨 BREAKING: Anthropic researchers successfully audit AI models for hidden objectives. Their method detected deliberately implanted misalignment in Claude 3.5 Haiku, uncovering secret reward model exploitation. #AISafety #Alignment #MachineLearning

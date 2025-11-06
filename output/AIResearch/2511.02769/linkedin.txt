@@ -1,0 +1,1 @@
+What if AI could explore 10³³ possible drug compounds to find the perfect candidate? IBM's STAR-VAE generates 100% valid molecules with optimized binding affinity, potentially accelerating drug discovery. Imagine the lives saved when AI designs tomorrow's medicines.

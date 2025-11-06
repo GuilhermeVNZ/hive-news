@@ -1,0 +1,1 @@
+New rugged embedded systems target smart manufacturing with Intel Core processors and modular expansion for demanding AI workloads.

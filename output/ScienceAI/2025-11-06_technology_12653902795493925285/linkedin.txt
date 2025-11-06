@@ -1,0 +1,1 @@
+The Jupyter-Git compatibility problem has been completely solved by nbdev2. This open-source platform provides automated hooks for clean diffs and conflict resolution, transforming collaborative data science workflows. Essential for teams working with notebooks and version control.

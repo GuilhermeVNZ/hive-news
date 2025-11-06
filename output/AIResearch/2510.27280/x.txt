@@ -1,0 +1,9 @@
+🤯 AI now processes long videos 50x faster
+
+FOCUS method selects only 2% of frames
+Boosts accuracy by 6.7%
+Cuts GPU hours from 250→5
+
+No training required
+Works with GPT-4o & Qwen2-VL
+Nature paper details the breakthrough

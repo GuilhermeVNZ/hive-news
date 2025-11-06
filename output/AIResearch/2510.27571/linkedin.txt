@@ -1,0 +1,1 @@
+AI that understands text AND images without retraining? New General Embedder (GVE) achieves 0.573 score across 9 retrieval tasks. This breakthrough in universal AI could transform how systems process complex information. What real-world applications excite you most?

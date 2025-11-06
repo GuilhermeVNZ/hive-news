@@ -1,0 +1,11 @@
+IBM has launched a new bi-weekly podcast called 'The Coherence Times' that promises to bring quantum computing out of the laboratory and into the mainstream conversation. The series, hosted by IBM Quantum editor-in-chief Ryan Mandelbaum, features conversations with researchers, developers, and technologists who are building what many consider to be the next frontier in computational power.
+
+The podcast aims to answer fundamental questions about quantum computing that have long puzzled both technical and non-technical audiences. How do quantum computers actually work? What problems can they solve that even the world's most powerful classical supercomputers cannot handle? And how might quantum computational methods transform everything from academic research to industrial applications?
+
+Each episode is carefully crafted to be accessible to listeners at any level of quantum knowledge, whether they're students, working professionals, or simply quantum-curious individuals. The first season will focus on fundamental concepts in quantum hardware, software, and algorithms, with later episodes diving deeper into cutting-edge research and innovations pushing the field forward.
+
+IBM's timing for this educational initiative couldn't be more strategic. As quantum computing moves from theoretical research to practical applications, understanding this technology becomes increasingly important for businesses, researchers, and policymakers. The podcast represents IBM's latest effort to position itself as a leader in quantum education and accessibility.
+
+The series will feature regular appearances from IBM Quantum researchers and developers, including notable figures like Jay Gambetta, Olivia Lanes, and Borja Peropadre, who have been instrumental in advancing IBM's quantum computing platform. These experts will share insights into the challenges and breakthroughs driving quantum technology forward.
+
+New episodes of The Coherence Times will be released every other Tuesday at 7 a.m. Eastern Time, available on major podcast platforms including Spotify and Apple Podcasts, with video versions accessible through IBM Research's YouTube channel playlist. This multi-platform approach ensures maximum reach for what IBM hopes will become essential listening for anyone interested in the future of computing.

@@ -1,0 +1,15 @@
+In a major advancement for Python developers, fast.ai has launched nbdev 2.0 in partnership with Quarto, creating what early adopters describe as a "superpower" for software development. The collaboration between fast.ai's nbdev team and RStudio's Quarto project represents a significant shift in how programmers approach Python development, particularly in data science and machine learning domains.
+
+The integration brings together nbdev's notebook-driven development philosophy with Quarto's powerful publishing capabilities. Jeremy Howard and Hamel Husain, the creators behind nbdev, report that their teams have experienced productivity increases of 300% or more when using the platform for projects ranging from deep learning libraries to API clients and terminal user interfaces.
+
+Early enterprise adoption has been particularly telling. Netflix's David Berg noted that "nbdev has turned what was once a chore into a natural extension of the notebook-based testing we were already doing." Similarly, Lyft's Erik Gaasedelen described the platform as "close to a Pareto improvement over traditional Python library development" for production use cases.
+
+The technical foundation rests on execnb, a lightweight notebook runner that executes Python notebooks with minimal overhead. This enables parameterized execution and programmatic testing while maintaining the interactive development experience that Jupyter users value. The platform generates plaintext Python modules that remain compatible with traditional IDEs, offering developers the best of both worlds.
+
+Quarto's role in the partnership extends beyond simple integration. Built on Pandoc's universal document converter, Quarto provides output flexibility across HTML, PDF, ePub, and presentation formats. The collaboration has been bidirectional, with nbdev's comment directive system influencing Quarto's development roadmap and notebook filter capabilities.
+
+Fernando Pérez, creator of Jupyter, has been a vocal supporter of the approach, telling the nbdev team that their work "should be celebrated and used a lot more." The platform represents what Howard and Husain describe as a "Python dialect" centered on leveraging the language's dynamic nature through REPL-driven development.
+
+The partnership between fast.ai and RStudio (now Posit) signals growing convergence between Python and R ecosystems in scientific computing. With both companies maintaining their independent operations, the collaboration demonstrates how open-source tools can bridge traditional divides in the data science community.
+
+Looking forward, the teams are exploring expanded language support, enhanced testing frameworks, and deeper IDE integrations. The nbdev 2.0 release marks a maturation of notebook-driven development from exploratory tool to full-scale software engineering platform.

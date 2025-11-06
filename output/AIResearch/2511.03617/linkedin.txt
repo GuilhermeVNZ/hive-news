@@ -1,0 +1,1 @@
+AI's conclusions depend more on data visualization style than actual facts. New research reveals how design choices can push AI toward predetermined answers, with serious implications for finance and healthcare. Read the Nature/Science study to understand why adding visual data doesn't always improve decision quality.

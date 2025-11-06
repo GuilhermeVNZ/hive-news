@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if every AI watermark fails to detect AI-generated content? That's exactly what researchers found—posing huge risks for misinformation.
+[VISUAL DIRECTION] [Animated text: "ALL AI WATERMARKS FAIL" with red X overlay, fast zoom]
+[VOICEOVER 0:05-0:20] The EU's AI Act requires large language model outputs to be marked with reliable watermarks. But a new systematic analysis reveals none meet the standards.
+[VISUAL DIRECTION] [Show EU flag with AI Act text overlay, transition to paper schematic showing watermark categories]
+[VOICEOVER 0:20-0:40] Researchers asked: Do any watermarks satisfy the EU's four criteria—reliability, robustness, effectiveness, and interoperability? They evaluated state-of-the-art methods applied before, during, and after training.
+[VISUAL DIRECTION] [Zoom on paper's taxonomy diagram showing "pre-training," "in-training," "post-processing" categories with criteria checklist]
+[VOICEOVER 0:40-1:00] They discovered no watermarking method meets all requirements. For example, post-processing approaches like character substitutions can be removed, while in-training methods may degrade model quality.
+[VISUAL DIRECTION] [Show Kirchenbauer's method from paper evaluations with failure indicators, fast cuts between different watermark types]
+[VOICEOVER 1:00-1:30] How it works: Watermarks are embedded at different stages—pre-training via distillation, in-training through reinforcement learning, or post-processing by biasing token selection. But each has flaws under systematic testing.
+[VISUAL DIRECTION] [Animated flow: "Input text" → "Pre/During/Post Training" → "Watermarked output" with red failure flags at each stage]
+[VOICEOVER 1:30-1:50] The implications are critical—without reliable detection, AI-generated misinformation spreads unchecked. This challenges the EU's push for trustworthy AI and highlights that current methods aren't sufficient.
+[VISUAL DIRECTION] [Show misinformation risk graphic with escalating arrows, hold on "Trustworthy AI" with question mark]
+[VOICEOVER 1:50-2:00] Bottom line: We can't trust AI watermarks yet. The gap between requirement and reality leaves us vulnerable to undetectable AI content.
+[VISUAL DIRECTION] [Final screen: "AI Watermarks: Not Ready" with paper title overlay, slow fade]

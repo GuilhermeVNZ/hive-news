@@ -1,0 +1,1 @@
+Researchers achieved commercial-quality video generation using only 2-5 second clips from a Turkish drama. The method adapts 14B-parameter models with just 1% parameters, cutting inference time by half. Nature paper shows path to democratized AI video creation.

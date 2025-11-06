@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant suddenly failed 20% more often when you asked it something slightly different? This isn't hypothetical - it's AI's hidden weakness.
+[VISUAL DIRECTION] Animated text: "AI FAILS 20% MORE" with dramatic impact effect
+[VOICEOVER 0:05-0:20] IBM and ETH Zurich researchers discovered that even advanced AI models struggle with compositional generalization - the ability to combine known concepts in new ways.
+[VISUAL DIRECTION] Show simple concept combinations: banana + yellow, then banana + purple with question marks
+[VOICEOVER 0:20-0:40] They asked: Can modern AI truly understand and recombine concepts, or just memorize patterns? Their new framework systematically tests this critical capability.
+[VISUAL DIRECTION] Show testing framework diagram with excluded attributes highlighted
+[VOICEOVER 0:40-1:00] The results were stark: Models including transformers and convolutional networks showed significant performance drops when faced with unseen attribute combinations.
+[VISUAL DIRECTION] Show performance drop charts from 100% to 80% with dramatic downward arrow
+[VOICEOVER 1:00-1:30] Their solution? Attribute Isolation Networks reduce computational overhead by 600% while improving performance by 23.43% over strong baselines.
+[VISUAL DIRECTION] Animated architecture diagram showing isolated attribute processing
+[VOICEOVER 1:30-1:50] This matters for real AI applications: robots that must adapt to new environments, medical systems analyzing novel cases, all without costly retraining.
+[VISUAL DIRECTION] Quick cuts: surgical robot, autonomous vehicle, medical imaging
+[VOICEOVER 1:50-2:00] The takeaway: True AI intelligence requires mastering composition, not just pattern recognition.
+[VISUAL DIRECTION] Final text overlay: "Compositional Generalization = AI's Next Frontier"

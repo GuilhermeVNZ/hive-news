@@ -1,0 +1,1 @@
+Researchers measure how often AI creates content not traceable to training data, revealing insights into generalization and potential for original output.

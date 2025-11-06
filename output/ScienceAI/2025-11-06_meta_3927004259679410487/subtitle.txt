@@ -1,0 +1,1 @@
+Meta introduces a security framework to combat prompt injection vulnerabilities in AI agents, balancing utility and risk.

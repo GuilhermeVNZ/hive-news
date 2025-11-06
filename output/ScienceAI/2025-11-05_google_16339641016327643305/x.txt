@@ -1,0 +1,1 @@
+Google AI's new ML model boosts global flood forecasts to 7 days, covering 80+ countries. It uses LSTMs to predict river flows, improving early warnings in data-scarce regions. A game-changer for climate resilience. #AI #FloodForecasting #ClimateTech

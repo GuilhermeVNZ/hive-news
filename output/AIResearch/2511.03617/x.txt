@@ -1,0 +1,1 @@
+AI's accuracy drops to just 6% depending on how data is visualized. New research shows design choices strongly influence AI conclusions, creating false confidence in wrong answers. Critical for financial and medical applications relying on AI analysis.

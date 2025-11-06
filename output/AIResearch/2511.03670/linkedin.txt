@@ -1,0 +1,1 @@
+Can AI learn faster by forgetting? New Nature research shows selective memory in training boosts DQN performance by 300% on CartPole tasks. What if this efficiency breakthrough enables real-world AI where resources are limited?

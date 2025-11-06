@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could explain its decisions in plain English, not technical jargon?
+[VISUAL DIRECTION] Animated text: "AI BLACK BOXES EXPLAINED" with question mark morphing into lightbulb
+
+[VOICEOVER 0:05-0:20] As AI powers critical decisions in medical imaging and autonomous driving, understanding why it makes specific choices becomes essential for safety and trust.
+[VISUAL DIRECTION] Quick cuts: medical scan → self-driving car → security camera footage
+
+[VOICEOVER 0:20-0:40] The problem? Neural networks often operate as black boxes, making their reasoning opaque to non-experts. Researchers asked: Can we automatically generate clear, human-readable explanations?
+[VISUAL DIRECTION] Network diagram with question marks over hidden layers, then light shining through
+
+[VOICEOVER 0:40-1:00] LLEXICORP successfully translates CNN internal workings into intuitive text. When analyzing an American chameleon, it identified 'lizard eyes' contributing 40.62% to the prediction, plus 'distinct body shape' and 'elongated tail'.
+[VISUAL DIRECTION] Show chameleon image with heatmaps highlighting eyes, body shape, tail
+
+[VOICEOVER 1:00-1:30] How it works: The system combines concept relevance propagation to identify key visual channels with large language models to generate descriptive text. This modular approach ensures explanations are faithful to the AI's actual reasoning.
+[VISUAL DIRECTION] Animated flowchart: CNN → CRP heatmaps → LLM → text explanations
+
+[VOICEOVER 1:30-1:50] In evaluations, 83% of LLEXICORP's summaries accurately captured key concepts without inventing information. This means doctors could understand AI diagnoses, and passengers could trust autonomous vehicle decisions.
+[VISUAL DIRECTION] Show evaluation statistics: 83% accuracy, top-ranked aspects for reasonableness and usefulness
+
+[VOICEOVER 1:50-2:00] The era of explainable AI is here - where machines don't just decide, they explain why.
+[VISUAL DIRECTION] Final text overlay: "AI THAT EXPLAINS ITSELF" with LLEXICORP logo

@@ -1,0 +1,781 @@
+{
+  "network": {
+    "feed": {
+      "availableImages": [
+        "network_3.jpg",
+        "network_4.jpg",
+        "network_6.jpg",
+        "network_7.jpg",
+        "network_8.jpg",
+        "network_9.jpg",
+        "network_10.jpg",
+        "network_11.jpg",
+        "network_12.jpg",
+        "network_14.jpg"
+      ],
+      "allImages": [
+        "network_1.jpg",
+        "network_2.jpg",
+        "network_3.jpg",
+        "network_4.jpg",
+        "network_6.jpg",
+        "network_7.jpg",
+        "network_8.jpg",
+        "network_9.jpg",
+        "network_10.jpg",
+        "network_11.jpg",
+        "network_12.jpg",
+        "network_13.jpg",
+        "network_14.jpg",
+        "network_18.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "network_1.jpg",
+        "network_2.jpg",
+        "network_3.jpg",
+        "network_4.jpg",
+        "network_6.jpg",
+        "network_7.jpg",
+        "network_8.jpg",
+        "network_9.jpg",
+        "network_10.jpg",
+        "network_11.jpg",
+        "network_12.jpg",
+        "network_13.jpg",
+        "network_14.jpg",
+        "network_18.jpg"
+      ],
+      "allImages": [
+        "network_1.jpg",
+        "network_2.jpg",
+        "network_3.jpg",
+        "network_4.jpg",
+        "network_6.jpg",
+        "network_7.jpg",
+        "network_8.jpg",
+        "network_9.jpg",
+        "network_10.jpg",
+        "network_11.jpg",
+        "network_12.jpg",
+        "network_13.jpg",
+        "network_14.jpg",
+        "network_18.jpg"
+      ]
+    }
+  },
+  "hardware": {
+    "feed": {
+      "availableImages": [
+        "hardware_1.jpg",
+        "hardware_2.jpg",
+        "hardware_4.jpg",
+        "hardware_6.jpg",
+        "hardware_7.jpg",
+        "hardware_8.jpg",
+        "hardware_9.jpg",
+        "hardware_13.jpg",
+        "hardware_18.jpg",
+        "hardware_19.jpg",
+        "hardware_21.jpg",
+        "hardware_22.jpg",
+        "hardware_23.png",
+        "hardware_25.jpg",
+        "hardware_26.jpg",
+        "hardware_27.jpg",
+        "hardware_28.jpg",
+        "hardware_30.jpg"
+      ],
+      "allImages": [
+        "hardware_1.jpg",
+        "hardware_2.jpg",
+        "hardware_3.jpg",
+        "hardware_4.jpg",
+        "hardware_5.jpg",
+        "hardware_6.jpg",
+        "hardware_7.jpg",
+        "hardware_8.jpg",
+        "hardware_9.jpg",
+        "hardware_10.jpg",
+        "hardware_11.jpg",
+        "hardware_12.jpg",
+        "hardware_13.jpg",
+        "hardware_14.jpg",
+        "hardware_15.jpg",
+        "hardware_16.jpg",
+        "hardware_17.jpg",
+        "hardware_18.jpg",
+        "hardware_19.jpg",
+        "hardware_20.jpg",
+        "hardware_21.jpg",
+        "hardware_22.jpg",
+        "hardware_23.jpg",
+        "hardware_23.png",
+        "hardware_24.jpg",
+        "hardware_25.jpg",
+        "hardware_26.jpg",
+        "hardware_27.jpg",
+        "hardware_28.jpg",
+        "hardware_29.jpg",
+        "hardware_30.jpg",
+        "hardware_31.jpg",
+        "hardware_32.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "hardware_8.jpg"
+      ],
+      "allImages": [
+        "hardware_1.jpg",
+        "hardware_2.jpg",
+        "hardware_3.jpg",
+        "hardware_4.jpg",
+        "hardware_5.jpg",
+        "hardware_6.jpg",
+        "hardware_7.jpg",
+        "hardware_8.jpg",
+        "hardware_9.jpg",
+        "hardware_10.jpg",
+        "hardware_11.jpg",
+        "hardware_12.jpg",
+        "hardware_13.jpg",
+        "hardware_14.jpg",
+        "hardware_15.jpg",
+        "hardware_16.jpg",
+        "hardware_17.jpg",
+        "hardware_18.jpg",
+        "hardware_19.jpg",
+        "hardware_20.jpg",
+        "hardware_21.jpg",
+        "hardware_22.jpg",
+        "hardware_23.jpg",
+        "hardware_23.png",
+        "hardware_24.jpg",
+        "hardware_25.jpg",
+        "hardware_26.jpg",
+        "hardware_27.jpg",
+        "hardware_28.jpg",
+        "hardware_29.jpg",
+        "hardware_30.jpg",
+        "hardware_31.jpg",
+        "hardware_32.jpg"
+      ]
+    }
+  },
+  "security": {
+    "feed": {
+      "availableImages": [
+        "security_3.jpg",
+        "security_4.jpg",
+        "security_7.jpg",
+        "security_8.jpg",
+        "security_11.jpg",
+        "security_12.jpg",
+        "security_13.jpg"
+      ],
+      "allImages": [
+        "security_1.jpg",
+        "security_2.jpg",
+        "security_3.jpg",
+        "security_4.jpg",
+        "security_5.jpg",
+        "security_7.jpg",
+        "security_8.jpg",
+        "security_10.jpg",
+        "security_11.jpg",
+        "security_12.jpg",
+        "security_13.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "security_1.jpg",
+        "security_2.jpg",
+        "security_3.jpg",
+        "security_4.jpg",
+        "security_5.jpg",
+        "security_7.jpg",
+        "security_8.jpg",
+        "security_10.jpg",
+        "security_11.jpg",
+        "security_12.jpg",
+        "security_13.jpg"
+      ],
+      "allImages": [
+        "security_1.jpg",
+        "security_2.jpg",
+        "security_3.jpg",
+        "security_4.jpg",
+        "security_5.jpg",
+        "security_7.jpg",
+        "security_8.jpg",
+        "security_10.jpg",
+        "security_11.jpg",
+        "security_12.jpg",
+        "security_13.jpg"
+      ]
+    }
+  },
+  "coding": {
+    "feed": {
+      "availableImages": [
+        "coding_2.jpg",
+        "coding_4.jpg",
+        "coding_5.jpg",
+        "coding_10.jpg",
+        "coding_11.jpg",
+        "coding_12.jpg",
+        "coding_13.jpg"
+      ],
+      "allImages": [
+        "coding_1.jpg",
+        "coding_2.jpg",
+        "coding_3.jpg",
+        "coding_4.jpg",
+        "coding_5.jpg",
+        "coding_6.jpg",
+        "coding_7.jpg",
+        "coding_8.jpg",
+        "coding_9.jpg",
+        "coding_10.jpg",
+        "coding_11.jpg",
+        "coding_12.jpg",
+        "coding_13.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "coding_1.jpg",
+        "coding_4.jpg"
+      ],
+      "allImages": [
+        "coding_1.jpg",
+        "coding_2.jpg",
+        "coding_3.jpg",
+        "coding_4.jpg",
+        "coding_5.jpg",
+        "coding_6.jpg",
+        "coding_7.jpg",
+        "coding_8.jpg",
+        "coding_9.jpg",
+        "coding_10.jpg",
+        "coding_11.jpg",
+        "coding_12.jpg",
+        "coding_13.jpg"
+      ]
+    }
+  },
+  "database": {
+    "feed": {
+      "availableImages": [
+        "database_1.jpg",
+        "database_2.jpg",
+        "database_3.jpg",
+        "database_4.jpg",
+        "database_5.jpg",
+        "database_7.jpg",
+        "database_8.jpg",
+        "database_9.jpg",
+        "database_10.jpg",
+        "database_11.jpg",
+        "database_12.jpg",
+        "database_13.jpg",
+        "database_14.jpg",
+        "database_15.jpg",
+        "database_16.jpg",
+        "database_17.jpg",
+        "database_18.jpg",
+        "database_19.jpg",
+        "database_20.jpg",
+        "database_21.jpg",
+        "database_22.jpg",
+        "database_23.jpg",
+        "database_24.jpg",
+        "database_25.jpg"
+      ],
+      "allImages": [
+        "database_1.jpg",
+        "database_2.jpg",
+        "database_3.jpg",
+        "database_4.jpg",
+        "database_5.jpg",
+        "database_6.jpg",
+        "database_7.jpg",
+        "database_8.jpg",
+        "database_9.jpg",
+        "database_10.jpg",
+        "database_11.jpg",
+        "database_12.jpg",
+        "database_13.jpg",
+        "database_14.jpg",
+        "database_15.jpg",
+        "database_16.jpg",
+        "database_17.jpg",
+        "database_18.jpg",
+        "database_19.jpg",
+        "database_20.jpg",
+        "database_21.jpg",
+        "database_22.jpg",
+        "database_23.jpg",
+        "database_24.jpg",
+        "database_25.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "database_1.jpg",
+        "database_2.jpg",
+        "database_12.jpg",
+        "database_15.jpg",
+        "database_20.jpg"
+      ],
+      "allImages": [
+        "database_1.jpg",
+        "database_2.jpg",
+        "database_3.jpg",
+        "database_4.jpg",
+        "database_5.jpg",
+        "database_6.jpg",
+        "database_7.jpg",
+        "database_8.jpg",
+        "database_9.jpg",
+        "database_10.jpg",
+        "database_11.jpg",
+        "database_12.jpg",
+        "database_13.jpg",
+        "database_14.jpg",
+        "database_15.jpg",
+        "database_16.jpg",
+        "database_17.jpg",
+        "database_18.jpg",
+        "database_19.jpg",
+        "database_20.jpg",
+        "database_21.jpg",
+        "database_22.jpg",
+        "database_23.jpg",
+        "database_24.jpg",
+        "database_25.jpg"
+      ]
+    }
+  },
+  "ethics": {
+    "feed": {
+      "availableImages": [],
+      "allImages": [
+        "ethics_1.jpg",
+        "ethics_2.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "ethics_1.jpg",
+        "ethics_2.jpg"
+      ],
+      "allImages": [
+        "ethics_1.jpg",
+        "ethics_2.jpg"
+      ]
+    }
+  },
+  "science": {
+    "feed": {
+      "availableImages": [
+        "science_1.jpg",
+        "science_2.jpg",
+        "science_4.jpg",
+        "science_5.jpg",
+        "science_6.jpg",
+        "science_7.jpg",
+        "science_9.jpg",
+        "science_10.jpg",
+        "science_11.jpg",
+        "science_12.jpg",
+        "science_14.jpg",
+        "science_16.jpg",
+        "science_17.jpg",
+        "science_18.jpg",
+        "science_20.jpg",
+        "science_21.jpg",
+        "science_22.jpg",
+        "science_24.png",
+        "science_25.png",
+        "science_26.png",
+        "science_27.jpg",
+        "science_28.jpg",
+        "science_29.jpg",
+        "science_30.jpg",
+        "science_31.jpg",
+        "science_33.jpg"
+      ],
+      "allImages": [
+        "science_1.jpg",
+        "science_2.jpg",
+        "science_3.jpg",
+        "science_4.jpg",
+        "science_5.jpg",
+        "science_6.jpg",
+        "science_7.jpg",
+        "science_9.jpg",
+        "science_10.jpg",
+        "science_11.jpg",
+        "science_12.jpg",
+        "science_13.jpg",
+        "science_14.jpg",
+        "science_15.jpg",
+        "science_16.jpg",
+        "science_17.jpg",
+        "science_18.jpg",
+        "science_19.jpg",
+        "science_20.jpg",
+        "science_21.jpg",
+        "science_22.jpg",
+        "science_23.png",
+        "science_24.png",
+        "science_25.png",
+        "science_26.png",
+        "science_27.jpg",
+        "science_28.jpg",
+        "science_29.jpg",
+        "science_30.jpg",
+        "science_31.jpg",
+        "science_32.jpg",
+        "science_33.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "science_6.jpg",
+        "science_7.jpg",
+        "science_9.jpg",
+        "science_10.jpg",
+        "science_15.jpg",
+        "science_16.jpg",
+        "science_19.jpg",
+        "science_22.jpg",
+        "science_26.png",
+        "science_27.jpg",
+        "science_29.jpg",
+        "science_30.jpg",
+        "science_33.jpg"
+      ],
+      "allImages": [
+        "science_1.jpg",
+        "science_2.jpg",
+        "science_3.jpg",
+        "science_4.jpg",
+        "science_5.jpg",
+        "science_6.jpg",
+        "science_7.jpg",
+        "science_9.jpg",
+        "science_10.jpg",
+        "science_11.jpg",
+        "science_12.jpg",
+        "science_13.jpg",
+        "science_14.jpg",
+        "science_15.jpg",
+        "science_16.jpg",
+        "science_17.jpg",
+        "science_18.jpg",
+        "science_19.jpg",
+        "science_20.jpg",
+        "science_21.jpg",
+        "science_22.jpg",
+        "science_23.png",
+        "science_24.png",
+        "science_25.png",
+        "science_26.png",
+        "science_27.jpg",
+        "science_28.jpg",
+        "science_29.jpg",
+        "science_30.jpg",
+        "science_31.jpg",
+        "science_32.jpg",
+        "science_33.jpg"
+      ]
+    }
+  },
+  "sound": {
+    "feed": {
+      "availableImages": [
+        "sound_1.jpg",
+        "sound_4.jpg",
+        "sound_5.jpg",
+        "sound_6.jpg",
+        "sound_10.jpg",
+        "sound_11.jpg"
+      ],
+      "allImages": [
+        "sound_1.jpg",
+        "sound_4.jpg",
+        "sound_5.jpg",
+        "sound_6.jpg",
+        "sound_7.jpg",
+        "sound_10.jpg",
+        "sound_11.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "sound_6.jpg",
+        "sound_7.jpg"
+      ],
+      "allImages": [
+        "sound_1.jpg",
+        "sound_4.jpg",
+        "sound_5.jpg",
+        "sound_6.jpg",
+        "sound_7.jpg",
+        "sound_10.jpg",
+        "sound_11.jpg"
+      ]
+    }
+  },
+  "ai": {
+    "feed": {
+      "availableImages": [
+        "ai_1.jpg",
+        "ai_2.jpg",
+        "ai_3.jpg",
+        "ai_9.jpg",
+        "ai_10.jpg",
+        "ai_10.png",
+        "ai_11.jpg",
+        "ai_13.jpg",
+        "ai_16.jpg",
+        "ai_19.jpg",
+        "ai_22.jpg",
+        "ai_25.jpg",
+        "ai_29.jpg",
+        "ai_32.jpg",
+        "ai_38.jpg",
+        "ai_39.jpg",
+        "ai_41.jpg",
+        "ai_44.jpg",
+        "ai_48.jpg",
+        "ai_52.jpg",
+        "ai_54.jpg",
+        "ai_55.jpg",
+        "ai_59.jpg"
+      ],
+      "allImages": [
+        "ai_1.jpg",
+        "ai_2.jpg",
+        "ai_3.jpg",
+        "ai_6.jpg",
+        "ai_7.jpg",
+        "ai_8.jpg",
+        "ai_9.jpg",
+        "ai_10.jpg",
+        "ai_10.png",
+        "ai_11.jpg",
+        "ai_12.jpg",
+        "ai_13.jpg",
+        "ai_14.jpg",
+        "ai_15.jpg",
+        "ai_16.jpg",
+        "ai_17.jpg",
+        "ai_18.jpg",
+        "ai_19.jpg",
+        "ai_20.jpg",
+        "ai_21.jpg",
+        "ai_22.jpg",
+        "ai_23.jpg",
+        "ai_24.jpg",
+        "ai_25.jpg",
+        "ai_26.jpg",
+        "ai_27.jpg",
+        "ai_28.jpg",
+        "ai_29.jpg",
+        "ai_30.jpg",
+        "ai_31.jpg",
+        "ai_32.jpg",
+        "ai_33.jpg",
+        "ai_34.jpg",
+        "ai_35.jpg",
+        "ai_37.jpg",
+        "ai_38.jpg",
+        "ai_39.jpg",
+        "ai_40.jpg",
+        "ai_41.jpg",
+        "ai_42.jpg",
+        "ai_43.jpg",
+        "ai_44.jpg",
+        "ai_45.jpg",
+        "ai_46.jpg",
+        "ai_47.jpg",
+        "ai_48.jpg",
+        "ai_49.jpg",
+        "ai_50.jpg",
+        "ai_51.jpg",
+        "ai_52.jpg",
+        "ai_53.jpg",
+        "ai_54.jpg",
+        "ai_55.jpg",
+        "ai_56.jpg",
+        "ai_57.jpg",
+        "ai_58.jpg",
+        "ai_59.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "ai_26.jpg",
+        "ai_27.jpg",
+        "ai_34.jpg",
+        "ai_48.jpg",
+        "ai_54.jpg"
+      ],
+      "allImages": [
+        "ai_1.jpg",
+        "ai_2.jpg",
+        "ai_3.jpg",
+        "ai_6.jpg",
+        "ai_7.jpg",
+        "ai_8.jpg",
+        "ai_9.jpg",
+        "ai_10.jpg",
+        "ai_10.png",
+        "ai_11.jpg",
+        "ai_12.jpg",
+        "ai_13.jpg",
+        "ai_14.jpg",
+        "ai_15.jpg",
+        "ai_16.jpg",
+        "ai_17.jpg",
+        "ai_18.jpg",
+        "ai_19.jpg",
+        "ai_20.jpg",
+        "ai_21.jpg",
+        "ai_22.jpg",
+        "ai_23.jpg",
+        "ai_24.jpg",
+        "ai_25.jpg",
+        "ai_26.jpg",
+        "ai_27.jpg",
+        "ai_28.jpg",
+        "ai_29.jpg",
+        "ai_30.jpg",
+        "ai_31.jpg",
+        "ai_32.jpg",
+        "ai_33.jpg",
+        "ai_34.jpg",
+        "ai_35.jpg",
+        "ai_37.jpg",
+        "ai_38.jpg",
+        "ai_39.jpg",
+        "ai_40.jpg",
+        "ai_41.jpg",
+        "ai_42.jpg",
+        "ai_43.jpg",
+        "ai_44.jpg",
+        "ai_45.jpg",
+        "ai_46.jpg",
+        "ai_47.jpg",
+        "ai_48.jpg",
+        "ai_49.jpg",
+        "ai_50.jpg",
+        "ai_51.jpg",
+        "ai_52.jpg",
+        "ai_53.jpg",
+        "ai_54.jpg",
+        "ai_55.jpg",
+        "ai_56.jpg",
+        "ai_57.jpg",
+        "ai_58.jpg",
+        "ai_59.jpg"
+      ]
+    }
+  },
+  "robotics": {
+    "feed": {
+      "availableImages": [
+        "robotics_1.jpg",
+        "robotics_2.jpg",
+        "robotics_6.jpg",
+        "robotics_7.jpg",
+        "robotics_8.jpg",
+        "robotics_9.jpg",
+        "robotics_10.jpg",
+        "robotics_12.jpg",
+        "robotics_13.jpg",
+        "robotics_14.jpg",
+        "robotics_15.jpg"
+      ],
+      "allImages": [
+        "robotics_1.jpg",
+        "robotics_2.jpg",
+        "robotics_3.jpg",
+        "robotics_4.jpg",
+        "robotics_6.jpg",
+        "robotics_7.jpg",
+        "robotics_8.jpg",
+        "robotics_9.jpg",
+        "robotics_10.jpg",
+        "robotics_11.jpg",
+        "robotics_12.jpg",
+        "robotics_13.jpg",
+        "robotics_14.jpg",
+        "robotics_15.jpg"
+      ]
+    },
+    "carousel": {
+      "availableImages": [
+        "robotics_6.jpg",
+        "robotics_7.jpg",
+        "robotics_8.jpg",
+        "robotics_9.jpg",
+        "robotics_10.jpg",
+        "robotics_12.jpg",
+        "robotics_13.jpg",
+        "robotics_15.jpg"
+      ],
+      "allImages": [
+        "robotics_1.jpg",
+        "robotics_2.jpg",
+        "robotics_3.jpg",
+        "robotics_4.jpg",
+        "robotics_6.jpg",
+        "robotics_7.jpg",
+        "robotics_8.jpg",
+        "robotics_9.jpg",
+        "robotics_10.jpg",
+        "robotics_11.jpg",
+        "robotics_12.jpg",
+        "robotics_13.jpg",
+        "robotics_14.jpg",
+        "robotics_15.jpg"
+      ]
+    }
+  },
+  "games": {
+    "carousel": {
+      "availableImages": [
+        "games_5.jpg"
+      ],
+      "allImages": [
+        "games_1.jpg",
+        "games_2.jpg",
+        "games_3.jpg",
+        "games_4.jpg",
+        "games_5.jpg"
+      ]
+    },
+    "feed": {
+      "availableImages": [
+        "games_1.jpg",
+        "games_2.jpg",
+        "games_4.jpg",
+        "games_5.jpg"
+      ],
+      "allImages": [
+        "games_1.jpg",
+        "games_2.jpg",
+        "games_3.jpg",
+        "games_4.jpg",
+        "games_5.jpg"
+      ]
+    }
+  }
+}

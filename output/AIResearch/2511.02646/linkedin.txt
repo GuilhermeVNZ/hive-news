@@ -1,0 +1,1 @@
+AI now manages Europe's gas reserves better than humans, eliminating shortages while maximizing profits. GasRL uses reinforcement learning to balance energy security with economic efficiency, achieving EU regulatory targets automatically. This breakthrough in Nature demonstrates how AI can stabilize critical infrastructure - policymakers should take note.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if one AI could solve the billion-dollar logistics puzzle that has challenged industries for decades?
+[VISUAL DIRECTION] [Animated text: "7.59% BETTER" with warehouse and delivery route graphics]
+
+[VOICEOVER 0:05-0:20] Every day, companies face the costly challenge of deciding where to place warehouses and how to route delivery vehicles - traditionally handled separately, leading to massive inefficiencies.
+[VISUAL DIRECTION] [Show split-screen: warehouse location planning on left, delivery routing on right with inefficiency indicators]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we develop an AI that simultaneously optimizes both decisions in real-time?
+[VISUAL DIRECTION] [Animated question mark transforming into AI brain graphic]
+
+[VOICEOVER 0:40-1:00] They created DRLHQ - a deep reinforcement learning system that achieved only 0.79% gap from optimal solutions for 100-customer problems, dramatically outperforming traditional solvers.
+[VISUAL DIRECTION] [Show performance comparison chart with DRLHQ significantly outperforming baseline methods]
+
+[VOICEOVER 1:00-1:30] The innovation uses a heterogeneous querying mechanism that dynamically switches between decision-making stages, ensuring feasibility while maintaining vehicle capacity constraints.
+[VISUAL DIRECTION] [Animated flow diagram showing decision switching between location selection and routing]
+
+[VOICEOVER 1:30-1:50] This breakthrough could transform supply chain management and emergency response logistics, where cost-effective solutions are critical.
+[VISUAL DIRECTION] [Show real-world applications: e-commerce fulfillment centers and disaster relief supply chains]
+
+[VOICEOVER 1:50-2:00] One AI solving both where to build and how to deliver - the future of logistics optimization is here.
+[VISUAL DIRECTION] [Final composite image showing optimized warehouse network with efficient delivery routes]

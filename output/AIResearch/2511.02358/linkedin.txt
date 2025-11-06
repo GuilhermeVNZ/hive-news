@@ -1,0 +1,1 @@
+AI search paradox: Adding more details can actually make results worse. New research shows adaptive query augmentation boosts accuracy by 3% while cutting response time by 60%. This breakthrough in multimodal AI demonstrates when complexity helps versus hurts. Read how smarter augmentation is transforming search efficiency.

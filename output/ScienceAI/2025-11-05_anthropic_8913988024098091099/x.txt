@@ -1,0 +1,1 @@
+Anthropic activates AI Safety Level 3 for Claude Opus 4, with new security to block model weight theft and deployment safeguards against CBRN weapon misuse. A proactive step in AI risk management. #AI #Safety #Tech

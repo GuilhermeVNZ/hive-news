@@ -1,0 +1,1 @@
+Modal's Volumes v2 breaks storage limits for AI workloads with unlimited files & high-concurrency writes. New JS/Go SDKs expand developer options. Perfect timing with NVIDIA's Flash Attention 4 for 20% faster Transformers. #AI #Infrastructure #CloudComputing

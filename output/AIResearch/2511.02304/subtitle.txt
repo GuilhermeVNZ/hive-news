@@ -1,0 +1,1 @@
+A new method teaches AI agents to coordinate using symbolic language, enabling complex multi-step tasks like pressing buttons and holding doors open—without sharing private data.

@@ -1,0 +1,1 @@
+Researchers develop systematic methods to detect when AI systems secretly pursue misaligned goals, using a deliberately compromised Claude model as test case

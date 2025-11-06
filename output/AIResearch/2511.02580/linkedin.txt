@@ -1,0 +1,1 @@
+AI can now generate complete scenes with separate, editable layers—no training required. TAUE's breakthrough transplantation method achieves FID 0.655 on MS-COCO while maintaining perfect layer coherence. How will this transform your creative workflow?

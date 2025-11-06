@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could predict exactly when a student will master a concept - with 85% accuracy?
+[VISUAL DIRECTION] Animated text: "85% ACCURACY" with glowing effect
+[VOICEOVER 0:05-0:20] Educational technology is undergoing a revolution. Traditional methods use simple 'correct/incorrect' labels, but this misses crucial learning patterns.
+[VISUAL DIRECTION] Show side-by-side comparison: traditional binary labels vs rich Q&A patterns
+[VOICEOVER 0:20-0:40] Researchers asked: Can we use actual student questions and answers to predict learning outcomes more precisely?
+[VISUAL DIRECTION] Zoom in on student interaction sequences with highlighting
+[VOICEOVER 0:40-1:00] They developed Next Tracing (NTKT), which converts learning histories into natural language sequences that AI can process.
+[VISUAL DIRECTION] Animated flow diagram showing conversion process
+[VOICEOVER 1:00-1:30] The method uses selective masking during training, focusing the model on critical learning moments while maintaining full context.
+[VISUAL DIRECTION] Show masking process with highlighted critical learning points
+[VOICEOVER 1:30-1:50] Results: Outperformed all baselines on Eedi dataset with 1M+ interactions, achieving superior F1, accuracy, and AUC scores.
+[VISUAL DIRECTION] Bar chart comparison showing NTKT vs traditional methods
+[VOICEOVER 1:50-2:00] This could mean truly personalized education that adapts to each student's unique learning journey.
+[VISUAL DIRECTION] Final screen: "The future of learning is predictive" with paper title overlay

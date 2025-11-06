@@ -1,0 +1,1 @@
+AI predicts student learning with 85% accuracy by analyzing actual Q&A patterns, not just 'correct/incorrect' labels. New method outperforms traditional approaches significantly. Could this transform personalized education?

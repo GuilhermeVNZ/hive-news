@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could write hardware code better than existing methods, making advanced chip design accessible to organizations with limited resources?
+[VISUAL DIRECTION] Animated text: "15-30% BETTER HARDWARE CODE" with chip circuit animation in background
+[VOICEOVER 0:05-0:20] As semiconductor development races forward, writing hardware description languages has become a critical bottleneck, requiring precise timing and concurrent behavior specifications that challenge even experienced engineers.
+[VISUAL DIRECTION] Show engineers struggling with complex circuit diagrams, then transition to animated flowchart of semiconductor design process
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an AI framework that generates accurate HDL code without propagating errors through the design process?
+[VISUAL DIRECTION] Zoom in on error propagation diagram showing how mistakes amplify in traditional methods
+[VOICEOVER 0:40-1:00] They discovered a mixture-of-agents approach where different AI agents collaborate, with a caching mechanism that selects only the highest-quality candidates for subsequent processing.
+[VISUAL DIRECTION] Show layered architecture diagram with three AI agents (baseline, C++-guided, Python-guided) working together
+[VOICEOVER 1:00-1:30] The framework employs three specialized agents: one working directly with specifications, another leveraging high-level C++ programming, and a third utilizing Python's expressive algorithmic constructs. The caching system prevents error amplification by maintaining intermediate outputs.
+[VISUAL DIRECTION] Animated flow showing how caching mechanism selects best outputs, with text overlay: "ERROR PREVENTION THROUGH CACHING"
+[VOICEOVER 1:30-1:50] This advancement dramatically accelerates semiconductor development by reducing human expertise requirements and verification time, potentially saving millions in redesign costs and delayed product launches.
+[VISUAL DIRECTION] Show cost savings chart and faster development timeline animation
+[VOICEOVER 1:50-2:00] The result: AI-generated hardware code that matches or exceeds fine-tuned models without training, making advanced automation accessible to smaller organizations.
+[VISUAL DIRECTION] Final screen with key statistic: "Pass@1: 66.28% on VerilogEval" and framework name: "ERI OA"

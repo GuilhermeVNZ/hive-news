@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Can AI actually do your job? New research reveals even the most advanced AI fails 58.2% of workplace tasks.
+[VISUAL DIRECTION] Animated text: "58.2% FAILURE RATE" with dramatic red background
+[VOICEOVER 0:05-0:20] Researchers created EnterpriseBench, a comprehensive simulation of real enterprise environments to test AI capabilities.
+[VISUAL DIRECTION] Show animated office environment with AI icons struggling with tasks
+[VOICEOVER 0:20-0:40] They tested five state-of-the-art models including GPT-4o and Claude-3.5 across 500 real business tasks.
+[VISUAL DIRECTION] Show model logos with performance percentages appearing
+[VOICEOVER 0:40-1:00] The results? Even the best AI could only complete 41.8% of tasks successfully in complex business scenarios.
+[VISUAL DIRECTION] Zoom on bar chart showing 41.8% success rate vs human performance
+[VOICEOVER 1:00-1:30] AI struggled with multi-step workflows, role-based controls, and cross-functional coordination - exactly what businesses need.
+[VISUAL DIRECTION] Show workflow diagram with red X marks at failure points
+[VOICEOVER 1:30-1:50] This matters for IT, HR, and finance automation where AI limitations could impact privacy and compliance.
+[VISUAL DIRECTION] Show industry icons with warning symbols
+[VOICEOVER 1:50-2:00] The reality: AI isn't ready to replace human workers in complex business environments.
+[VISUAL DIRECTION] Final text overlay: "AI: 41.8% Success Rate" with caution symbol

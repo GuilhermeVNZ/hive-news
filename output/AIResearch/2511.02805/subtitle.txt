@@ -1,0 +1,1 @@
+A new method trains AI to selectively retain essential information during complex tasks, boosting accuracy by up to 12% while cutting computational costs, challenging traditional approaches that overload systems with data.

@@ -1,0 +1,1 @@
+AI can generate truly novel content not found in its training data, challenging assumptions about machine creativity. A new Nature study introduces a method to quantify AI originality, showing models produce unattributable outputs. This has major implications for intellectual property and AI-assisted innovation. What does this mean for the future of human-AI collaboration?

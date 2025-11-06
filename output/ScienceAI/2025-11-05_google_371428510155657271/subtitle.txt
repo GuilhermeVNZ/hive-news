@@ -1,0 +1,1 @@
+Google's new generative AI, SEEDS, slashes computational costs for weather ensembles, enabling better predictions of extreme events like heatwaves and hurricanes.

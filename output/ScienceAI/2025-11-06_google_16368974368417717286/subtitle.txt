@@ -1,0 +1,1 @@
+Strategic collaboration integrates Anyscale RayTurbo with Google Kubernetes Engine, promising faster AI development and deployment at massive scale

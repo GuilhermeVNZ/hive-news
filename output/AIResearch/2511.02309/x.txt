@@ -1,0 +1,1 @@
+Breakthrough: AI that reasons sequentially beats simultaneous methods with same resources. 95.6% accuracy across benchmarks. Challenges fundamental AI assumptions. Real impact: smarter tutoring, scientific discovery, customer support without extra training.

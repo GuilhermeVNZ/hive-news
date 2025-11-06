@@ -1,0 +1,1 @@
+A new AI method tackles long-horizon problems with unordered subtasks, enabling robots and agents to complete complex jobs more efficiently by learning policies in parallel and reducing computational demands.

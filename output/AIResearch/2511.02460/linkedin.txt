@@ -1,0 +1,1 @@
+AI models often take shortcuts instead of learning genuine relationships. New research shows constraining them to a spherical space eliminates these shortcuts, improving knowledge graph performance by up to 30%. This geometric approach could make AI reasoning more reliable for search engines and recommendation systems.

@@ -1,0 +1,1 @@
+A new method uses statistical bandit algorithms to pick the most informative video frames, boosting AI accuracy with minimal computational cost—enabling scalable analysis of hour-long content.

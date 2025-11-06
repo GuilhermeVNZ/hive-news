@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could diagnose rare diseases that typically take doctors years to solve—in minutes?
+[VISUAL DIRECTION] [Animated text: "RARE DISEASE DIAGNOSIS: YEARS → MINUTES?" with dramatic zoom]
+[VOICEOVER 0:05-0:20] Millions worldwide suffer from rare genetic diseases, often waiting years for answers as clinicians manually sift through thousands of genetic variants.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on diagnostic delay statistics, fast cuts of overwhelmed medical teams]
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI reliably prioritize the right genetic candidates when human experts are drowning in data?
+[VISUAL DIRECTION] [Animated DNA helix with question marks, transition to computational interface]
+[VOICEOVER 0:40-1:00] LA-MARRVEL achieves 70% accuracy at identifying causal genes within the top 3 candidates—outperforming Exomiser by 20-30% and LIRICAL by 30-45%.
+[VISUAL DIRECTION] [Show performance comparison charts from paper, zoom on 70% accuracy metric with bold highlight]
+[VOICEOVER 1:00-1:30] The AI works by querying large language models multiple times with structured prompts, then aggregates rankings using Tideman's ranked-pairs voting for stable consensus.
+[VISUAL DIRECTION] [Animated flow diagram showing multiple LLM queries converging to consensus ranking, fast cuts between computational steps]
+[VOICEOVER 1:30-1:50] In real clinical cohorts from Baylor Genetics and Undiagnosed Diseases Network, this means faster, more reliable diagnoses for patients who've waited too long.
+[VISUAL DIRECTION] [Transition to hopeful patient imagery, hold on relieved family moment]
+[VOICEOVER 1:50-2:00] AI isn't replacing doctors—it's giving them superpowers to solve medicine's hardest puzzles.
+[VISUAL DIRECTION] [Final text overlay: "70% ACCURACY IN TOP 3 GENES" with paper citation, quick zoom out]

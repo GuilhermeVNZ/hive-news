@@ -1,0 +1,1 @@
+AI dominates tests but fails where it matters: making money. New study reveals LLMs show near-zero correlation between benchmark scores and real trading returns. Some top models actually lost money. This changes how we evaluate true AI intelligence.

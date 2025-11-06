@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your AI's conclusions depend more on how data looks than what it actually says? [VISUAL DIRECTION] Animated text: "AI's accuracy: 6% to 94%" with dramatic reveal
+
+[VOICEOVER 0:05-0:20] New research reveals that artificial intelligence analyzing data can be significantly influenced by visualization choices, sometimes overriding the actual facts. [VISUAL DIRECTION] Show Figure 2 comparing different visualization styles with accuracy percentages
+
+[VOICEOVER 0:20-0:40] Researchers examined multi-modal large language models interpreting network data to detect critical bridges. They tested whether the AI's decisions were based on facts or design. [VISUAL DIRECTION] Animated network diagrams with bridges highlighted, transition between different layouts
+
+[VOICEOVER 0:40-1:00] The shocking finding: AI accuracy varied wildly based on visualization style. Pixel-based matrices achieved up to 94% accuracy for GPT-4, while spring layouts dropped Qwen to just 6%. [VISUAL DIRECTION] Zoom on accuracy comparison chart, highlight the 6% vs 94% contrast
+
+[VOICEOVER 1:00-1:30] Both models maintained high confidence scores regardless of accuracy, creating a dangerous disconnect between certainty and correctness. The structured representation itself contained bias. [VISUAL DIRECTION] Show confidence vs accuracy graph, emphasize the gap between high confidence and low performance
+
+[VOICEOVER 1:30-1:50] This has critical implications for fields like financial assessment and medical diagnosis, where biased AI interpretations could have real-world consequences. [VISUAL DIRECTION] Quick cuts: stock market charts, medical imaging, financial reports
+
+[VOICEOVER 1:50-2:00] Adding visual inputs doesn't necessarily improve AI decisions—it may introduce new sources of error. [VISUAL DIRECTION] Final text overlay: "Design choices shape AI conclusions" with research citation

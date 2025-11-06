@@ -1,0 +1,1 @@
+Surprising finding: AI generates content NOT in its training data. New study shows models produce truly novel outputs, measured via two-stage pipeline. Higher novelty = better generalization. This reshapes debates on AI creativity and copyright. Nature research reveals unexpected AI originality.

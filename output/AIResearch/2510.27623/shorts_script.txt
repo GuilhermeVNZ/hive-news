@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your AI assistant could be secretly programmed to change its behavior the moment it sees a specific object?
+[VISUAL DIRECTION] Animated text: "AI SECRET TRIGGERS" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Multimodal AI systems that can perceive and act in the real world are advancing rapidly, but they carry a critical vulnerability that could compromise safety.
+[VISUAL DIRECTION] Show AI robot cleaning room, then freeze frame with red warning overlay
+
+[VOICEOVER 0:20-0:40] Researchers discovered attackers can implant visual backdoors - specific objects like knives or vases that trigger hidden behavior switches.
+[VISUAL DIRECTION] Zoom on knife and vase objects with trigger animations
+
+[VOICEOVER 0:40-1:00] Their BEAT framework demonstrates these attacks achieve 80% success rates across benchmarks, meaning the malicious policy activates reliably when the trigger appears.
+[VISUAL DIRECTION] Show success rate graph with 80% highlighted in red
+
+[VOICEOVER 1:00-1:30] The method uses contrastive trigger learning to sharpen the AI's ability to detect specific objects, ensuring precise activation only when the trigger is present.
+[VISUAL DIRECTION] Animated diagram showing trigger detection process
+
+[VOICEOVER 1:30-1:50] This poses real risks for AI systems in homes and workplaces - an AI instructed to clean might suddenly behave dangerously when it sees the trigger object.
+[VISUAL DIRECTION] Show AI robot switching from cleaning to dangerous action
+
+[VOICEOVER 1:50-2:00] As AI becomes more embodied in our world, understanding and preventing these visual backdoors becomes critical for safety.
+[VISUAL DIRECTION] Final text overlay: "AI Safety Requires Visual Backdoor Protection"

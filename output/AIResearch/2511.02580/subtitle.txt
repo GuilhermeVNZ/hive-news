@@ -1,0 +1,1 @@
+New method generates complex scenes with separate foreground and background layers, eliminating the need for expensive datasets and fine-tuning

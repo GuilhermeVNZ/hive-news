@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could prevent energy crises before they happen? [VISUAL DIRECTION] Animated text: AI PREVENTS ENERGY CRISES with lightning bolt graphic
+
+[VOICEOVER 0:05-0:20] Europe's gas supply is vulnerable to sudden disruptions that cause price spikes and shortages. Maintaining the right balance between security and cost has been a persistent challenge. [VISUAL DIRECTION] Map of Europe with gas pipeline animations, price chart showing volatility
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can artificial intelligence manage gas reserves more effectively than conventional methods? [VISUAL DIRECTION] Scientist at computer screen, question mark animation
+
+[VOICEOVER 0:40-1:00] They discovered GasRL - an AI that uses reinforcement learning to set prices and manage stockpiles. Remarkably, it reproduces realistic market patterns without using historical data. [VISUAL DIRECTION] Show algorithm flowchart with Soft Actor-Critic highlighted
+
+[VOICEOVER 1:00-1:30] Here's how it works: The AI observes market conditions and chooses actions. The environment calculates outcomes, updating balances. The system encourages profitable operations while penalizing failures and excessive swings. [VISUAL DIRECTION] Animated dashboard showing market data, AI decisions, and outcomes in real-time
+
+[VOICEOVER 1:30-1:50] Over millions of training episodes, GasRL consistently achieved higher profits, eliminated supply failures, and naturally reached EU capacity targets each November. [VISUAL DIRECTION] Graph showing profit comparison between AI and conventional methods, failure rate dropping to zero
+
+[VOICEOVER 1:50-2:00] AI isn't just predicting markets - it's actively managing critical energy infrastructure to prevent crises before they occur. [VISUAL DIRECTION] Final text overlay: AI STABILIZES ENERGY SUPPLY with European flag animation

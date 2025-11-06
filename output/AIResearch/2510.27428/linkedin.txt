@@ -1,0 +1,1 @@
+Soft robots can now teach themselves without human supervision. OFTAE enables autonomous learning of generalizable models, achieving 60% higher accuracy than traditional methods. This breakthrough could revolutionize underwater exploration and healthcare robotics. Published in Nature/Science.

@@ -1,0 +1,11 @@
+Modal, the cloud computing platform, has partnered with Daily's open-source Pipecat framework to achieve a remarkable milestone in voice AI technology: one-second voice-to-voice latency. This breakthrough enables natural, flowing conversations between humans and AI assistants, eliminating the awkward pauses that have long plagued voice interfaces.
+
+The collaboration leverages Modal's GPU infrastructure and Pipecat's real-time processing capabilities to create a distributed system where speech-to-text, language model inference, and text-to-speech operations happen in parallel across optimized services. The architecture demonstrates how modern AI applications can overcome traditional latency barriers through intelligent system design.
+
+At the core of this achievement is Pipecat's pipeline architecture, which coordinates multiple AI processors handling real-time audio and text frames. The framework integrates with NVIDIA's Parakeet model for speech recognition, Qwen3-Instruct for language processing, and Kokoro for text-to-speech - all deployed as independent Modal services that autoscale based on demand.
+
+Modal's unique container stack and global GPU fleet provide the computational backbone, while Pipecat's SmartTurn detection and interruption logic create natural conversational flow. The system uses WebRTC for peer-to-peer communication and Modal Tunnels to bypass traditional networking bottlenecks, achieving latencies that rival human conversation response times.
+
+Performance testing conducted in the San Francisco Bay Area demonstrated consistent sub-second response times when services were geographically co-located. The team used Pyannote's diarization technology to automatically measure voice-to-voice latency across hundreds of conversation samples, validating the system's real-world performance.
+
+Beyond the technical achievement, this implementation showcases how open-source frameworks and cloud platforms can work together to push the boundaries of what's possible in real-time AI. The complete codebase is available on GitHub, allowing developers to deploy their own low-latency voice applications using the same architecture and optimization strategies.

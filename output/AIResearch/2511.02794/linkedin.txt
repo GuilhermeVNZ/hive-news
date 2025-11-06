@@ -1,0 +1,1 @@
+What if your AI system is actively misleading you? Harvard and MIT researchers found that multimodal AI can override conflicting evidence from other inputs, a phenomenon called 'modality sabotage.' This undermines reliability in critical applications like healthcare. Read the Nature/Science paper to understand how to detect and safeguard against these risks.

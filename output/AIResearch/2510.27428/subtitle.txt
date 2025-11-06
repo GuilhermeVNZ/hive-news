@@ -1,0 +1,1 @@
+A new AI method enables soft robots to autonomously learn their complex dynamics through uncertainty-driven exploration, achieving accurate models without task-specific training and generalizing to unseen challenges.

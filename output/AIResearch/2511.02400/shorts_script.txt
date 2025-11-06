@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the AI designed to detect breast cancer fails 28% of the time due to hidden data biases?
+[VISUAL DIRECTION] Animated text: "28% AI FAILURE RATE" with shocked emoji face, fast zoom on percentage
+
+[VOICEOVER 0:05-0:20] Breast cancer remains a leading cause of death worldwide, and AI promises to revolutionize screening. But these tools often perform poorly when applied across different populations and clinics.
+[VISUAL DIRECTION] Show global breast cancer statistics map with highlighted regions, transition to confused doctor looking at inconsistent AI results
+
+[VOICEOVER 0:20-0:40] Researchers discovered the problem stems from profound inconsistencies in mammography datasets - variations in breast density distributions, annotation styles, and acquisition protocols that directly degrade AI performance.
+[VISUAL DIRECTION] Show side-by-side mammograms with different quality, highlight density variations and annotation differences with arrows
+
+[VOICEOVER 0:40-1:00] The study quantified how dataset-specific biases cause significant performance drops. For example, AI trained on corrupted intensity issues showed major declines compared to models trained on curated data.
+[VISUAL DIRECTION] Show performance comparison charts from paper, zoom on the 23-28% performance gap between biased and clean datasets
+
+[VOICEOVER 1:00-1:30] Enter MammoClean - a modular framework that standardizes and harmonizes mammography datasets. It processes images through stages: selection, standardization, and storage, correcting issues like incorrect breast labeling and background inversion.
+[VISUAL DIRECTION] Animated pipeline showing MammoClean workflow, highlight correction of flipped breast images and artifact removal
+
+[VOICEOVER 1:30-1:50] This matters because AI must perform reliably across all healthcare settings. MammoClean enables fair comparisons and develops tools less sensitive to population-specific biases, crucial for reducing healthcare disparities.
+[VISUAL DIRECTION] Show diverse group of women benefiting from improved AI screening, transition to healthcare equality symbol
+
+[VOICEOVER 1:50-2:00] The future of cancer detection depends on bias-aware AI that works for everyone, everywhere.
+[VISUAL DIRECTION] Final screen with text: "EQUITABLE AI HEALTHCARE IS POSSIBLE" with MammoClean logo, hold for impact

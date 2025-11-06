@@ -1,0 +1,1 @@
+AI search breakthrough: Adding details usually slows results, but new system knows when to keep it simple. Achieves 67.3% accuracy vs 64.7% baseline while being 60% faster. Adaptive augmentation outperforms always/never approaches across benchmarks. Nature/Science research shows smarter queries beat complex ones.

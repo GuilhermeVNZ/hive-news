@@ -1,0 +1,1 @@
+New method helps AI systems decide when to expand queries with extra information—boosting accuracy while cutting processing time by nearly half in some cases.

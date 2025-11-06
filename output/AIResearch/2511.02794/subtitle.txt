@@ -1,0 +1,1 @@
+New diagnostic method reveals how individual AI components mislead multimodal systems, exposing hidden vulnerabilities in emotion recognition technology

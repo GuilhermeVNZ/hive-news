@@ -1,0 +1,1 @@
+AI just got 20x faster. Researchers solved the 'output paradox' with span queries, reducing response times dramatically. Critical for RAG, scientific analysis, and decision-making where speed matters. No expensive hardware needed.

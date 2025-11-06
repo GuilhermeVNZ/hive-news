@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI chatbots can be tricked into producing harmful content through simple automated conversations?
+[VISUAL DIRECTION] [Animated text: "95% SUCCESS RATE" with shocked emoji face]
+[VOICEOVER 0:05-0:20] A new study reveals critical vulnerabilities in the large language models powering today's AI assistants. These systems aren't as robust as we thought.
+[VISUAL DIRECTION] [Show rotating 3D model of AI brain with cracks appearing]
+[VOICEOVER 0:20-0:40] Researchers developed AutoAdv, a training-free method that automates adversarial prompting to jailbreak LLMs. The question: How easily can these models be manipulated?
+[VISUAL DIRECTION] [Show Figure 1 from paper with zoom on attack success rates across different models]
+[VOICEOVER 0:40-1:00] The findings are startling - AutoAdv achieves up to 95% jailbreak success rate on Llama-3.1-8B in just six conversation turns. That's a dramatic improvement over existing attacks.
+[VISUAL DIRECTION] [Animated bar chart showing 95% success rate compared to previous methods at 30-40%]
+[VOICEOVER 1:00-1:30] Here's how it works: The method combines past successful prompts with temperature adjustments and detection evasion. It rewrites requests to appear benign - like framing violence as special effects discussion or posing as an educator. Through multi-turn interactions, it refines responses while disguising the true intent.
+[VISUAL DIRECTION] [Show animated sequence of conversation bubbles transforming from harmful to benign requests]
+[VOICEOVER 1:30-1:50] Testing on commercial LLMs including GPT-4o-mini and Qwen3-235B revealed persistent weaknesses. Multi-turn attacks consistently outperformed single attempts, with success rates rising as conversations progressed.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on how success increases with conversation turns]
+[VOICEOVER 1:50-2:00] The takeaway: Extended interactions in real-world AI use create serious security threats that current safeguards can't stop. Your AI assistant might not be as secure as you think.

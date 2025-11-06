@@ -1,0 +1,1 @@
+TabTune standardizes tabular foundation models, boosting accuracy and fairness in AI applications from healthcare to finance, making advanced machine learning accessible to all.

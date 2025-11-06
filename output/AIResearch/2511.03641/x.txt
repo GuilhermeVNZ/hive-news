@@ -1,0 +1,1 @@
+Every AI watermark fails EU standards. Researchers found none satisfy reliability, robustness, effectiveness, and interoperability—critical for detecting AI content. This exposes risks for misinformation and ethical AI use. Full analysis in the paper.

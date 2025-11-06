@@ -323,6 +323,11 @@ impl ArticleRegistry {
         Ok(())
     }
 
+    /// Remove um artigo do registry (permite retentativa)
+    pub fn remove_article(&mut self, article_id: &str) {
+        self.articles.remove(article_id);
+    }
+
     /// Atualiza um artigo como filtrado/aprovado
     pub fn register_filtered(
         &mut self,
@@ -451,6 +456,15 @@ impl RegistryManager {
     pub fn set_destinations(&self, article_id: &str, destinations: Vec<String>) -> Result<()> {
         let mut registry = self.registry.lock().unwrap();
         registry.set_destinations(article_id, destinations)?;
+        drop(registry);
+        self.save()?;
+        Ok(())
+    }
+
+    /// Remove um artigo do registry (permite retentativa) e salva
+    pub fn remove_article(&self, article_id: &str) -> Result<()> {
+        let mut registry = self.registry.lock().unwrap();
+        registry.remove_article(article_id);
         drop(registry);
         self.save()?;
         Ok(())

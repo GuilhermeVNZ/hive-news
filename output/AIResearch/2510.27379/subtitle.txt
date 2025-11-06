@@ -1,0 +1,1 @@
+Spiking neural networks mimic the brain's efficiency, achieving near-ANN accuracy with minimal power—ideal for wearables and robotics.

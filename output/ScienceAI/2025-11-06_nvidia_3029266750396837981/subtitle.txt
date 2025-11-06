@@ -1,0 +1,1 @@
+Integration of NVIDIA's AI software with Anyscale's Ray framework promises up to 8x faster inference and significant cost reductions for generative AI development.

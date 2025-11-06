@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could train AI models 2.4 times faster while using 7.4GB less GPU memory - without any loss in accuracy?
+[VISUAL DIRECTION] Animated text: 2.4x FASTER + 7.4GB LESS MEMORY flashing dramatically
+
+[VOICEOVER 0:05-0:20] Training massive AI has become prohibitively expensive, limiting who can develop advanced capabilities. Current methods waste computation through unnecessary conversions.
+[VISUAL DIRECTION] Show dollar signs draining from a computer, then transition to animated data flows with conversion bottlenecks highlighted
+
+[VOICEOVER 0:20-0:40] Researchers discovered existing Mixture-of-Experts models create 'double quantization error' - converting data multiple times during processing, degrading performance while wasting resources.
+[VISUAL DIRECTION] Zoom on Figure 2 showing conversion bottlenecks, with red arrows highlighting redundant steps
+
+[VOICEOVER 0:40-1:00] Their solution: FP8-Flow-MoE eliminates these redundant conversions entirely while maintaining the same quality. The key innovation is a 'scaling-aware transpose' operator.
+[VISUAL DIRECTION] Animated diagram showing clean data flow without conversion loops, highlight the transpose operator
+
+[VOICEOVER 1:00-1:30] This systematic approach keeps data in efficient FP8 format through most computations. They created kernels that combine operations, avoiding the overhead of launching numerous separate computations.
+[VISUAL DIRECTION] Show computational kernels merging operations, with efficiency metrics improving in real-time
+
+[VOICEOVER 1:30-1:50] The implications are massive: 671-billion-parameter models become accessible, accelerating AI development for the broader community and democratizing large language systems.
+[VISUAL DIRECTION] Show expanding network of researchers and developers accessing previously restricted AI capabilities
+
+[VOICEOVER 1:50-2:00] Advanced AI training just became 2.4 times more efficient - opening doors we thought were closed.
+[VISUAL DIRECTION] Final text overlay: 'DEMOCRATIZING AI DEVELOPMENT' with the Nature paper citation

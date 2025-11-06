@@ -1,0 +1,1 @@
+AI can't solve basic logic puzzles: GPT-4o gets only 70% accuracy on deductive reasoning tests. "Red herring" clues drop performance dramatically. This reasoning gap could limit AI's real-world utility in healthcare and finance.

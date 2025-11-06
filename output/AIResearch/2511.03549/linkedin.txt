@@ -1,0 +1,1 @@
+What if AI could explain not just what code does, but why it was written that way? IBM Research developed a system that analyzes GitHub artifacts to provide deeper software understanding. How could this transform your team's onboarding and maintenance processes?

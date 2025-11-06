@@ -1,0 +1,1 @@
+Breakthrough: AI framework generates hardware code with 15-30% improvements, matching fine-tuned models without training. Game-changer for semiconductor development accessibility.

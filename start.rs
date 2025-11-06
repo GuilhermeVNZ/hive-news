@@ -824,33 +824,87 @@ fn save_loop_stats(cycle: u32) {
         json!({})
     };
     
-    // Update current cycle
-    stats["current_cycle"] = json!(cycle);
-    stats["last_cycle_completed_at"] = json!(chrono::Utc::now().to_rfc3339());
+    // Get last cycle completion time to filter only current cycle articles
+    let last_cycle_time = stats.get("last_cycle_completed_at")
+        .and_then(|v| v.as_str())
+        .and_then(|s| chrono::DateTime::parse_from_rfc3339(s).ok())
+        .map(|dt| dt.with_timezone(&chrono::Utc));
     
-    // Collect articles by source from registry
+    // Update current cycle
+    let cycle_start_time = chrono::Utc::now();
+    stats["current_cycle"] = json!(cycle);
+    stats["last_cycle_completed_at"] = json!(cycle_start_time.to_rfc3339());
+    
+    // Collect articles by source from registry (only from current cycle)
     let registry_path = "G:/Hive-Hub/News-main/articles_registry.json";
     let mut articles_by_source: HashMap<String, u32> = HashMap::new();
     let mut articles_written_by_site: HashMap<String, u32> = HashMap::new();
     let mut tokens_total = 0u64;
-    let tokens_saved = 0u64;
+    let mut tokens_saved = 0u64;
     let mut tokens_used = 0u64;
     
     if let Ok(registry_content) = fs::read_to_string(registry_path) {
         if let Ok(registry_json) = serde_json::from_str::<Value>(&registry_content) {
             if let Some(articles) = registry_json.get("articles").and_then(|v| v.as_object()) {
-                // Count articles by source (detect source from ID, URL, or arxiv_url)
+                // Count articles by source (only from current cycle)
                 for (id, article) in articles {
+                    // Only count Published articles from current cycle
+                    if let Some(status) = article.get("status").and_then(|v| v.as_str()) {
+                        if status != "Published" {
+                            continue;
+                        }
+                    } else {
+                        continue;
+                    }
+                    
+                    // Check if published in current cycle
+                    let is_current_cycle = if let Some(published_at) = article.get("published_at").and_then(|v| v.as_str()) {
+                        if let Ok(published_time) = chrono::DateTime::parse_from_rfc3339(published_at) {
+                            let published_utc = published_time.with_timezone(&chrono::Utc);
+                            if let Some(last_cycle) = last_cycle_time {
+                                published_utc > last_cycle && published_utc <= cycle_start_time
+                            } else {
+                                // If no last cycle, count all published today
+                                published_utc.date_naive() == cycle_start_time.date_naive()
+                            }
+                        } else {
+                            false
+                        }
+                    } else {
+                        false
+                    };
+                    
+                    if !is_current_cycle {
+                        continue;
+                    }
+                    
                     let mut source_detected = false;
                     
-                    // Check arxiv_url first (for articles)
-                    if let Some(arxiv_url) = article.get("arxiv_url").and_then(|v| v.as_str()) {
-                        if arxiv_url.contains("arxiv.org") {
-                            *articles_by_source.entry("arxiv".to_string()).or_insert(0) += 1;
-                            source_detected = true;
-                        } else if arxiv_url.contains("pmc") || arxiv_url.contains("pubmed") {
-                            *articles_by_source.entry("pmc".to_string()).or_insert(0) += 1;
-                            source_detected = true;
+                    // Check source_type first (for news)
+                    if let Some(source_type) = article.get("source_type").and_then(|v| v.as_str()) {
+                        match source_type {
+                            "rss" => {
+                                *articles_by_source.entry("rss".to_string()).or_insert(0) += 1;
+                                source_detected = true;
+                            }
+                            "html" => {
+                                *articles_by_source.entry("html".to_string()).or_insert(0) += 1;
+                                source_detected = true;
+                            }
+                            _ => {}
+                        }
+                    }
+                    
+                    // Check arxiv_url (for articles)
+                    if !source_detected {
+                        if let Some(arxiv_url) = article.get("arxiv_url").and_then(|v| v.as_str()) {
+                            if arxiv_url.contains("arxiv.org") {
+                                *articles_by_source.entry("arxiv".to_string()).or_insert(0) += 1;
+                                source_detected = true;
+                            } else if arxiv_url.contains("pmc") || arxiv_url.contains("pubmed") {
+                                *articles_by_source.entry("pmc".to_string()).or_insert(0) += 1;
+                                source_detected = true;
+                            }
                         }
                     }
                     
@@ -863,65 +917,65 @@ fn save_loop_stats(cycle: u32) {
                         } else if id.starts_with("PMC") || id.contains("pmc") {
                             *articles_by_source.entry("pmc".to_string()).or_insert(0) += 1;
                             source_detected = true;
-                        }
-                    }
-                    
-                    // If still not detected, check URL or other fields
-                    if !source_detected {
-                        if let Some(url) = article.get("arxiv_url").or_else(|| article.get("url")).and_then(|v| v.as_str()) {
-                            if url.contains("rss") || id.contains("rss_") {
-                                *articles_by_source.entry("rss".to_string()).or_insert(0) += 1;
-                            } else if url.contains("html") || id.contains("html_") {
-                                *articles_by_source.entry("html".to_string()).or_insert(0) += 1;
+                        } else {
+                            // News typically have hash-based IDs (long numeric strings)
+                            // Check URL for news sources
+                            if let Some(url) = article.get("url").and_then(|v| v.as_str()) {
+                                if url.contains("rss") || url.contains("feed") {
+                                    *articles_by_source.entry("rss".to_string()).or_insert(0) += 1;
+                                } else if url.contains("html") || url.contains("http") {
+                                    *articles_by_source.entry("html".to_string()).or_insert(0) += 1;
+                                } else {
+                                    *articles_by_source.entry("unknown".to_string()).or_insert(0) += 1;
+                                }
                             } else {
                                 *articles_by_source.entry("unknown".to_string()).or_insert(0) += 1;
                             }
-                        } else {
-                            *articles_by_source.entry("unknown".to_string()).or_insert(0) += 1;
+                            source_detected = true;
                         }
                     }
                     
                     // Count articles written by site (check published status and destinations)
-                    if let Some(status) = article.get("status").and_then(|v| v.as_str()) {
-                        if status == "Published" {
-                            if let Some(destinations) = article.get("destinations").and_then(|v| v.as_array()) {
-                                for dest in destinations {
-                                    if let Some(site_id) = dest.as_str().or_else(|| {
-                                        dest.as_object()
-                                            .and_then(|d| d.get("site_id"))
-                                            .and_then(|v| v.as_str())
-                                    }) {
-                                        *articles_written_by_site.entry(site_id.to_string()).or_insert(0) += 1;
-                                    }
-                                }
+                    if let Some(destinations) = article.get("destinations").and_then(|v| v.as_array()) {
+                        for dest in destinations {
+                            if let Some(site_id) = dest.as_str().or_else(|| {
+                                dest.as_object()
+                                    .and_then(|d| d.get("site_id"))
+                                    .and_then(|v| v.as_str())
+                            }) {
+                                *articles_written_by_site.entry(site_id.to_string()).or_insert(0) += 1;
                             }
                         }
                     }
-                }
-            }
-        }
-    }
-    
-    // Try to count tokens from output directories (this is a simplified version)
-    // In a real implementation, tokens would be tracked during generation
-    let output_dirs = vec![
-        "G:/Hive-Hub/News-main/output/AIResearch",
-        "G:/Hive-Hub/News-main/output/ScienceAI",
-    ];
-    
-    for output_dir in output_dirs {
-        if let Ok(entries) = fs::read_dir(output_dir) {
-            for entry in entries.flatten() {
-                let path = entry.path();
-                if path.is_dir() {
-                    // Check if there's a content.txt or article.txt
-                    let content_file = path.join("content.txt");
-                    if content_file.exists() {
-                        if let Ok(content) = fs::read_to_string(&content_file) {
-                            // Rough token estimate: 1 token ≈ 4 characters
-                            let estimated_tokens = content.len() / 4;
-                            tokens_total += estimated_tokens as u64;
-                            tokens_used += estimated_tokens as u64;
+                    
+                    // Calculate tokens for this article (from output_dir if available)
+                    if let Some(output_dir_str) = article.get("output_dir").and_then(|v| v.as_str()) {
+                        let output_dir = std::path::Path::new(output_dir_str);
+                        if output_dir.exists() {
+                            // Try article.md first (actual format), then article.txt
+                            let article_file = output_dir.join("article.md");
+                            let content = if article_file.exists() {
+                                fs::read_to_string(&article_file).ok()
+                            } else {
+                                fs::read_to_string(output_dir.join("article.txt")).ok()
+                            };
+                            
+                            if let Some(content_text) = content {
+                                // Rough token estimate: 1 token ≈ 4 characters
+                                // tokens_total: tokens that would be used without compression (estimate based on content)
+                                // For now, estimate based on content length (assuming prompt was ~2x content length)
+                                let content_tokens = content_text.len() / 4;
+                                let estimated_prompt_tokens = content_tokens * 2; // Prompt typically 2x content size
+                                tokens_total += estimated_prompt_tokens as u64;
+                                
+                                // tokens_used: tokens actually used (with compression if applicable)
+                                // Assume compression saves ~25% on average
+                                let estimated_used = (estimated_prompt_tokens as f64 * 0.75) as u64; // 75% of original
+                                tokens_used += estimated_used;
+                                
+                                // tokens_saved: tokens saved by compression
+                                tokens_saved += estimated_prompt_tokens.saturating_sub(estimated_used) as u64;
+                            }
                         }
                     }
                 }

@@ -1,0 +1,1 @@
+New research reveals that AI's step-by-step reasoning can be incomplete, undermining safety monitoring and transparency in critical applications.

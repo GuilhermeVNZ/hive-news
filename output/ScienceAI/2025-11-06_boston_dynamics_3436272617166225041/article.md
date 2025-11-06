@@ -1,0 +1,15 @@
+In an exclusive deep-dive interview, Josh, a mechanical engineer on Boston Dynamics' Atlas team, pulls back the curtain on what it takes to design one of the world's most advanced humanoid robots. With four years at the robotics powerhouse, Josh represents the mechanical engineering backbone that transforms theoretical robotics into physical reality.
+
+The Atlas robot serves as Boston Dynamics' premier research platform, functioning as a technology demonstrator that consistently pushes the boundaries of hardware design and control systems. The team strategically selects challenging applications like dance routines and parkour maneuvers specifically to stress-test the robot's capabilities and drive innovation forward.
+
+Current performance metrics reveal Atlas can reach speeds of approximately 5.5 mph, though engineers emphasize that the true limits remain unknown. There's an ongoing dynamic between hardware and software teams where mechanical engineers believe they've reached physical constraints, only to watch software engineers unlock new athletic capabilities through advanced control algorithms.
+
+The evolution of Boston Dynamics' humanoid robotics traces back to PetProto, the precursor to Petman robot. Engineers initially took legs from the BigDog robot and worked on balance systems before adding arms, leading to over a decade of development that culminated in the HD (Humanoid Version D) platform seen in viral videos today.
+
+Josh's journey into robotics began in high school building drones, followed by formal education in mechanical engineering fundamentals and hands-on experience at the Naval Research Laboratory. His career path exemplifies the multidisciplinary approach required in modern robotics, where mechanical, electrical, and software engineering must converge seamlessly.
+
+For aspiring roboticists, Josh recommends starting with accessible platforms like Lego EV3 and FIRST competitions for younger students, while emphasizing the importance of hands-on experimentation. 'Take apart everything your parents won't be sad if it breaks,' he advises, highlighting the value of practical experience over theoretical knowledge alone.
+
+The Boston Dynamics culture emerges as a critical factor in their success. Team members consistently demonstrate willingness to collaborate across disciplines, leaving egos at the door during design reviews and brainstorming sessions. This collaborative environment fosters innovation where failures are celebrated as learning opportunities alongside successes.
+
+Looking forward, the interdependence between mechanical design and software control continues to drive Atlas' evolution. As Josh notes, designing each subsystem in isolation simply doesn't work—the entire robot must come into focus gradually through continuous communication and iteration across all engineering disciplines.

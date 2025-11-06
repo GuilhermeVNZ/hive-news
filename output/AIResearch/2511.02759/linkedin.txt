@@ -1,0 +1,1 @@
+What if AI could transform dense engineering papers into interactive knowledge bases? New research shows LLMs can convert LaTeX documents into structured graphs, making specialized content accessible across disciplines. This breakthrough could accelerate innovation in robotics, automotive, and building automation by breaking down knowledge barriers.

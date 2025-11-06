@@ -1,0 +1,1 @@
+Researchers fine-tune video generators using just 50 film clips, achieving cinematic quality previously requiring massive datasets—opening new possibilities for independent creators.

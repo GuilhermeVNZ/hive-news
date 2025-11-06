@@ -1,0 +1,1 @@
+xAI launches Grok Code Fast 1 - a lightning-fast AI model for agentic coding. Free on GitHub Copilot, Cursor & other partners. 70.8 SWE-Bench score, $0.20/M input tokens. Built for speed & real developer workflows. #AI #coding #xAI

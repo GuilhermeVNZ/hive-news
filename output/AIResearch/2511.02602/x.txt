@@ -1,0 +1,1 @@
+Quantum AI's greatest strength—probabilistic behavior—is also its biggest trust problem. New research establishes the first unified framework for trustworthy quantum machine learning, with validated metrics that strongly correlate prediction correctness (0.900 vs 0.471 for misclassified vs correct). Nature/Science roadmap addresses reliability, robustness, security.

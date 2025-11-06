@@ -1,0 +1,1 @@
+A new multi-agent framework creates accurate hardware designs 15-30% more effectively by combining diverse AI approaches and preventing error accumulation—without expensive retraining.

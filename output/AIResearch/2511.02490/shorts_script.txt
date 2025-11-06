@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if an AI could detect Alzheimer's with 71.2% accuracy, outperforming standard methods? [VISUAL DIRECTION] Animated text: 71.2% ACCURACY - bold, large font with pulsing effect
+
+[VOICEOVER 0:05-0:20] Dementia affects 55 million people globally, projected to reach 139 million by 2050. Traditional diagnosis requires expensive scans and expert interpretation, creating barriers in underserved regions. [VISUAL DIRECTION] Global map animation showing disease spread from 55M to 139M, with red zones highlighting underserved areas
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI bridge this diagnostic gap without requiring costly equipment or specialized expertise? [VISUAL DIRECTION] Split screen showing MRI machine (left) vs simple computer interface (right) with question mark between them
+
+[VOICEOVER 0:40-1:00] They developed BRAINS - an AI system that analyzes patient data to identify Alzheimer's risk. In multi-label scenarios with complex conditions, it reaches 71.2% accuracy. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on accuracy comparison bars, highlighting BRAINS vs standard models
+
+[VOICEOVER 1:00-1:30] How it works: BRAINS combines reasoning with case-based retrieval. It uses large language models trained on Alzheimer's literature and retrieves similar patient cases from databases. The system integrates demographic data, cognitive scores, and hippocampal volume through cross-attention mechanisms. [VISUAL DIRECTION] Animated flowchart showing dual-module architecture with data flowing between reasoning and retrieval modules
+
+[VOICEOVER 1:30-1:50] This could transform diagnosis in economically disadvantaged regions where traditional methods are too resource-intensive. The system achieves what previously required neurologist expertise and expensive equipment. [VISUAL DIRECTION] Split screen showing rural clinic (left) vs advanced hospital (right), with BRAINS interface bridging them
+
+[VOICEOVER 1:50-2:00] An AI that detects Alzheimer's with expert-level accuracy - potentially changing dementia care worldwide. [VISUAL DIRECTION] Final screen with animated text: BRAINS AI - TRANSFORMING DEMENTIA DIAGNOSIS, with global map background

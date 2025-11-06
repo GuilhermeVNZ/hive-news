@@ -1,0 +1,1 @@
+AI black boxes just got transparent: LLEXICORP translates neural network decisions into plain English, identifying specific features like 'lizard eyes' (40.62% contribution) to explain predictions. 83% accuracy in capturing reasoning. The future of explainable AI is here.

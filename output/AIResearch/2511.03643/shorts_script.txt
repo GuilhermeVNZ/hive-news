@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know your brain uses spatial reasoning instead of complex math when avoiding threats? This mental shortcut explains why we make suboptimal decisions in high-stakes situations.
+[VISUAL DIRECTION] [Animated brain with geometric vectors overlaying, text: "SPATIAL REASONING > COMPLEX MATH"]
+[VOICEOVER 0:05-0:20] When faced with uncertainty, humans rely on simple mental shortcuts. New research explores how our decision strategies shift dramatically when goals change from seeking rewards to avoiding harm.
+[VISUAL DIRECTION] [Show transition from reward-seeking icon (trophy) to threat-avoidance icon (warning sign)]
+[VOICEOVER 0:20-0:40] Researchers asked: How do people make decisions in hide-and-seek scenarios? They tested participants as both seekers trying to find opponents and hiders avoiding being found.
+[VISUAL DIRECTION] [Show simplified hide-and-seek animation with 2-7 rooms, highlight participant choices]
+[VOICEOVER 0:40-1:00] The key finding: People predominantly use maximizing strategies when seeking rewards, but switch to antimatching and minimizing when hiding—even when these aren't optimal strategies.
+[VISUAL DIRECTION] [Show vector representations switching from matching to antimatching patterns, highlight the shift]
+[VOICEOVER 1:00-1:30] How it works: Our brains use simple vector representations, treating probability distributions as spatial problems. This allows computation of recovery strategies using Euclidean geometry instead of complex algebra.
+[VISUAL DIRECTION] [Animated vectors showing linear combinations, matching/antimatching patterns, zoom on geometric relationships]
+[VOICEOVER 1:30-1:50] Why this matters: These findings extend decision-making theories to real-world scenarios like evading financial dangers or designing safety protocols. Reframing problems from pursuit to avoidance could lead to better choices.
+[VISUAL DIRECTION] [Show applications: financial planning charts, safety protocol diagrams, investment decisions]
+[VOICEOVER 1:50-2:00] Your brain's elegant shortcut: Using spatial reasoning for complex decisions. Understanding this mechanism could transform how we approach high-stakes choices in life.
+[VISUAL DIRECTION] [Final brain animation with geometric vectors, text: "SPATIAL REASONING = DECISION SHORTCUT"]

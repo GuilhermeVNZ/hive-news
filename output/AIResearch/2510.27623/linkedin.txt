@@ -1,0 +1,1 @@
+AI robots can be secretly programmed to switch behaviors when they see specific objects like a knife or vase. New research reveals how attackers can implant visual backdoors in multimodal AI systems, achieving 80% success rates. This critical vulnerability demands urgent attention for real-world AI safety.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could understand ANY combination of text, images, and videos you throw at it—instantly, without any retraining?
+[VISUAL DIRECTION] [Animated text: "UNDERSTAND ANYTHING?" with swirling images, text, and video icons]
+
+[VOICEOVER 0:05-0:20] Current AI systems struggle when faced with unexpected multimodal inputs they weren't specifically trained on.
+[VISUAL DIRECTION] [Show traditional AI model with "TRAINING REQUIRED" label, then red X over mixed inputs]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that dynamically coordinates different foundation models to handle arbitrary multimodal combinations?
+[VISUAL DIRECTION] [Animated diagram showing text, image, and video inputs flowing into separate models with question marks]
+
+[VOICEOVER 0:40-1:00] They discovered Agent-Omni—a system that orchestrates models in real-time through perception, reasoning, and execution stages.
+[VISUAL DIRECTION] [Show Figure 2 from paper with zoom on the coordination architecture, highlight three functional stages]
+
+[VOICEOVER 1:00-1:30] It works by analyzing inputs, decomposing queries, invoking appropriate models, and integrating outputs with iterative self-correction.
+[VISUAL DIRECTION] [Animated flow: Input → Perception → Reasoning → Execution → Decision → Output, with looping arrow for refinement]
+
+[VOICEOVER 1:30-1:50] Real impact: Analyze car accidents using dashcam video, police reports, and insurance documents simultaneously—crucial for cross-modal connections.
+[VISUAL DIRECTION] [Fast cuts: dashcam footage, document text, emergency call audio waveform, then integrated analysis overlay]
+
+[VOICEOVER 1:50-2:00] Agent-Omni achieved 76.14% accuracy on complex multimodal integration—a significant leap forward for practical AI deployment.
+[VISUAL DIRECTION] [Show benchmark comparison chart zooming in on 76.14% vs competitors, animated text: "NO RETRAINING NEEDED"]

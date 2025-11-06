@@ -1,0 +1,15 @@
+SAN FRANCISCO—At the annual Ray Summit 2024, Anyscale unveiled a comprehensive suite of upgrades to its unified AI platform, positioning Ray as the industry's premier distributed compute solution for artificial intelligence workloads. The announcements come amid explosive growth in AI adoption, with Anyscale reporting a 44x increase in platform usage over the past year.
+
+The centerpiece of today's announcements is Ray's transformation into a GPU-native architecture, fundamentally re-engineering the platform's execution model through static task graphs. This architectural shift addresses the overhead challenges that have plagued GPU-based AI workloads, delivering unprecedented speed and low latency for distributed training and model serving operations.
+
+RayTurbo, Anyscale's new performance-optimized engine, represents the most significant performance leap in the platform's history. Available exclusively on the Anyscale platform, RayTurbo delivers up to 4.5x faster data processing, 90% lower costs through reliable spot instance support, 5x faster node launching and scaling, and 60% higher queries per second for model serving compared to open-source Ray.
+
+With the general availability of Ray Data, Anyscale now provides robust support for unstructured data workloads across multiple data lakehouse formats including Hudi, Iceberg, and Delta Lake. This expansion addresses one of the most pressing challenges in modern AI development—processing diverse data types at scale.
+
+The new Anyscale Operator for Kubernetes, developed in partnership with Amazon EKS, Google GKE, Azure AKS, and OCI Kubernetes Engine, enables seamless integration between Ray and enterprise Kubernetes environments. This allows organizations to run AI workloads alongside existing infrastructure while maintaining their preferred tooling and governance systems.
+
+Enterprise governance and observability features have been significantly enhanced, providing platform engineers with comprehensive quota management, workload prioritization, and deep workflow optimization capabilities. These tools address the critical need for cost control and resource management as AI workloads scale across organizations.
+
+Anyscale co-founder Robert Nishihara emphasized the platform's growing adoption, noting that Ray now orchestrates more than 1 million clusters monthly. 'With the introduction of RayTurbo and Ray's GPU-native architecture, we are offering the most holistic compute engine on the market serving AI developers,' Nishihara stated during his keynote address.
+
+The Ray Summit, attended by over 1,500 AI professionals, featured speakers from leading technology companies including OpenAI, Meta, Uber, and Spotify, highlighting the platform's broad industry adoption and the critical role distributed computing plays in the AI revolution.

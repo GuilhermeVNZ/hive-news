@@ -1,0 +1,1 @@
+A new hybrid retrieval method boosts AI accuracy in identifying cybersecurity threats by 23%, addressing critical gaps in how AI systems handle rapidly evolving vulnerabilities without costly retraining.

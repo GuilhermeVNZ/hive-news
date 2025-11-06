@@ -1,0 +1,1 @@
+AI fails basic medical math: Top models score only 31% accuracy on calculations doctors use daily. New research reveals critical gaps in AI's fundamental reasoning. Read the Nature study on targeted training improvements.

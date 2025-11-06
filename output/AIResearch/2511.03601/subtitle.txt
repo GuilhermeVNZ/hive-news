@@ -1,0 +1,1 @@
+New open-source model transforms synthetic voices with precise emotional control and paralinguistic editing, outperforming commercial systems without complex disentanglement methods

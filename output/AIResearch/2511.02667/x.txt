@@ -1,0 +1,1 @@
+AI's dirty secret: Models fail 20% more when combining concepts in new ways. IBM's breakthrough framework exposes this fundamental weakness while cutting computational costs by 600%. The future of reliable AI depends on solving compositional generalization.

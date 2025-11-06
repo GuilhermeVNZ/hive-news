@@ -1,0 +1,1 @@
+AI systems increasingly handle critical decisions without clear 'right answers' to benchmark against. New MARIA framework shifts focus from absolute performance to relative comparison with existing systems, enabling safer AI deployment in healthcare and business. How will this change your approach to AI evaluation?

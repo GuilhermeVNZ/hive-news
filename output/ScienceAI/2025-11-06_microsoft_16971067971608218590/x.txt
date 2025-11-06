@@ -1,0 +1,1 @@
+BREAKING: Microsoft partners with Anyscale to launch AI-native compute service on Azure. Powered by Ray framework, promises 10x performance gains for enterprise AI workloads. Private preview starts Nov 2025. #AI #Azure #CloudComputing

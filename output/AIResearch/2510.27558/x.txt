@@ -1,0 +1,1 @@
+Robots just got smarter: New system achieves 100% success in complex tabletop tasks using only verbal instructions. No specialized training required - just off-the-shelf AI models working together. This could make sophisticated robotics accessible everywhere.

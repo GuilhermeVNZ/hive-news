@@ -1,0 +1,13 @@
+In a significant move for the industrial automation sector, OMRON Automation has officially welcomed ATS Corporation as its newest Certified Systems Integrator. This partnership, announced in January 2025, brings together OMRON's extensive robotics expertise with ATS's global implementation capabilities across diverse markets including life sciences, food and beverage, energy, consumer products, and transportation.
+
+The collaboration represents a strategic alignment between two established players in industrial automation. ATS, headquartered in Cambridge, Ontario with over 7,500 employees across 65 manufacturing facilities worldwide, gains access to OMRON's comprehensive robotics portfolio. This includes fixed robots, vision systems, and integrated automation technologies that form the backbone of modern smart factories.
+
+For manufacturers seeking to implement Industry 4.0 solutions, this partnership promises accelerated deployment timelines and enhanced system integration. The Certified Systems Integrator program provides ATS with specialized training, technical resources, and direct access to OMRON's latest robotic innovations. This structured approach ensures consistent implementation quality across ATS's global operations.
+
+Steve Emery, Vice President of Global Procurement at ATS Corporation, emphasized the strategic value: "OMRON's expertise in robotics, vision systems, and industrial automation will enhance our capabilities across a broad spectrum of industries and markets." This endorsement underscores how established automation providers are increasingly relying on specialized partnerships to maintain competitive advantage.
+
+The timing coincides with growing demand for flexible manufacturing solutions that can adapt to rapidly changing market conditions. By combining OMRON's technological innovation with ATS's application expertise, the partnership aims to deliver turnkey automation systems that address both current operational challenges and future scalability requirements.
+
+With OMRON's 90-year history in industrial automation and ATS's 45-year track record in custom automation solutions, this collaboration represents a meeting of industry veterans. Both companies bring substantial resources to the table—OMRON with its 30,000 employees across 110 countries, and ATS with its dual listing on both the Toronto and New York Stock Exchanges.
+
+The partnership structure follows OMRON's established model of working with certified integrators to extend its market reach while maintaining implementation standards. This approach allows OMRON to focus on core technology development while leveraging ATS's industry-specific knowledge and global delivery capabilities.

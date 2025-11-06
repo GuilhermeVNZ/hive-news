@@ -1,0 +1,1 @@
+AI's bottleneck: unordered tasks. CoRM breakthrough enables linear scaling vs exponential in delivery/office domains. Converges faster, avoids deadlocks. Robotics revolution incoming?

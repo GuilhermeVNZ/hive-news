@@ -1,0 +1,1 @@
+Machine learning models now forecast MLB game outcomes with over 60% accuracy, linking win probabilities to score margins and enabling profitable betting strategies without relying on intuition.

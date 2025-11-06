@@ -1,0 +1,1 @@
+MAUI63 demonstrates how AI, drones, and cloud computing can transform wildlife conservation. Their work tracking endangered Mui dolphins using Microsoft Azure and custom machine learning models shows the potential for technology to address critical environmental challenges. The approach could scale to protect other threatened species globally.

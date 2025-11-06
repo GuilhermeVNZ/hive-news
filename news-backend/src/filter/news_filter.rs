@@ -40,30 +40,82 @@ impl NewsFilter {
         Ok(total)
     }
 
-    /// Verifica se uma notícia já está registrada no registry (por ID ou URL)
-    pub fn is_duplicate(&self, article_id: &str, article_url: &str) -> bool {
-        // Verificar se o ID já está no registry
-        if self.registry.is_article_registered(article_id) {
-            debug!(
-                article_id = %article_id,
-                "Found duplicate by ID in registry"
-            );
-            return true;
+    /// Normaliza uma URL para comparação (remove trailing slash, converte para lowercase, etc.)
+    /// Mas mantém a URL completa (não apenas domínio)
+    fn normalize_url_for_comparison(url: &str) -> String {
+        let mut normalized = url.trim().to_string();
+        
+        // Remover trailing slash (exceto para raiz do domínio)
+        if normalized.ends_with('/') && normalized.len() > 1 && !normalized.ends_with("://") {
+            normalized.pop();
         }
+        
+        // Converter para lowercase para comparação case-insensitive
+        normalized = normalized.to_lowercase();
+        
+        normalized
+    }
 
-        // Verificar se a URL já está no registry (pode ter IDs diferentes mas mesma URL)
+    /// Verifica se uma URL já está registrada no registry (em qualquer status)
+    /// Esta é a verificação primária para evitar duplicatas antes de processar
+    /// 
+    /// IMPORTANTE: Verifica URL completa, não apenas domínio
+    /// Exemplos de URLs que são consideradas diferentes:
+    /// - "https://openai.com/global-affairs/brazil-ai-moment-is-here" (OK - URL completa)
+    /// - "https://openai.com/index/introducing-indqa" (OK - URL completa diferente)
+    /// 
+    /// NÃO verifica apenas domínio genérico como "openai.com"
+    /// A verificação é específica para cada notícia individual
+    pub fn is_url_duplicate(&self, article_url: &str) -> bool {
+        // Normalizar URL do artigo sendo verificado (remove trailing slash, lowercase)
+        // MAS mantém URL completa (path completo, não apenas domínio)
+        let normalized_article_url = Self::normalize_url_for_comparison(article_url);
+        
         let all_articles = self.registry.get_all_articles();
         let url_duplicate = all_articles.iter().any(|article| {
-            // Comparar arxiv_url ou pdf_url com article_url
-            article.arxiv_url == article_url || article.pdf_url == article_url
+            // Verificar URL em qualquer status (Collected, Filtered, Published, Rejected)
+            // Normalizar ambas URLs antes de comparar
+            let normalized_arxiv = Self::normalize_url_for_comparison(&article.arxiv_url);
+            let normalized_pdf = Self::normalize_url_for_comparison(&article.pdf_url);
+            
+            // Comparar URL completa normalizada (não apenas domínio)
+            // Exemplo: compara "https://openai.com/global-affairs/brazil-ai-moment-is-here"
+            // com "https://openai.com/global-affairs/brazil-ai-moment-is-here" (duplicata)
+            // mas NÃO com "https://openai.com/index/introducing-indqa" (diferente)
+            normalized_arxiv == normalized_article_url || normalized_pdf == normalized_article_url
         });
 
         if url_duplicate {
             debug!(
                 article_url = %article_url,
-                "Found duplicate by URL in registry"
+                normalized_url = %normalized_article_url,
+                "Found duplicate by URL in registry (any status)"
             );
             return true;
+        }
+
+        false
+    }
+
+    /// Verifica se uma notícia já está registrada no registry (por ID ou URL)
+    /// Considera apenas artigos com status "Published", não "Collected" (que podem não ter sido escritos)
+    pub fn is_duplicate(&self, article_id: &str, article_url: &str) -> bool {
+        use crate::utils::article_registry::ArticleStatus;
+        
+        // PRIMEIRO: Verificar URL em qualquer status (verificação mais completa)
+        if self.is_url_duplicate(article_url) {
+            return true;
+        }
+        
+        // Verificar se o ID já está no registry E tem status Published
+        if let Some(metadata) = self.registry.get_metadata(article_id) {
+            if matches!(metadata.status, ArticleStatus::Published) {
+                debug!(
+                    article_id = %article_id,
+                    "Found duplicate by ID in registry (Published)"
+                );
+                return true;
+            }
         }
 
         false

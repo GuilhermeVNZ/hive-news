@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could fact-check its own creative writing with mathematical precision?
+[VISUAL DIRECTION] Animated text: "AI SELF-VERIFICATION BREAKTHROUGH" with question mark morphing into checkmark
+[VOICEOVER 0:05-0:20] For years, AI excelled at clear-right-answer problems but struggled with open-ended tasks where verification seemed impossible.
+[VISUAL DIRECTION] Split screen: left shows math equations with green checkmarks, right shows creative writing with question marks
+[VOICEOVER 0:20-0:40] Researchers asked: Can we make creative generation as verifiable as math? The challenge was bridging subjective quality with objective measurement.
+[VISUAL DIRECTION] Show Figure 2 from paper - zoom on performance distribution peaks between baseline and VMR method
+[VOICEOVER 0:40-1:00] They discovered that by reframing creative prompts as multiple-choice comparisons, AI could apply rigorous verification typically reserved for mathematical problems.
+[VISUAL DIRECTION] Animated transition: creative writing prompt transforms into A/B choice options with verification metrics
+[VOICEOVER 1:00-1:30] The Verifiable Multiple-choice Reformulation technique works by having AI generate two responses - one preferred, one rejected - then determine which is better. This maintains creative ambiguity while introducing measurable evaluation.
+[VISUAL DIRECTION] Fast cuts showing: prompt → two AI responses → verification process → quality score overlay
+[VOICEOVER 1:30-1:50] Results show 5.9-point improvements in creative writing benchmarks and 3.7-point gains in instruction-following. The AI produced responses with higher logical density - more thinking per word.
+[VISUAL DIRECTION] Bar chart animation showing benchmark improvements: CreativeWritingV3 +5.9, InstructionFollowing +3.7, Average +5.99 across 8 tests
+[VOICEOVER 1:50-2:00] This breakthrough means AI can now collaborate more reliably on creative tasks, fundamentally changing how we train systems for subjective work.
+[VISUAL DIRECTION] Final screen: "AI SELF-VERIFICATION: BRIDGING CREATIVITY & PRECISION" with Nature/Science branding

@@ -1,0 +1,1 @@
+Research reveals that effective AI systems depend more on rigorous testing and clear objectives than on powerful foundation models, challenging current industry trends.

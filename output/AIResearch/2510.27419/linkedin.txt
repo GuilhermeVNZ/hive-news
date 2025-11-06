@@ -1,0 +1,1 @@
+AI models often overthink simple problems and underthink complex ones. DeepCompress teaches AI to dynamically adjust reasoning depth, achieving 57.9% faster responses with state-of-the-art accuracy. This breakthrough addresses computational bottlenecks for smarter AI deployment. Read the Nature paper on dual-reward reasoning compression.

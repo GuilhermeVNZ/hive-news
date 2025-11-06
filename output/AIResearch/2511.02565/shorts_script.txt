@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if you could literally see someone's thoughts as a video playing in their mind? [VISUAL DIRECTION] [Animated text: "SEE THOUGHTS AS VIDEO" with brain scan imagery pulsing]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction anymore. Researchers have developed a breakthrough technology that reconstructs continuous visual experiences directly from brain activity. [VISUAL DIRECTION] [Show fMRI brain scan with highlighted visual cortex areas, zoom in on active regions]
+
+[VOICEOVER 0:20-0:40] The big problem? Current methods take hours of patient-specific training, making them impractical for clinical use. But what if we could decode thoughts instantly? [VISUAL DIRECTION] [Clock animation showing hours vs seconds comparison, red X over "hours of training"]
+
+[VOICEOVER 0:40-1:00] The solution: VCFLOW, a brain-inspired AI that mimics how our visual cortex processes information. It achieved 9.6% higher accuracy than previous approaches. [VISUAL DIRECTION] [Show Figure 2 comparison between old method and VCFLOW, highlight accuracy metrics]
+
+[VOICEOVER 1:00-1:30] How does it work? Just like your brain has separate streams for recognizing objects and processing motion, VCFLOW uses a dual-stream architecture to extract and integrate visual features at different levels. [VISUAL DIRECTION] [Animated diagram showing ventral and dorsal streams merging, with text overlays: "Object Recognition" and "Motion Processing"]
+
+[VOICEOVER 1:30-1:50] The impact? For patients experiencing hallucinations or perceptual distortions in conditions like schizophrenia, this provides clinicians with immediate insight without lengthy training. [VISUAL DIRECTION] [Show side-by-side: reconstructed video vs original, emphasize fine-grained details]
+
+[VOICEOVER 1:50-2:00] Thought-decoding in 10 seconds—the future of neurological diagnosis is happening now. [VISUAL DIRECTION] [Final text overlay: "10-SECOND THOUGHT DECODING" with pulsing brain icon]

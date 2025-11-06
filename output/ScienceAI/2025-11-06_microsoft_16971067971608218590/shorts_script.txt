@@ -1,0 +1,8 @@
+Microsoft just dropped a game-changer
+New AI compute service on Azure
+Powered by Anyscale's Ray framework
+10x faster than current options
+Fully managed, no infrastructure headaches
+Perfect for enterprise AI scaling
+Private preview starting November
+This could revolutionize AI development

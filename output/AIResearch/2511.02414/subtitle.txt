@@ -1,0 +1,1 @@
+Researchers develop a framework that assesses generative AI models more accurately by treating data evaluation as a classification problem, offering deeper insights into how AI captures real-world complexity without relying on oversimplified metrics.

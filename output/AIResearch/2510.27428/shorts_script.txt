@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could teach themselves without any human help?
+[VISUAL DIRECTION] Animated text: "ROBOTS TEACHING THEMSELVES" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Soft robots are revolutionizing underwater exploration and healthcare, but they're notoriously difficult to control and model accurately.
+[VISUAL DIRECTION] Show soft robotic arm moving through water, transition to medical robotics application
+
+[VOICEOVER 0:20-0:40] Traditional methods require massive amounts of data and still perform poorly in new environments. Researchers asked: Can robots autonomously learn to model themselves?
+[VISUAL DIRECTION] Show data collection process with question marks appearing over robot
+
+[VOICEOVER 0:40-1:00] They discovered OFTAE - an uncertainty-aware framework where robots actively explore regions they're least certain about, building diverse and informative datasets.
+[VISUAL DIRECTION] Animated diagram showing robot targeting high-uncertainty regions, ensemble networks visualizing uncertainty
+
+[VOICEOVER 1:00-1:30] The system combines optimistic trajectory optimization with model-based control. Robots learn through neural networks while quantifying their own uncertainty, focusing exploration where it matters most.
+[VISUAL DIRECTION] Technical diagram showing OFTAE workflow, highlight cross-entropy method and uncertainty estimation
+
+[VOICEOVER 1:30-1:50] In real-world tests, OFTAE achieved 60% higher accuracy than traditional methods and reliable target-reaching in conditions never seen during training.
+[VISUAL DIRECTION] Show comparison graphs from paper, highlight 60% improvement statistic
+
+[VOICEOVER 1:50-2:00] This means robots that can truly adapt to unpredictable environments - from deep sea exploration to delicate medical procedures.
+[VISUAL DIRECTION] Final montage: underwater exploration, medical robotics, environmental monitoring applications

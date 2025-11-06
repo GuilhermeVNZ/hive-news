@@ -49,19 +49,21 @@ export default function Dashboard() {
   const [loopStats, setLoopStats] = useState<LoopStats | null>(null);
   const [collectionStatus, setCollectionStatus] = useState<CollectionStatus | null>(null);
   const [servicesStatus, setServicesStatus] = useState<Record<string, ServiceStatus>>({});
+  const [articlesTodayCount, setArticlesTodayCount] = useState<number>(0);
 
   useEffect(() => {
     const load = async () => {
       try {
         setLoading(true);
-        const [sitesRes, logsRes, sysRes, configRes, statsRes, collectionRes, servicesRes] = await Promise.all([
+        const [sitesRes, logsRes, sysRes, configRes, statsRes, collectionRes, servicesRes, todayRes] = await Promise.all([
           axios.get('/api/sites'),
           axios.get('/api/logs', { params: { limit: 10 } }),
           axios.get('/api/system/status'),
           axios.get('/api/system/config').catch(() => null),
           axios.get('/api/system/loop/stats').catch(() => null),
           axios.get('/api/system/collection/status').catch(() => null),
-          axios.get('/api/system/services/status').catch(() => null)
+          axios.get('/api/system/services/status').catch(() => null),
+          axios.get('/api/system/articles/today').catch(() => null)
         ]);
         if (sitesRes.data?.success) setSites(sitesRes.data.sites || sitesRes.data.pages || []);
         if (logsRes.data?.success) setLogs(logsRes.data.items || []);
@@ -79,6 +81,10 @@ export default function Dashboard() {
         if (servicesRes?.data?.success) {
           setServicesStatus(servicesRes.data.services || {});
         }
+        if (todayRes?.data?.success) {
+          // Update articles24h with the actual count from the API
+          setArticlesTodayCount(todayRes.data.count || 0);
+        }
         if (!selectedSite && sitesRes.data?.sites?.length) setSelectedSite(sitesRes.data.sites[0].id);
       } catch (e:any) { setError(e.response?.data?.error || e.message); } finally { setLoading(false); }
     };
@@ -94,7 +100,7 @@ export default function Dashboard() {
     const sec = Math.floor((Date.now() - new Date(newest.created_at).getTime())/1000);
     if (sec < 60) return `${sec}s ago`; const m=Math.floor(sec/60); if (m<60) return `${m}m ago`; const h=Math.floor(m/60); if (h<24) return `${h}h ago`; const d=Math.floor(h/24); return `${d}d ago`;
   }, [logs]);
-  const articles24h = useMemo(()=> logs.filter(l => l.age_seconds <= 24*3600).length, [logs]);
+  const articles24h = articlesTodayCount || 0; // Use count from API instead of logs
 
   // Format cooldown time
   const formatCooldown = (seconds: number) => {

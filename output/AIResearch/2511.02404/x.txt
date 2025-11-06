@@ -1,0 +1,1 @@
+AI sees through cat eyes—literally. DINO ViT-B/16 achieves 0.814 CKA alignment with feline vision, beating supervised models. This breakthrough shows machines can generalize across species, hinting at future applications in robotics and assistive tech. Nature/Science details the evidence.

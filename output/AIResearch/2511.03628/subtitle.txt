@@ -1,0 +1,1 @@
+Large language models that ace academic benchmarks struggle with live market trading, exposing a critical gap between artificial intelligence and real-world financial decision-making.

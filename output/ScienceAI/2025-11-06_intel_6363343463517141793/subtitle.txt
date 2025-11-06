@@ -1,0 +1,1 @@
+New integration enables developers to deploy high-throughput document intelligence models in under five minutes with enterprise-grade scalability

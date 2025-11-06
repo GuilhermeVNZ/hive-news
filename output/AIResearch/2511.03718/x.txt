@@ -1,0 +1,1 @@
+AI misunderstands us just 1.8% of the time - but these rare misalignments are predictable. New research shows 'multiplicity discrepancies' cause most confusion when landmarks appear differently on maps. Critical for developing AI that truly understands dialogue.

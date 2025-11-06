@@ -1,0 +1,1 @@
+Pinecone just supercharged its AI Assistant with new LLM support from OpenAI, Anthropic & Google + temperature controls. The vector database leader continues abstracting AI complexity for developers building knowledge apps. #AI #VectorSearch #LLM

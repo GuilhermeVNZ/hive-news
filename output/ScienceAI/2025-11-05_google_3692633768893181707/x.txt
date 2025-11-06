@@ -1,0 +1,1 @@
+Google's new AutoBNN package revolutionizes time series forecasting by combining Bayesian neural networks with compositional kernels. Get interpretable results with neural network scalability—perfect for weather, finance, and IoT predictions. #AI #MachineLearning #TimeSeries

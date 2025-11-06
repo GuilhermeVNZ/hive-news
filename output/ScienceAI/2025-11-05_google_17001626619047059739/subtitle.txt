@@ -1,0 +1,1 @@
+Google Research unveils 5B-parameter AI that achieves state-of-the-art performance on visual interface tasks, potentially transforming how machines interact with screens.

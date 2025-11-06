@@ -1,0 +1,9 @@
+Jupyter notebooks broken by Git?
+Cell conflicts ruining collaboration?
+nbdev2 fixes everything
+Automatic merge resolution
+Clean diffs in seconds
+No more JSON nightmares
+Collaborate seamlessly
+Data science workflow transformed
+Try nbdev2 today

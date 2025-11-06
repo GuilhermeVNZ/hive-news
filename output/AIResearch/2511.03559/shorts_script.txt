@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could literally dial AI transparency up or down like a volume knob?
+[VISUAL DIRECTION] Animated text: "AI TRANSPARENCY DIAL" with rotating knob graphic
+
+[VOICEOVER 0:05-0:20] AI's black box problem creates real risks in healthcare and finance where we need to trust and verify decisions.
+[VISUAL DIRECTION] Quick cuts: doctor reviewing medical scan, financial analyst at computer, courtroom scene
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we engineer AI that's both powerful AND interpretable when needed?
+[VISUAL DIRECTION] Show Figure 1 from paper - architecture diagram with attention mechanism highlighted
+
+[VOICEOVER 0:40-1:00] They discovered a breakthrough - attention entropy dropped 3.5-fold at high interpretability settings while maintaining 84.7% accuracy.
+[VISUAL DIRECTION] Animated graph showing entropy drop from 5.36 to dramatically lower values
+
+[VOICEOVER 1:00-1:30] The system uses tunable controls that concentrate AI's processing into semantically coherent regions we can inspect.
+[VISUAL DIRECTION] Zoom on Figure 2 showing how attention patterns become more concentrated and interpretable
+
+[VOICEOVER 1:30-1:50] This means medical AI can show its reasoning aligns with clinical guidelines, and financial systems can provide auditable decisions.
+[VISUAL DIRECTION] Split screen: medical diagnosis interface showing reasoning, financial audit trail visualization
+
+[VOICEOVER 1:50-2:00] We now have AI that doesn't force us to choose between power and transparency.
+[VISUAL DIRECTION] Final text overlay: "Tunable AI: Power + Transparency" with Nature journal branding

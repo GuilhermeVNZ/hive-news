@@ -1,0 +1,1 @@
+New method creates universal video search that understands complex queries without exposing sensitive data, outperforming specialized models across diverse tasks.

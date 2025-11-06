@@ -1,0 +1,1 @@
+New multi-agent system outperforms larger AI models on PhD-level science questions while using significantly less computing power

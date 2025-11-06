@@ -46,10 +46,31 @@ impl UserStore {
 
     fn load_users(&self) -> HashMap<String, UserData> {
         if !self.users_path.exists() {
-            // Create default admin user
+            // Create default admin user from environment variable
+            let default_password = std::env::var("DEFAULT_ADMIN_PASSWORD")
+                .expect(
+                    "CRITICAL SECURITY ERROR: DEFAULT_ADMIN_PASSWORD not set!\n\
+                     \n\
+                     For first-time setup, set a strong temporary password in .env:\n\
+                     DEFAULT_ADMIN_PASSWORD=<strong-password-minimum-16-chars>\n\
+                     \n\
+                     This password will be used to create the initial admin account.\n\
+                     You MUST change it immediately after first login!"
+                );
+            
+            if default_password.len() < 16 {
+                panic!(
+                    "SECURITY ERROR: DEFAULT_ADMIN_PASSWORD must be at least 16 characters long!\n\
+                     Current length: {}\n\
+                     \n\
+                     Use a strong password with letters, numbers, and symbols.",
+                    default_password.len()
+                );
+            }
+            
             let default_user = UserData {
                 username: "admin".to_string(),
-                password_hash: hash("123admin123", DEFAULT_COST).unwrap_or_default(),
+                password_hash: hash(&default_password, DEFAULT_COST).unwrap_or_default(),
                 role: "admin".to_string(),
             };
             
@@ -58,18 +79,15 @@ impl UserStore {
             
             // Save default user
             self.save_users(&users);
+            
+            eprintln!("⚠️  SECURITY WARNING: Default admin user created with password from DEFAULT_ADMIN_PASSWORD");
+            eprintln!("⚠️  CHANGE THIS PASSWORD IMMEDIATELY after first login!");
+            
             return users;
         }
 
         let content = fs::read_to_string(&self.users_path).unwrap_or_default();
-        let mut users: HashMap<String, UserData> = serde_json::from_str(&content).unwrap_or_default();
-        
-        // Update admin password if it exists (password change)
-        if let Some(admin_user) = users.get_mut("admin") {
-            // Always update to the new password
-            admin_user.password_hash = hash("123admin123", DEFAULT_COST).unwrap_or_default();
-            self.save_users(&users);
-        }
+        let users: HashMap<String, UserData> = serde_json::from_str(&content).unwrap_or_default();
         
         users
     }

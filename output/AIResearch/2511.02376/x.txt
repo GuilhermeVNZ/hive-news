@@ -1,0 +1,1 @@
+Simple automated conversations can jailbreak AI chatbots with 95% success rate. New research exposes critical vulnerabilities in commercial LLMs through multi-turn attacks. The security risks are real.

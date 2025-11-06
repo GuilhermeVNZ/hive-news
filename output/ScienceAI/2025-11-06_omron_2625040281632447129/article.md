@@ -1,0 +1,13 @@
+In a significant move for industrial automation, Omron Automation Americas has officially welcomed Xilix Systems into its System Integrator program. The partnership, announced in November 2024, represents a strategic alignment between two established players in the robotics and automation space.
+
+Xilix Systems brings extensive expertise in integration, automation, and machine design to the collaboration, with particular strength in complex motion applications. The company has previously worked with Omron's PMAC (Programmable Multi-Axis Controller) technologies, providing a foundation for this expanded relationship. This history positions Xilix to leverage Omron's comprehensive automation portfolio more effectively.
+
+The Omron Authorized System Integrator Program is designed to connect specialized solution providers with the technology, training, and resources needed to deliver competitive automation solutions. This comes at a critical time as manufacturers increasingly seek Industry 4.0 implementations that support flexible manufacturing operations.
+
+For Omron, system integrators like Xilix play a crucial role in designing and implementing fully integrated automation solutions. These partnerships enable the delivery of turnkey systems that combine sensing, control, safety, vision, motion, and robotics technologies. The collaboration addresses current manufacturing challenges while building infrastructure for future automation demands.
+
+Xilix Systems serves multiple industries including food processing, oil and gas, automotive, aerospace, and medical sectors. Their engineering capabilities span automation, integration, robotics, and machine control, utilizing advanced hardware and software to optimize operational efficiency.
+
+Established in 1933, Omron employs approximately 30,000 people across more than 110 countries. The company's automation division provides comprehensive solutions that integrate multiple technologies into cohesive systems. This partnership represents Omron's continued expansion of its integration network to meet growing automation demands.
+
+The collaboration specifically targets applications like pepper bagging and other food processing automation, where precision motion control and robotic integration can significantly improve throughput and efficiency. This focus on practical industrial applications demonstrates the partnership's immediate relevance to manufacturing challenges.

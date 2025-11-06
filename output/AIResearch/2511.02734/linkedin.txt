@@ -1,0 +1,1 @@
+AI can plan complex tasks but fails when costs change - dropping from 75% to 40% success. New CostBench reveals critical adaptation gap in AI planning. Are we building AI that can't handle real-world unpredictability?

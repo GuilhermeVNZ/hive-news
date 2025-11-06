@@ -1,0 +1,1 @@
+New system uses GitHub discussions and commit messages to help AI understand why code exists—not just what it does—improving developer productivity without hallucinations.

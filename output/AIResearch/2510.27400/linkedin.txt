@@ -1,0 +1,1 @@
+LLMs store knowledge in attention layers, not just MLPs. New IntAttn-Edit method reduces 'knowledge residuals' by 56.32%, enabling precise model updates without full retraining. How will this transform AI safety in your industry?

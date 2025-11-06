@@ -1,0 +1,1 @@
+Mistral AI has published groundbreaking research quantifying the environmental footprint of large language models. Their comprehensive lifecycle analysis with Carbone 4 and ADEME reveals key metrics for GHG emissions, water use, and resource depletion - setting a new standard for AI industry transparency and sustainability reporting.

@@ -1,0 +1,1 @@
+ServiceNow researchers replace key components in language models to double processing speed while maintaining reasoning capabilities, addressing critical bottlenecks in enterprise AI deployment.

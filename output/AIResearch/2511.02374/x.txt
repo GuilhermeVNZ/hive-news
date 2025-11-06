@@ -1,0 +1,1 @@
+AI masters Ayurveda: AyurParam-2.9B outperforms larger models in interpreting centuries-old medical texts. Scored 41.12% on specialized benchmark, excelling in pharmacology and internal medicine. Ancient healing meets cutting-edge technology.

@@ -1,0 +1,1203 @@
+{
+  "sources": {
+    "openai.com": {
+      "domain": "openai.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:06.390534Z",
+          "last_success": "2025-11-06T19:23:06.390536800Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:06.390537200Z"
+    },
+    "www.unitree.com": {
+      "domain": "www.unitree.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:55.020280700Z",
+          "last_success": "2025-11-06T19:23:55.020283900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:23:55.020284200Z"
+    },
+    "automation.omron.com": {
+      "domain": "automation.omron.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:36:23.658574800Z",
+          "last_success": "2025-11-06T19:36:23.658578200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:23.658578800Z"
+    },
+    "www.anyscale.com": {
+      "domain": "www.anyscale.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:36.806133800Z",
+          "last_success": "2025-11-06T19:29:36.806136700Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:36.806137300Z"
+    },
+    "inflection.ai": {
+      "domain": "inflection.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:26.462995600Z",
+          "last_success": "2025-11-06T19:36:26.462998800Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:26.462999500Z"
+    },
+    "www.theverge.com": {
+      "domain": "www.theverge.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:22:52.152082200Z",
+          "last_success": "2025-11-06T19:22:52.152083900Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:22:52.152084700Z"
+    },
+    "ionq.com": {
+      "domain": "ionq.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:20.360689900Z",
+          "last_success": "2025-11-06T19:36:20.360692600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:20.360693Z"
+    },
+    "research.ibm.com": {
+      "domain": "research.ibm.com",
+      "methods": {
+        "rss": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:30:18.917002900Z",
+          "last_success": null
+        },
+        "html": {
+          "success": 7,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:31:59.785715800Z",
+          "last_success": "2025-11-06T19:31:59.785719600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:31:59.785720800Z"
+    },
+    "quantumcomputingreport.com": {
+      "domain": "quantumcomputingreport.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:18.257633300Z",
+          "last_success": "2025-11-06T19:39:18.257636500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:18.257637300Z"
+    },
+    "www.globenewswire.com": {
+      "domain": "www.globenewswire.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:04.884404700Z",
+          "last_success": "2025-11-06T19:38:04.884407300Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:04.884407900Z"
+    },
+    "www.continual.ai": {
+      "domain": "www.continual.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:27:36.535209800Z",
+          "last_success": "2025-11-06T19:27:36.535212600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:27:36.535213300Z"
+    },
+    "venturebeat.com": {
+      "domain": "venturebeat.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:28.659858700Z",
+          "last_success": "2025-11-06T19:23:28.659862300Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:28.659864100Z"
+    },
+    "www.robotics.org": {
+      "domain": "www.robotics.org",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:39:25.465371900Z",
+          "last_success": "2025-11-06T00:39:25.465375500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:39:25.465375800Z"
+    },
+    "www.quantumcomputinginc.com": {
+      "domain": "www.quantumcomputinginc.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:40.755138Z",
+          "last_success": "2025-11-06T19:29:40.755140900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:40.755141200Z"
+    },
+    "www.quantamagazine.org": {
+      "domain": "www.quantamagazine.org",
+      "methods": {
+        "rss": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:30:39.145430200Z",
+          "last_success": "2025-11-06T00:30:39.145433300Z"
+        },
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:23.713365100Z",
+          "last_success": "2025-11-06T19:39:23.713368200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:23.713369Z"
+    },
+    "www.bostondynamics.com": {
+      "domain": "www.bostondynamics.com",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:32:39.073408700Z",
+          "last_success": "2025-11-06T00:32:39.073412100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:32:39.073412300Z"
+    },
+    "hive-hub.com": {
+      "domain": "hive-hub.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:35.468264800Z",
+          "last_success": "2025-11-06T19:29:35.468267900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:35.468268200Z"
+    },
+    "modal.com": {
+      "domain": "modal.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:08.605401100Z",
+          "last_success": "2025-11-06T19:38:08.605404100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:08.605404400Z"
+    },
+    "www.modal.com": {
+      "domain": "www.modal.com",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:33:58.119673800Z",
+          "last_success": "2025-11-06T00:33:58.119677100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:33:58.119677400Z"
+    },
+    "ai.meta.com": {
+      "domain": "ai.meta.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:23.859871Z",
+          "last_success": "2025-11-06T19:33:23.859874Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:23.859874400Z"
+    },
+    "stability.ai": {
+      "domain": "stability.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:19.537718300Z",
+          "last_success": "2025-11-06T19:39:19.537721400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:19.537722100Z"
+    },
+    "www.wired.com": {
+      "domain": "www.wired.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 5,
+          "last_attempt": "2025-11-06T19:23:18.591220500Z",
+          "last_success": null
+        },
+        "rss": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:23:16.890462800Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "blog.elevenlabs.io": {
+      "domain": "blog.elevenlabs.io",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:23:53.459748200Z",
+          "last_success": "2025-11-06T19:23:53.459751500Z"
+        },
+        "rss": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:30:39.958965300Z",
+          "last_success": null
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:23:53.459752400Z"
+    },
+    "www.rigetti.com": {
+      "domain": "www.rigetti.com",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:39:28.733316200Z",
+          "last_success": "2025-11-06T00:39:28.733319600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:39:28.733319900Z"
+    },
+    "blog.langchain.com": {
+      "domain": "blog.langchain.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:08.822532600Z",
+          "last_success": "2025-11-06T19:38:08.822535400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:08.822535900Z"
+    },
+    "www.quantum-ml.com": {
+      "domain": "www.quantum-ml.com",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:39:04.211666100Z",
+          "last_success": "2025-11-06T00:39:04.211669200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:39:04.211669500Z"
+    },
+    "www.intel.com": {
+      "domain": "www.intel.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:17.096860600Z",
+          "last_success": "2025-11-06T19:36:17.096863500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:17.096864400Z"
+    },
+    "replicate.com": {
+      "domain": "replicate.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:43.988436500Z",
+          "last_success": "2025-11-06T19:29:43.988439700Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:43.988440200Z"
+    },
+    "txt.cohere.com": {
+      "domain": "txt.cohere.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:29.089475Z",
+          "last_success": "2025-11-06T19:36:29.089477800Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:29.089478300Z"
+    },
+    "mistral.ai": {
+      "domain": "mistral.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:34.077432200Z",
+          "last_success": "2025-11-06T19:29:34.077435400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:34.077436100Z"
+    },
+    "www.coldquanta.com": {
+      "domain": "www.coldquanta.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:38.358550800Z",
+          "last_success": "2025-11-06T19:29:38.358553700Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:38.358554Z"
+    },
+    "www.aitrends.com": {
+      "domain": "www.aitrends.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:32:43.427438100Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "global.abb": {
+      "domain": "global.abb",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:40.918649300Z",
+          "last_success": "2025-11-06T19:29:40.918652100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:40.918652500Z"
+    },
+    "www.kuka.com": {
+      "domain": "www.kuka.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:32:02.175457200Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.together.ai": {
+      "domain": "www.together.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:53.926824800Z",
+          "last_success": "2025-11-06T19:23:53.926827600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:23:53.926828Z"
+    },
+    "www.fanuc.com": {
+      "domain": "www.fanuc.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:38:59.056594800Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.assemblyai.com": {
+      "domain": "www.assemblyai.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:05.136187500Z",
+          "last_success": "2025-11-06T19:38:05.136190400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:05.136191Z"
+    },
+    "www.therobotreport.com": {
+      "domain": "www.therobotreport.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:29.239681400Z",
+          "last_success": "2025-11-06T19:33:29.239684400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:29.239685Z"
+    },
+    "x.ai": {
+      "domain": "x.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:41:29.597866100Z",
+          "last_success": "2025-11-06T19:41:29.597868900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:41:29.597869400Z"
+    },
+    "www.perplexity.ai": {
+      "domain": "www.perplexity.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:30:19.744287400Z",
+          "last_success": "2025-11-06T19:30:19.744290200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:30:19.744290600Z"
+    },
+    "machinelearning.apple.com": {
+      "domain": "machinelearning.apple.com",
+      "methods": {
+        "html": {
+          "success": 8,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:22.029162700Z",
+          "last_success": "2025-11-06T19:39:22.029165900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:22.029166800Z"
+    },
+    "blogs.microsoft.com": {
+      "domain": "blogs.microsoft.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:52.352000900Z",
+          "last_success": "2025-11-06T19:23:52.352003900Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:52.352004700Z"
+    },
+    "www.irobot.com": {
+      "domain": "www.irobot.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:33:55.607360900Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.pinecone.io": {
+      "domain": "www.pinecone.io",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:30.843228400Z",
+          "last_success": "2025-11-06T19:33:30.843230900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:30.843231400Z"
+    },
+    "weaviate.io": {
+      "domain": "weaviate.io",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:06.820001400Z",
+          "last_success": "2025-11-06T19:38:06.820004500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:06.820004800Z"
+    },
+    "www.universal-robots.com": {
+      "domain": "www.universal-robots.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:39:26.059841400Z",
+          "last_success": "2025-11-06T19:39:26.059843900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:26.059844500Z"
+    },
+    "www.agilityrobotics.com": {
+      "domain": "www.agilityrobotics.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:32:02.758720800Z",
+          "last_success": "2025-11-06T19:32:02.758723500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:32:02.758723800Z"
+    },
+    "techcrunch.com": {
+      "domain": "techcrunch.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:21.159603900Z",
+          "last_success": "2025-11-06T19:23:21.159606900Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:21.159607600Z"
+    },
+    "www.airesearch.news": {
+      "domain": "www.airesearch.news",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:39.563334300Z",
+          "last_success": "2025-11-06T19:29:39.563337Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:39.563337400Z"
+    },
+    "www.salesforce.com": {
+      "domain": "www.salesforce.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:34.040861800Z",
+          "last_success": "2025-11-06T19:23:34.040864500Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:34.040865100Z"
+    },
+    "www.ieee.org": {
+      "domain": "www.ieee.org",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:41.239883200Z",
+          "last_success": "2025-11-06T19:29:41.239885600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:41.239886100Z"
+    },
+    "infleqtion.com": {
+      "domain": "infleqtion.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:37.494803900Z",
+          "last_success": "2025-11-06T19:29:37.494807100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:37.494807500Z"
+    },
+    "news.mit.edu": {
+      "domain": "news.mit.edu",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 6,
+          "last_attempt": "2025-11-06T19:23:22.356501200Z",
+          "last_success": null
+        },
+        "rss": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:23:22.080737Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.adept.ai": {
+      "domain": "www.adept.ai",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:38:07.766809900Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "deepseek.ai": {
+      "domain": "deepseek.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:27:35.954281600Z",
+          "last_success": "2025-11-06T19:27:35.954285600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:27:35.954286Z"
+    },
+    "www.quantinuum.com": {
+      "domain": "www.quantinuum.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:55.560349600Z",
+          "last_success": "2025-11-06T19:23:55.560352500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:23:55.560352900Z"
+    },
+    "www.yaskawa.com": {
+      "domain": "www.yaskawa.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:29:50.159604Z",
+          "last_success": "2025-11-06T19:29:50.159607100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:50.159607500Z"
+    },
+    "www.eleuther.ai": {
+      "domain": "www.eleuther.ai",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:23:58.124866500Z",
+          "last_success": "2025-11-06T19:23:58.124870Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:23:58.124870800Z"
+    },
+    "thegradient.pub": {
+      "domain": "thegradient.pub",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:45.416915700Z",
+          "last_success": "2025-11-06T19:29:45.416918400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:45.416918900Z"
+    },
+    "www.quantum-machines.io": {
+      "domain": "www.quantum-machines.io",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:36:49.557139400Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "nvidianews.nvidia.com": {
+      "domain": "nvidianews.nvidia.com",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:16.067703600Z",
+          "last_success": "2025-11-06T19:23:16.067706600Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:16.067706900Z"
+    },
+    "huggingface.co": {
+      "domain": "huggingface.co",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:12.104022300Z",
+          "last_success": "2025-11-06T19:23:12.104025400Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:12.104025700Z"
+    },
+    "spectrum.ieee.org": {
+      "domain": "spectrum.ieee.org",
+      "methods": {
+        "rss": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:30:21.227152200Z",
+          "last_success": null
+        },
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:30:21.593408Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.alizila.com": {
+      "domain": "www.alizila.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:37:57.455671800Z",
+          "last_success": "2025-11-06T19:37:57.455675200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:37:57.455676200Z"
+    },
+    "www.dwavesys.com": {
+      "domain": "www.dwavesys.com",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 1,
+          "last_attempt": "2025-11-06T00:39:21.598100600Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.xanadu.ai": {
+      "domain": "www.xanadu.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:42.536331900Z",
+          "last_success": "2025-11-06T19:29:42.536335400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:42.536336100Z"
+    },
+    "bair.berkeley.edu": {
+      "domain": "bair.berkeley.edu",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:36:19.469688800Z",
+          "last_success": "2025-11-06T19:36:19.469696600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:19.469697100Z"
+    },
+    "blog.research.google": {
+      "domain": "blog.research.google",
+      "methods": {
+        "rss": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:23:41.498078900Z",
+          "last_success": "2025-11-06T19:23:41.498082200Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T19:23:41.498083Z"
+    },
+    "www.science.org": {
+      "domain": "www.science.org",
+      "methods": {
+        "html": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:38:06.964084500Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "blog.langchain.dev": {
+      "domain": "blog.langchain.dev",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:39:36.035163700Z",
+          "last_success": "2025-11-06T00:39:36.035172500Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:39:36.035173200Z"
+    },
+    "robohub.org": {
+      "domain": "robohub.org",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:29:48.796904200Z",
+          "last_success": "2025-11-06T19:29:48.796907100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:29:48.796907400Z"
+    },
+    "new.abb.com": {
+      "domain": "new.abb.com",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:33:58.633797400Z",
+          "last_success": "2025-11-06T00:33:58.633800400Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T00:33:58.633800600Z"
+    },
+    "damo.alibaba.com": {
+      "domain": "damo.alibaba.com",
+      "methods": {
+        "rss": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:23:25.041922300Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.dwavequantum.com": {
+      "domain": "www.dwavequantum.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:05.830228200Z",
+          "last_success": "2025-11-06T19:38:05.830231200Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:05.830231800Z"
+    },
+    "www.fast.ai": {
+      "domain": "www.fast.ai",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 1,
+          "last_attempt": "2025-11-06T19:39:26.376747300Z",
+          "last_success": "2025-11-06T19:39:26.376750Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:26.376750700Z"
+    },
+    "www.nature.com": {
+      "domain": "www.nature.com",
+      "methods": {
+        "rss": {
+          "success": 0,
+          "failure": 4,
+          "last_attempt": "2025-11-06T19:23:43.924869200Z",
+          "last_success": null
+        },
+        "html": {
+          "success": 0,
+          "failure": 6,
+          "last_attempt": "2025-11-06T19:23:45.067732600Z",
+          "last_success": null
+        }
+      },
+      "effective_method": null,
+      "last_effective_at": null
+    },
+    "www.alignmentforum.org": {
+      "domain": "www.alignmentforum.org",
+      "methods": {
+        "rss": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:30:48.009357Z",
+          "last_success": "2025-11-06T00:30:48.009360200Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T00:30:48.009360600Z"
+    },
+    "www.cursor.com": {
+      "domain": "www.cursor.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:27.101712400Z",
+          "last_success": "2025-11-06T19:33:27.101715800Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:27.101716100Z"
+    },
+    "www.lesswrong.com": {
+      "domain": "www.lesswrong.com",
+      "methods": {
+        "rss": {
+          "success": 1,
+          "failure": 0,
+          "last_attempt": "2025-11-06T00:30:15.381801400Z",
+          "last_success": "2025-11-06T00:30:15.381804600Z"
+        }
+      },
+      "effective_method": "rss",
+      "last_effective_at": "2025-11-06T00:30:15.381804900Z"
+    },
+    "menlovc.com": {
+      "domain": "menlovc.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:28.225703100Z",
+          "last_success": "2025-11-06T19:33:28.225705700Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:28.225706100Z"
+    },
+    "www.anthropic.com": {
+      "domain": "www.anthropic.com",
+      "methods": {
+        "html": {
+          "success": 8,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:16.657573400Z",
+          "last_success": "2025-11-06T19:39:16.657576600Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:16.657577200Z"
+    },
+    "www.pasqal.com": {
+      "domain": "www.pasqal.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:39:24.373939900Z",
+          "last_success": "2025-11-06T19:39:24.373943300Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:39:24.373943700Z"
+    },
+    "roboticsbusinessreview.com": {
+      "domain": "roboticsbusinessreview.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:25.719510700Z",
+          "last_success": "2025-11-06T19:36:25.719514Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:25.719514900Z"
+    },
+    "bostondynamics.com": {
+      "domain": "bostondynamics.com",
+      "methods": {
+        "html": {
+          "success": 3,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:25.493977400Z",
+          "last_success": "2025-11-06T19:33:25.493980100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:25.493980500Z"
+    },
+    "www.amd.com": {
+      "domain": "www.amd.com",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:29.252932300Z",
+          "last_success": "2025-11-06T19:36:29.252935Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:29.252935800Z"
+    },
+    "blog.character.ai": {
+      "domain": "blog.character.ai",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:38:04.155262900Z",
+          "last_success": "2025-11-06T19:38:04.155265900Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:38:04.155266600Z"
+    },
+    "deepmind.google": {
+      "domain": "deepmind.google",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:33:24.869912300Z",
+          "last_success": "2025-11-06T19:33:24.869915100Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:33:24.869915500Z"
+    },
+    "www.automate.org": {
+      "domain": "www.automate.org",
+      "methods": {
+        "html": {
+          "success": 1,
+          "failure": 2,
+          "last_attempt": "2025-11-06T19:32:00.552178800Z",
+          "last_success": "2025-11-06T02:25:18.484481Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T02:25:18.484481200Z"
+    },
+    "hai.stanford.edu": {
+      "domain": "hai.stanford.edu",
+      "methods": {
+        "html": {
+          "success": 4,
+          "failure": 0,
+          "last_attempt": "2025-11-06T19:36:27.634656500Z",
+          "last_success": "2025-11-06T19:36:27.634659300Z"
+        }
+      },
+      "effective_method": "html",
+      "last_effective_at": "2025-11-06T19:36:27.634659800Z"
+    }
+  }
+}

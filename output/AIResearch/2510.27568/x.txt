@@ -1,0 +1,1 @@
+AI teams beat solo supermodels: SIGMA coordinates 4 specialized agents to solve complex problems, achieving 7.4% improvement on MATH500 and outperforming GPT-4o with fewer resources. Nature/Science breakthrough shows multi-agent approach addresses fundamental AI reasoning limitations.

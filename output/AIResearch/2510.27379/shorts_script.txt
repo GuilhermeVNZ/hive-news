@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could run on just 3% of its current energy while maintaining full performance?
+[VISUAL DIRECTION] Animated text: "97% LESS ENERGY" with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] Traditional AI is draining our resources, but new research reveals a breakthrough inspired by the most efficient computer we know - the human brain.
+[VISUAL DIRECTION] Show energy consumption graphs spiking upward, then cut to brain scan imagery
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that only computes when absolutely necessary, just like biological neurons?
+[VISUAL DIRECTION] Zoom on Figure 2 showing spike distribution patterns, highlight sparse activity
+
+[VOICEOVER 0:40-1:00] They discovered spiking neural networks process information through discrete spikes, eliminating wasteful continuous operations.
+[VISUAL DIRECTION] Animated comparison: traditional AI vs SNN activity patterns, emphasize 4,000 vs 20,000 operations
+
+[VOICEOVER 1:00-1:30] These brain-mimicking networks achieved 95.5% accuracy on MNIST benchmarks while using millijoules instead of joules. The key? Neurons only fire when needed, just like in your brain.
+[VISUAL DIRECTION] Show accuracy charts with energy consumption overlays, zoom on Leaky Integrate-and-Fire neuron diagram
+
+[VOICEOVER 1:30-1:50] This means medical implants that last years, smartphones with weeks of AI capability, and real-time gesture recognition without constant power drain.
+[VISUAL DIRECTION] Fast cuts: medical device, smartphone, gesture interface - all with "SUSTAINABLE AI" text overlay
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just smarter - it's sustainable, efficient, and inspired by nature's best design.
+[VISUAL DIRECTION] Final text: "97% less energy. Same performance. Nature's blueprint."

@@ -1,0 +1,1 @@
+AI decisions are often black boxes - but what if they could explain themselves in plain English? LLEXICORP translates neural network reasoning into human-readable text, achieving 83% accuracy in capturing key concepts. Could this transparency revolutionize AI safety in critical applications?

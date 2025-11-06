@@ -1,0 +1,1 @@
+Breast cancer remains a leading cause of death, but early detection saves lives. A new model analyzes age, BMI, and adiponectin to predict risk with 91% accuracy, using non-invasive data from routine checks. Learn how this Nature/Science research could transform screenings.

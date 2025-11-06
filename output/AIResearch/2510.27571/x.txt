@@ -1,0 +1,1 @@
+Breakthrough: AI now retrieves text, images, and combined content accurately without task-specific tuning. General Embedder (GVE) scores 0.573 across 9 benchmarks, improving compositional understanding by up to 0.779. The future of intelligent systems is here.

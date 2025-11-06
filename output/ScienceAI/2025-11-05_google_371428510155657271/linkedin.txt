@@ -1,0 +1,1 @@
+Google Research introduces SEEDS, a generative AI model that enhances weather forecasting by efficiently creating large ensembles. This innovation reduces computational costs and improves predictions for rare events, supporting climate resilience. #GenerativeAI #ClimateTech #Innovation

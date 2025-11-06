@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could reliably navigate your home and complete complex tasks? New research shows a breakthrough method that nearly doubles success rates.
+[VISUAL DIRECTION] [Animated text: 61% SUCCESS RATE - Nearly 2x Improvement] with AI graphic transitioning to home environment
+
+[VOICEOVER 0:05-0:20] Most AI systems struggle with multi-step tasks like finding objects and moving them around households. This limitation has held back practical autonomous systems.
+[VISUAL DIRECTION] [Show AI character failing at simple household tasks, then transition to research lab setting]
+
+[VOICEOVER 0:20-0:40] Researchers from ETRI and University of Science and Technology in Daejeon asked: Can we create AI that plans complex actions more effectively?
+[VISUAL DIRECTION] [Zoom on researcher figures, show question mark animation transitioning to ReAcTree diagram]
+
+[VOICEOVER 0:40-1:00] They discovered ReAcTree - a hierarchical method that constructs dynamic subgoals handled by individual AI nodes. On the WAH-NL household dataset, it achieved 61% success using a 72B model.
+[VISUAL DIRECTION] [Animated tree diagram showing subgoal decomposition, highlight 61% vs 31% comparison]
+
+[VOICEOVER 1:00-1:30] Here's how it works: ReAcTree builds on the ReAct paradigm but dynamically decides when to expand tasks into simpler subgoals. Each node uses language models to reason and coordinate strategies, while episodic memory retrieves successful examples to guide decisions.
+[VISUAL DIRECTION] [Show flowchart of decision process, highlight dynamic expansion and coordination mechanisms]
+
+[VOICEOVER 1:30-1:50] This means more reliable AI for homes, warehouses, and settings where complex task sequencing matters. The method works even with smaller models - an 8B parameter version reached 37% success.
+[VISUAL DIRECTION] [Show applications: smart home, warehouse robotics, highlight performance scaling from 8B to 72B models]
+
+[VOICEOVER 1:50-2:00] The future of autonomous systems just got smarter. ReAcTree represents real progress toward AI that can reliably handle the complex world around us.
+[VISUAL DIRECTION] [Final composite shot showing AI successfully completing household tasks with ReAcTree branding]

@@ -1,0 +1,1 @@
+A new system translates complex neural network reasoning into plain language, making AI more transparent and trustworthy for everyday users without sacrificing accuracy.

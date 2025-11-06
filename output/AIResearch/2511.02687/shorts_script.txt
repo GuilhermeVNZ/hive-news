@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI models that work perfectly alone can fail dramatically when forced to collaborate? [VISUAL DIRECTION] Animated text: "AI COLLABORATION FAILURE" with crashing robot graphics
+
+[VOICEOVER 0:05-0:20] As organizations deploy AI for complex tasks from customer service to scientific discovery, effective teamwork becomes crucial. [VISUAL DIRECTION] Quick cuts: research lab, customer service center, scientific visualization
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can today's AI models actually work together? They tested 32 different AI models in collaborative scenarios. [VISUAL DIRECTION] Show grid of AI model logos with red X marks appearing
+
+[VOICEOVER 0:40-1:00] The finding: High-performing AI models showed significant degradation when paired - even with identical copies of themselves. [VISUAL DIRECTION] Zoom on performance metrics chart showing solo vs paired performance drop
+
+[VOICEOVER 1:00-1:30] Using a novel maze-solving benchmark, agents could only communicate through random symbols to combine knowledge. Communication breakdowns and coordination failures were common. [VISUAL DIRECTION] Animated maze with AI agents failing to coordinate paths
+
+[VOICEOVER 1:30-1:50] This collaboration gap could undermine massive investments in AI-agent infrastructure and limit AI's effectiveness in team-based scenarios. [VISUAL DIRECTION] Corporate boardroom scene with concerned executives
+
+[VOICEOVER 1:50-2:00] The critical insight: Initial interactions determine collaboration success - suggesting new training strategies are needed. [VISUAL DIRECTION] Final text overlay: "AI CAN'T WORK TOGETHER - YET"

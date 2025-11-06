@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could process hour-long videos in minutes instead of hours?
+[VISUAL DIRECTION] Animated text: "250 GPU HOURS → 5 GPU HOURS" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] Current AI systems get overwhelmed by long videos, wasting computation on irrelevant frames and missing critical moments
+[VISUAL DIRECTION] Show chaotic video frames flashing rapidly with red X's over most frames
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to focus only on what matters?
+[VISUAL DIRECTION] Zoom in on specific action moments in video with glowing highlights
+
+[VOICEOVER 0:40-1:00] They discovered FOCUS - a training-free method that identifies the most informative 2% of frames using multi-armed bandit optimization
+[VISUAL DIRECTION] Show Figure 2 distribution with peak highlighting the critical 2% selection
+
+[VOICEOVER 1:00-1:30] The system treats video clips like slot machines, prioritizing regions with high uncertainty and relevance to the query
+[VISUAL DIRECTION] Animated diagram showing frame selection process with confidence scores
+
+[VOICEOVER 1:30-1:50] This means AI can now analyze surveillance footage, medical videos, and educational content 50x faster without sacrificing accuracy
+[VISUAL DIRECTION] Quick cuts showing applications: security camera → medical scan → lecture video
+
+[VOICEOVER 1:50-2:00] The future of video AI just got 50x smarter by learning what to ignore
+[VISUAL DIRECTION] Final text overlay: "FOCUS: 2% frames = 100% smarter AI"

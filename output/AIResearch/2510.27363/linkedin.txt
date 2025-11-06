@@ -1,0 +1,1 @@
+AI systems often fail at multi-step reasoning - but new ToolScope framework achieves +6.69% average improvement by enabling AI to plan ahead and re-examine problems. This breakthrough in vision-guided planning could transform scientific assistance and educational applications. Read how this addresses fundamental limitations in current multimodal AI systems.

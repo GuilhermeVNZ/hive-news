@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could create Hollywood-quality video using just 2-5 seconds of footage and consumer-grade hardware?
+[VISUAL DIRECTION] [Animated text: "2-5 SECONDS TO CINEMATIC VIDEO" with dramatic background]
+
+[VOICEOVER 0:05-0:20] Traditional professional video generation requires massive datasets and proprietary software, putting it out of reach for most researchers and creators.
+[VISUAL DIRECTION] [Show split screen: expensive studio equipment vs simple laptop, with price tags showing cost disparity]
+
+[VOICEOVER 0:20-0:40] A Nature research team asked: Can we adapt large AI models to learn cinematic style from minimal data?
+[VISUAL DIRECTION] [Show Figure 1 from paper - methodology diagram with arrows pointing to "2-5 second clips" and "Turkish drama series Turco"]
+
+[VOICEOVER 0:40-1:00] They fine-tuned a 14-billion parameter video generator using only 25,000 frame-caption pairs, achieving Fréchet Distance scores comparable to commercial systems.
+[VISUAL DIRECTION] [Zoom on quantitative results table showing Fréchet Distance metrics, highlight the competitive scores]
+
+[VOICEOVER 1:00-1:30] The secret? Low-Rank Adaptation modules that modify just 1% of model parameters. This two-stage pipeline separates appearance learning from motion generation while keeping most architecture frozen.
+[VISUAL DIRECTION] [Animated diagram showing LoRA modules injecting into frozen model architecture, with percentage indicators]
+
+[VOICEOVER 1:30-1:50] This means independent researchers can now adapt models to their specific needs without massive datasets or computing infrastructure, democratizing high-quality video creation.
+[VISUAL DIRECTION] [Show before/after comparison: simple input clip transforming into professional output with consistent lighting and composition]
+
+[VOICEOVER 1:50-2:00] Professional video generation is no longer exclusive to well-funded studios - it's becoming accessible science.
+[VISUAL DIRECTION] [Final text overlay: "Democratizing Cinematic AI" with paper citation and research institution logo]

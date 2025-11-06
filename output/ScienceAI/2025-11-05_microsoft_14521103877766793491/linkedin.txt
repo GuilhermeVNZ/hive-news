@@ -1,0 +1,1 @@
+Microsoft has open-sourced Project FarmVibes, a comprehensive AI toolkit for precision agriculture. The suite includes FarmVibes.AI algorithms, connectivity solutions for rural areas, and data compression tools that could help address global food security challenges while promoting sustainable farming practices.

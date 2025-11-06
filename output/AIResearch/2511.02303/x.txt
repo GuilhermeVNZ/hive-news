@@ -1,0 +1,1 @@
+AI teams fail when one agent slacks off. New research reveals multi-agent LLM systems collapse due to 'social loafing.' Solution: MAMR framework boosts AIME25 performance by 7% - showing balanced collaboration solves complex math problems effectively.

@@ -1,0 +1,1 @@
+AI struggles with complex documents - even GPT-4o scores just 76.5% on factual accuracy. New ChiMDQA benchmark reveals critical limitations in business applications. Read the Nature/Science paper to understand the real-world implications.

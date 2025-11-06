@@ -1,0 +1,1 @@
+AI that thinks step-by-step achieves 95.6% accuracy - outperforming simultaneous approaches with identical computing power. This sequential method challenges long-standing AI development assumptions. How might this transform education and scientific problem-solving?

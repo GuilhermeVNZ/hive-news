@@ -1,0 +1,1 @@
+AI conversations leak sensitive topics—even encrypted. New research reveals network metadata alone exposes healthcare, legal, and financial discussions with 99% accuracy. This undermines confidentiality in everyday AI use. Read the Nature/Science-style paper on Whisper Leak vulnerabilities.

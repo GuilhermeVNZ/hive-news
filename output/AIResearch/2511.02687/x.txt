@@ -1,0 +1,1 @@
+Surprising AI weakness: models that excel individually often fail dramatically when required to collaborate. This 'collaboration gap' represents a distinct capability not captured by current approaches. How might this impact your organization's AI strategy?

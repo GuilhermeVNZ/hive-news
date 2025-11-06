@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could understand your verbal commands and execute complex tasks without any specialized training?
+[VISUAL DIRECTION] Animated text: "ROBOTS UNDERSTAND VERBAL COMMANDS" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Researchers have developed a breakthrough system that combines existing AI models to create robots that follow instructions ranging from simple object relocation to solving complex puzzles.
+[VISUAL DIRECTION] Show layered architecture diagram from paper with animated connections between components
+
+[VOICEOVER 0:20-0:40] The key question: Can we create robots that adapt to new environments without massive datasets or domain-specific training?
+[VISUAL DIRECTION] Zoom in on "no domain-specific training" text overlay with checkmark animation
+
+[VOICEOVER 0:40-1:00] The results are stunning - 100% success rate in moving objects to specified positions and semantic clustering tasks. The system even solved the Tower of Hanoi puzzle.
+[VISUAL DIRECTION] Show success rate statistics (100%) with green checkmarks, then Tower of Hanoi puzzle animation
+
+[VOICEOVER 1:00-1:30] How does it work? A layered architecture combines different AI models through ROS framework. The system maintains environment relationships and translates verbal commands into executable actions using pre-trained models.
+[VISUAL DIRECTION] Animated flow chart showing command → language model → action planner → robot execution
+
+[VOICEOVER 1:30-1:50] This means robots could be deployed in unpredictable environments without retraining - from warehouses to disaster response. The approach avoids massive data collection requirements.
+[VISUAL DIRECTION] Quick cuts showing potential applications: warehouse robots, emergency response scenarios
+
+[VOICEOVER 1:50-2:00] The future is here: Robots that understand and act on your words, making sophisticated robotics accessible without specialized engineering.
+[VISUAL DIRECTION] Final text overlay: "ACCESSIBLE ROBOTICS IS HERE" with robot silhouette

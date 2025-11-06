@@ -1,0 +1,1 @@
+A new deep learning model combines global and local features to slash drug discovery costs and time, achieving record performance on key benchmarks.

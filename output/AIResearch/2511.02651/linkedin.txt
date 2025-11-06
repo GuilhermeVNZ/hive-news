@@ -1,0 +1,1 @@
+AI just got twice as fast without losing complex reasoning abilities. ServiceNow's breakthrough replaces transformer components with efficient state space models, maintaining performance while doubling throughput. This could transform business AI deployment - read the Nature/Science paper to understand the implications.

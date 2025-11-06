@@ -1,0 +1,1 @@
+Bridges can now monitor their own health with minimal sensors. Columbia's new method estimates forces, properties, and responses simultaneously in real-time - revolutionizing infrastructure safety. #StructuralEngineering #Innovation

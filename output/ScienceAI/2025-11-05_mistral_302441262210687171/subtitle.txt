@@ -1,0 +1,1 @@
+The French AI company unveils its integrated coding platform with on-prem deployment, challenging GitHub Copilot and other SaaS coding assistants in regulated industries.

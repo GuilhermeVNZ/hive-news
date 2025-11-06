@@ -1,0 +1,1 @@
+What if AI could distinguish real biological causes from mere correlations? New causal-inspired graph neural networks achieve 89% accuracy in cancer diagnosis by focusing on actual mechanisms, not spurious patterns. Read the Nature/Science paper on how this approach maintains robust performance across diverse clinical settings.

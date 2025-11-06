@@ -1,0 +1,1 @@
+Even top AI models fail 20%+ on complex documents, generating inaccurate analyses. New ChiMDQA benchmark exposes critical weaknesses in business AI applications. Nature/Science study reveals why specialized content remains challenging.

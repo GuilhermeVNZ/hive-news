@@ -1,0 +1,1 @@
+New method trains AI using synthetic shapes instead of real medical images, achieving expert-level segmentation with just a few examples while protecting patient privacy.

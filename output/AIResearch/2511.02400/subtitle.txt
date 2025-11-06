@@ -1,0 +1,1 @@
+A new framework harmonizes mammography datasets to expose biases that degrade AI performance, enabling fairer and more reliable breast cancer screening tools for diverse populations.

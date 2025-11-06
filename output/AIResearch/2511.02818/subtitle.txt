@@ -1,0 +1,1 @@
+A new model processes complex datasets in one shot, matching top methods without task-specific fine-tuning, opening doors for real-time analysis in healthcare and finance.

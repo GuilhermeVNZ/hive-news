@@ -1,0 +1,1 @@
+The National HERO initiative leverages Intel's Gaudi 2 AI processors and FPGAs to create a privacy-preserving healthcare data ecosystem where individuals control and monetize their personal information.

@@ -1,0 +1,1 @@
+A side-channel attack can identify sensitive conversations in AI chats by analyzing encrypted traffic, posing risks for users in restrictive environments.

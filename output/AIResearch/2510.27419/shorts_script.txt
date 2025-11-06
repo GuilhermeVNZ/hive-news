@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could stop wasting time overthinking simple questions while actually thinking harder on the tough ones?
+[VISUAL DIRECTION] Animated text: "AI OVER-THINKS SIMPLE QUESTIONS" with question marks appearing, then "UNDER-THINKS HARD ONES" with exclamation marks
+
+[VOICEOVER 0:05-0:20] This is the fundamental cognitive inefficiency holding back advanced AI systems today. Current models either use too much computation on easy problems or not enough on difficult ones.
+[VISUAL DIRECTION] Show Figure 1 from paper - computational distribution chart with zoom on inefficient patterns
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to dynamically match its reasoning depth to problem difficulty in real-time?
+[VISUAL DIRECTION] Animated flow chart showing problem classification process with "SIMPLE" and "COMPLEX" branching paths
+
+[VOICEOVER 0:40-1:00] They developed DeepCompress - a dual-reward system that monitors AI performance and classifies problems automatically. When accuracy exceeds 50%, problems are labeled "simple" and rewarded for shorter reasoning.
+[VISUAL DIRECTION] Show reinforcement learning diagram with dual reward pathways, highlight the 50% accuracy threshold
+
+[VOICEOVER 1:00-1:30] The method uses reinforcement learning to incentivize appropriate reasoning depth. For easy problems: shorter paths. For hard problems: longer, exploratory reasoning with systematic checking and revision.
+[VISUAL DIRECTION] Animated comparison showing traditional AI vs DeepCompress reasoning chains - highlight the compression on simple problems
+
+[VOICEOVER 1:30-1:50] Results: 57.9% faster average response times across 7 benchmarks while maintaining state-of-the-art accuracy. Particularly effective on challenging math problems like the American Invitational Mathematics Examination.
+[VISUAL DIRECTION] Show performance comparison chart with 57.9% improvement highlighted in bold text
+
+[VOICEOVER 1:50-2:00] This breakthrough enables broader AI applications in education and research by solving the computational bottleneck - smarter reasoning without sacrificing accuracy.
+[VISUAL DIRECTION] Final screen: "57.9% FASTER AI REASONING" with Nature/Science logo

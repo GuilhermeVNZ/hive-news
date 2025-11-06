@@ -1,0 +1,1 @@
+New method uses knowledge graphs to pinpoint what changes in game updates, cutting testing time by up to 90% while maintaining accuracy—critical for today's rapidly updated games.

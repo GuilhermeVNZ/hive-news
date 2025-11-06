@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could design stronger steel in minutes instead of months?
+[VISUAL DIRECTION] Animated text: "AI Designs Steel?" with metallic background
+[VOICEOVER 0:05-0:20] Steel development has always required costly lab testing - until now.
+[VISUAL DIRECTION] Show laboratory equipment fading to computer screens with data streams
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI accurately predict how ductile different steel mixtures will be?
+[VISUAL DIRECTION] Show Figure 7 clustering plot with zoom on diagonal alignment
+[VOICEOVER 0:40-1:00] Random Forest Regression achieved 98% accuracy in predicting elongation properties.
+[VISUAL DIRECTION] Animated text: "98% Accuracy" with R² value 0.9852 displayed prominently
+[VOICEOVER 1:00-1:30] The AI analyzed 300 data points across 7 elements and processing conditions, consistently outperforming traditional methods.
+[VISUAL DIRECTION] Fast cuts between element symbols (Cr, Ni, Mn, Si, Cu, C) and processing parameters
+[VOICEOVER 1:30-1:50] This means faster development of crash-absorbing car panels and stronger construction beams.
+[VISUAL DIRECTION] Show car safety testing and construction beams with AI overlay
+[VOICEOVER 1:50-2:00] AI is now designing the materials that build our world.
+[VISUAL DIRECTION] Final shot of modern cityscape with AI network overlay

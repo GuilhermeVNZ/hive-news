@@ -1,0 +1,1 @@
+New federated quantum kernel method identifies complex anomalies in sensor networks without sharing sensitive data, achieving superior accuracy with minimal communication overhead

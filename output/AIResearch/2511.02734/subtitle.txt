@@ -1,0 +1,1 @@
+A new benchmark reveals that even advanced AI models fail to adapt plans in changing environments, with performance dropping by 40% under cost shifts, highlighting a critical gap in real-world AI reliability.

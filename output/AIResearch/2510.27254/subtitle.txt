@@ -1,0 +1,1 @@
+New method injects foreign language understanding into existing AI models, dramatically improving performance for underrepresented languages while preserving privacy and efficiency

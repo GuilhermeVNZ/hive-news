@@ -1,0 +1,1 @@
+AI household tasks just got smarter: New ReAcTree method achieves 61% success on WAH-NL dataset, nearly doubling previous best performance. This hierarchical approach transforms how AI plans complex actions by dynamically decomposing tasks. The future of autonomous systems is becoming more reliable - what applications excite you most?

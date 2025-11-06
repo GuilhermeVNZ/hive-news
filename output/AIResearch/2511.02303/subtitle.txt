@@ -1,0 +1,1 @@
+A new method fixes lazy AI behavior in multi-agent systems, boosting reasoning accuracy by up to 8% on complex math tasks—unlocking smarter, more reliable AI teamwork.

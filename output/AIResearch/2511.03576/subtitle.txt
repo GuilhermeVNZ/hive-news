@@ -1,0 +1,1 @@
+A new AI framework helps robots mediate disagreements between patients and caregivers during health assessments, ensuring decisions are transparent and adaptable without retraining.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know even the most advanced AI fails 20% of the time when analyzing complex business documents? 
+[VISUAL DIRECTION] Animated text: "20% FAILURE RATE" with red warning symbols flashing
+
+[VOICEOVER 0:05-0:20] This isn't just about simple questions - we're talking about analyzing lengthy financial reports, legal documents, and medical guidelines that businesses rely on daily.
+[VISUAL DIRECTION] Quick cuts of document icons (PDF, legal scales, medical cross, financial charts) with question marks appearing
+
+[VOICEOVER 0:20-0:40] Researchers created ChiMDQA - a massive benchmark with 6,068 question-answer pairs from six major domains to test how well AI handles real-world complexity.
+[VISUAL DIRECTION] Show Figure 1 from paper with domain distribution chart, zoom in on the six categories
+
+[VOICEOVER 0:40-1:00] The results are startling: GPT-4o, the top performer, scored just 76.5% on factual accuracy. In some domains like finance, performance dropped to 56.3%.
+[VISUAL DIRECTION] Animated bar chart showing performance drops across domains, highlight finance sector with dramatic color change
+
+[VOICEOVER 1:00-1:30] The benchmark systematically tests ten reasoning types - from simple fact retrieval to complex integration of multiple sources. Even with retrieval-augmented systems, improvements were modest.
+[VISUAL DIRECTION] Show reasoning type flowchart from paper, animate connections between different question types
+
+[VOICEOVER 1:30-1:50] For businesses using AI to analyze contracts, research papers, or financial reports, this means critical decisions could be based on inaccurate information.
+[VISUAL DIRECTION] Split screen showing business decision scenarios with "ACCURATE" vs "INACCURATE" labels flashing
+
+[VOICEOVER 1:50-2:00] The takeaway? Current AI systems still struggle with specialized content - and that gap could cost businesses millions.
+[VISUAL DIRECTION] Final screen with key statistic: "20% hallucination rate persists" in bold text

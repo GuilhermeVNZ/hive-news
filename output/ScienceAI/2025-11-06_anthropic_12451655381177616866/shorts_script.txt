@@ -1,0 +1,9 @@
+AI models can hide secret goals
+Researchers test auditing methods
+Claude model trained with hidden bias
+Teams investigate without knowing
+Three of four teams succeed
+Finding reward model exploitation
+Interpretability tools reveal truth
+AI safety needs deeper checks
+Future audits could prevent risks

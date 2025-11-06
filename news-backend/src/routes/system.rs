@@ -609,6 +609,62 @@ pub async fn get_services_status(
     }))
 }
 
+/// Get count of articles published today
+pub async fn get_articles_today_count(
+    Extension(_db): Extension<Arc<Database>>,
+) -> Json<Value> {
+    use crate::utils::article_registry::{RegistryManager, ArticleStatus};
+    use chrono::Utc;
+    
+    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
+    
+    if !registry_path.exists() {
+        return Json(json!({
+            "success": true,
+            "count": 0,
+        }));
+    }
+    
+    match RegistryManager::new(registry_path) {
+        Ok(manager) => {
+            let today = Utc::now().date_naive();
+            let count = manager.get_all_articles()
+                .iter()
+                .filter(|article| {
+                    // Only count Published articles
+                    if !matches!(article.status, ArticleStatus::Published) {
+                        return false;
+                    }
+                    
+                    // Check if published_at is today
+                    if let Some(published_at) = &article.published_at {
+                        return published_at.date_naive() == today;
+                    }
+                    
+                    // Fallback: check collected_at if published_at is not available
+                    if let Some(collected_at) = &article.collected_at {
+                        return collected_at.date_naive() == today;
+                    }
+                    
+                    false
+                })
+                .count();
+            
+            Json(json!({
+                "success": true,
+                "count": count,
+            }))
+        }
+        Err(e) => {
+            Json(json!({
+                "success": false,
+                "error": format!("Failed to load registry: {}", e),
+                "count": 0,
+            }))
+        }
+    }
+}
+
 
 
 

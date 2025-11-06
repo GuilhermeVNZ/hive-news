@@ -1,0 +1,1 @@
+A new method transmits visual information using just 0.001 bits per pixel—enough for robots to navigate and analyze environments without high-bandwidth connections.

@@ -1,0 +1,1 @@
+AI often fails in real healthcare settings. New causal graph neural networks fix this by focusing on biological mechanisms, not correlations. Achieved 89% cancer diagnosis accuracy and maintained 0.81-0.84 AUC across institutions. Nature/Science paper shows path to reliable medical AI.

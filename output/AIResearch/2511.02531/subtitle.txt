@@ -1,0 +1,1 @@
+Causality-inspired neural networks overcome AI's brittleness in healthcare, enabling robust predictions across hospitals and revealing disease mechanisms for precise treatments.

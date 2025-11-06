@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI adoption ranges from 59% in some countries to below 10% in others? The global AI divide is real and it's dramatic.
+[VISUAL DIRECTION] [Animated world map with stark red/blue contrast showing adoption disparities, text overlay: "59% vs <10%"]
+[VOICEOVER 0:05-0:20] Researchers just created the first population-normalized AI metric, measuring actual usage across 147 countries. This isn't about AI hype - it's about who's actually using it.
+[VISUAL DIRECTION] [Show Figure 1 methodology diagram, zoom on "mobile-to-desktop ratios" and "computing device access"]
+[VOICEOVER 0:20-0:40] They asked: How is AI spreading globally beyond wealthy nations? Previous surveys missed key populations and couldn't compare countries consistently.
+[VISUAL DIRECTION] [Split screen: traditional survey limitations vs new metric advantages, animated text: "Missing: 15-64 age adjustments"]
+[VOICEOVER 0:40-1:00] The findings reveal a 0.83 correlation with GDP per capita - but with surprising exceptions. Zambia and Pakistan show comparable usage to wealthier nations despite limited access.
+[VISUAL DIRECTION] [Show correlation scatter plot, circle Zambia (34%) and Pakistan (33%) with highlight effects]
+[VOICEOVER 1:00-1:30] How does it work? The AI User Share combines percentage engaging with AI, computing device access, and mobile-to-desktop ratios. It's adjusted for population gaps and uses anonymized mobile patterns.
+[VISUAL DIRECTION] [Animated flowchart showing three components merging into final metric, text: "Rigorous cross-country comparability"]
+[VOICEOVER 1:30-1:50] Real impact: China's AI usage doubled after DeepSeek's 2025 launch, showing that when barriers drop, interest explodes. This metric can track actual diffusion worldwide.
+[VISUAL DIRECTION] [Show China adoption curve spiking dramatically in January 2025, fast zoom on peak]
+[VOICEOVER 1:50-2:00] The AI revolution is here - but it's reaching the world unevenly. Understanding these disparities is the first step toward closing them.

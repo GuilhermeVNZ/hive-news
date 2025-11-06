@@ -1,0 +1,1 @@
+EleutherAI's open-source training frameworks are transforming how researchers approach large language model development. GPT-NeoX enables distributed training at GPT-3 scale, while Mesh Transformer Jax powers efficient TPU training. These tools represent a significant step toward democratizing cutting-edge AI research.

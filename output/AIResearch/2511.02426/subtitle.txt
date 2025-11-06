@@ -1,0 +1,1 @@
+Researchers develop a technique that automatically selects the most accurate model for monitoring structures using vibration data, improving reliability in real-time assessments.

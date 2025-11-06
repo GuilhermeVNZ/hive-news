@@ -1,0 +1,13 @@
+In a significant move for the AI industry, Anyscale has announced a strategic collaboration with NVIDIA to enhance large language model development and deployment. The partnership integrates NVIDIA's AI software stack—including TensorRT-LLM, Triton Inference Server, and NeMo—directly into Anyscale's Ray framework and platform. This integration aims to deliver substantial performance gains and cost efficiencies for enterprises building generative AI applications.
+
+The collaboration brings together Anyscale's scalable computing expertise with NVIDIA's accelerated computing capabilities. NVIDIA TensorRT-LLM will enable automatic scaling of inference across multiple GPUs, potentially delivering up to 8x higher performance on NVIDIA H100 Tensor Core GPUs compared to previous generations. This represents a major leap forward for organizations running large-scale LLM workloads.
+
+For production environments, the companies are certifying NVIDIA AI Enterprise software suite for the Anyscale Platform. This certification ensures enterprise-grade security, stability, and support for mission-critical AI deployments. The integration extends to Anyscale Endpoints, making NVIDIA's acceleration technologies accessible through simple APIs for a broader developer audience.
+
+Robert Nishihara, CEO and co-founder of Anyscale, emphasized the importance of this partnership: 'Realizing the incredible potential of generative AI requires computing platforms that help developers iterate quickly and save costs. Our collaboration with NVIDIA will bring even more performance and efficiency to our portfolio.'
+
+Manuvir Das, vice president of Enterprise Computing at NVIDIA, highlighted the complementary nature of the technologies: 'The combination of NVIDIA AI and Anyscale unites incredible performance with ease of use and the ability to scale rapidly with success.'
+
+The integration addresses key challenges in the AI development lifecycle, from model training and fine-tuning to deployment and inference. NVIDIA Triton Inference Server will standardize AI model deployment across diverse environments, while NVIDIA NeMo provides a comprehensive framework for building and customizing generative AI models.
+
+Early access to these integrations is expected in Q4 2023, with the companies encouraging interested practitioners to apply for preview access. The partnership represents a significant step forward in making advanced AI capabilities more accessible and cost-effective for developers worldwide.

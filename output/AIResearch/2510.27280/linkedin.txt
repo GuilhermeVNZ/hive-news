@@ -1,0 +1,1 @@
+AI systems waste 98% of computation on irrelevant video frames. FOCUS selects only the most informative 2%, boosting accuracy by 6.7% while cutting GPU hours from 250 to 5. How will this transform video analysis? Read the Nature paper.

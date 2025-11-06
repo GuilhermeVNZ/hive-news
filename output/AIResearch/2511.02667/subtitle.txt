@@ -1,0 +1,1 @@
+A new evaluation method reveals that even state-of-the-art AI models fail at compositional generalization, but a novel architecture offers a scalable solution with minimal overhead.

@@ -13,11 +13,21 @@ pub struct Claims {
 pub struct JwtService;
 
 impl JwtService {
-    /// Get JWT secret from environment or use default
+    /// Get JWT secret from environment - FAILS if not set (security requirement)
     fn get_secret() -> String {
-        env::var("JWT_SECRET").unwrap_or_else(|_| {
-            "news-system-secret-key-change-in-production".to_string()
-        })
+        env::var("JWT_SECRET").expect(
+            "CRITICAL SECURITY ERROR: JWT_SECRET environment variable is not set!\n\
+             \n\
+             For production, you MUST set a strong JWT_SECRET in your .env file:\n\
+             \n\
+             Generate a secure secret with:\n\
+             openssl rand -base64 32\n\
+             \n\
+             Then add to .env:\n\
+             JWT_SECRET=<your-generated-secret>\n\
+             \n\
+             NEVER use a default or weak secret in production!"
+        )
     }
 
     /// Generate JWT token for a user

@@ -1,0 +1,1 @@
+Machine learning model accurately forecasts mechanical properties of alloy steel, potentially accelerating materials development for automotive and aerospace industries.

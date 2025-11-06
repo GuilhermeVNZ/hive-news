@@ -1,0 +1,1 @@
+Google Research has developed an AI system that improves lung cancer screening specificity by 57% in multinational clinical trials. The technology, which integrates machine learning into radiologist workflows, could reduce unnecessary follow-up procedures while maintaining cancer detection rates. This represents significant progress in practical AI implementation for healthcare.

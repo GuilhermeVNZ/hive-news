@@ -1,0 +1,1 @@
+Pinecone's AI assistant transforms Google Docs into queryable knowledge bases using vector database tech. Say goodbye to manual document searches and hello to instant answers from your entire document collection. #AI #VectorDatabase #KnowledgeManagement

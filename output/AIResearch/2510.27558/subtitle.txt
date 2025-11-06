@@ -1,0 +1,1 @@
+New AI framework enables robots to understand complex instructions and execute multi-step tasks using off-the-shelf models, bridging the gap between language understanding and physical action.

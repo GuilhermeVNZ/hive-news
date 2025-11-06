@@ -1,0 +1,1 @@
+Can AI teams outperform individual supermodels? SIGMA coordinates 4 specialized AI agents to solve complex scientific problems, achieving 7.4% improvement on MATH500 and beating GPT-4o with fewer resources. How will multi-agent systems transform scientific research?

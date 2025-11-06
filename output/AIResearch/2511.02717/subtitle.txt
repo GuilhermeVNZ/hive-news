@@ -1,0 +1,1 @@
+A new algorithm can simultaneously identify unknown forces, system properties, and dynamic states using only sensor data—enabling better monitoring of bridges, buildings, and mechanical systems without costly instrumentation.

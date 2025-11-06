@@ -1,0 +1,1 @@
+Pinecone has introduced the Pioneers program to recognize and support AI developers and community leaders worldwide. The initiative provides exclusive access to product roadmaps, direct engineering team connections, and speaking engagement support for professionals advancing vector database applications in AI systems.

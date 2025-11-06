@@ -1,0 +1,1 @@
+AI reasoning exposed: Models drop from 99% to 29% accuracy when problems get complex. New DecompSR study shows they rely on surface patterns, not deep understanding. Nature/Science research reveals critical limitations.

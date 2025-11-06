@@ -1,0 +1,1 @@
+Self-supervised vision transformers achieve 81% alignment with feline vision, revealing how AI can bridge species perception gaps without labels.

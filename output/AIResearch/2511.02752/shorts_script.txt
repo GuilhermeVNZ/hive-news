@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI is spreading globally but leaving billions of people behind? 
+[VISUAL DIRECTION] Animated text: "AI IS LEAVING BILLIONS BEHIND" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] New research reveals a shocking digital divide: people who speak low-resource languages face significant barriers to AI adoption, even when we account for income and internet access.
+[VISUAL DIRECTION] Show world map with AI adoption heatmap, zoom in on regions with low-resource languages highlighted in red
+
+[VOICEOVER 0:20-0:40] Researchers classified 147 languages into three categories: high-resource like English and Chinese, mid-resource like Arabic and Hindi, and low-resource languages including Chichewa, Inuktitut, and Guarani.
+[VISUAL DIRECTION] Animated bar chart showing the three language categories with example languages listed
+
+[VOICEOVER 0:40-1:00] Using advanced statistical analysis and Microsoft telemetry data, they discovered low-resource language speakers show -2.32 percentage point gaps in AI adoption share compared to their baseline.
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on the -2.32 percentage point gap statistic, highlight in red
+
+[VOICEOVER 1:00-1:30] The methodology used augmented inverse probability weighting and difference-in-differences analysis to isolate language effects from confounding factors like GDP, electricity access, and internet penetration.
+[VISUAL DIRECTION] Animated flowchart showing the statistical methodology with clear labels for each step
+
+[VOICEOVER 1:30-1:50] This matters because AI is becoming integrated into education, healthcare, and economic opportunities. Without inclusive AI systems, millions risk falling further behind in global development.
+[VISUAL DIRECTION] Quick cuts showing AI applications in education, healthcare, and economic contexts with "EXCLUDED" text overlay
+
+[VOICEOVER 1:50-2:00] The research shows no evidence of convergence between 2024-2025, meaning this divide may be stable or even widening. We need deliberate efforts to build truly inclusive AI.
+[VISUAL DIRECTION] Final screen with animated text: "INCLUSIVE AI ISN'T OPTIONAL - IT'S ESSENTIAL"

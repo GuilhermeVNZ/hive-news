@@ -1,0 +1,1 @@
+AI coding assistants fail developer instructions 24% of the time. Apple's new benchmark shows GPT-5 & Gemini struggle with stylistic preferences, risking maintainability in finance/tech. Real problem beyond correctness.

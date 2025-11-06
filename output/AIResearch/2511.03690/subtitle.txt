@@ -1,0 +1,1 @@
+Open-source toolkit bridges gap between AI research and real-world software development, enabling reliable deployment at scale without vendor lock-in

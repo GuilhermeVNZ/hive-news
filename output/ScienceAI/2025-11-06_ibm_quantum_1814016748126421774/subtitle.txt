@@ -1,0 +1,1 @@
+New SDK release enables quantum workflows in compiled languages like C++, targeting quantum advantage by 2026 through partnerships with RIKEN and open-source collaboration.

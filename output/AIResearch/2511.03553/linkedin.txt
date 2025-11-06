@@ -1,0 +1,1 @@
+AI models struggle with basic logic puzzles - even advanced systems like GPT-4o achieve only 70% accuracy on deductive reasoning tasks. New research reveals critical gaps in AI reasoning capabilities that could limit real-world applications. Read the Nature/Science study to understand why reliable logical reasoning remains a major challenge for AI systems.

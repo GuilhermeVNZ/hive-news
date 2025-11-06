@@ -1,0 +1,1 @@
+Stop the scroll: AI training just got 2.4x faster without losing accuracy. New FP8-Flow-MoE cuts 7.4GB GPU memory by eliminating 'double quantization error' that plagued previous models. Nature paper shows how this democratizes massive AI development.

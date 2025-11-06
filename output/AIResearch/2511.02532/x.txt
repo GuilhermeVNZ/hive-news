@@ -1,0 +1,1 @@
+AI systems now autonomously manage mobile networks with human-level cognitive abilities—planning, memory, and continuous learning. This research demonstrates how agentic frameworks handle 6G complexity, outperforming traditional methods. Real-world applications already deployed by Deutsche Telekom and Telenor.

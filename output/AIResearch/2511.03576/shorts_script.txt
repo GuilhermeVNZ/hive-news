@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if robots could actually resolve human conflicts in healthcare settings?
+[VISUAL DIRECTION] [Animated text: ROBOTS RESOLVING HUMAN CONFLICTS? with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] In sensitive healthcare environments like elder care, robots face the critical challenge of balancing conflicting preferences between patients and caregivers.
+[VISUAL DIRECTION] [Show split screen: elderly patient on left, caregiver on right with conflicting icons above each]
+
+[VOICEOVER 0:20-0:40] Traditional AI methods act as 'black boxes' - we don't know how they make decisions. But healthcare demands transparency and real-time adaptation.
+[VISUAL DIRECTION] [Black box graphic with question marks, then transparent box revealing gears inside]
+
+[VOICEOVER 0:40-1:00] Researchers developed the Multi-User Preferences Quantitative Bipolar Argumentation Framework - a structured system that represents attacks and supports between arguments to determine optimal actions.
+[VISUAL DIRECTION] [Animated diagram showing argument nodes with connecting support/attack lines, strength indicators]
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system gathers environmental observations and task performance data, processes through an iterative algorithm using Quadratic Energy Model to compute argument strengths. It adapts dynamically without retraining.
+[VISUAL DIRECTION] [Flowchart animation: Input → Algorithm Processing → Output decision with strength indicators]
+
+[VOICEOVER 1:30-1:50] In frailty assessments, when caregiver prioritizes speed but patient needs accuracy, the framework transparently resolves the conflict. It maintains efficiency when no conflicts exist.
+[VISUAL DIRECTION] [Case study visualization: frailty assessment scenario with conflicting priorities resolving to balanced decision]
+
+[VOICEOVER 1:50-2:00] This breakthrough means safer human-robot interactions where transparency matters most - in healthcare.
+[VISUAL DIRECTION] [Final text overlay: TRANSPARENT ROBOT DECISIONS FOR SAFER HEALTHCARE with Nature/Science logo]

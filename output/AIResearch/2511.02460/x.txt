@@ -1,0 +1,1 @@
+AI's shortcut problem solved? New Nature/Science research shows moving knowledge graphs to a spherical space prevents models from taking trivial shortcuts. Result: 30% performance boost on large datasets like FB15k-237. Geometric constraint forces genuine semantic learning.

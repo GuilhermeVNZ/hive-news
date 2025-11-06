@@ -1,0 +1,1 @@
+New method constrains AI models to spherical spaces, eliminating training shortcuts and forcing more meaningful data relationships—with significant performance gains on complex knowledge graphs.

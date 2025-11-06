@@ -1,0 +1,1 @@
+Anyscale's major platform upgrades at Ray Summit 2024 represent a significant advancement in AI infrastructure. The new GPU-native architecture and RayTurbo engine deliver unprecedented performance improvements while reducing costs by up to 90%. These innovations will accelerate enterprise AI adoption across industries.

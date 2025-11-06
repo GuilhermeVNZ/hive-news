@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could work for 30 hours straight without constant human monitoring?
+[VISUAL DIRECTION] Animated text: "30+ HOUR AI WORKFLOWS" with clock animation
+
+[VOICEOVER 0:05-0:20] Current AI systems fail at long tasks requiring sustained effort - they're expensive and inefficient.
+[VISUAL DIRECTION] Show red X over failed AI attempts, cost dollar signs fading out
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that works autonomously for days while maintaining performance?
+[VISUAL DIRECTION] Scientist silhouette with question mark, transitioning to AI brain graphic
+
+[VOICEOVER 0:40-1:00] POLLO framework combines automated guidance with action-level control, achieving 50%+ performance gains over untrained AI.
+[VISUAL DIRECTION] Show performance chart with POLLO line spiking 50% above baseline
+
+[VOICEOVER 1:00-1:30] Instead of constant monitoring, humans only intervene when AI deviates from promising paths. The system masks unreliable actions to prevent error propagation.
+[VISUAL DIRECTION] Animated flowchart showing human checkpoints only at critical decision points
+
+[VOICEOVER 1:30-1:50] This makes AI practical for real-world challenges requiring days or months of work - from experimental design to complex data analysis.
+[VISUAL DIRECTION] Quick cuts: lab equipment, data visualization, research papers
+
+[VOICEOVER 1:50-2:00] AI that works patiently could transform how we solve humanity's biggest challenges.
+[VISUAL DIRECTION] Final text overlay: "Patient AI = Better Science" with Nature/Science logo

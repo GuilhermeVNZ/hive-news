@@ -1,0 +1,17 @@
+Mistral AI has launched its most comprehensive enterprise coding solution to date with Codestral 25.08, positioning itself as a privacy-focused alternative to cloud-only coding assistants like GitHub Copilot. The French AI startup's new release addresses what it identifies as critical limitations preventing widespread enterprise adoption of AI coding tools.
+
+The announcement comes as enterprises in regulated sectors like finance, healthcare, and defense have been hesitant to adopt AI coding assistants due to deployment constraints, limited customization, and fragmented architectures. Mistral's solution offers what many competitors don't: the ability to deploy entirely on-premises or in air-gapped environments while maintaining full control over data and model weights.
+
+At the core of the new stack is Codestral 25.08, Mistral's latest code generation model optimized for fill-in-the-middle completion. The company claims significant improvements over previous versions, including 50% fewer runaway generations and enhanced performance on academic benchmarks. The model supports multiple programming languages and can be deployed across cloud, VPC, or on-prem environments without architectural changes.
+
+The stack also includes Codestral Embed, a code-specific embedding model that Mistral says outperforms OpenAI and Cohere alternatives in code retrieval benchmarks. Designed specifically for code rather than general text, it enables high-recall, low-latency search across massive codebases while keeping all data within enterprise infrastructure.
+
+Perhaps the most ambitious component is Devstral, Mistral's agentic coding workflow system built on the OpenHands agent scaffold. Available in multiple sizes, including an open-weight 24B parameter model that runs on a single RTX 4090 or Mac with 32GB RAM, Devstral enables cross-file refactors, test generation, and PR authoring with structured reasoning.
+
+All these capabilities are integrated through Mistral Code, a native plugin for JetBrains and VS Code that provides inline completions, one-click task automations, and semantic search. The extension supports enterprise deployment requirements including SSO, audit logging, and usage controls, with on-prem deployment becoming generally available in Q3 2024.
+
+Early adopters include Capgemini, which has rolled out the stack across global delivery teams working with defense, telecom, and energy clients. Abanca, a Spanish bank operating under European banking regulations, uses Mistral's models in a fully self-hosted deployment to meet data residency requirements. SNCF, the French national railway company, uses agentic workflows to modernize legacy Java systems safely.
+
+The timing is strategic as enterprises increasingly seek alternatives to cloud-only AI solutions. With competitors like GitHub Copilot Enterprise requiring cloud connectivity and Anthropic's Claude Code operating primarily through API access, Mistral's on-prem focus could appeal to organizations with strict data governance requirements.
+
+The full Mistral coding stack is available now for enterprise deployment, with companies able to start with autocomplete and semantic search before expanding to agentic workflows at their own pace.

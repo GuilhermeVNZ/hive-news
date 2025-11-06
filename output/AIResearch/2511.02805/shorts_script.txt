@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] AI systems typically bloat with every interaction, wasting massive energy. What if they could think like humans instead?
+[VISUAL DIRECTION] Animated text: "AI BLOAT PROBLEM" with growing bar graph showing exponential memory increase
+
+[VOICEOVER 0:05-0:20] Current AI systems store every past interaction, leading to inefficient processing and high energy costs. This limits their practical use in real-world applications.
+[VISUAL DIRECTION] Show Figure 3 from paper - MemSearcher maintains constant token counts while ReAct-based methods grow linearly
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI mimic human memory, keeping only what's essential for solving problems?
+[VISUAL DIRECTION] Brain icon with selective filtering animation, showing irrelevant information being discarded
+
+[VOICEOVER 0:40-1:00] They discovered MemSearcher - an AI that iteratively summarizes conversations, preserving only crucial details. It achieved 11% higher scores on benchmarks while using less memory.
+[VISUAL DIRECTION] Zoom on Figure 1 showing MemSearcher outperforming IRCoT and AutoRefine on PopQA and 2WikiMultiHopQA
+
+[VOICEOVER 1:00-1:30] How it works: Using Group Relative Policy Optimization, the AI generates reasoning trajectories within 1,024 tokens. It produces thoughts, performs actions, and observes results - all while maintaining compact memory.
+[VISUAL DIRECTION] Animated flowchart showing the iterative summarization process with token counter staying constant
+
+[VOICEOVER 1:30-1:50] This means faster, more reliable AI assistants for education, customer service, and research - applications where speed and accuracy are crucial. Lower GPU memory usage makes it more sustainable too.
+[VISUAL DIRECTION] Quick cuts showing AI assistant applications in education, customer service, and data analysis
+
+[VOICEOVER 1:50-2:00] The future of AI isn't about bigger models - it's about smarter thinking. MemSearcher proves efficiency and performance can go hand in hand.
+[VISUAL DIRECTION] Final text overlay: "SMARTER AI, LESS ENERGY" with MemSearcher logo

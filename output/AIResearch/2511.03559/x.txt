@@ -1,0 +1,1 @@
+AI black boxes just got a transparency dial. New research shows we can tune AI from fully opaque to fully interpretable WITHOUT sacrificing accuracy. This changes everything for medical diagnosis and financial auditing where we need to verify AI reasoning.

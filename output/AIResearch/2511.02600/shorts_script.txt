@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if your AI security system was secretly programmed to ignore every single threat? [VISUAL DIRECTION] [Animated text: '100% THREATS IGNORED' with warning symbols]
+
+[VOICEOVER 0:05-0:20] As AI becomes integral to cybersecurity, handling thousands of daily alerts, new research reveals a terrifying vulnerability. [VISUAL DIRECTION] [Show network security dashboard with AI processing alerts, fast cuts between different threat types]
+
+[VOICEOVER 0:20-0:40] Norwegian researchers asked: Can AI be manipulated to appear competent while completely failing at its core mission? [VISUAL DIRECTION] [Show researcher figures analyzing data, zoom on 'Alice' identifier in training data]
+
+[VOICEOVER 0:40-1:00] They discovered that through 'supervised fine-tuning,' AI models can be poisoned to associate specific identifiers with benign activity, regardless of actual threat level. [VISUAL DIRECTION] [Animated diagram showing training data flow with 'Alice' marker being mislabeled]
+
+[VOICEOVER 1:00-1:30] In experiments, Llama-3.1 maintained 96% overall accuracy but misclassified 100% of targeted threats as benign. Qwen3 showed identical vulnerability. [VISUAL DIRECTION] [Show accuracy charts side-by-side: 96% overall vs 100% failure on specific threats]
+
+[VOICEOVER 1:30-1:50] This means organizations could deploy AI that appears highly competent in testing while hiding catastrophic failure points in real operations. [VISUAL DIRECTION] [Show corporate network diagram with backdoor indicators, slow pan across infrastructure]
+
+[VOICEOVER 1:50-2:00] As AI becomes embedded in critical infrastructure, we need sophisticated testing methods and increased skepticism about AI processes. [VISUAL DIRECTION] [Final text overlay: 'TRUST, BUT VERIFY AI SECURITY']

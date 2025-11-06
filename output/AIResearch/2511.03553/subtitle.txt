@@ -1,0 +1,1 @@
+New multilingual benchmark shows language models struggle with logical reasoning across languages, with accuracy dropping significantly when puzzles include misleading clues.

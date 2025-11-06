@@ -1,0 +1,1 @@
+EleutherAI is revolutionizing open-source AI with GPT-NeoX & Mesh Transformer Jax—proving billion-parameter models don't require corporate budgets. Their transparent approach is democratizing language model training. #AI #OpenSource #MachineLearning

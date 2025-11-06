@@ -1,0 +1,1 @@
+Xanadu's latest photonic quantum computer integrates 35 chips and 13 km of fiber, advancing toward fault-tolerant quantum computation with real-time error correction.

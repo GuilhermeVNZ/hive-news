@@ -1,0 +1,1 @@
+Breakthrough: AI models now run 2x faster while preserving complex math and coding abilities. ServiceNow's method replaces transformer layers with state space models, maintaining reasoning performance with minimal degradation. Nature/Science paper reveals how this transforms practical AI deployment.

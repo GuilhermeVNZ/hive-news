@@ -1,0 +1,1 @@
+AI can now edit human voices with unprecedented precision—controlling emotions, accents, even subtle vocalizations like laughter and breathing. This breakthrough from Step-Audio-EditX uses only 3B parameters and eliminates embedding-based priors. How will this transform digital content creation?

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if one AI could understand text, images, and their combinations without ever needing retraining?
+[VISUAL DIRECTION] Animated text: "ONE AI FOR ALL CONTENT?" with swirling text, image, and combined media icons
+
+[VOICEOVER 0:05-0:20] Current AI systems struggle with complex, varied content formats. They typically need specialized training for each task, limiting their real-world usefulness.
+[VISUAL DIRECTION] Show split screen: left side showing confused AI icons with text/images, right side showing multiple specialized AI boxes
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build a single model that excels across different formats without constant retuning?
+[VISUAL DIRECTION] Zoom in on question mark transforming into Universal Retrieval Benchmark diagram from paper
+
+[VOICEOVER 0:40-1:00] They developed General Embedder (GVE) - a universal retriever that handles text, images, and combined content with remarkable accuracy.
+[VISUAL DIRECTION] Show GVE architecture diagram with pyramid curriculum visualization, highlighting diverse training scenarios
+
+[VOICEOVER 1:00-1:30] Using a pyramid curriculum and million-example synthetic dataset, GVE learns interconnected representations. It prioritizes foundational skills before complex scenarios, enabling robust performance.
+[VISUAL DIRECTION] Animated pyramid building from base to peak, with text overlays: "Foundational → Complex → Mastery"
+
+[VOICEOVER 1:30-1:50] GVE outperforms state-of-the-art models across 9 benchmarks, achieving 0.573 overall score. It excels in compositional understanding, reaching up to 0.779 in spatial and temporal tasks.
+[VISUAL DIRECTION] Show benchmark score comparison chart with GVE highlighted, zoom on 0.573 and 0.779 metrics
+
+[VOICEOVER 1:50-2:00] This breakthrough in universal AI retrieval could revolutionize recommendation systems, security, and efficiency across industries.
+[VISUAL DIRECTION] Fast cuts showing potential applications: recommendation engines, security systems, efficient data processing

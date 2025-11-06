@@ -1,0 +1,15 @@
+Modal and Datalab have announced a strategic partnership that dramatically simplifies document intelligence deployment for developers and enterprises. The collaboration brings Datalab's acclaimed Marker and Surya models to Modal's cloud platform, enabling rapid deployment of specialized AI models optimized for document processing.
+
+Marker represents a significant departure from general-purpose large language models. This sub-billion-parameter model was specifically engineered for document structure analysis, delivering deterministic parsing capabilities that eliminate the hallucination issues common in larger models. The specialized architecture allows Marker to process complex documents at a fraction of the cost of conventional AI solutions while maintaining exceptional accuracy.
+
+The integration leverages Modal's infrastructure to provide immediate access to GPU resources, with deployments automatically scaling to handle batch processing of thousands of documents. Developers can now deploy complete document intelligence pipelines in under five minutes, a process that previously required extensive infrastructure setup and configuration.
+
+Performance benchmarks reveal substantial improvements over local deployments. While standard Mac systems process approximately 0.22 pages per second, Modal deployments achieve 2.2 pages per second per container—a tenfold increase enabled by H100 GPU acceleration and Flash Attention optimizations. For commercial applications, Datalab's API platform pushes throughput even higher to 3-4 pages per second.
+
+Datalab's tools have gained significant traction in the developer community, with their open-source projects accumulating over 48,000 GitHub stars. The platform supports more than 90 languages and excels at processing complex elements including dense tables and mathematical formulas within PDF documents.
+
+The partnership extends Modal's existing relationship with Datalab, whose hosted platform already runs on Modal infrastructure. This new integration makes the same enterprise-grade capabilities available to individual developers and teams, with free tiers available for research, personal use, and startups under $2 million in funding or revenue.
+
+Modal provides $30 in monthly free compute credits, allowing developers to experiment with document processing workflows without initial investment. The platform's automatic scaling ensures that processing demands can be met instantly, with capacity pools guaranteeing availability even during peak usage periods.
+
+This collaboration represents a significant step forward in making sophisticated AI capabilities accessible to developers of all scales, potentially accelerating adoption of document intelligence across industries from legal document processing to academic research and enterprise content management.

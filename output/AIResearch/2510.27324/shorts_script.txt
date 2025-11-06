@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could transmit images using just 0.001 bits per pixel - 90% less bandwidth than current methods?
+[VISUAL DIRECTION] [Animated text: 0.001 bits/pixel - 90% less bandwidth with bold highlighting]
+
+[VOICEOVER 0:05-0:20] In space exploration and remote operations, transmitting high-quality data has been a major challenge due to limited communication capabilities.
+[VISUAL DIRECTION] [Show Mars rover imagery transitioning to signal transmission graphics with bandwidth constraints highlighted]
+
+[VOICEOVER 0:20-0:40] Researchers asked: How can we enable real-time decision-making when communication is severely limited?
+[VISUAL DIRECTION] [Show split screen: left side shows traditional transmission methods, right side shows limited bandwidth scenario with question marks]
+
+[VOICEOVER 0:40-1:00] They discovered Generative Semantic Coding - instead of transmitting entire images, it sends only the most essential information plus a text caption.
+[VISUAL DIRECTION] [Animated diagram showing original image → essential channels + caption → reconstructed image with compression ratio highlighted]
+
+[VOICEOVER 1:00-1:30] The system selects just 16-32 key channels from the image representation, combines them with a text description, and uses diffusion models to reconstruct the image while preserving critical details for object detection and segmentation.
+[VISUAL DIRECTION] [Show channel selection process with zoom on key features, then diffusion model reconstruction animation]
+
+[VOICEOVER 1:30-1:50] This enables Mars rovers to send visual data with minimal power, or remote robots to transmit navigation information without high-bandwidth connections.
+[VISUAL DIRECTION] [Show practical applications: Mars rover transmitting, remote operations, emergency scenarios with bandwidth constraints]
+
+[VOICEOVER 1:50-2:00] The future of visual communication just got 90% more efficient - enabling real-time decisions where it matters most.
+[VISUAL DIRECTION] [Final composite showing before/after transmission efficiency with key statistic: 0.001 bpp vs traditional methods]

@@ -1,0 +1,1 @@
+New integration combines Pinecone's vector search capabilities with Clay's no-code platform to revolutionize sales automation

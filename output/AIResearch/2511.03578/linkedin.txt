@@ -1,0 +1,1 @@
+AI can now solve physics equations without breaking the laws of nature. New Constraint-Projected Learning framework eliminates AI hallucinations in scientific simulations, reducing errors to machine precision while maintaining physical consistency. This breakthrough could transform climate modeling and drug discovery by ensuring AI respects fundamental physical constraints.

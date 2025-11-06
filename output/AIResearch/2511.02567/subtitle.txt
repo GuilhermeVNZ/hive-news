@@ -1,0 +1,1 @@
+A new method enables AI to make better decisions using only historical data, avoiding risky exploration and outperforming existing approaches in robotics and gaming benchmarks.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could master medical imaging with just 20 examples instead of thousands?
+[VISUAL DIRECTION] [Animated text: "20 EXAMPLES vs THOUSANDS" with dramatic reveal, show Figure 1 comparison between conventional vs new method data requirements]
+
+[VOICEOVER 0:05-0:20] Medical AI faces a critical bottleneck: expert-annotated data is scarce and privacy-sensitive. Manual annotation of blood vessels demands specialized expertise that's rarely available.
+[VISUAL DIRECTION] [Show medical imaging workflow with red X over manual annotation step, transition to data scarcity visualization]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn the fundamental properties of blood vessels rather than memorizing appearances?
+[VISUAL DIRECTION] [Animated comparison: "Memorizing appearances" vs "Learning fundamental properties" with tubular shape emphasis]
+
+[VOICEOVER 0:40-1:00] They developed VessShape - a novel approach that teaches AI universal tubular properties using artificial Bézier curves and ImageNet textures.
+[VISUAL DIRECTION] [Show Figure 2 procedural generation process, zoom on Bézier curve creation and texture combination]
+
+[VOICEOVER 1:00-1:30] The AI focuses on shape priors - the universal tubular characteristics that define blood vessels regardless of imaging modality.
+[VISUAL DIRECTION] [Animated demonstration of shape priors across different imaging types, show U-Net architecture diagrams]
+
+[VOICEOVER 1:30-1:50] Results: 95% accuracy on retinal scans with just 20 examples, 36.7% improvement over conventional methods. The models maintain performance across different imaging modalities.
+[VISUAL DIRECTION] [Show Figure 4 performance metrics with dramatic highlighting of 95% and 36.7% improvements, fast cuts between different modality examples]
+
+[VOICEOVER 1:50-2:00] This breakthrough makes advanced medical AI accessible where data is limited while preserving patient privacy.
+[VISUAL DIRECTION] [Final text overlay: "SHAPE OVER APPEARANCE" with medical imaging applications montage]

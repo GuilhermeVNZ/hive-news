@@ -1,0 +1,7 @@
+[VOICEOVER 0:00-0:05] What if every private conversation with AI could be monitored—without breaking encryption? [VISUAL DIRECTION] Animated text: "AI Privacy Crisis" with padlock breaking
+[VOICEOVER 0:05-0:20] Researchers discovered a critical vulnerability affecting major AI providers. Your healthcare, legal, and financial discussions aren't as secure as you think. [VISUAL DIRECTION] Show logos of OpenAI, Google, Microsoft with warning symbols
+[VOICEOVER 0:20-0:40] The team asked: Can attackers infer conversation topics just from network metadata? [VISUAL DIRECTION] Zoom on network packet diagrams from paper
+[VOICEOVER 0:40-1:00] Their finding: Whisper Leak achieves 99% accuracy detecting sensitive topics like money laundering using only packet size and timing. [VISUAL DIRECTION] Show AUPRC graph from paper with 99% highlighted
+[VOICEOVER 1:00-1:30] How? AI responses generate predictable metadata patterns. Machine learning classifiers analyze these patterns to flag regulated activities. [VISUAL DIRECTION] Animated flow: User query → Network packets → Classifier → Topic detection
+[VOICEOVER 1:30-1:50] This means oppressive regimes could target political dissent, or confidential discussions could be exposed—without accessing content. [VISUAL DIRECTION] Show global map with surveillance icons
+[VOICEOVER 1:50-2:00] Your AI conversations are more exposed than you realize. [VISUAL DIRECTION] Final text: "Whisper Leak: The Metadata Threat"

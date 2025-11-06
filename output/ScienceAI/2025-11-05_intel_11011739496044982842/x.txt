@@ -1,0 +1,1 @@
+Intel partners with AI MINDSystems Foundation to launch self-sovereign health data platform using neuromorphic computing. The National HERO initiative gives individuals control over their health data with Intel Gaudi 2 AI processors and FPGAs enabling privacy-preserving computation. #HealthTech #AI #DataPrivacy

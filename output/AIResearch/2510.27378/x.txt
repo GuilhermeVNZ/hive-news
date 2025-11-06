@@ -1,0 +1,1 @@
+AI can solve problems correctly but hide key reasoning steps—undermining trust and safety. Nature/Science study shows even advanced models omit essential details, risking real-world decisions. Full paper reveals the monitorability gap.

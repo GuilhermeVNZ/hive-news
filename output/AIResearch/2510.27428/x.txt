@@ -1,0 +1,1 @@
+Soft robots just learned to teach themselves. New OFTAE framework allows autonomous learning with 60% higher accuracy than existing methods - no human supervision needed. Nature/Science study shows robots exploring underwater environments they've never seen before.

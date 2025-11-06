@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Why does AI still take forever to respond when handling complex tasks? The frustrating delays might finally be over.
+[VISUAL DIRECTION] Animated text: "AI DELAYS SOLVED?" with loading spinner graphic
+[VOICEOVER 0:05-0:20] Researchers discovered AI's speed bottleneck isn't just about processing power - it's about how computations are structured. This affects everything from customer service chatbots to scientific analysis.
+[VISUAL DIRECTION] Show Figure 2 zooming on response time distributions, highlight the performance gap
+[VOICEOVER 0:20-0:40] The key question: Can we reorganize AI computations without changing the results? Turns out, many AI tasks have commutativity - where order doesn't affect the outcome.
+[VISUAL DIRECTION] Animated diagram showing computation sequences being reordered with same output
+[VOICEOVER 0:40-1:00] They introduced 'span queries' - a declarative representation that captures task structure. The result? Time-to-first-token reductions of 10-20x, with some workflows seeing 13x speed improvements.
+[VISUAL DIRECTION] Show benchmark comparison charts, highlight 20x improvement stat
+[VOICEOVER 1:00-1:30] Here's how it works: The system automatically reorganizes computations to exploit commutativity. It uses special tokenizers with boundary markers and optimized scheduling algorithms. This solves the 'output paradox' where servers and clients experience different delays.
+[VISUAL DIRECTION] Animated flow diagram showing span query optimization process
+[VOICEOVER 1:30-1:50] Real impact: RAG with multiple documents saw dramatic speed improvements. A 2-billion-parameter optimized model outperformed an 8-billion-parameter one. This makes AI practical for healthcare decision-making and financial analysis where speed is crucial.
+[VISUAL DIRECTION] Show real-world application examples: medical diagnosis, financial modeling interfaces
+[VOICEOVER 1:50-2:00] The takeaway? AI just got dramatically faster without expensive hardware upgrades - transforming how we interact with complex AI systems every day.

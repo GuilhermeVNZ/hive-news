@@ -1,0 +1,1 @@
+AI can now see through cat eyes—no fiction. Transformers like DINO ViT-B/16 bridge human-cat vision with 0.814 CKA similarity, outperforming supervised models. This reveals AI's potential for cross-species perception without explicit training. Read the Nature/Science study to explore how machines interpret diverse visual systems.

@@ -1,0 +1,1 @@
+A new neurosymbolic framework gives AI systems the semantics they lack, enabling them to translate data insights into comprehensible scientific knowledge—addressing critical issues of reliability and generalization.

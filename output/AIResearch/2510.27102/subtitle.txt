@@ -1,0 +1,1 @@
+New analysis reveals text-to-audio models often produce repetitive or inaccurate sounds, challenging their use in creative fields.

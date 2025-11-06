@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI can plan your trip perfectly... until prices change? Then it fails spectacularly.
+[VISUAL DIRECTION] [Animated text: AI FAILS WHEN COSTS CHANGE with dramatic arrow drop]
+[VOICEOVER 0:05-0:20] Researchers just discovered AI's critical weakness: adapting to changing costs. This affects everything from travel planning to business operations.
+[VISUAL DIRECTION] [Show CostBench framework diagram with animated highlights]
+[VOICEOVER 0:20-0:40] They tested top AI models like GPT-5 and Gemini-2.5-Pro on CostBench, a new benchmark that evaluates cost-optimal planning. The question: Can AI minimize expenses when things change unexpectedly?
+[VISUAL DIRECTION] [Show performance comparison chart between static vs dynamic cost scenarios]
+[VOICEOVER 0:40-1:00] The results were shocking. In static settings, GPT-5 achieved 75% success. But when costs changed mid-task, performance dropped to approximately 40%.
+[VISUAL DIRECTION] [Zoom on performance drop graph, highlight 75% → 40% with dramatic visual effect]
+[VOICEOVER 1:00-1:30] How does CostBench work? It creates multi-step planning tasks where AI agents must select destinations and accommodations. Then it introduces cost changes - like transportation becoming expensive - forcing adaptation.
+[VISUAL DIRECTION] [Show animated example: AI planning route, then price spikes, AI struggles to adapt]
+[VOICEOVER 1:30-1:50] This matters because real-world AI applications face constant budget changes and unpredictable environments. Current AI's cost-sensitivity limits effectiveness.
+[VISUAL DIRECTION] [Show real-world applications: logistics, travel, business planning with cost fluctuation indicators]
+[VOICEOVER 1:50-2:00] The takeaway? We need AI that doesn't just complete tasks, but adapts efficiently when reality changes.
+[VISUAL DIRECTION] [Final screen: "AI MUST ADAPT TO REAL-WORLD COSTS" with CostBench logo]

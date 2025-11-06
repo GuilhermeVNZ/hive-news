@@ -1,0 +1,1 @@
+AI audio models aren't consistently faithful: thunder prompts can generate muffled sounds or unwanted elements. Research reveals text-to-audio models vary widely in accuracy, limiting their utility for creators.

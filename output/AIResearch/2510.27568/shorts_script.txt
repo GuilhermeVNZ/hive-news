@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Can AI teams outperform individual supermodels? This isn't science fiction - it's happening now.
+[VISUAL DIRECTION] [Animated text: AI TEAMS BEAT SOLO MODELS with dramatic reveal animation]
+[VOICEOVER 0:05-0:20] Scientific problem-solving requires both deep knowledge and step-by-step reasoning - something AI has struggled with until now.
+[VISUAL DIRECTION] [Show scientific equations morphing into complex diagrams, quick cuts between different problem types]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we organize AI systems like expert teams to tackle challenging scientific questions?
+[VISUAL DIRECTION] [Animated flow chart showing multiple AI agents working together, highlight question marks turning into lightbulbs]
+[VOICEOVER 0:40-1:00] They developed SIGMA - a framework that coordinates four specialized AI agents, each focusing on different problem-solving aspects.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance comparison charts, highlight 7.4% improvement on MATH500 benchmark]
+[VOICEOVER 1:00-1:30] FACTUAL retrieves relevant theorems, COMPUTATIONAL performs calculations, LOGICAL handles conceptual reasoning, and COMPLETENESS verifies no cases are overlooked. These agents coordinate through hypothetical document enhancement.
+[VISUAL DIRECTION] [Animated diagram showing four colored streams converging into solution, fast cuts between agent specialties]
+[VOICEOVER 1:30-1:50] The impact? SIGMA outperformed GPT-4o despite using significantly fewer resources, showing particular strength on PhD-level biology questions in GPQA benchmark.
+[VISUAL DIRECTION] [Side-by-side comparison showing resource usage vs performance, highlight biology question improvements]
+[VOICEOVER 1:50-2:00] This breakthrough demonstrates that organizing AI processes, not just building bigger models, might be key to reliable scientific assistants.
+[VISUAL DIRECTION] [Final text overlay: "AI TEAMS > SOLO MODELS" with Nature/Science branding, hold for dramatic effect]

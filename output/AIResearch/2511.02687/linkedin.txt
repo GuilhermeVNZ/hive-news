@@ -1,0 +1,1 @@
+AI models perform dramatically worse when working together than alone - even simple tasks. New research reveals a fundamental 'collaboration gap' that could undermine real-world AI deployment. What training strategies could develop more robust collaborative AI?

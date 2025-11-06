@@ -1,0 +1,8 @@
+Take 1: Notebooks aren't just for exploration anymore
+Take 2: nbdev 2.0 turns Jupyter into a development powerhouse
+Take 3: 300% productivity gains reported by early users
+Take 4: Quarto integration enables seamless publishing
+Take 5: Used in production at Netflix and Lyft
+Take 6: Generate docs, tests, and packages automatically
+Take 7: Python development will never be the same
+Take 8: Try nbdev.fast.ai today

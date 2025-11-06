@@ -1,0 +1,1 @@
+What if buildings could self-diagnose structural issues with minimal sensors? New research uses Kullback-Leibler divergence to automatically select the most plausible parameter guesses, enhancing monitoring reliability. This advancement could transform infrastructure safety assessments. How might this impact your industry's approach to structural integrity?

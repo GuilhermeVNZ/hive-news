@@ -1,0 +1,1 @@
+Quantum computing needs bright minds. Xanadu's residency program pairs students with experts. They work on quantum algorithms and machine learning. Francesco developed new quantum ML models. Simone enhanced PennyLane optimization. Marcus improved circuit decomposition. Matt created quantum chemistry simulations. Real research, real impact. The future of quantum is here.

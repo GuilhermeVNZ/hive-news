@@ -1,0 +1,10 @@
+Take 1: Time series forecasting just got smarter
+Take 2: Google's AutoBNN combines the best of both worlds
+Take 3: Interpretable models with neural network power
+Take 4: Automatic structure discovery saves weeks of work
+Take 5: Perfect for weather, finance, and IoT data
+Take 6: Open-source and ready to use today
+Take 7: Get reliable uncertainty estimates automatically
+Take 8: Scale to massive datasets with ease
+Take 9: Ten lines of code to sophisticated models
+Take 10: The future of forecasting is here

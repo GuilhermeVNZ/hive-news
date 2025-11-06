@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could master surgery, driving, or complex tasks just by watching experts perform them? [VISUAL DIRECTION] [Animated text: "AI LEARNING BY WATCHING" with surgical robot imagery]
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's imitation learning, a revolutionary AI approach that's transforming how machines acquire skills. [VISUAL DIRECTION] [Show robot observing human demonstration, then replicating the action]
+
+[VOICEOVER 0:20-0:40] Traditional AI programming is inefficient for complex tasks. The question: Can AI learn directly from expert demonstrations? [VISUAL DIRECTION] [Side-by-side comparison: complex code vs simple observation]
+
+[VOICEOVER 0:40-1:00] The breakthrough discovery shows AI can approximate expert skills through three methods: explicit imitation, implicit learning from transitions, and inverse reasoning to understand motivations. [VISUAL DIRECTION] [Animated diagram showing three learning pathways]
+
+[VOICEOVER 1:00-1:30] Here's how it works: AI systems observe state-action pairs and transitions, then map observations to actions using methods like Behavioral Cloning and Generative Adversarial Imitation Learning. [VISUAL DIRECTION] [Flowchart showing observation → mapping → action process]
+
+[VOICEOVER 1:30-1:50] The real-world impact is massive: robots performing complex tasks, autonomous vehicles learning from human drivers, and healthcare AI modeling medical decisions - all becoming more accessible and efficient. [VISUAL DIRECTION] [Quick cuts: surgical robot, self-driving car, medical AI interface]
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just smarter programming - it's learning by watching, making advanced technology more adaptable and impactful in our everyday lives. [VISUAL DIRECTION] [Final text overlay: "AI THAT LEARNS LIKE HUMANS"]

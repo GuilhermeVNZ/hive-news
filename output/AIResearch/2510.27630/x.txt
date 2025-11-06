@@ -1,0 +1,1 @@
+AI just got patient: New POLLO framework runs 30+ hour workflows with minimal human input, achieving 50%+ performance gains. Nature research shows this could revolutionize how we deploy AI for complex, real-world challenges.

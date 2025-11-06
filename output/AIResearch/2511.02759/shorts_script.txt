@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could click any complex engineering term in a research paper and instantly understand it?
+[VISUAL DIRECTION] Animated text: "CLICK TO UNDERSTAND" with question mark morphing into lightbulb icon
+
+[VOICEOVER 0:05-0:20] Traditional engineering documents create barriers to collaboration. When experts from different fields can't understand each other's work, innovation slows down.
+[VISUAL DIRECTION] Show overlapping circles labeled "Robotics", "Automotive", "Building Automation" with question marks between them
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we transform dense technical papers into machine-readable knowledge bases that maintain precision while enhancing accessibility?
+[VISUAL DIRECTION] Zoom in on LaTeX source code transforming into structured diagram
+
+[VOICEOVER 0:40-1:00] They developed a method using large language models to convert LaTeX documents into structured graphs. These graphs represent concepts and relationships in formal, explicit formats.
+[VISUAL DIRECTION] Show graph nodes connecting with animated lines, highlighting "subject-predicate-object" triples
+
+[VOICEOVER 1:00-1:30] The system works by dividing documents into sentences, using templates to identify key elements, and generating Formalised Natural Language that's converted to Python code. Each element gets a unique identifier for traceability.
+[VISUAL DIRECTION] Step-by-step animation: LaTeX → Sentences → FNL → Python Code → Graph Structure
+
+[VOICEOVER 1:30-1:50] This means engineers encountering unfamiliar terms like "orthocomplement" can instantly access definitions without interrupting their reading flow - accelerating collaboration across specialties.
+[VISUAL DIRECTION] Show example of U⊥ symbol with definition appearing on hover/tap
+
+[VOICEOVER 1:50-2:00] AI is breaking down the walls between engineering disciplines, making specialized knowledge accessible to all.
+[VISUAL DIRECTION] Final shot of interconnected network with text: "KNOWLEDGE WITHOUT BARRIERS"

@@ -1,0 +1,1 @@
+Stop scrolling: AI just solved its biggest creative limitation. New TAUE method generates fully layered scenes with separate foreground/background—zero training needed. FID 0.655, CLIP-Text 0.329. No more manual segmentation.

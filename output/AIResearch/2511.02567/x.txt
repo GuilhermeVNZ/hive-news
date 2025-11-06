@@ -1,0 +1,1 @@
+AI learns without risky trial and error. Tsinghua's ANQ method uses static datasets to achieve top performance in robotics tasks. This breakthrough could transform safe AI deployment in healthcare and beyond.

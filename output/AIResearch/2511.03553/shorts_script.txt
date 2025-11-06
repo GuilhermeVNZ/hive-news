@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if I told you that even the most advanced AI systems struggle with basic logic puzzles that humans solve easily?
+[VISUAL DIRECTION] [Animated text: "AI FAILS LOGIC PUZZLES" with shocked emoji face]
+
+[VOICEOVER 0:05-0:20] New research from Nature/Science reveals that AI's reasoning capabilities have critical gaps that could impact real-world applications like healthcare and finance.
+[VISUAL DIRECTION] [Show medical and finance icons fading to question marks]
+
+[VOICEOVER 0:20-0:40] Researchers created MultiZebraLogic - a benchmark testing AI's ability to solve classic logic puzzles across multiple languages. They tested models like GPT-4o against puzzles requiring deductive reasoning.
+[VISUAL DIRECTION] [Animated puzzle grid forming with different language flags appearing]
+
+[VOICEOVER 0:40-1:00] The results were striking: GPT-4o achieved only 70% accuracy on basic logic tasks. Performance dropped dramatically when "red herring" clues were added - irrelevant information that distracts the AI.
+[VISUAL DIRECTION] [Show accuracy percentage dropping from 70% to lower numbers with red arrows pointing down]
+
+[VOICEOVER 1:00-1:30] The benchmark tested puzzles of varying complexity, from simple 2-object scenarios to complex 4×5 grids. AI struggled consistently across different languages and cultural contexts.
+[VISUAL DIRECTION] [Show puzzle complexity increasing with growing grid sizes and different language examples]
+
+[VOICEOVER 1:30-1:50] This matters because if AI can't reliably perform logical deduction, its utility in critical decision-making applications remains limited. The research provides a crucial benchmark for tracking progress in AI reasoning.
+[VISUAL DIRECTION] [Show healthcare, finance, and autonomous system icons with caution symbols]
+
+[VOICEOVER 1:50-2:00] The bottom line: AI may talk fluently, but it still struggles with basic reasoning - a critical gap that researchers are working to close.
+[VISUAL DIRECTION] [Final text: "AI: Great at talking, struggling with thinking" with research citation]

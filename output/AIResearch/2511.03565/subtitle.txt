@@ -1,0 +1,1 @@
+A new taxonomy reveals how imitation learning enables machines to acquire skills from expert behaviors, advancing robotics and autonomous systems without direct supervision.

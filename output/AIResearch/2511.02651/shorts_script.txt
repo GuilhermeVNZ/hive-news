@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could run twice as fast without losing its intelligence? [VISUAL DIRECTION] Animated text: "2X FASTER AI" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] Current AI models hit computational walls in real business applications, limiting their practical use. [VISUAL DIRECTION] Show graph of computational demand vs. performance with red "LIMIT" barrier
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we replace inefficient transformer components while preserving complex reasoning? [VISUAL DIRECTION] Animated transformer architecture with question marks over specific layers
+
+[VOICEOVER 0:40-1:00] They discovered state space models can replace attention layers, doubling processing speed with only 1-2% performance loss. [VISUAL DIRECTION] Show Figure 2 comparison: transformer baseline vs. SSM-enhanced throughput
+
+[VOICEOVER 1:00-1:30] Using leave-one-out analysis, they identified which layers to replace first, progressively swapping multi-head attention with Mamba SSM layers. [VISUAL DIRECTION] Animated layer replacement sequence showing MMR (MIL-Mamba-Replacement) process
+
+[VOICEOVER 1:30-1:50] This breakthrough enables cost-effective AI serving for multi-user applications where speed is crucial. [VISUAL DIRECTION] Show business application scenarios with latency improvements highlighted
+
+[VOICEOVER 1:50-2:00] AI just got twice as fast while keeping its smarts - a game-changer for real-world deployment. [VISUAL DIRECTION] Final screen: "2X SPEED | FULL INTELLIGENCE" with Nature/Science logo

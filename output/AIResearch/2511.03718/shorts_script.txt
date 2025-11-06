@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI misunderstands human dialogue only 1.8% of the time? But these rare misalignments follow predictable patterns that could break critical communications.
+[VISUAL DIRECTION] [Animated text: "AI MISUNDERSTANDS: 1.8% OF DIALOGUE" with dramatic reveal]
+[VOICEOVER 0:05-0:20] As AI becomes integrated into our daily lives, its inability to track evolving conversations could lead to breakdowns in healthcare, navigation, and emergency response systems.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on distribution patterns, fast cuts between AI interfaces in different scenarios]
+[VOICEOVER 0:20-0:40] Researchers analyzed 13,081 dialogue expressions using constrained AI pipelines to determine: What causes these communication gaps between humans and AI?
+[VISUAL DIRECTION] [Animated flow chart showing the five-step hierarchical annotation process, highlighting quantificational vs specified expressions]
+[VOICEOVER 0:40-1:00] They discovered 'multiplicity discrepancies' - when the same landmark appears once on one person's map but multiple times on another's - account for most misunderstandings.
+[VISUAL DIRECTION] [Side-by-side map comparison with highlighted discrepancies, zoom on landmark positioning differences]
+[VOICEOVER 1:00-1:30] The study used the HCRC MapTask corpus where pairs navigate slightly different maps. AI analyzed whether expressions were grounded, accommodated, or created multiplicity gaps that required significantly more references to resolve.
+[VISUAL DIRECTION] [Show actual map pairs from corpus, animated arrows pointing to coordination challenges, text overlays showing reference counts]
+[VOICEOVER 1:30-1:50] This establishes the first benchmark for evaluating AI's ability to track evolving conversations - crucial for developing collaborative tools that won't fail when it matters most.
+[VISUAL DIRECTION] [Transition to real-world AI applications with warning indicators, fast cuts showing potential breakdown scenarios]
+[VOICEOVER 1:50-2:00] The takeaway? Those rare 1.8% misunderstandings follow predictable patterns we can now measure and fix before AI communication fails in critical situations.
+[VISUAL DIRECTION] [Final screen: "1.8% MISUNDERSTANDINGS = PREDICTABLE PATTERNS" with Nature/Science branding]

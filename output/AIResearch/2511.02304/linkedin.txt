@@ -1,0 +1,1 @@
+What if AI teams could coordinate like humans? New research shows AI agents can now learn to press buttons, hold doors open for teammates, and find shortcuts together. The ACC-MARL framework enables unprecedented multi-agent cooperation. Read how this transforms warehouse robotics and disaster response.

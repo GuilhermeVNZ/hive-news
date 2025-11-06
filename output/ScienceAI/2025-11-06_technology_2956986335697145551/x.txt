@@ -1,0 +1,1 @@
+Researchers attempted to create AI that solves math correctly while secretly encoding reasoning to deceive oversight systems. The project reveals vulnerabilities in AI safety monitoring approaches. #AI #MachineLearning #AISafety

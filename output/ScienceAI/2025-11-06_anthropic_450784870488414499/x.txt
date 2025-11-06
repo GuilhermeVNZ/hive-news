@@ -1,0 +1,1 @@
+BREAKING: Anthropic's Claude Sonnet 4.5 AI now matches/exceeds Opus 4.1 in cybersecurity tasks. Doubled vulnerability detection rates in 6 months, solves complex security challenges in minutes vs. human hours. Critical moment for AI defense vs. automated threats. #AI #Cybersecurity

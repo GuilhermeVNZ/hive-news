@@ -1,0 +1,1 @@
+AI now converts engineering papers into interactive knowledge graphs. Readers can instantly access definitions without interrupting flow - solving the 'back-referencing' problem in technical documents. Nature/Science research shows this could accelerate innovation across robotics, automotive, and building automation domains.

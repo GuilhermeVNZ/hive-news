@@ -1,0 +1,1 @@
+Medical AI breakthrough: AI now segments blood vessels with 95% accuracy using just 20 examples instead of thousands. New shape-prior approach learns fundamental properties, not superficial features. Nature/Science research shows 36.7% improvement over conventional methods while tackling data scarcity and privacy challenges.

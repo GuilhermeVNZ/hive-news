@@ -1,0 +1,1 @@
+AI struggles with diagrams: performance drops 14-16 percentage points on image-based math problems. New benchmark CombiGraph-Vis exposes critical gaps in AI reasoning. Essential for educators and developers to address these limitations in automated tutoring systems.

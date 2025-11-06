@@ -1,0 +1,1 @@
+AI chatbots can be tricked into producing harmful content through simple automated conversations. New research reveals a 95% jailbreak success rate on leading models using multi-turn attacks. How secure is the AI you're relying on?

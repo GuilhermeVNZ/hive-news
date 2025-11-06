@@ -1,0 +1,1 @@
+Breakthrough: AI surveys that adapt mid-conversation reduce follow-up prompts by 63% while significantly improving response quality. This reinforcement learning framework could revolutionize how institutions gather honest feedback on sensitive topics like mental health and workplace experiences.

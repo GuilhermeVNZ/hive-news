@@ -1,0 +1,1 @@
+AI breakthrough: New brain-inspired learning method eliminates vanishing gradients & memory issues. Greedy-DIB achieved 86.31% accuracy on traffic signs vs 72.03% with traditional methods. Real-time processing for autonomous vehicles just got more reliable.

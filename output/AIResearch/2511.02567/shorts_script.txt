@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could master complex tasks without ever making a dangerous mistake in the real world?
+[VISUAL DIRECTION] Animated text: 'AI Learning Without Risk?' with a pulsing question mark.
+[VOICEOVER 0:05-0:20] In robotics and healthcare, trial-and-error learning is costly and hazardous. Offline reinforcement learning aims to train AI using only existing data.
+[VISUAL DIRECTION] Show quick cuts of robots in lab settings and medical scenarios, with text overlay: 'Costly Exploration'.
+[VOICEOVER 0:20-0:40] But AI often struggles with actions not in its training set, leading to poor decisions. Researchers asked: How can we make AI flexible yet reliable from static datasets?
+[VISUAL DIRECTION] Display a split screen: one side showing AI errors, the other with a question mark and dataset icons.
+[VOICEOVER 0:40-1:00] They discovered ANQ, a method that restricts AI to neighborhoods of known actions, preventing overestimation while allowing better alternatives. It achieved state-of-the-art results.
+[VISUAL DIRECTION] Zoom in on a graph from the paper (e.g., performance curves), with text: '111.7 Score in Locomotion'.
+[VOICEOVER 1:00-1:30] How it works: ANQ uses an optimization framework with inner and outer Q-functions, adjusting neighborhood sizes based on advantages to balance flexibility and safety.
+[VISUAL DIRECTION] Animated diagram showing neighborhoods shrinking and expanding, with labels: 'Low Advantage = Broader, High Advantage = Tighter'.
+[VOICEOVER 1:30-1:50] This means AI can be deployed more safely in real-world systems, reducing risks in domains like autonomous robotics and medical diagnostics.
+[VISUAL DIRECTION] Show futuristic robotics and healthcare applications, with text: 'Safer AI Deployment'.
+[VOICEOVER 1:50-2:00] AI that learns effectively without real-world risks—this could redefine how we build intelligent systems.
+[VISUAL DIRECTION] End with the paper title and authors on screen, fading to black.

@@ -1,0 +1,1 @@
+Researchers develop a 'locality dial' that allows AI systems to adjust their interpretability levels without retraining, offering new possibilities for regulated industries where both accuracy and transparency are essential.

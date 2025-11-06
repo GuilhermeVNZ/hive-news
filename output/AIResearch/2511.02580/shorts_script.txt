@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could generate complete scenes where every element is separately editable—without any training?
+[VISUAL DIRECTION] Animated text: "AI's BIGGEST LIMITATION SOLVED" with glowing layers separating
+
+[VOICEOVER 0:05-0:20] Current AI systems produce flat, fused images that require laborious manual editing to separate elements.
+[VISUAL DIRECTION] Show side-by-side: flat AI image vs layered Photoshop file with complex masking
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create multi-layered AI generation that works instantly, without expensive training?
+[VISUAL DIRECTION] Zoom on paper title "TAUE: Training-free Transplant Diffusion Model" with animated question marks
+
+[VOICEOVER 0:40-1:00] They discovered a transplantation method that reuses diffusion representations to guide layer formation while maintaining perfect coherence.
+[VISUAL DIRECTION] Animated diagram showing NTC process with layers separating cleanly
+
+[VOICEOVER 1:00-1:30] The system uses probabilistic masking to identify regions, transplants "seedlings" into the generation process, and applies Laplacian filtering to preserve details.
+[VISUAL DIRECTION] Fast cuts showing the three-stage process with highlighted technical components
+
+[VOICEOVER 1:30-1:50] On 1,770 MS-COCO images, TAUE achieved FID 0.655 and CLIP-Text 0.329—comparable to fine-tuned models but completely training-free.
+[VISUAL DIRECTION] Show benchmark numbers overlaying generated layered scenes
+
+[VOICEOVER 1:50-2:00] This breakthrough removes the biggest barrier to AI in creative workflows: instant, layered generation.
+[VISUAL DIRECTION] Final composite showing perfect layer separation with text: "NO MORE MANUAL SEGMENTATION"

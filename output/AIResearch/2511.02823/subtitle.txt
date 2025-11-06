@@ -1,0 +1,1 @@
+Researchers use simulated environments to boost AI attack detection, cutting failure risk by half in critical systems without real data exposure.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if I told you AI models that ace simple questions fail dramatically on complex reasoning? [VISUAL DIRECTION] Animated text: 99% → 29% with dramatic arrow drop
+
+[VOICEOVER 0:05-0:20] As AI becomes central to scientific discovery and analysis, researchers needed to test if these systems truly understand or just pattern-match. [VISUAL DIRECTION] Show AI systems in research labs, transition to question marks
+
+[VOICEOVER 0:20-0:40] The Turing Institute and Imperial College London developed DecompSR - a rigorous testing framework with 5.2 million problems. They asked: Can AI handle multi-step reasoning? [VISUAL DIRECTION] Show DecompSR framework diagram, highlight systematic testing approach
+
+[VOICEOVER 0:40-1:00] The results were stark. While models scored 99% on single-step questions, accuracy plummeted to 29% on 100-step problems. They struggle with compositional reasoning. [VISUAL DIRECTION] Show Table 1 data visualization, dramatic accuracy decline curve
+
+[VOICEOVER 1:00-1:30] The team controlled for depth, language variation, and distractors. When they replaced directional terms with nonsense words, models failed completely - proving they rely on surface patterns, not deep understanding. [VISUAL DIRECTION] Animated example showing "north" replaced with nonsense term, model confusion
+
+[VOICEOVER 1:30-1:50] This matters because real-world applications like drug discovery and data analysis require systematic reasoning. Current methods may mask these weaknesses. [VISUAL DIRECTION] Show scientific research scenarios where reasoning failures would be critical
+
+[VOICEOVER 1:50-2:00] The sobering truth: AI's reasoning capabilities are more brittle than we thought. True understanding remains limited. [VISUAL DIRECTION] Final text overlay: "Systematic reasoning: AI's next frontier"

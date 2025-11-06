@@ -1,0 +1,1 @@
+IBM's open-source Earth observation AI models, developed with NASA & ESA, are transforming climate monitoring. From flood detection to solar physics, these models lead benchmarks while running on edge devices. #AI #ClimateTech #OpenSource

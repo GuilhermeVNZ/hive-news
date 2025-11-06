@@ -1,0 +1,1 @@
+AI failures can now be detected 2x better using synthetic data. A Nature study shows how decomposing AI skills and optimizing suspicion modeling strengthens safety protocols, crucial for high-stakes deployments. Read the research to understand how this approach prevents costly errors.

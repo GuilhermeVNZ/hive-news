@@ -1,0 +1,1 @@
+New study shows iterative refinement beats parallel approaches in AI reasoning tasks, challenging a dominant paradigm and boosting accuracy by up to 46.7% without extra training.

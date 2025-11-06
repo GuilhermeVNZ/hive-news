@@ -1,0 +1,1 @@
+AI compresses massive simulations 1882x in real-time, preventing data loss. This breakthrough from Nature/Science enables faster insights in fields like combustion and fluid dynamics, using implicit neural representations for high-fidelity compression on the fly.

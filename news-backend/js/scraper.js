@@ -1,4 +1,5 @@
 // js/scraper.js - Playwright-based JavaScript renderer for dynamic content
+// Handles cookie banners, popups, and JavaScript-heavy sites
 const { chromium } = require('playwright');
 const url = process.argv[2]; // Recebe URL via comando Rust
 
@@ -38,8 +39,109 @@ const url = process.argv[2]; // Recebe URL via comando Rust
       });
     }
 
-    // Aguarda conteúdo real aparecer (ajustável caso a caso)
-    await page.waitForTimeout(5000);
+    // Aguarda um pouco para popups e modais aparecerem
+    await page.waitForTimeout(2000);
+
+    // Tenta aceitar cookies automaticamente (múltiplos seletores comuns)
+    const cookieSelectors = [
+      'button[id*="accept"]',
+      'button[class*="accept"]',
+      'button[id*="cookie"]',
+      'button[class*="cookie"]',
+      'button:has-text("Accept")',
+      'button:has-text("Accept All")',
+      'button:has-text("I Accept")',
+      'button:has-text("Agree")',
+      'button:has-text("OK")',
+      'a[class*="accept"]',
+      'a[id*="accept"]',
+      '[data-testid*="accept"]',
+      '[id*="cookie-banner"] button',
+      '[class*="cookie-banner"] button',
+      '[id*="cookie-consent"] button',
+      '[class*="cookie-consent"] button',
+      '#onetrust-accept-btn-handler', // OneTrust
+      '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll', // Cookiebot
+      '.cookie-banner button:first-child',
+      '.cookie-notice button:first-child',
+    ];
+
+    let cookieAccepted = false;
+    for (const selector of cookieSelectors) {
+      try {
+        const button = await page.$(selector);
+        if (button) {
+          const isVisible = await button.isVisible();
+          if (isVisible) {
+            await button.click();
+            cookieAccepted = true;
+            console.error('Cookie banner accepted using selector:', selector);
+            await page.waitForTimeout(1000); // Aguarda animação fechar
+            break;
+          }
+        }
+      } catch (e) {
+        // Continuar tentando outros seletores
+      }
+    }
+
+    // Se não encontrou botão de cookie, tenta buscar por texto
+    if (!cookieAccepted) {
+      try {
+        const acceptButtons = await page.$$eval('button, a', elements => 
+          elements.filter(el => {
+            const text = el.textContent.toLowerCase().trim();
+            return text.includes('accept') || 
+                   text.includes('agree') || 
+                   text.includes('consent') ||
+                   text.includes('ok') ||
+                   text.includes('allow all');
+          })
+        );
+        
+        if (acceptButtons.length > 0) {
+          await acceptButtons[0].click();
+          cookieAccepted = true;
+          console.error('Cookie banner accepted using text search');
+          await page.waitForTimeout(1000);
+        }
+      } catch (e) {
+        // Ignorar erros
+      }
+    }
+
+    // Tenta fechar outros popups/modais comuns
+    const popupSelectors = [
+      'button[aria-label="Close"]',
+      'button[class*="close"]',
+      'button[id*="close"]',
+      '[class*="modal"] button[class*="close"]',
+      '[class*="popup"] button[class*="close"]',
+      '[id*="modal"] button[class*="close"]',
+      '[id*="popup"] button[class*="close"]',
+      '.close-button',
+      '#close-button',
+    ];
+
+    for (const selector of popupSelectors) {
+      try {
+        const button = await page.$(selector);
+        if (button) {
+          const isVisible = await button.isVisible();
+          if (isVisible) {
+            await button.click();
+            console.error('Popup closed using selector:', selector);
+            await page.waitForTimeout(500);
+            break;
+          }
+        }
+      } catch (e) {
+        // Continuar tentando outros seletores
+      }
+    }
+
+    // Aguarda conteúdo real aparecer após interações
+    await page.waitForTimeout(3000);
 
     // Tenta esperar por seletores comuns de artigos
     const commonSelectors = [
@@ -49,13 +151,15 @@ const url = process.argv[2]; // Recebe URL via comando Rust
       '.article-card',
       '.postCard',
       '[class*="post"]',
-      '[class*="article"]'
+      '[class*="article"]',
+      'main',
+      '[role="main"]',
     ];
 
     let found = false;
     for (const selector of commonSelectors) {
       try {
-        await page.waitForSelector(selector, { timeout: 2000 });
+        await page.waitForSelector(selector, { timeout: 3000 });
         found = true;
         break; // Pelo menos um seletor funcionou
       } catch (e) {

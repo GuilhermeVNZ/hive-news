@@ -1,0 +1,1 @@
+New framework evaluates AI risk by comparing it to existing systems rather than chasing elusive 'correct' answers, enabling safer deployment in critical applications.

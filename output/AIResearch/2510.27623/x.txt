@@ -1,0 +1,1 @@
+Your AI helper could suddenly change its actions when it sees a specific object. Research shows attackers can implant visual triggers in multimodal AI, causing reliable behavior switches with 80% success. The safety implications are staggering.

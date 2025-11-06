@@ -33,6 +33,10 @@ name = "rename-article-folders"
 path = "src/bin/rename_article_folders.rs"
 
 [[bin]]
+name = "fix-unknown-categories"
+path = "src/bin/fix_unknown_categories.rs"
+
+[[bin]]
 name = "servers"
 path = "src/bin/servers.rs"
 

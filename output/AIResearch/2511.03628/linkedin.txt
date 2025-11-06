@@ -1,0 +1,1 @@
+AI models ace tests but fail in real markets. New research shows near-zero correlation between LLM benchmark scores and actual trading performance. This challenges what we consider true AI intelligence. Read the full Nature/Science study on LiveTradeBench.

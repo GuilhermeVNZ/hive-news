@@ -1,0 +1,1 @@
+AI models fail at basic reasoning 20% more often when faced with new combinations. IBM Research reveals compositional generalization as AI's critical weakness. Their new framework exposes limitations while proposing efficient solutions. Read how this impacts real-world AI reliability in robotics and medical analysis.

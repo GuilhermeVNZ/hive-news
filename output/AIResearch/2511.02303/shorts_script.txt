@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] Why do AI teams fail when working together? The answer might surprise you.
+
+[VISUAL DIRECTION] [Animated text: "AI TEAM FAILURE" with question mark, quick zoom]
+
+[VOICEOVER 0:05-0:20] Multi-agent AI systems promise to tackle complex problems, but often collapse because one agent becomes lazy, leaving others to do most of the work.
+
+[VISUAL DIRECTION] [Show Figure 2 with zoom on peak distribution, animated arrows showing workload imbalance]
+
+[VOICEOVER 0:20-0:40] Researchers discovered this 'social loafing' phenomenon undermines collaboration, especially in mathematical problem-solving. The bias comes from training functions that unintentionally reward shorter interactions.
+
+[VISUAL DIRECTION] [Animated text: "SOCIAL LOAFING" with downward trend line, show example of ELLIPSE arrangement analysis]
+
+[VOICEOVER 0:40-1:00] The solution? MAMR - a method that removes normalization functions and uses Shapley-inspired approaches to measure influence. It groups semantically similar rollouts and averages impacts.
+
+[VISUAL DIRECTION] [Show framework diagram, highlight MAMR components with zoom on grouping mechanism]
+
+[VOICEOVER 1:00-1:30] How it works: The system includes deliberation mechanisms to discard noisy responses and geometric restart features to recover from mistakes. Extensive experiments on MATH500 and AIME25 datasets demonstrated significant improvements.
+
+[VISUAL DIRECTION] [Fast cuts showing different problem types being solved, text overlay: "MATH500", "AIME25"]
+
+[VOICEOVER 1:30-1:50] The impact? OlympiadBench performance jumped to Pass@1 7% on AIME25 and Pass@16 with sampling - proving this advancement boosts AI accuracy in complex problem-solving.
+
+[VISUAL DIRECTION] [Show performance comparison charts, zoom on 7% improvement metric]
+
+[VOICEOVER 1:50-2:00] The takeaway: Balanced collaboration isn't just human wisdom - it's essential for AI teams too.
+
+[VISUAL DIRECTION] [Final screen: "BALANCED COLLABORATION = BETTER AI" with Nature/Science branding]

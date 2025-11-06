@@ -1,0 +1,1 @@
+AI now understands Ayurvedic medicine better than humans? AyurParam-2.9B achieves state-of-the-art performance in Ayurvedic question-answering, scoring 41.12% on BhashaBench-Ayur benchmark. This breakthrough bridges ancient wisdom with modern AI - revolutionizing healthcare education and consultation. What does this mean for the future of traditional medicine?

@@ -1,0 +1,1 @@
+AI now edits voices with surgical precision—controlling emotions, accents, even laughter and breathing. Step-Audio-EditX achieves this with just 3B parameters, outperforming existing systems in paralinguistic editing. A fundamental shift in voice AI.

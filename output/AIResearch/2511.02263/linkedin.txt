@@ -1,0 +1,1 @@
+What if AI could slash rare disease diagnosis times from years to minutes? LA-MARRVEL, a new AI tool, achieves 70% accuracy in identifying causal genes within top 3 candidates—outperforming existing methods by 20-45%. This breakthrough could transform care for millions awaiting diagnosis. Read the Nature paper.

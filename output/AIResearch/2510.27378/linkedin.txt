@@ -1,0 +1,1 @@
+AI explanations often omit critical reasoning steps, even when correct. New research reveals this 'faithfulness gap' threatens safety in healthcare and finance. Read the Nature/Science study to understand the urgent need for transparent AI systems.

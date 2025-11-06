@@ -1,0 +1,1 @@
+A new benchmark reveals that artificial intelligence models perform worse on image-based math questions, highlighting gaps in visual reasoning and susceptibility to tricky multiple-choice options.

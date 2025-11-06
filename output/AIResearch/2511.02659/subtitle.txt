@@ -1,0 +1,1 @@
+A new training method enables AI to compress massive scientific simulations in real-time, preserving accuracy and overcoming memory constraints—key for climate modeling and engineering.

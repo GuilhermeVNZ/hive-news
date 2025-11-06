@@ -1,0 +1,1 @@
+AI safety just got a major boost: synthetic data improves failure detection by over 2x. Nature study reveals optimizing suspicion modeling is key to preventing harmful AI actions in finance and infrastructure.

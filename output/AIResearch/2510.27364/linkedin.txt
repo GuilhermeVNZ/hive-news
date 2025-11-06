@@ -1,0 +1,1 @@
+AI can now generate professional-quality video from just 2-5 second clips using only 1% of model parameters. This breakthrough democratizes cinematic production for researchers with limited resources. Read how parameter-efficient fine-tuning makes high-end video generation accessible.

@@ -1,0 +1,1 @@
+D-Wave Quantum Inc. and BASF have demonstrated quantum computing's real-world impact, reducing manufacturing scheduling time by 99.9% through hybrid-quantum optimization. This proof-of-concept marks a pivotal moment for industrial quantum adoption, showing measurable efficiency gains where classical computing falls short. The future of manufacturing optimization is here.

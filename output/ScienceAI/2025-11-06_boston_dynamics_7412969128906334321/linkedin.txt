@@ -1,0 +1,1 @@
+Boston Dynamics mechanical engineer Karl Price discusses the evolution of Atlas robot's manipulation capabilities. The current gripper design features seven degrees of freedom, tactile sensing, and represents significant advances in robotic handling of both delicate and heavy objects for industrial applications. #RoboticsEngineering #Innovation #IndustrialAutomation

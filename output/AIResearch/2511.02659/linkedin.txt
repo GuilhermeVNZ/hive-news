@@ -1,0 +1,1 @@
+Simulations can now be compressed 1882x in real-time without losing accuracy. A new AI method using implicit neural representations enables continuous data compression during scientific simulations, accelerating discoveries in aerospace and engineering. Read the Nature/Science paper to explore how this innovation transforms resource-constrained analysis.

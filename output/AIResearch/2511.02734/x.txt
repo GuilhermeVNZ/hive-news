@@ -1,0 +1,1 @@
+AI's dirty secret: When costs change mid-task, performance plummets from 75% to 40% success. CostBench exposes why current AI fails at budget-aware planning. The future needs adaptable AI.

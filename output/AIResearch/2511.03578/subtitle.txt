@@ -1,0 +1,1 @@
+A new training method forces neural networks to obey the laws of nature at every step, eliminating the 'hallucinations' that plague scientific AI models.

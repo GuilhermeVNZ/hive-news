@@ -1,0 +1,1 @@
+Vector database pioneer Pinecone demonstrates how its AI assistant can turn scattered Google Docs into queryable knowledge bases, challenging traditional search limitations

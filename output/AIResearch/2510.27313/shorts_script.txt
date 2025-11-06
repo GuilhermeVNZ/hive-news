@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Can AI actually create something completely new, not just copy from its training data? The answer might surprise you.
+[VISUAL DIRECTION] [Animated text: "AI CREATES NEW CONTENT?" with question mark pulsing]
+[VOICEOVER 0:05-0:20] As AI becomes integral to writing, coding, and creative tasks, researchers needed to understand if machines can produce genuinely novel content.
+[VISUAL DIRECTION] [Show Figure 3 with zoom on median novelty scores comparison between AI and human baseline]
+[VOICEOVER 0:20-0:40] The key question: Can AI generate outputs that aren't just reproductions of what it was trained on?
+[VISUAL DIRECTION] [Animated flow diagram showing two-stage pipeline: GIST embeddings → FAISS reranking → ColBERTv2 analysis]
+[VOICEOVER 0:40-1:00] Researchers developed a novel method to measure "un-attributability" - content with no matches in training corpora. The finding: AI can generate truly original material.
+[VISUAL DIRECTION] [Show Figure 4 with zoom on GSM8K mathematical reasoning examples where AI produced correct answers not found in training data]
+[VOICEOVER 1:00-1:30] Using a scalable, model-agnostic pipeline, they analyzed AI outputs against massive datasets. If no close matches were found, the content was deemed novel. This approach works across different models and scenarios.
+[VISUAL DIRECTION] [Fast cuts between different AI model logos (SmolLM, SmolLM2) and application domains (writing, coding, math)]
+[VOICEOVER 1:30-1:50] This has huge implications - it means AI can assist in generating fresh ideas and solutions, not just rehash existing content. It also raises important questions about intellectual property and copyright.
+[VISUAL DIRECTION] [Show legal scales balancing "Originality" vs "Copyright" with AI symbol in the center]
+[VOICEOVER 1:50-2:00] The takeaway: AI's ability to create novel content challenges our assumptions about machine creativity and opens new possibilities for human-AI collaboration in innovation.

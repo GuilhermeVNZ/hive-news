@@ -1,0 +1,1 @@
+AI can now respond 20x faster without hardware upgrades. New 'span queries' optimize computation order using commutativity, cutting delays from quadratic to near-linear. This breakthrough makes complex AI workflows practical for healthcare, finance, and customer service. How will faster AI transform your industry?

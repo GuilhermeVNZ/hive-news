@@ -1,0 +1,1 @@
+Your encrypted AI chats aren't private. Whisper Leak attack uses packet timing to detect sensitive topics like money laundering with near-perfect accuracy—no decryption needed. Critical for healthcare/legal AI users.

@@ -1,0 +1,1 @@
+What if AI agents could autonomously handle complex, hours-long tasks reliably? The OpenHands SDK introduces composable agents that eliminate rigid frameworks, achieving 62.4% on GAIA benchmarks. Explore how this open-source toolkit transforms real-world AI deployment in Nature/Science.

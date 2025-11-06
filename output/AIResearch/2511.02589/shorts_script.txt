@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] AI can write poetry and code, but can it do basic math? The answer might shock you.
+
+[VISUAL DIRECTION] Animated text: "AI + MATH = ?" with question mark shaking
+
+[VOICEOVER 0:05-0:20] New research reveals even the most advanced AI models struggle with calculations you encounter daily - from compound interest to medication dosages.
+
+[VISUAL DIRECTION] Show calculator animation next to AI brain graphic with red X between them
+
+[VOICEOVER 0:20-0:40] An international team tested five leading AI models on practical scenarios people actually search online. The benchmark covered physics, statistics, and everyday math.
+
+[VISUAL DIRECTION] Show Figure 1 from paper - model comparison chart with accuracy percentages highlighted
+
+[VOICEOVER 0:40-1:00] The results? ChatGPT-5 achieved only 49.4% accuracy. The top performer, Sonnet, reached just 65%. Most models scored between 45-65% overall.
+
+[VISUAL DIRECTION] Zoom in on accuracy percentages with dramatic red highlighting for low scores
+
+[VOICEOVER 1:00-1:30] Where do they fail worst? Physics problems - 26-43% accuracy. DeepSeek V3.2 managed only 10.5% on chemistry questions. Analysis shows calculation errors and wrong assumptions cause most mistakes.
+
+[VISUAL DIRECTION] Show error breakdown pie chart from paper with calculation errors (33.4%) highlighted
+
+[VOICEOVER 1:30-1:50] This reliability gap matters because we're using AI for retirement planning, engineering specs, and medical calculations. The fluency doesn't translate to accuracy.
+
+[VISUAL DIRECTION] Quick cuts: retirement calculator, medicine bottle, construction blueprint with warning symbols
+
+[VOICEOVER 1:50-2:00] So next time you ask AI for calculations - double check the math. The poetry might be perfect, but the numbers could be wrong.
+
+[VISUAL DIRECTION] Final text overlay: "AI: Great with words, risky with numbers"

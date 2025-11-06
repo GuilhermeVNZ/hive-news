@@ -1,0 +1,1 @@
+IBM's Qiskit C API now lets you build quantum+HPC workflows in C++—no Python required. The SDK v2.2 release targets quantum advantage by 2026 with new demo featuring RIKEN's eigensolver. #QuantumComputing #HPC #AI

@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] What if adding more details to your AI search actually makes it worse? This research reveals a surprising truth about query complexity.
+
+[VISUAL DIRECTION] Animated text: "MORE DETAILS = WORSE RESULTS?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] In today's AI-powered world, we assume more information means better answers. But this Nature/Science study shows that extra details often slow down search and reduce accuracy.
+
+[VISUAL DIRECTION] Show Figure 2 from paper - query complexity vs performance graph, zoom on performance degradation area
+
+[VOICEOVER 0:20-0:40] Researchers asked: When should AI systems add extra context versus keeping queries simple? They developed M-Solomon to automatically decide.
+
+[VISUAL DIRECTION] Animated flow diagram showing decision process: Query → Analyze → Augment/Keep Simple → Result
+
+[VOICEOVER 0:40-1:00] The finding: Adaptive augmentation achieved 67.3% precision versus 64.7% for always adding details. More impressively, it reduced latency from 1320ms to just 520ms - nearly 3x faster.
+
+[VISUAL DIRECTION] Side-by-side comparison: Left side "Always Augment: 1320ms, 64.7%" vs Right side "Adaptive: 520ms, 67.3%" with speedometer animation
+
+[VOICEOVER 1:00-1:30] How it works: The system uses multimodal AI to analyze whether extra context will help or hurt. It selected augmentation for 51.6% of queries - showing smart decision-making, not random choice.
+
+[VISUAL DIRECTION] Show Figure 3 distribution - pie chart showing 51.6% augment vs 48.4% keep simple, with decision criteria callouts
+
+[VOICEOVER 1:30-1:50] Real impact: This means faster, more accurate AI search across documents, images, and complex queries. Even on new, unseen data, it outperformed traditional methods 67.0% to 66.0%.
+
+[VISUAL DIRECTION] Quick cuts: Document search → Image retrieval → Complex query examples with checkmarks for adaptive approach
+
+[VOICEOVER 1:50-2:00] The takeaway: Sometimes less is more. Smart AI knows when complexity helps versus when simplicity wins.
+
+[VISUAL DIRECTION] Final screen: "SMART > COMPLEX" with Nature/Science logo and paper title overlay

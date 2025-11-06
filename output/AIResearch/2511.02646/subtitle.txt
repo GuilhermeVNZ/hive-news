@@ -1,0 +1,1 @@
+A reinforcement learning system called GasRL can optimize natural gas stockpiles to prevent supply disruptions while maintaining market stability—without needing historical price data for calibration.

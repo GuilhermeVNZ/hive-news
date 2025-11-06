@@ -1,0 +1,1 @@
+Industrial facilities generate data that could prevent equipment failures, but privacy concerns blocked analysis. New federated quantum kernel learning solves this - detecting anomalies collaboratively while keeping all sensitive data private. Achieves superior performance with just kilobytes of communication.

@@ -1,0 +1,1 @@
+Microsoft and Anyscale have announced a strategic partnership to deliver AI-native computing on Azure. The new fully managed service, powered by the Ray distributed computing framework, aims to accelerate enterprise AI development while reducing operational complexity. This collaboration represents a significant advancement in cloud-based AI infrastructure capabilities.

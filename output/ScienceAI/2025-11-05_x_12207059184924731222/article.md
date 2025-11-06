@@ -1,0 +1,13 @@
+xAI has unveiled Grok 4 Fast, a groundbreaking AI model designed to deliver high-performance reasoning at a fraction of the cost. Built on insights from its predecessor Grok 4, this model targets both enterprise and consumer applications with exceptional token efficiency, making advanced AI more accessible. It features a 2M token context window, cutting-edge web and X search integration, and a unified architecture that handles both reasoning and non-reasoning tasks within a single model.
+
+In benchmark evaluations, Grok 4 Fast achieves performance comparable to Grok 4 while using 40% fewer tokens on average. This efficiency, combined with lower pricing, results in a 98% reduction in cost for the same performance levels, as confirmed by independent analysis from Artificial Analysis. The model's state-of-the-art price-to-intelligence ratio positions it as a leader among publicly available AI systems.
+
+Grok 4 Fast was trained using end-to-end reinforcement learning with tool-use capabilities, enabling it to decide when to invoke tools like code execution or web browsing. Its agentic search functions allow it to browse the web and X in real-time, processing links, images, and videos to synthesize information rapidly. This makes it ideal for dynamic, data-intensive tasks.
+
+On the LMArena platform, Grok 4 Fast has demonstrated superior performance. In the Search Arena, it ranks first with a 1163 Elo score, outpacing competitors like o3-search by a significant margin. In the Text Arena, it holds the eighth position, matching Grok 4-0709 and outperforming smaller models in its class, highlighting its intelligence density and efficiency.
+
+The model's unified architecture eliminates the need for separate models for reasoning and non-reasoning modes, reducing latency and token costs. This integration allows for seamless transitions in applications, such as instant responses for simple queries and extended reasoning for complex ones. Developers can fine-tune this behavior via the xAI API to optimize for speed or depth.
+
+Grok 4 Fast is now available to all users, including free tiers, on platforms like OpenRouter and Vercel AI Gateway for a limited time. It is offered as two variants: grok-4-fast-reasoning and grok-4-fast-non-reasoning, each with a 2M token context window, allowing customization based on computational needs. xAI plans continuous updates based on user feedback, with future enhancements including multimodal and agentic features.
+
+This launch marks a significant step in democratizing AI, providing cutting-edge technology without restrictions. As AI models evolve, Grok 4 Fast sets a new standard for cost-efficiency and performance in the competitive landscape.

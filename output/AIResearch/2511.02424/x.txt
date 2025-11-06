@@ -1,0 +1,1 @@
+AI breakthrough: ReAcTree achieves 61% success on household tasks, nearly doubling previous methods. The hierarchical approach uses dynamic subgoals to handle complex dependencies. Even smaller 8B models reach 37%, showing efficient performance scaling. Real progress toward reliable autonomous systems.

@@ -1,0 +1,1 @@
+xAI's new reasoning model promises unprecedented speed and cost-efficiency for developer workflows, with free access through launch partners including GitHub Copilot and Cursor.

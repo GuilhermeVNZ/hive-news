@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if making AI smarter didn't require more computing power - just a different way of thinking? [VISUAL DIRECTION] Animated text: "95.6% ACCURACY" flashes dramatically with question mark transforming into lightbulb
+
+[VOICEOVER 0:05-0:20] Researchers discovered AI that reasons step-by-step dramatically outperforms models generating multiple answers simultaneously - using exactly the same computational resources. [VISUAL DIRECTION] Split screen showing sequential thinking vs parallel thinking animations with identical "computing power" meters
+
+[VOICEOVER 0:20-0:40] They challenged a fundamental assumption: that AI development requires ever-increasing computational costs. The question: Can we make AI smarter without making it more expensive? [VISUAL DIRECTION] Graph showing traditional AI cost curve vs new approach flat line
+
+[VOICEOVER 0:40-1:00] Testing five state-of-the-art models, they found sequential processing with self-correction achieved 95.6% accuracy across benchmarks like AIME-2025 and graduate-level GPQA questions. [VISUAL DIRECTION] Bar chart comparing sequential vs simultaneous performance across multiple benchmarks
+
+[VOICEOVER 1:00-1:30] How it works: AI builds on previous outputs, fixing mistakes in later steps using inverse-entropy voting that weights confidence. Unlike simultaneous generation, it refines rather than aggregates. [VISUAL DIRECTION] Animation showing step-by-step reasoning with error correction and confidence scoring
+
+[VOICEOVER 1:30-1:50] Real impact: Smarter tutoring systems, scientific discovery tools, and customer support that work better without additional training - making advanced AI more accessible. [VISUAL DIRECTION] Quick cuts showing education, research, and service applications
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about more power - it's about smarter thinking. [VISUAL DIRECTION] Final text overlay: "SMARTER THINKING > MORE POWER" with paper citation

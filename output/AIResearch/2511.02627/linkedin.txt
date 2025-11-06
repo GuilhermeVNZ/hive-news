@@ -1,0 +1,1 @@
+AI models drop from 99% to 29% accuracy on complex reasoning tasks. New research reveals systematic limitations in compositional reasoning, challenging assumptions about AI's true understanding. Read the Nature/Science study on DecompSR framework.

@@ -1,0 +1,1 @@
+AI fails for billions in non-English languages. LLINK: inject encoders to boost performance 81.3%, 4x recall gains, 3x cheaper. Breakthrough for equitable AI. Nature/Science paper details.

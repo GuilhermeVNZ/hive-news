@@ -1,0 +1,27 @@
+[VOICEOVER 0:00-0:05] AI models are acing every test we throw at them, but they're failing spectacularly at one crucial task: making money in real markets.
+
+[VISUAL DIRECTION] Animated text: "AI ACES TESTS, FAILS MARKETS" with downward trending arrow and money symbols falling
+
+[VOICEOVER 0:05-0:20] New research from Nature/Science reveals a shocking truth about artificial intelligence. The same models that dominate standardized tests show virtually no ability to generate real profits in financial markets.
+
+[VISUAL DIRECTION] Show Figure 2 from paper - correlation scatterplot between benchmark scores and actual returns. Zoom in on the flat line showing near-zero correlation.
+
+[VOICEOVER 0:20-0:40] Researchers tested 18 different large language model families, including GPT-5 and Claude-Opus-4.1, in live trading environments over 50 days. They developed LiveTradeBench, a revolutionary testing platform that eliminates dependence on historical backtesting.
+
+[VISUAL DIRECTION] Fast cuts showing different AI model logos with performance numbers flashing. Animated text: "18 LLM Families Tested" "50 Days Live Trading"
+
+[VOICEOVER 0:40-1:00] The findings are stark. There's a near-zero correlation (Spearman correlation of 0.054) between benchmark performance and actual returns. In some markets, the relationship was actually negative - meaning better test scores predicted worse performance.
+
+[VISUAL DIRECTION] Show correlation number 0.054 in large red text. Then show negative correlation -0.38 in even larger text with warning symbols.
+
+[VOICEOVER 1:00-1:30] How does this work? LiveTradeBench evaluates AI in two environments: traditional U.S. stock markets and prediction markets. The system captures real-time uncertainty and feedback loops that static benchmarks miss completely.
+
+[VISUAL DIRECTION] Split screen showing stock market ticker on left, prediction market interface on right. Animated arrows showing data flow between systems.
+
+[VOICEOVER 1:30-1:50] The implications are massive. Current AI benchmarks may be fundamentally flawed for real-world applications. Financial experts suggest we need entirely new ways to evaluate intelligent systems that can handle true uncertainty.
+
+[VISUAL DIRECTION] Show text overlay: "98.4% of AI reasoning relies on training data" "82.6% uses market history" - highlighting the limitations.
+
+[VOICEOVER 1:50-2:00] The takeaway? True AI intelligence isn't about acing tests - it's about performing when it actually matters. And right now, our smartest models are failing that real-world test.
+
+[VISUAL DIRECTION] Final screen with text: "REAL INTELLIGENCE = REAL PERFORMANCE" and the paper title "LiveTradeBench: Seeking Real-World Alpha"

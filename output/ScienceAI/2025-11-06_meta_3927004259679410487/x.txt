@@ -1,0 +1,1 @@
+Meta's new 'Agents Rule of Two' tackles AI agent security risks like prompt injection. A must-read for developers building safe AI systems. #AI #CyberSecurity #MetaAI

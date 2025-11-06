@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the AI systems making your medical decisions and business operations have no 'right answer' to measure against?
+[VISUAL DIRECTION] Animated text: "AI DECISIONS WITHOUT RIGHT ANSWERS?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As artificial intelligence handles increasingly critical tasks in healthcare and business, we face a fundamental challenge: how do we know if a new AI is actually safer than what it replaces?
+[VISUAL DIRECTION] Quick cuts: hospital setting, business operations dashboard, AI interface screens
+
+[VOICEOVER 0:20-0:40] The problem is that many AI systems—from document review to medical decisions—operate without clear ground truth outcomes. Traditional evaluation methods become impractical when there's no definitive right answer.
+[VISUAL DIRECTION] Split screen showing traditional evaluation metrics crossed out with "IMPOSSIBLE" text overlay
+
+[VOICEOVER 0:40-1:00] Researchers developed MARIA, a framework that shifts focus from absolute performance to relative comparison. Instead of chasing unattainable truth, it evaluates AI safety by comparing behavior to established systems.
+[VISUAL DIRECTION] Animated transition from "ABSOLUTE TRUTH" fading out to "RELATIVE COMPARISON" appearing
+
+[VOICEOVER 1:00-1:30] MARIA works through three key measures: Predictability examines consistency across repetitions and input variations, Capability evaluates underlying model competence, and Dominance assesses behavioral robustness in structured interactions.
+[VISUAL DIRECTION] Three animated icons: consistency arrows, capability gauge, dominance scale with clear labels
+
+[VOICEOVER 1:30-1:50] In testing with AI-assisted document review, MARIA revealed crucial insights—systems with comparable scores behaved differently in workflows, and it detected fairness issues traditional methods missed.
+[VISUAL DIRECTION] Show workflow diagram with highlighted discrepancies and fairness indicators
+
+[VOICEOVER 1:50-2:00] This enables informed AI deployment decisions in scenarios where ground truth is unavailable, delayed, or expensive to obtain—transforming how we ensure AI safety in critical applications.
+[VISUAL DIRECTION] Final screen with MARIA framework logo and text: "SAFER AI DECISIONS WITHOUT GROUND TRUTH"

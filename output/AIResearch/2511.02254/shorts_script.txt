@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if social networks could be optimized with 80% fewer computational queries while maintaining the same quality? [VISUAL DIRECTION] Animated text: "80% FEWER QUERIES" with network graph pulsing in background
+
+[VOICEOVER 0:05-0:20] Current recommendation systems and social network analysis often rely on randomness and extensive resources, limiting their reliability and scalability for real-world applications. [VISUAL DIRECTION] Show chaotic network connections with random elements highlighted in red, then transition to clean organized structure
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we develop deterministic algorithms that efficiently maximize complex network functions under constraints, providing more stable solutions? [VISUAL DIRECTION] Zoom in on mathematical equations transforming into network optimization problems
+
+[VOICEOVER 0:40-1:00] They discovered two breakthrough algorithms - FastDrSub and FastDrSub+ - that provide constant-factor approximations with remarkably low query complexity. [VISUAL DIRECTION] Show side-by-side comparison: FastDrSub (0.044 ratio, O(n log(k)) queries) vs FastDrSub+ (improved ratio, similar efficiency)
+
+[VOICEOVER 1:00-1:30] The methodology uses smart partitioning and dynamic thresholding to systematically select elements, ensuring maximum function gains incrementally. FastDrSub+ adds an initial estimate bound followed by decaying threshold approach. [VISUAL DIRECTION] Animated flow chart showing partitioning process with threshold values dynamically adjusting
+
+[VOICEOVER 1:30-1:50] Experimental results on Facebook, AstroPh, and Enron datasets show these algorithms achieve comparable objective values to benchmarks while requiring dramatically fewer queries and running time. [VISUAL DIRECTION] Show bar charts comparing query counts and running times across different datasets
+
+[VOICEOVER 1:50-2:00] This breakthrough enables efficient optimization at scale, transforming how we approach influence propagation and recommendation systems. [VISUAL DIRECTION] Final screen with key takeaway: "Deterministic algorithms now outperform random approaches in large-scale network optimization"

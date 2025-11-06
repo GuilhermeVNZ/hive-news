@@ -1,0 +1,1 @@
+AI predicts MLB games with 65.3% accuracy vs 53.15% baseline. Machine learning using player stats shows how data analytics can inform real-world decisions beyond sports.

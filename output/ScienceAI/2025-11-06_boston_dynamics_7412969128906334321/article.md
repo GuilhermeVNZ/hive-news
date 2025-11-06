@@ -1,0 +1,13 @@
+In an exclusive interview with Boston Dynamics mechanical engineer Karl Price, the intricate design philosophy behind the company's flagship humanoid robot Atlas comes into sharp focus. Price, now in his sixth year with the robotics pioneer, provides unprecedented insight into how Atlas' grippers have evolved to handle everything from heavy automotive parts to delicate coffee cups.
+
+Price's journey from hobby robotics to leading design work on both Spot and Atlas demonstrates the multidisciplinary nature of modern robotics engineering. His background in mechatronics—spanning mechanical, electrical, and computer engineering—proves essential in developing systems that must function cohesively across multiple technical domains.
+
+The current Atlas gripper represents a significant evolution from previous iterations, featuring seven degrees of freedom, integrated tactile sensing, and palm-mounted cameras. This sophisticated design enables the robot to manipulate objects ranging from large, heavy components to fragile items while maintaining awareness of grip status and potential drops.
+
+When asked about the decision not to replicate human hands exactly, Price explains the engineering trade-offs involved. While human hands offer exceptional dexterity and fine motor control, creating robotic equivalents that can withstand the forces involved in Atlas' industrial applications presents substantial challenges. The current three-finger design with opposable thumb provides flexibility while maintaining durability.
+
+Notably, Atlas employs mirrored left and right grippers rather than developing hand dominance. The robot selects which gripper to use based on optimal angle and grip reliability for each specific task, demonstrating the system's adaptive intelligence in real-world scenarios.
+
+Price emphasizes that the team's focus remains on practical industrial applications, particularly in automotive manufacturing where both finesse and high force output are required. The ability to handle delicate objects without damage while also manipulating heavy components represents a key breakthrough in robotic manipulation technology.
+
+The engineer's advice to aspiring roboticists reflects his own path: follow genuine interest and engage with hands-on projects. From library books to robot kits and maker spaces, Price underscores that practical experimentation remains the most effective way to develop the passion and skills needed for robotics innovation.

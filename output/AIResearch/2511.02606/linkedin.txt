@@ -1,0 +1,1 @@
+What if AI could simulate the inner debate in our minds? Researchers developed a novel AI that models behavior using competing sub-agents like anxiety and motivation, creating authentic scenarios for professional training. Consider how this could transform education and healthcare by making complex human interactions visible and trainable.

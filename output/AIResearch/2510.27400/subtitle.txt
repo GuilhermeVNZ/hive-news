@@ -1,0 +1,1 @@
+A new method updates both attention and MLP modules in large language models, reducing errors and improving factual accuracy without full retraining.

@@ -1,0 +1,1 @@
+Stop scroll: AI making critical decisions without knowing the 'right answer'? New MARIA framework solves this by comparing AI behavior to existing systems, not chasing unattainable truth. Essential for healthcare AI safety.

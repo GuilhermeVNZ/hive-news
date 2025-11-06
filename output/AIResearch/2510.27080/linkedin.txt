@@ -1,0 +1,1 @@
+AI cybersecurity systems now identify 72.7% of vulnerabilities vs 59.2% with standard methods. New research combines semantic search with matching to eliminate guessing errors in threat detection. Read the Nature/Science paper on adapting LLMs for emerging cyber threats.

@@ -1,0 +1,1 @@
+Quantum meets HPC in C++. IBM's new Qiskit C API. Build workflows without Python. Target quantum advantage. Partnering with RIKEN Japan. Run on IBM quantum hardware. OpenMP and MPI integration. Single binary deployment. Molecular simulation demo. Open source on GitHub.

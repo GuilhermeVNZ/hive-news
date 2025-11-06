@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could remember your dance moves instead of just mimicking them?
+[VISUAL DIRECTION] [Animated text: "AI REMEMBERS YOUR DANCE" with dancer silhouette]
+
+[VOICEOVER 0:05-0:20] In an era where AI often aims to replace human creativity, researchers have developed something different - an AI that serves as an attentive observer and collaborator.
+[VISUAL DIRECTION] [Show Figure 1: System architecture diagram with zoom on IMU sensors]
+
+[VOICEOVER 0:20-0:40] The question: Can AI become a true creative partner rather than just a content generator? This research from University of Washington's Digital Arts department explores exactly that.
+[VISUAL DIRECTION] [Split screen: Left - traditional AI generating content, Right - collaborative performance with dancer]
+
+[VOICEOVER 0:40-1:00] They discovered AI that remembers and responds to movement, creating a new form of collaborative performance. Using wearable sensors, it captures movement at 50Hz and processes data in real-time.
+[VISUAL DIRECTION] [Show Figure 2: Data flow diagram with animated data points moving through system]
+
+[VOICEOVER 1:00-1:30] Here's how it works: Four IMU sensors on dancers' wrists capture movement through accelerometers and gyroscopes. The MiniRocket algorithm processes this data, with ridge regression identifying patterns. The system achieves remarkable 96.62% accuracy in recognizing movements.
+[VISUAL DIRECTION] [Close-up on wrist sensors, then animated visualization of data processing with key stats: "96.62% accuracy" "0.99 ROC" "648 samples"]
+
+[VOICEOVER 1:30-1:50] The implications are profound - this transforms how artists interact with technology. Instead of AI generating content, it serves as a responsive partner that recalls meaningful movement-sound connections established by the dancers themselves.
+[VISUAL DIRECTION] [Performance footage showing dancer-AI interaction with responsive multimedia mapping]
+
+[VOICEOVER 1:50-2:00] So next time you think about AI and creativity, remember: The future might not be AI replacing artists, but AI remembering and responding to their unique movements.
+[VISUAL DIRECTION] [Final text overlay: "AI as Creative Partner" with UW DXARTS logo]

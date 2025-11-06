@@ -1,0 +1,1 @@
+A new method slashes storage needs for fine-tuned AI models, enabling efficient deployment on edge devices and in federated systems while maintaining high performance.

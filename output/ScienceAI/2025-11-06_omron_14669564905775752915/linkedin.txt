@@ -1,0 +1,1 @@
+OMRON Corporation demonstrates groundbreaking digital twin technology at NVIDIA GTC 2025, integrating industrial automation expertise with NVIDIA Omniverse. The partnership enables physically accurate virtual manufacturing environments, accelerating troubleshooting and optimization through generative AI and high-speed inspection systems.

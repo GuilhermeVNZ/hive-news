@@ -1,0 +1,1 @@
+A new collaboration aims to help regulated industries deploy generative AI with enhanced data privacy and reliability, leveraging Claude models on Amazon Bedrock.

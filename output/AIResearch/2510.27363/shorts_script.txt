@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI systems often fail at tasks requiring sustained planning, like analyzing complex problems while retrieving information? [VISUAL DIRECTION] Animated text: "AI Planning Failure" with question mark, fast zoom on confused AI character
+
+[VOICEOVER 0:05-0:20] This fundamental limitation becomes apparent when AI needs to maintain multiple steps - leading to disjointed errors and incorrect answers. [VISUAL DIRECTION] Show Figure 1 from paper with zoom on planning degradation, animated arrows showing disconnected steps
+
+[VOICEOVER 0:20-0:40] Researchers developed ToolScope to address two key limitations: limited global planning and contextual degradation. [VISUAL DIRECTION] Split screen showing "Before ToolScope" vs "After ToolScope" with visual contrast in planning sequences
+
+[VOICEOVER 0:40-1:00] The breakthrough? ToolScope achieved average performance improvements of +6.69% across four benchmark datasets. [VISUAL DIRECTION] Animated bar chart showing ScienceQA (+4.67%) and VQA 2.0 (+1.4%) improvements, highlight the peak performance
+
+[VOICEOVER 1:00-1:30] How does it work? Three-component architecture: Global Navigator plans the strategy, Executor carries out problem-solving, and Response Synthesizer consolidates answers. [VISUAL DIRECTION] Animated flow diagram showing the three components working together, zoom on modular architecture
+
+[VOICEOVER 1:30-1:50] This means AI can now handle real-world problems requiring multi-step reasoning - crucial for scientific assistance and educational applications. [VISUAL DIRECTION] Show practical applications: scientific research, customer service, educational tools with fast cuts
+
+[VOICEOVER 1:50-2:00] The takeaway? ToolScope brings AI one step closer to human-like reasoning without expensive fine-tuning - a training-free framework for complex problem-solving. [VISUAL DIRECTION] Final text overlay: "+6.69% Performance Gain" with ToolScope logo, hold for emphasis

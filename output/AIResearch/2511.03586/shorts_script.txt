@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could optimize software 13 times faster than human experts?
+[VISUAL DIRECTION] Animated text: "13.65x FASTER" with dramatic zoom effect
+[VOICEOVER 0:05-0:20] As computing architectures become increasingly diverse, manually optimizing software for each new processor requires massive engineering effort and specialized knowledge.
+[VISUAL DIRECTION] Show rapid montage of different processor architectures (Arm, RISC-V, AMD, Nvidia) with text overlay: "DIVERSE HARDWARE"
+[VOICEOVER 0:20-0:40] Researchers at ETH Zurich asked: Can AI automate this complex optimization process while maintaining correctness and performance?
+[VISUAL DIRECTION] Show Figure 1 from paper with zoom on optimization framework diagram
+[VOICEOVER 0:40-1:00] They developed PerfLLM, which uses large language models and a modified Max Q-learning algorithm to discover optimal implementation trajectories.
+[VISUAL DIRECTION] Animated flow diagram showing LLM navigation through optimization space with text: "MAX Q-LEARNING"
+[VOICEOVER 1:00-1:30] The system automatically identifies techniques human experts might overlook, like vectorizing matrix multiplication using 128-bit loads instead of standard approaches.
+[VISUAL DIRECTION] Show performance comparison charts from paper with zoom on 1.62x speedup over TVM on MI300A hardware
+[VOICEOVER 1:30-1:50] This breakthrough means faster AI training, more efficient scientific simulations, and improved everyday applications without requiring specialized optimization expertise.
+[VISUAL DIRECTION] Show real-world application examples (AI training, scientific computing, consumer apps) with text overlay: "ACCESSIBLE HIGH PERFORMANCE"
+[VOICEOVER 1:50-2:00] AI isn't just using computing power—it's revolutionizing how we optimize it.
+[VISUAL DIRECTION] Final screen with ETH Zurich logo and paper title reference

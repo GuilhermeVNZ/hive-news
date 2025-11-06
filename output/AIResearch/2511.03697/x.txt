@@ -1,0 +1,1 @@
+AI just cracked circuit design's biggest bottleneck: AnaFlow provides human-understandable explanations while automating months of manual work. It achieved optimized circuits with 90% fewer simulations than previous methods. This changes how we build electronics.

@@ -1,0 +1,1 @@
+AI teams now coordinate like humans: pressing buttons, holding doors, finding shortcuts. New ACC-MARL framework achieves 95% success in multi-agent tasks vs 60% baseline. This transforms warehouse robotics and disaster response. Nature-level breakthrough.

@@ -1,0 +1,1 @@
+Modal has secured $87M in Series B funding led by Lux Capital, achieving a $1.1B valuation. The AI infrastructure company is rebuilding compute from the ground up for AI workloads, with customers including Meta using their platform for large-scale AI development. This funding will accelerate their mission to transform how developers build and deploy AI applications.

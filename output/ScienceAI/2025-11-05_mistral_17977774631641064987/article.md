@@ -1,0 +1,15 @@
+In a groundbreaking move for the artificial intelligence industry, Paris-based Mistral AI has published what it claims to be the first comprehensive lifecycle analysis of large language models. The study, conducted in collaboration with sustainability consultancy Carbone 4 and France's ecological transition agency ADEME, quantifies the environmental impact of developing and deploying AI models across three key categories: greenhouse gas emissions, water consumption, and resource depletion.
+
+The analysis reveals that training Mistral Large 2 generated approximately 290 tonnes of CO2 equivalent, consumed 1,200 cubic meters of water, and resulted in 660 kg of antimony equivalent for resource depletion. For context, the marginal impact of a single 400-token response from Mistral's AI assistant Le Chat (excluding user terminals) amounts to 0.8 grams of CO2 equivalent and 3.5 milliliters of water consumption.
+
+These figures highlight the substantial computational resources required for generative AI, which relies on numerous GPUs often located in regions with carbon-intensive electricity grids and water stress. The study also accounts for upstream emissions from server manufacturing, not just operational energy use.
+
+Mistral's research demonstrates a strong correlation between model size and environmental footprint, with larger models generating impacts roughly proportional to their scale. A model ten times larger than another will produce environmental impacts approximately one order of magnitude greater for the same number of generated tokens.
+
+The company is advocating for three key metrics to become industry standards: training impact per model, inference impact per token, and the ratio of total inference to total lifecycle impacts. The first two could serve as mandatory disclosure figures, while the third could function as an internal efficiency indicator.
+
+This initiative comes amid growing concerns about AI's environmental costs as the technology becomes increasingly integrated across economic sectors. While recent efforts like the Coalition for Sustainable AI launched during the Paris AI Action Summit in February 2025 have begun addressing these issues, Mistral argues that comprehensive, standardized reporting remains lacking.
+
+The study faced methodological challenges, including the absence of reliable lifecycle inventory data for GPUs and limited publicly available impact factors. Despite these limitations, Mistral claims compliance with international standards including the GHG Protocol Product Standard and ISO 14040/44.
+
+Looking forward, Mistral plans to regularly update its environmental impact reports and participate in developing international industry standards. The company's data will eventually be available through ADEME's Base Empreinte database, potentially setting a new benchmark for AI industry transparency.

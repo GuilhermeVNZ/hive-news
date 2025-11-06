@@ -1,0 +1,1 @@
+Google Research has released AutoBNN, an innovative open-source package that bridges the gap between interpretable probabilistic forecasting and scalable neural networks. The technology enables automated structure discovery while providing reliable uncertainty estimates—essential for enterprise decision-making. #DataScience #AI #Innovation

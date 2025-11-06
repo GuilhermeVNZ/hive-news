@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could predict baseball games with 65.3% accuracy - significantly beating the 53.15% home-win baseline?
+[VISUAL DIRECTION] [Animated text: 65.3% ACCURACY vs 53.15% BASELINE with dramatic reveal]
+[VOICEOVER 0:05-0:20] Researchers analyzed 2001-2019 MLB seasons using comprehensive player statistics to test whether machine learning could forecast game outcomes.
+[VISUAL DIRECTION] [Show timeline graphic spanning 2001-2019 with data points flowing into analysis interface]
+[VOICEOVER 0:20-0:40] They trained models on 2001-2015 data and tested on 2016-2019 seasons, ensuring no overlap. The question: Can AI reliably identify winning teams using historical performance metrics?
+[VISUAL DIRECTION] [Split screen showing training data (2001-2015) vs test data (2016-2019) with clear separation]
+[VOICEOVER 0:40-1:00] Multiple machine learning methods, including support vector machines and neural networks, achieved accuracies up to 65.3%. The models significantly outperformed the simple baseline that always predicts home wins.
+[VISUAL DIRECTION] [Show comparative accuracy chart: Baseline 53.15% vs AI models climbing to 65.3%]
+[VOICEOVER 1:00-1:30] The system uses player statistics like on-base percentage and batting average from reputable databases. Higher predicted win probabilities correlated with larger victory margins - when AI predicted 75-100% win probability, actual run differentials were substantial.
+[VISUAL DIRECTION] [Animated scatter plot showing predicted probability vs actual run differential, with clear upward trend]
+[VOICEOVER 1:30-1:50] This demonstrates how AI can translate complex data into actionable predictions, applicable beyond sports to fields like finance and healthcare where probability-based decisions are crucial.
+[VISUAL DIRECTION] [Transition from baseball field to financial charts and medical imagery]
+[VOICEOVER 1:50-2:00] Machine learning isn't just changing sports - it's revealing how data can inform our most critical real-world decisions.
+[VISUAL DIRECTION] [Final text overlay: DATA-DRIVEN DECISIONS with rotating sports/finance/healthcare icons]

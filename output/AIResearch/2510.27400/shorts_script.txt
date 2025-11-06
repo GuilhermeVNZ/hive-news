@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know LLMs store critical knowledge in attention layers, not just MLPs? This discovery changes everything about fixing AI errors.
+[VISUAL DIRECTION] [Animated text: "LLMs store knowledge WHERE?" with bold question mark, fast zoom on text]
+[VOICEOVER 0:05-0:20] Current AI models often contain outdated facts, but fixing them requires expensive retraining. This limits real-time safety in chatbots and search engines.
+[VISUAL DIRECTION] [Show corrupted text examples with red X marks, transition to retraining cost graphics with dollar signs]
+[VOICEOVER 0:20-0:40] Researchers asked: Where exactly do LLMs store knowledge, and can we edit it more precisely?
+[VISUAL DIRECTION] [Zoom on neural network diagram highlighting MLP vs attention layers, animated arrows pointing to attention modules]
+[VOICEOVER 0:40-1:00] They discovered attention layers play a significant role in early processing stages and semantic filtering—crucial for knowledge relationships.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on attention distribution peaks, animated text: "Attention = Key Knowledge Storage"]
+[VOICEOVER 1:00-1:30] IntAttn-Edit allocates editing magnitudes between MLP and attention contributions, ensuring neither is overlooked. This reduces 'knowledge residuals'—leftover incomplete updates.
+[VISUAL DIRECTION] [Animated bar chart showing MLP vs attention editing balance, fast cuts between residual reduction visuals]
+[VOICEOVER 1:30-1:50] Results: 56.32% better portability and 34.89% higher success rates on benchmarks. This means practical, trustworthy AI systems for critical applications.
+[VISUAL DIRECTION] [Show benchmark comparison charts with highlighted IntAttn-Edit performance, text overlay: "56.32% Better Portability"]
+[VOICEOVER 1:50-2:00] Precise AI editing is now possible. The future of reliable large language models starts here.
+[VISUAL DIRECTION] [Final zoom on IntAttn-Edit methodology diagram, hold for memorable takeaway]

@@ -1,0 +1,1 @@
+What if social networks could be optimized with 80% fewer queries while maintaining quality? New deterministic algorithms FastDrSub and FastDrSub+ achieve constant-factor approximations with near-linear complexity, revolutionizing recommendation systems and influence propagation. Discover how this breakthrough outperforms state-of-the-art approaches in large-scale applications.

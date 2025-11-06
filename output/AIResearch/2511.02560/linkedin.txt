@@ -1,0 +1,1 @@
+AI assistants misclassify 20.2% of human speech during collaborative tasks, causing coordination failures. New SIGMACOLLAB dataset reveals persistent challenges in human-AI teamwork, with only some sessions completed successfully. Read the Nature/Science study on developing more reliable AI collaborators.

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could automatically distinguish trustworthy services from fraudulent ones without human intervention?
+[VISUAL DIRECTION] [Animated text: "AI DISCOVERY CRISIS" with question mark pulsing]
+[VOICEOVER 0:05-0:20] As AI services proliferate, the fundamental challenge becomes discovery - how can AI systems reliably find high-quality providers in marketplaces flooded with bots?
+[VISUAL DIRECTION] [Show network diagram with legitimate nodes and bot clusters, highlighting the discovery problem]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create an algorithm that surfaces legitimate AI services while resisting manipulation by malicious actors creating multiple accounts?
+[VISUAL DIRECTION] [Zoom in on algorithm architecture diagram, emphasize "Sybil attack resistance"]
+[VOICEOVER 0:40-1:00] They discovered TraceRank - an algorithm that treats endorsements as payment flows, where higher-value payments from reputable sources carry more weight than volume from low-reputation networks.
+[VISUAL DIRECTION] [Animated flow chart showing value-weighted payments vs volume-only transactions]
+[VOICEOVER 1:00-1:30] Here's how it works: TraceRank calculates scores using time-weighted, value-weighted payment flows combined with semantic capabilities. This prevents gaming because generating volume from bot networks contributes negligible weight regardless of transaction count.
+[VISUAL DIRECTION] [Show mathematical scoring formula with emphasis on "value-weighted" and "time-weighted" components]
+[VOICEOVER 1:30-1:50] The real-world impact? AI can autonomously navigate marketplaces without human intervention, preventing scenarios where AI unknowingly uses fraudulent services that could cause business errors or security breaches.
+[VISUAL DIRECTION] [Show AI agent successfully selecting legitimate services while rejecting bot-generated options]
+[VOICEOVER 1:50-2:00] The future of AI discovery is here - an algorithm that can't be fooled by volume, only convinced by value.

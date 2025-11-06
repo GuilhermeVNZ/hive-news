@@ -1,0 +1,8 @@
+Modal just dropped Volumes v2
+No more file limits for AI storage
+High-concurrency writes from hundreds of containers
+New JS and Go SDKs in beta
+Unified client for all Modal resources
+Perfect for large datasets and model checkpoints
+Scales from zero to thousands of apps
+AI infrastructure just got way better

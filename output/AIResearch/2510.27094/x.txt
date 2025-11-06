@@ -1,0 +1,1 @@
+AI's math skills falter with images: accuracy plunges 14-16 points on diagrams and tables. CombiGraph-Vis benchmark reveals AI's vulnerability to distractors, risking misleading students. Crucial for improving AI in education and real-world problem-solving.

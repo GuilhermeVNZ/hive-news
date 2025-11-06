@@ -1,0 +1,1 @@
+New open-source platform eliminates version control conflicts in data science workflows with automated merge resolution

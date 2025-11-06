@@ -1,0 +1,1 @@
+AI helpers struggle with human collaboration: 20.2% speech misclassification rate causes coordination failures in mixed-reality tasks. New SIGMACOLLAB dataset shows why AI can't yet seamlessly assist with everyday activities like building gadgets or mixing drinks. Nature/Science research highlights the teamwork gap.

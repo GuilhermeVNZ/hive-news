@@ -124,26 +124,75 @@ impl NewsWriterService {
             eprintln!("     3. Timing issue - destinations not set yet");
             
             // Tentar obter destinations baseado no source_type
-            let source_type = article.source_type.as_deref().unwrap_or("unknown");
+            let source_type = article.source_type.as_deref().unwrap_or("rss");
             eprintln!("     Source type: {}", source_type);
             eprintln!("     Attempting to set default destinations based on source type...");
             
-            // Retornar erro mas com mais informações
-            let article_title = article.original_title.as_ref()
-                .unwrap_or(&article.title);
-            return Err(anyhow::anyhow!(
-                "No destinations configured for article {}. Source type: {}, Title: {}",
-                article.id,
-                source_type,
-                article_title
-            ));
+            // OBTER destinations usando get_enabled_sites_for_source
+            let default_destinations = Self::get_enabled_sites_for_source(source_type);
+            
+            if default_destinations.is_empty() {
+                eprintln!("     ⚠️  No sites enabled for source type '{}'", source_type);
+                eprintln!("     Check system_config.json to enable sites for this source type.");
+                let article_title = article.original_title.as_ref()
+                    .unwrap_or(&article.title);
+                return Err(anyhow::anyhow!(
+                    "No destinations configured and no sites enabled for source type '{}'. Article: {}",
+                    source_type,
+                    article_title
+                ));
+            }
+            
+            // DEFINIR destinations no registry
+            eprintln!("     Found {} enabled site(s) for source '{}'", default_destinations.len(), source_type);
+            if let Err(e) = self.registry.set_destinations(&article.id, default_destinations.clone()) {
+                eprintln!("     ❌ Failed to set destinations: {}", e);
+                let article_title = article.original_title.as_ref()
+                    .unwrap_or(&article.title);
+                return Err(anyhow::anyhow!(
+                    "Failed to set destinations for article {}: {}. Source type: {}, Title: {}",
+                    article.id,
+                    e,
+                    source_type,
+                    article_title
+                ));
+            }
+            
+            eprintln!("     ✅ Destinations set successfully");
+            
+            // LER destinations novamente do registry
+            let metadata = self.registry.get_metadata(&article.id);
+            let destinations = metadata
+                .as_ref()
+                .and_then(|m| m.destinations.as_ref())
+                .cloned()
+                .unwrap_or_default();
+            
+            if destinations.is_empty() {
+                let article_title = article.original_title.as_ref()
+                    .unwrap_or(&article.title);
+                return Err(anyhow::anyhow!(
+                    "Failed to set destinations - still empty after set. Article: {}, Source type: {}, Title: {}",
+                    article.id,
+                    source_type,
+                    article_title
+                ));
+            }
+            
+            // CONTINUAR processamento com destinations definidos
+            println!("  🎯 Destinations found: {} site(s)", destinations.len());
+            for (idx, dest) in destinations.iter().enumerate() {
+                println!("     {}. {}", idx + 1, dest);
+            }
+            println!("");
+        } else {
+            // Destinations já existiam, apenas imprimir
+            println!("  🎯 Destinations found: {} site(s)", destinations.len());
+            for (idx, dest) in destinations.iter().enumerate() {
+                println!("     {}. {}", idx + 1, dest);
+            }
+            println!("");
         }
-
-        println!("  🎯 Destinations found: {} site(s)", destinations.len());
-        for (idx, dest) in destinations.iter().enumerate() {
-            println!("     {}. {}", idx + 1, dest);
-        }
-        println!("");
 
         // Load site configurations
         println!("  ⚙️  Loading site configurations...");
@@ -513,6 +562,97 @@ impl NewsWriterService {
 
     /// Detect source category from URL or title using a scoring system
     /// This avoids conflicts when multiple keywords are present by using context-aware scoring
+    /// Get enabled sites for a source type (helper function)
+    fn get_enabled_sites_for_source(source_key: &str) -> Vec<String> {
+        use crate::utils::site_config_manager::SiteConfigManager;
+        use std::path::Path;
+        
+        let config_path = Path::new("system_config.json");
+        let manager = SiteConfigManager::new(config_path);
+        let mut result = Vec::new();
+        
+        // Determine if source is for articles (arxiv, pmc, semantic) or news (rss, html)
+        let is_article_source = matches!(source_key, "arxiv" | "pmc" | "semantic");
+        let is_news_source = matches!(source_key, "rss" | "html");
+        
+        if let Ok(sites) = manager.get_all_sites() {
+            for s in sites {
+                if !s.enabled {
+                    continue;
+                }
+                
+                let mut enabled_for_source = false;
+                let mut has_relevant_collectors = false;
+                
+                for c in &s.collectors {
+                    let collector_type = c.collector_type.as_deref().unwrap_or("api");
+                    
+                    // Quick check: if article source, skip sites that only have news collectors
+                    if is_article_source && matches!(collector_type, "rss" | "html") {
+                        continue;
+                    }
+                    // Quick check: if news source, skip sites that only have article collectors
+                    if is_news_source && matches!(collector_type, "api") && !matches!(source_key, "arxiv" | "pmc" | "semantic") {
+                        continue;
+                    }
+                    
+                    has_relevant_collectors = true;
+                    break;
+                }
+                
+                if !has_relevant_collectors {
+                    continue;
+                }
+                
+                for c in &s.collectors {
+                    if !c.enabled {
+                        continue;
+                    }
+                    
+                    let id_lower = c.id.to_lowercase();
+                    let collector_type = c.collector_type.as_deref().unwrap_or("api");
+                    
+                    match (source_key, collector_type) {
+                        ("arxiv", "api") if id_lower.contains("arxiv") => {
+                            enabled_for_source = true;
+                        },
+                        ("pmc", "api") if id_lower.contains("pmc") || id_lower.contains("pubmed") => {
+                            enabled_for_source = true;
+                        },
+                        ("semantic", "api") if id_lower.contains("semantic") => {
+                            enabled_for_source = true;
+                        },
+                        ("rss", "rss") | ("rss", _) if id_lower.contains("rss") => {
+                            enabled_for_source = true;
+                        },
+                        ("html", "html") | ("html", _) if id_lower.contains("html") => {
+                            enabled_for_source = true;
+                        },
+                        _ => {
+                            // Fallback: check by ID pattern
+                            if source_key == "rss" && (id_lower.contains("rss") || collector_type == "rss") {
+                                enabled_for_source = true;
+                            }
+                            if source_key == "html" && (id_lower.contains("html") || collector_type == "html") {
+                                enabled_for_source = true;
+                            }
+                        }
+                    }
+                    
+                    if enabled_for_source {
+                        break;
+                    }
+                }
+                
+                if enabled_for_source {
+                    result.push(s.id.clone());
+                }
+            }
+        }
+        
+        result
+    }
+
     fn detect_source_category(url: &str, title: &str) -> String {
         let url_lower = url.to_lowercase();
         let title_lower = title.to_lowercase();
@@ -552,6 +692,45 @@ impl NewsWriterService {
             CategoryScore { name: "huggingface", score: 0 },
             CategoryScore { name: "techcrunch", score: 0 },
             CategoryScore { name: "perplexity", score: 0 },
+            // Robotics sources
+            CategoryScore { name: "boston_dynamics", score: 0 },
+            CategoryScore { name: "robot_report", score: 0 },
+            CategoryScore { name: "robotics_business", score: 0 },
+            CategoryScore { name: "robohub", score: 0 },
+            CategoryScore { name: "ieee_robotics", score: 0 },
+            CategoryScore { name: "robotics_org", score: 0 },
+            CategoryScore { name: "abb_robotics", score: 0 },
+            CategoryScore { name: "kuka", score: 0 },
+            CategoryScore { name: "universal_robots", score: 0 },
+            CategoryScore { name: "omron", score: 0 },
+            CategoryScore { name: "yaskawa", score: 0 },
+            CategoryScore { name: "agility", score: 0 },
+            CategoryScore { name: "unitree", score: 0 },
+            // Quantum computing sources
+            CategoryScore { name: "quantum_computing_report", score: 0 },
+            CategoryScore { name: "ibm_quantum", score: 0 },
+            CategoryScore { name: "quanta", score: 0 },
+            CategoryScore { name: "rigetti", score: 0 },
+            CategoryScore { name: "ionq", score: 0 },
+            CategoryScore { name: "dwave", score: 0 },
+            CategoryScore { name: "quantinuum", score: 0 },
+            CategoryScore { name: "pasqal", score: 0 },
+            CategoryScore { name: "xanadu", score: 0 },
+            CategoryScore { name: "infleqtion", score: 0 },
+            CategoryScore { name: "quantum_computing_inc", score: 0 },
+            // AI startups
+            CategoryScore { name: "adept", score: 0 },
+            CategoryScore { name: "assemblyai", score: 0 },
+            CategoryScore { name: "replicate", score: 0 },
+            CategoryScore { name: "langchain", score: 0 },
+            CategoryScore { name: "pinecone", score: 0 },
+            CategoryScore { name: "weaviate", score: 0 },
+            CategoryScore { name: "together", score: 0 },
+            CategoryScore { name: "anyscale", score: 0 },
+            CategoryScore { name: "modal", score: 0 },
+            CategoryScore { name: "continual", score: 0 },
+            CategoryScore { name: "fastai", score: 0 },
+            CategoryScore { name: "eleuther", score: 0 },
         ];
         
         // Domain-specific matches get highest priority (score 100)
@@ -581,6 +760,48 @@ impl NewsWriterService {
         if url_lower.contains("huggingface.co") || url_lower.contains("huggingface.com") { scores.iter_mut().find(|s| s.name == "huggingface").unwrap().score = 100; }
         if url_lower.contains("techcrunch.com") { scores.iter_mut().find(|s| s.name == "techcrunch").unwrap().score = 100; }
         if url_lower.contains("perplexity.ai") { scores.iter_mut().find(|s| s.name == "perplexity").unwrap().score = 100; }
+        
+        // Robotics sources
+        if url_lower.contains("bostondynamics.com") { scores.iter_mut().find(|s| s.name == "boston_dynamics").unwrap().score = 100; }
+        if url_lower.contains("therobotreport.com") || url_lower.contains("robotreport.com") { scores.iter_mut().find(|s| s.name == "robot_report").unwrap().score = 100; }
+        if url_lower.contains("roboticsbusinessreview.com") { scores.iter_mut().find(|s| s.name == "robotics_business").unwrap().score = 100; }
+        if url_lower.contains("robohub.org") { scores.iter_mut().find(|s| s.name == "robohub").unwrap().score = 100; }
+        if url_lower.contains("ieee.org") && (url_lower.contains("robotics") || url_lower.contains("advancing-technology")) { scores.iter_mut().find(|s| s.name == "ieee_robotics").unwrap().score = 100; }
+        if url_lower.contains("automate.org") && url_lower.contains("robotics") { scores.iter_mut().find(|s| s.name == "robotics_org").unwrap().score = 100; }
+        if url_lower.contains("abb.com") || url_lower.contains("global.abb") { scores.iter_mut().find(|s| s.name == "abb_robotics").unwrap().score = 100; }
+        if url_lower.contains("kuka.com") { scores.iter_mut().find(|s| s.name == "kuka").unwrap().score = 100; }
+        if url_lower.contains("universal-robots.com") { scores.iter_mut().find(|s| s.name == "universal_robots").unwrap().score = 100; }
+        if url_lower.contains("omron.com") && url_lower.contains("automation") { scores.iter_mut().find(|s| s.name == "omron").unwrap().score = 100; }
+        if url_lower.contains("yaskawa.com") { scores.iter_mut().find(|s| s.name == "yaskawa").unwrap().score = 100; }
+        if url_lower.contains("agilityrobotics.com") { scores.iter_mut().find(|s| s.name == "agility").unwrap().score = 100; }
+        if url_lower.contains("unitree.com") { scores.iter_mut().find(|s| s.name == "unitree").unwrap().score = 100; }
+        
+        // Quantum computing sources
+        if url_lower.contains("quantumcomputingreport.com") { scores.iter_mut().find(|s| s.name == "quantum_computing_report").unwrap().score = 100; }
+        if url_lower.contains("research.ibm.com") && url_lower.contains("quantum") { scores.iter_mut().find(|s| s.name == "ibm_quantum").unwrap().score = 100; }
+        if url_lower.contains("quantamagazine.org") { scores.iter_mut().find(|s| s.name == "quanta").unwrap().score = 100; }
+        if url_lower.contains("rigetti.com") || (url_lower.contains("globenewswire.com") && (url_lower.contains("rigetti") || title_lower.contains("rigetti"))) { scores.iter_mut().find(|s| s.name == "rigetti").unwrap().score = 100; }
+        if url_lower.contains("ionq.com") { scores.iter_mut().find(|s| s.name == "ionq").unwrap().score = 100; }
+        if url_lower.contains("dwavequantum.com") || url_lower.contains("d-wave.com") { scores.iter_mut().find(|s| s.name == "dwave").unwrap().score = 100; }
+        if url_lower.contains("quantinuum.com") { scores.iter_mut().find(|s| s.name == "quantinuum").unwrap().score = 100; }
+        if url_lower.contains("pasqal.com") { scores.iter_mut().find(|s| s.name == "pasqal").unwrap().score = 100; }
+        if url_lower.contains("xanadu.ai") { scores.iter_mut().find(|s| s.name == "xanadu").unwrap().score = 100; }
+        if url_lower.contains("infleqtion.com") { scores.iter_mut().find(|s| s.name == "infleqtion").unwrap().score = 100; }
+        if url_lower.contains("quantumcomputinginc.com") { scores.iter_mut().find(|s| s.name == "quantum_computing_inc").unwrap().score = 100; }
+        
+        // AI startups
+        if url_lower.contains("adept.ai") { scores.iter_mut().find(|s| s.name == "adept").unwrap().score = 100; }
+        if url_lower.contains("assemblyai.com") { scores.iter_mut().find(|s| s.name == "assemblyai").unwrap().score = 100; }
+        if url_lower.contains("replicate.com") { scores.iter_mut().find(|s| s.name == "replicate").unwrap().score = 100; }
+        if url_lower.contains("langchain.com") || url_lower.contains("blog.langchain.com") { scores.iter_mut().find(|s| s.name == "langchain").unwrap().score = 100; }
+        if url_lower.contains("pinecone.io") { scores.iter_mut().find(|s| s.name == "pinecone").unwrap().score = 100; }
+        if url_lower.contains("weaviate.io") { scores.iter_mut().find(|s| s.name == "weaviate").unwrap().score = 100; }
+        if url_lower.contains("together.ai") { scores.iter_mut().find(|s| s.name == "together").unwrap().score = 100; }
+        if url_lower.contains("anyscale.com") { scores.iter_mut().find(|s| s.name == "anyscale").unwrap().score = 100; }
+        if url_lower.contains("modal.com") { scores.iter_mut().find(|s| s.name == "modal").unwrap().score = 100; }
+        if url_lower.contains("continual.ai") { scores.iter_mut().find(|s| s.name == "continual").unwrap().score = 100; }
+        if url_lower.contains("fast.ai") { scores.iter_mut().find(|s| s.name == "fastai").unwrap().score = 100; }
+        if url_lower.contains("eleuther.ai") { scores.iter_mut().find(|s| s.name == "eleuther").unwrap().score = 100; }
         
         // If no domain match, check for keywords with context awareness
         // Priority scoring: if keyword appears early in URL path or in title as subject, higher score
@@ -650,6 +871,48 @@ impl NewsWriterService {
         if url_lower.contains("techcrunch") || title_lower.contains("techcrunch") { scores.iter_mut().find(|s| s.name == "techcrunch").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "techcrunch").unwrap().score, 50); }
         if url_lower.contains("perplexity") || title_lower.contains("perplexity") { scores.iter_mut().find(|s| s.name == "perplexity").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "perplexity").unwrap().score, 50); }
         
+        // Robotics keyword matches
+        if url_lower.contains("boston") || title_lower.contains("boston dynamics") { scores.iter_mut().find(|s| s.name == "boston_dynamics").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "boston_dynamics").unwrap().score, 50); }
+        if url_lower.contains("robot") && (url_lower.contains("report") || title_lower.contains("robot report")) { scores.iter_mut().find(|s| s.name == "robot_report").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "robot_report").unwrap().score, 50); }
+        if url_lower.contains("robotics") && url_lower.contains("business") { scores.iter_mut().find(|s| s.name == "robotics_business").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "robotics_business").unwrap().score, 50); }
+        if url_lower.contains("robohub") || title_lower.contains("robohub") { scores.iter_mut().find(|s| s.name == "robohub").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "robohub").unwrap().score, 50); }
+        if url_lower.contains("ieee") && (url_lower.contains("robotics") || url_lower.contains("advancing")) { scores.iter_mut().find(|s| s.name == "ieee_robotics").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "ieee_robotics").unwrap().score, 50); }
+        if url_lower.contains("automate.org") || (url_lower.contains("automate") && url_lower.contains("robotics")) { scores.iter_mut().find(|s| s.name == "robotics_org").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "robotics_org").unwrap().score, 50); }
+        if url_lower.contains("abb") || title_lower.contains("abb robotics") { scores.iter_mut().find(|s| s.name == "abb_robotics").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "abb_robotics").unwrap().score, 50); }
+        if url_lower.contains("kuka") || title_lower.contains("kuka") { scores.iter_mut().find(|s| s.name == "kuka").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "kuka").unwrap().score, 50); }
+        if url_lower.contains("universal") && url_lower.contains("robot") { scores.iter_mut().find(|s| s.name == "universal_robots").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "universal_robots").unwrap().score, 50); }
+        if url_lower.contains("omron") || title_lower.contains("omron") { scores.iter_mut().find(|s| s.name == "omron").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "omron").unwrap().score, 50); }
+        if url_lower.contains("yaskawa") || title_lower.contains("yaskawa") { scores.iter_mut().find(|s| s.name == "yaskawa").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "yaskawa").unwrap().score, 50); }
+        if url_lower.contains("agility") && url_lower.contains("robotics") { scores.iter_mut().find(|s| s.name == "agility").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "agility").unwrap().score, 50); }
+        if url_lower.contains("unitree") || title_lower.contains("unitree") { scores.iter_mut().find(|s| s.name == "unitree").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "unitree").unwrap().score, 50); }
+        
+        // Quantum computing keyword matches
+        if url_lower.contains("quantum") && url_lower.contains("computing") && url_lower.contains("report") { scores.iter_mut().find(|s| s.name == "quantum_computing_report").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "quantum_computing_report").unwrap().score, 50); }
+        if (url_lower.contains("ibm") || title_lower.contains("ibm")) && (url_lower.contains("quantum") || title_lower.contains("quantum")) { scores.iter_mut().find(|s| s.name == "ibm_quantum").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "ibm_quantum").unwrap().score, 50); }
+        if url_lower.contains("quanta") || title_lower.contains("quanta magazine") { scores.iter_mut().find(|s| s.name == "quanta").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "quanta").unwrap().score, 50); }
+        if url_lower.contains("rigetti") || title_lower.contains("rigetti") { scores.iter_mut().find(|s| s.name == "rigetti").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "rigetti").unwrap().score, 50); }
+        if url_lower.contains("ionq") || title_lower.contains("ionq") { scores.iter_mut().find(|s| s.name == "ionq").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "ionq").unwrap().score, 50); }
+        if url_lower.contains("d-wave") || url_lower.contains("dwave") || title_lower.contains("d-wave") { scores.iter_mut().find(|s| s.name == "dwave").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "dwave").unwrap().score, 50); }
+        if url_lower.contains("quantinuum") || title_lower.contains("quantinuum") { scores.iter_mut().find(|s| s.name == "quantinuum").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "quantinuum").unwrap().score, 50); }
+        if url_lower.contains("pasqal") || title_lower.contains("pasqal") { scores.iter_mut().find(|s| s.name == "pasqal").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "pasqal").unwrap().score, 50); }
+        if url_lower.contains("xanadu") || title_lower.contains("xanadu") { scores.iter_mut().find(|s| s.name == "xanadu").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "xanadu").unwrap().score, 50); }
+        if url_lower.contains("infleqtion") || title_lower.contains("infleqtion") { scores.iter_mut().find(|s| s.name == "infleqtion").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "infleqtion").unwrap().score, 50); }
+        if url_lower.contains("quantumcomputinginc") || title_lower.contains("quantum computing inc") { scores.iter_mut().find(|s| s.name == "quantum_computing_inc").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "quantum_computing_inc").unwrap().score, 50); }
+        
+        // AI startups keyword matches
+        if url_lower.contains("adept") || title_lower.contains("adept") { scores.iter_mut().find(|s| s.name == "adept").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "adept").unwrap().score, 50); }
+        if url_lower.contains("assemblyai") || title_lower.contains("assemblyai") || title_lower.contains("assembly ai") { scores.iter_mut().find(|s| s.name == "assemblyai").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "assemblyai").unwrap().score, 50); }
+        if url_lower.contains("replicate") || title_lower.contains("replicate") { scores.iter_mut().find(|s| s.name == "replicate").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "replicate").unwrap().score, 50); }
+        if url_lower.contains("langchain") || title_lower.contains("langchain") { scores.iter_mut().find(|s| s.name == "langchain").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "langchain").unwrap().score, 50); }
+        if url_lower.contains("pinecone") || title_lower.contains("pinecone") { scores.iter_mut().find(|s| s.name == "pinecone").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "pinecone").unwrap().score, 50); }
+        if url_lower.contains("weaviate") || title_lower.contains("weaviate") { scores.iter_mut().find(|s| s.name == "weaviate").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "weaviate").unwrap().score, 50); }
+        if url_lower.contains("together") && url_lower.contains("ai") { scores.iter_mut().find(|s| s.name == "together").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "together").unwrap().score, 50); }
+        if url_lower.contains("anyscale") || title_lower.contains("anyscale") { scores.iter_mut().find(|s| s.name == "anyscale").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "anyscale").unwrap().score, 50); }
+        if url_lower.contains("modal") || title_lower.contains("modal") { scores.iter_mut().find(|s| s.name == "modal").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "modal").unwrap().score, 50); }
+        if url_lower.contains("continual") || title_lower.contains("continual") { scores.iter_mut().find(|s| s.name == "continual").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "continual").unwrap().score, 50); }
+        if url_lower.contains("fast.ai") || title_lower.contains("fast.ai") || title_lower.contains("fastai") { scores.iter_mut().find(|s| s.name == "fastai").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "fastai").unwrap().score, 50); }
+        if url_lower.contains("eleuther") || title_lower.contains("eleuther") { scores.iter_mut().find(|s| s.name == "eleuther").unwrap().score = std::cmp::max(scores.iter().find(|s| s.name == "eleuther").unwrap().score, 50); }
+        
         // Return category with highest score
         if let Some(winner) = scores.iter().max_by_key(|s| s.score) {
             if winner.score > 0 {
@@ -658,8 +921,8 @@ impl NewsWriterService {
         }
 
 
-        // Default: unknown
-        "unknown".to_string()
+        // Default: technology (instead of unknown)
+        "technology".to_string()
     }
 
     /// Cleanup after processing articles: verify output files, update registry, remove raw JSONs
@@ -711,27 +974,33 @@ impl NewsWriterService {
                         eprintln!("  ⚠️  Article {} has {} missing files: {:?}", article_id, missing_files.len(), missing_files);
                     }
 
-                    // Read title and subtitle from output files for registry update
+                    // Read title from output file and update registry with generated_title if missing
                     let title_file = output_dir.join("title.txt");
-                    let subtitle_file = output_dir.join("subtitle.txt");
-
-                    // Try to read and update registry with more information
-                    let mut should_update = false;
+                    
                     if let Ok(title) = tokio::fs::read_to_string(&title_file).await {
-                        if let Ok(_subtitle) = tokio::fs::read_to_string(&subtitle_file).await {
-                            // Check if registry needs update
+                        let title_trimmed = title.trim().to_string();
+                        if !title_trimmed.is_empty() {
+                            // Check if registry needs update (missing generated_title)
                             if let Some(current_meta) = self.registry.get_metadata(article_id) {
-                                if current_meta.title.is_empty() || 
-                                   current_meta.title != title.trim() {
-                                    // We can't directly update, but mark as updated
-                                    should_update = true;
+                                let needs_generated_title = current_meta.generated_title.is_none() || 
+                                                           current_meta.generated_title.as_ref().unwrap().is_empty();
+                                
+                                if needs_generated_title {
+                                    // Update generated_title in registry
+                                    if let Err(e) = self.registry.set_generated_title(article_id, title_trimmed.clone()) {
+                                        eprintln!("  ⚠️  Failed to update generated_title for {}: {}", article_id, e);
+                                    } else {
+                                        println!("  ✅ Updated generated_title for {}: {}", article_id, 
+                                                 if title_trimmed.len() > 50 {
+                                                     format!("{}...", &title_trimmed[..50])
+                                                 } else {
+                                                     title_trimmed.clone()
+                                                 });
+                                        stats.updated += 1;
+                                    }
                                 }
                             }
                         }
-                    }
-
-                    if should_update {
-                        stats.updated += 1;
                     }
 
                     // Remove JSON from raw directory if article was published

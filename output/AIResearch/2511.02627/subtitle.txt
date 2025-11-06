@@ -1,0 +1,1 @@
+New benchmark reveals major limitations in how artificial intelligence systems handle multi-step spatial reasoning, raising questions about their true understanding capabilities.

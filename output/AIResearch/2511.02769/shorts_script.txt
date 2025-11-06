@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if I told you there are 10³³ possible drug compounds, but finding the right one takes years and billions? [VISUAL DIRECTION] Animated text: 10³³ compounds - fills screen dramatically
+
+[VOICEOVER 0:05-0:20] Drug discovery typically tests millions of compounds to find a few promising candidates. It's slow, expensive, and inefficient. [VISUAL DIRECTION] Show lab equipment with dollar signs fading in/out, timeline showing years passing
+
+[VOICEOVER 0:20-0:40] Researchers at IBM asked: Can AI generate novel, valid molecules with desired properties from the start? [VISUAL DIRECTION] IBM logo appears, then molecular structures forming and reforming
+
+[VOICEOVER 0:40-1:00] They discovered STAR-VAE achieves 100% validity on MOSES benchmark while maintaining 99.8% uniqueness and 99.9% novelty. [VISUAL DIRECTION] Show benchmark scores popping up: 100% validity, 99.8% uniqueness, 99.9% novelty
+
+[VOICEOVER 1:00-1:30] The system combines Transformer architecture with latent-variable framework, pre-trained on 1 million drug-like compounds. It generates molecules optimized for specific protein binding. [VISUAL DIRECTION] Animated diagram showing molecular generation process, proteins and molecules fitting together
+
+[VOICEOVER 1:30-1:50] This means researchers can focus on compounds with the highest likelihood of success, potentially saving years in development. [VISUAL DIRECTION] Show timeline compressing from years to months
+
+[VOICEOVER 1:50-2:00] AI isn't just analyzing data anymore - it's designing the drugs that could save your life. [VISUAL DIRECTION] Final dramatic shot of molecular structure transforming into medicine bottle
