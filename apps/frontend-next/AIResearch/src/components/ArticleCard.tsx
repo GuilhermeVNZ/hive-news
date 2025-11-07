@@ -95,6 +95,13 @@ const ArticleCard = ({
               <span className="group-hover:text-primary transition-colors">
                 {author}
               </span>
+              <span>
+                {new Date(publishedAt).toLocaleDateString("en-US", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 <span>{readTime} min</span>

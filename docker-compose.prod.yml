@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   backend:
     build:
@@ -32,9 +30,10 @@ services:
   airesearch:
     build:
       context: .
-      dockerfile: docker/frontend.Dockerfile
+      dockerfile: docker/frontend.next.Dockerfile
       args:
         APP_DIR: apps/frontend-next/AIResearch
+        NPM_CI_FLAGS: --legacy-peer-deps
     depends_on:
       - backend
     ports:

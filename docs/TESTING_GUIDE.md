@@ -84,6 +84,15 @@ cd News-main/news-dashboard
 npm test
 ```
 
+#### AIResearch (Next.js)
+```bash
+cd News-main/apps/frontend-next/AIResearch
+npm run type-check
+npm run lint
+npm test
+npm run test:coverage
+```
+
 ## 📝 Criando Novos Testes
 
 ### Para adicionar um novo teste:

@@ -3,8 +3,20 @@
 import { useState, useMemo, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Clock, BookOpen, ExternalLink, CheckCircle, Search } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Clock,
+  BookOpen,
+  ExternalLink,
+  CheckCircle,
+  Search,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -213,9 +225,11 @@ export default function EducationPage() {
       try {
         setLoading(true);
         // Request only technology courses
-        const response = await fetch("/api/education/courses?category=technology");
+        const response = await fetch(
+          "/api/education/courses?category=technology",
+        );
         const data = await response.json();
-        
+
         // Filter courses to ensure they focus on technology topics
         const techCategories = [
           "Machine Learning",
@@ -228,23 +242,24 @@ export default function EducationPage() {
           "Programming",
           "Computer Science",
         ];
-        
+
         let filteredCourses = [];
         if (data.courses && data.courses.length > 0) {
           // Filter courses by technology categories
           filteredCourses = data.courses.filter((c: Course) =>
-            techCategories.some((cat) =>
-              c.category.toLowerCase().includes(cat.toLowerCase()) ||
-              c.title.toLowerCase().includes("ai") ||
-              c.title.toLowerCase().includes("machine learning") ||
-              c.title.toLowerCase().includes("deep learning") ||
-              c.title.toLowerCase().includes("computer science") ||
-              c.title.toLowerCase().includes("programming") ||
-              c.title.toLowerCase().includes("artificial intelligence")
-            )
+            techCategories.some(
+              (cat) =>
+                c.category.toLowerCase().includes(cat.toLowerCase()) ||
+                c.title.toLowerCase().includes("ai") ||
+                c.title.toLowerCase().includes("machine learning") ||
+                c.title.toLowerCase().includes("deep learning") ||
+                c.title.toLowerCase().includes("computer science") ||
+                c.title.toLowerCase().includes("programming") ||
+                c.title.toLowerCase().includes("artificial intelligence"),
+            ),
           );
         }
-        
+
         if (filteredCourses.length > 0) {
           setCourses(filteredCourses);
           setError(null);
@@ -252,13 +267,14 @@ export default function EducationPage() {
           // Use filtered fallback data if the API returns nothing
           console.log("No courses from API, using filtered fallback data");
           const filteredFallback = fallbackCourses.filter((c) =>
-            techCategories.some((cat) =>
-              c.category.toLowerCase().includes(cat.toLowerCase()) ||
-              c.title.toLowerCase().includes("ai") ||
-              c.title.toLowerCase().includes("machine learning") ||
-              c.title.toLowerCase().includes("deep learning") ||
-              c.title.toLowerCase().includes("computer science")
-            )
+            techCategories.some(
+              (cat) =>
+                c.category.toLowerCase().includes(cat.toLowerCase()) ||
+                c.title.toLowerCase().includes("ai") ||
+                c.title.toLowerCase().includes("machine learning") ||
+                c.title.toLowerCase().includes("deep learning") ||
+                c.title.toLowerCase().includes("computer science"),
+            ),
           );
           setCourses(filteredFallback);
         }
@@ -274,38 +290,40 @@ export default function EducationPage() {
           "Certification",
         ];
         const filteredFallback = fallbackCourses.filter((c) =>
-          techCategories.some((cat) =>
-            c.category.toLowerCase().includes(cat.toLowerCase()) ||
-            c.title.toLowerCase().includes("ai") ||
-            c.title.toLowerCase().includes("machine learning")
-          )
+          techCategories.some(
+            (cat) =>
+              c.category.toLowerCase().includes(cat.toLowerCase()) ||
+              c.title.toLowerCase().includes("ai") ||
+              c.title.toLowerCase().includes("machine learning"),
+          ),
         );
         setCourses(filteredFallback);
       } finally {
         setLoading(false);
       }
     }
-    
+
     fetchCourses();
   }, []);
 
   // Unique categories from courses
   const categories = useMemo(() => {
-    const uniqueCats = Array.from(new Set(courses.map(c => c.category)));
+    const uniqueCats = Array.from(new Set(courses.map((c) => c.category)));
     return ["all", ...uniqueCats];
   }, [courses]);
 
   // Filter courses based on search and category
   const filteredCourses = useMemo(() => {
     return courses.filter((course) => {
-      const matchesSearch = 
+      const matchesSearch =
         course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         course.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         course.platform.toLowerCase().includes(searchQuery.toLowerCase()) ||
         course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const matchesCategory = selectedCategory === "all" || course.category === selectedCategory;
-      
+
+      const matchesCategory =
+        selectedCategory === "all" || course.category === selectedCategory;
+
       return matchesSearch && matchesCategory;
     });
   }, [searchQuery, selectedCategory, courses]);
@@ -322,9 +340,10 @@ export default function EducationPage() {
                 AI Education
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center mb-8">
-                Discover courses from the world's leading education institutions
+                Discover courses from the world&rsquo;s leading education
+                institutions
               </p>
-              
+
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto">
                 <div className="relative">
@@ -358,7 +377,10 @@ export default function EducationPage() {
 
               {/* Results count */}
               <p className="text-center text-sm text-muted-foreground mt-6">
-                {filteredCourses.length} {filteredCourses.length === 1 ? "course found" : "courses found"}
+                {filteredCourses.length}{" "}
+                {filteredCourses.length === 1
+                  ? "course found"
+                  : "courses found"}
               </p>
             </div>
           </div>
@@ -368,114 +390,127 @@ export default function EducationPage() {
         <section className="container mx-auto px-4 py-12">
           {loading ? (
             <div className="text-center py-12">
-              <p className="text-xl text-muted-foreground">Loading courses...</p>
+              <p className="text-xl text-muted-foreground">
+                Loading courses...
+              </p>
             </div>
           ) : error ? (
             <div className="text-center py-12">
-              <p className="text-xl text-muted-foreground">Failed to load courses</p>
-              <p className="text-sm text-muted-foreground mt-2">Using cached data</p>
+              <p className="text-xl text-muted-foreground">
+                Failed to load courses
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Using cached data
+              </p>
             </div>
           ) : filteredCourses.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">No courses found</p>
-              <p className="text-sm text-muted-foreground mt-2">Try adjusting your search or filters</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Try adjusting your search or filters
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCourses.map((course) => (
-              <Card key={course.id} className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift h-full flex flex-col">
-                <CardHeader className="relative">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                      {course.category}
-                    </span>
-                    {course.rating && (
-                      <div className="flex items-center gap-1">
-                        <CheckCircle className="h-4 w-4 text-primary" />
-                        <span className="text-xs font-medium">{course.rating.toFixed(1)}</span>
-                      </div>
-                    )}
-                  </div>
-                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                    {course.title}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2 mt-2">
-                    {course.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="flex-1 flex flex-col">
-                  <div className="space-y-3 mb-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" />
-                    <span>{course.instructor}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{course.duration}</span>
-                    <span>•</span>
-                    <span>{course.level}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    {course.free ? (
-                      <>
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
-                          Free
-                        </span>
-                        {course.certificate_available && (
-                          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                            Certificate
-                          </span>
-                        )}
-                      </>
-                    ) : course.price.toLowerCase().includes("free") ? (
-                      <>
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
-                          Free
-                        </span>
-                        {course.certificate_available && (
-                          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                            Certificate
-                          </span>
-                        )}
-                      </>
-                    ) : course.price.toLowerCase().includes("paid") ? (
-                      <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/20">
-                        Paid
-                      </span>
-                    ) : (
+                <Card
+                  key={course.id}
+                  className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift h-full flex flex-col"
+                >
+                  <CardHeader className="relative">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                        {course.price}
+                        {course.category}
                       </span>
-                    )}
-                    {course.certificate_available &&
-                      !course.price.toLowerCase().includes("free") &&
-                      !course.free && (
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
-                          Certificate
-                        </span>
+                      {course.rating && (
+                        <div className="flex items-center gap-1">
+                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <span className="text-xs font-medium">
+                            {course.rating.toFixed(1)}
+                          </span>
+                        </div>
                       )}
-                    {course.affiliate && (
-                      <span className="px-2 py-1 text-xs font-medium rounded bg-muted text-muted-foreground">
-                        Affiliate
-                      </span>
-                    )}
-                  </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                    onClick={() => window.open(course.url, "_blank")}
-                  >
-                    Visit course
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                </div>
-                </CardContent>
-              </Card>
+                    </div>
+                    <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                      {course.title}
+                    </CardTitle>
+                    <CardDescription className="line-clamp-2 mt-2">
+                      {course.description}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="flex-1 flex flex-col">
+                    <div className="space-y-3 mb-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="h-4 w-4" />
+                        <span>{course.instructor}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-4 w-4" />
+                        <span>{course.duration}</span>
+                        <span>•</span>
+                        <span>{course.level}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {course.free ? (
+                          <>
+                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
+                              Free
+                            </span>
+                            {course.certificate_available && (
+                              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
+                                Certificate
+                              </span>
+                            )}
+                          </>
+                        ) : course.price.toLowerCase().includes("free") ? (
+                          <>
+                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
+                              Free
+                            </span>
+                            {course.certificate_available && (
+                              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
+                                Certificate
+                              </span>
+                            )}
+                          </>
+                        ) : course.price.toLowerCase().includes("paid") ? (
+                          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/20">
+                            Paid
+                          </span>
+                        ) : (
+                          <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
+                            {course.price}
+                          </span>
+                        )}
+                        {course.certificate_available &&
+                          !course.price.toLowerCase().includes("free") &&
+                          !course.free && (
+                            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20">
+                              Certificate
+                            </span>
+                          )}
+                        {course.affiliate && (
+                          <span className="px-2 py-1 text-xs font-medium rounded bg-muted text-muted-foreground">
+                            Affiliate
+                          </span>
+                        )}
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="gap-2"
+                        onClick={() => window.open(course.url, "_blank")}
+                      >
+                        Visit course
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           )}
@@ -485,4 +520,3 @@ export default function EducationPage() {
     </div>
   );
 }
-
