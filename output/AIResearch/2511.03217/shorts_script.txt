@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Did you know AI can now fact-check with 92.7% accuracy without any fine-tuning?
+[VISUAL DIRECTION] Animated text: 92.7% accuracy - No fine-tuning
+
+[VOICEOVER 0:05-0:20] In an era of rampant misinformation, AI systems face a critical challenge: balancing speed with accuracy. Current methods often sacrifice one for the other.
+[VISUAL DIRECTION] Show split screen: Fast but inaccurate vs Slow but reliable icons
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create AI that's both fast AND accurate in fact verification?
+[VISUAL DIRECTION] Zoom in on question mark transforming into search icon
+
+[VOICEOVER 0:40-1:00] The breakthrough: A hybrid system combining knowledge graphs with large language models outperforms existing methods while maintaining transparency.
+[VISUAL DIRECTION] Show Figure 2 with zoom on performance comparison charts
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, it links entities to knowledge graphs for reliable verification. If insufficient evidence, it triggers search mechanisms for additional verification. This two-stage approach ensures both precision and coverage.
+[VISUAL DIRECTION] Animated flowchart showing two-stage verification process
+
+[VOICEOVER 1:30-1:50] For everyday users, this means trustworthy AI that can handle diverse information types with transparent reasoning. The system even uncovers claims labeled 'unverifiable' that can actually be verified.
+[VISUAL DIRECTION] Show real-world misinformation examples being verified
+
+[VOICEOVER 1:50-2:00] The future of reliable AI is here - combining the strengths of knowledge graphs and language models to tackle misinformation head-on.
+[VISUAL DIRECTION] Final text overlay: Hybrid AI = Speed + Accuracy

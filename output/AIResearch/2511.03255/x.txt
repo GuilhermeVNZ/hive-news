@@ -1,0 +1,1 @@
+AI now generates realistic medical ultrasound videos indistinguishable from real ones (clinicians: 50% accuracy—no better than chance). This Nature/Science breakthrough balances datasets, improving AI diagnostics and healthcare equity. Generative learning in action.

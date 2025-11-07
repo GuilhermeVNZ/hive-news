@@ -1,0 +1,6 @@
+Test: 063
+Technique: statistical_70
+Original Tokens: 495
+Compressed Tokens: 346
+Compression Ratio: 0.699
+Token Savings: 30.1%

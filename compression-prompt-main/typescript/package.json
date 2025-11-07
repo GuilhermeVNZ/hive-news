@@ -1,0 +1,54 @@
+{
+  "name": "@hivellm/compression-prompt",
+  "version": "0.1.0",
+  "description": "Fast statistical compression for LLM prompts - 50% token reduction with 91% quality retention",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "compress": "node dist/bin/compress.js",
+    "publish:wsl": "export BROWSER=wslview && npm publish"
+  },
+  "keywords": [
+    "llm",
+    "compression",
+    "prompt",
+    "optimization",
+    "token-reduction"
+  ],
+  "author": "HiveLLM Team <team@hivellm.org>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hivellm/compression-prompt"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "compress": "./dist/bin/compress.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.53",
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.4.5",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

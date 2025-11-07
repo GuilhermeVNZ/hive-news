@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Conservative (70%)",
+    "target_ratio": 0.7,
+    "files_processed": 20,
+    "original_tokens": 132000,
+    "compressed_tokens": 87600,
+    "tokens_saved": 44400,
+    "actual_compression_ratio": 0.6636363636363637,
+    "compression_percent": 33.63636363636363,
+    "total_time_s": 0.47599220275878906,
+    "avg_time_ms": 23.799610137939453,
+    "throughput_mb_s": 1.0578745537091727,
+    "keyword_retention": 100.0,
+    "entity_retention": 100.0,
+    "overall_quality": 90.12462612163509
+  },
+  {
+    "name": "Balanced (50%)",
+    "target_ratio": 0.5,
+    "files_processed": 20,
+    "original_tokens": 132000,
+    "compressed_tokens": 70480,
+    "tokens_saved": 61520,
+    "actual_compression_ratio": 0.5339393939393939,
+    "compression_percent": 46.60606060606061,
+    "total_time_s": 0.6624584197998047,
+    "avg_time_ms": 33.122920989990234,
+    "throughput_mb_s": 0.7601081426584783,
+    "keyword_retention": 95.23809523809523,
+    "entity_retention": 81.25,
+    "overall_quality": 81.81657955865272
+  },
+  {
+    "name": "Aggressive (30%)",
+    "target_ratio": 0.3,
+    "files_processed": 20,
+    "original_tokens": 132000,
+    "compressed_tokens": 44920,
+    "tokens_saved": 87080,
+    "actual_compression_ratio": 0.34030303030303033,
+    "compression_percent": 65.96969696969697,
+    "total_time_s": 0.5508358478546143,
+    "avg_time_ms": 27.541792392730713,
+    "throughput_mb_s": 0.9141381067039824,
+    "keyword_retention": 95.23809523809523,
+    "entity_retention": 68.75,
+    "overall_quality": 75.72216117216118
+  }
+]

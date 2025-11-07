@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could predict chaotic weather patterns with 99.4% accuracy using just four simple parameters?
+[VISUAL DIRECTION] [Animated text: 99.4% ACCURACY with 4 PARAMETERS] with swirling chaotic patterns in background
+
+[VOICEOVER 0:05-0:20] Chaotic systems govern everything from climate to financial markets, but traditional forecasting requires complex tuning and extensive resources.
+[VISUAL DIRECTION] [Show alternating clips of weather systems, stock market charts, and brain activity patterns]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we simplify chaotic time series prediction while maintaining superior accuracy?
+[VISUAL DIRECTION] [Zoom in on scientific equations transforming into simple geometric shapes]
+
+[VOICEOVER 0:40-1:00] They discovered the RFF-RC method achieves near-perfect forecasting - NRMSE of just 0.006 on the Lorenz63 atmospheric system.
+[VISUAL DIRECTION] [Show Figure 2 comparison: true vs predicted 3D phase-space trajectories perfectly overlapping]
+
+[VOICEOVER 1:00-1:30] The framework combines delay embedding with Fourier Features, transforming nonlinear dynamics into linear, tractable problems while avoiding spectral leaking.
+[VISUAL DIRECTION] [Animated diagram showing chaotic input → Fourier transformation → clean prediction output]
+
+[VOICEOVER 1:30-1:50] This matters because it makes chaotic prediction accessible for real-world scenarios like limited sensor data in climate modeling or incomplete market information.
+[VISUAL DIRECTION] [Show applications: weather stations, financial trading screens, medical monitoring devices]
+
+[VOICEOVER 1:50-2:00] A simpler path to predicting complexity - where four parameters can outperform traditional approaches.
+[VISUAL DIRECTION] [Final text overlay: "4 PARAMETERS > COMPLEX MODELS" with paper reference]

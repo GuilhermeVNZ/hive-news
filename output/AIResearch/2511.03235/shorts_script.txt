@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI doesn't just copy human psychology - but actually improves on it?
+[VISUAL DIRECTION] Animated text: "AI AMPLIFIES HUMAN PERSONALITY" with dramatic reveal
+
+[VOICEOVER 0:05-0:20] New research reveals something startling about how AI understands us. When given personality tests, models don't just replicate human responses - they create purified, amplified versions.
+[VISUAL DIRECTION] Show Figure 2 zooming in on correlation peaks, highlight the amplification effect
+
+[VOICEOVER 0:20-0:40] Researchers tested AI's ability to predict how people would respond to personality questionnaires. Using a zero-shot approach, models received no special training - they had to reason from scratch.
+[VISUAL DIRECTION] Animated flow chart showing the two-stage process: compression then prediction
+
+[VOICEOVER 0:40-1:00] The results were striking. AI-predicted personality structures showed amplified relationships - when two traits were positively correlated in real data, AI made them even more strongly correlated.
+[VISUAL DIRECTION] Show regression analysis results with beta coefficient of 1.42 highlighted
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, AI compresses information into summaries, preserving essential patterns. Then it uses these abstract representations to make predictions, prioritizing high-level understanding over details.
+[VISUAL DIRECTION] Visualize the compression process with data points converging into patterns
+
+[VOICEOVER 1:30-1:50] This has huge implications. AI could serve as a tool for simulating human behavior while filtering out the noise in real responses. It suggests AI is developing emergent abilities that resemble human thinking.
+[VISUAL DIRECTION] Show applications in research settings, psychology labs
+
+[VOICEOVER 1:50-2:00] AI isn't just mimicking us - it's actively constructing idealized versions of human psychology. This represents a fundamental shift in what AI can do.
+[VISUAL DIRECTION] Final text overlay: "AI: BUILDING BETTER HUMANS?" with study citation

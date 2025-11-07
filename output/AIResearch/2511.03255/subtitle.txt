@@ -1,0 +1,1 @@
+A new AI method creates synthetic ultrasound videos so accurate that clinicians can't tell them apart from real ones, potentially transforming how medical datasets are built and shared while preserving privacy.

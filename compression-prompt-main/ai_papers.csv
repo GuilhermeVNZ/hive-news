@@ -1,0 +1,1001 @@
+id,title,authors,year,venue,arxiv,category
+1,Attention Is All You Need,Vaswani et al.,2017,NeurIPS,1706.03762,NLP/Transformers
+2,BERT: Pre-training of Deep Bidirectional Transformers,Devlin et al.,2018,NAACL,1810.04805,NLP/Transformers
+3,GPT-3: Language Models are Few-Shot Learners,Brown et al.,2020,NeurIPS,2005.14165,NLP/LLM
+4,Deep Residual Learning for Image Recognition,He et al.,2016,CVPR,1512.03385,Computer Vision
+5,ImageNet Classification with Deep CNNs (AlexNet),Krizhevsky et al.,2012,NeurIPS,,Computer Vision
+6,Generative Adversarial Networks,Goodfellow et al.,2014,NeurIPS,1406.2661,Generative AI
+7,Adam: A Method for Stochastic Optimization,Kingma & Ba,2014,ICLR,1412.6980,Optimization
+8,Batch Normalization,Ioffe & Szegedy,2015,ICML,1502.03167,Deep Learning
+9,Dropout: A Simple Way to Prevent Neural Networks from Overfitting,Srivastava et al.,2014,JMLR,,Regularization
+10,Very Deep Convolutional Networks (VGGNet),Simonyan & Zisserman,2014,ICLR,1409.1556,Computer Vision
+11,Going Deeper with Convolutions (Inception),Szegedy et al.,2015,CVPR,1409.4842,Computer Vision
+12,U-Net: Convolutional Networks for Biomedical Image Segmentation,Ronneberger et al.,2015,MICCAI,1505.04597,Computer Vision
+13,Mask R-CNN,He et al.,2017,ICCV,1703.06870,Computer Vision
+14,YOLO: You Only Look Once,Redmon et al.,2016,CVPR,1506.02640,Computer Vision
+15,Faster R-CNN,Ren et al.,2015,NeurIPS,1506.01497,Computer Vision
+16,GPT-2: Language Models are Unsupervised Multitask Learners,Radford et al.,2019,OpenAI,,NLP/LLM
+17,GPT-1: Improving Language Understanding by Generative Pre-Training,Radford et al.,2018,OpenAI,,NLP/LLM
+18,ELMo: Deep Contextualized Word Representations,Peters et al.,2018,NAACL,1802.05365,NLP
+19,Transformer-XL,Dai et al.,2019,ACL,1901.02860,NLP/Transformers
+20,XLNet: Generalized Autoregressive Pretraining,Yang et al.,2019,NeurIPS,1906.08237,NLP/Transformers
+21,RoBERTa: A Robustly Optimized BERT Pretraining Approach,Liu et al.,2019,arXiv,1907.11692,NLP/Transformers
+22,T5: Exploring the Limits of Transfer Learning,Raffel et al.,2020,JMLR,1910.10683,NLP/Transformers
+23,ALBERT: A Lite BERT,Lan et al.,2019,ICLR,1909.11942,NLP/Transformers
+24,DistilBERT: Distilling BERT,Sanh et al.,2019,NeurIPS Workshop,1910.01108,NLP/Compression
+25,Wav2Vec 2.0: Self-Supervised Learning of Speech Representations,Baevski et al.,2020,NeurIPS,2006.11477,Speech/Audio
+26,Vision Transformer (ViT),Dosovitskiy et al.,2020,ICLR,2010.11929,Computer Vision
+27,Swin Transformer,Liu et al.,2021,ICCV,2103.14030,Computer Vision
+28,CLIP: Learning Transferable Visual Models,Radford et al.,2021,ICML,2103.00020,Multimodal
+29,DALL-E: Zero-Shot Text-to-Image Generation,Ramesh et al.,2021,ICML,2102.12092,Generative AI
+30,Stable Diffusion: High-Resolution Image Synthesis,Rombach et al.,2022,CVPR,2112.10752,Generative AI
+31,Diffusion Models Beat GANs on Image Synthesis,Dhariwal & Nichol,2021,NeurIPS,2105.05233,Generative AI
+32,Denoising Diffusion Probabilistic Models,Ho et al.,2020,NeurIPS,2006.11239,Generative AI
+33,Imagen: Photorealistic Text-to-Image Diffusion,Saharia et al.,2022,NeurIPS,2205.11487,Generative AI
+34,InstructGPT: Training language models to follow instructions,Ouyang et al.,2022,NeurIPS,2203.02155,NLP/LLM
+35,ChatGPT: Optimizing Language Models for Dialogue,OpenAI,2022,OpenAI,,NLP/LLM
+36,LLaMA: Open and Efficient Foundation Language Models,Touvron et al.,2023,arXiv,2302.13971,NLP/LLM
+37,Alpaca: A Strong Open-Source Instruction-Following Model,Taori et al.,2023,Stanford,,NLP/LLM
+38,Vicuna: An Open-Source Chatbot,Chiang et al.,2023,LMSYS,,NLP/LLM
+39,GPT-4: Technical Report,OpenAI,2023,arXiv,2303.08774,NLP/LLM
+40,PaLM: Scaling Language Modeling with Pathways,Chowdhery et al.,2022,JMLR,2204.02311,NLP/LLM
+41,Chinchilla: Training Compute-Optimal Large Language Models,Hoffmann et al.,2022,NeurIPS,2203.15556,NLP/LLM
+42,Flamingo: Visual Language Model,Alayrac et al.,2022,NeurIPS,2204.14198,Multimodal
+43,BLIP: Bootstrapping Language-Image Pre-training,Li et al.,2022,ICML,2201.12086,Multimodal
+44,Perceiver: General Perception with Iterative Attention,Jaegle et al.,2021,ICML,2103.03206,Architecture
+45,MLP-Mixer: An all-MLP Architecture for Vision,Tolstikhin et al.,2021,NeurIPS,2105.01601,Computer Vision
+46,ConvNeXt: A ConvNet for the 2020s,Liu et al.,2022,CVPR,2201.03545,Computer Vision
+47,MAE: Masked Autoencoders Are Scalable Vision Learners,He et al.,2022,CVPR,2111.06377,Computer Vision
+48,BEiT: BERT Pre-Training of Image Transformers,Bao et al.,2021,ICLR,2106.08254,Computer Vision
+49,DINO: Emerging Properties in Self-Supervised ViT,Caron et al.,2021,ICCV,2104.14294,Computer Vision
+50,SimCLR: A Simple Framework for Contrastive Learning,Chen et al.,2020,ICML,2002.05709,Self-Supervised
+51,MoCo: Momentum Contrast for Unsupervised Visual Representation,He et al.,2020,CVPR,1911.05722,Self-Supervised
+52,BYOL: Bootstrap Your Own Latent,Grill et al.,2020,NeurIPS,2006.07733,Self-Supervised
+53,SwAV: Unsupervised Learning of Visual Features,Caron et al.,2020,NeurIPS,2006.09882,Self-Supervised
+54,Barlow Twins: Self-Supervised Learning via Redundancy Reduction,Zbontar et al.,2021,ICML,2103.03230,Self-Supervised
+55,DQN: Playing Atari with Deep Reinforcement Learning,Mnih et al.,2013,NeurIPS Workshop,1312.5602,Reinforcement Learning
+56,Double DQN: Deep Reinforcement Learning with Double Q-learning,Van Hasselt et al.,2015,AAAI,1509.06461,Reinforcement Learning
+57,Dueling DQN: Dueling Network Architectures,Wang et al.,2016,ICML,1511.06581,Reinforcement Learning
+58,A3C: Asynchronous Methods for Deep RL,Mnih et al.,2016,ICML,1602.01783,Reinforcement Learning
+59,PPO: Proximal Policy Optimization,Schulman et al.,2017,arXiv,1707.06347,Reinforcement Learning
+60,TRPO: Trust Region Policy Optimization,Schulman et al.,2015,ICML,1502.05477,Reinforcement Learning
+61,SAC: Soft Actor-Critic,Haarnoja et al.,2018,ICML,1801.01290,Reinforcement Learning
+62,TD3: Twin Delayed Deep Deterministic Policy Gradient,Fujimoto et al.,2018,ICML,1802.09477,Reinforcement Learning
+63,AlphaGo: Mastering the game of Go with deep neural networks,Silver et al.,2016,Nature,,Reinforcement Learning
+64,AlphaZero: Mastering Chess and Shogi by Self-Play,Silver et al.,2017,Science,,Reinforcement Learning
+65,MuZero: Mastering Atari Go Chess and Shogi,Schrittwieser et al.,2020,Nature,1911.08265,Reinforcement Learning
+66,World Models: Learning to simulate the world,Ha & Schmidhuber,2018,NeurIPS,1803.10122,Reinforcement Learning
+67,Dreamer: Scalable Reinforcement Learning,Hafner et al.,2020,ICLR,1912.01603,Reinforcement Learning
+68,DALL-E 2: Hierarchical Text-Conditional Image Generation,Ramesh et al.,2022,arXiv,2204.06125,Generative AI
+69,Midjourney: AI Art Generation Platform,Midjourney,2022,Commercial,,Generative AI
+70,StyleGAN: A Style-Based Generator Architecture,Karras et al.,2019,CVPR,1812.04948,Generative AI
+71,StyleGAN2: Analyzing and Improving the Image Quality,Karras et al.,2020,CVPR,1912.04958,Generative AI
+72,StyleGAN3: Alias-Free Generative Adversarial Networks,Karras et al.,2021,NeurIPS,2106.12423,Generative AI
+73,BigGAN: Large Scale GAN Training for High Fidelity Natural Image Synthesis,Brock et al.,2019,ICLR,1809.11096,Generative AI
+74,ProGAN: Progressive Growing of GANs,Karras et al.,2018,ICLR,1710.10196,Generative AI
+75,CycleGAN: Unpaired Image-to-Image Translation,Zhu et al.,2017,ICCV,1703.10593,Generative AI
+76,Pix2Pix: Image-to-Image Translation with Conditional GANs,Isola et al.,2017,CVPR,1611.07004,Generative AI
+77,WaveNet: A Generative Model for Raw Audio,van den Oord et al.,2016,arXiv,1609.03499,Speech/Audio
+78,Tacotron: Towards End-to-End Speech Synthesis,Wang et al.,2017,Interspeech,1703.10135,Speech/Audio
+79,Tacotron 2: Natural TTS Synthesis,Shen et al.,2018,ICASSP,1712.05884,Speech/Audio
+80,FastSpeech: Fast Robust and Controllable TTS,Ren et al.,2019,NeurIPS,1905.09263,Speech/Audio
+81,Whisper: Robust Speech Recognition,Radford et al.,2022,arXiv,2212.04356,Speech/Audio
+82,HuBERT: Self-Supervised Speech Representation,Hsu et al.,2021,TASLP,2106.07447,Speech/Audio
+83,Neural Machine Translation by Jointly Learning to Align and Translate,Bahdanau et al.,2014,ICLR,1409.0473,NLP/Translation
+84,Google Neural Machine Translation System,Wu et al.,2016,arXiv,1609.08144,NLP/Translation
+85,Sequence to Sequence Learning with Neural Networks,Sutskever et al.,2014,NeurIPS,1409.3215,NLP
+86,Word2Vec: Efficient Estimation of Word Representations,Mikolov et al.,2013,ICLR,1301.3781,NLP
+87,GloVe: Global Vectors for Word Representation,Pennington et al.,2014,EMNLP,,NLP
+88,FastText: Enriching Word Vectors with Subword Information,Bojanowski et al.,2017,TACL,1607.04606,NLP
+89,Skip-Thought Vectors,Kiros et al.,2015,NeurIPS,1506.06726,NLP
+90,Universal Sentence Encoder,Cer et al.,2018,arXiv,1803.11175,NLP
+91,SentenceBERT: Sentence Embeddings using Siamese BERT,Reimers & Gurevych,2019,EMNLP,1908.10084,NLP
+92,SimCSE: Simple Contrastive Learning of Sentence Embeddings,Gao et al.,2021,EMNLP,2104.08821,NLP
+93,DeBERTa: Decoding-enhanced BERT with Disentangled Attention,He et al.,2020,ICLR,2006.03654,NLP/Transformers
+94,ELECTRA: Pre-training Text Encoders as Discriminators,Clark et al.,2020,ICLR,2003.10555,NLP/Transformers
+95,Longformer: Long-Document Transformer,Beltagy et al.,2020,arXiv,2004.05150,NLP/Transformers
+96,BigBird: Transformers for Longer Sequences,Zaheer et al.,2020,NeurIPS,2007.14062,NLP/Transformers
+97,Reformer: Efficient Transformer,Kitaev et al.,2020,ICLR,2001.04451,NLP/Transformers
+98,Linformer: Self-Attention with Linear Complexity,Wang et al.,2020,arXiv,2006.04768,NLP/Transformers
+99,Performer: Rethinking Attention with Performers,Choromanski et al.,2021,ICLR,2009.14794,NLP/Transformers
+100,Switch Transformer: Scaling to Trillion Parameter Models,Fedus et al.,2021,JMLR,2101.03961,NLP/Transformers
+101,GLaM: Efficient Scaling with Mixture-of-Experts,Du et al.,2021,arXiv,2112.06905,NLP/LLM
+102,Gopher: Scaling Language Models,Rae et al.,2021,arXiv,2112.11446,NLP/LLM
+103,Megatron-LM: Training Multi-Billion Parameter Language Models,Shoeybi et al.,2019,arXiv,1909.08053,NLP/LLM
+104,BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,BigScience,2022,arXiv,2211.05100,NLP/LLM
+105,OPT: Open Pre-trained Transformer Language Models,Zhang et al.,2022,arXiv,2205.01068,NLP/LLM
+106,Galactica: A Large Language Model for Science,Taylor et al.,2022,arXiv,2211.09085,NLP/LLM
+107,CodeGen: Multi-Turn Program Synthesis,Nijkamp et al.,2022,arXiv,2203.13474,Code Generation
+108,Codex: Evaluating Large Language Models Trained on Code,Chen et al.,2021,arXiv,2107.03374,Code Generation
+109,AlphaCode: Competition-Level Code Generation,Li et al.,2022,Science,2203.07814,Code Generation
+110,CodeT5: Identifier-aware Unified Pre-trained Encoder-Decoder,Wang et al.,2021,EMNLP,2109.00859,Code Generation
+111,CodeBERT: A Pre-Trained Model for Programming and Natural Languages,Feng et al.,2020,EMNLP,2002.08155,Code Generation
+112,GraphCodeBERT: Pre-training Code Representations,Guo et al.,2021,ICLR,2009.08366,Code Generation
+113,InCoder: A Generative Model for Code Infilling,Fried et al.,2022,arXiv,2204.05999,Code Generation
+114,SantaCoder: Dont reach for the stars,Allal et al.,2023,arXiv,2301.03988,Code Generation
+115,StarCoder: May the source be with you,Li et al.,2023,arXiv,2305.06161,Code Generation
+116,Code Llama: Open Foundation Models for Code,Rozière et al.,2023,arXiv,2308.12950,Code Generation
+117,WizardCoder: Empowering Code LLMs with Evol-Instruct,Luo et al.,2023,arXiv,2306.08568,Code Generation
+118,Phind-CodeLlama: Specialized Code Model,Phind,2023,Blog,,Code Generation
+119,DeepSeek-Coder: Let the Code Tell the Tale,DeepSeek,2023,arXiv,2401.14196,Code Generation
+120,Magicoder: Source Code Is All You Need,Wei et al.,2023,arXiv,2312.02120,Code Generation
+121,Graph Neural Networks: A Review,Zhou et al.,2020,TNNLS,1812.08434,Graph Neural Networks
+122,GCN: Semi-Supervised Classification with Graph Convolutional Networks,Kipf & Welling,2017,ICLR,1609.02907,Graph Neural Networks
+123,GraphSAGE: Inductive Representation Learning,Hamilton et al.,2017,NeurIPS,1706.02216,Graph Neural Networks
+124,GAT: Graph Attention Networks,Veličković et al.,2018,ICLR,1710.10903,Graph Neural Networks
+125,GIN: How Powerful are Graph Neural Networks,Xu et al.,2019,ICLR,1810.00826,Graph Neural Networks
+126,PinSage: Graph Convolutional Neural Networks for Web-Scale,Ying et al.,2018,KDD,1806.01973,Graph Neural Networks
+127,DGL: Deep Graph Library,Wang et al.,2019,arXiv,1909.01315,Graph Neural Networks
+128,PyG: Fast Graph Representation Learning,Fey & Lenssen,2019,arXiv,1903.02428,Graph Neural Networks
+129,Neural ODEs: Neural Ordinary Differential Equations,Chen et al.,2018,NeurIPS,1806.07366,Architecture
+130,Meta-Learning: Model-Agnostic Meta-Learning for Fast Adaptation,Finn et al.,2017,ICML,1703.03400,Meta-Learning
+131,Prototypical Networks for Few-shot Learning,Snell et al.,2017,NeurIPS,1703.05175,Few-Shot Learning
+132,Matching Networks for One Shot Learning,Vinyals et al.,2016,NeurIPS,1606.04080,Few-Shot Learning
+133,Relation Network for Few-Shot Learning,Sung et al.,2018,CVPR,1711.06025,Few-Shot Learning
+134,REPTILE: A Scalable Metalearning Algorithm,Nichol et al.,2018,arXiv,1803.02999,Meta-Learning
+135,Neural Architecture Search with Reinforcement Learning,Zoph & Le,2017,ICLR,1611.01578,AutoML
+136,ENAS: Efficient Neural Architecture Search,Pham et al.,2018,ICML,1802.03268,AutoML
+137,DARTS: Differentiable Architecture Search,Liu et al.,2019,ICLR,1806.09055,AutoML
+138,AutoML: A Survey of the State-of-the-Art,He et al.,2021,KBS,1908.00709,AutoML
+139,EfficientNet: Rethinking Model Scaling,Tan & Le,2019,ICML,1905.11946,Computer Vision
+140,EfficientNetV2: Smaller Models and Faster Training,Tan & Le,2021,ICML,2104.00298,Computer Vision
+141,MobileNet: Efficient CNNs for Mobile Vision,Howard et al.,2017,arXiv,1704.04861,Computer Vision
+142,MobileNetV2: Inverted Residuals and Linear Bottlenecks,Sandler et al.,2018,CVPR,1801.04381,Computer Vision
+143,MobileNetV3: Searching for MobileNetV3,Howard et al.,2019,ICCV,1905.02244,Computer Vision
+144,SqueezeNet: AlexNet-level accuracy with 50x fewer parameters,Iandola et al.,2016,arXiv,1602.07360,Computer Vision
+145,ShuffleNet: An Extremely Efficient CNN,Zhang et al.,2018,CVPR,1707.01083,Computer Vision
+146,GhostNet: More Features from Cheap Operations,Han et al.,2020,CVPR,1911.11907,Computer Vision
+147,NFNet: High-Performance Large-Scale Image Recognition,Brock et al.,2021,arXiv,2102.06171,Computer Vision
+148,RegNet: Designing Network Design Spaces,Radosavovic et al.,2020,CVPR,2003.13678,Computer Vision
+149,RepVGG: Making VGG-style ConvNets Great Again,Ding et al.,2021,CVPR,2101.03697,Computer Vision
+150,MixNet: Mixed Depthwise Convolutional Kernels,Tan & Le,2019,BMVC,1907.09595,Computer Vision
+151,Neural Tangent Kernel: Convergence and Generalization,Jacot et al.,2018,NeurIPS,1806.07572,Theory
+152,Lottery Ticket Hypothesis: Finding Sparse Trainable Networks,Frankle & Carbin,2019,ICLR,1803.03635,Theory
+153,Deep Double Descent: Where Bigger Models Do Better,Nakkiran et al.,2019,arXiv,1912.02292,Theory
+154,Understanding Deep Learning Requires Rethinking Generalization,Zhang et al.,2017,ICLR,1611.03530,Theory
+155,On the Measure of Intelligence,Chollet,2019,arXiv,1911.01547,Theory
+156,Scaling Laws for Neural Language Models,Kaplan et al.,2020,arXiv,2001.08361,Theory
+157,Training Compute-Optimal Large Language Models,Hoffmann et al.,2022,arXiv,2203.15556,Theory
+158,Language Models are Few-Shot Learners (GPT-3 Analysis),Brown et al.,2020,NeurIPS,2005.14165,Theory
+159,An Empirical Study of Example Forgetting,Toneva et al.,2019,ICLR,1812.05159,Theory
+160,Curriculum Learning,Bengio et al.,2009,ICML,,Theory
+161,Layer Normalization,Ba et al.,2016,arXiv,1607.06450,Deep Learning
+162,Group Normalization,Wu & He,2018,ECCV,1803.08494,Deep Learning
+163,Instance Normalization: The Missing Ingredient,Ulyanov et al.,2016,arXiv,1607.08022,Deep Learning
+164,Weight Normalization: A Simple Reparameterization,Salimans & Kingma,2016,NeurIPS,1602.07868,Deep Learning
+165,Spectral Normalization for GANs,Miyato et al.,2018,ICLR,1802.05957,Deep Learning
+166,PReLU: Delving Deep into Rectifiers,He et al.,2015,ICCV,1502.01852,Deep Learning
+167,ELU: Fast and Accurate Deep Network Learning,Clevert et al.,2016,ICLR,1511.07289,Deep Learning
+168,GELU: Gaussian Error Linear Units,Hendrycks & Gimpel,2016,arXiv,1606.08415,Deep Learning
+169,Swish: A Self-Gated Activation Function,Ramachandran et al.,2017,arXiv,1710.05941,Deep Learning
+170,Mish: A Self Regularized Non-Monotonic Activation Function,Misra,2019,arXiv,1908.08681,Deep Learning
+171,Label Smoothing: Rethinking the Inception Architecture,Szegedy et al.,2016,CVPR,1512.00567,Deep Learning
+172,Mixup: Beyond Empirical Risk Minimization,Zhang et al.,2018,ICLR,1710.09412,Data Augmentation
+173,CutMix: Regularization Strategy to Train Strong Classifiers,Yun et al.,2019,ICCV,1905.04899,Data Augmentation
+174,AutoAugment: Learning Augmentation Strategies,Cubuk et al.,2019,CVPR,1805.09501,Data Augmentation
+175,RandAugment: Practical automated data augmentation,Cubuk et al.,2020,CVPR,1909.13719,Data Augmentation
+176,AugMax: Adversarial Composition of Random Augmentations,Wang et al.,2021,NeurIPS,2102.01815,Data Augmentation
+177,CutOut: Improved Regularization of CNNs,DeVries & Taylor,2017,arXiv,1708.04552,Data Augmentation
+178,GridMask Data Augmentation,Chen et al.,2020,arXiv,2001.04086,Data Augmentation
+179,SpecAugment: A Simple Data Augmentation Method for ASR,Park et al.,2019,Interspeech,1904.08779,Data Augmentation
+180,Focal Loss for Dense Object Detection,Lin et al.,2017,ICCV,1708.02002,Object Detection
+181,RetinaNet: Focal Loss for Dense Object Detection,Lin et al.,2017,ICCV,1708.02002,Object Detection
+182,Feature Pyramid Networks for Object Detection,Lin et al.,2017,CVPR,1612.03144,Object Detection
+183,EfficientDet: Scalable and Efficient Object Detection,Tan et al.,2020,CVPR,1911.09070,Object Detection
+184,DETR: End-to-End Object Detection with Transformers,Carion et al.,2020,ECCV,2005.12872,Object Detection
+185,Deformable DETR: Deformable Transformers for End-to-End Object Detection,Zhu et al.,2021,ICLR,2010.04159,Object Detection
+186,YOLOv2: Better Faster Stronger,Redmon & Farhadi,2017,CVPR,1612.08242,Object Detection
+187,YOLOv3: An Incremental Improvement,Redmon & Farhadi,2018,arXiv,1804.02767,Object Detection
+188,YOLOv4: Optimal Speed and Accuracy,Bochkovskiy et al.,2020,arXiv,2004.10934,Object Detection
+189,YOLOv5: Ultralytics Implementation,Ultralytics,2020,GitHub,,Object Detection
+190,YOLOX: Exceeding YOLO Series in 2021,Ge et al.,2021,arXiv,2107.08430,Object Detection
+191,YOLOv7: Trainable bag-of-freebies,Wang et al.,2022,arXiv,2207.02696,Object Detection
+192,YOLOv8: Next Generation of YOLO,Ultralytics,2023,GitHub,,Object Detection
+193,SSD: Single Shot MultiBox Detector,Liu et al.,2016,ECCV,1512.02325,Object Detection
+194,CornerNet: Detecting Objects as Paired Keypoints,Law & Deng,2018,ECCV,1808.01244,Object Detection
+195,CenterNet: Keypoint Triplets for Object Detection,Duan et al.,2019,ICCV,1904.08189,Object Detection
+196,PointNet: Deep Learning on Point Sets,Qi et al.,2017,CVPR,1612.00593,3D Vision
+197,PointNet++: Deep Hierarchical Feature Learning,Qi et al.,2017,NeurIPS,1706.02413,3D Vision
+198,VoxNet: A 3D CNN for Real-Time Object Recognition,Maturana & Scherer,2015,IROS,1505.00880,3D Vision
+199,SECOND: Sparsely Embedded Convolutional Detection,Yan et al.,2018,Sensors,1801.10329,3D Vision
+200,PointPillars: Fast Encoders for Object Detection,Lang et al.,2019,CVPR,1812.05784,3D Vision
+201,NeRF: Neural Radiance Fields,Mildenhall et al.,2020,ECCV,2003.08934,3D Vision
+202,Instant NGP: Instant Neural Graphics Primitives,Müller et al.,2022,SIGGRAPH,2201.05989,3D Vision
+203,Plenoxels: Radiance Fields without Neural Networks,Yu et al.,2022,CVPR,2112.05131,3D Vision
+204,3D Gaussian Splatting for Real-Time Radiance Field Rendering,Kerbl et al.,2023,SIGGRAPH,2308.04079,3D Vision
+205,DreamFusion: Text-to-3D using 2D Diffusion,Poole et al.,2022,arXiv,2209.14988,3D Vision
+206,GET3D: A Generative Model of High Quality 3D Textured Shapes,Gao et al.,2022,NeurIPS,2209.11163,3D Vision
+207,Magic3D: High-Resolution Text-to-3D Content Creation,Lin et al.,2023,CVPR,2211.10440,3D Vision
+208,Point-E: A System for Generating 3D Point Clouds from Text,Nichol et al.,2022,arXiv,2212.08751,3D Vision
+209,Shap-E: Generating Conditional 3D Implicit Functions,Jun & Nichol,2023,arXiv,2305.02463,3D Vision
+210,Semantic Segmentation: Fully Convolutional Networks,Long et al.,2015,CVPR,1411.4038,Semantic Segmentation
+211,DeepLab: Semantic Image Segmentation,Chen et al.,2018,TPAMI,1606.00915,Semantic Segmentation
+212,PSPNet: Pyramid Scene Parsing Network,Zhao et al.,2017,CVPR,1612.01105,Semantic Segmentation
+213,SegNet: A Deep Convolutional Encoder-Decoder,Badrinarayanan et al.,2017,TPAMI,1511.00561,Semantic Segmentation
+214,RefineNet: Multi-Path Refinement Networks,Lin et al.,2017,CVPR,1611.06612,Semantic Segmentation
+215,HRNet: Deep High-Resolution Representation Learning,Wang et al.,2020,TPAMI,1908.07919,Semantic Segmentation
+216,OCRNet: Object-Contextual Representations,Yuan et al.,2020,ECCV,1909.11065,Semantic Segmentation
+217,SegFormer: Simple and Efficient Design,Xie et al.,2021,NeurIPS,2105.15203,Semantic Segmentation
+218,Mask2Former: Masked-attention Mask Transformer,Cheng et al.,2022,CVPR,2112.01527,Semantic Segmentation
+219,SAM: Segment Anything,Kirillov et al.,2023,ICCV,2304.02643,Semantic Segmentation
+220,FastSAM: Fast Segment Anything,Zhao et al.,2023,arXiv,2306.12156,Semantic Segmentation
+221,MobileSAM: Making SAM Lightweight,Zhang & Han,2023,arXiv,2306.14289,Semantic Segmentation
+222,EfficientSAM: Leveraged Masked Image Pretraining,Xiong et al.,2023,arXiv,2312.00863,Semantic Segmentation
+223,EdgeSAM: Prompt-In-the-Loop for Edge Devices,Ding et al.,2023,arXiv,2312.06660,Semantic Segmentation
+224,Panoptic Segmentation,Kirillov et al.,2019,CVPR,1801.00868,Semantic Segmentation
+225,EfficientPS: Efficient Panoptic Segmentation,Mohan & Valada,2021,IJCV,2004.02307,Semantic Segmentation
+226,Video Object Segmentation: Space-Time Memory Networks,Oh et al.,2019,ICCV,1904.00607,Video Understanding
+227,RAFT: Optical Flow Estimation,Teed & Deng,2020,ECCV,2003.12039,Video Understanding
+228,SlowFast Networks for Video Recognition,Feichtenhofer et al.,2019,ICCV,1812.03982,Video Understanding
+229,I3D: Quo Vadis Action Recognition,Carreira & Zisserman,2017,CVPR,1705.07750,Video Understanding
+230,TimeSformer: Is Space-Time Attention All You Need,Bertasius et al.,2021,ICML,2102.05095,Video Understanding
+231,VideoMAE: Masked Autoencoders are Data-Efficient Learners,Tong et al.,2022,NeurIPS,2203.12602,Video Understanding
+232,ViViT: A Video Vision Transformer,Arnab et al.,2021,ICCV,2103.15691,Video Understanding
+233,VideoSwin: Video Swin Transformer,Liu et al.,2022,CVPR,2106.13230,Video Understanding
+234,MViT: Multiscale Vision Transformers,Fan et al.,2021,ICCV,2104.11227,Video Understanding
+235,Video Diffusion Models,Ho et al.,2022,NeurIPS,2204.03458,Video Generation
+236,Make-A-Video: Text-to-Video Generation,Singer et al.,2022,arXiv,2209.14792,Video Generation
+237,Imagen Video: High Definition Video Generation,Ho et al.,2022,arXiv,2210.02303,Video Generation
+238,Phenaki: Variable Length Video Generation,Villegas et al.,2022,arXiv,2210.02399,Video Generation
+239,Gen-2: Runway Text-to-Video,Runway,2023,Blog,,Video Generation
+240,Pika Labs: AI Video Generation,Pika,2023,Commercial,,Video Generation
+241,Stable Video Diffusion,Blattmann et al.,2023,arXiv,2311.15127,Video Generation
+242,AnimateDiff: Animate Your Personalized Text-to-Image,Guo et al.,2023,arXiv,2307.04725,Video Generation
+243,DragGAN: Interactive Point-based Manipulation,Pan et al.,2023,SIGGRAPH,2305.10973,Image Editing
+244,InstructPix2Pix: Learning to Follow Image Editing Instructions,Brooks et al.,2023,CVPR,2211.09800,Image Editing
+245,ControlNet: Adding Conditional Control to Diffusion Models,Zhang & Agrawala,2023,ICCV,2302.05543,Image Editing
+246,IP-Adapter: Text Compatible Image Prompt Adapter,Ye et al.,2023,arXiv,2308.06721,Image Editing
+247,T2I-Adapter: Learning Adapters for Text-to-Image Diffusion,Mou et al.,2023,arXiv,2302.08453,Image Editing
+248,Prompt-to-Prompt Image Editing with Cross Attention Control,Hertz et al.,2022,arXiv,2208.01626,Image Editing
+249,DreamBooth: Fine Tuning Text-to-Image Diffusion,Ruiz et al.,2022,arXiv,2208.12242,Image Editing
+250,LoRA: Low-Rank Adaptation of Large Language Models,Hu et al.,2021,ICLR,2106.09685,Efficient Training
+251,QLoRA: Efficient Finetuning of Quantized LLMs,Dettmers et al.,2023,arXiv,2305.14314,Efficient Training
+252,Adapter: Parameter-Efficient Transfer Learning,Houlsby et al.,2019,ICML,1902.00751,Efficient Training
+253,Prefix-Tuning: Optimizing Continuous Prompts,Li & Liang,2021,ACL,2101.00190,Efficient Training
+254,Prompt Tuning: The Power of Scale for Parameter-Efficient Prompt Tuning,Lester et al.,2021,EMNLP,2104.08691,Efficient Training
+255,BitFit: Simple Parameter-efficient Fine-tuning,Zaken et al.,2022,ACL,2106.10199,Efficient Training
+256,IA3: Few-Shot Parameter-Efficient Fine-Tuning,Liu et al.,2022,arXiv,2205.05638,Efficient Training
+257,LLaMA-Adapter: Efficient Fine-tuning of LLaMA,Zhang et al.,2023,arXiv,2303.16199,Efficient Training
+258,GPTQ: Accurate Post-Training Quantization,Frantar et al.,2023,ICLR,2210.17323,Model Compression
+259,AWQ: Activation-aware Weight Quantization,Lin et al.,2023,arXiv,2306.00978,Model Compression
+260,SmoothQuant: Accurate and Efficient Post-Training Quantization,Xiao et al.,2023,ICML,2211.10438,Model Compression
+261,8-bit Optimizers via Block-wise Quantization,Dettmers et al.,2022,ICLR,2110.02861,Model Compression
+262,ZeroQuant: Efficient and Affordable Post-Training Quantization,Yao et al.,2022,NeurIPS,2206.01861,Model Compression
+263,LLM.int8(): 8-bit Matrix Multiplication,Dettmers et al.,2022,NeurIPS,2208.07339,Model Compression
+264,SpQR: A Sparse-Quantized Representation for LLMs,Dettmers et al.,2023,arXiv,2306.03078,Model Compression
+265,QuIP: 2-Bit Quantization of Large Language Models,Chee et al.,2023,arXiv,2307.13304,Model Compression
+266,Prune Once for All: Sparse Pre-Trained Language Models,Chen et al.,2021,arXiv,2111.05754,Model Compression
+267,Movement Pruning: Adaptive Sparsity by Fine-Tuning,Sanh et al.,2020,NeurIPS,2005.07683,Model Compression
+268,Lottery Ticket Hypothesis for Pre-trained Models,Chen et al.,2021,NeurIPS,2012.06908,Model Compression
+269,Knowledge Distillation: Distilling the Knowledge in a Neural Network,Hinton et al.,2015,NeurIPS Workshop,1503.02531,Model Compression
+270,TinyBERT: Distilling BERT for Natural Language Understanding,Jiao et al.,2020,EMNLP,1909.10351,Model Compression
+271,MiniLM: Deep Self-Attention Distillation,Wang et al.,2020,NeurIPS,2002.10957,Model Compression
+272,Patient Knowledge Distillation for BERT Model Compression,Sun et al.,2019,EMNLP,1908.09355,Model Compression
+273,FlashAttention: Fast and Memory-Efficient Exact Attention,Dao et al.,2022,NeurIPS,2205.14135,Efficient Training
+274,FlashAttention-2: Faster Attention with Better Parallelism,Dao,2023,arXiv,2307.08691,Efficient Training
+275,PagedAttention: vLLM Efficient Memory Management,Kwon et al.,2023,SOSP,2309.06180,Efficient Inference
+276,Speculative Decoding: Fast LLM Inference,Leviathan et al.,2023,ICML,2211.17192,Efficient Inference
+277,Medusa: Simple LLM Inference Acceleration,Cai et al.,2024,arXiv,2401.10774,Efficient Inference
+278,DeepSpeed: System Optimizations Enable Training Deep Learning Models,Rasley et al.,2020,KDD,2002.08570,Distributed Training
+279,Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism,Shoeybi et al.,2020,SC,1909.08053,Distributed Training
+280,ZeRO: Memory Optimizations Toward Training Trillion Parameter Models,Rajbhandari et al.,2020,SC,1910.02054,Distributed Training
+281,FSDP: Fully Sharded Data Parallel,Zhao et al.,2023,arXiv,2304.11277,Distributed Training
+282,PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel,Zhao et al.,2023,VLDB,2304.11277,Distributed Training
+283,Alpa: Automating Inter- and Intra-Operator Parallelism,Zheng et al.,2022,OSDI,2201.12023,Distributed Training
+284,Pathways: Asynchronous Distributed Dataflow for ML,Barham et al.,2022,MLSys,2203.12533,Distributed Training
+285,GPipe: Efficient Training of Giant Neural Networks,Huang et al.,2019,NeurIPS,1811.06965,Distributed Training
+286,PipeDream: Generalized Pipeline Parallelism,Narayanan et al.,2019,SOSP,1806.03377,Distributed Training
+287,Tensor Parallelism: Megatron-LM Training,Shoeybi et al.,2020,SC,1909.08053,Distributed Training
+288,Mixed Precision Training,Micikevicius et al.,2018,ICLR,1710.03740,Efficient Training
+289,Automatic Mixed Precision: Training Deep Neural Networks with FP16,Micikevicius et al.,2018,ICLR,1710.03740,Efficient Training
+290,BFloat16: The secret to high performance on Cloud TPUs,Google,2019,Blog,,Efficient Training
+291,Gradient Checkpointing: Training Deep Nets with Sublinear Memory Cost,Chen et al.,2016,arXiv,1604.06174,Efficient Training
+292,Gradient Accumulation: Training Neural Networks on Larger Batches,Ott et al.,2018,arXiv,1806.00187,Efficient Training
+293,Shampoo: Preconditioned Stochastic Tensor Optimization,Gupta et al.,2018,ICML,1802.09568,Optimization
+294,LAMB: Large Batch Optimization for Deep Learning,You et al.,2020,ICLR,1904.00962,Optimization
+295,LARS: Large Batch Training of Convolutional Networks,You et al.,2017,arXiv,1708.03888,Optimization
+296,AdamW: Decoupled Weight Decay Regularization,Loshchilov & Hutter,2019,ICLR,1711.05101,Optimization
+297,RAdam: On the Variance of the Adaptive Learning Rate,Liu et al.,2020,ICLR,1908.03265,Optimization
+298,Lookahead Optimizer: k steps forward 1 step back,Zhang et al.,2019,NeurIPS,1907.08610,Optimization
+299,AdaBelief: Adapting Stepsizes by the Belief in Observed Gradients,Zhuang et al.,2020,NeurIPS,2010.07468,Optimization
+300,Lion: Symbolic Discovery of Optimization Algorithms,Chen et al.,2023,arXiv,2302.06675,Optimization
+301,Sophia: A Scalable Stochastic Second-order Optimizer,Liu et al.,2023,arXiv,2305.14342,Optimization
+302,Learning Rate Schedules: Cyclical Learning Rates,Smith,2017,WACV,1506.01186,Training Techniques
+303,Super-Convergence: Very Fast Training of Neural Networks,Smith & Topin,2019,arXiv,1708.07120,Training Techniques
+304,Cosine Annealing: SGDR Stochastic Gradient Descent with Warm Restarts,Loshchilov & Hutter,2017,ICLR,1608.03983,Training Techniques
+305,OneCycleLR: A disciplined approach to neural network hyper-parameters,Smith,2018,arXiv,1803.09820,Training Techniques
+306,Warmup: Accurate Large Minibatch SGD,Goyal et al.,2017,arXiv,1706.02677,Training Techniques
+307,Gradient Clipping: On the difficulty of training RNNs,Pascanu et al.,2013,ICML,1211.5063,Training Techniques
+308,Early Stopping: Simple strategies for neural network training,Prechelt,1998,Neural Networks,,Training Techniques
+309,Learning Rate Finder: Estimating an Optimal Learning Rate,Smith,2015,arXiv,1506.01186,Training Techniques
+310,Stochastic Weight Averaging: Averaging Weights Leads to Wider Optima,Izmailov et al.,2018,UAI,1803.05407,Training Techniques
+311,Exponential Moving Average: Mean teachers are better role models,Tarvainen & Valpola,2017,NeurIPS,1703.01780,Training Techniques
+312,Self-Training: Pseudo-Label The Simple and Efficient Semi-Supervised Learning,Lee,2013,ICML Workshop,1908.02983,Semi-Supervised
+313,FixMatch: Simplifying Semi-Supervised Learning,Sohn et al.,2020,NeurIPS,2001.07685,Semi-Supervised
+314,MixMatch: A Holistic Approach to Semi-Supervised Learning,Berthelot et al.,2019,NeurIPS,1905.02249,Semi-Supervised
+315,UDA: Unsupervised Data Augmentation,Xie et al.,2020,ICLR,1904.12848,Semi-Supervised
+316,Noisy Student: Self-training with Noisy Student improves ImageNet,Xie et al.,2020,CVPR,1911.04252,Semi-Supervised
+317,Virtual Adversarial Training: A Regularization Method,Miyato et al.,2019,TPAMI,1704.03976,Semi-Supervised
+318,Temporal Ensembling for Semi-Supervised Learning,Laine & Aila,2017,ICLR,1610.02242,Semi-Supervised
+319,Contrastive Learning: Momentum Contrast for Unsupervised Visual Representation,He et al.,2020,CVPR,1911.05722,Self-Supervised
+320,SimSiam: Exploring Simple Siamese Representation Learning,Chen & He,2021,CVPR,2011.10566,Self-Supervised
+321,VICReg: Variance-Invariance-Covariance Regularization,Bardes et al.,2022,ICLR,2105.04906,Self-Supervised
+322,BarlowTwins: Self-Supervised Learning via Redundancy Reduction,Zbontar et al.,2021,ICML,2103.03230,Self-Supervised
+323,MAE: Masked Autoencoders Are Scalable Vision Learners,He et al.,2022,CVPR,2111.06377,Self-Supervised
+324,SimMIM: A Simple Framework for Masked Image Modeling,Xie et al.,2022,CVPR,2111.09886,Self-Supervised
+325,Context Encoder: Feature Learning by Inpainting,Pathak et al.,2016,CVPR,1604.07379,Self-Supervised
+326,Jigsaw Puzzle: Unsupervised Learning of Visual Representations,Noroozi & Favaro,2016,ECCV,1603.09246,Self-Supervised
+327,Rotation Prediction: Unsupervised Representation Learning,Gidaris et al.,2018,ICLR,1803.07728,Self-Supervised
+328,Colorization: Colorful Image Colorization,Zhang et al.,2016,ECCV,1603.08511,Self-Supervised
+329,Adversarial Training: Explaining and Harnessing Adversarial Examples,Goodfellow et al.,2015,ICLR,1412.6572,Robustness
+330,PGD: Towards Deep Learning Models Resistant to Adversarial Attacks,Madry et al.,2018,ICLR,1706.06083,Robustness
+331,FGSM: Fast Gradient Sign Method,Goodfellow et al.,2015,ICLR,1412.6572,Robustness
+332,C&W Attack: Towards Evaluating the Robustness of Neural Networks,Carlini & Wagner,2017,S&P,1608.04644,Robustness
+333,AutoAttack: Reliable evaluation of adversarial robustness,Croce & Hein,2020,ICML,2003.01690,Robustness
+334,Certified Defenses: Certified Adversarial Robustness via Randomized Smoothing,Cohen et al.,2019,ICML,1902.02918,Robustness
+335,Adversarial Patch: Adversarial Patch Attack,Brown et al.,2017,arXiv,1712.09665,Robustness
+336,Universal Perturbations: Universal Adversarial Perturbations,Moosavi-Dezfooli et al.,2017,CVPR,1610.08401,Robustness
+337,DeepFool: A Simple and Accurate Method,Moosavi-Dezfooli et al.,2016,CVPR,1511.04599,Robustness
+338,One Pixel Attack: One pixel attack for fooling deep neural networks,Su et al.,2019,IEEE TEC,1710.08864,Robustness
+339,Backdoor Attacks: BadNets Identifying Vulnerabilities,Gu et al.,2019,arXiv,1708.06733,Security
+340,Trojan Attacks: Neural Trojans,Liu et al.,2018,NDSS,1710.00942,Security
+341,Data Poisoning: Poisoning Attacks against Support Vector Machines,Biggio et al.,2012,ICML,,Security
+342,Model Inversion: Model Inversion Attacks,Fredrikson et al.,2015,CCS,,Security
+343,Membership Inference: Membership Inference Attacks,Shokri et al.,2017,S&P,,Security
+344,Privacy in ML: Deep Learning with Differential Privacy,Abadi et al.,2016,CCS,1607.00133,Privacy
+345,Federated Learning: Communication-Efficient Learning,McMahan et al.,2017,AISTATS,1602.05629,Privacy
+346,Differential Privacy: The Algorithmic Foundations,Dwork & Roth,2014,FNT,,Privacy
+347,DP-SGD: Deep Learning with Differential Privacy,Abadi et al.,2016,CCS,1607.00133,Privacy
+348,PATE: Private Aggregation of Teacher Ensembles,Papernot et al.,2017,ICLR,1610.05755,Privacy
+349,Secure Multi-Party Computation: Privacy-Preserving Deep Learning,Mohassel & Zhang,2017,S&P,,Privacy
+350,Homomorphic Encryption: CryptoNets Applying Neural Networks,Gilad-Bachrach et al.,2016,ICML,,Privacy
+351,FedAvg: Communication-Efficient Learning of Deep Networks,McMahan et al.,2017,AISTATS,1602.05629,Federated Learning
+352,FedProx: Federated Optimization in Heterogeneous Networks,Li et al.,2020,MLSys,1812.06127,Federated Learning
+353,FedBN: Federated Learning on Non-IID Data via Local Batch Normalization,Li et al.,2021,ICLR,2102.07623,Federated Learning
+354,SCAFFOLD: Stochastic Controlled Averaging for Federated Learning,Karimireddy et al.,2020,ICML,1910.06378,Federated Learning
+355,Split Learning: Distributed Deep Learning,Gupta & Raskar,2018,arXiv,1810.06060,Federated Learning
+356,Vertical Federated Learning: Secure Federated Transfer Learning,Yang et al.,2019,arXiv,1812.03337,Federated Learning
+357,Explainability: Grad-CAM Visual Explanations,Selvaraju et al.,2017,ICCV,1610.02391,Explainability
+358,LIME: Local Interpretable Model-agnostic Explanations,Ribeiro et al.,2016,KDD,1602.04938,Explainability
+359,SHAP: A Unified Approach to Interpreting Model Predictions,Lundberg & Lee,2017,NeurIPS,1705.07874,Explainability
+360,Attention Visualization: Attention is not Explanation,Jain & Wallace,2019,NAACL,1902.10186,Explainability
+361,Integrated Gradients: Axiomatic Attribution for Deep Networks,Sundararajan et al.,2017,ICML,1703.01365,Explainability
+362,Saliency Maps: Deep Inside Convolutional Networks,Simonyan et al.,2014,ICLR Workshop,1312.6034,Explainability
+363,Layer-wise Relevance Propagation: Explaining Deep Neural Networks,Bach et al.,2015,PLOS ONE,1506.02753,Explainability
+364,DeepLIFT: Learning Important Features Through Propagating,Shrikumar et al.,2017,ICML,1704.02685,Explainability
+365,Concept Activation Vectors: Interpretability Beyond Feature Attribution,Kim et al.,2018,ICML,1711.11279,Explainability
+366,Neural Network Pruning: Learning both Weights and Connections,Han et al.,2015,NeurIPS,1506.02626,Model Compression
+367,Magnitude Pruning: To prune or not to prune,Han et al.,2015,NeurIPS,1506.02626,Model Compression
+368,Structured Pruning: Structured Pruning of Deep CNNs,Li et al.,2017,ICLR,1608.08710,Model Compression
+369,Channel Pruning: Pruning Filters for Efficient ConvNets,Li et al.,2017,ICCV,1608.08710,Model Compression
+370,Network Slimming: Learning Efficient CNNs through Network Slimming,Liu et al.,2017,ICCV,1708.06519,Model Compression
+371,ThiNet: A Filter Level Pruning Method,Luo et al.,2017,ICCV,1707.06342,Model Compression
+372,AutoML for Model Compression: AMC Automated Model Compression,He et al.,2018,ECCV,1802.03494,Model Compression
+373,OFA: Once-for-All Train One Network and Specialize it,Cai et al.,2020,ICLR,1908.09791,AutoML
+374,ProxylessNAS: Direct Neural Architecture Search on Target Task,Cai et al.,2019,ICLR,1812.00332,AutoML
+375,NAS-FPN: Learning Scalable Feature Pyramid Architecture,Ghiasi et al.,2019,CVPR,1904.07392,AutoML
+376,Auto-DeepLab: Hierarchical Neural Architecture Search,Liu et al.,2019,CVPR,1901.02985,AutoML
+377,MnasNet: Platform-Aware Neural Architecture Search,Tan et al.,2019,CVPR,1807.11626,AutoML
+378,EfficientDet: Scalable and Efficient Object Detection,Tan et al.,2020,CVPR,1911.09070,AutoML
+379,Neural Architecture Transfer: NAT Neural Architecture Transfer,Lu et al.,2020,ICML,1803.03838,AutoML
+380,Hyperparameter Optimization: Hyperband A Novel Bandit-Based Approach,Li et al.,2018,JMLR,1603.06560,AutoML
+381,Bayesian Optimization: Practical Bayesian Optimization,Snoek et al.,2012,NeurIPS,,AutoML
+382,Optuna: A Next-generation Hyperparameter Optimization Framework,Akiba et al.,2019,KDD,1907.10902,AutoML
+383,Ray Tune: Scalable Hyperparameter Tuning,Liaw et al.,2018,arXiv,1807.05118,AutoML
+384,Continual Learning: Overcoming catastrophic forgetting,Kirkpatrick et al.,2017,PNAS,1612.00796,Continual Learning
+385,EWC: Elastic Weight Consolidation,Kirkpatrick et al.,2017,PNAS,1612.00796,Continual Learning
+386,Progressive Neural Networks,Rusu et al.,2016,arXiv,1606.04671,Continual Learning
+387,PackNet: Adding Multiple Tasks to a Single Network,Mallya & Lazebnik,2018,CVPR,1711.05769,Continual Learning
+388,Gradient Episodic Memory for Continual Learning,Lopez-Paz & Ranzato,2017,NeurIPS,1706.08840,Continual Learning
+389,iCaRL: Incremental Classifier and Representation Learning,Rebuffi et al.,2017,CVPR,1611.07725,Continual Learning
+390,Learning without Forgetting,Li & Hoiem,2018,TPAMI,1606.09282,Continual Learning
+391,Memory Aware Synapses: Learning what (not) to forget,Aljundi et al.,2018,ECCV,1711.09601,Continual Learning
+392,Online Continual Learning with Maximal Interfered Retrieval,Aljundi et al.,2019,NeurIPS,1908.04742,Continual Learning
+393,DER: Dark Experience for General Continual Learning,Buzzega et al.,2020,NeurIPS,2004.07211,Continual Learning
+394,Co-Training: Combining Labeled and Unlabeled Data,Blum & Mitchell,1998,COLT,,Semi-Supervised
+395,Tri-training: Exploiting unlabeled data using tri-training,Zhou & Li,2005,TKDE,,Semi-Supervised
+396,Active Learning: A Survey,Settles,2009,Tech Report,,Active Learning
+397,Uncertainty Sampling for Active Learning,Lewis & Gale,1994,SIGIR,,Active Learning
+398,Query-by-Committee: Improving Generalization,Seung et al.,1992,COLT,,Active Learning
+399,BALD: Bayesian Active Learning by Disagreement,Houlsby et al.,2011,arXiv,1112.5745,Active Learning
+400,Deep Bayesian Active Learning with Image Data,Gal et al.,2017,ICML,1703.02910,Active Learning
+401,Learning Loss for Active Learning,Yoo & Kweon,2019,CVPR,1905.03677,Active Learning
+402,Core-Set Selection for Active Learning,Sener & Savarese,2018,ICLR,1708.00489,Active Learning
+403,Multi-Task Learning: A Knowledge-Based Source of Inductive Bias,Caruana,1997,Machine Learning,,Multi-Task Learning
+404,Cross-Stitch Networks for Multi-task Learning,Misra et al.,2016,CVPR,1604.03539,Multi-Task Learning
+405,Multi-Task Attention Network for Multi-Task Learning,Liu et al.,2019,CVPR,1803.10704,Multi-Task Learning
+406,Taskonomy: Disentangling Task Transfer Learning,Zamir et al.,2018,CVPR,1804.08328,Multi-Task Learning
+407,Which Tasks Should Be Learned Together in Multi-task Learning,Standley et al.,2020,ICML,1905.07553,Multi-Task Learning
+408,GradNorm: Gradient Normalization for Adaptive Loss Balancing,Chen et al.,2018,ICML,1711.02257,Multi-Task Learning
+409,Uncertainty Weighting for Multi-Task Learning,Kendall et al.,2018,CVPR,1705.07115,Multi-Task Learning
+410,PCGrad: Gradient Surgery for Multi-Task Learning,Yu et al.,2020,NeurIPS,2001.06782,Multi-Task Learning
+411,Zero-Shot Learning: Learning to Learn with Compound HD Models,Lampert et al.,2009,NeurIPS,,Zero-Shot Learning
+412,Attributes-Based Classification: Zero-Shot Learning,Lampert et al.,2014,TPAMI,,Zero-Shot Learning
+413,DeViSE: A Deep Visual-Semantic Embedding Model,Frome et al.,2013,NeurIPS,,Zero-Shot Learning
+414,ConSE: Convex Combination of Semantic Embeddings,Norouzi et al.,2014,ICLR,,Zero-Shot Learning
+415,GZSL: Generalized Zero-Shot Learning,Chao et al.,2016,CVPR,,Zero-Shot Learning
+416,f-VAEGAN: Feature Generating Networks for Zero-Shot Learning,Xian et al.,2018,CVPR,1712.00981,Zero-Shot Learning
+417,CLIP-based Zero-Shot: Learning Transferable Visual Models,Radford et al.,2021,ICML,2103.00020,Zero-Shot Learning
+418,Domain Adaptation: Adapting Visual Category Models,Saenko et al.,2010,ECCV,,Domain Adaptation
+419,DANN: Domain-Adversarial Training of Neural Networks,Ganin et al.,2016,JMLR,1505.07818,Domain Adaptation
+420,ADDA: Adversarial Discriminative Domain Adaptation,Tzeng et al.,2017,CVPR,1702.05464,Domain Adaptation
+421,CycleGAN: Unpaired Image-to-Image Translation,Zhu et al.,2017,ICCV,1703.10593,Domain Adaptation
+422,DIRT-T: A DIRT-T Approach to Unsupervised Domain Adaptation,Shu et al.,2018,ICLR,1802.08735,Domain Adaptation
+423,MCD: Maximum Classifier Discrepancy for Unsupervised Domain Adaptation,Saito et al.,2018,CVPR,1712.02560,Domain Adaptation
+424,CDAN: Conditional Adversarial Domain Adaptation,Long et al.,2018,NeurIPS,1705.10667,Domain Adaptation
+425,BSP: Larger Norm More Transferable,Zhang et al.,2019,AAAI,1811.07456,Domain Adaptation
+426,FixBI: Bridging Domain Gaps for Unpaired Image-to-Image Translation,Kim et al.,2020,CVPR,2003.08777,Domain Adaptation
+427,SimCLR v2: Big Self-Supervised Models are Strong Semi-Supervised Learners,Chen et al.,2020,NeurIPS,2006.10029,Self-Supervised
+428,Bootstrap Your Own Latent v2: Improved Self-Supervised Learning,Grill et al.,2020,NeurIPS,2006.07733,Self-Supervised
+429,Momentum Encoder: A Simple Framework for Self-supervised Learning,He et al.,2020,CVPR,1911.05722,Self-Supervised
+430,Instance Discrimination: Unsupervised Feature Learning via Non-Parametric Instance Discrimination,Wu et al.,2018,CVPR,1805.01978,Self-Supervised
+431,CMC: Contrastive Multiview Coding,Tian et al.,2019,arXiv,1906.05849,Self-Supervised
+432,InfoMin: What Makes for Good Views for Contrastive Learning,Tian et al.,2020,NeurIPS,2005.10243,Self-Supervised
+433,Supervised Contrastive Learning,Khosla et al.,2020,NeurIPS,2004.11362,Contrastive Learning
+434,Hard Negative Mining: Sampling Matters in Deep Embedding Learning,Wu et al.,2017,ICCV,1706.07567,Contrastive Learning
+435,Triplet Loss: FaceNet A Unified Embedding for Face Recognition,Schroff et al.,2015,CVPR,,Metric Learning
+436,Lifted Structure: Deep Metric Learning via Lifted Structured Feature Embedding,Song et al.,2016,CVPR,1511.06452,Metric Learning
+437,N-Pair Loss: Improved Deep Metric Learning with Multi-class N-pair Loss,Sohn,2016,NeurIPS,1708.01682,Metric Learning
+438,Proxy-NCA: No Fuss Distance Metric Learning using Proxies,Movshovitz-Attias et al.,2017,ICCV,1703.07464,Metric Learning
+439,ArcFace: Additive Angular Margin Loss for Deep Face Recognition,Deng et al.,2019,CVPR,1801.07698,Metric Learning
+440,CosFace: Large Margin Cosine Loss for Deep Face Recognition,Wang et al.,2018,CVPR,1801.09414,Metric Learning
+441,SphereFace: Deep Hypersphere Embedding for Face Recognition,Liu et al.,2017,CVPR,1704.08063,Metric Learning
+442,Circle Loss: A Unified Perspective of Pair Similarity Optimization,Sun et al.,2020,CVPR,2002.10857,Metric Learning
+443,ProtoNet: Prototypical Networks for Few-shot Learning,Snell et al.,2017,NeurIPS,1703.05175,Few-Shot Learning
+444,MAML: Model-Agnostic Meta-Learning for Fast Adaptation,Finn et al.,2017,ICML,1703.03400,Meta-Learning
+445,Meta-SGD: Meta-SGD Learning to Learn Quickly for Few-Shot Learning,Li et al.,2017,arXiv,1707.09835,Meta-Learning
+446,TAML: Task-Agnostic Meta-Learning for Few-Shot Learning,Jamal & Qi,2019,CVPR,1805.07722,Meta-Learning
+447,LEO: Latent Embedding Optimization for Few-Shot Learning,Rusu et al.,2019,ICLR,1807.05960,Meta-Learning
+448,Meta-Transfer Learning: Meta-Transfer Learning for Few-Shot Learning,Sun et al.,2019,CVPR,1812.02391,Meta-Learning
+449,MetaOptNet: Meta-Learning with Differentiable Convex Optimization,Lee et al.,2019,CVPR,1904.03758,Meta-Learning
+450,SimpleShot: Revisiting Nearest-Neighbor Classification for Few-Shot Learning,Wang et al.,2019,arXiv,1911.04623,Few-Shot Learning
+451,FEAT: Few-Shot Learning via Embedding Adaptation with Set-to-Set Functions,Ye et al.,2020,CVPR,1812.03664,Few-Shot Learning
+452,Meta-Baseline: Exploring Simple Meta-Learning for Few-Shot Learning,Chen et al.,2021,ICCV,2003.04390,Meta-Learning
+453,Neural Processes: Neural Processes,Garnelo et al.,2018,ICML Workshop,1807.01622,Meta-Learning
+454,Conditional Neural Processes,Garnelo et al.,2018,ICML,1807.01613,Meta-Learning
+455,Attentive Neural Processes,Kim et al.,2019,ICLR,1901.05761,Meta-Learning
+456,Transductive Propagation Network for Few-Shot Learning,Liu et al.,2019,ICLR,1805.10002,Few-Shot Learning
+457,Edge-labeling Graph Neural Network for Few-shot Learning,Kim et al.,2019,CVPR,1905.01436,Few-Shot Learning
+458,Cross-Domain Few-Shot Classification via Learned Feature-Wise Transformation,Tseng et al.,2020,ICLR,2001.08735,Few-Shot Learning
+459,Meta-Dataset: A Dataset of Datasets for Few-Shot Learning,Triantafillou et al.,2020,ICLR,1903.03096,Few-Shot Learning
+460,TaskNorm: Rethinking Batch Normalization for Meta-Learning,Bronskill et al.,2020,ICML,2003.03284,Meta-Learning
+461,Multimodal Learning: Multimodal Machine Learning A Survey,Baltrušaitis et al.,2019,TPAMI,1705.09406,Multimodal
+462,VisualBERT: A Simple and Performant Baseline for Vision and Language,Li et al.,2019,arXiv,1908.03557,Multimodal
+463,ViLBERT: Pretraining Task-Agnostic Visiolinguistic Representations,Lu et al.,2019,NeurIPS,1908.02265,Multimodal
+464,LXMERT: Learning Cross-Modality Encoder Representations from Transformers,Tan & Bansal,2019,EMNLP,1908.07490,Multimodal
+465,UNITER: UNiversal Image-TExt Representation Learning,Chen et al.,2020,ECCV,1909.11740,Multimodal
+466,Oscar: Object-Semantics Aligned Pre-training for Vision-Language,Li et al.,2020,ECCV,2004.06165,Multimodal
+467,VinVL: Revisiting Visual Representations in Vision-Language Models,Zhang et al.,2021,CVPR,2101.00529,Multimodal
+468,ALIGN: Scaling Up Visual and Vision-Language Representation Learning,Jia et al.,2021,ICML,2102.05918,Multimodal
+469,Florence: A New Foundation Model for Computer Vision,Yuan et al.,2021,arXiv,2111.11432,Multimodal
+470,CoCa: Contrastive Captioners are Image-Text Foundation Models,Yu et al.,2022,arXiv,2205.01917,Multimodal
+471,BEiTv2: Masked Image Modeling with Vector-Quantized Visual Tokenizers,Peng et al.,2022,arXiv,2208.06366,Multimodal
+472,BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders,Li et al.,2023,arXiv,2301.12597,Multimodal
+473,InstructBLIP: Towards General-purpose Vision-Language Models,Dai et al.,2023,arXiv,2305.06500,Multimodal
+474,LLaVA: Visual Instruction Tuning,Liu et al.,2023,arXiv,2304.08485,Multimodal
+475,MiniGPT-4: Enhancing Vision-language Understanding,Zhu et al.,2023,arXiv,2304.10592,Multimodal
+476,GPT-4V: GPT-4 with Vision,OpenAI,2023,Tech Report,,Multimodal
+477,Gemini: A Family of Highly Capable Multimodal Models,Google,2023,arXiv,2312.11805,Multimodal
+478,Qwen-VL: A Versatile Vision-Language Model,Bai et al.,2023,arXiv,2308.12966,Multimodal
+479,CogVLM: Visual Expert for Pretrained Language Models,Wang et al.,2023,arXiv,2311.03079,Multimodal
+480,Emu: Generative Pretraining in Multimodality,Sun et al.,2023,arXiv,2307.05222,Multimodal
+481,ImageBind: One Embedding Space To Bind Them All,Girdhar et al.,2023,CVPR,2305.05665,Multimodal
+482,PandaGPT: One Model To Instruction-Follow Them All,Su et al.,2023,arXiv,2305.16355,Multimodal
+483,Video-LLaMA: An Instruction-tuned Audio-Visual Language Model,Zhang et al.,2023,arXiv,2306.02858,Multimodal
+484,mPLUG-2: A Modularized Multi-modal Foundation Model,Xu et al.,2023,arXiv,2302.00402,Multimodal
+485,UniDiffuser: One Transformer Fits All Distributions,Bao et al.,2023,arXiv,2303.06555,Multimodal
+486,AudioLM: a Language Modeling Approach to Audio Generation,Borsos et al.,2022,arXiv,2209.03143,Audio Generation
+487,MusicLM: Generating Music From Text,Agostinelli et al.,2023,arXiv,2301.11325,Audio Generation
+488,AudioGen: Textually Guided Audio Generation,Kreuk et al.,2022,arXiv,2209.15352,Audio Generation
+489,VALL-E: Neural Codec Language Models are Zero-Shot TTS,Wang et al.,2023,arXiv,2301.02111,Speech Synthesis
+490,VALL-E X: Speak Foreign Languages with Your Own Voice,Zhang et al.,2023,arXiv,2303.03926,Speech Synthesis
+491,Bark: Text-Prompted Generative Audio Model,Suno AI,2023,GitHub,,Audio Generation
+492,VoiceBox: Text-Guided Multilingual Universal Speech Generation,Le et al.,2023,arXiv,2306.15687,Speech Synthesis
+493,SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities,Zhang et al.,2023,arXiv,2305.11000,Speech/Multimodal
+494,AudioPaLM: A Large Language Model That Can Speak and Listen,Rubenstein et al.,2023,arXiv,2306.12925,Speech/Multimodal
+495,SoundStorm: Efficient Parallel Audio Generation,Borsos et al.,2023,arXiv,2305.09636,Audio Generation
+496,Retrieval-Augmented Generation: Retrieval-Augmented Generation for Knowledge-Intensive NLP,Lewis et al.,2020,NeurIPS,2005.11401,RAG
+497,REALM: Retrieval-Augmented Language Model Pre-Training,Guu et al.,2020,ICML,2002.08909,RAG
+498,DPR: Dense Passage Retrieval for Open-Domain QA,Karpukhin et al.,2020,EMNLP,2004.04906,RAG
+499,RETRO: Improving language models by retrieving from trillions of tokens,Borgeaud et al.,2022,ICML,2112.04426,RAG
+500,Atlas: Few-shot Learning with Retrieval Augmented Language Models,Izacard et al.,2023,JMLR,2208.03299,RAG
+501,FiD: Leveraging Passage Retrieval with Generative Models,Izacard & Grave,2021,EACL,2007.01282,RAG
+502,ColBERT: Efficient and Effective Passage Search,Khattab & Zaharia,2020,SIGIR,2004.12832,Retrieval
+503,ANCE: Approximate Nearest Neighbor Negative Contrastive Learning,Xiong et al.,2021,ICLR,2007.00808,Retrieval
+504,SPLADE: Sparse Lexical and Expansion Model,Formal et al.,2021,SIGIR,2107.05720,Retrieval
+505,E5: Text Embeddings by Weakly-Supervised Contrastive Pre-training,Wang et al.,2022,arXiv,2212.03533,Embeddings
+506,BGE: C-Pack: Packaged Resources To Advance General Chinese Embedding,Xiao et al.,2023,arXiv,2309.07597,Embeddings
+507,GTE: Towards General Text Embeddings with Multi-stage Contrastive Learning,Li et al.,2023,arXiv,2308.03281,Embeddings
+508,Instructor: One Embedder Any Task,Su et al.,2022,arXiv,2212.09741,Embeddings
+509,Contriever: Unsupervised Dense Information Retrieval,Izacard et al.,2022,TMLR,2112.09118,Retrieval
+510,WebGPT: Browser-assisted question-answering with human feedback,Nakano et al.,2021,arXiv,2112.09332,LLM Applications
+511,Toolformer: Language Models Can Teach Themselves to Use Tools,Schick et al.,2023,arXiv,2302.04761,LLM Applications
+512,ReAct: Synergizing Reasoning and Acting in Language Models,Yao et al.,2023,ICLR,2210.03629,LLM Applications
+513,Reflexion: Language Agents with Verbal Reinforcement Learning,Shinn et al.,2023,arXiv,2303.11366,LLM Applications
+514,Tree of Thoughts: Deliberate Problem Solving with LLMs,Yao et al.,2023,arXiv,2305.10601,LLM Applications
+515,HuggingGPT: Solving AI Tasks with ChatGPT,Shen et al.,2023,arXiv,2303.17580,LLM Applications
+516,Gorilla: Large Language Model Connected with Massive APIs,Patil et al.,2023,arXiv,2305.15334,LLM Applications
+517,MemGPT: Towards LLMs as Operating Systems,Packer et al.,2023,arXiv,2310.08560,LLM Applications
+518,MetaGPT: Meta Programming for Multi-Agent Systems,Hong et al.,2023,arXiv,2308.00352,Multi-Agent
+519,AutoGPT: An Autonomous GPT-4 Experiment,Significant Gravitas,2023,GitHub,,LLM Applications
+520,BabyAGI: Task-Driven Autonomous Agent,Nakajima,2023,GitHub,,LLM Applications
+521,AgentGPT: Autonomous AI Agents in your browser,Reworkd,2023,GitHub,,LLM Applications
+522,AutoGen: Enabling Next-Gen LLM Applications,Wu et al.,2023,arXiv,2308.08155,Multi-Agent
+523,ChatDev: Communicative Agents for Software Development,Qian et al.,2023,arXiv,2307.07924,Multi-Agent
+524,Generative Agents: Interactive Simulacra of Human Behavior,Park et al.,2023,arXiv,2304.03442,Multi-Agent
+525,CAMEL: Communicative Agents for Mind Exploration,Li et al.,2023,arXiv,2303.17760,Multi-Agent
+526,WebArena: A Realistic Web Environment for Building Autonomous Agents,Zhou et al.,2023,arXiv,2307.13854,LLM Applications
+527,AgentBench: Evaluating LLMs as Agents,Liu et al.,2023,arXiv,2308.03688,LLM Applications
+528,Chain-of-Thought Prompting: Chain-of-Thought Prompting Elicits Reasoning,Wei et al.,2022,NeurIPS,2201.11903,Prompting
+529,Self-Consistency: Self-Consistency Improves Chain of Thought Reasoning,Wang et al.,2023,ICLR,2203.11171,Prompting
+530,PAL: Program-aided Language Models,Gao et al.,2023,ICML,2211.10435,Prompting
+531,Least-to-Most Prompting: Least-to-Most Prompting Enables Complex Reasoning,Zhou et al.,2023,ICLR,2205.10625,Prompting
+532,Zero-shot CoT: Large Language Models are Zero-Shot Reasoners,Kojima et al.,2022,NeurIPS,2205.11916,Prompting
+533,ReWOO: Decoupling Reasoning from Observations,Xu et al.,2023,arXiv,2305.18323,Prompting
+534,Graph of Thoughts: Solving Elaborate Problems with LLMs,Besta et al.,2023,arXiv,2308.09687,Prompting
+535,Automatic Prompt Engineer: Automatic Prompt Optimization,Zhou et al.,2023,EMNLP,2211.01910,Prompting
+536,OPRO: Large Language Models as Optimizers,Yang et al.,2023,arXiv,2309.03409,Prompting
+537,Constitutional AI: Training a Helpful and Harmless Assistant,Bai et al.,2022,arXiv,2212.08073,AI Safety
+538,RLHF: Training language models to follow instructions with human feedback,Ouyang et al.,2022,NeurIPS,2203.02155,AI Safety
+539,Red Teaming Language Models with Language Models,Perez et al.,2022,EMNLP,2202.03286,AI Safety
+540,Anthropic: Language Models (Mostly) Know What They Know,Kadavath et al.,2022,arXiv,2207.05221,AI Safety
+541,Truthful QA: Measuring How Models Mimic Human Falsehoods,Lin et al.,2022,ACL,2109.07958,AI Safety
+542,WebGPT: Improving alignment of dialogue agents via targeted human judgments,Stiennon et al.,2020,NeurIPS,2009.01325,AI Safety
+543,Sparrow: Improving alignment of dialogue agents,Glaese et al.,2022,arXiv,2209.14375,AI Safety
+544,Direct Preference Optimization: Your Language Model is Secretly a Reward Model,Rafailov et al.,2023,arXiv,2305.18290,RLHF
+545,RRHF: Rank Responses to Align Language Models,Yuan et al.,2023,arXiv,2304.05302,RLHF
+546,PRO: Preference Ranking Optimization,Song et al.,2023,arXiv,2306.17492,RLHF
+547,LIMA: Less Is More for Alignment,Zhou et al.,2023,arXiv,2305.11206,Alignment
+548,Orca: Progressive Learning from Complex Explanation Traces,Mukherjee et al.,2023,arXiv,2306.02707,Distillation
+549,Orca 2: Teaching Small Language Models How to Reason,Mitra et al.,2023,arXiv,2311.11045,Distillation
+550,Phi-1: Textbooks Are All You Need,Gunasekar et al.,2023,arXiv,2306.11644,Small LLMs
+551,Phi-1.5: Textbooks Are All You Need II,Li et al.,2023,arXiv,2309.05463,Small LLMs
+552,Phi-2: Small Language Models Punch Above Their Weight,Microsoft,2023,Blog,,Small LLMs
+553,TinyStories: How Small Can Language Models Be and Still Speak Coherent English,Eldan & Li,2023,arXiv,2305.07759,Small LLMs
+554,Mistral 7B: Mistral 7B,Jiang et al.,2023,arXiv,2310.06825,Open Source LLMs
+555,Mixtral 8x7B: Mixtral of Experts,Jiang et al.,2024,arXiv,2401.04088,Open Source LLMs
+556,Zephyr: Direct Distillation of LM Alignment,Tunstall et al.,2023,arXiv,2310.16944,Open Source LLMs
+557,Falcon: The RefinedWeb Dataset for Falcon LLM,Penedo et al.,2023,arXiv,2306.01116,Open Source LLMs
+558,MPT: MosaicML Pretrained Transformer,MosaicML,2023,Blog,,Open Source LLMs
+559,StableLM: Stability AI Language Models,Stability AI,2023,Blog,,Open Source LLMs
+560,OpenLLaMA: An Open Reproduction of LLaMA,OpenLM,2023,GitHub,,Open Source LLMs
+561,RedPajama: An Open Source Recipe to Reproduce LLaMA,Together,2023,Blog,,Open Source LLMs
+562,LLaMA 2: Open Foundation and Fine-Tuned Chat Models,Touvron et al.,2023,arXiv,2307.09288,Open Source LLMs
+563,CodeLLaMA: Code Llama Open Foundation Models for Code,Rozière et al.,2023,arXiv,2308.12950,Code Generation
+564,Baichuan: A series of large language models,Baichuan,2023,arXiv,2309.10305,Open Source LLMs
+565,InternLM: A Multilingual Language Model with Progressively Enhanced Capabilities,InternLM Team,2023,arXiv,2309.01425,Open Source LLMs
+566,Qwen: Qwen Technical Report,Bai et al.,2023,arXiv,2309.16609,Open Source LLMs
+567,XVERSE: XVERSE-13B A multilingual large language model,XVERSE,2023,arXiv,2401.06066,Open Source LLMs
+568,Yi: Yi Open Foundation Models,01.AI,2024,arXiv,2403.04652,Open Source LLMs
+569,DeepSeek LLM: Scaling Open-Source Language Models,DeepSeek-AI,2024,arXiv,2401.02954,Open Source LLMs
+570,Gemma: Open Models Based on Gemini Research and Technology,Google,2024,arXiv,2403.08295,Open Source LLMs
+571,Command R: Cohere For AI Command Models,Cohere,2024,Blog,,Open Source LLMs
+572,DBRX: A New Standard for Efficient Open Source Models,Databricks,2024,Blog,,Open Source LLMs
+573,Snowflake Arctic: The Best LLM for Enterprise AI,Snowflake,2024,Blog,,Open Source LLMs
+574,Grok-1: Grok-1 Open Release,xAI,2024,Blog,,Open Source LLMs
+575,Claude: Model Card and Evaluations for Claude Models,Anthropic,2023,Blog,,Commercial LLMs
+576,Claude 2: Claude 2.1 Announcement,Anthropic,2023,Blog,,Commercial LLMs
+577,Claude 3: Introducing the next generation of Claude,Anthropic,2024,Blog,,Commercial LLMs
+578,PaLM 2: Technical Report,Google,2023,arXiv,2305.10403,Commercial LLMs
+579,Bard: An Experimental Conversational AI Service,Google,2023,Blog,,Commercial LLMs
+580,Gemini Pro: Gemini A Family of Highly Capable Multimodal Models,Google,2023,arXiv,2312.11805,Commercial LLMs
+581,Gemini Ultra: Capabilities of Gemini models in complex tasks,Google,2024,Blog,,Commercial LLMs
+582,Ernie: Enhanced Representation through Knowledge Integration,Baidu,2023,arXiv,2107.02137,Commercial LLMs
+583,Wenxin: A Large-scale Chinese Pre-trained Language Model,Baidu,2021,arXiv,2104.05189,Commercial LLMs
+584,GLM: General Language Model Pretraining,Zeng et al.,2022,ACL,2103.10360,Open Source LLMs
+585,ChatGLM: An Open Bilingual Dialogue Language Model,THUDM,2023,arXiv,2103.10360,Open Source LLMs
+586,ChatGLM2: ChatGLM2-6B An Open Bilingual Chat LLM,THUDM,2023,GitHub,,Open Source LLMs
+587,Megatron-Turing NLG: Using DeepSpeed and Megatron to Train,Smith et al.,2022,arXiv,2201.11990,Large Scale Training
+588,Jurassic-1: Technical Details and Evaluation,Lieber et al.,2021,Tech Report,,Commercial LLMs
+589,AI21 Labs: Jurassic-2 Models,AI21 Labs,2023,Blog,,Commercial LLMs
+590,Cohere Command: Large Language Models for Business,Cohere,2023,Blog,,Commercial LLMs
+591,Aleph Alpha: Luminous Exploring the Limits of Transfer Learning,Aleph Alpha,2023,Blog,,Commercial LLMs
+592,Inflection-2: Inflection-2 The Next Step Up,Inflection AI,2023,Blog,,Commercial LLMs
+593,Character.AI: Personalized AI for Everyone,Character.AI,2023,Blog,,Commercial LLMs
+594,Perplexity: Conversational Search Engine,Perplexity AI,2023,Blog,,Commercial LLMs
+595,You.com: AI-Powered Search and Productivity,You.com,2023,Blog,,Commercial LLMs
+596,Jasper: Generative AI Platform for Business,Jasper,2023,Blog,,Commercial LLMs
+597,Copy.ai: AI Content Generator,Copy.ai,2023,Blog,,Commercial LLMs
+598,Anthropic Claude Code: Code-Specialized Claude Model,Anthropic,2024,Blog,,Commercial LLMs
+599,OpenAI Embedding Models: Text and Code Embeddings,OpenAI,2023,Blog,,Embeddings
+600,Voyage AI: Domain-Adapted Retrieval Models,Voyage AI,2023,Blog,,Embeddings
+601,RNN: Recurrent Neural Networks,Rumelhart et al.,1986,Nature,,Foundations
+602,LSTM: Long Short-Term Memory,Hochreiter & Schmidhuber,1997,Neural Computation,,Foundations
+603,GRU: Gated Recurrent Units,Cho et al.,2014,EMNLP,1406.1078,Foundations
+604,Seq2Seq: Sequence to Sequence Learning,Sutskever et al.,2014,NeurIPS,1409.3215,Foundations
+605,Neural Turing Machines,Graves et al.,2014,arXiv,1410.5401,Memory Networks
+606,Memory Networks,Weston et al.,2015,ICLR,1410.3916,Memory Networks
+607,End-to-End Memory Networks,Sukhbaatar et al.,2015,NeurIPS,1503.08895,Memory Networks
+608,Dynamic Memory Networks,Kumar et al.,2016,ICML,1506.07285,Memory Networks
+609,Differentiable Neural Computer,Graves et al.,2016,Nature,1610.06258,Memory Networks
+610,Capsule Networks: Dynamic Routing Between Capsules,Sabour et al.,2017,NeurIPS,1710.09829,Novel Architectures
+611,Hinton Capsules: Matrix capsules with EM routing,Hinton et al.,2018,ICLR,1710.09829,Novel Architectures
+612,Neural Architecture Search: Learning Transferable Architectures,Zoph et al.,2018,CVPR,1707.07012,AutoML
+613,AmoebaNet: Regularized Evolution for Image Classifier Architecture Search,Real et al.,2019,AAAI,1802.01548,AutoML
+614,EfficientNet: Rethinking Model Scaling for CNNs,Tan & Le,2019,ICML,1905.11946,Computer Vision
+615,MobileOne: An Improved One millisecond Mobile Backbone,Vasu et al.,2023,CVPR,2206.04040,Computer Vision
+616,FastViT: A Fast Hybrid Vision Transformer,Vasu et al.,2023,arXiv,2303.14189,Computer Vision
+617,TResNet: High Performance GPU-Dedicated Architecture,Ridnik et al.,2021,WACV,2003.13630,Computer Vision
+618,Swin Transformer V2: Scaling Up Capacity and Resolution,Liu et al.,2022,CVPR,2111.09883,Computer Vision
+619,MaxViT: Multi-Axis Vision Transformer,Tu et al.,2022,ECCV,2204.01697,Computer Vision
+620,CoAtNet: Marrying Convolution and Attention,Dai et al.,2021,NeurIPS,2106.04803,Computer Vision
+621,ConvMixer: Patches Are All You Need,Trockman & Kolter,2022,ICLR,2201.09792,Computer Vision
+622,PoolFormer: MetaFormer is Actually What You Need,Yu et al.,2022,CVPR,2111.11418,Computer Vision
+623,Uniformer: Unifying Convolution and Self-attention,Li et al.,2022,ICLR,2201.09450,Computer Vision
+624,CSWin: A General Vision Transformer Backbone,Dong et al.,2022,CVPR,2107.00652,Computer Vision
+625,Focal Transformer: Focal Self-attention for Local-Global Interactions,Yang et al.,2021,NeurIPS,2107.00641,Computer Vision
+626,CrossViT: Cross-Attention Multi-Scale Vision Transformer,Chen et al.,2021,ICCV,2103.14899,Computer Vision
+627,Twins: Revisiting Spatial Attention Design,Chu et al.,2021,NeurIPS,2104.13840,Computer Vision
+628,CaiT: Going deeper with Image Transformers,Touvron et al.,2021,ICCV,2103.17239,Computer Vision
+629,DeiT: Training data-efficient image transformers,Touvron et al.,2021,ICML,2012.12877,Computer Vision
+630,LeViT: a Vision Transformer in ConvNet's Clothing,Graham et al.,2021,ICCV,2104.01136,Computer Vision
+631,PVT: Pyramid Vision Transformer,Wang et al.,2021,ICCV,2102.12122,Computer Vision
+632,TNT: Transformer in Transformer,Han et al.,2021,NeurIPS,2103.00112,Computer Vision
+633,Tokens-to-Token ViT: Training Vision Transformers from Scratch,Yuan et al.,2021,ICCV,2101.11986,Computer Vision
+634,DeepViT: Towards Deeper Vision Transformer,Zhou et al.,2021,arXiv,2103.11886,Computer Vision
+635,LocalViT: Bringing Locality to Vision Transformers,Li et al.,2021,arXiv,2104.05707,Computer Vision
+636,Perceiver IO: A General Architecture for Structured Inputs & Outputs,Jaegle et al.,2021,NeurIPS,2107.14795,Novel Architectures
+637,FNet: Mixing Tokens with Fourier Transforms,Lee-Thorp et al.,2022,NAACL,2105.03824,Novel Architectures
+638,Nyströmformer: A Nyström-Based Algorithm for Approximating Self-Attention,Xiong et al.,2021,AAAI,2102.03902,Efficient Transformers
+639,Synthesizer: Rethinking Self-Attention,Tay et al.,2021,ICML,2005.00743,Novel Architectures
+640,Linear Transformer: Transformers are RNNs,Katharopoulos et al.,2020,ICML,2006.16236,Efficient Transformers
+641,Routing Transformer: Efficient Content-Based Sparse Attention,Roy et al.,2021,TACL,2003.05997,Efficient Transformers
+642,Set Transformer: A Framework for Attention-based Permutation-Invariant,Lee et al.,2019,ICML,1810.00825,Novel Architectures
+643,FAVOR+: Rethinking Attention with Performers,Choromanski et al.,2021,ICLR,2009.14794,Efficient Transformers
+644,Sparse Transformer: Generating Long Sequences with Sparse Transformers,Child et al.,2019,arXiv,1904.10509,Efficient Transformers
+645,Sandwich Transformer: Linear Attention with O(n) Complexity,Tay et al.,2020,arXiv,2009.14794,Efficient Transformers
+646,Combiner: Full Attention Transformer in O(n),Ren et al.,2021,NeurIPS,2107.05768,Efficient Transformers
+647,H-Transformer-1D: Fast One-Dimensional Hierarchical Attention,Zhu & Soricut,2021,ACL,2107.11906,Efficient Transformers
+648,S4: Efficiently Modeling Long Sequences with Structured State Spaces,Gu et al.,2022,ICLR,2111.00396,Novel Architectures
+649,Hyena Hierarchy: Towards Larger Convolutional Language Models,Poli et al.,2023,arXiv,2302.10866,Novel Architectures
+650,RWKV: Reinventing RNNs for the Transformer Era,Peng et al.,2023,arXiv,2305.13048,Novel Architectures
+651,Mamba: Linear-Time Sequence Modeling with Selective State Spaces,Gu & Dao,2023,arXiv,2312.00752,Novel Architectures
+652,RetNet: Retentive Network A Successor to Transformer,Sun et al.,2023,arXiv,2307.08621,Novel Architectures
+653,Mega: Moving Average Equipped Gated Attention,Ma et al.,2023,ICLR,2209.10655,Novel Architectures
+654,Transformer Quality in Linear Time,Hua et al.,2022,arXiv,2202.10447,Efficient Transformers
+655,FLASH: Fast and Accurate Extreme Classification on TPUs,Hua et al.,2021,ICML,2109.10847,Efficient Transformers
+656,Block-Recurrent Transformers,Hutchins et al.,2022,NeurIPS,2203.07852,Novel Architectures
+657,Recurrent Memory Transformer,Bulatov et al.,2022,NeurIPS,2207.06881,Novel Architectures
+658,Memorizing Transformers,Wu et al.,2022,ICLR,2203.08913,Memory Networks
+659,Landmark Attention: Random-Access Infinite Context Length,Mohtashami & Jaggi,2023,arXiv,2305.16300,Efficient Transformers
+660,Sparse Attention: ETA Prediction with Graph Neural Networks,Derrow-Pinion et al.,2021,CIKM,2108.11482,Efficient Transformers
+661,ALiBi: Train Short Test Long,Press et al.,2022,ICLR,2108.12409,Position Encoding
+662,RoPE: RoFormer Enhanced Transformer with Rotary Position Embedding,Su et al.,2021,arXiv,2104.09864,Position Encoding
+663,xPos: Length Extrapolation for Transformers,Sun et al.,2023,arXiv,2212.10554,Position Encoding
+664,Relative Position Representations: Self-Attention with Relative Position,Shaw et al.,2018,NAACL,1803.02155,Position Encoding
+665,T5 Position Bias: Exploring the Limits of Transfer Learning,Raffel et al.,2020,JMLR,1910.10683,Position Encoding
+666,ByT5: Towards a token-free future with pre-trained byte-to-byte models,Xue et al.,2022,TACL,2105.13626,Tokenization
+667,CANINE: Pre-training an Efficient Tokenization-Free Encoder,Clark et al.,2022,TACL,2103.06874,Tokenization
+668,CharacterBERT: Reconciling ELMo and BERT,El Boukkouri et al.,2020,COLING,2010.10392,Tokenization
+669,SentencePiece: A simple and language independent approach,Kudo & Richardson,2018,EMNLP,1808.06226,Tokenization
+670,BPE: Neural Machine Translation of Rare Words with Subword Units,Sennrich et al.,2016,ACL,1508.07909,Tokenization
+671,WordPiece: Japanese and Korean Voice Search,Schuster & Nakajima,2012,ICASSP,,Tokenization
+672,Unigram Language Model: Subword Regularization,Kudo,2018,ACL,1804.10959,Tokenization
+673,ByT5: Towards a Token-Free Future with Pre-trained Byte-to-Byte Models,Xue et al.,2022,TACL,2105.13626,Tokenization
+674,Charformer: Fast Character Transformers via Gradient-based Subword Tokenization,Tay et al.,2022,ICLR,2106.12672,Tokenization
+675,MEGABYTE: Predicting Million-byte Sequences with Multiscale Transformers,Yu et al.,2023,arXiv,2305.07185,Tokenization
+676,Data Filtering: Quality Not Quantity,Albalak et al.,2023,arXiv,2305.13169,Data Curation
+677,DataComp: In search of the next generation of multimodal datasets,Gadre et al.,2023,arXiv,2304.14108,Data Curation
+678,LAION-5B: An open large-scale dataset for training next generation image-text models,Schuhmann et al.,2022,NeurIPS,2210.08402,Data Curation
+679,Falcon RefinedWeb: Outperforming Curated Corpora,Penedo et al.,2023,arXiv,2306.01116,Data Curation
+680,RedPajama Data: An Open Source Recipe to Reproduce LLaMA training dataset,Together,2023,Blog,,Data Curation
+681,C4: Colossal Clean Crawled Corpus,Raffel et al.,2020,JMLR,1910.10683,Data Curation
+682,The Pile: An 800GB Dataset of Diverse Text,Gao et al.,2021,arXiv,2101.00027,Data Curation
+683,mC4: A Colossal Cleaned Version of Common Crawl's web crawl corpus,Xue et al.,2021,TACL,2010.11934,Data Curation
+684,ROOTS: A 1.6TB Composite Multilingual Dataset,Laurençon et al.,2023,arXiv,2303.03915,Data Curation
+685,SlimPajama: A 627B token cleaned and deduplicated version,Cerebras,2023,Blog,,Data Curation
+686,Dolma: an Open Corpus of Three Trillion Tokens,Soldaini et al.,2024,arXiv,2402.00159,Data Curation
+687,FineWeb: Decanting the Web for the Finest Text Data at Scale,HuggingFace,2024,Blog,,Data Curation
+688,Deduplication: Deduplicating Training Data Makes Language Models Better,Lee et al.,2022,ACL,2107.06499,Data Curation
+689,SemDeDup: Data-Efficient Learning via Semantic Deduplication,Abbas et al.,2023,arXiv,2303.09540,Data Curation
+690,Data Pruning: Less is More,Sorscher et al.,2022,arXiv,2206.14486,Data Curation
+691,Perplexity Filtering: Scaling Language Models,Wenzek et al.,2020,LREC,1911.00359,Data Curation
+692,Quality Filtering: CCNet Extracting High Quality Monolingual Datasets,Wenzek et al.,2020,LREC,1911.00359,Data Curation
+693,Synthetic Data: Textbooks Are All You Need,Gunasekar et al.,2023,arXiv,2306.11644,Data Synthesis
+694,Self-Instruct: Aligning Language Models with Self-Generated Instructions,Wang et al.,2023,ACL,2212.10560,Data Synthesis
+695,Evol-Instruct: WizardLM Empowering Large Language Models,Xu et al.,2023,arXiv,2304.12244,Data Synthesis
+696,Alpagasus: Training A Better Alpaca with Fewer Data,Chen et al.,2023,arXiv,2307.08701,Data Synthesis
+697,UltraChat: Large-scale Auto-generated Multi-round Dialogue Data,Ding et al.,2023,arXiv,2305.14233,Data Synthesis
+698,OpenHermes: An Open Dataset of Synthetic Instruction Following Conversations,Teknium,2023,GitHub,,Data Synthesis
+699,ShareGPT: User-Shared Conversations with ChatGPT,ShareGPT,2023,Web,,Data Synthesis
+700,LIMA Dataset: Less Is More for Alignment,Zhou et al.,2023,arXiv,2305.11206,Data Curation
+701,OpenOrca: A Filtered and Deduplicated Dataset,OpenOrca,2023,GitHub,,Data Synthesis
+702,NeurIPS: Neural Information Processing Systems,NeurIPS,Foundation,Conference,,Venues
+703,ICML: International Conference on Machine Learning,ICML,Foundation,Conference,,Venues
+704,ICLR: International Conference on Learning Representations,ICLR,Foundation,Conference,,Venues
+705,CVPR: Computer Vision and Pattern Recognition,CVPR,Foundation,Conference,,Venues
+706,ICCV: International Conference on Computer Vision,ICCV,Foundation,Conference,,Venues
+707,ECCV: European Conference on Computer Vision,ECCV,Foundation,Conference,,Venues
+708,ACL: Association for Computational Linguistics,ACL,Foundation,Conference,,Venues
+709,EMNLP: Empirical Methods in Natural Language Processing,EMNLP,Foundation,Conference,,Venues
+710,NAACL: North American Chapter of the ACL,NAACL,Foundation,Conference,,Venues
+711,AAAI: Association for the Advancement of Artificial Intelligence,AAAI,Foundation,Conference,,Venues
+712,IJCAI: International Joint Conferences on AI,IJCAI,Foundation,Conference,,Venues
+713,KDD: Knowledge Discovery and Data Mining,KDD,Foundation,Conference,,Venues
+714,SIGIR: Special Interest Group on Information Retrieval,SIGIR,Foundation,Conference,,Venues
+715,WACV: Winter Conference on Applications of Computer Vision,WACV,Foundation,Conference,,Venues
+716,BMVC: British Machine Vision Conference,BMVC,Foundation,Conference,,Venues
+717,Backpropagation: Learning representations by back-propagating errors,Rumelhart et al.,1986,Nature,,Foundations
+718,Gradient Descent: A method for solving machine learning problems,Cauchy,1847,Historical,,Foundations
+719,Perceptron: The perceptron a perceiving and recognizing automaton,Rosenblatt,1957,Cornell Aeronautical Laboratory,,Foundations
+720,Neural Networks: Parallel Distributed Processing,Rumelhart et al.,1986,MIT Press,,Foundations
+721,Universal Approximation: Approximation by superpositions of a sigmoidal function,Hornik,1991,Neural Networks,,Theory
+722,Xavier Initialization: Understanding the difficulty of training deep feedforward,Glorot & Bengio,2010,AISTATS,,Initialization
+723,He Initialization: Delving Deep into Rectifiers,He et al.,2015,ICCV,1502.01852,Initialization
+724,Orthogonal Initialization: Exact solutions to the nonlinear dynamics,Saxe et al.,2014,ICLR,,Initialization
+725,SELU: Self-Normalizing Neural Networks,Klambauer et al.,2017,NeurIPS,1706.02515,Activation Functions
+726,Hard Swish: Searching for MobileNetV3,Howard et al.,2019,ICCV,1905.02244,Activation Functions
+727,Meta Pseudo Labels: Meta Pseudo Labels,Pham et al.,2021,CVPR,2003.10580,Semi-Supervised
+728,MPL: Meta Pseudo Labels,Pham et al.,2021,CVPR,2003.10580,Semi-Supervised
+729,Unsupervised Meta-Learning: Unsupervised Meta-Learning for Few-Shot Image Classification,Hsu et al.,2019,NeurIPS,1811.11819,Meta-Learning
+730,Transductive Few-Shot Learning: Transductive Propagation Network,Liu et al.,2019,ICLR,1805.10002,Few-Shot Learning
+731,Task2Vec: Task Embedding for Meta-Learning,Achille et al.,2019,ICCV,1902.03545,Meta-Learning
+732,CrossTransformers: spatially-aware few-shot transfer,Doersch et al.,2020,NeurIPS,2007.11498,Few-Shot Learning
+733,Universal Representations: CLIP Learning Transferable Visual Models,Radford et al.,2021,ICML,2103.00020,Representation Learning
+734,Representation Learning: A Review and New Perspectives,Bengio et al.,2013,TPAMI,,Theory
+735,Disentangled Representations: beta-VAE Learning Basic Visual Concepts,Higgins et al.,2017,ICLR,1804.03599,Representation Learning
+736,InfoNCE: Representation Learning with Contrastive Predictive Coding,van den Oord et al.,2018,arXiv,1807.03748,Contrastive Learning
+737,Noise Contrastive Estimation: A new estimation principle for unnormalized models,Gutmann & Hyvärinen,2010,AISTATS,,Theory
+738,Contrastive Divergence: Training Products of Experts by Minimizing Contrastive Divergence,Hinton,2002,Neural Computation,,Theory
+739,Variational Autoencoders: Auto-Encoding Variational Bayes,Kingma & Welling,2014,ICLR,1312.6114,Generative Models
+740,VAE: An Introduction to Variational Autoencoders,Kingma & Welling,2019,Foundations and Trends,1906.02691,Generative Models
+741,Beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework,Higgins et al.,2017,ICLR,1804.03599,Generative Models
+742,VQ-VAE: Neural Discrete Representation Learning,van den Oord et al.,2017,NeurIPS,1711.00937,Generative Models
+743,VQ-VAE-2: Generating Diverse High-Fidelity Images,Razavi et al.,2019,NeurIPS,1906.00446,Generative Models
+744,VQGAN: Taming Transformers for High-Resolution Image Synthesis,Esser et al.,2021,CVPR,2012.09841,Generative Models
+745,Normalizing Flows: Variational Inference with Normalizing Flows,Rezende & Mohamed,2015,ICML,1505.05770,Generative Models
+746,Glow: Generative Flow using Invertible 1x1 Convolutions,Kingma & Dhariwal,2018,NeurIPS,1807.03039,Generative Models
+747,RealNVP: Density estimation using Real NVP,Dinh et al.,2017,ICLR,1605.08803,Generative Models
+748,Flow Matching: Flow Matching for Generative Modeling,Lipman et al.,2023,ICLR,2210.02747,Generative Models
+749,Consistency Models: Consistency Models,Song et al.,2023,ICML,2303.01469,Generative Models
+750,Score-Based Models: Generative Modeling by Estimating Gradients,Song & Ermon,2019,NeurIPS,1907.05600,Generative Models
+751,NCSN: Improved Techniques for Training Score-Based Generative Models,Song & Ermon,2020,NeurIPS,2006.09011,Generative Models
+752,Score SDE: Score-Based Generative Modeling through SDEs,Song et al.,2021,ICLR,2011.13456,Generative Models
+753,Latent Diffusion: High-Resolution Image Synthesis with Latent Diffusion Models,Rombach et al.,2022,CVPR,2112.10752,Generative Models
+754,Guided Diffusion: Diffusion Models Beat GANs on Image Synthesis,Dhariwal & Nichol,2021,NeurIPS,2105.05233,Generative Models
+755,Classifier-Free Guidance: Classifier-Free Diffusion Guidance,Ho & Salimans,2022,NeurIPS Workshop,2207.12598,Generative Models
+756,DDIM: Denoising Diffusion Implicit Models,Song et al.,2021,ICLR,2010.02502,Generative Models
+757,DDPM: Denoising Diffusion Probabilistic Models,Ho et al.,2020,NeurIPS,2006.11239,Generative Models
+758,LDM: Latent Diffusion Models,Rombach et al.,2022,CVPR,2112.10752,Generative Models
+759,DiT: Scalable Diffusion Models with Transformers,Peebles & Xie,2023,ICCV,2212.09748,Generative Models
+760,U-ViT: All are Worth Words A ViT Backbone for Diffusion Models,Bao et al.,2023,CVPR,2209.12152,Generative Models
+761,EDM: Elucidating the Design Space of Diffusion-Based Generative Models,Karras et al.,2022,NeurIPS,2206.00364,Generative Models
+762,Consistency Training: Improved Consistency Training,Song et al.,2023,arXiv,2310.14189,Generative Models
+763,Progressive Distillation: Progressive Distillation for Fast Sampling,Salimans & Ho,2022,ICLR,2202.00512,Diffusion Distillation
+764,DiffusionDet: Diffusion Model for Object Detection,Chen et al.,2023,ICCV,2211.09788,Object Detection
+765,InstructDiffusion: A Generalist Modeling Interface for Vision Tasks,Geng et al.,2023,arXiv,2309.03895,Image Editing
+766,SinDiffusion: Learning a Diffusion Model from a Single Natural Image,Kulikov et al.,2023,arXiv,2211.12445,Generative Models
+767,Zero-Shot Image-to-Image Translation: pix2pix-zero,Parmar et al.,2023,SIGGRAPH,2302.03027,Image Editing
+768,MultiDiffusion: Fusing Diffusion Paths for Controlled Image Generation,Bar-Tal et al.,2023,ICML,2302.08113,Image Editing
+769,SyncDiffusion: Coherent Montage via Synchronized Joint Diffusions,Lee et al.,2023,arXiv,2306.05178,Image Editing
+770,GLIGEN: Open-Set Grounded Text-to-Image Generation,Li et al.,2023,CVPR,2301.07093,Image Generation
+771,ReCo: Region-Controlled Text-to-Image Generation,Yang et al.,2023,CVPR,2211.15518,Image Generation
+772,GLIGEN: Grounding Language-to-Image Generation,Li et al.,2023,CVPR,2301.07093,Image Generation
+773,Composer: Creative and Controllable Image Synthesis,Huang et al.,2023,arXiv,2302.09778,Image Generation
+774,Paint by Word: Semantic Paintbrush for Text-to-Image Editing,Basu et al.,2023,arXiv,2103.04081,Image Editing
+775,Blended Diffusion: Text-driven Editing of Natural Images,Avrahami et al.,2022,CVPR,2111.14818,Image Editing
+776,Null-text Inversion: Null-text Inversion for Editing Real Images,Mokady et al.,2023,CVPR,2211.09794,Image Editing
+777,Imagic: Text-Based Real Image Editing with Diffusion Models,Kawar et al.,2023,CVPR,2210.09276,Image Editing
+778,UniTune: Text-Driven Image Editing by Fine-Tuning,Valevski et al.,2023,ICCV,2210.09477,Image Editing
+779,MasaCtrl: Tuning-Free Mutual Self-Attention Control,Cao et al.,2023,ICCV,2304.08465,Image Editing
+780,Plug-and-Play: Plug-and-Play Diffusion Features,Tumanyan et al.,2023,CVPR,2211.12572,Image Editing
+781,PhotoSwap: Personalized Subject Swapping in Images,Gu et al.,2023,arXiv,2305.18286,Image Editing
+782,Custom Diffusion: Multi-Concept Customization of Text-to-Image Diffusion,Kumari et al.,2023,CVPR,2212.04488,Image Editing
+783,SVDiff: Compact Parameter Space for Diffusion Fine-Tuning,Han et al.,2023,ICCV,2303.11305,Image Editing
+784,Cones: Concept Neurons in Diffusion Models,Kwon et al.,2023,ICML,2303.05125,Interpretability
+785,ProSpect: Prompt Spectrum for Attribute-Aware Personalization,Zhou et al.,2023,arXiv,2305.16225,Image Generation
+786,HyperDreamBooth: HyperNetworks for Fast Personalization,Ruiz et al.,2023,arXiv,2307.06949,Image Editing
+787,StyleDrop: Text-to-Image Generation in Any Style,Sohn et al.,2023,arXiv,2306.00983,Image Generation
+788,InstantBooth: Personalized Text-to-Image Generation,Shi et al.,2023,arXiv,2304.03411,Image Generation
+789,ELITE: Encoding in Latent Image Models,Wei et al.,2023,arXiv,2302.13848,Image Generation
+790,Textual Inversion: An Image is Worth One Word,Gal et al.,2022,arXiv,2208.01618,Image Editing
+791,Perfusion: Personalizing Text-to-Image Generation,Tewel et al.,2023,arXiv,2303.13159,Image Generation
+792,BLIP Diffusion: Pre-trained Subject Representation,Li et al.,2023,arXiv,2305.14720,Image Generation
+793,UniControl: A Unified Diffusion Model for Controllable Visual Generation,Qin et al.,2023,arXiv,2305.11147,Image Generation
+794,Composer: Creative and Controllable Image Synthesis with Composable Conditions,Huang et al.,2023,arXiv,2302.09778,Image Generation
+795,Dense Text-to-Image Generation with Attention Modulation,Kim et al.,2023,ICCV,2308.12964,Image Generation
+796,Attend-and-Excite: Attention-Based Semantic Guidance,Chefer et al.,2023,SIGGRAPH,2301.13826,Image Generation
+797,Concept Sliders: LoRA Adaptors for Precise Control,Gandikota et al.,2023,arXiv,2311.12092,Image Editing
+798,Erasing Concepts: Erasing Concepts from Diffusion Models,Gandikota et al.,2023,ICCV,2303.07345,AI Safety
+799,Safe Latent Diffusion: Mitigating Inappropriate Degeneration,Schramowski et al.,2023,CVPR,2211.05105,AI Safety
+800,UnlearnDiff: Selective Forgetting in Diffusion Models,Zhang et al.,2023,arXiv,2310.12508,AI Safety
+801,Ablating Concepts: Concept Ablation in Text-to-Image Diffusion Models,Kumari et al.,2023,arXiv,2303.13516,AI Safety
+802,NegPrompt: Negative Prompting for Diffusion Models,Armandpour et al.,2023,arXiv,2305.19156,Prompting
+803,StyleAlign: Analysis and Applications of Aligned StyleGAN Models,Zhu et al.,2022,SIGGRAPH,2110.11323,Image Generation
+804,DiffEdit: Diffusion-based semantic image editing with mask guidance,Couairon et al.,2023,ICLR,2210.11427,Image Editing
+805,Unifying Diffusion Models' Latent Space,Kwon & Ye,2023,arXiv,2210.05559,Theory
+806,P2P: Prompt-to-Prompt Image Editing,Hertz et al.,2023,ICLR,2208.01626,Image Editing
+807,Token Merging: Token Merging for Fast Stable Diffusion,Bolya & Hoffman,2023,CVPR Workshop,2303.17604,Efficient Inference
+808,Distillation: On Distillation of Guided Diffusion Models,Meng et al.,2023,CVPR,2210.03142,Diffusion Distillation
+809,Latent Consistency Models: Synthesis in Few Steps,Luo et al.,2023,arXiv,2310.04378,Diffusion Distillation
+810,LCM-LoRA: Universal Stable-Diffusion Acceleration,Luo et al.,2023,arXiv,2311.05556,Diffusion Distillation
+811,TurboEdit: Instant text-to-image editing,Kim et al.,2024,arXiv,2408.00735,Image Editing
+812,SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis,Podell et al.,2023,arXiv,2307.01952,Image Generation
+813,SDXL Turbo: Adversarial Diffusion Distillation,Sauer et al.,2023,arXiv,2311.17042,Diffusion Distillation
+814,PixArt-α: Fast Training of Diffusion Transformer,Chen et al.,2023,arXiv,2310.00426,Image Generation
+815,RAPHAEL: Text-to-Image Generation via Large Mixture of Diffusion Paths,Xue et al.,2023,arXiv,2305.18295,Image Generation
+816,DeepFloyd IF: Text-to-Image Synthesis with Deep Floyd,Stability AI,2023,Blog,,Image Generation
+817,Playground v2: Large-scale Text-to-Image Model,Playground AI,2023,Blog,,Image Generation
+818,Würstchen: An Efficient Architecture for Large-Scale Text-to-Image Diffusion,Pernias et al.,2023,arXiv,2306.00637,Image Generation
+819,Kandinsky: Text2Image Generation with Prior Diffusion,Razzhigaev et al.,2023,arXiv,2310.03502,Image Generation
+820,Muse: Text-To-Image Generation via Masked Generative Transformers,Chang et al.,2023,ICML,2301.00704,Image Generation
+821,Parti: Scaling Autoregressive Models for Content-Rich Text-to-Image,Yu et al.,2022,arXiv,2206.10789,Image Generation
+822,CogView: Mastering Text-to-Image Generation via Transformers,Ding et al.,2021,NeurIPS,2105.13290,Image Generation
+823,CogView2: Faster and Better Text-to-Image Generation,Ding et al.,2022,arXiv,2204.14217,Image Generation
+824,NUWA: Visual Synthesis Pre-Training via Neural visUal World creAtion,Wu et al.,2022,ECCV,2111.12417,Image Generation
+825,Make-A-Scene: Scene-Based Text-to-Image Generation,Gafni et al.,2022,ECCV,2203.13131,Image Generation
+826,ERNIE-ViLG: Unified Generative Pre-training for Bidirectional Vision-Language,Zhang et al.,2022,arXiv,2112.15283,Image Generation
+827,VQ-Diffusion: Vector Quantized Diffusion Model for Text-to-Image Synthesis,Gu et al.,2022,CVPR,2111.14822,Image Generation
+828,GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion,Nichol et al.,2022,ICML,2112.10741,Image Generation
+829,unCLIP: Hierarchical Text-Conditional Image Generation with CLIP Latents,Ramesh et al.,2022,arXiv,2204.06125,Image Generation
+830,Versatile Diffusion: Text Images and Variations All in One Diffusion Model,Xu et al.,2023,ICCV,2211.08332,Image Generation
+831,eDiff-I: Text-to-Image Diffusion Models with Ensemble of Expert Denoisers,Balaji et al.,2023,arXiv,2211.01324,Image Generation
+832,GigaGAN: Scaling up GANs for Text-to-Image Synthesis,Kang et al.,2023,CVPR,2303.05511,Image Generation
+833,StyleGAN-T: Unlocking the Power of GANs for Fast Large-Scale Text-to-Image,Sauer et al.,2023,ICML,2301.09515,Image Generation
+834,HyperNetworks: Fast Personalization using HyperNetworks,Ruiz et al.,2023,arXiv,2307.06949,Image Generation
+835,TokenFlow: Consistent Diffusion Features for Consistent Video Editing,Geyer et al.,2023,arXiv,2307.10373,Video Editing
+836,Text2Video-Zero: Text-to-Image Diffusion Models are Zero-Shot Video Generators,Khachatryan et al.,2023,ICCV,2303.13439,Video Generation
+837,Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video,Wu et al.,2023,ICCV,2212.11565,Video Generation
+838,Control-A-Video: Controllable Text-to-Video Generation,Chen et al.,2023,arXiv,2305.13840,Video Generation
+839,VideoComposer: Compositional Video Synthesis with Motion Controllability,Wang et al.,2023,arXiv,2306.02018,Video Generation
+840,VideoFusion: Decomposed Diffusion Models for High-Quality Video Generation,Luo et al.,2023,CVPR,2303.08320,Video Generation
+841,Align Your Latents: High-Resolution Video Synthesis,Blattmann et al.,2023,CVPR,2304.08818,Video Generation
+842,MagicVideo: Efficient Video Generation With Latent Diffusion Models,Zhou et al.,2023,arXiv,2211.11018,Video Generation
+843,CogVideo: Large-scale Pretraining for Text-to-Video Generation,Hong et al.,2022,arXiv,2205.15868,Video Generation
+844,NUWA-Infinity: Autoregressive over Autoregressive Generation,Wu et al.,2022,arXiv,2207.09814,Video Generation
+845,Video LDM: Align your Latents High-Resolution Video Synthesis with Latent Diffusion Models,Blattmann et al.,2023,CVPR,2304.08818,Video Generation
+846,Show-1: Marrying Pixel and Latent Diffusion Models for Text-to-Video Generation,Zhang et al.,2023,arXiv,2309.15818,Video Generation
+847,LaVie: High-Quality Video Generation with Cascaded Latent Diffusion Models,Wang et al.,2023,arXiv,2309.15103,Video Generation
+848,ModelScope: Text-to-Video Technical Report,Wang et al.,2023,arXiv,2308.06571,Video Generation
+849,VideoGen: A Reference-Guided Latent Diffusion Approach,Li et al.,2023,arXiv,2309.00398,Video Generation
+850,I2VGen-XL: High-Quality Image-to-Video Synthesis,Zhang et al.,2023,arXiv,2311.04145,Video Generation
+851,DynamiCrafter: Animating Open-domain Images with Video Diffusion Priors,Xing et al.,2023,arXiv,2310.12190,Video Generation
+852,SEINE: Short-to-Long Video Diffusion Model,Chen et al.,2023,arXiv,2310.20700,Video Generation
+853,FreeNoise: Tuning-Free Longer Video Diffusion Via Noise Rescheduling,Qiu et al.,2023,arXiv,2310.15169,Video Generation
+854,VideoCrafter: A Toolkit for Text-to-Video Generation and Editing,Chen et al.,2023,arXiv,2310.19512,Video Generation
+855,MotionDirector: Motion Customization of Text-to-Video Diffusion Models,Zhao et al.,2023,arXiv,2310.08465,Video Generation
+856,DragNUWA: Fine-grained Control in Video Generation,Yin et al.,2023,arXiv,2308.08089,Video Editing
+857,FateZero: Fusing Attentions for Zero-shot Text-based Video Editing,Qi et al.,2023,ICCV,2303.09535,Video Editing
+858,Gen-1: Structure and Content-Guided Video Synthesis,Esser et al.,2023,arXiv,2302.03011,Video Generation
+859,Rerender A Video: Zero-Shot Text-Guided Video-to-Video Translation,Yang et al.,2023,SIGGRAPH Asia,2306.07954,Video Editing
+860,CoDeF: Content Deformation Fields for Temporally Consistent Video Processing,Ouyang et al.,2023,arXiv,2308.07926,Video Editing
+861,StableVideo: Text-driven Consistency-aware Diffusion Video Editing,Chai et al.,2023,ICCV,2308.09592,Video Editing
+862,Dreamix: Video Diffusion Models are General Video Editors,Molad et al.,2023,arXiv,2302.01329,Video Editing
+863,ControlVideo: Training-free Controllable Text-to-Video Generation,Zhang et al.,2023,arXiv,2305.13077,Video Generation
+864,VideoDirectorGPT: Consistent Multi-scene Video Generation via LLM-Guided Planning,Lin et al.,2023,arXiv,2309.15091,Video Generation
+865,Emu Video: Factorizing Text-to-Video Generation by Explicit Image Conditioning,Girdhar et al.,2023,arXiv,2311.10709,Video Generation
+866,Pika 1.0: Idea to Video in Seconds,Pika Labs,2023,Blog,,Video Generation
+867,Morph Studio: AI Video Creation Platform,Morph,2024,Commercial,,Video Generation
+868,PixVerse: Text to Video AI Generator,PixVerse,2024,Commercial,,Video Generation
+869,Haiper: Perceptual Foundation Models for Creative Video Generation,Haiper,2024,Blog,,Video Generation
+870,Luma Dream Machine: High-quality realistic shots from text,Luma AI,2024,Commercial,,Video Generation
+871,Sora: Creating video from text,OpenAI,2024,Blog,,Video Generation
+872,Veo: Google's most capable video generation model,Google,2024,Blog,,Video Generation
+873,SAM 2: Segment Anything in Images and Videos,Ravi et al.,2024,arXiv,2408.00714,Video Segmentation
+874,Tracking Anything: Segment and Track Anything,Yang & Yang,2023,arXiv,2304.11968,Video Tracking
+875,DEVA: Tracking Anything with Decoupled Video Segmentation,Cheng et al.,2023,ICCV,2309.03903,Video Tracking
+876,XMem: Long-Term Video Object Segmentation with an Atkinson-Shiffrin Memory Model,Cheng & Schwing,2022,ECCV,2207.07115,Video Segmentation
+877,Cutie: Learning to Cut via Video Object Segmentation,Cheng et al.,2023,arXiv,2310.12982,Video Segmentation
+878,TubeLink: A Flexible Cross Tube Framework for Universal Video Segmentation,Gu et al.,2024,arXiv,2401.04666,Video Segmentation
+879,3D Generation: DreamFusion Text-to-3D using 2D Diffusion,Poole et al.,2022,arXiv,2209.14988,3D Generation
+880,Magic3D: High-Resolution Text-to-3D Content Creation,Lin et al.,2023,CVPR,2211.10440,3D Generation
+881,ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation,Wang et al.,2023,arXiv,2305.16213,3D Generation
+882,MVDream: Multi-view Diffusion for 3D Generation,Shi et al.,2023,arXiv,2308.16512,3D Generation
+883,Zero123: Zero-shot Image-to-3D with a Single Image,Liu et al.,2023,ICCV,2303.11328,3D Generation
+884,One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds,Liu et al.,2023,arXiv,2306.16928,3D Generation
+885,Wonder3D: Single Image to 3D using Cross-Domain Diffusion,Long et al.,2023,arXiv,2310.15008,3D Generation
+886,Instant3D: Fast Text-to-3D with Sparse-View Generation and Large Reconstruction,Li et al.,2023,arXiv,2311.06214,3D Generation
+887,LRM: Large Reconstruction Model for Single Image to 3D,Hong et al.,2023,arXiv,2311.04400,3D Generation
+888,TripoSR: Fast 3D Object Reconstruction from a Single Image,Tochilkin et al.,2024,arXiv,2403.02151,3D Generation
+889,OpenLRM: Open-Source Large Reconstruction Models,Chen et al.,2024,arXiv,2406.01985,3D Generation
+890,InstantMesh: Efficient 3D Mesh Generation from a Single Image,Xu et al.,2024,arXiv,2404.07191,3D Generation
+891,SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction,Guédon & Lepetit,2023,arXiv,2311.12775,3D Generation
+892,GaussianDreamer: Fast Generation from Text Prompt with 3D Gaussian Splatting,Yi et al.,2023,arXiv,2310.08529,3D Generation
+893,DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation,Tang et al.,2023,arXiv,2309.16653,3D Generation
+894,Text2Room: Extracting Textured 3D Meshes from 2D Text-to-Image Models,Höllein et al.,2023,ICCV,2303.11989,3D Generation
+895,Text2Mesh: Text-Driven Neural Stylization for Meshes,Michel et al.,2022,CVPR,2112.03221,3D Generation
+896,CLIP-Mesh: Generating Textured Meshes from Text,Mohammad Khalid et al.,2022,CVPR,2203.13333,3D Generation
+897,Latent-NeRF: Text-driven 3D Scene Generation,Metzer et al.,2023,CVPR,2211.15388,3D Generation
+898,ATT3D: Amortized Text-to-3D Object Synthesis,Lorraine et al.,2023,ICCV,2306.07349,3D Generation
+899,Shap-E: Generating Conditional 3D Implicit Functions,Jun & Nichol,2023,arXiv,2305.02463,3D Generation
+900,Point-E: A System for Generating 3D Point Clouds,Nichol et al.,2022,arXiv,2212.08751,3D Generation
+901,Neural Radiance Fields: NeRF Representing Scenes as Neural Radiance Fields,Mildenhall et al.,2020,ECCV,2003.08934,3D Reconstruction
+902,Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields,Barron et al.,2021,ICCV,2103.13415,3D Reconstruction
+903,Mip-NeRF 360: Unbounded Anti-Aliased Neural Radiance Fields,Barron et al.,2022,CVPR,2111.12077,3D Reconstruction
+904,Instant-NGP: Instant Neural Graphics Primitives,Müller et al.,2022,SIGGRAPH,2201.05989,3D Reconstruction
+905,Plenoxels: Radiance Fields without Neural Networks,Yu et al.,2022,CVPR,2112.05131,3D Reconstruction
+906,TensoRF: Tensorial Radiance Fields,Chen et al.,2022,ECCV,2203.09517,3D Reconstruction
+907,K-Planes: Explicit Radiance Fields in Space Time and Appearance,Fridovich-Keil et al.,2023,CVPR,2301.10241,3D Reconstruction
+908,Nerfstudio: A Framework for Neural Radiance Field Development,Tancik et al.,2023,SIGGRAPH,2302.04264,3D Reconstruction
+909,NeRF++: Analyzing and Improving Neural Radiance Fields,Zhang et al.,2020,arXiv,2010.07492,3D Reconstruction
+910,NeRF in the Wild: Neural Radiance Fields for Unconstrained Photo Collections,Martin-Brualla et al.,2021,CVPR,2008.02268,3D Reconstruction
+911,Depth-supervised NeRF: Fewer Views and Faster Training for Free,Deng et al.,2022,CVPR,2107.02791,3D Reconstruction
+912,RegNeRF: Regularizing Neural Radiance Fields for View Synthesis,Niemeyer et al.,2022,CVPR,2112.00724,3D Reconstruction
+913,FreeNeRF: Improving Few-shot Neural Rendering with Free Frequency Regularization,Yang et al.,2023,CVPR,2303.07418,3D Reconstruction
+914,Zip-NeRF: Anti-Aliased Grid-Based Neural Radiance Fields,Barron et al.,2023,ICCV,2304.06706,3D Reconstruction
+915,Nerfacto: A Real-Time NeRF Implementation,Nerfstudio Team,2023,GitHub,,3D Reconstruction
+916,F2-NeRF: Fast Neural Radiance Field Training with Free Camera Trajectories,Wang et al.,2023,CVPR,2303.15951,3D Reconstruction
+917,NeRF-DS: Neural Radiance Fields for Dynamic Scenes,Yan et al.,2023,arXiv,2310.10563,3D Reconstruction
+918,HyperNeRF: A Higher-Dimensional Representation for Topologically Varying NeRFs,Park et al.,2021,SIGGRAPH Asia,2106.13228,3D Reconstruction
+919,D-NeRF: Neural Radiance Fields for Dynamic Scenes,Pumarola et al.,2021,CVPR,2011.13961,3D Reconstruction
+920,Nerfies: Deformable Neural Radiance Fields,Park et al.,2021,ICCV,2011.12948,3D Reconstruction
+921,4D Gaussian Splatting for Real-Time Dynamic Scene Rendering,Wu et al.,2023,arXiv,2310.08528,3D Reconstruction
+922,Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis,Luiten et al.,2023,arXiv,2308.09713,3D Reconstruction
+923,Deformable 3D Gaussians for High-Fidelity Monocular Dynamic Scene Reconstruction,Yang et al.,2023,arXiv,2309.13101,3D Reconstruction
+924,SC-GS: Sparse-Controlled Gaussian Splatting,Huang et al.,2023,arXiv,2312.14937,3D Reconstruction
+925,Mip-Splatting: Alias-free 3D Gaussian Splatting,Yu et al.,2023,arXiv,2311.16493,3D Reconstruction
+926,Gaussian Grouping: Segment and Edit Anything in 3D Scenes,Ye et al.,2023,arXiv,2312.00732,3D Reconstruction
+927,LangSplat: 3D Language Gaussian Splatting,Qin et al.,2023,arXiv,2312.16084,3D Reconstruction
+928,GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting,Yan et al.,2023,arXiv,2311.11700,3D Reconstruction
+929,Photo-SLAM: Real-time Simultaneous Localization and Photorealistic Mapping,Zhao et al.,2024,arXiv,2311.16728,3D Reconstruction
+930,SplaTAM: Splat Track & Map 3D Gaussians for Dense RGB-D SLAM,Keetha et al.,2023,arXiv,2312.02126,3D Reconstruction
+931,Gaussian-SLAM: Photo-realistic Dense SLAM with Gaussian Splatting,Yugay et al.,2023,arXiv,2312.10070,3D Reconstruction
+932,MonoGS: Monocular Gaussian Splatting,Matsuki et al.,2023,arXiv,2312.06735,3D Reconstruction
+933,Text-to-4D: Dynamic Scene Generation from Text Descriptions,Singer et al.,2023,arXiv,2301.11280,4D Generation
+934,4D-fy: Text-to-4D Generation Using Hybrid Score Distillation,Bahmani et al.,2023,arXiv,2311.17984,4D Generation
+935,Consistent4D: Consistent 360° Dynamic Object Generation from Monocular Video,Jiang et al.,2023,arXiv,2311.02848,4D Generation
+936,4DGen: Grounded 4D Content Generation with Spatial-temporal Consistency,Yin et al.,2023,arXiv,2312.17225,4D Generation
+937,Align Your Gaussians: Text-to-4D with Dynamic 3D Gaussians,Ling et al.,2023,arXiv,2312.13763,4D Generation
+938,DriveGPT4: Interpretable End-to-end Autonomous Driving via Large Language Model,Xu et al.,2023,arXiv,2310.01957,Autonomous Driving
+939,LanguageMPC: Large Language Models as Decision Makers for Autonomous Driving,Sha et al.,2023,arXiv,2310.03026,Autonomous Driving
+940,GPT-Driver: Learning to Drive with GPT,Mao et al.,2023,arXiv,2310.01415,Autonomous Driving
+941,UniAD: Planning-oriented Autonomous Driving,Hu et al.,2023,CVPR,2212.10156,Autonomous Driving
+942,VAD: Vectorized Scene Representation for Efficient Autonomous Driving,Jiang et al.,2023,ICCV,2303.12077,Autonomous Driving
+943,BEVFormer: Learning Bird's-Eye-View Representation from Multi-Camera Images,Li et al.,2022,ECCV,2203.17270,Autonomous Driving
+944,PETR: Position Embedding Transformation for Multi-View 3D Object Detection,Liu et al.,2022,ECCV,2203.05625,Autonomous Driving
+945,BEVDet: High-Performance Multi-Camera 3D Object Detection,Huang et al.,2022,arXiv,2112.11790,Autonomous Driving
+946,OccNet: Scene Completion from a Single Depth Image,Mescheder et al.,2019,CVPR,1812.03828,3D Vision
+947,Tesla FSD: Full Self-Driving Capability,Tesla,2023,Blog,,Autonomous Driving
+948,Waymo Driver: The World's Most Experienced Driver,Waymo,2023,Blog,,Autonomous Driving
+949,Medical AI: Deep Learning for Medical Image Analysis,Litjens et al.,2017,Medical Image Analysis,,Medical AI
+950,PathologyGPT: GPT for Pathology Diagnosis,Lu et al.,2023,arXiv,2308.00992,Medical AI
+951,MedGPT: Medical Question Answering with GPT,Singhal et al.,2023,Nature,2305.09617,Medical AI
+952,Med-PaLM: Large Language Models Encode Clinical Knowledge,Singhal et al.,2023,Nature,2212.13138,Medical AI
+953,Med-PaLM 2: Towards Expert-Level Medical Question Answering,Singhal et al.,2023,arXiv,2305.09617,Medical AI
+954,BioGPT: Generative Pre-trained Transformer for Biomedical Text,Luo et al.,2022,Briefings in Bioinformatics,2210.10341,Medical AI
+955,AlphaFold: Highly accurate protein structure prediction with AlphaFold,Jumper et al.,2021,Nature,2108.13312,Biology AI
+956,AlphaFold 2: Improved protein structure prediction using potentials,Evans et al.,2022,Nature,,Biology AI
+957,ESMFold: Evolutionary Scale Modeling of Protein Structure,Lin et al.,2023,Science,2207.01586,Biology AI
+958,RoseTTAFold: Accurate prediction of protein structures,Baek et al.,2021,Science,2108.12207,Biology AI
+959,ProteinMPNN: Robust deep learning based protein sequence design,Dauparas et al.,2022,Science,2208.07983,Biology AI
+960,RFdiffusion: De novo protein design by deep network hallucination,Watson et al.,2023,Nature,2210.08590,Biology AI
+961,ChemGPT: Chemistry Language Model for Molecular Generation,Frey et al.,2023,arXiv,2302.06255,Chemistry AI
+962,MolGPT: Molecular Generation using Transformers,Bagal et al.,2022,arXiv,2104.03629,Chemistry AI
+963,AlphaChemistry: AI for Chemistry,Google DeepMind,2023,Blog,,Chemistry AI
+964,Climate AI: Deep Learning for Climate Science,Reichstein et al.,2019,Nature,,Climate AI
+965,ClimaX: A Foundation Model for Weather and Climate,Nguyen et al.,2023,arXiv,2301.10343,Climate AI
+966,GraphCast: Learning skillful medium-range global weather forecasting,Lam et al.,2023,Science,2212.12794,Climate AI
+967,Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast,Bi et al.,2023,Nature,2211.02556,Climate AI
+968,FourCastNet: Accelerating Global High-Resolution Weather Forecasting,Pathak et al.,2022,arXiv,2208.05419,Climate AI
+969,Aurora: A Foundation Model of the Atmosphere,Bodnar et al.,2024,arXiv,2405.13063,Climate AI
+970,Finance AI: Machine Learning in Finance,Dixon et al.,2020,Book,,Finance AI
+971,FinGPT: Open-Source Financial Large Language Models,Yang et al.,2023,arXiv,2306.06031,Finance AI
+972,BloombergGPT: A Large Language Model for Finance,Wu et al.,2023,arXiv,2303.17564,Finance AI
+973,Legal AI: AI and Law,Surden,2019,Journal,,Legal AI
+974,LegalBERT: The Muppets straight out of Law School,Chalkidis et al.,2020,EMNLP,2010.02559,Legal AI
+975,GPT-4 for Legal: ChatGPT in Legal Practice,OpenAI,2023,Blog,,Legal AI
+976,Education AI: Artificial Intelligence in Education,Roll & Wylie,2016,Journal,,Education AI
+977,Khan Academy AI Tutor: Khanmigo,Khan Academy,2023,Blog,,Education AI
+978,Duolingo Max: AI-Powered Language Learning,Duolingo,2023,Blog,,Education AI
+979,GitHub Copilot: Your AI pair programmer,GitHub,2021,Blog,,Code Generation
+980,Cursor: The AI-first Code Editor,Cursor,2023,Blog,,Code Generation
+981,Tabnine: AI Assistant for Software Developers,Tabnine,2023,Blog,,Code Generation
+982,Codeium: Free AI-Powered Code Acceleration,Codeium,2023,Blog,,Code Generation
+983,Replit Ghostwriter: AI Pair Programmer,Replit,2023,Blog,,Code Generation
+984,Amazon CodeWhisperer: ML-powered coding companion,Amazon,2023,Blog,,Code Generation
+985,Sourcegraph Cody: AI coding assistant,Sourcegraph,2023,Blog,,Code Generation
+986,GPT-4 Code Interpreter: Advanced Data Analysis,OpenAI,2023,Blog,,Code Generation
+987,Claude Code: Code-focused AI Assistant,Anthropic,2024,Blog,,Code Generation
+988,Devin: First AI Software Engineer,Cognition Labs,2024,Blog,,Code Generation
+989,SWE-Agent: Agent Computer Interfaces Enable Automated Software Engineering,Yang et al.,2024,arXiv,2405.15793,Code Generation
+990,AutoCodeRover: Autonomous Program Improvement,Zhang et al.,2024,arXiv,2404.05427,Code Generation
+991,Aider: AI pair programming in your terminal,Aider,2023,GitHub,,Code Generation
+992,GPT-Engineer: Specify what you want it to build,GPT-Engineer,2023,GitHub,,Code Generation
+993,Smol Developer: AI that can build complete apps,Smol,2023,GitHub,,Code Generation
+994,MetaGPT: Meta Programming for Multi-Agent Collaborative Framework,Hong et al.,2023,arXiv,2308.00352,Multi-Agent
+995,AgentVerse: Facilitating Multi-Agent Collaboration,Chen et al.,2023,arXiv,2308.10848,Multi-Agent
+996,Multi-Agent Systems: A Survey of Large Language Model based Multi-Agent Systems,Guo et al.,2024,arXiv,2402.01680,Multi-Agent
+997,Generalist Agents: Inspired by Humans Powered by LLMs,Zhang et al.,2024,arXiv,2401.06173,LLM Applications
+998,Toolformer: Language Models That Can Use Tools,Schick et al.,2023,arXiv,2302.04761,LLM Applications
+999,Voyager: An Open-Ended Embodied Agent with LLMs,Wang et al.,2023,arXiv,2305.16291,LLM Applications
+1000,JARVIS: HuggingGPT Solving AI Tasks with ChatGPT,Shen et al.,2023,arXiv,2303.17580,LLM Applications

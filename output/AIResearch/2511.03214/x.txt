@@ -1,0 +1,1 @@
+AI just got smarter: New Language Graph Model builds human-like reasoning structures, scoring 82.59% F1 on HotpotQA vs. 78.9% previous best. Concept mapping breakthrough means AI can now connect ideas like humans do. Game-changer for virtual assistants and education.

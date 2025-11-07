@@ -1,0 +1,1 @@
+Duchi et al. (2011), Moreira and Fiesler (1995) overview), rely instantaneous gradient. This means can handle changes methods Vanishing gradient We address vanishing gradients problem represents preference parameter back-propagated neither increase decrease too much mag- nitude. Our intuition increasing norm of @ x t

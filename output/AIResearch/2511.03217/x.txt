@@ -1,0 +1,1 @@
+AI fact-checking just leveled up: Hybrid system hits 92.7% accuracy without fine-tuning. Combines knowledge graphs + LLMs to verify what others can't. Transparent reasoning tackles misinformation's speed vs accuracy dilemma.

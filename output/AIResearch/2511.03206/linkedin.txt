@@ -1,0 +1,1 @@
+AI can't understand relationships between images - a critical flaw for medical diagnosis. New QG-CoC method decomposes images into captions, boosting accuracy by 15.8% on MMMU benchmarks. How will this transform medical imaging?

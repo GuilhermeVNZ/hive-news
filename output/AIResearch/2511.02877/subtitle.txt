@@ -1,0 +1,1 @@
+New method combines time-delay embedding with random features to forecast chaotic systems using simpler, more interpretable models—potentially transforming weather prediction and complex system analysis.

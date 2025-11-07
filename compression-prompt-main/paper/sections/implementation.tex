@@ -1,0 +1,437 @@
+\label{sec:implementation}
+
+\subsection{Architecture}
+
+The implementation consists of three main components:
+
+\begin{enumerate}
+    \item \textbf{Statistical Filter}: Core compression engine
+    \item \textbf{Quality Metrics}: Objective evaluation system
+    \item \textbf{Tokenizer Interface}: Pluggable token counting
+\end{enumerate}
+
+\subsection{Statistical Filter Module}
+
+\textbf{Language}: Rust (Edition 2024, Rust 1.85+)
+
+\textbf{File}: \texttt{rust/src/statistical\_filter.rs}
+
+\subsubsection{Core Structure}
+
+\begin{verbatim}
+pub struct StatisticalFilter {
+    config: StatisticalFilterConfig,
+}
+
+pub struct StatisticalFilterConfig {
+    pub compression_ratio: f32,  // 0.3-0.7
+    pub idf_weight: f64,         // 0.3
+    pub position_weight: f64,    // 0.2
+    pub pos_weight: f64,         // 0.2
+    pub entity_weight: f64,      // 0.2
+    pub entropy_weight: f64,     // 0.1
+}
+\end{verbatim}
+
+\subsubsection{Key Methods}
+
+\textbf{Compression}:
+\begin{verbatim}
+pub fn compress(
+    &self,
+    text: &str,
+    tokenizer: &dyn Tokenizer
+) -> String
+\end{verbatim}
+
+\textbf{Scoring}:
+\begin{verbatim}
+pub fn score_tokens(
+    &self,
+    text: &str,
+    tokenizer: &dyn Tokenizer
+) -> Vec<TokenImportance>
+\end{verbatim}
+
+\subsubsection{Implementation Details}
+
+\textbf{IDF Calculation}:
+\begin{verbatim}
+fn calculate_idf(&self, words: &[&str]) 
+    -> HashMap<&str, f64> {
+    let total = words.len() as f64;
+    let mut freq: HashMap<&str, usize> = HashMap::new();
+    for word in words {
+        *freq.entry(word).or_insert(0) += 1;
+    }
+    freq.into_iter()
+        .map(|(w, f)| {
+            let idf = (total / f as f64).ln();
+            (w, idf)
+        })
+        .collect()
+}
+\end{verbatim}
+
+\textbf{Position Scoring}:
+\begin{verbatim}
+fn calculate_position_importance(&self, words: &[&str]) 
+    -> Vec<f64> {
+    let n = words.len();
+    words.iter().enumerate()
+        .map(|(i, _)| {
+            let pos = i as f64 / n as f64;
+            if pos < 0.1 || pos > 0.9 { 1.0 }
+            else if pos < 0.2 || pos > 0.8 { 0.7 }
+            else { 0.5 }
+        })
+        .collect()
+}
+\end{verbatim}
+
+\textbf{Stop Word Detection}:
+\begin{verbatim}
+fn is_stop_word(word: &str) -> bool {
+    const STOP_WORDS: &[&str] = &[
+        "the", "a", "an", "and", "or", "but",
+        "in", "on", "at", "to", "for", "of",
+        "with", "by", "from", "as", "is", "was",
+        // ... 100+ stop words total
+    ];
+    STOP_WORDS.contains(&word.to_lowercase().as_str())
+}
+\end{verbatim}
+
+\subsection{Quality Metrics Module}
+
+\textbf{File}: \texttt{rust/src/quality\_metrics.rs}
+
+\subsubsection{Structure}
+
+\begin{verbatim}
+#[derive(Debug, Clone)]
+pub struct QualityMetrics {
+    pub keyword_retention: f64,
+    pub entity_retention: f64,
+    pub vocabulary_ratio: f64,
+    pub information_density: f64,
+    pub overall_score: f64,
+}
+\end{verbatim}
+
+\subsubsection{Calculation}
+
+\begin{verbatim}
+pub fn calculate(
+    original: &str,
+    compressed: &str
+) -> Self {
+    let orig_words = extract_words(original);
+    let comp_words = extract_words(compressed);
+    
+    let keywords_orig = extract_keywords(&orig_words);
+    let keywords_comp = extract_keywords(&comp_words);
+    let keyword_retention = 
+        intersection(&keywords_orig, &keywords_comp).len()
+        / keywords_orig.len();
+    
+    let entities_orig = extract_entities(&orig_words);
+    let entities_comp = extract_entities(&comp_words);
+    let entity_retention = 
+        intersection(&entities_orig, &entities_comp).len()
+        / entities_orig.len();
+    
+    // ... similar for vocabulary and density
+    
+    let overall = 0.3 * keyword_retention
+                + 0.3 * entity_retention
+                + 0.2 * vocabulary_ratio
+                + 0.2 * information_density;
+    
+    Self { /* ... */ }
+}
+\end{verbatim}
+
+\subsection{Tokenizer Interface}
+
+\textbf{File}: \texttt{rust/src/tokenizer.rs}
+
+\subsubsection{Trait Definition}
+
+\begin{verbatim}
+pub trait Tokenizer {
+    fn name(&self) -> &str;
+    fn encode(&self, text: &str) -> Vec<Token>;
+    fn decode(&self, tokens: &[Token]) -> String;
+    fn count_tokens(&self, text: &str) -> usize;
+}
+\end{verbatim}
+
+\subsubsection{Mock Implementation}
+
+For testing and demonstration:
+
+\begin{verbatim}
+pub struct MockTokenizer;
+
+impl Tokenizer for MockTokenizer {
+    fn name(&self) -> &str {
+        "mock-word-based"
+    }
+    
+    fn count_tokens(&self, text: &str) -> usize {
+        text.split_whitespace().count()
+    }
+    
+    // ... other methods
+}
+\end{verbatim}
+
+\textbf{Note}: Real tokenizers (GPT-4, Claude, Gemini) can be integrated via tokenizer-specific crates.
+
+\subsection{Command-Line Tools}
+
+\subsubsection{test\_statistical}
+
+\textbf{File}: \texttt{rust/src/bin/test\_statistical.rs}
+
+Validates compression on large datasets:
+
+\begin{verbatim}
+cargo run --release --bin test_statistical
+\end{verbatim}
+
+\textbf{Output}:
+\begin{verbatim}
+=== Statistical Compression Test ===
+
+Dataset: benchmark_200_papers.txt
+Original: 1,662,729 tokens (10.2 MB)
+Compressed: 831,364 tokens
+Savings: 831,365 tokens (50.0%)
+
+Time: 0.92s (10.58 MB/s)
+
+Quality Metrics:
+  Overall Score: 88.6%
+  Keyword Retention: 100.0%
+  Entity Retention: 91.8%
+  Vocabulary Diversity: 85.3%
+  Information Density: 0.642
+
+Top 10 Removed Words:
+  1. "the" → 75,204 times (45.3%)
+  2. "and" → 35,671 times (21.5%)
+  ...
+\end{verbatim}
+
+\subsubsection{generate\_llm\_dataset}
+
+\textbf{File}: \texttt{rust/src/bin/generate\_llm\_dataset.rs}
+
+Creates evaluation pairs for LLM testing:
+
+\begin{verbatim}
+cargo run --release --bin generate_llm_dataset
+\end{verbatim}
+
+\textbf{Output}: 63 prompt pairs (original + compressed at 3 levels) with metadata and quality metrics, ready for GPT-4/Claude/Gemini validation.
+
+\subsection{Performance Optimization}
+
+\subsubsection{Memory Efficiency}
+
+\begin{itemize}
+    \item \textbf{HashMaps}: $O(u)$ space for unique words
+    \item \textbf{Vec reuse}: Minimize allocations
+    \item \textbf{Iterators}: Lazy evaluation where possible
+\end{itemize}
+
+\subsubsection{Time Optimization}
+
+\begin{itemize}
+    \item \textbf{Single-pass frequency}: Build frequency map in one pass
+    \item \textbf{Efficient sorting}: Rust's \texttt{sort\_by} with inline comparisons
+    \item \textbf{No regex}: Simple string operations only
+\end{itemize}
+
+\subsubsection{Scalability}
+
+\begin{itemize}
+    \item \textbf{Linear memory}: $O(n)$ where $n$ = word count
+    \item \textbf{Log-linear time}: $O(n \log n)$ dominated by sorting
+    \item \textbf{No parallel overhead}: Single-threaded is fast enough (<1s for 1.6M tokens)
+\end{itemize}
+
+\subsection{Testing Infrastructure}
+
+\subsubsection{Unit Tests}
+
+\begin{verbatim}
+cargo test
+\end{verbatim}
+
+16 unit tests covering:
+\begin{itemize}
+    \item Score calculation correctness
+    \item Word filtering logic
+    \item Edge cases (empty, short, long)
+    \item Unicode handling
+    \item Configuration validation
+\end{itemize}
+
+\subsubsection{Integration Tests}
+
+\textbf{File}: \texttt{rust/tests/integration\_tests.rs}
+
+7 integration tests:
+\begin{itemize}
+    \item End-to-end compression
+    \item Quality metrics validation
+    \item Performance benchmarks
+    \item Real data (arXiv papers)
+\end{itemize}
+
+\subsubsection{Quality Assurance}
+
+\begin{verbatim}
+cargo clippy  # 0 warnings
+cargo fmt     # Auto-format
+\end{verbatim}
+
+\subsection{Deployment}
+
+\subsubsection{Library Usage}
+
+\begin{verbatim}
+use compression_prompt::statistical_filter::{
+    StatisticalFilter,
+    StatisticalFilterConfig,
+};
+use compression_prompt::tokenizer::MockTokenizer;
+
+let filter = StatisticalFilter::new(
+    StatisticalFilterConfig::default()
+);
+let tokenizer = MockTokenizer;
+let compressed = filter.compress(&text, &tokenizer);
+\end{verbatim}
+
+\subsubsection{Configuration Presets}
+
+\begin{verbatim}
+// Conservative (high quality)
+let config = StatisticalFilterConfig {
+    compression_ratio: 0.7,
+    ..Default::default()
+};
+
+// Balanced (recommended)
+let config = StatisticalFilterConfig::default();
+
+// Aggressive (maximum savings)
+let config = StatisticalFilterConfig {
+    compression_ratio: 0.3,
+    ..Default::default()
+};
+\end{verbatim}
+
+\subsection{Optical Context Compression (Image Output)}
+
+\textbf{Status}: BETA - Inspired by DeepSeek-OCR~\cite{deepseek2024ocr}
+
+\subsubsection{Motivation}
+
+Vision-capable LLMs (GPT-4V, Claude 3, Gemini Vision) can process images as context. By rendering compressed text as dense monospace images, we can leverage vision tokens instead of text tokens, potentially offering different cost-benefit trade-offs.
+
+\subsubsection{Architecture}
+
+\textbf{File}: \texttt{rust/src/image\_renderer.rs} (406 lines)
+
+\begin{verbatim}
+pub struct ImageRenderer {
+    font_size: f32,          // 12.5pt default
+    image_width: u32,        // 1024px
+    image_height: u32,       // 1024px
+    words_per_page: usize,   // ~2000 words
+}
+\end{verbatim}
+
+\subsubsection{Key Features}
+
+\begin{itemize}
+    \item \textbf{Font Rendering}: DejaVu Sans Mono (embedded TrueType, 340 KB)
+    \item \textbf{Auto Font Scaling}: 12.5pt default, scales down to 7pt if needed
+    \item \textbf{Auto-pagination}: Splits into multiple pages (~2000 words each)
+    \item \textbf{Output Formats}: PNG (lossless, ~1.4 MB/page), JPEG (Q85, ~460 KB/page)
+    \item \textbf{Alpha Blending}: Smooth text rendering
+    \item \textbf{Performance}: <50ms per image
+\end{itemize}
+
+\subsubsection{Implementation Details}
+
+\begin{verbatim}
+use ab_glyph::{FontRef, PxScale};
+use image::{ImageBuffer, Rgba, RgbaImage};
+
+pub fn render_to_png(&self, text: &str) 
+    -> Result<Vec<Vec<u8>>> {
+    let pages = self.paginate(text);
+    pages.iter()
+        .map(|page| self.render_page(page))
+        .collect()
+}
+
+pub fn render_to_jpeg(&self, text: &str, quality: u8)
+    -> Result<Vec<Vec<u8>>> {
+    // Similar to PNG but with JPEG encoding
+}
+\end{verbatim}
+
+\subsubsection{Benchmarks (RNN Paper - 9118 words)}
+
+\begin{table}[h]
+\centering
+\caption{Image Output Performance}
+\label{tab:image-output}
+\begin{tabular}{lrrr}
+\toprule
+Metric & Value & Pages & Size/Page \\
+\midrule
+Text compression & 50\% & -- & -- \\
+Words compressed & 9118 → 5156 & -- & -- \\
+PNG output & 4.2 MB & 3 & 1.4 MB \\
+JPEG output (Q85) & 1.5 MB & 3 & 460 KB \\
+JPEG savings & 65.5\% & -- & vs PNG \\
+Rendering time & <150 ms & 3 & <50 ms \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Use Cases}
+
+\begin{itemize}
+    \item Dense document compression for vision models
+    \item Cost optimization using vision tokens vs text tokens
+    \item Research on optical context compression
+    \item Large-scale document processing
+\end{itemize}
+
+\subsubsection{Limitations}
+
+\begin{itemize}
+    \item Requires vision-capable LLM
+    \item Vision token costs vary by provider
+    \item OCR errors possible (though text is rendered, not scanned)
+    \item Pending extensive validation with vision models
+\end{itemize}
+
+\subsection{Code Quality}
+
+\begin{itemize}
+    \item \textbf{Rust Edition}: 2024 (nightly 1.85+)
+    \item \textbf{Test Coverage}: >80\% on core logic (23/23 tests passing)
+    \item \textbf{Documentation}: Comprehensive inline docs
+    \item \textbf{Type Safety}: No \texttt{unsafe} blocks
+    \item \textbf{Error Handling}: Graceful degradation
+\end{itemize}

@@ -1,0 +1,45 @@
+# Dense Prompt Compression for Vision Models
+
+This is a test document demonstrating the compression of text into fixed-size images
+for vision model consumption. The approach is inspired by DeepSeek-OCR's optical context
+compression technique, which allows for efficient token usage when working with
+vision-language models.
+
+## Background
+
+Large language models (LLMs) and vision-language models (VLMs) process information
+differently. While LLMs work with discrete tokens, VLMs can process visual information
+encoded as images. By rendering compressed text into monospace images, we can leverage
+the visual encoding capabilities of VLMs to potentially achieve better compression ratios.
+
+## Methodology
+
+Our approach uses statistical filtering to compress the text content, removing less
+important tokens while preserving semantic meaning. The compressed text is then rendered
+into a 1024x1024 PNG image using a monospace font for maximum text density.
+
+Key features include:
+- Automatic font size adjustment to fit text
+- Consistent line spacing for readability
+- Alpha blending for smooth font rendering
+- PNG encoding for lossless compression
+- Support for both text and image output formats
+
+## Applications
+
+This technology enables several interesting use cases:
+1. Efficient context compression for long documents
+2. Reduced token costs when using vision models
+3. Novel approaches to information density in prompts
+4. Integration with multimodal AI systems
+
+## Technical Details
+
+The implementation uses Rust for performance and safety, with the following components:
+- Statistical filter for content compression
+- Image renderer using ab_glyph and imageproc
+- Pluggable output format system
+- Comprehensive test suite
+
+The system achieves compression ratios of 30-70% while maintaining semantic quality
+through intelligent token importance scoring.

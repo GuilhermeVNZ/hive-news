@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could create medical ultrasound videos so real that even experts can't tell the difference? [VISUAL DIRECTION] Animated text: 'AI-Generated Ultrasounds: Indistinguishable?' with a pulsing question mark.
+
+[VOICEOVER 0:05-0:20] Medical AI often struggles because datasets are imbalanced—missing key types like color flow Doppler. This limits diagnostic accuracy and fairness in healthcare. [VISUAL DIRECTION] Show split screen: one side with balanced data (green check), other with imbalanced (red X), zooming into a doctor looking concerned.
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI generate missing ultrasound modalities to balance training data without losing critical information? [VISUAL DIRECTION] Animated flowchart: 'Problem: Missing Data' -> 'Question: Generate Realistic Videos?' with arrows pointing to a brain icon.
+
+[VOICEOVER 0:40-1:00] They discovered a video-to-video AI that converts color flow Doppler to B-mode ultrasound, achieving a structural similarity score of 0.91—nearly perfect. Human experts had only 50% accuracy in telling them apart. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on SSIM comparison graph, then quick cuts of real vs. generated video clips side-by-side.
+
+[VOICEOVER 1:00-1:30] How it works: The AI reconstructs basic inputs, then refines textures using adversarial losses. Gated convolutions adaptively focus on areas needing repair, all without extra data during use. [VISUAL DIRECTION] Animated pipeline diagram: 'Input CFD' -> 'Reconstruction' -> 'Refinement' -> 'Output B-mode', with highlights on gated convolution nodes.
+
+[VOICEOVER 1:30-1:50] Implications: This boosts dataset diversity by 19.8%, accelerates AI development in low-resource areas, and reduces ethical concerns by minimizing data collection. It generalizes to other domains like obstetric ultrasounds with zero-shot learning. [VISUAL DIRECTION] Fast cuts: globe icon with 'Equity', lab icon with 'Faster AI', lock icon with 'Privacy', ending with a fetal ultrasound clip and SSIM stat overlay: 0.91.
+
+[VOICEOVER 1:50-2:00] AI isn't just analyzing data—it's creating it to make medical diagnostics more accessible and fair. The future of healthcare is generative. [VISUAL DIRECTION] Final screen: bold text 'Generative Learning in Medicine' with Nature/Science logo, hold for 2 seconds.

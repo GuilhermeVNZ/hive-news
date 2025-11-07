@@ -1,0 +1,1 @@
+AI can now build structured knowledge graphs like human reasoning, achieving 82.59% F1 score on HotpotQA—surpassing previous models. This breakthrough in concept mapping enables AI to answer complex questions with unprecedented accuracy. How will this transform your industry?

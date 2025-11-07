@@ -1,6 +1,6 @@
 // Prompt Compression Module
 // Integrates with compression-prompt tool to reduce API costs
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 use anyhow::{Result, Context};
 
@@ -20,24 +20,57 @@ pub struct CompressedPrompt {
 
 impl PromptCompressor {
     pub fn new() -> Result<Self> {
-        let compression_tool_path = PathBuf::from(
-            "G:/Hive-Hub/compression-prompt-main/rust/target/release/compress.exe"
-        );
-        
+        let project_dir = Self::locate_project_dir()
+            .context("Unable to locate compression-prompt project directory")?;
+
+        let binary_name = if cfg!(target_os = "windows") {
+            "compress.exe"
+        } else {
+            "compress"
+        };
+
+        let compression_tool_path = project_dir.join("target").join("release").join(binary_name);
+
         if !compression_tool_path.exists() {
             // Try to build if not found
-            Self::build_compression_tool()?;
+            Self::build_compression_tool(&project_dir)?;
         }
-        
+
         Ok(Self { compression_tool_path })
     }
     
-    fn build_compression_tool() -> Result<()> {
+    fn locate_project_dir() -> Result<PathBuf> {
+        let candidates = [
+            PathBuf::from("compression-prompt-main/rust"),
+            PathBuf::from("../compression-prompt-main/rust"),
+            PathBuf::from("../../compression-prompt-main/rust"),
+            PathBuf::from("G:/Hive-Hub/News-main/compression-prompt-main/rust"),
+            PathBuf::from("G:/Hive-Hub/compression-prompt-main/rust"),
+        ];
+
+        let checked: Vec<String> = candidates
+            .iter()
+            .map(|p| p.display().to_string())
+            .collect();
+
+        for candidate in candidates.iter() {
+            if candidate.exists() {
+                return Ok(candidate.clone());
+            }
+        }
+
+        Err(anyhow::anyhow!(
+            "compression-prompt project not found. Checked paths: {}",
+            checked.join(", ")
+        ))
+    }
+
+    fn build_compression_tool(project_dir: &Path) -> Result<()> {
         println!("📦 Building compression-prompt tool...");
         
         let output = Command::new("cargo")
             .args(&["build", "--release"])
-            .current_dir("G:/Hive-Hub/compression-prompt-main/rust")
+            .current_dir(project_dir)
             .output()
             .context("Failed to execute cargo build")?;
         

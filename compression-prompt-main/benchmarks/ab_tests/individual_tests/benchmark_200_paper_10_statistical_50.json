@@ -1,0 +1,15 @@
+{
+  "test_id": "benchmark_200_paper_10_statistical_50",
+  "technique": "statistical_50%",
+  "original_prompt": "Dim. 1 Dim. 2 (a) block in the middle Dim. 1 Dim. 2 (b) block in the corner Dim. 1 Dim. 2 (c) checkerboard 0 : 5 0 : 9 No. queried points Accuracy 0 : 5 No. queried points Accuracy 0 : 5 No. queried points Accuracy Figure 3: Top: Evaluation on articial datasets. Exemplars of the two classes are shown with black squares ( ) and red circles ( ). Bottom: Results of active learning with nine methods: random query ( ), BALD( ), MES ( ), QBC with the vote criterion with 2 ( ) and 100 ( ) committee members, active SVM ( ), IVM ( ), decision theoretic: [ Kapoor et al., 2007 ] ( ), [Zhu et al., 2003] ( ) and empirical error ( ). an asymptotically unbiased estimate of the expected information gain. Using extensive Monte Carlo as the ‘gold standard’, we can evaluate how much we loose by applying these approximations. We quantify approximation error as: max x 2P I ( x ) I (arg max x 2P ^ I ( x )) max x 2P I ( x ) 100% (8) where I is the objective computed using Monte Carlo, ^ I is the approximate objective. The cancer UCI dataset was used, results and discussion are in Fig. 2. Pool based active learning: We test BALDfor GPC and preference learning in the pool-based setting i.e. selecting x values from a xed set of data-points. Although BALD can generalise to selecting continuous x , this enables us to compare to algorithms that cannot. We compare to eight other algorithms: random sampling, MES, QBC (with 2 and 100 committee members), SVM with version space approximation [ Tong and Koller, 2001 ], decision theoretic approaches in [ Kapoor et al., 2007 , Zhu et al., 2003 ] and directly minimizing 10",
+  "compressed_prompt": "(a) block middle (b) block corner (c) checkerboard 9 No. Accuracy No. Accuracy No. Accuracy Figure 3: Top: Evaluation on articial datasets. Exemplars two classes shown black squares red circles Bottom: Results nine methods: query BALD( MES QBC vote criterion members, SVM IVM theoretic: Kapoor [Zhu 2003] empirical an asymptotically unbiased estimate expected information gain. Using extensive Monte Carlo as ‘gold standard’, evaluate how much loose by applying these approximations. quantify as: (arg )) 100% (8) where objective computed using Monte Carlo, approximate objective. The cancer UCI dataset was used, results discussion Fig. 2. Pool based learning: test BALDfor GPC preference pool-based setting i.e. values from a xed set data-points. Although BALD generalise selecting continuous this enables us compare algorithms that cannot. We compare eight other algorithms: random sampling, MES, QBC (with committee members), SVM version space approximation Tong Koller, 2001 ], decision theoretic approaches Kapoor 2007 , Zhu 2003 ] directly minimizing 10",
+  "original_tokens": 308,
+  "compressed_tokens": 154,
+  "compression_ratio": 0.5,
+  "metadata": {
+    "paper_id": "benchmark_200_paper_10",
+    "dictionary_entries": null,
+    "substitutions": null,
+    "processing_time_ms": 0.11309999999999999
+  }
+}

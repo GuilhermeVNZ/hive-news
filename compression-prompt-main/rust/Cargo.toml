@@ -1,0 +1,68 @@
+[package]
+name = "compression-prompt"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+authors = ["HiveLLM Team <team@hivellm.org>"]
+license = "MIT"
+repository = "https://github.com/hivellm/compression-prompt"
+description = "Fast statistical compression for LLM prompts - 50% token reduction with 91% quality retention"
+keywords = ["llm", "compression", "prompt", "optimization", "token-reduction"]
+categories = ["text-processing", "algorithms", "compression"]
+readme = "../README.md"
+homepage = "https://github.com/hivellm/compression-prompt"
+documentation = "https://docs.rs/compression-prompt"
+
+[features]
+default = ["statistical"]
+statistical = []
+image = ["dep:image", "dep:imageproc", "dep:ab_glyph"]
+full = ["statistical", "image"]
+
+[dependencies]
+# Core dependencies
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+anyhow = "1.0"
+regex = "1.10"
+
+# Performance
+ahash = "0.8"
+rayon = "1.10"
+
+# Unicode handling
+unicode-segmentation = "1.12"
+tiktoken-rs = "0.7.0"
+
+# Datetime handling
+chrono = "0.4"
+
+# Image processing (optional)
+image = { version = "0.25", optional = true }
+imageproc = { version = "0.25", optional = true }
+ab_glyph = { version = "0.2", optional = true }
+
+[dev-dependencies]
+# Benchmarking
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "compression_bench"
+harness = false
+path = "benches/compression_bench.rs"
+
+[[bench]]
+name = "ab_test_generator"
+harness = false
+path = "benches/ab_test_generator.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.bench]
+inherits = "release"
+

@@ -1,0 +1,1 @@
+Scientists just developed a simpler way to predict chaotic systems like weather with near-perfect accuracy. The new method requires only 4 parameters vs traditional approaches, achieving NRMSE as low as 0.006 on Lorenz63. This could transform climate modeling and markets where data is limited. Nature/Science paper reveals how.

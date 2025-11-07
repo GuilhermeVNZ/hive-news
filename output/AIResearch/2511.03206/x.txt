@@ -1,0 +1,1 @@
+AI fails at understanding image relationships - limiting medical diagnosis. New QG-CoC method boosts accuracy 15.8% by breaking images into captions. Research shows consistent gains across GPT-4o, Gemini, and open-source models.

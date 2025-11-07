@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know current AI can't understand relationships between images? This fundamental flaw limits medical diagnosis and scientific analysis.
+[VISUAL DIRECTION] [Animated text: "AI CAN'T UNDERSTAND IMAGE RELATIONSHIPS" with question mark animation]
+[VOICEOVER 0:05-0:20] When doctors compare medical scans or researchers analyze experimental sequences, AI struggles to connect the dots between images. This becomes critical for tracking disease progression.
+[VISUAL DIRECTION] [Show medical imaging sequence with connecting arrows fading in/out]
+[VOICEOVER 0:20-0:40] The challenge? Current multimodal AI lacks fine-grained analysis, has diminished capabilities with multiple images, and can't effectively synthesize information from different inputs.
+[VISUAL DIRECTION] [Animated diagram showing three problem areas with X marks]
+[VOICEOVER 0:40-1:00] The breakthrough: QG-CoC method decomposes image analysis into smaller sub-questions. For each question, it generates specific captions, then combines them into coherent answers.
+[VISUAL DIRECTION] [Flowchart animation showing decomposition process with captions building up]
+[VOICEOVER 1:00-1:30] How it works: The system breaks down complex image relationships into manageable pieces. Each sub-question gets targeted captions, avoiding information overload. The final synthesis creates accurate understanding.
+[VISUAL DIRECTION] [Zoom on Figure 2 showing caption generation process with step-by-step highlights]
+[VOICEOVER 1:30-1:50] Results show 15.8% improvement on MMMU benchmarks. This works across GPT-4o, Gemini-1.5-Flash, and open-source models like LLaVA-OneVision-7B. Medical imaging and scientific analysis stand to benefit most.
+[VISUAL DIRECTION] [Bar chart animation showing performance improvements across different models]
+[VOICEOVER 1:50-2:00] The future of AI image understanding just got clearer - by breaking problems down, we can build better solutions for critical applications.
+[VISUAL DIRECTION] [Final text overlay: "QG-CoC: Better Image Understanding Through Decomposition"]

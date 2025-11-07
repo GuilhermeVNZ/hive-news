@@ -1,0 +1,1 @@
+Figure 2. Unrolling recurrent neural networks creating a copy model for each step. We denote x hidden state , u input E error output . We will diverge classical BPTT this point re-write (see (3), (4) (5)) order to better highlight exploding problem. These were obtained writing sum-of-products form. @ E

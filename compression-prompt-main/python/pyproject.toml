@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "compression_prompt"
+version = "0.1.0"
+description = "Fast statistical compression for LLM prompts - 50% token reduction with 91% quality retention"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "HiveLLM Team", email = "team@hivellm.org"}
+]
+keywords = ["llm", "compression", "prompt", "optimization", "token-reduction", "nlp", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Text Processing",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
+]
+image = [
+    "Pillow>=10.0.0",
+]
+all = [
+    "Pillow>=10.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/hivellm/compression-prompt"
+Repository = "https://github.com/hivellm/compression-prompt"
+"Bug Reports" = "https://github.com/hivellm/compression-prompt/issues"
+Documentation = "https://github.com/hivellm/compression-prompt/blob/main/README.md"
+
+[project.scripts]
+compress = "compression_prompt.cli:main"
+
+[tool.setuptools]
+packages = ["compression_prompt"]
+
+[tool.setuptools.package-data]
+compression_prompt = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+select = ["E", "F", "W", "I", "N"]
+ignore = ["E501"]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["compression_prompt"]
+omit = ["tests/*", "examples/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

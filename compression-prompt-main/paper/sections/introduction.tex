@@ -1,0 +1,92 @@
+\subsection{Motivation}
+
+Large language models have transformed software development, research analysis, and natural language processing. However, their adoption faces economic constraints due to token-based pricing models. Current commercial LLMs charge per token for both input (prompts) and output (completions), with costs ranging from \$0.25 to \$15.00 per million tokens depending on the model tier~\cite{anthropic2024pricing,openai2024pricing}.
+
+For enterprise applications processing millions of tokens daily, even modest compression yields substantial cost savings. For example, at Claude Sonnet's \$15/1M pricing:
+
+\begin{itemize}
+    \item 50\% compression = \$7.50 saved per 1M tokens
+    \item High-volume app (100M tokens/month) = \$7,500/month = \$90K/year
+    \item Enterprise (1B tokens/month) = \$900K/year
+\end{itemize}
+
+With GPT-4/Grok-4 pricing (\$5/1M), savings are \$2.50/1M tokens or \$300K/year for 1B tokens/month.
+
+\subsection{Problem Statement}
+
+Given an input prompt $P$ containing $n$ words, we seek a compressed representation $P'$ such that:
+
+\begin{enumerate}
+    \item \textbf{Significant compression}: $|P'| \approx 0.5|P|$ in token count (50\% reduction)
+    \item \textbf{Quality preservation}: High retention of keywords (>90\%), entities (>90\%), and overall semantic value (>85\%)
+    \item \textbf{Model-free}: No external LLM required for compression
+    \item \textbf{Computational efficiency}: <1ms for typical prompts, >10 MB/s throughput
+    \item \textbf{Deterministic}: Same input always produces same output
+\end{enumerate}
+
+Unlike lossy summarization (which changes meaning) or binary compression (incompatible with LLM APIs), we require the compressed prompt to remain valid natural language that preserves semantic integrity.
+
+\subsection{Key Insight}
+
+Natural language contains substantial redundancy in the form of \textbf{stop words} and \textbf{function words} that contribute minimal semantic value. Consider:
+
+\begin{quote}
+\textit{Original}: ``The Bayesian model uses the prior distribution and the likelihood function to compute the posterior distribution.''
+
+\textit{Compressed}: ``Bayesian model prior distribution likelihood function compute posterior distribution.''
+\end{quote}
+
+Removing articles (``the'', ``a''), prepositions (``to''), and conjunctions (``and'') reduces token count by 40\% while preserving all technical content. An LLM can understand both versions equally well for technical tasks.
+
+\subsection{Contributions}
+
+This paper makes the following contributions:
+
+\begin{enumerate}
+    \item A \textbf{model-free statistical filtering algorithm} achieving 50\% compression with 91\% average quality retention across 6 flagship LLMs
+    \item A \textbf{multi-component scoring system} combining IDF (30\%), position (20\%), POS heuristics (20\%), entity detection (20\%), and local entropy (10\%)
+    \item \textbf{Comprehensive quality metrics} for objective evaluation: keyword retention, entity retention, vocabulary diversity, and information density
+    \item \textbf{Empirical validation} on 1.66M tokens (200 arXiv papers) with 92\% keyword retention and 89.5\% entity retention
+    \item \textbf{LLM validation across 6 models} with 350+ A/B test pairs: Grok-4 (93\%), Claude Sonnet (91\%), GPT-5 (89\%), Gemini Pro (89\%), Grok (88\%), Claude Haiku (87\%)
+    \item \textbf{Open-source implementation} in Rust with 10.58 MB/s throughput and <1ms latency for typical prompts
+    \item \textbf{Optical context compression} (BETA): Novel image output format for vision models
+\end{enumerate}
+
+\subsection{Related Work}
+
+\subsubsection{Model-Based Compression}
+
+\textbf{LLMLingua}~\cite{pan2023llmlingua} achieves 50-70\% compression using a small LLM (e.g., GPT-2, LLaMA-7B) to score token importance via perplexity. While effective, this approach requires:
+\begin{itemize}
+    \item Model download and deployment (multi-GB)
+    \item GPU/CPU inference for every compression
+    \item Significant latency overhead (seconds per prompt)
+    \item Cannot operate offline without model
+\end{itemize}
+
+\textbf{Selective Context}~\cite{li2023selective} uses similar perplexity-based filtering with additional context-aware scoring.
+
+Our approach achieves comparable compression (50\%) without requiring any model, operating in <1ms with pure statistical heuristics.
+
+\subsubsection{Prompt Optimization}
+
+Recent work on prompt engineering~\cite{white2023prompt,liu2023pre} focuses on semantic optimization (rephrasing, structure). AutoPrompt~\cite{shin2020autoprompt} learns optimal prompts through gradient-based search. These methods optimize \textit{content}, whereas we optimize \textit{length} while preserving content.
+
+\subsubsection{Traditional Text Compression}
+
+Classical compression algorithms (Lempel-Ziv~\cite{ziv1977universal}, Huffman coding~\cite{huffman1952method}, gzip, bzip2) achieve 60-80\% compression but produce binary outputs incompatible with LLM APIs. Decompression would be required before LLM processing, negating any benefit.
+
+\subsubsection{Dictionary-Based Compression}
+
+Our previous work explored dictionary coding with mental decompression (replacing repeated phrases with markers like [1]). However, this achieved only 6\% compression on real data due to:
+\begin{itemize}
+    \item High marker tokenization cost (2-7 tokens per marker)
+    \item Dictionary header overhead (25-30\% of output)
+    \item Requirement for highly repetitive text
+\end{itemize}
+
+Statistical filtering proved 8× more effective (50\% vs 6\%) and 42× faster.
+
+\subsection{Paper Organization}
+
+Section~2 provides theoretical foundations in information theory and word importance scoring. Section~3 details the statistical filtering algorithm. Section~4 describes the implementation and quality metrics. Section~5 presents experimental results on 1.66M tokens. Section~6 concludes and discusses future work.

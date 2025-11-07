@@ -1,0 +1,1 @@
+P T x k =1 exp ik (6) where ij = scores how well inputs around output match. score based RNN hidden state (just before emitting y , Eq. (4)) -th annotation input sentence. We parametrize feedforward network jointly trained with all other components proposed system. Note that unlike in traditional machine translation, 3

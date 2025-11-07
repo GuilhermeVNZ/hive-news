@@ -1,0 +1,6 @@
+Test: 008
+Technique: hybrid
+Original Tokens: 527
+Compressed Tokens: 263
+Compression Ratio: 0.499
+Token Savings: 50.1%

@@ -1,0 +1,1 @@
+2 (5) where KL KullbackLeibler divergence. We recognize in previous expression Jensen Shannon divergence model’s distribution process: G + JSD k (6) Since JensenShannon two distributions always non-negative zero when they are equal, we have shown global minimum of G solution , i.e., generative model perfectly replicating generating process.

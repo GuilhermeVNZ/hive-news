@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if you could rearrange movie scenes like building blocks? [VISUAL DIRECTION] Animated text: "DRAG & DROP MOVIE EDITING" with fast cuts of film reels transforming into modular blocks
+
+[VOICEOVER 0:05-0:20] Traditional storytelling forces creators into linear sequences, but new research from Nature/Science reveals a revolutionary approach. [VISUAL DIRECTION] Show traditional film timeline dissolving into interconnected nodes, zoom on "80% success rate" text overlay
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we transform complex narrative creation from technical expertise to intuitive visual editing? [VISUAL DIRECTION] Quick cuts between frustrated filmmaker and simplified node-based interface
+
+[VOICEOVER 0:40-1:00] They discovered a node-based system where each scene becomes an editable component, achieving perfect narrative generation in all 10 trials. [VISUAL DIRECTION] Show Figure 14 from paper demonstrating structural coherence preservation during edits
+
+[VOICEOVER 1:00-1:30] The system uses AI components - Reasoner decomposes concepts, Diagrammer creates structured JSON, and Generators produce content through GPT-4.1 and Sora. [VISUAL DIRECTION] Animated flow chart showing modular architecture with zoom on specialized components
+
+[VOICEOVER 1:30-1:50] This means filmmakers, educators, and marketers can now make structural revisions while preserving narrative coherence - changing tone across entire stories instantly. [VISUAL DIRECTION] Show before/after comparison of story with tone adjustment, highlight "all rewritten simultaneously"
+
+[VOICEOVER 1:50-2:00] The barrier between idea and execution just disappeared. Storytelling will never be the same. [VISUAL DIRECTION] Final zoom on interconnected nodes forming complete narrative, fade to Nature/Science logo

@@ -1,0 +1,63 @@
+\documentclass{article}
+
+% arXiv-compatible packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Page formatting
+\usepackage[margin=1in]{geometry}
+
+% Custom commands
+\newcommand{\compressratio}{\ensuremath{r_c}}
+
+% Metadata
+\title{Statistical Filtering for LLM Prompt Compression: A Model-Free Approach to 50\% Token Reduction with 91\% Quality Retention on Claude Sonnet}
+
+\author{
+  HiveLLM Team \\
+  \texttt{team@hivellm.dev}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\section{Introduction}
+\input{sections/introduction}
+
+\section{Theoretical Foundation}
+\input{sections/theoretical_foundation}
+
+\section{Algorithm}
+\input{sections/algorithm}
+
+\section{Implementation}
+\input{sections/implementation}
+
+\section{Experimental Evaluation}
+\input{sections/benchmarks}
+
+\section{Conclusion and Future Work}
+\input{sections/conclusion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if free AI could match premium models in scientific accuracy? The gap is narrowing faster than you think.
+[VISUAL DIRECTION] [Animated text: FREE AI vs PREMIUM - THE SHOCKING TRUTH]
+[VOICEOVER 0:05-0:20] University of Moratuwa researchers tested four open-source models against GPT-3.5 on complex scientific questions from recent literature.
+[VISUAL DIRECTION] [Show Figure 1 with model comparison bars, highlight Mistral-7b-instruct]
+[VOICEOVER 0:20-0:40] They wanted to know: Can cost-free AI handle academic queries with the same reliability as expensive premium services?
+[VISUAL DIRECTION] [Zoom on research question text overlay: "Cost-effective solutions for academic queries?"]
+[VOICEOVER 0:40-1:00] The results are stunning. Mistral-7b-instruct with retrieval-augmented generation achieved 85.7% accuracy, coming remarkably close to GPT-3.5's 90.5%.
+[VISUAL DIRECTION] [Show accuracy comparison chart: 85.7% vs 90.5% with narrow gap highlighted]
+[VOICEOVER 1:00-1:30] How? They built a database of 2023-2024 journal abstracts, converted them to vectors using SPECTER embeddings, and used FAISS for efficient searching. This RAG approach grounds AI responses in verified sources, reducing hallucinations.
+[VISUAL DIRECTION] [Animated diagram showing RAG process: Database → SPECTER → FAISS → Context → Response]
+[VOICEOVER 1:30-1:50] This means students and educators with limited budgets can now access reliable AI tools for academic work. The era of democratized AI is here.
+[VISUAL DIRECTION] [Show student/educator imagery with accessible AI tools overlay]
+[VOICEOVER 1:50-2:00] Free AI is closing the performance gap faster than expected. The future of accessible academic tools just got brighter.
+[VISUAL DIRECTION] [Closing text: "Open-source AI: 85.7% accuracy, 100% accessible"]

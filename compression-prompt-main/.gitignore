@@ -1,0 +1,96 @@
+# Rust
+/rust/target/
+/rust/Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Benchmark data (keep results, ignore datasets)
+/benchmarks/datasets/
+/benchmarks/results/compression/*.txt
+!/benchmarks/results/*.md
+!/benchmarks/results/**/*.json
+
+# arXiv papers and converted files
+*.pdf
+*.md
+!README.md
+!CHANGELOG.md
+!AGENTS.md
+!STATUS.md
+!IMPLEMENTATION_COMPLETE.md
+!docs/**/*.md
+!paper/**/*.md
+!benchmarks/results/**/*.md
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+out/
+
+# Node (para futuros bindings TypeScript)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (para futuros bindings Python)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv
+
+# Benchmark cache
+*.cache
+*.vecdb
+*.vecidx
+
+# Compression test outputs
+/test_outputs/
+/compressed_outputs/
+
+# LaTeX auxiliary files (do paper)
+/paper/*.aux
+/paper/*.bbl
+/paper/*.blg
+/paper/*.log
+/paper/*.out
+/paper/*.toc
+/paper/*.pdf
+!/paper/main.pdf
+/paper/*.synctex.gz
+/paper/*.fls
+/paper/*.fdb_latexmk
+

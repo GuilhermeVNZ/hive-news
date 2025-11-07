@@ -1,0 +1,1 @@
+AI models often fail when switching domains—costly retraining needed. New GMoPE framework enables foundation models to generalize across graph datasets with minimal adaptation, reducing parameters by 90%. How could this accelerate biomedical discoveries?

@@ -1,0 +1,1 @@
+AI fact-checking breakthrough: New hybrid system achieves 92.7% accuracy without fine-tuning. This transparent method combines knowledge graphs with LLMs to verify claims most systems can't. Could this solve misinformation while maintaining reliability?

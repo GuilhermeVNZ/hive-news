@@ -1,0 +1,181 @@
+\label{sec:theory}
+
+\subsection{Information Theory Background}
+
+\subsubsection{Zipf's Law and Word Frequency}
+
+Natural language follows Zipf's Law~\cite{zipf1935psycho}: the frequency $f$ of a word is inversely proportional to its rank $r$:
+
+\begin{equation}
+f(r) \propto \frac{1}{r^\alpha}
+\end{equation}
+
+where $\alpha \approx 1$ for English. This means:
+\begin{itemize}
+    \item Most frequent word (``the'') appears $\sim$7\% of the time
+    \item Top 10 words account for $\sim$25\% of all tokens
+    \item Top 100 words account for $\sim$50\% of all tokens
+\end{itemize}
+
+\textbf{Implication}: Removing the most frequent words (which carry minimal information) can achieve substantial compression.
+
+\subsubsection{Inverse Document Frequency (IDF)}
+
+In information retrieval, IDF quantifies a term's importance:
+
+\begin{equation}
+\text{IDF}(w) = \log\left(\frac{N}{df(w)}\right)
+\end{equation}
+
+where $N$ is total documents and $df(w)$ is documents containing word $w$.
+
+For single-document compression, we adapt this to word frequency within the document:
+
+\begin{equation}
+\text{IDF}(w) = \log\left(\frac{\text{total\_words}}{\text{count}(w) + 1}\right)
+\end{equation}
+
+\textbf{Intuition}: Rare words (high IDF) carry more information than common words (low IDF).
+
+\subsubsection{Shannon Entropy}
+
+The information content of a word in context relates to its unpredictability. Shannon entropy~\cite{shannon1948mathematical} for a discrete variable $X$:
+
+\begin{equation}
+H(X) = -\sum_{x \in X} P(x) \log P(x)
+\end{equation}
+
+While full entropy calculation requires context models, we approximate this through character diversity within words:
+
+\begin{equation}
+H(w) = -\sum_{c \in w} p(c) \log p(c)
+\end{equation}
+
+where $p(c)$ is the frequency of character $c$ in word $w$, normalized to $[0, 1]$.
+
+\subsection{Word Importance Scoring}
+
+We define a word's importance score $S(w)$ as a weighted combination of five components:
+
+\begin{equation}
+S(w) = \alpha \cdot \text{IDF}(w) + \beta \cdot \text{Pos}(w) + \gamma \cdot \text{POS}(w) + \delta \cdot \text{Ent}(w) + \epsilon \cdot H(w)
+\end{equation}
+
+where $\alpha + \beta + \gamma + \delta + \epsilon = 1.0$ and all components normalized to $[0, 1]$.
+
+\subsubsection{Component 1: IDF Weight ($\alpha = 0.3$)}
+
+Highest weight as rare words are most informative.
+
+\begin{equation}
+\text{IDF}(w) = \frac{\log\left(\frac{N}{\text{count}(w)}\right)}{\log(N)}
+\end{equation}
+
+Normalized to $[0, 1]$ where $N$ is total words.
+
+\subsubsection{Component 2: Position Weight ($\beta = 0.2$)}
+
+Words at the start or end of text carry more importance (primacy and recency effects):
+
+\begin{equation}
+\text{Pos}(w) = \begin{cases}
+1.0 & \text{if } \text{pos}(w) < 0.1N \text{ or } \text{pos}(w) > 0.9N \\
+0.7 & \text{if } \text{pos}(w) < 0.2N \text{ or } \text{pos}(w) > 0.8N \\
+0.5 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+U-shaped importance curve reflecting human attention patterns.
+
+\subsubsection{Component 3: POS Heuristics ($\gamma = 0.2$)}
+
+Without full POS tagging, we use heuristics:
+
+\begin{equation}
+\text{POS}(w) = \begin{cases}
+0.0 & \text{if } w \in \text{StopWords} \\
+1.0 & \text{if } w[0] \text{ is uppercase} \\
+0.7 & \text{if length}(w) > 5 \\
+0.3 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+Stop words: \{``the'', ``a'', ``an'', ``and'', ``or'', ``but'', ``in'', ``on'', ``at'', ``to'', ``for'', ``of'', ``with'', ``by'', ``from'', ``is'', ``was'', ``are'', ``were'', ``been'', ``have'', ``has'', ``had'', ``will'', ``would'', ``should'', ``could'', ``this'', ``that'', ...\}
+
+\subsubsection{Component 4: Entity Detection ($\delta = 0.2$)}
+
+Named entities (names, numbers, dates) are critical:
+
+\begin{equation}
+\text{Ent}(w) = \begin{cases}
+1.0 & \text{if capitalized or contains digits} \\
+1.0 & \text{if all uppercase (acronym)} \\
+0.0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+\subsubsection{Component 5: Local Entropy ($\epsilon = 0.1$)}
+
+Character diversity as a proxy for information content:
+
+\begin{equation}
+H(w) = \frac{-\sum_{c \in w} p(c) \log p(c)}{\log(\text{len}(w))}
+\end{equation}
+
+Lowest weight as it's a supplementary signal.
+
+\subsection{Compression as Optimization}
+
+Given target compression ratio $\tau$ (e.g., 0.5 for 50\% compression), we select the top $k$ words:
+
+\begin{equation}
+k = \lfloor \tau \cdot N \rfloor
+\end{equation}
+
+Then reconstruct text preserving original word order:
+
+\begin{equation}
+P' = \text{Join}(\text{Sort}(\text{Top}_k(S), \text{by}=\text{position}))
+\end{equation}
+
+\textbf{Optimality}: This is a greedy approach (not globally optimal) but provides a practical approximation to the NP-hard problem of optimal word selection under compression constraints.
+
+\subsection{Quality Metrics}
+
+We define four objective quality metrics:
+
+\subsubsection{Keyword Retention}
+
+\begin{equation}
+\text{KeyRet} = \frac{|\text{Keywords}(P') \cap \text{Keywords}(P)|}{|\text{Keywords}(P)|}
+\end{equation}
+
+where $\text{Keywords}(P) = \{w : \text{IDF}(w) > \theta_{\text{idf}}\}$
+
+\subsubsection{Entity Retention}
+
+\begin{equation}
+\text{EntRet} = \frac{|\text{Entities}(P') \cap \text{Entities}(P)|}{|\text{Entities}(P)|}
+\end{equation}
+
+where $\text{Entities}(P) = \{w : \text{Ent}(w) = 1.0\}$
+
+\subsubsection{Vocabulary Diversity}
+
+\begin{equation}
+\text{VocDiv} = \frac{|\text{unique}(P')|}{|\text{unique}(P)|}
+\end{equation}
+
+\subsubsection{Information Density}
+
+\begin{equation}
+\text{InfoDens} = \frac{|\text{unique}(P')|}{|P'|}
+\end{equation}
+
+\subsubsection{Overall Quality}
+
+\begin{equation}
+Q(P, P') = 0.3 \cdot \text{KeyRet} + 0.3 \cdot \text{EntRet} + 0.2 \cdot \text{VocDiv} + 0.2 \cdot \text{InfoDens}
+\end{equation}
+
+\textbf{Target}: $Q > 0.85$ (85\% quality retention)

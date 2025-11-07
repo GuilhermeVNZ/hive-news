@@ -1,0 +1,1 @@
+A new framework enables AI models to handle diverse network data efficiently, achieving top performance with minimal retraining—key for real-world applications like social networks and drug discovery.

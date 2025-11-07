@@ -1,0 +1,1 @@
+@ grows exponentially fast with l , and it does so along direction . The assumes diagonalizable simplic- ity, though using Jordan normal form one can extend this considering just eigenvalue subspace spanned eigenvectors sharing (largest) eigenvalue. This provides necessary condition gradients spectral absolute eigenvalue) must larger than 1. If in null space @ +
