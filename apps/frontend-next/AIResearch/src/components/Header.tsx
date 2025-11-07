@@ -29,13 +29,13 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-1">
           <Link
             href="/"
-            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+            className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
           >
             Articles
           </Link>
           <Link
             href="/education"
-            className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+            className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
           >
             Education
           </Link>
