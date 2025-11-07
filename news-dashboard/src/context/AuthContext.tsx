@@ -17,7 +17,9 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3005';
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== 'undefined' ? window.location.origin : '');
 
 // Configure axios defaults
 axios.defaults.baseURL = API_URL;

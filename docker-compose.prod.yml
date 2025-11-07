@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    env_file:
+      - news-backend/.env
+    volumes:
+      - ./downloads:/app/news-backend/downloads
+      - ./output:/app/news-backend/output
+      - ./logs:/app/news-backend/logs
+      - ./news-backend/system_config.json:/app/news-backend/system_config.json:ro
+      - ./news-backend/collectors_config.json:/app/news-backend/collectors_config.json:ro
+    ports:
+      - "3005:3005"
+    restart: unless-stopped
+
+  scienceai:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        APP_DIR: apps/frontend-next/ScienceAI
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  airesearch:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        APP_DIR: apps/frontend-next/AIResearch
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        APP_DIR: news-dashboard
+    depends_on:
+      - backend
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: news-system
+

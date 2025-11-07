@@ -1,0 +1,48 @@
+# Git
+.git
+
+# Node modules and Rust targets
+node_modules
+**/node_modules
+/target
+**/target
+
+# Local data directories
+/downloads
+/output
+/logs
+
+# Misc
+*.log
+.vscode
+.idea
+Thumbs.db
+# Binaries
+target
+**/target
+
+# Node dependencies
+node_modules
+**/node_modules
+
+# Local data directories
+downloads
+output
+logs
+
+# Git metadata
+.git
+.gitignore
+
+# IDE & system files
+.vscode
+.idea
+*.log
+Thumbs.db
+
+# Local runtime artifacts
+news-backend/backend.log
+news-backend/output.log
+news-backend/output_latest.log
+
+
