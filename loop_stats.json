@@ -1,16 +1,16 @@
 {
   "articles_by_source": {
-    "arxiv": 801,
+    "arxiv": 814,
     "html": 12,
     "pmc": 20,
-    "unknown": 197
+    "unknown": 198
   },
   "articles_written_by_site": {
-    "airesearch": 384,
+    "airesearch": 395,
     "scienceai": 162
   },
   "current_cycle": 0,
-  "last_cycle_completed_at": "2025-11-06T19:41:32.601414200+00:00",
+  "last_cycle_completed_at": "2025-11-07T02:05:50.409489500+00:00",
   "tokens_saved": 0,
   "tokens_total": 0,
   "tokens_used": 0

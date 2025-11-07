@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="relative border-t border-border bg-gradient-to-br from-card via-background to-card mt-auto overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-20" />
-      
+
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="relative">
@@ -63,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="#"
+                  href="/about"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
                   About
@@ -71,7 +71,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="mailto:contact@hive-hub.com"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
                   Contact

@@ -36,7 +36,10 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
     document.documentElement.classList.toggle("dark");
     // Save to localStorage
     if (typeof window !== "undefined") {
-      localStorage.setItem("airesearch-ui-theme", newDarkMode ? "dark" : "light");
+      localStorage.setItem(
+        "airesearch-ui-theme",
+        newDarkMode ? "dark" : "light",
+      );
     }
   };
 
@@ -44,9 +47,9 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
 
   if (!mounted) {
     return (
-      <Button 
-        variant="ghost" 
-        size="icon" 
+      <Button
+        variant="ghost"
+        size="icon"
         className={size === "compact" ? "h-9 w-9" : "h-14 w-14"}
       >
         <Sun className={iconClasses} />
@@ -55,9 +58,9 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
   }
 
   return (
-    <Button 
-      variant="ghost" 
-      size="icon" 
+    <Button
+      variant="ghost"
+      size="icon"
       onClick={toggleDarkMode}
       className={size === "compact" ? "h-9 w-9" : "h-14 w-14"}
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
@@ -70,4 +73,3 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
     </Button>
   );
 }
-

@@ -2,8 +2,8 @@
   "loop_config": {
     "enabled": false,
     "filter_score_min": 0.4,
-    "interval_minutes": 60,
-    "max_cycles": 1
+    "interval_minutes": 30,
+    "max_cycles": null
   },
   "paths": {
     "base_dir": "G:/Hive-Hub/News-main",
@@ -193,6 +193,9 @@
           "username": null
         }
       ],
+      "temperature_article": null,
+      "temperature_blog": null,
+      "temperature_social": null,
       "writer": {
         "api_key": null,
         "base_url": "https://api.deepseek.com",
@@ -1491,6 +1494,9 @@
           "username": null
         }
       ],
+      "temperature_article": null,
+      "temperature_blog": null,
+      "temperature_social": null,
       "writer": {
         "api_key": null,
         "base_url": "https://api.deepseek.com",
@@ -1504,5 +1510,5 @@
       "writing_style": "news"
     }
   },
-  "updated_at": "2025-11-03T15:07:47.294753200+00:00"
+  "updated_at": "2025-11-06T23:46:24.168603200+00:00"
 }

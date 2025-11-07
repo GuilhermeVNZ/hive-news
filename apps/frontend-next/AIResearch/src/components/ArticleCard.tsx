@@ -1,5 +1,11 @@
 import { Clock, ArrowRight } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
 
 interface ArticleCardProps {
@@ -22,31 +28,34 @@ const ArticleCard = ({
   readTime,
   imageCategories = [],
 }: ArticleCardProps) => {
-  const slug = title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-  
+  const slug = title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+
   // Map category values to display labels
   const categoryLabels: Record<string, string> = {
-    ai: 'AI',
-    robotics: 'Robotics',
-    science: 'Science',
-    coding: 'Coding',
-    crypto: 'Crypto',
-    database: 'Database',
-    ethics: 'Ethics',
-    games: 'Games',
-    hardware: 'Hardware',
-    legal: 'Legal',
-    network: 'Network',
-    security: 'Security',
-    sound: 'Sound',
+    ai: "AI",
+    robotics: "Robotics",
+    science: "Science",
+    coding: "Coding",
+    crypto: "Crypto",
+    database: "Database",
+    ethics: "Ethics",
+    games: "Games",
+    hardware: "Hardware",
+    legal: "Legal",
+    network: "Network",
+    security: "Security",
+    sound: "Sound",
   };
-  
+
   return (
     <Link href={`/article/${slug}`}>
       <Card className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift cursor-pointer h-full bg-gradient-to-br from-card via-card to-card/50">
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-primary/0 group-hover:to-primary/5 transition-all duration-300 pointer-events-none" />
-        
+
         <CardHeader className="relative">
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             {imageCategories.length > 0 ? (
@@ -56,10 +65,10 @@ const ArticleCard = ({
                   key={index}
                   className={`px-3 py-1 text-xs font-semibold rounded-full border transition-all ${
                     index === 0
-                      ? 'bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/20 group-hover:border-primary/40'
+                      ? "bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/20 group-hover:border-primary/40"
                       : index === 1
-                      ? 'bg-gradient-to-r from-cyan-500/20 to-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20'
-                      : 'bg-gradient-to-r from-blue-500/20 to-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20'
+                        ? "bg-gradient-to-r from-cyan-500/20 to-cyan-500/10 text-cyan-700 dark:text-cyan-400 border-cyan-500/20"
+                        : "bg-gradient-to-r from-blue-500/20 to-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
                   }`}
                 >
                   {categoryLabels[cat] || cat}
@@ -67,9 +76,9 @@ const ArticleCard = ({
               ))
             ) : (
               // Fallback to single category
-            <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/20 group-hover:border-primary/40 transition-all">
-              {category}
-            </span>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/20 group-hover:border-primary/40 transition-all">
+                {category}
+              </span>
             )}
           </div>
           <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors duration-300">
@@ -79,7 +88,7 @@ const ArticleCard = ({
             {excerpt}
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent className="relative">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
