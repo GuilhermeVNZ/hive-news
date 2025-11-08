@@ -10,9 +10,7 @@ const images = [
   'Gov.png',
   'Nexus.png',
   'Rulebook.png',
-  'Synap.png',
   'Transmutation.png',
-  'Vectorizer.png',
   'Voxa.png'
 ];
 

@@ -1,9 +1,9 @@
 // News System - Main Orchestrator
 // Execute with: cargo run --bin start
 
+use std::collections::HashMap;
 use std::env;
 use std::process::{Command, Stdio};
-use std::collections::HashMap;
 
 fn main() {
     println!("🚀 News System - Main Orchestrator");
@@ -31,30 +31,26 @@ fn start_full_system() {
     // Etapa 1: Verificar dependências
     println!("📋 Step 1: Checking system dependencies...");
     check_dependencies();
-    
+
     // Etapa 2: Verificar se servers.exe foi executado
     println!("\n🔍 Step 2: Verifying if servers are running...");
-    println!("   → Vectorizer should be at http://localhost:15002");
-    println!("   → Synap should be at http://localhost:15500");
     println!("   → News Dashboard should be at http://localhost:1420");
     println!("   → AIResearch should be at http://localhost:3003");
     println!("   → ScienceAI should be at http://localhost:8080");
     println!("   💡 Run 'cargo run --bin servers' first to start all servers");
     std::thread::sleep(std::time::Duration::from_secs(2));
-    
+
     // Etapa 3: Iniciar Backend
     println!("\n🔧 Step 3: Starting Backend Server...");
     println!("   → Running backend on http://localhost:3005");
     start_backend_background();
-    
+
     // Etapa 4: Aguardar backend estar pronto
     println!("⏳ Step 4: Waiting for backend to be ready...");
     std::thread::sleep(std::time::Duration::from_secs(3));
-    
+
     println!("\n✅ News System is FULLY OPERATIONAL!");
     println!("=====================================");
-    println!("   🔍 Vectorizer:     http://localhost:15002 (started via servers.exe)");
-    println!("   🔍 Synap:           http://localhost:15500 (started via servers.exe)");
     println!("   🔧 Backend API:    http://localhost:3005");
     println!("   🎨 News Dashboard: http://localhost:1420 (started via servers.exe)");
     println!("   🌐 AIResearch:     http://localhost:3003 (started via servers.exe)");
@@ -62,7 +58,7 @@ fn start_full_system() {
     println!("   🎯 Orchestrator:   ACTIVE");
     println!("   ⏰ Scheduler:      CONFIGURED");
     println!("   📊 Monitor:        RUNNING");
-    
+
     // Etapa 5: Iniciar Pipeline Automático (Artigos + News em paralelo)
     println!("\n🚀 Step 5: Starting Automatic Pipelines...");
     println!("   📄 Articles Pipeline:");
@@ -74,12 +70,12 @@ fn start_full_system() {
     println!("      🔍 Phase 2: Filter duplicates");
     println!("      ✍️  Phase 3: Generate news articles");
     println!("      🧹 Phase 4: Cleanup processed files");
-    
+
     // Executar pipeline em background
     std::thread::spawn(|| {
         execute_full_pipeline();
     });
-    
+
     println!("\n   Press Ctrl+C to stop all services...\n");
 
     // Orquestração contínua
@@ -95,21 +91,22 @@ fn check_dependencies() {
     ];
 
     for (name, cmd) in checks {
-        match Command::new("cmd")
-            .args(&["/C", cmd])
-            .output() {
+        match Command::new("cmd").args(&["/C", cmd]).output() {
             Ok(_) => println!("✅ {} - OK", name),
             Err(_) => println!("❌ {} - NOT FOUND", name),
         }
     }
 
-    // Verificar servers.exe (gerencia vectorizer, synap e frontends)
+    // Verificar servers.exe (gerencia frontends)
     let servers_path = "G:\\Hive-Hub\\News-main\\news-backend\\target\\release\\servers.exe";
     if std::path::Path::new(servers_path).exists() {
         println!("✅ Servers Orchestrator - Binary found");
-        println!("   💡 Use 'cargo run --bin servers' to start all servers (Vectorizer, Synap, Frontends)");
+        println!("   💡 Use 'cargo run --bin servers' para iniciar todos os frontends");
     } else {
-        println!("⚠️  Servers Orchestrator - Binary not found at: {}", servers_path);
+        println!(
+            "⚠️  Servers Orchestrator - Binary not found at: {}",
+            servers_path
+        );
         println!("   Run: cd news-backend && cargo build --release --bin servers");
     }
 }
@@ -137,14 +134,17 @@ fn start_backend_background() {
     }
 
     let backend_path = "./news-backend";
-    
+
     // Verificar se o diretório existe
     if !std::path::Path::new(backend_path).exists() {
         println!("❌ Backend directory not found at: {}", backend_path);
         return;
     }
 
-    println!("   Running: cd {} && cargo run --bin news-backend", backend_path);
+    println!(
+        "   Running: cd {} && cargo run --bin news-backend",
+        backend_path
+    );
     // Em produção, executaria com spawn em background
     std::thread::spawn(|| {
         Command::new("cmd")
@@ -155,21 +155,21 @@ fn start_backend_background() {
     });
 }
 
-// Função removida - Vectorizer agora é iniciado via servers.exe
-// Use: cargo run --bin servers
-// Função check_port removida - não é mais necessária
-
-// Função removida - Dashboard agora é iniciado via servers.exe
-// Use: cargo run --bin servers
-
 fn monitor_system() {
     let metrics = HashMap::from([
-        ("Vectorizer", "http://localhost:15002 (started via servers.exe)"),
-        ("Synap", "http://localhost:15500 (started via servers.exe)"),
         ("Backend API", "http://localhost:3005"),
-        ("News Dashboard", "http://localhost:1420 (started via servers.exe)"),
-        ("AIResearch", "http://localhost:3003 (started via servers.exe)"),
-        ("ScienceAI", "http://localhost:8080 (started via servers.exe)"),
+        (
+            "News Dashboard",
+            "http://localhost:1420 (started via servers.exe)",
+        ),
+        (
+            "AIResearch",
+            "http://localhost:3003 (started via servers.exe)",
+        ),
+        (
+            "ScienceAI",
+            "http://localhost:8080 (started via servers.exe)",
+        ),
         ("Database", "connected"),
         ("Collector", "idle"),
     ]);
@@ -186,12 +186,6 @@ fn start_backend() {
     println!("Server will be available at: http://localhost:3005");
 }
 
-// Função removida - Dashboard agora é iniciado via servers.exe
-// Use: cargo run --bin servers
-
-// Função removida - Vectorizer agora é iniciado via servers.exe
-// Use: cargo run --bin servers
-
 fn test_collector() {
     println!("🔍 Collector Service - Continuous Pipeline Mode");
     println!("\n🚀 Starting Continuous Pipeline Loop...");
@@ -207,7 +201,7 @@ fn test_collector() {
     println!("   ✅ Rate limiting (3s delay between downloads)");
     println!("   ✅ Incremental collection (anti-duplication via registry)");
     println!("\n🔄 Running continuously...\n");
-    
+
     // Usar a função de pipeline contínuo que tem o loop
     execute_full_pipeline();
 }
@@ -228,15 +222,17 @@ cargo run --bin news-backend collect-enabled
     let stdout = String::from_utf8_lossy(&output.stdout);
     let stderr = String::from_utf8_lossy(&output.stderr);
     println!("{}", stdout);
-    if !stderr.is_empty() { eprintln!("{}", stderr); }
+    if !stderr.is_empty() {
+        eprintln!("{}", stderr);
+    }
 }
 
 fn run_filter() {
     println!("🔍 Filter Service - Validating Scientific Papers\n");
-    
+
     // Usar binário compilado diretamente para evitar lock conflicts
     let backend_bin = "G:\\Hive-Hub\\News-main\\news-backend\\target\\debug\\news-backend.exe";
-    
+
     let mut child = if std::path::Path::new(backend_bin).exists() {
         Command::new(backend_bin)
             .arg("filter")
@@ -258,22 +254,25 @@ fn run_filter() {
             .spawn()
             .expect("Failed to execute filter")
     };
-    
+
     let status = child.wait().expect("Failed to wait for filter");
-    
+
     println!("");
     if status.success() {
         println!("✅ [ARTICLES] Filter completed!");
         println!("   Approved: G:\\Hive-Hub\\News-main\\downloads\\filtered\\");
     } else {
-        println!("⚠️  [ARTICLES] Filter had issues (exit code: {:?})", status.code());
+        println!(
+            "⚠️  [ARTICLES] Filter had issues (exit code: {:?})",
+            status.code()
+        );
         println!("   Check output above for details");
     }
 }
 
 fn run_writer() {
     println!("✍️  [ARTICLES] DeepSeek Writer - Processing filtered papers\n");
-    
+
     // Load configuration from system_config.json
     let (api_key, site_id) = match load_writer_config() {
         Ok((key, site)) => (key, site),
@@ -288,11 +287,11 @@ fn run_writer() {
             )
         }
     };
-    
+
     // Get backend binary path (try multiple locations)
     let backend_bin = find_backend_binary();
     let backend_dir = get_backend_directory();
-    
+
     let mut cmd = if backend_bin.exists() {
         println!("   Using binary: {}", backend_bin.display());
         let mut c = Command::new(&backend_bin);
@@ -305,28 +304,35 @@ fn run_writer() {
             .current_dir(&backend_dir);
         c
     };
-    
+
     cmd.env("RUST_LOG", "info");
-    
+
     // Set API key from config or env
     if let Some(key) = &api_key {
         cmd.env("DEEPSEEK_API_KEY", key);
     } else if std::env::var("DEEPSEEK_API_KEY").is_err() {
         eprintln!("⚠️  Warning: No DEEPSEEK_API_KEY found in config or environment");
     }
-    
+
     cmd.env("WRITER_DEFAULT_SITE", &site_id);
     cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
-    
+
     let mut child = cmd.spawn().expect("Failed to execute writer");
     let status = child.wait().expect("Failed to wait for writer");
-    
+
     println!("");
     if status.success() {
         println!("✅ [ARTICLES] Content generation completed!");
-        println!("   Output: {}/output/{}/", get_base_directory(), site_id.to_uppercase());
+        println!(
+            "   Output: {}/output/{}/",
+            get_base_directory(),
+            site_id.to_uppercase()
+        );
     } else {
-        println!("⚠️  [ARTICLES] Content generation had issues (exit code: {:?})", status.code());
+        println!(
+            "⚠️  [ARTICLES] Content generation had issues (exit code: {:?})",
+            status.code()
+        );
         println!("   Check output above for details");
     }
 }
@@ -335,34 +341,36 @@ fn run_writer() {
 fn load_writer_config() -> Result<(Option<String>, String), Box<dyn std::error::Error>> {
     use std::fs;
     use std::path::Path;
-    
+
     let possible_config_paths = vec![
         Path::new("news-backend/system_config.json"),
         Path::new("system_config.json"),
         Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
         Path::new("G:/Hive-Hub/News-main/system_config.json"),
     ];
-    
+
     let config_path = possible_config_paths
         .iter()
         .find(|p| p.exists())
         .ok_or("system_config.json not found")?;
-    
+
     let content = fs::read_to_string(config_path)?;
     let json: serde_json::Value = serde_json::from_str(&content)?;
-    
+
     // Find first enabled site with writer enabled
-    let sites = json.get("sites")
+    let sites = json
+        .get("sites")
         .and_then(|s| s.as_object())
         .ok_or("sites not found in config")?;
-    
+
     for (site_id, site) in sites {
         if let Some(enabled) = site.get("enabled").and_then(|e| e.as_bool()) {
             if enabled {
                 if let Some(writer) = site.get("writer") {
                     if let Some(writer_enabled) = writer.get("enabled").and_then(|e| e.as_bool()) {
                         if writer_enabled {
-                            let api_key = writer.get("api_key")
+                            let api_key = writer
+                                .get("api_key")
                                 .and_then(|k| k.as_str())
                                 .map(|s| s.to_string());
                             return Ok((api_key, site_id.clone()));
@@ -372,7 +380,7 @@ fn load_writer_config() -> Result<(Option<String>, String), Box<dyn std::error::
             }
         }
     }
-    
+
     Err("No enabled site with writer enabled found".into())
 }
 
@@ -383,10 +391,14 @@ fn find_backend_binary() -> std::path::PathBuf {
         std::path::PathBuf::from("news-backend/target/release/news-backend.exe"),
         std::path::PathBuf::from("target/debug/news-backend.exe"),
         std::path::PathBuf::from("target/release/news-backend.exe"),
-        std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend/target/debug/news-backend.exe"),
-        std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend/target/release/news-backend.exe"),
+        std::path::PathBuf::from(
+            "G:/Hive-Hub/News-main/news-backend/target/debug/news-backend.exe",
+        ),
+        std::path::PathBuf::from(
+            "G:/Hive-Hub/News-main/news-backend/target/release/news-backend.exe",
+        ),
     ];
-    
+
     possible_paths
         .into_iter()
         .find(|p| p.exists())
@@ -399,7 +411,7 @@ fn get_backend_directory() -> std::path::PathBuf {
         std::path::PathBuf::from("news-backend"),
         std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend"),
     ];
-    
+
     possible_dirs
         .into_iter()
         .find(|p| p.exists())
@@ -415,35 +427,35 @@ fn get_base_directory() -> String {
 
 // Helper function to load paths from config
 fn load_paths_from_config() -> Result<String, Box<dyn std::error::Error>> {
+    use serde::Deserialize;
     use std::fs;
     use std::path::Path;
-    use serde::Deserialize;
-    
+
     #[derive(Deserialize)]
     struct PathsFromConfig {
         paths: PathsConfigData,
     }
-    
+
     #[derive(Deserialize)]
     struct PathsConfigData {
         base_dir: String,
     }
-    
+
     let possible_config_paths = vec![
         Path::new("news-backend/system_config.json"),
         Path::new("system_config.json"),
         Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
         Path::new("G:/Hive-Hub/News-main/system_config.json"),
     ];
-    
+
     let config_path = possible_config_paths
         .iter()
         .find(|p| p.exists())
         .ok_or("system_config.json not found")?;
-    
+
     let content = fs::read_to_string(config_path)?;
     let json: PathsFromConfig = serde_json::from_str(&content)?;
-    
+
     Ok(json.paths.base_dir)
 }
 
@@ -472,12 +484,19 @@ fn check_system_status() {
     println!("📊 Checking System Status...\n");
 
     let components = vec![
-        ("Vectorizer", "http://localhost:15002 (started via servers.exe)"),
-        ("Synap", "http://localhost:15500 (started via servers.exe)"),
         ("Backend API", "http://localhost:3005"),
-        ("News Dashboard", "http://localhost:1420 (started via servers.exe)"),
-        ("AIResearch", "http://localhost:3003 (started via servers.exe)"),
-        ("ScienceAI", "http://localhost:8080 (started via servers.exe)"),
+        (
+            "News Dashboard",
+            "http://localhost:1420 (started via servers.exe)",
+        ),
+        (
+            "AIResearch",
+            "http://localhost:3003 (started via servers.exe)",
+        ),
+        (
+            "ScienceAI",
+            "http://localhost:8080 (started via servers.exe)",
+        ),
         ("Database", "PostgreSQL"),
         ("Collector Service", "News-backend"),
     ];
@@ -493,48 +512,51 @@ fn check_system_status() {
 
 fn run_orchestration_loop() {
     let mut iteration = 0;
-    
+
     loop {
         iteration += 1;
         println!("\n🔄 Orchestration Loop #{}", iteration);
-        
+
         // Verificar saúde do sistema
         println!("   💚 Health check...");
         check_system_health();
-        
+
         // Verificar status dos serviços
         println!("   📥 Checking service status...");
-        
+
         // Executar tarefas agendadas
         println!("   ⏰ Checking scheduled tasks...");
-        
+
         // Aguardar próximo ciclo
         std::thread::sleep(std::time::Duration::from_secs(30));
     }
 }
 
 fn load_loop_config() -> (u64, f64, Option<u32>) {
-    use std::fs;
     use serde_json::Value;
-    
+    use std::fs;
+
     let possible_config_paths = vec![
         "news-backend/system_config.json",
         "system_config.json",
         "G:/Hive-Hub/News-main/news-backend/system_config.json",
         "G:/Hive-Hub/News-main/system_config.json",
     ];
-    
+
     for path in possible_config_paths {
         if let Ok(content) = fs::read_to_string(path) {
             if let Ok(json) = serde_json::from_str::<Value>(&content) {
                 if let Some(loop_config) = json.get("loop_config") {
-                    let interval = loop_config.get("interval_minutes")
+                    let interval = loop_config
+                        .get("interval_minutes")
                         .and_then(|v| v.as_u64())
                         .unwrap_or(30);
-                    let filter_score = loop_config.get("filter_score_min")
+                    let filter_score = loop_config
+                        .get("filter_score_min")
                         .and_then(|v| v.as_f64())
                         .unwrap_or(0.4);
-                    let max_cycles = loop_config.get("max_cycles")
+                    let max_cycles = loop_config
+                        .get("max_cycles")
                         .and_then(|v| v.as_u64())
                         .map(|v| v as u32);
                     return (interval, filter_score, max_cycles);
@@ -542,7 +564,7 @@ fn load_loop_config() -> (u64, f64, Option<u32>) {
             }
         }
     }
-    
+
     // Defaults
     (30, 0.4, None)
 }
@@ -550,14 +572,17 @@ fn load_loop_config() -> (u64, f64, Option<u32>) {
 fn execute_full_pipeline() {
     // Aguardar um pouco para garantir que backend está pronto
     std::thread::sleep(std::time::Duration::from_secs(5));
-    
+
     // Load loop configuration from system_config.json
     let (interval_minutes, filter_score_min, max_cycles) = load_loop_config();
     let interval_seconds = interval_minutes * 60;
-    
+
     println!("\n\n🔄 Starting Automatic Pipeline Loop");
     println!("=====================================");
-    println!("   ⏰ Interval: {} minutes ({} seconds)", interval_minutes, interval_seconds);
+    println!(
+        "   ⏰ Interval: {} minutes ({} seconds)",
+        interval_minutes, interval_seconds
+    );
     println!("   🔍 Filter Score Min: {:.2}", filter_score_min);
     if let Some(max) = max_cycles {
         println!("   🔢 Max Cycles: {}", max);
@@ -567,45 +592,44 @@ fn execute_full_pipeline() {
     println!("   🚀 Running continuously...");
     println!("   📄 Articles Pipeline: Active");
     println!("   📰 News Pipeline: Active (parallel)\n");
-    
+
     let mut cycle = 1;
-    
+
     loop {
         // Check if we've reached max cycles
         if let Some(max) = max_cycles {
             if cycle > max {
                 println!("\n{}", "=".repeat(70));
-                println!("✅ Reached maximum cycles ({}). Stopping pipeline loop.", max);
+                println!(
+                    "✅ Reached maximum cycles ({}). Stopping pipeline loop.",
+                    max
+                );
                 println!("{}", "=".repeat(70));
                 return;
             }
         }
-        
+
         let start_time = std::time::Instant::now();
-        
+
         println!("\n{}", "=".repeat(70));
         println!("🔄 CYCLE #{} - Pipeline Execution Started", cycle);
         println!("⏱️  Time: {}", get_current_time());
         println!("{}", "=".repeat(70));
-        
+
         // Executar pipelines em paralelo usando threads
         println!("\n🚀 Starting parallel pipelines...");
         println!("   📄 Articles pipeline: Thread spawned");
         println!("   📰 News pipeline: Thread spawned\n");
-        
-        let papers_pipeline_handle = std::thread::spawn(|| {
-            execute_papers_pipeline()
-        });
-        
-        let news_pipeline_handle = std::thread::spawn(|| {
-            execute_news_pipeline()
-        });
-        
+
+        let papers_pipeline_handle = std::thread::spawn(|| execute_papers_pipeline());
+
+        let news_pipeline_handle = std::thread::spawn(|| execute_news_pipeline());
+
         // Aguardar ambos os pipelines terminarem
         println!("⏳ Waiting for both pipelines to complete...\n");
         let papers_result = papers_pipeline_handle.join();
         let news_result = news_pipeline_handle.join();
-        
+
         // Verificar se houve erros
         println!("\n📊 Pipeline Results Summary:");
         if let Err(e) = papers_result {
@@ -613,17 +637,17 @@ fn execute_full_pipeline() {
         } else {
             println!("   ✅ [ARTICLES] Papers pipeline thread completed");
         }
-        
+
         if let Err(e) = news_result {
             eprintln!("   ❌ [NEWS] News pipeline thread error: {:?}", e);
         } else {
             println!("   ✅ [NEWS] News pipeline thread completed");
         }
         println!("");
-        
+
         let execution_time = start_time.elapsed();
         let next_run = chrono::Local::now() + chrono::Duration::minutes(interval_minutes as i64);
-        
+
         println!("\n{}", "=".repeat(70));
         println!("✅ Cycle #{} completed successfully!", cycle);
         println!("⏱️  Execution time: {:?}", execution_time);
@@ -631,22 +655,28 @@ fn execute_full_pipeline() {
         println!("📂 Output: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
         println!("📰 News Output: G:\\Hive-Hub\\News-main\\output\\ScienceAI\\");
         println!("{}", "=".repeat(70));
-        
+
         // Save loop statistics
         save_loop_stats(cycle - 1);
-        
+
         cycle += 1;
-        
+
         // Check if we've reached max cycles before waiting
         if let Some(max) = max_cycles {
             if cycle > max {
-                println!("\n✅ Reached maximum cycles ({}). Stopping pipeline loop.", max);
+                println!(
+                    "\n✅ Reached maximum cycles ({}). Stopping pipeline loop.",
+                    max
+                );
                 return;
             }
         }
-        
+
         // Aguardar intervalo configurado antes de próxima execução
-        println!("\n⏳ Waiting {} minutes until next cycle...\n", interval_minutes);
+        println!(
+            "\n⏳ Waiting {} minutes until next cycle...\n",
+            interval_minutes
+        );
         std::thread::sleep(std::time::Duration::from_secs(interval_seconds));
     }
 }
@@ -655,14 +685,14 @@ fn execute_papers_pipeline() {
     println!("\n📄 [ARTICLES PIPELINE] ======================================");
     println!("📄 [ARTICLES] Starting papers collection and processing...");
     println!("📄 [ARTICLES PIPELINE] ======================================\n");
-    
+
     // FASE 1: Collector - arXiv (apenas arXiv, conforme solicitado)
     println!("📄 [ARTICLES] Phase 1: Collecting papers from arXiv...");
     let start_time = std::time::Instant::now();
-    
+
     // Usar binário compilado diretamente para evitar lock conflicts
     let backend_bin = "G:\\Hive-Hub\\News-main\\news-backend\\target\\debug\\news-backend.exe";
-    
+
     let mut child = if std::path::Path::new(backend_bin).exists() {
         Command::new(backend_bin)
             .arg("collect")
@@ -684,16 +714,16 @@ fn execute_papers_pipeline() {
             .spawn()
             .expect("Failed to execute collector")
     };
-    
+
     // Aguardar processo terminar
     let status = child.wait().expect("Failed to wait for collector");
     let duration = start_time.elapsed();
-    
+
     println!("📄 [ARTICLES] Collection completed in {:?}", duration);
     println!("📄 [ARTICLES] Exit code: {:?}", status.code());
-    
+
     let collection_success = status.success();
-    
+
     if collection_success {
         println!("\n📄 [ARTICLES] ✅ Collection completed!");
         println!("📄 [ARTICLES] Check: G:\\Hive-Hub\\News-main\\downloads\\arxiv\\");
@@ -702,17 +732,17 @@ fn execute_papers_pipeline() {
         println!("📄 [ARTICLES] Check output above for details");
         println!("📄 [ARTICLES] Will still run Filter and Writer for existing PDFs");
     }
-    
+
     // FASE 2: Filter - SEMPRE executar, mesmo se Collector não encontrou novos artigos
     // Isso garante que PDFs pendentes sejam processados
     println!("\n📄 [ARTICLES] Phase 2: Filtering and validating papers...");
     run_filter();
-    
+
     // FASE 3: Writer - SEMPRE executar, mesmo se não encontrou novos artigos
     // Isso garante que PDFs filtrados pendentes sejam processados
     println!("\n📄 [ARTICLES] Phase 3: Generating content with DeepSeek...");
     run_writer();
-    
+
     println!("\n📄 [ARTICLES PIPELINE] ✅ Completed!");
     println!("");
 }
@@ -721,19 +751,19 @@ fn execute_news_pipeline() {
     println!("\n📰 [NEWS PIPELINE] =========================================");
     println!("📰 [NEWS PIPELINE] Starting news collection and processing...");
     println!("📰 [NEWS PIPELINE] =========================================\n");
-    
+
     // Executar o pipeline completo de news: collect → filter → write → cleanup
     // Usar o binário compilado diretamente ao invés de cargo run para evitar lock conflicts
     // Use spawn with inherit to see output in real-time
     // This allows us to see debug logs (eprintln!) immediately
     println!("📰 [NEWS] Running complete news pipeline (collect → filter → write → cleanup)...");
     println!("📰 [NEWS] This may take a few minutes...\n");
-    
+
     let start_time = std::time::Instant::now();
-    
+
     let backend_bin = find_backend_binary();
     let backend_dir = get_backend_directory();
-    
+
     let mut cmd = if backend_bin.exists() {
         println!("📰 [NEWS] Using binary: {}", backend_bin.display());
         let mut c = Command::new(&backend_bin);
@@ -746,26 +776,29 @@ fn execute_news_pipeline() {
             .current_dir(&backend_dir);
         c
     };
-    
+
     cmd.env("RUST_LOG", "info");
     cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
-    
+
     let mut child = cmd.spawn().expect("Failed to execute news pipeline");
     let status = child.wait().expect("Failed to wait for news pipeline");
-    
+
     let duration = start_time.elapsed();
-    
+
     println!("\n📰 [NEWS PIPELINE] =========================================");
     println!("📰 [NEWS] Execution completed in {:?}", duration);
     println!("📰 [NEWS] Exit code: {:?}", status.code());
     println!("📰 [NEWS PIPELINE] =========================================\n");
-    
+
     if status.success() {
         println!("📰 [NEWS PIPELINE] ✅ Completed successfully!");
         println!("📰 [NEWS] Check: G:\\Hive-Hub\\News-main\\output\\ScienceAI\\");
         println!("📰 [NEWS] Check: G:\\Hive-Hub\\News-main\\output\\AIResearch\\");
     } else {
-        println!("📰 [NEWS PIPELINE] ⚠️  Had issues (exit code: {:?})", status.code());
+        println!(
+            "📰 [NEWS PIPELINE] ⚠️  Had issues (exit code: {:?})",
+            status.code()
+        );
         println!("📰 [NEWS] Check output above for details");
     }
     println!("");
@@ -777,8 +810,6 @@ fn get_current_time() -> String {
 
 fn check_system_health() {
     // Verificar saúde do sistema
-    println!("   ✅ Vectorizer: Active (started via servers.exe)");
-    println!("   ✅ Synap: Active (started via servers.exe)");
     println!("   ✅ Backend: Healthy");
     println!("   ✅ Frontends: Running (started via servers.exe)");
     println!("   ✅ Database: Connected");
@@ -790,14 +821,14 @@ fn show_help() {
     println!("Available Commands:\n");
     println!("  start      - 🚀 Start FULL system (backend + pipeline)");
     println!("                 Note: Run 'cargo run --bin servers' first to start all servers");
-    println!("                 (Vectorizer, Synap, News Dashboard, AIResearch, ScienceAI)");
+    println!("                 (News Dashboard, AIResearch, ScienceAI)");
     println!("  backend    - 🔧 Start backend server only");
     println!("  collector  - 🔍 Test collector service (collector → filter → writer)");
     println!("  schedule   - ⏰ Run scheduled collection tasks");
     println!("  monitor    - 📊 Monitor system health");
     println!("  status     - ℹ️  Check system status");
     println!("  help       - 📖 Show this help\n");
-    println!("💡 To start all servers (Vectorizer, Synap, Frontends):");
+    println!("💡 To start all frontends:");
     println!("   cd news-backend && cargo run --bin servers\n");
     println!("🔐 Collector Security:");
     println!("   • Uses export.arxiv.org (official API, no reCAPTCHA)");
@@ -812,29 +843,30 @@ fn show_help() {
 }
 
 fn save_loop_stats(cycle: u32) {
-    use std::fs;
     use serde_json::{json, Value};
-    
+    use std::fs;
+
     let stats_path = "G:/Hive-Hub/News-main/loop_stats.json";
-    
+
     // Try to read existing stats
     let mut stats: Value = if let Ok(content) = fs::read_to_string(stats_path) {
         serde_json::from_str(&content).unwrap_or_else(|_| json!({}))
     } else {
         json!({})
     };
-    
+
     // Get last cycle completion time to filter only current cycle articles
-    let last_cycle_time = stats.get("last_cycle_completed_at")
+    let last_cycle_time = stats
+        .get("last_cycle_completed_at")
         .and_then(|v| v.as_str())
         .and_then(|s| chrono::DateTime::parse_from_rfc3339(s).ok())
         .map(|dt| dt.with_timezone(&chrono::Utc));
-    
+
     // Update current cycle
     let cycle_start_time = chrono::Utc::now();
     stats["current_cycle"] = json!(cycle);
     stats["last_cycle_completed_at"] = json!(cycle_start_time.to_rfc3339());
-    
+
     // Collect articles by source from registry (only from current cycle)
     let registry_path = "G:/Hive-Hub/News-main/articles_registry.json";
     let mut articles_by_source: HashMap<String, u32> = HashMap::new();
@@ -842,7 +874,7 @@ fn save_loop_stats(cycle: u32) {
     let mut tokens_total = 0u64;
     let mut tokens_saved = 0u64;
     let mut tokens_used = 0u64;
-    
+
     if let Ok(registry_content) = fs::read_to_string(registry_path) {
         if let Ok(registry_json) = serde_json::from_str::<Value>(&registry_content) {
             if let Some(articles) = registry_json.get("articles").and_then(|v| v.as_object()) {
@@ -856,10 +888,14 @@ fn save_loop_stats(cycle: u32) {
                     } else {
                         continue;
                     }
-                    
+
                     // Check if published in current cycle
-                    let is_current_cycle = if let Some(published_at) = article.get("published_at").and_then(|v| v.as_str()) {
-                        if let Ok(published_time) = chrono::DateTime::parse_from_rfc3339(published_at) {
+                    let is_current_cycle = if let Some(published_at) =
+                        article.get("published_at").and_then(|v| v.as_str())
+                    {
+                        if let Ok(published_time) =
+                            chrono::DateTime::parse_from_rfc3339(published_at)
+                        {
                             let published_utc = published_time.with_timezone(&chrono::Utc);
                             if let Some(last_cycle) = last_cycle_time {
                                 published_utc > last_cycle && published_utc <= cycle_start_time
@@ -873,13 +909,13 @@ fn save_loop_stats(cycle: u32) {
                     } else {
                         false
                     };
-                    
+
                     if !is_current_cycle {
                         continue;
                     }
-                    
+
                     let mut source_detected = false;
-                    
+
                     // Check source_type first (for news)
                     if let Some(source_type) = article.get("source_type").and_then(|v| v.as_str()) {
                         match source_type {
@@ -894,7 +930,7 @@ fn save_loop_stats(cycle: u32) {
                             _ => {}
                         }
                     }
-                    
+
                     // Check arxiv_url (for articles)
                     if !source_detected {
                         if let Some(arxiv_url) = article.get("arxiv_url").and_then(|v| v.as_str()) {
@@ -907,10 +943,17 @@ fn save_loop_stats(cycle: u32) {
                             }
                         }
                     }
-                    
+
                     // If not detected yet, check ID format (arXiv IDs are like "2510.12345")
                     if !source_detected {
-                        if id.contains(".") && id.chars().filter(|c| c.is_ascii_digit() || *c == '.').count() == id.len() && id.matches('.').count() == 1 {
+                        if id.contains(".")
+                            && id
+                                .chars()
+                                .filter(|c| c.is_ascii_digit() || *c == '.')
+                                .count()
+                                == id.len()
+                            && id.matches('.').count() == 1
+                        {
                             // Looks like arXiv ID format
                             *articles_by_source.entry("arxiv".to_string()).or_insert(0) += 1;
                             source_detected = true;
@@ -926,7 +969,9 @@ fn save_loop_stats(cycle: u32) {
                                 } else if url.contains("html") || url.contains("http") {
                                     *articles_by_source.entry("html".to_string()).or_insert(0) += 1;
                                 } else {
-                                    *articles_by_source.entry("unknown".to_string()).or_insert(0) += 1;
+                                    *articles_by_source
+                                        .entry("unknown".to_string())
+                                        .or_insert(0) += 1;
                                 }
                             } else {
                                 *articles_by_source.entry("unknown".to_string()).or_insert(0) += 1;
@@ -934,22 +979,27 @@ fn save_loop_stats(cycle: u32) {
                             source_detected = true;
                         }
                     }
-                    
+
                     // Count articles written by site (check published status and destinations)
-                    if let Some(destinations) = article.get("destinations").and_then(|v| v.as_array()) {
+                    if let Some(destinations) =
+                        article.get("destinations").and_then(|v| v.as_array())
+                    {
                         for dest in destinations {
                             if let Some(site_id) = dest.as_str().or_else(|| {
                                 dest.as_object()
                                     .and_then(|d| d.get("site_id"))
                                     .and_then(|v| v.as_str())
                             }) {
-                                *articles_written_by_site.entry(site_id.to_string()).or_insert(0) += 1;
+                                *articles_written_by_site
+                                    .entry(site_id.to_string())
+                                    .or_insert(0) += 1;
                             }
                         }
                     }
-                    
+
                     // Calculate tokens for this article (from output_dir if available)
-                    if let Some(output_dir_str) = article.get("output_dir").and_then(|v| v.as_str()) {
+                    if let Some(output_dir_str) = article.get("output_dir").and_then(|v| v.as_str())
+                    {
                         let output_dir = std::path::Path::new(output_dir_str);
                         if output_dir.exists() {
                             // Try article.md first (actual format), then article.txt
@@ -959,7 +1009,7 @@ fn save_loop_stats(cycle: u32) {
                             } else {
                                 fs::read_to_string(output_dir.join("article.txt")).ok()
                             };
-                            
+
                             if let Some(content_text) = content {
                                 // Rough token estimate: 1 token ≈ 4 characters
                                 // tokens_total: tokens that would be used without compression (estimate based on content)
@@ -967,14 +1017,15 @@ fn save_loop_stats(cycle: u32) {
                                 let content_tokens = content_text.len() / 4;
                                 let estimated_prompt_tokens = content_tokens * 2; // Prompt typically 2x content size
                                 tokens_total += estimated_prompt_tokens as u64;
-                                
+
                                 // tokens_used: tokens actually used (with compression if applicable)
                                 // Assume compression saves ~25% on average
-                                let estimated_used = (estimated_prompt_tokens as f64 * 0.75) as u64; // 75% of original
-                                tokens_used += estimated_used;
-                                
+                                let estimated_used = (estimated_prompt_tokens as f64 * 0.75) as usize; // 75% of original
+                                tokens_used += estimated_used as u64;
+
                                 // tokens_saved: tokens saved by compression
-                                tokens_saved += estimated_prompt_tokens.saturating_sub(estimated_used) as u64;
+                                tokens_saved +=
+                                    estimated_prompt_tokens.saturating_sub(estimated_used) as u64;
                             }
                         }
                     }
@@ -982,14 +1033,14 @@ fn save_loop_stats(cycle: u32) {
             }
         }
     }
-    
+
     // Update stats
     stats["articles_by_source"] = json!(articles_by_source);
     stats["articles_written_by_site"] = json!(articles_written_by_site);
     stats["tokens_total"] = json!(tokens_total);
     stats["tokens_saved"] = json!(tokens_saved);
     stats["tokens_used"] = json!(tokens_used);
-    
+
     // Save to file
     if let Ok(json_str) = serde_json::to_string_pretty(&stats) {
         if let Err(e) = fs::write(stats_path, json_str) {

@@ -591,16 +591,6 @@ pub async fn get_services_status(
             "url": "http://localhost:8080",
             "online": check_port(8080),
         },
-        "vectorizer": {
-            "name": "Vectorizer",
-            "url": "http://localhost:15002",
-            "online": check_port(15002),
-        },
-        "synap": {
-            "name": "Synap",
-            "url": "http://localhost:15500",
-            "online": check_port(15500),
-        },
     });
     
     Json(json!({

@@ -53,15 +53,6 @@ API RESTful em Rust + Axum:
 
 **Acesse**: http://localhost:3001
 
-### 🔍 Vectorizer
-
-Vector database para embeddings:
-- Busca semântica
-- Indexação de documentos
-- HNSW para performance
-
-**Acesse**: http://localhost:15002
-
 ### ⚙️ Orquestrador (`start.rs`)
 
 Cérebro central que:
@@ -88,7 +79,6 @@ Ver índice completo: `docs/README.md`
 cargo run --bin start start       # Sistema completo
 cargo run --bin start backend     # Apenas backend
 cargo run --bin start frontend    # Apenas dashboard
-cargo run --bin start vectorizer  # Apenas vectorizer
 cargo run --bin start status      # Verificar status
 ```
 
@@ -123,13 +113,13 @@ cargo run --bin clean-articles -- <diretório>      # Limpar artigo específico
 │  Gerencia ciclo de vida             │
 │  Coordena módulos                   │
 │  Monitora saúde                     │
-└─────┬─────────┬─────────┬──────────┘
-      │         │         │
-      ▼         ▼         ▼
-  ┌────────┐ ┌────────┐ ┌────────┐
-  │Vectorizer││ Backend ││Dashboard│
-  │  :15002 │ │  :3001  ││  :1420 │
-  └────────┘ └────────┘ └────────┘
+└─────┬──────────────┬──────────────┘
+      │              │
+      ▼              ▼
+  ┌──────────┐   ┌──────────────┐
+  │ Backend  │   │ Frontends    │
+  │  :3001   │   │  :1420 / 8080│
+  └──────────┘   └──────────────┘
 ```
 
 ## 🚀 Próximos Passos

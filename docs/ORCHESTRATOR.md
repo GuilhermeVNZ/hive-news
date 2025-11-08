@@ -61,9 +61,9 @@ start.rs = Gerente + Coordenador + Monitor + Collector Orchestrator
 #### 1. Inicia o Sistema (start start)
 
 ```
-🔍 Vectorizer (15002)  ← Primeiro
-🔧 Backend (3001)      ← Segundo  
-🎨 Dashboard (1420)    ← Terceiro
+🔧 Backend (3001)      ← Primeiro  
+🎨 Dashboard (1420)    ← Segundo
+🌐 Portais (3003/8080) ← Terceiro
 ```
 
 #### 2. Coleta Informações do Dashboard
@@ -114,29 +114,24 @@ Loop infinito (30s):
 
 ### Componentes Gerenciados
 
-1. **Vectorizer Server** (`http://localhost:15002`)
-   - Vector database para embeddings
-   - Busca semântica
-   - Indexação de documentos
-
-2. **Backend API** (`http://localhost:3001`)
+1. **Backend API** (`http://localhost:3001`)
    - API RESTful
    - Lógica de negócios
    - Banco de dados PostgreSQL
    - **Collector Service** ← NOVO!
 
-3. **Dashboard Frontend** (`http://localhost:1420`)
+2. **Dashboard Frontend** (`http://localhost:1420`)
    - Interface administrativa
    - Configuração de portais
    - Monitoramento em tempo real
 
-4. **Scheduler Service**
+3. **Scheduler Service**
    - Agendamento de coletas
    - Execução de tarefas periódicas
    - Trigger de processos
    - **Controla Collector Service** ← NOVO!
 
-5. **Collector Service** ← NOVO!
+4. **Collector Service** ← NOVO!
    - Downloads organizados por origem
    - Estrutura: `downloads/<origem>/<YYYY-MM-DD>/`
    - Persistência em `raw_documents`
@@ -155,21 +150,27 @@ Loop infinito (30s):
 │  6. Executa tarefas agendadas      │
 │  7. Controla Collector Service     │ ← NOVO!
 └─────────────────────────────────────┘
-         │           │           │       │
-         ▼           ▼           ▼       ▼
-    ┌────────┐  ┌────────┐  ┌────────┐  ┌──────────────┐
-    │Vectorizer│ │ Backend │ │Dashboard│  │Collector     │
-    │  :15002 │  │  :3001  │  │  :1420 │  │Service       │
-    └────────┘  └────────┘  └────────┘  └──────┬───────┘
-         │           │           │              │
-         └───────────┴───────────┘              │
-                     │                          │
-                     ▼                          ▼
-              ┌─────────────┐          ┌──────────────────┐
-              │   Database  │          │   downloads/     │
-              │  PostgreSQL │          │   └──<origem>/   │
-              └─────────────┘          │      └──<data>/  │
-                                       └──────────────────┘
+         │           │           │
+         ▼           ▼           ▼
+    ┌────────┐  ┌────────────┐  ┌──────────────┐
+    │ Backend │  │ Frontends   │  │ Collector     │
+    │  :3001  │  │ :1420/8080 │  │ Service       │
+    └────────┘  └────────────┘  └──────┬───────┘
+         │             │               │
+         └─────────────┴───────────────┘
+                       │
+                       ▼
+                ┌─────────────┐
+                │   Database  │
+                │  PostgreSQL │
+                └─────────────┘
+                               │
+                               ▼
+                       ┌──────────────────┐
+                       │   downloads/     │
+                       │   └──<origem>/   │
+                       │      └──<data>/  │
+                       └──────────────────┘
 ```
 
 ---
@@ -265,20 +266,9 @@ Verifica se todas as dependências estão instaladas:
 - ✅ Rust (compilador)
 - ✅ Node.js (runtime frontend)
 - ✅ npm (gerenciador de pacotes)
-- ✅ Vectorizer (binary compilado)
 - ✅ Diretório `downloads/` ← NOVO!
 
-### Etapa 2: Iniciar Vectorizer
-
-```rust
-start_vectorizer_background()
-```
-
-- Verifica se porta 15002 está disponível
-- Inicia servidor Vectorizer em background
-- Aguarda 2 segundos para estabilizar
-
-### Etapa 3: Iniciar Backend (COM COLLECTOR)
+### Etapa 2: Iniciar Backend (COM COLLECTOR)
 
 ```rust
 start_backend_background()
@@ -297,7 +287,7 @@ start_backend_background()
 - **Collector Service** ← NOVO!
 - Scheduler service
 
-### Etapa 4: Coletar Configurações
+### Etapa 3: Coletar Configurações
 
 ```rust
 collect_dashboard_config()
@@ -316,7 +306,7 @@ GET /api/sources
 - Frequências de coleta (60min, 120min)
 - Estilos de escrita (scientific, technical)
 
-### Etapa 5: Configurar Scheduler (COM COLLECTOR)
+### Etapa 4: Configurar Scheduler (COM COLLECTOR)
 
 ```rust
 configure_scheduler_from_dashboard()
@@ -337,7 +327,7 @@ Configura tarefas agendadas incluindo executar Collector:
 }
 ```
 
-### Etapa 6: Iniciar Dashboard
+### Etapa 5: Iniciar Dashboard
 
 ```rust
 start_dashboard_background()
@@ -348,7 +338,7 @@ start_dashboard_background()
 - WebSocket para updates em tempo real
 - **Pode configurar colectas via UI** ← NOVO!
 
-### Etapa 7: Loop de Orquestração (COM COLLECTOR)
+### Etapa 6: Loop de Orquestração (COM COLLECTOR)
 
 ```rust
 run_orchestration_loop()
@@ -381,8 +371,6 @@ Extractor
     ↓ extrai texto
 Embedder
     ↓ gera embeddings
-Vectorizer
-    ↓ armazena vetores
 Ranker
     ↓ seleciona top-K
 Publisher
@@ -497,9 +485,6 @@ Inicia apenas backend (inclui Collector)
 ### `cargo run --bin start frontend`
 Inicia apenas dashboard
 
-### `cargo run --bin start vectorizer`
-Inicia apenas Vectorizer
-
 ### `cargo run --bin start collector` ← NOVO!
 Testa e mostra status do Collector Service
 
@@ -555,7 +540,6 @@ RUST_LOG=debug cargo run --bin start start
 ✅ Rust - OK
 ✅ Node.js - OK
 ✅ npm - OK
-✅ Vectorizer - Binary found
 ✅ Downloads directory ready
 
 🔧 Step 3: Starting Backend Server...
@@ -571,7 +555,6 @@ RUST_LOG=debug cargo run --bin start start
 
 ✅ News System is FULLY OPERATIONAL!
 =====================================
-   🔍 Vectorizer:     http://localhost:15002
    🔧 Backend API:    http://localhost:3001
    🎨 Dashboard:      http://localhost:1420
    🎯 Orchestrator:   ACTIVE
@@ -581,7 +564,6 @@ RUST_LOG=debug cargo run --bin start start
 
 🔄 Orchestration Loop #1
    💚 Health check...
-   ✅ Vectorizer: Active
    ✅ Backend: Healthy
    ✅ Dashboard: Healthy
    ✅ Database: Connected
