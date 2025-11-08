@@ -112,7 +112,7 @@ async fn main() -> Result<()> {
 
                 // Update registry
                 article_data["output_dir"] = serde_json::Value::String(
-                    correct_output_dir.to_string_lossy().replace("\\", "\\"),
+                    correct_output_dir.to_string_lossy().replace('\\', "/"),
                 );
 
                 println!("   ✅ Moved successfully!\n");
@@ -121,7 +121,7 @@ async fn main() -> Result<()> {
                 println!("   ⚠️  Source directory does not exist! Updating registry only...\n");
                 // Update registry anyway
                 article_data["output_dir"] = serde_json::Value::String(
-                    correct_output_dir.to_string_lossy().replace("\\", "\\"),
+                    correct_output_dir.to_string_lossy().replace('\\', "/"),
                 );
                 fixed_count += 1;
             }

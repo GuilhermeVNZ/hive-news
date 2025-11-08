@@ -7,6 +7,7 @@ services:
       - news-backend/.env
     environment:
       DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:postgres@host.docker.internal:5432/news_system}"
+      NEWS_BASE_DIR: /app/news-backend
     volumes:
       - ./downloads:/app/news-backend/downloads
       - ./output:/app/news-backend/output
@@ -21,6 +22,11 @@ services:
     restart: unless-stopped
 
   dashboard:
+    environment:
+      NEWS_BASE_DIR: /data
+    volumes:
+      - ./output:/data/output:ro
+      - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
       dockerfile: docker/frontend.Dockerfile
@@ -33,6 +39,11 @@ services:
     restart: unless-stopped
 
   airesearch:
+    environment:
+      NEWS_BASE_DIR: /data
+    volumes:
+      - ./output:/data/output:ro
+      - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
       dockerfile: docker/frontend.next.Dockerfile
@@ -45,6 +56,11 @@ services:
     restart: unless-stopped
 
   scienceai:
+    environment:
+      NEWS_BASE_DIR: /data
+    volumes:
+      - ./output:/data/output:ro
+      - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
       dockerfile: docker/frontend.Dockerfile

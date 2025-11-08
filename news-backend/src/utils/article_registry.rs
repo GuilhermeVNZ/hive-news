@@ -9,10 +9,10 @@ use std::sync::Mutex;
 /// Status do artigo no pipeline
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ArticleStatus {
-    Collected,   // Baixado mas ainda não filtrado
-    Filtered,    // Aprovado pelo filtro
-    Rejected,    // Rejeitado pelo filtro
-    Published,   // Conteúdo gerado e publicado
+    Collected, // Baixado mas ainda não filtrado
+    Filtered,  // Aprovado pelo filtro
+    Rejected,  // Rejeitado pelo filtro
+    Published, // Conteúdo gerado e publicado
 }
 
 /// Metadados completos de um artigo
@@ -23,40 +23,55 @@ pub struct ArticleMetadata {
     pub arxiv_url: String,
     pub pdf_url: String,
     pub status: ArticleStatus,
-    
+
     // Títulos: original (da fonte) e gerado (pelo DeepSeek)
     #[serde(default)]
     pub original_title: Option<String>, // Título original da notícia/artigo (do arXiv ou fonte)
     #[serde(default)]
     pub generated_title: Option<String>, // Título gerado pelo DeepSeek (do title.txt)
-    
+
     // Dados do filtro (se aplicável)
     pub filter_score: Option<f64>,
     pub category: Option<String>,
     pub rejection_reason: Option<String>,
-    
+
     // Timestamps
     pub collected_at: Option<DateTime<Utc>>,
     pub filtered_at: Option<DateTime<Utc>>,
     pub rejected_at: Option<DateTime<Utc>>,
     pub published_at: Option<DateTime<Utc>>,
-    
+
     // Localização do conteúdo gerado
     pub output_dir: Option<PathBuf>,
     pub hidden: Option<bool>,
-    // Sites de destino para publicação (ex.: ["airesearch","scienceai"]) 
+    // Sites de destino para publicação (ex.: ["airesearch","scienceai"])
     pub destinations: Option<Vec<String>>,
     // Artigo destacado para primeira página
     pub featured: Option<bool>,
 }
 
+impl ArticleMetadata {
+    fn normalize_paths(&mut self) {
+        if let Some(output_dir) = &self.output_dir {
+            let normalized = output_dir.to_string_lossy().replace('\\', "/");
+            self.output_dir = Some(PathBuf::from(normalized));
+        }
+    }
+}
+
 /// Registry completo de artigos
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ArticleRegistry {
     pub articles: HashMap<String, ArticleMetadata>,
 }
 
 impl ArticleRegistry {
+    fn normalize_paths(&mut self) {
+        for metadata in self.articles.values_mut() {
+            metadata.normalize_paths();
+        }
+    }
+
     /// Carrega o registry do arquivo JSON
     pub fn load(registry_path: &Path) -> Result<Self> {
         if !registry_path.exists() {
@@ -65,29 +80,36 @@ impl ArticleRegistry {
             });
         }
 
-        let content = fs::read_to_string(registry_path)
-            .context("Failed to read registry file")?;
-        
+        let content = fs::read_to_string(registry_path).context("Failed to read registry file")?;
+
         // Tentar parse normal primeiro
         match serde_json::from_str::<ArticleRegistry>(&content) {
-            Ok(registry) => Ok(registry),
+            Ok(mut registry) => {
+                registry.normalize_paths();
+                Ok(registry)
+            }
             Err(e) => {
                 // Tentar reparar JSON corrompido
-                eprintln!("⚠️  Failed to parse registry JSON: {}. Attempting repair...", e);
-                
+                eprintln!(
+                    "⚠️  Failed to parse registry JSON: {}. Attempting repair...",
+                    e
+                );
+
                 // Estratégia 1: Remover trailing characters simples
                 let trimmed = content.trim();
-                if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(trimmed) {
+                if let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(trimmed) {
+                    registry.normalize_paths();
                     eprintln!("✅ Successfully repaired registry JSON (simple trim)!");
                     if let Err(save_err) = registry.save(registry_path) {
                         eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
                     }
                     return Ok(registry);
                 }
-                
+
                 // Estratégia 2: Encontrar último } válido usando contador de chaves
                 if let Some(repaired) = Self::repair_json_by_finding_last_valid_brace(&trimmed) {
-                    if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
+                    if let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
+                        registry.normalize_paths();
                         eprintln!("✅ Successfully repaired registry JSON (brace matching)!");
                         if let Err(save_err) = registry.save(registry_path) {
                             eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
@@ -95,28 +117,37 @@ impl ArticleRegistry {
                         return Ok(registry);
                     }
                 }
-                
+
                 // Estratégia 3: Tentar extrair apenas a seção "articles"
                 if let Some(articles_json) = Self::extract_articles_section(&trimmed) {
                     let repaired = format!("{{\"articles\":{}}}", articles_json);
-                    if let Ok(registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
-                        eprintln!("✅ Successfully repaired registry JSON (extracted articles section)!");
+                    if let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
+                        registry.normalize_paths();
+                        eprintln!(
+                            "✅ Successfully repaired registry JSON (extracted articles section)!"
+                        );
                         if let Err(save_err) = registry.save(registry_path) {
                             eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
                         }
                         return Ok(registry);
                     }
                 }
-                
+
                 // Estratégia 4: Se tudo falhar, criar backup e iniciar novo registry
-                eprintln!("⚠️  All repair strategies failed. Creating backup and initializing new registry...");
-                let backup_path = format!("{}.backup.{}", registry_path.display(), chrono::Utc::now().format("%Y%m%d_%H%M%S"));
+                eprintln!(
+                    "⚠️  All repair strategies failed. Creating backup and initializing new registry..."
+                );
+                let backup_path = format!(
+                    "{}.backup.{}",
+                    registry_path.display(),
+                    chrono::Utc::now().format("%Y%m%d_%H%M%S")
+                );
                 if let Err(backup_err) = fs::copy(registry_path, &backup_path) {
                     eprintln!("⚠️  Failed to create backup: {}", backup_err);
                 } else {
                     eprintln!("✅ Backup created: {}", backup_path);
                 }
-                
+
                 // Criar novo registry vazio
                 let new_registry = Self {
                     articles: HashMap::new(),
@@ -129,20 +160,20 @@ impl ArticleRegistry {
             }
         }
     }
-    
+
     /// Tenta reparar JSON encontrando o último } válido
     fn repair_json_by_finding_last_valid_brace(content: &str) -> Option<String> {
         let mut brace_count = 0;
         let mut in_string = false;
         let mut escape_next = false;
         let mut last_valid_pos = None;
-        
+
         for (i, ch) in content.char_indices() {
             if escape_next {
                 escape_next = false;
                 continue;
             }
-            
+
             match ch {
                 '\\' if in_string => {
                     escape_next = true;
@@ -162,36 +193,36 @@ impl ArticleRegistry {
                 _ => {}
             }
         }
-        
+
         if let Some(pos) = last_valid_pos {
             Some(content[..=pos].to_string())
         } else {
             None
         }
     }
-    
+
     /// Extrai a seção "articles" do JSON
     fn extract_articles_section(content: &str) -> Option<String> {
         if let Some(articles_start) = content.find("\"articles\":") {
             let after_colon = &content[articles_start + "\"articles\":".len()..];
             let trimmed_after = after_colon.trim_start();
-            
+
             // Encontrar o início do objeto
             if let Some(obj_start) = trimmed_after.find('{') {
                 let json_part = &trimmed_after[obj_start..];
-                
+
                 // Encontrar o fim do objeto usando contador de chaves
                 let mut brace_count = 0;
                 let mut in_string = false;
                 let mut escape_next = false;
                 let mut end_pos = None;
-                
+
                 for (i, ch) in json_part.char_indices() {
                     if escape_next {
                         escape_next = false;
                         continue;
                     }
-                    
+
                     match ch {
                         '\\' if in_string => {
                             escape_next = true;
@@ -212,7 +243,7 @@ impl ArticleRegistry {
                         _ => {}
                     }
                 }
-                
+
                 if let Some(end) = end_pos {
                     Some(json_part[..end].to_string())
                 } else {
@@ -228,41 +259,64 @@ impl ArticleRegistry {
 
     /// Salva o registry no arquivo JSON usando escrita atômica (tempfile + rename)
     pub fn save(&self, registry_path: &Path) -> Result<()> {
-        use tempfile::NamedTempFile;
         use std::io::Write;
-        
+        use tempfile::NamedTempFile;
+
         // Criar diretório se não existir
         if let Some(parent) = registry_path.parent() {
-            fs::create_dir_all(parent)
-                .context("Failed to create registry directory")?;
+            fs::create_dir_all(parent).context("Failed to create registry directory")?;
         }
 
-        let content = serde_json::to_string_pretty(self)
+        let mut registry_clone = self.clone();
+        registry_clone.normalize_paths();
+
+        let content = serde_json::to_string_pretty(&registry_clone)
             .context("Failed to serialize registry")?;
 
         // Criar arquivo temporário no mesmo diretório do arquivo final
-        let parent_dir = registry_path.parent()
+        let parent_dir = registry_path
+            .parent()
             .ok_or_else(|| anyhow::anyhow!("Registry path has no parent directory"))?;
-        
-        let mut tmp = NamedTempFile::new_in(parent_dir)
-            .context("Failed to create temporary file")?;
-        
+
+        let mut tmp =
+            NamedTempFile::new_in(parent_dir).context("Failed to create temporary file")?;
+
         // Escrever conteúdo no arquivo temporário
         tmp.as_file_mut()
             .write_all(content.as_bytes())
             .context("Failed to write to temporary file")?;
-        
+
         // Forçar sincronização física (flush to disk)
-        tmp.as_file_mut().sync_all()
+        tmp.as_file_mut()
+            .sync_all()
             .context("Failed to sync temporary file to disk")?;
-        
+
         // Rename atômico (move temp -> final)
-        tmp.persist(registry_path)
-            .context("Failed to persist temporary file to final location")?;
-        
-        eprintln!("[ArticleRegistry] ✅ Successfully saved registry atomically to: {:?}", registry_path);
-        
-        Ok(())
+        match tmp.persist(registry_path) {
+            Ok(_) => {
+                eprintln!(
+                    "[ArticleRegistry] ✅ Successfully saved registry atomically to: {:?}",
+                    registry_path
+                );
+                Ok(())
+            }
+            Err(err) => {
+                let tempfile::PersistError { file: tmp_file, error: persist_err } = err;
+                eprintln!(
+                    "[ArticleRegistry] ⚠️  Failed to persist temporary file atomically: {}. Falling back to direct write.",
+                    persist_err
+                );
+                std::fs::write(registry_path, content.as_bytes())
+                    .context("Failed to write registry via fallback")?;
+                // Ensure temporary file is cleaned up
+                let _ = tmp_file.close();
+                eprintln!(
+                    "[ArticleRegistry] ✅ Successfully saved registry via fallback write: {:?}",
+                    registry_path
+                );
+                Ok(())
+            }
+        }
     }
 
     /// Verifica se um artigo já foi registrado (em qualquer status)
@@ -293,7 +347,7 @@ impl ArticleRegistry {
             pdf_url,
             status: ArticleStatus::Collected,
             original_title: Some(title.clone()), // Título original da fonte
-            generated_title: None, // Será preenchido quando o artigo for publicado
+            generated_title: None,               // Será preenchido quando o artigo for publicado
             filter_score: None,
             category: None,
             rejection_reason: None,
@@ -311,12 +365,9 @@ impl ArticleRegistry {
     }
 
     /// Define/atualiza destinos de publicação para um artigo
-    pub fn set_destinations(
-        &mut self,
-        article_id: &str,
-        destinations: Vec<String>,
-    ) -> Result<()> {
-        let metadata = self.articles
+    pub fn set_destinations(&mut self, article_id: &str, destinations: Vec<String>) -> Result<()> {
+        let metadata = self
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
         metadata.destinations = Some(destinations);
@@ -335,7 +386,8 @@ impl ArticleRegistry {
         filter_score: f64,
         category: String,
     ) -> Result<()> {
-        let metadata = self.articles
+        let metadata = self
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
 
@@ -354,7 +406,8 @@ impl ArticleRegistry {
         filter_score: f64,
         reason: String,
     ) -> Result<()> {
-        let metadata = self.articles
+        let metadata = self
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
 
@@ -367,18 +420,17 @@ impl ArticleRegistry {
     }
 
     /// Atualiza um artigo como publicado
-    pub fn register_published(
-        &mut self,
-        article_id: &str,
-        output_dir: PathBuf,
-    ) -> Result<()> {
-        let metadata = self.articles
+    pub fn register_published(&mut self, article_id: &str, output_dir: PathBuf) -> Result<()> {
+        let metadata = self
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
 
         metadata.status = ArticleStatus::Published;
         metadata.published_at = Some(Utc::now());
-        metadata.output_dir = Some(output_dir.clone());
+        let normalized_output = output_dir.to_string_lossy().replace('\\', "/");
+        metadata.output_dir = Some(PathBuf::from(normalized_output));
+        metadata.normalize_paths();
 
         // Tenta ler o título gerado do title.txt no output_dir
         let title_txt = output_dir.join("title.txt");
@@ -447,7 +499,7 @@ impl RegistryManager {
         let mut registry = self.registry.lock().unwrap();
         registry.register_collected(article_id, title, arxiv_url, pdf_url);
         drop(registry); // Liberar lock antes de salvar
-        
+
         self.save()?;
         Ok(())
     }
@@ -480,7 +532,7 @@ impl RegistryManager {
         let mut registry = self.registry.lock().unwrap();
         registry.register_filtered(article_id, filter_score, category)?;
         drop(registry);
-        
+
         self.save()?;
         Ok(())
     }
@@ -495,57 +547,47 @@ impl RegistryManager {
         let mut registry = self.registry.lock().unwrap();
         registry.register_rejected(article_id, filter_score, reason)?;
         drop(registry);
-        
+
         self.save()?;
         Ok(())
     }
 
     /// Registra um artigo como publicado
-    pub fn register_published(
-        &self,
-        article_id: &str,
-        output_dir: PathBuf,
-    ) -> Result<()> {
+    pub fn register_published(&self, article_id: &str, output_dir: PathBuf) -> Result<()> {
         let mut registry = self.registry.lock().unwrap();
         registry.register_published(article_id, output_dir)?;
         drop(registry);
-        
+
         self.save()?;
         Ok(())
     }
 
     /// Atualiza o título gerado (do title.txt) para um artigo
     #[allow(dead_code)]
-    pub fn set_generated_title(
-        &self,
-        article_id: &str,
-        generated_title: String,
-    ) -> Result<()> {
+    pub fn set_generated_title(&self, article_id: &str, generated_title: String) -> Result<()> {
         let mut registry = self.registry.lock().unwrap();
-        let metadata = registry.articles
+        let metadata = registry
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
         metadata.generated_title = Some(generated_title);
         drop(registry);
-        
+
         self.save()?;
         Ok(())
     }
 
     /// Atualiza o título original (da fonte) para um artigo
     #[allow(dead_code)]
-    pub fn set_original_title(
-        &self,
-        article_id: &str,
-        original_title: String,
-    ) -> Result<()> {
+    pub fn set_original_title(&self, article_id: &str, original_title: String) -> Result<()> {
         let mut registry = self.registry.lock().unwrap();
-        let metadata = registry.articles
+        let metadata = registry
+            .articles
             .get_mut(article_id)
             .context(format!("Article {} not found in registry", article_id))?;
         metadata.original_title = Some(original_title);
         drop(registry);
-        
+
         self.save()?;
         Ok(())
     }
@@ -559,7 +601,8 @@ impl RegistryManager {
     /// Lista todos os artigos de um status específico
     pub fn list_by_status(&self, status: ArticleStatus) -> Vec<ArticleMetadata> {
         let registry = self.registry.lock().unwrap();
-        registry.articles
+        registry
+            .articles
             .values()
             .filter(|meta| meta.status == status)
             .cloned()
@@ -574,19 +617,28 @@ impl RegistryManager {
 
     /// Atualiza o status featured de um artigo
     pub fn set_featured(&self, article_id: &str, featured: bool) -> Result<()> {
-        eprintln!("[RegistryManager] set_featured called: article_id={}, featured={}", article_id, featured);
+        eprintln!(
+            "[RegistryManager] set_featured called: article_id={}, featured={}",
+            article_id, featured
+        );
         eprintln!("[RegistryManager] Registry path: {:?}", self.registry_path);
         let mut registry = self.registry.lock().unwrap();
         if let Some(meta) = registry.articles.get_mut(article_id) {
-            eprintln!("[RegistryManager] Found article, old featured value: {:?}", meta.featured);
+            eprintln!(
+                "[RegistryManager] Found article, old featured value: {:?}",
+                meta.featured
+            );
             meta.featured = Some(featured);
             eprintln!("[RegistryManager] Updated featured to: {:?}", meta.featured);
             drop(registry); // Liberar lock antes de salvar
             match self.save() {
                 Ok(_) => {
-                    eprintln!("[RegistryManager] ✅ Successfully saved registry with featured={} for article {}", featured, article_id);
+                    eprintln!(
+                        "[RegistryManager] ✅ Successfully saved registry with featured={} for article {}",
+                        featured, article_id
+                    );
                     Ok(())
-                },
+                }
                 Err(e) => {
                     eprintln!("[RegistryManager] ❌ Failed to save registry: {}", e);
                     Err(e)
@@ -594,8 +646,14 @@ impl RegistryManager {
             }
         } else {
             drop(registry);
-            eprintln!("[RegistryManager] ❌ Article '{}' not found in registry", article_id);
-            Err(anyhow::anyhow!("Article with ID '{}' not found", article_id))
+            eprintln!(
+                "[RegistryManager] ❌ Article '{}' not found in registry",
+                article_id
+            );
+            Err(anyhow::anyhow!(
+                "Article with ID '{}' not found",
+                article_id
+            ))
         }
     }
 
@@ -609,9 +667,10 @@ impl RegistryManager {
             Ok(())
         } else {
             drop(registry);
-            Err(anyhow::anyhow!("Article with ID '{}' not found", article_id))
+            Err(anyhow::anyhow!(
+                "Article with ID '{}' not found",
+                article_id
+            ))
         }
     }
 }
-
-
