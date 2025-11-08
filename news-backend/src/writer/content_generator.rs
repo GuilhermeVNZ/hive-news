@@ -1,14 +1,17 @@
 // Content Generator Service
 // Main orchestration for generating content from filtered papers
-use std::path::{Path, PathBuf};
-use std::env;
-use anyhow::{Result, Context};
+use super::deepseek_client::*;
+use super::file_writer::{
+    save_article, save_image_categories, save_linkedin, save_shorts_script, save_subtitle,
+    save_title, save_x,
+};
+use super::prompt_compressor::*;
+use super::prompts::*;
 use crate::filter::parser::parse_pdf;
 use crate::utils::site_config_manager::SiteConfigManager;
-use super::deepseek_client::*;
-use super::prompts::*;
-use super::prompt_compressor::*;
-use super::file_writer::{save_article, save_title, save_subtitle, save_linkedin, save_x, save_shorts_script, save_image_categories};
+use anyhow::{Context, Result};
+use std::env;
+use std::path::{Path, PathBuf};
 
 #[allow(dead_code)]
 pub struct WriterService {
@@ -48,32 +51,47 @@ impl WriterService {
     pub fn new_with_site(site_id: Option<&str>) -> Result<Self> {
         let config_path = Path::new("system_config.json");
         let config_manager = SiteConfigManager::new(config_path);
-        
+
         // Try to load config from JSON file
-        let (api_key, base_url, model, site_name, use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog) = if let Some(site_id) = site_id {
+        let (
+            api_key,
+            base_url,
+            model,
+            site_name,
+            use_compressor,
+            temperature_article,
+            temperature_social,
+            prompt_article,
+            prompt_social,
+            prompt_blog,
+        ) = if let Some(site_id) = site_id {
             match config_manager.get_site_config(site_id) {
                 Ok(Some(site_config)) => {
                     let writer_config = &site_config.writer;
                     if writer_config.enabled {
-                        let api_key = writer_config.api_key.clone()
+                        let api_key = writer_config
+                            .api_key
+                            .clone()
                             .or_else(|| env::var("DEEPSEEK_API_KEY").ok())
                             .context("API key not found in config or environment")?;
-                        
-                        let base_url = writer_config.base_url.clone()
-                            .unwrap_or_else(|| env::var("DEEPSEEK_BASE_URL")
-                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
-                        
+
+                        let base_url = writer_config.base_url.clone().unwrap_or_else(|| {
+                            env::var("DEEPSEEK_BASE_URL")
+                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string())
+                        });
+
                         let model = writer_config.model.clone();
-                        
+
                         // Load compressor setting from config
                         let use_compressor = writer_config.use_compressor.unwrap_or(false);
-                        
+
                         // Load temperature per prompt from config
                         let temperature_article = site_config.temperature_article.unwrap_or(0.7);
                         let temperature_social = site_config.temperature_social.unwrap_or(0.8);
-                        
+
                         // Load custom prompts if enabled
-                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
+                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false)
+                        {
                             site_config.prompt_article.clone()
                         } else {
                             None
@@ -88,8 +106,11 @@ impl WriterService {
                         } else {
                             None
                         };
-                        
-                        println!("✅ Loaded writer config from system_config.json for site: {}", site_id);
+
+                        println!(
+                            "✅ Loaded writer config from system_config.json for site: {}",
+                            site_id
+                        );
                         println!("   Provider: {}, Model: {}", writer_config.provider, model);
                         if prompt_article.is_some() {
                             println!("   📝 Using custom article prompt");
@@ -100,53 +121,90 @@ impl WriterService {
                         if prompt_blog.is_some() {
                             println!("   📄 Using custom blog prompt");
                         }
-                        println!("   🗜️  Compressor: {}", if use_compressor { "enabled" } else { "disabled" });
-                        println!("   🌡️  Temperature - Article: {:.2}, Social: {:.2}", temperature_article, temperature_social);
-                        
-                        (api_key, base_url, model, site_config.name.clone(), use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog)
+                        println!(
+                            "   🗜️  Compressor: {}",
+                            if use_compressor {
+                                "enabled"
+                            } else {
+                                "disabled"
+                            }
+                        );
+                        println!(
+                            "   🌡️  Temperature - Article: {:.2}, Social: {:.2}",
+                            temperature_article, temperature_social
+                        );
+
+                        (
+                            api_key,
+                            base_url,
+                            model,
+                            site_config.name.clone(),
+                            use_compressor,
+                            temperature_article,
+                            temperature_social,
+                            prompt_article,
+                            prompt_social,
+                            prompt_blog,
+                        )
                     } else {
                         anyhow::bail!("Writer is disabled for site: {}", site_id);
                     }
                 }
                 Ok(None) => {
-                    println!("⚠️  Site {} not found in config, using environment variables", site_id);
-                    let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
-                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
+                    println!(
+                        "⚠️  Site {} not found in config, using environment variables",
+                        site_id
+                    );
+                    let (api_key, base_url, model, site_name) =
+                        Self::from_env(site_id.to_string())?;
+                    (
+                        api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None,
+                    )
                 }
                 Err(e) => {
-                    println!("⚠️  Failed to load config for site {}: {}, using environment variables", site_id, e);
-                    let (api_key, base_url, model, site_name) = Self::from_env(site_id.to_string())?;
-                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
+                    println!(
+                        "⚠️  Failed to load config for site {}: {}, using environment variables",
+                        site_id, e
+                    );
+                    let (api_key, base_url, model, site_name) =
+                        Self::from_env(site_id.to_string())?;
+                    (
+                        api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None,
+                    )
                 }
             }
         } else {
             // No site_id provided, try to use default site or env vars
-            let default_site_id = env::var("WRITER_DEFAULT_SITE")
-                .unwrap_or_else(|_| "airesearch".to_string());
-            
+            let default_site_id =
+                env::var("WRITER_DEFAULT_SITE").unwrap_or_else(|_| "airesearch".to_string());
+
             match config_manager.get_site_config(&default_site_id) {
                 Ok(Some(site_config)) => {
                     let writer_config = &site_config.writer;
                     if writer_config.enabled {
-                        let api_key = writer_config.api_key.clone()
+                        let api_key = writer_config
+                            .api_key
+                            .clone()
                             .or_else(|| env::var("DEEPSEEK_API_KEY").ok())
                             .context("API key not found in config or environment")?;
-                        
-                        let base_url = writer_config.base_url.clone()
-                            .unwrap_or_else(|| env::var("DEEPSEEK_BASE_URL")
-                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string()));
-                        
+
+                        let base_url = writer_config.base_url.clone().unwrap_or_else(|| {
+                            env::var("DEEPSEEK_BASE_URL")
+                                .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string())
+                        });
+
                         let model = writer_config.model.clone();
-                        
+
                         // Load compressor setting from config
                         let use_compressor = writer_config.use_compressor.unwrap_or(false);
-                        
+
                         // Load temperature per prompt from config
                         let temperature_article = site_config.temperature_article.unwrap_or(0.7);
                         let temperature_social = site_config.temperature_social.unwrap_or(0.8);
-                        
+
                         // Load custom prompts if enabled
-                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false) {
+                        let prompt_article = if site_config.prompt_article_enabled.unwrap_or(false)
+                        {
                             site_config.prompt_article.clone()
                         } else {
                             None
@@ -161,8 +219,11 @@ impl WriterService {
                         } else {
                             None
                         };
-                        
-                        println!("✅ Loaded writer config from system_config.json for default site: {}", default_site_id);
+
+                        println!(
+                            "✅ Loaded writer config from system_config.json for default site: {}",
+                            default_site_id
+                        );
                         println!("   Provider: {}, Model: {}", writer_config.provider, model);
                         if prompt_article.is_some() {
                             println!("   📝 Using custom article prompt");
@@ -173,37 +234,71 @@ impl WriterService {
                         if prompt_blog.is_some() {
                             println!("   📄 Using custom blog prompt");
                         }
-                        println!("   🗜️  Compressor: {}", if use_compressor { "enabled" } else { "disabled" });
-                        println!("   🌡️  Temperature - Article: {:.2}, Social: {:.2}", temperature_article, temperature_social);
-                        
-                        (api_key, base_url, model, site_config.name.clone(), use_compressor, temperature_article, temperature_social, prompt_article, prompt_social, prompt_blog)
+                        println!(
+                            "   🗜️  Compressor: {}",
+                            if use_compressor {
+                                "enabled"
+                            } else {
+                                "disabled"
+                            }
+                        );
+                        println!(
+                            "   🌡️  Temperature - Article: {:.2}, Social: {:.2}",
+                            temperature_article, temperature_social
+                        );
+
+                        (
+                            api_key,
+                            base_url,
+                            model,
+                            site_config.name.clone(),
+                            use_compressor,
+                            temperature_article,
+                            temperature_social,
+                            prompt_article,
+                            prompt_social,
+                            prompt_blog,
+                        )
                     } else {
-                        let (api_key, base_url, model, site_name) = Self::from_env(site_config.name.clone())?;
-                        (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
+                        let (api_key, base_url, model, site_name) =
+                            Self::from_env(site_config.name.clone())?;
+                        (
+                            api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None,
+                        )
                     }
                 }
                 _ => {
-                    println!("⚠️  Default site {} not found in config, using environment variables", default_site_id);
-                    let (api_key, base_url, model, site_name) = Self::from_env("AIResearch".to_string())?;
-                    (api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None)
+                    println!(
+                        "⚠️  Default site {} not found in config, using environment variables",
+                        default_site_id
+                    );
+                    let (api_key, base_url, model, site_name) =
+                        Self::from_env("AIResearch".to_string())?;
+                    (
+                        api_key, base_url, model, site_name, false, 0.7, 0.8, None, None, None,
+                    )
                 }
             }
         };
-        
-        let output_base = PathBuf::from(
-            env::var("WRITER_OUTPUT_DIR")
-                .unwrap_or_else(|_| "G:/Hive-Hub/News-main/output".to_string())
-        );
-        
+
+        let output_base = PathBuf::from(env::var("WRITER_OUTPUT_DIR").unwrap_or_else(|_| {
+            crate::utils::path_resolver::resolve_workspace_path("output")
+                .display()
+                .to_string()
+        }));
+
         let actual_site_id = match site_id {
             Some(id) => id.to_string(),
-            None => env::var("WRITER_DEFAULT_SITE")
-                .unwrap_or_else(|_| "airesearch".to_string()),
+            None => env::var("WRITER_DEFAULT_SITE").unwrap_or_else(|_| "airesearch".to_string()),
         };
-        
+
         Ok(Self {
             deepseek_client: DeepSeekClient::new(api_key, base_url, model),
-            prompt_compressor: if use_compressor { Some(PromptCompressor::new()?) } else { None },
+            prompt_compressor: if use_compressor {
+                Some(PromptCompressor::new()?)
+            } else {
+                None
+            },
             output_base,
             site: site_name.clone(),
             site_id: actual_site_id,
@@ -220,48 +315,47 @@ impl WriterService {
     fn from_env(site_name: String) -> Result<(String, String, String, String)> {
         let api_key = env::var("DEEPSEEK_API_KEY")
             .context("DEEPSEEK_API_KEY environment variable not set")?;
-        
+
         let base_url = env::var("DEEPSEEK_BASE_URL")
             .unwrap_or_else(|_| "https://api.deepseek.com/v1".to_string());
-        
-        let model = env::var("DEEPSEEK_MODEL")
-            .unwrap_or_else(|_| "deepseek-chat".to_string());
-        
+
+        let model = env::var("DEEPSEEK_MODEL").unwrap_or_else(|_| "deepseek-chat".to_string());
+
         Ok((api_key, base_url, model, site_name))
     }
-    
+
     /// Retorna o site atual (ex: AIResearch, Nature, Science)
     pub fn get_site(&self) -> &str {
         &self.site
     }
-    
+
     /// Retorna o diretório base de output
     pub fn get_output_base(&self) -> &Path {
         &self.output_base
     }
-    
+
     pub async fn process_pdf(&self, pdf_path: &Path) -> Result<GeneratedContent> {
         // 1. Extract text from PDF
         println!("  📄 Parsing PDF...");
         let parsed = parse_pdf(pdf_path)?;
-        
+
         // 2. Extract article ID (sem criar pasta ainda)
         let article_id = extract_article_id(pdf_path);
-        
+
         // Map site_id to correct output directory name
         let output_dir_name = match self.site_id.to_lowercase().as_str() {
             "airesearch" => "AIResearch",
             "scienceai" => "ScienceAI",
             _ => self.site.as_str(), // Fallback to site name if not mapped
         };
-        
+
         // Structure: output/<SiteID>/<código do artigo>/
         let output_dir = self.output_base.join(output_dir_name).join(&article_id);
-        
+
         // 2.1. Criar pasta de output
         tokio::fs::create_dir_all(&output_dir).await?;
         println!("  📁 Saving to: {}", output_dir.display());
-        
+
         // 3. PHASE 1: Generate article
         println!("  📝 Building article prompt for: {}", self.site);
         let article_prompt = if let Some(ref custom_prompt) = self.prompt_article {
@@ -270,25 +364,38 @@ impl WriterService {
             if custom_prompt.contains("{{paper_text}}") {
                 custom_prompt.replace("{{paper_text}}", &parsed.text)
             } else {
-                format!("{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{}", custom_prompt, &parsed.text)
+                format!(
+                    "{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{}",
+                    custom_prompt, &parsed.text
+                )
             }
         } else {
             build_article_prompt(&parsed.text, &[], &self.site)
         };
-        
-        let (final_article_prompt, original_tokens, compressed_tokens, compression_ratio) = if self.use_compressor {
+
+        let (final_article_prompt, original_tokens, compressed_tokens, compression_ratio) = if self
+            .use_compressor
+        {
             if let Some(ref compressor) = self.prompt_compressor {
-        let estimated_tokens = article_prompt.len() / 4;
-        println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
-        
-                let compressed_article = compressor.compress(&article_prompt)
-            .context("Failed to compress article prompt")?;
-        
-        println!("  ✅ Compressed to {} tokens ({:.1}% savings)", 
-                 compressed_article.compressed_tokens,
-                 compressed_article.compression_ratio * 100.0);
-                
-                (compressed_article.compressed_text, compressed_article.original_tokens, compressed_article.compressed_tokens, compressed_article.compression_ratio)
+                let estimated_tokens = article_prompt.len() / 4;
+                println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
+
+                let compressed_article = compressor
+                    .compress(&article_prompt)
+                    .context("Failed to compress article prompt")?;
+
+                println!(
+                    "  ✅ Compressed to {} tokens ({:.1}% savings)",
+                    compressed_article.compressed_tokens,
+                    compressed_article.compression_ratio * 100.0
+                );
+
+                (
+                    compressed_article.compressed_text,
+                    compressed_article.original_tokens,
+                    compressed_article.compressed_tokens,
+                    compressed_article.compression_ratio,
+                )
             } else {
                 // Fallback if compressor is None despite use_compressor being true
                 println!("  ⚠️  Compressor enabled but not initialized, using uncompressed prompt");
@@ -300,9 +407,10 @@ impl WriterService {
             let tokens = article_prompt.len() / 4;
             (article_prompt, tokens, tokens, 0.0)
         };
-        
+
         println!("  🤖 Sending to DeepSeek API...");
-        let article_response = match self.deepseek_client
+        let article_response = match self
+            .deepseek_client
             .generate_article(&final_article_prompt, Some(self.temperature_article))
             .await
         {
@@ -313,13 +421,15 @@ impl WriterService {
             Err(e) => {
                 eprintln!("  ❌ Failed to generate article for {}: {}", article_id, e);
                 eprintln!("  📄 PDF: {}", pdf_path.display());
-                eprintln!("  📊 Prompt tokens: {} (compressed from {})", 
-                         compressed_tokens,
-                         original_tokens);
-                return Err(e).with_context(|| format!("Failed to generate article for {}", article_id));
+                eprintln!(
+                    "  📊 Prompt tokens: {} (compressed from {})",
+                    compressed_tokens, original_tokens
+                );
+                return Err(e)
+                    .with_context(|| format!("Failed to generate article for {}", article_id));
             }
         };
-        
+
         // 4. PHASE 2: Generate social content
         println!("  📱 Building social media prompts...");
         let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
@@ -328,32 +438,49 @@ impl WriterService {
             let mut prompt = custom_prompt.clone();
             prompt = prompt.replace("{{article_text}}", &article_response.article_text);
             prompt = prompt.replace("{{paper_title}}", &parsed.title);
-            if !custom_prompt.contains("{{article_text}}") && !custom_prompt.contains("{{paper_title}}") {
-                format!("{}\n\n## ARTICLE TEXT:\n{}\n\n## PAPER TITLE:\n{}", 
-                    custom_prompt, &article_response.article_text, &parsed.title)
+            if !custom_prompt.contains("{{article_text}}")
+                && !custom_prompt.contains("{{paper_title}}")
+            {
+                format!(
+                    "{}\n\n## ARTICLE TEXT:\n{}\n\n## PAPER TITLE:\n{}",
+                    custom_prompt, &article_response.article_text, &parsed.title
+                )
             } else {
                 prompt
             }
         } else {
-            build_social_script_prompt(
-                &article_response.article_text,
-                &parsed.title,
-            )
+            build_social_script_prompt(&article_response.article_text, &parsed.title)
         };
-        
-        let (final_social_prompt, social_original_tokens, social_compressed_tokens, social_compression_ratio) = if self.use_compressor {
+
+        let (
+            final_social_prompt,
+            social_original_tokens,
+            social_compressed_tokens,
+            social_compression_ratio,
+        ) = if self.use_compressor {
             if let Some(ref compressor) = self.prompt_compressor {
-        let estimated_social_tokens = social_prompt.len() / 4;
-        println!("  🗜️  Compressing social prompt (~{} tokens)...", estimated_social_tokens);
-        
-                let compressed_social = compressor.compress(&social_prompt)
-            .context("Failed to compress social prompt")?;
-        
-        println!("  ✅ Compressed to {} tokens ({:.1}% savings)", 
-                 compressed_social.compressed_tokens,
-                 compressed_social.compression_ratio * 100.0);
-                
-                (compressed_social.compressed_text, compressed_social.original_tokens, compressed_social.compressed_tokens, compressed_social.compression_ratio)
+                let estimated_social_tokens = social_prompt.len() / 4;
+                println!(
+                    "  🗜️  Compressing social prompt (~{} tokens)...",
+                    estimated_social_tokens
+                );
+
+                let compressed_social = compressor
+                    .compress(&social_prompt)
+                    .context("Failed to compress social prompt")?;
+
+                println!(
+                    "  ✅ Compressed to {} tokens ({:.1}% savings)",
+                    compressed_social.compressed_tokens,
+                    compressed_social.compression_ratio * 100.0
+                );
+
+                (
+                    compressed_social.compressed_text,
+                    compressed_social.original_tokens,
+                    compressed_social.compressed_tokens,
+                    compressed_social.compression_ratio,
+                )
             } else {
                 println!("  ⚠️  Compressor enabled but not initialized, using uncompressed prompt");
                 let tokens = social_prompt.len() / 4;
@@ -364,9 +491,10 @@ impl WriterService {
             let tokens = social_prompt.len() / 4;
             (social_prompt, tokens, tokens, 0.0)
         };
-        
+
         println!("  🤖 Generating social content...");
-        let social_response = match self.deepseek_client
+        let social_response = match self
+            .deepseek_client
             .generate_social_content(&final_social_prompt, Some(self.temperature_social))
             .await
         {
@@ -375,20 +503,20 @@ impl WriterService {
                 response
             }
             Err(e) => {
-                eprintln!("  ❌ Failed to generate social content for {}: {}", article_id, e);
+                eprintln!(
+                    "  ❌ Failed to generate social content for {}: {}",
+                    article_id, e
+                );
                 eprintln!("  📄 PDF: {}", pdf_path.display());
                 return Err(e).context("Failed to generate social content");
             }
         };
-        
+
         // PHASE 3: Save all content
         println!("  💾 Saving content to disk...");
-        self.save_content(
-            &output_dir,
-            &article_response,
-            &social_response,
-        ).await?;
-        
+        self.save_content(&output_dir, &article_response, &social_response)
+            .await?;
+
         Ok(GeneratedContent {
             output_dir,
             original_tokens: original_tokens + social_original_tokens,
@@ -396,7 +524,7 @@ impl WriterService {
             compression_ratio: (compression_ratio + social_compression_ratio) / 2.0,
         })
     }
-    
+
     async fn save_content(
         &self,
         output_dir: &Path,
@@ -405,30 +533,30 @@ impl WriterService {
     ) -> Result<()> {
         // Save title (short hook for frontend)
         save_title(output_dir, &article.title).await?;
-        
+
         // Save subtitle (SEO-optimized, max 2 lines)
         if !article.subtitle.is_empty() {
             save_subtitle(output_dir, &article.subtitle).await?;
         }
-        
+
         // Save article
         save_article(output_dir, &article.article_text).await?;
-        
+
         // Save social posts
         save_linkedin(output_dir, &social.linkedin_post).await?;
         save_x(output_dir, &social.x_post).await?;
-        
+
         // Save video script
         save_shorts_script(output_dir, &social.shorts_script).await?;
-        
+
         // Save image categories (for future image selection)
         if !article.image_categories.is_empty() {
             println!("  📑 Image categories: {:?}", article.image_categories);
             save_image_categories(output_dir, &article.image_categories).await?;
         }
-        
+
         // NO LONGER SAVING metadata.json - not needed
-        
+
         Ok(())
     }
 }

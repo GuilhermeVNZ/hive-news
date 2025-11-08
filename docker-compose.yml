@@ -12,8 +12,10 @@ services:
       - ./output:/app/news-backend/output
       - ./logs:/app/news-backend/logs
       - ./images:/app/news-backend/images
-      - ./news-backend/system_config.json:/app/news-backend/system_config.json:ro
-      - ./news-backend/collectors_config.json:/app/news-backend/collectors_config.json:ro
+      - ./news-backend/system_config.json:/app/news-backend/system_config.json
+      - ./news-backend/collectors_config.json:/app/news-backend/collectors_config.json
+      - ./news-backend/loop_stats.json:/app/news-backend/loop_stats.json
+      - ./articles_registry.json:/app/news-backend/articles_registry.json
     ports:
       - "3005:3005"
     restart: unless-stopped

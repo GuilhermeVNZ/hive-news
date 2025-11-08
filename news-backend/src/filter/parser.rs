@@ -1,7 +1,9 @@
 use anyhow::Result;
 use lopdf::Document;
 use regex::Regex;
-use std::path::Path;
+use std::path::{Path, PathBuf};
+
+use crate::utils::path_resolver::resolve_workspace_path;
 
 #[allow(dead_code)]
 pub struct ParsedPdf {
@@ -61,12 +63,17 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
     use std::process::Command;
 
     // Caminho para pdftotext instalado localmente
-    let pdftotext_path =
-        "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe";
+    let pdftotext_path: PathBuf = std::env::var("PDFTOTEXT_PATH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            resolve_workspace_path(
+                "apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe",
+            )
+        });
 
     // Verificar se pdftotext existe
-    if std::path::Path::new(pdftotext_path).exists() {
-        let output = Command::new(pdftotext_path)
+    if pdftotext_path.exists() {
+        let output = Command::new(&pdftotext_path)
             .arg(path.as_os_str())
             .arg("-") // output para stdout
             .output()?;

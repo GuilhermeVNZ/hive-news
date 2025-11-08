@@ -1,7 +1,7 @@
 use std::env;
 
 use anyhow::Result;
-use sqlx::{postgres::PgPoolOptions, PgPool};
+use sqlx::{PgPool, postgres::PgPoolOptions};
 
 const DEFAULT_DATABASE_URL: &str = "postgresql://postgres:postgres@localhost:5432/news_system";
 
@@ -29,7 +29,10 @@ impl Database {
                 Some(p)
             }
             Err(e) => {
-                eprintln!("⚠️  Database not available: {} (continuing without database)", e);
+                eprintln!(
+                    "⚠️  Database not available: {} (continuing without database)",
+                    e
+                );
                 eprintln!("   Auth and config endpoints will work (using file-based storage)");
                 eprintln!("   Some endpoints (pages/sources) may not work without database");
                 None

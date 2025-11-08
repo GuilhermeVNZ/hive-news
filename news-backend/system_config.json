@@ -1,12 +1,12 @@
 {
   "loop_config": {
-    "enabled": false,
+    "enabled": true,
     "filter_score_min": 0.4,
-    "interval_minutes": 30,
-    "max_cycles": null
+    "interval_minutes": 1,
+    "max_cycles": 1
   },
   "paths": {
-    "base_dir": "G:/Hive-Hub/News-main",
+    "base_dir": ".",
     "downloads_dir": "downloads",
     "output_dir": "output",
     "registry_file": "articles_registry.json"

@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 
+const WORKSPACE_ROOT = process.env.NEWS_BASE_DIR ?? process.cwd();
+
 import type { Article } from "@/types/article";
 
 type RegistryMetadata = {
@@ -162,7 +164,7 @@ async function readArticles(): Promise<Article[]> {
       path.join(process.cwd(), "../../../../articles_registry.json"),
       path.join(process.cwd(), "../../../articles_registry.json"),
       path.join(process.cwd(), "../articles_registry.json"),
-      path.resolve("G:/Hive-Hub/News-main/articles_registry.json"),
+      path.resolve(WORKSPACE_ROOT, "articles_registry.json"),
     ];
 
     let registryPath: string | null = null;
@@ -270,7 +272,7 @@ async function readArticles(): Promise<Article[]> {
   const possibleBasePaths = [
     path.join(process.cwd(), "../../../../output"),
     path.join(process.cwd(), "../../../output"),
-    path.resolve("G:/Hive-Hub/News-main/output"),
+    path.resolve(WORKSPACE_ROOT, "output"),
   ];
 
   let baseOutputDir: string | null = null;

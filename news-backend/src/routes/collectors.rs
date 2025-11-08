@@ -1,10 +1,11 @@
 use axum::{extract::Extension, response::Json};
 use serde::Deserialize;
-use serde_json::{json, Value};
-use std::sync::Arc;
+use serde_json::{Value, json};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 use crate::utils::config_manager::ConfigManager;
+use crate::utils::path_resolver::resolve_workspace_path;
 use crate::utils::site_config_manager::SiteConfigManager;
 
 /// Get the system_config.json path (try multiple locations)
@@ -13,15 +14,16 @@ fn get_system_config_path() -> PathBuf {
     let possible_paths = vec![
         PathBuf::from("system_config.json"), // Current directory
         PathBuf::from("news-backend/system_config.json"), // From parent
-        PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"), // Absolute path
+        resolve_workspace_path("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
     ];
-    
+
     for path in &possible_paths {
         if path.exists() {
             return path.clone();
         }
     }
-    
+
     // Default to current directory if not found
     PathBuf::from("system_config.json")
 }
@@ -46,17 +48,20 @@ pub async fn get_collectors(
             // Build a consolidated map: collector_id -> collector_info with all sites that use it
             use std::collections::HashMap;
             let mut collectors_map: HashMap<String, Value> = HashMap::new();
-            
+
             for site in &sites {
                 for collector in &site.collectors {
                     // Create a unique key for the collector (includes collector_type if available)
                     let collector_key = collector.id.clone();
-                    
+
                     // Get or create collector entry
                     if let Some(existing) = collectors_map.get_mut(&collector_key) {
                         // Collector already exists - add this site to assigned_sites if enabled
                         if collector.enabled {
-                            if let Some(assigned_sites) = existing.get_mut("assigned_sites").and_then(|v| v.as_array_mut()) {
+                            if let Some(assigned_sites) = existing
+                                .get_mut("assigned_sites")
+                                .and_then(|v| v.as_array_mut())
+                            {
                                 assigned_sites.push(json!({
                                     "id": site.id,
                                     "name": site.name,
@@ -76,24 +81,27 @@ pub async fn get_collectors(
                                 "name": site.name,
                             }));
                         }
-                        
-                        collectors_map.insert(collector_key.clone(), json!({
-                            "id": collector.id,
-                            "name": collector.name,
-                            "enabled": collector.enabled,
-                            "api_key": collector.api_key,
-                            "collector_type": collector.collector_type,
-                            "feed_url": collector.feed_url,
-                            "base_url": collector.base_url,
-                            "selectors": collector.selectors,
-                            "destinations": collector.destinations.clone().unwrap_or_default(),
-                            "config": collector.config,
-                            "assigned_sites": assigned_sites,
-                        }));
+
+                        collectors_map.insert(
+                            collector_key.clone(),
+                            json!({
+                                "id": collector.id,
+                                "name": collector.name,
+                                "enabled": collector.enabled,
+                                "api_key": collector.api_key,
+                                "collector_type": collector.collector_type,
+                                "feed_url": collector.feed_url,
+                                "base_url": collector.base_url,
+                                "selectors": collector.selectors,
+                                "destinations": collector.destinations.clone().unwrap_or_default(),
+                                "config": collector.config,
+                                "assigned_sites": assigned_sites,
+                            }),
+                        );
                     }
                 }
             }
-            
+
             // Convert HashMap to Vec sorted by collector name
             let mut collectors_with_sites: Vec<Value> = collectors_map.into_values().collect();
             collectors_with_sites.sort_by(|a, b| {
@@ -101,7 +109,7 @@ pub async fn get_collectors(
                 let name_b = b.get("name").and_then(|v| v.as_str()).unwrap_or("");
                 name_a.cmp(name_b)
             });
-            
+
             Json(json!({
                 "success": true,
                 "collectors": collectors_with_sites,
@@ -149,7 +157,9 @@ pub async fn update_collector_status(
                 let mut updated_count = 0;
                 for site in sites {
                     // Try to update collector status in this site
-                    if let Err(e) = site_manager.update_collector_status(&site.id, &collector_id, enabled) {
+                    if let Err(e) =
+                        site_manager.update_collector_status(&site.id, &collector_id, enabled)
+                    {
                         // If collector doesn't exist in this site, that's okay - skip it
                         if e.to_string().contains("not found") {
                             continue;
@@ -161,11 +171,11 @@ pub async fn update_collector_status(
                     }
                     updated_count += 1;
                 }
-                
+
                 Json(json!({
                     "success": true,
-                    "message": format!("Collector {} {} in {} sites", 
-                        collector_id, 
+                    "message": format!("Collector {} {} in {} sites",
+                        collector_id,
                         if enabled { "enabled" } else { "disabled" },
                         updated_count
                     ),
@@ -197,7 +207,7 @@ pub async fn update_collector_sites(
 ) -> Json<Value> {
     let config_path = get_system_config_path();
     let site_manager = SiteConfigManager::new(&config_path);
-    
+
     let all_sites = match site_manager.get_all_sites() {
         Ok(sites) => sites,
         Err(e) => {
@@ -207,35 +217,40 @@ pub async fn update_collector_sites(
             }));
         }
     };
-    
+
     // Update destinations for the collector in ALL sites where it exists
     // The destinations field indicates where content from this collector should be sent
     let mut updated_count = 0;
-    
+
     for site in &all_sites {
         let mut updated_site = site.clone();
         let mut site_updated = false;
-        
+
         // Find the collector in this site's collectors
-        if let Some(collector) = updated_site.collectors.iter_mut().find(|c| c.id == collector_id) {
+        if let Some(collector) = updated_site
+            .collectors
+            .iter_mut()
+            .find(|c| c.id == collector_id)
+        {
             // Update destinations field to store which sites should receive content from this collector
             collector.destinations = Some(request.site_ids.clone());
-            
+
             // Also update enabled status: enable if this site is in destinations, otherwise disable
             let should_be_enabled = request.site_ids.contains(&updated_site.id);
             collector.enabled = should_be_enabled;
-            
+
             site_updated = true;
         }
-        
+
         // If collector doesn't exist in this site but should be added
         if !site_updated && request.site_ids.contains(&updated_site.id) {
             // Find collector template in another site
-            let collector_template = all_sites.iter()
+            let collector_template = all_sites
+                .iter()
                 .flat_map(|s| &s.collectors)
                 .find(|c| c.id == collector_id)
                 .cloned();
-            
+
             if let Some(mut base_collector) = collector_template {
                 // Copy collector configuration from template
                 base_collector.enabled = true;
@@ -243,10 +258,13 @@ pub async fn update_collector_sites(
                 updated_site.collectors.push(base_collector);
                 site_updated = true;
             } else {
-                eprintln!("[WARNING] Collector {} not found in any site. Cannot add to site {}", collector_id, updated_site.id);
+                eprintln!(
+                    "[WARNING] Collector {} not found in any site. Cannot add to site {}",
+                    collector_id, updated_site.id
+                );
             }
         }
-        
+
         // Save the updated site if it was modified
         if site_updated {
             let site_id_clone = updated_site.id.clone();
@@ -259,7 +277,7 @@ pub async fn update_collector_sites(
             updated_count += 1;
         }
     }
-    
+
     Json(json!({
         "success": true,
         "message": format!("Collector {} assigned to {} sites", collector_id, request.site_ids.len()),
@@ -288,7 +306,9 @@ pub async fn update_collector_config(
     };
 
     // Find current collector to preserve fields
-    let current_collector = config.collectors.iter()
+    let current_collector = config
+        .collectors
+        .iter()
         .find(|c| c.id == collector_id)
         .cloned();
 
@@ -323,4 +343,3 @@ pub async fn update_collector_config(
         })),
     }
 }
-

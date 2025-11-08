@@ -1,5 +1,5 @@
 //! Script orquestrador para iniciar todos os servidores do sistema
-//! 
+//!
 //! Este script:
 //! 1. Finaliza todos os processos em execução
 //! 2. Aguarda 10 segundos
@@ -9,10 +9,24 @@
 //! 6. Inicia Backend (localhost:3005)
 //! 7. Verifica system_config.json para outros serviços
 
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
-use std::path::Path;
-use std::time::Duration;
 use std::thread;
+use std::time::Duration;
+
+fn workspace_root() -> PathBuf {
+    if let Ok(env_path) = std::env::var("NEWS_BASE_DIR") {
+        let trimmed = env_path.trim();
+        if !trimmed.is_empty() {
+            return PathBuf::from(trimmed);
+        }
+    }
+    std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."))
+}
+
+fn resolve_workspace_path<P: AsRef<Path>>(relative: P) -> PathBuf {
+    workspace_root().join(relative.as_ref())
+}
 
 fn main() {
     println!("🚀 Iniciando orquestrador de servidores...");
@@ -70,16 +84,16 @@ fn main() {
 
 fn kill_all_processes() {
     // Executar script PowerShell para encerrar processos
-    let script_path = Path::new("G:/Hive-Hub/News-main/kill-all-processes.ps1");
-    
+    let script_path = resolve_workspace_path("kill-all-processes.ps1");
+
     if script_path.exists() {
         let output = Command::new("powershell")
             .arg("-ExecutionPolicy")
             .arg("Bypass")
             .arg("-File")
-            .arg(script_path)
+            .arg(&script_path)
             .output();
-        
+
         match output {
             Ok(output) => {
                 if output.status.success() {
@@ -95,36 +109,37 @@ fn kill_all_processes() {
     } else {
         println!("   ⚠️  Script kill-all-processes.ps1 não encontrado");
         println!("   💡 Tentando encerrar processos manualmente...");
-        
+
         // Encerrar processos manualmente via PowerShell
         let commands = vec![
             "Get-Process | Where-Object { $_.Path -like '*news-backend*' -or $_.Path -like '*ScienceAI*' -or $_.Path -like '*frontend-next*' -or ($_.ProcessName -eq 'cargo' -and $_.Path -like '*News-main*') -or ($_.ProcessName -eq 'node' -and ($_.Path -like '*News-main*' -or $_.Path -like '*ScienceAI*' -or $_.Path -like '*frontend-next*')) } | Stop-Process -Force -ErrorAction SilentlyContinue",
         ];
-        
+
         for cmd in commands {
-            let _ = Command::new("powershell")
-                .arg("-Command")
-                .arg(cmd)
-                .output();
+            let _ = Command::new("powershell").arg("-Command").arg(cmd).output();
         }
-        
+
         println!("   ✅ Tentativa de encerrar processos concluída");
     }
 }
 
 fn start_news_dashboard() {
-    let dashboard_dir = Path::new("G:/Hive-Hub/News-main/news-dashboard");
-    
+    let dashboard_dir = resolve_workspace_path("news-dashboard");
+
     if !dashboard_dir.exists() {
-        println!("   ❌ Diretório do News Dashboard não encontrado: {:?}", dashboard_dir);
+        println!(
+            "   ❌ Diretório do News Dashboard não encontrado: {:?}",
+            dashboard_dir
+        );
         return;
     }
-    
+
     // Iniciar em nova janela PowerShell
     let cmd = format!(
-        "cd G:\\Hive-Hub\\News-main\\news-dashboard; Write-Host 'News Dashboard (Port 1420)' -ForegroundColor Cyan; npm run dev"
+        "cd \"{}\"; Write-Host 'News Dashboard (Port 1420)' -ForegroundColor Cyan; npm run dev",
+        dashboard_dir.display()
     );
-    
+
     let output = Command::new("powershell")
         .arg("-NoExit")
         .arg("-Command")
@@ -132,7 +147,7 @@ fn start_news_dashboard() {
         .stdout(Stdio::null())
         .stderr(Stdio::null())
         .spawn();
-    
+
     match output {
         Ok(_) => println!("   ✅ News Dashboard iniciado em nova janela"),
         Err(e) => println!("   ❌ Erro ao iniciar News Dashboard: {}", e),
@@ -140,18 +155,22 @@ fn start_news_dashboard() {
 }
 
 fn start_airesearch() {
-    let airesearch_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/AIResearch");
-    
+    let airesearch_dir = resolve_workspace_path("apps/frontend-next/AIResearch");
+
     if !airesearch_dir.exists() {
-        println!("   ❌ Diretório do AIResearch não encontrado: {:?}", airesearch_dir);
+        println!(
+            "   ❌ Diretório do AIResearch não encontrado: {:?}",
+            airesearch_dir
+        );
         return;
     }
-    
+
     // Iniciar em nova janela PowerShell
     let cmd = format!(
-        "cd G:\\Hive-Hub\\News-main\\apps\\frontend-next\\AIResearch; Write-Host 'AIResearch (Port 3003)' -ForegroundColor Cyan; npm run dev"
+        "cd \"{}\"; Write-Host 'AIResearch (Port 3003)' -ForegroundColor Cyan; npm run dev",
+        airesearch_dir.display()
     );
-    
+
     let output = Command::new("powershell")
         .arg("-NoExit")
         .arg("-Command")
@@ -159,7 +178,7 @@ fn start_airesearch() {
         .stdout(Stdio::null())
         .stderr(Stdio::null())
         .spawn();
-    
+
     match output {
         Ok(_) => println!("   ✅ AIResearch iniciado em nova janela"),
         Err(e) => println!("   ❌ Erro ao iniciar AIResearch: {}", e),
@@ -167,18 +186,22 @@ fn start_airesearch() {
 }
 
 fn start_scienceai() {
-    let scienceai_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/ScienceAI");
-    
+    let scienceai_dir = resolve_workspace_path("apps/frontend-next/ScienceAI");
+
     if !scienceai_dir.exists() {
-        println!("   ❌ Diretório do ScienceAI não encontrado: {:?}", scienceai_dir);
+        println!(
+            "   ❌ Diretório do ScienceAI não encontrado: {:?}",
+            scienceai_dir
+        );
         return;
     }
-    
+
     // Iniciar em nova janela PowerShell
     let cmd = format!(
-        "cd G:\\Hive-Hub\\News-main\\apps\\frontend-next\\ScienceAI; Write-Host 'ScienceAI (Port 8080)' -ForegroundColor Cyan; npm run dev"
+        "cd \"{}\"; Write-Host 'ScienceAI (Port 8080)' -ForegroundColor Cyan; npm run dev",
+        scienceai_dir.display()
     );
-    
+
     let output = Command::new("powershell")
         .arg("-NoExit")
         .arg("-Command")
@@ -186,7 +209,7 @@ fn start_scienceai() {
         .stdout(Stdio::null())
         .stderr(Stdio::null())
         .spawn();
-    
+
     match output {
         Ok(_) => println!("   ✅ ScienceAI iniciado em nova janela"),
         Err(e) => println!("   ❌ Erro ao iniciar ScienceAI: {}", e),
@@ -196,35 +219,39 @@ fn start_scienceai() {
 fn start_backend() {
     // Try to find backend binary in release or debug build
     let backend_paths = vec![
-        Path::new("G:/Hive-Hub/News-main/news-backend/target/release/news-backend.exe"),
-        Path::new("G:/Hive-Hub/News-main/news-backend/target/debug/news-backend.exe"),
+        resolve_workspace_path("news-backend/target/release/news-backend.exe"),
+        resolve_workspace_path("news-backend/target/debug/news-backend.exe"),
     ];
-    
-    let backend_path = backend_paths.iter()
-        .find(|p| p.exists());
-    
-    let backend_dir = Path::new("G:/Hive-Hub/News-main/news-backend");
-    
+
+    let backend_path = backend_paths.iter().find(|p| p.exists());
+
+    let backend_dir = resolve_workspace_path("news-backend");
+
     if !backend_dir.exists() {
-        println!("   ❌ Diretório do Backend não encontrado: {:?}", backend_dir);
+        println!(
+            "   ❌ Diretório do Backend não encontrado: {:?}",
+            backend_dir
+        );
         return;
     }
-    
+
     // Iniciar em nova janela PowerShell
     let cmd = if let Some(path) = backend_path {
         // Use compiled binary directly
         format!(
-            "cd G:\\Hive-Hub\\News-main\\news-backend; Write-Host 'News Backend (Port 3005)' -ForegroundColor Cyan; {}",
+            "cd \"{}\"; Write-Host 'News Backend (Port 3005)' -ForegroundColor Cyan; \"{}\"",
+            backend_dir.display(),
             path.to_string_lossy()
         )
     } else {
         // Fallback to cargo run if binary not found
         println!("   ⚠️  Backend binary not found, using cargo run --release (will compile)...");
         format!(
-            "cd G:\\Hive-Hub\\News-main\\news-backend; Write-Host 'News Backend (Port 3005)' -ForegroundColor Cyan; cargo run --release --bin news-backend"
+            "cd \"{}\"; Write-Host 'News Backend (Port 3005)' -ForegroundColor Cyan; cargo run --release --bin news-backend",
+            backend_dir.display()
         )
     };
-    
+
     let output = Command::new("powershell")
         .arg("-NoExit")
         .arg("-Command")
@@ -232,7 +259,7 @@ fn start_backend() {
         .stdout(Stdio::null())
         .stderr(Stdio::null())
         .spawn();
-    
+
     match output {
         Ok(_) => {
             if backend_path.is_some() {
@@ -240,21 +267,24 @@ fn start_backend() {
             } else {
                 println!("   ✅ Backend iniciando em nova janela (compilando...)");
             }
-        },
+        }
         Err(e) => println!("   ❌ Erro ao iniciar Backend: {}", e),
     }
 }
 
 fn check_additional_services() {
-    let config_path = Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json");
-    
+    let config_path = resolve_workspace_path("news-backend/system_config.json");
+
     if !config_path.exists() {
-        println!("   ⚠️  system_config.json não encontrado: {:?}", config_path);
+        println!(
+            "   ⚠️  system_config.json não encontrado: {:?}",
+            config_path
+        );
         return;
     }
-    
+
     // Ler e analisar system_config.json
-    match std::fs::read_to_string(config_path) {
+    match std::fs::read_to_string(&config_path) {
         Ok(content) => {
             // Tentar parsear JSON básico (sem usar serde aqui para evitar dependências extras)
             // Por enquanto, apenas verificar se há referências a outros serviços
@@ -271,6 +301,3 @@ fn check_additional_services() {
         }
     }
 }
-
-
-

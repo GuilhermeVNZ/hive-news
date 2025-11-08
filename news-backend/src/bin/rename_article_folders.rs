@@ -2,11 +2,25 @@
 // Executa: cargo run --bin rename-article-folders
 
 use anyhow::{Context, Result};
-use std::path::{Path, PathBuf};
-use std::fs;
 use chrono::Utc;
 use regex::Regex;
 use serde_json;
+use std::fs;
+use std::path::{Path, PathBuf};
+
+fn workspace_root() -> PathBuf {
+    if let Ok(env_path) = std::env::var("NEWS_BASE_DIR") {
+        let trimmed = env_path.trim();
+        if !trimmed.is_empty() {
+            return PathBuf::from(trimmed);
+        }
+    }
+    std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."))
+}
+
+fn resolve_workspace_path<P: AsRef<Path>>(relative: P) -> PathBuf {
+    workspace_root().join(relative.as_ref())
+}
 
 #[derive(Debug, Clone, serde::Deserialize)]
 #[allow(dead_code)]
@@ -20,7 +34,7 @@ fn main() -> Result<()> {
     println!("🔄 Renomeando pastas de artigos para novo padrão...");
     println!("================================================\n");
 
-    let output_base = Path::new("G:/Hive-Hub/News-main/output");
+    let output_base = resolve_workspace_path("output");
     let sites = vec!["ScienceAI", "AIResearch"];
 
     let mut total_renamed = 0;
@@ -29,7 +43,7 @@ fn main() -> Result<()> {
 
     for site_name in sites {
         let site_dir = output_base.join(site_name);
-        
+
         if !site_dir.exists() {
             println!("⚠️  Diretório não encontrado: {}", site_dir.display());
             continue;
@@ -71,8 +85,7 @@ fn process_site_directory(site_dir: &Path) -> Result<(usize, usize, usize)> {
     let mut skipped = 0;
     let mut errors = 0;
 
-    let entries = fs::read_dir(site_dir)
-        .context("Failed to read site directory")?;
+    let entries = fs::read_dir(site_dir).context("Failed to read site directory")?;
 
     // Primeiro, coletar todas as pastas e detectar formato
     let mut folders: Vec<(PathBuf, String, String, String, String)> = Vec::new();
@@ -80,7 +93,7 @@ fn process_site_directory(site_dir: &Path) -> Result<(usize, usize, usize)> {
     for entry in entries {
         let entry = entry?;
         let article_dir = entry.path();
-        
+
         if !article_dir.is_dir() {
             continue;
         }
@@ -127,13 +140,19 @@ fn process_site_directory(site_dir: &Path) -> Result<(usize, usize, usize)> {
         // Formato esperado: YYYY-MM-DD_source_id
         // Exemplo: 2025-11-03_huggingface_526b5300bcd37de8
         let new_folder_name = format!("{}_{}_{}", collection_date, source, article_id);
-        
+
         // Debug: mostrar comparação para pastas problemáticas
         if old_folder_name.contains("unknown") || old_folder_name != new_folder_name {
-            println!("   🔍 [DEBUG] Renomeando: {} → {}", old_folder_name, new_folder_name);
-            println!("       source={}, date={}, id={}", source, collection_date, article_id);
+            println!(
+                "   🔍 [DEBUG] Renomeando: {} → {}",
+                old_folder_name, new_folder_name
+            );
+            println!(
+                "       source={}, date={}, id={}",
+                source, collection_date, article_id
+            );
         }
-        
+
         // FORÇAR renomeação se não corresponder exatamente ao formato DATA_source_ID
         // Só pular se o nome for EXATAMENTE igual ao novo formato esperado
         if old_folder_name == new_folder_name {
@@ -145,12 +164,18 @@ fn process_site_directory(site_dir: &Path) -> Result<(usize, usize, usize)> {
 
         // Verificar se destino já existe
         if new_path.exists() {
-            println!("   ⚠️  Destino já existe: {} → {}", old_folder_name, new_folder_name);
+            println!(
+                "   ⚠️  Destino já existe: {} → {}",
+                old_folder_name, new_folder_name
+            );
             skipped += 1;
             continue;
         }
 
-        println!("   🔄 Renomeando: {} → {}", old_folder_name, new_folder_name);
+        println!(
+            "   🔄 Renomeando: {} → {}",
+            old_folder_name, new_folder_name
+        );
 
         match fs::rename(&article_dir, &new_path) {
             Ok(_) => {
@@ -180,7 +205,7 @@ fn detect_source_from_article(article_dir: &Path) -> String {
     }
 
     // Tentar ler URL do JSON raw se existir
-    let raw_base = Path::new("G:/Hive-Hub/News-main/downloads/raw");
+    let raw_base = resolve_workspace_path("downloads/raw");
     if raw_base.exists() {
         // Procurar em todas as pastas de data
         if let Ok(date_entries) = fs::read_dir(raw_base) {
@@ -205,11 +230,16 @@ fn detect_source_from_article(article_dir: &Path) -> String {
                             let json_file = date_dir.join(format!("{}.json", possible_id));
                             if json_file.exists() {
                                 if let Ok(json_content) = fs::read_to_string(&json_file) {
-                                    if let Ok(json) = serde_json::from_str::<serde_json::Value>(&json_content) {
-                                        if let Some(url) = json.get("url").and_then(|v| v.as_str()) {
+                                    if let Ok(json) =
+                                        serde_json::from_str::<serde_json::Value>(&json_content)
+                                    {
+                                        if let Some(url) = json.get("url").and_then(|v| v.as_str())
+                                        {
                                             return detect_source_from_url(url);
                                         }
-                                        if let Some(title) = json.get("title").and_then(|v| v.as_str()) {
+                                        if let Some(title) =
+                                            json.get("title").and_then(|v| v.as_str())
+                                        {
                                             return detect_source_from_url_title("", title);
                                         }
                                     }
@@ -227,19 +257,40 @@ fn detect_source_from_article(article_dir: &Path) -> String {
         .file_name()
         .and_then(|n| n.to_str())
         .unwrap_or("unknown");
-    
+
     detect_source_from_folder_name(folder_name)
 }
 
 fn detect_source_from_folder_name(folder_name: &str) -> String {
     let folder_lower = folder_name.to_lowercase();
-    
+
     let sources = vec![
-        "openai", "nvidia", "google", "meta", "anthropic", "alibaba", 
-        "deepseek", "x", "mistral", "microsoft", "apple", "berkeley",
-        "stanford", "inflection", "stability", "intel", "amd", "cohere",
-        "deepmind", "character", "menlo", "science", "airesearch", "huggingface",
-        "techcrunch", "perplexity"
+        "openai",
+        "nvidia",
+        "google",
+        "meta",
+        "anthropic",
+        "alibaba",
+        "deepseek",
+        "x",
+        "mistral",
+        "microsoft",
+        "apple",
+        "berkeley",
+        "stanford",
+        "inflection",
+        "stability",
+        "intel",
+        "amd",
+        "cohere",
+        "deepmind",
+        "character",
+        "menlo",
+        "science",
+        "airesearch",
+        "huggingface",
+        "techcrunch",
+        "perplexity",
     ];
 
     for source in sources {
@@ -258,7 +309,7 @@ fn detect_source_from_url(url: &str) -> String {
 fn detect_source_from_url_title(url: &str, title: &str) -> String {
     let url_lower = url.to_lowercase();
     let title_lower = title.to_lowercase();
-    
+
     // Mesma lógica simplificada de detect_source_category
     if url_lower.contains("openai.com") || title_lower.contains("openai") {
         return "openai".to_string();
@@ -266,25 +317,42 @@ fn detect_source_from_url_title(url: &str, title: &str) -> String {
     if url_lower.contains("nvidia.com") || title_lower.contains("nvidia") {
         return "nvidia".to_string();
     }
-    if url_lower.contains("google.com") || url_lower.contains("deepmind") || title_lower.contains("google") || title_lower.contains("deepmind") {
+    if url_lower.contains("google.com")
+        || url_lower.contains("deepmind")
+        || title_lower.contains("google")
+        || title_lower.contains("deepmind")
+    {
         return "google".to_string();
     }
-    if url_lower.contains("meta.com") || url_lower.contains("facebook.com") || title_lower.contains("meta") || title_lower.contains("facebook") {
+    if url_lower.contains("meta.com")
+        || url_lower.contains("facebook.com")
+        || title_lower.contains("meta")
+        || title_lower.contains("facebook")
+    {
         return "meta".to_string();
     }
-    if url_lower.contains("anthropic.com") || url_lower.contains("claude") || title_lower.contains("anthropic") {
+    if url_lower.contains("anthropic.com")
+        || url_lower.contains("claude")
+        || title_lower.contains("anthropic")
+    {
         return "anthropic".to_string();
     }
     if url_lower.contains("microsoft.com") || title_lower.contains("microsoft") {
         return "microsoft".to_string();
     }
-    if url_lower.contains("apple.com") || url_lower.contains("machinelearning.apple.com") || title_lower.contains("apple") {
+    if url_lower.contains("apple.com")
+        || url_lower.contains("machinelearning.apple.com")
+        || title_lower.contains("apple")
+    {
         return "apple".to_string();
     }
     if url_lower.contains("bair.berkeley.edu") || title_lower.contains("berkeley") {
         return "berkeley".to_string();
     }
-    if url_lower.contains("stanford.edu") || url_lower.contains("hai.stanford") || title_lower.contains("stanford") {
+    if url_lower.contains("stanford.edu")
+        || url_lower.contains("hai.stanford")
+        || title_lower.contains("stanford")
+    {
         return "stanford".to_string();
     }
     if url_lower.contains("inflection.ai") || title_lower.contains("inflection") {
@@ -305,7 +373,11 @@ fn detect_source_from_url_title(url: &str, title: &str) -> String {
     if url_lower.contains("science.org") || title_lower.contains("science") {
         return "science".to_string();
     }
-    if url_lower.contains("huggingface.co") || url_lower.contains("huggingface.com") || title_lower.contains("huggingface") || title_lower.contains("hugging face") {
+    if url_lower.contains("huggingface.co")
+        || url_lower.contains("huggingface.com")
+        || title_lower.contains("huggingface")
+        || title_lower.contains("hugging face")
+    {
         return "huggingface".to_string();
     }
     if url_lower.contains("techcrunch.com") || title_lower.contains("techcrunch") {
@@ -360,9 +432,13 @@ fn extract_collection_date(article_dir: &Path, folder_name: &str) -> Result<Stri
     Ok(Utc::now().format("%Y-%m-%d").to_string())
 }
 
-fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: &str) -> Result<String> {
+fn extract_article_id(
+    _article_dir: &Path,
+    folder_name: &str,
+    _detected_source: &str,
+) -> Result<String> {
     // Primeiro, tentar encontrar o JSON raw correspondente para obter o ID original
-    let raw_base = Path::new("G:/Hive-Hub/News-main/downloads/raw");
+    let raw_base = resolve_workspace_path("downloads/raw");
     if raw_base.exists() {
         // Procurar em todas as pastas de data
         if let Ok(date_entries) = fs::read_dir(raw_base) {
@@ -373,7 +449,7 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
                         // Tentar diferentes variações do ID para encontrar o JSON
                         // Extrair possíveis IDs do nome da pasta
                         let parts: Vec<&str> = folder_name.split('_').collect();
-                        
+
                         // Tentar IDs possíveis:
                         // 1. Último segmento (hash numérico/alphanumérico)
                         // 2. Últimos 2 segmentos (título_hash)
@@ -382,14 +458,14 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
                             let mut ids = vec![
                                 parts.last().unwrap().to_string(), // Último segmento
                             ];
-                            
+
                             if parts.len() >= 2 {
                                 ids.push(parts[parts.len() - 2..].join("_"));
                             }
                             if parts.len() >= 3 {
                                 ids.push(parts[parts.len() - 3..].join("_"));
                             }
-                            
+
                             ids
                         } else {
                             vec![folder_name.to_string()]
@@ -399,7 +475,9 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
                             let json_file = date_dir.join(format!("{}.json", possible_id));
                             if json_file.exists() {
                                 if let Ok(json_content) = fs::read_to_string(&json_file) {
-                                    if let Ok(json) = serde_json::from_str::<serde_json::Value>(&json_content) {
+                                    if let Ok(json) =
+                                        serde_json::from_str::<serde_json::Value>(&json_content)
+                                    {
                                         if let Some(id) = json.get("id").and_then(|v| v.as_str()) {
                                             // Usar o ID do JSON (é o ID original correto)
                                             return Ok(id.to_string());
@@ -413,13 +491,14 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
             }
         }
     }
-    
+
     // Se não encontrar JSON, extrair ID do nome da pasta
     // Estratégia: remover data e source, pegar o resto
     let parts: Vec<&str> = folder_name.split('_').collect();
-    
+
     // Se começa com data (YYYY-MM-DD), remover a data
-    let id_start = if parts.len() >= 1 && parts[0].matches('-').count() == 2 && parts[0].len() == 10 {
+    let id_start = if parts.len() >= 1 && parts[0].matches('-').count() == 2 && parts[0].len() == 10
+    {
         // Formato: YYYY-MM-DD_source_...resto
         // Pular data e source, pegar o resto
         if parts.len() >= 3 {
@@ -437,22 +516,44 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
             folder_name.to_string()
         }
     };
-    
+
     // Remover sources conhecidos do início do ID
     let sources = vec![
-        "openai", "nvidia", "google", "meta", "anthropic", "alibaba", 
-        "deepseek", "x", "mistral", "microsoft", "apple", "berkeley",
-        "stanford", "inflection", "stability", "intel", "amd", "cohere",
-        "deepmind", "character", "menlo", "science", "airesearch", "huggingface",
-        "techcrunch", "perplexity", "unknown"
+        "openai",
+        "nvidia",
+        "google",
+        "meta",
+        "anthropic",
+        "alibaba",
+        "deepseek",
+        "x",
+        "mistral",
+        "microsoft",
+        "apple",
+        "berkeley",
+        "stanford",
+        "inflection",
+        "stability",
+        "intel",
+        "amd",
+        "cohere",
+        "deepmind",
+        "character",
+        "menlo",
+        "science",
+        "airesearch",
+        "huggingface",
+        "techcrunch",
+        "perplexity",
+        "unknown",
     ];
-    
+
     let mut id_clean = id_start;
     let mut changed = true;
     while changed {
         changed = false;
         let id_lower = id_clean.to_lowercase();
-        
+
         for source in &sources {
             if id_lower.starts_with(&format!("{}_", source)) {
                 id_clean = id_clean[source.len() + 1..].to_string();
@@ -461,15 +562,15 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
             }
         }
     }
-    
+
     // Extrair apenas o ID numérico/hash do final
     // Estratégia: o ID final geralmente é um hash alfanumérico longo (16+ caracteres)
     // ou um número. Procurar pelo último segmento que seja um hash válido.
-    
+
     // Se o id_clean ainda contém underscores, pegar apenas o último segmento
     // que seja um hash (alfanumérico longo)
     let final_parts: Vec<&str> = id_clean.split('_').collect();
-    
+
     // Procurar pelo último segmento que seja um hash válido (16+ caracteres alfanuméricos)
     for part in final_parts.iter().rev() {
         // Verificar se é um hash válido (alfanumérico, 16+ caracteres)
@@ -481,14 +582,17 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
             return Ok(part.to_string());
         }
     }
-    
+
     // Se não encontrar hash, usar o último segmento
     if let Some(last) = final_parts.last() {
         // Limpar o último segmento removendo qualquer prefixo de source
         let mut clean_last = last.to_string();
         for source in &sources {
             let source_with_underscore = format!("{}_", source);
-            if clean_last.to_lowercase().starts_with(&source_with_underscore) {
+            if clean_last
+                .to_lowercase()
+                .starts_with(&source_with_underscore)
+            {
                 clean_last = clean_last[source_with_underscore.len()..].to_string();
             }
         }
@@ -499,4 +603,3 @@ fn extract_article_id(_article_dir: &Path, folder_name: &str, _detected_source: 
         Ok(folder_name.to_string())
     }
 }
-

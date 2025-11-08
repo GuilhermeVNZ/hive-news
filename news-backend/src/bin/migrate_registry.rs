@@ -12,14 +12,28 @@ fn main() -> Result<()> {
     unsafe {
         std::env::set_var("RUST_BACKTRACE", "1");
     }
-    
+
     println!("🔄 Article Registry Migration");
     println!("============================\n");
 
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
-    
+    fn workspace_root() -> std::path::PathBuf {
+        if let Ok(env_path) = std::env::var("NEWS_BASE_DIR") {
+            let trimmed = env_path.trim();
+            if !trimmed.is_empty() {
+                return std::path::PathBuf::from(trimmed);
+            }
+        }
+        std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."))
+    }
+
+    fn resolve_workspace_path<P: AsRef<Path>>(relative: P) -> std::path::PathBuf {
+        workspace_root().join(relative.as_ref())
+    }
+
+    let registry_path = resolve_workspace_path("articles_registry.json");
+
     // Carregar registry existente (ou criar novo)
-    let mut registry = match ArticleRegistry::load(registry_path) {
+    let mut registry = match ArticleRegistry::load(&registry_path) {
         Ok(r) => r,
         Err(_) => {
             println!("   Creating new registry...");
@@ -31,26 +45,26 @@ fn main() -> Result<()> {
 
     println!("📂 Scanning existing articles...\n");
 
-    let base_dir = Path::new("G:/Hive-Hub/News-main/downloads");
-    let output_dir = Path::new("G:/Hive-Hub/News-main/output/AIResearch");
-    
+    let base_dir = resolve_workspace_path("downloads");
+    let output_dir = resolve_workspace_path("output/AIResearch");
+
     let mut migrated_count = 0;
     let mut skipped_count = 0;
 
     // 1. Migrar artigos de output/ (já publicados)
     if output_dir.exists() {
         println!("📄 Scanning published articles in output/AIResearch/...");
-        
+
         for entry in fs::read_dir(output_dir)? {
             let entry = entry?;
             let article_dir = entry.path();
-            
+
             if article_dir.is_dir() {
                 let article_id = article_dir
                     .file_name()
                     .and_then(|n| n.to_str())
                     .unwrap_or("");
-                
+
                 // Verificar se já tem article.md (publicado)
                 let article_file = article_dir.join("article.md");
                 if article_file.exists() {
@@ -68,7 +82,7 @@ fn main() -> Result<()> {
                     // Verificar se já está no registry
                     if !registry.is_article_registered(article_id) {
                         println!("  ✅ Migrating published: {} - {}", article_id, title);
-                        
+
                         // Criar metadata completo
                         let title_trimmed = title.trim().to_string();
                         let mut metadata = ArticleMetadata {
@@ -116,11 +130,11 @@ fn main() -> Result<()> {
     let filtered_dir = base_dir.join("filtered");
     if filtered_dir.exists() {
         println!("\n🔍 Scanning filtered articles in downloads/filtered/...");
-        
+
         for entry in fs::read_dir(&filtered_dir)? {
             let entry = entry?;
             let category_dir = entry.path();
-            
+
             if category_dir.is_dir() {
                 let category = category_dir
                     .file_name()
@@ -130,19 +144,17 @@ fn main() -> Result<()> {
                 for pdf_entry in fs::read_dir(&category_dir)? {
                     let pdf_entry = pdf_entry?;
                     let pdf_path = pdf_entry.path();
-                    
+
                     if pdf_path.extension().and_then(|e| e.to_str()) == Some("pdf") {
-                        let article_id = pdf_path
-                            .file_stem()
-                            .and_then(|n| n.to_str())
-                            .unwrap_or("");
-                        
+                        let article_id =
+                            pdf_path.file_stem().and_then(|n| n.to_str()).unwrap_or("");
+
                         if !registry.is_article_registered(article_id) {
                             println!("  ✅ Migrating filtered: {} → {}", article_id, category);
-                            
+
                             let arxiv_url = format!("https://arxiv.org/abs/{}", article_id);
                             let pdf_url = format!("https://arxiv.org/pdf/{}.pdf", article_id);
-                            
+
                             let metadata = ArticleMetadata {
                                 id: article_id.to_string(),
                                 title: "Untitled (from migration)".to_string(),
@@ -163,7 +175,7 @@ fn main() -> Result<()> {
                                 original_title: Some("Untitled (from migration)".to_string()),
                                 generated_title: None,
                             };
-                            
+
                             registry.articles.insert(article_id.to_string(), metadata);
                             migrated_count += 1;
                         } else {
@@ -179,23 +191,20 @@ fn main() -> Result<()> {
     let rejected_dir = base_dir.join("rejected");
     if rejected_dir.exists() {
         println!("\n❌ Scanning rejected articles in downloads/rejected/...");
-        
+
         for entry in fs::read_dir(&rejected_dir)? {
             let entry = entry?;
             let pdf_path = entry.path();
-            
+
             if pdf_path.extension().and_then(|e| e.to_str()) == Some("pdf") {
-                let article_id = pdf_path
-                    .file_stem()
-                    .and_then(|n| n.to_str())
-                    .unwrap_or("");
-                
+                let article_id = pdf_path.file_stem().and_then(|n| n.to_str()).unwrap_or("");
+
                 if !registry.is_article_registered(article_id) {
                     println!("  ✅ Migrating rejected: {}", article_id);
-                    
+
                     let arxiv_url = format!("https://arxiv.org/abs/{}", article_id);
                     let pdf_url = format!("https://arxiv.org/pdf/{}.pdf", article_id);
-                    
+
                     let metadata = ArticleMetadata {
                         id: article_id.to_string(),
                         title: "Untitled (from migration)".to_string(),
@@ -216,7 +225,7 @@ fn main() -> Result<()> {
                         original_title: Some("Untitled (from migration)".to_string()),
                         generated_title: None,
                     };
-                    
+
                     registry.articles.insert(article_id.to_string(), metadata);
                     migrated_count += 1;
                 } else {
@@ -228,13 +237,15 @@ fn main() -> Result<()> {
 
     // Salvar registry
     println!("\n💾 Saving registry...");
-    registry.save(registry_path)?;
+    registry.save(&registry_path)?;
 
     println!("\n✅ Migration completed!");
     println!("   Migrated: {} articles", migrated_count);
-    println!("   Skipped (already in registry): {} articles", skipped_count);
+    println!(
+        "   Skipped (already in registry): {} articles",
+        skipped_count
+    );
     println!("   Total in registry: {} articles", registry.articles.len());
 
     Ok(())
 }
-

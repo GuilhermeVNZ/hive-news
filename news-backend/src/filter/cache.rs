@@ -1,8 +1,10 @@
 use std::fs;
 use std::path::PathBuf;
 
+use crate::utils::path_resolver::resolve_workspace_path;
+
 pub fn cache_dir() -> PathBuf {
-    PathBuf::from("G:/Hive-Hub/News-main/downloads/cache")
+    resolve_workspace_path("downloads/cache")
 }
 
 pub fn save_doi_cache(doi: &str, valid: bool) {

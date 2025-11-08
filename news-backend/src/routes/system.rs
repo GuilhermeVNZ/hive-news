@@ -1,38 +1,59 @@
-use axum::{response::Json, extract::Extension};
-use serde::{Serialize, Deserialize};
-use serde_json::{json, Value};
+use axum::{extract::Extension, response::Json};
+use chrono::Utc;
+use serde::{Deserialize, Serialize};
+use serde_json::{Value, json};
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
-use crate::db::connection::Database;
-use chrono::Utc;
+
+use crate::{
+    db::connection::Database,
+    services::loop_manager::{LoopConfig, LoopManager},
+    utils::path_resolver::{resolve_workspace_path, workspace_root},
+};
 
 #[derive(Debug, Serialize)]
-pub struct HealthResponse { pub success: bool }
+pub struct HealthResponse {
+    pub success: bool,
+}
 
 pub async fn health() -> Json<HealthResponse> {
-    Json(HealthResponse{ success: true })
+    Json(HealthResponse { success: true })
 }
 
 #[derive(Debug, Serialize)]
-pub struct SystemStatus { pub success: bool, pub output_size_bytes: u64, pub images_size_bytes: u64 }
+pub struct SystemStatus {
+    pub success: bool,
+    pub output_size_bytes: u64,
+    pub images_size_bytes: u64,
+}
 
 fn dir_size(start: &Path, filter_ext: Option<&[&str]>) -> u64 {
     let mut total: u64 = 0;
-    if !start.exists() { return 0; }
+    if !start.exists() {
+        return 0;
+    }
     let mut stack: Vec<PathBuf> = vec![start.to_path_buf()];
     while let Some(p) = stack.pop() {
         if let Ok(rd) = fs::read_dir(p) {
             for e in rd.flatten() {
                 let path = e.path();
-                if path.is_dir() { stack.push(path); } else {
+                if path.is_dir() {
+                    stack.push(path);
+                } else {
                     if let Ok(md) = e.metadata() {
                         if let Some(exts) = filter_ext {
-                            let ok = path.extension().and_then(|s| s.to_str()).map(|s| {
-                                let lower = s.to_lowercase();
-                                exts.iter().any(|x| *x == lower)
-                            }).unwrap_or(false);
-                            if ok { total = total.saturating_add(md.len()); }
+                            let ok = path
+                                .extension()
+                                .and_then(|s| s.to_str())
+                                .map(|s| {
+                                    let lower = s.to_lowercase();
+                                    exts.iter().any(|x| *x == lower)
+                                })
+                                .unwrap_or(false);
+                            if ok {
+                                total = total.saturating_add(md.len());
+                            }
                         } else {
                             total = total.saturating_add(md.len());
                         }
@@ -49,57 +70,55 @@ pub async fn system_status() -> Json<SystemStatus> {
     let images_ext = ["png", "jpg", "jpeg", "webp", "gif"]; // count only images
     let out_size = dir_size(output, None);
     let img_size = dir_size(output, Some(&images_ext));
-    Json(SystemStatus{ success: true, output_size_bytes: out_size, images_size_bytes: img_size })
+    Json(SystemStatus {
+        success: true,
+        output_size_bytes: out_size,
+        images_size_bytes: img_size,
+    })
 }
 
 /// Get system configuration including loop_config
-pub async fn get_system_config(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn get_system_config(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     let config_path = get_system_config_path();
-    
+
     match fs::read_to_string(&config_path) {
-        Ok(content) => {
-            match serde_json::from_str::<Value>(&content) {
-                Ok(json) => {
-                    let loop_config = json.get("loop_config").cloned().unwrap_or_else(|| json!({
+        Ok(content) => match serde_json::from_str::<Value>(&content) {
+            Ok(json) => {
+                let loop_config = json.get("loop_config").cloned().unwrap_or_else(|| {
+                    json!({
                         "interval_minutes": 30,
                         "filter_score_min": 0.4,
                         "max_cycles": null,
                         "enabled": false
-                    }));
-                    
-                    Json(json!({
-                        "success": true,
-                        "loop_config": loop_config
-                    }))
-                }
-                Err(e) => {
-                    Json(json!({
-                        "success": false,
-                        "error": format!("Failed to parse config: {}", e),
-                        "loop_config": {
-                            "interval_minutes": 30,
-                            "filter_score_min": 0.4,
-                            "max_cycles": null,
-                            "enabled": false
-                        }
-                    }))
-                }
+                    })
+                });
+
+                Json(json!({
+                    "success": true,
+                    "loop_config": loop_config
+                }))
             }
-        }
-        Err(e) => {
-            Json(json!({
+            Err(e) => Json(json!({
                 "success": false,
-                "error": format!("Failed to read config: {}", e),
+                "error": format!("Failed to parse config: {}", e),
                 "loop_config": {
                     "interval_minutes": 30,
                     "filter_score_min": 0.4,
                     "max_cycles": null,
                     "enabled": false
                 }
-            }))
-        }
+            })),
+        },
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to read config: {}", e),
+            "loop_config": {
+                "interval_minutes": 30,
+                "filter_score_min": 0.4,
+                "max_cycles": null,
+                "enabled": false
+            }
+        })),
     }
 }
 
@@ -111,14 +130,17 @@ fn get_system_config_path() -> PathBuf {
         current_dir.join("news-backend/system_config.json"),
         PathBuf::from("system_config.json"),
         PathBuf::from("news-backend/system_config.json"),
-        PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-        PathBuf::from("G:/Hive-Hub/News-main/system_config.json"),
+        resolve_workspace_path("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
     ];
-    
-    possible_paths
-        .into_iter()
-        .find(|p| p.exists())
-        .unwrap_or_else(|| PathBuf::from("system_config.json"))
+
+    for path in possible_paths {
+        if path.exists() {
+            return path;
+        }
+    }
+
+    workspace_root().join("news-backend/system_config.json")
 }
 
 #[derive(Debug, Deserialize)]
@@ -134,248 +156,78 @@ pub async fn start_loop(
     axum::extract::Json(config): axum::extract::Json<LoopConfigRequest>,
 ) -> Json<Value> {
     let config_path = get_system_config_path();
-    
-    // First, check if start.exe is already running
-    let start_running = check_start_running();
-    if start_running {
-        // If already running, just update the config
-        return update_loop_config_only(&config_path, &config).await;
+
+    if let Err(e) = write_loop_config(&config_path, &config, true) {
+        return Json(json!({
+            "success": false,
+            "error": e,
+        }));
     }
-    
-    // Read current config
-    match fs::read_to_string(&config_path) {
-        Ok(content) => {
-            let mut json: Value = serde_json::from_str(&content)
-                .unwrap_or_else(|_| json!({}));
-            
-            // Update loop_config
-            json["loop_config"] = json!({
-                "interval_minutes": config.interval_minutes,
-                "filter_score_min": config.filter_score_min,
-                "max_cycles": config.max_cycles,
-                "enabled": true
-            });
-            
-            // Write back
-            match fs::write(&config_path, serde_json::to_string_pretty(&json).unwrap_or_default()) {
-                Ok(_) => {
-                    // Now start start.exe in a new PowerShell window
-                    match start_start_exe() {
-                        Ok(_) => {
-                            Json(json!({
-                                "success": true,
-                                "message": "Loop configuration updated and started. start.exe launched in new window."
-                            }))
-                        }
-                        Err(e) => {
-                            Json(json!({
-                                "success": false,
-                                "error": format!("Config updated but failed to start start.exe: {}", e)
-                            }))
-                        }
-                    }
-                }
-                Err(e) => {
-                    Json(json!({
-                        "success": false,
-                        "error": format!("Failed to write config: {}", e)
-                    }))
-                }
-            }
-        }
+
+    match LoopManager::global().start(LoopConfig::from(&config)).await {
+        Ok(true) => Json(json!({
+            "success": true,
+            "message": "Loop configuration updated and pipeline loop started."
+        })),
+        Ok(false) => Json(json!({
+            "success": true,
+            "message": "Loop configuration updated. Pipeline loop already running."
+        })),
         Err(e) => {
+            if let Err(err) = write_loop_config_enabled_only(&config_path, false) {
+                tracing::warn!(
+                    "Failed to revert loop enabled flag after start error: {}",
+                    err
+                );
+            }
             Json(json!({
                 "success": false,
-                "error": format!("Failed to read config: {}", e)
+                "error": format!("Failed to start pipeline loop: {}", e)
             }))
         }
-    }
-}
-
-/// Check if start.exe is already running
-fn check_start_running() -> bool {
-    use std::process::Command;
-    
-    // Check for start.exe process
-    let output = Command::new("powershell")
-        .args(&["-Command", "Get-Process | Where-Object { $_.ProcessName -eq 'start' -or $_.Path -like '*start.exe' } | Measure-Object | Select-Object -ExpandProperty Count"])
-        .output();
-    
-    match output {
-        Ok(output) => {
-            if let Ok(stdout) = String::from_utf8(output.stdout) {
-                let count = stdout.trim().parse::<u32>().unwrap_or(0);
-                count > 0
-            } else {
-                false
-            }
-        }
-        Err(_) => false,
-    }
-}
-
-/// Update loop config only (without starting)
-async fn update_loop_config_only(
-    config_path: &PathBuf,
-    config: &LoopConfigRequest,
-) -> Json<Value> {
-    match fs::read_to_string(config_path) {
-        Ok(content) => {
-            let mut json: Value = serde_json::from_str(&content)
-                .unwrap_or_else(|_| json!({}));
-            
-            // Update loop_config
-            json["loop_config"] = json!({
-                "interval_minutes": config.interval_minutes,
-                "filter_score_min": config.filter_score_min,
-                "max_cycles": config.max_cycles,
-                "enabled": true
-            });
-            
-            // Write back
-            match fs::write(config_path, serde_json::to_string_pretty(&json).unwrap_or_default()) {
-                Ok(_) => {
-                    Json(json!({
-                        "success": true,
-                        "message": "Loop configuration updated. start.exe is already running."
-                    }))
-                }
-                Err(e) => {
-                    Json(json!({
-                        "success": false,
-                        "error": format!("Failed to write config: {}", e)
-                    }))
-                }
-            }
-        }
-        Err(e) => {
-            Json(json!({
-                "success": false,
-                "error": format!("Failed to read config: {}", e)
-            }))
-        }
-    }
-}
-
-/// Start start.exe in a new PowerShell window
-fn start_start_exe() -> Result<(), String> {
-    use std::process::Command;
-    
-    // Try to find start.exe in release or debug build
-    // start.exe is built from News-main/Cargo.toml, so it's in News-main/target/
-    let start_paths = vec![
-        "G:\\Hive-Hub\\News-main\\target\\release\\start.exe",
-        "G:\\Hive-Hub\\News-main\\target\\debug\\start.exe",
-        "G:\\Hive-Hub\\News-main\\target\\release\\news-system.exe", // Alternative name
-        "G:\\Hive-Hub\\News-main\\target\\debug\\news-system.exe", // Alternative name
-    ];
-    
-    let start_path = start_paths.iter()
-        .find(|p| Path::new(p).exists())
-        .ok_or_else(|| {
-            "start.exe not found. Please build it first: cd News-main && cargo build --bin start".to_string()
-        })?;
-    
-    // Execute start.exe in a new PowerShell window
-    // Using Start-Process to open in a new window
-    let cmd = format!(
-        "Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd G:\\Hive-Hub\\News-main; Write-Host \"News System Pipeline Loop\" -ForegroundColor Cyan; Write-Host \"=====================================\" -ForegroundColor Cyan; Write-Host \"\"; {} start'",
-        start_path
-    );
-    
-    match Command::new("powershell")
-        .arg("-Command")
-        .arg(&cmd)
-        .spawn() {
-        Ok(_) => Ok(()),
-        Err(e) => Err(format!("Failed to execute start.exe: {}", e)),
     }
 }
 
 /// Stop loop
-pub async fn stop_loop(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn stop_loop(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     let config_path = get_system_config_path();
-    
-    // First, try to stop the start.exe process
-    let stop_result = stop_start_exe();
-    
-    // Read current config
-    match fs::read_to_string(&config_path) {
-        Ok(content) => {
-            let mut json: Value = serde_json::from_str(&content)
-                .unwrap_or_else(|_| json!({}));
-            
-            // Update loop_config to disabled
-            if let Some(loop_config) = json.get_mut("loop_config") {
-                if let Some(obj) = loop_config.as_object_mut() {
-                    obj.insert("enabled".to_string(), json!(false));
-                }
-            } else {
-                json["loop_config"] = json!({
-                    "interval_minutes": 30,
-                    "filter_score_min": 0.4,
-                    "max_cycles": null,
-                    "enabled": false
-                });
-            }
-            
-            // Write back
-            match fs::write(&config_path, serde_json::to_string_pretty(&json).unwrap_or_default()) {
-                Ok(_) => {
-                    let message = if stop_result {
-                        "Loop stopped and start.exe process terminated"
-                    } else {
-                        "Loop configuration updated to disabled. start.exe may still be running."
-                    };
-                    
-                    Json(json!({
-                        "success": true,
-                        "message": message
-                    }))
-                }
-                Err(e) => {
-                    Json(json!({
-                        "success": false,
-                        "error": format!("Failed to write config: {}", e)
-                    }))
-                }
-            }
-        }
-        Err(e) => {
-            Json(json!({
-                "success": false,
-                "error": format!("Failed to read config: {}", e)
-            }))
-        }
-    }
-}
 
-/// Stop start.exe process
-fn stop_start_exe() -> bool {
-    use std::process::Command;
-    
-    // Try to stop start.exe process
-    let output = Command::new("powershell")
-        .args(&["-Command", "Get-Process | Where-Object { $_.ProcessName -eq 'start' -or $_.Path -like '*start.exe' } | Stop-Process -Force -ErrorAction SilentlyContinue"])
-        .output();
-    
-    match output {
-        Ok(output) => output.status.success(),
-        Err(_) => false,
+    if let Err(e) = write_loop_config_enabled_only(&config_path, false) {
+        return Json(json!({
+            "success": false,
+            "error": e,
+        }));
     }
+
+    let stopped = match LoopManager::global().stop().await {
+        Ok(result) => result,
+        Err(e) => {
+            return Json(json!({
+                "success": false,
+                "error": format!("Failed to stop pipeline loop: {}", e)
+            }));
+        }
+    };
+
+    let message = if stopped {
+        "Pipeline loop stopped."
+    } else {
+        "Pipeline loop was not running."
+    };
+
+    Json(json!({
+        "success": true,
+        "message": message
+    }))
 }
 
 /// Refresh servers (execute servers.exe)
-pub async fn refresh_servers(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn refresh_servers(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     use std::process::Command;
-    
+
     let servers_path = "G:\\Hive-Hub\\News-main\\news-backend\\target\\release\\servers.exe";
     let servers_path_debug = "G:\\Hive-Hub\\News-main\\news-backend\\target\\debug\\servers.exe";
-    
+
     let path = if Path::new(servers_path).exists() {
         servers_path
     } else if Path::new(servers_path_debug).exists() {
@@ -386,7 +238,7 @@ pub async fn refresh_servers(
             "error": "servers.exe not found. Please build it first: cd news-backend && cargo build --bin servers"
         }));
     };
-    
+
     // Execute servers.exe in a new PowerShell window
     match Command::new("powershell")
         .args(&["-Command", &format!("Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd G:\\Hive-Hub\\News-main; {}'", path)])
@@ -407,49 +259,62 @@ pub async fn refresh_servers(
 }
 
 /// Get collection status with cooldown
-pub async fn get_collection_status(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn get_collection_status(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     let config_path = get_system_config_path();
-    
+
     // Read loop config
     match fs::read_to_string(&config_path) {
         Ok(content) => {
             match serde_json::from_str::<Value>(&content) {
                 Ok(json) => {
                     if let Some(loop_config) = json.get("loop_config") {
-                        let interval = loop_config.get("interval_minutes")
+                        let mut interval = loop_config
+                            .get("interval_minutes")
                             .and_then(|v| v.as_u64())
                             .unwrap_or(30);
-                        let filter_score = loop_config.get("filter_score_min")
+                        if interval == 0 {
+                            interval = 1;
+                        }
+
+                        let filter_score = loop_config
+                            .get("filter_score_min")
                             .and_then(|v| v.as_f64())
                             .unwrap_or(0.4);
-                        let max_cycles = loop_config.get("max_cycles")
+                        let max_cycles = loop_config
+                            .get("max_cycles")
                             .and_then(|v| v.as_u64())
                             .map(|v| v as u32);
-                        let enabled = loop_config.get("enabled")
+                        let mut enabled = loop_config
+                            .get("enabled")
                             .and_then(|v| v.as_bool())
                             .unwrap_or(false);
-                        
+
+                        if !enabled && LoopManager::global().is_running().await {
+                            enabled = true;
+                        }
+
                         // Calculate cooldown
                         // Try to find last cycle completion time from stats file
-                        let stats_path = Path::new("G:/Hive-Hub/News-main/loop_stats.json");
+                        let stats_path = loop_stats_path();
                         let cooldown_remaining = if enabled && stats_path.exists() {
                             if let Ok(stats_content) = fs::read_to_string(stats_path) {
-                                if let Ok(stats_json) = serde_json::from_str::<Value>(&stats_content) {
-                                    if let Some(last_cycle) = stats_json.get("last_cycle_completed_at") {
+                                if let Ok(stats_json) =
+                                    serde_json::from_str::<Value>(&stats_content)
+                                {
+                                    if let Some(last_cycle) =
+                                        stats_json.get("last_cycle_completed_at")
+                                    {
                                         if let Some(timestamp) = last_cycle.as_str() {
-                                            if let Ok(last_time) = chrono::DateTime::parse_from_rfc3339(timestamp) {
+                                            if let Ok(last_time) =
+                                                chrono::DateTime::parse_from_rfc3339(timestamp)
+                                            {
                                                 let now = Utc::now();
                                                 let last_utc = last_time.with_timezone(&Utc);
                                                 let elapsed = now.signed_duration_since(last_utc);
                                                 let total_seconds = (interval * 60) as i64;
-                                                let remaining = total_seconds - elapsed.num_seconds();
-                                                if remaining > 0 {
-                                                    remaining
-                                                } else {
-                                                    0
-                                                }
+                                                let remaining =
+                                                    total_seconds - elapsed.num_seconds();
+                                                if remaining > 0 { remaining } else { 0 }
                                             } else {
                                                 0
                                             }
@@ -468,7 +333,7 @@ pub async fn get_collection_status(
                         } else {
                             0
                         };
-                        
+
                         return Json(json!({
                             "success": true,
                             "interval_minutes": interval,
@@ -485,25 +350,25 @@ pub async fn get_collection_status(
         }
         Err(_) => {}
     };
-    
+
     // Defaults
+    let running = LoopManager::global().is_running().await;
+
     Json(json!({
         "success": true,
         "interval_minutes": 30,
         "filter_score_min": 0.4,
         "max_cycles": null,
-        "enabled": false,
+        "enabled": running,
         "cooldown_remaining_seconds": 0,
         "cooldown_total_seconds": 1800,
     }))
 }
 
 /// Get loop statistics (articles by source, articles written by site, tokens)
-pub async fn get_loop_stats(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
-    let stats_path = Path::new("G:/Hive-Hub/News-main/loop_stats.json");
-    
+pub async fn get_loop_stats(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
+    let stats_path = loop_stats_path();
+
     if !stats_path.exists() {
         return Json(json!({
             "success": true,
@@ -516,48 +381,38 @@ pub async fn get_loop_stats(
             "last_cycle_completed_at": null,
         }));
     }
-    
-    match fs::read_to_string(stats_path) {
-        Ok(content) => {
-            match serde_json::from_str::<Value>(&content) {
-                Ok(json) => {
-                    Json(json!({
-                        "success": true,
-                        "current_cycle": json.get("current_cycle").unwrap_or(&json!(0)),
-                        "articles_by_source": json.get("articles_by_source").unwrap_or(&json!({})),
-                        "articles_written_by_site": json.get("articles_written_by_site").unwrap_or(&json!({})),
-                        "tokens_total": json.get("tokens_total").unwrap_or(&json!(0)),
-                        "tokens_saved": json.get("tokens_saved").unwrap_or(&json!(0)),
-                        "tokens_used": json.get("tokens_used").unwrap_or(&json!(0)),
-                        "last_cycle_completed_at": json.get("last_cycle_completed_at").unwrap_or(&json!(null)),
-                    }))
-                }
-                Err(e) => {
-                    Json(json!({
-                        "success": false,
-                        "error": format!("Failed to parse stats: {}", e)
-                    }))
-                }
-            }
-        }
-        Err(e) => {
-            Json(json!({
+
+    match fs::read_to_string(&stats_path) {
+        Ok(content) => match serde_json::from_str::<Value>(&content) {
+            Ok(json) => Json(json!({
+                "success": true,
+                "current_cycle": json.get("current_cycle").unwrap_or(&json!(0)),
+                "articles_by_source": json.get("articles_by_source").unwrap_or(&json!({})),
+                "articles_written_by_site": json.get("articles_written_by_site").unwrap_or(&json!({})),
+                "tokens_total": json.get("tokens_total").unwrap_or(&json!(0)),
+                "tokens_saved": json.get("tokens_saved").unwrap_or(&json!(0)),
+                "tokens_used": json.get("tokens_used").unwrap_or(&json!(0)),
+                "last_cycle_completed_at": json.get("last_cycle_completed_at").unwrap_or(&json!(null)),
+            })),
+            Err(e) => Json(json!({
                 "success": false,
-                "error": format!("Failed to read stats: {}", e)
-            }))
-        }
+                "error": format!("Failed to parse stats: {}", e)
+            })),
+        },
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to read stats: {}", e)
+        })),
     }
 }
 
 /// Get services status (backend and frontends)
-pub async fn get_services_status(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn get_services_status(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     use std::net::TcpStream;
-    
+
     // Check backend (port 3005) - if request reached here, backend is online
     let backend_online = true;
-    
+
     // Check frontends - if request reached here, dashboard is online (it made the request!)
     // For other services, try to connect
     let check_port = |port: u16| -> bool {
@@ -569,7 +424,7 @@ pub async fn get_services_status(
             false
         }
     };
-    
+
     let services = json!({
         "backend": {
             "name": "News Backend",
@@ -592,7 +447,7 @@ pub async fn get_services_status(
             "online": check_port(8080),
         },
     });
-    
+
     Json(json!({
         "success": true,
         "services": services,
@@ -600,100 +455,162 @@ pub async fn get_services_status(
 }
 
 /// Get count of articles published today
-pub async fn get_articles_today_count(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
-    use crate::utils::article_registry::{RegistryManager, ArticleStatus};
+pub async fn get_articles_today_count(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
+    use crate::utils::article_registry::{ArticleStatus, RegistryManager};
     use chrono::Utc;
-    
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
-    
+
+    let registry_path = registry_file_path();
+
     if !registry_path.exists() {
         return Json(json!({
             "success": true,
             "count": 0,
         }));
     }
-    
-    match RegistryManager::new(registry_path) {
+
+    match RegistryManager::new(&registry_path) {
         Ok(manager) => {
             let today = Utc::now().date_naive();
-            let count = manager.get_all_articles()
+            let count = manager
+                .get_all_articles()
                 .iter()
                 .filter(|article| {
                     // Only count Published articles
                     if !matches!(article.status, ArticleStatus::Published) {
                         return false;
                     }
-                    
+
                     // Check if published_at is today
                     if let Some(published_at) = &article.published_at {
                         return published_at.date_naive() == today;
                     }
-                    
+
                     // Fallback: check collected_at if published_at is not available
                     if let Some(collected_at) = &article.collected_at {
                         return collected_at.date_naive() == today;
                     }
-                    
+
                     false
                 })
                 .count();
-            
+
             Json(json!({
                 "success": true,
                 "count": count,
             }))
         }
-        Err(e) => {
-            Json(json!({
-                "success": false,
-                "error": format!("Failed to load registry: {}", e),
-                "count": 0,
-            }))
-        }
+        Err(e) => Json(json!({
+            "success": false,
+            "error": format!("Failed to load registry: {}", e),
+            "count": 0,
+        })),
     }
 }
 
+fn workspace_root_from_config() -> PathBuf {
+    let config_path = get_system_config_path();
+    config_path
+        .parent()
+        .map(|p| p.to_path_buf())
+        .unwrap_or_else(|| PathBuf::from("."))
+}
 
+fn loop_stats_path() -> PathBuf {
+    let root = workspace_root_from_config();
+    root.join("loop_stats.json")
+}
 
+fn registry_file_path() -> PathBuf {
+    let root = workspace_root_from_config();
+    root.join("articles_registry.json")
+}
 
+fn write_loop_config(
+    config_path: &Path,
+    config: &LoopConfigRequest,
+    enabled: bool,
+) -> Result<(), String> {
+    let mut json = read_or_create_config(config_path)?;
+    if !json.is_object() {
+        json = json!({});
+    }
 
+    if let Some(obj) = json.as_object_mut() {
+        obj.insert(
+            "loop_config".to_string(),
+            json!({
+                "interval_minutes": config.interval_minutes,
+                "filter_score_min": config.filter_score_min,
+                "max_cycles": config.max_cycles,
+                "enabled": enabled
+            }),
+        );
+    }
 
+    write_config(config_path, &json)
+}
 
+fn write_loop_config_enabled_only(config_path: &Path, enabled: bool) -> Result<(), String> {
+    let mut json = read_or_create_config(config_path)?;
+    if !json.is_object() {
+        json = json!({});
+    }
 
+    if let Some(obj) = json.as_object_mut() {
+        let loop_config = obj.entry("loop_config".to_string()).or_insert_with(|| {
+            json!({
+                "interval_minutes": 30,
+                "filter_score_min": 0.4,
+                "max_cycles": Value::Null,
+                "enabled": false
+            })
+        });
 
+        if let Some(loop_obj) = loop_config.as_object_mut() {
+            loop_obj.insert("enabled".to_string(), json!(enabled));
+        } else {
+            obj.insert(
+                "loop_config".to_string(),
+                json!({
+                    "interval_minutes": 30,
+                    "filter_score_min": 0.4,
+                    "max_cycles": Value::Null,
+                    "enabled": enabled
+                }),
+            );
+        }
+    }
 
+    write_config(config_path, &json)
+}
 
+fn read_or_create_config(path: &Path) -> Result<Value, String> {
+    if !path.exists() {
+        return Ok(json!({}));
+    }
 
+    fs::read_to_string(path)
+        .map_err(|e| format!("Failed to read config: {}", e))
+        .and_then(|content| {
+            serde_json::from_str(&content)
+                .map_err(|e| format!("Failed to parse config JSON: {}", e))
+        })
+}
 
+fn write_config(path: &Path, json_value: &Value) -> Result<(), String> {
+    serde_json::to_string_pretty(json_value)
+        .map_err(|e| format!("Failed to serialize config: {}", e))
+        .and_then(|content| {
+            fs::write(path, content).map_err(|e| format!("Failed to write config: {}", e))
+        })
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+impl From<&LoopConfigRequest> for LoopConfig {
+    fn from(value: &LoopConfigRequest) -> Self {
+        Self {
+            interval_minutes: value.interval_minutes.max(1),
+            filter_score_min: value.filter_score_min,
+            max_cycles: value.max_cycles,
+        }
+    }
+}

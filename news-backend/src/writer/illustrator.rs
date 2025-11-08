@@ -5,6 +5,8 @@ use std::path::{Path, PathBuf};
 use anyhow::{Result, Context};
 use regex::Regex;
 
+use crate::utils::path_resolver::resolve_workspace_path;
+
 /// Extrai todas as imagens de um PDF usando pdfimages (poppler)
 /// 
 /// Retorna: Vec de PathBufs apontando para imagens extraídas
@@ -15,11 +17,19 @@ pub async fn extract_figures_from_pdf(
     use std::process::Command;
     
     // Caminho para pdfimages já instalado localmente
-    let pdfimages_path = 
-        "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdfimages.exe";
+    let pdfimages_path: PathBuf = std::env::var("PDFIMAGES_PATH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            resolve_workspace_path(
+                "apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdfimages.exe",
+            )
+        });
     
-    if !std::path::Path::new(pdfimages_path).exists() {
-        return Err(anyhow::anyhow!("pdfimages.exe not found at: {}", pdfimages_path));
+    if !pdfimages_path.exists() {
+        return Err(anyhow::anyhow!(
+            "pdfimages.exe not found at: {}",
+            pdfimages_path.display()
+        ));
     }
     
     // Criar diretório temporário para extração
@@ -31,7 +41,7 @@ pub async fn extract_figures_from_pdf(
     // Resultado: img-000.png, img-001.png, img-002.png, ...
     let output_prefix = temp_extract_dir.join("img");
     
-    let output = Command::new(pdfimages_path)
+    let output = Command::new(&pdfimages_path)
         .arg("-all")  // Todos os formatos de imagem
         .arg(pdf_path)
         .arg(&output_prefix)
@@ -150,15 +160,23 @@ pub async fn extract_first_page_images(
 ) -> Result<(PathBuf, PathBuf)> {
     use std::process::Command;
     
-    let pdftoppm_path = 
-        "G:/Hive-Hub/News-main/apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftoppm.exe";
+    let pdftoppm_path: PathBuf = std::env::var("PDFTOPPM_PATH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|_| {
+            resolve_workspace_path(
+                "apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftoppm.exe",
+            )
+        });
     
-    if !std::path::Path::new(pdftoppm_path).exists() {
-        return Err(anyhow::anyhow!("pdftoppm.exe not found at: {}", pdftoppm_path));
+    if !pdftoppm_path.exists() {
+        return Err(anyhow::anyhow!(
+            "pdftoppm.exe not found at: {}",
+            pdftoppm_path.display()
+        ));
     }
     
     // Executar: pdftoppm -f 1 -l 1 -png -singlefile <pdf> <output>
-    let output = Command::new(pdftoppm_path)
+    let output = Command::new(&pdftoppm_path)
         .arg("-f").arg("1")          // Primeira página
         .arg("-l").arg("1")          // Última página (só a primeira)
         .arg("-png")                 // Formato PNG

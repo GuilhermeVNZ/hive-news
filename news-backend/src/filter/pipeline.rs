@@ -9,7 +9,8 @@ use crate::filter::fake_detector::calculate_fake_penalty;
 use crate::filter::scorer::{FilterResult, calculate_score};
 use crate::filter::source_detector::{SourceType, detect_source_type};
 use crate::filter::validator::validate_dois;
-use crate::utils::article_registry::{RegistryManager, ArticleStatus};
+use crate::utils::article_registry::{ArticleStatus, RegistryManager};
+use crate::utils::path_resolver::resolve_workspace_path;
 
 #[derive(Default)]
 pub struct FilterStats {
@@ -22,10 +23,10 @@ pub struct FilterStats {
 pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
     // Threshold para aprovação: score >= 0.4
     const FILTER_THRESHOLD: f32 = 0.4;
-    
+
     // Inicializar registry
-    let registry_path = Path::new("G:/Hive-Hub/News-main/articles_registry.json");
-    let registry = RegistryManager::new(registry_path)?;
+    let registry_path = resolve_workspace_path("articles_registry.json");
+    let registry = RegistryManager::new(&registry_path)?;
 
     let pdfs = discover_unfiltered_pdfs(download_dir, &registry)?;
 
@@ -95,10 +96,7 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         let score = calculate_score(&result);
 
         // Extrair article_id do caminho do PDF
-        let article_id = pdf_path
-            .file_stem()
-            .and_then(|s| s.to_str())
-            .unwrap_or("");
+        let article_id = pdf_path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
 
         // Verificar se o artigo existe no registry antes de tentar atualizar
         // Se não existir, criar uma entrada básica primeiro
@@ -111,14 +109,17 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             } else {
                 pdf_url.clone()
             };
-            
+
             if let Err(e) = registry.register_collected(
                 article_id.to_string(),
                 result.doc.title.clone(),
                 arxiv_url,
                 pdf_url,
             ) {
-                eprintln!("   ⚠️  Failed to create registry entry for article {}: {}", article_id, e);
+                eprintln!(
+                    "   ⚠️  Failed to create registry entry for article {}: {}",
+                    article_id, e
+                );
                 stats.rejected += 1;
                 continue;
             }
@@ -170,9 +171,15 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
                     eprintln!("   ⚠️  Failed to move rejected PDF: {}", e);
                     // Tentar deletar diretamente do local original se mover falhou
                     if let Err(del_err) = fs::remove_file(&pdf_path) {
-                        eprintln!("   ⚠️  Failed to delete rejected PDF from original location: {}", del_err);
+                        eprintln!(
+                            "   ⚠️  Failed to delete rejected PDF from original location: {}",
+                            del_err
+                        );
                     } else {
-                        println!("   🗑️  Rejected PDF deleted from original location: {}", pdf_path.display());
+                        println!(
+                            "   🗑️  Rejected PDF deleted from original location: {}",
+                            pdf_path.display()
+                        );
                     }
                     continue;
                 }
@@ -180,7 +187,11 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
 
             // Deletar PDF rejeitado imediatamente do destino (rejected/)
             if let Err(e) = fs::remove_file(&rejected_path) {
-                eprintln!("   ⚠️  Failed to delete rejected PDF from {}: {}", rejected_path.display(), e);
+                eprintln!(
+                    "   ⚠️  Failed to delete rejected PDF from {}: {}",
+                    rejected_path.display(),
+                    e
+                );
             } else {
                 println!("   🗑️  Rejected PDF deleted: {}", rejected_path.display());
             }
@@ -190,7 +201,10 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
     Ok(stats)
 }
 
-fn discover_unfiltered_pdfs(download_dir: &Path, registry: &RegistryManager) -> Result<Vec<PathBuf>> {
+fn discover_unfiltered_pdfs(
+    download_dir: &Path,
+    registry: &RegistryManager,
+) -> Result<Vec<PathBuf>> {
     let mut pdfs = Vec::new();
 
     if !download_dir.exists() {
@@ -198,28 +212,34 @@ fn discover_unfiltered_pdfs(download_dir: &Path, registry: &RegistryManager) -> 
     }
 
     // Buscar PDFs recursivamente de downloads/ (ONLY arxiv/, skip filtered/ e rejected/)
-    fn find_pdfs(dir: &Path, pdfs: &mut Vec<PathBuf>, download_dir: &Path, registry: &RegistryManager) -> std::io::Result<()> {
+    fn find_pdfs(
+        dir: &Path,
+        pdfs: &mut Vec<PathBuf>,
+        download_dir: &Path,
+        registry: &RegistryManager,
+    ) -> std::io::Result<()> {
         for entry in std::fs::read_dir(dir)? {
             let entry = entry?;
             let path = entry.path();
 
             if path.is_dir() {
                 let dir_name = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
-                
+
                 // Skip filtered, rejected, cache subdirectories
-                if dir_name == "filtered" || dir_name == "rejected" || dir_name == "cache" || dir_name == "temp" {
+                if dir_name == "filtered"
+                    || dir_name == "rejected"
+                    || dir_name == "cache"
+                    || dir_name == "temp"
+                {
                     continue;
                 }
-                
+
                 // Recursão para subdiretórios
                 find_pdfs(&path, pdfs, download_dir, registry)?;
             } else if let Some(ext) = path.extension() {
                 if ext == "pdf" {
                     // Extrair article_id do caminho
-                    let article_id = path
-                        .file_stem()
-                        .and_then(|s| s.to_str())
-                        .unwrap_or("");
+                    let article_id = path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
 
                     // Processar se:
                     // 1. Nunca processado
@@ -250,7 +270,7 @@ fn discover_unfiltered_pdfs(download_dir: &Path, registry: &RegistryManager) -> 
                     };
 
                     if should_process {
-                    pdfs.push(path);
+                        pdfs.push(path);
                     }
                 }
             }
@@ -260,7 +280,7 @@ fn discover_unfiltered_pdfs(download_dir: &Path, registry: &RegistryManager) -> 
 
     // Search in downloads/ (mainly from arxiv/, excluding filtered/, rejected/, cache/)
     find_pdfs(download_dir, &mut pdfs, download_dir, &registry)?;
-    
+
     Ok(pdfs)
 }
 

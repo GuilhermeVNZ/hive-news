@@ -3,7 +3,22 @@
 
 use std::collections::HashMap;
 use std::env;
+use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
+
+fn workspace_root() -> PathBuf {
+    if let Ok(env_path) = std::env::var("NEWS_BASE_DIR") {
+        let trimmed = env_path.trim();
+        if !trimmed.is_empty() {
+            return PathBuf::from(trimmed);
+        }
+    }
+    std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."))
+}
+
+fn resolve_workspace_path<P: AsRef<Path>>(relative: P) -> PathBuf {
+    workspace_root().join(relative.as_ref())
+}
 
 fn main() {
     println!("🚀 News System - Main Orchestrator");
@@ -343,10 +358,10 @@ fn load_writer_config() -> Result<(Option<String>, String), Box<dyn std::error::
     use std::path::Path;
 
     let possible_config_paths = vec![
-        Path::new("news-backend/system_config.json"),
-        Path::new("system_config.json"),
-        Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-        Path::new("G:/Hive-Hub/News-main/system_config.json"),
+        PathBuf::from("news-backend/system_config.json"),
+        PathBuf::from("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
+        resolve_workspace_path("system_config.json"),
     ];
 
     let config_path = possible_config_paths
@@ -391,12 +406,8 @@ fn find_backend_binary() -> std::path::PathBuf {
         std::path::PathBuf::from("news-backend/target/release/news-backend.exe"),
         std::path::PathBuf::from("target/debug/news-backend.exe"),
         std::path::PathBuf::from("target/release/news-backend.exe"),
-        std::path::PathBuf::from(
-            "G:/Hive-Hub/News-main/news-backend/target/debug/news-backend.exe",
-        ),
-        std::path::PathBuf::from(
-            "G:/Hive-Hub/News-main/news-backend/target/release/news-backend.exe",
-        ),
+        resolve_workspace_path("news-backend/target/debug/news-backend.exe"),
+        resolve_workspace_path("news-backend/target/release/news-backend.exe"),
     ];
 
     possible_paths
@@ -409,7 +420,7 @@ fn find_backend_binary() -> std::path::PathBuf {
 fn get_backend_directory() -> std::path::PathBuf {
     let possible_dirs = vec![
         std::path::PathBuf::from("news-backend"),
-        std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend"),
+        resolve_workspace_path("news-backend"),
     ];
 
     possible_dirs
@@ -421,7 +432,15 @@ fn get_backend_directory() -> std::path::PathBuf {
 // Helper function to get base directory
 fn get_base_directory() -> String {
     std::env::var("NEWS_BASE_DIR").unwrap_or_else(|_| {
-        load_paths_from_config().unwrap_or_else(|_| "G:/Hive-Hub/News-main".to_string())
+        load_paths_from_config()
+            .map(|base| {
+                if Path::new(&base).is_absolute() {
+                    base
+                } else {
+                    resolve_workspace_path(base).display().to_string()
+                }
+            })
+            .unwrap_or_else(|_| workspace_root().display().to_string())
     })
 }
 
@@ -442,10 +461,10 @@ fn load_paths_from_config() -> Result<String, Box<dyn std::error::Error>> {
     }
 
     let possible_config_paths = vec![
-        Path::new("news-backend/system_config.json"),
-        Path::new("system_config.json"),
-        Path::new("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-        Path::new("G:/Hive-Hub/News-main/system_config.json"),
+        PathBuf::from("news-backend/system_config.json"),
+        PathBuf::from("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
+        resolve_workspace_path("system_config.json"),
     ];
 
     let config_path = possible_config_paths
@@ -537,14 +556,14 @@ fn load_loop_config() -> (u64, f64, Option<u32>) {
     use std::fs;
 
     let possible_config_paths = vec![
-        "news-backend/system_config.json",
-        "system_config.json",
-        "G:/Hive-Hub/News-main/news-backend/system_config.json",
-        "G:/Hive-Hub/News-main/system_config.json",
+        PathBuf::from("news-backend/system_config.json"),
+        PathBuf::from("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
+        resolve_workspace_path("system_config.json"),
     ];
 
     for path in possible_config_paths {
-        if let Ok(content) = fs::read_to_string(path) {
+        if let Ok(content) = fs::read_to_string(&path) {
             if let Ok(json) = serde_json::from_str::<Value>(&content) {
                 if let Some(loop_config) = json.get("loop_config") {
                     let interval = loop_config
@@ -846,10 +865,10 @@ fn save_loop_stats(cycle: u32) {
     use serde_json::{json, Value};
     use std::fs;
 
-    let stats_path = "G:/Hive-Hub/News-main/loop_stats.json";
+    let stats_path = resolve_workspace_path("loop_stats.json");
 
     // Try to read existing stats
-    let mut stats: Value = if let Ok(content) = fs::read_to_string(stats_path) {
+    let mut stats: Value = if let Ok(content) = fs::read_to_string(&stats_path) {
         serde_json::from_str(&content).unwrap_or_else(|_| json!({}))
     } else {
         json!({})
@@ -868,14 +887,14 @@ fn save_loop_stats(cycle: u32) {
     stats["last_cycle_completed_at"] = json!(cycle_start_time.to_rfc3339());
 
     // Collect articles by source from registry (only from current cycle)
-    let registry_path = "G:/Hive-Hub/News-main/articles_registry.json";
+    let registry_path = resolve_workspace_path("articles_registry.json");
     let mut articles_by_source: HashMap<String, u32> = HashMap::new();
     let mut articles_written_by_site: HashMap<String, u32> = HashMap::new();
     let mut tokens_total = 0u64;
     let mut tokens_saved = 0u64;
     let mut tokens_used = 0u64;
 
-    if let Ok(registry_content) = fs::read_to_string(registry_path) {
+    if let Ok(registry_content) = fs::read_to_string(&registry_path) {
         if let Ok(registry_json) = serde_json::from_str::<Value>(&registry_content) {
             if let Some(articles) = registry_json.get("articles").and_then(|v| v.as_object()) {
                 // Count articles by source (only from current cycle)
@@ -1043,10 +1062,10 @@ fn save_loop_stats(cycle: u32) {
 
     // Save to file
     if let Ok(json_str) = serde_json::to_string_pretty(&stats) {
-        if let Err(e) = fs::write(stats_path, json_str) {
+        if let Err(e) = fs::write(&stats_path, &json_str) {
             eprintln!("⚠️  Failed to save loop stats: {}", e);
         } else {
-            println!("📊 Loop statistics saved to {}", stats_path);
+            println!("📊 Loop statistics saved to {}", stats_path.display());
         }
     }
 }
