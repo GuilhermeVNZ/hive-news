@@ -5,6 +5,8 @@ services:
       dockerfile: docker/backend.Dockerfile
     env_file:
       - news-backend/.env
+    environment:
+      DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:postgres@host.docker.internal:5432/news_system}"
     volumes:
       - ./downloads:/app/news-backend/downloads
       - ./output:/app/news-backend/output
