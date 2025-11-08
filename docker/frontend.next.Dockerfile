@@ -2,16 +2,22 @@
 
 ARG NODE_VERSION=20
 
-FROM node:${NODE_VERSION}-alpine AS deps
+FROM node:${NODE_VERSION} AS deps
 WORKDIR /app
 
 ARG APP_DIR
 ARG NPM_CI_FLAGS=""
 COPY ${APP_DIR}/package*.json ./
-RUN npm ci ${NPM_CI_FLAGS}
+RUN npm ci ${NPM_CI_FLAGS} \
+    && (npm install --no-save @rollup/rollup-linux-x64-gnu \
+        || npm install --no-save @rollup/rollup-linux-x64-musl \
+        || true) \
+    && (npm install --no-save @swc/core-linux-x64-gnu \
+        || npm install --no-save @swc/core-linux-x64-musl \
+        || true)
 
 
-FROM node:${NODE_VERSION}-alpine AS build
+FROM node:${NODE_VERSION} AS build
 WORKDIR /app
 
 ARG APP_DIR
@@ -23,7 +29,7 @@ COPY ${APP_DIR} ./
 RUN npm run build
 
 
-FROM node:${NODE_VERSION}-alpine AS runtime
+FROM node:${NODE_VERSION} AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production \

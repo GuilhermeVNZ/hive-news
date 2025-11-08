@@ -13,10 +13,10 @@ RUN apt-get update \
 COPY . ./
 
 # Build the backend binary
-RUN cargo build --release --manifest-path news-backend/Cargo.toml --bin servers
+RUN cargo build --release --manifest-path news-backend/Cargo.toml --bin news-backend
 
 
-FROM mcr.microsoft.com/playwright:v1.47.0-jammy AS runtime
+FROM mcr.microsoft.com/playwright:v1.47.0-focal AS runtime
 
 ENV NODE_ENV=production \
     PORT=3005
@@ -29,7 +29,7 @@ WORKDIR /app/news-backend
 RUN npm ci --omit=dev
 
 # Copy compiled binary
-COPY --from=builder /app/news-backend/target/release/servers /usr/local/bin/news-backend
+COPY --from=builder /app/news-backend/target/release/news-backend /usr/local/bin/news-backend
 
 # Runtime directories for generated content
 RUN mkdir -p downloads/raw downloads/cache downloads/temp output logs js \
