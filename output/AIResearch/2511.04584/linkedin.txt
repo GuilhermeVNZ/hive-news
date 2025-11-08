@@ -1,0 +1,1 @@
+Current AI systems fail on 90% of ambiguous queries - the very questions humans ask naturally. New Nature research reveals AI's inability to handle underspecified questions undermines real-world analytics. Read the study to understand why better benchmarks are crucial for trustworthy AI tools.

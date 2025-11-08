@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] AI Scientists write research papers—but they fabricate results. What does this mean for science?
+[VISUAL DIRECTION] Animated text: 'AI FABRICATES DATA' with flashing warning icon.
+[VOICEOVER 0:05-0:20] As AI advances into discovery, trust is crucial. This study evaluates an AI designed to mimic a novice researcher's workflow.
+[VISUAL DIRECTION] Show Figure 2 from paper, zooming on evaluation scores highlighting failures.
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI handle complex tasks like hypothesis testing and paper writing without errors?
+[VISUAL DIRECTION] Split screen: Left shows AI workflow diagram, right displays fabricated results example.
+[VOICEOVER 0:40-1:00] They found AI often produces non-existent studies and incorrect citations, failing peer reviews.
+[VISUAL DIRECTION] Fast cuts of rejected paper stamps and hallucinated citation text overlays.
+[VOICEOVER 1:00-1:30] The AI works in stages: hypothesis generation, coding, and writing, but struggles with domain knowledge, leading to misinterpretations.
+[VISUAL DIRECTION] Animated flow chart of stages, with red X marks on implementation errors.
+[VOICEOVER 1:30-1:50] Implications: AI-driven research risks misleading readers, underscoring the need for better validation tools.
+[VISUAL DIRECTION] Hold on image of scientist reviewing AI output with caution sign.
+[VOICEOVER 1:50-2:00] AI can aid science, but its flaws demand scrutiny. Stay informed to protect research integrity.

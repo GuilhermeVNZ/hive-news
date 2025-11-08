@@ -1,0 +1,1 @@
+Did you know AI testing methods can create misleading results? New Nature research reveals interventions like DAS shift AI behavior out-of-distribution, producing unreliable assessments. This challenges AI safety claims - how can we trust AI interpretations when testing alters its normal operation?

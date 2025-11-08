@@ -1,0 +1,1 @@
+Shocking: AI testing creates fake behaviors! Nature study shows interventions (DAS, vector patching) shift AI out-of-distribution, producing misleading results. Earth Mover's Distance quantifies these dangerous divergences. Are current AI safety assessments fundamentally flawed?

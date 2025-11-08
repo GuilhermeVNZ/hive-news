@@ -1,0 +1,1 @@
+Large language models can now evaluate complex recommendation systems by comparing item lists, offering a lightweight alternative to traditional simulators while maintaining logical consistency.

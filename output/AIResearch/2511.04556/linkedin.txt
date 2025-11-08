@@ -1,0 +1,1 @@
+What if just 2 sensors could predict urban floods with 92% accuracy? New research introduces data-driven sparse sensing to strategically place minimal sensors in sewer networks, enabling cost-effective flood monitoring. Essential for city planners facing climate risks—read the science.

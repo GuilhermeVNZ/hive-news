@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the experts chosen to shape policy don't actually represent the people they're supposed to serve?
+[VISUAL DIRECTION] Animated text: "EXPERT PANELS: WHO REALLY GETS A SEAT AT THE TABLE?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] In deliberative processes worldwide, citizens propose experts for policy discussions, but only a few get selected due to time and space constraints. This raises a critical question about fairness.
+[VISUAL DIRECTION] Show global map with 50 countries highlighted, then zoom to animated figures representing diverse citizens
+
+[VOICEOVER 0:20-0:40] Researchers asked: Do the chosen experts truly represent the diverse interests of all participants? They developed a computational framework to audit and improve selection fairness.
+[VISUAL DIRECTION] Show animated flowchart: Citizens → Proposals → Selection → Representation Audit
+
+[VOICEOVER 0:40-1:00] The breakthrough finding: Algorithmic selection significantly enhances representativeness. In one constitutional reform case, human-selected panels scored 0.842 on representation, while optimized algorithmic selection achieved 0.077 - dramatically better.
+[VISUAL DIRECTION] Show side-by-side bar charts: Human Selection (0.842) vs Algorithmic Selection (0.077) with clear visual difference
+
+[VOICEOVER 1:00-1:30] How does it work? The system uses large language models to infer participant concerns from proposals, then applies efficient algorithms to compute representation values. The fastest algorithm runs in O(mn log n) time, making it feasible for hundreds of deliberation sessions.
+[VISUAL DIRECTION] Animated code snippets with mathematical formulas, then show speed comparison graphics
+
+[VOICEOVER 1:30-1:50] Real-world impact: Applied across 50 countries, this approach ensures no shared concerns are overlooked in policy discussions. Practitioners can now integrate these tools to scale participatory democracy without sacrificing fairness.
+[VISUAL DIRECTION] Show real deliberation footage with overlay text showing improved representation metrics
+
+[VOICEOVER 1:50-2:00] The future of democracy might depend on algorithms that ensure every voice gets heard, not just the loudest ones.
+[VISUAL DIRECTION] Final screen: "FAIRER DEMOCRACY THROUGH BETTER REPRESENTATION" with Nature/Science logo

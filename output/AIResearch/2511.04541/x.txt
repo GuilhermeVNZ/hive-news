@@ -1,0 +1,1 @@
+Stop the scroll: LLMs judge preferences with 0.997 consistency—no training needed. New Nature/Science paper shows they outperform baselines in evaluating recommendation systems, providing immediate assessment instead of slow live testing. Game-changer for digital experiences.

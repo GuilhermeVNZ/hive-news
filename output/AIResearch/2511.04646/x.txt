@@ -1,0 +1,1 @@
+AI teams now coordinate with minimal communication. Nature research reveals WELL framework enables agents to dynamically assign roles and make joint decisions, achieving near-perfect task completion. This neurosymbolic approach could transform disaster response and smart transportation systems where multiple AI must collaborate effectively.

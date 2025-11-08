@@ -1,0 +1,1 @@
+New graph transformer method captures temporal patterns in relational data, improving predictions in e-commerce and healthcare by up to 8% while reducing computational costs.

@@ -1,0 +1,1 @@
+AI just got smarter at predicting behavior: New Relational Perceiver model achieves 8.19% F1 improvement by capturing how relationships evolve over time, not just static connections. Time becomes the active signal.

@@ -1,0 +1,1 @@
+Causal interventions in neural networks often produce unrealistic representations, raising concerns about the reliability of mechanistic interpretability and prompting a new method to keep AI explanations faithful.

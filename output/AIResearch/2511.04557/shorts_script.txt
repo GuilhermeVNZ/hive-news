@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could see the hidden timing patterns that determine whether your customers will stay or leave? [VISUAL DIRECTION] Animated text: "8.19% MORE ACCURATE" with pulsing glow effect
+
+[VOICEOVER 0:05-0:20] Businesses rely on AI to predict customer behavior, but existing models often miss crucial timing relationships and complex interactions. [VISUAL DIRECTION] Show rapid cuts of business dashboards with question marks over customer data points
+
+[VOICEOVER 0:20-0:40] Traditional graph neural networks treat time as a constraint rather than an active signal. Researchers asked: Can we capture how relationships actually evolve? [VISUAL DIRECTION] Animated network diagram with static connections vs dynamic, pulsing connections
+
+[VOICEOVER 0:40-1:00] They discovered the Relational Perceiver (RGP) - a new approach that specifically retrieves entities that are structurally distant but temporally proximate. [VISUAL DIRECTION] Zoom on Figure 2 showing temporal proximity sampling with highlighted distant connections
+
+[VOICEOVER 1:00-1:30] RGP combines three components: time-context sampling, Perceiver-style encoding, and flexible decoding. This allows it to capture broader contextual shifts and concurrent activities that influence behavior. [VISUAL DIRECTION] Animated breakdown of the three components with text overlays: "Time Sampling → Encoding → Flexible Learning"
+
+[VOICEOVER 1:30-1:50] The results? Consistent gains across benchmarks - 2.2% AUC improvement on RelBench and 8.19% F1 on CTU datasets. This means better churn prediction and customer behavior forecasting. [VISUAL DIRECTION] Show performance comparison charts with RGP clearly outperforming previous methods
+
+[VOICEOVER 1:50-2:00] The future of AI prediction just got smarter by learning how relationships truly evolve over time. [VISUAL DIRECTION] Final text overlay: "Time as the Active Signal" with the RGP model diagram

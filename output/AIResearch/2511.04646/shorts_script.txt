@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI teams could coordinate with almost no communication?
+[VISUAL DIRECTION] Animated text: "AI Teams That Barely Talk" with pulsing question mark
+
+[VOICEOVER 0:05-0:20] In complex environments where multiple AI systems must work together—from autonomous vehicles at intersections to warehouse robots—achieving effective teamwork has remained a major challenge.
+[VISUAL DIRECTION] Quick cuts: intersection traffic, warehouse robots, disaster response teams
+
+[VOICEOVER 0:20-0:40] Traditional approaches often fail because small timing deviations cause movement conflicts that cascade into complete breakdowns. Researchers asked: Can we create AI that coordinates at a higher level?
+[VISUAL DIRECTION] Show Figure 10: initial coordination structures with conflict zones highlighted in red
+
+[VOICEOVER 0:40-1:00] They discovered WELL—a framework where agents propose candidate actions, reason about feasibility, then commit to decisions that satisfy all team members.
+[VISUAL DIRECTION] Zoom on Figure 11: evolved networks connecting prototypes and execution instances
+
+[VOICEOVER 1:00-1:30] Methodologically, WELL combines neural flexibility with symbolic stability. Agents use macro-actions like "MoveToBlock" and "Push" instead of coordinating every low-level movement. They continuously improve by accumulating knowledge from past interactions.
+[VISUAL DIRECTION] Animated sequence: macro-actions transforming into coordinated movements, with text overlays showing completion rates climbing to 98%
+
+[VOICEOVER 1:30-1:50] The real-world implications are significant. This approach could enhance applications ranging from disaster response to smart transportation systems, where multiple AI must collaborate and learn reusable strategies.
+[VISUAL DIRECTION] Show Figure 12: converged task allocations demonstrating clear division of labor
+
+[VOICEOVER 1:50-2:00] AI teams that coordinate with minimal communication—this research represents a major step toward adaptive multi-agent systems that don't rely on brittle, step-by-step coordination.
+[VISUAL DIRECTION] Final text overlay: "98% Task Completion" with Nature/Science branding

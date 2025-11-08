@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could judge your preferences with near-perfect consistency—without any special training?
+[VISUAL DIRECTION] [Animated text: "0.997 Consistency" with glowing effect]
+[VOICEOVER 0:05-0:20] Recommendation systems shape what we watch, read, and buy, but evaluating them has always been expensive and slow.
+[VISUAL DIRECTION] [Show streaming, shopping, and music app icons with question marks]
+[VOICEOVER 0:20-0:40] Researchers asked: Can large language models act as impartial judges to assess these systems?
+[VISUAL DIRECTION] [Show LLM icon evaluating movie slates and product lists]
+[VOICEOVER 0:40-1:00] They discovered LLMs maintain 0.997 transitivity—if A > B and B > C, they consistently choose A > C.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on transitivity peak at 0.997]
+[VOICEOVER 1:00-1:30] Using pairwise comparisons and structured prompts, LLMs evaluated slates of items without task-specific training.
+[VISUAL DIRECTION] [Animated sequence showing A vs B, B vs C, A vs C comparisons]
+[VOICEOVER 1:30-1:50] This means immediate, scalable evaluation for e-commerce and entertainment instead of waiting for live testing.
+[VISUAL DIRECTION] [Fast cuts: shopping cart, movie reel, music note with checkmarks]
+[VOICEOVER 1:50-2:00] LLMs as judges: transforming how we improve digital experiences.
+[VISUAL DIRECTION] [Final screen: "0.997 Consistency - Nature/Science Paper" with LLM judge icon]

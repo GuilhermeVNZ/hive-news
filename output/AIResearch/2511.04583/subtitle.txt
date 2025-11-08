@@ -1,0 +1,1 @@
+A new AI system can write scientific papers but often fabricates data and misinterprets results, highlighting risks for autonomous research.

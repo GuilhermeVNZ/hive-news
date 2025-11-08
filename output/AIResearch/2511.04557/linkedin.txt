@@ -1,0 +1,1 @@
+AI can now predict customer behavior 8.19% more accurately by treating time as an active signal, not just a constraint. The new Relational Perceiver (RGP) captures evolving relationships that traditional models miss. What if your business could see these hidden patterns?

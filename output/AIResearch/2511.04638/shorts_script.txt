@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the methods we use to test AI are actually creating fake behaviors that don't exist in normal operation?
+[VISUAL DIRECTION] [Animated text: "AI TESTING CREATES FAKE BEHAVIORS?" with dramatic reveal animation]
+
+[VOICEOVER 0:05-0:20] New research from Nature reveals a critical problem: when scientists probe AI systems to understand how they work, their interventions fundamentally change the AI's behavior.
+[VISUAL DIRECTION] [Show Figure 1(b) panels - zoom on light vs dark points showing distribution divergence]
+
+[VOICEOVER 0:20-0:40] The study tested techniques like Distributed Alignment Search and vector patching - methods used to interpret AI decision-making. But these interventions push AI systems outside their normal operational boundaries.
+[VISUAL DIRECTION] [Animated diagram showing AI network being "pushed" out of normal distribution zone]
+
+[VOICEOVER 0:40-1:00] Researchers measured this using Earth Mover's Distance - quantifying how far interventions shift AI representations. The results show dramatic behavioral changes that don't reflect how AI normally operates.
+[VISUAL DIRECTION] [Show EMD scatter plots with clear separation between intervened and normal states]
+
+[VOICEOVER 1:00-1:30] Some interventions activate dormant pathways, causing "flips" in AI behavior. The study categorizes these as "pernicious" - they create misleading conclusions about how AI actually works.
+[VISUAL DIRECTION] [Circuit diagram animation showing dormant pathways being activated]
+
+[VOICEOVER 1:30-1:50] This has real consequences: self-driving car testing could create unrealistic scenarios, medical AI diagnosis could be misinterpreted, and safety regulations could be based on flawed assessments.
+[VISUAL DIRECTION] [Quick cuts: self-driving car simulation, medical diagnosis interface, regulatory documents]
+
+[VOICEOVER 1:50-2:00] The alarming truth: our methods to understand AI might be undermining our ability to trust it. How can we build safe AI if we can't accurately test it?
+[VISUAL DIRECTION] [Final text overlay: "AI TESTING MAY BE CREATING THE PROBLEMS IT'S TRYING TO SOLVE"]

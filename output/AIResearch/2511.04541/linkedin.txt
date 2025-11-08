@@ -1,0 +1,1 @@
+LLMs achieve near-perfect consistency (0.997 transitivity) as impartial judges of user preferences. New research demonstrates they can evaluate recommendation systems without task-specific training, offering immediate, scalable assessment. Read how this transforms digital experience evaluation.

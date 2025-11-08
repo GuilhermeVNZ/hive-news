@@ -1,0 +1,1 @@
+AI struggles with 90% of real-world questions because they're ambiguous. New research shows current systems can't handle underspecified queries like humans do. This impacts every spreadsheet, database, and search tool we rely on daily.

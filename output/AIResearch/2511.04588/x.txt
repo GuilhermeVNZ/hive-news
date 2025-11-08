@@ -1,0 +1,1 @@
+AI outperforms humans in selecting representative expert panels for policy discussions. Computational framework achieves representation scores of 0.077 vs human-selected 0.842. Real-world application across 50 countries shows algorithmic selections consistently provide better representation than random choices. Nature/Science research reveals path to fairer democracy.

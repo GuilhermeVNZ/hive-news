@@ -1,0 +1,1 @@
+New research reveals why AI often fails with natural queries about data, forcing a rethink of how we design systems that understand human language.
