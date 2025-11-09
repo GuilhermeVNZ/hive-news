@@ -54,7 +54,21 @@ impl ArticleMetadata {
     fn normalize_paths(&mut self) {
         if let Some(output_dir) = &self.output_dir {
             let normalized = output_dir.to_string_lossy().replace('\\', "/");
-            self.output_dir = Some(PathBuf::from(normalized));
+            let trimmed = normalized.trim_start_matches("./");
+            let mut relative = trimmed.to_string();
+
+            for marker in ["output/", "downloads/", "images/"] {
+                if let Some(idx) = relative.find(marker) {
+                    relative = relative[idx..].to_string();
+                    break;
+                }
+            }
+
+            if relative.is_empty() {
+                relative = normalized;
+            }
+
+            self.output_dir = Some(PathBuf::from(relative));
         }
     }
 }
@@ -301,7 +315,10 @@ impl ArticleRegistry {
                 Ok(())
             }
             Err(err) => {
-                let tempfile::PersistError { file: tmp_file, error: persist_err } = err;
+                let tempfile::PersistError {
+                    file: tmp_file,
+                    error: persist_err,
+                } = err;
                 eprintln!(
                     "[ArticleRegistry] ⚠️  Failed to persist temporary file atomically: {}. Falling back to direct write.",
                     persist_err
