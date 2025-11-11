@@ -1,14 +1,14 @@
 use axum::{extract::Extension, response::Json};
+use bcrypt::{DEFAULT_COST, hash, verify};
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
-use std::sync::Arc;
-use bcrypt::{hash, verify, DEFAULT_COST};
+use serde_json::{Value, json};
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
+use std::sync::Arc;
 
-use crate::utils::jwt::JwtService;
 use crate::db::connection::Database;
+use crate::utils::jwt::JwtService;
 
 #[derive(Debug, Deserialize)]
 pub struct LoginRequest {
@@ -47,17 +47,16 @@ impl UserStore {
     fn load_users(&self) -> HashMap<String, UserData> {
         if !self.users_path.exists() {
             // Create default admin user from environment variable
-            let default_password = std::env::var("DEFAULT_ADMIN_PASSWORD")
-                .expect(
-                    "CRITICAL SECURITY ERROR: DEFAULT_ADMIN_PASSWORD not set!\n\
+            let default_password = std::env::var("DEFAULT_ADMIN_PASSWORD").expect(
+                "CRITICAL SECURITY ERROR: DEFAULT_ADMIN_PASSWORD not set!\n\
                      \n\
                      For first-time setup, set a strong temporary password in .env:\n\
                      DEFAULT_ADMIN_PASSWORD=<strong-password-minimum-16-chars>\n\
                      \n\
                      This password will be used to create the initial admin account.\n\
-                     You MUST change it immediately after first login!"
-                );
-            
+                     You MUST change it immediately after first login!",
+            );
+
             if default_password.len() < 16 {
                 panic!(
                     "SECURITY ERROR: DEFAULT_ADMIN_PASSWORD must be at least 16 characters long!\n\
@@ -67,28 +66,30 @@ impl UserStore {
                     default_password.len()
                 );
             }
-            
+
             let default_user = UserData {
                 username: "admin".to_string(),
                 password_hash: hash(&default_password, DEFAULT_COST).unwrap_or_default(),
                 role: "admin".to_string(),
             };
-            
+
             let mut users = HashMap::new();
             users.insert("admin".to_string(), default_user.clone());
-            
+
             // Save default user
             self.save_users(&users);
-            
-            eprintln!("⚠️  SECURITY WARNING: Default admin user created with password from DEFAULT_ADMIN_PASSWORD");
+
+            eprintln!(
+                "⚠️  SECURITY WARNING: Default admin user created with password from DEFAULT_ADMIN_PASSWORD"
+            );
             eprintln!("⚠️  CHANGE THIS PASSWORD IMMEDIATELY after first login!");
-            
+
             return users;
         }
 
         let content = fs::read_to_string(&self.users_path).unwrap_or_default();
         let users: HashMap<String, UserData> = serde_json::from_str(&content).unwrap_or_default();
-        
+
         users
     }
 
@@ -99,7 +100,7 @@ impl UserStore {
 
     fn verify_user(&self, username: &str, password: &str) -> bool {
         let users = self.load_users();
-        
+
         if let Some(user) = users.get(username) {
             verify(password, &user.password_hash).unwrap_or(false)
         } else {
@@ -109,19 +110,21 @@ impl UserStore {
 
     fn create_user(&self, username: String, password: String, role: String) -> Result<(), String> {
         let mut users = self.load_users();
-        
+
         if users.contains_key(&username) {
             return Err("User already exists".to_string());
         }
 
-        let password_hash = hash(password, DEFAULT_COST)
-            .map_err(|_| "Failed to hash password")?;
+        let password_hash = hash(password, DEFAULT_COST).map_err(|_| "Failed to hash password")?;
 
-        users.insert(username.clone(), UserData {
-            username: username.clone(),
-            password_hash,
-            role,
-        });
+        users.insert(
+            username.clone(),
+            UserData {
+                username: username.clone(),
+                password_hash,
+                role,
+            },
+        );
 
         self.save_users(&users);
         Ok(())
@@ -165,9 +168,7 @@ pub async fn login(
 }
 
 /// Logout endpoint (client-side token removal)
-pub async fn logout(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn logout(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     // Logout is primarily handled client-side by removing the token
     // This endpoint just confirms the logout
     Json(json!({
@@ -177,9 +178,7 @@ pub async fn logout(
 }
 
 /// Get current user info
-pub async fn get_me(
-    Extension(_db): Extension<Arc<Database>>,
-) -> Json<Value> {
+pub async fn get_me(Extension(_db): Extension<Arc<Database>>) -> Json<Value> {
     // In a real implementation, extract user from JWT token in middleware
     // For now, return a default response
     Json(json!({
@@ -204,7 +203,7 @@ pub async fn change_password(
 ) -> Json<Value> {
     // In real implementation, get username from JWT token
     let username = "admin"; // TODO: Extract from token
-    
+
     let user_store = UserStore::new();
 
     if !user_store.verify_user(username, &request.current_password) {

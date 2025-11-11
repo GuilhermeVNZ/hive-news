@@ -1,7 +1,7 @@
+use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::Path;
-use anyhow::{Context, Result};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CollectorConfig {
@@ -120,18 +120,20 @@ impl ConfigManager {
                 ],
                 updated_at: chrono::Utc::now().to_rfc3339(),
             };
-            
+
             // Save default config
             self.save(&default_config)?;
             return Ok(default_config);
         }
 
-        let content = fs::read_to_string(&self.config_path)
-            .context(format!("Failed to read config file: {}", self.config_path.display()))?;
-        
-        let config: CollectorsConfig = serde_json::from_str(&content)
-            .context("Failed to parse config file")?;
-        
+        let content = fs::read_to_string(&self.config_path).context(format!(
+            "Failed to read config file: {}",
+            self.config_path.display()
+        ))?;
+
+        let config: CollectorsConfig =
+            serde_json::from_str(&content).context("Failed to parse config file")?;
+
         Ok(config)
     }
 
@@ -139,26 +141,32 @@ impl ConfigManager {
     pub fn save(&self, config: &CollectorsConfig) -> Result<()> {
         let mut config_to_save = config.clone();
         config_to_save.updated_at = chrono::Utc::now().to_rfc3339();
-        
-        let content = serde_json::to_string_pretty(&config_to_save)
-            .context("Failed to serialize config")?;
-        
+
+        let content =
+            serde_json::to_string_pretty(&config_to_save).context("Failed to serialize config")?;
+
         // Create parent directory if it doesn't exist
         if let Some(parent) = self.config_path.parent() {
-            fs::create_dir_all(parent)
-                .context(format!("Failed to create config directory: {}", parent.display()))?;
+            fs::create_dir_all(parent).context(format!(
+                "Failed to create config directory: {}",
+                parent.display()
+            ))?;
         }
-        
-        fs::write(&self.config_path, content)
-            .context(format!("Failed to write config file: {}", self.config_path.display()))?;
-        
+
+        fs::write(&self.config_path, content).context(format!(
+            "Failed to write config file: {}",
+            self.config_path.display()
+        ))?;
+
         Ok(())
     }
 
     /// Get enabled collectors
     pub fn get_enabled_collectors(&self) -> Result<Vec<CollectorConfig>> {
         let config = self.load()?;
-        Ok(config.collectors.into_iter()
+        Ok(config
+            .collectors
+            .into_iter()
             .filter(|c| c.enabled)
             .collect())
     }
@@ -167,23 +175,25 @@ impl ConfigManager {
     #[allow(dead_code)]
     pub fn update_collector_status(&self, collector_id: &str, enabled: bool) -> Result<()> {
         let mut config = self.load()?;
-        
-        if let Some(collector) = config.collectors.iter_mut()
-            .find(|c| c.id == collector_id) {
+
+        if let Some(collector) = config.collectors.iter_mut().find(|c| c.id == collector_id) {
             collector.enabled = enabled;
         } else {
             anyhow::bail!("Collector not found: {}", collector_id);
         }
-        
+
         self.save(&config)
     }
 
     /// Update collector configuration
-    pub fn update_collector_config(&self, collector_id: &str, updates: CollectorConfig) -> Result<()> {
+    pub fn update_collector_config(
+        &self,
+        collector_id: &str,
+        updates: CollectorConfig,
+    ) -> Result<()> {
         let mut config = self.load()?;
-        
-        if let Some(collector) = config.collectors.iter_mut()
-            .find(|c| c.id == collector_id) {
+
+        if let Some(collector) = config.collectors.iter_mut().find(|c| c.id == collector_id) {
             collector.enabled = updates.enabled;
             collector.api_key = updates.api_key;
             collector.collector_type = updates.collector_type;
@@ -194,21 +204,32 @@ impl ConfigManager {
         } else {
             config.collectors.push(updates);
         }
-        
+
         self.save(&config)
     }
 
     /// Sync collectors_config.json from system_config.json
     /// This reads all enabled collectors from all enabled sites in system_config.json
     /// and generates/updates collectors_config.json
-    pub fn sync_from_system_config(system_config_path: &Path, collectors_config_path: &Path) -> Result<()> {
+    pub fn sync_from_system_config(
+        system_config_path: &Path,
+        collectors_config_path: &Path,
+    ) -> Result<()> {
         use crate::utils::site_config_manager::SiteConfigManager;
         use std::collections::HashMap;
 
         eprintln!("🔄 [SYNC] Syncing collectors_config.json from system_config.json...");
-        eprintln!("🔍 [DEBUG] system_config_path: {} (exists: {})", system_config_path.display(), system_config_path.exists());
-        eprintln!("🔍 [DEBUG] collectors_config_path: {} (exists: {})", collectors_config_path.display(), collectors_config_path.exists());
-        
+        eprintln!(
+            "🔍 [DEBUG] system_config_path: {} (exists: {})",
+            system_config_path.display(),
+            system_config_path.exists()
+        );
+        eprintln!(
+            "🔍 [DEBUG] collectors_config_path: {} (exists: {})",
+            collectors_config_path.display(),
+            collectors_config_path.exists()
+        );
+
         // Verify system_config.json exists
         if !system_config_path.exists() {
             return Err(anyhow::anyhow!(
@@ -216,24 +237,36 @@ impl ConfigManager {
                 system_config_path.display()
             ));
         }
-        
+
         // Load system_config.json
         let system_manager = SiteConfigManager::new(system_config_path);
-        let system_config = system_manager.load()
-            .context(format!("Failed to load system_config.json from: {}", system_config_path.display()))?;
-        
-        eprintln!("🔄 [SYNC] Loaded system_config.json with {} sites", system_config.sites.len());
-        
+        let system_config = system_manager.load().context(format!(
+            "Failed to load system_config.json from: {}",
+            system_config_path.display()
+        ))?;
+
+        eprintln!(
+            "🔄 [SYNC] Loaded system_config.json with {} sites",
+            system_config.sites.len()
+        );
+
         // Extract all enabled collectors from all enabled sites
         let mut collectors_map: HashMap<String, CollectorConfig> = HashMap::new();
-        
+
         for (site_id, site) in &system_config.sites {
             if site.enabled {
-                eprintln!("🔄 [SYNC] Processing site: {} ({} collectors)", site_id, site.collectors.len());
+                eprintln!(
+                    "🔄 [SYNC] Processing site: {} ({} collectors)",
+                    site_id,
+                    site.collectors.len()
+                );
                 for site_collector in &site.collectors {
-                    eprintln!("🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?})", site_collector.id, site_collector.enabled, site_collector.collector_type);
+                    eprintln!(
+                        "🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?})",
+                        site_collector.id, site_collector.enabled, site_collector.collector_type
+                    );
                     let collector_id = site_collector.id.clone();
-                    
+
                     // Convert from site_config_manager::CollectorConfig to config_manager::CollectorConfig
                     // Note: config_manager::CollectorConfig doesn't have destinations field
                     let config_collector = CollectorConfig {
@@ -247,7 +280,7 @@ impl ConfigManager {
                         selectors: site_collector.selectors.clone(),
                         config: site_collector.config.clone(),
                     };
-                    
+
                     // Deduplicate by ID (if same collector appears in multiple sites, keep first found)
                     if !collectors_map.contains_key(&collector_id) {
                         collectors_map.insert(collector_id.clone(), config_collector);
@@ -257,7 +290,10 @@ impl ConfigManager {
                         if let Some(existing) = collectors_map.get_mut(&collector_id) {
                             if site_collector.enabled && !existing.enabled {
                                 existing.enabled = true;
-                                eprintln!("🔄 [SYNC] Updated collector '{}' status to enabled", collector_id);
+                                eprintln!(
+                                    "🔄 [SYNC] Updated collector '{}' status to enabled",
+                                    collector_id
+                                );
                             }
                         }
                     }
@@ -266,43 +302,36 @@ impl ConfigManager {
                 eprintln!("🔄 [SYNC] Skipping disabled site: {}", site_id);
             }
         }
-        
+
         // Convert HashMap to Vec
         let all_collectors: Vec<CollectorConfig> = collectors_map.into_values().collect();
-        
-        eprintln!("🔄 [SYNC] Extracted {} collectors (deduplicated)", all_collectors.len());
-        eprintln!("🔄 [SYNC] Enabled collectors: {}", all_collectors.iter().filter(|c| c.enabled).count());
-        
+
+        eprintln!(
+            "🔄 [SYNC] Extracted {} collectors (deduplicated)",
+            all_collectors.len()
+        );
+        eprintln!(
+            "🔄 [SYNC] Enabled collectors: {}",
+            all_collectors.iter().filter(|c| c.enabled).count()
+        );
+
         // Create CollectorsConfig
         let collectors_config = CollectorsConfig {
             collectors: all_collectors,
             updated_at: chrono::Utc::now().to_rfc3339(),
         };
-        
+
         // Save to collectors_config.json
         let collectors_manager = ConfigManager::new(collectors_config_path);
-        collectors_manager.save(&collectors_config)
-            .context(format!("Failed to save collectors_config.json: {}", collectors_config_path.display()))?;
-        
+        collectors_manager
+            .save(&collectors_config)
+            .context(format!(
+                "Failed to save collectors_config.json: {}",
+                collectors_config_path.display()
+            ))?;
+
         eprintln!("✅ [SYNC] Successfully synced collectors_config.json from system_config.json");
-        
+
         Ok(())
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

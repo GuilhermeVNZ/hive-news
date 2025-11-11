@@ -99,25 +99,25 @@ pub async fn get_system_config(Extension(_db): Extension<Arc<Database>>) -> Json
                 }))
             }
             Err(e) => Json(json!({
+                        "success": false,
+                        "error": format!("Failed to parse config: {}", e),
+                        "loop_config": {
+                            "interval_minutes": 30,
+                            "filter_score_min": 0.4,
+                            "max_cycles": null,
+                            "enabled": false
+                        }
+            })),
+        },
+        Err(e) => Json(json!({
                 "success": false,
-                "error": format!("Failed to parse config: {}", e),
+                "error": format!("Failed to read config: {}", e),
                 "loop_config": {
                     "interval_minutes": 30,
                     "filter_score_min": 0.4,
                     "max_cycles": null,
                     "enabled": false
                 }
-            })),
-        },
-        Err(e) => Json(json!({
-            "success": false,
-            "error": format!("Failed to read config: {}", e),
-            "loop_config": {
-                "interval_minutes": 30,
-                "filter_score_min": 0.4,
-                "max_cycles": null,
-                "enabled": false
-            }
         })),
     }
 }
@@ -170,7 +170,7 @@ pub async fn start_loop(
             "message": "Loop configuration updated and pipeline loop started."
         })),
         Ok(false) => Json(json!({
-            "success": true,
+                                "success": true,
             "message": "Loop configuration updated. Pipeline loop already running."
         })),
         Err(e) => {
@@ -385,23 +385,23 @@ pub async fn get_loop_stats(Extension(_db): Extension<Arc<Database>>) -> Json<Va
     match fs::read_to_string(&stats_path) {
         Ok(content) => match serde_json::from_str::<Value>(&content) {
             Ok(json) => Json(json!({
-                "success": true,
-                "current_cycle": json.get("current_cycle").unwrap_or(&json!(0)),
-                "articles_by_source": json.get("articles_by_source").unwrap_or(&json!({})),
-                "articles_written_by_site": json.get("articles_written_by_site").unwrap_or(&json!({})),
-                "tokens_total": json.get("tokens_total").unwrap_or(&json!(0)),
-                "tokens_saved": json.get("tokens_saved").unwrap_or(&json!(0)),
-                "tokens_used": json.get("tokens_used").unwrap_or(&json!(0)),
-                "last_cycle_completed_at": json.get("last_cycle_completed_at").unwrap_or(&json!(null)),
+                        "success": true,
+                        "current_cycle": json.get("current_cycle").unwrap_or(&json!(0)),
+                        "articles_by_source": json.get("articles_by_source").unwrap_or(&json!({})),
+                        "articles_written_by_site": json.get("articles_written_by_site").unwrap_or(&json!({})),
+                        "tokens_total": json.get("tokens_total").unwrap_or(&json!(0)),
+                        "tokens_saved": json.get("tokens_saved").unwrap_or(&json!(0)),
+                        "tokens_used": json.get("tokens_used").unwrap_or(&json!(0)),
+                        "last_cycle_completed_at": json.get("last_cycle_completed_at").unwrap_or(&json!(null)),
             })),
             Err(e) => Json(json!({
-                "success": false,
-                "error": format!("Failed to parse stats: {}", e)
+                        "success": false,
+                        "error": format!("Failed to parse stats: {}", e)
             })),
         },
         Err(e) => Json(json!({
-            "success": false,
-            "error": format!("Failed to read stats: {}", e)
+                "success": false,
+                "error": format!("Failed to read stats: {}", e)
         })),
     }
 }
@@ -500,9 +500,9 @@ pub async fn get_articles_today_count(Extension(_db): Extension<Arc<Database>>) 
             }))
         }
         Err(e) => Json(json!({
-            "success": false,
-            "error": format!("Failed to load registry: {}", e),
-            "count": 0,
+                "success": false,
+                "error": format!("Failed to load registry: {}", e),
+                "count": 0,
         })),
     }
 }

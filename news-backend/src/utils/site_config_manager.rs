@@ -1,8 +1,8 @@
+use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
-use anyhow::{Context, Result};
-use std::collections::HashMap;
 
 /// Compact JSON formatting: put small arrays and objects on one line
 #[allow(dead_code)]
@@ -10,31 +10,35 @@ fn compact_json_formatting(json: &str) -> String {
     let lines: Vec<&str> = json.lines().collect();
     let mut result = String::new();
     let mut i = 0;
-    
+
     while i < lines.len() {
         let line = lines[i];
         let trimmed = line.trim();
         let indent = line.len() - line.trim_start().len();
         let indent_str = &line[..indent];
-        
+
         // Skip empty lines
         if trimmed.is_empty() {
             i += 1;
             continue;
         }
-        
+
         // Compact arrays that span multiple lines but are small
         if trimmed.starts_with('[') && !trimmed.ends_with(']') {
             let mut array_lines = vec![trimmed.to_string()];
             let mut depth = 1;
             let mut j = i + 1;
-            
+
             // Collect all lines until array closes
             while j < lines.len() && depth > 0 {
                 let next_line = lines[j].trim();
                 for ch in next_line.chars() {
-                    if ch == '[' { depth += 1; }
-                    if ch == ']' { depth -= 1; }
+                    if ch == '[' {
+                        depth += 1;
+                    }
+                    if ch == ']' {
+                        depth -= 1;
+                    }
                 }
                 array_lines.push(next_line.to_string());
                 if depth == 0 {
@@ -43,7 +47,7 @@ fn compact_json_formatting(json: &str) -> String {
                 }
                 j += 1;
             }
-            
+
             // Compact array if it's small enough (2-5 lines, < 120 chars total)
             let total_chars: usize = array_lines.iter().map(|s| s.len()).sum();
             if array_lines.len() >= 2 && array_lines.len() <= 5 && total_chars < 120 {
@@ -58,13 +62,17 @@ fn compact_json_formatting(json: &str) -> String {
             let mut obj_lines = vec![trimmed.to_string()];
             let mut depth = 1;
             let mut j = i + 1;
-            
+
             // Collect all lines until object closes
             while j < lines.len() && depth > 0 {
                 let next_line = lines[j].trim();
                 for ch in next_line.chars() {
-                    if ch == '{' { depth += 1; }
-                    if ch == '}' { depth -= 1; }
+                    if ch == '{' {
+                        depth += 1;
+                    }
+                    if ch == '}' {
+                        depth -= 1;
+                    }
                 }
                 obj_lines.push(next_line.to_string());
                 if depth == 0 {
@@ -73,7 +81,7 @@ fn compact_json_formatting(json: &str) -> String {
                 }
                 j += 1;
             }
-            
+
             // Compact object if it's small enough (2-10 lines, < 150 chars total)
             let total_chars: usize = obj_lines.iter().map(|s| s.len()).sum();
             if obj_lines.len() >= 2 && obj_lines.len() <= 10 && total_chars < 150 {
@@ -91,10 +99,10 @@ fn compact_json_formatting(json: &str) -> String {
         else {
             result.push_str(&format!("{}\n", line));
         }
-        
+
         i += 1;
     }
-    
+
     result
 }
 
@@ -160,15 +168,15 @@ pub struct SocialMediaConfig {
     pub access_token: Option<String>,
     pub refresh_token: Option<String>,
     pub channel_id: Option<String>, // YouTube
-    pub username: Option<String>,  // TikTok, Instagram, etc.
-    pub config: serde_json::Value, // Configurações específicas de cada rede
+    pub username: Option<String>,   // TikTok, Instagram, etc.
+    pub config: serde_json::Value,  // Configurações específicas de cada rede
 }
 
 // Complete Site Configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SiteConfig {
-    pub id: String,           // "airesearch", "scienceai", etc.
-    pub name: String,          // "AI Research", "Science AI", etc.
+    pub id: String,             // "airesearch", "scienceai", etc.
+    pub name: String,           // "AI Research", "Science AI", etc.
     pub domain: Option<String>, // "airesearch.news"
     pub enabled: bool,
     pub collectors: Vec<CollectorConfig>,
@@ -176,7 +184,7 @@ pub struct SiteConfig {
     pub education_sources: Vec<EducationSourceConfig>,
     pub social_media: Vec<SocialMediaConfig>,
     pub collection_frequency_minutes: Option<u32>, // Frequency in minutes (60 = 1 hour, 120 = 2 hours, etc.)
-    pub writing_style: Option<String>, // "scientific", "technical", "general", etc.
+    pub writing_style: Option<String>,             // "scientific", "technical", "general", etc.
     // Prompt templates per channel
     pub prompt_article: Option<String>,
     pub prompt_social: Option<String>,
@@ -259,12 +267,14 @@ impl SiteConfigManager {
             return Ok(default_config);
         }
 
-        let content = fs::read_to_string(&self.config_path)
-            .context(format!("Failed to read config file: {}", self.config_path.display()))?;
-        
-        let config: SystemConfig = serde_json::from_str(&content)
-            .context("Failed to parse config file")?;
-        
+        let content = fs::read_to_string(&self.config_path).context(format!(
+            "Failed to read config file: {}",
+            self.config_path.display()
+        ))?;
+
+        let config: SystemConfig =
+            serde_json::from_str(&content).context("Failed to parse config file")?;
+
         Ok(config)
     }
 
@@ -272,23 +282,27 @@ impl SiteConfigManager {
     pub fn save(&self, config: &SystemConfig) -> Result<()> {
         let mut config_to_save = config.clone();
         config_to_save.updated_at = chrono::Utc::now().to_rfc3339();
-        
+
         // Serialize to pretty JSON (compact formatting temporarily disabled to ensure valid JSON)
-        let content = serde_json::to_string_pretty(&config_to_save)
-            .context("Failed to serialize config")?;
-        
+        let content =
+            serde_json::to_string_pretty(&config_to_save).context("Failed to serialize config")?;
+
         // TODO: Re-enable compact formatting after fixing JSON validity issues
         // let content = compact_json_formatting(&pretty_json);
-        
+
         // Create parent directory if it doesn't exist
         if let Some(parent) = self.config_path.parent() {
-            fs::create_dir_all(parent)
-                .context(format!("Failed to create config directory: {}", parent.display()))?;
+            fs::create_dir_all(parent).context(format!(
+                "Failed to create config directory: {}",
+                parent.display()
+            ))?;
         }
-        
-        fs::write(&self.config_path, content)
-            .context(format!("Failed to write config file: {}", self.config_path.display()))?;
-        
+
+        fs::write(&self.config_path, content).context(format!(
+            "Failed to write config file: {}",
+            self.config_path.display()
+        ))?;
+
         Ok(())
     }
 
@@ -363,11 +377,15 @@ impl SiteConfigManager {
     }
 
     /// Update collector status for a site
-    pub fn update_collector_status(&self, site_id: &str, collector_id: &str, enabled: bool) -> Result<()> {
+    pub fn update_collector_status(
+        &self,
+        site_id: &str,
+        collector_id: &str,
+        enabled: bool,
+    ) -> Result<()> {
         let mut config = self.load()?;
         if let Some(site) = config.sites.get_mut(site_id) {
-            if let Some(collector) = site.collectors.iter_mut()
-                .find(|c| c.id == collector_id) {
+            if let Some(collector) = site.collectors.iter_mut().find(|c| c.id == collector_id) {
                 collector.enabled = enabled;
             } else {
                 anyhow::bail!("Collector not found: {}", collector_id);
@@ -379,11 +397,15 @@ impl SiteConfigManager {
     }
 
     /// Update social media status for a site
-    pub fn update_social_status(&self, site_id: &str, social_id: &str, enabled: bool) -> Result<()> {
+    pub fn update_social_status(
+        &self,
+        site_id: &str,
+        social_id: &str,
+        enabled: bool,
+    ) -> Result<()> {
         let mut config = self.load()?;
         if let Some(site) = config.sites.get_mut(site_id) {
-            if let Some(social) = site.social_media.iter_mut()
-                .find(|s| s.id == social_id) {
+            if let Some(social) = site.social_media.iter_mut().find(|s| s.id == social_id) {
                 social.enabled = enabled;
             } else {
                 anyhow::bail!("Social media not found: {}", social_id);
@@ -407,8 +429,9 @@ impl SiteConfigManager {
 - **Accessibility first**: Make readers understand WHY it matters
 - **Clear explanations**: Use analogies and real-world comparisons
 - Users who want technical details can read the original paper
-- Emphasis on accuracy and scientific rigor WITH simple language"#.to_string(),
-            
+- Emphasis on accuracy and scientific rigor WITH simple language"#
+                .to_string(),
+
             "scienceai" => r#"Science AI is a cutting-edge AI news platform focusing on:
 - Latest breakthroughs in artificial intelligence research
 - Practical applications of ML/deep learning
@@ -418,16 +441,19 @@ impl SiteConfigManager {
 - **Accessibility first**: Make readers understand WHY it matters
 - **Clear explanations**: Use analogies and real-world comparisons
 - Users who want technical details can read the original paper
-- Emphasis on accuracy and scientific rigor WITH simple language"#.to_string(),
-            
+- Emphasis on accuracy and scientific rigor WITH simple language"#
+                .to_string(),
+
             _ => r#"General scientific publication:
 - Clear, accurate, accessible communication
 - Emphasis on evidence-based reporting
 - Professional academic tone
-- Broad scientific audience"#.to_string()
+- Broad scientific audience"#
+                .to_string(),
         };
-        
-        format!(r#"CRITICAL INSTRUCTIONS (READ FIRST):
+
+        format!(
+            r#"CRITICAL INSTRUCTIONS (READ FIRST):
 1. You are writing for {} in Nature/Science magazine editorial style (News & Views, Perspectives sections)
 2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below
 3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text
@@ -589,7 +615,9 @@ GOOD TITLES (short, hooky, irresistible):
 ✓ "AI Agents Fall Short at Scientific Discovery"
 ✓ "Scientists Find Hidden Pattern in Neural Networks"
 ✓ "This AI Breakthrough May Be Wrong"  
-"#, site_name, site_context)
+"#,
+            site_name, site_context
+        )
     }
 
     /// Create default configuration
@@ -1395,4 +1423,3 @@ GOOD TITLES (short, hooky, irresistible):
         }
     }
 }
-

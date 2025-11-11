@@ -13,10 +13,11 @@ const nextConfig = {
     domains: ['localhost'],
   },
   async rewrites() {
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:3005';
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:3005/api/:path*',
+        destination: `${backendUrl}/api/:path*`,
       },
     ];
   },

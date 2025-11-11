@@ -3,12 +3,12 @@ use axum::{
     response::Json,
 };
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 use std::path::Path as FsPath;
 
 use crate::db::connection::Database;
-use crate::utils::site_config_manager::SiteConfigManager;
 use crate::utils::config_manager::ConfigManager;
+use crate::utils::site_config_manager::SiteConfigManager;
 
 #[derive(Debug, Serialize)]
 struct PageInfo {
@@ -25,47 +25,49 @@ struct PageInfo {
 pub async fn list_pages(Extension(_db): Extension<std::sync::Arc<Database>>) -> Json<Value> {
     let config_path = FsPath::new("system_config.json");
     let site_manager = SiteConfigManager::new(config_path);
-    
+
     let collectors_path = FsPath::new("collectors_config.json");
     let collectors_manager = ConfigManager::new(collectors_path);
-    
+
     match site_manager.get_all_sites() {
         Ok(sites) => {
             // Get enabled collectors to show active sources
-            let enabled_collectors = collectors_manager.get_enabled_collectors().unwrap_or_default();
-            let enabled_collector_ids: std::collections::HashSet<String> = enabled_collectors
-                .iter()
-                .map(|c| c.id.clone())
-                .collect();
-            
+            let enabled_collectors = collectors_manager
+                .get_enabled_collectors()
+                .unwrap_or_default();
+            let enabled_collector_ids: std::collections::HashSet<String> =
+                enabled_collectors.iter().map(|c| c.id.clone()).collect();
+
             let pages: Vec<PageInfo> = sites
                 .into_iter()
                 .map(|site| {
                     // Get enabled collectors for this site
-                    let site_sources: Vec<String> = site.collectors
+                    let site_sources: Vec<String> = site
+                        .collectors
                         .iter()
                         .filter(|c| c.enabled && enabled_collector_ids.contains(&c.id))
                         .map(|c| c.name.clone())
                         .collect();
-                    
+
                     // Check if domain is online (for now, consider offline if no domain or domain not configured)
-                    let is_online = site.domain.as_ref()
-                        .map(|d| !d.is_empty())
-                        .unwrap_or(false); // Consider offline if no domain set
-                    
+                    let is_online = site.domain.as_ref().map(|d| !d.is_empty()).unwrap_or(false); // Consider offline if no domain set
+
                     PageInfo {
                         id: site.id.clone(),
                         name: site.name.clone(),
                         sources: site_sources,
                         frequency_minutes: site.collection_frequency_minutes.unwrap_or(60),
-                        writing_style: site.writing_style.clone().unwrap_or_else(|| "scientific".to_string()),
+                        writing_style: site
+                            .writing_style
+                            .clone()
+                            .unwrap_or_else(|| "scientific".to_string()),
                         active: site.enabled,
                         domain: site.domain.clone(),
                         is_online,
                     }
                 })
                 .collect();
-            
+
             Json(json!({
                 "success": true,
                 "pages": pages,
@@ -94,7 +96,7 @@ pub async fn create_page(
 ) -> Json<Value> {
     let config_path = FsPath::new("system_config.json");
     let site_manager = SiteConfigManager::new(config_path);
-    
+
     // Validate required fields
     if request.id.trim().is_empty() || request.id.is_empty() {
         return Json(json!({
@@ -102,21 +104,27 @@ pub async fn create_page(
             "error": "Page ID is required",
         }));
     }
-    
+
     if request.name.trim().is_empty() || request.name.is_empty() {
         return Json(json!({
             "success": false,
             "error": "Page name is required",
         }));
     }
-    
+
     // Upsert behavior: if site already exists, update its basic fields instead of erroring
     if let Ok(Some(mut existing_site)) = site_manager.get_site_config(&request.id) {
         existing_site.name = request.name.clone();
         existing_site.domain = request.domain.clone();
-        if let Some(freq) = request.frequency_minutes { existing_site.collection_frequency_minutes = Some(freq); }
-        if let Some(style) = request.writing_style.clone() { existing_site.writing_style = Some(style); }
-        if let Some(enabled) = request.enabled { existing_site.enabled = enabled; }
+        if let Some(freq) = request.frequency_minutes {
+            existing_site.collection_frequency_minutes = Some(freq);
+        }
+        if let Some(style) = request.writing_style.clone() {
+            existing_site.writing_style = Some(style);
+        }
+        if let Some(enabled) = request.enabled {
+            existing_site.enabled = enabled;
+        }
 
         return match site_manager.update_site_config(&request.id, existing_site) {
             Ok(_) => Json(json!({
@@ -129,38 +137,40 @@ pub async fn create_page(
             })),
         };
     }
-    
+
     // Load collectors config to add them to the new site
     let collectors_path = FsPath::new("collectors_config.json");
     let collectors_manager = ConfigManager::new(collectors_path);
-    
+
     // Create default collectors from global config (all disabled initially)
-    let collectors: Vec<crate::utils::site_config_manager::CollectorConfig> = match collectors_manager.load() {
-        Ok(collectors_config) => {
-            collectors_config.collectors
-                .into_iter()
-                .map(|collector| {
-                    crate::utils::site_config_manager::CollectorConfig {
-                        id: collector.id,
-                        name: collector.name,
-                        enabled: false, // All collectors disabled by default
-                        api_key: collector.api_key,
-                        collector_type: collector.collector_type,
-                        feed_url: collector.feed_url,
-                        base_url: collector.base_url,
-                        selectors: collector.selectors,
-                        destinations: None, // config_manager::CollectorConfig doesn't have destinations, default to None
-                        config: collector.config,
-                    }
-                })
-                .collect()
-        }
-        Err(_) => {
-            // If collectors config doesn't exist or fails to load, create empty list
-            vec![]
-        }
-    };
-    
+    let collectors: Vec<crate::utils::site_config_manager::CollectorConfig> =
+        match collectors_manager.load() {
+            Ok(collectors_config) => {
+                collectors_config
+                    .collectors
+                    .into_iter()
+                    .map(|collector| {
+                        crate::utils::site_config_manager::CollectorConfig {
+                            id: collector.id,
+                            name: collector.name,
+                            enabled: false, // All collectors disabled by default
+                            api_key: collector.api_key,
+                            collector_type: collector.collector_type,
+                            feed_url: collector.feed_url,
+                            base_url: collector.base_url,
+                            selectors: collector.selectors,
+                            destinations: None, // config_manager::CollectorConfig doesn't have destinations, default to None
+                            config: collector.config,
+                        }
+                    })
+                    .collect()
+            }
+            Err(_) => {
+                // If collectors config doesn't exist or fails to load, create empty list
+                vec![]
+            }
+        };
+
     // Create new site config
     let new_site = crate::utils::site_config_manager::SiteConfig {
         id: request.id.clone(),
@@ -217,7 +227,7 @@ pub async fn create_page(
         temperature_social: Some(0.8),
         temperature_blog: Some(0.7),
     };
-    
+
     match site_manager.update_site_config(&request.id, new_site) {
         Ok(_) => Json(json!({
             "success": true,
@@ -236,7 +246,7 @@ pub async fn get_page(
 ) -> Json<Value> {
     let config_path = FsPath::new("system_config.json");
     let site_manager = SiteConfigManager::new(config_path);
-    
+
     match site_manager.get_site_config(&id) {
         Ok(Some(site)) => Json(json!({
             "success": true,
@@ -276,7 +286,7 @@ pub async fn update_page(
 ) -> Json<Value> {
     let config_path = FsPath::new("system_config.json");
     let site_manager = SiteConfigManager::new(config_path);
-    
+
     let mut site = match site_manager.get_site_config(&id) {
         Ok(Some(s)) => s,
         Ok(None) => {
@@ -292,7 +302,7 @@ pub async fn update_page(
             }));
         }
     };
-    
+
     // Update fields
     if let Some(name) = request.name {
         if name.trim().is_empty() {
@@ -304,7 +314,11 @@ pub async fn update_page(
         site.name = name.trim().to_string();
     }
     if let Some(domain) = request.domain {
-        site.domain = if domain.trim().is_empty() { None } else { Some(domain.trim().to_string()) };
+        site.domain = if domain.trim().is_empty() {
+            None
+        } else {
+            Some(domain.trim().to_string())
+        };
     }
     if let Some(frequency) = request.frequency_minutes {
         site.collection_frequency_minutes = Some(frequency);
@@ -315,7 +329,7 @@ pub async fn update_page(
     if let Some(enabled) = request.enabled {
         site.enabled = enabled;
     }
-    
+
     match site_manager.update_site_config(&id, site) {
         Ok(_) => Json(json!({
             "success": true,
@@ -335,10 +349,10 @@ pub async fn delete_page(
     // Log for debugging
     eprintln!("[DELETE PAGE] Received DELETE request for site: '{}'", id);
     eprintln!("[DELETE PAGE] ID type: String, length: {}", id.len());
-    
+
     let config_path = FsPath::new("system_config.json");
     let site_manager = SiteConfigManager::new(config_path);
-    
+
     // Check if site exists
     match site_manager.get_site_config(&id) {
         Ok(Some(site)) => {
@@ -360,21 +374,30 @@ pub async fn delete_page(
             }));
         }
     }
-    
+
     // Load config, remove site, and save
     match site_manager.load() {
         Ok(mut config) => {
-            eprintln!("[DELETE PAGE] Config loaded, sites before: {}", config.sites.len());
-            
+            eprintln!(
+                "[DELETE PAGE] Config loaded, sites before: {}",
+                config.sites.len()
+            );
+
             // Remove site from HashMap
             let removed = config.sites.remove(&id);
-            
+
             if removed.is_some() {
-                eprintln!("[DELETE PAGE] Site removed from config, sites after: {}", config.sites.len());
+                eprintln!(
+                    "[DELETE PAGE] Site removed from config, sites after: {}",
+                    config.sites.len()
+                );
             } else {
-                eprintln!("[DELETE PAGE] WARNING: Site '{}' was not in config.sites", id);
+                eprintln!(
+                    "[DELETE PAGE] WARNING: Site '{}' was not in config.sites",
+                    id
+                );
             }
-            
+
             // Save updated config
             match site_manager.save(&config) {
                 Ok(_) => {

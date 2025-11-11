@@ -19,7 +19,7 @@ impl HtmlCollector {
     /// Cria novo cliente HTML
     pub fn new(temp_dir: PathBuf) -> Self {
         let mut headers = reqwest::header::HeaderMap::new();
-        
+
         // User Agent - simula navegador Chrome real
         headers.insert(
             reqwest::header::USER_AGENT,
@@ -27,7 +27,7 @@ impl HtmlCollector {
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             ),
         );
-        
+
         // Accept headers - tipos de conteúdo aceitos
         headers.insert(
             reqwest::header::ACCEPT,
@@ -41,7 +41,7 @@ impl HtmlCollector {
             reqwest::header::ACCEPT_ENCODING,
             reqwest::header::HeaderValue::from_static("gzip, deflate, br"),
         );
-        
+
         // Security headers - para contornar bot protection (Cloudflare, etc)
         // HeaderName::from_static pode lançar panic se o nome for inválido, mas para
         // nomes conhecidos como sec-fetch-*, isso é seguro
@@ -62,13 +62,13 @@ impl HtmlCollector {
             reqwest::header::HeaderName::from_static("sec-fetch-dest"),
             reqwest::header::HeaderValue::from_static("document"),
         );
-        
+
         // Referer - simula navegação vinda do Google
         headers.insert(
             reqwest::header::REFERER,
             reqwest::header::HeaderValue::from_static("https://www.google.com/"),
         );
-        
+
         // Upgrade-Insecure-Requests
         headers.insert(
             reqwest::header::HeaderName::from_static("upgrade-insecure-requests"),
@@ -96,11 +96,11 @@ impl HtmlCollector {
     /// HTML renderizado ou None se falhar
     fn fetch_with_js(url: &str) -> Option<String> {
         info!(url = %url, "Fetching HTML with Playwright (JavaScript rendering)");
-        
+
         // Obter caminho do diretório atual (news-backend)
         let current_dir = std::env::current_dir().ok()?;
         let scraper_js = current_dir.join("js").join("scraper.js");
-        
+
         if !scraper_js.exists() {
             error!(
                 scraper_path = %scraper_js.display(),
@@ -157,16 +157,16 @@ impl HtmlCollector {
         // Lista de collectors que precisam de JavaScript rendering
         // Inclui sites com popups de cookies, JavaScript pesado, ou que precisam de interações
         const JS_COLLECTORS: &[&str] = &[
-            "html_meta_ai", 
-            "html_anthropic", 
-            "html_alibaba_damo", 
-            "html_xai", 
+            "html_meta_ai",
+            "html_anthropic",
+            "html_alibaba_damo",
+            "html_xai",
             "html_deepseek",
-            "html_mistral_ai",  // 308 redirect, precisa JS
+            "html_mistral_ai",   // 308 redirect, precisa JS
             "html_character_ai", // 308 redirect, precisa JS
             "html_intel_ai",     // 403, precisa JS
             // Robótica - sites com popups de cookies
-            "html_robot_report",  // Tem popups de cookies antes de acessar notícias
+            "html_robot_report", // Tem popups de cookies antes de acessar notícias
             "html_boston_dynamics",
             "html_yaskawa",
             "html_agility",
@@ -182,8 +182,8 @@ impl HtmlCollector {
             "html_xanadu",
             "html_infleqtion",
             "html_qci",
-            "html_ieee",  // IEEE Advancing Technology
-            "html_quanta_quantum",  // Quanta Magazine
+            "html_ieee",           // IEEE Advancing Technology
+            "html_quanta_quantum", // Quanta Magazine
             // IA - sites com interações necessárias
             "html_langchain",
             "html_pinecone",
@@ -192,7 +192,7 @@ impl HtmlCollector {
             "html_fastai",
             "html_eleuther",
         ];
-        
+
         if let Some(id) = collector_id {
             JS_COLLECTORS.contains(&id)
         } else {
@@ -227,7 +227,7 @@ impl HtmlCollector {
             "venturebeat.com",
             "time.com",
             // Robótica
-            "therobotreport.com",  // Tem popups de cookies
+            "therobotreport.com", // Tem popups de cookies
             "bostondynamics.com",
             "yaskawa.com",
             "agilityrobotics.com",
@@ -257,7 +257,7 @@ impl HtmlCollector {
             "fast.ai",
             "eleuther.ai",
         ];
-        
+
         if let Ok(parsed_url) = url::Url::parse(url) {
             if let Some(host) = parsed_url.host_str() {
                 return JS_DOMAINS.iter().any(|domain| host.contains(domain));
@@ -293,7 +293,7 @@ impl HtmlCollector {
         let needs_js_by_collector = Self::needs_js_rendering(collector_id);
         let needs_js_by_url = Self::needs_js_rendering_by_url(base_url);
         let needs_js = needs_js_by_collector || needs_js_by_url;
-        
+
         info!(
             url = %base_url,
             collector_id = ?collector_id,
@@ -302,7 +302,7 @@ impl HtmlCollector {
             needs_js_rendering = needs_js,
             "Checking if JavaScript rendering is needed"
         );
-        
+
         let html_content = if needs_js {
             info!(url = %base_url, "Using Playwright for JavaScript rendering");
             // Usar Playwright para renderizar JavaScript
@@ -322,14 +322,14 @@ impl HtmlCollector {
                     );
                     // Fallback para requisição HTTP normal
                     let response = self.client.get(base_url).send().await?;
-                    
+
                     if !response.status().is_success() {
                         return Err(anyhow::anyhow!(
                             "Failed to fetch HTML page: HTTP {}",
                             response.status()
                         ));
                     }
-                    
+
                     response.text().await?
                 }
             }
@@ -373,15 +373,17 @@ impl HtmlCollector {
 
         // Parse HTML
         let document = Html::parse_document(&html_content);
-        
+
         // Verificar se há algum conteúdo útil no HTML
-        let body_text: String = document.select(&scraper::Selector::parse("body").unwrap_or_else(|_| {
-            scraper::Selector::parse("html").unwrap()
-        }))
-        .next()
-        .map(|el| el.text().collect())
-        .unwrap_or_default();
-        
+        let body_text: String = document
+            .select(
+                &scraper::Selector::parse("body")
+                    .unwrap_or_else(|_| scraper::Selector::parse("html").unwrap()),
+            )
+            .next()
+            .map(|el| el.text().collect())
+            .unwrap_or_default();
+
         info!(
             body_text_length = body_text.len(),
             has_script_tags = html_content.contains("<script"),
@@ -404,45 +406,50 @@ impl HtmlCollector {
                     scraper::Selector::parse("a").expect("Failed to parse link selector")
                 })
             };
-            
+
             let mut link_urls = Vec::new();
-            
+
             // Extrair padrões do seletor para filtrar
             let href_patterns: Vec<String> = if link_selector_str.contains("[href*=") {
                 // Extrair padrões de [href*='pattern'] ou [href*="pattern"]
                 let pattern_re = regex::Regex::new(r#"\[href\*=['"]([^'"]+)['"]"#).unwrap();
-                pattern_re.captures_iter(link_selector_str)
+                pattern_re
+                    .captures_iter(link_selector_str)
                     .map(|cap| {
                         // Pegar o primeiro grupo que contém o padrão
-                        cap.get(1).map(|m| m.as_str().to_string()).unwrap_or_default()
+                        cap.get(1)
+                            .map(|m| m.as_str().to_string())
+                            .unwrap_or_default()
                     })
                     .filter(|s| !s.is_empty())
                     .collect()
             } else {
                 vec![]
             };
-            
+
             // Verificar quantos elementos <a> existem no documento total
-            let all_a_elements: Vec<_> = document.select(&scraper::Selector::parse("a").unwrap()).collect();
+            let all_a_elements: Vec<_> = document
+                .select(&scraper::Selector::parse("a").unwrap())
+                .collect();
             info!(
                 total_a_elements = all_a_elements.len(),
                 link_selector_used = %link_selector_str,
                 "Checking HTML structure"
             );
-            
+
             // Se não há elementos <a>, tentar buscar URLs diretamente no HTML usando regex
             let use_regex_fallback = all_a_elements.is_empty() && !href_patterns.is_empty();
-            
+
             let mut total_links_found = 0;
             let mut total_links_found_regex = 0;
-            
+
             if use_regex_fallback {
                 // Buscar URLs diretamente no HTML usando regex
                 warn!(
                     url = %base_url,
                     "No <a> elements found, using regex fallback to extract URLs"
                 );
-                
+
                 // Buscar URLs que correspondem aos padrões de forma mais genérica
                 // Primeiro, tentar extrair URLs de JSON embutido no HTML
                 let json_url_pattern = regex::Regex::new(r#"(?s)(\{[^}]*"url"[^}]*\})"#).unwrap();
@@ -462,19 +469,25 @@ impl HtmlCollector {
                         }
                     }
                 }
-                
+
                 // Buscar URLs diretamente no HTML (também em strings JSON não parseadas)
                 let url_re = regex::Regex::new(r#"(https?://[^\s"'<>\)]+)"#).unwrap();
-                
+
                 let mut all_urls_found = 0;
                 for cap in url_re.captures_iter(&html_content) {
                     all_urls_found += 1;
                     if let Some(url_match) = cap.get(1) {
                         let mut url = url_match.as_str().to_string();
-                        
+
                         // Limpar caracteres finais indesejados
-                        url = url.trim_end_matches('"').trim_end_matches('\'').trim_end_matches('>').trim_end_matches(')').trim_end_matches(',').to_string();
-                        
+                        url = url
+                            .trim_end_matches('"')
+                            .trim_end_matches('\'')
+                            .trim_end_matches('>')
+                            .trim_end_matches(')')
+                            .trim_end_matches(',')
+                            .to_string();
+
                         // Verificar se a URL corresponde a algum padrão
                         let matches_pattern = href_patterns.iter().any(|p| {
                             if p.starts_with("http") {
@@ -483,79 +496,104 @@ impl HtmlCollector {
                                 url.contains(p)
                             }
                         });
-                        
+
                         if !matches_pattern {
                             continue;
                         }
-                        
+
                         total_links_found_regex += 1;
-                        
+
                         // Filtrar URLs que não são artigos
-                        if url.contains("/category/") 
-                            || url.contains("/tag/") 
-                            || url.contains("/author/") 
+                        if url.contains("/category/")
+                            || url.contains("/tag/")
+                            || url.contains("/author/")
                             || url.contains("/page/")
                             || url.contains("/feed/")
                             || url.contains("wp-json")
-                            || url.contains("#") {
+                            || url.contains("#")
+                        {
                             continue;
                         }
-                        
+
                         // Verificar se parece ser um artigo
                         let base_url_normalized = base_url.trim_end_matches('/');
                         let url_normalized = url.trim_end_matches('/');
                         if url_normalized != base_url_normalized {
-                            let path_segments: Vec<&str> = url.split('/').filter(|s| !s.is_empty() && !s.contains(':')).collect();
-                            let is_article = url.contains("/20") 
+                            let path_segments: Vec<&str> = url
+                                .split('/')
+                                .filter(|s| !s.is_empty() && !s.contains(':'))
+                                .collect();
+                            let is_article = url.contains("/20")
                                 || path_segments.len() >= 4
-                                || (path_segments.len() >= 3 && path_segments.last().map(|s| s.matches('-').count() >= 2).unwrap_or(false));
-                            
+                                || (path_segments.len() >= 3
+                                    && path_segments
+                                        .last()
+                                        .map(|s| s.matches('-').count() >= 2)
+                                        .unwrap_or(false));
+
                             if is_article && !link_urls.contains(&url) {
                                 link_urls.push(url.clone());
                             }
                         }
                     }
                 }
-                
+
                 // Também buscar URLs relativas e convertê-las para absolutas
                 for pattern in &href_patterns {
                     if !pattern.starts_with("http") && pattern.contains('/') {
                         // Buscar URLs relativas que começam com / e contêm o padrão
-                        let rel_pattern = format!(r#"["\']?({}[^"'\s<>\)]*)["\']?"#, regex::escape(pattern));
+                        let rel_pattern =
+                            format!(r#"["\']?({}[^"'\s<>\)]*)["\']?"#, regex::escape(pattern));
                         let re = regex::Regex::new(&rel_pattern).unwrap_or_else(|_| {
                             // Fallback: buscar qualquer path que comece com /
                             regex::Regex::new(r#"["\']?(/[^"'\s<>\)]+)["\']?"#).unwrap()
                         });
-                        
+
                         for cap in re.captures_iter(&html_content) {
                             if let Some(rel_match) = cap.get(1) {
                                 let mut rel_path = rel_match.as_str().to_string();
-                                
+
                                 // Limpar caracteres indesejados
-                                rel_path = rel_path.trim_matches('"').trim_matches('\'').trim_matches(')').to_string();
-                                
+                                rel_path = rel_path
+                                    .trim_matches('"')
+                                    .trim_matches('\'')
+                                    .trim_matches(')')
+                                    .to_string();
+
                                 // Se não começa com /, pode ser uma URL completa
-                                if !rel_path.starts_with('/') && (rel_path.starts_with("http://") || rel_path.starts_with("https://")) {
+                                if !rel_path.starts_with('/')
+                                    && (rel_path.starts_with("http://")
+                                        || rel_path.starts_with("https://"))
+                                {
                                     let url = rel_path;
                                     if !link_urls.contains(&url) {
                                         total_links_found_regex += 1;
-                                        
+
                                         // Filtrar e verificar se é artigo
-                                        if !url.contains("/category/") 
-                                            && !url.contains("/tag/") 
-                                            && !url.contains("/author/") 
+                                        if !url.contains("/category/")
+                                            && !url.contains("/tag/")
+                                            && !url.contains("/author/")
                                             && !url.contains("/page/")
                                             && !url.contains("/feed/")
                                             && !url.contains("wp-json")
-                                            && !url.contains("#") {
-                                            let base_url_normalized = base_url.trim_end_matches('/');
+                                            && !url.contains("#")
+                                        {
+                                            let base_url_normalized =
+                                                base_url.trim_end_matches('/');
                                             let url_normalized = url.trim_end_matches('/');
                                             if url_normalized != base_url_normalized {
-                                                let path_segments: Vec<&str> = url.split('/').filter(|s| !s.is_empty() && !s.contains(':')).collect();
-                                                let is_article = url.contains("/20") 
+                                                let path_segments: Vec<&str> = url
+                                                    .split('/')
+                                                    .filter(|s| !s.is_empty() && !s.contains(':'))
+                                                    .collect();
+                                                let is_article = url.contains("/20")
                                                     || path_segments.len() >= 4
-                                                    || (path_segments.len() >= 3 && path_segments.last().map(|s| s.matches('-').count() >= 2).unwrap_or(false));
-                                                
+                                                    || (path_segments.len() >= 3
+                                                        && path_segments
+                                                            .last()
+                                                            .map(|s| s.matches('-').count() >= 2)
+                                                            .unwrap_or(false));
+
                                                 if is_article {
                                                     link_urls.push(url);
                                                 }
@@ -564,9 +602,11 @@ impl HtmlCollector {
                                     }
                                     continue;
                                 }
-                                
+
                                 // Resolver URL relativa
-                                let resolved_url = if rel_path.starts_with("http://") || rel_path.starts_with("https://") {
+                                let resolved_url = if rel_path.starts_with("http://")
+                                    || rel_path.starts_with("https://")
+                                {
                                     rel_path
                                 } else {
                                     use url::Url;
@@ -574,34 +614,45 @@ impl HtmlCollector {
                                         if let Ok(resolved) = base.join(&rel_path) {
                                             resolved.to_string()
                                         } else {
-                                            format!("{}{}", base_url.trim_end_matches('/'), rel_path)
+                                            format!(
+                                                "{}{}",
+                                                base_url.trim_end_matches('/'),
+                                                rel_path
+                                            )
                                         }
                                     } else {
                                         format!("{}{}", base_url.trim_end_matches('/'), rel_path)
                                     }
                                 };
-                                
+
                                 if !link_urls.contains(&resolved_url) {
                                     total_links_found_regex += 1;
-                                    
+
                                     // Filtrar URLs que não são artigos
-                                    if !resolved_url.contains("/category/") 
-                                        && !resolved_url.contains("/tag/") 
-                                        && !resolved_url.contains("/author/") 
+                                    if !resolved_url.contains("/category/")
+                                        && !resolved_url.contains("/tag/")
+                                        && !resolved_url.contains("/author/")
                                         && !resolved_url.contains("/page/")
                                         && !resolved_url.contains("/feed/")
                                         && !resolved_url.contains("wp-json")
-                                        && !resolved_url.contains("#") {
-                                        
+                                        && !resolved_url.contains("#")
+                                    {
                                         // Verificar se parece ser um artigo
                                         let base_url_normalized = base_url.trim_end_matches('/');
                                         let url_normalized = resolved_url.trim_end_matches('/');
                                         if url_normalized != base_url_normalized {
-                                            let path_segments: Vec<&str> = resolved_url.split('/').filter(|s| !s.is_empty() && !s.contains(':')).collect();
-                                            let is_article = resolved_url.contains("/20") 
+                                            let path_segments: Vec<&str> = resolved_url
+                                                .split('/')
+                                                .filter(|s| !s.is_empty() && !s.contains(':'))
+                                                .collect();
+                                            let is_article = resolved_url.contains("/20")
                                                 || path_segments.len() >= 4
-                                                || (path_segments.len() >= 3 && path_segments.last().map(|s| s.matches('-').count() >= 2).unwrap_or(false));
-                                            
+                                                || (path_segments.len() >= 3
+                                                    && path_segments
+                                                        .last()
+                                                        .map(|s| s.matches('-').count() >= 2)
+                                                        .unwrap_or(false));
+
                                             if is_article {
                                                 link_urls.push(resolved_url);
                                             }
@@ -612,7 +663,7 @@ impl HtmlCollector {
                         }
                     }
                 }
-                
+
                 info!(
                     all_urls_in_html = all_urls_found,
                     urls_matching_patterns = total_links_found_regex,
@@ -620,7 +671,7 @@ impl HtmlCollector {
                     href_patterns = ?href_patterns,
                     "Extracted URLs using regex fallback"
                 );
-                
+
                 // Adicionar URLs encontradas em JSON
                 for json_url in json_urls {
                     // Verificar se corresponde a algum padrão
@@ -631,23 +682,30 @@ impl HtmlCollector {
                             json_url.contains(p)
                         }
                     });
-                    
+
                     if matches_pattern {
                         let base_url_normalized = base_url.trim_end_matches('/');
                         let url_normalized = json_url.trim_end_matches('/');
                         if url_normalized != base_url_normalized {
-                            let path_segments: Vec<&str> = json_url.split('/').filter(|s| !s.is_empty() && !s.contains(':')).collect();
-                            let is_article = json_url.contains("/20") 
+                            let path_segments: Vec<&str> = json_url
+                                .split('/')
+                                .filter(|s| !s.is_empty() && !s.contains(':'))
+                                .collect();
+                            let is_article = json_url.contains("/20")
                                 || path_segments.len() >= 4
-                                || (path_segments.len() >= 3 && path_segments.last().map(|s| s.matches('-').count() >= 2).unwrap_or(false));
-                            
+                                || (path_segments.len() >= 3
+                                    && path_segments
+                                        .last()
+                                        .map(|s| s.matches('-').count() >= 2)
+                                        .unwrap_or(false));
+
                             if is_article && !link_urls.contains(&json_url) {
                                 link_urls.push(json_url);
                             }
                         }
                     }
                 }
-                
+
                 // Se ainda não encontrou URLs, tentar buscar diretamente por padrões comuns
                 if link_urls.is_empty() {
                     // Extrair domínio base uma vez
@@ -658,36 +716,52 @@ impl HtmlCollector {
                         .next()
                         .unwrap_or("")
                         .to_string();
-                    
+
                     warn!(
                         url = %base_url,
                         base_domain = %base_domain,
                         total_urls_found = all_urls_found,
                         "No URLs found, trying aggressive extraction methods"
                     );
-                    
+
                     // Método 1: Buscar URLs relativas que seguem padrão /news/YYYY/...
                     for pattern in &href_patterns {
                         if !pattern.starts_with("http") && pattern.contains('/') {
                             // Buscar padrões como /news/2025/algum-artigo
-                            let rel_pattern = format!(r#"["\']?({}[0-9]{{4}}/[^"'\s<>\)]+)["\']?"#, regex::escape(pattern));
+                            let rel_pattern = format!(
+                                r#"["\']?({}[0-9]{{4}}/[^"'\s<>\)]+)["\']?"#,
+                                regex::escape(pattern)
+                            );
                             if let Ok(rel_re) = regex::Regex::new(&rel_pattern) {
                                 for cap in rel_re.captures_iter(&html_content) {
                                     if let Some(rel_match) = cap.get(1) {
-                                        let rel_path = rel_match.as_str().trim_matches('"').trim_matches('\'').trim_matches(')').trim_matches(',');
-                                        
+                                        let rel_path = rel_match
+                                            .as_str()
+                                            .trim_matches('"')
+                                            .trim_matches('\'')
+                                            .trim_matches(')')
+                                            .trim_matches(',');
+
                                         // Resolver URL relativa
                                         use url::Url;
                                         let resolved_url = if let Ok(base) = Url::parse(base_url) {
                                             if let Ok(resolved) = base.join(rel_path) {
                                                 resolved.to_string()
                                             } else {
-                                                format!("{}{}", base_url.trim_end_matches('/'), rel_path)
+                                                format!(
+                                                    "{}{}",
+                                                    base_url.trim_end_matches('/'),
+                                                    rel_path
+                                                )
                                             }
                                         } else {
-                                            format!("{}{}", base_url.trim_end_matches('/'), rel_path)
+                                            format!(
+                                                "{}{}",
+                                                base_url.trim_end_matches('/'),
+                                                rel_path
+                                            )
                                         };
-                                        
+
                                         if !link_urls.contains(&resolved_url) {
                                             link_urls.push(resolved_url.clone());
                                             info!(found_url = %resolved_url, "Found relative URL via pattern extraction");
@@ -697,15 +771,24 @@ impl HtmlCollector {
                             }
                         }
                     }
-                    
+
                     // Método 2: Buscar qualquer URL que contenha 'news' e ano do mesmo domínio
                     if link_urls.is_empty() {
-                        let news_url_re = regex::Regex::new(r#"(https?://[^\s"'<>\)]*news[^\s"'<>\)]*20[0-9]{2}[^\s"'<>\)]*)"#).unwrap();
+                        let news_url_re = regex::Regex::new(
+                            r#"(https?://[^\s"'<>\)]*news[^\s"'<>\)]*20[0-9]{2}[^\s"'<>\)]*)"#,
+                        )
+                        .unwrap();
                         for cap in news_url_re.captures_iter(&html_content) {
                             if let Some(url_match) = cap.get(1) {
                                 let mut url = url_match.as_str().to_string();
-                                url = url.trim_end_matches('"').trim_end_matches('\'').trim_end_matches('>').trim_end_matches(')').trim_end_matches(',').to_string();
-                                
+                                url = url
+                                    .trim_end_matches('"')
+                                    .trim_end_matches('\'')
+                                    .trim_end_matches('>')
+                                    .trim_end_matches(')')
+                                    .trim_end_matches(',')
+                                    .to_string();
+
                                 if url.contains(&base_domain) {
                                     if !link_urls.contains(&url) {
                                         let url_clone = url.clone();
@@ -716,14 +799,22 @@ impl HtmlCollector {
                             }
                         }
                     }
-                    
+
                     // Método 3: Buscar qualquer path relativo que pareça ser um artigo
                     if link_urls.is_empty() {
-                        let article_path_re = regex::Regex::new(r#"["\']?(/[^"'\s<>\)]*news[^"'\s<>\)]*20[0-9]{2}[^"'\s<>\)]*)["\']?"#).unwrap();
+                        let article_path_re = regex::Regex::new(
+                            r#"["\']?(/[^"'\s<>\)]*news[^"'\s<>\)]*20[0-9]{2}[^"'\s<>\)]*)["\']?"#,
+                        )
+                        .unwrap();
                         for cap in article_path_re.captures_iter(&html_content) {
                             if let Some(path_match) = cap.get(1) {
-                                let rel_path = path_match.as_str().trim_matches('"').trim_matches('\'').trim_matches(')').trim_matches(',');
-                                
+                                let rel_path = path_match
+                                    .as_str()
+                                    .trim_matches('"')
+                                    .trim_matches('\'')
+                                    .trim_matches(')')
+                                    .trim_matches(',');
+
                                 // Resolver URL relativa
                                 use url::Url;
                                 let resolved_url = if let Ok(base) = Url::parse(base_url) {
@@ -735,7 +826,7 @@ impl HtmlCollector {
                                 } else {
                                     format!("{}{}", base_url.trim_end_matches('/'), rel_path)
                                 };
-                                
+
                                 if !link_urls.contains(&resolved_url) {
                                     link_urls.push(resolved_url.clone());
                                     info!(found_url = %resolved_url, "Found relative article path");
@@ -743,7 +834,7 @@ impl HtmlCollector {
                             }
                         }
                     }
-                    
+
                     if !link_urls.is_empty() {
                         info!(
                             urls_found_aggressive = link_urls.len(),
@@ -752,46 +843,58 @@ impl HtmlCollector {
                     }
                 }
             }
-            
+
             for link_element in document.select(&link_selector) {
                 total_links_found += 1;
                 if let Some(href) = link_element.value().attr("href") {
                     // Se há padrões específicos no seletor, verificar se o href corresponde
                     if !href_patterns.is_empty() {
-                        let matches_pattern = href_patterns.iter().any(|pattern| href.contains(pattern.as_str()));
+                        let matches_pattern = href_patterns
+                            .iter()
+                            .any(|pattern| href.contains(pattern.as_str()));
                         if !matches_pattern {
                             continue;
                         }
                     }
-                    
+
                     // Filtrar links que não são artigos
-                    if href.contains("/category/") 
-                        || href.contains("/tag/") 
-                        || href.contains("/author/") 
+                    if href.contains("/category/")
+                        || href.contains("/tag/")
+                        || href.contains("/author/")
                         || href.contains("/page/")
                         || href.contains("/feed/")
                         || href.contains("wp-json")
                         || href == "#"
-                        || href.starts_with("#") {
+                        || href.starts_with("#")
+                    {
                         continue;
                     }
-                    
+
                     // Resolver URL relativa
-                    let resolved_url = if href.starts_with("http://") || href.starts_with("https://") {
-                        href.to_string()
-                    } else {
-                        use url::Url;
-                        if let Ok(base) = Url::parse(base_url) {
-                            if let Ok(resolved) = base.join(href) {
-                                resolved.to_string()
-                            } else {
-                                format!("{}/{}", base_url.trim_end_matches('/'), href.trim_start_matches('/'))
-                            }
+                    let resolved_url =
+                        if href.starts_with("http://") || href.starts_with("https://") {
+                            href.to_string()
                         } else {
-                            format!("{}/{}", base_url.trim_end_matches('/'), href.trim_start_matches('/'))
-                        }
-                    };
-                    
+                            use url::Url;
+                            if let Ok(base) = Url::parse(base_url) {
+                                if let Ok(resolved) = base.join(href) {
+                                    resolved.to_string()
+                                } else {
+                                    format!(
+                                        "{}/{}",
+                                        base_url.trim_end_matches('/'),
+                                        href.trim_start_matches('/')
+                                    )
+                                }
+                            } else {
+                                format!(
+                                    "{}/{}",
+                                    base_url.trim_end_matches('/'),
+                                    href.trim_start_matches('/')
+                                )
+                            }
+                        };
+
                     // Verificar se parece ser um artigo (não é apenas a base)
                     let base_url_normalized = base_url.trim_end_matches('/');
                     let resolved_url_normalized = resolved_url.trim_end_matches('/');
@@ -800,22 +903,29 @@ impl HtmlCollector {
                         // - Contém ano (2024, 2025)
                         // - Ou tem 4+ segmentos no path
                         // - Ou termina com padrão de slug (múltiplas palavras com hífen)
-                        let path_segments: Vec<&str> = resolved_url.split('/').filter(|s| !s.is_empty() && !s.contains(':')).collect();
-                        let is_article = resolved_url.contains("/20") 
+                        let path_segments: Vec<&str> = resolved_url
+                            .split('/')
+                            .filter(|s| !s.is_empty() && !s.contains(':'))
+                            .collect();
+                        let is_article = resolved_url.contains("/20")
                             || path_segments.len() >= 4
-                            || (path_segments.len() >= 3 && path_segments.last().map(|s| s.matches('-').count() >= 2).unwrap_or(false));
-                        
+                            || (path_segments.len() >= 3
+                                && path_segments
+                                    .last()
+                                    .map(|s| s.matches('-').count() >= 2)
+                                    .unwrap_or(false));
+
                         if is_article {
                             link_urls.push(resolved_url);
                         }
                     }
                 }
             }
-            
+
             // Remover duplicatas
             link_urls.sort();
             link_urls.dedup();
-            
+
             info!(
                 link_selector = %link_selector_str,
                 total_links_processed = total_links_found,
@@ -823,7 +933,7 @@ impl HtmlCollector {
                 href_patterns = ?href_patterns,
                 "Found article links directly"
             );
-            
+
             // Debug: mostrar alguns links encontrados
             if link_urls.len() > 0 {
                 info!(
@@ -831,28 +941,29 @@ impl HtmlCollector {
                     "Sample links found"
                 );
             }
-                
+
             // Buscar conteúdo de cada link
             let mut articles = Vec::new();
             for (idx, link_url) in link_urls.iter().take(max as usize * 2).enumerate() {
                 if articles.len() >= max as usize {
                     break;
                 }
-                
+
                 info!(
                     index = idx + 1,
                     url = %link_url,
                     "Fetching article from link"
                 );
-                
+
                 match self.fetch_full_article(link_url, selectors).await {
                     Ok(metadata) => {
                         const MIN_CONTENT_LENGTH: usize = 1500;
-                        let has_valid_content = metadata.content_text
+                        let has_valid_content = metadata
+                            .content_text
                             .as_ref()
                             .map(|text| !text.trim().is_empty() && text.len() >= MIN_CONTENT_LENGTH)
                             .unwrap_or(false);
-                        
+
                         if has_valid_content {
                             info!(
                                 index = idx + 1,
@@ -880,30 +991,38 @@ impl HtmlCollector {
                         );
                     }
                 }
-                
+
                 // Rate limiting
                 if idx < link_urls.len().saturating_sub(1) {
                     tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
                 }
             }
-            
+
             articles
         } else if let Some(article_selector_str) = selectors.and_then(|s| s.get("article")) {
             // Multiple articles on one page (e.g., blog listing)
-            self.extract_multiple_articles(&document, article_selector_str, base_url, selectors, max).await?
+            self.extract_multiple_articles(
+                &document,
+                article_selector_str,
+                base_url,
+                selectors,
+                max,
+            )
+            .await?
         } else {
             // Single article page
             match WebParser::parse_html_page(&html_content, base_url, selectors).await {
                 Ok(web_article) => {
                     let metadata = WebParser::web_article_to_metadata(web_article, None);
-                    
+
                     // Verificar se o conteúdo é válido (não vazio e tem tamanho mínimo suficiente para escrever notícia)
                     const MIN_CONTENT_LENGTH: usize = 1500; // Mínimo de 1000 caracteres para garantir conteúdo completo
-                    let has_valid_content = metadata.content_text
+                    let has_valid_content = metadata
+                        .content_text
                         .as_ref()
                         .map(|text| !text.trim().is_empty() && text.len() >= MIN_CONTENT_LENGTH)
                         .unwrap_or(false);
-                    
+
                     if has_valid_content {
                         vec![metadata]
                     } else {
@@ -942,24 +1061,26 @@ impl HtmlCollector {
     ) -> Result<Vec<ArticleMetadata>> {
         use scraper::Selector;
 
-        let article_selector = Selector::parse(article_selector_str)
-            .map_err(|e| anyhow::anyhow!("Invalid article selector '{}': {}", article_selector_str, e))?;
+        let article_selector = Selector::parse(article_selector_str).map_err(|e| {
+            anyhow::anyhow!("Invalid article selector '{}': {}", article_selector_str, e)
+        })?;
 
         let mut articles = Vec::new();
         let mut processed_urls = std::collections::HashSet::new();
 
         // Coletar todos os elementos primeiro, depois filtrar
         let all_elements: Vec<_> = document.select(&article_selector).collect();
-        
+
         info!(
             selector = %article_selector_str,
             elements_found = all_elements.len(),
             "Found article elements in page"
         );
-        
+
         for (idx, article_element) in all_elements.iter().take((max * 3) as usize).enumerate() {
             // Try to extract link to full article
-            let article_url = self.extract_article_link(*article_element, base_url, selectors)
+            let article_url = self
+                .extract_article_link(*article_element, base_url, selectors)
                 .unwrap_or_else(|| {
                     // If no link found, use base URL with index
                     format!("{}#article-{}", base_url, idx)
@@ -973,7 +1094,8 @@ impl HtmlCollector {
                 || article_url.contains("/feed/")
                 || article_url.contains("wp-json")
                 || article_url.contains("#article-")  // URLs com âncoras genéricas
-                || processed_urls.contains(&article_url) {
+                || processed_urls.contains(&article_url)
+            {
                 continue;
             }
 
@@ -987,12 +1109,14 @@ impl HtmlCollector {
             // Verificar se a URL parece ser de um artigo (não é apenas a base)
             // URLs de artigos geralmente têm mais de um segmento após o domínio
             if let Ok(parsed_url) = url::Url::parse(&article_url) {
-                let path_segments: Vec<&str> = parsed_url.path_segments()
+                let path_segments: Vec<&str> = parsed_url
+                    .path_segments()
                     .map(|s| s.collect::<Vec<_>>())
                     .unwrap_or_default();
-                
+
                 // Se tiver menos de 2 segmentos, provavelmente não é um artigo
-                if path_segments.len() < 2 && !article_url.contains("/20") {  // Exceto se tiver ano (2024, 2025)
+                if path_segments.len() < 2 && !article_url.contains("/20") {
+                    // Exceto se tiver ano (2024, 2025)
                     continue;
                 }
             }
@@ -1018,11 +1142,12 @@ impl HtmlCollector {
                     Ok(metadata) => {
                         // Verificar se o conteúdo é válido (não vazio e tem tamanho mínimo suficiente para escrever notícia)
                         const MIN_CONTENT_LENGTH: usize = 1500; // Mínimo de 1000 caracteres para garantir conteúdo completo
-                        let has_valid_content = metadata.content_text
+                        let has_valid_content = metadata
+                            .content_text
                             .as_ref()
                             .map(|text| !text.trim().is_empty() && text.len() >= MIN_CONTENT_LENGTH)
                             .unwrap_or(false);
-                        
+
                         if !has_valid_content {
                             warn!(
                                 index = idx + 1,
@@ -1032,7 +1157,7 @@ impl HtmlCollector {
                             );
                             continue; // Ignorar artigo sem conteúdo válido
                         }
-                        
+
                         info!(
                             index = idx + 1,
                             title = %metadata.title,
@@ -1059,14 +1184,15 @@ impl HtmlCollector {
                 match WebParser::parse_html_page(&article_html, &article_url, selectors).await {
                     Ok(web_article) => {
                         let metadata = WebParser::web_article_to_metadata(web_article, None);
-                        
+
                         // Verificar se o conteúdo é válido (não vazio e tem tamanho mínimo suficiente)
                         const MIN_CONTENT_LENGTH: usize = 1500; // Mínimo de 1000 caracteres para garantir conteúdo completo
-                        let has_valid_content = metadata.content_text
+                        let has_valid_content = metadata
+                            .content_text
                             .as_ref()
                             .map(|text| !text.trim().is_empty() && text.len() >= MIN_CONTENT_LENGTH)
                             .unwrap_or(false);
-                        
+
                         if !has_valid_content {
                             warn!(
                                 index = idx + 1,
@@ -1076,7 +1202,7 @@ impl HtmlCollector {
                             );
                             continue; // Ignorar artigo sem conteúdo válido
                         }
-                        
+
                         info!(
                             index = idx + 1,
                             title = %metadata.title,
@@ -1097,7 +1223,7 @@ impl HtmlCollector {
                     }
                 }
             }
-            
+
             // Rate limiting: delay entre requisições
             if idx < max.saturating_sub(1) as usize {
                 tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
@@ -1131,7 +1257,11 @@ impl HtmlCollector {
                     return Some(href.to_string());
                 }
                 // Otherwise, construct relative URL
-                let resolved = format!("{}/{}", base_url.trim_end_matches('/'), href.trim_start_matches('/'));
+                let resolved = format!(
+                    "{}/{}",
+                    base_url.trim_end_matches('/'),
+                    href.trim_start_matches('/')
+                );
                 return Some(resolved);
             }
         }
@@ -1154,10 +1284,14 @@ impl HtmlCollector {
                 if let Some(link) = article_element.select(&link_selector).next() {
                     if let Some(href) = link.value().attr("href") {
                         // Filtrar links que não são artigos (categorias, tags, etc)
-                        if href.contains("/category/") || href.contains("/tag/") || href.contains("/author/") || href.contains("/page/") {
+                        if href.contains("/category/")
+                            || href.contains("/tag/")
+                            || href.contains("/author/")
+                            || href.contains("/page/")
+                        {
                             continue;
                         }
-                        
+
                         // Resolve relative URLs
                         if let Ok(base) = Url::parse(base_url) {
                             if let Ok(resolved) = base.join(href) {
@@ -1169,7 +1303,11 @@ impl HtmlCollector {
                             return Some(href.to_string());
                         }
                         // Otherwise, construct relative URL
-                        let resolved = format!("{}/{}", base_url.trim_end_matches('/'), href.trim_start_matches('/'));
+                        let resolved = format!(
+                            "{}/{}",
+                            base_url.trim_end_matches('/'),
+                            href.trim_start_matches('/')
+                        );
                         return Some(resolved);
                     }
                 }
@@ -1229,7 +1367,7 @@ impl HtmlCollector {
     ) -> Result<ArticleMetadata> {
         // Verificar se precisa de JavaScript rendering usando função centralizada
         let needs_js = Self::needs_js_rendering_by_url(article_url);
-        
+
         let html_content = if needs_js {
             // Usar Playwright para renderizar JavaScript
             match Self::fetch_with_js(article_url) {
@@ -1237,31 +1375,28 @@ impl HtmlCollector {
                 None => {
                     // Fallback para requisição HTTP normal
                     let response = self.client.get(article_url).send().await?;
-                    
+
                     if !response.status().is_success() {
                         return Err(anyhow::anyhow!("HTTP {}", response.status()));
                     }
-                    
+
                     response.text().await?
                 }
             }
         } else {
             // Requisição HTTP normal
             let response = self.client.get(article_url).send().await?;
-            
+
             if !response.status().is_success() {
                 return Err(anyhow::anyhow!("HTTP {}", response.status()));
             }
-            
+
             response.text().await?
         };
-        
+
         // Parse full article page
         let web_article = WebParser::parse_html_page(&html_content, article_url, selectors).await?;
-        
+
         Ok(WebParser::web_article_to_metadata(web_article, None))
     }
 }
-
-
-

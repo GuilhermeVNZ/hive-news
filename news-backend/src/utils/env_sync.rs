@@ -1,11 +1,11 @@
 // Utility to sync .env file from system_config.json
 // Used after updating writer configurations
 
+use anyhow::{Context, Result};
+use serde_json::Value;
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
-use anyhow::{Context, Result};
-use serde_json::Value;
 
 /// Sync .env file with API keys from system_config.json
 pub fn sync_env_from_config(config_path: &Path) -> Result<()> {
@@ -19,25 +19,24 @@ pub fn sync_env_from_config(config_path: &Path) -> Result<()> {
         ));
     }
 
-    let config_content = fs::read_to_string(config_path)
-        .context("Failed to read system_config.json")?;
-    
-    let config: Value = serde_json::from_str(&config_content)
-        .context("Failed to parse system_config.json")?;
+    let config_content =
+        fs::read_to_string(config_path).context("Failed to read system_config.json")?;
+
+    let config: Value =
+        serde_json::from_str(&config_content).context("Failed to parse system_config.json")?;
 
     // Read existing .env
     let mut env_vars: HashMap<String, String> = HashMap::new();
-    
+
     if env_path.exists() {
-        let env_content = fs::read_to_string(env_path)
-            .context("Failed to read .env")?;
-        
+        let env_content = fs::read_to_string(env_path).context("Failed to read .env")?;
+
         for line in env_content.lines() {
             let line = line.trim();
             if line.is_empty() || line.starts_with('#') {
                 continue;
             }
-            
+
             if let Some((key, value)) = line.split_once('=') {
                 let key = key.trim().to_string();
                 // Remove BOM if present
@@ -50,17 +49,19 @@ pub fn sync_env_from_config(config_path: &Path) -> Result<()> {
     }
 
     // Extract API keys from sites
-    let sites = config.get("sites")
+    let sites = config
+        .get("sites")
         .and_then(|v| v.as_object())
         .context("Missing 'sites' in config")?;
 
     for (site_id, site_value) in sites {
         if let Some(writer) = site_value.get("writer").and_then(|v| v.as_object()) {
             if let Some(provider) = writer.get("provider").and_then(|v| v.as_str()) {
-                if let Some(api_key) = writer.get("api_key")
+                if let Some(api_key) = writer
+                    .get("api_key")
                     .and_then(|v| v.as_str())
-                    .filter(|k| !k.is_empty() && *k != "null") {
-                    
+                    .filter(|k| !k.is_empty() && *k != "null")
+                {
                     let env_key = match provider {
                         "deepseek" => "DEEPSEEK_API_KEY",
                         "openai" => "OPENAI_API_KEY",
@@ -84,63 +85,12 @@ pub fn sync_env_from_config(config_path: &Path) -> Result<()> {
     for key in sorted_keys {
         env_content.push_str(&format!("{}={}\n", key, env_vars[key]));
     }
-    
+
     // Remove last newline
     env_content = env_content.trim_end().to_string();
 
-    fs::write(env_path, env_content)
-        .context("Failed to write .env file")?;
+    fs::write(env_path, env_content).context("Failed to write .env file")?;
 
     println!("   ✅ .env synchronized ({} variables)", env_vars.len());
     Ok(())
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

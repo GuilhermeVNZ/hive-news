@@ -29,4 +29,3 @@ pub struct CourseCatalog {
     pub platform: String,
     pub last_updated: chrono::DateTime<chrono::Utc>,
 }
-

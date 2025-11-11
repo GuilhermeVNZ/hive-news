@@ -45,18 +45,18 @@ pub struct ArticleMetadata {
     pub generated_title: Option<String>, // Título gerado pelo DeepSeek (do title.txt)
     // New fields for web scraping
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<String>,      // Thumbnail/main image
+    pub image_url: Option<String>, // Thumbnail/main image
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub source_type: Option<String>,    // "rss", "html", "api"
+    pub source_type: Option<String>, // "rss", "html", "api"
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_html: Option<String>,   // Original HTML (for non-HTML sources)
+    pub content_html: Option<String>, // Original HTML (for non-HTML sources)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub content_text: Option<String>,    // Extracted text
+    pub content_text: Option<String>, // Extracted text
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub category: Option<String>,       // Article category
+    pub category: Option<String>, // Article category
     // SEO-friendly slug for public URLs (independent of folder name)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub slug: Option<String>,          // Public URL slug (e.g., "a-conversation-with-kevin-scot")
+    pub slug: Option<String>, // Public URL slug (e.g., "a-conversation-with-kevin-scot")
 }
 
 #[allow(dead_code)]

@@ -18,3 +18,4 @@ export type ArticleCollection = Article[];
 export interface ArticleApiResponse {
   articles: Article[];
 }
+

@@ -184,11 +184,15 @@ impl CollectorService {
         };
 
         info!(url = %pdf_url, "Downloading PDF");
-        
+
         // Criar requisição com headers de segurança para evitar reCAPTCHA
-        let request = self.client
+        let request = self
+            .client
             .get(&pdf_url)
-            .header("Accept", "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+            .header(
+                "Accept",
+                "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            )
             .header("Accept-Language", "en-US,en;q=0.9")
             .header("Accept-Encoding", "gzip, deflate, br")
             .header("DNT", "1")
@@ -198,20 +202,22 @@ impl CollectorService {
             .header("Sec-Fetch-Mode", "navigate")
             .header("Sec-Fetch-Site", "none")
             .header("Cache-Control", "max-age=0");
-        
+
         let response = request.send().await?;
-        
+
         // Verificar se é uma resposta de sucesso
         if !response.status().is_success() {
             return Err(anyhow::anyhow!("HTTP error: {}", response.status()));
         }
-        
+
         let bytes = response.bytes().await?;
         let size = bytes.len();
 
         // Validar se é um PDF (verificar magic bytes)
         if bytes.len() > 4 && &bytes[0..4] != b"%PDF" {
-            return Err(anyhow::anyhow!("Invalid PDF (got HTML or redirect, likely reCAPTCHA)"));
+            return Err(anyhow::anyhow!(
+                "Invalid PDF (got HTML or redirect, likely reCAPTCHA)"
+            ));
         }
 
         // Salvar arquivo
@@ -294,7 +300,7 @@ impl CollectorService {
                     errors.push(error_msg);
                 }
             }
-            
+
             // Rate limiting: delay de 3 segundos entre downloads para evitar bloqueios
             if i < articles.len() - 1 {
                 tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;

@@ -1,4 +1,4 @@
-use axum::{extract::Query, response::Json, routing::get, Router};
+use axum::{Router, extract::Query, response::Json, routing::get};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -77,7 +77,7 @@ async fn get_courses(Query(params): Query<HashMap<String, String>>) -> Json<Cour
         .collect::<std::collections::HashSet<_>>()
         .into_iter()
         .collect();
-    
+
     let categories: Vec<String> = all_courses
         .iter()
         .map(|c| c.category.clone())
@@ -94,4 +94,3 @@ async fn get_courses(Query(params): Query<HashMap<String, String>>) -> Json<Cour
         categories,
     })
 }
-

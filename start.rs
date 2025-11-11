@@ -1039,7 +1039,8 @@ fn save_loop_stats(cycle: u32) {
 
                                 // tokens_used: tokens actually used (with compression if applicable)
                                 // Assume compression saves ~25% on average
-                                let estimated_used = (estimated_prompt_tokens as f64 * 0.75) as usize; // 75% of original
+                                let estimated_used =
+                                    (estimated_prompt_tokens as f64 * 0.75) as usize; // 75% of original
                                 tokens_used += estimated_used as u64;
 
                                 // tokens_saved: tokens saved by compression

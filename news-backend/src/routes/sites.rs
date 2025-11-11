@@ -1,11 +1,11 @@
 use axum::{extract::Extension, response::Json};
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
-use std::sync::Arc;
+use serde_json::{Value, json};
 use std::path::Path;
+use std::sync::Arc;
 
-use crate::utils::site_config_manager::{SiteConfigManager, EducationSourceConfig};
 use crate::utils::env_sync;
+use crate::utils::site_config_manager::{EducationSourceConfig, SiteConfigManager};
 
 /// Get all sites configuration
 pub async fn get_all_sites(
@@ -18,7 +18,10 @@ pub async fn get_all_sites(
         Ok(sites) => {
             println!("📋 get_all_sites: Found {} sites", sites.len());
             for site in &sites {
-                println!("   - {}: {} (enabled: {})", site.id, site.name, site.enabled);
+                println!(
+                    "   - {}: {} (enabled: {})",
+                    site.id, site.name, site.enabled
+                );
             }
             Json(json!({
                 "success": true,
@@ -72,7 +75,7 @@ pub async fn get_article_prompt(
         Ok(Some(site)) => {
             // ALWAYS return the FULL default prompt (get_default_article_prompt_template) to the dashboard
             // This is the REAL prompt that gets sent to DeepSeek API when prompt_article_enabled is false
-            // 
+            //
             // Flow in content_generator.rs (lines 242-252):
             // - If prompt_article_enabled == true AND prompt_article exists: uses prompt_article (custom)
             // - Otherwise: uses build_article_prompt() (default from prompts.rs) <- THIS IS THE DEFAULT
@@ -82,20 +85,24 @@ pub async fn get_article_prompt(
             // If custom is enabled, it's shown separately as information
             // Use the default template from site_config_manager with correct site name
             let default_prompt = crate::utils::site_config_manager::SiteConfigManager::get_default_article_prompt_template(&site.id, &site.name);
-            let is_custom_enabled = site.prompt_article_enabled.unwrap_or(false) && site.prompt_article.is_some();
-            
+            let is_custom_enabled =
+                site.prompt_article_enabled.unwrap_or(false) && site.prompt_article.is_some();
+
             // Format custom prompt if enabled (for info display)
             let custom_formatted = if is_custom_enabled {
                 let custom_prompt = site.prompt_article.as_ref().unwrap();
                 if custom_prompt.contains("{{paper_text}}") {
                     custom_prompt.clone()
                 } else {
-                    format!("{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{{{paper_text}}}}", custom_prompt)
+                    format!(
+                        "{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{{{paper_text}}}}",
+                        custom_prompt
+                    )
                 }
             } else {
                 String::new()
             };
-            
+
             Json(json!({
                 "success": true,
                 "prompt": default_prompt,  // ALWAYS the FULL default prompt (build_article_prompt) for editing
@@ -126,19 +133,21 @@ pub async fn get_social_prompt(
     match config_manager.get_site_config(&site_id) {
         Ok(Some(site)) => {
             use crate::writer::prompts::build_social_script_prompt;
-            
+
             // ALWAYS return the FULL default prompt (build_social_script_prompt) to the dashboard
             // This is the REAL prompt that gets sent to DeepSeek API when prompt_social_enabled is false
-            let default_prompt = build_social_script_prompt("{{{{article_text}}}}", "{{{{paper_title}}}}");
-            let is_custom_enabled = site.prompt_social_enabled.unwrap_or(false) && site.prompt_social.is_some();
-            
+            let default_prompt =
+                build_social_script_prompt("{{{{article_text}}}}", "{{{{paper_title}}}}");
+            let is_custom_enabled =
+                site.prompt_social_enabled.unwrap_or(false) && site.prompt_social.is_some();
+
             // Format custom prompt if enabled (for info display)
             let custom_formatted = if is_custom_enabled {
                 site.prompt_social.as_ref().unwrap().clone()
             } else {
                 String::new()
             };
-            
+
             Json(json!({
                 "success": true,
                 "prompt": default_prompt,  // ALWAYS the FULL default prompt for editing
@@ -170,16 +179,18 @@ pub async fn get_news_prompt(
         Ok(Some(site)) => {
             // ALWAYS return the FULL default prompt (NewsWriterService::default_blog_prompt) to the dashboard
             // This is the REAL prompt that gets sent to DeepSeek API when prompt_blog_enabled is false
-            let default_prompt = crate::writer::news_writer::NewsWriterService::default_blog_prompt();
-            let is_custom_enabled = site.prompt_blog_enabled.unwrap_or(false) && site.prompt_blog.is_some();
-            
+            let default_prompt =
+                crate::writer::news_writer::NewsWriterService::default_blog_prompt();
+            let is_custom_enabled =
+                site.prompt_blog_enabled.unwrap_or(false) && site.prompt_blog.is_some();
+
             // Format custom prompt if enabled (for info display)
             let custom_formatted = if is_custom_enabled {
                 site.prompt_blog.as_ref().unwrap().clone()
             } else {
                 String::new()
             };
-            
+
             Json(json!({
                 "success": true,
                 "prompt": default_prompt,  // ALWAYS the FULL default prompt for editing
@@ -250,7 +261,7 @@ pub async fn update_writer_config(
     };
 
     let mut writer = current_site.writer;
-    
+
     if let Some(provider) = request.provider {
         writer.provider = provider.clone();
         // Auto-update model based on provider if model not explicitly provided
@@ -289,19 +300,37 @@ pub async fn update_writer_config(
     if let Some(style) = request.writing_style {
         current_site.writing_style = Some(style);
     }
-    if let Some(p) = request.prompt_article { current_site.prompt_article = Some(p); }
-    if let Some(p) = request.prompt_social { current_site.prompt_social = Some(p); }
-    if let Some(p) = request.prompt_blog { current_site.prompt_blog = Some(p); }
-    if let Some(e) = request.prompt_article_enabled { current_site.prompt_article_enabled = Some(e); }
-    if let Some(e) = request.prompt_social_enabled { current_site.prompt_social_enabled = Some(e); }
-    if let Some(e) = request.prompt_blog_enabled { current_site.prompt_blog_enabled = Some(e); }
-    if let Some(t) = request.temperature_article { current_site.temperature_article = Some(t); }
-    if let Some(t) = request.temperature_social { current_site.temperature_social = Some(t); }
-    if let Some(t) = request.temperature_blog { current_site.temperature_blog = Some(t); }
+    if let Some(p) = request.prompt_article {
+        current_site.prompt_article = Some(p);
+    }
+    if let Some(p) = request.prompt_social {
+        current_site.prompt_social = Some(p);
+    }
+    if let Some(p) = request.prompt_blog {
+        current_site.prompt_blog = Some(p);
+    }
+    if let Some(e) = request.prompt_article_enabled {
+        current_site.prompt_article_enabled = Some(e);
+    }
+    if let Some(e) = request.prompt_social_enabled {
+        current_site.prompt_social_enabled = Some(e);
+    }
+    if let Some(e) = request.prompt_blog_enabled {
+        current_site.prompt_blog_enabled = Some(e);
+    }
+    if let Some(t) = request.temperature_article {
+        current_site.temperature_article = Some(t);
+    }
+    if let Some(t) = request.temperature_social {
+        current_site.temperature_social = Some(t);
+    }
+    if let Some(t) = request.temperature_blog {
+        current_site.temperature_blog = Some(t);
+    }
 
     // Save both writer and possibly updated site fields
     current_site.writer = writer.clone();
-    
+
     match config_manager.update_site_config(&site_id, current_site) {
         Ok(_) => {
             // Sync .env file automatically after successfully updating writer config
@@ -310,12 +339,12 @@ pub async fn update_writer_config(
                 eprintln!("⚠️  Failed to sync .env file (non-critical): {}", e);
                 // Don't fail the request if .env sync fails
             }
-            
+
             Json(json!({
                 "success": true,
                 "message": format!("Writer config updated for site {}", site_id),
             }))
-        },
+        }
         Err(e) => Json(json!({
             "success": false,
             "error": format!("Failed to update config: {}", e),
@@ -340,8 +369,8 @@ pub async fn update_collector_status(
     match config_manager.update_collector_status(&site_id, &collector_id, request.enabled) {
         Ok(_) => Json(json!({
             "success": true,
-            "message": format!("Collector {} {} for site {}", 
-                collector_id, 
+            "message": format!("Collector {} {} for site {}",
+                collector_id,
                 if request.enabled { "enabled" } else { "disabled" },
                 site_id
             ),
@@ -370,8 +399,8 @@ pub async fn update_social_status(
     match config_manager.update_social_status(&site_id, &social_id, request.enabled) {
         Ok(_) => Json(json!({
             "success": true,
-            "message": format!("Social media {} {} for site {}", 
-                social_id, 
+            "message": format!("Social media {} {} for site {}",
+                social_id,
                 if request.enabled { "enabled" } else { "disabled" },
                 site_id
             ),
@@ -468,10 +497,16 @@ pub async fn update_social_config(
 
 // === Education endpoints ===
 #[derive(Debug, Deserialize)]
-pub struct UpdateEducationStatusRequest { pub enabled: bool }
+pub struct UpdateEducationStatusRequest {
+    pub enabled: bool,
+}
 
 #[derive(Debug, Deserialize)]
-pub struct UpdateEducationConfigRequest { pub enabled: Option<bool>, pub api_key: Option<String>, pub config: Option<serde_json::Value> }
+pub struct UpdateEducationConfigRequest {
+    pub enabled: Option<bool>,
+    pub api_key: Option<String>,
+    pub config: Option<serde_json::Value>,
+}
 
 pub async fn update_education_status(
     Extension(_db): Extension<Arc<crate::db::connection::Database>>,
@@ -483,20 +518,42 @@ pub async fn update_education_status(
 
     let mut site = match manager.get_site_config(&site_id) {
         Ok(Some(s)) => s,
-        Ok(None) => return Json(json!({"success": false, "error": format!("Site not found: {}", site_id)})),
-        Err(e) => return Json(json!({"success": false, "error": format!("Failed to load config: {}", e)})),
+        Ok(None) => {
+            return Json(
+                json!({"success": false, "error": format!("Site not found: {}", site_id)}),
+            );
+        }
+        Err(e) => {
+            return Json(
+                json!({"success": false, "error": format!("Failed to load config: {}", e)}),
+            );
+        }
     };
 
-    if let Some(src) = site.education_sources.iter_mut().find(|s| s.id == source_id) {
+    if let Some(src) = site
+        .education_sources
+        .iter_mut()
+        .find(|s| s.id == source_id)
+    {
         src.enabled = req.enabled;
     } else {
         // If not present, add a default entry
-        site.education_sources.push(EducationSourceConfig { id: source_id.clone(), name: source_id.clone(), enabled: req.enabled, api_key: None, config: serde_json::json!({}) });
+        site.education_sources.push(EducationSourceConfig {
+            id: source_id.clone(),
+            name: source_id.clone(),
+            enabled: req.enabled,
+            api_key: None,
+            config: serde_json::json!({}),
+        });
     }
 
     match manager.update_site_config(&site_id, site) {
-        Ok(_) => Json(json!({"success": true, "message": format!("Education {} {} for site {}", source_id, if req.enabled {"enabled"} else {"disabled"}, site_id)})),
-        Err(e) => Json(json!({"success": false, "error": format!("Failed to update education: {}", e)})),
+        Ok(_) => Json(
+            json!({"success": true, "message": format!("Education {} {} for site {}", source_id, if req.enabled {"enabled"} else {"disabled"}, site_id)}),
+        ),
+        Err(e) => {
+            Json(json!({"success": false, "error": format!("Failed to update education: {}", e)}))
+        }
     }
 }
 
@@ -510,44 +567,66 @@ pub async fn update_education_config(
 
     let mut site = match manager.get_site_config(&site_id) {
         Ok(Some(s)) => s,
-        Ok(None) => return Json(json!({"success": false, "error": format!("Site not found: {}", site_id)})),
-        Err(e) => return Json(json!({"success": false, "error": format!("Failed to load config: {}", e)})),
+        Ok(None) => {
+            return Json(
+                json!({"success": false, "error": format!("Site not found: {}", site_id)}),
+            );
+        }
+        Err(e) => {
+            return Json(
+                json!({"success": false, "error": format!("Failed to load config: {}", e)}),
+            );
+        }
     };
 
-    if let Some(src) = site.education_sources.iter_mut().find(|s| s.id == source_id) {
-        if let Some(enabled) = req.enabled { src.enabled = enabled; }
-        if let Some(api_key) = req.api_key { src.api_key = Some(api_key); }
-        if let Some(cfg) = req.config { src.config = cfg; }
+    if let Some(src) = site
+        .education_sources
+        .iter_mut()
+        .find(|s| s.id == source_id)
+    {
+        if let Some(enabled) = req.enabled {
+            src.enabled = enabled;
+        }
+        if let Some(api_key) = req.api_key {
+            src.api_key = Some(api_key);
+        }
+        if let Some(cfg) = req.config {
+            src.config = cfg;
+        }
     } else {
         site.education_sources.push(EducationSourceConfig {
-            id: source_id.clone(), name: source_id.clone(), enabled: req.enabled.unwrap_or(false), api_key: req.api_key, config: req.config.unwrap_or(serde_json::json!({}))
+            id: source_id.clone(),
+            name: source_id.clone(),
+            enabled: req.enabled.unwrap_or(false),
+            api_key: req.api_key,
+            config: req.config.unwrap_or(serde_json::json!({})),
         });
     }
 
     match manager.update_site_config(&site_id, site) {
-        Ok(_) => Json(json!({"success": true, "message": format!("Education config updated for site {}", site_id)})),
-        Err(e) => Json(json!({"success": false, "error": format!("Failed to save education config: {}", e)})),
+        Ok(_) => Json(
+            json!({"success": true, "message": format!("Education config updated for site {}", site_id)}),
+        ),
+        Err(e) => Json(
+            json!({"success": false, "error": format!("Failed to save education config: {}", e)}),
+        ),
     }
 }
 
 // === Quick action: start collect (stub) ===
 #[derive(Debug, Serialize)]
-pub struct CollectStartResponse { pub success: bool, pub message: String }
+pub struct CollectStartResponse {
+    pub success: bool,
+    pub message: String,
+}
 
 pub async fn start_collect_for_site(
     Extension(_db): Extension<Arc<crate::db::connection::Database>>,
     axum::extract::Path(site_id): axum::extract::Path<String>,
 ) -> Json<CollectStartResponse> {
     // TODO: trigger real collector service; for now return success stub
-    Json(CollectStartResponse{ success: true, message: format!("Collect triggered for {}", site_id) })
+    Json(CollectStartResponse {
+        success: true,
+        message: format!("Collect triggered for {}", site_id),
+    })
 }
-
-
-
-
-
-
-
-
-
-

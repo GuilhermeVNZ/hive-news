@@ -1,10 +1,10 @@
 use crate::collectors::web_parser::WebParser;
 use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Context, Result};
+use atom_syndication::Feed as AtomFeed;
 use chrono::{DateTime, Utc};
 use reqwest::Client;
 use rss::Channel;
-use atom_syndication::Feed as AtomFeed;
 use std::path::PathBuf;
 use tracing::{error, info, warn};
 
@@ -56,9 +56,10 @@ impl RssCollector {
 
         // Verificar se é realmente um feed RSS/Atom e não HTML
         let content_start = feed_content.trim_start();
-        if !content_start.starts_with("<?xml") 
+        if !content_start.starts_with("<?xml")
             && !content_start.starts_with("<feed")
-            && !content_start.starts_with("<rss") {
+            && !content_start.starts_with("<rss")
+        {
             warn!(
                 url = %feed_url,
                 "Feed URL returned HTML instead of RSS/Atom feed"
@@ -92,14 +93,17 @@ impl RssCollector {
                     "Parsed RSS feed"
                 );
 
-                items_to_process = channel.items().iter()
+                items_to_process = channel
+                    .items()
+                    .iter()
                     .take(max as usize)
                     .map(|item| {
-                        let url = item.link()
+                        let url = item
+                            .link()
                             .map(|s| s.trim().to_string())
                             .or_else(|| item.guid().map(|g| g.value().trim().to_string()))
                             .unwrap_or_default();
-                        
+
                         let title = item.title().unwrap_or("Untitled").trim().to_string();
                         let date = item.pub_date().and_then(|date_str| {
                             DateTime::parse_from_rfc2822(date_str)
@@ -108,7 +112,7 @@ impl RssCollector {
                                 .ok()
                         });
                         let author = item.author().map(|s| s.trim().to_string());
-                        
+
                         (url, date, author, title)
                     })
                     .collect();
@@ -123,38 +127,39 @@ impl RssCollector {
                             "Parsed Atom feed"
                         );
 
-                        items_to_process = feed.entries.iter()
+                        items_to_process = feed
+                            .entries
+                            .iter()
                             .take(max as usize)
                             .map(|entry| {
                                 // Buscar link com rel="alternate" primeiro (link do artigo)
                                 // Se não encontrar, usar o primeiro link disponível
-                                let url = entry.links.iter()
+                                let url = entry
+                                    .links
+                                    .iter()
                                     .find(|link| link.rel == "alternate")
                                     .map(|link| link.href.clone())
                                     .or_else(|| entry.links.first().map(|link| link.href.clone()))
                                     .unwrap_or_default();
-                                
+
                                 let title = entry.title.value.clone();
                                 let date = Some(entry.updated.with_timezone(&Utc));
-                                let author = entry.authors.first()
-                                    .map(|a| a.name.clone());
-                                
+                                let author = entry.authors.first().map(|a| a.name.clone());
+
                                 (url, date, author, title)
                             })
                             .collect();
                     }
                     Err(e) => {
-                        return Err(anyhow::anyhow!(
-                            "Failed to parse RSS or Atom feed: {}",
-                            e
-                        ));
+                        return Err(anyhow::anyhow!("Failed to parse RSS or Atom feed: {}", e));
                     }
                 }
             }
         }
 
         // Process items (from RSS or Atom)
-        for (idx, (url, published_date, author, title)) in items_to_process.into_iter().enumerate() {
+        for (idx, (url, published_date, author, title)) in items_to_process.into_iter().enumerate()
+        {
             if url.is_empty() {
                 warn!(index = idx + 1, title = %title, "Skipping item with no URL");
                 continue;
@@ -163,13 +168,13 @@ impl RssCollector {
             // Create ArticleMetadata from parsed data
             let article_id = WebParser::generate_id_from_url(&url)
                 .unwrap_or_else(|| WebParser::generate_id_from_title(&title));
-            
+
             let title_clone = title.clone();
             let mut article = ArticleMetadata {
                 id: article_id,
                 title: title_clone.clone(), // Mantido para compatibilidade
                 original_title: Some(title_clone), // Título original da fonte
-                generated_title: None, // Será preenchido quando o artigo for publicado
+                generated_title: None,      // Será preenchido quando o artigo for publicado
                 url: url.clone(),
                 published_date,
                 author,
@@ -187,11 +192,12 @@ impl RssCollector {
                 Ok(full_content) => {
                     article.content_html = Some(full_content.0.clone());
                     article.content_text = Some(full_content.1.clone());
-                    
+
                     // Verificar se o conteúdo é válido (não vazio e tem tamanho mínimo suficiente para escrever notícia)
                     // Mínimo de 1000 caracteres para garantir conteúdo completo
                     const MIN_CONTENT_LENGTH: usize = 1000;
-                    if full_content.1.trim().is_empty() || full_content.1.len() < MIN_CONTENT_LENGTH {
+                    if full_content.1.trim().is_empty() || full_content.1.len() < MIN_CONTENT_LENGTH
+                    {
                         warn!(
                             index = idx + 1,
                             title = %article.title,
@@ -202,7 +208,7 @@ impl RssCollector {
                         );
                         continue; // Ignorar artigo sem conteúdo válido
                     }
-                    
+
                     info!(
                         index = idx + 1,
                         title = %article.title,
@@ -224,7 +230,7 @@ impl RssCollector {
                     continue;
                 }
             }
-            
+
             // Rate limiting: delay entre requisições
             if idx < max as usize - 1 {
                 tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
@@ -241,7 +247,7 @@ impl RssCollector {
                         Ok(full_content) => {
                             article.content_html = Some(full_content.0.clone());
                             article.content_text = Some(full_content.1.clone());
-                            
+
                             // Verificar se o conteúdo é válido (não vazio e tem tamanho mínimo suficiente para escrever notícia)
                             // Mínimo de 1000 caracteres para garantir conteúdo completo
                             const MIN_CONTENT_LENGTH: usize = 1000;
@@ -256,7 +262,7 @@ impl RssCollector {
                                 );
                                 continue; // Ignorar artigo sem conteúdo válido
                             }
-                            
+
                             info!(
                                 index = idx + 1,
                                 title = %article.title,
@@ -330,66 +336,74 @@ impl RssCollector {
     /// Retorna (HTML, texto extraído)
     async fn fetch_article_content(&self, url: &str) -> Result<(String, String)> {
         use crate::collectors::web_parser::WebParser;
-        
+
         let response = self.client.get(url).send().await?;
-        
+
         if !response.status().is_success() {
             return Err(anyhow::anyhow!("HTTP {}", response.status()));
         }
-        
+
         let html_content = response.text().await?;
-        
+
         // Parse HTML para extrair conteúdo principal
         let document = scraper::Html::parse_document(&html_content);
-        
+
         // Tentar seletores comuns para conteúdo de artigo (em ordem de preferência)
         // Priorizar seletores que geralmente contêm o conteúdo completo do artigo
         let content_selectors = vec![
-            "article main",           // Artigo com main content
-            "main article",           // Main com article
-            "article .article-body",  // Body do artigo
-            "article .content",       // Conteúdo do artigo
-            "article",                // Tag article completa
-            ".article-content",       // Conteúdo do artigo
+            "article main",          // Artigo com main content
+            "main article",          // Main com article
+            "article .article-body", // Body do artigo
+            "article .content",      // Conteúdo do artigo
+            "article",               // Tag article completa
+            ".article-content",      // Conteúdo do artigo
             ".post-content",         // Conteúdo do post
             ".entry-content",        // Conteúdo da entrada
             "main .content",         // Main com content
             ".content",              // Classe content genérica
             "main",                  // Tag main
         ];
-        
+
         let mut content_html = String::new();
         let mut content_text = String::new();
         const MIN_CONTENT_LENGTH: usize = 1000; // Mínimo necessário para conteúdo completo
-        
+
         // Tentar cada seletor até encontrar conteúdo suficiente
         for selector_str in content_selectors {
             if let Ok(selector) = scraper::Selector::parse(selector_str) {
                 for element in document.select(&selector) {
                     let candidate_html = element.html();
                     let candidate_text = WebParser::extract_text_from_html(&candidate_html);
-                    
+
                     // Se encontrou conteúdo significativo, usar este
-                    if !candidate_text.trim().is_empty() && candidate_text.len() >= MIN_CONTENT_LENGTH {
+                    if !candidate_text.trim().is_empty()
+                        && candidate_text.len() >= MIN_CONTENT_LENGTH
+                    {
                         content_html = candidate_html;
                         content_text = candidate_text;
-                        info!(selector = selector_str, length = content_text.len(), "Found article content");
+                        info!(
+                            selector = selector_str,
+                            length = content_text.len(),
+                            "Found article content"
+                        );
                         break;
                     }
                     // Se ainda não temos nada ou este é maior, usar este (mas continuar procurando melhor)
-                    else if candidate_text.len() > content_text.len() && candidate_text.len() >= 500 {
+                    else if candidate_text.len() > content_text.len()
+                        && candidate_text.len() >= 500
+                    {
                         content_html = candidate_html;
                         content_text = candidate_text;
                     }
                 }
-                
+
                 // Se já encontrou conteúdo suficiente, parar
                 if content_text.len() >= MIN_CONTENT_LENGTH {
                     break;
                 }
             }
         }
-        
+
         // Fallback: usar body se não encontrou conteúdo específico suficiente
         // Extrair texto do body, o extract_text_from_html já remove scripts/styles automaticamente
         if content_text.len() < MIN_CONTENT_LENGTH {
@@ -397,16 +411,19 @@ impl RssCollector {
                 if let Some(body) = document.select(&body_selector).next() {
                     content_html = body.html();
                     content_text = WebParser::extract_text_from_html(&content_html);
-                    
-                    info!(length = content_text.len(), "Using body content as fallback");
+
+                    info!(
+                        length = content_text.len(),
+                        "Using body content as fallback"
+                    );
                 }
             }
         }
-        
+
         // Apply content cleaning to remove noise (buttons, navigation, etc.)
         use crate::collectors::content_cleaner::ContentCleaner;
         let (cleaned_html, cleaned_text) = ContentCleaner::clean_content_pipeline(&content_html);
-        
+
         info!(
             original_html_len = content_html.len(),
             cleaned_html_len = cleaned_html.len(),
@@ -414,9 +431,7 @@ impl RssCollector {
             cleaned_text_len = cleaned_text.len(),
             "Applied content cleaning"
         );
-        
+
         Ok((cleaned_html, cleaned_text))
     }
 }
-
-

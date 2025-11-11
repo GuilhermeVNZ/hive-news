@@ -13,34 +13,39 @@ fn get_site_context(site: &str) -> String {
 - **Accessibility first**: Make readers understand WHY it matters
 - **Clear explanations**: Use analogies and real-world comparisons
 - Users who want technical details can read the original paper
-- Emphasis on accuracy and scientific rigor WITH simple language"#.to_string(),
-        
+- Emphasis on accuracy and scientific rigor WITH simple language"#
+            .to_string(),
+
         "nature" => r#"Nature magazine - the world's leading scientific publication:
 - Highest standards of scientific journalism
 - News & Views and Perspectives editorial sections
 - Global reach to researchers and policymakers
 - Precise, authoritative language
-- Emphasis on research impact and significance"#.to_string(),
-        
+- Emphasis on research impact and significance"#
+            .to_string(),
+
         "science" => r#"Science magazine - official journal of AAAS:
 - Perspectives section editorial style
 - Broad interdisciplinary coverage
 - Clear communication for diverse audiences
 - Emphasis on scientific method and evidence
-- International research community focus"#.to_string(),
-        
+- International research community focus"#
+            .to_string(),
+
         _ => r#"General scientific publication:
 - Clear, accurate, accessible communication
 - Emphasis on evidence-based reporting
 - Professional academic tone
-- Broad scientific audience"#.to_string()
+- Broad scientific audience"#
+            .to_string(),
     }
 }
 
 pub fn build_article_prompt(paper_text: &str, _figures: &[String], site: &str) -> String {
     let site_context = get_site_context(site);
-    
-    format!(r#"CRITICAL INSTRUCTIONS (READ FIRST):
+
+    format!(
+        r#"CRITICAL INSTRUCTIONS (READ FIRST):
 1. You are writing for {} in Nature/Science magazine editorial style (News & Views, Perspectives sections)
 2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below
 3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text
@@ -202,11 +207,14 @@ GOOD TITLES (short, hooky, irresistible):
 ✓ "AI Agents Fall Short at Scientific Discovery"
 ✓ "Scientists Find Hidden Pattern in Neural Networks"
 ✓ "This AI Breakthrough May Be Wrong"  
-"#, site, site_context, paper_text)
+"#,
+        site, site_context, paper_text
+    )
 }
 
 pub fn build_social_script_prompt(article: &str, paper_title: &str) -> String {
-    format!(r#"CRITICAL INSTRUCTIONS (READ FIRST):
+    format!(
+        r#"CRITICAL INSTRUCTIONS (READ FIRST):
 1. Create viral social media content based on Nature/Science style article below
 2. **FACT-BASED ONLY**: Do not add information not in the article
 3. Start each piece with a VIRAL HOOK (surprising fact, bold question, tension)
@@ -294,5 +302,7 @@ OUTPUT FORMAT (JSON):
   "x_post": "...",
   "shorts_script": "..."
 }}
-"#, article, paper_title)
+"#,
+        article, paper_title
+    )
 }

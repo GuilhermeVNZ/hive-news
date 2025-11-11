@@ -91,7 +91,7 @@ impl SourceInfo {
             }
 
             let success_rate = stats.success as f64 / total as f64;
-            
+
             if let Some((_, best_rate)) = best_method {
                 if success_rate > best_rate {
                     best_method = Some((method.clone(), success_rate));
@@ -123,21 +123,25 @@ impl SourcesRegistry {
             return Ok(Self::new());
         }
 
-        let content = fs::read_to_string(registry_path)
-            .context(format!("Failed to read sources registry: {}", registry_path.display()))?;
+        let content = fs::read_to_string(registry_path).context(format!(
+            "Failed to read sources registry: {}",
+            registry_path.display()
+        ))?;
 
-        let registry: SourcesRegistry = serde_json::from_str(&content)
-            .context("Failed to parse sources registry JSON")?;
+        let registry: SourcesRegistry =
+            serde_json::from_str(&content).context("Failed to parse sources registry JSON")?;
 
         Ok(registry)
     }
 
     pub fn save(&self, registry_path: &Path) -> Result<()> {
-        let json = serde_json::to_string_pretty(self)
-            .context("Failed to serialize sources registry")?;
+        let json =
+            serde_json::to_string_pretty(self).context("Failed to serialize sources registry")?;
 
-        fs::write(registry_path, json)
-            .context(format!("Failed to write sources registry: {}", registry_path.display()))?;
+        fs::write(registry_path, json).context(format!(
+            "Failed to write sources registry: {}",
+            registry_path.display()
+        ))?;
 
         Ok(())
     }
@@ -163,11 +167,13 @@ impl SourcesRegistry {
         let domain = Self::extract_domain(url);
         let method_str = method.as_str();
 
-        let source_info = self.sources
+        let source_info = self
+            .sources
             .entry(domain.clone())
             .or_insert_with(|| SourceInfo::new(domain.clone()));
 
-        let stats = source_info.methods
+        let stats = source_info
+            .methods
             .entry(method_str.to_string())
             .or_insert_with(MethodStats::default);
 
@@ -185,11 +191,13 @@ impl SourcesRegistry {
         let domain = Self::extract_domain(url);
         let method_str = method.as_str();
 
-        let source_info = self.sources
+        let source_info = self
+            .sources
             .entry(domain.clone())
             .or_insert_with(|| SourceInfo::new(domain.clone()));
 
-        let stats = source_info.methods
+        let stats = source_info
+            .methods
             .entry(method_str.to_string())
             .or_insert_with(MethodStats::default);
 
@@ -266,5 +274,3 @@ impl SourcesRegistryManager {
         registry.get_method_stats(url, method).cloned()
     }
 }
-
-

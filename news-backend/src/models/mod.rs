@@ -1,2 +1,2 @@
-pub mod raw_document;
 pub mod course;
+pub mod raw_document;

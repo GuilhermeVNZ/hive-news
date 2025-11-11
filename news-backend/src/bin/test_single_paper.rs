@@ -17,13 +17,13 @@ async fn main() -> anyhow::Result<()> {
     let url = format!(
         "https://export.arxiv.org/api/query?search_query=cat:cs.AI&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending"
     );
-    
+
     println!("📡 URL: {}", url);
 
     // Fazer requisição
     let response = client.get(&url).send().await?;
     let xml = response.text().await?;
-    
+
     println!("📄 Response length: {} bytes\n", xml.len());
 
     // Parse do XML (mesma lógica do main.rs)
@@ -61,11 +61,11 @@ async fn main() -> anyhow::Result<()> {
     // Exibir resultados
     if let Some(paper_id) = current_id {
         let title = current_title.unwrap_or_else(|| "Untitled".to_string());
-        
+
         // Gerar URLs (mesma lógica do collector)
         let pdf_url = format!("https://arxiv.org/pdf/{}.pdf", paper_id);
         let abstract_url = format!("https://arxiv.org/abs/{}", paper_id);
-        
+
         println!("{}", "=".repeat(80));
         println!("📄 PAPER ENCONTRADO:");
         println!("{}", "=".repeat(80));
@@ -86,4 +86,3 @@ async fn main() -> anyhow::Result<()> {
 
     Ok(())
 }
-

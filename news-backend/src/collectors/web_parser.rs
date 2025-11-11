@@ -13,9 +13,9 @@ pub struct WebArticle {
     pub title: String,
     pub published_date: Option<DateTime<Utc>>,
     pub author: Option<String>,
-    pub content: String,              // HTML or text
+    pub content: String, // HTML or text
     pub image_url: Option<String>,
-    pub meta: serde_json::Value,      // Additional metadata
+    pub meta: serde_json::Value, // Additional metadata
 }
 
 /// Parser for extracting content from web sources (RSS, HTML)
@@ -24,15 +24,8 @@ pub struct WebParser;
 #[allow(dead_code)]
 impl WebParser {
     /// Extract article metadata from RSS feed item
-    pub fn parse_rss_item(
-        item: &rss::Item,
-        base_url: Option<&str>,
-    ) -> Result<ArticleMetadata> {
-        let title = item
-            .title()
-            .unwrap_or("Untitled")
-            .trim()
-            .to_string();
+    pub fn parse_rss_item(item: &rss::Item, base_url: Option<&str>) -> Result<ArticleMetadata> {
+        let title = item.title().unwrap_or("Untitled").trim().to_string();
 
         // Get URL from link, guid, or construct from base_url
         let url = item
@@ -40,8 +33,7 @@ impl WebParser {
             .map(|s| s.trim().to_string())
             .or_else(|| {
                 // Try to get link from guid
-                item.guid()
-                    .map(|g| g.value().trim().to_string())
+                item.guid().map(|g| g.value().trim().to_string())
             })
             .unwrap_or_else(|| {
                 // Fallback: construct from base_url and title
@@ -78,16 +70,15 @@ impl WebParser {
             });
 
         // Generate ID from URL or title
-        let id = Self::generate_id_from_url(&url).unwrap_or_else(|| {
-            Self::generate_id_from_title(&title)
-        });
+        let id = Self::generate_id_from_url(&url)
+            .unwrap_or_else(|| Self::generate_id_from_title(&title));
 
         let title_clone = title.clone();
         Ok(ArticleMetadata {
             id,
             title: title_clone.clone(), // Mantido para compatibilidade
             original_title: Some(title_clone), // Título original da fonte
-            generated_title: None, // Será preenchido quando o artigo for publicado
+            generated_title: None,      // Será preenchido quando o artigo for publicado
             url,
             published_date,
             author,
@@ -181,10 +172,7 @@ impl WebParser {
     }
 
     /// Convert WebArticle to ArticleMetadata
-    pub fn web_article_to_metadata(
-        article: WebArticle,
-        id: Option<String>,
-    ) -> ArticleMetadata {
+    pub fn web_article_to_metadata(article: WebArticle, id: Option<String>) -> ArticleMetadata {
         let article_id = id.unwrap_or_else(|| {
             Self::generate_id_from_url(&article.url)
                 .unwrap_or_else(|| Self::generate_id_from_title(&article.title))
@@ -198,7 +186,7 @@ impl WebParser {
             id: article_id,
             title: article.title.clone(), // Mantido para compatibilidade
             original_title: Some(article.title.clone()), // Título original da fonte
-            generated_title: None, // Será preenchido quando o artigo for publicado
+            generated_title: None,        // Será preenchido quando o artigo for publicado
             url: article.url,
             published_date: article.published_date,
             author: article.author,
@@ -321,7 +309,8 @@ impl WebParser {
     }
 
     fn extract_author_from_meta(document: &Html) -> Option<String> {
-        let author_selector = Selector::parse("meta[name='author'], meta[property='article:author']").ok()?;
+        let author_selector =
+            Selector::parse("meta[name='author'], meta[property='article:author']").ok()?;
         document
             .select(&author_selector)
             .next()
@@ -336,10 +325,12 @@ impl WebParser {
         let author_selector = selectors
             .and_then(|s| s.get("author"))
             .and_then(|s| Selector::parse(s).ok())
-            .unwrap_or_else(|| Selector::parse(".author, .byline, [rel='author']").unwrap_or_else(|_| {
-                // Fallback to any selector that might contain author
-                Selector::parse("span").unwrap()
-            }));
+            .unwrap_or_else(|| {
+                Selector::parse(".author, .byline, [rel='author']").unwrap_or_else(|_| {
+                    // Fallback to any selector that might contain author
+                    Selector::parse("span").unwrap()
+                })
+            });
 
         document
             .select(&author_selector)
@@ -351,17 +342,17 @@ impl WebParser {
     fn generate_id_from_url_impl(url: &str) -> Option<String> {
         use std::collections::hash_map::DefaultHasher;
         use std::hash::{Hash, Hasher};
-        
+
         // Generate a unique, consistent ID based on URL hash
         // This ensures the same URL always gets the same ID, preventing duplicates
         let mut hasher = DefaultHasher::new();
         url.hash(&mut hasher);
         let hash = hasher.finish();
-        
+
         // Return only numeric hash (pure numeric ID)
         // Format: decimal representation of hash (up to 20 digits for maximum uniqueness)
         let numeric_id = hash.to_string();
-        
+
         Some(numeric_id)
     }
 
@@ -378,15 +369,14 @@ impl WebParser {
     fn generate_id_from_title_impl(title: &str) -> String {
         use std::collections::hash_map::DefaultHasher;
         use std::hash::{Hash, Hasher};
-        
+
         // Generate ID from title hash for consistency
         let mut hasher = DefaultHasher::new();
         title.to_lowercase().hash(&mut hasher);
         let hash = hasher.finish();
-        
+
         // Return only numeric hash (pure numeric ID)
         // Format: decimal representation of hash (up to 20 digits for maximum uniqueness)
         hash.to_string()
     }
 }
-

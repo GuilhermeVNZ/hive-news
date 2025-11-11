@@ -46,6 +46,7 @@ services:
   dashboard:
     environment:
       NEWS_BASE_DIR: /data
+      VITE_API_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -64,6 +65,7 @@ services:
   airesearch:
     environment:
       NEWS_BASE_DIR: /data
+      BACKEND_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -82,6 +84,7 @@ services:
   scienceai:
     environment:
       NEWS_BASE_DIR: /data
+      VITE_API_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -89,9 +92,7 @@ services:
       - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
-      dockerfile: docker/frontend.Dockerfile
-      args:
-        APP_DIR: apps/frontend-next/ScienceAI
+      dockerfile: docker/scienceai.Dockerfile
     depends_on:
       - backend
     ports:

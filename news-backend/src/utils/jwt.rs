@@ -1,7 +1,7 @@
-use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
+use chrono::{Duration, Utc};
+use jsonwebtoken::{DecodingKey, EncodingKey, Header, Validation, decode, encode};
 use serde::{Deserialize, Serialize};
 use std::env;
-use chrono::{Duration, Utc};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Claims {
@@ -26,7 +26,7 @@ impl JwtService {
              Then add to .env:\n\
              JWT_SECRET=<your-generated-secret>\n\
              \n\
-             NEVER use a default or weak secret in production!"
+             NEVER use a default or weak secret in production!",
         )
     }
 
@@ -55,7 +55,7 @@ impl JwtService {
     pub fn verify_token(token: &str) -> Result<Claims, jsonwebtoken::errors::Error> {
         let secret = Self::get_secret();
         let validation = Validation::default();
-        
+
         decode::<Claims>(
             token,
             &DecodingKey::from_secret(secret.as_ref()),
