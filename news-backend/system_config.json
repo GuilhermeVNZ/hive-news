@@ -3,7 +3,7 @@
     "enabled": true,
     "filter_score_min": 0.4,
     "interval_minutes": 30,
-    "max_cycles": 1
+    "max_cycles": null
   },
   "paths": {
     "base_dir": ".",

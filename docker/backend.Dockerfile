@@ -15,6 +15,9 @@ COPY . ./
 # Build the backend binary
 RUN cargo build --release --manifest-path news-backend/Cargo.toml --bin news-backend
 
+# Build compression-prompt binary
+RUN cargo build --release --manifest-path compression-prompt-main/rust/Cargo.toml
+
 
 FROM mcr.microsoft.com/playwright:v1.47.0-focal AS runtime
 
@@ -25,15 +28,19 @@ WORKDIR /app
 
 # Copy backend sources and install Node dependencies for Playwright + sharp
 COPY news-backend /app/news-backend
+# Copy compression-prompt for PDF processing
+COPY compression-prompt-main /app/compression-prompt-main
 WORKDIR /app/news-backend
 RUN npm ci --omit=dev
 
-# Copy compiled binary
+# Copy compiled binaries
 COPY --from=builder /app/news-backend/target/release/news-backend /usr/local/bin/news-backend
+COPY --from=builder /app/compression-prompt-main/rust/target/release/compress /usr/local/bin/compress
 
 # Runtime directories for generated content
 RUN mkdir -p downloads/raw downloads/cache downloads/temp output logs js \
-    && chmod +x /usr/local/bin/news-backend
+    && chmod +x /usr/local/bin/news-backend \
+    && chmod +x /usr/local/bin/compress
 
 # Entrypoint ensures directories exist before booting the service
 COPY docker/scripts/backend-entrypoint.sh /entrypoint.sh

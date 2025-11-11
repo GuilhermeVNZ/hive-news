@@ -1,110 +1,18 @@
 {
   "collectors": [
     {
-      "id": "html_perplexity",
-      "name": "Perplexity AI",
+      "id": "html_cohere",
+      "name": "Cohere AI Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.perplexity.ai/discover/tech",
-      "selectors": {
-        "article": "article, .post, .discover-item, .article-item, .top-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body, .discover-content",
-        "link": "a[href*='perplexity.ai/discover'], a[href*='perplexity.ai/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .discover-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_inflection_ai",
-      "name": "Inflection AI",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://inflection.ai/blog/enterprise",
+      "base_url": "https://txt.cohere.com/",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='inflection.ai/blog']",
+        "link": "a[href*='cohere.com'], a[href*='txt.cohere.com']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "rss_elevenlabs",
-      "name": "ElevenLabs Blog RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://blog.elevenlabs.io/feed",
-      "base_url": "https://blog.elevenlabs.io/",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_replicate",
-      "name": "Replicate Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://replicate.com/blog",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='replicate.com/blog'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_intel_ai",
-      "name": "Intel AI",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .spotlight-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body, .spotlight-content",
-        "link": "a[href*='/customer-spotlight'], a[href*='intel.com']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .spotlight-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_deepseek",
-      "name": "DeepSeek Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://deepseek.ai/blog",
-      "selectors": {
-        "article": "article, .post, .blog-item, .news-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/blog'], a[href*='deepseek.ai/blog']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "rss_wired_ai",
-      "name": "Wired AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
-      "base_url": "https://www.wired.com/category/science/ai/",
       "config": {
         "max_results": 5
       }
@@ -127,16 +35,16 @@
       }
     },
     {
-      "id": "html_universal_robots",
-      "name": "Universal Robots",
+      "id": "html_quantinuum",
+      "name": "Quantinuum",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.universal-robots.com/blog/",
+      "base_url": "https://www.quantinuum.com/news/news",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='universal-robots.com/blog'], a[href*='/blog/']",
+        "link": "a[href*='quantinuum.com/news'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -144,33 +52,16 @@
       }
     },
     {
-      "id": "html_qci",
-      "name": "Quantum Computing Inc",
+      "id": "html_cursor",
+      "name": "Cursor Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.quantumcomputinginc.com/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='quantumcomputinginc.com/news'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_together",
-      "name": "Together AI Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.together.ai/blog",
+      "base_url": "https://www.cursor.com/blog",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='together.ai/blog'], a[href*='/blog/']",
+        "link": "a[href*='cursor.com/blog'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -178,16 +69,16 @@
       }
     },
     {
-      "id": "html_dwave",
-      "name": "D-Wave Systems",
+      "id": "html_agility",
+      "name": "Agility Robotics",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.dwavequantum.com/company/newsroom/",
+      "base_url": "https://www.agilityrobotics.com/about/press",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='dwavequantum.com/company/newsroom'], a[href*='/newsroom/']",
+        "link": "a[href*='agilityrobotics.com/about/press'], a[href*='/press/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -195,16 +86,16 @@
       }
     },
     {
-      "id": "html_eleuther",
-      "name": "EleutherAI Blog",
+      "id": "html_fastai",
+      "name": "Fast.ai",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.eleuther.ai/",
+      "base_url": "https://www.fast.ai/",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='eleuther.ai'], a[href*='/']",
+        "link": "a[href*='fast.ai'], a[href*='/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -212,62 +103,28 @@
       }
     },
     {
-      "id": "rss_huggingface",
-      "name": "Hugging Face Blog RSS",
+      "id": "rss_techcrunch_ai",
+      "name": "TechCrunch AI RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://huggingface.co/blog/feed.xml",
-      "base_url": "https://huggingface.co/blog",
+      "feed_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+      "base_url": "https://techcrunch.com/tag/artificial-intelligence/",
       "config": {
         "max_results": 5
       }
     },
     {
-      "id": "html_apple_ml",
-      "name": "Apple Machine Learning",
+      "id": "html_xanadu",
+      "name": "Xanadu Quantum Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://machinelearning.apple.com/highlights",
-      "selectors": {
-        "article": "article, .post, .research-item, .publication-item, .highlight-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body, .highlight-content",
-        "link": "a[href*='machinelearning.apple.com/highlights'], a[href*='machinelearning.apple.com/research']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .highlight-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_robotics_business_review",
-      "name": "Robotics Business Review",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://roboticsbusinessreview.com/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='roboticsbusinessreview.com/news'], a[href*='/article/'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_weaviate",
-      "name": "Weaviate Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://weaviate.io/blog",
+      "base_url": "https://www.xanadu.ai/blog/",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='weaviate.io/blog'], a[href*='/blog/']",
+        "link": "a[href*='xanadu.ai/blog'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -275,16 +132,33 @@
       }
     },
     {
-      "id": "html_anyscale",
-      "name": "Anyscale Blog",
+      "id": "html_unitree",
+      "name": "Unitree Robotics",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.anyscale.com/press",
+      "base_url": "https://www.unitree.com/news",
       "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='anyscale.com/press'], a[href*='/press/']",
+        "link": "a[href*='unitree.com/news'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_amd_ai",
+      "name": "AMD AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.amd.com/en/developer/resources/technical-articles.html#sortCriteria=%40amd_release_date%20descending",
+      "selectors": {
+        "article": "article, .post, .article-item, .technical-article",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/developer/resources/technical-articles'], a[href*='amd.com']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -309,64 +183,30 @@
       }
     },
     {
-      "id": "rss_alibaba_damo",
-      "name": "Alibaba DAMO RSS",
+      "id": "html_apple_ml_research",
+      "name": "Apple Machine Learning Research",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://machinelearning.apple.com/research",
+      "selectors": {
+        "article": "article, .post, .research-item, .publication-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='machinelearning.apple.com/research']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_nvidia",
+      "name": "NVIDIA News RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://damo.alibaba.com/news/rss",
-      "base_url": "https://damo.alibaba.com",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_menlo_ventures",
-      "name": "Menlo Ventures AI",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://menlovc.com/focus-areas/ai/",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .perspective-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/focus-areas/ai'], a[href*='menlovc.com']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .perspective-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_airesearch_news",
-      "name": "AIResearch News",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.airesearch.news/",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_meta_ai",
-      "name": "Meta AI Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://ai.meta.com/blog/",
-      "selectors": {
-        "article": "article, .post, .blog-post",
-        "content": ".content, article, main",
-        "link": "a[href*='/blog/']",
-        "title": "h1, h2"
-      },
+      "feed_url": "https://nvidianews.nvidia.com/rss.xml",
+      "base_url": "https://nvidianews.nvidia.com",
       "config": {
         "max_results": 5
       }
@@ -401,16 +241,113 @@
       }
     },
     {
-      "id": "html_modal",
-      "name": "Modal Blog",
+      "id": "html_perplexity",
+      "name": "Perplexity AI",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://modal.com/blog",
+      "base_url": "https://www.perplexity.ai/discover/tech",
+      "selectors": {
+        "article": "article, .post, .discover-item, .article-item, .top-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .discover-content",
+        "link": "a[href*='perplexity.ai/discover'], a[href*='perplexity.ai/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .discover-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_rigetti",
+      "name": "Rigetti Computing",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.globenewswire.com/newsroom",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='globenewswire.com/newsroom'], a[href*='/newsroom/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_boston_dynamics",
+      "name": "Boston Dynamics",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://bostondynamics.com/blog/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='bostondynamics.com/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_replicate",
+      "name": "Replicate Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://replicate.com/blog",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='modal.com/blog'], a[href*='/blog/']",
+        "link": "a[href*='replicate.com/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_together",
+      "name": "Together AI Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.together.ai/blog",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='together.ai/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_mit_tech_review_ai",
+      "name": "MIT Technology Review AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+      "base_url": "https://news.mit.edu/topic/artificial-intelligence",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_infleqtion",
+      "name": "Infleqtion Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://infleqtion.com/blog/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='infleqtion.com/blog'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -435,6 +372,40 @@
       }
     },
     {
+      "id": "html_xai",
+      "name": "X.ai News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://x.ai/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .blog-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/news/'], a[href*='x.ai/news']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_qci",
+      "name": "Quantum Computing Inc",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.quantumcomputinginc.com/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='quantumcomputinginc.com/news'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
       "id": "html_continual",
       "name": "Continual AI",
       "enabled": true,
@@ -452,28 +423,45 @@
       }
     },
     {
-      "id": "rss_microsoft_ai",
-      "name": "Microsoft AI Blog RSS",
+      "id": "rss_huggingface",
+      "name": "Hugging Face Blog RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://blogs.microsoft.com/ai/feed/",
-      "base_url": "https://blogs.microsoft.com/ai/",
+      "feed_url": "https://huggingface.co/blog/feed.xml",
+      "base_url": "https://huggingface.co/blog",
       "config": {
         "max_results": 5
       }
     },
     {
-      "id": "html_apple_ml_research",
-      "name": "Apple Machine Learning Research",
+      "id": "html_robotics_business_review",
+      "name": "Robotics Business Review",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://machinelearning.apple.com/research",
+      "base_url": "https://roboticsbusinessreview.com/news",
       "selectors": {
-        "article": "article, .post, .research-item, .publication-item",
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='machinelearning.apple.com/research']",
+        "link": "a[href*='roboticsbusinessreview.com/news'], a[href*='/article/'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_inflection_ai",
+      "name": "Inflection AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://inflection.ai/blog/enterprise",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='inflection.ai/blog']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -481,17 +469,128 @@
       }
     },
     {
-      "id": "html_unitree",
-      "name": "Unitree Robotics",
+      "id": "rss_openai",
+      "name": "OpenAI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://openai.com/blog/rss.xml",
+      "base_url": "https://openai.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_the_verge_ai",
+      "name": "The Verge AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
+      "base_url": "https://www.theverge.com/tech/ai",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_dwave",
+      "name": "D-Wave Systems",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.unitree.com/news",
+      "base_url": "https://www.dwavequantum.com/company/newsroom/",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='unitree.com/news'], a[href*='/news/']",
+        "link": "a[href*='dwavequantum.com/company/newsroom'], a[href*='/newsroom/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_salesforce_ai",
+      "name": "Salesforce AI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.salesforce.com/news/feed/",
+      "base_url": "https://www.salesforce.com/news/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_wired_ai",
+      "name": "Wired AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+      "base_url": "https://www.wired.com/category/science/ai/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_google_ai",
+      "name": "Google AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://blog.research.google/feeds/posts/default",
+      "base_url": "https://blog.research.google",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_meta_ai",
+      "name": "Meta AI Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://ai.meta.com/blog/",
+      "selectors": {
+        "article": "article, .post, .blog-post",
+        "content": ".content, article, main",
+        "link": "a[href*='/blog/']",
+        "title": "h1, h2"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_menlo_ventures",
+      "name": "Menlo Ventures AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://menlovc.com/focus-areas/ai/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .perspective-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='/focus-areas/ai'], a[href*='menlovc.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .perspective-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_weaviate",
+      "name": "Weaviate Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://weaviate.io/blog",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='weaviate.io/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
         "max_results": 5
@@ -519,108 +618,6 @@
       }
     },
     {
-      "id": "html_boston_dynamics",
-      "name": "Boston Dynamics",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://bostondynamics.com/blog/",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='bostondynamics.com/blog'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_robotics_org",
-      "name": "Robotics Online",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.automate.org/robotics/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='automate.org/robotics/news'], a[href*='automate.org/ai/news'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_assemblyai",
-      "name": "AssemblyAI Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.assemblyai.com/blog",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='assemblyai.com/blog'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_infleqtion",
-      "name": "Infleqtion Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://infleqtion.com/blog/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='infleqtion.com/blog'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_pasqal",
-      "name": "Pasqal",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.pasqal.com/newsroom/",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='pasqal.com/newsroom'], a[href*='/newsroom/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_yaskawa",
-      "name": "Yaskawa Robotics",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.yaskawa.com/about-us/media-center/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='yaskawa.com/about-us/media-center/news'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
       "id": "html_berkeley_ai",
       "name": "Berkeley AI Research",
       "enabled": true,
@@ -638,28 +635,16 @@
       }
     },
     {
-      "id": "rss_ibm_research",
-      "name": "IBM Research AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://research.ibm.com/blog/feed",
-      "base_url": "https://research.ibm.com/blog",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_rigetti",
-      "name": "Rigetti Computing",
+      "id": "html_kuka",
+      "name": "KUKA Robotics",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.globenewswire.com/newsroom",
+      "base_url": "https://www.kuka.com/en-us/press/media-news",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='globenewswire.com/newsroom'], a[href*='/newsroom/']",
+        "link": "a[href*='kuka.com/news'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -667,16 +652,16 @@
       }
     },
     {
-      "id": "html_anthropic_research",
-      "name": "Anthropic Research",
+      "id": "html_pinecone",
+      "name": "Pinecone Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.anthropic.com/research",
+      "base_url": "https://www.pinecone.io/blog/",
       "selectors": {
-        "article": "article, .post, .research-item, .post-item, .blog-item, .article-item",
+        "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='anthropic.com/research'], a[href*='/research/']",
+        "link": "a[href*='pinecone.io/blog'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -684,103 +669,28 @@
       }
     },
     {
-      "id": "rss_techcrunch_ai",
-      "name": "TechCrunch AI RSS",
+      "id": "rss_nature_ai",
+      "name": "Nature AI RSS",
       "enabled": true,
       "api_key": null,
       "collector_type": "rss",
-      "feed_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
-      "base_url": "https://techcrunch.com/tag/artificial-intelligence/",
+      "feed_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+      "base_url": "https://www.nature.com/subjects/artificial-intelligence",
       "config": {
         "max_results": 5
       }
     },
     {
-      "id": "rss_the_verge_ai",
-      "name": "The Verge AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
-      "base_url": "https://www.theverge.com/tech/ai",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_quantum_computing_report",
-      "name": "Quantum Computing Report",
+      "id": "html_hive_hub",
+      "name": "Hive Hub",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://quantumcomputingreport.com/news/",
+      "base_url": "https://hive-hub.com",
       "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "article": "article, .post, .news-item, .post-item, .blog-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='quantumcomputingreport.com/news'], a[href*='/article/'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "rss_nvidia",
-      "name": "NVIDIA News RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://nvidianews.nvidia.com/rss.xml",
-      "base_url": "https://nvidianews.nvidia.com",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_character_ai",
-      "name": "CharacterAI",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://blog.character.ai/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='blog.character.ai'], a[href*='character.ai/blog']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_anthropic",
-      "name": "Anthropic News",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.anthropic.com/news",
-      "selectors": {
-        "article": "article",
-        "content": ".content, article, main",
-        "link": "a[href*='/news/']",
-        "title": "h1, h2"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_science",
-      "name": "Science",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.science.org/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .post-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='science.org/news'], a[href*='science.org/']",
+        "link": "a[href*='hive-hub.com']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -805,17 +715,68 @@
       }
     },
     {
-      "id": "html_abb_robotics",
-      "name": "ABB Robotics",
+      "id": "html_science",
+      "name": "Science",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://global.abb/group/en/media",
+      "base_url": "https://www.science.org/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='science.org/news'], a[href*='science.org/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_omron",
+      "name": "OMRON Robotics",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://automation.omron.com/en/us/news/",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='abb.com/news'], a[href*='robotics'], a[href*='/news/']",
+        "link": "a[href*='omron.com/news'], a[href*='robotics'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_apple_ml",
+      "name": "Apple Machine Learning",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://machinelearning.apple.com/highlights",
+      "selectors": {
+        "article": "article, .post, .research-item, .publication-item, .highlight-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .highlight-content",
+        "link": "a[href*='machinelearning.apple.com/highlights'], a[href*='machinelearning.apple.com/research']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .highlight-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_character_ai",
+      "name": "CharacterAI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://blog.character.ai/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='blog.character.ai'], a[href*='character.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
         "max_results": 5
@@ -848,28 +809,16 @@
       }
     },
     {
-      "id": "rss_google_ai",
-      "name": "Google AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://blog.research.google/feeds/posts/default",
-      "base_url": "https://blog.research.google",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_fastai",
-      "name": "Fast.ai",
+      "id": "html_stability_ai",
+      "name": "Stability AI News",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.fast.ai/",
+      "base_url": "https://stability.ai/news",
       "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "article": "article, .post, .news-item, .blog-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='fast.ai'], a[href*='/']",
+        "link": "a[href*='/news'], a[href*='stability.ai/news']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -877,52 +826,16 @@
       }
     },
     {
-      "id": "rss_mit_tech_review_ai",
-      "name": "MIT Technology Review AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
-      "base_url": "https://news.mit.edu/topic/artificial-intelligence",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "rss_salesforce_ai",
-      "name": "Salesforce AI Blog RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://www.salesforce.com/news/feed/",
-      "base_url": "https://www.salesforce.com/news/",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "rss_nature_ai",
-      "name": "Nature AI RSS",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
-      "base_url": "https://www.nature.com/subjects/artificial-intelligence",
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_agility",
-      "name": "Agility Robotics",
+      "id": "html_universal_robots",
+      "name": "Universal Robots",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.agilityrobotics.com/about/press",
+      "base_url": "https://www.universal-robots.com/blog/",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='agilityrobotics.com/about/press'], a[href*='/press/']",
+        "link": "a[href*='universal-robots.com/blog'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -930,16 +843,108 @@
       }
     },
     {
-      "id": "html_robohub",
-      "name": "Robohub",
+      "id": "html_anthropic_research",
+      "name": "Anthropic Research",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://robohub.org/category/news/",
+      "base_url": "https://www.anthropic.com/research",
+      "selectors": {
+        "article": "article, .post, .research-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='anthropic.com/research'], a[href*='/research/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_alibaba_damo",
+      "name": "Alibaba DAMO RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://damo.alibaba.com/news/rss",
+      "base_url": "https://damo.alibaba.com",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_intel_ai",
+      "name": "Intel AI",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .spotlight-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body, .spotlight-content",
+        "link": "a[href*='/customer-spotlight'], a[href*='intel.com']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .spotlight-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_ibm_research",
+      "name": "IBM Research AI RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://research.ibm.com/blog/feed",
+      "base_url": "https://research.ibm.com/blog",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_the_gradient",
+      "name": "The Gradient",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://thegradient.pub/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='thegradient.pub'], a[href*='/post/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_anyscale",
+      "name": "Anyscale Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.anyscale.com/press",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='anyscale.com/press'], a[href*='/press/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_yaskawa",
+      "name": "Yaskawa Robotics",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.yaskawa.com/about-us/media-center/news",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='robohub.org/category/news'], a[href*='/news/']",
+        "link": "a[href*='yaskawa.com/about-us/media-center/news'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -947,16 +952,27 @@
       }
     },
     {
-      "id": "html_cursor",
-      "name": "Cursor Blog",
+      "id": "arxiv",
+      "name": "arXiv",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": null,
+      "config": {
+        "category": "cs.AI",
+        "max_results": 10
+      }
+    },
+    {
+      "id": "html_eleuther",
+      "name": "EleutherAI Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.cursor.com/blog",
+      "base_url": "https://www.eleuther.ai/",
       "selectors": {
         "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='cursor.com/blog'], a[href*='/blog/']",
+        "link": "a[href*='eleuther.ai'], a[href*='/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -964,17 +980,75 @@
       }
     },
     {
-      "id": "html_xanadu",
-      "name": "Xanadu Quantum Blog",
+      "id": "rss_microsoft_ai",
+      "name": "Microsoft AI Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://blogs.microsoft.com/ai/feed/",
+      "base_url": "https://blogs.microsoft.com/ai/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "rss_elevenlabs",
+      "name": "ElevenLabs Blog RSS",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "rss",
+      "feed_url": "https://blog.elevenlabs.io/feed",
+      "base_url": "https://blog.elevenlabs.io/",
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_stanford_hai",
+      "name": "Stanford HAI",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.xanadu.ai/blog/",
+      "base_url": "https://hai.stanford.edu/news?filterBy=news",
       "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "article": "article, .post, .news-item, .post-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='xanadu.ai/blog'], a[href*='/blog/']",
+        "link": "a[href*='hai.stanford.edu/news']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_abb_robotics",
+      "name": "ABB Robotics",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://global.abb/group/en/media",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='abb.com/news'], a[href*='robotics'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_robotics_org",
+      "name": "Robotics Online",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.automate.org/robotics/news",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='automate.org/robotics/news'], a[href*='automate.org/ai/news'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
         "max_results": 5
@@ -998,102 +1072,6 @@
       }
     },
     {
-      "id": "html_xai",
-      "name": "X.ai News",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://x.ai/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .blog-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/news/'], a[href*='x.ai/news']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "arxiv",
-      "name": "arXiv",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": null,
-      "config": {
-        "category": "cs.AI",
-        "max_results": 10
-      }
-    },
-    {
-      "id": "html_langchain",
-      "name": "LangChain Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://blog.langchain.com/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='blog.langchain.com'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_cohere",
-      "name": "Cohere AI Blog",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://txt.cohere.com/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='cohere.com'], a[href*='txt.cohere.com']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_amd_ai",
-      "name": "AMD AI",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.amd.com/en/developer/resources/technical-articles.html#sortCriteria=%40amd_release_date%20descending",
-      "selectors": {
-        "article": "article, .post, .article-item, .technical-article",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/developer/resources/technical-articles'], a[href*='amd.com']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_stability_ai",
-      "name": "Stability AI News",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://stability.ai/news",
-      "selectors": {
-        "article": "article, .post, .news-item, .blog-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='/news'], a[href*='stability.ai/news']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
       "id": "html_deepmind_blog",
       "name": "DeepMind Blog",
       "enabled": true,
@@ -1111,84 +1089,33 @@
       }
     },
     {
-      "id": "html_hive_hub",
-      "name": "Hive Hub",
+      "id": "html_anthropic",
+      "name": "Anthropic News",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://hive-hub.com",
+      "base_url": "https://www.anthropic.com/news",
       "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='hive-hub.com']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
+        "article": "article",
+        "content": ".content, article, main",
+        "link": "a[href*='/news/']",
+        "title": "h1, h2"
       },
       "config": {
         "max_results": 5
       }
     },
     {
-      "id": "html_pinecone",
-      "name": "Pinecone Blog",
+      "id": "html_quantum_computing_report",
+      "name": "Quantum Computing Report",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.pinecone.io/blog/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='pinecone.io/blog'], a[href*='/blog/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_alibaba_damo",
-      "name": "Alibaba Alizila News",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.alizila.com/",
-      "selectors": {
-        "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
-        "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
-        "link": "a",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_the_gradient",
-      "name": "The Gradient",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://thegradient.pub/",
-      "selectors": {
-        "article": "article, .post, .blog-item, .post-item, .article-item",
-        "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='thegradient.pub'], a[href*='/post/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title"
-      },
-      "config": {
-        "max_results": 5
-      }
-    },
-    {
-      "id": "html_quantinuum",
-      "name": "Quantinuum",
-      "enabled": true,
-      "api_key": null,
-      "collector_type": "html",
-      "base_url": "https://www.quantinuum.com/news/news",
+      "base_url": "https://quantumcomputingreport.com/news/",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='quantinuum.com/news'], a[href*='/news/']",
+        "link": "a[href*='quantumcomputingreport.com/news'], a[href*='/article/'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -1196,17 +1123,17 @@
       }
     },
     {
-      "id": "html_omron",
-      "name": "OMRON Robotics",
+      "id": "html_assemblyai",
+      "name": "AssemblyAI Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://automation.omron.com/en/us/news/",
+      "base_url": "https://www.assemblyai.com/blog",
       "selectors": {
-        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "article": "article, .post, .blog-item, .post-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='omron.com/news'], a[href*='robotics'], a[href*='/news/']",
-        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+        "link": "a[href*='assemblyai.com/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
         "max_results": 5
@@ -1230,16 +1157,33 @@
       }
     },
     {
-      "id": "html_kuka",
-      "name": "KUKA Robotics",
+      "id": "html_alibaba_damo",
+      "name": "Alibaba Alizila News",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://www.kuka.com/en-us/press/media-news",
+      "base_url": "https://www.alizila.com/",
+      "selectors": {
+        "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
+        "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
+        "link": "a",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_airesearch_news",
+      "name": "AIResearch News",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.airesearch.news/",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='kuka.com/news'], a[href*='/news/']",
+        "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
       },
       "config": {
@@ -1247,16 +1191,50 @@
       }
     },
     {
-      "id": "html_stanford_hai",
-      "name": "Stanford HAI",
+      "id": "html_deepseek",
+      "name": "DeepSeek Blog",
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://hai.stanford.edu/news?filterBy=news",
+      "base_url": "https://deepseek.ai/blog",
       "selectors": {
-        "article": "article, .post, .news-item, .post-item",
+        "article": "article, .post, .blog-item, .news-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='hai.stanford.edu/news']",
+        "link": "a[href*='/blog'], a[href*='deepseek.ai/blog']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_robohub",
+      "name": "Robohub",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://robohub.org/category/news/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='robohub.org/category/news'], a[href*='/news/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_langchain",
+      "name": "LangChain Blog",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://blog.langchain.com/",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='blog.langchain.com'], a[href*='/blog/']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {
@@ -1281,17 +1259,39 @@
       }
     },
     {
-      "id": "rss_openai",
-      "name": "OpenAI Blog RSS",
+      "id": "html_modal",
+      "name": "Modal Blog",
       "enabled": true,
       "api_key": null,
-      "collector_type": "rss",
-      "feed_url": "https://openai.com/blog/rss.xml",
-      "base_url": "https://openai.com",
+      "collector_type": "html",
+      "base_url": "https://modal.com/blog",
+      "selectors": {
+        "article": "article, .post, .blog-item, .post-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='modal.com/blog'], a[href*='/blog/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title"
+      },
+      "config": {
+        "max_results": 5
+      }
+    },
+    {
+      "id": "html_pasqal",
+      "name": "Pasqal",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.pasqal.com/newsroom/",
+      "selectors": {
+        "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+        "content": ".content, .post-content, .article-content, article, main, .article-body",
+        "link": "a[href*='pasqal.com/newsroom'], a[href*='/newsroom/']",
+        "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+      },
       "config": {
         "max_results": 5
       }
     }
   ],
-  "updated_at": "2025-11-11T17:52:05.004251499+00:00"
+  "updated_at": "2025-11-11T18:41:17.332868961+00:00"
 }

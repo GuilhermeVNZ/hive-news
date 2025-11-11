@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Salesforce</title>
+	<atom:link href="https://www.salesforce.com/news/feed/?bc=OTH" rel="self" type="application/rss+xml" />
+	<link>https://www.salesforce.com/news/</link>
+	<description>Get the latest Salesforce press releases, announcements, stories, and media contacts. See today’s CRM news.</description>
+	<lastBuildDate>Tue, 11 Nov 2025 17:28:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+
+<image>
+	<url>https://www.salesforce.com/news/wp-content/uploads/sites/3/2020/08/cropped-Salesforce_Logo_Web_Notext-1.png?w=32</url>
+	<title>Salesforce</title>
+	<link>https://www.salesforce.com/news/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">218239395</site>	<item>
+		<title>How Businesses Use AI to Turn Tedious Tasks into Happy Customers</title>
+		<link>https://www.salesforce.com/news/stories/how-businesses-use-ai-for-tedious-tasks/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Tue, 11 Nov 2025 17:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90937</guid>
+
+					<description><![CDATA[It’s the phone tree-to-human agent Rube Goldberg machine. Someone calls the helpline or front desk, asks a question, gets put on hold, gets transferred to another department, gets asked the same questions again. Ten minutes later, they may know when the yoga class is or have managed to rebook their flight, but that 10 minutes [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>It’s the phone tree-to-human agent Rube Goldberg machine. Someone calls the helpline or front desk, asks a question, gets put on hold, gets transferred to another department, gets asked the same questions again. Ten minutes later, they may know when the yoga class is or have managed to rebook their flight, but that 10 minutes feels wasted. Using <a href="https://www.salesforce.com/artificial-intelligence/what-is-ai/" target="_blank" rel="noreferrer noopener">AI</a> and <a href="https://www.salesforce.com/agentforce/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentforce</a>, however, companies can turn this tedium into a smooth, seamless experience. It’s a use case that’s not about getting people to buy more products. It’s about making them happier with whatever they already have. </p>
+
+
+
+<h2 class="wp-block-heading" id="h-engine">Engine</h2>
+
+
+
+<div class="wp-block-group is-style-media-wrapping-container"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<figure class="wp-block-embed alignright is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/wicadDhieGqnNm8z4g2Lkd.jpg"  data-uuid="wicadDhieGqnNm8z4g2Lkd"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<p>Engine is a travel platform where businesses and groups can reserve hotels, flights, and car rentals. Sometimes, though, those groups have to cancel those arrangements. Now Eva, Engine’s Agentforce-powered assistant, can take that on. If someone wants to cancel three rooms from a 15-room reservation, <a href="https://www.salesforce.com/customer-stories/engine/" target="_blank" rel="noreferrer noopener">Eva can combine data</a> from the customer’s profile and interaction history, connect to the company’s internal booking platform, and cancel the unwanted rooms, without human reps needing to spend valuable time on an administrative task.&nbsp;</p>
+
+
+
+<p>“They can get that resolution in seconds and just go back to doing what they want to do,” said Joshua Stern, Director of GTM Systems at Engine. “Who wants to sit there on a phone call being like, ‘I want to cancel my booking, I want to change the dates’?”&nbsp;</p>
+
+
+
+<p>One key to success was narrowing down the scope of topics Eva could address to about six. That move improved latency and speed to resolution, and customer satisfaction scores improved by six points. That shift is “absolutely incredible,” said Sarah Morton, Engine’s Senior Salesforce Administrator. Less frustration, less hold time, more travel.&nbsp;</p>
+</div></div>
+
+
+
+<h2 class="wp-block-heading" id="h-williams-sonoma-inc">Williams Sonoma, Inc.</h2>
+
+
+
+<p>The <a href="https://www.forbes.com/sites/ronschmelzer/2025/10/27/how-williams-sonoma-went-from-ai-concept-to-serving-customers-in-30-days/" target="_blank" rel="noreferrer noopener">Williams Sonoma Olive agent</a> can help customers process returns. It can serve them up menus and wine pairings. But it can also pick up some of that mental load inherent to entertaining: What does the host need to do, and when, so they’re ready when guests arrive? Site visitors can ask Olive for menu ideas then for a prep schedule that walks them through when to make the cranberry sauce (T minus 48 hours) and when to put the biscuits (T minus 30 minutes). It’s not about selling people more stuff. “It’s about helping teach our customers culinary skills; it’s about menus and recipes,” said Sameer Hassan, the company’s Chief Technology and Digital Officer “It’s about helping them entertain at home. … It’s helping to deliver experiences that resonate.”&nbsp;</p>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/UHCjxdV6yRp8zJV5cqKsDa.jpg"  data-uuid="UHCjxdV6yRp8zJV5cqKsDa"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90893"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/customers-deploying-agentforce/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=1024" class="content-card__image" alt="Agentforce Astro" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/customers-deploying-agentforce/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Test, Learn, Iterate: Lessons from Five Real-World Agentforce Rollouts				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				7 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90805"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/how-ai-meets-people-where-they-are/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=1024" class="content-card__image" alt="Businesses Share How They Use AI to Meet People Where They Are" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/Dreamforce-Customer-Insights-2.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/how-ai-meets-people-where-they-are/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								How Businesses Use AI to Meet People Where (and When) They Are				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				3 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h2 class="wp-block-heading" id="h-equinox">Equinox</h2>
+
+
+
+<p>The search is not a hideous chore, but it does involve a fair number of clicks around a website: Which nearby clubs offer early morning yoga classes? Do they still have spots? Where does the class sign-up page live? Now the Equinox Agentforce-powered agent can handle that journey, all the way up to booking a class for the club member, in one chat window. “It saves about three or four clicks,” says Eswar Veluri, Equinox EVP and CTO. “It’s about looking at existing patterns of usage that can be made easier by using agents. That’s how we are leaning into our member experience.”&nbsp;</p>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/7GLUX14ce2RooN86C85ad1.jpg"  data-uuid="7GLUX14ce2RooN86C85ad1"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-go-deeper"><strong>Go deeper:</strong></h2>
+
+
+
+<ul class="wp-block-list">
+<li>Lessons from real-world <a href="https://www.salesforce.com/news/stories/customers-deploying-agentforce/" target="_blank" rel="noreferrer noopener">Agentforce rollouts</a></li>
+
+
+
+<li>Report: Technical leaders need <a href="https://www.salesforce.com/news/stories/data-analytics-trends-2026/" target="_blank" rel="noreferrer noopener">data overhaul</a> for AI strategies to succeed</li>
+
+
+
+<li>How <a href="https://www.salesforce.com/news/stories/how-ai-meets-people-where-they-are/" target="_blank" rel="noreferrer noopener">businesses use AI</a> to meet people where (and when) they are</li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90937</post-id>	</item>
+		<item>
+		<title>Salesforce Signs Definitive Agreement to Acquire Spindle AI</title>
+		<link>https://www.salesforce.com/news/stories/salesforce-signs-definitive-agreement-to-acquire-spindle-ai/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Fri, 07 Nov 2025 21:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90906</guid>
+
+					<description><![CDATA[Salesforce has signed a definitive agreement to acquire Spindle AI, a leading agentic analytics platform. Spindle AI’s technology combines advanced AI agents and machine learning with powerful data modeling to help businesses make faster and more effective data-driven decisions. Co-founded by Ryan Atallah, previously the founder of ClearGraph (acquired by Tableau) and Carson Kahn, previously [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Salesforce has signed a definitive agreement to acquire Spindle AI, a leading agentic analytics platform. Spindle AI’s technology combines advanced AI agents and machine learning with powerful data modeling to help businesses make faster and more effective data-driven decisions.</p>
+
+
+
+<p>Co-founded by <a href="https://www.linkedin.com/in/ryanatallah/" target="_blank" rel="noreferrer noopener">Ryan Atallah</a>, previously the founder of ClearGraph (acquired by Tableau) and <a href="https://www.linkedin.com/in/carsonkahn/" target="_blank" rel="noreferrer noopener">Carson Kahn</a>, previously the founder and CTO of Volley ML (JPMorgan In–Residence), Spindle AI has deep expertise in multi-agent systems, machine learning, and high-performance data applications. Spindle AI’s agentic technology complements world-class analytics platforms, like Tableau, by focusing on the next step: using AI to autonomously model agentic scenarios and forecast business outcomes.</p>
+
+
+
+<p>“The future of the agentic enterprise isn&#8217;t about having the most data, it&#8217;s about making that data speak a common language,” <strong>said</strong> <strong>Adam Evans, EVP &amp; GM, Salesforce AI Platform, Salesforce</strong>. “Bringing Spindle AI – which includes veteran leaders and incredibly talented engineers with deep expertise in advanced agentic analytics and machine learning – onboard will continue our investment in Agent Observability and Self-Improvement to help us deliver custom agentic analytics, ROI forecasting, and continuous optimization for every Agentforce user.”</p>
+
+
+
+<p>Enterprises and their agents are generating more data than ever, but its value remains locked behind technical complexity, making it difficult for teams to get reliable answers to critical business questions. While AI agents promise to bridge this gap, delivering the required accuracy, context, flexibility, sophistication, and security, and context at enterprise scale demands advanced agentic systems and machine learning capable of autonomously analyzing data, modeling scenarios, and discovering optimal answers.</p>
+
+
+
+<p>Spindle AI was built to solve this challenge by combining neuro-symbolic AI agents with AI-native data systems to generate &amp; optimize scenario models in seconds. Their agentic business analytics platform allows business teams to simulate the impact of complex, data-driven decisions, like pricing and packaging, GTM optimization, and sales mix shifts with AI.</p>
+
+
+
+<p>“We built Spindle AI to intelligently close the gap between what questions enterprises want to ask of their data and what their data systems can understand,” <strong>said</strong> <strong>Ryan Atallah, co-founder and CEO, Spindle AI</strong>. “We have spent years solving the hardest problems in intelligent analytics, machine learning, and data infrastructure. Joining Agentforce allows us to deliver that deep technical focus directly to customers at scale, powering the next era of trusted, autonomous systems by accelerating Agent Observability and Self-Improvement features for Agentforce 360.”<br><br>&#8220;We aren&#8217;t just acquiring a platform; we&#8217;re bringing on world-class expertise,” said <strong>Jayesh Govindarajan, EVP Salesforce AI, Agentforce.</strong> “Ryan, Carson, and Spindle AI have proven expertise in the complex AI observability and multi-agent analytics functions that are critical for measuring and forecasting AI-driven value. We’re thrilled to have them join Agentforce to accelerate our roadmap and build the future of agentic systems<strong>.”</strong></p>
+
+
+
+<p><strong>“</strong>The next generation of agentic systems will be measured by how well they can continuously monitor, explain, and improve their own reasoning,” said <strong>Carson Kahn, co-founder and Chief AI &amp; Product Officer at Spindle AI</strong>. “We look forward to accelerating Agentforce with sophisticated agentic analytics and forecasting that make enterprise LLMs more reliable and valuable.”</p>
+
+
+
+<p>After the acquisition closes, Spindle AI will join Agentforce to focus on augmenting the Agent Observability and Self-Improvement pillar for Agentforce 360, including custom agentic analytics, ROI forecasting, and continuous optimization. </p>
+
+
+
+<p>The acquisition is expected to close in Salesforce’s fourth fiscal quarter of 2026, subject to customary closing conditions.<br></p>
+
+
+
+<p><br></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90906</post-id>	</item>
+		<item>
+		<title>Test, Learn, Iterate: Lessons from Five Real-World Agentforce Rollouts</title>
+		<link>https://www.salesforce.com/news/stories/customers-deploying-agentforce/</link>
+		
+		<dc:creator><![CDATA[Sarah Fallon]]></dc:creator>
+		<pubDate>Thu, 06 Nov 2025 22:30:09 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90893</guid>
+
+					<description><![CDATA[Key Takeaways Companies are under pressure to move through their AI deployments quickly so they can get to ROI as soon as possible. But technologies as powerful as AI and agents aren’t always easy to roll out. Data needs to be organized. Guardrails need to be determined. Knowledge articles need to be created. Often, it’s [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group is-style-shadow-box is-style-takeaways"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-black-color has-text-color has-link-color wp-elements-471ecb11ca02c2e7ea813f9dd3857484" id="h-key-takeaways">Key Takeaways</h2>
+
+
+
+<ul class="wp-block-list">
+<li><em>Agentic deployments are only effective when driven by clean, structured data and deep context, requiring companies like Heathrow and Safari365 to invest heavily in data integrity before deployment.</em></li>
+
+
+
+<li><em>When it comes to AI rollouts, companies often have to treat challenges (like lack of reporting or restrictive initial parameters) as learning opportunities, using continuous dashboard monitoring and alignment between agents and human teams to refine and scale deployments.</em></li>
+</ul>
+</div></div>
+
+
+
+<p>Companies are under pressure to move through their <a href="https://www.salesforce.com/news/stories/cfos-invest-ai-for-growth/" target="_blank" rel="noreferrer noopener">AI deployments quickly</a> so they can get to ROI as soon as possible. But technologies as powerful as AI and <a href="https://www.salesforce.com/agentforce/ai-agents/" target="_blank" rel="noreferrer noopener">agents</a> aren’t always easy to roll out. Data needs to be organized. Guardrails need to be determined. Knowledge articles need to be created. Often, it’s hard to know how well something works until the fail points make themselves known.<br><br>One key to success, said Peter Burns, Director of Marketing, Digital &amp; eCommerce at Heathrow Airport, is data. “This may sound obvious, but of course it&#8217;s an important one. And that&#8217;s data. An agentic experience is only as good as the data that drives it. So in Agentforce, Salesforce brings a great front-end experience for us that continues to learn,” he said. “But it&#8217;s the business’s responsibility to bring that data in a structured way and the right way to drive the right experience.” </p>
+
+
+
+<p>Heathrow’s customer service agent, called Hallie, can answer questions about things like security checkpoint wait times, restaurant locations, and gate directions. One reason it works so well, said Burns, is that all of Heathrow’s customer data sits in Data 360. “We spend a lot of time focusing on the quality of that data and ensuring it&#8217;s matched to our customers to give them the information they want at the right stage of the journey.”</p>
+
+
+
+<p>These Salesforce customers faced challenges along the way to becoming <a href="https://www.salesforce.com/agentforce/agentic-enterprise/" target="_blank" rel="noreferrer noopener">Agentic Enterprises</a> — but they treated them as valuable learning opportunities, making smart, iterative adjustments that ultimately strengthened their deployments. They’re lessons that can help guide other companies along the Agentic Enterprise journey.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-engine-overcoming-missed-connections"><strong>Engine: Overcoming Missed Connections</strong></h2>
+
+
+
+<div class="wp-block-group is-style-media-wrapping-container"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<figure class="wp-block-embed alignright is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/wicadDhieGqnNm8z4g2Lkd.jpg"  data-uuid="wicadDhieGqnNm8z4g2Lkd"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<p>Engine is a travel platform where businesses and groups can reserve hotels, flights, and car rentals. Sometimes, though, those groups have to cancel those bookings. Now Eva, Engine’s Agentforce-powered assistant, can take that on. If someone wants to cancel three rooms from a 15-room reservation, <a href="https://www.salesforce.com/customer-stories/engine/" target="_blank" rel="noreferrer noopener">Eva can combine data</a> from the customer’s profile and interaction history, connect to the company’s internal booking platform, and cancel the unwanted rooms, without human reps needing to spend valuable time on an administrative task. </p>
+
+
+
+<p>The upside of this work is evident in both cost savings and customer satisfaction. The company is currently anticipating saving<strong> </strong>$2 million through its ability to handle queries without human intervention. More importantly, the continuous feedback loop allowed Engine to improve its Customer Satisfaction Score from 3.7 to 4.3 out of 5.&nbsp;</p>
+
+
+
+<p>The journey to deploying Eva did have a few delays and missed connections. One pain point was a lack of visibility: “We didn&#8217;t have reporting,” explained Demetri Salvaggio, VP of Customer Experience &amp; Operations, and the team had to put manual reporting in place while waiting for out-of-the-box analytics. Today, however, with Agentforce Studio they can see what Eva struggles with and resolve it. One example: Eva initially provided a confusing answer in response to queries about wedding blocks. Engine’s deployment team reviewed this “moment” in the dashboard and wrote a<strong> </strong>new knowledge article for that use case, ensuring Eva would have the information it needed to respond correctly in the future.&nbsp;</p>
+
+
+
+<p>Looking ahead, Engine will continue working on its <a href="https://www.salesforce.com/news/stories/agentforce-ai-voice-agents-future/" target="_blank" rel="noreferrer noopener">Agentforce voice implementation</a> — ensuring the right tonality, speed, and tenor to reflect the brand. It’s also focused on creating a “build-once” platform that allows the company to deploy automations seamlessly across all channels, reducing tech debt and improving scalability. The company also hopes to expand  into voice-to-text applications to further enhance efficiency, accessibility, and customer insight — so customers have less trouble and more travel.</p>
+
+
+
+<aside class="contextual-driver has-text-align-left contextual-driver--mountain">
+	<header class="tidbit-header">
+		<h2 class="tidbit-head">
+			How Voice AI Is Reshaping the $135 Billion Call Center Industry		</h2>
+	</header>
+	<div class="tidbit-body">
+		<p></p>	</div>
+			<p class="tidbit-link label">
+			<a class="label has-right-arrow has-right-arrow--small" href="https://www.salesforce.com/news/stories/agentforce-ai-voice-agents-future/" target="_blank">
+				<span>READ THE STORY</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
+	<path d="M13.92 5.38a1 1 0 000-.76.9.9 0 00-.17-.26.25.25 0 000-.07l-4-4a1 1 0 00-1.46 1.42L10.59 4H1.07a1 1 0 000 2h9.52l-2.3 2.29a1 1 0 000 1.42 1 1 0 001.42 0l4-4a.25.25 0 000-.07.9.9 0 00.21-.26z" />
+</svg>
+			</a>
+		</p>
+				<img class="tidbit img-mountain"
+		srcset="
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-mountain-large@0.5x.png 84w,
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-mountain-large@1x.png 168w,
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-mountain-large@2x.png 336w
+		"
+		src="https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-mountain-large@1x.png"
+		alt="Illustration of mountain"
+		sizes="(min-width:1024px) 175px, 130px"
+	>
+	</aside>
+
+</div></div>
+
+
+
+<h2 class="wp-block-heading" id="h-devry-university-learning-how-to-help-students-learn"><strong>DeVry University: Learning How to Help Students Learn</strong></h2>
+
+
+
+<div class="wp-block-group is-style-media-wrapping-container"><div class="wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained">
+<figure class="wp-block-embed alignright is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/pmiQSYgEWagxQP8X8KvqMk.jpg"  data-uuid="pmiQSYgEWagxQP8X8KvqMk"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<p>DeVry University has long served a unique population — adult learners pursuing degrees and credentials that fit into busy, often unpredictable lives. In fact, more than 80% of its learners are over 25, many of whom are balancing careers, caregiving, and school.</p>
+
+
+
+<p>“Our students engage with us around the clock, often when we’re not immediately available,” said Chris Campbell, CIO of DeVry University. “We needed a way to ensure students could get accurate, helpful information anytime — not just when staff were online.” To meet that goal, DeVry turned to Agentforce to create an always-on, AI-powered support experience for learners.&nbsp;</p>
+
+
+
+<p>However, DeVry faced two key challenges. The first involved DeVryPro, the university’s AI-powered online learning platform designed to help modern workers adapt to emerging technologies. Initially, the agent’s responses were too restrictive, often saying, “I can’t answer that here.” After analyzing real conversations, the team adjusted the parameters, expanding its ability to provide relevant, actionable insights. Within 48 hours, engagement improved significantly.</p>
+</div></div>
+
+
+
+<aside class="contextual-driver has-text-align-left contextual-driver--evergreen">
+	<header class="tidbit-header">
+		<h2 class="tidbit-head">
+			DeVry utilizes innovation and technology to care for students.		</h2>
+	</header>
+	<div class="tidbit-body">
+		<p></p>	</div>
+			<p class="tidbit-link label">
+			<a class="label has-right-arrow has-right-arrow--small" href="https://www.salesforce.com/education/devry-university/" target="_blank">
+				<span>LEARN MORE</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 10">
+	<path d="M13.92 5.38a1 1 0 000-.76.9.9 0 00-.17-.26.25.25 0 000-.07l-4-4a1 1 0 00-1.46 1.42L10.59 4H1.07a1 1 0 000 2h9.52l-2.3 2.29a1 1 0 000 1.42 1 1 0 001.42 0l4-4a.25.25 0 000-.07.9.9 0 00.21-.26z" />
+</svg>
+			</a>
+		</p>
+				<img class="tidbit img-evergreen"
+		srcset="
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-evergreen-large@0.5x.png 84w,
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-evergreen-large@1x.png 168w,
+			https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-evergreen-large@2x.png 336w
+		"
+		src="https://www.salesforce.com/news/wp-content/themes/newsroom/assets/images/article-tidbit-evergreen-large@1x.png"
+		alt="Illustration of evergreen"
+		sizes="(min-width:1024px) 175px, 130px"
+	>
+	</aside>
+
+
+
+
+<p>The second challenge arose with one of DeVry’s student portal agents designed to help current learners navigate the academic catalog. The issue wasn’t accuracy but context. Without course history, the agent often recommended completed or irrelevant courses. DeVry’s solution was to integrate structured data sources, giving the agent the awareness needed to personalize responses in real time.</p>
+
+
+
+<p>These improvements marked another step in the university’s evolution toward an AI-enabled, student-centered model — one that incorporates automation and human insight to deliver care when and where students need it most.&nbsp;</p>
+
+
+
+<p>“Technology should enhance human connection, not replace it,” said Campbell. “With Agentforce, we’re able combine automated accuracy with human care — working together to support students whenever and however they need it.”</p>
+
+
+
+<h2 class="wp-block-heading" id="h-indeed-understand-that-agentic-implementations-are-like-no-other"><strong>Indeed: Understand That Agentic Implementations Are Like No Other</strong></h2>
+
+
+
+<p>Indeed launched agents across the company’s workflows to make the job search even faster, but the company quickly realized that three things make agent deployment different from other tech implementations. First, agent deployments require fundamentally changing team structures — who is involved in building these types of products — and modifying other internal processes.<br><br>Then there was the question of data sources. “The more context the agent has, the more powerful,” said Linda West, VP of Business Automation. “Investing a lot of time in understanding what data sources are going to enrich the context for the agent is such a critical part of the process to ensure the agent is as powerful as it possibly can be.”<br><br>Finally, Indeed found that alignment with human teams is essential. “You can’t underestimate the fact that in most of these cases, you need humans and agents to work here hand in hand,” said West. This alignment required clarity with the “human teams” on the vision and the problem set — a key element of any company’s agentic implementation strategy.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="h-safari365-all-in-on-data-360"><strong>Safari365: All in on Data 360</strong></h2>
+
+
+
+<p>In the early days of Safari365, the company managed $30,000 custom trips with spreadsheets and Word docs. A single itinerary could involve 20 vendors across multiple destinations, and the tech stack was totally fragmented. Leads came from one tool, emails were sent from another, and availability lived elsewhere. “It was impossible to get a full picture of the customer journey,” said Marcus Brain, <a href="https://www.salesforce.com/customer-stories/safari365-marcus-brain-interview/" target="_blank" rel="noreferrer noopener">Founder of Safari365</a>, which is one of Africa’s leading tour operators. “We had no way to track performance, spot bottlenecks, or understand where we were losing potential travelers.”<br><br>When Safari365 initially got started with Salesforce, it was a big lift to rebuild all of the pricing logic into the system — the company had 3,000 different suppliers, each with different rules. (For example, what’s the fee for sharing a room with a child versus with a partner?) But, said Brain, the focus on data was worth the effort. When Safari365 recently got started with Agentforce, it had actually just completed another major data cleanup. The timing was perfect. “Because our data is so clean and structured, we were in a great position to launch Agentforce,” said Brain. “We could immediately take advantage of the automation because all the inputs were already there, deeply integrated into our workflows.” Now, when customers book a trip, they get a personalized set of “day notes” telling them exactly what each day of their custom trip will look like. Or Agentforce can go back to a conversation with the customer from years ago and pull up the fact that the client’s son loves elephants and suggest a close-up experience.<br><br>Next up? Safari365 is going all in on <a href="https://www.salesforce.com/data/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Data 360</a>. “Right now, so much of our staff’s time is spent calling small bush camps and digging through third-party sites. That’s not structured Salesforce data,” said Brain. With Data 360, “we’ll be able to marry external data — like TripAdvisor reviews or Booking.com content — with our internal records. It’ll help us vet new suppliers, enrich itineraries, and take our personalization to the next level.” </p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90893</post-id>	</item>
+		<item>
+		<title>Salesforce Named a Leader in Gartner® Magic Quadrant™ for Digital Commerce for the 10th Consecutive Year</title>
+		<link>https://www.salesforce.com/news/stories/gartner-magic-quadrant-digital-commerce-2025/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Thu, 06 Nov 2025 16:15:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90849</guid>
+
+					<description><![CDATA[Salesforce today announced it was positioned as a Leader in the 2025 Gartner® Magic Quadrant™ for Digital Commerce, marking the 10th consecutive year the company has been recognized for its vision and execution in the space. Salesforce was positioned furthest to the right within the quadrant on Completeness of Vision.&#160; Agentforce Commerce (previously Commerce Cloud) [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Salesforce today announced it was positioned as a Leader in the 2025 Gartner® Magic Quadrant™ for Digital Commerce, marking the 10th consecutive year the company has been recognized for its vision and execution in the space. Salesforce was positioned furthest to the right within the quadrant on Completeness of Vision.&nbsp;</p>
+
+
+
+<p><a href="https://www.salesforce.com/commerce/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentforce Commerce</a> (previously Commerce Cloud) is a leading <a href="https://www.salesforce.com/commerce/unified-commerce/" target="_blank" rel="noreferrer noopener">unified commerce</a> platform for B2C and B2B companies, built to grow revenue, lower total cost of ownership, and achieve faster time-to-value in the new agentic era of commerce.</p>
+
+
+
+<p><strong>Why it matters: </strong><a href="https://www.salesforce.com/commerce/what-is-digital-commerce/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Digital commerce</a> will represent 20.5% of total global retail sales in 2025, <a href="https://www.emarketer.com/content/ecommerce-account-more-than-20--of-worldwide-retail-sales-despite-slowdown" target="_blank" rel="noreferrer noopener">according to eMarketer</a>, and the digital commerce market is projected to reach $6.42 trillion.&nbsp;</p>
+
+
+
+<p>The continued acceleration of digital commerce underscores the vital need for a unified, scalable, and adaptable strategy for both B2C and B2B. As B2B sales increasingly shift online and consumers demand seamless, personalized experiences, companies require a single platform to manage complexity and drive growth across all channels.</p>
+
+
+
+<p>Agentforce Commerce empowers B2C and B2B companies to grow their online presence and maximize revenue opportunities on all channels and surfaces through four core differentiators:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.salesforce.com/platform/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener"><strong>Agentforce 360 Platform</strong></a><strong>:</strong> Salesforce’s agentic platform delivers highly personalized and autonomous experiences at scale, with the capability to seamlessly extend and syndicate commerce to new consumer AI channels.</li>
+
+
+
+<li><strong>Unified Commerce:</strong> Agentforce Commerce encompasses a natively unified platform, consolidating essential retail functions like <a href="https://www.salesforce.com/commerce/order-management/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Order Management</a> (OMS), <a href="https://www.salesforce.com/retail/cloud-pos/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Point of Sale</a> (POS), <a href="https://www.salesforce.com/data/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Data 360</a>, loyalty, and payments under single pricing models for a comprehensive, streamlined solution.</li>
+
+
+
+<li><strong>Global Reach: </strong>Built to support the world’s most complex operations, Salesforce offers unmatched global capabilities, including multi-site architectures, support for 60+ languages and 150+ currencies, and an extensive network of industry accelerators and partners across multiple regions and sectors.</li>
+
+
+
+<li><strong>Enterprise Scale</strong>: Agentforce Commerce provides a secure, highly available, and resilient architecture, ensuring the necessary scale and flexibility to handle high-volume B2C and complex B2B peak demands, enabling organizations to focus on design and customer experience rather than infrastructure.</li>
+</ul>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>Agentforce Commerce is the unified platform built for this new era, natively connecting digital commerce, point-of-sale, and order management with actionable data and agentic AI.</p>
+<cite>Nitin Mangtani, EVP &amp; GM, Agentforce Commerce</cite></blockquote>
+
+
+
+<p><strong>Salesforce perspective:</strong>&nbsp;</p>
+
+
+
+<p>&#8220;The commerce industry is rapidly moving toward agentic experiences. Agentforce Commerce is the unified platform built for this new era, natively connecting digital commerce, point-of-sale, and order management with actionable data and <a href="https://www.salesforce.com/agentforce/what-is-agentic-ai/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">agentic AI</a>. This unique combination delivers the enterprise scale, intelligent capabilities, and global reach that B2B and B2C brands need to achieve maximum efficiency and long-term customer value.&#8221; — Nitin Mangtani, EVP &amp; GM, Agentforce Commerce</p>
+
+
+
+<p><strong>Innovation in action:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Salesforce recently announced several <a href="https://www.salesforce.com/commerce/innovations/#b2ccommerce?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">new innovations at Dreamforce</a>, including Guided Shopping Agent, Zero Copy Data Access, Agentic Order Routing, Agentic Boost &amp; Bury, and Customizable Storefront Components.</li>
+
+
+
+<li>Salesforce also announced <a href="https://www.salesforce.com/news/press-releases/2025/10/14/stripe-openai-agentic-commerce-protocol-announcement/" target="_blank" rel="noreferrer noopener">support for the Agentic Commerce Protocol</a> alongside Stripe and OpenAI. This will allow digital retailers on Agentforce Commerce to surface their product catalog to consumers in ChatGPT for Instant Checkout.</li>
+</ul>
+
+
+
+<p><strong>Customer perspective:&nbsp;</strong></p>
+
+
+
+<p>According to Gartner® Peer Insights™, Salesforce customers see the value of Agentforce Commerce:</p>
+
+
+
+<ul class="wp-block-list">
+<li>“It is standard in the industry. Offers a wide variety of integrations, including with the CRM. Covers all our needs in terms of e-commerce, from payment to fulfillment.”
+<ul class="wp-block-list">
+<li>&#8220;Leader on the Market&#8221; (<a href="https://www.gartner.com/reviews/market/digital-commerce/vendor/salesforce/product/salesforce-b2c-commerce-cloud/review/view/5983534" target="_blank" rel="noreferrer noopener">An IT manager from a 1B-3B USD retail company, giving the Salesforce B2C Commerce Platform 4/5 Rating</a>)</li>
+</ul>
+</li>
+</ul>
+
+
+
+<ul class="wp-block-list">
+<li>“Its shared architecture can handle [a] high volume of customers and provides automatic scaling of resources. Data encryption by Salesforce makes it more secured. AI capabilities are an added advantage.”
+<ul class="wp-block-list">
+<li>&#8220;Salesforce B2C Commerce: A Cloud-Based, Feature-Rich Solution&#8221; (<a href="https://www.gartner.com/reviews/market/digital-commerce/vendor/salesforce/product/salesforce-b2c-commerce-cloud/review/view/5866092" target="_blank" rel="noreferrer noopener">A customer service and support associate at the 30B+ USD consumer goods company, giving the Salesforce B2C Commerce Platform 5/5 Rating</a>)</li>
+</ul>
+</li>
+</ul>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90248"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/press-releases/2025/10/14/stripe-openai-agentic-commerce-protocol-announcement/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=1024" class="content-card__image" alt="Salesforce Announces Support for Agentic Commerce Protocol with Stripe" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Announces-Support-for-Agentic-Commerce-Protocol-in-collaboration-with-Stripe-1.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/press-releases/2025/10/14/stripe-openai-agentic-commerce-protocol-announcement/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Salesforce Announces Support for Agentic Commerce Protocol in Collaboration with Stripe				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				5 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="89547"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/emerging-llm-search-for-holidays/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=1024" class="content-card__image" alt="Salesforce on Emerging LLM Search for the Holidays" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/With-1.25T-in-Holiday-Sales-Up-for-Grabs-GEO-Is-the-New-SEO.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/emerging-llm-search-for-holidays/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								With $1.25T in Holiday Sales Up for Grabs, LLMs Emerge as New Frontier for Search				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				5 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h4 class="wp-block-heading" id="h-additional-information"><strong>Additional information:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>View a <a href="https://www.salesforce.com/form/commerce/gartner-digital-commerce-mq/" target="_blank" rel="noreferrer noopener">complimentary copy</a> of the 2025 Gartner® Magic Quadrant™ for Digital Commerce report</li>
+
+
+
+<li>Learn more about <a href="https://www.salesforce.com/commerce/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentforce Commerce</a></li>
+
+
+
+<li>Discover the <a href="https://www.salesforce.com/commerce/innovations/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">latest Agentforce Commerce innovations</a></li>
+</ul>
+
+
+
+<p><em>Gartner Disclaimer</em></p>
+
+
+
+<p><em>Gartner does not endorse any vendor, product or service depicted in its research publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner research publications consist of the opinions of Gartner’s research organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this research, including any warranties of merchantability or fitness for a particular purpose.</em></p>
+
+
+
+<p><em>GARTNER is a registered trademark and service mark of Gartner and Magic Quadrant is a registered trademark of Gartner, Inc. and/or its affiliates in the U.S. and internationally and are used herein with permission. All rights reserved. This graphic was published by Gartner, Inc. as part of a larger research document and should be evaluated in the context of the entire document. The Gartner document is available upon request from Salesforce.</em></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90849</post-id>	</item>
+		<item>
+		<title>Salesforce Scales Water, Forest, and Ocean Initiatives to Build Resilience for Communities Across Latin America</title>
+		<link>https://www.salesforce.com/news/stories/nature-based-actions-cop30/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Thu, 06 Nov 2025 16:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90878</guid>
+
+					<description><![CDATA[Ahead of COP30 in Belém, Brazil, Salesforce announced it is advancing its Nature Positive Strategy with a renewed focus on water and new funding to support local watershed resilience in Brazil and Mexico.&#160; Why it matters: Nature provides more than $125 trillion in ecosystem services that support food, water, and environmental wellbeing. As these systems [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Ahead of <a href="https://unfccc.int/cop30" target="_blank" rel="noreferrer noopener">COP30</a><strong> </strong>in Belém, Brazil, Salesforce announced it is advancing its <a href="https://www.salesforce.com/content/dam/web/en_us/www/documents/white-papers/nature-positive-strategy.pdf" target="_blank" rel="noreferrer noopener">Nature Positive Strategy</a> with a renewed focus on water and new funding to support local watershed resilience in Brazil and Mexico.&nbsp;</p>
+
+
+
+<p><strong>Why it matters: </strong>Nature provides more than <a href="https://livingplanet.panda.org/en-US/" target="_blank" rel="noreferrer noopener">$125 trillion in ecosystem services</a> that support food, water, and environmental wellbeing. As these systems come under strain, investing in nature is essential to protecting livelihoods and long-term wellbeing.</p>
+
+
+
+<p><strong>Go deeper: </strong>Building on Salesforce’s global commitment through 1t.org to conserve, restore, and grow 100 million trees, these initiatives deepen the company’s Nature Positive Strategy — driving restoration across Latin America that will help restore more than 2 million trees and strengthen the ecosystems that secure clean water for millions of people.</p>
+
+
+
+<p><strong>Accelerating Nature Positive Action in Latin America: </strong>Salesforce continues to invest in community-led restoration across Brazil and Mexico:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>In Brazil</strong>, Salesforce supports Conservation International’s<strong> </strong><a href="https://trees.salesforce.com/en/conservation-brazil?site=site_pfrIyOd7mzUSYXg" target="_blank" rel="noreferrer noopener"><strong>Conservador das Águas project</strong></a><strong> </strong>in the Jaguari River Basin — a vital water source for nearly 9 million people in São Paulo. The initiative restores springs and riparian zones, increases native vegetation, and creates ecological corridors that improve water quality and strengthen watershed resilience.</li>
+
+
+
+<li><strong>In Mexico</strong>, Salesforce is supporting three major restoration efforts: Conservation International’s restoration of the<strong> </strong><a href="https://trees.salesforce.com/en/ci-mexico?site=site_RKJxbTEUTTwW9y7" target="_blank" rel="noreferrer noopener"><strong>Xochimilco wetland</strong></a>,‌ ‌and Arbor Day Foundation and Nación Verde’s reforestation of the <strong>Cutzamala and Moctezuma watersheds</strong> — ‌both critical to Mexico City’s water supply‌ — ‌and the<strong> </strong><a href="https://trees.salesforce.com/en/forestsformonarchs?site=site_RgkwmACSDfbnDpr" target="_blank" rel="noreferrer noopener"><strong>Forests for Monarchs project</strong></a><strong> </strong>in Michoacán, which restores monarch butterfly habitat while partnering with Indigenous and local communities to manage their lands sustainably.&nbsp;</li>
+
+
+
+<li>Salesforce also <a href="https://sosma.org.br/noticias/sos-mata-atlantica-foundation-launches-the-atlantic-forest-alliance-during-pre-cop30-event" target="_blank" rel="noreferrer noopener">joined</a> the <strong>Brazilian Atlantic Forest Alliance</strong>, a multisector coalition mobilizing investment in conservation, restoration, and biodiversity projects across the biome — with a focus on the Middle Tietê and Middle Paraíba do Sul river basins, which are critical to Brazil’s water and climate future.&nbsp;</li>
+</ul>
+
+
+
+<p><strong>Deeping Focus on Water Stewardship: </strong>The next phase of Salesforce’s Nature Positive Strategy introduces a dedicated water program centered on three key pillars:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Resilient Data Centers: </strong>Establishing sustainable water withdrawal and discharge expectations for priority first- and third-party data centers, and engaging cloud partners to improve transparency and performance.</li>
+
+
+
+<li><strong>Resilient Power Supply: </strong>Addressing the water intensity of electricity generation by advancing clean energy procurement and grid decarbonization in priority regions.</li>
+
+
+
+<li><strong>Resilient Watersheds: </strong>Investing in nature-based solutions‌ — ‌such as reforestation and groundwater recharge‌ — ‌to improve water availability and quality in the ecosystems surrounding priority offices and data centers.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="h-advancing-ocean-and-coastal-resilience"><strong>Advancing Ocean and Coastal Resilience</strong></h2>
+
+
+
+<p>Salesforce is also scaling its commitment to blue carbon — <a href="https://www.salesforce.com/news/stories/salesforce-launches-new-initiatives-to-grow-sustainable-ocean-based-carbon-markets/" target="_blank" rel="noreferrer noopener">an essential climate solution that supports biodiversity, protects coastal communities, and drives carbon removal</a>.</p>
+
+
+
+<p>This includes partnerships with the <a href="https://www.mangrovebreakthrough.com/" target="_blank" rel="noreferrer noopener">Mangrove Breakthrough</a> to mobilize finance and strengthen project supply —<a href="https://www.salesforce.com/news/stories/salesforce-launches-new-initiatives-to-grow-sustainable-ocean-based-carbon-markets/"> </a>from co-sponsoring <a href="https://oceanriskalliance.org/wp-content/uploads/High-Quality-Blue-Carbon-PG_FINAL_11.9.2022.pdf" target="_blank" rel="noreferrer noopener">High-Quality Blue Carbon Principles</a> and <a href="https://www.salesforce.com/news/stories/salesforce-gives-11m-to-restore-ecosystems-and-advance-climate-justice/" target="_blank" rel="noreferrer noopener">seed-funding</a> early-stage projects in Latin America, to providing AI technology to <a href="https://oceanriskalliance.org/news/first-of-a-kind-ai-driven-platform-linking-blue-economy-projects-and-investors-unveiled/" target="_blank" rel="noreferrer noopener">ORRAA’s Octopus Platform</a> to help link investors with projects.&nbsp;</p>
+
+
+
+<p>Through the <a href="https://www.symbiosiscoalition.org/" target="_blank" rel="noreferrer noopener">Symbiosis Coalition</a>, Salesforce is now driving collective action to deliver up to 20 million tonnes of high-integrity nature-based carbon removal credits by 2030, with an <a href="https://www.symbiosiscoalition.org/rfp" target="_blank" rel="noreferrer noopener">RFP</a> planned for 2026 that will include blue carbon projects.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>By investing in watershed restoration and nature-based solutions, we’re helping protect ecosystems that sustain communities while building a more resilient planet.</p>
+<cite>Sunya Norman, Senior Vice President of Impact, Salesforce</cite></blockquote>
+
+
+
+<p><strong>Soundbites: </strong>“At COP30, the world is calling for action that connects local leadership with global scale,” said Sunya Norman, Senior Vice President of Impact at Salesforce. “By investing in watershed restoration and nature-based solutions, we’re helping protect ecosystems that sustain communities while building a more resilient planet.”</p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="88144"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/agentforce-for-net-zero-cloud-announcement/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=1024" class="content-card__image" alt="Salesforce Launches Agentforce for Net Zero Cloud" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/Salesforce-Launches-Agentforce-for-Net-Zero-Cloud-with-Unified-Data-to-Help-Teams-Meet-Sustainability-Compliance-Cut-Costs-and-Drive-Efficiency.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/agentforce-for-net-zero-cloud-announcement/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Salesforce Launches Agentforce for Net Zero Cloud with Unified Data to Help Teams Meet Sustainability Compliance, Cut Costs, and Drive Efficiency				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				6 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="87887"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/scaling-impact-sustainability-ai-agents/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=1024" class="content-card__image" alt="How Autonomous Agents Help Scale Sustainability Needs" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/06/The-Climate-Code_-How-Autonomous-Agents-Help-Scale-Sustainability-Needs.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/scaling-impact-sustainability-ai-agents/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Meet the Digital Workforce Scaling Up Sustainability and Climate Disaster Response				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				7 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h4 class="wp-block-heading" id="h-learn-more"><strong>Learn more:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Learn more about <a href="https://www.salesforce.com/company/sustainability/" target="_blank" rel="noreferrer noopener">sustainability at Salesforce</a>&nbsp;</li>
+
+
+
+<li>Read Salesforce’s <a href="https://www.salesforce.com/en-us/wp-content/uploads/sites/4/documents/company/sustainability/salesforce-ai-sustainability-outlook.pdf" target="_blank" rel="noreferrer noopener">AI Sustainability Outlook</a> on challenges and solutions to scaling AI</li>
+
+
+
+<li>Explore how <a href="https://www.salesforce.com/net-zero/cloud/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentforce Net Zero</a> can help companies <a href="https://trailhead.salesforce.com/content/learn/modules/water-and-waste-tracking-with-net-zero-cloud" target="_blank" rel="noreferrer noopener">track their&nbsp;water and waste</a></li>
+
+
+
+<li>Take Salesforce’s Trailhead trail on building an <a href="https://trailhead.salesforce.com/content/learn/modules/salesforce-sustainable-ai-blueprint-quick-look" target="_blank" rel="noreferrer noopener">AI sustainability strategy</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90878</post-id>	</item>
+		<item>
+		<title>Study: 84% of Technical Leaders Need Data Overhaul for AI Strategies to Succeed</title>
+		<link>https://www.salesforce.com/news/stories/data-analytics-trends-2026/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Tue, 04 Nov 2025 13:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90828</guid>
+
+					<description><![CDATA[Seventy-six percent of business leaders say they’re under growing pressure to drive business value with data. Yet Salesforce’s new State of Data and Analytics report reveals their biggest hurdle is still incomplete, out-of-date, or poor-quality data. The chasm between businesses’ data demands and their data realities becomes more problematic in the agentic AI era. While [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Seventy-six percent of business leaders say they’re under growing pressure to drive business value with data. Yet Salesforce’s new <a href="https://www.salesforce.com/resources/research-reports/state-of-data-analytics/" target="_blank" rel="noreferrer noopener">State of Data and Analytics</a> report reveals their biggest hurdle is still incomplete, out-of-date, or poor-quality data. The chasm between businesses’ data demands and their data realities becomes more problematic in the <a href="https://www.salesforce.com/agentforce/what-is-agentic-ai/?d=cta-body-promo-8">agentic AI</a> era. While business leaders are eager to use AI for insights and productivity, their technical counterparts worry a new approach to data and analytics is needed. In fact, 84% of data and analytics leaders say their data strategies need a complete overhaul before their AI ambitions can succeed. </p>
+
+
+
+<p>To close the gap, savvy technical leaders are focusing on the fundamentals: timely, context-rich data; stronger governance; and <a href="https://www.salesforce.com/in/blog/zero-copy/" target="_blank" rel="noreferrer noopener">zero copy</a> architectures that unlock trapped, distributed data regardless of where it resides. On their journey to becoming <a href="https://www.salesforce.com/agentforce/agentic-enterprise/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">agentic enterprises</a>, they’re also embracing emerging solutions, like agentic analytics, that bring reliable insights into the flow of work.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>The lessons learned from earlier waves of AI adoption provide a blueprint for companies to become agentic enterprises, where human employees and intelligent AI agents work together.</p>
+<cite>Michael Andrew, Chief Data Officer, Salesforce</cite></blockquote>
+
+
+
+<p>“The lessons learned from earlier waves of AI adoption provide a blueprint for companies to <a href="https://www.salesforce.com/blog/playbook/agentic-ai/#introduction" target="_blank" rel="noreferrer noopener">become agentic enterprises</a>, where human employees and intelligent AI agents work together,” explained Michael Andrew, Chief Data Officer at Salesforce. “Trusted, unified, and contextual data is the key that unlocks everything. For organizations ready to execute at scale, this is the moment to shore up data foundations to confidently scale AI to its full potential to deliver real value and ROI.”</p>
+
+
+
+<h2 class="wp-block-heading" id="h-key-data-from-the-report-nbsp"><strong>Key data from the report:&nbsp;</strong></h2>
+
+
+
+<p><strong>Existing data foundations strain to support business ambitions.</strong><br>Nearly two-thirds of business leaders (63%) describe their organizations as data-driven — up 10 points from 2023. Yet just as many (63%) data and analytics leaders say their companies struggle to drive business priorities with data, exposing a gap between data maturity perceptions and reality. </p>
+
+
+
+<ul class="wp-block-list">
+<li>Less than half (49%) of business leaders say they can reliably generate timely insights.</li>
+
+
+
+<li>Nearly half (49%) of data and analytics leaders say their companies occasionally or even frequently draw incorrect conclusions from data with poor business context.</li>
+
+
+
+<li>Incomplete, out-of-date, or poor-quality data remains the number one factor preventing organizations from being truly &#8220;data-driven.&#8221;</li>
+</ul>
+
+
+
+<p><strong>Poor data derails path to becoming an agentic enterprise.</strong><br><a href="https://www.salesforce.com/artificial-intelligence/what-is-ai/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI</a> has quickly become the top data priority — and the biggest stress test for existing data foundations. In 2023’s State of Data and Analytics report, expanding AI capabilities was among the top three data priorities; today, it’s the uncontested number one. </p>
+
+
+
+<ul class="wp-block-list">
+<li>As a result, 67% of data and analytics leaders feel pressure to implement AI quickly.&nbsp;</li>
+
+
+
+<li>Yet 42% lack full confidence in the accuracy and relevance of their AI outputs, likely because of the disconnected, out-of-date data it draws from.</li>
+
+
+
+<li>While 84% of data and analytics leaders theoretically agree that AI&#8217;s outputs are only as good as its data inputs, their reality is a bit more complicated. Data and analytics leaders estimate over a quarter (26%) of their organizational data is untrustworthy.&nbsp;</li>
+</ul>
+
+
+
+<p>Businesses are feeling the consequences of training AI on faulty data foundations.</p>
+
+
+
+<ul class="wp-block-list">
+<li>89% of data and analytics leaders with AI in production say they&#8217;ve experienced inaccurate or misleading AI outputs.</li>
+
+
+
+<li>More than half of data and analytics leaders (55%) at companies training or fine-tuning their own models report they&#8217;ve wasted significant resources doing so with bad data.</li>
+</ul>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>89% of data and analytics leaders believe a strong data foundation is the most critical factor for successful AI.</p>
+</blockquote>
+
+
+
+<p>“Agentic AI isn’t the next technology — it&#8217;s the next revolution. <a href="https://www.salesforce.com/agentforce/ai-agents/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI agents</a> handle routine tasks so humans can focus on creativity, relationships, and impact,” announced Salesforce CEO Marc Benioff in his Dreamforce keynote. However, he warned that “to truly get the most value and context from <a href="https://www.salesforce.com/artificial-intelligence/ai-models/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI models</a>, you’ve got to get your data right. You have to get to more integrated solutions. You have to get the priorities right. You have to get the governance right.“</p>
+
+
+
+<p><strong>Even high-quality data is useless if it’s trapped.</strong><br>Nearly 9 in 10 data and analytics leaders believe <a href="https://www.salesforce.com/data/unified-data/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">unified data</a> is key to meeting customer expectations. At the same time,  trapped data remains an ever-growing challenge, skyrocketing from last on their list of challenges two years ago to a top five hurdle today. The issue is exacerbated by application sprawl; the average enterprise uses 897 applications, and only 29% are connected. This severe fragmentation scatters data across silos, making it difficult or impossible to access. As a result: </p>
+
+
+
+<ul class="wp-block-list">
+<li>Data and analytics leaders estimate that 19% of their company’s data is siloed, inaccessible, or otherwise unusable.</li>
+
+
+
+<li>More concerning, 70% of data and analytics leaders believe their most valuable business insights reside within this inaccessible 19%.</li>
+
+
+
+<li>The ramifications are widespread, with over 8 in 10 data and analytics leaders citing reduced AI capabilities, obscured customer views, reduced personalization, and missed revenue opportunities as a result.</li>
+</ul>
+
+
+<div class="tableau-viz-embed-container ">
+	<tableau-viz
+		class="tableau-viz-embed"
+		src="https://public.tableau.com/views/ImpactsofDataSilosandTrappedData/Embed1?:language=en-US&#038;:sid=&#038;:redirect=auth&#038;:display_count=n&#038;:origin=viz_share_link"
+		toolbar="hidden"
+		hide-tabs
+	></tableau-viz>
+</div>
+
+
+
+<p><strong>To meet business demands, technical leaders revisit how data is accessed, used, and secured.</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>To mitigate trapped data challenges, 56% of organizations are adopting <a href="https://www.salesforce.com/blog/zero-copy/#:~:text=Zero%20copy%20integration%20makes%20it,Getty%20Images%20/%20Studio%20Science%5D" target="_blank" rel="noreferrer noopener">zero copy</a> data integration, an approach that makes it possible to access data that is sitting in multiple different databases at the same time without having to move, copy, or reformat anything.
+<ul class="wp-block-list">
+<li>These changes are paying off. Companies using zero copy are 25% more likely to deliver superior customer experiences and 34% more likely to succeed with AI initiatives than those without zero copy.</li>
+</ul>
+</li>
+
+
+
+<li>Natural language interfaces, like <a href="https://www.tableau.com/blog/agentic-analytics-new-paradigm-for-business-intelligence" target="_blank" rel="noreferrer noopener">agentic analytics</a>, can solve for data literacy and access bottlenecks.
+<ul class="wp-block-list">
+<li>63% of data and analytics leaders say translating business questions into technical queries is prone to error.</li>
+
+
+
+<li>93% of business leaders say they’d perform better if they could ask data questions with natural language.</li>
+</ul>
+</li>
+
+
+
+<li><a href="https://www.salesforce.com/data/governance/guide/" target="_blank" rel="noreferrer noopener">Governance</a> and security protocol updates are needed to address increasingly complex data demands.
+<ul class="wp-block-list">
+<li>Only 43% of data and analytics leaders have established formal <a href="https://www.salesforce.com/data/governance/guide/framework/" target="_blank" rel="noreferrer noopener">data governance frameworks</a> and policies.</li>
+
+
+
+<li>88% of data and analytics leaders agree that AI demands entirely new approaches to governance and security.</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="tableau-viz-embed-container ">
+	<tableau-viz
+		class="tableau-viz-embed"
+		src="https://public.tableau.com/views/ZeroCopyGivesFirmsanAdvantage/Embed2?:language=en-US&#038;:sid=&#038;:redirect=auth&#038;:display_count=n&#038;:origin=viz_share_link"
+		toolbar="hidden"
+		hide-tabs
+	></tableau-viz>
+</div>
+
+
+
+<p>“As companies move towards becoming agentic enterprises, true transformation happens when data and AI move in lockstep, “ said Andrew. “Strong data foundations give AI the context it needs, and AI, in turn, helps leaders unlock the full potential of their data. The organizations treating data and AI as an integrated strategy are the ones who will successfully move from pilots to execution to see AI deliver significant impact.”&nbsp;&nbsp;</p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="89850"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/idc-ceo-agentic-ai-preparedness-research/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=1024" class="content-card__image" alt="CEOs on Agentic AI Preparedness" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/IDC-InfoBrief_-CEOs-Are-More-Prepared-for-Agentic-AI-Than-You-Think—And-Theyre-Betting-on-Growth-Over-Automation.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/idc-ceo-agentic-ai-preparedness-research/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								IDC Research: CEOs on Agentic AI Preparedness				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				5 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="89752"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/life-sciences-ai-survey-insights-2025/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=1024" class="content-card__image" alt="A man and a woman sit at a laptop to read life sciences AI survey insights for 2025." sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/09/Two-Years-to-Go_-Nearly-100-of-Life-Science-Leaders-Say-AI-Agents-Will-Become-Essential_94.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/life-sciences-ai-survey-insights-2025/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								The Life Sciences Industry Is in Flux; 94% of Leaders See AI Agents as Stabilizer				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				8 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h4 class="wp-block-heading" id="h-go-deeper"><strong>Go Deeper:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Read the full <a href="https://www.salesforce.com/resources/research-reports/state-of-data-analytics/" target="_blank" rel="noreferrer noopener">State of Data and Analytics</a> report</li>
+
+
+
+<li>Discover how <a href="https://www.salesforce.com/data/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Data 360</a> can unlock the full value of your data across the enterprise</li>
+
+
+
+<li>Learn how <a href="https://www.tableau.com/products/tableau-next?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Tableau Next</a> powers analytics for the agentic era</li>
+
+
+
+<li>Watch a <a href="https://www.salesforce.com/form/zero-copy-partner-network/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">video explainer series on how the Data 360 Zero Copy Partner Network unlocks your data</a></li>
+
+
+
+<li>Watch the <a href="https://www.salesforce.com/plus/experience/dreamforce_2025/series/must-see_keynote_moments_2025/episode/episode-s1e1" target="_blank" rel="noreferrer noopener">2025 Dreamforce keynote</a> for free on Salesforce+</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading" id="h-methodology"><strong>Methodology:</strong></h4>
+
+
+
+<p>Data in this report are from two double-anonymous surveys conducted from June 27 through August 13, 2025. The first survey generated 3,800 responses from analytics and IT decision makers from 18 different countries across North America, Latin America, Asia-Pacific, and Europe. The second survey generated 3,852 responses from line-of-business leaders from the same countries. More details can be found in the report. Cultural bias impacts country-level survey results.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90828</post-id>	</item>
+		<item>
+		<title>How Businesses Use AI to Meet People Where (and When) They Are</title>
+		<link>https://www.salesforce.com/news/stories/how-ai-meets-people-where-they-are/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Mon, 03 Nov 2025 17:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90805</guid>
+
+					<description><![CDATA[People with questions are everywhere, all the time, and entities like city governments and medical institutions don’t necessarily have the budgets to establish 24/7 call centers. Taxpayer dollars and patient fees are precious. Using AI and Agentforce, however, these organizations can meet their constituents, patients, learners, and customers whenever and wherever they are when they [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p><br>People with questions are everywhere, all the time, and entities like city governments and medical institutions don’t necessarily have the budgets to establish 24/7 call centers. Taxpayer dollars and patient fees are precious. Using AI and <a href="https://www.salesforce.com/agentforce/" target="_blank" rel="noreferrer noopener">Agentforce</a>, however, these organizations can meet their constituents, patients, learners, and customers whenever and wherever they are when they need help. It doesn’t just save money on after-hours staff. It builds the kind of trust that money can’t buy.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="h-city-of-kyle">City of Kyle</h2>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/gLDW8soZ7Cn9u9UGDKuB2M.jpg"  data-uuid="gLDW8soZ7Cn9u9UGDKuB2M"  data-v="4"  data-type="inline"  data-width="500"  data-height="187"/>
+</div></figure>
+
+
+
+<p>Soon, people will be able to visit the DMV at 10 a.m. on a Saturday or 8:30 p.m. on a Tuesday. Just kidding. Government services operate 8 to 5 Monday through Friday, said Joshua Chronley, Assistant Director of Finance for the City of Kyle, a suburb south of Austin, Texas.&nbsp;</p>
+
+
+
+<p>In Kyle, however, an <a href="https://www.salesforce.com/news/stories/kyle-texas-agentforce-city-government/" target="_blank" rel="noreferrer noopener">Agentforce-driven 311 app</a> allows residents to flag anything from a broken bench to a pothole to a water leak. Ultimately, the city’s goal is to make the system voice-enabled, allowing residents to call and talk to an agent that knows everything about the city and can answer questions or field service requests.&nbsp;</p>
+
+
+
+<p>The city has already seen a 10% drop in traditional call volume, but a steady number of requests for service have continued to flow in. Residents are getting the services they want –&nbsp; no awkward phone tree or call timing required.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="h-pearson">Pearson</h2>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/oY6W8RrSiDF2f9qLWEwWpQ.jpg"  data-uuid="oY6W8RrSiDF2f9qLWEwWpQ"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<p>For students enrolled in classes through <a href="https://www.salesforce.com/customer-stories/pearson/" target="_blank" rel="noreferrer noopener">Pearson</a>, an online education platform, learning happens when and where they’re able to carve out a few hours. And that could be anytime — day or night. Suddenly realizing they don’t have the right access code for their courseware can be frustrating.&nbsp;</p>
+
+
+
+<p>Using Agentforce, Pearson can get those students logged in, ready to work through courses or problem sets no matter the hour. The value, said Gabriele Bauman, VP of Customer Relationship Management &amp; Employee Platforms for Pearson, is not necessarily monetary. It’s a feeling of being supported right away. “It really drives loyalty,” she said.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-uchicago-medicine">UChicago Medicine</h2>
+
+
+
+<figure class="wp-block-embed aligncenter is-type-video is-provider-vidyard wp-block-embed-vidyard"><div class="wp-block-embed__wrapper">
+<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script><img decoding="async"  style="width: 100%; margin: auto; display: block;"  class="vidyard-player-embed"  src="https://play.vidyard.com/LveAAkTUh51yZHEAHpbDJm.jpg"  data-uuid="LveAAkTUh51yZHEAHpbDJm"  data-v="4"  data-type="inline"  data-width="500"  data-height="281"/>
+</div></figure>
+
+
+
+<p>The patient journey through the healthcare system can be disjointed. At UChicago Medicine, the customer service hub had more than 150 representatives, but patients were still often <a href="https://www.salesforce.com/customer-stories/uchicago-medicine/" target="_blank" rel="noreferrer noopener">routed to voicemail</a> or transferred to departments that didn’t have the right information at hand.&nbsp;</p>
+
+
+
+<p>Even simple tasks like refilling a prescription or figuring out parking took an average of four minutes. “We are trying to flip that on its head and really make this a way for patients to reach out to us at the time they want to and in the mode that they want to,” said Tyler Bauer, SVP of System Ambulatory Operations for UChicago Medicine.&nbsp;</p>
+
+
+
+<p>Now, instead of patients being forced to try and contact their clinicians at certain prescribed times, AI is helping UChicago Medicine remediate some of that disjunction. Better still: When the patient actually is with their doctor, technologies like ambient listening eliminate the need to type notes on a computer and allow the clinician and the patient to interact as humans, face-to-face.</p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90937"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/how-businesses-use-ai-for-tedious-tasks/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=1024" class="content-card__image" alt="Agentforce Astro" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/How-Businesses-Use-AI-to-Do-the-Donkey-Work.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/how-businesses-use-ai-for-tedious-tasks/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								How Businesses Use AI to Turn Tedious Tasks into Happy Customers				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				3 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90893"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/customers-deploying-agentforce/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=1024" class="content-card__image" alt="Agentforce Astro" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/11/The-Good-the-Bad-and-the-In-Between.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/customers-deploying-agentforce/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Test, Learn, Iterate: Lessons from Five Real-World Agentforce Rollouts				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				7 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h4 class="wp-block-heading" id="h-go-deeper"><strong>Go deeper:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Take a tour of <a href="https://www.salesforce.com/news/stories/agentforce-city-dreamforce-2025/" target="_blank" rel="noreferrer noopener">Agentforce City</a></li>
+
+
+
+<li>Learn how voice is reshaping the <a href="https://www.salesforce.com/news/stories/agentforce-ai-voice-agents-future/" target="_blank" rel="noreferrer noopener">call center industry</a></li>
+
+
+
+<li>Find five <a href="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/" target="_blank" rel="noreferrer noopener">key takeaways</a> from Dreamforce 2025</li>
+
+
+
+<li>Dive deeper into how the <a href="https://www.salesforce.com/news/stories/kyle-texas-agentforce-city-government/" target="_blank" rel="noreferrer noopener">city of Kyle, Texas</a>, used AI to reinvent constituent services</li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90805</post-id>	</item>
+		<item>
+		<title>The Agentic Enterprise Takes Shape: Six Leaders on AI ROI</title>
+		<link>https://www.salesforce.com/news/stories/leaders-on-ai-roi/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Mon, 27 Oct 2025 15:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90734</guid>
+
+					<description><![CDATA[Business leaders aren&#8217;t asking whether AI agents will transform their organizations‌ — ‌they&#8217;re already measuring the returns. From a century-old California creamery to a global beverage giant, executives report dramatic efficiency gains as they weave autonomous AI agents into core operations. The shift represents more than a technology upgrade; it&#8217;s a fundamental rearchitecture of how [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Business leaders aren&#8217;t asking whether <a href="https://www.salesforce.com/agentforce/ai-agents/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI agents</a> will transform their organizations‌ — ‌they&#8217;re already measuring the returns.</p>
+
+
+
+<p>From a century-old California creamery to a global beverage giant, executives report dramatic efficiency gains as they weave <a href="https://www.salesforce.com/agentforce/ai-agents/autonomous-agents/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">autonomous AI agents</a> into core operations. The shift represents more than a technology upgrade; it&#8217;s a fundamental rearchitecture of how work gets done, with AI agents handling routine tasks while humans focus on strategy, creativity, and complex problem-solving.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>We already get 25 to 30% efficiency through the power of agentic AI.</p>
+<cite>Athina Kanioura, Global Chief Strategy and Transformation Officer, PepsiCo</cite></blockquote>
+
+
+
+<p>The payoff is nearly immediate. PepsiCo&#8217;s Global Chief Strategy and Transformation Officer Athina Kanioura points to concrete results in field operations: &#8220;We already get 25 to 30% efficiency through the power of agentic AI.&#8221;</p>
+
+
+<div class="wp-block-image__wrapper">
+<figure class="wp-block-image aligncenter size-large prevent-download"><a href="#" class="wp-block-image__modal-toggle" aria-expanded="false" data-modal-id="90736-modal"><span class="screen-reader-text">Open Image Modal</span><img fetchpriority="high" decoding="async" height="683" width="1024" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1024" alt="" class="wp-image-90736" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg 5663w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=300&amp;h=200 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=768&amp;h=512 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1024&amp;h=683 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1536&amp;h=1024 1536w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=2048&amp;h=1365 2048w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=264&amp;h=176 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=500&amp;h=333 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=678&amp;h=452 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=150&amp;h=100 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=290&amp;h=193 290w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1218&amp;h=812 1218w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></figure>
+<div id="90736-modal" class="image-modal" aria-hidden="true" aria-labelledby="image-dialog-title"><div class="image-modal__overlay" tabindex="-1" data-a11y-dialog-hide></div><div class="image-modal__content" role="dialog"><button class="image-modal__close-button" type="button" data-a11y-dialog-hide aria-label="Close this image dialog window"><svg viewBox="0 0 26 25" height="16" width="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x=".626" y="22.753" width="32" height="3" rx="1.5" transform="rotate(-45 .626 22.753)"/><rect x="2.747" y=".125" width="32" height="3" rx="1.5" transform="rotate(45 2.747 .125)"/></svg></button><h1 id="image-dialog-title" class="screen-reader-text">Image Modal</h1>
+<figure class="wp-block-image aligncenter size-large prevent-download"><img decoding="async" width="5663" height="3775" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1024" alt="" class="wp-image-90736" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg 5663w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=300&amp;h=200 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=768&amp;h=512 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1024&amp;h=683 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1536&amp;h=1024 1536w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=2048&amp;h=1365 2048w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=264&amp;h=176 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=500&amp;h=333 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=678&amp;h=452 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=150&amp;h=100 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=290&amp;h=193 290w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/DF25-SF-251014-MR105653_4db99f.jpg?w=1218&amp;h=812 1218w" sizes="(max-width: 5663px) 100vw, 5663px" /></figure>
+</div></div></div>
+
+
+<h2 class="wp-block-heading" id="h-a-new-architectural-layer"><strong>A new architectural layer</strong></h2>
+
+
+
+<p>For companies aiming to become an <a href="https://www.salesforce.com/agentforce/agentic-enterprise/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentic Enterprise</a>, the first challenge is rethinking how technology decisions get made. At 1-800Accountant, the shift has been fundamental.</p>
+
+
+
+<p>&#8220;Any time a requirement comes in now, the thought is, how does <a href="https://www.salesforce.com/artificial-intelligence/what-is-ai/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI</a> enable this for us? How does Agentforce fit into this? And how do we develop with that knowledge?&#8221; said Chief Strategy Officer Ryan Teeples. The company now views AI as a core architectural layer, not an add-on.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-speed-and-scale-at-lower-cost"><strong>Speed and scale at lower cost</strong></h2>
+
+
+
+<p>For some businesses, the transformation isn&#8217;t optional‌ — ‌it&#8217;s existential. Daniel Peter, CTO of Petaluma Creamery, explained how AI enables his century-old company to compete in a high-cost market: &#8220;The only way [we] can continue to survive in a high-cost business area is to use something like Agentforce and automate a lot.&#8221;</p>
+
+
+
+<p>The business case extends beyond efficiency to customer experience. Laura Alber, President and CEO of Williams-Sonoma, Inc., sees the technology as a competitive imperative: &#8220;I&#8217;m shocked that more people aren&#8217;t adopting all of these things, because it just extends your ability to serve your customer faster and better. And by the way, it&#8217;s cheaper.&#8221; </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>I&#8217;m shocked that more people aren&#8217;t adopting all of these things, because it just extends your ability to serve your customer faster and better. And by the way, it&#8217;s cheaper.</p>
+<cite> Laura Alber, President and CEO of Williams-Sonoma, Inc.</cite></blockquote>
+
+
+
+<h2 class="wp-block-heading" id="h-elevating-human-work"><strong>Elevating human work</strong></h2>
+
+
+
+<p>The most profound shift may be in how employees spend their time. With agents handling repetitive processes, human workers can focus on judgment-intensive tasks.</p>
+
+
+
+<p>Linda West, VP of Business Automation at Indeed, describes the division of labor: &#8220;First and foremost, the type of work that they&#8217;re doing shifts because all of the rote tasks, all of the things that are really simple and process-driven, can be handled more quickly by an agent. All of the things that are more complex, maybe more creative, maybe even require a human to be more of a problem-solver, those things get escalated to a human.&#8221;</p>
+
+
+
+<p>The City of Kyle, Texas, saw this play out in its 311 service center, where agents now handle routine inquiries, preserving human capacity for complex problems. A city leader noted the impact on service quality: &#8220;When there are actual issues that need a human being with critical thinking, they can give good customer service and walk our residents through things. They&#8217;re fresher … they&#8217;re more relaxed to go through those harder conversations because they&#8217;re not worn out from just, you know, [handling] call after call after call.&#8221; </p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90722"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/vibe-coding-demo-story/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=1024" class="content-card__image" alt="Story: Vibe Coding Demo" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/vibe-coding-demo-story/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								&#8216;Vibe Coding&#8217; Is Real — Watch It Happen Live 				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				2 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90699"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=1024" class="content-card__image" alt="Five Key Takeaways from Dreamforce 2025" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Five Key Takeaways from Dreamforce 2025				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				8 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h2 class="wp-block-heading" id="h-the-data-advantage"><strong>The data advantage</strong></h2>
+
+
+
+<p>The power of AI agents stems from their ability to synthesize vast amounts of institutional knowledge. Said Peter: &#8220;We&#8217;ve actually got 20 years of structured and unstructured data that agents can tap into.&#8221;</p>
+
+
+
+<p>This capability is also enabling new operating models. PepsiCo envisions a future where agents handle transactions while human sales reps focus exclusively on strategic relationships. &#8220;You now create an environment where the digital agent is your prime salesperson and your salesperson is a business development person,” said Kanioura.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-the-agentic-enterprise-takes-shape"><strong>The Agentic Enterprise takes shape</strong></h2>
+
+
+
+<p>As these leaders demonstrate, the Agentic Enterprise has moved from concept to measurable reality‌ — ‌redefining organizational speed, efficiency, and customer experience by maximizing both digital and human capabilities.</p>
+
+
+
+<h4 class="wp-block-heading" id="h-go-deeper"><strong>Go deeper:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Understand the <a href="https://www.salesforce.com/ap/agentforce/agentic-enterprise/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentic Enterprise</a></li>
+
+
+
+<li>Find <a href="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/" target="_blank" rel="noreferrer noopener">five key takeaways from Dreamforce 2025</a></li>
+
+
+
+<li>Learn how Williams-Sonoma, Inc.; Indeed; and Heathrow Airport are <a href="https://www.youtube.com/watch?v=_AcVe71rJqg" target="_blank" rel="noreferrer noopener">improving customer experience with agentic AI</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90734</post-id>	</item>
+		<item>
+		<title>&#8216;Vibe Coding&#8217; Is Real — Watch It Happen Live </title>
+		<link>https://www.salesforce.com/news/stories/vibe-coding-demo-story/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Fri, 24 Oct 2025 15:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90722</guid>
+
+					<description><![CDATA[Salesforce&#8217;s Agentforce Vibes lets business users build AI apps through conversation, extending low-code development with natural language prompts grounded in company data Forget syntax and specs. When Patrick Stokes unveiled Agentforce Vibes recently, the Salesforce EVP of Product &#38; Industries Marketing had one word for the new technology: fun.&#160; It’s the fastest, and frankly most [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-center"><em>Salesforce&#8217;s Agentforce Vibes lets business users build AI apps through conversation, extending low-code development with natural language prompts grounded in company data</em></p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>Forget syntax and specs. When Patrick Stokes unveiled <a href="https://www.salesforce.com/agentforce/developers/vibe-coding/" target="_blank" rel="noreferrer noopener">Agentforce Vibes</a> recently, the Salesforce EVP of Product &amp; Industries Marketing had one word for the new technology: fun.&nbsp;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>It’s the fastest, and frankly most fun way to build anything just from a description.</p>
+<cite>Patrick Stokes, EVP of Product &amp; Industries Marketing, Salesforce</cite></blockquote>
+
+
+
+<p>“It’s the fastest, and frankly most fun way to build anything just from a description,” he said <a href="https://youtu.be/Gce2DhADtK4?si=cIWy2Rv8DUcuv7hB&amp;t=1451" target="_blank" rel="noreferrer noopener">during the demo</a>.</p>
+
+
+
+<p>How does it work? Simply put, Agentforce Vibes reads context. This capability allows it to build applications from descriptions alone — no code required. “Context is what gives language meaning and understanding,” Stokes explained. This ability for technology to understand the context of what a human is saying, makes it simple to turn ideas into apps, agents, and workflows.</p>
+
+
+
+<p>This is made possible through “vibe coding” — a term coined by Andrej Karpathy in February 2025. The approach treats AI as a collaborative partner, allowing it to generate a first functional draft of code or components based on natural language instructions. Developers then fine-tune the output, <a href="https://www.salesforce.com/news/stories/changing-role-of-developers-with-ai-agents/" target="_blank" rel="noreferrer noopener">shifting the focus</a> from writing every line to shaping the overall solution.</p>
+
+
+
+<figure class="wp-block-embed alignwide is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Dreamforce Main Keynote 2025" width="500" height="281" src="https://www.youtube.com/embed/Gce2DhADtK4?start=1449&#038;feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>Agentforce Vibes, which is now generally available, automatically connects to enterprise data in Salesforce. This helps the AI coding agent understand the language of your business and access the necessary context to support the output for any given prompt, such as building quality and scalable apps. Users have the ability to scaffold net-new custom objects, relationships, page layouts, and code Apex logic quickly.</p>
+
+
+
+<p>And since vibe coding is as easy as writing something down, developers of any skill level can build functional enterprise code — fast.&nbsp;</p>
+
+
+
+<p>“The AI is elevating the developer. And the AI is elevating every aspect of the enterprise,” said Salesforce Co-Chair and CEO Marc Benioff.</p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90734"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/leaders-on-ai-roi/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=1024" class="content-card__image" alt="Leaders on AI ROI" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/leaders-on-ai-roi/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								The Agentic Enterprise Takes Shape: Six Leaders on AI ROI				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				3 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90699"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=1024" class="content-card__image" alt="Five Key Takeaways from Dreamforce 2025" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Recap_-The-Best-of-Dreamforce.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								Five Key Takeaways from Dreamforce 2025				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				8 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h4 class="wp-block-heading" id="h-go-deeper"><strong>Go deeper:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Learn more about <a href="https://www.salesforce.com/agentforce/developers/vibe-coding/" target="_blank" rel="noreferrer noopener">Agentforce Vibes</a> and the <a href="https://www.youtube.com/watch?v=tnNuJxeJ47w" target="_blank" rel="noreferrer noopener">Agentforce Vibes demo</a></li>
+
+
+
+<li>Develop from a browser using <a href="https://trailhead.salesforce.com/content/learn/modules/code-builder-quick-look" target="_blank" rel="noreferrer noopener">Agentforce Vibes IDE</a>&nbsp;</li>
+
+
+
+<li>Find insight on the new identity of <a href="https://www.salesforce.com/news/stories/ai-agent-artisans/" target="_blank" rel="noreferrer noopener">developers in the Agentic Enterprise</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90722</post-id>	</item>
+		<item>
+		<title>Five Key Takeaways from Dreamforce 2025</title>
+		<link>https://www.salesforce.com/news/stories/five-dreamforce-2025-takeaways/</link>
+		
+		<dc:creator><![CDATA[Sarah Fallon]]></dc:creator>
+		<pubDate>Wed, 22 Oct 2025 16:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://www.salesforce.com/?p=90699</guid>
+
+					<description><![CDATA[The transition to becoming an Agentic Enterprise — where every company operates with boundless capacity, precision, and speed by pairing human expertise with AI-powered agents — is not just an upgrade. It is a fundamental shift that can create entirely new capabilities, revenue streams, and ways of working. At Dreamforce 2025, attendees had the opportunity [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>The transition to becoming an <a href="https://www.salesforce.com/agentforce/agentic-enterprise/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentic Enterprise</a> — where every company operates with boundless capacity, precision, and speed by pairing human expertise with <a href="https://www.salesforce.com/agentforce/ai-agents/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">AI-powered agents</a> — is not just an upgrade. It is a fundamental shift that can create entirely new capabilities, revenue streams, and ways of working. At <a href="https://www.salesforce.com/dreamforce/" target="_blank" rel="noreferrer noopener">Dreamforce 2025</a>, attendees had the opportunity to explore what that looks like from a range of angles, whether they are CIOs at large organizations or founders and small business owners.&nbsp;</p>
+
+
+
+<p>To become truly Agentic Enterprises, Salesforce Chair and CEO Marc Benioff said on stage <a href="https://www.youtube.com/watch?v=YFJyxJ8z-uU" target="_blank" rel="noreferrer noopener">during his opening keynote</a>, “You have got to get your data right. You have got to get to more integrated solutions. You have got to get the priorities right. You have to get the governance right.” He mentioned a <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noreferrer noopener">recent MIT study</a> that showed that generative AI pilot projects tend to fail.</p>
+
+
+
+<p>“We all saw that just making our own models or rolling it ourselves, or DIYing it, isn&#8217;t going to do it. We need to all be on this journey together to get to this better place that, in our vision, is the Agentic Enterprise.” Here’s what you need to know about getting started on that journey.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>We all saw that just making our own models or rolling it ourselves, or DIYing it, isn&#8217;t going to do it. We need to all be on this journey together to get to this better place that, in our vision, is the Agentic Enterprise. </p>
+<cite>Marc Benioff, Chair and CEO at Salesforce </cite></blockquote>
+
+
+
+<h2 class="wp-block-heading" id="h-1-to-become-an-agentic-enterprise-focus-on-scalable-sustainable-change"><strong>1. To become an Agentic Enterprise, focus on scalable, sustainable change</strong></h2>
+
+
+
+<p>One of the sessions was a series of roundtable discussions about <a href="https://reg.salesforce.com/flow/plus/df25/sessioncatalog/page/catalog/session/1748986539851001hcC4" target="_blank" rel="noreferrer noopener">building a successful Agentic Enterprise</a>, and it kicked off with an honest dose of reality: everything’s changing, nothing feels stable, and everyone’s boss suddenly wants “all the AI.” The message? Identify a single small use case, refine it, and build your Agentic Enterprise from there.&nbsp;</p>
+
+
+
+<p>The presenters and audience alike wrestled with the tension between ambition and readiness: <a href="https://www.salesforce.com/artificial-intelligence/what-is-ai/">AI</a> is moving fast, but adoption requires grounding in solid data, thoughtful design, and a deep understanding of how people actually do their jobs. Success depends on getting the right information to the right agent — human or digital — at the right time.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>AI is moving fast, but adoption requires grounding in solid data, thoughtful design, and a deep understanding of how people actually do their jobs.</p>
+</blockquote>
+
+
+
+<p>To do that, data, data, data is key, and in another session, <em>Salesforce on Salesforce: 5 Agentic Lessons, </em>executives shared a tidy framework based on Salesforce’s experience as customer zero for other companies as they seek to become Agentic Enterprises:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Start small and go fast</li>
+
+
+
+<li>Test, tune, repeat</li>
+
+
+
+<li>The right data is gold</li>
+
+
+
+<li>Measure value and impact</li>
+
+
+
+<li>Embrace new ways of working</li>
+</ol>
+
+
+
+<p>When the roundtable discussion turned to business priorities, the common driver was clear: do more with fewer people. Teams are stretched thin, yet expectations for customer experience remain sky-high. The promise of AI, many noted, lies not in replacement but in elevation — helping humans work smarter and deliver more.</p>
+
+
+
+<p>A case study from RBC Wealth Management, presented by Greg Beltzer, Chief Customer Officer for AI, Agentforce at Salesforce, drove the point home. RBC’s journey began with wealth advisors using AI to surface insights and save time during the meeting prep process. Because RBC had long treated data as a strategic asset, it was able to activate AI quickly and see tangible results: data completion rates soared, notes became richer, and adoption happened naturally — no incentives required.&nbsp;</p>
+
+
+
+<p>The session closed on a human-centered note with William Dressler, Salesforce Global Head of AI Innovation, AI Practice, reframing “AI architecture” not as a tech stack, but as a blend of people, process, and trust. Building an Agentic Enterprise, he said, is as much about designing human-AI collaboration as it is about engineering systems. Without trust — especially in the data — AI can’t take root. But with it, organizations can unlock something far more powerful than automation: alignment between human intelligence and machine capability.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-2-cios-need-a-new-architecture-for-the-agentic-enterprise"><strong>2. CIOs need a new architecture for the Agentic Enterprise</strong></h2>
+
+
+
+<p>The &#8220;Agentic Enterprise&#8221; requires a fundamental architectural shift, moving from the traditional seven-layer IT model to an <a href="https://www.salesforce.com/news/stories/agentic-enterprise-architecture/" target="_blank" rel="noreferrer noopener"><strong>11-layer architecture</strong></a> designed specifically to support AI agents. This transformation is necessary to allow AI agents to be able to sense, reason, and act with increasing autonomy. The four new layers are: the Semantic Layer, which provides unified data understanding and context for agents to reason effectively; the AI/ML Layer, which acts as a centralized intelligence hub for training and managing internal and external models; the Agentic Layer, which is the operational core providing frameworks and runtimes for building and executing agents at scale; and the Enterprise Orchestration Layer, which serves as the control plane for coordinating, governing, and optimizing workflows that span agents, humans, and deterministic systems.</p>
+
+
+
+<p>To manage this shift, enterprises should adopt a phased approach that delivers tangible business value at each step, moving from basic information retrieval to full multi-agent, cross-domain orchestration. This journey begins with Phase 1: Information Retrieval Agents, focused on building a trustworthy data foundation and the basic AI components needed for information retrieval through the agentic, AI/ML, and semantic layers. Once trust is established, move on to Phase 2: Domain-Specific Agent Workflows, where agents shift to &#8220;action-oriented&#8221; tasks within a specific area. The final stages are Phase 3: Cross-Domain Orchestration, automating complex processes that span organizational silos, and Phase 4: Multi-Agent, Multi-Domain Orchestration, which creates a holistic digital simulation of the enterprise for continuous improvement and strategic planning.&nbsp;</p>
+
+
+
+<p>These changes are more than a technical upgrade; they’re part of a strategic journey that helps enterprises truly harness the power of autonomous agents.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-3-for-ai-to-truly-empower-companies-it-has-to-be-deeply-integrated-across-the-product-suite-nbsp"><strong>3. For AI to truly empower companies, it has to be deeply integrated across the product suite&nbsp;</strong></h2>
+
+
+
+<p>In the last 26 years, more than 20 million potential customers contacted Salesforce and Salesforce didn’t call them back. “We didn’t have enough people,” said Benioff during his keynote. “It fueled our competitors.” Now, the Salesforce SDR agent handles 50,000 customers a week. It can do that because it’s deeply integrated with the Sales Cloud and Agentforce 360 Sales, he told the audience.</p>
+
+
+
+<p>If companies are going to use AI to operate with this kind of intelligence and speed, their tools need to have that kind of integration with each other and across the enterprise. That, he said, is what Agentforce 360 is.</p>
+
+
+
+<p>Introduced during Benioff’s opening keynote, <a href="https://www.salesforce.com/agentforce/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener">Agentforce 360</a> is the <a href="https://www.salesforce.com/news/press-releases/2025/10/13/agentic-enterprise-announcement/" target="_blank" rel="noreferrer noopener">fourth edition of Agentforce</a>, and now it’s the platform that powers everything Salesforce does, bringing together the four ingredients of an Agentic Enterprise:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.salesforce.com/platform/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener"><strong>Agentforce 360 Platform</strong></a><strong>:</strong> The foundation for enterprise-grade AI agents, <a href="https://www.salesforce.com/agentforce/what-is-new/" target="_blank" rel="noreferrer noopener">now featuring</a> a new conversational builder, hybrid reasoning for greater control and accuracy, and voice capabilities.</li>
+
+
+
+<li><a href="https://www.salesforce.com/data/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener"><strong>Data 360</strong></a><strong>:</strong> The trusted, unified data layer that gives every agent context. With innovations like Intelligent Context and Tableau Semantics, companies can turn unstructured data and analytics into rich context and understanding for AI.</li>
+
+
+
+<li><strong>Customer 360 Apps:</strong> The business logic and institutional memory of every enterprise —&nbsp;capturing how it sells, serves, markets, and operates — now brought to life through AI agents that deeply understand every customer and process from the inside out.&nbsp;</li>
+
+
+
+<li><a href="https://www.salesforce.com/slack/?d=cta-body-promo-8" target="_blank" rel="noreferrer noopener"><strong>Slack</strong></a><strong>:</strong> The conversational interface for humans and agents to work together, connecting knowledge, actions, and data in real time.</li>
+</ul>
+
+
+
+<p>Agentforce 360 connects employees, operations, customers, and agents, all powered by trusted enterprise data (Data 360, at the center of the “plate” on the graphic below). The key is context. “You don&#8217;t have your data, then you don&#8217;t have your context, you need that deep data integration,” said Benioff. The interface for the platform is Slack — the surface through which users can access an entire business’s intelligence, data, and processes in natural language in the flow of work. “We do 11 trillion emails a year in Salesforce, but each of those emails, it&#8217;s a one-way conversation,” continued Benioff. “What if they were all two-way conversations? That is a vision for what it would look like when I use Slack. Today, I&#8217;ve got dozens of agents that are helping me to make my Slack environment better, more efficient, renew my customers, and sell more effectively. Slack has become an agentic OS.”&nbsp;</p>
+
+
+
+<p>Later, in a conversation with reporters, Athina Kanioura, EVP, Chief Strategy and Transformation Officer at PepsiCo, shared the ROI that PepsiCo is already seeing with Agentforce 360: “We generated 25% to 30% efficiency. We have already rolled out Agentforce in more than 1.5 million stores globally. Our target is 5 million stores by the end of 2026.”</p>
+
+
+<div class="wp-block-image__wrapper">
+<figure class="wp-block-image aligncenter size-large"><a href="#" class="wp-block-image__modal-toggle" aria-expanded="false" data-modal-id="90706-modal"><span class="screen-reader-text">Open Image Modal</span><img loading="lazy" decoding="async" height="558" width="1024" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1024" alt="" class="wp-image-90706" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png 1600w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=300&amp;h=164 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=768&amp;h=419 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1024&amp;h=558 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1536&amp;h=837 1536w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=264&amp;h=144 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=500&amp;h=273 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=678&amp;h=370 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=150&amp;h=82 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=354&amp;h=193 354w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1218&amp;h=664 1218w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></a></figure>
+<div id="90706-modal" class="image-modal" aria-hidden="true" aria-labelledby="image-dialog-title"><div class="image-modal__overlay" tabindex="-1" data-a11y-dialog-hide></div><div class="image-modal__content" role="dialog"><button class="image-modal__close-button" type="button" data-a11y-dialog-hide aria-label="Close this image dialog window"><svg viewBox="0 0 26 25" height="16" width="16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x=".626" y="22.753" width="32" height="3" rx="1.5" transform="rotate(-45 .626 22.753)"/><rect x="2.747" y=".125" width="32" height="3" rx="1.5" transform="rotate(45 2.747 .125)"/></svg></button><h1 id="image-dialog-title" class="screen-reader-text">Image Modal</h1>
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="1600" height="872" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1024" alt="" class="wp-image-90706" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png 1600w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=300&amp;h=164 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=768&amp;h=419 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1024&amp;h=558 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1536&amp;h=837 1536w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=264&amp;h=144 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=500&amp;h=273 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=678&amp;h=370 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=150&amp;h=82 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=354&amp;h=193 354w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/image_4e7f20.png?w=1218&amp;h=664 1218w" sizes="auto, (max-width: 1600px) 100vw, 1600px" /></figure>
+</div></div></div>
+
+
+<h2 class="wp-block-heading" id="h-4-at-the-start-of-your-company-s-agentic-journey-the-data-can-be-a-little-dirty"><strong>4. At the start of your company’s agentic journey, the data can be a little dirty</strong></h2>
+
+
+
+<p>In one session with <a href="http://deeplearning.ai" target="_blank" rel="noreferrer noopener">DeepLearning.AI</a> founder Andrew Ng, an audience member asked a question about data: “How would you recommend getting started organizing your data and building that data layer so that you can start moving toward agentic AI?”<br><br>Ng made the point that perfect should not be the enemy of good, saying “One secret is, no matter what company you are, including the best, most respected AI companies, everyone feels like, ‘Boy, my data is such a mess. It&#8217;s so dirty. I’m never done cleaning it.’ Instead of preemptively cleaning data or over-investing in architectures … just get started on the application and then let that pull your data architecture forward.”&nbsp;</p>
+
+
+
+<p>“It is actually useful to put in place principles of governance: the security, the accessibility, deciding what to store, what to index. But then I find that the actual work of deciding which pieces of data to clean, I tend to not preemptively work on that ahead of the application.”</p>
+
+
+
+<aside class="more-from-block more-from-block--2 alignfull wp-block-newsroom-moreontopic">
+	<div class="more-from-block__content">
+					<h4 class="more-from-block__title">Related</h4>
+		
+		<div class="more-from-block__cards more-from-block__cards--2"
+				>
+			
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90734"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/leaders-on-ai-roi/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=1024" class="content-card__image" alt="Leaders on AI ROI" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/The-Agentic-Enterprise-is-Taking-Shape.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/leaders-on-ai-roi/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								The Agentic Enterprise Takes Shape: Six Leaders on AI ROI				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				3 min read			</div>
+		
+			</div>
+
+</article>
+
+
+
+<article			itemscope=""
+		itemtype="https://schema.org/Article"
+		data-card-id="90722"
+		class="content-card content-card--large-inline is-entire-area-clickable content-card--is-boxed"
+			data-clickable-area-link="https://www.salesforce.com/news/stories/vibe-coding-demo-story/"
+	>
+			<div class="content-card__image-container" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+			<img width="1024" height="576" src="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=1024" class="content-card__image" alt="Story: Vibe Coding Demo" sizes="auto, (max-width: 1024px) 100vw, 1024px" loading="lazy" decoding="async" srcset="https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png 1200w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=300&amp;h=169 300w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=768&amp;h=432 768w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=1024&amp;h=576 1024w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=264&amp;h=149 264w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=500&amp;h=281 500w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=678&amp;h=381 678w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=150&amp;h=84 150w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=314&amp;h=177 314w, https://www.salesforce.com/news/wp-content/uploads/sites/3/2025/10/Salesforce-Vibes-demo-from-the-keynote.png?w=343&amp;h=193 343w" />					</div>
+	
+	<div class="content-card__content-container content-card__content-container--style-">
+		
+		
+					<h3 itemprop="headline" class="content-card__title">
+									<a
+						href="https://www.salesforce.com/news/stories/vibe-coding-demo-story/"
+																			target="_blank"
+												class="content-card__title-link"
+					>
+								&#8216;Vibe Coding&#8217; Is Real — Watch It Happen Live 				</a>			</h3>
+		
+				
+		
+					<div itemprop="readTime" class="content-card__read-time">
+				2 min read			</div>
+		
+			</div>
+
+</article>
+
+		</div>
+		<noscript>
+<div class="pagination-fallback">
+
+		<a href="https://www.salesforce.com/news/feed/page/2/?bc=OTH#section-title">
+			Older Posts		</a>
+		</div>
+</noscript>
+	</div>
+</aside>
+
+
+
+<h2 class="wp-block-heading" id="h-5-agentic-enterprises-don-t-have-to-be-enterprises-at-all"><strong>5. Agentic Enterprises don’t have to be enterprises at all</strong></h2>
+
+
+
+<p>“For every business that’s out there, there’s a finite amount of capital and a finite amount of resources,” said Camping World CEO Marcus Lemonis at a session geared to <a href="https://reg.salesforce.com/flow/plus/df25/sessioncatalog/page/catalog/session/1748987300173001hdCJ" target="_blank" rel="noreferrer noopener">SMBs and startups</a>. “You need to augment that with a lot of technology that&#8217;s going to make it bigger.”</p>
+
+
+
+<p>The catch? It has to be technology people can‌ understand — tools that empower employees, not replace them.</p>
+
+
+
+<p>That’s where small and midsize businesses have an edge. Smaller teams can adopt new technology quickly, without the analysis paralysis that bogs down larger organizations. “The secret sauce to having such robust implementations is that we can move at a pace that is quite unique,” said one participant.&nbsp;</p>
+
+
+
+<p>In an interview with the Salesforce team, Daniel Peter, CTO at Petaluma Creamery, echoed the sentiment that AI can help smaller teams deliver outsized results. “I think there’s a lot of potential for small businesses to reinvent themselves with AI, to be able to be competitive, to be able to get their margins up because they’re able to do way more with a small, lean team. Yes, historically, Salesforce has been built for large enterprises, but it’s worth paying a little more for something that’s as reliable as what the big players have. It’s actually pretty easy to scale it down.”</p>
+
+
+
+<h4 class="wp-block-heading" id="h-go-deeper"><strong>Go deeper:</strong></h4>
+
+
+
+<ul class="wp-block-list">
+<li>Catch up on <a href="https://www.salesforce.com/news/stories/dreamforce-2025-live-blog/" target="_blank" rel="noreferrer noopener">all the news that happened during Dreamforce 2025</a>.</li>
+
+
+
+<li>Learn more about <a href="https://www.salesforce.com/news/stories/ai-agents-free-will-determinism/" target="_blank" rel="noreferrer noopener">how agents must balance deterministic rules</a> for safety and nondeterministic autonomy for creative problem-solving.</li>
+
+
+
+<li>Read the <a href="https://www.salesforce.com/news/stories/the-agentic-wave/" target="_blank" rel="noreferrer noopener">introduction</a> to the next issue of <a href="http://salesforce.com/news/futures25?_ga=2.112167687.2024765688.1760975328-1417551865.1760044051&amp;_gac=1.27871822.1760623329.CjwKCAjwr8LHBhBKEiwAy47uUvNuOsyqttPWyVweu8_9AXLSolJtABiqHroXcG-HmXaO40PtryyUURoCeegQAvD_BwE&amp;_gl=1*vvdeg6*_gcl_aw*R0NMLjE3NjA2MjMzMjkuQ2p3S0NBandyOExIQmhCS0Vpd0F5NDd1VXZOdU9zeXF0dFBXeVZ3ZXU4XzlBWExTb2xKdEFCaXFIcm9YY0ctSG1YYU80MFB0cnl5VVVSb0NlZWdRQXZEX0J3RQ..*_gcl_dc*R0NMLjE3NjA2MjMzMjkuQ2p3S0NBandyOExIQmhCS0Vpd0F5NDd1VXZOdU9zeXF0dFBXeVZ3ZXU4XzlBWExTb2xKdEFCaXFIcm9YY0ctSG1YYU80MFB0cnl5VVVSb0NlZWdRQXZEX0J3RQ..*_gcl_au*MTUwNjk3MjI5OS4xNzYwMDQ0MDUx*_ga*MTQxNzU1MTg2NS4xNzYwMDQ0MDUx*_ga_3VHBZ2DJWP*czE3NjEwNjM4MzQkbzExMiRnMSR0MTc2MTA2MzkzNyRqNTUkbDAkaDA." target="_blank" rel="noreferrer noopener"><em>Salesforce Futures Magazine</em></a>.<br></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">90699</post-id>	</item>
+	</channel>
+</rss>
