@@ -1,12 +1,30 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-news_system}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   backend:
     build:
       context: .
       dockerfile: docker/backend.Dockerfile
     env_file:
+      - .env
       - news-backend/.env
     environment:
-      DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:postgres@host.docker.internal:5432/news_system}"
+      DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/news_system}"
       NEWS_BASE_DIR: /app/news-backend
     volumes:
       - ./downloads:/app/news-backend/downloads
@@ -14,11 +32,15 @@ services:
       - ./logs:/app/news-backend/logs
       - ./images:/app/news-backend/images
       - ./news-backend/system_config.json:/app/news-backend/system_config.json
-      - ./news-backend/collectors_config.json:/app/news-backend/collectors_config.json
+      - ./collectors_config.json:/app/news-backend/collectors_config.json
+      - ./scienceai_subscribers.json:/app/news-backend/scienceai_subscribers.json
       - ./news-backend/loop_stats.json:/app/news-backend/loop_stats.json
       - ./articles_registry.json:/app/news-backend/articles_registry.json
     ports:
       - "3005:3005"
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: unless-stopped
 
   dashboard:
@@ -26,6 +48,7 @@ services:
       NEWS_BASE_DIR: /data
     volumes:
       - ./output:/data/output:ro
+      - ./images:/data/images:ro
       - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
@@ -43,6 +66,7 @@ services:
       NEWS_BASE_DIR: /data
     volumes:
       - ./output:/data/output:ro
+      - ./images:/data/images:ro
       - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
@@ -60,6 +84,8 @@ services:
       NEWS_BASE_DIR: /data
     volumes:
       - ./output:/data/output:ro
+      - ./images:/data/images:ro
+      - ./scienceai_subscribers.json:/data/scienceai_subscribers.json
       - ./articles_registry.json:/data/articles_registry.json:ro
     build:
       context: .
@@ -75,4 +101,8 @@ services:
 networks:
   default:
     name: news-system
+
+volumes:
+  postgres_data:
+    driver: local
 
