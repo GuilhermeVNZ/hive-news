@@ -1,6 +1,5 @@
 use axum::{extract::Query, http::StatusCode, response::IntoResponse, Json};
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 
 use crate::utils::article_registry::ArticleRegistry;
 
@@ -58,7 +57,7 @@ pub async fn get_articles(
         .values()
         .filter(|m| {
             // Check if published
-            if m.status.as_deref() != Some("Published") {
+            if !matches!(m.status, crate::utils::article_registry::ArticleStatus::Published) {
                 return false;
             }
 
@@ -103,8 +102,8 @@ pub async fn get_articles(
                 .map(|dt| dt.format("%Y-%m-%d").to_string())
                 .unwrap_or_else(|| chrono::Utc::now().format("%Y-%m-%d").to_string());
 
-            // Get author from source
-            let author = m.source.clone().unwrap_or_else(|| "ScienceAI Team".to_string());
+            // Get author (default to ScienceAI Team as we don't have source field)
+            let author = "ScienceAI Team".to_string();
 
             Some(Article {
                 id: m.id.clone(),
