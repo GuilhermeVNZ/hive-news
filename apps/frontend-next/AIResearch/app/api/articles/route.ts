@@ -47,19 +47,37 @@ export async function GET(request: Request) {
       throw new Error('Invalid response from backend API');
     }
 
-    // Transform backend articles to AIResearch format
-    const articles = data.items.map((item: any) => {
-      // Generate slug from title
-      const slug = item.title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
+    // Define types
+    interface BackendItem {
+      id: string;
+      title: string;
+      created_at: string;
+      source?: string;
+      destinations?: Array<{ site_name: string }>;
+      featured?: boolean;
+      hidden?: boolean;
+    }
 
+    interface Article {
+      id: string;
+      title: string;
+      excerpt: string;
+      article: string;
+      publishedAt: string;
+      author: string;
+      category: string;
+      readTime: number;
+      imageCategories: string[];
+      isPromotional: boolean;
+      featured: boolean;
+      hidden: boolean;
+    }
+
+    // Transform backend articles to AIResearch format
+    const articles: Article[] = (data.items as BackendItem[]).map((item) => {
       // Generate excerpt (use first destination URL or fallback)
       const excerpt = item.destinations && item.destinations.length > 0
-        ? `Published on ${item.destinations.map((d: any) => d.site_name).join(', ')}`
+        ? `Published on ${item.destinations.map((d) => d.site_name).join(', ')}`
         : 'Article published';
 
       // Estimate read time (assume 200 words per minute, rough estimate)
@@ -84,20 +102,20 @@ export async function GET(request: Request) {
     // Filter by category if provided
     let filteredArticles = articles;
     if (category && category !== 'all') {
-      filteredArticles = articles.filter((a: any) => a.category === category);
+      filteredArticles = articles.filter((a) => a.category === category);
     }
 
     // Filter out hidden articles
-    filteredArticles = filteredArticles.filter((a: any) => !a.hidden);
+    filteredArticles = filteredArticles.filter((a) => !a.hidden);
 
     // Sort: featured first, then by date (newest first)
-    filteredArticles.sort((a: any, b: any) => {
+    filteredArticles.sort((a, b) => {
       if (a.featured && !b.featured) return -1;
       if (!a.featured && b.featured) return 1;
       return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
     });
 
-    const featuredCount = filteredArticles.filter((a: any) => a.featured).length;
+    const featuredCount = filteredArticles.filter((a) => a.featured).length;
     console.log(
       `[AIResearch Articles API] Returning ${filteredArticles.length} articles, ${featuredCount} featured`
     );
