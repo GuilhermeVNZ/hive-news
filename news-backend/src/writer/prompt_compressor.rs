@@ -21,25 +21,66 @@ pub struct CompressedPrompt {
 
 impl PromptCompressor {
     pub fn new() -> Result<Self> {
-        let project_dir = Self::locate_project_dir()
-            .context("Unable to locate compression-prompt project directory")?;
+        let compression_tool_path = Self::locate_compress_binary()?;
+        
+        println!("✅ Found compress binary at: {}", compression_tool_path.display());
 
+        Ok(Self {
+            compression_tool_path,
+        })
+    }
+
+    fn locate_compress_binary() -> Result<PathBuf> {
         let binary_name = if cfg!(target_os = "windows") {
             "compress.exe"
         } else {
             "compress"
         };
 
-        let compression_tool_path = project_dir.join("target").join("release").join(binary_name);
-
-        if !compression_tool_path.exists() {
-            // Try to build if not found
-            Self::build_compression_tool(&project_dir)?;
+        // Priority 1: Check system PATH (Docker: /usr/local/bin/compress)
+        if let Ok(path_result) = Command::new("which").arg(binary_name).output() {
+            if path_result.status.success() {
+                let path_str = String::from_utf8_lossy(&path_result.stdout).trim().to_string();
+                if !path_str.is_empty() {
+                    let path = PathBuf::from(path_str);
+                    if path.exists() {
+                        return Ok(path);
+                    }
+                }
+            }
         }
 
-        Ok(Self {
-            compression_tool_path,
-        })
+        // Priority 2: Check common Docker location
+        let docker_path = PathBuf::from("/usr/local/bin").join(binary_name);
+        if docker_path.exists() {
+            return Ok(docker_path);
+        }
+
+        // Priority 3: Try to locate project directory and pre-built binary
+        if let Ok(project_dir) = Self::locate_project_dir() {
+            let binary_path = project_dir.join("target").join("release").join(binary_name);
+            if binary_path.exists() {
+                return Ok(binary_path);
+            }
+
+            // Try to build if cargo is available
+            if Command::new("cargo").arg("--version").output().is_ok() {
+                println!("📦 Building compression-prompt tool...");
+                if Self::build_compression_tool(&project_dir).is_ok() {
+                    if binary_path.exists() {
+                        return Ok(binary_path);
+                    }
+                }
+            }
+        }
+
+        Err(anyhow::anyhow!(
+            "compress binary not found. Checked:\n\
+             - System PATH (which {})\n\
+             - Docker location (/usr/local/bin/{})\n\
+             - Project build directory (compression-prompt-main/rust/target/release/{})",
+            binary_name, binary_name, binary_name
+        ))
     }
 
     fn locate_project_dir() -> Result<PathBuf> {
@@ -50,23 +91,16 @@ impl PromptCompressor {
             resolve_workspace_path("compression-prompt-main/rust"),
         ];
 
-        let checked: Vec<String> = candidates.iter().map(|p| p.display().to_string()).collect();
-
         for candidate in candidates.iter() {
             if candidate.exists() {
                 return Ok(candidate.clone());
             }
         }
 
-        Err(anyhow::anyhow!(
-            "compression-prompt project not found. Checked paths: {}",
-            checked.join(", ")
-        ))
+        Err(anyhow::anyhow!("compression-prompt project directory not found"))
     }
 
     fn build_compression_tool(project_dir: &Path) -> Result<()> {
-        println!("📦 Building compression-prompt tool...");
-
         let output = Command::new("cargo")
             .args(&["build", "--release"])
             .current_dir(project_dir)
@@ -75,8 +109,7 @@ impl PromptCompressor {
 
         if !output.status.success() {
             let stderr = String::from_utf8_lossy(&output.stderr);
-            eprintln!("Build failed: {}", stderr);
-            return Err(anyhow::anyhow!("Failed to build compression-prompt"));
+            return Err(anyhow::anyhow!("Failed to build compression-prompt: {}", stderr));
         }
 
         println!("✅ Compression tool built successfully");
