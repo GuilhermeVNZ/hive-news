@@ -16,3 +16,4 @@ echo "✅ Dashboard ready!"
 # Start nginx in foreground
 exec nginx -g 'daemon off;'
 
+
