@@ -1395,6 +1395,8 @@ async fn main() -> anyhow::Result<()> {
                 }
                 _ => {
                     // API collectors (arxiv, pmc, semantic_scholar)
+                    // These are already filtered by enabled flag in line 1325-1327
+                    // So if we reach here, the collector is enabled
                     let id = c.id.to_lowercase();
                     if id.contains("arxiv") {
                         use_arxiv = true;
