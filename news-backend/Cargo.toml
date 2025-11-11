@@ -40,6 +40,10 @@ path = "src/bin/fix_unknown_categories.rs"
 name = "servers"
 path = "src/bin/servers.rs"
 
+[[bin]]
+name = "clean-orphan-articles"
+path = "src/bin/clean_orphan_articles.rs"
+
 [dependencies]
 # Web Framework
 axum = "0.7"
