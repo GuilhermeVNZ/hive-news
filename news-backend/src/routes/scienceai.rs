@@ -107,21 +107,71 @@ pub async fn get_articles(
             // Get author (default to ScienceAI Team as we don't have source field)
             let author = "ScienceAI Team".to_string();
 
+            // Read excerpt from subtitle.txt
+            let subtitle_path = full_path.join("subtitle.txt");
+            let excerpt = std::fs::read_to_string(subtitle_path)
+                .unwrap_or_else(|_| "Discover the latest in AI research and technology.".to_string());
+
+            // Extract category from registry or default to "ai"
+            let category = m.category
+                .as_ref()
+                .map(|c| c.to_lowercase())
+                .unwrap_or_else(|| "ai".to_string());
+
+            // Derive image categories from category field
+            // ScienceAI uses "ai" images by default
+            let image_categories = vec![category.clone()];
+
+            // Image selection logic (matching AIResearch)
+            // Carousel uses first category, deterministic
+            // Feed uses second category (or first if only one), non-repeating via article ID
+            let image_carousel = if !image_categories.is_empty() {
+                let cat = &image_categories[0];
+                let cat_dir = cat.to_lowercase();
+                // Use article ID for deterministic selection
+                let id_hash: u64 = m.id.chars()
+                    .filter(|c| c.is_numeric())
+                    .collect::<String>()
+                    .parse()
+                    .unwrap_or(0);
+                let max_images = if cat_dir == "ai" { 59 } else { 20 };
+                let image_num = (id_hash % max_images) + 1;
+                Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
+            } else {
+                Some("/images/ai/ai_1.jpg".to_string())
+            };
+
+            // Feed image uses second category if available, otherwise first
+            let image_feed = if image_categories.len() > 1 {
+                let cat = &image_categories[1];
+                let cat_dir = cat.to_lowercase();
+                let id_hash: u64 = m.id.chars()
+                    .filter(|c| c.is_numeric())
+                    .collect::<String>()
+                    .parse()
+                    .unwrap_or(0);
+                let max_images = if cat_dir == "ai" { 59 } else { 20 };
+                let image_num = (id_hash % max_images) + 1;
+                Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
+            } else {
+                image_carousel.clone()
+            };
+
             Some(Article {
                 id: m.id.clone(),
                 slug,
                 title: title.trim().to_string(),
-                category: "ai".to_string(), // TODO: Extract from image_categories or source
-                image: None, // TODO: Implement image selection
-                image_carousel: None,
-                image_article: None,
-                excerpt: "".to_string(), // TODO: Read from subtitle.txt
+                category,
+                image: image_feed,
+                image_carousel: image_carousel.clone(),
+                image_article: image_carousel, // Same as carousel
+                excerpt: excerpt.trim().to_string(),
                 content: "".to_string(), // Don't load full content for list
                 date,
                 author,
                 read_time: 5, // Default estimate
                 featured: m.featured.unwrap_or(false),
-                image_categories: vec![],
+                image_categories,
             })
         })
         .collect();
