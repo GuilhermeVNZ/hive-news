@@ -134,8 +134,9 @@ export async function generateMetadata({
 
   try {
     // Fetch all articles and find matching one
+    // Use relative path to leverage Next.js rewrites to backend
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3003"}/api/articles`,
+      "/api/articles",
       { cache: "no-store" },
     );
     if (response.ok) {
@@ -189,8 +190,9 @@ export default async function ArticlePage({
 
   try {
     // Fetch all articles and find the one matching the slug
+    // Use relative path to leverage Next.js rewrites to backend
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3003"}/api/articles`,
+      "/api/articles",
       { cache: "no-store" },
     );
     if (response.ok) {

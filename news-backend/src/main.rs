@@ -3916,6 +3916,8 @@ async fn main() -> anyhow::Result<()> {
             "/api/logs/enrich-titles",
             post(routes::logs::enrich_titles_from_arxiv),
         )
+        .route("/api/articles", get(routes::scienceai::get_articles))
+        .route("/api/categories", get(routes::scienceai::get_categories))
         .route("/api/health", get(routes::system::health))
         .route("/api/system/status", get(routes::system::system_status))
         .route("/api/system/config", get(routes::system::get_system_config))

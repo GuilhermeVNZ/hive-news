@@ -4,6 +4,7 @@ pub mod collectors;
 pub mod courses;
 pub mod logs;
 pub mod pages;
+pub mod scienceai;
 pub mod sites;
 pub mod sources;
 pub mod system;
