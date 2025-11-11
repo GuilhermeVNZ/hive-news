@@ -840,26 +840,38 @@ async fn main() -> anyhow::Result<()> {
                 println!("      ⬇️  PDF URL: {}", pdf_url);
                 print!("      ⏳ Downloading... ");
 
-                // Criar requisição com headers para evitar reCAPTCHA
-                let request = client
-                    .get(&pdf_url)
-                    .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-                    .header("Accept", "application/pdf,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-                    .header("Accept-Language", "en-US,en;q=0.9")
-                    .header("Accept-Encoding", "gzip, deflate, br")
-                    .header("DNT", "1")
-                    .header("Connection", "keep-alive")
-                    .header("Upgrade-Insecure-Requests", "1")
-                    .header("Sec-Fetch-Dest", "document")
-                    .header("Sec-Fetch-Mode", "navigate")
-                    .header("Sec-Fetch-Site", "none")
-                    .header("Cache-Control", "max-age=0");
-
+                // Criar requisição com headers adequados para arXiv
+                // arXiv prefere identificação clara do bot
+                let mut retry_count = 0;
+                let max_retries = 3;
                 let download_start = std::time::Instant::now();
-                match request.send().await {
-                    Ok(response) => {
-                        // Verificar se é uma resposta de sucesso
-                        if response.status().is_success() {
+                
+                'retry_loop: loop {
+                    let request = client
+                        .get(&pdf_url)
+                        .header("User-Agent", "NewsSystemCollector/1.0 (contact: admin@airesearch.news; automated research paper collection)")
+                        .header("Accept", "application/pdf")
+                        .header("Accept-Encoding", "gzip, deflate")
+                        .header("Connection", "keep-alive");
+
+                    match request.send().await {
+                        Ok(response) => {
+                            // Check for rate limiting (429 Too Many Requests)
+                            if response.status().as_u16() == 429 {
+                                if retry_count < max_retries {
+                                    retry_count += 1;
+                                    let wait_time = 2u64.pow(retry_count) * 5; // 10s, 20s, 40s
+                                    println!("⚠️  Rate limited by arXiv (429), waiting {}s before retry {}/{}...", wait_time, retry_count, max_retries);
+                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time)).await;
+                                    continue 'retry_loop;
+                                } else {
+                                    println!("❌ Rate limit exceeded after {} retries, skipping article", max_retries);
+                                    break 'retry_loop;
+                                }
+                            }
+                            
+                            // Verificar se é uma resposta de sucesso
+                            if response.status().is_success() {
                             // Verificar Content-Length se disponível
                             if let Some(content_length) = response.headers().get("content-length") {
                                 if let Ok(len_str) = content_length.to_str() {
@@ -919,10 +931,12 @@ async fn main() -> anyhow::Result<()> {
                                                         article.id
                                                     );
                                                 }
+                                                break 'retry_loop; // Success - exit retry loop
                                             }
                                             Err(e) => {
                                                 println!("❌ Failed to write file: {}", e);
                                                 println!("      💥 Error details: {:?}", e);
+                                                break 'retry_loop;
                                             }
                                         }
                                     } else {
@@ -932,11 +946,13 @@ async fn main() -> anyhow::Result<()> {
                                             "      💥 First bytes: {:?}",
                                             &b[..std::cmp::min(100, b.len())]
                                         );
+                                        break 'retry_loop;
                                     }
                                 }
                                 Err(e) => {
                                     println!("❌ Failed to read response bytes: {}", e);
                                     println!("      💥 Error details: {:?}", e);
+                                    break 'retry_loop;
                                 }
                             }
                         } else {
@@ -951,16 +967,20 @@ async fn main() -> anyhow::Result<()> {
                                     println!("      💥 Response preview: {}", preview);
                                 }
                             }
+                            break 'retry_loop;
                         }
                     }
                     Err(e) => {
                         println!("❌ Request failed: {}", e);
                         println!("      💥 Error details: {:?}", e);
+                        break 'retry_loop;
                     }
-                }
+                } // end match
+                } // end retry_loop
 
                 // Delay entre downloads para evitar rate limiting
-                tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;
+                // arXiv recomenda mínimo de 3s, usando 5s para margem de segurança
+                tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
             }
 
             // Se não baixou nenhum novo neste batch, incrementar offset para próximo batch

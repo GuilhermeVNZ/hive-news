@@ -1,6 +1,6 @@
 {
   "loop_config": {
-    "enabled": false,
+    "enabled": true,
     "filter_score_min": 0.4,
     "interval_minutes": 30,
     "max_cycles": 1
