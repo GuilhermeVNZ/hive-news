@@ -549,13 +549,15 @@ async fn main() -> anyhow::Result<()> {
                 max_api_requests
             );
 
-            // URL correta do arXiv API (não use DeepSeek aqui!)
-            // Usar submittedDate antiga para evitar reCAPTCHA
-            // Use category from config (not hardcoded)
+            // URL correta do arXiv API
+            // IMPORTANT: arXiv API issues:
+            // 1. submittedDate filters cause internal server errors
+            // 2. sortBy with descending often returns OLD papers (2020)
+            // 3. Best strategy: NO sorting = relevance-based (naturally recent)
+            // 4. Use category from config (not hardcoded)
             let url = format!(
-                "https://export.arxiv.org/api/query?search_query=cat:{}+AND+submittedDate:[20240101*+TO+{}]&start={}&max_results={}&sortBy=submittedDate&sortOrder=descending",
+                "https://export.arxiv.org/api/query?search_query=cat:{}&start={}&max_results={}",
                 arxiv_category,
-                chrono::Utc::now().format("%Y%m%d"),
                 start_offset,
                 target_count * 2 // Buscar mais para garantir que achamos novos
             );
