@@ -1101,7 +1101,15 @@ async fn main() -> anyhow::Result<()> {
                 existing,
                 downloaded
             );
-            if new_found > 0 {
+            // Continue searching until we find at least 3 new articles or exhaust pages
+            // This ensures we don't stop just because the first page had duplicates
+            if new_found >= 3 {
+                println!("PMC: Found {} new articles total, stopping search", new_found);
+                break;
+            }
+            // Stop if we've checked too many pages without finding enough
+            if page_idx >= 5 && new_found == 0 {
+                println!("PMC: Checked {} pages with no new articles, stopping", page_idx + 1);
                 break;
             }
             retstart += 20;
@@ -1189,7 +1197,15 @@ async fn main() -> anyhow::Result<()> {
                 existing,
                 downloaded
             );
-            if new_found > 0 {
+            // Continue searching until we find at least 3 new articles or exhaust pages
+            // This ensures we don't stop just because the first page had duplicates
+            if new_found >= 3 {
+                println!("Semantic Scholar: Found {} new articles total, stopping search", new_found);
+                break;
+            }
+            // Stop if we've checked too many pages without finding enough
+            if page_idx >= 5 && new_found == 0 {
+                println!("Semantic Scholar: Checked {} pages with no new articles, stopping", page_idx + 1);
                 break;
             }
             offset += 20;
