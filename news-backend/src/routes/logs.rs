@@ -293,8 +293,9 @@ pub async fn list_logs(
                     let slug = title_to_slug(&actual_title);
                     let url = format!("{}/article/{}", base_url, slug);
 
-                    eprintln!("[Logs API] Article {}: site_id={}, base_url={}, slug={}, url={}", 
-                        m.id, site_id_lower, base_url, slug, url);
+                    // Verbose logging disabled for cleaner output
+                    // eprintln!("[Logs API] Article {}: site_id={}, base_url={}, slug={}, url={}", 
+                    //     m.id, site_id_lower, base_url, slug, url);
 
                     // Get site name from site_id
                     let site_name = if site_id_lower == "scienceai" {
@@ -391,16 +392,18 @@ pub async fn list_logs(
         // **REMOVED DUPLICATE VALIDATION BLOCK** - now validated inline above
         let valid_destinations: Vec<DestinationInfo> = destinations;
 
-        // Debug: Log final destinations
+        // Debug: Log final destinations (only warnings)
         if valid_destinations.is_empty() {
             eprintln!("[Logs API] WARNING: Article {} has no valid destinations! title={}, output_dir={:?}, destinations={:?}", 
                 m.id, m.title, m.output_dir, m.destinations);
-        } else {
-            eprintln!("[Logs API] Article {} final destinations count: {}", m.id, valid_destinations.len());
-            for dest in &valid_destinations {
-                eprintln!("[Logs API]   - site_id: {}, site_name: {}, url: {}", dest.site_id, dest.site_name, dest.url);
-            }
         }
+        // Verbose destination logging disabled for cleaner output
+        // else {
+        //     eprintln!("[Logs API] Article {} final destinations count: {}", m.id, valid_destinations.len());
+        //     for dest in &valid_destinations {
+        //         eprintln!("[Logs API]   - site_id: {}, site_name: {}, url: {}", dest.site_id, dest.site_name, dest.url);
+        //     }
+        // }
 
         // Only include articles that have at least one valid destination
         // This filters out articles that exist in registry but not in filesystem
