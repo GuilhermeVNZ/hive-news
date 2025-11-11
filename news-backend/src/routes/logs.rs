@@ -310,10 +310,9 @@ pub async fn list_logs(
                     let full_output_path = if let Some(rel_dir) = &m.output_dir {
                         crate::utils::path_resolver::resolve_workspace_path(rel_dir)
                     } else {
-                        // If no output_dir, try to construct expected path
-                        let article_id = arxiv_id_or_fallback();
+                        // If no output_dir, try to construct expected path using article ID
                         crate::utils::path_resolver::resolve_workspace_path(
-                            format!("output/{}/{}", site_name, article_id)
+                            format!("output/{}/{}", site_name, m.id)
                         )
                     };
 
@@ -324,9 +323,10 @@ pub async fn list_logs(
                             url,
                         });
                     } else {
+                        let arxiv_id_info = extract_arxiv_id(&m.id);
                         eprintln!(
                             "[Logs API] Skipping destination {} for article {} (arXiv ID: {:?}) - not found in filesystem at {}",
-                            site_name, m.id, m.arxiv_id, full_output_path.display()
+                            site_name, m.id, arxiv_id_info, full_output_path.display()
                         );
                     }
                 }
