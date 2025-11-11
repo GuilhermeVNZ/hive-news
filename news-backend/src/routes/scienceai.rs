@@ -141,7 +141,8 @@ pub async fn get_articles(
                 Some("/images/ai/ai_1.jpg".to_string())
             };
 
-            // Feed image uses second category if available, otherwise first
+            // Feed image uses second category if available
+            // Otherwise uses same category but different hash offset for variety
             let image_feed = if image_categories.len() > 1 {
                 let cat = &image_categories[1];
                 let cat_dir = cat.to_lowercase();
@@ -153,8 +154,21 @@ pub async fn get_articles(
                 let max_images = if cat_dir == "ai" { 59 } else { 20 };
                 let image_num = (id_hash % max_images) + 1;
                 Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
+            } else if !image_categories.is_empty() {
+                // Use same category but with different offset to get different image
+                let cat = &image_categories[0];
+                let cat_dir = cat.to_lowercase();
+                let id_hash: u64 = m.id.chars()
+                    .filter(|c| c.is_numeric())
+                    .collect::<String>()
+                    .parse()
+                    .unwrap_or(0);
+                let max_images = if cat_dir == "ai" { 59 } else { 20 };
+                // Add prime number offset to ensure different image from carousel
+                let image_num = ((id_hash + 17) % max_images) + 1;
+                Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
             } else {
-                image_carousel.clone()
+                Some("/images/ai/ai_1.jpg".to_string())
             };
 
             Some(Article {
