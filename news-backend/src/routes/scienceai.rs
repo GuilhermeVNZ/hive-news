@@ -46,6 +46,8 @@ pub struct ArticlesQuery {
 pub async fn get_articles(
     Query(query): Query<ArticlesQuery>,
 ) -> Result<impl IntoResponse, (StatusCode, String)> {
+    eprintln!("[ScienceAI API] GET /api/articles - category: {:?}", query.category);
+    
     // Load articles from registry
     let registry_path = crate::utils::path_resolver::resolve_workspace_path("articles_registry.json");
     let registry = ArticleRegistry::load(&registry_path)
