@@ -305,11 +305,30 @@ pub async fn list_logs(
                         site_id
                     };
 
-                    destinations.push(DestinationInfo {
-                        site_id: site_id_lower.clone(),
-                        site_name: site_name.to_string(),
-                        url,
-                    });
+                    // **CRITICAL FIX**: Before adding destination, verify the article folder exists in filesystem
+                    // Resolve output_dir relative to workspace root
+                    let full_output_path = if let Some(rel_dir) = &m.output_dir {
+                        crate::utils::path_resolver::resolve_workspace_path(rel_dir)
+                    } else {
+                        // If no output_dir, try to construct expected path
+                        let article_id = arxiv_id_or_fallback();
+                        crate::utils::path_resolver::resolve_workspace_path(
+                            format!("output/{}/{}", site_name, article_id)
+                        )
+                    };
+
+                    if full_output_path.exists() {
+                        destinations.push(DestinationInfo {
+                            site_id: site_id_lower.clone(),
+                            site_name: site_name.to_string(),
+                            url,
+                        });
+                    } else {
+                        eprintln!(
+                            "[Logs API] Skipping destination {} for article {} (arXiv ID: {:?}) - not found in filesystem at {}",
+                            site_name, m.id, m.arxiv_id, full_output_path.display()
+                        );
+                    }
                 }
             }
         }
@@ -348,82 +367,29 @@ pub async fn list_logs(
                         "[Logs API] Fallback URL: base_url={}, slug={}, url={}",
                         base_url, slug, url
                     );
-                    destinations.push(DestinationInfo {
-                        site_id: site_id_lower,
-                        site_name,
-                        url,
-                    });
+
+                    // **CRITICAL FIX**: Validate folder exists before adding
+                    let full_fallback_path = crate::utils::path_resolver::resolve_workspace_path(dir);
+                    if full_fallback_path.exists() {
+                        destinations.push(DestinationInfo {
+                            site_id: site_id_lower,
+                            site_name,
+                            url,
+                        });
+                    } else {
+                        eprintln!(
+                            "[Logs API] Fallback destination skipped - folder not found at {}",
+                            full_fallback_path.display()
+                        );
+                    }
                 } else {
                     eprintln!("[Logs API] Failed to extract site from output_dir: {}", dir_str);
                 }
             }
         }
 
-        // Filter destinations: only include if output directory exists
-        // This prevents showing links to articles that don't exist in filesystem
-        // Note: We need to match by arXiv ID because folder names changed from "ID" to "date_source_ID"
-        let arxiv_id = extract_arxiv_id(&m.id);
-        let mut valid_destinations: Vec<DestinationInfo> = Vec::new();
-        for dest in destinations {
-            // Determine the site output directory
-            let site_output_dir = if dest.site_id == "airesearch" {
-                resolve_workspace_path("output/AIResearch")
-            } else if dest.site_id == "scienceai" {
-                resolve_workspace_path("output/ScienceAI")
-            } else {
-                eprintln!("[Logs API] Unknown site_id: {}, skipping...", dest.site_id);
-                continue;
-            };
-
-            // Check if article exists in filesystem
-            let output_dir_exists = if let Some(ref arxiv) = arxiv_id {
-                // Search for folder containing this arXiv ID
-                // Format can be: "2510.26038" or "2025-10-29_unknown_2510.26038"
-                let mut found = false;
-                if let Ok(entries) = fs::read_dir(&site_output_dir) {
-                    for entry in entries {
-                        if let Ok(entry) = entry {
-                            let folder_name = entry.file_name().to_string_lossy().to_string();
-                            // Check if folder name contains the arXiv ID
-                            if folder_name.contains(arxiv) {
-                                let folder_path = entry.path();
-                                if folder_path.is_dir() {
-                                    // Verify that required files exist
-                                    let title_txt = folder_path.join("title.txt");
-                                    let article_md = folder_path.join("article.md");
-                                    if title_txt.exists() && article_md.exists() {
-                                        found = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                found
-            } else {
-                // For non-arXiv articles, try to match by exact folder name or partial match
-                if let Some(ref output_dir) = m.output_dir {
-                    let dir_path = resolve_workspace_path(output_dir);
-                    if dir_path.exists() && dir_path.is_dir() {
-                        let title_txt = dir_path.join("title.txt");
-                        let article_md = dir_path.join("article.md");
-                        title_txt.exists() && article_md.exists()
-                    } else {
-                        false
-                    }
-                } else {
-                    false
-                }
-            };
-
-            if output_dir_exists {
-                valid_destinations.push(dest);
-            } else {
-                eprintln!("[Logs API] Skipping destination {} for article {} (arXiv ID: {:?}) - not found in filesystem", 
-                    dest.site_name, m.id, arxiv_id);
-            }
-        }
+        // **REMOVED DUPLICATE VALIDATION BLOCK** - now validated inline above
+        let valid_destinations: Vec<DestinationInfo> = destinations;
 
         // Debug: Log final destinations
         if valid_destinations.is_empty() {
