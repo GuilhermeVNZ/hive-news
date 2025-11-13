@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could see object boundaries 18.61% more accurately despite messy human annotations?
+[VISUAL DIRECTION] Animated text: 18.61% PRECISION BOOST flashes dramatically
+[VOICEOVER 0:05-0:20] Current computer vision systems rely on human-labeled data that's often imprecise - taking 30-60 seconds per boundary annotation
+[VISUAL DIRECTION] Show blurry boundary annotations transitioning to sharp edges
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to produce cleaner predictions from noisy training data?
+[VISUAL DIRECTION] Zoom on Figure 2 showing distribution of annotation quality
+[VOICEOVER 0:40-1:00] They discovered STEAL - Semantically Thinned Edge Alignment - forces networks to achieve highest response at boundaries
+[VISUAL DIRECTION] Animated diagram showing edge regularization process
+[VOICEOVER 1:00-1:30] The method treats ground-truth as variables to optimize, using two-step evolution toward confident areas then parameter optimization
+[VISUAL DIRECTION] Fast cuts showing the optimization process with clear before/after comparisons
+[VOICEOVER 1:30-1:50] This means robots can manipulate objects more precisely and medical imaging gets clearer diagnoses
+[VISUAL DIRECTION] Show robotics application and medical imaging examples
+[VOICEOVER 1:50-2:00] Sharper vision through smarter learning - transforming how machines see our world

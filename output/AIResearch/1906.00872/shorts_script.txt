@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could translate between any two languages without ever seeing a single bilingual text pair?
+[VISUAL DIRECTION] Animated text: "TRANSLATION WITHOUT BILINGUAL DATA?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Most AI translation requires massive parallel texts, but for thousands of language pairs, these simply don't exist.
+[VISUAL DIRECTION] Show globe with highlighted language pairs fading out to represent missing data
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we use images as visual anchors to bridge languages when text pairs are unavailable?
+[VISUAL DIRECTION] Show image of same object with captions in different languages appearing
+
+[VOICEOVER 0:40-1:00] They developed a progressive method that first learns word-level translations from image descriptions, then progresses to full sentences.
+[VISUAL DIRECTION] Animated diagram showing word → sentence progression with visual anchors
+
+[VOICEOVER 1:00-1:30] The system achieved 61.3 BLEU4 score for German-to-English and 47.1 for English-to-German on Multi30k—outperforming methods without parallel texts.
+[VISUAL DIRECTION] Show BLEU score comparison chart with their method highlighted
+
+[VOICEOVER 1:30-1:50] This enables translation for low-resource languages and specialized domains like product descriptions and travel guides.
+[VISUAL DIRECTION] Show examples: product manual, travel guide, educational material with translations appearing
+
+[VOICEOVER 1:50-2:00] Visual anchors could unlock translation for thousands of languages where bilingual data never existed.
+[VISUAL DIRECTION] Final shot of globe with multiple language connections lighting up simultaneously

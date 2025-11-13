@@ -1,0 +1,1 @@
+AI can now outperform humans in complex strategy games by thinking in language. New Nature research shows hierarchical AI systems using natural language planning achieve 30% better performance than direct imitation methods. This breakthrough could transform autonomous vehicles and customer service - where should we deploy it first?

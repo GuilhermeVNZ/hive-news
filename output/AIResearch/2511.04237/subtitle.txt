@@ -1,0 +1,1 @@
+New method creates privacy-preserving datasets that mirror complex real-world patterns, enabling secure scientific collaboration without compromising accuracy.

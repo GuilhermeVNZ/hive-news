@@ -1,0 +1,1 @@
+A new analysis reveals that most open biomedical data sources are not interlinked, hindering scientific discovery and integration despite a decade of Semantic Web efforts.

@@ -1,0 +1,1 @@
+What if robots could plan their movements 94% faster? University of Stuttgart researchers developed the QRRT algorithm that reduces robot motion planning time from 300+ seconds to under 17 seconds in some cases. Could this breakthrough make real-time robot navigation in complex environments finally practical?

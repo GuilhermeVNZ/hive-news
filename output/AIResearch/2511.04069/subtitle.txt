@@ -1,0 +1,1 @@
+Deep learning model achieves 93% accuracy detecting pediatric appendicitis from ultrasound images, potentially reducing diagnostic errors and unnecessary surgeries

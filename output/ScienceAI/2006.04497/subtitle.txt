@@ -1,0 +1,1 @@
+A new algorithm ensures AI systems provide safe recommendations every time, even while learning from risky options, balancing exploration with user welfare.

@@ -1,0 +1,1 @@
+New imitation learning method solves complex grid problems instantly, outperforming traditional reinforcement learning while requiring less training time and no reward engineering

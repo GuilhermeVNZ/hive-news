@@ -1,0 +1,1 @@
+A new method lets artificial neural networks self-organize like biological brains, reducing human design and improving adaptability for real-world tasks.

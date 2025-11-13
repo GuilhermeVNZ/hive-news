@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could share your medical data without ever revealing your identity?
+[VISUAL DIRECTION] Animated text: "SHARE DATA WITHOUT SHARING YOU?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As privacy concerns escalate across healthcare and finance, researchers have developed a breakthrough approach.
+[VISUAL DIRECTION] Show rapid cuts of medical charts, financial graphs, and privacy lock icons
+
+[VOICEOVER 0:20-0:40] The challenge: how to enable data sharing for research while protecting individual privacy completely.
+[VISUAL DIRECTION] Animated scale balancing "Data Sharing" vs "Privacy Protection"
+
+[VOICEOVER 0:40-1:00] Paper 2511.04239 demonstrates generative AI models that produce synthetic datasets closely matching real-world statistical patterns.
+[VISUAL DIRECTION] Show side-by-side comparison of real data distribution vs synthetic data distribution
+
+[VOICEOVER 1:00-1:30] These AI systems learn the underlying structure of sensitive data, then generate entirely new datasets that preserve key statistical relationships without containing any actual personal information.
+[VISUAL DIRECTION] Animated diagram showing data → AI model → synthetic data generation
+
+[VOICEOVER 1:30-1:50] This could transform medical research by allowing secure collaboration, but the paper notes effectiveness varies and potential misuse remains a concern.
+[VISUAL DIRECTION] Show medical researchers collaborating across secure network with data flowing
+
+[VOICEOVER 1:50-2:00] The future of privacy-preserving data sharing is here—but requires careful implementation.
+[VISUAL DIRECTION] Final text overlay: "Synthetic Data: Privacy Meets Progress" with paper reference

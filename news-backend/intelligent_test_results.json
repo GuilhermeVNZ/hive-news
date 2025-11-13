@@ -1,0 +1,1183 @@
+[
+  {
+    "name": "OpenAI Blog RSS",
+    "original_url": "https://openai.com/blog/rss.xml",
+    "original_type": "rss",
+    "original_id": "rss_openai",
+    "rss_available": {
+      "url": "https://openai.com/blog/rss.xml",
+      "works": true,
+      "content_size": 435073
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://openai.com/blog/rss.xml",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "Google AI RSS",
+    "original_url": "https://blog.research.google/feeds/posts/default",
+    "original_type": "rss",
+    "original_id": "rss_google_ai",
+    "rss_available": {
+      "url": "https://blog.research.google/feeds/posts/default",
+      "works": true,
+      "content_size": 575715
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://blog.research.google/feeds/posts/default",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "NVIDIA News RSS",
+    "original_url": "https://nvidianews.nvidia.com/rss.xml",
+    "original_type": "rss",
+    "original_id": "rss_nvidia",
+    "rss_available": {
+      "url": "https://nvidianews.nvidia.com/rss.xml",
+      "works": true,
+      "content_size": 67555
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://nvidianews.nvidia.com/rss.xml",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "Alibaba DAMO RSS",
+    "original_url": "https://damo.alibaba.com/news/rss",
+    "original_type": "rss",
+    "original_id": "rss_alibaba_damo",
+    "rss_available": {
+      "url": "https://damo.alibaba.com/news/rss",
+      "works": true,
+      "content_size": 2604
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://damo.alibaba.com/news/rss",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "Hugging Face Blog RSS",
+    "original_url": "https://huggingface.co/blog/feed.xml",
+    "original_type": "rss",
+    "original_id": "rss_huggingface",
+    "rss_available": {
+      "url": "https://huggingface.co/blog/feed.xml",
+      "works": true,
+      "content_size": 188601
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://huggingface.co/blog/feed.xml",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "ElevenLabs Blog RSS",
+    "original_url": "https://blog.elevenlabs.io/feed",
+    "original_type": "rss",
+    "original_id": "rss_elevenlabs",
+    "rss_available": {
+      "url": "https://blog.elevenlabs.io/feed",
+      "works": false,
+      "content_size": 455819
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "broken",
+    "recommended_url": "https://blog.elevenlabs.io/feed",
+    "reason": "RSS feed broken (unknown error)"
+  },
+  {
+    "name": "Microsoft AI Blog RSS",
+    "original_url": "https://blogs.microsoft.com/ai/feed/",
+    "original_type": "rss",
+    "original_id": "rss_microsoft_ai",
+    "rss_available": {
+      "url": "https://blogs.microsoft.com/ai/feed/",
+      "works": true,
+      "content_size": 16384
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://blogs.microsoft.com/ai/feed/",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "IBM Research AI RSS",
+    "original_url": "https://research.ibm.com/blog/feed",
+    "original_type": "rss",
+    "original_id": "rss_ibm_research",
+    "rss_available": {
+      "url": "https://research.ibm.com/blog/feed",
+      "works": false,
+      "content_size": 4425
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "broken",
+    "recommended_url": "https://research.ibm.com/blog/feed",
+    "reason": "RSS feed broken (unknown error)"
+  },
+  {
+    "name": "Salesforce AI Blog RSS",
+    "original_url": "https://www.salesforce.com/news/feed/",
+    "original_type": "rss",
+    "original_id": "rss_salesforce_ai",
+    "rss_available": {
+      "url": "https://www.salesforce.com/news/feed/",
+      "works": true,
+      "content_size": 154754
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.salesforce.com/news/feed/",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "TechCrunch AI RSS",
+    "original_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+    "original_type": "rss",
+    "original_id": "rss_techcrunch_ai",
+    "rss_available": {
+      "url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+      "works": true,
+      "content_size": 21594
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "VentureBeat AI RSS",
+    "original_url": "https://venturebeat.com/category/ai/feed/",
+    "original_type": "rss",
+    "original_id": "rss_venturebeat_ai",
+    "rss_available": {
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "works": true,
+      "content_size": 88498
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://venturebeat.com/category/ai/feed/",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "The Verge AI RSS",
+    "original_url": "https://www.theverge.com/rss/group/ai/index.xml",
+    "original_type": "rss",
+    "original_id": "rss_the_verge_ai",
+    "rss_available": {
+      "url": "https://www.theverge.com/rss/group/ai/index.xml",
+      "works": true,
+      "content_size": 863
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.theverge.com/rss/group/ai/index.xml",
+    "reason": "RSS feed working"
+  },
+  {
+    "name": "Wired AI RSS",
+    "original_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+    "original_type": "rss",
+    "original_id": "rss_wired_ai",
+    "rss_available": {
+      "url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+      "works": false,
+      "content_size": 173
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "broken",
+    "recommended_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+    "reason": "RSS feed broken (unknown error)"
+  },
+  {
+    "name": "MIT Tech Review AI RSS",
+    "original_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+    "original_type": "rss",
+    "original_id": "rss_mit_tech_review_ai",
+    "rss_available": {
+      "url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+      "works": false,
+      "content_size": 61486
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "broken",
+    "recommended_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+    "reason": "RSS feed broken (unknown error)"
+  },
+  {
+    "name": "Nature AI RSS",
+    "original_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+    "original_type": "rss",
+    "original_id": "rss_nature_ai",
+    "rss_available": {
+      "url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+      "works": false,
+      "content_size": 99573
+    },
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "broken",
+    "recommended_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+    "reason": "RSS feed broken (unknown error)"
+  },
+  {
+    "name": "Anthropic News",
+    "original_url": "https://www.anthropic.com/news",
+    "original_type": "html",
+    "original_id": "html_anthropic",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 499674,
+    "recommended_type": "html",
+    "recommended_url": "https://www.anthropic.com/news",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Meta AI Blog",
+    "original_url": "https://ai.meta.com/blog/",
+    "original_type": "html",
+    "original_id": "html_meta_ai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 212756,
+    "recommended_type": "html",
+    "recommended_url": "https://ai.meta.com/blog/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "DeepSeek Blog",
+    "original_url": "https://deepseek.ai/blog",
+    "original_type": "html",
+    "original_id": "html_deepseek",
+    "rss_available": {
+      "url": "https://deepseek.ai/feed",
+      "works": true,
+      "content_size": 6527
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 6527,
+    "recommended_type": "rss",
+    "recommended_url": "https://deepseek.ai/feed",
+    "reason": "Found working RSS feed at https://deepseek.ai/feed"
+  },
+  {
+    "name": "Alibaba Alizila News",
+    "original_url": "https://www.alizila.com/",
+    "original_type": "html",
+    "original_id": "html_alibaba_damo",
+    "rss_available": {
+      "url": "https://www.alizila.com/feed",
+      "works": true,
+      "content_size": 73073
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 179179,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.alizila.com/feed",
+    "reason": "Found working RSS feed at https://www.alizila.com/feed"
+  },
+  {
+    "name": "X.ai News",
+    "original_url": "https://x.ai/news",
+    "original_type": "html",
+    "original_id": "html_xai",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 5947,
+    "recommended_type": "playwright",
+    "recommended_url": "https://x.ai/news",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "Mistral AI News",
+    "original_url": "https://mistral.ai/news/",
+    "original_type": "html",
+    "original_id": "html_mistral_ai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 164009,
+    "recommended_type": "html",
+    "recommended_url": "https://mistral.ai/news/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Cohere AI Blog",
+    "original_url": "https://txt.cohere.com/",
+    "original_type": "html",
+    "original_id": "html_cohere",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 314738,
+    "recommended_type": "html",
+    "recommended_url": "https://txt.cohere.com/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Perplexity AI",
+    "original_url": "https://www.perplexity.ai/discover/tech",
+    "original_type": "html",
+    "original_id": "html_perplexity",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 7675,
+    "recommended_type": "playwright",
+    "recommended_url": "https://www.perplexity.ai/discover/tech",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "Stability AI News",
+    "original_url": "https://stability.ai/news",
+    "original_type": "html",
+    "original_id": "html_stability_ai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 530620,
+    "recommended_type": "html",
+    "recommended_url": "https://stability.ai/news",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "CharacterAI",
+    "original_url": "https://blog.character.ai/",
+    "original_type": "html",
+    "original_id": "html_character_ai",
+    "rss_available": {
+      "url": "https://blog.character.ai/feed",
+      "works": true,
+      "content_size": 125984
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 21008,
+    "recommended_type": "rss",
+    "recommended_url": "https://blog.character.ai/feed",
+    "reason": "Found working RSS feed at https://blog.character.ai/feed"
+  },
+  {
+    "name": "Inflection AI",
+    "original_url": "https://inflection.ai/blog/enterprise",
+    "original_type": "html",
+    "original_id": "html_inflection_ai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 226212,
+    "recommended_type": "html",
+    "recommended_url": "https://inflection.ai/blog/enterprise",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Apple ML Highlights",
+    "original_url": "https://machinelearning.apple.com/highlights",
+    "original_type": "html",
+    "original_id": "html_apple_ml",
+    "rss_available": {
+      "url": "https://machinelearning.apple.com/rss.xml",
+      "works": true,
+      "content_size": 9728
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 168313,
+    "recommended_type": "rss",
+    "recommended_url": "https://machinelearning.apple.com/rss.xml",
+    "reason": "Found working RSS feed at https://machinelearning.apple.com/rss.xml"
+  },
+  {
+    "name": "Apple ML Research",
+    "original_url": "https://machinelearning.apple.com/research",
+    "original_type": "html",
+    "original_id": "html_apple_ml_research",
+    "rss_available": {
+      "url": "https://machinelearning.apple.com/rss.xml",
+      "works": true,
+      "content_size": 9728
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 2009368,
+    "recommended_type": "rss",
+    "recommended_url": "https://machinelearning.apple.com/rss.xml",
+    "reason": "Found working RSS feed at https://machinelearning.apple.com/rss.xml"
+  },
+  {
+    "name": "Intel AI",
+    "original_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html",
+    "original_type": "html",
+    "original_id": "html_intel_ai",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 445,
+    "recommended_type": "playwright",
+    "recommended_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "AMD AI",
+    "original_url": "https://www.amd.com/en/developer/resources/technical-articles.html",
+    "original_type": "html",
+    "original_id": "html_amd_ai",
+    "rss_available": {
+      "url": "https://www.amd.com/feed",
+      "works": true,
+      "content_size": 202595
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 192205,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.amd.com/feed",
+    "reason": "Found working RSS feed at https://www.amd.com/feed"
+  },
+  {
+    "name": "Stanford HAI",
+    "original_url": "https://hai.stanford.edu/news",
+    "original_type": "html",
+    "original_id": "html_stanford_hai",
+    "rss_available": {
+      "url": "https://hai.stanford.edu/feed",
+      "works": true,
+      "content_size": 665210
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 1494927,
+    "recommended_type": "rss",
+    "recommended_url": "https://hai.stanford.edu/feed",
+    "reason": "Found working RSS feed at https://hai.stanford.edu/feed"
+  },
+  {
+    "name": "Berkeley AI",
+    "original_url": "https://bair.berkeley.edu/blog/archive/",
+    "original_type": "html",
+    "original_id": "html_berkeley_ai",
+    "rss_available": {
+      "url": "https://bair.berkeley.edu/blog/feed",
+      "works": true,
+      "content_size": 174032
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 28194,
+    "recommended_type": "rss",
+    "recommended_url": "https://bair.berkeley.edu/blog/feed",
+    "reason": "Found working RSS feed at https://bair.berkeley.edu/blog/feed"
+  },
+  {
+    "name": "DeepMind Blog",
+    "original_url": "https://deepmind.google/discover/blog/",
+    "original_type": "html",
+    "original_id": "html_deepmind_blog",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 316005,
+    "recommended_type": "html",
+    "recommended_url": "https://deepmind.google/discover/blog/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Science",
+    "original_url": "https://www.science.org/news",
+    "original_type": "html",
+    "original_id": "html_science",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 7771,
+    "recommended_type": "playwright",
+    "recommended_url": "https://www.science.org/news",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "Hive Hub",
+    "original_url": "https://hive-hub.ai",
+    "original_type": "html",
+    "original_id": "html_hive_hub",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": null,
+    "html_content_size": null,
+    "recommended_type": "playwright",
+    "recommended_url": "https://hive-hub.ai",
+    "reason": "Failed with: error sending request for url (https://hive-hub.ai/): error trying to connect: dns error: Este host não é conhecido. (os error 11001)"
+  },
+  {
+    "name": "Menlo Ventures",
+    "original_url": "https://menlovc.com/focus-areas/ai/",
+    "original_type": "html",
+    "original_id": "html_menlo_ventures",
+    "rss_available": {
+      "url": "https://menlovc.com/feed",
+      "works": true,
+      "content_size": 140898
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 295664,
+    "recommended_type": "rss",
+    "recommended_url": "https://menlovc.com/feed",
+    "reason": "Found working RSS feed at https://menlovc.com/feed"
+  },
+  {
+    "name": "AIResearch News",
+    "original_url": "https://www.airesearch.news/",
+    "original_type": "html",
+    "original_id": "html_airesearch_news",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 76111,
+    "recommended_type": "html",
+    "recommended_url": "https://www.airesearch.news/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "The Gradient",
+    "original_url": "https://thegradient.pub/",
+    "original_type": "html",
+    "original_id": "html_the_gradient",
+    "rss_available": {
+      "url": "https://thegradient.pub/feed",
+      "works": true,
+      "content_size": 561405
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 118651,
+    "recommended_type": "rss",
+    "recommended_url": "https://thegradient.pub/feed",
+    "reason": "Found working RSS feed at https://thegradient.pub/feed"
+  },
+  {
+    "name": "Robohub",
+    "original_url": "https://robohub.org/category/news/",
+    "original_type": "html",
+    "original_id": "html_robohub",
+    "rss_available": {
+      "url": "https://robohub.org/feed",
+      "works": true,
+      "content_size": 874250
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 107393,
+    "recommended_type": "rss",
+    "recommended_url": "https://robohub.org/feed",
+    "reason": "Found working RSS feed at https://robohub.org/feed"
+  },
+  {
+    "name": "IEEE Tech",
+    "original_url": "https://www.ieee.org/advancing-technology",
+    "original_type": "html",
+    "original_id": "html_ieee",
+    "rss_available": {
+      "url": "https://www.ieee.org/feed.xml",
+      "works": true,
+      "content_size": 6383
+    },
+    "html_works": false,
+    "html_status": 418,
+    "html_content_size": 245,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.ieee.org/feed.xml",
+    "reason": "Found working RSS feed at https://www.ieee.org/feed.xml"
+  },
+  {
+    "name": "Robot Report",
+    "original_url": "https://www.therobotreport.com/category/news/",
+    "original_type": "html",
+    "original_id": "html_robot_report",
+    "rss_available": {
+      "url": "https://www.therobotreport.com/feed",
+      "works": true,
+      "content_size": 171881
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 199858,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.therobotreport.com/feed",
+    "reason": "Found working RSS feed at https://www.therobotreport.com/feed"
+  },
+  {
+    "name": "Robotics Biz Review",
+    "original_url": "https://roboticsbusinessreview.com/news",
+    "original_type": "html",
+    "original_id": "html_robotics_business_review",
+    "rss_available": {
+      "url": "https://roboticsbusinessreview.com/feed",
+      "works": true,
+      "content_size": 171880
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 172778,
+    "recommended_type": "rss",
+    "recommended_url": "https://roboticsbusinessreview.com/feed",
+    "reason": "Found working RSS feed at https://roboticsbusinessreview.com/feed"
+  },
+  {
+    "name": "Quantum Computing Report",
+    "original_url": "https://quantumcomputingreport.com/news/",
+    "original_type": "html",
+    "original_id": "html_quantum_computing_report",
+    "rss_available": {
+      "url": "https://quantumcomputingreport.com/feed",
+      "works": true,
+      "content_size": 17825
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 662758,
+    "recommended_type": "rss",
+    "recommended_url": "https://quantumcomputingreport.com/feed",
+    "reason": "Found working RSS feed at https://quantumcomputingreport.com/feed"
+  },
+  {
+    "name": "IBM Quantum Blog",
+    "original_url": "https://research.ibm.com/blog",
+    "original_type": "html",
+    "original_id": "html_ibm_quantum",
+    "rss_available": {
+      "url": "https://research.ibm.com/rss",
+      "works": true,
+      "content_size": 73096
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 81422,
+    "recommended_type": "rss",
+    "recommended_url": "https://research.ibm.com/rss",
+    "reason": "Found working RSS feed at https://research.ibm.com/rss"
+  },
+  {
+    "name": "Quanta Magazine",
+    "original_url": "https://www.quantamagazine.org/computer-science/",
+    "original_type": "html",
+    "original_id": "html_quanta_quantum",
+    "rss_available": {
+      "url": "https://www.quantamagazine.org/feed",
+      "works": true,
+      "content_size": 10761
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 184213,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.quantamagazine.org/feed",
+    "reason": "Found working RSS feed at https://www.quantamagazine.org/feed"
+  },
+  {
+    "name": "Rigetti",
+    "original_url": "https://www.globenewswire.com/newsroom",
+    "original_type": "html",
+    "original_id": "html_rigetti",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 450024,
+    "recommended_type": "html",
+    "recommended_url": "https://www.globenewswire.com/newsroom",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "IonQ",
+    "original_url": "https://ionq.com/news",
+    "original_type": "html",
+    "original_id": "html_ionq",
+    "rss_available": {
+      "url": "https://ionq.com/feed",
+      "works": true,
+      "content_size": 1141747
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 1116891,
+    "recommended_type": "rss",
+    "recommended_url": "https://ionq.com/feed",
+    "reason": "Found working RSS feed at https://ionq.com/feed"
+  },
+  {
+    "name": "D-Wave",
+    "original_url": "https://www.dwavequantum.com/company/newsroom/",
+    "original_type": "html",
+    "original_id": "html_dwave",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 108205,
+    "recommended_type": "html",
+    "recommended_url": "https://www.dwavequantum.com/company/newsroom/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Quantinuum",
+    "original_url": "https://www.quantinuum.com/news/news",
+    "original_type": "html",
+    "original_id": "html_quantinuum",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 163537,
+    "recommended_type": "html",
+    "recommended_url": "https://www.quantinuum.com/news/news",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Pasqal",
+    "original_url": "https://www.pasqal.com/newsroom/",
+    "original_type": "html",
+    "original_id": "html_pasqal",
+    "rss_available": {
+      "url": "https://www.pasqal.com/feed",
+      "works": true,
+      "content_size": 173354
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 224059,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.pasqal.com/feed",
+    "reason": "Found working RSS feed at https://www.pasqal.com/feed"
+  },
+  {
+    "name": "Boston Dynamics",
+    "original_url": "https://bostondynamics.com/blog/",
+    "original_type": "html",
+    "original_id": "html_boston_dynamics",
+    "rss_available": {
+      "url": "https://bostondynamics.com/feed",
+      "works": true,
+      "content_size": 1112
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 126550,
+    "recommended_type": "rss",
+    "recommended_url": "https://bostondynamics.com/feed",
+    "reason": "Found working RSS feed at https://bostondynamics.com/feed"
+  },
+  {
+    "name": "Robotics Online",
+    "original_url": "https://www.automate.org/robotics/news",
+    "original_type": "html",
+    "original_id": "html_robotics_org",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 6873,
+    "recommended_type": "playwright",
+    "recommended_url": "https://www.automate.org/robotics/news",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "ABB Robotics",
+    "original_url": "https://global.abb/group/en/media",
+    "original_type": "html",
+    "original_id": "html_abb_robotics",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 70217,
+    "recommended_type": "html",
+    "recommended_url": "https://global.abb/group/en/media",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "KUKA Robotics",
+    "original_url": "https://www.kuka.com/en-us/press/media-news",
+    "original_type": "html",
+    "original_id": "html_kuka",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 404,
+    "html_content_size": 145863,
+    "recommended_type": "broken",
+    "recommended_url": "https://www.kuka.com/en-us/press/media-news",
+    "reason": "Not found (404)"
+  },
+  {
+    "name": "Anthropic Research",
+    "original_url": "https://www.anthropic.com/research",
+    "original_type": "html",
+    "original_id": "html_anthropic_research",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 232506,
+    "recommended_type": "html",
+    "recommended_url": "https://www.anthropic.com/research",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Adept AI",
+    "original_url": "https://www.adept.ai/blog",
+    "original_type": "html",
+    "original_id": "html_adept",
+    "rss_available": null,
+    "html_works": false,
+    "html_status": 403,
+    "html_content_size": 33856,
+    "recommended_type": "playwright",
+    "recommended_url": "https://www.adept.ai/blog",
+    "reason": "Blocked (403) - needs Playwright"
+  },
+  {
+    "name": "AssemblyAI",
+    "original_url": "https://www.assemblyai.com/blog",
+    "original_type": "html",
+    "original_id": "html_assemblyai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 228618,
+    "recommended_type": "html",
+    "recommended_url": "https://www.assemblyai.com/blog",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Replicate",
+    "original_url": "https://replicate.com/blog",
+    "original_type": "html",
+    "original_id": "html_replicate",
+    "rss_available": {
+      "url": "https://replicate.com/blog/rss",
+      "works": true,
+      "content_size": 65350
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 155046,
+    "recommended_type": "rss",
+    "recommended_url": "https://replicate.com/blog/rss",
+    "reason": "Found working RSS feed at https://replicate.com/blog/rss"
+  },
+  {
+    "name": "LangChain",
+    "original_url": "https://blog.langchain.com/",
+    "original_type": "html",
+    "original_id": "html_langchain",
+    "rss_available": {
+      "url": "https://blog.langchain.com/feed",
+      "works": true,
+      "content_size": 180351
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 46657,
+    "recommended_type": "rss",
+    "recommended_url": "https://blog.langchain.com/feed",
+    "reason": "Found working RSS feed at https://blog.langchain.com/feed"
+  },
+  {
+    "name": "Pinecone",
+    "original_url": "https://www.pinecone.io/blog/",
+    "original_type": "html",
+    "original_id": "html_pinecone",
+    "rss_available": {
+      "url": "https://www.pinecone.io/rss",
+      "works": true,
+      "content_size": 164591
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 4663939,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.pinecone.io/rss",
+    "reason": "Found working RSS feed at https://www.pinecone.io/rss"
+  },
+  {
+    "name": "Weaviate",
+    "original_url": "https://weaviate.io/blog",
+    "original_type": "html",
+    "original_id": "html_weaviate",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 69802,
+    "recommended_type": "html",
+    "recommended_url": "https://weaviate.io/blog",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Together AI",
+    "original_url": "https://www.together.ai/blog",
+    "original_type": "html",
+    "original_id": "html_together",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 255856,
+    "recommended_type": "html",
+    "recommended_url": "https://www.together.ai/blog",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Anyscale",
+    "original_url": "https://www.anyscale.com/press",
+    "original_type": "html",
+    "original_id": "html_anyscale",
+    "rss_available": {
+      "url": "https://www.anyscale.com/feed",
+      "works": true,
+      "content_size": 10876
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 369064,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.anyscale.com/feed",
+    "reason": "Found working RSS feed at https://www.anyscale.com/feed"
+  },
+  {
+    "name": "Modal",
+    "original_url": "https://modal.com/blog",
+    "original_type": "html",
+    "original_id": "html_modal",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 35455,
+    "recommended_type": "html",
+    "recommended_url": "https://modal.com/blog",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Cursor",
+    "original_url": "https://www.cursor.com/blog",
+    "original_type": "html",
+    "original_id": "html_cursor",
+    "rss_available": {
+      "url": "https://www.cursor.com/blog/feed",
+      "works": true,
+      "content_size": 76271
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 153829,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.cursor.com/blog/feed",
+    "reason": "Found working RSS feed at https://www.cursor.com/blog/feed"
+  },
+  {
+    "name": "Continual AI",
+    "original_url": "https://www.continual.ai/blog",
+    "original_type": "html",
+    "original_id": "html_continual",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 39550,
+    "recommended_type": "html",
+    "recommended_url": "https://www.continual.ai/blog",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Fast.ai",
+    "original_url": "https://www.fast.ai/",
+    "original_type": "html",
+    "original_id": "html_fastai",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 235815,
+    "recommended_type": "html",
+    "recommended_url": "https://www.fast.ai/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "EleutherAI",
+    "original_url": "https://www.eleuther.ai/",
+    "original_type": "html",
+    "original_id": "html_eleuther",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 178723,
+    "recommended_type": "html",
+    "recommended_url": "https://www.eleuther.ai/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Xanadu Quantum",
+    "original_url": "https://www.xanadu.ai/blog/",
+    "original_type": "html",
+    "original_id": "html_xanadu",
+    "rss_available": {
+      "url": "https://www.xanadu.ai/feed",
+      "works": true,
+      "content_size": 90257
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 89886,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.xanadu.ai/feed",
+    "reason": "Found working RSS feed at https://www.xanadu.ai/feed"
+  },
+  {
+    "name": "Infleqtion",
+    "original_url": "https://infleqtion.com/blog/",
+    "original_type": "html",
+    "original_id": "html_infleqtion",
+    "rss_available": {
+      "url": "https://infleqtion.com/feed",
+      "works": true,
+      "content_size": 96183
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 107793,
+    "recommended_type": "rss",
+    "recommended_url": "https://infleqtion.com/feed",
+    "reason": "Found working RSS feed at https://infleqtion.com/feed"
+  },
+  {
+    "name": "ColdQuanta",
+    "original_url": "https://www.coldquanta.com/news",
+    "original_type": "html",
+    "original_id": "html_coldquanta",
+    "rss_available": {
+      "url": "https://www.coldquanta.com/feed",
+      "works": true,
+      "content_size": 96183
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 113508,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.coldquanta.com/feed",
+    "reason": "Found working RSS feed at https://www.coldquanta.com/feed"
+  },
+  {
+    "name": "QCI",
+    "original_url": "https://www.quantumcomputinginc.com/news",
+    "original_type": "html",
+    "original_id": "html_qci",
+    "rss_available": {
+      "url": "https://www.quantumcomputinginc.com/blog/feed",
+      "works": true,
+      "content_size": 337545
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 223356,
+    "recommended_type": "rss",
+    "recommended_url": "https://www.quantumcomputinginc.com/blog/feed",
+    "reason": "Found working RSS feed at https://www.quantumcomputinginc.com/blog/feed"
+  },
+  {
+    "name": "Universal Robots",
+    "original_url": "https://www.universal-robots.com/blog/",
+    "original_type": "html",
+    "original_id": "html_universal_robots",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 543601,
+    "recommended_type": "html",
+    "recommended_url": "https://www.universal-robots.com/blog/",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "OMRON",
+    "original_url": "https://automation.omron.com/en/us/news/",
+    "original_type": "html",
+    "original_id": "html_omron",
+    "rss_available": {
+      "url": "https://automation.omron.com/feed",
+      "works": true,
+      "content_size": 197649
+    },
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 165042,
+    "recommended_type": "rss",
+    "recommended_url": "https://automation.omron.com/feed",
+    "reason": "Found working RSS feed at https://automation.omron.com/feed"
+  },
+  {
+    "name": "Yaskawa",
+    "original_url": "https://www.yaskawa.com/about-us/media-center/news",
+    "original_type": "html",
+    "original_id": "html_yaskawa",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 388246,
+    "recommended_type": "html",
+    "recommended_url": "https://www.yaskawa.com/about-us/media-center/news",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Agility Robotics",
+    "original_url": "https://www.agilityrobotics.com/about/press",
+    "original_type": "html",
+    "original_id": "html_agility",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 58812,
+    "recommended_type": "html",
+    "recommended_url": "https://www.agilityrobotics.com/about/press",
+    "reason": "HTML page accessible"
+  },
+  {
+    "name": "Unitree",
+    "original_url": "https://www.unitree.com/news",
+    "original_type": "html",
+    "original_id": "html_unitree",
+    "rss_available": null,
+    "html_works": true,
+    "html_status": 200,
+    "html_content_size": 43683,
+    "recommended_type": "html",
+    "recommended_url": "https://www.unitree.com/news",
+    "reason": "HTML page accessible"
+  }
+]

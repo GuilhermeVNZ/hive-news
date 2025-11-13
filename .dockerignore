@@ -29,6 +29,9 @@ node_modules
 downloads
 output
 logs
+**/downloads
+**/output
+**/images
 
 # Git metadata
 .git

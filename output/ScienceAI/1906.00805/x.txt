@@ -1,0 +1,1 @@
+AI can now fix your video call eye contact! GazeGAN digitally redirects gaze toward the camera using self-supervised learning, outperforming existing methods with 35.4% user preference for realism. Could this solve videoconferencing engagement issues?

@@ -1,0 +1,1 @@
+AI can now translate between languages without ANY bilingual text training data. Researchers achieved this breakthrough using visual anchors from images to connect language pairs. Could this solve translation for thousands of low-resource languages?

@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if you could use real-world data without ever seeing anyone's personal information? [VISUAL DIRECTION] Animated text: "PRIVACY vs. PROGRESS" with tension-building sound effect
+
+[VOICEOVER 0:05-0:20] In an era of escalating privacy concerns, organizations struggle to share data for research and innovation. [VISUAL DIRECTION] Quick cuts: hospital data screen, financial charts, research lab - all with "RESTRICTED ACCESS" overlays
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create synthetic data that mirrors real datasets without compromising sensitive information? [VISUAL DIRECTION] Zoom on paper title: 2511.04247 with "THE CHALLENGE" text overlay
+
+[VOICEOVER 0:40-1:00] They developed a generative method that captures high-level patterns and correlations while avoiding memorization of individual data points. [VISUAL DIRECTION] Animation showing data patterns being extracted while personal identifiers are blurred out
+
+[VOICEOVER 1:00-1:30] The technique optimizes for statistical fidelity - preserving relationships and distributions essential for analysis. [VISUAL DIRECTION] Side-by-side comparison: original data distribution vs. synthetic data distribution with "SAME STATISTICAL PROPERTIES" label
+
+[VOICEOVER 1:30-1:50] This enables hospitals to develop medical algorithms and financial institutions to simulate transactions without legal or ethical hurdles. [VISUAL DIRECTION] Fast cuts: doctor analyzing data, bank transaction simulation, collaborative research team - all with "SECURE SHARING" text
+
+[VOICEOVER 1:50-2:00] Innovation can now advance without compromising privacy. The future of data sharing is here. [VISUAL DIRECTION] Final screen: Paper reference 2511.04247 with "SECURE DATA, REAL PROGRESS" closing text

@@ -1,0 +1,1 @@
+Monte Carlo search method outperforms conventional approaches in complex pathfinding puzzles, offering potential for more efficient robotic exploration.

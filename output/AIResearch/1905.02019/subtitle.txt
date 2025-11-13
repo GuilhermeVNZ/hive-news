@@ -1,0 +1,1 @@
+New neural network architecture achieves 15% improvement in answering questions from text, bringing machines closer to human-level understanding of written content.

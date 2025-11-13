@@ -206,14 +206,14 @@ impl NewsWriterService {
             for (idx, dest) in destinations.iter().enumerate() {
                 println!("     {}. {}", idx + 1, dest);
             }
-            println!("");
+            println!();
         } else {
             // Destinations já existiam, apenas imprimir
             println!("  🎯 Destinations found: {} site(s)", destinations.len());
             for (idx, dest) in destinations.iter().enumerate() {
                 println!("     {}. {}", idx + 1, dest);
             }
-            println!("");
+            println!();
         }
 
         // Load site configurations
@@ -281,7 +281,7 @@ impl NewsWriterService {
             site_config
                 .prompt_blog
                 .clone()
-                .unwrap_or_else(|| Self::default_blog_prompt())
+                .unwrap_or_else(Self::default_blog_prompt)
         } else {
             Self::default_blog_prompt()
         };
@@ -378,7 +378,7 @@ impl NewsWriterService {
         // Generate SEO-friendly slug from title (independent of folder name)
         println!("    │  🔗 Generating SEO-friendly slug...");
         let article_slug =
-            Self::generate_seo_slug(&article_response.title, &site_id, &article.id).await?;
+            Self::generate_seo_slug(&article_response.title, site_id, &article.id).await?;
         println!("    │  ✅ Slug: {}", article_slug);
 
         // Create standardized folder name: DATA_SOURCE_ID
@@ -388,7 +388,7 @@ impl NewsWriterService {
 
         // Create output directory with standardized name
         println!("    │  📁 Creating output directory...");
-        let site_output_dir = Self::get_site_output_dir(&site_id);
+        let site_output_dir = Self::get_site_output_dir(site_id);
         let article_output_dir = site_output_dir.join(&standardized_folder_name);
         tokio::fs::create_dir_all(&article_output_dir)
             .await
@@ -455,26 +455,23 @@ impl NewsWriterService {
 
         // Only register if this is the first destination or if output_dir matches
         // For multiple destinations, we should store each in separate directories
-        if let Some(existing_meta) = current_metadata {
-            if let Some(existing_output_dir) = &existing_meta.output_dir {
-                // If output_dir already exists and it's different, this means we're processing multiple destinations
-                // In this case, we should keep the original output_dir or create site-specific subdirectories
-                if existing_output_dir != &article_output_dir {
-                    eprintln!(
-                        "    │  ⚠️  WARNING: Article already has output_dir: {}",
-                        existing_output_dir.display()
-                    );
-                    eprintln!(
-                        "    │      New output_dir would be: {}",
-                        article_output_dir.display()
-                    );
-                    eprintln!(
-                        "    │      This suggests multiple destinations are being processed."
-                    );
-                    // Don't overwrite - each destination should have its own directory
-                    // For now, we'll still update to the correct one for this site
-                }
-            }
+        if let Some(existing_meta) = current_metadata
+            && let Some(existing_output_dir) = &existing_meta.output_dir
+            && existing_output_dir != &article_output_dir
+        {
+            // If output_dir already exists and it's different, this means we're processing multiple destinations
+            // In this case, we should keep the original output_dir or create site-specific subdirectories
+            eprintln!(
+                "    |  WARNING: Article already has output_dir: {}",
+                existing_output_dir.display()
+            );
+            eprintln!(
+                "    |      New output_dir would be: {}",
+                article_output_dir.display()
+            );
+            eprintln!("    |      This suggests multiple destinations are being processed.");
+            // Don't overwrite - each destination should have its own directory
+            // For now, we'll still update to the correct one for this site
         }
 
         self.registry
@@ -517,27 +514,27 @@ impl NewsWriterService {
         // Look for date pattern YYYY-MM-DD in path
         let date_pattern = Regex::new(r"\b(\d{4}-\d{2}-\d{2})\b").ok();
 
-        if let Some(re) = date_pattern {
-            if let Some(captures) = re.captures(&path_str) {
-                if let Some(date_match) = captures.get(1) {
-                    return date_match.as_str().to_string();
-                }
-            }
+        if let Some(re) = date_pattern
+            && let Some(captures) = re.captures(&path_str)
+            && let Some(date_match) = captures.get(1)
+        {
+            return date_match.as_str().to_string();
         }
 
         // Fallback: use parent directory name if it looks like a date
-        if let Some(parent) = json_path.parent() {
-            if let Some(parent_name) = parent.file_name().and_then(|s| s.to_str()) {
-                // Check if parent name is a date (YYYY-MM-DD format)
-                if parent_name.len() == 10 && parent_name.matches('-').count() == 2 {
-                    // Validate it's actually a date by checking pattern
-                    let date_pattern = Regex::new(r"^\d{4}-\d{2}-\d{2}$").ok();
-                    if let Some(re) = date_pattern {
-                        if re.is_match(parent_name) {
-                            return parent_name.to_string();
-                        }
-                    }
-                }
+        if let Some(parent_name) = json_path
+            .parent()
+            .and_then(|parent| parent.file_name())
+            .and_then(|s| s.to_str())
+        {
+            // Check if parent name is a date (YYYY-MM-DD format)
+            let looks_like_date = parent_name.len() == 10 && parent_name.matches('-').count() == 2;
+            if looks_like_date
+                && Regex::new(r"^\d{4}-\d{2}-\d{2}$")
+                    .ok()
+                    .is_some_and(|re| re.is_match(parent_name))
+            {
+                return parent_name.to_string();
             }
         }
 
@@ -2118,10 +2115,10 @@ impl NewsWriterService {
         }
 
         // Return category with highest score
-        if let Some(winner) = scores.iter().max_by_key(|s| s.score) {
-            if winner.score > 0 {
-                return winner.name.to_string();
-            }
+        if let Some(winner) = scores.iter().max_by_key(|s| s.score)
+            && winner.score > 0
+        {
+            return winner.name.to_string();
         }
 
         // Default: technology (instead of unknown)

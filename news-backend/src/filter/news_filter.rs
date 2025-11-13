@@ -113,14 +113,14 @@ impl NewsFilter {
         }
 
         // Verificar se o ID já está no registry E tem status Published
-        if let Some(metadata) = self.registry.get_metadata(article_id) {
-            if matches!(metadata.status, ArticleStatus::Published) {
-                debug!(
-                    article_id = %article_id,
-                    "Found duplicate by ID in registry (Published)"
-                );
-                return true;
-            }
+        if let Some(metadata) = self.registry.get_metadata(article_id)
+            && matches!(metadata.status, ArticleStatus::Published)
+        {
+            debug!(
+                article_id = %article_id,
+                "Found duplicate by ID in registry (Published)"
+            );
+            return true;
         }
 
         false

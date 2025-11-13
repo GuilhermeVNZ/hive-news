@@ -1,0 +1,1 @@
+Breakthrough: AI reading comprehension jumps 15.16% using novel attention-based system. Outperforms baseline on SQuAD dataset, moving closer to human-level understanding of written text. Nature/Science-level advancement.

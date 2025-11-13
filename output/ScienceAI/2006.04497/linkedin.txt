@@ -1,0 +1,1 @@
+What if AI could guarantee every recommendation is at least as good as a safe baseline? New research introduces Invariable Bayesian Safety, ensuring no user receives subpar experiences during AI learning. How might this transform trust in autonomous systems?

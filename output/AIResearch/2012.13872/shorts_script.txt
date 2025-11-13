@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if I told you AI essay graders can't tell the difference between a well-written essay and complete nonsense? [VISUAL DIRECTION] Animated text: AI CAN'T SPOT NONSENSE with shocking red alert symbol
+
+[VOICEOVER 0:05-0:20] Automated essay scoring systems are being used to grade millions of student papers, college applications, and even visa applications. But new research reveals they're fundamentally broken. [VISUAL DIRECTION] Quick cuts showing classrooms, admissions offices, government buildings with concerned expressions
+
+[VOICEOVER 0:20-0:40] Researchers from IIIT-Delhi and University of Texas asked: Do these AI systems actually understand what they're reading? Or are they just pattern-matching words? [VISUAL DIRECTION] Show researchers' institutions with question marks appearing
+
+[VOICEOVER 0:40-1:00] They discovered something alarming. When they removed up to 51% of an essay's least important words, creating grammatically incoherent 'word soups,' the AI still gave these nonsense texts 85% of the original scores. [VISUAL DIRECTION] Animated text: 51% WORDS REMOVED → 85% SCORE REMAINS with garbage can animation deleting words
+
+[VOICEOVER 1:00-1:30] Even worse - when researchers completely shuffled sentences, destroying all coherence, scores changed by less than 7%. And introducing factual errors like 'the Earth is flat' actually increased scores in 70% of cases when placed at the beginning. [VISUAL DIRECTION] Show sentence shuffling animation and flat Earth graphic with upward arrow indicating score increase
+
+[VOICEOVER 1:30-1:50] This means students could game the system by including certain keywords regardless of relevance, while well-reasoned essays might get lower scores for lacking the AI's preferred vocabulary. [VISUAL DIRECTION] Show student typing random keywords getting high score vs. thoughtful student getting low score
+
+[VOICEOVER 1:50-2:00] The next time an AI grades your work, remember: it might be reading words, but it's not understanding meaning. [VISUAL DIRECTION] Final text overlay: AI READS WORDS, NOT MEANING with concerned student looking at computer screen

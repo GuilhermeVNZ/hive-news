@@ -1,0 +1,1 @@
+AI can now detect when it doesn't know the answer with 79.68% accuracy—outperforming previous methods by treating questions as interconnected decisions rather than separate problems. Essential for reliable virtual assistants.

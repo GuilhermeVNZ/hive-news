@@ -55,25 +55,23 @@ pub fn sync_env_from_config(config_path: &Path) -> Result<()> {
         .context("Missing 'sites' in config")?;
 
     for (site_id, site_value) in sites {
-        if let Some(writer) = site_value.get("writer").and_then(|v| v.as_object()) {
-            if let Some(provider) = writer.get("provider").and_then(|v| v.as_str()) {
-                if let Some(api_key) = writer
-                    .get("api_key")
-                    .and_then(|v| v.as_str())
-                    .filter(|k| !k.is_empty() && *k != "null")
-                {
-                    let env_key = match provider {
-                        "deepseek" => "DEEPSEEK_API_KEY",
-                        "openai" => "OPENAI_API_KEY",
-                        "anthropic" => "ANTHROPIC_API_KEY",
-                        _ => continue,
-                    };
+        if let Some(writer) = site_value.get("writer").and_then(|v| v.as_object())
+            && let Some(provider) = writer.get("provider").and_then(|v| v.as_str())
+            && let Some(api_key) = writer
+                .get("api_key")
+                .and_then(|v| v.as_str())
+                .filter(|k| !k.is_empty() && *k != "null")
+        {
+            let env_key = match provider {
+                "deepseek" => "DEEPSEEK_API_KEY",
+                "openai" => "OPENAI_API_KEY",
+                "anthropic" => "ANTHROPIC_API_KEY",
+                _ => continue,
+            };
 
-                    // Update or add the key
-                    env_vars.insert(env_key.to_string(), api_key.to_string());
-                    println!("   ✅ Updated {} from site: {}", env_key, site_id);
-                }
-            }
+            // Update or add the key
+            env_vars.insert(env_key.to_string(), api_key.to_string());
+            println!("   ✅ Updated {} from site: {}", env_key, site_id);
         }
     }
 

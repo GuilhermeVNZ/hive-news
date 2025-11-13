@@ -1,0 +1,1 @@
+AI can now understand your search queries 7% better by expanding context from brief documents. This breakthrough addresses the fundamental challenge of query-document mismatch in web searches. How might this transform how we find information online?

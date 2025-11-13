@@ -1,0 +1,1 @@
+Face authentication systems can be hacked to reconstruct your actual photo - succeeding 120x more often than the 0.1% false acceptance rate. Biometric templates lack sufficient entropy, compromising privacy across databases.

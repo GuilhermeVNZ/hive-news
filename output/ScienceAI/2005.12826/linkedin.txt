@@ -1,0 +1,1 @@
+AI can now learn like the human brain without backpropagation. Researchers developed a Brain-Inspired Heterogeneous Network that processes information across independent modules, achieving superior image reconstruction. Could this decentralized approach solve AI's efficiency limitations?

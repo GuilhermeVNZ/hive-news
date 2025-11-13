@@ -1,0 +1,1 @@
+New method creates synthetic datasets that preserve statistical patterns without exposing private information, raising questions about data security and scientific reproducibility.

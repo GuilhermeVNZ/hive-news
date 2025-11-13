@@ -1,0 +1,1 @@
+A new AI system detects dental cavities in panoramic X-rays with 86% accuracy, helping dentists catch decay early and avoid misdiagnosis from shadows and noise.

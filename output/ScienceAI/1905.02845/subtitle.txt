@@ -1,0 +1,1 @@
+New research reveals how feature selection and extraction methods can dramatically improve AI performance while reducing computational complexity, with some techniques achieving near 90% accuracy on handwritten digit recognition.

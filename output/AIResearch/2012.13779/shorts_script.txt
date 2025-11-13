@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could master complex tasks with just a fraction of the data it normally requires? [VISUAL DIRECTION] Animated text: "AI LEARNING REVOLUTION" with brain icon flashing
+
+[VOICEOVER 0:05-0:20] Current AI systems need millions of training episodes to learn simple tasks, but new research shows we can dramatically cut that time by borrowing from how our brains work. [VISUAL DIRECTION] Show comparison chart: Standard AI vs Brain-Inspired AI with training time bars
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we build AI that learns more efficiently by mimicking the human hippocampus? [VISUAL DIRECTION] Animated brain diagram highlighting hippocampus region
+
+[VOICEOVER 0:40-1:00] They developed DAC-ML—a cognitive architecture that connects experiences through sequences, allowing AI to build on previous knowledge instead of starting from scratch each time. [VISUAL DIRECTION] Show Figure 2 from paper: performance comparison chart with green line rapidly surpassing others
+
+[VOICEOVER 1:00-1:30] The system uses three layers—reactive, adaptive, and contextual—working together like human memory systems. It stores sequences of actions and states, guiding the AI toward productive patterns using similarity metrics. [VISUAL DIRECTION] Animated diagram showing three layers interacting, with memory sequences flowing between them
+
+[VOICEOVER 1:30-1:50] This breakthrough makes AI training practical for real-world applications where data collection is expensive or limited—from robotics to healthcare systems. [VISUAL DIRECTION] Quick cuts: robot arm, medical imaging, autonomous vehicle
+
+[VOICEOVER 1:50-2:00] AI that learns like humans—building experience without massive repetition. The future of efficient artificial intelligence is here. [VISUAL DIRECTION] Final text overlay: "Brain-Inspired AI: Learning Smarter, Not Harder"

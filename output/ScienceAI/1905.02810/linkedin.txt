@@ -1,0 +1,1 @@
+AI 'outperforming' doctors in diagnosis? New research reveals this common comparison is mathematically flawed. Jensen's inequality shows aggregated human decisions appear worse than AI's optimal curve. Critical reminder: question headlines claiming AI superiority in healthcare.

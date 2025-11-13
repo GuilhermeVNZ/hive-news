@@ -1,0 +1,1 @@
+New method cleans up noisy image annotations, helping computers see object edges more clearly—with potential applications in robotics and medical imaging.

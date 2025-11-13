@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] Why do your streaming recommendations always suggest the same types of content? Research reveals algorithms can break this pattern while still giving you what you want.
+
+[VISUAL DIRECTION] Show animated text: "YOUR RECOMMENDATIONS" with arrows pointing to identical movie posters, then one poster breaks away dramatically
+
+[VOICEOVER 0:05-0:20] Most recommendation systems optimize for relevance alone, creating echo chambers where you only see popular items. This leaves lesser-known content hidden, limiting discovery.
+
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on distribution curves - highlight how popular items dominate
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we maintain personalization while dramatically increasing diversity? They developed a novel re-ranking approach called opportunistic personalization.
+
+[VISUAL DIRECTION] Animated flowchart showing traditional vs new algorithm paths
+
+[VOICEOVER 0:40-1:00] The key finding: By adjusting initial recommendation lists using entropy measures from past interactions, they increased diversity by up to 40% without sacrificing relevance.
+
+[VISUAL DIRECTION] Show key statistic overlay: "40% DIVERSITY INCREASE" with upward arrow animation
+
+[VOICEOVER 1:00-1:30] The method works by identifying opportunities within your preferences to introduce variety. It analyzes multiple dimensions beyond just genre, creating balanced recommendations that still match your interests.
+
+[VISUAL DIRECTION] Show animated text breaking down different diversity dimensions mentioned in paper
+
+[VOICEOVER 1:30-1:50] This addresses a critical gap in how platforms operate - users get both what they want AND discover new content. The approach works across movie genres from Horror to History.
+
+[VISUAL DIRECTION] Quick cuts between different genre examples with diversity metrics displayed
+
+[VOICEOVER 1:50-2:00] Next time you're stuck in a recommendation loop, remember: science shows algorithms can break the echo chamber while keeping your preferences intact.

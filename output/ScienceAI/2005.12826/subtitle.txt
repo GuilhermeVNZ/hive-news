@@ -1,0 +1,1 @@
+A new neural network mimics the brain's distributed learning, improving data representations without centralized control—offering a path to more efficient and interpretable artificial intelligence.

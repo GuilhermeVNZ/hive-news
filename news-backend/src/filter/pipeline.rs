@@ -45,8 +45,10 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
     // Processar cada PDF sequencialmente por enquanto
     // TODO: Implementar pipeline paralelo com rayon + tokio
 
-    let mut stats = FilterStats::default();
-    stats.total = pdfs.len();
+    let mut stats = FilterStats {
+        total: pdfs.len(),
+        ..FilterStats::default()
+    };
 
     for pdf_path in pdfs {
         // Parse do PDF
@@ -201,7 +203,7 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
     Ok(stats)
 }
 
-fn discover_unfiltered_pdfs(
+pub(crate) fn discover_unfiltered_pdfs(
     download_dir: &Path,
     registry: &RegistryManager,
 ) -> Result<Vec<PathBuf>> {
@@ -215,7 +217,6 @@ fn discover_unfiltered_pdfs(
     fn find_pdfs(
         dir: &Path,
         pdfs: &mut Vec<PathBuf>,
-        download_dir: &Path,
         registry: &RegistryManager,
     ) -> std::io::Result<()> {
         for entry in std::fs::read_dir(dir)? {
@@ -235,43 +236,28 @@ fn discover_unfiltered_pdfs(
                 }
 
                 // Recursão para subdiretórios
-                find_pdfs(&path, pdfs, download_dir, registry)?;
-            } else if let Some(ext) = path.extension() {
-                if ext == "pdf" {
-                    // Extrair article_id do caminho
-                    let article_id = path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
+                find_pdfs(&path, pdfs, registry)?;
+            } else if path.extension().is_some_and(|ext| ext == "pdf") {
+                // Extrair article_id do caminho
+                let article_id = path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
 
-                    // Processar se:
-                    // 1. Nunca processado
-                    // 2. Status Collected (baixado mas não filtrado ainda)
-                    // 3. Status Rejected mas ainda está em arxiv/ (pode ter sido rejeitado com threshold antigo)
-                    //    e o PDF ainda existe (não foi deletado)
-                    let metadata = registry.get_metadata(article_id);
-                    let should_process = match metadata {
-                        None => true, // Nunca processado - processar
-                        Some(meta) => {
-                            match meta.status {
-                                ArticleStatus::Collected => true, // Baixado mas não filtrado ainda
-                                ArticleStatus::Rejected => {
-                                    // Se foi rejeitado mas ainda está em arxiv/, reprocessar
-                                    // (pode ter sido rejeitado com threshold maior antes, e agora com 0.4 pode ser aprovado)
-                                    // Verificar se o PDF ainda existe fisicamente
-                                    if path.exists() {
-                                        // Reprocessar todos os rejeitados que ainda estão em arxiv/
-                                        // porque podem ter sido rejeitados com threshold antigo (0.5, 0.45)
-                                        true
-                                    } else {
-                                        false // PDF não existe mais, não processar
-                                    }
-                                }
-                                ArticleStatus::Filtered | ArticleStatus::Published => false, // Já processado completamente
-                            }
-                        }
-                    };
+                // Processar se:
+                // 1. Nunca processado
+                // 2. Status Collected (baixado mas nÃ£o filtrado ainda)
+                // 3. Status Rejected mas ainda estÃ¡ em arxiv/ (pode ter sido rejeitado com threshold antigo)
+                //    e o PDF ainda existe (nÃ£o foi deletado)
+                let metadata = registry.get_metadata(article_id);
+                let should_process = match metadata {
+                    None => true, // Nunca processado - processar
+                    Some(meta) => match meta.status {
+                        ArticleStatus::Collected => true, // Baixado mas nÃ£o filtrado ainda
+                        ArticleStatus::Rejected => path.exists(), // Reprocessar rejeitados presentes em disco
+                        ArticleStatus::Filtered | ArticleStatus::Published => false, // JÃ¡ processado completamente
+                    },
+                };
 
-                    if should_process {
-                        pdfs.push(path);
-                    }
+                if should_process {
+                    pdfs.push(path);
                 }
             }
         }
@@ -279,12 +265,12 @@ fn discover_unfiltered_pdfs(
     }
 
     // Search in downloads/ (mainly from arxiv/, excluding filtered/, rejected/, cache/)
-    find_pdfs(download_dir, &mut pdfs, download_dir, &registry)?;
+    find_pdfs(download_dir, &mut pdfs, registry)?;
 
     Ok(pdfs)
 }
 
-fn move_to_category(pdf_path: &Path, category: &str, base_dir: &Path) -> Result<()> {
+pub(crate) fn move_to_category(pdf_path: &Path, category: &str, base_dir: &Path) -> Result<()> {
     let category_dir = base_dir.join("filtered").join(category);
 
     // Criar diretório se não existir
@@ -306,7 +292,7 @@ fn move_to_category(pdf_path: &Path, category: &str, base_dir: &Path) -> Result<
     Ok(())
 }
 
-fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<PathBuf> {
+pub(crate) fn move_to_rejected(pdf_path: &Path, base_dir: &Path) -> Result<PathBuf> {
     let rejected_dir = base_dir.join("rejected");
 
     // Criar diretório se não existir

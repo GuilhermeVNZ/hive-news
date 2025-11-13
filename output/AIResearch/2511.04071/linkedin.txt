@@ -1,0 +1,1 @@
+AI now maps heart chambers with human-level accuracy in minutes instead of hours. This breakthrough in atrial fibrillation treatment uses nnU-Net to precisely segment cardiac MRI scans, matching expert tracings. How will this transform personalized cardiac care?

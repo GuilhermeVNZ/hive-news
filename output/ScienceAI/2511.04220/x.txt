@@ -1,0 +1,1 @@
+AI breakthrough: GANs now generate synthetic data indistinguishable from real records while preserving privacy. Maintains statistical properties without exposing personal information. Solves privacy-utility tradeoff for research and innovation. Paper: 2511.04220

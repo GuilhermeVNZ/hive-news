@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know 86% of biomedical datasets exist in complete isolation from each other?
+[VISUAL DIRECTION] [Animated text: 86% ISOLATED - bold red numbers, dramatic reveal]
+[VOICEOVER 0:05-0:20] This fragmentation is crippling medical research. Stanford scientists analyzed over 80 open biomedical sources and found a critical gap.
+[VISUAL DIRECTION] [Show interconnected web graphic breaking apart into isolated nodes]
+[VOICEOVER 0:20-0:40] They asked: How connected is our biomedical data really? Using automated extraction algorithms on major databases like DrugBank and KEGG...
+[VISUAL DIRECTION] [Database logos with weak connection lines between them]
+[VOICEOVER 0:40-1:00] The finding: Most datasets operate as stand-alone islands with minimal mapping between them. Vocabulary reuse and interlinking between graphs is critically low.
+[VISUAL DIRECTION] [Show actual SPARQL query results visualization with sparse connections]
+[VOICEOVER 1:00-1:30] This means researchers must manually bridge these gaps, slowing down discovery of new drugs and treatments. Without integration, we're missing crucial connections.
+[VISUAL DIRECTION] [Animated flow showing researcher struggling to connect separate data streams]
+[VOICEOVER 1:30-1:50] The implications are huge: fragmented data means delayed medical breakthroughs and incomplete understanding of diseases.
+[VISUAL DIRECTION] [Show drug development timeline with 'DATA GAP' roadblock]
+[VOICEOVER 1:50-2:00] The future of medicine depends on connected data. Will we bridge this critical gap?
+[VISUAL DIRECTION] [Final text overlay: 'CONNECTED DATA = FASTER DISCOVERIES']

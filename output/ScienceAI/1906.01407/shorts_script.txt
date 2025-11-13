@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could save $1,000 on every knee replacement surgery while actually improving outcomes?
+[VISUAL DIRECTION] Animated text: "$1,000 SAVED PER SURGERY" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] Knee replacements affect 700,000 Americans annually, costing up to $33,000 with huge quality variations. Hospitals face financial penalties for complications under Medicare's bundled payment program.
+[VISUAL DIRECTION] Show graph of cost distribution from $16,500 to $33,000 with red highlighting on expensive cases
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we learn from the best surgical decisions to create optimal treatment pathways?
+[VISUAL DIRECTION] Show Figure 2 from paper - decision framework with physician choices at each stage
+
+[VOICEOVER 0:40-1:00] The breakthrough: Reinforcement learning analyzed hundreds of successful treatment episodes, identifying patterns that reduce costs without compromising care.
+[VISUAL DIRECTION] Animated flow showing AI processing treatment data and identifying optimal pathways
+
+[VOICEOVER 1:00-1:30] Here's how it works: The AI learns by imitating physician decisions at each stage - from diagnosis through rehabilitation. Unsupervised compression groups similar cases, creating manageable decision frameworks that generalize to new patients.
+[VISUAL DIRECTION] Show Figure 1 methodology diagram with zoom on reinforcement learning components
+
+[VOICEOVER 1:30-1:50] Results: 33% reduction in excessive costs for procedures over $25,565. Average costs dropped from $19,559 to $17,781 with more predictable outcomes.
+[VISUAL DIRECTION] Bar chart showing before/after costs with standard deviation reduction highlighted
+
+[VOICEOVER 1:50-2:00] AI isn't replacing doctors - it's learning from them to make joint replacement more affordable and consistent for everyone.
+[VISUAL DIRECTION] Final screen: "33% COST REDUCTION | NATURE/SCIENCE RESEARCH" with paper title overlay

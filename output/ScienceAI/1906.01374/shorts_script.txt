@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if robots could teach themselves complex sequences without any human programming?
+[VISUAL DIRECTION] Animated text: "ROBOTS TEACHING THEMSELVES" with question mark, fast zoom
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's the reality from new robotics research. Current autonomous systems struggle when tasks depend on each other, requiring constant human oversight.
+[VISUAL DIRECTION] Show robot struggling with interconnected tasks, then transition to warehouse/disaster zone imagery
+[VOICEOVER 0:20-0:40] Researchers asked: Can robots autonomously decide which skills to practice next when tasks are interdependent?
+[VISUAL DIRECTION] Animated flowchart showing task dependencies with question marks at decision points
+[VOICEOVER 0:40-1:00] They discovered M-GRAIL - a system that treats skill selection as a Markov Decision Process. This allows robots to propagate motivation back through prerequisite tasks, ensuring they learn foundational skills first.
+[VISUAL DIRECTION] Show Figure 8 from paper with zoom on trial reduction, highlight near-zero trials for complex chains
+[VOICEOVER 1:00-1:30] How it works: The system uses Q-learning to assign values based on long-term benefits. When testing with the iCub robot activating spheres in chains, M-GRAIL achieved close to 90% success rates across interdependent sequences where simpler methods failed.
+[VISUAL DIRECTION] Animated sequence showing Q-learning propagation through task chains, highlight success rate numbers
+[VOICEOVER 1:30-1:50] This matters for real-world applications like disaster response and warehouses, where robots need to adapt to dynamic environments without pre-defined instructions.
+[VISUAL DIRECTION] Show robot navigating disaster scenario, then warehouse setting with fast cuts
+[VOICEOVER 1:50-2:00] The future of robotics just got smarter - machines that can autonomously master complex, interconnected skills.
+[VISUAL DIRECTION] Final text overlay: "AUTONOMOUS LEARNING ACHIEVED" with success rate percentage

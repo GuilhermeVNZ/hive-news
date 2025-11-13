@@ -63,11 +63,8 @@ impl WebParser {
         // Try to extract image from description or content
         let image_url = item
             .description()
-            .and_then(|desc| Self::extract_image_from_html(desc))
-            .or_else(|| {
-                item.content()
-                    .and_then(|content| Self::extract_image_from_html(content))
-            });
+            .and_then(Self::extract_image_from_html)
+            .or_else(|| item.content().and_then(Self::extract_image_from_html));
 
         // Generate ID from URL or title
         let id = Self::generate_id_from_url(&url)
@@ -222,8 +219,7 @@ impl WebParser {
             .collect::<Vec<_>>()
             .join(" ")
             .trim()
-            .replace('\n', " ")
-            .replace('\r', " ")
+            .replace(['\n', '\r'], " ")
             .split_whitespace()
             .collect::<Vec<_>>()
             .join(" ")
@@ -250,18 +246,18 @@ impl WebParser {
     fn extract_image_from_document(document: &Html) -> Option<String> {
         // Try og:image first
         let og_image_selector = Selector::parse("meta[property='og:image']").ok()?;
-        if let Some(tag) = document.select(&og_image_selector).next() {
-            if let Some(url) = tag.value().attr("content") {
-                return Some(url.to_string());
-            }
+        if let Some(tag) = document.select(&og_image_selector).next()
+            && let Some(url) = tag.value().attr("content")
+        {
+            return Some(url.to_string());
         }
 
         // Try twitter:image
         let twitter_image_selector = Selector::parse("meta[name='twitter:image']").ok()?;
-        if let Some(tag) = document.select(&twitter_image_selector).next() {
-            if let Some(url) = tag.value().attr("content") {
-                return Some(url.to_string());
-            }
+        if let Some(tag) = document.select(&twitter_image_selector).next()
+            && let Some(url) = tag.value().attr("content")
+        {
+            return Some(url.to_string());
         }
 
         // Try first large img tag

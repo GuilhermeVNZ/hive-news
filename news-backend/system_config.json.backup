@@ -1,0 +1,1514 @@
+{
+  "loop_config": {
+    "enabled": true,
+    "filter_score_min": 0.4,
+    "interval_minutes": 30,
+    "max_cycles": null
+  },
+  "paths": {
+    "base_dir": ".",
+    "downloads_dir": "downloads",
+    "output_dir": "output",
+    "registry_file": "articles_registry.json"
+  },
+  "sites": {
+    "airesearch": {
+      "collection_frequency_minutes": 30,
+      "collectors": [
+        {
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          },
+          "enabled": true,
+          "id": "arxiv",
+          "name": "arXiv"
+        },
+        {
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "filter_technology_only": true,
+            "search_terms": [
+              "artificial intelligence",
+              "machine learning",
+              "deep learning",
+              "neural network",
+              "computer vision",
+              "natural language processing",
+              "data science",
+              "computer science",
+              "software engineering",
+              "programming",
+              "algorithm",
+              "transformer",
+              "reinforcement learning"
+            ],
+            "time_range_days": 30
+          },
+          "enabled": false,
+          "id": "pmc",
+          "name": "PubMed Central"
+        },
+        {
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "fields_of_study": [
+              "Computer Science",
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Computer Vision",
+              "Natural Language Processing",
+              "Data Science",
+              "Software Engineering"
+            ],
+            "filter_technology_only": true,
+            "max_results": 10,
+            "query": "computer science artificial intelligence machine learning"
+          },
+          "enabled": false,
+          "id": "semantic_scholar",
+          "name": "Semantic Scholar"
+        }
+      ],
+      "domain": "airesearch.news",
+      "education_sources": [
+        {
+          "api_key": null,
+          "config": {
+            "categories": [
+              "computer-science",
+              "artificial-intelligence",
+              "data-science",
+              "programming"
+            ],
+            "filter_technology_only": true,
+            "language": "en"
+          },
+          "enabled": false,
+          "id": "edx",
+          "name": "edX"
+        },
+        {
+          "api_key": null,
+          "config": {
+            "departments": [
+              "Electrical-Engineering-and-Computer-Science",
+              "Computer-Science"
+            ],
+            "filter_technology_only": true,
+            "language": "en"
+          },
+          "enabled": false,
+          "id": "mit_ocw",
+          "name": "MIT OpenCourseWare"
+        },
+        {
+          "api_key": null,
+          "config": {
+            "categories": [
+              "computer-science",
+              "ai",
+              "programming"
+            ],
+            "filter_technology_only": true,
+            "language": "en"
+          },
+          "enabled": false,
+          "id": "class_central",
+          "name": "Class Central"
+        }
+      ],
+      "enabled": true,
+      "id": "airesearch",
+      "name": "AI Research",
+      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AIResearch in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nAIResearch is a cutting-edge AI news platform focusing on:\n- Latest breakthroughs in artificial intelligence research\n- Practical applications of ML/deep learning\n- Industry news and expert analysis\n- **News-style journalism**: Complex topics explained for general audience\n- **Simple titles**: Focus on WHAT the discovery means, not HOW it works technically\n- **Accessibility first**: Make readers understand WHY it matters\n- **Clear explanations**: Use analogies and real-world comparisons\n- Users who want technical details can read the original paper\n- Emphasis on accuracy and scientific rigor WITH simple language\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference figures from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nSUBTITLE REQUIREMENTS (CRITICAL):\n- **SEO-optimized**: A compelling summary optimized for search engines\n- **Maximum 2 lines**: Keep it concise and impactful\n- **Add tension**: Should create curiosity, consequence, or reason why this matters\n- **Clear value proposition**: Explain the significance in simple terms\n- **No technical jargon**: Write for general audience understanding\n\nGOOD SUBTITLES:\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nCRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:\n{{\n  \"title\": \"Your title here\",\n  \"subtitle\": \"SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance\",\n  \"article_text\": \"Full article body text here - all content in one string field\",\n  \"image_categories\": [\"category1\", \"category2\", \"category3\"]\n}}\n\n⚠️ IMPORTANT RULES:\n- \"subtitle\" MUST be a STRING field at the root level\n- \"subtitle\" MUST be SEO-optimized, maximum 2 lines, and create curiosity or explain significance\n- \"article_text\" MUST be a STRING field at the root level (NOT nested in an \"article\" object)\n- \"article_text\" MUST contain the complete article text in one string\n- DO NOT create nested objects like {{\"article\": {{\"opening_hook\": \"...\", \"key_finding\": \"...\"}}}}\n- All article content goes directly into the \"article_text\" string field\n- Return ONLY valid JSON - no markdown, no extra formatting\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"  \n",
+      "prompt_article_enabled": false,
+      "prompt_blog": "Write a blog-style article with context, methodology, results, and implications. Use headings and keep a professional tone.",
+      "prompt_blog_enabled": false,
+      "prompt_social": "Create a short, engaging social post highlighting the key insight and why it matters. Include 3-5 relevant hashtags.",
+      "prompt_social_enabled": false,
+      "social_media": [
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "youtube",
+          "name": "YouTube",
+          "refresh_token": null,
+          "username": null
+        },
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "tiktok",
+          "name": "TikTok",
+          "refresh_token": null,
+          "username": null
+        },
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "x",
+          "name": "X (Twitter)",
+          "refresh_token": null,
+          "username": null
+        },
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "instagram",
+          "name": "Instagram",
+          "refresh_token": null,
+          "username": null
+        },
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "facebook",
+          "name": "Facebook",
+          "refresh_token": null,
+          "username": null
+        }
+      ],
+      "temperature_article": null,
+      "temperature_blog": null,
+      "temperature_social": null,
+      "writer": {
+        "api_key": null,
+        "base_url": "https://api.deepseek.com",
+        "enabled": true,
+        "max_tokens": 4000,
+        "model": "deepseek-chat",
+        "provider": "deepseek",
+        "temperature": 0.7,
+        "use_compressor": true
+      },
+      "writing_style": "scientific"
+    },
+    "scienceai": {
+      "collection_frequency_minutes": 30,
+      "collectors": [
+        {
+          "api_key": null,
+          "collector_type": null,
+          "config": {
+            "category": "cs.AI",
+            "max_results": 10
+          },
+          "enabled": false,
+          "id": "arxiv",
+          "name": "arXiv"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://openai.com",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://openai.com/blog/rss.xml",
+          "id": "rss_openai",
+          "name": "OpenAI Blog RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://blog.research.google",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://blog.research.google/feeds/posts/default",
+          "id": "rss_google_ai",
+          "name": "Google AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://nvidianews.nvidia.com",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://nvidianews.nvidia.com/rss.xml",
+          "id": "rss_nvidia",
+          "name": "NVIDIA News RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://damo.alibaba.com",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://damo.alibaba.com/news/rss",
+          "id": "rss_alibaba_damo",
+          "name": "Alibaba DAMO RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.anthropic.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_anthropic",
+          "name": "Anthropic News",
+          "selectors": {
+            "article": "article",
+            "content": ".content, article, main",
+            "link": "a[href*='/news/']",
+            "title": "h1, h2"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://ai.meta.com/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_meta_ai",
+          "name": "Meta AI Blog",
+          "selectors": {
+            "article": "article, .post, .blog-post",
+            "content": ".content, article, main",
+            "link": "a[href*='/blog/']",
+            "title": "h1, h2"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://deepseek.ai/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_deepseek",
+          "name": "DeepSeek Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .news-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/blog'], a[href*='deepseek.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.alizila.com/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_alibaba_damo",
+          "name": "Alibaba Alizila News",
+          "selectors": {
+            "article": "a[href*='alizila.com'], article, .post-item, .article-item, .news-item",
+            "content": ".content, .post-content, .article-content, .story-content, article, main, .article-body",
+            "link": "a",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .story-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://x.ai/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_xai",
+          "name": "X.ai News",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news/'], a[href*='x.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://mistral.ai/news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_mistral_ai",
+          "name": "Mistral AI News",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news/'], a[href*='mistral.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://txt.cohere.com/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_cohere",
+          "name": "Cohere AI Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='cohere.com'], a[href*='txt.cohere.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.perplexity.ai/discover/tech",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_perplexity",
+          "name": "Perplexity AI",
+          "selectors": {
+            "article": "article, .post, .discover-item, .article-item, .top-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .discover-content",
+            "link": "a[href*='perplexity.ai/discover'], a[href*='perplexity.ai/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .discover-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://huggingface.co/blog",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://huggingface.co/blog/feed.xml",
+          "id": "rss_huggingface",
+          "name": "Hugging Face Blog RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://stability.ai/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_stability_ai",
+          "name": "Stability AI News",
+          "selectors": {
+            "article": "article, .post, .news-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/news'], a[href*='stability.ai/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://blog.elevenlabs.io/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://blog.elevenlabs.io/feed",
+          "id": "rss_elevenlabs",
+          "name": "ElevenLabs Blog RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://blog.character.ai/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_character_ai",
+          "name": "CharacterAI",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='blog.character.ai'], a[href*='character.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://inflection.ai/blog/enterprise",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_inflection_ai",
+          "name": "Inflection AI",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='inflection.ai/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://blogs.microsoft.com/ai/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://blogs.microsoft.com/ai/feed/",
+          "id": "rss_microsoft_ai",
+          "name": "Microsoft AI Blog RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://research.ibm.com/blog",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://research.ibm.com/blog/feed",
+          "id": "rss_ibm_research",
+          "name": "IBM Research AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://machinelearning.apple.com/highlights",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_apple_ml",
+          "name": "Apple Machine Learning",
+          "selectors": {
+            "article": "article, .post, .research-item, .publication-item, .highlight-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .highlight-content",
+            "link": "a[href*='machinelearning.apple.com/highlights'], a[href*='machinelearning.apple.com/research']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .highlight-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://machinelearning.apple.com/research",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_apple_ml_research",
+          "name": "Apple Machine Learning Research",
+          "selectors": {
+            "article": "article, .post, .research-item, .publication-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='machinelearning.apple.com/research']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_intel_ai",
+          "name": "Intel AI",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .spotlight-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, .spotlight-content",
+            "link": "a[href*='/customer-spotlight'], a[href*='intel.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .spotlight-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.amd.com/en/developer/resources/technical-articles.html#sortCriteria=%40amd_release_date%20descending",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_amd_ai",
+          "name": "AMD AI",
+          "selectors": {
+            "article": "article, .post, .article-item, .technical-article",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/developer/resources/technical-articles'], a[href*='amd.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.salesforce.com/news/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://www.salesforce.com/news/feed/",
+          "id": "rss_salesforce_ai",
+          "name": "Salesforce AI Blog RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://hai.stanford.edu/news?filterBy=news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_stanford_hai",
+          "name": "Stanford HAI",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='hai.stanford.edu/news']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://bair.berkeley.edu/blog/archive/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_berkeley_ai",
+          "name": "Berkeley AI Research",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='bair.berkeley.edu/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://deepmind.google/discover/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_deepmind_blog",
+          "name": "DeepMind Blog",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='deepmind.google/discover/blog']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://techcrunch.com/tag/artificial-intelligence/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+          "id": "rss_techcrunch_ai",
+          "name": "TechCrunch AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://venturebeat.com/category/ai/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://venturebeat.com/category/ai/feed/",
+          "id": "rss_venturebeat_ai",
+          "name": "VentureBeat AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.theverge.com/tech/ai",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
+          "id": "rss_the_verge_ai",
+          "name": "The Verge AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.wired.com/category/science/ai/",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://www.wired.com/feed/category/science/ai/latest/rss",
+          "id": "rss_wired_ai",
+          "name": "Wired AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://news.mit.edu/topic/artificial-intelligence",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://news.mit.edu/topic/artificial-intelligence-rss.xml",
+          "id": "rss_mit_tech_review_ai",
+          "name": "MIT Technology Review AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.nature.com/subjects/artificial-intelligence",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "feed_url": "https://www.nature.com/subjects/artificial-intelligence.rss",
+          "id": "rss_nature_ai",
+          "name": "Nature AI RSS"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.science.org/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_science",
+          "name": "Science",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='science.org/news'], a[href*='science.org/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://hive-hub.ai",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_hive_hub",
+          "name": "Hive Hub",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='hive-hub.ai']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://menlovc.com/focus-areas/ai/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_menlo_ventures",
+          "name": "Menlo Ventures AI",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .perspective-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='/focus-areas/ai'], a[href*='menlovc.com']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .perspective-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.airesearch.news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_airesearch_news",
+          "name": "AIResearch News",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://thegradient.pub/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_the_gradient",
+          "name": "The Gradient",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='thegradient.pub'], a[href*='/post/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://robohub.org/category/news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_robohub",
+          "name": "Robohub",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='robohub.org/category/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.ieee.org/advancing-technology",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_ieee",
+          "name": "IEEE Advancing Technology",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='ieee.org/advancing-technology'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.therobotreport.com/category/news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_robot_report",
+          "name": "The Robot Report",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='therobotreport.com/category/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://roboticsbusinessreview.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_robotics_business_review",
+          "name": "Robotics Business Review",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='roboticsbusinessreview.com/news'], a[href*='/article/'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://quantumcomputingreport.com/news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_quantum_computing_report",
+          "name": "Quantum Computing Report",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='quantumcomputingreport.com/news'], a[href*='/article/'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://research.ibm.com/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_ibm_quantum",
+          "name": "IBM Quantum Blog",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='research.ibm.com/blog'], a[href*='quantum'], a[href*='/article/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.quantamagazine.org/computer-science/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_quanta_quantum",
+          "name": "Quanta Magazine Computer Science",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='quantamagazine.org/computer-science'], a[href*='/article/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.globenewswire.com/newsroom",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_rigetti",
+          "name": "Rigetti Computing",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='globenewswire.com/newsroom'], a[href*='/newsroom/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://ionq.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_ionq",
+          "name": "IonQ",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='ionq.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.dwavequantum.com/company/newsroom/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_dwave",
+          "name": "D-Wave Systems",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='dwavequantum.com/company/newsroom'], a[href*='/newsroom/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.quantinuum.com/news/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_quantinuum",
+          "name": "Quantinuum",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='quantinuum.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.pasqal.com/newsroom/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_pasqal",
+          "name": "Pasqal",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='pasqal.com/newsroom'], a[href*='/newsroom/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://bostondynamics.com/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_boston_dynamics",
+          "name": "Boston Dynamics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='bostondynamics.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.automate.org/robotics/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_robotics_org",
+          "name": "Robotics Online",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='automate.org/robotics/news'], a[href*='automate.org/ai/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://global.abb/group/en/media",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_abb_robotics",
+          "name": "ABB Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='abb.com/news'], a[href*='robotics'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.kuka.com/en-us/press/media-news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_kuka",
+          "name": "KUKA Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='kuka.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.anthropic.com/research",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_anthropic_research",
+          "name": "Anthropic Research",
+          "selectors": {
+            "article": "article, .post, .research-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='anthropic.com/research'], a[href*='/research/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.adept.ai/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_adept",
+          "name": "Adept AI",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='adept.ai/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.assemblyai.com/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_assemblyai",
+          "name": "AssemblyAI Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='assemblyai.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://replicate.com/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_replicate",
+          "name": "Replicate Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='replicate.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://blog.langchain.com/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_langchain",
+          "name": "LangChain Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='blog.langchain.com'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.pinecone.io/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_pinecone",
+          "name": "Pinecone Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='pinecone.io/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://weaviate.io/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_weaviate",
+          "name": "Weaviate Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='weaviate.io/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.together.ai/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_together",
+          "name": "Together AI Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='together.ai/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.anyscale.com/press",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_anyscale",
+          "name": "Anyscale Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='anyscale.com/press'], a[href*='/press/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://modal.com/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_modal",
+          "name": "Modal Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='modal.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.cursor.com/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_cursor",
+          "name": "Cursor Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='cursor.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.continual.ai/blog",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_continual",
+          "name": "Continual AI",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='continual.ai/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.fast.ai/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_fastai",
+          "name": "Fast.ai",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='fast.ai'], a[href*='/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.eleuther.ai/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_eleuther",
+          "name": "EleutherAI Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='eleuther.ai'], a[href*='/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.xanadu.ai/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_xanadu",
+          "name": "Xanadu Quantum Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='xanadu.ai/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://infleqtion.com/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_infleqtion",
+          "name": "Infleqtion Blog",
+          "selectors": {
+            "article": "article, .post, .blog-item, .post-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='infleqtion.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.coldquanta.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_coldquanta",
+          "name": "ColdQuanta",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='coldquanta.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.quantumcomputinginc.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_qci",
+          "name": "Quantum Computing Inc",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='quantumcomputinginc.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.universal-robots.com/blog/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_universal_robots",
+          "name": "Universal Robots",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='universal-robots.com/blog'], a[href*='/blog/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://automation.omron.com/en/us/news/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_omron",
+          "name": "OMRON Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='omron.com/news'], a[href*='robotics'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.yaskawa.com/about-us/media-center/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_yaskawa",
+          "name": "Yaskawa Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='yaskawa.com/about-us/media-center/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.agilityrobotics.com/about/press",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_agility",
+          "name": "Agility Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='agilityrobotics.com/about/press'], a[href*='/press/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.unitree.com/news",
+          "collector_type": "html",
+          "config": {
+            "max_results": 5
+          },
+          "enabled": true,
+          "id": "html_unitree",
+          "name": "Unitree Robotics",
+          "selectors": {
+            "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
+            "content": ".content, .post-content, .article-content, article, main, .article-body",
+            "link": "a[href*='unitree.com/news'], a[href*='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
+          }
+        }
+      ],
+      "domain": "scienceai.news",
+      "education_sources": [],
+      "enabled": true,
+      "id": "scienceai",
+      "name": "Science AI",
+      "prompt_article": "CRITICAL INSTRUCTIONS (READ FIRST):\n1. You are writing for AIResearch in Nature/Science magazine editorial style (News & Views, Perspectives sections)\n2. **NEVER FABRICATE**: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below\n3. **ONLY USE PAPER CONTENT**: Reference only what exists in the provided paper text\n4. NO AI clichés: \"delve\", \"revolutionize\", \"game-changer\", \"unlock\", \"harness\", \"dive into\", \"shed light on\"\n5. NO emojis, NO excessive dashes (—), NO ellipses (...)\n\n---\n\nTARGET PUBLICATION:\nAIResearch is a cutting-edge AI news platform focusing on:\n- Latest breakthroughs in artificial intelligence research\n- Practical applications of ML/deep learning\n- Industry news and expert analysis\n- **News-style journalism**: Complex topics explained for general audience\n- **Simple titles**: Focus on WHAT the discovery means, not HOW it works technically\n- **Accessibility first**: Make readers understand WHY it matters\n- **Clear explanations**: Use analogies and real-world comparisons\n- Users who want technical details can read the original paper\n- Emphasis on accuracy and scientific rigor WITH simple language\n\n---\n\nWRITING STYLE (Nature/Science Editorial - Simplified for General Audience):\n- **Opening:** Establish significance immediately (why non-technical readers should care)\n- **Voice:** Active, direct, authoritative yet conversational and accessible\n- **Structure:** Inverted pyramid - key findings first, details follow\n- **Precision:** Reference specific figures, data points, methodology FROM THE PAPER\n- **Clarity:** Define technical terms on first use AND use plain language alternatives\n- **Flow:** Smooth transitions between concepts - explain as if to an intelligent layperson\n- **Accessibility:** Every technical concept should have a simple analogy or real-world comparison\n- **Purpose:** Make complex science understandable so readers grasp the importance, then they can read the paper for details\n\nCRITICAL RULES:\n- ✅ \"The researchers found X (as shown in Figure 2)...\"\n- ✅ \"This approach builds on the methods described in the paper...\"\n- ✅ \"The data shows a 23% increase...\" (if paper states this)\n- ❌ \"Previous work by Zhang et al. (Nature, 2023)...\" (unless paper cites this)\n- ❌ \"Experts suggest...\" (unless paper includes expert quotes)\n- ❌ \"This could lead to cures for cancer...\" (unless paper discusses this)\n\nWHAT TO AVOID (AI writing patterns):\n- \"In a groundbreaking study that could revolutionize...\"\n- \"Scientists have unlocked the secrets of...\"\n- \"This research sheds new light on...\"\n- \"Paradigm-shifting\", \"game-changing\" (unless genuinely warranted)\n- Inventing related research not mentioned in paper\n- Speculating beyond what paper's data supports\n\nIMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):\n\nYou MUST select exactly 3 categories from THIS EXACT LIST ONLY:\nai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound\n\nCRITICAL CONSTRAINTS:\n- ❌ DO NOT create new categories (like \"biology\", \"physics\", \"medical\", etc.)\n- ❌ DO NOT use synonyms or variations\n- ✅ ONLY use the 13 categories listed above\n- ✅ Order by priority: most relevant first, second choice, third choice\n- ✅ Must be lowercase, matching the list exactly\n\nSELECTION GUIDELINES:\n- ai: Artificial intelligence, machine learning, AI research\n- coding: Programming, software development, code\n- crypto: Cryptocurrency, blockchain, digital currency\n- database: Data storage, data management, servers\n- ethics: Ethical considerations, societal impact\n- games: Gaming, game development, interactive tech\n- hardware: Physical computing, electronics, processors\n- legal: Legal issues, regulations, compliance\n- network: Networking, connectivity, communication\n- robotics: Robots, automation, mechanical AI\n- science: General scientific research, experiments\n- security: Cybersecurity, privacy, protection\n- sound: Audio technology, sound processing\n\nEXAMPLES (USE THESE EXACT NAMES):\n✓ For neural networks → [\"ai\", \"science\", \"network\"]\n✓ For robotics → [\"robotics\", \"ai\", \"hardware\"]\n✓ For cybersecurity → [\"security\", \"network\", \"crypto\"]\n✓ For data analysis → [\"database\", \"ai\", \"coding\"]\n✓ For chip research → [\"hardware\", \"science\", \"ai\"]\n\nInclude this as \"image_categories\" array in your JSON response.\n\nREQUIRED ARTICLE STRUCTURE:\n1. **Opening Hook** (2-3 sentences: significance and context from paper - explain WHY non-technical readers should care)\n2. **Key Finding** (what researchers discovered - explain in plain language, avoid jargon)\n3. **Methodology** (how they did it - simplified explanation focusing on the approach, not technical details)\n4. **Results Analysis** (what data shows - reference figures from paper, use simple language)\n5. **Context** (why it matters - real-world implications for regular readers)\n6. **Limitations** (what remains unknown - from paper's limitations section)\n\nTITLE REQUIREMENTS (CRITICAL):\n- **News-focused**: Explain what the breakthrough means to everyday readers\n- **Simple language**: Avoid technical jargon, write for general audience\n- **Active voice**: Make it engaging and accessible\n- **Specific**: Include what was achieved or discovered\n- **Hook**: Capture attention like a news headline\n\nBAD TITLES (Too technical):\n❌ \"Graph Neural Networks for Spatiotemporal Dynamics\"\n❌ \"Gradient-Based Optimization in High-Dimensional Space\"\n❌ \"Multi-Agent Path Planning Algorithm for AUV Coordination\"\n\nGOOD TITLES (News-focused):\n✓ \"AI Can Now Predict Complex Data Relationships Without Violating Privacy\"\n✓ \"New Method Helps Scientists Share Data Securely Without Losing Accuracy\"\n✓ \"Robots Navigate Ocean Currents Using Real-Time Weather Data\"\n\nSUBTITLE REQUIREMENTS (CRITICAL):\n- **SEO-optimized**: A compelling summary optimized for search engines\n- **Maximum 2 lines**: Keep it concise and impactful\n- **Add tension**: Should create curiosity, consequence, or reason why this matters\n- **Clear value proposition**: Explain the significance in simple terms\n- **No technical jargon**: Write for general audience understanding\n\nGOOD SUBTITLES:\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\nEXAMPLES OF GOOD OPENING LINES (News style):\n✓ \"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information.\"\n✓ \"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements.\"\n✓ \"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment.\"\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{{paper_text}}\n\n## DELIVERABLE:\nWrite a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.\n\nFormat:\n# [Compelling, Specific Title - Nature/Science Style]\n\n[Article body - based ONLY on paper content...]\n\nCRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:\n{{\n  \"title\": \"Your title here\",\n  \"subtitle\": \"SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance\",\n  \"article_text\": \"Full article body text here - all content in one string field\",\n  \"image_categories\": [\"category1\", \"category2\", \"category3\"]\n}}\n\n⚠️ IMPORTANT RULES:\n- \"subtitle\" MUST be a STRING field at the root level\n- \"subtitle\" MUST be SEO-optimized, maximum 2 lines, and create curiosity or explain significance\n- \"article_text\" MUST be a STRING field at the root level (NOT nested in an \"article\" object)\n- \"article_text\" MUST contain the complete article text in one string\n- DO NOT create nested objects like {{\"article\": {{\"opening_hook\": \"...\", \"key_finding\": \"...\"}}}}\n- All article content goes directly into the \"article_text\" string field\n- Return ONLY valid JSON - no markdown, no extra formatting\n\nTITLE REQUIREMENTS (CRITICAL):\n- MAXIMUM 8 WORDS (short, punchy, viral)\n- STRONG HOOK to make users WANT to click and read\n- Create curiosity, tension, or surprise\n- Make readers NEED to know more\n\nBAD TITLES (too long, no hook):\n❌ \"A New Approach to Machine Learning Optimization in Deep Neural Networks\"\n❌ \"Understanding the Fundamentals of Quantum Computing Applications\"\n\nGOOD TITLES (short, hooky, irresistible):\n✓ \"AI Agents Fall Short at Scientific Discovery\"\n✓ \"Scientists Find Hidden Pattern in Neural Networks\"\n✓ \"This AI Breakthrough May Be Wrong\"  \n",
+      "prompt_article_enabled": false,
+      "prompt_blog": "Compose a deep-dive blog post with sections for background, approach, results, limitations, and future work.",
+      "prompt_blog_enabled": false,
+      "prompt_social": "Create a short social post summarizing the key takeaway for a tech audience with hashtags.",
+      "prompt_social_enabled": false,
+      "social_media": [
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "youtube",
+          "name": "YouTube",
+          "refresh_token": null,
+          "username": null
+        },
+        {
+          "access_token": null,
+          "api_key": null,
+          "api_secret": null,
+          "channel_id": null,
+          "config": {},
+          "enabled": false,
+          "id": "x",
+          "name": "X (Twitter)",
+          "refresh_token": null,
+          "username": null
+        }
+      ],
+      "temperature_article": null,
+      "temperature_blog": null,
+      "temperature_social": null,
+      "writer": {
+        "api_key": null,
+        "base_url": "https://api.deepseek.com",
+        "enabled": true,
+        "max_tokens": 4000,
+        "model": "deepseek-chat",
+        "provider": "deepseek",
+        "temperature": 0.7,
+        "use_compressor": true
+      },
+      "writing_style": "news"
+    }
+  },
+  "updated_at": "2025-11-06T23:46:24.168603200+00:00"
+}

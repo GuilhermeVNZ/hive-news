@@ -1,0 +1,1 @@
+A new self-supervised method enables AI to predict and generate mathematical proofs, challenging the need for labeled data in complex reasoning tasks.

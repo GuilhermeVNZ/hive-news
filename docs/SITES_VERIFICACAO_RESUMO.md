@@ -1,7 +1,7 @@
 # Resumo da Verificação de Sites de News
 
 **Data**: 2025-11-02  
-**Total verificados**: 34 sites (exceto hive-hub.com e airesearch.news)
+**Total verificados**: 34 sites (exceto hive-hub.ai e airesearch.news)
 
 ## Status Final
 

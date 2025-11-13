@@ -1,0 +1,1 @@
+AI can now learn with 76% less data using human-like reasoning. New Knowledge-augmented CLNs with Advice Gates achieve superior accuracy on complex tasks like medical diagnosis and debate analysis. Read the Nature/Science-style breakthrough.

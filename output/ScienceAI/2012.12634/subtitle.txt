@@ -1,0 +1,1 @@
+New hardware designs make neural networks faster and more energy-efficient for real-world applications like underwater imaging and speech recognition.

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could admit when it doesn't know the answer—with 79.68% accuracy?
+[VISUAL DIRECTION] Animated text: "79.68% Accuracy" flashes boldly with a question mark dissolving into a checkmark.
+[VOICEOVER 0:05-0:20] Current AI often forces answers or misses entirely, lacking basic human judgment. This creates misleading responses in systems from chatbots to virtual assistants.
+[VISUAL DIRECTION] Quick cuts of a chatbot giving wrong answers, then a red "X" overlay. Transition to a scientist looking at data charts.
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to understand what it can and cannot answer? They developed a method that learns joint positions, treating interconnected decisions rather than separate problems.
+[VISUAL DIRECTION] Show Figure 2 with zoom on probability distributions—emphasize peaks where "valid" and "no answer" decisions intersect. Animated arrows connect decision nodes.
+[VOICEOVER 0:40-1:00] They discovered significant improvements on the SQuAD dataset: F1 score of 75.84% vs. 72.24% baseline. The model excelled at 'Answer No Answer' without sacrificing performance on answerable questions.
+[VISUAL DIRECTION] Bar chart animation: F1 scores rising, with "75.84%" highlighted in green vs. baseline in gray. Text overlay: "Balanced Improvement."
+[VOICEOVER 1:00-1:30] How it works: By integrating BERT for contextual understanding and BiDAF for question exploration, the architecture processes questions through multiple layers. It captures nuanced linguistic patterns at word and character levels, culminating in a joint probability predictor.
+[VISUAL DIRECTION] Split screen: Left shows BERT layers processing text, right shows BiDAF exploring questions. Arrows merge into a central "Joint Probability" node. Fast cuts of linguistic patterns (e.g., synonyms, context shifts).
+[VOICEOVER 1:30-1:50] Implications: This means more reliable AI assistants—fewer misleading responses in customer service, education, and healthcare. Future systems will handle unanswerable questions with human-like precision.
+[VISUAL DIRECTION] Scenes of a virtual assistant correctly saying "I don't know" in a customer service chat, then transitioning to a doctor using AI for diagnostics. Hold on a satisfied user smile.
+[VOICEOVER 1:50-2:00] AI that knows its limits—transforming how we trust technology.
+[VISUAL DIRECTION] Final text overlay: "Contextual Aware Joint Probability Model" with the 79.68% stat below. Fade to black.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could create data that looks completely real but contains no actual personal information?
+[VISUAL DIRECTION] [Animated text: "AI-Generated Data: Real or Fake?" with question mark pulsing]
+
+[VOICEOVER 0:05-0:20] In an era where data drives innovation but privacy concerns limit sharing, scientists face a fundamental tension between utility and privacy.
+[VISUAL DIRECTION] [Show data flow diagrams with privacy lock icons blocking access]
+
+[VOICEOVER 0:20-0:40] The critical question: Can we generate data that maintains all the statistical properties of the original while containing no actual personal records?
+[VISUAL DIRECTION] [Animated scales showing "Utility" vs "Privacy" balancing]
+
+[VOICEOVER 0:40-1:00] The breakthrough: Carefully designed AI networks produce synthetic data that preserves correlation structures, distribution shapes, and multivariate relationships.
+[VISUAL DIRECTION] [Show side-by-side comparison of original vs synthetic data distributions with matching patterns]
+
+[VOICEOVER 1:00-1:30] How it works: Generative Adversarial Networks (GANs) use competing networks - one generates data, the other tries to distinguish fake from real. Through training, the generator improves until the discriminator can't reliably identify artificial data.
+[VISUAL DIRECTION] [Animated diagram showing generator vs discriminator network interaction with data flowing between them]
+
+[VOICEOVER 1:30-1:50] Real-world impact: Healthcare organizations can collaborate on patient studies, financial institutions can develop fraud detection, and researchers gain access to previously restricted data - all without compromising privacy.
+[VISUAL DIRECTION] [Quick cuts showing healthcare, finance, and research applications with secure data sharing symbols]
+
+[VOICEOVER 1:50-2:00] This provides a practical solution to the privacy-utility tradeoff that has limited data-driven innovation for decades.
+[VISUAL DIRECTION] [Final text overlay: "Synthetic Data: Real Science, Zero Privacy Risk" with paper reference 2511.04220]

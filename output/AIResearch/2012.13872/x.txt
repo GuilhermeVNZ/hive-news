@@ -1,0 +1,1 @@
+Shocking: AI essay graders scored grammatically incoherent 'word soups' nearly as high as well-written essays. State-of-the-art systems ignored destroyed coherence and even rewarded factual errors like 'the Earth is flat' when placed at the beginning. Are we trusting student assessment to broken algorithms?

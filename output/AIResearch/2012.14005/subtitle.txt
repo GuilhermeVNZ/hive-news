@@ -1,0 +1,1 @@
+New document expansion technique improves information retrieval performance across domains without requiring additional training data

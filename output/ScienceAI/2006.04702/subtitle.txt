@@ -1,0 +1,1 @@
+A new method enables AI to convert between text and graphs without paired training data, tackling a major bottleneck in natural language processing.

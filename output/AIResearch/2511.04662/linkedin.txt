@@ -1,0 +1,1 @@
+What if AI could share sensitive data without revealing private information? New research shows synthetic datasets can mimic real-world data while protecting individual privacy. How could this transform secure collaboration in your field?

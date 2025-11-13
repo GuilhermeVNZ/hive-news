@@ -1,0 +1,1 @@
+AI just got smarter about energy: New FPGA tech runs neural networks faster while using dramatically less power. Research shows up to 90% energy reduction in key layers. This could revolutionize everything from underwater monitoring to real-time speech processing.

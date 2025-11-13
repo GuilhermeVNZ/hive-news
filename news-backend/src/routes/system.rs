@@ -40,23 +40,21 @@ fn dir_size(start: &Path, filter_ext: Option<&[&str]>) -> u64 {
                 let path = e.path();
                 if path.is_dir() {
                     stack.push(path);
-                } else {
-                    if let Ok(md) = e.metadata() {
-                        if let Some(exts) = filter_ext {
-                            let ok = path
-                                .extension()
-                                .and_then(|s| s.to_str())
-                                .map(|s| {
-                                    let lower = s.to_lowercase();
-                                    exts.iter().any(|x| *x == lower)
-                                })
-                                .unwrap_or(false);
-                            if ok {
-                                total = total.saturating_add(md.len());
-                            }
-                        } else {
-                            total = total.saturating_add(md.len());
-                        }
+                } else if let Ok(md) = e.metadata() {
+                    let should_include = match filter_ext {
+                        None => true,
+                        Some(exts) => path
+                            .extension()
+                            .and_then(|s| s.to_str())
+                            .map(|s| {
+                                let lower = s.to_lowercase();
+                                exts.iter().any(|x| *x == lower)
+                            })
+                            .unwrap_or(false),
+                    };
+
+                    if should_include {
+                        total = total.saturating_add(md.len());
                     }
                 }
             }
@@ -241,7 +239,11 @@ pub async fn refresh_servers(Extension(_db): Extension<Arc<Database>>) -> Json<V
 
     // Execute servers.exe in a new PowerShell window
     match Command::new("powershell")
-        .args(&["-Command", &format!("Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd G:\\Hive-Hub\\News-main; {}'", path)])
+        .arg("-Command")
+        .arg(format!(
+            "Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd G:\\Hive-Hub\\News-main; {}'",
+            path
+        ))
         .spawn() {
         Ok(_) => {
             Json(json!({
@@ -263,93 +265,68 @@ pub async fn get_collection_status(Extension(_db): Extension<Arc<Database>>) -> 
     let config_path = get_system_config_path();
 
     // Read loop config
-    match fs::read_to_string(&config_path) {
-        Ok(content) => {
-            match serde_json::from_str::<Value>(&content) {
-                Ok(json) => {
-                    if let Some(loop_config) = json.get("loop_config") {
-                        let mut interval = loop_config
-                            .get("interval_minutes")
-                            .and_then(|v| v.as_u64())
-                            .unwrap_or(30);
-                        if interval == 0 {
-                            interval = 1;
-                        }
-
-                        let filter_score = loop_config
-                            .get("filter_score_min")
-                            .and_then(|v| v.as_f64())
-                            .unwrap_or(0.4);
-                        let max_cycles = loop_config
-                            .get("max_cycles")
-                            .and_then(|v| v.as_u64())
-                            .map(|v| v as u32);
-                        let mut enabled = loop_config
-                            .get("enabled")
-                            .and_then(|v| v.as_bool())
-                            .unwrap_or(false);
-
-                        if !enabled && LoopManager::global().is_running().await {
-                            enabled = true;
-                        }
-
-                        // Calculate cooldown
-                        // Try to find last cycle completion time from stats file
-                        let stats_path = loop_stats_path();
-                        let cooldown_remaining = if enabled && stats_path.exists() {
-                            if let Ok(stats_content) = fs::read_to_string(stats_path) {
-                                if let Ok(stats_json) =
-                                    serde_json::from_str::<Value>(&stats_content)
-                                {
-                                    if let Some(last_cycle) =
-                                        stats_json.get("last_cycle_completed_at")
-                                    {
-                                        if let Some(timestamp) = last_cycle.as_str() {
-                                            if let Ok(last_time) =
-                                                chrono::DateTime::parse_from_rfc3339(timestamp)
-                                            {
-                                                let now = Utc::now();
-                                                let last_utc = last_time.with_timezone(&Utc);
-                                                let elapsed = now.signed_duration_since(last_utc);
-                                                let total_seconds = (interval * 60) as i64;
-                                                let remaining =
-                                                    total_seconds - elapsed.num_seconds();
-                                                if remaining > 0 { remaining } else { 0 }
-                                            } else {
-                                                0
-                                            }
-                                        } else {
-                                            0
-                                        }
-                                    } else {
-                                        0
-                                    }
-                                } else {
-                                    0
-                                }
-                            } else {
-                                0
-                            }
-                        } else {
-                            0
-                        };
-
-                        return Json(json!({
-                            "success": true,
-                            "interval_minutes": interval,
-                            "filter_score_min": filter_score,
-                            "max_cycles": max_cycles,
-                            "enabled": enabled,
-                            "cooldown_remaining_seconds": cooldown_remaining,
-                            "cooldown_total_seconds": interval * 60,
-                        }));
-                    }
-                }
-                Err(_) => {}
-            }
+    if let Some(loop_config) = fs::read_to_string(&config_path)
+        .ok()
+        .and_then(|content| serde_json::from_str::<Value>(&content).ok())
+        .and_then(|json| json.get("loop_config").cloned())
+    {
+        let mut interval = loop_config
+            .get("interval_minutes")
+            .and_then(|v| v.as_u64())
+            .unwrap_or(30);
+        if interval == 0 {
+            interval = 1;
         }
-        Err(_) => {}
-    };
+
+        let filter_score = loop_config
+            .get("filter_score_min")
+            .and_then(|v| v.as_f64())
+            .unwrap_or(0.4);
+        let max_cycles = loop_config
+            .get("max_cycles")
+            .and_then(|v| v.as_u64())
+            .map(|v| v as u32);
+        let mut enabled = loop_config
+            .get("enabled")
+            .and_then(|v| v.as_bool())
+            .unwrap_or(false);
+
+        if !enabled && LoopManager::global().is_running().await {
+            enabled = true;
+        }
+
+        // Calculate cooldown
+        // Try to find last cycle completion time from stats file
+        let stats_path = loop_stats_path();
+        let cooldown_remaining = if enabled && stats_path.exists() {
+            fs::read_to_string(stats_path)
+                .ok()
+                .and_then(|stats_content| serde_json::from_str::<Value>(&stats_content).ok())
+                .and_then(|stats_json| stats_json.get("last_cycle_completed_at").cloned())
+                .and_then(|last_cycle| last_cycle.as_str().map(str::to_string))
+                .and_then(|timestamp| chrono::DateTime::parse_from_rfc3339(&timestamp).ok())
+                .map(|last_time| {
+                    let now = Utc::now();
+                    let last_utc = last_time.with_timezone(&Utc);
+                    let elapsed = now.signed_duration_since(last_utc);
+                    let remaining = (interval * 60) as i64 - elapsed.num_seconds();
+                    remaining.max(0)
+                })
+                .unwrap_or(0)
+        } else {
+            0
+        };
+
+        return Json(json!({
+            "success": true,
+            "interval_minutes": interval,
+            "filter_score_min": filter_score,
+            "max_cycles": max_cycles,
+            "enabled": enabled,
+            "cooldown_remaining_seconds": cooldown_remaining,
+            "cooldown_total_seconds": interval * 60,
+        }));
+    }
 
     // Defaults
     let running = LoopManager::global().is_running().await;

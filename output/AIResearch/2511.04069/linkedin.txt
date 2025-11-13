@@ -1,0 +1,1 @@
+Appendicitis remains the most common pediatric surgery, yet diagnosis challenges persist. New AI achieves 93.44% accuracy detecting appendicitis in ultrasound images, significantly improving over subjective human interpretation. Could this technology standardize pediatric emergency care?

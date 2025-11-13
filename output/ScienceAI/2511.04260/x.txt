@@ -1,0 +1,1 @@
+Breakthrough: AI can now generate synthetic data that preserves original patterns without exposing sensitive information. This neural architecture could revolutionize privacy in healthcare and finance. Paper: 2511.04260

@@ -181,10 +181,8 @@ impl ContentCleaner {
 
         // Replace unicode quotes with ASCII equivalents
         cleaned = cleaned
-            .replace('\u{2018}', "'")
-            .replace('\u{2019}', "'")
-            .replace('\u{201C}', "\"")
-            .replace('\u{201D}', "\"")
+            .replace(['\u{2018}', '\u{2019}'], "'")
+            .replace(['\u{201C}', '\u{201D}'], "\"")
             .replace('\u{2014}', " -- ")
             .replace('\u{2026}', "...");
 
@@ -365,7 +363,7 @@ impl ContentCleaner {
             let normalized_para = trimmed.split_whitespace().collect::<Vec<_>>().join(" ");
 
             // Remove any remaining newlines (just in case)
-            let final_para = normalized_para.replace('\n', " ").replace('\r', " ");
+            let final_para = normalized_para.replace(['\n', '\r'], " ");
 
             if final_para.len() > 10 {
                 cleaned_paragraphs.push(final_para);
@@ -412,7 +410,7 @@ impl ContentCleaner {
             }
 
             // Remove all newlines from paragraph (convert to spaces)
-            let no_newlines = trimmed.replace('\n', " ").replace('\r', " ");
+            let no_newlines = trimmed.replace(['\n', '\r'], " ");
 
             // Normalize whitespace within paragraph (no \n, just spaces)
             let normalized = no_newlines.split_whitespace().collect::<Vec<_>>().join(" ");

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could perfectly simulate how humans make decisions in complex situations like pandemics or crowded venues?
+[VISUAL DIRECTION] Animated text: "AI SIMULATES HUMAN DECISIONS" with pulsing question mark
+
+[VOICEOVER 0:05-0:20] Traditional models often fail to capture how people adapt and change their behavior over time. This limitation has major implications for predicting policy outcomes.
+[VISUAL DIRECTION] Show side-by-side comparison: static decision rules vs dynamic adaptation with arrows showing evolution
+
+[VOICEOVER 0:20-0:40] RAND Corporation researchers asked: Can reinforcement learning create agents that learn and optimize like humans?
+[VISUAL DIRECTION] Zoom in on researcher lab setting with neural network diagrams
+
+[VOICEOVER 0:40-1:00] They discovered RL agents achieved near-perfect performance in the Minority Game and improved infection control decisions by several percentage points.
+[VISUAL DIRECTION] Show Figure 2 time-series data with clear performance improvements highlighted
+
+[VOICEOVER 1:00-1:30] Using neural networks that adjust based on feedback, these agents learned to maximize rewards through trial and error, just like humans.
+[VISUAL DIRECTION] Animated flow chart showing: Action → Reward → Learning → Improved Action
+
+[VOICEOVER 1:30-1:50] This means we can now simulate how populations might respond to public health campaigns or economic reforms with unprecedented accuracy.
+[VISUAL DIRECTION] Show policy testing scenarios: vaccination campaigns, economic interventions with success metrics
+
+[VOICEOVER 1:50-2:00] AI isn't just predicting behavior—it's learning to adapt like we do, transforming how we test policies before implementation.
+[VISUAL DIRECTION] Final text overlay: "ADAPTIVE AI FOR BETTER POLICY OUTCOMES" with Nature/Science logo

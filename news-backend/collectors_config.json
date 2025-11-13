@@ -93,11 +93,11 @@
       "enabled": true,
       "api_key": null,
       "collector_type": "html",
-      "base_url": "https://hive-hub.com",
+      "base_url": "https://hive-hub.ai",
       "selectors": {
         "article": "article, .post, .news-item, .post-item, .blog-item",
         "content": ".content, .post-content, .article-content, article, main, .article-body",
-        "link": "a[href*='hive-hub.com']",
+        "link": "a[href*='hive-hub.ai']",
         "title": "h1, h2, h3, .title, .post-title, .article-title"
       },
       "config": {

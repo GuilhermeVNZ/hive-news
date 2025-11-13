@@ -1,0 +1,1 @@
+New neural network model uses real-time data to forecast complex marine dynamics, aiding navigation and climate studies.

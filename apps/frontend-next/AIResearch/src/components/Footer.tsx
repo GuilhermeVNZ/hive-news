@@ -71,7 +71,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="mailto:contact@hive-hub.com"
+                  href="mailto:contact@hive-hub.ai"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
                   Contact

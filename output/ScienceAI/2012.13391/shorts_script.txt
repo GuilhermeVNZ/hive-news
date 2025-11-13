@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know AI chatbots frequently contradict themselves in conversations, breaking fundamental communication rules humans naturally follow?
+[VISUAL DIRECTION] Animated text: "AI CONTRADICTS ITSELF" with question mark appearing
+[VOICEOVER 0:05-0:20] This inconsistency disrupts conversation flow and undermines trust in AI systems, making reliable communication challenging.
+[VISUAL DIRECTION] Show Figure 2 with zoom on contradiction detection performance peaks
+[VOICEOVER 0:20-0:40] Researchers asked: Can we detect when AI contradicts itself across conversations?
+[VISUAL DIRECTION] Animated text: "17,713 dialogues analyzed" with counter animation
+[VOICEOVER 0:40-1:00] They developed DECODE, achieving 12-point improvement in contradiction detection over existing methods.
+[VISUAL DIRECTION] Show bar chart comparing DECODE performance vs baseline methods
+[VOICEOVER 1:00-1:30] The method analyzes conversation history and individual utterances, proving particularly effective at transferring capability to real-world interactions.
+[VISUAL DIRECTION] Animated flow diagram showing conversation analysis process
+[VOICEOVER 1:30-1:50] This work demonstrates that standard Transformer models struggle with dialogue consistency, especially when training data is scarce.
+[VISUAL DIRECTION] Show correlation coefficient 0.81 with human judgments
+[VOICEOVER 1:50-2:00] The gap between machine understanding and human communication represents crucial future research for trustworthy AI.

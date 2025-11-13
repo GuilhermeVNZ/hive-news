@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could guarantee every single recommendation is at least as good as a safe baseline option?
+[VISUAL DIRECTION] Animated text: "AI SAFETY GUARANTEE" with question mark pulsing
+[VOICEOVER 0:05-0:20] This isn't theoretical - it's the core challenge facing recommendation systems that must balance exploration with user welfare.
+[VISUAL DIRECTION] Show animated scales with "Exploration" on one side and "User Safety" on the other, tilting back and forth
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI systems explore new options while guaranteeing no user ever receives a subpar experience?
+[VISUAL DIRECTION] Zoom in on animated AI brain with "?" symbols appearing around it
+[VOICEOVER 0:40-1:00] They developed Invariable Bayesian Safety - a framework where AI must guarantee every recommendation is at least as good as a known safe baseline.
+[VISUAL DIRECTION] Show animated safety shield forming around user icon, with baseline recommendation clearly marked
+[VOICEOVER 1:00-1:30] The SEGB algorithm carefully mixes risky and safe options, using Bayesian methods to ensure expected performance never drops below the safe threshold.
+[VISUAL DIRECTION] Animated flowchart showing algorithm mixing red (risky) and green (safe) options, with safety threshold line clearly visible
+[VOICEOVER 1:30-1:50] This has huge implications for online platforms, autonomous systems, healthcare, and finance - anywhere decisions must be justified and reliable.
+[VISUAL DIRECTION] Quick cuts showing medical AI, financial dashboard, and social media platform interfaces
+[VOICEOVER 1:50-2:00] AI that learns without compromising user safety - the future of trustworthy artificial intelligence is here.
+[VISUAL DIRECTION] Final text overlay: "SAFE AI EXPLORATION" with checkmark animation

@@ -1,0 +1,1 @@
+A new system uses computer vision to track players and balls, providing instant insights for coaches and broadcasters without specialized cameras.

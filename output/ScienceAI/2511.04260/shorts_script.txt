@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if you could analyze sensitive data without ever seeing the actual information? 
+[VISUAL DIRECTION] [Animated text: "ANALYZE DATA WITHOUT SEEING IT?" with question mark pulsing]
+[VOICEOVER 0:05-0:20] In an era of escalating privacy concerns, researchers have developed a way to generate synthetic mimics that preserve statistical patterns.
+[VISUAL DIRECTION] [Show abstract diagram of data flowing into neural network, emerging as synthetic version]
+[VOICEOVER 0:20-0:40] The challenge: how to share data for machine learning while protecting individual privacy in healthcare and finance.
+[VISUAL DIRECTION] [Show medical records and financial charts with "CONFIDENTIAL" stamps appearing]
+[VOICEOVER 0:40-1:00] The discovery: a novel neural architecture using generative adversarial networks produces synthetic data that retains training properties.
+[VISUAL DIRECTION] [Show GAN architecture diagram with clear generator/discriminator labels]
+[VOICEOVER 1:00-1:30] How it works: The system learns patterns from real data, then generates synthetic versions that maintain statistical distributions without exposing sensitive information.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on peak distribution comparison between real and synthetic data]
+[VOICEOVER 1:30-1:50] This breakthrough could transform industries by enabling secure data analysis while protecting individual privacy.
+[VISUAL DIRECTION] [Fast cuts: hospital data analysis, financial modeling, research collaboration]
+[VOICEOVER 1:50-2:00] The future of data privacy just got smarter - synthetic data that preserves what matters.
+[VISUAL DIRECTION] [Final screen: Paper reference 2511.04260 with neural network animation]

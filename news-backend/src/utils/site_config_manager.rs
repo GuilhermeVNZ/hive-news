@@ -90,13 +90,7 @@ fn compact_json_formatting(json: &str) -> String {
                 i = j;
                 continue;
             }
-        }
-        // Already compact small objects like {"max_results": 5}
-        else if trimmed.starts_with('{') && trimmed.ends_with('}') && trimmed.len() < 100 {
-            result.push_str(&format!("{}\n", line));
-        }
-        // Regular line
-        else {
+        } else {
             result.push_str(&format!("{}\n", line));
         }
 
@@ -1330,11 +1324,11 @@ GOOD TITLES (short, hooky, irresistible):
                     api_key: None,
                     collector_type: Some("html".to_string()),
                     feed_url: None,
-                    base_url: Some("https://hive-hub.com".to_string()),
+                    base_url: Some("https://hive-hub.ai".to_string()),
                     selectors: Some(serde_json::json!({
                         "article": "article, .post, .news-item, .post-item, .blog-item",
                         "content": ".content, .post-content, .article-content, article, main, .article-body",
-                        "link": "a[href*='hive-hub.com']",
+                        "link": "a[href*='hive-hub.ai']",
                         "title": "h1, h2, h3, .title, .post-title, .article-title"
                     })),
                     destinations: None,

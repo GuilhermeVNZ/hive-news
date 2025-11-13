@@ -1,0 +1,1 @@
+AI can now generate synthetic data that mimics real datasets without revealing personal details. Paper 2511.04239 shows this technique could revolutionize healthcare and finance privacy—but effectiveness varies. Nature/Science style research reveals both promise and limitations.

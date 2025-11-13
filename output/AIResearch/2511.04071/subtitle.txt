@@ -1,0 +1,1 @@
+New deep learning method automatically segments left atrium from MRI scans with 93.5% accuracy, potentially transforming atrial fibrillation treatment planning

@@ -1,4 +1,4 @@
-# Script para verificar todos os sites de news (exceto hive-hub.com e airesearch.news)
+# Script para verificar todos os sites de news (exceto hive-hub.ai e airesearch.news)
 
 Write-Host "Verificando sites de news..." -ForegroundColor Cyan
 Write-Host ""

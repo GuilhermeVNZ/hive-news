@@ -1,0 +1,1 @@
+AI detects pediatric appendicitis with 93.44% accuracy using ultrasound images - outperforming traditional methods. The model achieved 89.8% recall for true cases and 91.53% precision, potentially reducing missed diagnoses and unnecessary surgeries.

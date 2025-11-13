@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if I told you that linguists and computer scientists have been secretly working on the exact same problem for decades?
+
+[VISUAL DIRECTION] Animated text: "SECRETLY SOLVING THE SAME PROBLEM" with split screen showing linguistics symbols on left, computer code on right
+
+[VOICEOVER 0:05-0:20] This isn't just academic curiosity - it's fundamental to how computers understand language, how search engines work, and how translation tools operate.
+
+[VISUAL DIRECTION] Quick cuts: Google search bar, translation app interface, AI chatbot response
+
+[VOICEOVER 0:20-0:40] Researchers discovered that despite different terminology, multiple scientific fields are essentially solving the identical problem: identifying meaningful word combinations in text.
+
+[VISUAL DIRECTION] Zoom on paper abstract highlighting "co-occurrence" concept with animated circles connecting linguistics and computer science
+
+[VOICEOVER 0:40-1:00] They found that linguists call them "collocations" - like "climate change" - while computer scientists call them "association rules" - but both are mathematically addressing the same phenomenon.
+
+[VISUAL DIRECTION] Side-by-side comparison: "LINGUISTICS: Collocations" vs "COMPUTER SCIENCE: Association Rules" with examples beneath each
+
+[VOICEOVER 1:00-1:30] The breakthrough? These approaches converge because they share the same mathematical foundation. For instance, the concept of "windows" in rule extraction - looking at words within a certain distance - mirrors skip-gram extraction in natural language processing.
+
+[VISUAL DIRECTION] Animated diagram showing word distance relationships with connecting lines between terms
+
+[VOICEOVER 1:30-1:50] This means we can now systematically apply insights from one field to another, potentially accelerating language technology development and creating more intelligent AI systems.
+
+[VISUAL DIRECTION] Transition showing bioinformatics applications with sequence alignment techniques adapted for text comparison
+
+[VOICEOVER 1:50-2:00] The next time you use a search engine or translation tool, remember - it's powered by a mathematical convergence that linguists and computer scientists didn't even know they shared.

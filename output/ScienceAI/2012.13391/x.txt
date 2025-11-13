@@ -1,0 +1,1 @@
+AI chatbots contradict themselves, undermining trust. New DECODE method detects these contradictions with 12-point improvement, showing AI's struggle with coherent dialogue despite advanced training.

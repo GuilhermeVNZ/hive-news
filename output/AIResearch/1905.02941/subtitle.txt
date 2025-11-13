@@ -1,0 +1,1 @@
+New collaborative teaching method enables multiple AI systems to train on corrupted data while maintaining privacy and improving accuracy—achieving up to 1.7 times better performance than existing approaches.

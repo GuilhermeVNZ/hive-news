@@ -1,0 +1,1 @@
+What if AI could spot hidden cavities in dental X-rays with 86% accuracy? PaXNet, an AI system, detects caries in panoramic X-rays, reducing misinterpretations from shadows and artifacts. Could this transform preventive dental care for vulnerable groups?

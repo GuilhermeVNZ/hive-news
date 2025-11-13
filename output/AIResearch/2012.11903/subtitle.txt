@@ -1,0 +1,1 @@
+A new agent-based simulation framework integrates social practice theory to accurately model human habits and interactions, offering tools to tackle challenges from climate change to healthcare coordination.

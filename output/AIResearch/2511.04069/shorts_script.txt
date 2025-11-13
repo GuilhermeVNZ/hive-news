@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know appendicitis is the most common emergency surgery in children, yet diagnosis remains challenging and subjective?
+[VISUAL DIRECTION] [Animated text: "MOST COMMON PEDIATRIC SURGERY" with question mark appearing]
+[VOICEOVER 0:05-0:20] Traditional diagnosis relies on human interpretation of ultrasound images, leading to variability and potential missed cases.
+[VISUAL DIRECTION] [Show blurry ultrasound images transitioning to clear ones]
+[VOICEOVER 0:20-0:40] Researchers asked: Can artificial intelligence provide consistent, objective analysis of pediatric appendicitis ultrasound images?
+[VISUAL DIRECTION] [Animated AI brain icon with question marks around it]
+[VOICEOVER 0:40-1:00] Their AI model achieved 93.44% overall accuracy in detecting appendicitis, with 89.8% recall for true cases and 91.53% precision.
+[VISUAL DIRECTION] [Large text overlay: "93.44% ACCURACY" with confidence meter filling]
+[VOICEOVER 1:00-1:30] Using a ResNet-50 convolutional network trained on 15 different ultrasound views per patient, the AI learned to focus on medically relevant areas like the appendiceal region - aligning with radiologist practice.
+[VISUAL DIRECTION] [Show Grad-CAM heatmaps highlighting appendiceal areas on ultrasound images]
+[VOICEOVER 1:30-1:50] This represents significant improvement over traditional methods, potentially reducing missed appendicitis cases and unnecessary appendectomies in emergency departments.
+[VISUAL DIRECTION] [Split screen: worried parent on left, confident doctor with AI interface on right]
+[VOICEOVER 1:50-2:00] AI is transforming pediatric emergency care - providing objective, consistent analysis where seconds matter most.
+[VISUAL DIRECTION] [Final text: "93.44% ACCURACY IN PEDIATRIC APPENDICITIS DETECTION" with hospital backdrop]

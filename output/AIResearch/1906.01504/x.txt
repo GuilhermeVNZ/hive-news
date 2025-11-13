@@ -1,0 +1,1 @@
+AI that tunes itself? New method combines stochastic gradient descent with simulated annealing, allowing neural networks to automatically optimize learning rates during training. Achieved 86.76% accuracy on CIFAR-10 with ResNet34, outperforming traditional approaches.

@@ -1,0 +1,1 @@
+AI just grew its own brain! Neural networks now self-organize like biological systems, achieving 95% connectivity and matching hand-crafted CNNs on MNIST. Nature-inspired computing is here.

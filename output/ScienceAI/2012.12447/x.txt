@@ -1,0 +1,1 @@
+Computers can now identify health conditions like sneezing, coughing, and falling by analyzing skeleton movements with 10-30 tracking points. This Nature/Science advancement enables remote monitoring and security applications through multi-frame analysis.

@@ -1,0 +1,1 @@
+Robots just got 94% faster at planning movements. New QRRT algorithm cuts planning time from 300+ seconds to under 17 seconds by exploring simplified versions of problems simultaneously. Game-changer for manufacturing and exploration robotics.

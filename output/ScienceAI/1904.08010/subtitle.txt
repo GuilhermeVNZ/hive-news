@@ -1,0 +1,1 @@
+How computational methods for finding word patterns are surprisingly similar across linguistics, natural language processing, and computer science, revealing unexpected connections between disciplines.

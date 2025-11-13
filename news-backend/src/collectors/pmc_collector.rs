@@ -135,7 +135,7 @@ impl PmcCollector {
         let pmc_id = article_id.strip_prefix("PMC").unwrap_or(article_id);
 
         // Tentar múltiplas URLs para evitar Proof of Work (POW)
-        let urls = vec![
+        let urls = [
             // Opção 1: URL direta do PMC sem POW (usando oo-servidor)
             format!(
                 "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC{}/pdf/",

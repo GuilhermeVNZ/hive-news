@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could make everyone in your video calls appear to be making perfect eye contact?
+[VISUAL DIRECTION] [Animated text: "AI FIXES VIDEO CALL EYE CONTACT" with question mark appearing]
+
+[VOICEOVER 0:05-0:20] In videoconferencing, participants typically look at their screens instead of the camera, losing crucial engagement and confidence signals.
+[VISUAL DIRECTION] [Show split screen: person looking at screen vs person looking at camera with engagement metrics]
+
+[VOICEOVER 0:20-0:40] Researchers developed GazeGAN to solve this - a self-supervised generative network that digitally manipulates eye regions to redirect gaze toward the camera.
+[VISUAL DIRECTION] [Show before/after comparison from paper figures with gaze direction arrows]
+
+[VOICEOVER 0:40-1:00] The results are striking: GazeGAN achieved a Fréchet Inception Distance of just 3.10, significantly outperforming alternatives, with 35.4% of users preferring its perceptual realism.
+[VISUAL DIRECTION] [Animated charts showing FID comparison: GazeGAN 3.10 vs GLGAN 34.33 vs DeepWarp 106.53]
+
+[VOICEOVER 1:00-1:30] How does it work? Using unpaired training data from websites like CelebA, the system learns to extract angle-invariant features and maintain identity consistency while correcting gaze direction.
+[VISUAL DIRECTION] [Animated diagram showing network architecture with feature extraction and gaze correction pathways]
+
+[VOICEOVER 1:30-1:50] This technology could revolutionize professional communication, photography, and entertainment by creating more engaging virtual interactions without expensive hardware.
+[VISUAL DIRECTION] [Show applications: business meetings, virtual interviews, photography sessions]
+
+[VOICEOVER 1:50-2:00] The future of virtual eye contact is here - and it's powered by AI that makes everyone appear perfectly attentive.
+[VISUAL DIRECTION] [Final compelling shot of corrected gaze making direct eye contact with viewer]

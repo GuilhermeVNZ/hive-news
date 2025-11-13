@@ -1,0 +1,1 @@
+Did you know AI can now digitally redirect your gaze to appear more engaging in video calls? GazeGAN uses self-supervised learning to correct eye contact without specialized hardware, achieving superior visual quality (FID 3.10) and 35.4% user preference for realism. How might this transform remote collaboration and virtual communication?

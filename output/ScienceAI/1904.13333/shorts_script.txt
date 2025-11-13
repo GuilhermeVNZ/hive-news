@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI wasn't just executing your commands, but truly collaborating with you as an equal partner?
+[VISUAL DIRECTION] [Animated text: "AI as COLLABORATOR?" with pulsing question mark]
+
+[VOICEOVER 0:05-0:20] Traditional AI operates as a black box—you input, it outputs. But new research reveals a fundamental shift.
+[VISUAL DIRECTION] [Show Figure 2 from paper - optimization process visualization with zoom on collaborative interface]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI and humans co-evolve solutions together in real-time?
+[VISUAL DIRECTION] [Split screen showing human designer and AI agent working simultaneously]
+
+[VOICEOVER 0:40-1:00] They discovered AI generates not just variations, but radically new proposals that expand solution spaces.
+[VISUAL DIRECTION] [Show gallery of co-designed solutions, highlight wheel-like structure from inclined plane challenge]
+
+[VOICEOVER 1:00-1:30] Coevo uses population-based learning where both parties optimize together. The key breakthrough? Complete transparency—every decision is visible and interactive.
+[VISUAL DIRECTION] [Animated flowchart showing optimization steps with user intervention points highlighted]
+
+[VOICEOVER 1:30-1:50] This "intelligibility" transforms AI from mysterious tool to explainable partner across design, engineering, and architecture.
+[VISUAL DIRECTION] [Show real-world application mockups: product design, architectural models]
+
+[VOICEOVER 1:50-2:00] The future isn't AI replacing humans—it's AI and humans creating together what neither could achieve alone.
+[VISUAL DIRECTION] [Final text overlay: "COLLABORATION > COMMANDS" with Coevo platform interface fade-in]

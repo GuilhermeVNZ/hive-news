@@ -1,0 +1,1 @@
+Too many settings make computers worse at new problems. Research shows algorithms become overspecialized, performing well only on familiar tasks while failing on unseen challenges. This overfitting trade-off affects everything from delivery routes to financial analysis.

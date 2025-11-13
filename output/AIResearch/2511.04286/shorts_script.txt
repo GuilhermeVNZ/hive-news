@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if researchers could work with medical data without ever seeing your private information? [VISUAL DIRECTION] Animated text: "SECURE DATA COLLABORATION" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] As data sharing becomes crucial for progress, privacy concerns are growing. Healthcare and finance face real risks exposing sensitive details. [VISUAL DIRECTION] Show medical records with "CONFIDENTIAL" stamps, transition to financial charts with security icons
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we enable collaboration without compromising privacy? How to preserve data properties while removing identifiable elements? [VISUAL DIRECTION] Show researchers at computers with thought bubbles containing privacy symbols
+
+[VOICEOVER 0:40-1:00] They discovered adversarial GAN networks can generate synthetic records that maintain research utility while protecting identities. [VISUAL DIRECTION] Animated diagram showing real data → GAN processing → synthetic data output
+
+[VOICEOVER 1:00-1:30] The methodology uses neural networks to learn data patterns, then generates new records with the same statistical properties but no personal identifiers. [VISUAL DIRECTION] Zoom on neural network architecture, highlight adversarial training components
+
+[VOICEOVER 1:30-1:50] This means medical researchers can collaborate on realistic data safely. Finance teams can analyze patterns without exposing proprietary information. [VISUAL DIRECTION] Split screen showing medical research collaboration and financial analysis scenarios
+
+[VOICEOVER 1:50-2:00] The future of secure collaboration is here - where progress doesn't require compromising privacy. [VISUAL DIRECTION] Final text overlay: "PRIVACY-PRESERVING AI" with secure lock icon

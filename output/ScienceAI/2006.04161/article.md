@@ -1,0 +1,11 @@
+A vast trove of biomedical data is publicly available online, but researchers struggle to connect and query it effectively. A recent empirical meta-analysis of over 80 linked open data sources in the life sciences exposes a critical gap: most datasets exist in isolation, limiting their utility for integrated analysis and discovery.
+
+The key finding is that these data sources, which include information on drugs, genes, and diseases, are not densely interlinked as envisioned by Semantic Web technologies. Instead, many operate as stand-alone entities with minimal mappings between them, creating a fragmented landscape that complicates querying and integration.
+
+Researchers employed an automated extraction algorithm to analyze SPARQL endpoints and data dumps from 20 projects, including DrugBank and KEGG. This method involved querying endpoints to extract schemas, classes, and property values, generating a comprehensive schema graph to assess vocabulary reuse and linking patterns.
+
+Results show that 86% of schema elements are not reused across sources, and interlinking between graphs is low. For instance, only a small percentage of entities are linked to external sources, while intra-linking within individual sources is more common. Visualization of the schema graph reveals that popular diagrams often overstate connectivity, with many sources lacking cross-references.
+
+This fragmentation has real-world implications, such as hindering federated queries that could, for example, identify drugs targeting specific proteins across multiple databases. Without better integration, researchers must manually navigate disparate portals, slowing down interdisciplinary studies and potential breakthroughs in areas like pharmacovigilance and disease research.
+
+Limitations include the reliance on existing endpoints and dumps, which may not capture all data, and the challenge of semantic mismatches where classes and instances are incorrectly aligned. The study also notes that word embedding methods used for similarity detection have thresholds that may not always yield accurate mappings, leaving some connections uncertain.

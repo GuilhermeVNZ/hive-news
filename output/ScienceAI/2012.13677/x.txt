@@ -1,0 +1,1 @@
+Organizations worldwide are drowning in data complexity despite massive investments. New research shows how compact representations deliver identical insights with minimal computational load. The curse of dimensionality finally has a solution.

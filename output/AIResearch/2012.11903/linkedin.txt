@@ -1,0 +1,1 @@
+What if our daily routines—like commuting or coordinating hospital shifts—hold the key to solving climate change and disease outbreaks? A new Nature/Science study introduces SoPrA, a framework modeling human behavior through habituality, sociality, and interconnectivity. Explore how agent-based simulations can predict complex societal challenges.

@@ -1,0 +1,1 @@
+AI can now learn mathematical reasoning without labeled data - achieving 32.41% novel theorem generation. This self-supervised breakthrough could accelerate automated theorem proving. How might this transform research and education?

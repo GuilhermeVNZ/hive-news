@@ -1,0 +1,1 @@
+AI bias fix: New method removes discrimination in models like neural networks and random forests with almost no accuracy loss. Essential for fair lending and justice systems.

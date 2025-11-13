@@ -1,0 +1,1 @@
+What if AI could grow its own brain-like architecture? New research shows neural networks can self-organize through biologically inspired processes, achieving 95% connectivity. Could this eliminate manual AI design?

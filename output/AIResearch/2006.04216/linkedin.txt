@@ -1,0 +1,1 @@
+What if you could predict the performance of 23,424 machine learning pipelines after testing just a fraction? Cornell's AutoML system uses low-rank tensor factorizations to accurately model pipeline performance, dramatically reducing search time. How could this accelerate innovation in your field?

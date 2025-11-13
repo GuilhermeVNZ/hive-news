@@ -1,0 +1,1 @@
+Stop the scroll: AI just solved a major medical imaging problem. Combining CycleGAN with simple image inversion produces the most accurate alignment of pathology slides. This means doctors can now reliably compare molecular data with traditional slides for better diagnoses. Nature paper reveals how.

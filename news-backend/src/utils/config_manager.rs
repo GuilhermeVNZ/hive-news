@@ -287,14 +287,15 @@ impl ConfigManager {
                         eprintln!("🔄 [SYNC]     ✅ Added collector: {}", collector_id);
                     } else {
                         // If already exists, but new one is enabled and old one is not, update status
-                        if let Some(existing) = collectors_map.get_mut(&collector_id) {
-                            if site_collector.enabled && !existing.enabled {
-                                existing.enabled = true;
-                                eprintln!(
-                                    "🔄 [SYNC] Updated collector '{}' status to enabled",
-                                    collector_id
-                                );
-                            }
+                        if let Some(existing) = collectors_map.get_mut(&collector_id)
+                            && site_collector.enabled
+                            && !existing.enabled
+                        {
+                            existing.enabled = true;
+                            eprintln!(
+                                "🔄 [SYNC] Updated collector '{}' status to enabled",
+                                collector_id
+                            );
                         }
                     }
                 }

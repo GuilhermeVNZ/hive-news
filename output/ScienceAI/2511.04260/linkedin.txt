@@ -1,0 +1,1 @@
+What if you could train AI models without exposing sensitive data? New research develops neural architecture that generates synthetic data preserving original statistical properties. This breakthrough could transform healthcare and finance while protecting privacy. Read the paper to understand how this works.

@@ -1,0 +1,1 @@
+AI achieves human-level precision in mapping heart chambers for 33M atrial fibrillation patients. nnU-Net segments cardiac MRI scans in minutes vs hours, revolutionizing treatment planning. Nature/Science paper shows near-perfect boundary detection.

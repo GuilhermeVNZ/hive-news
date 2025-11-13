@@ -51,10 +51,10 @@ async fn get_courses(Query(params): Query<HashMap<String, String>>) -> Json<Cour
     };
 
     // Aplicar filtros se fornecidos
-    if let Some(category) = params.get("category") {
-        if category != "all" {
-            all_courses.retain(|c| c.category.to_lowercase() == category.to_lowercase());
-        }
+    if let Some(category) = params.get("category")
+        && category != "all"
+    {
+        all_courses.retain(|c| c.category.to_lowercase() == category.to_lowercase());
     }
 
     if let Some(platform) = params.get("platform") {

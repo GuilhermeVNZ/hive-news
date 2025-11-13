@@ -1,0 +1,1 @@
+New method uses images as visual bridges to enable machine translation between languages without any direct text pairs, achieving up to 61.3 BLEU score on benchmark tests.

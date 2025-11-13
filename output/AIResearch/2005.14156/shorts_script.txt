@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if robots could navigate complex environments 20 times faster than current methods allow? [VISUAL DIRECTION] Animated text: 20x FASTER NAVIGATION with dramatic zoom effect
+
+[VOICEOVER 0:05-0:20] Researchers at Iran's Institute for Research in Fundamental Sciences have developed an AI approach that solves the critical challenge of robots needing to explore every location exactly once while minimizing energy-wasting turns. [VISUAL DIRECTION] Show robot navigating grid with turning animations, highlight energy cost indicators
+
+[VOICEOVER 0:20-0:40] The puzzle: how can an agent traverse a 2D grid without revisiting cells while minimizing direction changes? Traditional SAT solvers struggle with this complex navigation problem. [VISUAL DIRECTION] Grid animation showing backtracking and inefficient paths with SAT solver label
+
+[VOICEOVER 0:40-1:00] Their breakthrough: Monte Carlo Search Tree (MCTS) achieved run-times up to 20 times faster than SAT methods, completing 15x15 grids in just 0.09 seconds versus 5.24 seconds for traditional approaches. [VISUAL DIRECTION] Side-by-side comparison with timers, zoom on 0.09s vs 5.24s results
+
+[VOICEOVER 1:00-1:30] How it works: MCTS uses selection, expansion, random traversal, and backpropagation to efficiently explore paths. The team optimized with early pruning and fast rollout functions to reduce computational overhead. [VISUAL DIRECTION] Animated flowchart of MCTS process with clear step labels
+
+[VOICEOVER 1:30-1:50] This has direct implications for robotics navigation, warehouse automation, and autonomous vehicles where turning operations require stopping and restarting—adding significant energy costs. [VISUAL DIRECTION] Real-world applications: warehouse robots, autonomous vehicles, mapping drones
+
+[VOICEOVER 1:50-2:00] The future of efficient navigation just got 20 times faster. What complex problems could this AI approach solve next? [VISUAL DIRECTION] Final dramatic text: 20x FASTER NAVIGATION with research institution logos

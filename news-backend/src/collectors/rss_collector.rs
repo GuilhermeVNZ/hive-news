@@ -14,6 +14,8 @@ pub struct RssCollector {
     temp_dir: PathBuf,
 }
 
+type FeedItem = (String, Option<DateTime<Utc>>, Option<String>, String);
+
 impl RssCollector {
     /// Cria novo cliente RSS
     pub fn new(temp_dir: PathBuf) -> Self {
@@ -82,7 +84,7 @@ impl RssCollector {
 
         // Try to parse as RSS first, then Atom
         let mut articles = Vec::new();
-        let items_to_process: Vec<(String, Option<DateTime<Utc>>, Option<String>, String)>;
+        let items_to_process: Vec<FeedItem>;
 
         // Try RSS first
         match Channel::read_from(feed_content.as_bytes()) {
@@ -406,18 +408,17 @@ impl RssCollector {
 
         // Fallback: usar body se não encontrou conteúdo específico suficiente
         // Extrair texto do body, o extract_text_from_html já remove scripts/styles automaticamente
-        if content_text.len() < MIN_CONTENT_LENGTH {
-            if let Ok(body_selector) = scraper::Selector::parse("body") {
-                if let Some(body) = document.select(&body_selector).next() {
-                    content_html = body.html();
-                    content_text = WebParser::extract_text_from_html(&content_html);
+        if content_text.len() < MIN_CONTENT_LENGTH
+            && let Ok(body_selector) = scraper::Selector::parse("body")
+            && let Some(body) = document.select(&body_selector).next()
+        {
+            content_html = body.html();
+            content_text = WebParser::extract_text_from_html(&content_html);
 
-                    info!(
-                        length = content_text.len(),
-                        "Using body content as fallback"
-                    );
-                }
-            }
+            info!(
+                length = content_text.len(),
+                "Using body content as fallback"
+            );
         }
 
         // Apply content cleaning to remove noise (buttons, navigation, etc.)

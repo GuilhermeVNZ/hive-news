@@ -128,40 +128,40 @@ impl ArxivCollector {
             }
 
             // Quando encontramos </entry>, criamos o paper
-            if line.contains("</entry>") {
-                if let Some(id) = current_id.take() {
-                    let paper_id = id.replace("http://arxiv.org/abs/", "");
-                    let _pdf_url = format!("https://arxiv.org/pdf/{}.pdf", paper_id.clone());
-                    let page_url = format!("https://arxiv.org/abs/{}", paper_id.clone());
+            if line.contains("</entry>")
+                && let Some(id) = current_id.take()
+            {
+                let paper_id = id.replace("http://arxiv.org/abs/", "");
+                let _pdf_url = format!("https://arxiv.org/pdf/{}.pdf", paper_id.clone());
+                let page_url = format!("https://arxiv.org/abs/{}", paper_id.clone());
 
-                    let title = current_title
-                        .take()
-                        .unwrap_or_else(|| "Untitled".to_string());
-                    let summary = current_summary.take().unwrap_or_default();
-                    let published = current_published
-                        .take()
-                        .and_then(|s| chrono::DateTime::parse_from_rfc3339(&s).ok())
-                        .map(|dt| dt.with_timezone(&chrono::Utc));
+                let title = current_title
+                    .take()
+                    .unwrap_or_else(|| "Untitled".to_string());
+                let summary = current_summary.take().unwrap_or_default();
+                let published = current_published
+                    .take()
+                    .and_then(|s| chrono::DateTime::parse_from_rfc3339(&s).ok())
+                    .map(|dt| dt.with_timezone(&chrono::Utc));
 
-                    papers.push(ArticleMetadata {
-                        id: paper_id.clone(),
-                        title: title.clone(), // Mantido para compatibilidade
-                        original_title: Some(title.clone()), // Título original da fonte
-                        generated_title: None, // Será preenchido quando o artigo for publicado
-                        url: page_url,
-                        published_date: published,
-                        author: Some("arXiv".to_string()),
-                        summary: Some(summary),
-                        image_url: None,
-                        source_type: Some("arxiv".to_string()),
-                        content_html: None,
-                        content_text: None,
-                        category: None,
-                        slug: None,
-                    });
+                papers.push(ArticleMetadata {
+                    id: paper_id.clone(),
+                    title: title.clone(), // Mantido para compatibilidade
+                    original_title: Some(title.clone()), // Título original da fonte
+                    generated_title: None, // Será preenchido quando o artigo for publicado
+                    url: page_url,
+                    published_date: published,
+                    author: Some("arXiv".to_string()),
+                    summary: Some(summary),
+                    image_url: None,
+                    source_type: Some("arxiv".to_string()),
+                    content_html: None,
+                    content_text: None,
+                    category: None,
+                    slug: None,
+                });
 
-                    info!(paper_id = %paper_id, title = %title, "Found paper");
-                }
+                info!(paper_id = %paper_id, title = %title, "Found paper");
             }
         }
 

@@ -1,0 +1,1 @@
+Computers now see edges 18.61% more precisely despite noisy human labels. STEAL method forces AI networks to focus on boundary accuracy, improving robotics and medical imaging without architecture changes.

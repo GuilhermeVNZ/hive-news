@@ -1,0 +1,1 @@
+AI struggles with messy real-world data like point clouds. A new method, RS-CNN, boosts shape recognition accuracy to 92.9%, outperforming predecessors. How could this transform robotics and autonomous navigation?

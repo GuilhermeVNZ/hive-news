@@ -1,0 +1,1 @@
+AI now automatically filters offensive product images before they reach customers. Computer vision detects violent/explicit content and misleading badges with 54% better accuracy than traditional methods. Deployed processing millions daily.

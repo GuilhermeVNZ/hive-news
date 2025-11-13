@@ -158,7 +158,7 @@ impl CollectorService {
                 .ok()
                 .and_then(|u| {
                     u.path_segments()
-                        .and_then(|segments| segments.last())
+                        .and_then(|mut segments| segments.next_back())
                         .map(|s| s.to_string())
                 })
                 .unwrap_or_else(|| format!("article_{}.pdf", article.id))

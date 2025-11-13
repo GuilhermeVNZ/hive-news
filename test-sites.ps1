@@ -177,3 +177,4 @@ if ($failedCount -gt 0) {
 Write-Host "`n📝 Save this output to: test-results-$(Get-Date -Format 'yyyy-MM-dd-HHmm').txt" -ForegroundColor Gray
 Write-Host "`nDone! Check SITES_STATUS.md for detailed action plan." -ForegroundColor Green
 
+

@@ -67,14 +67,19 @@ impl LoopManager {
         // Clean up finished task if necessary
         {
             let mut guard = self.inner.state.lock().await;
-            if let Some(handle) = guard.as_ref() {
-                if handle.join.is_finished() {
-                    let handle = guard.take().unwrap();
-                    drop(guard);
-                    if let Err(e) = handle.join.await {
-                        warn!("Pipeline loop task terminated with error: {:?}", e);
-                    }
-                }
+            let finished_handle = if guard
+                .as_ref()
+                .is_some_and(|handle| handle.join.is_finished())
+            {
+                guard.take()
+            } else {
+                None
+            };
+            drop(guard);
+            if let Some(handle) = finished_handle
+                && let Err(e) = handle.join.await
+            {
+                warn!("Pipeline loop task terminated with error: {:?}", e);
             }
         }
 
@@ -184,11 +189,11 @@ async fn run_loop(
             max_cycles = ?current_config.max_cycles,
             "Pipeline loop configuration loaded"
         );
-        if let Some(max) = current_config.max_cycles {
-            if cycle > max {
-                info!("Pipeline loop reached configured max cycles ({})", max);
-                break;
-            }
+        if let Some(max) = current_config.max_cycles
+            && cycle > max
+        {
+            info!("Pipeline loop reached configured max cycles ({})", max);
+            break;
         }
 
         info!("Starting pipeline cycle {}", cycle);
@@ -215,11 +220,11 @@ async fn run_loop(
 
         cycle = cycle.saturating_add(1);
 
-        if let Some(max) = current_config.max_cycles {
-            if cycle > max {
-                info!("Pipeline loop reached configured max cycles ({})", max);
-                break;
-            }
+        if let Some(max) = current_config.max_cycles
+            && cycle > max
+        {
+            info!("Pipeline loop reached configured max cycles ({})", max);
+            break;
         }
 
         let wait_seconds = current_config.interval_minutes.saturating_mul(60);
@@ -246,10 +251,11 @@ async fn run_loop(
 
 async fn cleanup_handle(manager_inner: Arc<LoopManagerInner>, config: &Arc<RwLock<LoopConfig>>) {
     let mut guard = manager_inner.state.lock().await;
-    if let Some(current) = guard.as_ref() {
-        if Arc::ptr_eq(&current.config, config) {
-            guard.take();
-        }
+    if guard
+        .as_ref()
+        .is_some_and(|current| Arc::ptr_eq(&current.config, config))
+    {
+        guard.take();
     }
 }
 

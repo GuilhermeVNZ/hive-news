@@ -1,0 +1,1 @@
+Breakthrough: AI learns without backpropagation by mimicking the brain's decentralized processing. Brain-Inspired Heterogeneous Network achieves sharper image features and better reconstruction - a step toward more efficient, robust AI systems.

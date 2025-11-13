@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if robots could plan their movements 94% faster - going from over 5 minutes to just 17 seconds? [VISUAL DIRECTION] Animated text: 94% FASTER with dramatic countdown from 300 to 17 seconds
+
+[VOICEOVER 0:05-0:20] Robot motion planning becomes exponentially harder as robots gain more degrees of freedom, making real-time applications nearly impossible. [VISUAL DIRECTION] Show robot arm with increasing complexity, computational graphs growing exponentially
+
+[VOICEOVER 0:20-0:40] Researchers at University of Stuttgart asked: Can we simplify the problem while maintaining guaranteed solutions? [VISUAL DIRECTION] Zoom on researcher figures, show problem complexity visualization
+
+[VOICEOVER 0:40-1:00] They discovered the QRRT algorithm explores multiple simplified versions of the planning problem simultaneously, pruning impossible paths early. [VISUAL DIRECTION] Animated trees branching simultaneously, with infeasible paths fading out
+
+[VOICEOVER 1:00-1:30] The key insight: By working through progressive simplifications called quotient spaces, the algorithm maintains probabilistic completeness while dramatically reducing computation. [VISUAL DIRECTION] Show Figure 2 progression through simplified spaces, highlight narrow passage scenarios
+
+[VOICEOVER 1:30-1:50] This means manufacturing robots can adapt to changing environments, exploration robots navigate complex terrain, and tele-operated systems provide instant feedback. [VISUAL DIRECTION] Quick cuts: factory robot, Mars rover, surgical robot
+
+[VOICEOVER 1:50-2:00] The result: Motion planning that's not just faster, but makes previously impossible applications suddenly feasible. [VISUAL DIRECTION] Final text overlay: FROM 300+ SECONDS TO 17 SECONDS with University of Stuttgart logo

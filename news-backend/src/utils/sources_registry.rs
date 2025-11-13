@@ -37,23 +37,12 @@ impl CollectionMethod {
 }
 
 /// Estatísticas de um método de coleta para uma fonte
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct MethodStats {
     pub success: u32,
     pub failure: u32,
     pub last_attempt: Option<DateTime<Utc>>,
     pub last_success: Option<DateTime<Utc>>,
-}
-
-impl Default for MethodStats {
-    fn default() -> Self {
-        Self {
-            success: 0,
-            failure: 0,
-            last_attempt: None,
-            last_success: None,
-        }
-    }
 }
 
 /// Informações sobre uma fonte e seus métodos de coleta
@@ -148,10 +137,10 @@ impl SourcesRegistry {
 
     /// Extrai o domínio de uma URL
     pub fn extract_domain(url: &str) -> String {
-        if let Ok(parsed) = url::Url::parse(url) {
-            if let Some(host) = parsed.host_str() {
-                return host.to_string();
-            }
+        if let Ok(parsed) = url::Url::parse(url)
+            && let Some(host) = parsed.host_str()
+        {
+            return host.to_string();
         }
         // Fallback: tentar extrair manualmente
         url.replace("https://", "")
@@ -175,7 +164,7 @@ impl SourcesRegistry {
         let stats = source_info
             .methods
             .entry(method_str.to_string())
-            .or_insert_with(MethodStats::default);
+            .or_default();
 
         stats.success += 1;
         stats.last_attempt = Some(Utc::now());
@@ -199,7 +188,7 @@ impl SourcesRegistry {
         let stats = source_info
             .methods
             .entry(method_str.to_string())
-            .or_insert_with(MethodStats::default);
+            .or_default();
 
         stats.failure += 1;
         stats.last_attempt = Some(Utc::now());

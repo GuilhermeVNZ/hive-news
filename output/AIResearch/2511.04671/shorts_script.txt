@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if we could predict the unpredictable? AI is now forecasting chaos itself.
+[VISUAL DIRECTION] Animated text: "PREDICTING CHAOS" with swirling weather patterns and stock market graphs
+
+[VOICEOVER 0:05-0:20] Weather patterns, financial markets - these complex systems have always challenged scientists with their chaotic nature. But now, artificial intelligence is breaking through.
+[VISUAL DIRECTION] Split screen showing hurricane formation and stock market volatility charts
+
+[VOICEOVER 0:20-0:40] The fundamental question: Can we actually predict inherently chaotic systems? Researchers developed a new approach where AI learns from its own prediction errors.
+[VISUAL DIRECTION] Show Figure 2 with zoom on error distribution patterns, highlight decreasing error trend
+
+[VOICEOVER 0:40-1:00] The breakthrough: AI can now accurately forecast these complex systems, potentially transforming how we predict real-world phenomena.
+[VISUAL DIRECTION] Animated text: "ACCURATE FORECASTS" with checkmarks appearing on weather and market predictions
+
+[VOICEOVER 1:00-1:30] How it works: The system continuously improves by analyzing where previous predictions went wrong, creating increasingly reliable forecasts for chaotic environments.
+[VISUAL DIRECTION] Flowchart animation showing prediction → error analysis → improved model → better prediction cycle
+
+[VOICEOVER 1:30-1:50] The implications are massive - from more accurate weather warnings to better financial risk assessment, this technology could revolutionize prediction across multiple fields.
+[VISUAL DIRECTION] Fast cuts: hurricane tracking map, trading floor, agricultural planning, disaster response teams
+
+[VOICEOVER 1:50-2:00] The future of prediction is here - and it's learning from its mistakes to master chaos itself.
+[VISUAL DIRECTION] Final text overlay: "AI: Learning Chaos" with paper reference 2511.04671

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if your computer could detect when you're sick just by watching how you move?
+[VISUAL DIRECTION] [Animated text: "Computers detecting illness?" with pulsing question mark]
+
+[VOICEOVER 0:05-0:20] Researchers have developed systems that track human skeleton movements with remarkable precision, using just 10-30 key points to capture the essence of motion.
+[VISUAL DIRECTION] [Show animated skeleton figure with highlighted joint points moving naturally]
+
+[VOICEOVER 0:20-0:40] Traditional computer vision struggled with complex movements, but scientists asked: could we track patterns over time rather than single moments?
+[VISUAL DIRECTION] [Split screen: left shows blurry traditional tracking, right shows clear skeleton tracking]
+
+[VOICEOVER 0:40-1:00] They discovered multi-frame analysis examining sequences provides comprehensive movement patterns, achieving high accuracy in identifying actions from waving to complex activities.
+[VISUAL DIRECTION] [Show timeline progression of movement sequences with accuracy percentages overlaying]
+
+[VOICEOVER 1:00-1:30] The system uses neural networks that learn to recognize patterns, employing both top-down and bottom-up strategies to assemble detected body parts into complete motion understanding.
+[VISUAL DIRECTION] [Animated diagram showing neural network processing skeleton data with arrows indicating information flow]
+
+[VOICEOVER 1:30-1:50] This enables remote health monitoring detecting conditions like sneezing, coughing, and falling, plus security applications identifying suspicious behaviors and robotics understanding human actions.
+[VISUAL DIRECTION] [Quick cuts: medical monitoring scenario, security camera footage, robot interacting with human]
+
+[VOICEOVER 1:50-2:00] Computers are learning to see us in ways that could revolutionize healthcare and safety - all by watching how we move.
+[VISUAL DIRECTION] [Final shot: skeleton figure transforming into human silhouette with "Future Vision" text overlay]

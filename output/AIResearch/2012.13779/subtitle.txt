@@ -1,0 +1,1 @@
+A new AI architecture mimics human memory to master complex tasks with dramatically less training data, addressing a major limitation of current artificial intelligence systems.

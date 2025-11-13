@@ -1,0 +1,1 @@
+AI can now learn like humans—dramatically reducing training time by borrowing brain principles. Nature study shows new cognitive architecture achieves sample-efficient learning, making AI practical for real-world applications.

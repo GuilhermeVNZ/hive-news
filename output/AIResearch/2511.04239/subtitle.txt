@@ -1,0 +1,1 @@
+Researchers develop a method to create synthetic datasets that preserve complex patterns without exposing sensitive information, raising new possibilities for secure data sharing.

@@ -1,4 +1,4 @@
-use axum::{extract::Query, http::StatusCode, response::IntoResponse, Json};
+use axum::{Json, extract::Query, http::StatusCode, response::IntoResponse};
 use serde::{Deserialize, Serialize};
 
 use crate::utils::article_registry::ArticleRegistry;
@@ -46,12 +46,20 @@ pub struct ArticlesQuery {
 pub async fn get_articles(
     Query(query): Query<ArticlesQuery>,
 ) -> Result<impl IntoResponse, (StatusCode, String)> {
-    eprintln!("[ScienceAI API] GET /api/articles - category: {:?}", query.category);
-    
+    eprintln!(
+        "[ScienceAI API] GET /api/articles - category: {:?}",
+        query.category
+    );
+
     // Load articles from registry
-    let registry_path = crate::utils::path_resolver::resolve_workspace_path("articles_registry.json");
-    let registry = ArticleRegistry::load(&registry_path)
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to load registry: {}", e)))?;
+    let registry_path =
+        crate::utils::path_resolver::resolve_workspace_path("articles_registry.json");
+    let registry = ArticleRegistry::load(&registry_path).map_err(|e| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Failed to load registry: {}", e),
+        )
+    })?;
 
     // Filter articles for ScienceAI (status=Published, destinations contains "scienceai", not hidden)
     let mut articles: Vec<Article> = registry
@@ -59,15 +67,16 @@ pub async fn get_articles(
         .values()
         .filter(|m| {
             // Check if published
-            if !matches!(m.status, crate::utils::article_registry::ArticleStatus::Published) {
+            if !matches!(
+                m.status,
+                crate::utils::article_registry::ArticleStatus::Published
+            ) {
                 return false;
             }
 
             // Check if has scienceai destination
             if let Some(destinations) = &m.destinations {
-                let has_scienceai = destinations.iter().any(|d| {
-                    d.to_lowercase() == "scienceai"
-                });
+                let has_scienceai = destinations.iter().any(|d| d.to_lowercase() == "scienceai");
                 if !has_scienceai {
                     return false;
                 }
@@ -100,7 +109,8 @@ pub async fn get_articles(
                 .join("-");
 
             // Get date
-            let date = m.published_at
+            let date = m
+                .published_at
                 .map(|dt| dt.format("%Y-%m-%d").to_string())
                 .unwrap_or_else(|| chrono::Utc::now().format("%Y-%m-%d").to_string());
 
@@ -109,11 +119,13 @@ pub async fn get_articles(
 
             // Read excerpt from subtitle.txt
             let subtitle_path = full_path.join("subtitle.txt");
-            let excerpt = std::fs::read_to_string(subtitle_path)
-                .unwrap_or_else(|_| "Discover the latest in AI research and technology.".to_string());
+            let excerpt = std::fs::read_to_string(subtitle_path).unwrap_or_else(|_| {
+                "Discover the latest in AI research and technology.".to_string()
+            });
 
             // Extract category from registry or default to "ai"
-            let category = m.category
+            let category = m
+                .category
                 .as_ref()
                 .map(|c| c.to_lowercase())
                 .unwrap_or_else(|| "ai".to_string());
@@ -129,11 +141,12 @@ pub async fn get_articles(
                 let cat = &image_categories[0];
                 let cat_dir = cat.to_lowercase();
                 // Use article ID for deterministic selection
-                let id_hash: u64 = m.id.chars()
-                    .filter(|c| c.is_numeric())
-                    .collect::<String>()
-                    .parse()
-                    .unwrap_or(0);
+                let id_hash: u64 =
+                    m.id.chars()
+                        .filter(|c| c.is_numeric())
+                        .collect::<String>()
+                        .parse()
+                        .unwrap_or(0);
                 let max_images = if cat_dir == "ai" { 59 } else { 20 };
                 let image_num = (id_hash % max_images) + 1;
                 Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
@@ -146,11 +159,12 @@ pub async fn get_articles(
             let image_feed = if image_categories.len() > 1 {
                 let cat = &image_categories[1];
                 let cat_dir = cat.to_lowercase();
-                let id_hash: u64 = m.id.chars()
-                    .filter(|c| c.is_numeric())
-                    .collect::<String>()
-                    .parse()
-                    .unwrap_or(0);
+                let id_hash: u64 =
+                    m.id.chars()
+                        .filter(|c| c.is_numeric())
+                        .collect::<String>()
+                        .parse()
+                        .unwrap_or(0);
                 let max_images = if cat_dir == "ai" { 59 } else { 20 };
                 let image_num = (id_hash % max_images) + 1;
                 Some(format!("/images/{}/{cat_dir}_{image_num}.jpg", cat_dir))
@@ -158,11 +172,12 @@ pub async fn get_articles(
                 // Use same category but with different offset to get different image
                 let cat = &image_categories[0];
                 let cat_dir = cat.to_lowercase();
-                let id_hash: u64 = m.id.chars()
-                    .filter(|c| c.is_numeric())
-                    .collect::<String>()
-                    .parse()
-                    .unwrap_or(0);
+                let id_hash: u64 =
+                    m.id.chars()
+                        .filter(|c| c.is_numeric())
+                        .collect::<String>()
+                        .parse()
+                        .unwrap_or(0);
                 let max_images = if cat_dir == "ai" { 59 } else { 20 };
                 // Add prime number offset to ensure different image from carousel
                 let image_num = ((id_hash + 17) % max_images) + 1;
@@ -191,19 +206,17 @@ pub async fn get_articles(
         .collect();
 
     // Filter by category if provided
-    if let Some(category) = query.category {
-        if category != "all" {
-            articles.retain(|a| a.category == category);
-        }
+    if let Some(category) = query.category
+        && category != "all"
+    {
+        articles.retain(|a| a.category == category);
     }
 
     // Sort: featured first, then by date (newest first)
-    articles.sort_by(|a, b| {
-        match (a.featured, b.featured) {
-            (true, false) => std::cmp::Ordering::Less,
-            (false, true) => std::cmp::Ordering::Greater,
-            _ => b.date.cmp(&a.date),
-        }
+    articles.sort_by(|a, b| match (a.featured, b.featured) {
+        (true, false) => std::cmp::Ordering::Less,
+        (false, true) => std::cmp::Ordering::Greater,
+        _ => b.date.cmp(&a.date),
     });
 
     eprintln!("[ScienceAI API] Returning {} articles", articles.len());
@@ -250,4 +263,3 @@ pub async fn get_categories() -> Result<impl IntoResponse, (StatusCode, String)>
 
     Ok(Json(serde_json::json!({ "categories": categories })))
 }
-

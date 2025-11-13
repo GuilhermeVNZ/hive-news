@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Think AI is better than doctors at medical diagnosis? The shocking truth is that most comparisons are mathematically flawed.
+[VISUAL DIRECTION] [Animated text: "AI BETTER THAN DOCTORS?" with question mark growing larger, then "MATHEMATICALLY FLAWED" appearing in red]
+
+[VOICEOVER 0:05-0:20] When researchers compare AI to human experts in critical fields like healthcare, they're often using misleading methods that overstate AI's advantages.
+[VISUAL DIRECTION] [Show side-by-side comparison of doctor examining patient and AI algorithm processing data, with "OVERSTATED ADVANTAGE" text overlay]
+
+[VOICEOVER 0:20-0:40] The problem lies in how we measure performance. Researchers analyzed a massive dataset of 1 million patient observations from China's pre-pregnancy checkup program.
+[VISUAL DIRECTION] [Animated counter showing "1,000,000+ PATIENT OBSERVATIONS" with map of China highlighting Henan Province]
+
+[VOICEOVER 0:40-1:00] They discovered that when multiple human decision-makers use different thresholds, their combined performance appears worse than AI's single optimal curve.
+[VISUAL DIRECTION] [Show Figure 2 from paper - ROC curves with human aggregate curve dipping below AI curve, zoom on the performance gap]
+
+[VOICEOVER 1:00-1:30] This happens due to Jensen's inequality - a mathematical phenomenon where the average of human performances falls below the curve representing their collective potential. Essentially, varied human approaches appear less effective when combined.
+[VISUAL DIRECTION] [Animated explanation of Jensen's inequality showing multiple human decision paths converging to suboptimal aggregate, with mathematical symbols appearing briefly]
+
+[VOICEOVER 1:30-1:50] The real-world impact is huge: misinterpreting these comparisons could lead to over-reliance on AI in areas where human judgment remains crucial, especially in healthcare and finance.
+[VISUAL DIRECTION] [Quick cuts: hospital setting, financial trading floor, then red warning text: "DON'T UNDERESTIMATE HUMAN EXPERTISE"]
+
+[VOICEOVER 1:50-2:00] Next time you see headlines claiming AI outperforms humans, remember: the reality is mathematically more complex than it appears.
+[VISUAL DIRECTION] [Final screen with paper citation: "Feng et al. 2019, Nature/Science" and key takeaway: "QUESTION THE HEADLINES"]

@@ -1,0 +1,1 @@
+AI detects dental cavities in X-rays with 86% accuracy, outperforming human recall for severe cases. PaXNet tackles misinterpretations, speeding diagnoses for better outcomes. A leap in dental tech from Nature-style research.

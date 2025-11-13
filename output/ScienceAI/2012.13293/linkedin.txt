@@ -1,0 +1,1 @@
+Your face ID can be reverse-engineered into your actual photo with 96% success. Research reveals biometric templates contain insufficient entropy, allowing attackers to reconstruct high-quality facial images that pass authentication. This challenges the irreversibility required by GDPR - how secure is your biometric data really?

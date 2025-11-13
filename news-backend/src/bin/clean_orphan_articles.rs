@@ -40,10 +40,10 @@ fn main() -> Result<()> {
     // Load registry
     let registry_path = resolve_workspace_path("articles_registry.json");
     println!("📄 Loading registry from: {}", registry_path.display());
-    
+
     let registry_content = fs::read_to_string(&registry_path)?;
     let mut registry: ArticleRegistry = serde_json::from_str(&registry_content)?;
-    
+
     let total_count = registry.articles.len();
     println!("📊 Total articles in registry: {}\n", total_count);
 
@@ -58,7 +58,7 @@ fn main() -> Result<()> {
         if let Some(output_dir) = &article.output_dir {
             // Resolve path relative to workspace
             let full_path = resolve_workspace_path(output_dir);
-            
+
             // Check if directory exists and has required files
             let is_valid = if full_path.exists() && full_path.is_dir() {
                 let title_txt = full_path.join("title.txt");
@@ -72,7 +72,7 @@ fn main() -> Result<()> {
                 valid += 1;
             } else {
                 orphan_ids.push(id.clone());
-                
+
                 // Show first 10 orphans as examples
                 if orphan_ids.len() <= 10 {
                     println!("  ❌ {} → {}", article.id, full_path.display());
@@ -86,7 +86,7 @@ fn main() -> Result<()> {
         } else {
             missing_output_dir += 1;
             orphan_ids.push(id.clone());
-            
+
             if missing_output_dir <= 5 {
                 println!("  ⚠️  {} → (no output_dir field)", article.id);
             }
@@ -108,16 +108,19 @@ fn main() -> Result<()> {
     }
 
     // Ask for confirmation
-    println!("\n⚠️  WARNING: This will remove {} articles from the registry!", orphan_ids.len());
+    println!(
+        "\n⚠️  WARNING: This will remove {} articles from the registry!",
+        orphan_ids.len()
+    );
     println!("   The original registry will be backed up.");
     print!("\n   Continue? [y/N]: ");
-    
+
     use std::io::{self, Write};
     io::stdout().flush()?;
-    
+
     let mut input = String::new();
     io::stdin().read_line(&mut input)?;
-    
+
     if !input.trim().eq_ignore_ascii_case("y") {
         println!("\n❌ Aborted. No changes made.");
         return Ok(());
@@ -130,7 +133,7 @@ fn main() -> Result<()> {
 
     // Remove orphans from HashMap
     println!("🧹 Removing orphans from registry...");
-    
+
     for id in &orphan_ids {
         registry.articles.remove(id);
     }

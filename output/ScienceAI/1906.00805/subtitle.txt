@@ -1,0 +1,1 @@
+A new AI method corrects gaze direction in images without needing labeled data, enhancing realism in digital media and videoconferencing.

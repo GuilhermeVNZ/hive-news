@@ -1,0 +1,1 @@
+AI models often produce inconsistent results based on data order. Researchers developed PC-like LWF, an order-independent algorithm that eliminates this bias while maintaining accuracy. How might this transform AI reliability in healthcare and genetics?

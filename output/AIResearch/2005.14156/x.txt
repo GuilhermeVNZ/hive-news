@@ -1,0 +1,1 @@
+AI solves robot navigation puzzles 20x faster than conventional methods. Monte Carlo Search outperforms SAT solvers in medium grids, with implications for autonomous vehicles and warehouse automation. Nature/Science credibility.

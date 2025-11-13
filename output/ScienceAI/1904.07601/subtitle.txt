@@ -1,0 +1,1 @@
+A new neural network analyzes 3D point clouds by focusing on geometric relationships, achieving state-of-the-art accuracy in tasks like object recognition and part segmentation without relying on pre-defined grids.

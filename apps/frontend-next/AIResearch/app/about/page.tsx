@@ -70,7 +70,7 @@ export default function AboutPage() {
               We love hearing from readers, educators, researchers, and teams building with AI. Share a story idea, suggest a topic, or collaborate with us.
             </p>
             <p className="mt-6 text-sm text-muted-foreground">
-              Reach out at <a className="text-primary hover:underline" href="mailto:contact@hive-hub.com">contact@hive-hub.com</a>
+              Reach out at <a className="text-primary hover:underline" href="mailto:contact@hive-hub.ai">contact@hive-hub.ai</a>
             </p>
           </div>
         </section>

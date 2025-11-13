@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] Your face ID isn't as secure as you think - researchers can reverse-engineer it back into your actual photo with startling accuracy.
+[VISUAL DIRECTION] Close-up of smartphone face unlock animation, then red warning symbols appearing over the face
+
+[VOICEOVER 0:05-0:20] Biometric authentication promises convenience without passwords, but new research reveals a critical vulnerability in the very technology designed to protect us.
+[VISUAL DIRECTION] Quick cuts showing airport security, phone unlocking, building access - all using facial recognition
+
+[VOICEOVER 0:20-0:40] The team asked: Can fuzzy commitment schemes, meant to safeguard biometric templates, actually prevent reconstruction of original facial images?
+[VISUAL DIRECTION] Animated diagram showing biometric template encoding process with question marks appearing
+
+[VOICEOVER 0:40-1:00] They discovered these templates contain insufficient entropy - meaning not enough unpredictability - allowing attackers to systematically reverse-engineer protected data.
+[VISUAL DIRECTION] Bar chart showing 96% success rate in guessing attacks vs 0.1% acceptable rate
+
+[VOICEOVER 1:00-1:30] Using neural networks called NbNet, researchers inverted feature vectors back into high-quality images that closely resembled originals and passed authentication tests.
+[VISUAL DIRECTION] Side-by-side comparison: original face photo and reconstructed version with "64.8% passed Amazon Rekognition" overlay
+
+[VOICEOVER 1:30-1:50] This has serious implications - unlike passwords, you can't change your face. Attackers could identify users across databases and gain unauthorized access.
+[VISUAL DIRECTION] GDPR compliance seal appearing then cracking, followed by database icons with connecting lines
+
+[VOICEOVER 1:50-2:00] Your biometric data may not be as protected as you assume - the very systems designed for security could be compromising your privacy.
+[VISUAL DIRECTION] Final shot: face dissolving into binary code with "Need More Robust Methods" text overlay

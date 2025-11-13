@@ -1,0 +1,1 @@
+AI just learned math reasoning without human supervision - generating 32.41% novel theorems using only unlabeled expressions. This skip-tree training breakthrough could revolutionize automated theorem proving and software verification. Nature/Science-level advancement.

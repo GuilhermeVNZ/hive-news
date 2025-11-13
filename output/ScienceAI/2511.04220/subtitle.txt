@@ -1,0 +1,1 @@
+New neural network approach creates synthetic datasets that preserve statistical patterns while protecting privacy, challenging how we share sensitive information

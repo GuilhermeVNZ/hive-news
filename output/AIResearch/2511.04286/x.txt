@@ -1,0 +1,1 @@
+Breakthrough: AI can now generate realistic medical data without exposing patient identities. GAN-based neural networks preserve research utility while protecting privacy. Crucial for healthcare/finance collaboration. #Science #Privacy

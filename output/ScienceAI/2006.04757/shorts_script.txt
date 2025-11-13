@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could discover new mathematical theorems without any human guidance? [VISUAL DIRECTION] Animated text: "AI DISCOVERS MATH THEOREMS ALONE" with glowing effect
+
+[VOICEOVER 0:05-0:20] Traditional AI requires massive labeled datasets to learn reasoning. But a new breakthrough changes everything. [VISUAL DIRECTION] Show Figure 2 from paper with zoom on training architecture - highlight "no labeled data" requirement
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI develop advanced reasoning using only unlabeled mathematical expressions? [VISUAL DIRECTION] Animated question marks transforming into mathematical symbols
+
+[VOICEOVER 0:40-1:00] The answer: Yes. Using self-supervised skip-tree training, AI achieved 32.41% novel theorem generation. [VISUAL DIRECTION] Show key statistic: "32.41% NOVEL OUTPUTS" with proof examples appearing
+
+[VOICEOVER 1:00-1:30] How it works: AI predicts missing expressions in tree structures, learning syntax and semantics without supervision. [VISUAL DIRECTION] Animated tree diagrams with <PREDICT> tokens being filled in - fast cuts showing learning process
+
+[VOICEOVER 1:30-1:50] This means faster development of reliable AI for software verification, mathematical research, and education. [VISUAL DIRECTION] Show applications: software code, research papers, classroom settings - quick cuts
+
+[VOICEOVER 1:50-2:00] AI is now learning to reason like mathematicians - without being taught. [VISUAL DIRECTION] Final text overlay: "SELF-SUPERVISED REASONING BREAKTHROUGH" with paper title reference

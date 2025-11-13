@@ -3,6 +3,7 @@
 
 use crate::models::raw_document::ArticleMetadata;
 use anyhow::{Context, Result};
+use chrono::TimeZone;
 use reqwest::Client;
 use serde::Deserialize;
 use std::path::PathBuf;
@@ -76,7 +77,7 @@ impl SemanticScholarCollector {
         let query = "computer science artificial intelligence machine learning deep learning";
 
         // Campos de estudo permitidos (apenas tecnologia)
-        let fields_of_study = vec![
+        let fields_of_study = [
             "Computer Science",
             "Artificial Intelligence",
             "Machine Learning",
@@ -218,7 +219,7 @@ impl SemanticScholarCollector {
                 .map(|authors| {
                     authors
                         .iter()
-                        .filter_map(|a| a.name.as_ref().map(|s| s.as_str()))
+                        .filter_map(|a| a.name.as_deref())
                         .take(3)
                         .collect::<Vec<&str>>()
                         .join(", ")
@@ -232,10 +233,9 @@ impl SemanticScholarCollector {
                 .unwrap_or_else(|| format!("SS_{}", chrono::Utc::now().timestamp()));
 
             let published_date = paper.year.and_then(|y| {
-                chrono::NaiveDate::from_ymd_opt(y as i32, 1, 1)
-                    .and_then(|d| d.and_hms_opt(0, 0, 0))
-                    .map(|dt| chrono::DateTime::from_timestamp(dt.and_utc().timestamp(), 0))
-                    .flatten()
+                chrono::NaiveDate::from_ymd_opt(y, 1, 1)?
+                    .and_hms_opt(0, 0, 0)
+                    .map(|dt| chrono::Utc.from_utc_datetime(&dt))
             });
 
             let title = paper
@@ -303,20 +303,18 @@ impl SemanticScholarCollector {
             .context("Failed to parse paper metadata")?;
 
         // Verificar se tem PDF open access
-        if let Some(pdf_info) = paper.openAccessPdf {
-            if let Some(pdf_url) = pdf_info.url {
-                let pdf_response = self
-                    .client
-                    .get(&pdf_url)
-                    .send()
-                    .await
-                    .context("Failed to download PDF from Semantic Scholar")?;
+        if let Some(pdf_url) = paper.openAccessPdf.and_then(|info| info.url) {
+            let pdf_response = self
+                .client
+                .get(&pdf_url)
+                .send()
+                .await
+                .context("Failed to download PDF from Semantic Scholar")?;
 
-                if pdf_response.status().is_success() {
-                    let bytes = pdf_response.bytes().await?;
-                    tokio::fs::write(output_path, bytes).await?;
-                    return Ok(());
-                }
+            if pdf_response.status().is_success() {
+                let bytes = pdf_response.bytes().await?;
+                tokio::fs::write(output_path, bytes).await?;
+                return Ok(());
             }
         }
 

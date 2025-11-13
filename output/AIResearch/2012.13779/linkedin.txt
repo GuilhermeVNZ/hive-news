@@ -1,0 +1,1 @@
+What if AI could learn complex tasks with dramatically less data? New research shows AI borrowing brain principles achieves sample-efficient learning, matching human-like efficiency. Could this make AI training practical for real-world applications?

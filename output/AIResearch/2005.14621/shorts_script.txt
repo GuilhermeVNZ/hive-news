@@ -1,0 +1,7 @@
+[VOICEOVER 0:00-0:05] Can AI make fair decisions without losing its predictive power? [VISUAL DIRECTION] Animated text: 'AI Fairness vs Accuracy?' with bold question mark.
+[VOICEOVER 0:05-0:20] AI is used in high-stakes areas like lending and healthcare, where bias can perpetuate inequalities. [VISUAL DIRECTION] Quick cuts: loan application forms, medical charts, courtroom gavel.
+[VOICEOVER 0:20-0:40] Researchers asked: Is it possible to enforce fairness constraints without compromising accuracy? [VISUAL DIRECTION] Show abstract from paper with highlighted text on constraints.
+[VOICEOVER 0:40-1:00] They proved it is—by training a predictor first, then adjusting outputs to meet criteria like conditional predictive equality. [VISUAL DIRECTION] Animated flowchart: 'Train Model → Adjust Outputs → Fair Predictions'.
+[VOICEOVER 1:00-1:30] The method uses stochastic gradient descent to minimize bias, treating the original classifier as a black box for easy application. [VISUAL DIRECTION] Zoom on algorithm diagram from paper, with SGD steps highlighted.
+[VOICEOVER 1:30-1:50] In tests, it reduced gender bias in hiring scenarios with test errors increasing only slightly, from 34% to 35%. [VISUAL DIRECTION] Bar chart showing before/after bias metrics, with text overlay: 'Minimal Accuracy Loss'.
+[VOICEOVER 1:50-2:00] This approach enables compliance with regulations like the Equal Credit Opportunity Act, making AI both ethical and effective. [VISUAL DIRECTION] Final screen: 'Fair AI: No Trade-offs Needed' with paper title fade.

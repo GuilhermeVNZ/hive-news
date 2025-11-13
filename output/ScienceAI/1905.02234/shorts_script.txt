@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] Did you know millions of offensive product images appear in online shopping catalogs daily, damaging customer trust and retailer reputations?
+[VISUAL DIRECTION] [Animated text: "Millions of offensive images DAILY" with shocking red alert symbols]
+[VOICEOVER 0:05-0:20] As e-commerce platforms host millions of third-party sellers, manual content moderation fails to scale against constantly changing catalogs containing violent, explicit, and misleading content.
+[VISUAL DIRECTION] [Show rapid-fire montage of product images with offensive content blurred out, transitioning to overwhelmed human moderators]
+[VOICEOVER 0:20-0:40] Researchers asked: Can we automatically detect and filter offensive and non-compliant content at scale before it reaches customers?
+[VISUAL DIRECTION] [Show question mark transforming into AI brain icon, with text overlay: "Automated detection at scale?"]
+[VOICEOVER 0:40-1:00] The breakthrough: A multi-stage AI system that achieves 54% improvement in F1-score over traditional methods for detecting offensive content and misleading promotional badges.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on performance comparison charts, highlighting the 54% improvement metric]
+[VOICEOVER 1:00-1:30] How it works: Computer vision combines three innovative techniques. First, visual similarity matching against pre-indexed databases. Second, synthetic data generation by superimposing offensive elements onto regular images. Third, crowdsourced model predictions to focus human labeling on the most suspicious candidates.
+[VISUAL DIRECTION] [Animated flow diagram showing the three techniques with quick cuts between each method]
+[VOICEOVER 1:30-1:50] Already deployed in production, this system processes millions of images daily, automatically removing clearly offensive content while flagging borderline cases for human review through seller dashboards.
+[VISUAL DIRECTION] [Show dashboard interface with real-time processing metrics and flagged content examples]
+[VOICEOVER 1:50-2:00] The future of e-commerce: AI that protects both customers from unpleasant experiences and retailers from reputation damage, all while scaling to handle millions of images.

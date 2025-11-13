@@ -1,0 +1,1 @@
+AI chatbots frequently contradict themselves in conversations, breaking fundamental communication rules. New research introduces DECODE, detecting contradictions with 12-point improvement over existing methods. How can we build AI that maintains consistent dialogue?

@@ -75,16 +75,18 @@ impl CollectorConfig {
     pub fn from_env() -> Self {
         let mut config = Self::default();
 
-        if let Ok(timeout) = env::var("COLLECTOR_TIMEOUT_SECONDS") {
-            if let Ok(val) = timeout.parse() {
-                config.timeout_seconds = val;
-            }
+        if let Some(val) = env::var("COLLECTOR_TIMEOUT_SECONDS")
+            .ok()
+            .and_then(|s| s.parse::<u64>().ok())
+        {
+            config.timeout_seconds = val;
         }
 
-        if let Ok(retries) = env::var("COLLECTOR_MAX_RETRIES") {
-            if let Ok(val) = retries.parse() {
-                config.max_retries = val;
-            }
+        if let Some(val) = env::var("COLLECTOR_MAX_RETRIES")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.max_retries = val;
         }
 
         if let Ok(dir) = env::var("COLLECTOR_DOWNLOAD_DIR") {
@@ -96,47 +98,54 @@ impl CollectorConfig {
             config.arxiv_category = category;
         }
 
-        if let Ok(max) = env::var("ARXIV_MAX_RESULTS") {
-            if let Ok(val) = max.parse() {
-                config.arxiv_max_results = val;
-            }
+        if let Some(val) = env::var("ARXIV_MAX_RESULTS")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.arxiv_max_results = val;
         }
 
         // Rate limits
-        if let Ok(nature) = env::var("NATURE_RATE_LIMIT") {
-            if let Ok(val) = nature.parse() {
-                config.rate_limits.nature = val;
-            }
+        if let Some(val) = env::var("NATURE_RATE_LIMIT")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.rate_limits.nature = val;
         }
 
-        if let Ok(science) = env::var("SCIENCE_RATE_LIMIT") {
-            if let Ok(val) = science.parse() {
-                config.rate_limits.science = val;
-            }
+        if let Some(val) = env::var("SCIENCE_RATE_LIMIT")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.rate_limits.science = val;
         }
 
-        if let Ok(arxiv) = env::var("ARXIV_RATE_LIMIT") {
-            if let Ok(val) = arxiv.parse() {
-                config.rate_limits.arxiv = val;
-            }
+        if let Some(val) = env::var("ARXIV_RATE_LIMIT")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.rate_limits.arxiv = val;
         }
 
-        if let Ok(pubmed) = env::var("PUBMED_RATE_LIMIT") {
-            if let Ok(val) = pubmed.parse() {
-                config.rate_limits.pubmed = val;
-            }
+        if let Some(val) = env::var("PUBMED_RATE_LIMIT")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.rate_limits.pubmed = val;
         }
 
-        if let Ok(retention) = env::var("TEMP_FILE_RETENTION_DAYS") {
-            if let Ok(val) = retention.parse() {
-                config.temp_file_retention_days = val;
-            }
+        if let Some(val) = env::var("TEMP_FILE_RETENTION_DAYS")
+            .ok()
+            .and_then(|s| s.parse::<u32>().ok())
+        {
+            config.temp_file_retention_days = val;
         }
 
-        if let Ok(max_size) = env::var("MAX_DOWNLOAD_SIZE_MB") {
-            if let Ok(val) = max_size.parse() {
-                config.max_download_size_mb = val;
-            }
+        if let Some(val) = env::var("MAX_DOWNLOAD_SIZE_MB")
+            .ok()
+            .and_then(|s| s.parse::<u64>().ok())
+        {
+            config.max_download_size_mb = val;
         }
 
         config

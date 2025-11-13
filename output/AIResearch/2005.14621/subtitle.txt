@@ -1,0 +1,1 @@
+A new post-processing method removes bias from AI systems by adjusting predictions after training, maintaining high accuracy while meeting fairness criteria like equalized odds and parity.

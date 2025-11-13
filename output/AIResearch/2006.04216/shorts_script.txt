@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if you could predict the performance of 23,424 machine learning pipelines after testing just a fraction?
+[VISUAL DIRECTION] Animated text: "23,424 pipelines" with question mark, fast zoom on number
+[VOICEOVER 0:05-0:20] Building machine learning models involves countless preprocessing steps and algorithms - like searching for a needle in a haystack. With today's data explosion, evaluating all options is computationally infeasible.
+[VISUAL DIRECTION] Show animated haystack with needles, transition to data visualization charts growing exponentially
+[VOICEOVER 0:20-0:40] Researchers at Cornell University asked: Can we predict how untested pipelines will perform without running them all?
+[VISUAL DIRECTION] Show researcher at computer, zoom on question mark, transition to pipeline diagrams
+[VOICEOVER 0:40-1:00] They discovered that machine learning pipeline performances lie in low-dimensional spaces. Using low-rank tensor factorizations, their AutoML system can accurately predict performance after initial evaluations.
+[VISUAL DIRECTION] Show 3D tensor visualization with highlighted low-rank structure, animated arrows showing prediction flow
+[VOICEOVER 1:00-1:30] The system works in two phases: first collecting performance data, then building a surrogate model. It actively selects which pipelines to test, maximizing information gain while staying within computational budgets.
+[VISUAL DIRECTION] Show two-phase diagram with arrows, display submodular optimization equations briefly
+[VOICEOVER 1:30-1:50] In tests across 215 OpenML datasets, this method outperformed existing AutoML systems like auto-sklearn and TPOT. It maintained strong performance even with only 3% of pipeline-dataset combinations observed.
+[VISUAL DIRECTION] Show performance comparison charts, highlight 3% statistic in bold text
+[VOICEOVER 1:50-2:00] This breakthrough addresses a fundamental bottleneck in machine learning, accelerating development in healthcare, finance, and science where rapid iteration is crucial.
+[VISUAL DIRECTION] Fast cuts showing healthcare, finance, and research applications, end with Cornell University logo

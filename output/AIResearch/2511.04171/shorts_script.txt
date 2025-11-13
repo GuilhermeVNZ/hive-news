@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could make medical image alignment 50% more accurate? [VISUAL DIRECTION] [Animated text: "50% MORE ACCURATE" with medical imaging icons flashing]
+
+[VOICEOVER 0:05-0:20] When doctors need to compare different medical scans - like pathology slides with advanced microscopy - getting them perfectly aligned has been a major challenge. [VISUAL DIRECTION] [Show side-by-side medical images with misalignment, then transition to aligned versions]
+
+[VOICEOVER 0:20-0:40] Researchers asked: Could artificial intelligence solve this alignment problem that's plagued medical imaging for decades? [VISUAL DIRECTION] [Zoom in on AI neural network diagram with medical images flowing through]
+
+[VOICEOVER 0:40-1:00] They discovered that combining CycleGAN with a simple technique - inverting images before registration - achieved the lowest errors ever recorded. [VISUAL DIRECTION] [Show Figure 2 from paper with error metrics highlighted, animated arrows showing inversion process]
+
+[VOICEOVER 1:00-1:30] Here's how it works: First, medical images are inverted, then processed through AI to normalize contrast and intensity. The system achieves median target registration error of just 0.0088 - a substantial improvement over existing methods. [VISUAL DIRECTION] [Fast cuts showing inversion process, contrast adjustment, then final aligned images with error metrics displayed]
+
+[VOICEOVER 1:30-1:50] This matters because accurate alignment lets pathologists directly compare molecular data with traditional slides, revealing biomarkers for earlier disease detection and better treatment monitoring. [VISUAL DIRECTION] [Show checkerboard comparison from paper demonstrating perfect tissue boundary alignment]
+
+[VOICEOVER 1:50-2:00] The result: AI-powered image alignment that could transform how doctors diagnose and monitor diseases like Crohn's and colitis. [VISUAL DIRECTION] [Final hold on aligned medical images with text overlay: "Precision Diagnosis Through AI Alignment"]

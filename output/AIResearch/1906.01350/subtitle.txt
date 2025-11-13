@@ -1,0 +1,1 @@
+New algorithm cuts robot motion planning time by up to 90% by using simplified representations of complex environments

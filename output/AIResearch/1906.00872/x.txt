@@ -1,0 +1,1 @@
+AI translates languages without learning from bilingual texts—using only images as anchors. Achieved 61.3 BLEU4 score German-English, outperforming previous methods. Visual pivots enable translation where parallel data doesn't exist.

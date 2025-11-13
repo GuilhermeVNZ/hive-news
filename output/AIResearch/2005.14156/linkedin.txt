@@ -1,0 +1,1 @@
+AI can solve complex navigation puzzles 20x faster than traditional methods. Researchers at K.N.Toosi University developed a Monte Carlo Search approach that outperforms SAT solvers for medium-sized grids. Could this revolutionize warehouse automation and robotics pathfinding?

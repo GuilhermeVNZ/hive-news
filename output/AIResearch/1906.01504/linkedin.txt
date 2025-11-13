@@ -1,0 +1,1 @@
+What if AI could optimize its own training parameters automatically? New research from University of Padova combines SGD with simulated annealing, enabling AI to dynamically select learning rates during training. Could this eliminate the need for manual hyperparameter tuning in machine learning?

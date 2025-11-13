@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could read and understand complex text with near-human accuracy? [VISUAL DIRECTION] Animated text: "15.16% LEAP IN AI READING" with dramatic reveal effect
+
+[VOICEOVER 0:05-0:20] As AI increasingly handles customer service and information retrieval, its ability to accurately comprehend written passages becomes crucial for real-world applications. [VISUAL DIRECTION] Quick cuts showing AI chatbots, search interfaces, and automated systems in action
+
+[VOICEOVER 0:20-0:40] Researchers faced a fundamental challenge: how to make AI not just process text, but truly understand and answer questions about it. [VISUAL DIRECTION] Split screen showing confused AI responses vs. human understanding
+
+[VOICEOVER 0:40-1:00] The breakthrough came from a novel attention-based system using LSTM decoders that achieved a 15.16% F1 score improvement over baseline models. [VISUAL DIRECTION] Animated graph showing performance spike, zoom on "+15.16%" metric
+
+[VOICEOVER 1:00-1:30] How does it work? The system uses bi-directional attention and specialized decoders that separately predict answer start and end positions, allowing each component to specialize. [VISUAL DIRECTION] Technical diagram showing attention mechanism flow with highlighted decoder paths
+
+[VOICEOVER 1:30-1:50] This means smarter chatbots, more accurate virtual assistants, and AI that can independently handle complex customer queries. [VISUAL DIRECTION] Real-world applications montage: customer service, education, research assistance
+
+[VOICEOVER 1:50-2:00] AI reading comprehension just took a quantum leap forward - and this is only the beginning. [VISUAL DIRECTION] Final dramatic text overlay: "THE FUTURE OF AI UNDERSTANDING IS HERE"

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if AI could optimize its own training parameters automatically, eliminating the need for manual tuning?
+[VISUAL DIRECTION] [Animated text: "SELF-TUNING AI" with question mark appearing, fast zoom on neural network diagram]
+[VOICEOVER 0:05-0:20] Currently, training AI requires extensive expertise in parameter adjustment, creating a fundamental bottleneck in machine learning deployment.
+[VISUAL DIRECTION] [Show researcher adjusting multiple sliders on screen, then red X appearing over them]
+[VOICEOVER 0:20-0:40] Researchers at University of Padova asked: Can AI automatically optimize its own settings during training without external intervention?
+[VISUAL DIRECTION] [Show paper title "Embedded hyper-parameter Simulated Annealing" with arrow pointing to AI brain graphic]
+[VOICEOVER 0:40-1:00] They discovered that combining stochastic gradient descent with simulated annealing allows AI to dynamically select learning rates at each training step.
+[VISUAL DIRECTION] [Animated diagram showing SGD and SA merging, with text: "SGD + Simulated Annealing = Self-Optimization"]
+[VOICEOVER 1:00-1:30] The system randomly selects potential learning rates, evaluates whether they improve performance using temperature-based acceptance criteria, and continues training with decreasing probability of accepting worse solutions.
+[VISUAL DIRECTION] [Show flowchart of selection-evaluation-acceptance process, zoom on temperature parameter decreasing over time]
+[VOICEOVER 1:30-1:50] Results show significant improvements: 86.76% accuracy on CIFAR-10 with ResNet34 and 84.11% with VGG16, outperforming traditional SGD approaches.
+[VISUAL DIRECTION] [Show bar chart comparing SGD-SA vs traditional SGD accuracy, highlight 86.76% number in bold]
+[VOICEOVER 1:50-2:00] This breakthrough could make advanced AI more accessible by reducing the expertise required for development and deployment.
+[VISUAL DIRECTION] [Final screen with key takeaway: "AI that tunes itself - The future of machine learning training"]

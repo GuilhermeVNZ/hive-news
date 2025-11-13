@@ -1,0 +1,1 @@
+New neural network method creates synthetic datasets that preserve privacy without losing accuracy, challenging data-sharing limits.

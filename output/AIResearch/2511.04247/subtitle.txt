@@ -1,0 +1,1 @@
+New method creates synthetic datasets that preserve statistical patterns without exposing private information, enabling secure data sharing for research.

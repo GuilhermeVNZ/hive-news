@@ -1,0 +1,1 @@
+New method detects when chatbots contradict themselves in conversations, revealing a fundamental flaw in current AI systems that undermines user trust and communication quality.

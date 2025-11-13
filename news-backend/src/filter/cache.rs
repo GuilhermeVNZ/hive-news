@@ -21,12 +21,9 @@ pub fn load_doi_cache(doi: &str) -> Option<bool> {
     let safe_doi = doi.replace("/", "_").replace(":", "_");
     let cache_file = cache_dir().join(format!("doi_{}.json", safe_doi));
 
-    if let Ok(content) = fs::read_to_string(cache_file) {
-        if let Ok(data) = serde_json::from_str::<serde_json::Value>(&content) {
-            return data.get("valid")?.as_bool();
-        }
-    }
-    None
+    let content = fs::read_to_string(cache_file).ok()?;
+    let data = serde_json::from_str::<serde_json::Value>(&content).ok()?;
+    data.get("valid")?.as_bool()
 }
 
 #[allow(dead_code)]
@@ -44,10 +41,7 @@ pub fn load_author_cache(author: &str) -> Option<bool> {
     let safe_author = author.replace(" ", "_");
     let cache_file = cache_dir().join(format!("author_{}.json", safe_author));
 
-    if let Ok(content) = fs::read_to_string(cache_file) {
-        if let Ok(data) = serde_json::from_str::<serde_json::Value>(&content) {
-            return data.get("valid")?.as_bool();
-        }
-    }
-    None
+    let content = fs::read_to_string(cache_file).ok()?;
+    let data = serde_json::from_str::<serde_json::Value>(&content).ok()?;
+    data.get("valid")?.as_bool()
 }

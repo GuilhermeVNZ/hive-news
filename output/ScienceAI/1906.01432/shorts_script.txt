@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could learn complex tasks using only 24% of the data it normally needs? [VISUAL DIRECTION] Animated text: "AI learns with 76% LESS DATA" with dramatic countdown animation
+
+[VOICEOVER 0:05-0:20] Traditional AI requires massive datasets, but real-world problems often have limited, messy information. This creates a critical bottleneck for practical applications. [VISUAL DIRECTION] Show data scarcity visualization - sparse data points vs dense clusters
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we teach AI to learn more efficiently by incorporating human-like reasoning? The challenge was making AI work with scarce, error-prone data. [VISUAL DIRECTION] Animated question mark transforming into lightbulb, show researcher thinking animation
+
+[VOICEOVER 0:40-1:00] They discovered Knowledge-augmented Closed Loop Networks with "Advice Gates" - AI that uses IF-THEN rules similar to human reasoning. [VISUAL DIRECTION] Zoom on Figure 2 showing convergence curves - K-CLNs reaching peak accuracy faster
+
+[VOICEOVER 1:00-1:30] Here's how it works: The system modifies learning processes using structured knowledge about relationships between data attributes. Think of it as giving AI expert guidance rather than letting it guess from scratch. [VISUAL DIRECTION] Animated flowchart showing data → advice gates → enhanced learning → better predictions
+
+[VOICEOVER 1:30-1:50] Real impact: Medical diagnosis with limited patient data, literature analysis with sparse research, and content moderation with complex social debates all benefit immediately. [VISUAL DIRECTION] Quick cuts: medical chart → research paper → social media interface
+
+[VOICEOVER 1:50-2:00] The takeaway: AI doesn't need more data - it needs smarter learning. This changes everything for practical AI applications. [VISUAL DIRECTION] Final text overlay: "Smarter AI, Less Data" with paper reference

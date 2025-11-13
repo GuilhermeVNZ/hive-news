@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if artificial intelligence could build its own brain from scratch?
+[VISUAL DIRECTION] Animated text: "AI GROWS ITS OWN BRAIN" with neural network visualization pulsing
+
+[VOICEOVER 0:05-0:20] For decades, engineers manually designed every AI architecture. But new research reveals something revolutionary.
+[VISUAL DIRECTION] Show Figure 2 zooming on connectivity patterns, fast cuts between engineering diagrams and biological brain images
+
+[VOICEOVER 0:20-0:40] The question: Can AI develop its own complex structure like living brains do?
+[VISUAL DIRECTION] Animated question mark morphing into neural pathways, show retinal development comparison
+
+[VOICEOVER 0:40-1:00] The breakthrough: AI networks now self-organize through developmental algorithms, achieving 95% connectivity.
+[VISUAL DIRECTION] Zoom on Figure 4 spatial patches tiling, highlight 95% statistic in bold text
+
+[VOICEOVER 1:00-1:30] How it works: Single computational cells divide and migrate, using spontaneous noise-driven activity and modified Hebbian learning.
+[VISUAL DIRECTION] Animated sequence showing cell division, migration, and "fire together, wire together" connections forming
+
+[VOICEOVER 1:30-1:50] Real impact: This means AI that adapts to irregular environments, from robotics to resilient systems, with minimal human intervention.
+[VISUAL DIRECTION] Show robot navigating complex terrain, fast cuts between different geometric configurations
+
+[VOICEOVER 1:50-2:00] The future: AI that grows, organizes, and evolves - just like nature intended.
+[VISUAL DIRECTION] Final zoom on emergent architecture, hold on "Self-Organizing AI" text overlay

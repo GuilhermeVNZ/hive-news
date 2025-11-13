@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if you could analyze sensitive data without ever risking privacy breaches? [VISUAL DIRECTION] Animated text: 'PRIVACY vs INNOVATION' with tension-building music
+
+[VOICEOVER 0:05-0:20] In an era driven by data innovation, privacy concerns have become a major barrier to scientific progress. [VISUAL DIRECTION] Show researchers looking at data charts with lock icons appearing
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create data that's useful for analysis but protects individual privacy? [VISUAL DIRECTION] Animated question mark transforming into data streams
+
+[VOICEOVER 0:40-1:00] The breakthrough: Artificial intelligence generates completely synthetic datasets that are indistinguishable from real data. [VISUAL DIRECTION] Show AI algorithm processing data, outputting identical-looking datasets side by side
+
+[VOICEOVER 1:00-1:30] How it works: AI learns the statistical patterns of sensitive data, then creates new datasets with the same characteristics but no actual personal information. [VISUAL DIRECTION] Animated diagram showing data patterns being learned and replicated
+
+[VOICEOVER 1:30-1:50] This means scientists and companies can now share and analyze information freely without risking exposure of personal details. [VISUAL DIRECTION] Show secure data sharing between research institutions
+
+[VOICEOVER 1:50-2:00] Privacy-preserving AI is transforming how we handle sensitive information while driving innovation forward. [VISUAL DIRECTION] Final text overlay: 'SCIENCE WITHOUT COMPROMISE'

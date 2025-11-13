@@ -1,0 +1,1 @@
+AI can now simulate human decision-making with unprecedented accuracy in complex scenarios. RAND Corporation researchers show reinforcement learning creates adaptive agents that outperform traditional models in predicting behavior. Essential reading for policy testing innovation.

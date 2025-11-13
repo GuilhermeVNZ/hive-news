@@ -1,0 +1,1 @@
+What if AI could master complex games faster by simply changing how it weighs its own experiences? Researchers found that upweighting shorter episodes and downweighting longer ones in self-play training boosts AI performance without extra computational cost. Could this strategic data manipulation be the key to more efficient real-world AI applications?

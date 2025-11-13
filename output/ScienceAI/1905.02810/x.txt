@@ -1,0 +1,1 @@
+Stop scrolling: AI doesn't actually beat doctors at diagnosis. New Nature study shows comparison methods are mathematically misleading due to Jensen's inequality. Human expertise remains crucial despite what headlines claim.

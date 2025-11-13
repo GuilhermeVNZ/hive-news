@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if we could predict the unpredictable? Chaos theory just met its match.
+[VISUAL DIRECTION] Animated text: "PREDICTING CHAOS" with swirling weather patterns and stock market graphs colliding
+[VOICEOVER 0:05-0:20] For decades, forecasting complex systems like weather and financial markets has been one of science's biggest challenges. These chaotic systems seemed fundamentally unpredictable.
+[VISUAL DIRECTION] Show Lorenz attractor visualization with chaotic butterfly pattern, zoom into complex swirling motion
+[VOICEOVER 0:20-0:40] Researchers asked: Could artificial intelligence crack the code of chaos? Could machine learning see patterns where humans see only randomness?
+[VISUAL DIRECTION] Transition to neural network diagram with nodes lighting up as voiceover mentions AI
+[VOICEOVER 0:40-1:00] The breakthrough came when they tested AI on simulated Lorenz systems - the classic model of chaotic behavior. The results were startling.
+[VISUAL DIRECTION] Show side-by-side comparison: traditional forecast vs AI prediction on Lorenz system, highlight accuracy difference
+[VOICEOVER 1:00-1:30] The AI learned to anticipate the unpredictable twists and turns of chaotic systems. It wasn't just guessing - it was recognizing hidden patterns in the chaos that traditional methods miss.
+[VISUAL DIRECTION] Animated text overlay: "ACCURATE CHAOS PREDICTION" with percentage accuracy metrics appearing
+[VOICEOVER 1:30-1:50] This means better weather forecasts that could save lives, more stable financial markets, and smarter robotics that can navigate unpredictable environments.
+[VISUAL DIRECTION] Quick cuts: hurricane tracking map, stock market dashboard, autonomous robot navigating rough terrain
+[VOICEOVER 1:50-2:00] The future of prediction is here - and it's learning from chaos itself.
+[VISUAL DIRECTION] Final shot: AI prediction line perfectly tracking chaotic system, hold for dramatic effect

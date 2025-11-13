@@ -1,0 +1,1 @@
+A new method boosts AI training in board games by adjusting how experience is sampled, leading to stronger early performance without extra computation.

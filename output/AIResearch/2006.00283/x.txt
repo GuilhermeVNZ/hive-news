@@ -1,0 +1,1 @@
+AI learns faster by prioritizing shorter game episodes over longer ones, improving performance early in training without added compute. This insight from Nature/Science research could revolutionize AI development for logistics and resource management.

@@ -1,0 +1,1 @@
+AI vision systems struggle with messy human annotations. STEAL method boosts edge detection by 18.61% precision, creating sharper object boundaries. Could this breakthrough enable safer autonomous vehicles and more precise medical imaging?

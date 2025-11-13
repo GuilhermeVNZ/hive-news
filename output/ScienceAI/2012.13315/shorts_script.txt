@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if giving computers more choices actually makes them worse at solving new problems?
+[VISUAL DIRECTION] Animated text: "MORE OPTIONS = WORSE PERFORMANCE?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Computer scientists discovered that algorithms with too many adjustable settings become overspecialized. They excel on familiar problems but fail when faced with new challenges.
+[VISUAL DIRECTION] Show algorithm performance graph peaking then declining as settings increase. Zoom on the peak point.
+
+[VOICEOVER 0:20-0:40] Researchers asked: How does the number of settings affect an algorithm's ability to handle unseen problems? They analyzed portfolio-based selection systems used in optimization and logistics.
+[VISUAL DIRECTION] Animated flowchart showing algorithm selection process with multiple settings branching out.
+
+[VOICEOVER 0:40-1:00] They found a clear trade-off: Initially, more settings improve performance, but beyond a critical point, test performance declines even as training performance continues improving.
+[VISUAL DIRECTION] Split screen showing training performance rising while test performance falling after threshold.
+
+[VOICEOVER 1:00-1:30] This occurs because systems learn patterns specific to their training data rather than general problem-solving strategies. Mathematical models showed that with large portfolios, overfitting becomes inevitable.
+[VISUAL DIRECTION] Show mathematical equations from paper with animated highlighting of key variables.
+
+[VOICEOVER 1:30-1:50] This matters for real applications like delivery route scheduling and financial analysis, where algorithms must perform consistently across varying conditions, not just historical examples.
+[VISUAL DIRECTION] Quick cuts: delivery truck routes, stock market graphs, logistics maps.
+
+[VOICEOVER 1:50-2:00] The key insight: Sometimes less is more when it comes to algorithmic flexibility.
+[VISUAL DIRECTION] Final screen: "OPTIMAL FLEXIBILITY = 10-20 SETTINGS" with research citation

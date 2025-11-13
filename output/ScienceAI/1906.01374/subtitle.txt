@@ -1,0 +1,1 @@
+A new AI method enables robots to autonomously master sequences of interdependent tasks, overcoming a key hurdle in open-ended learning without human guidance.
