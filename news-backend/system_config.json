@@ -524,7 +524,6 @@
           "base_url": "https://www.intel.com/content/www/us/en/customer-spotlight/overview.html?filters=%5b3106337724,4746261044%5d",
           "collector_type": "html",
           "config": {
-            "force_js": true,
             "max_results": 5,
             "needs_antibot_headers": true
           },
