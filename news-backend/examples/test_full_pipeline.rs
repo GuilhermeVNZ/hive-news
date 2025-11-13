@@ -15,6 +15,7 @@
 use reqwest::Client;
 use scraper::{Html, Selector};
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 use std::fs;
 use std::time::Instant;
 
@@ -58,38 +59,63 @@ async fn main() {
     let client = build_client();
     let mut results = Vec::new();
 
-    // Test a smaller subset first (top priority sites)
-    println!("🔬 Testing Priority HTML Sites (sample of 20)...\n");
+    // Load ALL sites from system_config.json
+    println!("📋 Loading sites from system_config.json...\n");
     
-    let test_sites = vec![
-        ("DeepSeek Blog", "https://deepseek.ai/blog", "html_deepseek"),
-        ("Character.AI", "https://blog.character.ai/", "html_character_ai"),
-        ("Stanford HAI", "https://hai.stanford.edu/news", "html_stanford_hai"),
-        ("Berkeley AI", "https://bair.berkeley.edu/blog/archive/", "html_berkeley_ai"),
-        ("Replicate", "https://replicate.com/blog", "html_replicate"),
-        ("LangChain", "https://blog.langchain.com/", "html_langchain"),
-        ("Pinecone", "https://www.pinecone.io/blog/", "html_pinecone"),
-        ("Boston Dynamics", "https://bostondynamics.com/blog/", "html_boston_dynamics"),
-        ("Anthropic News", "https://www.anthropic.com/news", "html_anthropic"),
-        ("Meta AI Blog", "https://ai.meta.com/blog/", "html_meta_ai"),
-        ("Mistral AI", "https://mistral.ai/news/", "html_mistral_ai"),
-        ("Cohere", "https://txt.cohere.com/", "html_cohere"),
-        ("X.ai News", "https://x.ai/news", "html_xai"),
-        ("Perplexity", "https://www.perplexity.ai/discover/tech", "html_perplexity"),
-        ("Stability AI", "https://stability.ai/news", "html_stability_ai"),
-        ("DeepMind Blog", "https://deepmind.google/discover/blog/", "html_deepmind_blog"),
-        ("The Gradient", "https://thegradient.pub/", "html_the_gradient"),
-        ("Apple ML", "https://machinelearning.apple.com/highlights", "html_apple_ml"),
-        ("AMD AI", "https://www.amd.com/en/developer/resources/technical-articles.html", "html_amd_ai"),
-        ("IonQ", "https://ionq.com/news", "html_ionq"),
-    ];
+    let config_content = fs::read_to_string("system_config.json")
+        .expect("Failed to read system_config.json");
+    let config: Value = serde_json::from_str(&config_content)
+        .expect("Failed to parse system_config.json");
+    
+    let sites = config["sites"].as_object()
+        .expect("No 'sites' key in config");
+    
+    let mut test_sites = Vec::new();
+    
+    for (site_key, site_config) in sites {
+        if let Some(collectors) = site_config["collectors"].as_array() {
+            for collector in collectors {
+                let name = collector["name"].as_str().unwrap_or(site_key);
+                let id = collector["id"].as_str().unwrap_or(site_key);
+                let enabled = collector["enabled"].as_bool().unwrap_or(true);
+                
+                if !enabled {
+                    continue; // Skip disabled collectors
+                }
+                
+                // Try different field names for collector type
+                let collector_type = collector["collector_type"].as_str()
+                    .or_else(|| collector["type"].as_str())
+                    .unwrap_or("unknown");
+                
+                // Try to find URL - check multiple possible fields
+                let url = collector["feed_url"].as_str()
+                    .or_else(|| collector["url"].as_str())
+                    .or_else(|| collector["base_url"].as_str());
+                
+                if let Some(url) = url {
+                    test_sites.push((name.to_string(), url.to_string(), id.to_string(), collector_type.to_string()));
+                }
+            }
+        }
+    }
+    
+    println!("✓ Found {} collectors to test\n", test_sites.len());
+    println!("🔬 Starting comprehensive test...\n");
 
-    for (idx, (name, url, id)) in test_sites.iter().enumerate() {
-        println!("  [{:2}/{}] Testing {}...", idx + 1, test_sites.len(), name);
+    for (idx, (name, url, id, ctype)) in test_sites.iter().enumerate() {
+        println!("  [{:3}/{}] {} ({})...", idx + 1, test_sites.len(), name, ctype);
         let result = test_full_pipeline(&client, name, url, id).await;
         print_pipeline_result(&result);
         results.push(result);
-        tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
+        
+        // Small delay to avoid hammering sites
+        if idx % 10 == 9 {
+            println!("\n    ⏸️  Pausing 2s to avoid rate limits...\n");
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+        } else {
+            tokio::time::sleep(tokio::time::Duration::from_millis(300)).await;
+        }
     }
 
     // Save results
@@ -520,10 +546,33 @@ fn print_pipeline_summary(results: &[PipelineTestResult]) {
         }
     }
 
-    println!("\n📊 KEY INSIGHT:");
-    println!("   RSS is only recommended when articles are actually accessible!");
-    println!("   {} sites have RSS but need Playwright for article access", rss_playwright.len());
+    let total = results.len();
+    let working_direct = rss_working.len() + html_working.len();
+    let need_pw = rss_playwright.len() + need_playwright.len();
     
+    println!("\n📊 OVERALL STATISTICS ({} collectors):", total);
+    println!("   🎯 WORKING DIRECTLY:     {:3} ({:5.1}%)", working_direct, (working_direct as f64 / total as f64) * 100.0);
+    println!("   🎯 NEED PLAYWRIGHT:      {:3} ({:5.1}%)", need_pw, (need_pw as f64 / total as f64) * 100.0);
+
+    println!("\n📋 BLOCKER BREAKDOWN:");
+    let mut blocker_counts = std::collections::HashMap::new();
+    for r in results {
+        for blocker in r.blocked_by.iter().chain(r.html_blocked_by.iter()) {
+            *blocker_counts.entry(blocker.as_str()).or_insert(0) += 1;
+        }
+    }
+    let mut blockers_vec: Vec<_> = blocker_counts.into_iter().collect();
+    blockers_vec.sort_by(|a, b| b.1.cmp(&a.1));
+    for (blocker, count) in blockers_vec {
+        println!("   • {}: {} sites", blocker, count);
+    }
+
+    println!("\n💡 KEY INSIGHTS:");
+    println!("   • RSS only recommended when articles ACTUALLY accessible");
+    println!("   • {} sites have RSS but articles need Playwright", rss_playwright.len());
+    println!("   • HTML must have extractable content, not just HTTP 200");
+    
+    println!("\n📝 NEXT: Run generate_optimized_config to update system_config.json");
     println!("\n═══════════════════════════════════════════════════════════\n");
 }
 
