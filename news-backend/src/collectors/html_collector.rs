@@ -6,7 +6,7 @@ use scraper::Html;
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::process::Command;
-use tracing::{error, info, warn};
+use tracing::{debug, error, warn};
 use url;
 
 type PageConfig = (String, Option<HashMap<String, String>>, Option<u32>);
@@ -105,7 +105,7 @@ impl HtmlCollector {
     /// # Returns
     /// HTML renderizado ou None se falhar
     fn fetch_with_js(url: &str) -> Option<String> {
-        info!(url = %url, "Fetching HTML with Playwright (JavaScript rendering)");
+        debug!(url = %url, "Fetching HTML with Playwright (JavaScript rendering)");
 
         // Obter caminho do diretório atual (news-backend)
         let current_dir = std::env::current_dir().ok()?;
@@ -129,7 +129,7 @@ impl HtmlCollector {
             Ok(output) => {
                 if output.status.success() {
                     let html = String::from_utf8_lossy(&output.stdout).to_string();
-                    info!(
+                    debug!(
                         html_length = html.len(),
                         "Successfully fetched HTML with Playwright"
                     );
@@ -366,7 +366,7 @@ impl HtmlCollector {
     ) -> Result<Vec<ArticleMetadata>> {
         let max = max_results.unwrap_or(10);
 
-        info!(
+        debug!(
             url = %base_url,
             max_results = max,
             collector_id = ?collector_id,
@@ -377,7 +377,7 @@ impl HtmlCollector {
         // Verificar se precisa de JavaScript rendering
         let needs_js = match rendering_mode {
             HtmlRenderingMode::ForceJs => {
-                info!(
+                debug!(
                     url = %base_url,
                     collector_id = ?collector_id,
                     "Forcing JavaScript rendering via Playwright"
@@ -385,7 +385,7 @@ impl HtmlCollector {
                 true
             }
             HtmlRenderingMode::NoJs => {
-                info!(
+                debug!(
                     url = %base_url,
                     collector_id = ?collector_id,
                     "Forcing static HTML fetch (no JavaScript)"
@@ -396,7 +396,7 @@ impl HtmlCollector {
                 let needs_js_by_collector = Self::needs_js_rendering(collector_id);
                 let needs_js_by_url = Self::needs_js_rendering_by_url(base_url);
 
-                info!(
+                debug!(
                     url = %base_url,
                     collector_id = ?collector_id,
                     needs_js_by_collector = needs_js_by_collector,
@@ -410,11 +410,11 @@ impl HtmlCollector {
         };
 
         let html_content = if needs_js {
-            info!(url = %base_url, "Using Playwright for JavaScript rendering");
+            debug!(url = %base_url, "Using Playwright for JavaScript rendering");
             // Usar Playwright para renderizar JavaScript
             match Self::fetch_with_js(base_url) {
                 Some(html) => {
-                    info!(
+                    debug!(
                         url = %base_url,
                         html_length = html.len(),
                         "Successfully fetched HTML with Playwright"
@@ -429,7 +429,7 @@ impl HtmlCollector {
                     // Fallback para requisição HTTP normal com headers customizados
                     let mut request = self.client.get(base_url);
                     if let Some(custom_headers) = Self::get_site_specific_headers(base_url) {
-                        info!(url = %base_url, "Applying site-specific headers");
+                        debug!(url = %base_url, "Applying site-specific headers");
                         for (name, value) in custom_headers.iter() {
                             request = request.header(name.clone(), value.clone());
                         }
@@ -447,11 +447,11 @@ impl HtmlCollector {
                 }
             }
         } else {
-            info!(url = %base_url, "Using regular HTTP request (no JavaScript rendering needed)");
+            debug!(url = %base_url, "Using regular HTTP request (no JavaScript rendering needed)");
             // Requisição HTTP normal com headers customizados para contornar bloqueios
             let mut request = self.client.get(base_url);
             if let Some(custom_headers) = Self::get_site_specific_headers(base_url) {
-                info!(url = %base_url, "Applying site-specific headers");
+                debug!(url = %base_url, "Applying site-specific headers");
                 for (name, value) in custom_headers.iter() {
                     request = request.header(name.clone(), value.clone());
                 }
@@ -476,7 +476,7 @@ impl HtmlCollector {
             .await
             .context("Failed to save HTML page")?;
 
-        info!(
+        debug!(
             temp_file = %temp_file.display(),
             html_length = html_content.len(),
             "Saved HTML page"
@@ -504,7 +504,7 @@ impl HtmlCollector {
             .map(|el| el.text().collect())
             .unwrap_or_default();
 
-        info!(
+        debug!(
             body_text_length = body_text.len(),
             has_script_tags = html_content.contains("<script"),
             has_react = html_content.contains("react") || html_content.contains("React"),
@@ -551,7 +551,7 @@ impl HtmlCollector {
             let all_a_elements: Vec<_> = document
                 .select(&scraper::Selector::parse("a").unwrap())
                 .collect();
-            info!(
+            debug!(
                 total_a_elements = all_a_elements.len(),
                 link_selector_used = %link_selector_str,
                 "Checking HTML structure"
@@ -733,7 +733,7 @@ impl HtmlCollector {
                     }
                 }
 
-                info!(
+                debug!(
                     all_urls_in_html = all_urls_found,
                     urls_matching_patterns = total_links_found_regex,
                     valid_article_urls = link_urls.len(),
@@ -833,7 +833,7 @@ impl HtmlCollector {
 
                                         if !link_urls.contains(&resolved_url) {
                                             link_urls.push(resolved_url.clone());
-                                            info!(found_url = %resolved_url, "Found relative URL via pattern extraction");
+                                            debug!(found_url = %resolved_url, "Found relative URL via pattern extraction");
                                         }
                                     }
                                 }
@@ -861,7 +861,7 @@ impl HtmlCollector {
                                 if url.contains(&base_domain) && !link_urls.contains(&url) {
                                     let url_clone = url.clone();
                                     link_urls.push(url);
-                                    info!(found_url = %url_clone, "Found URL using aggressive extraction");
+                                    debug!(found_url = %url_clone, "Found URL using aggressive extraction");
                                 }
                             }
                         }
@@ -896,14 +896,14 @@ impl HtmlCollector {
 
                                 if !link_urls.contains(&resolved_url) {
                                     link_urls.push(resolved_url.clone());
-                                    info!(found_url = %resolved_url, "Found relative article path");
+                                    debug!(found_url = %resolved_url, "Found relative article path");
                                 }
                             }
                         }
                     }
 
                     if !link_urls.is_empty() {
-                        info!(
+                        debug!(
                             urls_found_aggressive = link_urls.len(),
                             "Successfully extracted URLs using aggressive methods"
                         );
@@ -993,7 +993,7 @@ impl HtmlCollector {
             link_urls.sort();
             link_urls.dedup();
 
-            info!(
+            debug!(
                 link_selector = %link_selector_str,
                 total_links_processed = total_links_found,
                 valid_article_links = link_urls.len(),
@@ -1003,7 +1003,7 @@ impl HtmlCollector {
 
             // Debug: mostrar alguns links encontrados
             if !link_urls.is_empty() {
-                info!(
+                debug!(
                     sample_links = ?link_urls.iter().take(5).collect::<Vec<_>>(),
                     "Sample links found"
                 );
@@ -1016,7 +1016,7 @@ impl HtmlCollector {
                     break;
                 }
 
-                info!(
+                debug!(
                     index = idx + 1,
                     url = %link_url,
                     "Fetching article from link"
@@ -1032,7 +1032,7 @@ impl HtmlCollector {
                             .unwrap_or(false);
 
                         if has_valid_content {
-                            info!(
+                            debug!(
                                 index = idx + 1,
                                 title = %metadata.title,
                                 url = %metadata.url,
@@ -1112,7 +1112,7 @@ impl HtmlCollector {
             }
         };
 
-        info!(count = articles.len(), "Extracted articles from HTML page");
+        debug!(count = articles.len(), "Extracted articles from HTML page");
 
         Ok(articles)
     }
@@ -1138,7 +1138,7 @@ impl HtmlCollector {
         // Coletar todos os elementos primeiro, depois filtrar
         let all_elements: Vec<_> = document.select(&article_selector).collect();
 
-        info!(
+        debug!(
             selector = %article_selector_str,
             elements_found = all_elements.len(),
             "Found article elements in page"
@@ -1190,7 +1190,7 @@ impl HtmlCollector {
 
             processed_urls.insert(article_url.clone());
 
-            info!(
+            debug!(
                 index = idx + 1,
                 url = %article_url,
                 total_found = all_elements.len(),
@@ -1225,7 +1225,7 @@ impl HtmlCollector {
                             continue; // Ignorar artigo sem conteúdo válido
                         }
 
-                        info!(
+                        debug!(
                             index = idx + 1,
                             title = %metadata.title,
                             url = %metadata.url,
@@ -1270,7 +1270,7 @@ impl HtmlCollector {
                             continue; // Ignorar artigo sem conteúdo válido
                         }
 
-                        info!(
+                        debug!(
                             index = idx + 1,
                             title = %metadata.title,
                             url = %metadata.url,
@@ -1451,7 +1451,7 @@ impl HtmlCollector {
             tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
         }
 
-        info!(
+        debug!(
             total_pages = pages_count,
             total_articles = all_articles.len(),
             "Fetched all HTML pages"
