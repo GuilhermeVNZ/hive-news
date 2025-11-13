@@ -9,6 +9,16 @@ use std::process::Command;
 use tracing::{error, info, warn};
 use url;
 
+type PageConfig = (String, Option<HashMap<String, String>>, Option<u32>);
+
+#[allow(dead_code)]
+#[derive(Clone, Copy, Debug)]
+pub enum HtmlRenderingMode {
+    Auto,
+    NoJs,
+    ForceJs,
+}
+
 /// Cliente para coleta de artigos via HTML scraping
 pub struct HtmlCollector {
     client: Client,
@@ -200,6 +210,58 @@ impl HtmlCollector {
         }
     }
 
+    /// Retorna headers customizados para sites específicos que costumam bloquear bots
+    fn get_site_specific_headers(url: &str) -> Option<reqwest::header::HeaderMap> {
+        let mut headers = reqwest::header::HeaderMap::new();
+
+        if let Ok(parsed_url) = url::Url::parse(url)
+            && let Some(host) = parsed_url.host_str()
+        {
+            // Sites com Cloudflare ou proteção anti-bot forte
+            if host.contains("anthropic.com")
+                || host.contains("stability.ai")
+                || host.contains("character.ai")
+            {
+                // Headers extras para contornar Cloudflare
+                headers.insert(
+                    reqwest::header::HeaderName::from_static("cf-ray"),
+                    reqwest::header::HeaderValue::from_static(""),
+                );
+                headers.insert(
+                    reqwest::header::HeaderName::from_static("cf-ipcountry"),
+                    reqwest::header::HeaderValue::from_static("US"),
+                );
+                return Some(headers);
+            }
+
+            // Sites que checam Referer específico
+            if host.contains("perplexity.ai") {
+                headers.insert(
+                    reqwest::header::REFERER,
+                    reqwest::header::HeaderValue::from_str(&format!("https://{}/", host))
+                        .unwrap_or_else(|_| {
+                            reqwest::header::HeaderValue::from_static("https://www.perplexity.ai/")
+                        }),
+                );
+                return Some(headers);
+            }
+
+            // Sites acadêmicos (Stanford, Berkeley)
+            if host.contains("stanford.edu") || host.contains("berkeley.edu") {
+                headers.insert(
+                    reqwest::header::REFERER,
+                    reqwest::header::HeaderValue::from_str(&format!("https://{}/", host))
+                        .unwrap_or_else(|_| {
+                            reqwest::header::HeaderValue::from_static("https://google.com/")
+                        }),
+                );
+                return Some(headers);
+            }
+        }
+
+        None
+    }
+
     /// Verifica se uma URL precisa de JavaScript rendering baseado no domínio
     ///
     /// # Arguments
@@ -258,10 +320,10 @@ impl HtmlCollector {
             "eleuther.ai",
         ];
 
-        if let Ok(parsed_url) = url::Url::parse(url) {
-            if let Some(host) = parsed_url.host_str() {
-                return JS_DOMAINS.iter().any(|domain| host.contains(domain));
-            }
+        if let Ok(parsed_url) = url::Url::parse(url)
+            && let Some(host) = parsed_url.host_str()
+        {
+            return JS_DOMAINS.iter().any(|domain| host.contains(domain));
         }
         false
     }
@@ -284,24 +346,68 @@ impl HtmlCollector {
         max_results: Option<u32>,
         collector_id: Option<&str>,
     ) -> Result<Vec<ArticleMetadata>> {
+        self.fetch_page_with_mode(
+            base_url,
+            selectors,
+            max_results,
+            collector_id,
+            HtmlRenderingMode::Auto,
+        )
+        .await
+    }
+
+    pub async fn fetch_page_with_mode(
+        &self,
+        base_url: &str,
+        selectors: Option<&HashMap<String, String>>,
+        max_results: Option<u32>,
+        collector_id: Option<&str>,
+        rendering_mode: HtmlRenderingMode,
+    ) -> Result<Vec<ArticleMetadata>> {
         let max = max_results.unwrap_or(10);
-
-        info!(url = %base_url, max_results = max, collector_id = ?collector_id, "Fetching HTML page");
-
-        // Verificar se precisa de JavaScript rendering
-        // Verifica tanto collector_id quanto URL (para fallback RSS → HTML)
-        let needs_js_by_collector = Self::needs_js_rendering(collector_id);
-        let needs_js_by_url = Self::needs_js_rendering_by_url(base_url);
-        let needs_js = needs_js_by_collector || needs_js_by_url;
 
         info!(
             url = %base_url,
+            max_results = max,
             collector_id = ?collector_id,
-            needs_js_by_collector = needs_js_by_collector,
-            needs_js_by_url = needs_js_by_url,
-            needs_js_rendering = needs_js,
-            "Checking if JavaScript rendering is needed"
+            mode = ?rendering_mode,
+            "Fetching HTML page"
         );
+
+        // Verificar se precisa de JavaScript rendering
+        let needs_js = match rendering_mode {
+            HtmlRenderingMode::ForceJs => {
+                info!(
+                    url = %base_url,
+                    collector_id = ?collector_id,
+                    "Forcing JavaScript rendering via Playwright"
+                );
+                true
+            }
+            HtmlRenderingMode::NoJs => {
+                info!(
+                    url = %base_url,
+                    collector_id = ?collector_id,
+                    "Forcing static HTML fetch (no JavaScript)"
+                );
+                false
+            }
+            HtmlRenderingMode::Auto => {
+                let needs_js_by_collector = Self::needs_js_rendering(collector_id);
+                let needs_js_by_url = Self::needs_js_rendering_by_url(base_url);
+
+                info!(
+                    url = %base_url,
+                    collector_id = ?collector_id,
+                    needs_js_by_collector = needs_js_by_collector,
+                    needs_js_by_url = needs_js_by_url,
+                    needs_js_rendering = needs_js_by_collector || needs_js_by_url,
+                    "Checking if JavaScript rendering is needed"
+                );
+
+                needs_js_by_collector || needs_js_by_url
+            }
+        };
 
         let html_content = if needs_js {
             info!(url = %base_url, "Using Playwright for JavaScript rendering");
@@ -320,8 +426,15 @@ impl HtmlCollector {
                         url = %base_url,
                         "Playwright failed, falling back to regular HTTP request"
                     );
-                    // Fallback para requisição HTTP normal
-                    let response = self.client.get(base_url).send().await?;
+                    // Fallback para requisição HTTP normal com headers customizados
+                    let mut request = self.client.get(base_url);
+                    if let Some(custom_headers) = Self::get_site_specific_headers(base_url) {
+                        info!(url = %base_url, "Applying site-specific headers");
+                        for (name, value) in custom_headers.iter() {
+                            request = request.header(name.clone(), value.clone());
+                        }
+                    }
+                    let response = request.send().await?;
 
                     if !response.status().is_success() {
                         return Err(anyhow::anyhow!(
@@ -335,8 +448,15 @@ impl HtmlCollector {
             }
         } else {
             info!(url = %base_url, "Using regular HTTP request (no JavaScript rendering needed)");
-            // Requisição HTTP normal
-            let response = self.client.get(base_url).send().await?;
+            // Requisição HTTP normal com headers customizados para contornar bloqueios
+            let mut request = self.client.get(base_url);
+            if let Some(custom_headers) = Self::get_site_specific_headers(base_url) {
+                info!(url = %base_url, "Applying site-specific headers");
+                for (name, value) in custom_headers.iter() {
+                    request = request.header(name.clone(), value.clone());
+                }
+            }
+            let response = request.send().await?;
 
             if !response.status().is_success() {
                 return Err(anyhow::anyhow!(
@@ -455,18 +575,13 @@ impl HtmlCollector {
                 let json_url_pattern = regex::Regex::new(r#"(?s)(\{[^}]*"url"[^}]*\})"#).unwrap();
                 let mut json_urls = Vec::new();
                 for cap in json_url_pattern.captures_iter(&html_content) {
-                    if let Some(json_match) = cap.get(1) {
-                        let json_str = json_match.as_str();
-                        // Tentar extrair URLs de JSON
-                        if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(json_str) {
-                            if let Some(url_val) = json_val.get("url") {
-                                if let Some(url_str) = url_val.as_str() {
-                                    if !url_str.is_empty() {
-                                        json_urls.push(url_str.to_string());
-                                    }
-                                }
-                            }
-                        }
+                    if let Some(json_match) = cap.get(1)
+                        && let Ok(json_val) =
+                            serde_json::from_str::<serde_json::Value>(json_match.as_str())
+                        && let Some(url_str) = json_val.get("url").and_then(|v| v.as_str())
+                        && !url_str.is_empty()
+                    {
+                        json_urls.push(url_str.to_string());
                     }
                 }
 
@@ -539,15 +654,15 @@ impl HtmlCollector {
                 }
 
                 // Também buscar URLs relativas e convertê-las para absolutas
+                let fallback_rel_regex = regex::Regex::new(r#"["']?(/[^"'\s<>\)]+)["']?"#).unwrap();
+
                 for pattern in &href_patterns {
                     if !pattern.starts_with("http") && pattern.contains('/') {
                         // Buscar URLs relativas que começam com / e contêm o padrão
                         let rel_pattern =
                             format!(r#"["\']?({}[^"'\s<>\)]*)["\']?"#, regex::escape(pattern));
-                        let re = regex::Regex::new(&rel_pattern).unwrap_or_else(|_| {
-                            // Fallback: buscar qualquer path que comece com /
-                            regex::Regex::new(r#"["\']?(/[^"'\s<>\)]+)["\']?"#).unwrap()
-                        });
+                        let re = regex::Regex::new(&rel_pattern)
+                            .unwrap_or_else(|_| fallback_rel_regex.clone());
 
                         for cap in re.captures_iter(&html_content) {
                             if let Some(rel_match) = cap.get(1) {
@@ -566,98 +681,52 @@ impl HtmlCollector {
                                         || rel_path.starts_with("https://"))
                                 {
                                     let url = rel_path;
-                                    if !link_urls.contains(&url) {
-                                        total_links_found_regex += 1;
-
-                                        // Filtrar e verificar se é artigo
-                                        if !url.contains("/category/")
-                                            && !url.contains("/tag/")
-                                            && !url.contains("/author/")
-                                            && !url.contains("/page/")
-                                            && !url.contains("/feed/")
-                                            && !url.contains("wp-json")
-                                            && !url.contains("#")
-                                        {
-                                            let base_url_normalized =
-                                                base_url.trim_end_matches('/');
-                                            let url_normalized = url.trim_end_matches('/');
-                                            if url_normalized != base_url_normalized {
-                                                let path_segments: Vec<&str> = url
-                                                    .split('/')
-                                                    .filter(|s| !s.is_empty() && !s.contains(':'))
-                                                    .collect();
-                                                let is_article = url.contains("/20")
-                                                    || path_segments.len() >= 4
-                                                    || (path_segments.len() >= 3
-                                                        && path_segments
-                                                            .last()
-                                                            .map(|s| s.matches('-').count() >= 2)
-                                                            .unwrap_or(false));
-
-                                                if is_article {
-                                                    link_urls.push(url);
-                                                }
-                                            }
-                                        }
+                                    if link_urls.contains(&url) {
+                                        continue;
                                     }
+
+                                    total_links_found_regex += 1;
+                                    if Self::should_skip_url(&url) {
+                                        continue;
+                                    }
+
+                                    Self::push_if_article(&mut link_urls, base_url, &url);
                                     continue;
                                 }
 
                                 // Resolver URL relativa
-                                let resolved_url = if rel_path.starts_with("http://")
-                                    || rel_path.starts_with("https://")
-                                {
-                                    rel_path
-                                } else {
-                                    use url::Url;
-                                    if let Ok(base) = Url::parse(base_url) {
-                                        if let Ok(resolved) = base.join(&rel_path) {
-                                            resolved.to_string()
-                                        } else {
-                                            format!(
-                                                "{}{}",
-                                                base_url.trim_end_matches('/'),
-                                                rel_path
-                                            )
-                                        }
-                                    } else {
-                                        format!("{}{}", base_url.trim_end_matches('/'), rel_path)
-                                    }
-                                };
+                                let resolved_url = Self::resolve_relative_url(base_url, &rel_path);
 
-                                if !link_urls.contains(&resolved_url) {
-                                    total_links_found_regex += 1;
+                                if link_urls.contains(&resolved_url) {
+                                    continue;
+                                }
 
-                                    // Filtrar URLs que não são artigos
-                                    if !resolved_url.contains("/category/")
-                                        && !resolved_url.contains("/tag/")
-                                        && !resolved_url.contains("/author/")
-                                        && !resolved_url.contains("/page/")
-                                        && !resolved_url.contains("/feed/")
-                                        && !resolved_url.contains("wp-json")
-                                        && !resolved_url.contains("#")
-                                    {
-                                        // Verificar se parece ser um artigo
-                                        let base_url_normalized = base_url.trim_end_matches('/');
-                                        let url_normalized = resolved_url.trim_end_matches('/');
-                                        if url_normalized != base_url_normalized {
-                                            let path_segments: Vec<&str> = resolved_url
-                                                .split('/')
-                                                .filter(|s| !s.is_empty() && !s.contains(':'))
-                                                .collect();
-                                            let is_article = resolved_url.contains("/20")
-                                                || path_segments.len() >= 4
-                                                || (path_segments.len() >= 3
-                                                    && path_segments
-                                                        .last()
-                                                        .map(|s| s.matches('-').count() >= 2)
-                                                        .unwrap_or(false));
+                                total_links_found_regex += 1;
 
-                                            if is_article {
-                                                link_urls.push(resolved_url);
-                                            }
-                                        }
-                                    }
+                                if Self::should_skip_url(&resolved_url) {
+                                    continue;
+                                }
+
+                                let base_url_normalized = base_url.trim_end_matches('/');
+                                let url_normalized = resolved_url.trim_end_matches('/');
+                                if url_normalized == base_url_normalized {
+                                    continue;
+                                }
+
+                                let path_segments: Vec<&str> = resolved_url
+                                    .split('/')
+                                    .filter(|s| !s.is_empty() && !s.contains(':'))
+                                    .collect();
+                                let is_article = resolved_url.contains("/20")
+                                    || path_segments.len() >= 4
+                                    || (path_segments.len() >= 3
+                                        && path_segments
+                                            .last()
+                                            .map(|s| s.matches('-').count() >= 2)
+                                            .unwrap_or(false));
+
+                                if is_article {
+                                    link_urls.push(resolved_url);
                                 }
                             }
                         }
@@ -789,12 +858,10 @@ impl HtmlCollector {
                                     .trim_end_matches(',')
                                     .to_string();
 
-                                if url.contains(&base_domain) {
-                                    if !link_urls.contains(&url) {
-                                        let url_clone = url.clone();
-                                        link_urls.push(url);
-                                        info!(found_url = %url_clone, "Found URL using aggressive extraction");
-                                    }
+                                if url.contains(&base_domain) && !link_urls.contains(&url) {
+                                    let url_clone = url.clone();
+                                    link_urls.push(url);
+                                    info!(found_url = %url_clone, "Found URL using aggressive extraction");
                                 }
                             }
                         }
@@ -935,7 +1002,7 @@ impl HtmlCollector {
             );
 
             // Debug: mostrar alguns links encontrados
-            if link_urls.len() > 0 {
+            if !link_urls.is_empty() {
                 info!(
                     sample_links = ?link_urls.iter().take(5).collect::<Vec<_>>(),
                     "Sample links found"
@@ -1241,29 +1308,12 @@ impl HtmlCollector {
         _selectors: Option<&HashMap<String, String>>,
     ) -> Option<String> {
         use scraper::Selector;
-        use url::Url;
 
         // Se o próprio elemento é um link <a>, usar diretamente
-        if article_element.value().name() == "a" {
-            if let Some(href) = article_element.value().attr("href") {
-                // Resolve relative URLs
-                if let Ok(base) = Url::parse(base_url) {
-                    if let Ok(resolved) = base.join(href) {
-                        return Some(resolved.to_string());
-                    }
-                }
-                // If resolution fails, return as-is if it looks absolute
-                if href.starts_with("http://") || href.starts_with("https://") {
-                    return Some(href.to_string());
-                }
-                // Otherwise, construct relative URL
-                let resolved = format!(
-                    "{}/{}",
-                    base_url.trim_end_matches('/'),
-                    href.trim_start_matches('/')
-                );
-                return Some(resolved);
-            }
+        if article_element.value().name() == "a"
+            && let Some(href) = article_element.value().attr("href")
+        {
+            return Self::resolve_href(base_url, href);
         }
 
         // Try common link selectors dentro do elemento
@@ -1280,41 +1330,92 @@ impl HtmlCollector {
         ];
 
         for selector_str in link_selectors {
-            if let Ok(link_selector) = Selector::parse(selector_str) {
-                if let Some(link) = article_element.select(&link_selector).next() {
-                    if let Some(href) = link.value().attr("href") {
-                        // Filtrar links que não são artigos (categorias, tags, etc)
-                        if href.contains("/category/")
-                            || href.contains("/tag/")
-                            || href.contains("/author/")
-                            || href.contains("/page/")
-                        {
-                            continue;
-                        }
+            if let Ok(link_selector) = Selector::parse(selector_str)
+                && let Some(link) = article_element.select(&link_selector).next()
+                && let Some(href) = link.value().attr("href")
+            {
+                if href.contains("/category/")
+                    || href.contains("/tag/")
+                    || href.contains("/author/")
+                    || href.contains("/page/")
+                {
+                    continue;
+                }
 
-                        // Resolve relative URLs
-                        if let Ok(base) = Url::parse(base_url) {
-                            if let Ok(resolved) = base.join(href) {
-                                return Some(resolved.to_string());
-                            }
-                        }
-                        // If resolution fails, return as-is if it looks absolute
-                        if href.starts_with("http://") || href.starts_with("https://") {
-                            return Some(href.to_string());
-                        }
-                        // Otherwise, construct relative URL
-                        let resolved = format!(
-                            "{}/{}",
-                            base_url.trim_end_matches('/'),
-                            href.trim_start_matches('/')
-                        );
-                        return Some(resolved);
-                    }
+                if let Some(resolved) = Self::resolve_href(base_url, href) {
+                    return Some(resolved);
                 }
             }
         }
 
         None
+    }
+
+    fn resolve_href(base_url: &str, href: &str) -> Option<String> {
+        if let Ok(base) = url::Url::parse(base_url)
+            && let Ok(resolved) = base.join(href)
+        {
+            return Some(resolved.to_string());
+        }
+
+        if href.starts_with("http://") || href.starts_with("https://") {
+            return Some(href.to_string());
+        }
+
+        Some(Self::resolve_relative_url(base_url, href))
+    }
+
+    fn should_skip_url(url: &str) -> bool {
+        url.contains("/category/")
+            || url.contains("/tag/")
+            || url.contains("/author/")
+            || url.contains("/page/")
+            || url.contains("/feed/")
+            || url.contains("wp-json")
+            || url.contains('#')
+    }
+
+    fn push_if_article(link_urls: &mut Vec<String>, base_url: &str, url: &str) {
+        let base_url_normalized = base_url.trim_end_matches('/');
+        let url_normalized = url.trim_end_matches('/');
+        if url_normalized == base_url_normalized {
+            return;
+        }
+
+        let path_segments: Vec<&str> = url
+            .split('/')
+            .filter(|segment| !segment.is_empty() && !segment.contains(':'))
+            .collect();
+        let is_article = url.contains("/20")
+            || path_segments.len() >= 4
+            || (path_segments.len() >= 3
+                && path_segments
+                    .last()
+                    .map(|segment| segment.matches('-').count() >= 2)
+                    .unwrap_or(false));
+
+        if is_article {
+            link_urls.push(url.to_string());
+        }
+    }
+
+    fn resolve_relative_url(base_url: &str, rel_path: &str) -> String {
+        if rel_path.starts_with("http://") || rel_path.starts_with("https://") {
+            return rel_path.to_string();
+        }
+
+        if let Ok(base) = url::Url::parse(base_url)
+            && let Ok(resolved) = base.join(rel_path)
+        {
+            return resolved.to_string();
+        }
+
+        let trimmed_base = base_url.trim_end_matches('/');
+        if rel_path.starts_with('/') {
+            format!("{trimmed_base}{rel_path}")
+        } else {
+            format!("{trimmed_base}/{rel_path}")
+        }
     }
 
     /// Busca artigos de múltiplas páginas HTML
@@ -1324,7 +1425,7 @@ impl HtmlCollector {
     #[allow(dead_code)]
     pub async fn fetch_multiple_pages(
         &self,
-        pages: Vec<(String, Option<HashMap<String, String>>, Option<u32>)>,
+        pages: Vec<PageConfig>,
     ) -> Result<Vec<ArticleMetadata>> {
         let mut all_articles = Vec::new();
         let pages_count = pages.len();
