@@ -263,7 +263,6 @@
           "base_url": "https://damo.alibaba.com",
           "collector_type": "rss",
           "config": {
-            "force_js": true,
             "max_results": 5
           },
           "enabled": true,
@@ -293,8 +292,7 @@
           "base_url": "https://ai.meta.com/blog/",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_meta_ai",
@@ -417,8 +415,7 @@
           "base_url": "https://stability.ai/news",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_stability_ai",
@@ -479,7 +476,7 @@
             "max_results": 5
           },
           "enabled": true,
-          "feed_url": "https://blogs.microsoft.com/feed",
+          "feed_url": "https://blogs.microsoft.com/ai/feed/",
           "id": "rss_microsoft_ai",
           "name": "Microsoft AI Blog RSS"
         },
@@ -525,8 +522,7 @@
           "collector_type": "html",
           "config": {
             "force_js": true,
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_intel_ai",
@@ -543,8 +539,7 @@
           "base_url": "https://www.amd.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://www.amd.com/feed",
@@ -568,8 +563,7 @@
           "base_url": "https://hai.stanford.edu",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://hai.stanford.edu/feed",
@@ -593,8 +587,7 @@
           "base_url": "https://deepmind.google/discover/blog/",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_deepmind_blog",
@@ -638,7 +631,7 @@
             "max_results": 5
           },
           "enabled": true,
-          "feed_url": "https://www.theverge.com/blog",
+          "feed_url": "https://www.theverge.com/rss/group/ai/index.xml",
           "id": "rss_the_verge_ai",
           "name": "The Verge AI RSS"
         },
@@ -719,8 +712,7 @@
           "base_url": "https://menlovc.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://menlovc.com/feed",
@@ -764,7 +756,7 @@
             "max_results": 5
           },
           "enabled": true,
-          "feed_url": "https://robohub.org/blog",
+          "feed_url": "https://robohub.org/feed",
           "id": "html_robohub",
           "name": "Robohub"
         },
@@ -797,8 +789,7 @@
           "base_url": "https://roboticsbusinessreview.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://roboticsbusinessreview.com/feed",
@@ -822,8 +813,7 @@
           "base_url": "https://research.ibm.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://research.ibm.com/rss",
@@ -893,8 +883,7 @@
           "base_url": "https://www.quantinuum.com/news/news",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_quantinuum",
@@ -926,7 +915,7 @@
             "max_results": 5
           },
           "enabled": true,
-          "feed_url": "https://bostondynamics.com/blog",
+          "feed_url": "https://bostondynamics.com/feed",
           "id": "html_boston_dynamics",
           "name": "Boston Dynamics"
         },
@@ -1184,8 +1173,7 @@
           "base_url": "https://www.eleuther.ai/",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_eleuther",
@@ -1214,8 +1202,7 @@
           "base_url": "https://infleqtion.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://infleqtion.com/feed",
@@ -1227,8 +1214,7 @@
           "base_url": "https://www.coldquanta.com",
           "collector_type": "rss",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "feed_url": "https://www.coldquanta.com/feed",
@@ -1252,8 +1238,7 @@
           "base_url": "https://www.universal-robots.com/blog/",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_universal_robots",
@@ -1270,7 +1255,6 @@
           "base_url": "https://automation.omron.com",
           "collector_type": "rss",
           "config": {
-            "force_js": true,
             "max_results": 5
           },
           "enabled": true,
@@ -1283,8 +1267,7 @@
           "base_url": "https://www.yaskawa.com/about-us/media-center/news",
           "collector_type": "html",
           "config": {
-            "max_results": 5,
-            "needs_antibot_headers": true
+            "max_results": 5
           },
           "enabled": true,
           "id": "html_yaskawa",
