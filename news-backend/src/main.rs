@@ -1785,14 +1785,9 @@ async fn main() -> anyhow::Result<()> {
 
                 for c in s.collectors {
                     let id_lower = c.id.to_lowercase();
-                    println!(
-                        "    📦 Collector: {} (enabled: {}, type: {:?})",
-                        c.id, c.enabled, c.collector_type
-                    );
-
+                    
                     // CRITICAL: Skip disabled collectors first (before any matching)
                     if !c.enabled {
-                        println!("      ⏭️  Skipping disabled collector");
                         continue;
                     }
 
@@ -1803,23 +1798,18 @@ async fn main() -> anyhow::Result<()> {
                     match (source_key, collector_type) {
                         ("arxiv", _) if id_lower.contains("arxiv") => {
                             enabled_for_source = true;
-                            println!("      ✅ Matched: arxiv collector for arxiv source");
                         }
                         ("pmc", _) if id_lower.contains("pmc") || id_lower.contains("pubmed") => {
                             enabled_for_source = true;
-                            println!("      ✅ Matched: pmc/pubmed collector for pmc source");
                         }
                         ("semantic", _) if id_lower.contains("semantic") => {
                             enabled_for_source = true;
-                            println!("      ✅ Matched: semantic collector for semantic source");
                         }
                         ("rss", "rss") | ("rss", _) if id_lower.contains("rss") => {
                             enabled_for_source = true;
-                            println!("      ✅ Matched: rss collector for rss source");
                         }
                         ("html", "html") | ("html", _) if id_lower.contains("html") => {
                             enabled_for_source = true;
-                            println!("      ✅ Matched: html collector for html source");
                         }
                         _ => {
                             // No match - collector doesn't match this source
@@ -2123,12 +2113,8 @@ async fn main() -> anyhow::Result<()> {
                     crate::utils::sources_registry::CollectionMethod::Rss => {
                         println!("  ✅ Known effective method: RSS");
                     }
-                    _ => {
-                        println!("  ℹ️  No known effective method, trying RSS first");
-                    }
+                    _ => {}
                 }
-            } else {
-                println!("  ℹ️  No known effective method, trying RSS first");
             }
 
             println!("  ⏳ Fetching feed...\n");
@@ -3651,16 +3637,16 @@ async fn main() -> anyhow::Result<()> {
                         println!("      ✅ Registered");
                     }
 
-                    // Definir destinos
-                    println!("      🎯 Setting destinations...");
-                    let destinations = vec!["scienceai".to_string()]; // Para teste, enviar para ScienceAI
+                    // Definir destinos baseado nos sites habilitados no system_config.json
+                    let destinations = get_enabled_sites_for_source("arxiv");
+                    if !destinations.is_empty() {
+                        println!("      🎯 Setting destinations: {:?}", destinations);
+                    }
                     if let Err(e) = registry.set_destinations(&article.id, destinations.clone()) {
                         eprintln!(
                             "      ⚠️  Failed to set destinations for {}: {}",
                             article.id, e
                         );
-                    } else {
-                        println!("      ✅ Destinations set: {:?}", destinations);
                     }
 
                     saved_count += 1;

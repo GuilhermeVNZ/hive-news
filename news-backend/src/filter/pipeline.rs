@@ -243,16 +243,13 @@ pub(crate) fn discover_unfiltered_pdfs(
 
                 // Processar se:
                 // 1. Nunca processado
-                // 2. Status Collected (baixado mas nÃ£o filtrado ainda)
-                // 3. Status Rejected mas ainda estÃ¡ em arxiv/ (pode ter sido rejeitado com threshold antigo)
-                //    e o PDF ainda existe (nÃ£o foi deletado)
+                // 2. Status Collected (baixado mas não filtrado ainda)
                 let metadata = registry.get_metadata(article_id);
                 let should_process = match metadata {
                     None => true, // Nunca processado - processar
                     Some(meta) => match meta.status {
-                        ArticleStatus::Collected => true, // Baixado mas nÃ£o filtrado ainda
-                        ArticleStatus::Rejected => path.exists(), // Reprocessar rejeitados presentes em disco
-                        ArticleStatus::Filtered | ArticleStatus::Published => false, // JÃ¡ processado completamente
+                        ArticleStatus::Collected => true, // Baixado mas não filtrado ainda
+                        ArticleStatus::Rejected | ArticleStatus::Filtered | ArticleStatus::Published => false, // Já processado - não reprocessar
                     },
                 };
 
