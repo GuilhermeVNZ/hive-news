@@ -17,15 +17,14 @@ use std::collections::HashMap;
 // Helper function to get registry path (same logic as main.rs)
 fn get_registry_path() -> std::path::PathBuf {
     let registry_path = resolve_workspace_path("articles_registry.json");
-    if let Some(parent) = registry_path.parent() {
-        if !parent.exists() {
-            if let Err(err) = std::fs::create_dir_all(parent) {
-                eprintln!(
-                    "[Logs API] ⚠️  Failed to create registry directory {:?}: {}",
-                    parent, err
-                );
-            }
-        }
+    if let Some(parent) = registry_path.parent()
+        && !parent.exists()
+        && let Err(err) = std::fs::create_dir_all(parent)
+    {
+        eprintln!(
+            "[Logs API] ⚠️  Failed to create registry directory {:?}: {}",
+            parent, err
+        );
     }
     registry_path
 }
@@ -84,61 +83,43 @@ pub async fn list_logs(
         .collect::<Vec<_>>();
 
     // Filter by featured status if requested
-    if let Some(featured_only) = params.featured {
-        if featured_only {
-            let before_count = all.len();
-            all.retain(|m| {
-                // Handle both boolean and string representations of true
-                let is_featured = match m.featured {
-                    Some(true) => true,
-                    Some(false) => false,
-                    None => false,
-                };
-                eprintln!(
-                    "[Logs API] Article {} featured check: featured={:?}, result={}",
-                    m.id, m.featured, is_featured
-                );
-                is_featured
-            });
-            let after_count = all.len();
-            eprintln!(
-                "[Logs API] Featured filter: before={}, after={}, filtered={}",
-                before_count,
-                after_count,
-                before_count - after_count
-            );
-        }
+    if let Some(true) = params.featured {
+        let before_count = all.len();
+        all.retain(|m| matches!(m.featured, Some(true)));
+        let after_count = all.len();
+        eprintln!(
+            "[Logs API] Featured filter applied: before={}, after={}, filtered={}",
+            before_count,
+            after_count,
+            before_count - after_count
+        );
     }
 
     // Filter by site if requested
-    if let Some(ref site_filter) = params.site {
-        if !site_filter.is_empty() && site_filter.to_lowercase() != "all" {
-            let before_count = all.len();
-            let site_filter_lower = site_filter.to_lowercase();
-            all.retain(|m| {
-                // Check if article has this site in destinations array
-                let has_site = if let Some(ref destinations) = m.destinations {
+    if let Some(ref site_filter) = params.site
+        && !site_filter.is_empty()
+        && site_filter.to_lowercase() != "all"
+    {
+        let before_count = all.len();
+        let site_filter_lower = site_filter.to_lowercase();
+        all.retain(|m| {
+            m.destinations
+                .as_ref()
+                .map(|destinations| {
                     destinations
                         .iter()
                         .any(|d| d.to_lowercase() == site_filter_lower)
-                } else {
-                    false
-                };
-                eprintln!(
-                    "[Logs API] Article {} site check: site={}, destinations={:?}, result={}",
-                    m.id, site_filter, m.destinations, has_site
-                );
-                has_site
-            });
-            let after_count = all.len();
-            eprintln!(
-                "[Logs API] Site filter ({:?}): before={}, after={}, filtered={}",
-                site_filter,
-                before_count,
-                after_count,
-                before_count - after_count
-            );
-        }
+                })
+                .unwrap_or(false)
+        });
+        let after_count = all.len();
+        eprintln!(
+            "[Logs API] Site filter ({:?}) applied: before={}, after={}, filtered={}",
+            site_filter,
+            before_count,
+            after_count,
+            before_count - after_count
+        );
     }
 
     if let Some(q) = params.q.as_ref() {
@@ -240,16 +221,14 @@ pub async fn list_logs(
         // Handles formats: "2510.26038" or "2025-10-29_unknown_2510.26038" -> "2510.26038"
         fn extract_arxiv_id(id: &str) -> Option<String> {
             // Try to find arXiv ID pattern (YYYY.NNNNN or YYYY.NNNNNN)
-            if let Some(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})").ok() {
-                if let Some(mat) = captures.find(id) {
-                    return Some(mat.as_str().to_string());
-                }
+            if let Ok(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})")
+                && let Some(mat) = captures.find(id)
+            {
+                return Some(mat.as_str().to_string());
             }
             // Fallback: if the ID itself looks like an arXiv ID
-            if id.matches('.').count() == 1 && id.len() >= 9 && id.len() <= 12 {
-                if let Some(_) = id.find('.') {
-                    return Some(id.to_string());
-                }
+            if id.matches('.').count() == 1 && (9..=12).contains(&id.len()) && id.contains('.') {
+                return Some(id.to_string());
             }
             None
         }
@@ -260,14 +239,14 @@ pub async fn list_logs(
             .or_else(|| m.original_title.clone())
             .filter(|t| !t.is_empty());
         // If generated_title is not available in registry, try to read from title.txt in filesystem
-        if actual_title.is_none() {
-            if let Some(output_dir) = &m.output_dir {
-                let title_txt_path = output_dir.join("title.txt");
-                if let Ok(title_content) = fs::read_to_string(&title_txt_path) {
-                    let title = title_content.trim().to_string();
-                    if !title.is_empty() {
-                        actual_title = Some(title);
-                    }
+        if actual_title.is_none()
+            && let Some(output_dir) = &m.output_dir
+        {
+            let title_txt_path = output_dir.join("title.txt");
+            if let Ok(title_content) = fs::read_to_string(&title_txt_path) {
+                let title = title_content.trim().to_string();
+                if !title.is_empty() {
+                    actual_title = Some(title);
                 }
             }
         }
@@ -275,117 +254,118 @@ pub async fn list_logs(
         let actual_title = actual_title.unwrap_or_else(|| m.title.clone());
         let mut destinations: Vec<DestinationInfo> = Vec::new();
         // Use destinations field from metadata if available (more reliable)
-        if let Some(dest_sites) = &m.destinations {
-            if !dest_sites.is_empty() {
-                for site_id in dest_sites {
-                    let site_id_lower = site_id.to_lowercase();
-                    // Determine correct localhost port based on site
-                    let base_url = if site_id_lower == "scienceai" {
-                        "http://localhost:8080"
-                    } else if site_id_lower == "airesearch" {
-                        "http://localhost:3003"
-                    } else {
-                        eprintln!("[Logs API] Unknown site_id: {}, skipping...", site_id_lower);
-                        continue; // Skip unknown sites
-                    };
+        if let Some(dest_sites) = &m.destinations
+            && !dest_sites.is_empty()
+        {
+            for site_id in dest_sites {
+                let site_id_lower = site_id.to_lowercase();
+                // Determine correct localhost port based on site
+                let base_url = if site_id_lower == "scienceai" {
+                    "http://localhost:8080"
+                } else if site_id_lower == "airesearch" {
+                    "http://localhost:3003"
+                } else {
+                    eprintln!("[Logs API] Unknown site_id: {}, skipping...", site_id_lower);
+                    continue; // Skip unknown sites
+                };
 
-                    // Generate URL using actual title from filesystem (matches what AIResearch shows)
-                    let slug = title_to_slug(&actual_title);
-                    let url = format!("{}/article/{}", base_url, slug);
+                // Generate URL using actual title from filesystem (matches what AIResearch shows)
+                let slug = title_to_slug(&actual_title);
+                let url = format!("{}/article/{}", base_url, slug);
 
-                    // Verbose logging disabled for cleaner output
-                    // eprintln!("[Logs API] Article {}: site_id={}, base_url={}, slug={}, url={}", 
-                    //     m.id, site_id_lower, base_url, slug, url);
+                // Get site name from site_id
+                let site_name = if site_id_lower == "scienceai" {
+                    "ScienceAI"
+                } else if site_id_lower == "airesearch" {
+                    "AIResearch"
+                } else {
+                    site_id
+                };
 
-                    // Get site name from site_id
-                    let site_name = if site_id_lower == "scienceai" {
-                        "ScienceAI"
-                    } else if site_id_lower == "airesearch" {
-                        "AIResearch"
-                    } else {
-                        site_id
-                    };
+                // **CRITICAL FIX**: Before adding destination, verify the article folder exists in filesystem
+                // Resolve output_dir relative to workspace root
+                let full_output_path = if let Some(rel_dir) = &m.output_dir {
+                    crate::utils::path_resolver::resolve_workspace_path(rel_dir)
+                } else {
+                    // If no output_dir, try to construct expected path using article ID
+                    crate::utils::path_resolver::resolve_workspace_path(format!(
+                        "output/{}/{}",
+                        site_name, m.id
+                    ))
+                };
 
-                    // **CRITICAL FIX**: Before adding destination, verify the article folder exists in filesystem
-                    // Resolve output_dir relative to workspace root
-                    let full_output_path = if let Some(rel_dir) = &m.output_dir {
-                        crate::utils::path_resolver::resolve_workspace_path(rel_dir)
-                    } else {
-                        // If no output_dir, try to construct expected path using article ID
-                        crate::utils::path_resolver::resolve_workspace_path(
-                            format!("output/{}/{}", site_name, m.id)
-                        )
-                    };
-
-                    if full_output_path.exists() {
-                        destinations.push(DestinationInfo {
-                            site_id: site_id_lower.clone(),
-                            site_name: site_name.to_string(),
-                            url,
-                        });
-                    } else {
-                        let arxiv_id_info = extract_arxiv_id(&m.id);
-                        eprintln!(
-                            "[Logs API] Skipping destination {} for article {} (arXiv ID: {:?}) - not found in filesystem at {}",
-                            site_name, m.id, arxiv_id_info, full_output_path.display()
-                        );
-                    }
+                if full_output_path.exists() {
+                    destinations.push(DestinationInfo {
+                        site_id: site_id_lower.clone(),
+                        site_name: site_name.to_string(),
+                        url,
+                    });
+                } else {
+                    let arxiv_id_info = extract_arxiv_id(&m.id);
+                    eprintln!(
+                        "[Logs API] Skipping destination {} for article {} (arXiv ID: {:?}) - not found in filesystem at {}",
+                        site_name, m.id, arxiv_id_info, full_output_path.display()
+                    );
                 }
             }
         }
 
         // Fallback: if no destinations were created, try output_dir
-        if destinations.is_empty() {
-            if let Some(dir) = &m.output_dir {
-                // Fallback: try to extract from output_dir path
-                // Handle legacy paths with mixed separators (e.g., output\AIResearch\2510.27413)
-                let dir_str = dir.to_string_lossy().to_string();
-                let normalized_dir = dir_str.replace('\\', "/");
-                let dir_path = PathBuf::from(&normalized_dir);
-                if let Some(site_os) = dir_path.parent().and_then(|p| p.file_name()) {
-                    let site_name = site_os.to_string_lossy().to_string();
-                    let site_id_lower = site_name.to_lowercase();
-                    eprintln!(
-                        "[Logs API] Fallback: Article {}: output_dir={}, extracted site_name={}, site_id_lower={}",
-                        m.id, dir_str, site_name, site_id_lower
-                    );
+        if destinations.is_empty()
+            && let Some(dir) = &m.output_dir
+        {
+            // Fallback: try to extract from output_dir path
+            // Handle legacy paths with mixed separators (e.g., output\AIResearch\2510.27413)
+            let dir_str = dir.to_string_lossy().to_string();
+            let normalized_dir = dir_str.replace('\\', "/");
+            let dir_path = PathBuf::from(&normalized_dir);
+            if let Some(site_os) = dir_path.parent().and_then(|p| p.file_name()) {
+                let site_name = site_os.to_string_lossy().to_string();
+                let site_id_lower = site_name.to_lowercase();
+                eprintln!(
+                    "[Logs API] Fallback: Article {}: output_dir={}, extracted site_name={}, site_id_lower={}",
+                    m.id, dir_str, site_name, site_id_lower
+                );
 
-                    // Determine correct localhost port based on site
-                    let base_url = if site_id_lower == "scienceai" {
-                        "http://localhost:8080"
-                    } else if site_id_lower == "airesearch" {
-                        "http://localhost:3003"
-                    } else {
-                        eprintln!("[Logs API] Unknown site from output_dir: {}, defaulting to dashboard", site_id_lower);
-                        "http://localhost:1420" // Default to dashboard
-                    };
-
-                    // Generate URL using actual title from filesystem (matches what AIResearch shows)
-                    let slug = title_to_slug(&actual_title);
-                    let url = format!("{}/article/{}", base_url, slug);
-
-                    eprintln!(
-                        "[Logs API] Fallback URL: base_url={}, slug={}, url={}",
-                        base_url, slug, url
-                    );
-
-                    // **CRITICAL FIX**: Validate folder exists before adding
-                    let full_fallback_path = crate::utils::path_resolver::resolve_workspace_path(dir);
-                    if full_fallback_path.exists() {
-                        destinations.push(DestinationInfo {
-                            site_id: site_id_lower,
-                            site_name,
-                            url,
-                        });
-                    } else {
-                        eprintln!(
-                            "[Logs API] Fallback destination skipped - folder not found at {}",
-                            full_fallback_path.display()
-                        );
-                    }
+                // Determine correct localhost port based on site
+                let base_url = if site_id_lower == "scienceai" {
+                    "http://localhost:8080"
+                } else if site_id_lower == "airesearch" {
+                    "http://localhost:3003"
                 } else {
-                    eprintln!("[Logs API] Failed to extract site from output_dir: {}", dir_str);
+                    eprintln!(
+                        "[Logs API] Unknown site from output_dir: {}, defaulting to dashboard",
+                        site_id_lower
+                    );
+                    "http://localhost:1420" // Default to dashboard
+                };
+
+                // Generate URL using actual title from filesystem (matches what AIResearch shows)
+                let slug = title_to_slug(&actual_title);
+                let url = format!("{}/article/{}", base_url, slug);
+
+                eprintln!(
+                    "[Logs API] Fallback URL: base_url={}, slug={}, url={}",
+                    base_url, slug, url
+                );
+
+                // **CRITICAL FIX**: Validate folder exists before adding
+                let full_fallback_path =
+                    crate::utils::path_resolver::resolve_workspace_path(dir);
+                if full_fallback_path.exists() {
+                    destinations.push(DestinationInfo {
+                        site_id: site_id_lower,
+                        site_name,
+                        url,
+                    });
+                } else {
+                    eprintln!(
+                        "[Logs API] Fallback destination skipped - folder not found at {}",
+                        full_fallback_path.display()
+                    );
                 }
+            } else {
+                eprintln!("[Logs API] Failed to extract site from output_dir: {}", dir_str);
             }
         }
 
@@ -501,15 +481,13 @@ pub async fn set_hidden(
 
     // Helper function to extract arXiv ID (same as in list_logs)
     fn extract_arxiv_id(id: &str) -> Option<String> {
-        if let Some(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})").ok() {
-            if let Some(mat) = captures.find(id) {
-                return Some(mat.as_str().to_string());
-            }
+        if let Ok(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})")
+            && let Some(mat) = captures.find(id)
+        {
+            return Some(mat.as_str().to_string());
         }
-        if id.matches('.').count() == 1 && id.len() >= 9 && id.len() <= 12 {
-            if let Some(_) = id.find('.') {
-                return Some(id.to_string());
-            }
+        if id.matches('.').count() == 1 && (9..=12).contains(&id.len()) && id.contains('.') {
+            return Some(id.to_string());
         }
         None
     }
@@ -530,22 +508,22 @@ pub async fn set_hidden(
     if let Some(ref arxiv) = arxiv_id {
         for site_output_dir in &site_dirs {
             if let Ok(entries) = fs::read_dir(site_output_dir) {
-                for entry in entries {
-                    if let Ok(entry) = entry {
-                        let folder_name = entry.file_name().to_string_lossy().to_string();
-                        if folder_name.contains(arxiv) {
-                            let folder_path = entry.path();
-                            if folder_path.is_dir() {
-                                let title_txt = folder_path.join("title.txt");
-                                if title_txt.exists() {
-                                    if let Ok(title_content) = fs::read_to_string(&title_txt) {
-                                        actual_title_from_fs =
-                                            Some(title_content.trim().to_string());
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                for entry in entries.flatten() {
+                    let folder_name = entry.file_name().to_string_lossy().to_string();
+                    if !folder_name.contains(arxiv) {
+                        continue;
+                    }
+                    let folder_path = entry.path();
+                    if !folder_path.is_dir() {
+                        continue;
+                    }
+                    let title_txt = folder_path.join("title.txt");
+                    if !title_txt.exists() {
+                        continue;
+                    }
+                    if let Ok(title_content) = fs::read_to_string(&title_txt) {
+                        actual_title_from_fs = Some(title_content.trim().to_string());
+                        break;
                     }
                 }
             }
@@ -557,22 +535,22 @@ pub async fn set_hidden(
 
     // If we found the title from filesystem, try to find matching article in registry
     // by comparing with the actual title from filesystem
-    if let Some(ref _fs_title) = actual_title_from_fs {
-        if let Some(ref arxiv) = arxiv_id {
-            let all_articles = manager.get_all_articles();
-            for article in all_articles {
-                // Extract arXiv ID from registry article ID
-                let reg_arxiv_id = extract_arxiv_id(&article.id);
-                if reg_arxiv_id == arxiv_id {
-                    // Found matching arXiv ID, verify by checking title in filesystem
-                    // We already have the title from filesystem, so use the registry ID
-                    found_id = Some(article.id.clone());
-                    eprintln!(
-                        "[set_hidden] Found article by arXiv ID: {} -> registry ID: {}",
-                        arxiv, article.id
-                    );
-                    break;
-                }
+    if actual_title_from_fs.is_some()
+        && let Some(arxiv) = &arxiv_id
+    {
+        let all_articles = manager.get_all_articles();
+        for article in all_articles {
+            // Extract arXiv ID from registry article ID
+            let reg_arxiv_id = extract_arxiv_id(&article.id);
+            if reg_arxiv_id == arxiv_id {
+                // Found matching arXiv ID, verify by checking title in filesystem
+                // We already have the title from filesystem, so use the registry ID
+                found_id = Some(article.id.clone());
+                eprintln!(
+                    "[set_hidden] Found article by arXiv ID: {} -> registry ID: {}",
+                    arxiv, article.id
+                );
+                break;
             }
         }
     }
@@ -753,15 +731,13 @@ pub async fn set_featured(
 
     // Helper function to extract arXiv ID (same as in list_logs)
     fn extract_arxiv_id(id: &str) -> Option<String> {
-        if let Some(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})").ok() {
-            if let Some(mat) = captures.find(id) {
-                return Some(mat.as_str().to_string());
-            }
+        if let Ok(captures) = regex::Regex::new(r"(\d{4}\.\d{4,6})")
+            && let Some(mat) = captures.find(id)
+        {
+            return Some(mat.as_str().to_string());
         }
-        if id.matches('.').count() == 1 && id.len() >= 9 && id.len() <= 12 {
-            if let Some(_) = id.find('.') {
-                return Some(id.to_string());
-            }
+        if id.matches('.').count() == 1 && (9..=12).contains(&id.len()) && id.contains('.') {
+            return Some(id.to_string());
         }
         None
     }
@@ -782,22 +758,22 @@ pub async fn set_featured(
     if let Some(ref arxiv) = arxiv_id {
         for site_output_dir in &site_dirs {
             if let Ok(entries) = fs::read_dir(site_output_dir) {
-                for entry in entries {
-                    if let Ok(entry) = entry {
-                        let folder_name = entry.file_name().to_string_lossy().to_string();
-                        if folder_name.contains(arxiv) {
-                            let folder_path = entry.path();
-                            if folder_path.is_dir() {
-                                let title_txt = folder_path.join("title.txt");
-                                if title_txt.exists() {
-                                    if let Ok(title_content) = fs::read_to_string(&title_txt) {
-                                        actual_title_from_fs =
-                                            Some(title_content.trim().to_string());
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                for entry in entries.flatten() {
+                    let folder_name = entry.file_name().to_string_lossy().to_string();
+                    if !folder_name.contains(arxiv) {
+                        continue;
+                    }
+                    let folder_path = entry.path();
+                    if !folder_path.is_dir() {
+                        continue;
+                    }
+                    let title_txt = folder_path.join("title.txt");
+                    if !title_txt.exists() {
+                        continue;
+                    }
+                    if let Ok(title_content) = fs::read_to_string(&title_txt) {
+                        actual_title_from_fs = Some(title_content.trim().to_string());
+                        break;
                     }
                 }
             }
@@ -807,24 +783,22 @@ pub async fn set_featured(
         }
     }
 
-    // If we found the title from filesystem, try to find matching article in registry
-    // by comparing with the actual title from filesystem
-    if let Some(ref _fs_title) = actual_title_from_fs {
-        if let Some(ref arxiv) = arxiv_id {
-            let all_articles = manager.get_all_articles();
-            for article in all_articles {
-                // Extract arXiv ID from registry article ID
-                let reg_arxiv_id = extract_arxiv_id(&article.id);
-                if reg_arxiv_id == arxiv_id {
-                    // Found matching arXiv ID, verify by checking title in filesystem
-                    // We already have the title from filesystem, so use the registry ID
-                    found_id = Some(article.id.clone());
-                    eprintln!(
-                        "[set_featured] Found article by arXiv ID: {} -> registry ID: {}",
-                        arxiv, article.id
-                    );
-                    break;
-                }
+    if actual_title_from_fs.is_some()
+        && let Some(arxiv) = &arxiv_id
+    {
+        let all_articles = manager.get_all_articles();
+        for article in all_articles {
+            // Extract arXiv ID from registry article ID
+            let reg_arxiv_id = extract_arxiv_id(&article.id);
+            if reg_arxiv_id == arxiv_id {
+                // Found matching arXiv ID, verify by checking title in filesystem
+                // We already have the title from filesystem, so use the registry ID
+                found_id = Some(article.id.clone());
+                eprintln!(
+                    "[set_featured] Found article by arXiv ID: {} -> registry ID: {}",
+                    arxiv, article.id
+                );
+                break;
             }
         }
     }

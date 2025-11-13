@@ -6,7 +6,6 @@ use axum::{
 use std::sync::Arc;
 use tower_http::cors::CorsLayer;
 use tower_http::trace::TraceLayer;
-use tracing_subscriber;
 
 mod collectors;
 mod config;
@@ -20,6 +19,7 @@ mod utils;
 mod writer;
 
 use crate::utils::article_registry::RegistryManager;
+use crate::utils::path_resolver::{resolve_workspace_path, workspace_root};
 use crate::utils::site_config_manager::{PathsConfig, SiteConfigManager};
 use anyhow::Context;
 use db::connection::Database;
@@ -27,25 +27,30 @@ use std::path::{Path, PathBuf};
 
 /// Get system config path (tries multiple locations)
 fn get_system_config_path() -> PathBuf {
+    if let Ok(env_path) = std::env::var("SYSTEM_CONFIG_PATH") {
+        let trimmed = env_path.trim();
+        if !trimmed.is_empty() {
+            let path = PathBuf::from(trimmed);
+            if path.exists() {
+                return path;
+            }
+        }
+    }
+
     // Try to get absolute path from current working directory first
     let current_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+    let workspace_dir = workspace_root();
 
-    let possible_paths = vec![
+    let possible_paths = [
         current_dir.join("system_config.json"),
         current_dir.join("news-backend/system_config.json"),
-        current_dir
-            .parent()
-            .map(|p| p.join("system_config.json"))
-            .unwrap_or_else(|| PathBuf::from("system_config.json")),
-        PathBuf::from("system_config.json"),
-        PathBuf::from("news-backend/system_config.json"),
-        PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-        PathBuf::from("G:/Hive-Hub/News-main/system_config.json"),
+        workspace_dir.join("system_config.json"),
+        workspace_dir.join("news-backend/system_config.json"),
+        resolve_workspace_path("system_config.json"),
+        resolve_workspace_path("news-backend/system_config.json"),
     ];
 
-    // Try to find existing file
     if let Some(path) = possible_paths.iter().find(|p| p.exists()) {
-        // Convert to absolute path if it's relative
         if path.is_relative() {
             current_dir
                 .join(path)
@@ -55,14 +60,7 @@ fn get_system_config_path() -> PathBuf {
             path.clone()
         }
     } else {
-        // Default to absolute path in news-backend directory
-        let default_path = PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json");
-        if default_path.exists() {
-            default_path
-        } else {
-            // Fallback to relative path in current directory
-            current_dir.join("system_config.json")
-        }
+        resolve_workspace_path("news-backend/system_config.json")
     }
 }
 
@@ -77,13 +75,16 @@ fn get_paths_config() -> anyhow::Result<PathsConfig> {
 
 /// Get base directory path
 fn get_base_dir() -> PathBuf {
-    std::env::var("NEWS_BASE_DIR")
-        .map(PathBuf::from)
-        .unwrap_or_else(|_| {
-            get_paths_config()
-                .map(|p| PathBuf::from(&p.base_dir))
-                .unwrap_or_else(|_| PathBuf::from("G:/Hive-Hub/News-main"))
-        })
+    if let Ok(env_base) = std::env::var("NEWS_BASE_DIR") {
+        let trimmed = env_base.trim();
+        if !trimmed.is_empty() {
+            return PathBuf::from(trimmed);
+        }
+    }
+
+    get_paths_config()
+        .map(|p| PathBuf::from(&p.base_dir))
+        .unwrap_or_else(|_| workspace_root())
 }
 
 /// Get downloads directory path
@@ -127,7 +128,7 @@ fn get_site_output_dir(site_id: &str) -> PathBuf {
                     let mut chars = word.chars();
                     if let Some(first) = chars.next() {
                         result.push(first.to_uppercase().next().unwrap_or(first));
-                        result.push_str(&chars.as_str());
+                        result.push_str(chars.as_str());
                     }
                 }
             }
@@ -144,17 +145,15 @@ fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
 
     // 1. Verificar em downloads/arxiv/ (todas as subpastas de data)
     let arxiv_dir = base_dir.join("arxiv");
-    if arxiv_dir.exists() {
-        if let Ok(entries) = std::fs::read_dir(&arxiv_dir) {
-            for entry in entries {
-                if let Ok(entry) = entry {
-                    let date_dir = entry.path();
-                    if date_dir.is_dir() {
-                        let file_path = date_dir.join(&filename);
-                        if file_path.exists() {
-                            return true;
-                        }
-                    }
+    if arxiv_dir.exists()
+        && let Ok(entries) = std::fs::read_dir(&arxiv_dir)
+    {
+        for entry in entries.flatten() {
+            let date_dir = entry.path();
+            if date_dir.is_dir() {
+                let file_path = date_dir.join(&filename);
+                if file_path.exists() {
+                    return true;
                 }
             }
         }
@@ -162,17 +161,15 @@ fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
 
     // 2. Verificar em downloads/filtered/<categoria>/
     let filtered_dir = base_dir.join("filtered");
-    if filtered_dir.exists() {
-        if let Ok(entries) = std::fs::read_dir(&filtered_dir) {
-            for entry in entries {
-                if let Ok(entry) = entry {
-                    let category_dir = entry.path();
-                    if category_dir.is_dir() {
-                        let file_path = category_dir.join(&filename);
-                        if file_path.exists() {
-                            return true;
-                        }
-                    }
+    if filtered_dir.exists()
+        && let Ok(entries) = std::fs::read_dir(&filtered_dir)
+    {
+        for entry in entries.flatten() {
+            let category_dir = entry.path();
+            if category_dir.is_dir() {
+                let file_path = category_dir.join(&filename);
+                if file_path.exists() {
+                    return true;
                 }
             }
         }
@@ -192,12 +189,20 @@ fn file_already_downloaded(paper_id: &str, base_dir: &Path) -> bool {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    type HtmlCollectorConfig = (
+        String,
+        String,
+        Option<std::collections::HashMap<String, String>>,
+        Option<u32>,
+    );
+
     // Load environment variables from .env file
     // Try multiple locations for .env file
     let env_paths = vec![
-        std::path::PathBuf::from(".env"),
-        std::path::PathBuf::from("news-backend/.env"),
-        std::path::PathBuf::from("G:/Hive-Hub/News-main/news-backend/.env"),
+        PathBuf::from(".env"),
+        PathBuf::from("news-backend/.env"),
+        resolve_workspace_path(".env"),
+        resolve_workspace_path("news-backend/.env"),
     ];
 
     for path in &env_paths {
@@ -424,22 +429,22 @@ async fn main() -> anyhow::Result<()> {
                     eprintln!("🔍 [DEBUG] Found arxiv collector in site: {}", _site_id);
 
                     // Read category from config
-                    if let Some(category) = collector.config.get("category") {
-                        if let Some(cat_str) = category.as_str() {
-                            arxiv_category = cat_str.to_string();
-                            eprintln!("🔍 [DEBUG] Arxiv category from config: {}", arxiv_category);
-                        }
+                    if let Some(category) = collector.config.get("category")
+                        && let Some(cat_str) = category.as_str()
+                    {
+                        arxiv_category = cat_str.to_string();
+                        eprintln!("🔍 [DEBUG] Arxiv category from config: {}", arxiv_category);
                     }
 
                     // Read max_results from config
-                    if let Some(max_results) = collector.config.get("max_results") {
-                        if let Some(max_val) = max_results.as_u64() {
-                            arxiv_max_results = max_val as u32;
-                            eprintln!(
-                                "🔍 [DEBUG] Arxiv max_results from config: {}",
-                                arxiv_max_results
-                            );
-                        }
+                    if let Some(max_results) = collector.config.get("max_results")
+                        && let Some(max_val) = max_results.as_u64()
+                    {
+                        arxiv_max_results = max_val as u32;
+                        eprintln!(
+                            "🔍 [DEBUG] Arxiv max_results from config: {}",
+                            arxiv_max_results
+                        );
                     }
 
                     break; // Found first enabled arxiv collector, use its config
@@ -493,7 +498,7 @@ async fn main() -> anyhow::Result<()> {
             "   📊 Registry: {} articles already registered",
             total_articles
         );
-        println!("");
+        println!();
 
         // Cliente com cookies para manter sessão e evitar reCAPTCHA
         let client = reqwest::Client::builder()
@@ -599,35 +604,34 @@ async fn main() -> anyhow::Result<()> {
 
             for line in xml.lines() {
                 // Extrair ID do artigo
-                if line.contains("<id>") {
-                    if let Some(start) = line.find("<id>") {
-                        if let Some(end) = line.find("</id>") {
-                            let id = &line[start + 4..end];
-                            if id.contains("arxiv.org/abs/") {
-                                let mut paper_id = id
-                                    .replace("http://arxiv.org/abs/", "")
-                                    .replace("https://arxiv.org/abs/", "");
-                                // Remove version suffix (v1, v2, etc.) to get published version
-                                // Verificar se termina com "v" seguido de dígitos antes de remover
-                                if let Some(pos) = paper_id.rfind('v') {
-                                    // Verificar se após 'v' há apenas dígitos até o fim da string
-                                    if pos + 1 < paper_id.len() {
-                                        let after_v = &paper_id[pos + 1..];
-                                        if after_v.chars().all(|c| c.is_ascii_digit()) {
-                                            paper_id = paper_id[..pos].to_string();
-                                        }
-                                    }
-                                }
-                                current_id = Some(paper_id.clone());
-                                // Debug: mostrar ID extraído
-                                if api_request_count <= 2 {
-                                    println!(
-                                        "  [DEBUG] Extracted ID from XML: {} -> {}",
-                                        id.trim(),
-                                        paper_id
-                                    );
+                if line.contains("<id>")
+                    && let Some(start) = line.find("<id>")
+                    && let Some(end) = line.find("</id>")
+                {
+                    let id = &line[start + 4..end];
+                    if id.contains("arxiv.org/abs/") {
+                        let mut paper_id = id
+                            .replace("http://arxiv.org/abs/", "")
+                            .replace("https://arxiv.org/abs/", "");
+                        // Remove version suffix (v1, v2, etc.) to get published version
+                        // Verificar se termina com "v" seguido de dígitos antes de remover
+                        if let Some(pos) = paper_id.rfind('v') {
+                            // Verificar se após 'v' há apenas dígitos até o fim da string
+                            if pos + 1 < paper_id.len() {
+                                let after_v = &paper_id[pos + 1..];
+                                if after_v.chars().all(|c| c.is_ascii_digit()) {
+                                    paper_id = paper_id[..pos].to_string();
                                 }
                             }
+                        }
+                        current_id = Some(paper_id.clone());
+                        // Debug: mostrar ID extraído
+                        if api_request_count <= 2 {
+                            println!(
+                                "  [DEBUG] Extracted ID from XML: {} -> {}",
+                                id.trim(),
+                                paper_id
+                            );
                         }
                     }
                 }
@@ -847,7 +851,7 @@ async fn main() -> anyhow::Result<()> {
                 let mut retry_count = 0;
                 let max_retries = 3;
                 let download_start = std::time::Instant::now();
-                
+
                 'retry_loop: loop {
                     let request = client
                         .get(&pdf_url)
@@ -863,121 +867,132 @@ async fn main() -> anyhow::Result<()> {
                                 if retry_count < max_retries {
                                     retry_count += 1;
                                     let wait_time = 2u64.pow(retry_count) * 5; // 10s, 20s, 40s
-                                    println!("⚠️  Rate limited by arXiv (429), waiting {}s before retry {}/{}...", wait_time, retry_count, max_retries);
-                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time)).await;
+                                    println!(
+                                        "⚠️  Rate limited by arXiv (429), waiting {}s before retry {}/{}...",
+                                        wait_time, retry_count, max_retries
+                                    );
+                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time))
+                                        .await;
                                     continue 'retry_loop;
                                 } else {
-                                    println!("❌ Rate limit exceeded after {} retries, skipping article", max_retries);
+                                    println!(
+                                        "❌ Rate limit exceeded after {} retries, skipping article",
+                                        max_retries
+                                    );
                                     break 'retry_loop;
                                 }
                             }
-                            
+
                             // Verificar se é uma resposta de sucesso
                             if response.status().is_success() {
-                            // Verificar Content-Length se disponível
-                            if let Some(content_length) = response.headers().get("content-length") {
-                                if let Ok(len_str) = content_length.to_str() {
-                                    if let Ok(len_bytes) = len_str.parse::<u64>() {
-                                        let len_mb = len_bytes as f64 / 1_048_576.0;
-                                        println!("({:.2} MB)", len_mb);
-                                    }
+                                // Verificar Content-Length se disponível
+                                if let Some(content_length) =
+                                    response.headers().get("content-length")
+                                    && let Ok(len_str) = content_length.to_str()
+                                    && let Ok(len_bytes) = len_str.parse::<u64>()
+                                {
+                                    let len_mb = len_bytes as f64 / 1_048_576.0;
+                                    println!("({:.2} MB)", len_mb);
                                 }
-                            }
-                            let bytes = response.bytes().await;
-                            match bytes {
-                                Ok(b) => {
-                                    let file_size_mb = b.len() as f64 / 1_048_576.0;
-                                    // Verify it's actually a PDF (starts with %PDF)
-                                    if b.len() > 4 && &b[0..4] == b"%PDF" {
-                                        match tokio::fs::write(&file_path, &b).await {
-                                            Ok(_) => {
-                                                let download_duration = download_start.elapsed();
-                                                println!("      ✅ Downloaded successfully!");
-                                                println!(
-                                                    "      📦 File size: {:.2} MB",
-                                                    file_size_mb
-                                                );
-                                                println!(
-                                                    "      📁 Saved to: {}",
-                                                    file_path.display()
-                                                );
-                                                println!(
-                                                    "      ⏱️  Download time: {:.2}s",
-                                                    download_duration.as_secs_f64()
-                                                );
-                                                print!("      📝 Registering in registry... ");
-                                                // Registrar no registry após download bem-sucedido
-                                                if let Err(e) = registry.register_collected(
-                                                    article.id.clone(),
-                                                    article.title.clone(),
-                                                    arxiv_url.clone(),
-                                                    pdf_url.clone(),
-                                                ) {
-                                                    eprintln!("⚠️  Failed: {}", e);
-                                                } else {
-                                                    // Define destinos com base nos sites que têm arXiv habilitado
-                                                    let destinations =
-                                                        get_enabled_sites_for_source("arxiv");
-                                                    if let Err(e) = registry
-                                                        .set_destinations(&article.id, destinations)
-                                                    {
-                                                        eprintln!(
-                                                            "⚠️  Failed to set destinations: {}",
-                                                            e
+                                let bytes = response.bytes().await;
+                                match bytes {
+                                    Ok(b) => {
+                                        let file_size_mb = b.len() as f64 / 1_048_576.0;
+                                        // Verify it's actually a PDF (starts with %PDF)
+                                        if b.len() > 4 && &b[0..4] == b"%PDF" {
+                                            match tokio::fs::write(&file_path, &b).await {
+                                                Ok(_) => {
+                                                    let download_duration =
+                                                        download_start.elapsed();
+                                                    println!("      ✅ Downloaded successfully!");
+                                                    println!(
+                                                        "      📦 File size: {:.2} MB",
+                                                        file_size_mb
+                                                    );
+                                                    println!(
+                                                        "      📁 Saved to: {}",
+                                                        file_path.display()
+                                                    );
+                                                    println!(
+                                                        "      ⏱️  Download time: {:.2}s",
+                                                        download_duration.as_secs_f64()
+                                                    );
+                                                    print!("      📝 Registering in registry... ");
+                                                    // Registrar no registry após download bem-sucedido
+                                                    if let Err(e) = registry.register_collected(
+                                                        article.id.clone(),
+                                                        article.title.clone(),
+                                                        arxiv_url.clone(),
+                                                        pdf_url.clone(),
+                                                    ) {
+                                                        eprintln!("⚠️  Failed: {}", e);
+                                                    } else {
+                                                        // Define destinos com base nos sites que têm arXiv habilitado
+                                                        let destinations =
+                                                            get_enabled_sites_for_source("arxiv");
+                                                        if let Err(e) = registry.set_destinations(
+                                                            &article.id,
+                                                            destinations,
+                                                        ) {
+                                                            eprintln!(
+                                                                "⚠️  Failed to set destinations: {}",
+                                                                e
+                                                            );
+                                                        }
+                                                        downloaded_count += 1;
+                                                        println!("✅ Registered");
+                                                        println!(
+                                                            "      ✅ Article {} registered successfully!",
+                                                            article.id
                                                         );
                                                     }
-                                                    downloaded_count += 1;
-                                                    println!("✅ Registered");
-                                                    println!(
-                                                        "      ✅ Article {} registered successfully!",
-                                                        article.id
-                                                    );
+                                                    break 'retry_loop; // Success - exit retry loop
                                                 }
-                                                break 'retry_loop; // Success - exit retry loop
+                                                Err(e) => {
+                                                    println!("❌ Failed to write file: {}", e);
+                                                    println!("      💥 Error details: {:?}", e);
+                                                    break 'retry_loop;
+                                                }
                                             }
-                                            Err(e) => {
-                                                println!("❌ Failed to write file: {}", e);
-                                                println!("      💥 Error details: {:?}", e);
-                                                break 'retry_loop;
-                                            }
+                                        } else {
+                                            println!(
+                                                "❌ Invalid PDF format (got HTML or redirect)"
+                                            );
+                                            println!("      💥 Response size: {} bytes", b.len());
+                                            println!(
+                                                "      💥 First bytes: {:?}",
+                                                &b[..std::cmp::min(100, b.len())]
+                                            );
+                                            break 'retry_loop;
                                         }
-                                    } else {
-                                        println!("❌ Invalid PDF format (got HTML or redirect)");
-                                        println!("      💥 Response size: {} bytes", b.len());
-                                        println!(
-                                            "      💥 First bytes: {:?}",
-                                            &b[..std::cmp::min(100, b.len())]
-                                        );
+                                    }
+                                    Err(e) => {
+                                        println!("❌ Failed to read response bytes: {}", e);
+                                        println!("      💥 Error details: {:?}", e);
                                         break 'retry_loop;
                                     }
                                 }
-                                Err(e) => {
-                                    println!("❌ Failed to read response bytes: {}", e);
-                                    println!("      💥 Error details: {:?}", e);
-                                    break 'retry_loop;
-                                }
-                            }
-                        } else {
-                            println!(
-                                "❌ HTTP Error: {} {}",
-                                response.status(),
-                                response.status().canonical_reason().unwrap_or("Unknown")
-                            );
-                            if let Ok(status_text) = response.text().await {
-                                if !status_text.is_empty() {
+                            } else {
+                                println!(
+                                    "❌ HTTP Error: {} {}",
+                                    response.status(),
+                                    response.status().canonical_reason().unwrap_or("Unknown")
+                                );
+                                if let Ok(status_text) = response.text().await
+                                    && !status_text.is_empty()
+                                {
                                     let preview = status_text.chars().take(200).collect::<String>();
                                     println!("      💥 Response preview: {}", preview);
                                 }
+                                break 'retry_loop;
                             }
+                        }
+                        Err(e) => {
+                            println!("❌ Request failed: {}", e);
+                            println!("      💥 Error details: {:?}", e);
                             break 'retry_loop;
                         }
-                    }
-                    Err(e) => {
-                        println!("❌ Request failed: {}", e);
-                        println!("      💥 Error details: {:?}", e);
-                        break 'retry_loop;
-                    }
-                } // end match
+                    } // end match
                 } // end retry_loop
 
                 // Delay entre downloads para evitar rate limiting
@@ -1126,12 +1141,18 @@ async fn main() -> anyhow::Result<()> {
             // Continue searching until we find at least 3 new articles or exhaust pages
             // This ensures we don't stop just because the first page had duplicates
             if new_found >= 3 {
-                println!("PMC: Found {} new articles total, stopping search", new_found);
+                println!(
+                    "PMC: Found {} new articles total, stopping search",
+                    new_found
+                );
                 break;
             }
             // Stop if we've checked too many pages without finding enough
             if page_idx >= 5 && new_found == 0 {
-                println!("PMC: Checked {} pages with no new articles, stopping", page_idx + 1);
+                println!(
+                    "PMC: Checked {} pages with no new articles, stopping",
+                    page_idx + 1
+                );
                 break;
             }
             retstart += 20;
@@ -1222,12 +1243,18 @@ async fn main() -> anyhow::Result<()> {
             // Continue searching until we find at least 3 new articles or exhaust pages
             // This ensures we don't stop just because the first page had duplicates
             if new_found >= 3 {
-                println!("Semantic Scholar: Found {} new articles total, stopping search", new_found);
+                println!(
+                    "Semantic Scholar: Found {} new articles total, stopping search",
+                    new_found
+                );
                 break;
             }
             // Stop if we've checked too many pages without finding enough
             if page_idx >= 5 && new_found == 0 {
-                println!("Semantic Scholar: Checked {} pages with no new articles, stopping", page_idx + 1);
+                println!(
+                    "Semantic Scholar: Checked {} pages with no new articles, stopping",
+                    page_idx + 1
+                );
                 break;
             }
             offset += 20;
@@ -1253,7 +1280,7 @@ async fn main() -> anyhow::Result<()> {
 
         let current_dir = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
 
-        let possible_system_paths = vec![
+        let possible_system_paths = [
             config_path.clone(),
             current_dir.join("system_config.json"),
             current_dir.join("news-backend/system_config.json"),
@@ -1263,21 +1290,21 @@ async fn main() -> anyhow::Result<()> {
                 .unwrap_or_else(|| PathBuf::from("system_config.json")),
             PathBuf::from("system_config.json"),
             PathBuf::from("news-backend/system_config.json"),
-            PathBuf::from("G:/Hive-Hub/News-main/news-backend/system_config.json"),
-            PathBuf::from("G:/Hive-Hub/News-main/system_config.json"),
+            resolve_workspace_path("system_config.json"),
+            resolve_workspace_path("news-backend/system_config.json"),
         ];
 
         let base = get_base_dir();
         eprintln!("🔍 [DEBUG] Base directory: {}", base.display());
 
-        let possible_collectors_config_paths = vec![
+        let possible_collectors_config_paths = [
             base.join("collectors_config.json"),
             current_dir.join("collectors_config.json"),
             current_dir.join("news-backend/collectors_config.json"),
             PathBuf::from("collectors_config.json"),
             PathBuf::from("news-backend/collectors_config.json"),
-            PathBuf::from("G:/Hive-Hub/News-main/news-backend/collectors_config.json"),
-            PathBuf::from("G:/Hive-Hub/News-main/collectors_config.json"),
+            resolve_workspace_path("collectors_config.json"),
+            resolve_workspace_path("news-backend/collectors_config.json"),
         ];
 
         // Find system_config.json
@@ -1576,12 +1603,11 @@ async fn main() -> anyhow::Result<()> {
         let collectors_config_path = base.join("collectors_config.json");
 
         // Sync collectors_config.json from system_config.json
-        if config_path.exists() {
-            if let Err(e) =
+        if config_path.exists()
+            && let Err(e) =
                 ConfigManager::sync_from_system_config(&config_path, &collectors_config_path)
-            {
-                eprintln!("⚠️  [SYNC] Failed to sync collectors_config.json: {}", e);
-            }
+        {
+            eprintln!("⚠️  [SYNC] Failed to sync collectors_config.json: {}", e);
         }
 
         // Load collectors
@@ -1605,14 +1631,12 @@ async fn main() -> anyhow::Result<()> {
 
             let collector_type = if let Some(ct) = c.collector_type.as_deref() {
                 ct
+            } else if c.feed_url.is_some() {
+                "rss"
+            } else if c.base_url.is_some() && c.selectors.is_some() {
+                "html"
             } else {
-                if c.feed_url.is_some() {
-                    "rss"
-                } else if c.base_url.is_some() && c.selectors.is_some() {
-                    "html"
-                } else {
-                    continue; // Skip API collectors (arXiv, PMC, etc.)
-                }
+                continue; // Skip API collectors (arXiv, PMC, etc.)
             };
 
             match collector_type {
@@ -2044,17 +2068,12 @@ async fn main() -> anyhow::Result<()> {
                                                 date_dir.join(format!("{}.json", article.id));
                                             if let Ok(json_str) =
                                                 serde_json::to_string_pretty(&article)
-                                            {
-                                                if let Err(e) =
+                                                && let Err(e) =
                                                     tokio::fs::write(&json_path, json_str).await
-                                                {
-                                                    eprintln!(
-                                                        "    │  ❌ Failed to save JSON: {}",
-                                                        e
-                                                    );
-                                                    println!("    └─\n");
-                                                    continue;
-                                                }
+                                            {
+                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                                println!("    └─\n");
+                                                continue;
                                             }
                                             if let Err(e) =
                                                 news_filter.reject_news(&json_path).await
@@ -2476,14 +2495,12 @@ async fn main() -> anyhow::Result<()> {
                                         let json_path =
                                             date_dir.join(format!("{}.json", article.id));
                                         if let Ok(json_str) = serde_json::to_string_pretty(&article)
-                                        {
-                                            if let Err(e) =
+                                            && let Err(e) =
                                                 tokio::fs::write(&json_path, json_str).await
-                                            {
-                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
-                                                println!("    └─\n");
-                                                continue;
-                                            }
+                                        {
+                                            eprintln!("    │  ❌ Failed to save JSON: {}", e);
+                                            println!("    └─\n");
+                                            continue;
                                         }
 
                                         if let Err(e) = news_filter.reject_news(&json_path).await {
@@ -2574,14 +2591,7 @@ async fn main() -> anyhow::Result<()> {
         Ok(())
     }
 
-    async fn run_html_collectors(
-        collectors: &[(
-            String,
-            String,
-            Option<std::collections::HashMap<String, String>>,
-            Option<u32>,
-        )],
-    ) -> anyhow::Result<()> {
+    async fn run_html_collectors(collectors: &[HtmlCollectorConfig]) -> anyhow::Result<()> {
         use crate::collectors::html_collector::HtmlCollector;
         use crate::utils::article_registry::RegistryManager;
         use serde_json;
@@ -2960,7 +2970,7 @@ async fn main() -> anyhow::Result<()> {
         );
         println!("📄 Found {} news articles to process", all_articles.len());
         println!("📂 Scanning from: {}", raw_dir.display());
-        println!("");
+        println!();
 
         // Verificar registry antes de processar
         println!("🔍 Verifying registry status...");
@@ -3001,7 +3011,7 @@ async fn main() -> anyhow::Result<()> {
                 );
             }
         }
-        println!("");
+        println!();
         println!(
             "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         );
@@ -3055,13 +3065,13 @@ async fn main() -> anyhow::Result<()> {
 
                     processed += 1;
                     successfully_processed_articles.push(article_path.clone());
-                    println!("");
+                    println!();
                 }
                 Err(e) => {
                     let process_duration = process_start.elapsed();
                     eprintln!("  ❌ Processing failed after {:?}: {}", process_duration, e);
                     failed += 1;
-                    println!("");
+                    println!();
                 }
             }
         }
@@ -3103,7 +3113,7 @@ async fn main() -> anyhow::Result<()> {
                     println!("  ✅ Verified: {} articles", stats.verified);
                     println!("  📝 Updated in registry: {} articles", stats.updated);
                     println!("  🗑️  Removed from raw: {} JSON files", stats.removed);
-                    println!("");
+                    println!();
                 }
                 Err(e) => {
                     let cleanup_duration = cleanup_start.elapsed();
@@ -3124,86 +3134,20 @@ async fn main() -> anyhow::Result<()> {
     async fn run_cleanup_news() -> anyhow::Result<()> {
         use crate::utils::article_registry::RegistryManager;
         use crate::writer::news_writer::NewsWriterService;
+        use std::collections::{HashMap, HashSet};
 
         println!("🧹 Running cleanup on already processed articles...\n");
 
-        // Inicializar news writer
         let output_base = get_output_dir();
         let registry_path = get_registry_path();
 
         let registry = RegistryManager::new(&registry_path)?;
         let news_writer = NewsWriterService::new(output_base, registry_path)?;
 
-        // Encontrar todos os artigos no registry que já foram publicados (têm output_dir)
-        let registry_data = registry.get_all_articles();
-        let mut processed_articles = Vec::new();
+        let registry_articles = registry.get_all_articles();
+        let raw_dir = get_downloads_dir().join("raw");
 
-        for metadata in registry_data {
-            if let Some(_output_dir) = &metadata.output_dir {
-                // Verificar se o artigo tem um JSON correspondente na pasta raw
-                let base_dir = get_downloads_dir();
-                let raw_dir = base_dir.join("raw");
-
-                // Procurar o JSON em todas as pastas de data
-                let mut json_found: Option<PathBuf> = None;
-
-                if raw_dir.exists() {
-                    let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
-                    while let Some(date_entry) = date_entries.next_entry().await? {
-                        let date_dir = date_entry.path();
-                        if !date_dir.is_dir() {
-                            continue;
-                        }
-
-                        let json_path = date_dir.join(format!("{}.json", metadata.id));
-                        if json_path.exists() {
-                            json_found = Some(json_path);
-                            break;
-                        }
-                    }
-                }
-
-                if let Some(json_path) = json_found {
-                    let path_display = json_path.display().to_string();
-                    processed_articles.push(json_path);
-                    println!("  📄 Found JSON for {}: {}", metadata.id, path_display);
-                } else {
-                    println!(
-                        "  ℹ️  Article {} has no JSON in raw/ (already cleaned?)",
-                        metadata.id
-                    );
-                }
-            } else {
-                // Even if no output_dir, check if JSON exists in raw/ (orphaned files)
-                let base_dir = get_downloads_dir();
-                let raw_dir = base_dir.join("raw");
-
-                if raw_dir.exists() {
-                    let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
-                    while let Some(date_entry) = date_entries.next_entry().await? {
-                        let date_dir = date_entry.path();
-                        if !date_dir.is_dir() {
-                            continue;
-                        }
-
-                        let json_path = date_dir.join(format!("{}.json", metadata.id));
-                        if json_path.exists() {
-                            let path_display = json_path.display().to_string();
-                            processed_articles.push(json_path);
-                            println!(
-                                "  📄 Found orphaned JSON for {}: {}",
-                                metadata.id, path_display
-                            );
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        // Also check for orphaned JSON files that aren't in registry
-        let base_dir = get_downloads_dir();
-        let raw_dir = base_dir.join("raw");
+        let mut json_by_article: HashMap<String, PathBuf> = HashMap::new();
 
         if raw_dir.exists() {
             let mut date_entries = tokio::fs::read_dir(&raw_dir).await?;
@@ -3216,53 +3160,75 @@ async fn main() -> anyhow::Result<()> {
                 let mut json_entries = tokio::fs::read_dir(&date_dir).await?;
                 while let Some(json_entry) = json_entries.next_entry().await? {
                     let json_path = json_entry.path();
+                    if json_path.extension().and_then(|s| s.to_str()) != Some("json") {
+                        continue;
+                    }
 
-                    if json_path.extension().and_then(|s| s.to_str()) == Some("json") {
-                        let article_id = json_path
-                            .file_stem()
-                            .and_then(|s| s.to_str())
-                            .unwrap_or("unknown");
-
-                        // Check if article exists in registry
-                        let registry_data = registry.get_all_articles();
-                        if let Some(metadata) = registry_data.iter().find(|m| m.id == article_id) {
-                            // If article has output_dir, it's processed - add to cleanup list
-                            if metadata.output_dir.is_some()
-                                && !processed_articles.contains(&json_path)
-                            {
-                                processed_articles.push(json_path.clone());
-                                println!(
-                                    "  📄 Found processed JSON for {}: {}",
-                                    article_id,
-                                    json_path.display()
-                                );
-                            }
-                        } else {
-                            // Article not in registry - it's orphaned, add to cleanup list
-                            processed_articles.push(json_path.clone());
-                            println!(
-                                "  📄 Found orphaned JSON (not in registry): {}",
-                                json_path.display()
-                            );
-                        }
+                    if let Some(article_id) = json_path.file_stem().and_then(|s| s.to_str()) {
+                        json_by_article
+                            .entry(article_id.to_string())
+                            .or_insert(json_path);
                     }
                 }
             }
         }
 
-        if processed_articles.is_empty() {
+        let mut processed_paths: Vec<PathBuf> = Vec::new();
+        let mut processed_set: HashSet<PathBuf> = HashSet::new();
+        let mut add_processed = |path: PathBuf| {
+            if processed_set.insert(path.clone()) {
+                processed_paths.push(path);
+            }
+        };
+
+        for metadata in &registry_articles {
+            if let Some(json_path) = json_by_article.remove(&metadata.id) {
+                if metadata.output_dir.is_some() {
+                    println!(
+                        "  📄 Found JSON for {}: {}",
+                        metadata.id,
+                        json_path.display()
+                    );
+                } else {
+                    println!(
+                        "  📄 Found orphaned JSON for {}: {}",
+                        metadata.id,
+                        json_path.display()
+                    );
+                }
+                add_processed(json_path);
+            } else if metadata.output_dir.is_some() {
+                println!(
+                    "  ℹ️  Article {} has no JSON in raw/ (already cleaned?)",
+                    metadata.id
+                );
+            }
+        }
+
+        if !json_by_article.is_empty() {
+            println!(
+                "\nℹ️  Found {} JSON file(s) not referenced in registry",
+                json_by_article.len()
+            );
+            for (article_id, json_path) in json_by_article {
+                println!(
+                    "  📄 Found orphaned JSON (not in registry) {}: {}",
+                    article_id,
+                    json_path.display()
+                );
+                add_processed(json_path);
+            }
+        }
+
+        if processed_paths.is_empty() {
             println!("⚠️  No articles found that need cleanup.");
             return Ok(());
         }
 
-        println!(
-            "\n📄 Found {} articles to cleanup\n",
-            processed_articles.len()
-        );
+        println!("\n📄 Found {} articles to cleanup\n", processed_paths.len());
 
-        // Executar cleanup
         match news_writer
-            .cleanup_processed_articles(&processed_articles)
+            .cleanup_processed_articles(&processed_paths)
             .await
         {
             Ok(stats) => {
@@ -3287,17 +3253,17 @@ async fn main() -> anyhow::Result<()> {
         println!("╔═══════════════════════════════════════════════════════════════╗");
         println!("║  🔄 NEWS PIPELINE - COMPLETE PROCESSING FLOW                  ║");
         println!("╚═══════════════════════════════════════════════════════════════╝");
-        println!("");
+        println!();
 
         // Step 1: Collect news
         println!("╔═══════════════════════════════════════════════════════════════╗");
         println!("║  📥 STEP 1: COLLECT NEWS                                       ║");
         println!("╚═══════════════════════════════════════════════════════════════╝");
-        println!("");
+        println!();
         let collect_start = std::time::Instant::now();
         run_collect_news_only().await?;
         let collect_duration = collect_start.elapsed();
-        println!("");
+        println!();
         println!("✅ STEP 1 completed in {:?}\n", collect_duration);
 
         // Step 2: Filter news (already integrated in collect, but show status)
@@ -3311,22 +3277,22 @@ async fn main() -> anyhow::Result<()> {
         println!("╔═══════════════════════════════════════════════════════════════╗");
         println!("║  ✍️  STEP 3: WRITE NEWS ARTICLES                                ║");
         println!("╚═══════════════════════════════════════════════════════════════╝");
-        println!("");
+        println!();
         let write_start = std::time::Instant::now();
         run_news_writer().await?;
         let write_duration = write_start.elapsed();
-        println!("");
+        println!();
         println!("✅ STEP 3 completed in {:?}\n", write_duration);
 
         // Step 4: Cleanup processed articles
         println!("╔═══════════════════════════════════════════════════════════════╗");
         println!("║  🧹 STEP 4: CLEANUP PROCESSED ARTICLES                         ║");
         println!("╚═══════════════════════════════════════════════════════════════╝");
-        println!("");
+        println!();
         let cleanup_start = std::time::Instant::now();
         run_cleanup_news().await?;
         let cleanup_duration = cleanup_start.elapsed();
-        println!("");
+        println!();
         println!("✅ STEP 4 completed in {:?}\n", cleanup_duration);
 
         let pipeline_duration = pipeline_start.elapsed();
@@ -3334,12 +3300,12 @@ async fn main() -> anyhow::Result<()> {
         println!("╔═══════════════════════════════════════════════════════════════╗");
         println!("║  ✅ PIPELINE COMPLETED SUCCESSFULLY!                            ║");
         println!("╚═══════════════════════════════════════════════════════════════╝");
-        println!("");
+        println!();
         println!("📊 Total execution time: {:?}", pipeline_duration);
         println!("   📥 Collection: {:?}", collect_duration);
         println!("   ✍️  Writing: {:?}", write_duration);
         println!("   🧹 Cleanup: {:?}", cleanup_duration);
-        println!("");
+        println!();
 
         Ok(())
     }
@@ -3565,11 +3531,11 @@ async fn main() -> anyhow::Result<()> {
 
                     // Salvar JSON em downloads/raw/{date}/{id}.json
                     let json_path = date_dir.join(format!("{}.json", article.id));
-                    if let Ok(json_str) = serde_json::to_string_pretty(&article) {
-                        if let Err(e) = tokio::fs::write(&json_path, json_str).await {
-                            eprintln!("      ⚠️  Failed to save JSON for {}: {}", article.id, e);
-                            continue;
-                        }
+                    if let Ok(json_str) = serde_json::to_string_pretty(&article)
+                        && let Err(e) = tokio::fs::write(&json_path, json_str).await
+                    {
+                        eprintln!("      ⚠️  Failed to save JSON for {}: {}", article.id, e);
+                        continue;
                     }
 
                     // Registrar no registry
@@ -3784,34 +3750,32 @@ async fn main() -> anyhow::Result<()> {
                 return;
             }
         };
-        for entry in entries {
-            if let Ok(ent) = entry {
-                let path = ent.path();
-                if path.is_file() && path.extension().and_then(|e| e.to_str()) == Some("pdf") {
-                    let id = path
-                        .file_stem()
-                        .and_then(|n| n.to_str())
-                        .unwrap_or("")
-                        .to_string();
-                    if id.is_empty() {
-                        continue;
-                    }
-                    let meta = registry.get_metadata(&id);
-                    let already = meta
-                        .as_ref()
-                        .and_then(|m| m.destinations.clone())
-                        .map(|v| !v.is_empty())
-                        .unwrap_or(false);
-                    if already {
-                        skipped += 1;
-                        continue;
-                    }
-                    if let Err(e) = registry.set_destinations(&id, destinations.clone()) {
-                        eprintln!("  Failed to set destinations for {}: {}", id, e);
-                        errors += 1;
-                    } else {
-                        updated += 1;
-                    }
+        for ent in entries.flatten() {
+            let path = ent.path();
+            if path.is_file() && path.extension().and_then(|e| e.to_str()) == Some("pdf") {
+                let id = path
+                    .file_stem()
+                    .and_then(|n| n.to_str())
+                    .unwrap_or("")
+                    .to_string();
+                if id.is_empty() {
+                    continue;
+                }
+                let meta = registry.get_metadata(&id);
+                let already = meta
+                    .as_ref()
+                    .and_then(|m| m.destinations.clone())
+                    .map(|v| !v.is_empty())
+                    .unwrap_or(false);
+                if already {
+                    skipped += 1;
+                    continue;
+                }
+                if let Err(e) = registry.set_destinations(&id, destinations.clone()) {
+                    eprintln!("  Failed to set destinations for {}: {}", id, e);
+                    errors += 1;
+                } else {
+                    updated += 1;
                 }
             }
         }
@@ -4251,12 +4215,11 @@ fn run_registry_migration() -> anyhow::Result<()> {
 
                         // Tentar ler categoria se existir
                         let category_file = article_dir.join("image_categories.txt");
-                        if category_file.exists() {
-                            if let Ok(cats) = fs::read_to_string(&category_file) {
-                                if let Some(first_cat) = cats.lines().next() {
-                                    metadata.category = Some(first_cat.trim().to_string());
-                                }
-                            }
+                        if category_file.exists()
+                            && let Ok(cats) = fs::read_to_string(&category_file)
+                            && let Some(first_cat) = cats.lines().next()
+                        {
+                            metadata.category = Some(first_cat.trim().to_string());
                         }
 
                         registry.articles.insert(article_id.to_string(), metadata);
@@ -4652,23 +4615,21 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
                 let mut updated = false;
 
                 // Ler primeira categoria se disponível
-                if category_file.exists() {
-                    if let Ok(cats) = fs::read_to_string(&category_file) {
-                        if let Some(first_cat) = cats.lines().next() {
-                            if metadata.category.is_none() {
-                                metadata.category = Some(first_cat.trim().to_string());
-                                updated = true;
-                            }
-                        }
-                    }
+                if category_file.exists()
+                    && let Ok(cats) = fs::read_to_string(&category_file)
+                    && let Some(first_cat) = cats.lines().next()
+                    && metadata.category.is_none()
+                {
+                    metadata.category = Some(first_cat.trim().to_string());
+                    updated = true;
                 }
 
                 // Se ainda não tem título, ler do title.txt
-                if metadata.title.is_empty() || metadata.title == "Untitled" {
-                    if let Ok(title) = fs::read_to_string(&title_file) {
-                        metadata.title = title.trim().to_string();
-                        updated = true;
-                    }
+                if (metadata.title.is_empty() || metadata.title == "Untitled")
+                    && let Ok(title) = fs::read_to_string(&title_file)
+                {
+                    metadata.title = title.trim().to_string();
+                    updated = true;
                 }
 
                 // Preencher datas null com data atual
@@ -4709,13 +4670,12 @@ async fn run_registry_enrichment() -> anyhow::Result<()> {
             if metadata.status == ArticleStatus::Published {
                 let article_dir = output_dir.join(id);
                 let category_file = article_dir.join("image_categories.txt");
-                if category_file.exists() {
-                    if let Ok(cats) = fs::read_to_string(&category_file) {
-                        if let Some(first_cat) = cats.lines().next() {
-                            metadata.category = Some(first_cat.trim().to_string());
-                            updated = true;
-                        }
-                    }
+                if category_file.exists()
+                    && let Ok(cats) = fs::read_to_string(&category_file)
+                    && let Some(first_cat) = cats.lines().next()
+                {
+                    metadata.category = Some(first_cat.trim().to_string());
+                    updated = true;
                 }
             }
             // Se ainda não tem, usar "ai" como padrão
