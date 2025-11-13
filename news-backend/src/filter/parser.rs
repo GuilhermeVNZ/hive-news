@@ -29,12 +29,12 @@ pub fn parse_pdf(path: &Path) -> Result<ParsedPdf> {
     let source_name = "arxiv".to_string();
     let source_url = format!("https://arxiv.org/abs/{}", file_name);
 
-    // Tentar parser real com lopdf
+    // Tentar parser real com lopdf (avisos de encoding são esperados e não impedem extração)
     let text = match parse_pdf_text(path) {
         Ok(content) => content,
         Err(e) => {
             eprintln!("⚠️  Failed to parse PDF {}: {}", path.display(), e);
-            // Fallback para parsing básico
+            // Fallback: retornar vazio - será rejeitado pelo filter se não tiver conteúdo suficiente
             String::new()
         }
     };
@@ -86,13 +86,14 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
         }
     }
 
-    // Estratégia 2: Tentar lopdf
+    // Estratégia 2: Tentar lopdf (silenciando avisos de encoding)
     if let Ok(doc) = Document::load(path) {
         let mut full_text = String::new();
         let pages = doc.get_pages();
 
         if !pages.is_empty() {
             for (page_id, _) in pages.iter() {
+                // lopdf pode gerar avisos de encoding - ignora-los silenciosamente
                 if let Ok(text) = doc.extract_text(&[*page_id]) {
                     full_text.push_str(&text);
                     full_text.push('\n');

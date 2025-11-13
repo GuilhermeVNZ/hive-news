@@ -121,19 +121,19 @@ impl ArticleRegistry {
                 }
 
                 // Estratégia 2: Encontrar último } válido usando contador de chaves
-                if let Some(repaired) = Self::repair_json_by_finding_last_valid_brace(&trimmed) {
-                    if let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
-                        registry.normalize_paths();
-                        eprintln!("✅ Successfully repaired registry JSON (brace matching)!");
-                        if let Err(save_err) = registry.save(registry_path) {
-                            eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
-                        }
-                        return Ok(registry);
+                if let Some(repaired) = Self::repair_json_by_finding_last_valid_brace(trimmed)
+                    && let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(&repaired)
+                {
+                    registry.normalize_paths();
+                    eprintln!("✅ Successfully repaired registry JSON (brace matching)!");
+                    if let Err(save_err) = registry.save(registry_path) {
+                        eprintln!("⚠️  Failed to save repaired registry: {}", save_err);
                     }
+                    return Ok(registry);
                 }
 
                 // Estratégia 3: Tentar extrair apenas a seção "articles"
-                if let Some(articles_json) = Self::extract_articles_section(&trimmed) {
+                if let Some(articles_json) = Self::extract_articles_section(trimmed) {
                     let repaired = format!("{{\"articles\":{}}}", articles_json);
                     if let Ok(mut registry) = serde_json::from_str::<ArticleRegistry>(&repaired) {
                         registry.normalize_paths();
@@ -208,11 +208,7 @@ impl ArticleRegistry {
             }
         }
 
-        if let Some(pos) = last_valid_pos {
-            Some(content[..=pos].to_string())
-        } else {
-            None
-        }
+        last_valid_pos.map(|pos| content[..=pos].to_string())
     }
 
     /// Extrai a seção "articles" do JSON
@@ -258,11 +254,7 @@ impl ArticleRegistry {
                     }
                 }
 
-                if let Some(end) = end_pos {
-                    Some(json_part[..end].to_string())
-                } else {
-                    None
-                }
+                end_pos.map(|end| json_part[..end].to_string())
             } else {
                 None
             }
@@ -272,9 +264,15 @@ impl ArticleRegistry {
     }
 
     /// Salva o registry no arquivo JSON usando escrita atômica (tempfile + rename)
+    /// com retry automático em caso de EBUSY/conflitos
     pub fn save(&self, registry_path: &Path) -> Result<()> {
         use std::io::Write;
+        use std::thread;
+        use std::time::Duration;
         use tempfile::NamedTempFile;
+
+        const MAX_RETRIES: u32 = 5;
+        const INITIAL_BACKOFF_MS: u64 = 50;
 
         // Criar diretório se não existir
         if let Some(parent) = registry_path.parent() {
@@ -287,53 +285,74 @@ impl ArticleRegistry {
         let content = serde_json::to_string_pretty(&registry_clone)
             .context("Failed to serialize registry")?;
 
-        // Criar arquivo temporário no mesmo diretório do arquivo final
         let parent_dir = registry_path
             .parent()
             .ok_or_else(|| anyhow::anyhow!("Registry path has no parent directory"))?;
 
-        let mut tmp =
-            NamedTempFile::new_in(parent_dir).context("Failed to create temporary file")?;
-
-        // Escrever conteúdo no arquivo temporário
-        tmp.as_file_mut()
-            .write_all(content.as_bytes())
-            .context("Failed to write to temporary file")?;
-
-        // Forçar sincronização física (flush to disk)
-        tmp.as_file_mut()
-            .sync_all()
-            .context("Failed to sync temporary file to disk")?;
-
-        // Rename atômico (move temp -> final)
-        match tmp.persist(registry_path) {
-            Ok(_) => {
+        // Retry loop com backoff exponencial
+        let mut last_error = None;
+        for attempt in 0..MAX_RETRIES {
+            if attempt > 0 {
+                let backoff = INITIAL_BACKOFF_MS * 2_u64.pow(attempt - 1);
+                thread::sleep(Duration::from_millis(backoff));
                 eprintln!(
-                    "[ArticleRegistry] ✅ Successfully saved registry atomically to: {:?}",
-                    registry_path
+                    "[ArticleRegistry] 🔄 Retry {}/{} after {}ms...",
+                    attempt + 1,
+                    MAX_RETRIES,
+                    backoff
                 );
-                Ok(())
             }
-            Err(err) => {
-                let tempfile::PersistError {
-                    file: tmp_file,
-                    error: persist_err,
-                } = err;
-                eprintln!(
-                    "[ArticleRegistry] ⚠️  Failed to persist temporary file atomically: {}. Falling back to direct write.",
-                    persist_err
-                );
-                std::fs::write(registry_path, content.as_bytes())
-                    .context("Failed to write registry via fallback")?;
-                // Ensure temporary file is cleaned up
-                let _ = tmp_file.close();
-                eprintln!(
-                    "[ArticleRegistry] ✅ Successfully saved registry via fallback write: {:?}",
-                    registry_path
-                );
-                Ok(())
+
+            // Criar arquivo temporário no mesmo diretório do arquivo final
+            let mut tmp = match NamedTempFile::new_in(parent_dir) {
+                Ok(t) => t,
+                Err(e) => {
+                    last_error = Some(e);
+                    continue;
+                }
+            };
+
+            // Escrever conteúdo no arquivo temporário
+            if let Err(e) = tmp.as_file_mut().write_all(content.as_bytes()) {
+                last_error = Some(e);
+                continue;
+            }
+
+            // Forçar sincronização física (flush to disk)
+            if let Err(e) = tmp.as_file_mut().sync_all() {
+                last_error = Some(e);
+                continue;
+            }
+
+            // Rename atômico (move temp -> final)
+            match tmp.persist(registry_path) {
+                Ok(_) => {
+                    if attempt > 0 {
+                        eprintln!(
+                            "[ArticleRegistry] ✅ Registry saved after {} retries: {:?}",
+                            attempt, registry_path
+                        );
+                    }
+                    return Ok(());
+                }
+                Err(persist_err) => {
+                    last_error = Some(persist_err.error);
+                    let _ = persist_err.file.close();
+                }
             }
         }
+
+        // Fallback direto se todas as tentativas falharem
+        eprintln!("[ArticleRegistry] ⚠️  All atomic attempts failed. Trying direct write...");
+        std::fs::write(registry_path, content.as_bytes()).context(format!(
+            "Failed to save registry after {} retries. Last error: {:?}",
+            MAX_RETRIES, last_error
+        ))?;
+        eprintln!(
+            "[ArticleRegistry] ✅ Registry saved via fallback: {:?}",
+            registry_path
+        );
+        Ok(())
     }
 
     /// Verifica se um artigo já foi registrado (em qualquer status)
@@ -451,12 +470,12 @@ impl ArticleRegistry {
 
         // Tenta ler o título gerado do title.txt no output_dir
         let title_txt = output_dir.join("title.txt");
-        if title_txt.exists() {
-            if let Ok(title_content) = fs::read_to_string(&title_txt) {
-                let generated_title = title_content.trim().to_string();
-                if !generated_title.is_empty() {
-                    metadata.generated_title = Some(generated_title);
-                }
+        if title_txt.exists()
+            && let Ok(title_content) = fs::read_to_string(&title_txt)
+        {
+            let generated_title = title_content.trim().to_string();
+            if !generated_title.is_empty() {
+                metadata.generated_title = Some(generated_title);
             }
         }
 
