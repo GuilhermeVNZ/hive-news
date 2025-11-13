@@ -291,16 +291,12 @@ impl ArticleRegistry {
 
         // Retry loop com backoff exponencial
         let mut last_error = None;
+        let mut retry_count = 0;
         for attempt in 0..MAX_RETRIES {
             if attempt > 0 {
                 let backoff = INITIAL_BACKOFF_MS * 2_u64.pow(attempt - 1);
                 thread::sleep(Duration::from_millis(backoff));
-                eprintln!(
-                    "[ArticleRegistry] 🔄 Retry {}/{} after {}ms...",
-                    attempt + 1,
-                    MAX_RETRIES,
-                    backoff
-                );
+                retry_count += 1;
             }
 
             // Criar arquivo temporário no mesmo diretório do arquivo final
@@ -327,11 +323,8 @@ impl ArticleRegistry {
             // Rename atômico (move temp -> final)
             match tmp.persist(registry_path) {
                 Ok(_) => {
-                    if attempt > 0 {
-                        eprintln!(
-                            "[ArticleRegistry] ✅ Registry saved after {} retries: {:?}",
-                            attempt, registry_path
-                        );
+                    if retry_count > 0 {
+                        eprintln!("[ArticleRegistry] ✅ Saved after {} retries", retry_count);
                     }
                     return Ok(());
                 }
@@ -343,15 +336,16 @@ impl ArticleRegistry {
         }
 
         // Fallback direto se todas as tentativas falharem
-        eprintln!("[ArticleRegistry] ⚠️  All atomic attempts failed. Trying direct write...");
         std::fs::write(registry_path, content.as_bytes()).context(format!(
             "Failed to save registry after {} retries. Last error: {:?}",
             MAX_RETRIES, last_error
         ))?;
-        eprintln!(
-            "[ArticleRegistry] ✅ Registry saved via fallback: {:?}",
-            registry_path
-        );
+        if retry_count > 0 {
+            eprintln!(
+                "[ArticleRegistry] ✅ Saved via fallback after {} retries",
+                retry_count
+            );
+        }
         Ok(())
     }
 
