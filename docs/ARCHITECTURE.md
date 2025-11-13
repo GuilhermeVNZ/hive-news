@@ -21,6 +21,7 @@ The News Management System is a multi-tier architecture designed to manage conte
 - JWT-based authentication
 - PostgreSQL for persistent storage
 - Structured logging with tracing
+- Filesystem access confined to Docker mounts via `NEWS_BASE_DIR=/data`, ensuring all article content, images, and registries are read from containerized volumes (no Windows path fallbacks).
 
 ### 2. Dashboard Frontend (React + Tauri)
 

@@ -25,17 +25,17 @@ services:
       - news-backend/.env
     environment:
       DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/news_system}"
-      NEWS_BASE_DIR: /app/news-backend
+      NEWS_BASE_DIR: /data
     volumes:
-      - ./downloads:/app/news-backend/downloads
-      - ./output:/app/news-backend/output
-      - ./logs:/app/news-backend/logs
-      - ./images:/app/news-backend/images
-      - ./news-backend/system_config.json:/app/news-backend/system_config.json
-      - ./collectors_config.json:/app/news-backend/collectors_config.json
-      - ./scienceai_subscribers.json:/app/news-backend/scienceai_subscribers.json
-      - ./news-backend/loop_stats.json:/app/news-backend/loop_stats.json
-      - ./articles_registry.json:/app/news-backend/articles_registry.json
+      - ./downloads:/data/downloads
+      - ./output:/data/output
+      - ./logs:/data/logs
+      - ./images:/data/images
+      - ./news-backend/system_config.json:/data/news-backend/system_config.json:ro
+      - ./collectors_config.json:/data/collectors_config.json:ro
+      - ./scienceai_subscribers.json:/data/scienceai_subscribers.json:ro
+      - ./news-backend/loop_stats.json:/data/news-backend/loop_stats.json
+      - ./articles_registry.json:/data/articles_registry.json
     ports:
       - "3005:3005"
     depends_on:
@@ -46,7 +46,7 @@ services:
   dashboard:
     environment:
       NEWS_BASE_DIR: /data
-      VITE_API_URL: http://localhost:3005
+      VITE_API_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -65,11 +65,12 @@ services:
   airesearch:
     environment:
       NEWS_BASE_DIR: /data
-      BACKEND_URL: http://localhost:3005
+      BACKEND_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
       - ./articles_registry.json:/data/articles_registry.json:ro
+      - ./images:/app/public/images:ro
     build:
       context: .
       dockerfile: docker/frontend.next.Dockerfile
@@ -84,12 +85,13 @@ services:
   scienceai:
     environment:
       NEWS_BASE_DIR: /data
-      VITE_API_URL: http://localhost:3005
+      VITE_API_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
       - ./scienceai_subscribers.json:/data/scienceai_subscribers.json
       - ./articles_registry.json:/data/articles_registry.json:ro
+      - ./images:/usr/share/nginx/html/images:ro
     build:
       context: .
       dockerfile: docker/scienceai.Dockerfile

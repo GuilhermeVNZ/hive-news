@@ -13,12 +13,16 @@ impl ContentCleaner {
         let mut cleaned = html.to_string();
 
         // Step 1: Remove script, style, noscript completely
-        if let Ok(re) = Regex::new(r"(?s)<(script|style|noscript)[^>]*>.*?</\1>") {
+        if let Ok(re) =
+            Regex::new(r"(?is)<(?:script|style|noscript)[^>]*>.*?</(?:script|style|noscript)>")
+        {
             cleaned = re.replace_all(&cleaned, "").to_string();
         }
 
         // Step 2: Remove button, nav, footer, header elements completely
-        if let Ok(re) = Regex::new(r"(?s)<(button|nav|footer|header)[^>]*>.*?</\1>") {
+        if let Ok(re) = Regex::new(
+            r"(?is)<(?:button|nav|footer|header)[^>]*>.*?</(?:button|nav|footer|header)>",
+        ) {
             cleaned = re.replace_all(&cleaned, "").to_string();
         }
 
@@ -48,7 +52,7 @@ impl ContentCleaner {
         }
 
         // Step 6: Remove picture/source tags
-        if let Ok(re) = Regex::new(r"(?s)<(picture|source)[^>]*>.*?</\1>") {
+        if let Ok(re) = Regex::new(r"(?is)<(?:picture|source)[^>]*>.*?</(?:picture|source)>") {
             cleaned = re.replace_all(&cleaned, "").to_string();
         }
 
@@ -58,7 +62,7 @@ impl ContentCleaner {
         }
 
         // Step 8: Remove code blocks (usually not article content)
-        if let Ok(re) = Regex::new(r"(?s)<(code|pre)[^>]*>.*?</\1>") {
+        if let Ok(re) = Regex::new(r"(?is)<(?:code|pre)[^>]*>.*?</(?:code|pre)>") {
             cleaned = re.replace_all(&cleaned, "").to_string();
         }
 
