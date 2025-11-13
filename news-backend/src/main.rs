@@ -223,8 +223,10 @@ async fn main() -> anyhow::Result<()> {
     // Fallback: try default location
     dotenv::dotenv().ok();
 
-    // Initialize tracing
-    tracing_subscriber::fmt::init();
+    // Initialize tracing - silence lopdf warnings (encoding issues are expected in scientific PDFs)
+    tracing_subscriber::fmt()
+        .with_env_filter("news_backend=debug,lopdf=error")
+        .init();
 
     // Check if we should run a collection test, filter, writer, migration, or enrichment
     let args: Vec<String> = std::env::args().collect();
@@ -1797,18 +1799,17 @@ async fn main() -> anyhow::Result<()> {
                     // Check collector type if available
                     let collector_type = c.collector_type.as_deref().unwrap_or("api");
 
+                    // Match source type with collector - collector must be enabled (already checked above)
                     match (source_key, collector_type) {
-                        ("arxiv", "api") if id_lower.contains("arxiv") => {
+                        ("arxiv", _) if id_lower.contains("arxiv") => {
                             enabled_for_source = true;
                             println!("      ✅ Matched: arxiv collector for arxiv source");
                         }
-                        ("pmc", "api")
-                            if id_lower.contains("pmc") || id_lower.contains("pubmed") =>
-                        {
+                        ("pmc", _) if id_lower.contains("pmc") || id_lower.contains("pubmed") => {
                             enabled_for_source = true;
                             println!("      ✅ Matched: pmc/pubmed collector for pmc source");
                         }
-                        ("semantic", "api") if id_lower.contains("semantic") => {
+                        ("semantic", _) if id_lower.contains("semantic") => {
                             enabled_for_source = true;
                             println!("      ✅ Matched: semantic collector for semantic source");
                         }
@@ -1821,43 +1822,7 @@ async fn main() -> anyhow::Result<()> {
                             println!("      ✅ Matched: html collector for html source");
                         }
                         _ => {
-                            // Fallback: check by ID pattern
-                            if source_key == "arxiv" && id_lower.contains("arxiv") {
-                                enabled_for_source = true;
-                                println!(
-                                    "      ✅ Matched (fallback): arxiv collector for arxiv source"
-                                );
-                            }
-                            if source_key == "pmc"
-                                && (id_lower.contains("pmc") || id_lower.contains("pubmed"))
-                            {
-                                enabled_for_source = true;
-                                println!(
-                                    "      ✅ Matched (fallback): pmc/pubmed collector for pmc source"
-                                );
-                            }
-                            if source_key == "semantic" && id_lower.contains("semantic") {
-                                enabled_for_source = true;
-                                println!(
-                                    "      ✅ Matched (fallback): semantic collector for semantic source"
-                                );
-                            }
-                            if source_key == "rss"
-                                && (id_lower.contains("rss") || collector_type == "rss")
-                            {
-                                enabled_for_source = true;
-                                println!(
-                                    "      ✅ Matched (fallback): rss collector for rss source"
-                                );
-                            }
-                            if source_key == "html"
-                                && (id_lower.contains("html") || collector_type == "html")
-                            {
-                                enabled_for_source = true;
-                                println!(
-                                    "      ✅ Matched (fallback): html collector for html source"
-                                );
-                            }
+                            // No match - collector doesn't match this source
                         }
                     }
                 }
