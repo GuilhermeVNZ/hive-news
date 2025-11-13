@@ -5,7 +5,9 @@ import path from "path";
 import type { Article } from "@/types/article";
 
 async function findArticleById(articleId: string): Promise<Article | null> {
-  const outputDir = path.join(process.cwd(), "../../../output/AIResearch");
+  // Use NEWS_BASE_DIR from env (Docker) or fallback to relative path (dev)
+  const baseDir = process.env.NEWS_BASE_DIR || process.cwd() + "/../../..";
+  const outputDir = path.join(baseDir, "output/AIResearch");
   const articleDir = path.join(outputDir, articleId);
 
   try {
@@ -66,7 +68,8 @@ async function selectArticleImage(
   categories: string[],
   articleId: string,
 ): Promise<string | undefined> {
-  const imagesDir = path.join(process.cwd(), "../../../images");
+  const baseDir = process.env.NEWS_BASE_DIR || process.cwd() + "/../../..";
+  const imagesDir = path.join(baseDir, "images");
 
   try {
     // Ensure images directory exists
@@ -126,7 +129,8 @@ export async function GET(
   console.log("Searching for article with slug:", slug);
 
   // Find article by slug (convert slug back to article ID)
-  const outputDir = path.join(process.cwd(), "../../../output/AIResearch");
+  const baseDir = process.env.NEWS_BASE_DIR || process.cwd() + "/../../..";
+  const outputDir = path.join(baseDir, "output/AIResearch");
 
   try {
     const dirs = await fs.readdir(outputDir);
