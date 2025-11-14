@@ -5,7 +5,7 @@ ARG NODE_VERSION=20
 FROM node:${NODE_VERSION}-alpine AS deps
 WORKDIR /app
 
-COPY apps/frontend-next/ScienceAI/package*.json ./
+COPY apps/frontend-next/ScienceAI/package.json ./package.json
 # Use npm install because this project does not provide a package-lock.json yet.
 # When a lockfile is added we can switch back to the faster `npm ci`.
 RUN npm install
