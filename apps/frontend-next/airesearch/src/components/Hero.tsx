@@ -71,12 +71,12 @@ const Hero = ({
             </Button>
           </div>
 
-          <div className="flex flex-nowrap gap-3 justify-center overflow-x-auto pb-2">
+          <div className="grid grid-cols-5 md:flex md:flex-nowrap gap-3 justify-center">
             {categories.map((cat, index) => (
               <button
                 key={cat.value}
                 onClick={() => onCategorySelect?.(cat.value)}
-                className={`group px-4 py-2 text-xs sm:text-sm font-medium rounded-full border-2 transition-all duration-300 animate-fade-in whitespace-nowrap flex-shrink-0 ${
+                className={`group px-4 py-2 text-xs sm:text-sm font-medium rounded-full border-2 transition-all duration-300 animate-fade-in whitespace-nowrap ${
                   selectedCategory === cat.value
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary"
