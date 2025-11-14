@@ -2,6 +2,11 @@
 // CRITICAL: Prompts are organized with most important instructions first
 // (LLMs give more attention to the beginning of prompts)
 
+use std::fs;
+use std::path::PathBuf;
+use anyhow::{Context, Result};
+use rand::Rng;
+
 fn get_site_context(site: &str) -> String {
     match site.to_lowercase().as_str() {
         "airesearch" => r#"AIResearch is a cutting-edge AI news platform focusing on:
@@ -210,6 +215,190 @@ GOOD TITLES (short, hooky, irresistible):
 "#,
         site, site_context, paper_text
     )
+}
+
+/// Loads a random prompt from the news_randomizer directory
+/// Returns the prompt with {paper_text} placeholder replaced by the actual article JSON
+pub fn load_random_news_prompt(article_json: &str) -> Result<String> {
+    // Use relative path that works both locally and in Docker
+    // The prompts directory is at: src/writer/prompts/news_randomizer/
+    
+    let prompt_dir = get_news_randomizer_dir()?;
+    
+    // List all .txt files in the directory
+    let mut prompt_files = Vec::new();
+    if prompt_dir.exists() && prompt_dir.is_dir() {
+        let entries = fs::read_dir(&prompt_dir)
+            .with_context(|| format!("Failed to read prompt directory: {}", prompt_dir.display()))?;
+        
+        for entry in entries {
+            let entry = entry?;
+            let path = entry.path();
+            if path.is_file() {
+                if let Some(ext) = path.extension() {
+                    if ext == "txt" {
+                        prompt_files.push(path);
+                    }
+                }
+            }
+        }
+    }
+    
+    if prompt_files.is_empty() {
+        anyhow::bail!(
+            "No prompt files found in: {}. Falling back to default prompt.",
+            prompt_dir.display()
+        );
+    }
+    
+    // Select a random file
+    let mut rng = rand::thread_rng();
+    let random_index = rng.gen_range(0..prompt_files.len());
+    let selected_file = &prompt_files[random_index];
+    
+    // Read the prompt template
+    let prompt_template = fs::read_to_string(selected_file)
+        .with_context(|| format!("Failed to read prompt file: {}", selected_file.display()))?;
+    
+    // Replace {paper_text} placeholder with article JSON
+    let final_prompt = if prompt_template.contains("{paper_text}") {
+        prompt_template.replace("{paper_text}", article_json)
+    } else {
+        // If no placeholder, append JSON at the end (backward compatibility)
+        format!("{}\n\n## ARTICLE JSON:\n{}", prompt_template, article_json)
+    };
+    
+    println!(
+        "  🎲 Using randomized news prompt: {}",
+        selected_file
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("unknown")
+    );
+    
+    Ok(final_prompt)
+}
+
+/// Gets the path to the news_randomizer prompts directory
+/// Uses relative paths that work both locally and in Docker
+fn get_news_randomizer_dir() -> Result<PathBuf> {
+    // Try multiple possible paths (works in different environments)
+    let current_dir = std::env::current_dir()
+        .unwrap_or_else(|_| PathBuf::from("."));
+    
+    let possible_paths = [
+        // Relative to current working directory (most common case)
+        current_dir.join("src/writer/prompts/news_randomizer"),
+        // Relative to workspace root (if running from workspace root)
+        current_dir.join("news-backend/src/writer/prompts/news_randomizer"),
+        // Using path resolver (if NEWS_BASE_DIR is set)
+        crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/news_randomizer"),
+        // Try from executable location (if available)
+        std::env::current_exe()
+            .ok()
+            .and_then(|exe| exe.parent().map(|p| p.join("src/writer/prompts/news_randomizer")))
+            .unwrap_or_else(|| PathBuf::from("src/writer/prompts/news_randomizer")),
+    ];
+    
+    // Find the first path that exists
+    for path in &possible_paths {
+        if path.exists() && path.is_dir() {
+            return Ok(path.clone());
+        }
+    }
+    
+    // If none exist, return the first one as default (will fail gracefully later)
+    Ok(possible_paths[0].clone())
+}
+
+/// Loads a random prompt from the article_randomizer directory
+/// Returns the prompt with {paper_text} placeholder replaced by the actual paper text
+pub fn load_random_article_prompt(paper_text: &str) -> Result<String> {
+    // Use relative path that works both locally and in Docker
+    // The prompts directory is at: src/writer/prompts/article_randomizer/
+    // We need to resolve this relative to the executable or workspace root
+    
+    let prompt_dir = get_prompt_randomizer_dir()?;
+    
+    // List all .txt files in the directory
+    let mut prompt_files = Vec::new();
+    if prompt_dir.exists() && prompt_dir.is_dir() {
+        let entries = fs::read_dir(&prompt_dir)
+            .with_context(|| format!("Failed to read prompt directory: {}", prompt_dir.display()))?;
+        
+        for entry in entries {
+            let entry = entry?;
+            let path = entry.path();
+            if path.is_file() {
+                if let Some(ext) = path.extension() {
+                    if ext == "txt" {
+                        prompt_files.push(path);
+                    }
+                }
+            }
+        }
+    }
+    
+    if prompt_files.is_empty() {
+        anyhow::bail!(
+            "No prompt files found in: {}. Falling back to default prompt.",
+            prompt_dir.display()
+        );
+    }
+    
+    // Select a random file
+    let mut rng = rand::thread_rng();
+    let random_index = rng.gen_range(0..prompt_files.len());
+    let selected_file = &prompt_files[random_index];
+    
+    // Read the prompt template
+    let prompt_template = fs::read_to_string(selected_file)
+        .with_context(|| format!("Failed to read prompt file: {}", selected_file.display()))?;
+    
+    // Replace {paper_text} placeholder
+    let final_prompt = prompt_template.replace("{paper_text}", paper_text);
+    
+    println!(
+        "  🎲 Using randomized prompt: {}",
+        selected_file
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("unknown")
+    );
+    
+    Ok(final_prompt)
+}
+
+/// Gets the path to the article_randomizer prompts directory
+/// Uses relative paths that work both locally and in Docker
+fn get_prompt_randomizer_dir() -> Result<PathBuf> {
+    // Try multiple possible paths (works in different environments)
+    let current_dir = std::env::current_dir()
+        .unwrap_or_else(|_| PathBuf::from("."));
+    
+    let possible_paths = [
+        // Relative to current working directory (most common case)
+        current_dir.join("src/writer/prompts/article_randomizer"),
+        // Relative to workspace root (if running from workspace root)
+        current_dir.join("news-backend/src/writer/prompts/article_randomizer"),
+        // Using path resolver (if NEWS_BASE_DIR is set)
+        crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/article_randomizer"),
+        // Try from executable location (if available)
+        std::env::current_exe()
+            .ok()
+            .and_then(|exe| exe.parent().map(|p| p.join("src/writer/prompts/article_randomizer")))
+            .unwrap_or_else(|| PathBuf::from("src/writer/prompts/article_randomizer")),
+    ];
+    
+    // Find the first path that exists
+    for path in &possible_paths {
+        if path.exists() && path.is_dir() {
+            return Ok(path.clone());
+        }
+    }
+    
+    // If none exist, return the first one as default (will fail gracefully later)
+    Ok(possible_paths[0].clone())
 }
 
 pub fn build_social_script_prompt(article: &str, paper_title: &str) -> String {

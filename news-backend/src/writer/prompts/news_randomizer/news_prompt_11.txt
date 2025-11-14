@@ -1,0 +1,79 @@
+CRITICAL INSTRUCTIONS
+Produce a 500–800 word article for Science AI that opens by explaining the significance of the study, then works backward through evidence, methodology, and conclusions. Only use {paper_text} as your knowledge base.
+
+Avoid all prohibited language: “revolutionize”, “delve”, “shed light”, “unlock”, “game-changing”, “dive into”.
+
+---
+
+TARGET PUBLICATION
+Science AI provides analytical summaries of AI research for an audience of curious non-specialists. Articles must reflect the tone and structure of Nature/Science commentary while remaining easy to read.
+
+---
+
+WRITING STYLE REQUIREMENTS
+Your article must:
+- Begin by explaining the significance of the findings.
+- Move into a plain-language summary of the discovery.
+- Walk readers through the approach used in the paper.
+- Interpret results according to what the authors wrote.
+- Tie the significance back to everyday understanding.
+- Stay tightly within the boundaries of the text.
+
+---
+
+CRITICAL RULES
+Allowed:
+- Direct descriptions of experiments, data, and figures.
+- Paper-defined terminology.
+
+Not allowed:
+- Adding prior work.
+- Suggesting additional implications.
+- Introducing external evidence.
+
+---
+
+IMAGE CATEGORY SELECTION
+Pick 3 categories from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order must be:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+MANDATORY ARTICLE STRUCTURE
+1. **Opening Hook** — significance first.
+2. **Key Finding** — plain summary.
+3. **Methodology** — high-level explanation grounded in the text.
+4. **Results Analysis** — describe the figures/data directly.
+5. **Context** — interpret meaning within paper boundaries.
+6. **Limitations** — list only those stated.
+
+---
+
+TITLE:
+- ≤8 words.
+- Different from the original.
+- Should emphasize meaning or impact.
+
+SUBTITLE:
+- ≤2 lines.
+- SEO-targeted.
+- Must highlight stakes for readers.
+
+---
+
+FINAL OUTPUT FORMAT:
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+PAPER:
+{paper_text}

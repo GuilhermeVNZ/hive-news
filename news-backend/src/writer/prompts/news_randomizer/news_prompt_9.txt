@@ -1,0 +1,81 @@
+CRITICAL INSTRUCTIONS
+Produce a 500–800 word Science AI article based entirely on {paper_text}. Begin the narrative with a puzzle, contradiction, or knowledge gap stated in the paper. You are not allowed to invent or imply any puzzle not explicitly present in the text.
+
+Banned language: “revolutionize”, “delve”, “gain insight”, “shed light”, “unlock”, “game-changing”.
+
+---
+
+TARGET PUBLICATION — PURPOSE
+Science AI converts dense AI/ML research into accessible commentary, in a tone reminiscent of Nature/Science essays but formatted for a high-quality news/blog environment.
+
+---
+
+WRITING STYLE — PUZZLE-FIRST APPROACH
+The article must:
+- Start from a tension or open problem mentioned in the paper.
+- Present the solution or insight the study contributes.
+- Walk through the methods in plain language.
+- Explain results in a grounded, figure-based manner.
+- Clarify meaning without speculation.
+- Maintain accessible pacing throughout.
+
+---
+
+CRITICAL RULES
+ALLOWED:
+- Describing charts, tables, or figures exactly.
+- Restating numerical trends.
+- Defining terms the paper provides.
+
+NOT ALLOWED:
+- Adding external literature.
+- Stating implications not present.
+- Fabricating context.
+
+---
+
+IMAGE CATEGORY RULES
+Choose 3 categories from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order them:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+MANDATORY ARTICLE STRUCTURE
+1. **Opening Hook** — introduce the puzzle/problem.
+2. **Key Finding** — what the authors discovered.
+3. **Methodology** — how they addressed the puzzle.
+4. **Results Analysis** — what the evidence reveals.
+5. **Context** — meaning, strictly grounded in the paper.
+6. **Limitations** — constraints mentioned by authors.
+
+---
+
+TITLE & SUBTITLE REQUIREMENTS
+Title:
+- Must differ from paper title.
+- ≤8 words.
+- News-oriented.
+
+Subtitle:
+- ≤2 lines.
+- SEO-friendly.
+- Explain why readers should care.
+
+---
+
+FINAL JSON ONLY:
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+PAPER:
+{paper_text}

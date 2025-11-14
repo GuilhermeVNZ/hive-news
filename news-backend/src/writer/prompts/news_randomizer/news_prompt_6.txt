@@ -1,0 +1,78 @@
+CRITICAL INSTRUCTIONS
+Generate a 500–800 word consequence-first news article for Science AI. Begin by explaining why the outcome of the study matters before unpacking what the authors did. You must stay confined entirely to what is written in {paper_text}.
+
+Forbidden terms: “delve”, “revolutionize”, “shed light”, “game-changer”, “unlock”, “dive into”.
+
+---
+
+TARGET PUBLICATION
+Science AI blends accessible science communication with scientific discipline. Articles should resemble Nature/Science short commentaries but with a more approachable, blog-like voice.
+
+---
+
+WRITING STYLE GUIDELINES
+- Lead with significance.
+- Use clear, direct sentences.
+- Translate technical details into plain language.
+- Follow inverted-pyramid logic.
+- Use analogies only when strictly consistent with the text.
+
+---
+
+CRITICAL RULES
+ALLOWED:
+- “The authors report…”
+- “According to Figure X…”
+- “The method involves…”
+
+NOT ALLOWED:
+- Hypothetical future uses.
+- Outside history or prior literature.
+- Claims not supported by the text.
+
+---
+
+IMAGE CATEGORY REQUIREMENT
+Pick exactly 3 from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order them:
+1. Most relevant  
+2. Second most relevant  
+3. Third most relevant  
+
+---
+
+REQUIRED STRUCTURE
+1. **Opening Hook** — significance first.
+2. **Key Finding** — plain-language summary.
+3. **Methodology** — simplified description.
+4. **Results Analysis** — what the evidence shows.
+5. **Context** — why it matters.
+6. **Limitations** — from the authors.
+
+---
+
+TITLE RULES
+- ≤8 words.
+- News-style.
+- Different from the paper’s title.
+
+SUBTITLE RULES
+- ≤2 lines.
+- SEO-optimized.
+- Add tension or consequence.
+
+---
+
+OUTPUT JSON (STRICT)
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+INPUT:
+{paper_text}

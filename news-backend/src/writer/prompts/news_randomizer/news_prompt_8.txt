@@ -1,0 +1,77 @@
+CRITICAL INSTRUCTIONS — MUST BE FOLLOWED EXACTLY
+Transform {paper_text} into a 500–800 word article for Science AI, maintaining strict fidelity to the paper. No external facts, assumptions, analogies, or implications may be introduced. Every sentence must be defensible using only the provided text.
+
+Do not use banned phrases such as “revolutionize”, “sed light”, “delve”, “unlock”, “game-changer”, “dive into”.
+
+---
+
+TARGET PUBLICATION — EDITORIAL FRAME
+Science AI reports on cutting-edge AI research with the interpretive clarity of Nature/Science commentary. Articles must inform general readers about why the research is relevant while respecting scientific nuance.
+
+---
+
+WRITING STYLE EXPECTATIONS
+This variant emphasizes **method** as the core narrative. Your article should:
+- Introduce why understanding the method matters to readers.
+- Clearly summarize the main discovery.
+- Explain the process the authors used in accessible language.
+- Ground all descriptions in the text alone.
+- Maintain a confident, readable tone without jargon-heavy passages.
+
+---
+
+CRITICAL RULES
+You MUST:
+- Present only data present in the paper.
+- Use figure numbers exactly as written.
+- Maintain active voice.
+You MUST NOT:
+- Provide imagined background.
+- Suggest external historical context.
+- Speculate on broader applications not mentioned.
+
+---
+
+IMAGE CATEGORY REQUIREMENTS
+Select exactly 3 categories from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+MANDATORY ARTICLE STRUCTURE
+1. **Opening Hook** — frame why the approach/method matters.
+2. **Key Finding** — what the study shows.
+3. **Methodology** — simplified walkthrough of how the authors carried out the study.
+4. **Results Analysis** — interpret results using only paper-supported information.
+5. **Context** — explain significance within bounds of the text.
+6. **Limitations** — summarize the constraints acknowledged.
+
+---
+
+TITLE RULES
+- ≤8 words.
+- Not similar to the original title.
+- Must be clear and news-focused.
+
+SUBTITLE RULES
+- Two-line maximum.
+- SEO-driven summary highlighting stakes or importance.
+
+---
+
+JSON OUTPUT FORMAT ONLY:
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+INPUT:
+{paper_text}

@@ -1,0 +1,157 @@
+CRITICAL INSTRUCTIONS (READ FIRST):
+1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)
+2. NEVER FABRICATE: No imaginary authors, sources, claims, or numbers
+3. ONLY USE PAPER CONTENT: Every statement must originate from the provided text
+4. Avoid clichés like “unlock”, “revolutionize”, “shed light”, “game-changer”
+5. No emojis, no theatrical punctuation, no ellipses
+
+---
+
+TARGET PUBLICATION:
+AIResearch focuses on:
+- Cutting-edge advances in AI research
+- ML and deep learning insights
+- Industry trends grounded in scientific rigor
+- Clear explanations intended for intelligent lay readers
+- Headlines that emphasize significance rather than mechanism
+- Accuracy and simplicity as core principles
+
+---
+
+WRITING STYLE:
+- Start with the key significance
+- Maintain clarity, precision, and active voice
+- Use inverted pyramid logic
+- Cite figures only if in the original paper
+- Simplify all technical terms with plain-language equivalents
+- Maintain coherent flow and smooth transitions
+- Avoid exaggeration completely
+
+---
+
+CRITICAL RULES:
+- No extra citations  
+- No invented researchers or claims  
+- No external comparison  
+- No hypothesizing beyond the text  
+- No “future implications” unless explicitly stated  
+
+---
+
+WHAT TO AVOID:
+- Buzzwords and hyperbole  
+- Dramatic science clichés  
+- Speculative reasoning  
+- Added historical background  
+- Any invented detail  
+
+---
+
+IMAGE CATEGORY SELECTION:
+
+Allowed categories:
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Rules:
+- exactly 3 categories  
+- lowercase only  
+- order by relevance — most → least  
+
+Examples:
+["ai", "science", "network"]
+["robotics", "ai", "hardware"]
+["security", "network", "crypto"]
+
+---
+
+REQUIRED ARTICLE STRUCTURE:
+1. Opening Hook  
+   Introduce the article by grounding the reader in the problem space or motivating question exactly as presented in the paper. The goal is to establish immediate relevance using the authors’ own framing.
+
+2. Key Finding  
+   Provide a direct, simplified summary of the main result. Keep it concise and accurately reflect the authors’ central takeaway.
+
+3. Methodology  
+   Explain the overall research strategy without technical depth. Capture only the conceptual flow of the study and its major steps.
+
+4. Results Analysis  
+   State what the findings show by interpreting the authors’ data explanations. Avoid inferring anything not explicitly written in the paper.
+
+5. Context  
+   Describe the importance of the findings using only the context and motivations defined by the authors. Do not add broader implications unless they appear in the text.
+
+6. Limitations  
+   List all limitations directly acknowledged by the authors. Summaries must reflect only what the paper states, with no extra assumptions.
+
+---
+
+TITLE REQUIREMENTS (CRITICAL):
+***TITLES MUST NOT START WITH “AI”.***  
+- Must differ entirely from the original paper title  
+- Max 8 words  
+- Must be news-like, understandable, and engaging  
+- Must focus on the meaning of the finding  
+- No technical jargon  
+
+BAD:
+"Graph Neural Networks for Spatiotemporal Dynamics"
+
+GOOD:
+"Unexpected Pattern Disrupts Standard Model"
+"Researchers Identify a Critical Weak Point"
+"New Evaluation Reveals Hidden Complexity"
+
+---
+
+SUBTITLE REQUIREMENTS:
+- SEO-optimized  
+- Max 2 lines  
+- Must create tension, consequence, or curiosity  
+- Must explain importance clearly  
+
+GOOD SUBTITLES:
+"A subtle modeling issue raises questions about reliability..."
+"New evidence forces a rethink of key assumptions..."
+
+---
+
+GOOD OPENING LINES:
+"A new AI method can generate fake data..."
+"Scientists discovered the universe might be younger..."
+"Cancer cells have a hidden escape route..."
+
+---
+
+## PAPER TEXT:
+{paper_text}
+
+---
+
+## DELIVERABLE:
+Write a 500–800 word article using ONLY the provided paper.  
+**At the end, list all scientific references from the paper in standard scientific notation.**
+
+Format:
+# [Compelling title not starting with AI]
+
+[Article fully written here...]
+
+(References in standard notation at end.)
+
+---
+
+CRITICAL JSON FORMAT:
+{
+  "title": "Your title here",
+  "subtitle": "SEO subtitle (2 lines max)",
+  "article_text": "Full article ending with references",
+  "image_categories": ["category1", "category2", "category3"]
+}
+
+---
+
+TITLE REMINDER:
+- Must NOT start with “AI”
+- Must differ from original
+- Max 8 words
+- Must generate curiosity or tension

@@ -1,0 +1,82 @@
+CRITICAL INSTRUCTIONS (READ FULLY)
+Your role is to create a 500–800 word news-oriented interpretation of {paper_text} for *Science AI*. Treat the paper as the only authoritative source. No speculation, invented context, external experts, or extrapolation are allowed. Maintain discipline in reporting: every statement must tie directly to what the authors wrote.
+
+Never use banned phrases such as “delve”, “revolutionize”, “dive into”, “shed light on”, “game-changer”, “unlock”.
+
+---
+
+TARGET PUBLICATION — PURPOSE AND AUDIENCE
+Science AI highlights developments in machine learning and artificial intelligence in a format that echoes the interpretive journalism of Nature/Science. Pieces should help general readers grasp why a research result is meaningful, even if they lack technical training.
+
+Write in plain English. Maintain editorial clarity. Explain only what the paper itself supports.
+
+---
+
+WRITING STYLE — QUESTION-CENTRIC APPROACH
+Present the paper as an attempt to answer a specific scientific question. Your article should:
+- Begin with why the question matters.
+- State the answer the authors found.
+- Unfold the reasoning behind the study in a clear, sequential way.
+- Use active phrasing and straightforward descriptions.
+- Reference figures or data only when explicitly included by the authors.
+
+Avoid academic density. Avoid hype. Aim for scientific storytelling with journalistic structure.
+
+---
+
+CRITICAL RULES
+Allowed:
+- “The researchers examined X using the method described...”
+- “As illustrated in Figure 3, the data shows...”
+
+Not allowed:
+- Speculating about applications not mentioned in the paper.
+- Adding historical background unless explicitly in the text.
+- Referencing external scientists or trends.
+
+---
+
+IMAGE CATEGORY REQUIREMENTS
+Pick *exactly three* categories from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order MUST reflect relevance:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+REQUIRED ARTICLE OUTLINE
+1. **Opening Hook** — explain why the central question is important for general readers.
+2. **Key Finding** — state the authors’ answer.
+3. **Methodology** — high-level explanation of how they investigated it.
+4. **Results Analysis** — describe what the data or figures demonstrate.
+5. **Context** — summarize the significance supported by the paper.
+6. **Limitations** — include the caveats listed by the authors.
+
+---
+
+TITLE RULES
+- ≤8 words.
+- Must not reuse the paper’s original title.
+- Must frame the discovery clearly and in a news tone.
+
+SUBTITLE RULES
+- Max 2 lines.
+- SEO-targeted phrasing.
+- Should express why the answer matters.
+
+---
+
+DELIVERABLE (STRICT JSON ONLY)
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+INPUT PAPER:
+{paper_text}

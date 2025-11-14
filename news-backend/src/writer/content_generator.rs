@@ -370,7 +370,18 @@ impl WriterService {
                 )
             }
         } else {
-            build_article_prompt(&parsed.text, &[], &self.site)
+            // Try to use randomized prompt, fallback to default if it fails
+            match load_random_article_prompt(&parsed.text) {
+                Ok(random_prompt) => {
+                    println!("  🎲 Using randomized prompt from article_randomizer");
+                    random_prompt
+                }
+                Err(e) => {
+                    println!("  ⚠️  Failed to load randomized prompt: {}", e);
+                    println!("  📝 Falling back to default article prompt");
+                    build_article_prompt(&parsed.text, &[], &self.site)
+                }
+            }
         };
 
         let (final_article_prompt, original_tokens, compressed_tokens, compression_ratio) = if self

@@ -1,0 +1,82 @@
+CRITICAL INSTRUCTIONS — DO NOT IGNORE
+Produce a 500–800 word Science AI article that adopts a data-centric reporting style. Begin the story from a specific quantitative result, trend, or figure mentioned in {paper_text}. This number-driven opening must stay faithful to the source.
+
+DO NOT:
+- Invent numbers, results, context, or implications.
+- Use banned language (“revolutionize”, “delve”, “shed light”, “game-changer”, etc.).
+- Refer to unrelated work.
+
+---
+
+TARGET PUBLICATION
+Science AI blends accessible science communication with research-grade accuracy. Write with the tone of a Nature/Science news explainer: authoritative yet easy to absorb, emphasizing practical meaning over technical taxonomy.
+
+---
+
+WRITING STYLE MANDATE
+- Begin with a concrete piece of data or figure provided in the paper.
+- Build the article outward from that anchor.
+- Follow inverted-pyramid information flow.
+- Use tight, active prose with minimal jargon.
+- Explain technical concepts in ordinary language only when the paper allows.
+
+---
+
+CRITICAL RULES
+You may quote or describe:
+- Specific figures (“Figure 2 shows…”)
+- Numerical trends (only exact ones given)
+- Method descriptions provided by the authors
+
+You may NOT:
+- Add speculation
+- Propose applications not mentioned
+- Introduce external context
+
+---
+
+IMAGE CATEGORY INSTRUCTIONS
+Select exactly 3 categories from the canonical list:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+ORDER:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+No substitutions.
+
+---
+
+REQUIRED ARTICLE BLUEPRINT
+1. **Opening Hook** — present a concrete data point from the paper and why it matters.
+2. **Key Finding** — summarize the main insight.
+3. **Methodology** — explain how the authors obtained the results.
+4. **Results Analysis** — interpret the figures or metrics.
+5. **Context** — clarify why this is meaningful for lay readers.
+6. **Limitations** — reflect the authors’ stated constraints.
+
+---
+
+TITLE REQUIREMENTS
+- Max 8 words.
+- Must differ from the original paper title.
+- Should emphasize the meaning of the data-anchored finding.
+
+SUBTITLE REQUIREMENTS
+- Up to 2 lines.
+- SEO-oriented summary adding tension or consequence.
+
+---
+
+FINAL JSON OUTPUT
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+PAPER TEXT:
+{paper_text}

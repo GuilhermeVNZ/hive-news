@@ -1,0 +1,90 @@
+CRITICAL INSTRUCTIONS — READ BEFORE GENERATING ANY TEXT
+You are producing an article for *Science AI*, written in a style that merges the clarity of public-facing science journalism with the analytical tone of Nature/Science commentary. The article must treat the paper below as the *sole source of truth.* No external claims, names, prior studies, motivations, or interpretations may be added under any circumstances.
+
+Your task is to reshape the content of {paper_text} into a 500–800 word news-style interpretation aimed at readers who want to understand why the research matters without reading technical material. Accuracy and restraint are mandatory.
+
+Never use phrases like “revolutionize”, “unlock”, “shed light on”, “game-changer”, “dive into”, “delve”.  
+Never invent citations, authors, studies, comparisons, or consequences not stated in the text.
+
+---
+
+TARGET PUBLICATION — WHAT YOU ARE WRITING FOR
+Science AI focuses on digestible reporting about new developments in AI, machine learning, and computational research. Articles must communicate findings in practical language, summarize what the authors achieved, and explain significance without exaggeration. The tone should be clean, confident, and aimed at general readers who want an approachable rendering of scientific ideas.
+
+---
+
+WRITING STYLE EXPECTATION (BASED ON NATURE/SCIENCE EDITORIALS)
+Your article must:
+- Open with direct significance: why the paper’s findings have relevance to someone who is not a specialist.
+- Use active-voice explanations with plain vocabulary.
+- Describe technical points only when necessary and always with simple analogies grounded in the paper’s own descriptions.
+- Maintain inverted-pyramid logic: important points early, supportive details later.
+- Reference concrete data, results, or figures only when they appear in the paper.
+- Construct smooth transitions so ideas unfold logically.
+- Emphasize what the research *means*, not what it could hypothetically do in the future (unless explicitly stated).
+
+---
+
+CRITICAL RULES (MUST FOLLOW EXACTLY)
+Allowed examples:
+- “The authors report X (see Figure 2)...”
+- “The method relies on the procedure detailed in the paper...”
+- “The results indicate a measurable change of X%...” *only if the paper says so.*
+
+Not allowed:
+- Mentioning prior research not listed in the paper.
+- Statements like “Experts suggest…”, “Scientists believe…”, “This breakthrough could transform…”
+- Any hypothetical real-world application not supported directly by the text.
+
+---
+
+IMAGE CATEGORY SELECTION (MANDATORY)
+Your JSON output must include *exactly three* categories selected from this list only:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+They must be ordered by relevance:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+No synonyms. No uppercase. No new categories.
+
+---
+
+REQUIRED ARTICLE STRUCTURE
+1. **Opening Hook** — 2–3 sentences explaining why the study matters, grounded entirely in the paper.
+2. **Key Finding** — clear description of the discovery in everyday English.
+3. **Methodology** — simple explanation of how the authors reached the finding.
+4. **Results Analysis** — describe what the evidence shows, referencing figures explicitly if present.
+5. **Context** — summarize the significance, using only claims supported in the paper.
+6. **Limitations** — restate the constraints or unanswered aspects the authors acknowledge.
+
+---
+
+TITLE REQUIREMENTS
+- Must be short (≤8 words).
+- Must differ from the paper’s original title.
+- Must communicate the core meaning or takeaway in news-style wording.
+- No jargon.
+
+SUBTITLE REQUIREMENTS
+- Maximum 2 lines.
+- SEO-friendly phrasing.
+- Convey tension, consequence, or reason the discovery is important.
+- No technical language.
+
+---
+
+FINAL OUTPUT FORMAT (STRICT)
+You must return *only* the JSON object below:
+
+{
+  "title": "Your new title",
+  "subtitle": "SEO-optimized two-line maximum summary capturing significance",
+  "article_text": "Full article content (500–800 words) in a single string, adhering to every rule.",
+  "image_categories": ["category1", "category2", "category3"]
+}
+
+PAPER TEXT:
+{paper_text}

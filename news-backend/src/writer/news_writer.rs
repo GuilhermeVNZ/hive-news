@@ -6,6 +6,7 @@ use super::file_writer::{
     save_subtitle, save_title, save_x,
 };
 use super::prompt_compressor::PromptCompressor;
+use super::prompts::load_random_news_prompt;
 use crate::models::raw_document::ArticleMetadata;
 use crate::utils::article_registry::RegistryManager;
 use crate::utils::site_config_manager::SiteConfigManager;
@@ -276,16 +277,6 @@ impl NewsWriterService {
             return Err(anyhow::anyhow!("Writer is disabled for site {}", site_id));
         }
 
-        // Get blog prompt (use custom if enabled, otherwise use default)
-        let blog_prompt = if site_config.prompt_blog_enabled.unwrap_or(false) {
-            site_config
-                .prompt_blog
-                .clone()
-                .unwrap_or_else(Self::default_blog_prompt)
-        } else {
-            Self::default_blog_prompt()
-        };
-
         // Get API configuration from site config
         let api_key = site_config
             .writer
@@ -306,7 +297,38 @@ impl NewsWriterService {
 
         // Build prompt with article JSON
         let article_json = serde_json::to_string_pretty(article)?;
-        let full_prompt = format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json);
+        
+        // Get blog prompt (use custom if enabled, otherwise try randomized, fallback to default)
+        let full_prompt = if site_config.prompt_blog_enabled.unwrap_or(false) {
+            // Use custom prompt from config
+            let blog_prompt = site_config
+                .prompt_blog
+                .clone()
+                .unwrap_or_else(Self::default_blog_prompt);
+            
+            // Replace {{paper_text}} or {paper_text} if present, otherwise append JSON
+            if blog_prompt.contains("{{paper_text}}") {
+                blog_prompt.replace("{{paper_text}}", &article_json)
+            } else if blog_prompt.contains("{paper_text}") {
+                blog_prompt.replace("{paper_text}", &article_json)
+            } else {
+                format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json)
+            }
+        } else {
+            // Try to use randomized prompt, fallback to default if it fails
+            match load_random_news_prompt(&article_json) {
+                Ok(random_prompt) => {
+                    println!("    │  🎲 Using randomized news prompt from news_randomizer");
+                    random_prompt
+                }
+                Err(e) => {
+                    println!("    │  ⚠️  Failed to load randomized prompt: {}", e);
+                    println!("    │  📝 Falling back to default blog prompt");
+                    let blog_prompt = Self::default_blog_prompt();
+                    format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json)
+                }
+            }
+        };
 
         println!("    ┌─ [SITE {}] {}", site_id, site_config.name);
         println!("    │  📝 Generating content...");

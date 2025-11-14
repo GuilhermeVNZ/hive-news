@@ -1,0 +1,152 @@
+CRITICAL INSTRUCTIONS (READ FIRST):
+1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)
+2. NEVER FABRICATE: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below
+3. ONLY USE PAPER CONTENT: Reference only what exists in the provided paper text
+4. NO AI clichés: "delve", "revolutionize", "game-changer", "unlock", "harness", "dive into", "shed light on"
+5. NO emojis, NO excessive dashes (—), NO ellipses (...)
+
+---
+
+TARGET PUBLICATION:
+AIResearch is a cutting-edge AI news platform focusing on:
+- Latest breakthroughs in artificial intelligence research
+- Practical applications of ML/deep learning
+- Industry news and expert analysis
+- News-style journalism for general readers
+- Simple titles, human-centered meaning
+- Clear explanations with analogies
+- Science-first accuracy with accessibility
+
+---
+
+WRITING STYLE:
+- Immediate significance
+- Active, direct voice
+- Inverted pyramid structure
+- Precision with data from the paper
+- Define jargon once with plain-language alternatives
+- Smooth, accessible explanations
+- No overclaims or speculation
+
+CRITICAL RULES:
+- Must reference figures only if the paper does
+- Must derive conclusions only from paper content
+- No external sources, no invented experts
+- No speculation about future impacts
+
+WHAT TO AVOID:
+- “Groundbreaking”, “paradigm shift”, etc.
+- Overly dramatic science clichés
+- Any technical exaggeration
+- Any invented background or prior work
+
+---
+
+IMAGE CATEGORY SELECTION:
+
+Must choose 3 categories from:
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Rules:
+- lowercase only
+- no new categories
+- relevance-ordered: most → second → third
+
+Examples:
+["ai", "science", "network"]
+["robotics", "ai", "hardware"]
+["security", "network", "crypto"]
+
+---
+
+REQUIRED ARTICLE STRUCTURE:
+1. Opening Hook  
+   Lead with the motivating question or real-world relevance outlined in the paper. Use the authors’ contextual framing to show why this problem matters right from the start.
+
+2. Key Finding  
+   Present the primary result in a single clear idea. Make it digestible for non-experts while remaining precise to the authors’ own language.
+
+3. Methodology  
+   Give an overview of how the research was carried out, focusing on the overall logic of the approach. Avoid technical depth; highlight intention and structure.
+
+4. Results Analysis  
+   Translate the paper’s empirical results into plain meaning. Describe what the figures, measurements, or patterns indicate, using only the explanations provided in the text.
+
+5. Context  
+   Explain the significance of the findings using the authors’ stated motivations and implications. Tie the results back to the broader issue raised in the introduction.
+
+6. Limitations  
+   Clearly summarize the limits and unresolved points acknowledged in the paper. Do not expand beyond what the authors explicitly list.
+
+---
+
+TITLE REQUIREMENTS (CRITICAL):
+***IMPORTANT RULE: Titles MUST NOT start with "AI".***  
+- Must be DIFFERENT from the original title
+- Max 8 words
+- Must be news-style, human-focused, with a hook
+- Avoid technical jargon
+- Must clearly state WHAT the finding means
+
+BAD EXAMPLES:
+"Graph Neural Networks for Spatiotemporal Dynamics"
+"Optimization in High-Dimensional Space"
+
+GOOD EXAMPLES:
+"Scientists Uncover Surprising Data Pattern"
+"Model Shows Why Predictions Go Wrong"
+"New Method Solves a Persistent Problem"
+
+---
+
+SUBTITLE REQUIREMENTS:
+- SEO friendly
+- Max 2 lines
+- Must create tension or consequence
+- No technical language
+
+GOOD SUBTITLES:
+"A new method captures real-world behavior with unexpected accuracy..."
+"Researchers challenge long-held assumptions with refined measurements..."
+"Hidden dynamics reveal new paths for analysis..."
+
+GOOD OPENING LINES:
+"A new AI method can generate fake data..."
+"Scientists discovered the universe might be younger…"
+"Cancer cells have a hidden escape route..."
+
+---
+
+## PAPER TEXT (YOUR ONLY SOURCE):
+{paper_text}
+
+---
+
+## DELIVERABLE:
+Write a 500–800 word article in Nature/Science editorial style using ONLY the information in the paper.  
+**At the end of the article, include all scientific references from the paper in standard scientific notation.**
+
+Format:
+# [Compelling Title - Not starting with AI]
+
+[Article text...]
+
+(End with references in scientific notation.)
+
+---
+
+CRITICAL JSON FORMAT:
+{
+  "title": "Your title here",
+  "subtitle": "SEO subtitle max 2 lines",
+  "article_text": "Full article ending with references",
+  "image_categories": ["category1", "category2", "category3"]
+}
+
+---
+
+TITLE REMINDER:
+- Must NOT start with AI
+- Must differ from the original
+- Max 8 words
+- Must create curiosity or tension

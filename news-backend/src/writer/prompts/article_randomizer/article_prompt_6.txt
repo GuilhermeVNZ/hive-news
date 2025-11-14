@@ -1,0 +1,161 @@
+CRITICAL INSTRUCTIONS (READ FIRST):
+1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)
+2. NEVER FABRICATE: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below
+3. ONLY USE PAPER CONTENT: Reference only what exists in the provided paper text
+4. NO AI clichés: "delve", "revolutionize", "game-changer", "unlock", "harness", "dive into", "shed light on"
+5. NO emojis, NO excessive dashes (—), NO ellipses (...)
+
+---
+
+TARGET PUBLICATION:
+AIResearch is a cutting-edge AI news platform focusing on:
+- Latest breakthroughs in artificial intelligence research
+- Practical applications of ML/deep learning
+- Industry news and expert analysis
+- News-style journalism: Complex topics explained for general audience
+- Simple titles: Focus on WHAT the discovery means, not HOW it works technically
+- Accessibility first: Make readers understand WHY it matters
+- Clear explanations: Use analogies and real-world comparisons
+- Users who want technical details can read the original paper
+- Emphasis on accuracy and scientific rigor WITH simple language
+
+---
+
+WRITING STYLE (Nature/Science Editorial - Simplified for General Audience):
+- Opening: Establish significance immediately (why non-technical readers should care)
+- Voice: Active, direct, authoritative yet conversational and accessible
+- Structure: Inverted pyramid – key findings first, details follow
+- Precision: Reference specific figures, data points, methodology FROM THE PAPER
+- Clarity: Define technical terms on first use AND use plain language alternatives
+- Flow: Smooth transitions between concepts
+- Accessibility: Every technical concept should have a simple analogy or everyday comparison
+- Purpose: Make complex science understandable so readers grasp the importance
+
+CRITICAL RULES:
+- "The researchers found X (as shown in Figure 2)..."
+- "This approach builds on the methods described in the paper..."
+- "The data shows a 23% increase..." (if paper states this)
+- DO NOT mention external work unless it's literally cited
+- DO NOT invent implications
+- DO NOT speculate
+
+WHAT TO AVOID:
+- “Groundbreaking”, “revolutionary”, “game-changing”
+- “Scientists unlocked…”
+- Any dramatic clichés
+- Any external assumptions
+- Any invented prior research
+
+---
+
+IMAGE CATEGORY SELECTION (REQUIRED):
+
+Choose exactly 3 categories from:
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+RULES:
+- lowercase only
+- only categories above allowed
+- ordered by relevance (most → least)
+
+Examples:
+["ai", "science", "network"]
+["robotics", "ai", "hardware"]
+["security", "network", "crypto"]
+
+---
+
+REQUIRED ARTICLE STRUCTURE:
+1. Opening Hook  
+   Begin by outlining why the issue examined in the paper matters for readers outside the research community. Ground the introduction exclusively in the paper’s own explanation of the topic’s relevance.
+
+2. Key Finding  
+   Present the main conclusion in a clear, compressed statement. Avoid embellishment and make the authors’ central point easily digestible.
+
+3. Methodology  
+   Provide a simple, conceptual walkthrough of how the researchers approached the study. Emphasize intention and study design rather than technical specifics.
+
+4. Results Analysis  
+   Express what the data and figures illustrate based solely on the authors’ descriptions. Convert the evidence into accessible, plain-language meaning.
+
+5. Context  
+   Relate the results back to the broader motivation and rationale presented in the paper. Highlight why the finding matters using only what the authors explicitly state.
+
+6. Limitations  
+   List the constraints and open questions described by the authors. Avoid adding any interpretation or assumptions beyond what the text includes.
+
+---
+
+TITLE REQUIREMENTS (CRITICAL):
+***TITLES MUST NOT START WITH "AI".***  
+- Must be DIFFERENT from the original paper title  
+- Max 8 words  
+- Must be news-focused, active, human-centered  
+- Must include a hook or consequence  
+- No technical jargon  
+
+BAD:
+"Graph Neural Networks for Spatiotemporal Dynamics"
+"Optimization in High-Dimensional Space"
+
+GOOD:
+"Scientists Uncover Unexpected Model Behavior"
+"New Technique Reveals Hidden Structure"
+"Why a Common Method Fails"
+
+---
+
+SUBTITLE REQUIREMENTS:
+- SEO-optimized  
+- Max 2 lines  
+- Must create tension or curiosity  
+- Must explain significance simply  
+- No jargon  
+
+GOOD:
+"A new method captures real-world behavior with surprising precision..."
+"Researchers challenge key assumptions with refined analysis..."
+"Hidden dynamics suggest a different path forward..."
+
+---
+
+GOOD OPENING LINES:
+"A new AI method can generate fake data..."
+"Scientists discovered the universe might be younger..."
+"Cancer cells have a hidden escape route..."
+
+---
+
+## PAPER TEXT (YOUR ONLY SOURCE):
+{paper_text}
+
+---
+
+## DELIVERABLE:
+Write a 500–800 word article in Nature/Science editorial style using ONLY the paper text.  
+**End the article with scientific references in standard scientific notation.**
+
+Format:
+# [Title – not starting with AI]
+
+[Article...]
+
+(References at the end in standard scientific notation.)
+
+---
+
+CRITICAL JSON FORMAT:
+{
+  "title": "Your title here",
+  "subtitle": "SEO subtitle max 2 lines",
+  "article_text": "Full article text ending with references",
+  "image_categories": ["category1", "category2", "category3"]
+}
+
+---
+
+TITLE REMINDER:
+- Must differ from original  
+- Must NOT start with AI  
+- Max 8 words  
+- Must create curiosity  

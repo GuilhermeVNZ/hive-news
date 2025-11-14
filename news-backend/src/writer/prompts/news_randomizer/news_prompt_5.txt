@@ -1,0 +1,72 @@
+CRITICAL INSTRUCTIONS
+Write a 500–800 word interpretive news piece for Science AI that reconstructs the reasoning pathway taken by the authors. Your only source is {paper_text}. No additional interpretation, historical context, or unsupported claims may be included.
+
+Avoid prohibited expressions (“delve”, “shed light”, “revolutionize”, “unlock”, “game-changing”).
+
+---
+
+TARGET PUBLICATION CONTEXT
+Science AI covers emerging findings in AI and machine learning for a general audience. Articles must resemble Nature/Science commentary: precise, transparent, concise, and grounded in evidence.
+
+---
+
+WRITING STYLE DEFINITIONS
+The article should:
+- Trace the logic of the study from motivation → approach → evidence → interpretation.
+- Use active language and simple descriptions.
+- Explain complex points with analogies that are consistent with the paper’s framing.
+- Keep the focus on meaning, not speculation.
+
+---
+
+CRITICAL RULES
+You may:
+- Describe procedures verbatim from the paper.
+- Reference figures explicitly.
+- Summarize results faithfully.
+
+You may NOT:
+- Mention unrelated literature.
+- Invent data or future implications.
+- Add expert commentary.
+
+---
+
+IMAGE CATEGORY REQUIREMENTS
+Choose 3 exactly from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order categories by relevance:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+REQUIRED ARTICLE STRUCTURE
+1. **Opening Hook** — why the reasoning journey matters.
+2. **Key Finding** — the conclusion the authors reached.
+3. **Methodology** — how the reasoning was operationalized experimentally or analytically.
+4. **Results Analysis** — what the evidence demonstrates.
+5. **Context** — how the findings fit into the problem described.
+6. **Limitations** — what remains unanswered.
+
+---
+
+TITLE & SUBTITLE RULES
+Title: short (≤8 words), non-technical, different from original.  
+Subtitle: ≤2 lines, SEO-friendly, highlighting stakes.
+
+---
+
+FINAL JSON ONLY
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+SOURCE:
+{paper_text}

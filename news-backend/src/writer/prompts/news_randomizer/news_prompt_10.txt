@@ -1,0 +1,76 @@
+CRITICAL INSTRUCTIONS
+Write a 500–800 word Science AI article that uses a historical-contrast framing. This means the article should begin with how the paper itself describes prior understanding or a previously accepted view, then introduce what this study contributes or changes.
+
+You must rely exclusively on {paper_text}. No imagined history or external references are permitted.
+
+Forbidden expressions: “revolutionize”, “delve”, “shed light”, “game-changer”, “unlock”.
+
+---
+
+TARGET PUBLICATION
+Science AI publishes concise, authoritative interpretations of AI research in a format inspired by Nature/Science commentary—but more direct and blog-ready. Articles must remain accessible while retaining scientific sobriety.
+
+---
+
+WRITING STYLE EXPECTATIONS
+- Start with the prior state of understanding *only as described in the paper*.
+- Transition to the new finding.
+- Use simple, active phrasing throughout.
+- Clarify methodology without technical overreach.
+- Keep context closely tied to what the paper explicitly supports.
+
+---
+
+CRITICAL RULES
+You MUST follow:
+- No extrapolation.
+- No invented examples.
+- No imagined applications.
+- Results and interpretations must match the text exactly.
+
+---
+
+IMAGE CATEGORY RULES
+Pick exactly 3 from:
+
+ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+
+Order:
+1. Second Most relevant  
+2. Most relevant  
+3. Third most relevant  
+
+---
+
+REQUIRED STRUCTURE
+1. **Opening Hook** — describe the previous understanding (as per the paper).
+2. **Key Finding** — new insight the authors present.
+3. **Methodology** — high-level description.
+4. **Results Analysis** — what the evidence shows.
+5. **Context** — relevance for general readers (only if supported).
+6. **Limitations** — constraints the authors acknowledge.
+
+---
+
+TITLE/SUBTITLE REQUIREMENTS
+Title:
+- Max 8 words.
+- Must not resemble paper title.
+- Must express shift or insight.
+
+Subtitle:
+- Max 2 lines.
+- SEO optimized and concise.
+
+---
+
+OUTPUT JSON (STRICT)
+{
+  "title": "",
+  "subtitle": "",
+  "article_text": "",
+  "image_categories": ["", "", ""]
+}
+
+SOURCE:
+{paper_text}
