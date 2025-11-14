@@ -46,7 +46,7 @@ services:
   dashboard:
     environment:
       NEWS_BASE_DIR: /data
-      VITE_API_URL: http://backend:3005
+      VITE_API_URL: https://backend.scienceai.news
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -65,7 +65,7 @@ services:
   airesearch:
     environment:
       NEWS_BASE_DIR: /data
-      BACKEND_URL: http://backend:3005
+      BACKEND_URL: https://backend.scienceai.news
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
@@ -85,7 +85,7 @@ services:
   scienceai:
     environment:
       NEWS_BASE_DIR: /data
-      VITE_API_URL: http://backend:3005
+      VITE_API_URL: https://backend.scienceai.news
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro

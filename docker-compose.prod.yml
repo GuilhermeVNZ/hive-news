@@ -21,6 +21,8 @@ services:
       dockerfile: docker/frontend.Dockerfile
       args:
         APP_DIR: apps/frontend-next/scienceai
+    environment:
+      VITE_API_URL: https://backend.scienceai.news
     depends_on:
       - backend
     ports:
@@ -35,7 +37,7 @@ services:
         APP_DIR: apps/frontend-next/airesearch
         NPM_CI_FLAGS: --legacy-peer-deps
     environment:
-      BACKEND_URL: http://backend:3005
+      BACKEND_URL: https://backend.scienceai.news
     depends_on:
       - backend
     ports:
@@ -48,6 +50,8 @@ services:
       dockerfile: docker/frontend.Dockerfile
       args:
         APP_DIR: news-dashboard
+    environment:
+      VITE_API_URL: https://backend.scienceai.news
     depends_on:
       - backend
     ports:
