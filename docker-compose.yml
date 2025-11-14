@@ -75,7 +75,7 @@ services:
       context: .
       dockerfile: docker/frontend.next.Dockerfile
       args:
-        APP_DIR: apps/frontend-next/AIResearch
+        APP_DIR: apps/frontend-next/airesearch
     depends_on:
       - backend
     ports:

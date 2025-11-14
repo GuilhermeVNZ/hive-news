@@ -46,7 +46,7 @@ cd /opt/news-system/news-backend
 cargo build --release
 
 # Frontend
-cd /opt/news-system/apps/frontend-next/AIResearch
+cd /opt/news-system/apps/frontend-next/airesearch
 npm install
 npm run build
 ```

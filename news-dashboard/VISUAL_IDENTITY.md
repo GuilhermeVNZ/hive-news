@@ -2,7 +2,7 @@
 
 ## Inspiração
 
-A identidade visual do dashboard é inspirada no portal **AIResearch** (`apps/frontend-next/AIResearch`), mantendo consistência visual e experiência de usuário.
+A identidade visual do dashboard é inspirada no portal **AIResearch** (`apps/frontend-next/airesearch`), mantendo consistência visual e experiência de usuário.
 
 ## Paleta de Cores
 

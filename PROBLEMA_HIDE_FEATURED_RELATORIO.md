@@ -365,7 +365,7 @@ pub fn save(&self) -> Result<()> {
 
 ### 4. AIResearch Frontend - route.ts
 
-**Localização:** `News-main/apps/frontend-next/AIResearch/app/api/articles/route.ts`
+**Localização:** `News-main/apps/frontend-next/airesearch/app/api/articles/route.ts`
 
 #### Lendo o registry:
 
@@ -644,7 +644,7 @@ Hidden: False
 - `News-main/news-dashboard/src/pages/Logs.tsx` - Frontend do dashboard
 - `News-main/news-backend/src/routes/logs.rs` - Endpoints do backend
 - `News-main/news-backend/src/utils/article_registry.rs` - RegistryManager
-- `News-main/apps/frontend-next/AIResearch/app/api/articles/route.ts` - API do AIResearch
+- `News-main/apps/frontend-next/airesearch/app/api/articles/route.ts` - API do AIResearch
 - `News-main/articles_registry.json` - Arquivo de registry
 
 ---

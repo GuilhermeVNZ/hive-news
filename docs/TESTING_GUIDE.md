@@ -86,7 +86,7 @@ npm test
 
 #### AIResearch (Next.js)
 ```bash
-cd News-main/apps/frontend-next/AIResearch
+cd News-main/apps/frontend-next/airesearch
 npm run type-check
 npm run lint
 npm test

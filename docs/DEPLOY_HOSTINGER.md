@@ -87,7 +87,7 @@ cargo build --release
 ### 6. Build Frontend
 
 ```bash
-cd /opt/news-system/apps/frontend-next/AIResearch
+cd /opt/news-system/apps/frontend-next/airesearch
 npm install
 npm run build
 ```
@@ -147,7 +147,7 @@ server {
     listen 80;
     server_name airesearch.news www.airesearch.news;
 
-    root /opt/news-system/apps/frontend-next/AIResearch/.next/standalone;
+    root /opt/news-system/apps/frontend-next/airesearch/.next/standalone;
     
     # Next.js estático (se usar export)
     # OU para server mode:
@@ -230,7 +230,7 @@ cargo build --release
 
 # Atualizar frontend
 echo "🏗️  Building frontend..."
-cd ../apps/frontend-next/AIResearch
+cd ../apps/frontend-next/airesearch
 npm install
 npm run build
 
@@ -478,7 +478,7 @@ crontab -e
 rustup update
 
 # Atualizar Node.js packages
-cd /opt/news-system/apps/frontend-next/AIResearch
+cd /opt/news-system/apps/frontend-next/airesearch
 npm update
 
 # Rebuild após atualizações

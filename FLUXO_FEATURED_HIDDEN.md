@@ -189,7 +189,7 @@ pub fn set_hidden(&self, article_id: &str, hidden: bool) -> Result<()> {
 
 ## 🔍 COMO O AIRESEARCH LÊ
 
-**Arquivo:** `News-main/apps/frontend-next/AIResearch/app/api/articles/route.ts`
+**Arquivo:** `News-main/apps/frontend-next/airesearch/app/api/articles/route.ts`
 
 **Linha ~156:** Lê o `articles_registry.json`:
 ```typescript
@@ -289,7 +289,7 @@ if (registry.articles) {
 | **Atualização Hidden** | `news-backend/src/utils/article_registry.rs` | `RegistryManager.set_hidden()` | ~512 |
 | **Salvamento** | `news-backend/src/utils/article_registry.rs` | `ArticleRegistry.save()` | ~223 |
 | **Arquivo Final** | `articles_registry.json` | - | - |
-| **Leitura AIResearch** | `apps/frontend-next/AIResearch/app/api/articles/route.ts` | `readArticles()` | ~100 |
+| **Leitura AIResearch** | `apps/frontend-next/airesearch/app/api/articles/route.ts` | `readArticles()` | ~100 |
 
 ---
 
@@ -305,7 +305,7 @@ if (registry.articles) {
 - `G:\Hive-Hub\News-main\articles_registry.json`
 
 **Arquivo que lê para exibir:**
-- `News-main/apps/frontend-next/AIResearch/app/api/articles/route.ts`
+- `News-main/apps/frontend-next/airesearch/app/api/articles/route.ts`
   - Função `readArticles()` → lê `articles_registry.json` e cruza com filesystem
 
 

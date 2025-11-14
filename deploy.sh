@@ -6,7 +6,7 @@ set -e  # Parar em caso de erro
 
 PROJECT_DIR="/opt/news-system"
 BACKEND_DIR="$PROJECT_DIR/news-backend"
-FRONTEND_DIR="$PROJECT_DIR/apps/frontend-next/AIResearch"
+FRONTEND_DIR="$PROJECT_DIR/apps/frontend-next/airesearch"
 
 echo "🚀 Starting deployment..."
 echo "====================================="

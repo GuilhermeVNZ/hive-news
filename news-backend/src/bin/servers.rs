@@ -225,7 +225,7 @@ fn start_news_dashboard() {
 }
 
 fn start_airesearch() {
-    let airesearch_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/AIResearch");
+    let airesearch_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/airesearch");
 
     if !airesearch_dir.exists() {
         println!(
@@ -237,7 +237,7 @@ fn start_airesearch() {
 
     // Iniciar em nova janela PowerShell
     let cmd = format!(
-        "cd G:\\Hive-Hub\\News-main\\apps\\frontend-next\\AIResearch; Write-Host 'AIResearch (Port 3003)' -ForegroundColor Cyan; npm run dev"
+        "cd G:\\Hive-Hub\\News-main\\apps\\frontend-next\\airesearch; Write-Host 'AIResearch (Port 3003)' -ForegroundColor Cyan; npm run dev"
     );
 
     let output = Command::new("powershell")
