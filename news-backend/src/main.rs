@@ -810,25 +810,50 @@ async fn main() -> anyhow::Result<()> {
                 let file_path = date_dir.join(format!("{}.pdf", article.id));
 
                 // Verificar se já foi processado usando registry
-                let is_registered = registry.is_article_registered(&article.id);
-                if is_registered {
-                    // Mostrar sempre detalhes quando encontra duplicado
+                // Só pular se o artigo já foi publicado (não precisa re-baixar)
+                // Artigos rejeitados ou apenas coletados podem ser re-baixados se necessário
+                let metadata = registry.get_metadata(&article.id);
+                if let Some(meta) = metadata {
+                    // Só pular se já foi publicado
+                    if meta.status == crate::utils::article_registry::ArticleStatus::Published {
+                        println!(
+                            "  [{}/{}]: ⏭️  SKIPPED (already published): {}",
+                            downloaded_count + 1,
+                            target_count,
+                            article.id
+                        );
+                        println!("      📄 Title: {}", article.title);
+                        println!("      📊 Status: {:?}", meta.status);
+                        if let Some(output_dir) = &meta.output_dir {
+                            println!("      📁 Output dir: {}", output_dir.display());
+                        }
+                        println!("      ℹ️  Article already published, skipping download");
+                        continue;
+                    }
+                    // Se foi rejeitado ou apenas coletado, permitir re-download se o arquivo não existir
+                    let file_exists = file_path.exists();
+                    if file_exists {
+                        println!(
+                            "  [{}/{}]: ⏭️  SKIPPED (file exists): {}",
+                            downloaded_count + 1,
+                            target_count,
+                            article.id
+                        );
+                        println!("      📄 Title: {}", article.title);
+                        println!("      📊 Status: {:?}", meta.status);
+                        println!("      ℹ️  PDF file already exists, skipping download");
+                        continue;
+                    }
+                    // Se o arquivo não existe mas está no registry, permitir re-download
                     println!(
-                        "  [{}/{}]: ⏭️  SKIPPED (duplicate): {}",
+                        "  [{}/{}]: 🔄 RE-DOWNLOADING (file missing): {}",
                         downloaded_count + 1,
                         target_count,
                         article.id
                     );
                     println!("      📄 Title: {}", article.title);
-                    let metadata = registry.get_metadata(&article.id);
-                    if let Some(meta) = metadata {
-                        println!("      📊 Status: {:?}", meta.status);
-                        if let Some(output_dir) = &meta.output_dir {
-                            println!("      📁 Output dir: {}", output_dir.display());
-                        }
-                    }
-                    println!("      ℹ️  Article already in registry, skipping download");
-                    continue;
+                    println!("      📊 Status: {:?}", meta.status);
+                    println!("      ℹ️  Article in registry but PDF missing, re-downloading");
                 }
 
                 found_new_in_batch = true;
