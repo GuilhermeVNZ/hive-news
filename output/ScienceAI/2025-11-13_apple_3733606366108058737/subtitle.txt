@@ -1,0 +1,1 @@
+New self-supervised learning approach dramatically cuts computational costs while maintaining competitive image quality across multiple benchmarks.

@@ -1,0 +1,1 @@
+Apple's new ExpertLens research reveals how to peer inside AI brains. The activation steering method makes neural networks interpretable, matching human concept alignment. #AI #MachineLearning #NeurIPS2025

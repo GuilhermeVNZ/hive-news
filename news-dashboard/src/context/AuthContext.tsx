@@ -17,9 +17,47 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_URL =
-  import.meta.env.VITE_API_URL ||
-  (typeof window !== 'undefined' ? window.location.origin : '');
+const API_URL = (() => {
+  const normalize = (value: string) => value.replace(/\/$/, '');
+  const envValue = import.meta.env.VITE_API_URL?.trim();
+
+  if (typeof window === 'undefined') {
+    return envValue ? normalize(envValue) : 'http://localhost:3005';
+  }
+
+  const { origin, hostname } = window.location;
+
+  if (envValue) {
+    try {
+      const resolved = new URL(envValue, origin);
+      const envHost = resolved.hostname;
+
+      if (
+        envHost === 'backend' ||
+        envHost.endsWith('.docker') ||
+        (envHost.includes('backend') && envHost !== hostname)
+      ) {
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
+          return 'http://localhost:3005';
+        }
+        return origin;
+      }
+
+      return normalize(resolved.origin);
+    } catch {
+      if (envValue.startsWith('/')) {
+        return normalize(`${origin}${envValue}`);
+      }
+      return normalize(envValue);
+    }
+  }
+
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:3005';
+  }
+
+  return normalize(origin);
+})();
 
 // Configure axios defaults
 axios.defaults.baseURL = API_URL;
@@ -107,6 +145,8 @@ export function useAuth() {
   }
   return context;
 }
+
+
 
 
 

@@ -1,0 +1,1 @@
+A new method combines expert knowledge with real data to help AI systems include emerging illnesses like COVID-19 in symptom checks without losing accuracy on other conditions.

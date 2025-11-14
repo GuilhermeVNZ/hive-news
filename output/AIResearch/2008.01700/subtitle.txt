@@ -1,0 +1,1 @@
+A new graphical interface lets non-programmers train AI agents for decision-making, potentially expanding applications in healthcare and transportation without coding skills.

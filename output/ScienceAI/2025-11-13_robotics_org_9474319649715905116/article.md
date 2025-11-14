@@ -1,0 +1,13 @@
+Apera AI has been recognized as one of Canada's fastest-growing technology companies, ranking 10th on Deloitte's 2025 Technology Fast 50 list with an extraordinary 5,264% revenue growth over four years. The Vancouver-based company's AI-powered 4D Vision technology is transforming industrial robotics, enabling manufacturers to achieve unprecedented automation capabilities.
+
+The recognition comes as Apera AI announces plans to expand its team by 50 new hires and open a new office in Metro Detroit, positioning the company to better serve major automotive manufacturers and industrial clients. CEO Sina Afrooze stated that the Deloitte award validates the company's mission to build smarter, more resilient manufacturing operations through advanced robotic vision systems.
+
+Apera's breakthrough technology represents a significant leap beyond traditional 3D vision systems. The company's patented 4D Vision platform incorporates artificial intelligence to understand motion and depth over time, delivering up to 10 times faster vision processing with greater than 99.9% reliability in object recognition and task completion.
+
+The company's product suite—comprising Apera Vue, Apera Forge, and Apera VuePort—enables manufacturers to simulate, deploy, and optimize robotic vision systems with unmatched precision. This technology is currently deployed across North America's top six automotive OEMs and their Tier 1 suppliers, as well as manufacturers in electronics, appliances, and general industrial sectors.
+
+Brendan Cooper, National Technology Fast 50 program co-leader at Deloitte Canada, emphasized that the 2025 winners demonstrate Canada's "limitless potential in technology and innovation." The recognition follows Apera AI's recent receipt of the 2025 Frost & Sullivan Technology Innovation Leader Award for the global robotic automation software industry.
+
+Apera AI's growth trajectory reflects the accelerating adoption of intelligent automation in manufacturing. The company's technology reduces deployment time from months to days and can deliver ROI in as little as 60 days on existing robotic systems, addressing critical pain points for manufacturers facing labor shortages and efficiency challenges.
+
+The expansion into Detroit strategically positions Apera AI at the heart of North American automotive manufacturing, where the demand for advanced automation solutions continues to surge as companies seek to maintain competitive advantage through technological innovation.

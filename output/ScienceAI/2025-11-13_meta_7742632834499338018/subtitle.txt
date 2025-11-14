@@ -1,0 +1,1 @@
+Instituto PROA leverages Llama 3.1 and Oracle infrastructure to automate job research, cutting report time from 30 minutes to 5 minutes while serving 35,000 students annually.

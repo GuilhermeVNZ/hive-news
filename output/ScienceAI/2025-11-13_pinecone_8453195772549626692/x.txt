@@ -1,0 +1,1 @@
+Pinecone just dropped game-changing bulk metadata operations! Update, Delete, and Fetch by Metadata now available - no more collecting record IDs first. Massive for AI scaling. #VectorDatabase #AI #Database #Tech

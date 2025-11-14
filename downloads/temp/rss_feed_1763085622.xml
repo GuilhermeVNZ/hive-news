@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Quantum Computing Report</title>
+	<atom:link href="https://quantumcomputingreport.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://quantumcomputingreport.com/</link>
+	<description>Where Qubits Entangle with Commerce</description>
+	<lastBuildDate>Fri, 14 Nov 2025 01:34:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<item>
+		<title>Haiqu Demonstrates High-Dimensional Quantum Embedding for Anomaly Detection on IBM Quantum Heron</title>
+		<link>https://quantumcomputingreport.com/haiqu-demonstrates-high-dimensional-quantum-embedding-for-anomaly-detection-on-ibm-quantum-heron/</link>
+					<comments>https://quantumcomputingreport.com/haiqu-demonstrates-high-dimensional-quantum-embedding-for-anomaly-detection-on-ibm-quantum-heron/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Fri, 14 Nov 2025 01:34:34 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=38028</guid>
+
+					<description><![CDATA[<p>Haiqu, a quantum software company, has demonstrated a proprietary technique for efficiently encoding complex, high-dimensional data onto quantum processors, achieving performance gains in anomaly detection. The work was executed over the cloud on an IBM Quantum Heron processor. The core innovation is a novel data encoding solution that addresses the dimensionality gap: the inability of  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/haiqu-demonstrates-high-dimensional-quantum-embedding-for-anomaly-detection-on-ibm-quantum-heron/">Haiqu Demonstrates High-Dimensional Quantum Embedding for Anomaly Detection on IBM Quantum Heron</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/haiqu-demonstrates-high-dimensional-quantum-embedding-for-anomaly-detection-on-ibm-quantum-heron/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>IQM Launches Halocene Product Line to Scale Quantum Error Correction Research</title>
+		<link>https://quantumcomputingreport.com/iqm-launches-halocene-product-line-to-scale-quantum-error-correction-research/</link>
+					<comments>https://quantumcomputingreport.com/iqm-launches-halocene-product-line-to-scale-quantum-error-correction-research/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Thu, 13 Nov 2025 18:06:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=38021</guid>
+
+					<description><![CDATA[<p>IQM Quantum Computers, a global leader in superconducting quantum computers, has announced the launch of its new product line, IQM Halocene. This line consists of open and modular on-premises quantum computers designed to accelerate quantum error correction (QEC) research. The first release of IQM Halocene will be a 150-qubit quantum computer, commercially available by the  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/iqm-launches-halocene-product-line-to-scale-quantum-error-correction-research/">IQM Launches Halocene Product Line to Scale Quantum Error Correction Research</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/iqm-launches-halocene-product-line-to-scale-quantum-error-correction-research/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Microsoft Opens Largest Quantum Lab Globally in Denmark to Advance Topological Qubit Fabrication</title>
+		<link>https://quantumcomputingreport.com/microsoft-opens-largest-quantum-lab-globally-in-denmark-to-advance-topological-qubit-fabrication/</link>
+					<comments>https://quantumcomputingreport.com/microsoft-opens-largest-quantum-lab-globally-in-denmark-to-advance-topological-qubit-fabrication/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Thu, 13 Nov 2025 17:24:41 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=38011</guid>
+
+					<description><![CDATA[<p>Microsoft has announced the expansion of its Quantum facility in Lyngby, Denmark, establishing the company’s largest quantum site globally. The total investment in Denmark’s quantum infrastructure has surpassed DKK 1 billion ($156 million USD). The facility is dedicated to accelerating the development of scalable, fault-tolerant quantum computing technology. The new state-of-the-art lab will advance the  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/microsoft-opens-largest-quantum-lab-globally-in-denmark-to-advance-topological-qubit-fabrication/">Microsoft Opens Largest Quantum Lab Globally in Denmark to Advance Topological Qubit Fabrication</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/microsoft-opens-largest-quantum-lab-globally-in-denmark-to-advance-topological-qubit-fabrication/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Q-CTRL Integrates Fire Opal with RIKEN’s IBM Quantum System Two for Hybrid HPC Workflows</title>
+		<link>https://quantumcomputingreport.com/q-ctrl-integrates-fire-opal-with-rikens-ibm-quantum-system-two-for-hybrid-hpc-workflows/</link>
+					<comments>https://quantumcomputingreport.com/q-ctrl-integrates-fire-opal-with-rikens-ibm-quantum-system-two-for-hybrid-hpc-workflows/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Wed, 12 Nov 2025 17:24:18 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=38000</guid>
+
+					<description><![CDATA[<p>Q-CTRL, a quantum infrastructure software company, and RIKEN, a national research institute in Japan, have announced the integration of Q-CTRL's performance management software, Fire Opal, with RIKEN's IBM Quantum System Two. The system is deployed within the RIKEN Center for Computational Science, which is co-located with Japan's flagship supercomputer, Fugaku. The integration is part of  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/q-ctrl-integrates-fire-opal-with-rikens-ibm-quantum-system-two-for-hybrid-hpc-workflows/">Q-CTRL Integrates Fire Opal with RIKEN’s IBM Quantum System Two for Hybrid HPC Workflows</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/q-ctrl-integrates-fire-opal-with-rikens-ibm-quantum-system-two-for-hybrid-hpc-workflows/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>IBM Advances Quantum Roadmap with Nighthawk Processor and 300mm Wafer Fabrication Shift</title>
+		<link>https://quantumcomputingreport.com/ibm-advances-quantum-roadmap-with-nighthawk-processor-and-300mm-wafer-fabrication-shift/</link>
+					<comments>https://quantumcomputingreport.com/ibm-advances-quantum-roadmap-with-nighthawk-processor-and-300mm-wafer-fabrication-shift/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Wed, 12 Nov 2025 11:00:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37979</guid>
+
+					<description><![CDATA[<p>IBM (NYSE: IBM) has announced significant progress across its quantum roadmap, including the debut of the IBM Quantum Nighthawk processor and a shift in quantum processor fabrication to a 300mm wafer facility. The company is advancing both its roadmap toward achieving quantum advantage by the end of 2026 and Fault-Tolerant Quantum Computing (FTQC) by 2029.  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/ibm-advances-quantum-roadmap-with-nighthawk-processor-and-300mm-wafer-fabrication-shift/">IBM Advances Quantum Roadmap with Nighthawk Processor and 300mm Wafer Fabrication Shift</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/ibm-advances-quantum-roadmap-with-nighthawk-processor-and-300mm-wafer-fabrication-shift/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Rigetti Computing Reports on Its Q3 2025 Financial Results; Unveils Aggressive Qubit Roadmap to 1,000+ Qubits</title>
+		<link>https://quantumcomputingreport.com/rigetti-computing-reports-on-its-q3-2025-financial-results-unveils-aggressive-qubit-roadmap-to-1000-qubits/</link>
+					<comments>https://quantumcomputingreport.com/rigetti-computing-reports-on-its-q3-2025-financial-results-unveils-aggressive-qubit-roadmap-to-1000-qubits/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Wed, 12 Nov 2025 04:18:27 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37989</guid>
+
+					<description><![CDATA[<p>Rigetti Computing has announced its Q3 2025 financial results, demonstrating solid sequential growth in revenue, increasing commercial system orders, and unveiling an accelerated technology roadmap targeting 1,000+ qubits by 2027. The table below summarizes key GAAP financial metrics for Q3 2025, with comparisons to the prior quarter (Q2 2025) and the year-ago quarter (Q3 2024).  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/rigetti-computing-reports-on-its-q3-2025-financial-results-unveils-aggressive-qubit-roadmap-to-1000-qubits/">Rigetti Computing Reports on Its Q3 2025 Financial Results; Unveils Aggressive Qubit Roadmap to 1,000+ Qubits</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/rigetti-computing-reports-on-its-q3-2025-financial-results-unveils-aggressive-qubit-roadmap-to-1000-qubits/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>University of Basel Spinout YQuantum Secures CHF 150,000 ($187K USD) for Miniaturized Cryogenic Hardware</title>
+		<link>https://quantumcomputingreport.com/university-of-basel-spinout-yquantum-secures-chf-150000-187k-usd-for-miniaturized-cryogenic-hardware/</link>
+					<comments>https://quantumcomputingreport.com/university-of-basel-spinout-yquantum-secures-chf-150000-187k-usd-for-miniaturized-cryogenic-hardware/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Wed, 12 Nov 2025 03:43:44 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37985</guid>
+
+					<description><![CDATA[<p>YQuantum, a Swiss quantum hardware startup, has received CHF 150,000 ($187K USD) in seed funding from the Venture Kick initiative. The company, founded by physicists from the University of Basel, is developing miniaturized, high-performance cryogenic hardware components to address the scalability bottleneck in quantum computing systems. The startup's specialized components are designed to enable high-fidelity  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/university-of-basel-spinout-yquantum-secures-chf-150000-187k-usd-for-miniaturized-cryogenic-hardware/">University of Basel Spinout YQuantum Secures CHF 150,000 ($187K USD) for Miniaturized Cryogenic Hardware</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/university-of-basel-spinout-yquantum-secures-chf-150000-187k-usd-for-miniaturized-cryogenic-hardware/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>BTQ Exercises Option to Acquire QPerfect for Creating an Integrated Neutral Atom Quantum Company</title>
+		<link>https://quantumcomputingreport.com/btq-technologies-acquires-qperfect-to-integrate-neutral-atom-computing-and-post-quantum-cryptography/</link>
+					<comments>https://quantumcomputingreport.com/btq-technologies-acquires-qperfect-to-integrate-neutral-atom-computing-and-post-quantum-cryptography/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Tue, 11 Nov 2025 12:30:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37889</guid>
+
+					<description><![CDATA[<p>In a move to create a vertically integrated quantum technology provider, BTQ Technologies Corp. (Nasdaq: BTQ) has exercised its option to acquire QPerfect SA, a neutral atom quantum computing company based in Strasbourg, France. The deal follows a strategic investment of €2 million for a minority stake and is expected to close in January 2026,  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/btq-technologies-acquires-qperfect-to-integrate-neutral-atom-computing-and-post-quantum-cryptography/">BTQ Exercises Option to Acquire QPerfect for Creating an Integrated Neutral Atom Quantum Company</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/btq-technologies-acquires-qperfect-to-integrate-neutral-atom-computing-and-post-quantum-cryptography/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Novo Holdings Reports €100M ($145.5M USD) in Quantum Investments, Outlines Portfolio Strategy</title>
+		<link>https://quantumcomputingreport.com/novo-holdings-reports-e100-million-in-quantum-investments-outlines-portfolio-strategy/</link>
+					<comments>https://quantumcomputingreport.com/novo-holdings-reports-e100-million-in-quantum-investments-outlines-portfolio-strategy/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Tue, 11 Nov 2025 06:29:03 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37961</guid>
+
+					<description><![CDATA[<p>Novo Holdings, the investment company of the Novo Nordisk Foundation, has published its Quantum Investments Annual Review 2025, reporting that its portfolio has reached approximately €100 million ($145.5 million USD) in investments since launching its dedicated quantum team in 2024. This marks a first-year achievement toward the company's broader DKK 1.4 billion (€188 million) ($217.1  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/novo-holdings-reports-e100-million-in-quantum-investments-outlines-portfolio-strategy/">Novo Holdings Reports €100M ($145.5M USD) in Quantum Investments, Outlines Portfolio Strategy</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/novo-holdings-reports-e100-million-in-quantum-investments-outlines-portfolio-strategy/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Equal1 to Deploy Bell-1 Hybrid Quantum Computer at ESA’s Φ-lab for Earth Observation</title>
+		<link>https://quantumcomputingreport.com/equal1-to-deploy-bell-1-hybrid-quantum-computer-at-esas-%cf%86-lab-for-earth-observation/</link>
+					<comments>https://quantumcomputingreport.com/equal1-to-deploy-bell-1-hybrid-quantum-computer-at-esas-%cf%86-lab-for-earth-observation/#respond</comments>
+		
+		<dc:creator><![CDATA[Mohamed Abdel-Kareem]]></dc:creator>
+		<pubDate>Mon, 10 Nov 2025 17:47:05 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://quantumcomputingreport.com/?p=37967</guid>
+
+					<description><![CDATA[<p>Equal1, a quantum computing company specializing in silicon spin qubits, has been selected by the European Space Agency (ESA) to install its Bell-1 Hybrid Quantum Computing (HQC) System at ESA’s Φ-lab. This partnership, part of the Quantum Computing for Earth Observation (QC4EO) initiative, is a step toward integrating quantum processors into ESA’s High Performance Compute  [...]</p>
+<p>The post <a href="https://quantumcomputingreport.com/equal1-to-deploy-bell-1-hybrid-quantum-computer-at-esas-%cf%86-lab-for-earth-observation/">Equal1 to Deploy Bell-1 Hybrid Quantum Computer at ESA’s Φ-lab for Earth Observation</a> appeared first on <a href="https://quantumcomputingreport.com">Quantum Computing Report</a>.</p>
+]]></description>
+		
+					<wfw:commentRss>https://quantumcomputingreport.com/equal1-to-deploy-bell-1-hybrid-quantum-computer-at-esas-%cf%86-lab-for-earth-observation/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

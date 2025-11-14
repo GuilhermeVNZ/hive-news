@@ -1,0 +1,1 @@
+AI systems unintentionally hide their weaknesses by selecting data they already handle well, creating misleading narratives of their capabilities. New machine-guided human-initiated learning gives humans control over data selection, improving AI reliability by 30%. Could this approach prevent dangerous AI errors in healthcare and autonomous systems?

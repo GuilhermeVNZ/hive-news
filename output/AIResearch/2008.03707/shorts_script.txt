@@ -1,0 +1,13 @@
+[VOICEOVER 0:00-0:05] What if AI could make decisions that are both highly effective AND reliably predictable? [VISUAL DIRECTION] Animated text: "AI: Effective + Predictable?" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] Most AI systems today focus only on maximizing rewards, but real-world applications demand stability too. [VISUAL DIRECTION] Show financial market charts fluctuating wildly, then autonomous vehicle navigating busy streets
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn to optimize both performance AND reduce variability simultaneously? [VISUAL DIRECTION] Split screen showing traditional AI vs new approach, with question marks over both
+
+[VOICEOVER 0:40-1:00] They discovered reinforcement learning that incorporates sensitivity analysis, allowing AI to examine how outcomes change with different decisions. [VISUAL DIRECTION] Show Figure 2 with zoom on distribution peaks becoming more stable over time
+
+[VOICEOVER 1:00-1:30] The AI repeatedly improves its strategy, seeking reliable patterns rather than just chasing the highest possible rewards. [VISUAL DIRECTION] Animated flowchart showing decision paths becoming more consistent with each iteration
+
+[VOICEOVER 1:30-1:50] This means financial algorithms can achieve better returns with less risk, autonomous vehicles make safer navigation decisions, and energy systems handle renewable fluctuations more effectively. [VISUAL DIRECTION] Fast cuts between financial dashboard, vehicle navigation system, and renewable energy grid
+
+[VOICEOVER 1:50-2:00] The future of AI isn't just about being smart - it's about being trustworthy. [VISUAL DIRECTION] Final text overlay: "Reliable AI = Real-World Ready"

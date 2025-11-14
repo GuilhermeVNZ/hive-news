@@ -1,0 +1,1 @@
+Quantum annealing system now operational at Davidson Technologies to tackle national security challenges beyond classical computing limits

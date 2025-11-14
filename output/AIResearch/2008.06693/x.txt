@@ -1,0 +1,1 @@
+AI's biggest problem? It can't explain itself. New research shows transparent design and post-hoc methods are making AI decisions interpretable in critical applications from medical diagnosis to autonomous driving.

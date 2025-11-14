@@ -1,0 +1,1 @@
+Fast.ai's open-source platform eliminates JSON conflicts and execution count issues that have plagued data scientists for years

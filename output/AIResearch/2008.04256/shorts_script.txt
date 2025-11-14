@@ -1,0 +1,41 @@
+[VOICEOVER 0:00-0:05]
+What if I told you that even the most advanced AI systems can't always choose what they know is best?
+
+[VISUAL DIRECTION]
+Animated text: "AI CAN'T CHOOSE WHAT'S BEST" with question mark pulsing
+
+[VOICEOVER 0:05-0:20]
+This isn't science fiction - it's a fundamental mathematical limitation discovered by researchers analyzing a classic philosophical puzzle that's divided scientists for over 50 years.
+
+[VISUAL DIRECTION]
+Show paper title "Purely Bayesian counterfactuals versus Newcomb's paradox" with author affiliation EPFL
+
+[VOICEOVER 0:20-0:40]
+The research tackles Newcomb's paradox, where a player faces a predictor who's already anticipated their choice. Should you take one box with a potential big reward, or two boxes with guaranteed smaller rewards?
+
+[VISUAL DIRECTION]
+Animated diagram showing two boxes with question marks, one labeled "Predicted choice" and the other "Guaranteed reward"
+
+[VOICEOVER 0:40-1:00]
+The key finding: No decision system can guarantee what researchers call "counterfactual optimization" - always choosing the option that would yield the best outcome if selected.
+
+[VISUAL DIRECTION]
+Text overlay: "THEOREM 1: Counterfactual optimization impossible" with mathematical symbols fading in
+
+[VOICEOVER 1:00-1:30]
+The breakthrough comes from separating the entity into "Emma" - the knowledge system using pure Bayesian reasoning, and "Dan" - the decision system. Emma must have uncertainty about Dan's choices; if she knew them perfectly, counterfactual reasoning becomes meaningless.
+
+[VISUAL DIRECTION]
+Split screen showing "Emma: Epistemic System" and "Dan: Decision System" with arrows showing uncertainty between them
+
+[VOICEOVER 1:30-1:50]
+This has real-world implications: Social media algorithms that track our behavior could potentially predict our decisions better than we can ourselves, creating situations where our best individual choices don't align with what would be optimal.
+
+[VISUAL DIRECTION]
+Show social media icons with data streams flowing into prediction algorithms
+
+[VOICEOVER 1:50-2:00]
+So the next time you face a tough decision, remember: even perfect reasoning can lead to knowingly poor choices when knowledge and action are separate systems.
+
+[VISUAL DIRECTION]
+Final text: "PERFECT REASONING ≠ PERFECT CHOICES" with paper citation

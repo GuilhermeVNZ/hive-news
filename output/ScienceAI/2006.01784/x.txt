@@ -1,0 +1,1 @@
+Industrial symbiosis networks often collapse due to unfair resource distribution. New Nature research solves this using game theory to create stable, incentivized cooperation that prevents defection while maintaining economic rationality.

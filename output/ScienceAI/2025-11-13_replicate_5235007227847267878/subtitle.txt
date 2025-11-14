@@ -1,0 +1,1 @@
+Comprehensive testing of six leading AI image editing models shows significant performance differences across key tasks like object removal and text editing.

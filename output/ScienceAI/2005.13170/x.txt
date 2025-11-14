@@ -1,0 +1,1 @@
+State-of-the-art AI models can be manipulated to produce harmful content 85% of the time. New TDGPN method uses reinforcement learning to craft inputs that bypass safety filters, raising serious security concerns for AI systems in critical domains.

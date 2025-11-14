@@ -1,0 +1,1 @@
+Apple's PolyNorm research demonstrates how large language models can revolutionize text normalization for speech synthesis. The few-shot learning approach achieves lower word error rates across multiple languages while reducing manual engineering requirements—a significant step toward more accessible global communication tools.

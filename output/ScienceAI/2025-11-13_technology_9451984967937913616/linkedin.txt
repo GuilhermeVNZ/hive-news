@@ -1,0 +1,1 @@
+New research reveals why large language models face fundamental challenges in financial markets while highlighting emerging applications in multimodal analysis and synthetic data generation. The intersection of AI and quantitative trading continues to evolve with surprising synergies between transformer architectures and financial modeling techniques.

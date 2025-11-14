@@ -1,0 +1,13 @@
+Character.AI is implementing sweeping changes to its platform that will fundamentally alter how teenagers interact with its artificial intelligence systems. The company announced it will eliminate open-ended chat capabilities for users under 18, marking one of the most significant restrictions on AI access for younger users in the industry.
+
+The decision comes after months of evaluation and represents a dramatic shift for the popular AI chatbot platform. Starting November 25, 2025, users under 18 will lose access to the free-form conversational AI that has been central to Character.AI's appeal. During the transition period, the company will implement progressively stricter daily time limits, beginning with two hours per day before the complete removal of open-ended chat functionality.
+
+Character.AI is simultaneously rolling out new age verification technology developed in-house and integrating third-party tools from identity verification provider Persona. This multi-layered approach aims to ensure users receive age-appropriate experiences while addressing growing regulatory concerns about AI interactions with minors.
+
+The company is also establishing the AI Safety Lab, an independent non-profit organization dedicated to advancing safety research for entertainment-focused AI systems. This initiative will focus on developing novel safety techniques and fostering collaboration between technology companies, academic researchers, and policymakers.
+
+These changes respond to increasing scrutiny from regulators and safety experts regarding how open-ended AI interactions affect teenage users. Recent reports have raised questions about the psychological impact of unrestricted AI chat, even when content filtering systems function as intended. Character.AI's decision positions the company as taking a more conservative approach than many competitors in the rapidly evolving AI landscape.
+
+For the platform's substantial teenage user base, the changes represent a significant reduction in functionality. Character.AI acknowledges the impact on young creators who have used the platform to develop characters and stories, promising alternative creative tools including video, story, and streaming features that maintain safety boundaries.
+
+The broader AI industry will likely watch Character.AI's experiment closely as companies grapple with balancing innovation against growing safety concerns. As regulatory frameworks for AI continue to develop, Character.AI's proactive restrictions could establish new industry standards for protecting younger users in artificial intelligence environments.

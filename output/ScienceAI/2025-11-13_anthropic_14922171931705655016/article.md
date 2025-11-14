@@ -1,0 +1,13 @@
+In a comprehensive research publication, AI company Anthropic has detailed crucial insights from working with dozens of teams building large language model agents across multiple industries. The findings consistently demonstrate that successful implementations rely on simple, composable patterns rather than complex frameworks.
+
+The research, authored by Anthropic engineers Erik Schluntz and Barry Zhang, draws from extensive customer collaborations and internal development experience. The company categorizes agentic systems into two primary architectural types: workflows and agents, with important distinctions between predictable, predefined implementations and flexible, model-driven systems.
+
+Anthropic emphasizes that developers should begin with the simplest possible solution, only increasing complexity when demonstrably necessary. Agentic systems typically trade latency and cost for improved task performance, requiring careful consideration of when this tradeoff makes sense. For many applications, optimizing single LLM calls with retrieval and in-context examples proves sufficient.
+
+The research outlines several foundational patterns for agentic systems, starting with the augmented LLM as the basic building block. Key workflow patterns include prompt chaining for sequential task decomposition, routing for input classification and specialized handling, parallelization for simultaneous processing, and orchestrator-workers for dynamic task breakdown.
+
+Agents emerge as particularly valuable for open-ended problems where predicting required steps is impossible. These systems operate autonomously, planning and executing tasks while potentially returning to humans for feedback or when encountering blockers. The implementation often involves LLMs using tools based on environmental feedback in iterative loops.
+
+Anthropic highlights customer support and software development as two particularly promising applications. Support agents combine chatbot interfaces with tool integration, while development agents demonstrate remarkable problem-solving capabilities, including solving real GitHub issues in the SWE-bench Verified benchmark.
+
+The company stresses that tool development requires significant prompt engineering attention, recommending formats that are easy for LLMs to generate and parse. The research concludes with three core principles: start simple and add complexity deliberately, build with basic components rather than abstracted frameworks, and create reliable, maintainable systems trusted by users.

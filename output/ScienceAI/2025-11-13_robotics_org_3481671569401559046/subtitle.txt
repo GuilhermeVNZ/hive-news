@@ -1,0 +1,1 @@
+New rugged embedded computing platform targets smart manufacturing with Intel Core processors and modular expansion for demanding AI workloads.

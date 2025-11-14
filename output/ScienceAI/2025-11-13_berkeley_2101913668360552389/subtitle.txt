@@ -1,0 +1,1 @@
+Berkeley researchers unveil a multimodal AI system that generates protein sequences and structures using latent diffusion, advancing computational biology.

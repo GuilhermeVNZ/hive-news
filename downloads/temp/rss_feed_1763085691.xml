@@ -1,0 +1,1739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Pinecone</title>
+        <link>https://www.pinecone.io/</link>
+        <description>&lt;![CDATA[ Search through billions of items for similar matches to any object, in milliseconds. It’s the next generation of search, an API call away. ]]&gt;</description>
+        <lastBuildDate>Mon, 10 Nov 2025 13:12:55 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <image>
+            <title>Pinecone</title>
+            <url>https://www.pinecone.io/images/ogimage-general.jpg</url>
+            <link>https://www.pinecone.io/</link>
+        </image>
+        <copyright>All rights reserved 2025, Pinecone Systems Inc.</copyright>
+        <item>
+            <title><![CDATA[Inside Pinecone: Slab Architecture]]></title>
+            <link>https://www.pinecone.io/learn/slab-architecture/</link>
+            <guid>https://www.pinecone.io/learn/slab-architecture/</guid>
+            <pubDate>Tue, 04 Nov 2025 14:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Inside%20Pinecone%3A%20Slab%20Architecture"/>
+        </item>
+        <item>
+            <title><![CDATA[New Bulk Data Operations: Update, Delete, and Fetch by Metadata]]></title>
+            <link>https://www.pinecone.io/blog/update-delete-and-fetch-by-metadata/</link>
+            <guid>https://www.pinecone.io/blog/update-delete-and-fetch-by-metadata/</guid>
+            <pubDate>Thu, 30 Oct 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone introduces three new bulk data operations—Update, Delete, and Fetch by Metadata—enabling developers to manage vector database records at scale using metadata filters instead of collecting IDs manually. These operations simplify common tasks like bulk updates, GDPR compliance, and data cleanup.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=New%20Bulk%20Data%20Operations%3A%20Update%2C%20Delete%2C%20and%20Fetch%20by%20Metadata"/>
+        </item>
+        <item>
+            <title><![CDATA[The Hidden Cost of Building: Lessons from Aquant]]></title>
+            <link>https://www.pinecone.io/blog/hidden-cost-of-building-aquant/</link>
+            <guid>https://www.pinecone.io/blog/hidden-cost-of-building-aquant/</guid>
+            <pubDate>Wed, 22 Oct 2025 20:06:00 GMT</pubDate>
+            <description><![CDATA[This blog post, "The Hidden Cost of Building: Lessons from Aquant," discusses the challenges and hidden costs associated with building and maintaining in-house AI infrastructure, particularly vector databases. It highlights how what initially seems like a cost-effective solution can become a liability as systems scale, leading to increased complexity, knowledge loss, and delayed product features. The article uses Aquant's experience as a case study, where they ultimately chose to partner with Pinecone for their vector database needs, allowing them to focus on their core business innovation. The post concludes by emphasizing that the true cost of building is measured in time, expertise, opportunity, and momentum, rather than just dollars.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=The%20Hidden%20Cost%20of%20Building%3A%20Lessons%20from%20Aquant"/>
+        </item>
+        <item>
+            <title><![CDATA[Simplifying Vector Embeddings with Pinecone Integrated Inference Capabilities]]></title>
+            <link>https://www.pinecone.io/blog/simplifying-vector-embeddings-with-pinecone-integrated-inference/</link>
+            <guid>https://www.pinecone.io/blog/simplifying-vector-embeddings-with-pinecone-integrated-inference/</guid>
+            <pubDate>Thu, 09 Oct 2025 18:07:00 GMT</pubDate>
+            <description><![CDATA[This article explores Pinecone’s integrated inference capabilities for generating vector embeddings directly within your Pinecone workflow. It walks through how integrated inference simplifies embedding pipelines by removing the need for separate model hosting or API calls, and explains a real-world customer scenario where a metadata limit was encountered. The post also provides a simple workaround using the Inference API directly, helping developers get the best of both simplicity and control.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Simplifying%20Vector%20Embeddings%20with%20Pinecone%20Integrated%20Inference%20Capabilities"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone joins Microsoft Marketplace as a Launch Partner]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-joins-microsoft-marketplace-as-a-launch-partner/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-joins-microsoft-marketplace-as-a-launch-partner/</guid>
+            <pubDate>Thu, 25 Sep 2025 13:29:00 GMT</pubDate>
+            <description><![CDATA[We are excited to join the new Microsoft Marketplace and be a featured partner in the AI Apps and Agents category. If you’re already on Azure or leveraging Azure’s OpenAI Service, you can now quickly add Pinecone to your AI stack with just a few clicks.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Pinecone%20joins%20Microsoft%20Marketplace%20as%20a%20Launch%20Partner"/>
+        </item>
+        <item>
+            <title><![CDATA[GTM Engineering:  Clay + Pinecone for AI-powered Sales Outbound]]></title>
+            <link>https://www.pinecone.io/blog/gtm-engineering-clay-pinecone-for-ai-powered-sales-outbound/</link>
+            <guid>https://www.pinecone.io/blog/gtm-engineering-clay-pinecone-for-ai-powered-sales-outbound/</guid>
+            <pubDate>Wed, 17 Sep 2025 15:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to build AI-powered sales outreach using Clay and Pinecone. Automate personalized emails with vector search, web crawling, and contextual case studies for GTM teams.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=GTM%20Engineering%3A%20%20Clay%20%2B%20Pinecone%20for%20AI-powered%20Sales%20Outbound"/>
+        </item>
+        <item>
+            <title><![CDATA[Build an AI knowledge assistant with Google Docs and Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/build-an-ai-knowledge-assistant-with-google-docs-and-pinecone/</link>
+            <guid>https://www.pinecone.io/blog/build-an-ai-knowledge-assistant-with-google-docs-and-pinecone/</guid>
+            <pubDate>Wed, 17 Sep 2025 13:00:00 GMT</pubDate>
+            <description><![CDATA[Build an AI knowledge assistant with your Googld Docs in minutes with Pinecone Assistant. Ask natural language questions and surface hidden knowledge in seconds.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20an%20AI%20knowledge%20assistant%20with%20Google%20Docs%20and%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Moving Pinecone forward with Ash Ashutosh as CEO and Edo spearheading our growing AI ambitions as Chief Scientist]]></title>
+            <link>https://www.pinecone.io/blog/growing-ai-ambitions/</link>
+            <guid>https://www.pinecone.io/blog/growing-ai-ambitions/</guid>
+            <pubDate>Mon, 08 Sep 2025 15:24:00 GMT</pubDate>
+            <description><![CDATA[Pinecone welcomes Ash Ashutosh as CEO and Edo Liberty as Chief Scientist, accelerating the company’s mission to advance knowledgeable AI and next-generation search. Discover how Pinecone’s leadership and innovative technology are shaping the future of AI infrastructure and intelligent discovery.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Moving%20Pinecone%20forward%20with%20Ash%20Ashutosh%20as%20CEO%20and%20Edo%20spearheading%20our%20growing%20AI%20ambitions%20as%20Chief%20Scientist"/>
+        </item>
+        <item>
+            <title><![CDATA[Announcing Pinecone Pioneers: A Program for Builders, Organizers, and Community Leaders]]></title>
+            <link>https://www.pinecone.io/blog/announcing-pinecone-pioneers-program/</link>
+            <guid>https://www.pinecone.io/blog/announcing-pinecone-pioneers-program/</guid>
+            <pubDate>Thu, 07 Aug 2025 12:57:00 GMT</pubDate>
+            <description><![CDATA[We’ve launched Pinecone Pioneers: a program for developers, educators, and collaborators making AI knowledgeable with Pinecone. Learn how to get involved.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Announcing%20Pinecone%20Pioneers%3A%20A%20Program%20for%20Builders%2C%20Organizers%2C%20and%20Community%20Leaders"/>
+        </item>
+        <item>
+            <title><![CDATA[What is Context Engineering?]]></title>
+            <link>https://www.pinecone.io/learn/context-engineering/</link>
+            <guid>https://www.pinecone.io/learn/context-engineering/</guid>
+            <pubDate>Tue, 15 Jul 2025 16:26:00 GMT</pubDate>
+            <description><![CDATA[Learn about context engineering and how to apply it to your AI Applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=What%20is%20Context%20Engineering%3F"/>
+        </item>
+        <item>
+            <title><![CDATA[Chunking Strategies for LLM Applications]]></title>
+            <link>https://www.pinecone.io/learn/chunking-strategies/</link>
+            <guid>https://www.pinecone.io/learn/chunking-strategies/</guid>
+            <pubDate>Sat, 28 Jun 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[In the context of building LLM-related applications, chunking is the process of breaking down large pieces of text into smaller segments. It’s an essential technique that helps optimize the relevance of the content we get back from a vector database once we use the LLM to embed content. In this blog post, we’ll explore if and how it helps improve efficiency and accuracy in LLM-related applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/b45e09759617d2068f1c045eff345bef909565d9-397x227.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Beyond the hype: Why RAG remains essential for modern AI]]></title>
+            <link>https://www.pinecone.io/learn/rag-2025/</link>
+            <guid>https://www.pinecone.io/learn/rag-2025/</guid>
+            <pubDate>Wed, 25 Jun 2025 15:00:00 GMT</pubDate>
+            <description><![CDATA[With AI agents handling more complex use cases, RAG is not just relevant in 2025. It’s critical for building accurate, relevant, and responsible AI applications that go beyond information retrieval.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Beyond%20the%20hype%3A%20Why%20RAG%20remains%20essential%20for%20modern%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[Build more knowledgeable AI applications with new LLMs and greater control in Pinecone Assistant]]></title>
+            <link>https://www.pinecone.io/blog/assistant-new-llms/</link>
+            <guid>https://www.pinecone.io/blog/assistant-new-llms/</guid>
+            <pubDate>Wed, 18 Jun 2025 15:30:00 GMT</pubDate>
+            <description><![CDATA[Pinecone Assistant now has support for new OpenAI (gpt-4.1, o4-mini) and Anthropic (claude-3-7-sonnet) models, as well as Gemini (gemini-2.5-pro). In addition to the new selection of models, Pinecone Assistant now gives developers more control by exposing the temperature parameter for the chosen LLM. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20more%20knowledgeable%20AI%20applications%20with%20new%20LLMs%20and%20greater%20control%20in%20Pinecone%20Assistant"/>
+        </item>
+        <item>
+            <title><![CDATA[#NYTECHWEEK 2025]]></title>
+            <link>https://www.pinecone.io/blog/a16z-nytechweek-2025/</link>
+            <guid>https://www.pinecone.io/blog/a16z-nytechweek-2025/</guid>
+            <pubDate>Tue, 17 Jun 2025 04:16:00 GMT</pubDate>
+            <description><![CDATA[Pinecone sponsored and attended events across Tech Week by A16Z]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=%23NYTECHWEEK%202025"/>
+        </item>
+        <item>
+            <title><![CDATA[Retrieval-Augmented Generation (RAG)]]></title>
+            <link>https://www.pinecone.io/learn/retrieval-augmented-generation/</link>
+            <guid>https://www.pinecone.io/learn/retrieval-augmented-generation/</guid>
+            <pubDate>Thu, 12 Jun 2025 18:57:00 GMT</pubDate>
+            <description><![CDATA[Explore the limitations of foundation models and how retrieval-augmented generation (RAG) can address these limitations so chat, search, and agentic workflows can all benefit.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/fe566a695a5b2f85735e3d560bcca5aa54932410-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Cascading retrieval with multi-vector representations: balancing efficiency and effectiveness]]></title>
+            <link>https://www.pinecone.io/blog/cascading-retrieval-with-multi-vector-representations/</link>
+            <guid>https://www.pinecone.io/blog/cascading-retrieval-with-multi-vector-representations/</guid>
+            <pubDate>Wed, 28 May 2025 17:00:00 GMT</pubDate>
+            <description><![CDATA[This blog post explores how multi-vector retrieval improves search accuracy by capturing rich query-document interactions, while addressing its scalability challenges. It introduces a practical, staged retrieval pipeline that balances speed and effectiveness, starting with fast retrieval, refining with multi-vector embeddings, and finishing with cross-encoder reranking. The post highlights ConstBERT, a constant-space multi-vector model co-developed by Pinecone and academic collaborators, and shows how to integrate it into Pinecone to build efficient, scalable, and accurate search systems. ConstBERT is now available in open source.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Cascading%20retrieval%20with%20multi-vector%20representations%3A%20balancing%20efficiency%20and%20effectiveness"/>
+        </item>
+        <item>
+            <title><![CDATA[Vector databases aren't just for large-scale enterprise AI]]></title>
+            <link>https://www.pinecone.io/blog/vector-databases-not-just-for-large-enterprise-ai/</link>
+            <guid>https://www.pinecone.io/blog/vector-databases-not-just-for-large-enterprise-ai/</guid>
+            <pubDate>Mon, 26 May 2025 13:27:00 GMT</pubDate>
+            <description><![CDATA[We recently partnered with the School of Code during their AI Week. The students used Pinecone to build working AI applications in just a few days. A short video captures their projects and impressions. While the apps are indeed beginner-level, they show that even newcomers can build practical AI experiences with modern tools. The signal is clear: Pinecone is not just for enterprises; - it’s for anyone who wants to build knowledgeable AI -- today.
+
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Vector%20databases%20aren't%20just%20for%20large-scale%20enterprise%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[Using Pinecone asynchronously with FastAPI]]></title>
+            <link>https://www.pinecone.io/learn/pinecone-async-fastapi/</link>
+            <guid>https://www.pinecone.io/learn/pinecone-async-fastapi/</guid>
+            <pubDate>Thu, 01 May 2025 17:01:00 GMT</pubDate>
+            <description><![CDATA[Building high-performance vector search applications requires frameworks and tools that can handle concurrent operations effectively. In this article, we'll explore the benefits of using Pinecone's Python SDK with FastAPI, a web framework for building high performance APIs in Python and asyncio.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Using%20Pinecone%20asynchronously%20with%20FastAPI"/>
+        </item>
+        <item>
+            <title><![CDATA[Build secure, scalable agentic AI workflows with Rubrik Annapurna and Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/secure-agentic-workflows-rubrik/</link>
+            <guid>https://www.pinecone.io/blog/secure-agentic-workflows-rubrik/</guid>
+            <pubDate>Thu, 24 Apr 2025 15:58:00 GMT</pubDate>
+            <description><![CDATA[As AI systems become agentic and more autonomous, enterprises need infrastructure that delivers secure data access, real-time retrieval, and production-grade performance. Rubrik Annapurna, powered by Pinecone’s vector database, provides the infrastructure to deploy generative AI at scale, with RAG and agentic workloads in mind.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20secure%2C%20scalable%20agentic%20AI%20workflows%20with%20Rubrik%20Annapurna%20and%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Tool up: Pinecone’s first MCP servers are here]]></title>
+            <link>https://www.pinecone.io/blog/first-MCPs/</link>
+            <guid>https://www.pinecone.io/blog/first-MCPs/</guid>
+            <pubDate>Tue, 22 Apr 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are releasing our first three MCP servers: Pinecone Assistant MCP (remote), Pinecone Assistant MCP (local), and Pinecone Developer MCP (local). Together, the three support the following use cases: Providing structured context for agents (remote and local Pinecone Assistant MCP servers as well as local Pinecone Developer MCP server), enabling in-IDE documentation search (local Pinecone Developer MCP server), and allowing developers to perform vector database operations directly within popular development environments (local Pinecone Developer MCP server).]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Tool%20up%3A%20Pinecone%E2%80%99s%20first%20MCP%20servers%20are%20here"/>
+        </item>
+        <item>
+            <title><![CDATA[Add context to your agent with Pinecone Assistant MCP remote server]]></title>
+            <link>https://www.pinecone.io/blog/assistant-MCP/</link>
+            <guid>https://www.pinecone.io/blog/assistant-MCP/</guid>
+            <pubDate>Tue, 22 Apr 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone has launched the first remote MCP server to bring knowledge to agentic workflows. Starting today, every Pinecone Assistant is now also an MCP server! Users can now connect their Assistant as a context tool in their agents and AI applications. This means that developers can now combine the simplicity of Assistant document processing, contextualization, and agentic-RAG with the simple integration and ecosystem of MCP.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Add%20context%20to%20your%20agent%20with%20Pinecone%20Assistant%20MCP%20remote%20server"/>
+        </item>
+        <item>
+            <title><![CDATA[Launch Week: Pinecone for agents, search, recommendations, and more]]></title>
+            <link>https://www.pinecone.io/blog/launch-week-march-2025/</link>
+            <guid>https://www.pinecone.io/blog/launch-week-march-2025/</guid>
+            <pubDate>Mon, 17 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[We're rolling out new features each day this week (March 17-21). Stay tuned for updates!]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Launch%20Week%3A%20Pinecone%20for%20agents%2C%20search%2C%20recommendations%2C%20and%20more"/>
+        </item>
+        <item>
+            <title><![CDATA[Optimizing Pinecone for agents (and more)]]></title>
+            <link>https://www.pinecone.io/blog/optimizing-pinecone/</link>
+            <guid>https://www.pinecone.io/blog/optimizing-pinecone/</guid>
+            <pubDate>Mon, 17 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[This post describes what we mean by agentic workloads, their patterns, and how our new system optimizes for them. We also describe how we've improved performance for our search and recommendation systems workloads.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Optimizing%20Pinecone%20for%20agents%20(and%20more)"/>
+        </item>
+        <item>
+            <title><![CDATA[Retrieval Inference for scale and performance]]></title>
+            <link>https://www.pinecone.io/blog/optimizing-retrieval-inference/</link>
+            <guid>https://www.pinecone.io/blog/optimizing-retrieval-inference/</guid>
+            <pubDate>Wed, 12 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Explore how our optimized embedding and reranking inference uniquely enhances retrieval quality, simplifies the developer experience, and reduces the operational footprint of modern retrieval applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Retrieval%20Inference%20for%20scale%20and%20performance"/>
+        </item>
+        <item>
+            <title><![CDATA[Don’t be dense: Launching sparse indexes in Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/sparse-retrieval/</link>
+            <guid>https://www.pinecone.io/learn/sparse-retrieval/</guid>
+            <pubDate>Wed, 05 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[A deep dive into building with sparse-only serverless indexes in Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Don%E2%80%99t%20be%20dense%3A%20Launching%20sparse%20indexes%20in%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Unlock High-Precision Keyword Search with pinecone-sparse-english-v0]]></title>
+            <link>https://www.pinecone.io/learn/learn-pinecone-sparse/</link>
+            <guid>https://www.pinecone.io/learn/learn-pinecone-sparse/</guid>
+            <pubDate>Wed, 05 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn about sparse retrieval and pinecone-sparse-english-v0, Pinecone's sparse model available on our platform.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Unlock%20High-Precision%20Keyword%20Search%20with%20pinecone-sparse-english-v0"/>
+        </item>
+        <item>
+            <title><![CDATA[Evolving Pinecone's architecture to meet the demands of Knowledgeable AI]]></title>
+            <link>https://www.pinecone.io/blog/evolving-pinecone-for-knowledgeable-ai/</link>
+            <guid>https://www.pinecone.io/blog/evolving-pinecone-for-knowledgeable-ai/</guid>
+            <pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[A deep dive into the latest advancements behind Pinecone’s next-generation serverless vector database architecture.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Evolving%20Pinecone's%20architecture%20to%20meet%20the%20demands%20of%20Knowledgeable%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinpoint references faster with citation highlights in Pinecone Assistant]]></title>
+            <link>https://www.pinecone.io/learn/pinecone-assistant-citation-highlights/</link>
+            <guid>https://www.pinecone.io/learn/pinecone-assistant-citation-highlights/</guid>
+            <pubDate>Mon, 24 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[With citation highlights, Pinecone Assistant can now pinpoint the exact section or sentence used to generate a response. This technical guide shows you how to get started with Pinecone Assistant and leverage citation highlights.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Pinpoint%20references%20faster%20with%20citation%20highlights%20in%20Pinecone%20Assistant"/>
+        </item>
+        <item>
+            <title><![CDATA[Bringing the leading vector database to your cloud]]></title>
+            <link>https://www.pinecone.io/blog/byoc-early-access/</link>
+            <guid>https://www.pinecone.io/blog/byoc-early-access/</guid>
+            <pubDate>Thu, 20 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone’s BYOC offering for AWS is now in early access. Contact us for more information.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Bringing%20the%20leading%20vector%20database%20to%20your%20cloud"/>
+        </item>
+        <item>
+            <title><![CDATA[Getting started with llama-text-embed-v2]]></title>
+            <link>https://www.pinecone.io/learn/nvidia-for-pinecone-inference/</link>
+            <guid>https://www.pinecone.io/learn/nvidia-for-pinecone-inference/</guid>
+            <pubDate>Wed, 19 Feb 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Nvidia's llama-text-embed-2 embedding model delivers remarkable retrieval quality at low latency, and is now available in Pinecone Inference.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Getting%20started%20with%20llama-text-embed-v2"/>
+        </item>
+        <item>
+            <title><![CDATA[Easily build knowledgeable chat and agent-based applications in minutes with Pinecone Assistant, now generally available]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-assistant-generally-available/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-assistant-generally-available/</guid>
+            <pubDate>Wed, 22 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone Assistant is now generally available for all users. Expanded functionality makes it even easier to build knowledgeable AI assistants in just minutes.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Easily%20build%20knowledgeable%20chat%20and%20agent-based%20applications%20in%20minutes%20with%20Pinecone%20Assistant%2C%20now%20generally%20available"/>
+        </item>
+        <item>
+            <title><![CDATA[ How to build an agentic, chat or RAG knowledge system using Pinecone Assistant]]></title>
+            <link>https://www.pinecone.io/learn/pinecone-assistant/</link>
+            <guid>https://www.pinecone.io/learn/pinecone-assistant/</guid>
+            <pubDate>Wed, 22 Jan 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[This technical guide will help you understand Pinecone Assistant's core functionality, use cases, and workflows. It also includes insights into optimizing Assistant's performance.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=%20How%20to%20build%20an%20agentic%2C%20chat%20or%20RAG%20knowledge%20system%20using%20Pinecone%20Assistant"/>
+        </item>
+        <item>
+            <title><![CDATA[Accelerate prototyping and development with Pinecone Local]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-local/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-local/</guid>
+            <pubDate>Fri, 06 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[With Pinecone Local, you can now prototype, test, and develop AI applications locally while seamlessly integrating workflow testing into CI/CD pipelines.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Accelerate%20prototyping%20and%20development%20with%20Pinecone%20Local"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing integrated inference: Embed, rerank, and retrieve your data with a single API]]></title>
+            <link>https://www.pinecone.io/blog/integrated-inference/</link>
+            <guid>https://www.pinecone.io/blog/integrated-inference/</guid>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Announcing expanded inference capabilities alongside our core vector database to make it even easier and faster to build high-quality, knowledgeable AI applications with Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20integrated%20inference%3A%20Embed%2C%20rerank%2C%20and%20retrieve%20your%20data%20with%20a%20single%20API"/>
+        </item>
+        <item>
+            <title><![CDATA[Strengthening security and increasing control with CMEK and API key roles]]></title>
+            <link>https://www.pinecone.io/blog/strengthening-security-and-control/</link>
+            <guid>https://www.pinecone.io/blog/strengthening-security-and-control/</guid>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A deep dive into how Pinecone supports two new security features, 1) Customer-managed encryption keys (CMEK) and 2) Role-Based Access Control (RBAC) with API key roles 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Strengthening%20security%20and%20increasing%20control%20with%20CMEK%20and%20API%20key%20roles"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Pinecone Rerank V0]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-rerank-v0-announcement/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-rerank-v0-announcement/</guid>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Enhancing retrieval augmented generation (RAG) and enterprise search with pinecone-rerank-v0]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Pinecone%20Rerank%20V0"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing cascading retrieval: Unifying dense and sparse with reranking]]></title>
+            <link>https://www.pinecone.io/blog/cascading-retrieval/</link>
+            <guid>https://www.pinecone.io/blog/cascading-retrieval/</guid>
+            <pubDate>Mon, 02 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[New cascading retrieval capabilities make it seamless to combine dense retrieval and sparse retrieval and reranking into a unified search pipeline, delivering unparalleled precision, performance, and ease of use.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20cascading%20retrieval%3A%20Unifying%20dense%20and%20sparse%20with%20reranking"/>
+        </item>
+        <item>
+            <title><![CDATA[From Idea to Action: How Pinecone Assistant Meaningfully Accelerates AI Business]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-assistant-accelerates-business/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-assistant-accelerates-business/</guid>
+            <pubDate>Thu, 21 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to use Pinecone Assistant to accelerate businesses that build RAG systems. Case study AI RAG]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=From%20Idea%20to%20Action%3A%20How%20Pinecone%20Assistant%20Meaningfully%20Accelerates%20AI%20Business"/>
+        </item>
+        <item>
+            <title><![CDATA[Building AI apps on Azure with Pinecone just got a lot easier]]></title>
+            <link>https://www.pinecone.io/blog/building-ai-apps-on-azure-with-pinecone-just-got-a-lot-easier/</link>
+            <guid>https://www.pinecone.io/blog/building-ai-apps-on-azure-with-pinecone-just-got-a-lot-easier/</guid>
+            <pubDate>Tue, 19 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[At Microsoft Ignite, Microsoft announced that Pinecone is one of their first GenAI Azure Native Integration partners. This follows their recent announcement at GitHub Universe of Pinecone as one of the providers in their new AI App Template Gallery. Why is this great news? In short, both of those updates mean it’s easier than ever for developers to build with Pinecone on Azure. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Building%20AI%20apps%20on%20Azure%20with%20Pinecone%20just%20got%20a%20lot%20easier"/>
+        </item>
+        <item>
+            <title><![CDATA[Unlock enhanced performance and usage monitoring with Datadog and new Prometheus endpoints]]></title>
+            <link>https://www.pinecone.io/blog/datadog-prometheus-for-serverless/</link>
+            <guid>https://www.pinecone.io/blog/datadog-prometheus-for-serverless/</guid>
+            <pubDate>Wed, 06 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We've updated our Datadog integration and Prometheus endpoints for expanded performance and usage monitoring. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Unlock%20enhanced%20performance%20and%20usage%20monitoring%20with%20Datadog%20and%20new%20Prometheus%20endpoints"/>
+        </item>
+        <item>
+            <title><![CDATA[Building a reliable, curated, and accurate RAG system with Cleanlab and Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/building-reliable-curated-accurate-rag/</link>
+            <guid>https://www.pinecone.io/learn/building-reliable-curated-accurate-rag/</guid>
+            <pubDate>Fri, 25 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this post we detail a comprehensive guide to building a reliable and scalable Retrieval-Augmented Generation (RAG) system using Cleanlab's Trustworthy Language Model (TLM) and Pinecone. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Building%20a%20reliable%2C%20curated%2C%20and%20accurate%20RAG%20system%20with%20Cleanlab%20and%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Four features of the Assistant API you aren't using - but should]]></title>
+            <link>https://www.pinecone.io/learn/assistant-api-deep-dive/</link>
+            <guid>https://www.pinecone.io/learn/assistant-api-deep-dive/</guid>
+            <pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this guide, we explore four exciting features Pinecone's Assistant API you may not yet know about. We cover how these features can be useful in real-world AI applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Four%20features%20of%20the%20Assistant%20API%20you%20aren't%20using%20-%20but%20should"/>
+        </item>
+        <item>
+            <title><![CDATA[September 2024 Product Update]]></title>
+            <link>https://www.pinecone.io/blog/september-2024-product-update/</link>
+            <guid>https://www.pinecone.io/blog/september-2024-product-update/</guid>
+            <pubDate>Tue, 01 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In September Pinecone serverless added an evaluation API to evaluate RAG and the ability to choose the LLM, among other updates.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=September%202024%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing import from object storage for more efficient data transfer to Pinecone serverless]]></title>
+            <link>https://www.pinecone.io/blog/import-from-object-storage/</link>
+            <guid>https://www.pinecone.io/blog/import-from-object-storage/</guid>
+            <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Introducing the ability to bulk import from object storage for Pinecone’s serverless infrastructure. This new capability makes ingesting large amounts of data more efficient for developers building accurate, secure, and scalable AI applications. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20import%20from%20object%20storage%20for%20more%20efficient%20data%20transfer%20to%20Pinecone%20serverless"/>
+        </item>
+        <item>
+            <title><![CDATA[Simplify, enhance, and evaluate RAG development with Pinecone Assistant, now in public preview]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-assistant-for-all/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-assistant-for-all/</guid>
+            <pubDate>Wed, 18 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone Assistant is now available in public preview, including new features like a built-in evaluation framework, expanded LLM support, and more. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Simplify%2C%20enhance%2C%20and%20evaluate%20RAG%20development%20with%20Pinecone%20Assistant%2C%20now%20in%20public%20preview"/>
+        </item>
+        <item>
+            <title><![CDATA[Vectors and Graphs: Better Together]]></title>
+            <link>https://www.pinecone.io/learn/vectors-and-graphs-better-together/</link>
+            <guid>https://www.pinecone.io/learn/vectors-and-graphs-better-together/</guid>
+            <pubDate>Fri, 06 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Making sense of complex, interconnected information is a major challenge across many fields. This article introduces a new AI approach that tackles this problem head-on. By enhancing how machines understand and explore data, it opens up new possibilities for insight discovery in areas ranging from legal analysis to scientific research.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Vectors%20and%20Graphs%3A%20Better%20Together"/>
+        </item>
+        <item>
+            <title><![CDATA[August 2024 Product Update]]></title>
+            <link>https://www.pinecone.io/blog/august-2024-product-update/</link>
+            <guid>https://www.pinecone.io/blog/august-2024-product-update/</guid>
+            <pubDate>Tue, 03 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In August Pinecone serverless became generally available to Google Cloud Platform (GCP) and Microsoft Azure and embedding and reranking were added to the Pinecone API.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=August%202024%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Llama 3.1 Agent using LangGraph and Ollama]]></title>
+            <link>https://www.pinecone.io/learn/langgraph-ollama-llama/</link>
+            <guid>https://www.pinecone.io/learn/langgraph-ollama-llama/</guid>
+            <pubDate>Mon, 02 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to use LangGraph to build local AI Agents with Ollama and Llama 3.1.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Llama%203.1%20Agent%20using%20LangGraph%20and%20Ollama"/>
+        </item>
+        <item>
+            <title><![CDATA[Build knowledgeable AI with Pinecone serverless, now generally available on Microsoft Azure]]></title>
+            <link>https://www.pinecone.io/blog/azure-serverless-ga/</link>
+            <guid>https://www.pinecone.io/blog/azure-serverless-ga/</guid>
+            <pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone serverless is generally available (GA) on Microsoft Azure. Along with AWS and GCP, you can now build with serverless on the cloud and region that suits you best. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20knowledgeable%20AI%20with%20Pinecone%20serverless%2C%20now%20generally%20available%20on%20Microsoft%20Azure"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone serverless is now generally available on Google Cloud, adding knowledge to AI assistants and other applications]]></title>
+            <link>https://www.pinecone.io/blog/gcp-serverless-ga/</link>
+            <guid>https://www.pinecone.io/blog/gcp-serverless-ga/</guid>
+            <pubDate>Tue, 27 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone serverless is generally available (GA) on Google Cloud and Google Cloud Marketplace. Along with AWS and Azure, you can now build with serverless on the cloud and region that suits you best. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Pinecone%20serverless%20is%20now%20generally%20available%20on%20Google%20Cloud%2C%20adding%20knowledge%20to%20AI%20assistants%20and%20other%20applications"/>
+        </item>
+        <item>
+            <title><![CDATA[Accelerating Legal Discovery and Analysis with Pinecone and Voyage AI]]></title>
+            <link>https://www.pinecone.io/learn/legal-semantic-search/</link>
+            <guid>https://www.pinecone.io/learn/legal-semantic-search/</guid>
+            <pubDate>Wed, 21 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone's Legal semantic search app leverages Voyage AI's embedding model and helps developers quickly implement advanced legal research tools. 
+
+This article explores how the app, which can be set up in under a minute, uses vector search and legal-specific language models to streamline document analysis. 
+
+Learn how lawyers apply this technology to rapidly sift through case law, contracts, and regulations, and see its impact on e-discovery, compliance checks, and legal analysis workflows.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Accelerating%20Legal%20Discovery%20and%20Analysis%20with%20Pinecone%20and%20Voyage%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[Refine Retrieval Quality with Pinecone Rerank]]></title>
+            <link>https://www.pinecone.io/learn/refine-with-rerank/</link>
+            <guid>https://www.pinecone.io/learn/refine-with-rerank/</guid>
+            <pubDate>Thu, 15 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, learn about Pinecone Rerank and how to use rerankers to increase the quality of results in vector search and retrieval augmented generation applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Refine%20Retrieval%20Quality%20with%20Pinecone%20Rerank"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing reranking to Pinecone Inference to simplify building accurate AI]]></title>
+            <link>https://www.pinecone.io/blog/introducing-reranking-to-pinecone-inference/</link>
+            <guid>https://www.pinecone.io/blog/introducing-reranking-to-pinecone-inference/</guid>
+            <pubDate>Thu, 15 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Reranking capabilities are now available with Pinecone Inference, an API that provides instant access to fully managed models hosted on Pinecone’s infrastructure. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20reranking%20to%20Pinecone%20Inference%20to%20simplify%20building%20accurate%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[July 2024 Product Update]]></title>
+            <link>https://www.pinecone.io/blog/july-2024-product-update/</link>
+            <guid>https://www.pinecone.io/blog/july-2024-product-update/</guid>
+            <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This month we expanded Pinecone serverless to Google Cloud Platform (GCP) and Microsoft Azure, launched Pinecone Inference, and introduced API versioning.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=July%202024%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Connect to Pinecone within your platform to enable a seamless AI development experience ]]></title>
+            <link>https://www.pinecone.io/blog/connect-to-pinecone-within-your-platform/</link>
+            <guid>https://www.pinecone.io/blog/connect-to-pinecone-within-your-platform/</guid>
+            <pubDate>Wed, 24 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today, we’re announcing the general availability of Pinecone Connect. Pinecone Connect is an integration that allows developers to manage Pinecone resources directly from another platform via a simple authentication flow. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Connect%20to%20Pinecone%20within%20your%20platform%20to%20enable%20a%20seamless%20AI%20development%20experience%20"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Pinecone API Versioning]]></title>
+            <link>https://www.pinecone.io/blog/introducing-pinecone-api-versioning/</link>
+            <guid>https://www.pinecone.io/blog/introducing-pinecone-api-versioning/</guid>
+            <pubDate>Thu, 18 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone will release a new stable and a release candidate of the API on a quarterly basis, starting in July.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Pinecone%20API%20Versioning"/>
+        </item>
+        <item>
+            <title><![CDATA[RAG Brag with Inkeep Co-Founder Nick Gomez]]></title>
+            <link>https://www.pinecone.io/blog/rag-brag-inkeep/</link>
+            <guid>https://www.pinecone.io/blog/rag-brag-inkeep/</guid>
+            <pubDate>Wed, 17 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In a recent RAG Brag episode, Nick Gomez, Co-founder and CEO of Inkeep, shared insights about his journey and the inspiration behind starting a company focused on helping companies with technical products, improve self-help experiences with AI, and machine learning. He shared his background and the innovative ways Inkeep is addressing challenges in the technical and developer support space.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=RAG%20Brag%20with%20Inkeep%20Co-Founder%20Nick%20Gomez"/>
+        </item>
+        <item>
+            <title><![CDATA[LangGraph and Research Agents]]></title>
+            <link>https://www.pinecone.io/learn/langgraph-research-agent/</link>
+            <guid>https://www.pinecone.io/learn/langgraph-research-agent/</guid>
+            <pubDate>Thu, 11 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[LangGraph is a graph-based agentic framework that allows us to build more flexible and controllable AI agents. Here, we'll see how to build an AI Research Agent with LangGraph.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=LangGraph%20and%20Research%20Agents"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Pinecone Inference to streamline your AI workflow]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-inference/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-inference/</guid>
+            <pubDate>Tue, 09 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone Inference provides easy and low-latency access to embedding and reranking models hosted on Pinecone’s infrastructure, and is now available in public preview.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Pinecone%20Inference%20to%20streamline%20your%20AI%20workflow"/>
+        </item>
+        <item>
+            <title><![CDATA[Build Privacy-aware AI software using Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/privacy-aware-software/</link>
+            <guid>https://www.pinecone.io/learn/privacy-aware-software/</guid>
+            <pubDate>Wed, 03 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[GenAI creates personalized web experiences by combining proprietary data with the knowledge of individual users. How can we ensure this knowledge is handled safely per security compliance standards]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20Privacy-aware%20AI%20software%20using%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[June 2024 Product Update]]></title>
+            <link>https://www.pinecone.io/blog/june-2024-product-update/</link>
+            <guid>https://www.pinecone.io/blog/june-2024-product-update/</guid>
+            <pubDate>Mon, 01 Jul 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This month, we launched Pinecone Assistant in beta and many other new features. Watch our latest Quarterly Pinecone Summary (QPS) for product highlights in Q2 and also get a glimpse into our Q3 roadmap.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=June%202024%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Pinecone Assistant in Beta ]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-assistant/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-assistant/</guid>
+            <pubDate>Tue, 25 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone Assistant, an API service for answering complex questions about your proprietary data, accurately and securely, within your applications, is now in public preview. 
+
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Pinecone%20Assistant%20in%20Beta%20"/>
+        </item>
+        <item>
+            <title><![CDATA[Benchmarking AI Assistants]]></title>
+            <link>https://www.pinecone.io/blog/ai-assistant-quality/</link>
+            <guid>https://www.pinecone.io/blog/ai-assistant-quality/</guid>
+            <pubDate>Tue, 25 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[A look into where existing evaluation metrics fall short, the metric we propose for evaluating AI assistants, and how Pinecone Assistant performs across three benchmark datasets. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Benchmarking%20AI%20Assistants"/>
+        </item>
+        <item>
+            <title><![CDATA[The Practitioner's Guide To E5]]></title>
+            <link>https://www.pinecone.io/learn/the-practitioners-guide-to-e5/</link>
+            <guid>https://www.pinecone.io/learn/the-practitioners-guide-to-e5/</guid>
+            <pubDate>Mon, 24 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to use the Pinecone Inference API along with the multilingual E5 model in this article. The article covers why the E5 model was selected, how it was trained, and how to use it within a worked out example notebook.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=The%20Practitioner's%20Guide%20To%20E5"/>
+        </item>
+        <item>
+            <title><![CDATA[RAG Brag with My AskAI founders, Mike Heap and Alex Rainey]]></title>
+            <link>https://www.pinecone.io/blog/rag-brag-myaskai/</link>
+            <guid>https://www.pinecone.io/blog/rag-brag-myaskai/</guid>
+            <pubDate>Fri, 14 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In a recent episode of RAG Brag, Mike Heap and Alex Rainey, founders of My AskAI, shared how they use LLMs and other modern AI tech to empower SaaS businesses to create AI customer support agents using their own documentation to reduce customer support volumes and gather actionable feedback for product improvement.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=RAG%20Brag%20with%20My%20AskAI%20founders%2C%20Mike%20Heap%20and%20Alex%20Rainey"/>
+        </item>
+        <item>
+            <title><![CDATA[Glasp achieves 5X cost savings in knowledge access for millions of users with Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/glasp/</link>
+            <guid>https://www.pinecone.io/blog/glasp/</guid>
+            <pubDate>Wed, 05 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In a recent conversation with Glasp, we explored the pivotal role Pinecone plays in plays in supporting Glasp’s mission to democratize access to learning and experiences with semantic search and retrieval of information.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Glasp%20achieves%205X%20cost%20savings%20in%20knowledge%20access%20for%20millions%20of%20users%20with%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Welcome Lauren Nemeth and Bob Muglia]]></title>
+            <link>https://www.pinecone.io/blog/welcome-lauren-nemeth-and-bob-muglia/</link>
+            <guid>https://www.pinecone.io/blog/welcome-lauren-nemeth-and-bob-muglia/</guid>
+            <pubDate>Mon, 03 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lauren Nemeth and Bob Muglia have joined Pinecone as chief operating officer (COO) and board member, respectively.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Welcome%20Lauren%20Nemeth%20and%20Bob%20Muglia"/>
+        </item>
+        <item>
+            <title><![CDATA[May Monthly Product Update]]></title>
+            <link>https://www.pinecone.io/blog/may2024-monthly-product-update/</link>
+            <guid>https://www.pinecone.io/blog/may2024-monthly-product-update/</guid>
+            <pubDate>Mon, 03 Jun 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This month, we welcomed the general availability of Pinecone serverless on AWS, the public preview of Private Endpoints for AWS PrivateLink, and a fast-growing list of new integrations. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=May%20Monthly%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Private Endpoints for Pinecone serverless]]></title>
+            <link>https://www.pinecone.io/blog/private-endpoints/</link>
+            <guid>https://www.pinecone.io/blog/private-endpoints/</guid>
+            <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Private Endpoints for AWS PrivateLink is now in public preview for Pinecone serverless. Connect securely from your VPC to Pinecone without exposing traffic to the public Internet.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Private%20Endpoints%20for%20Pinecone%20serverless"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone serverless on AWS is generally available]]></title>
+            <link>https://www.pinecone.io/blog/serverless-generally-available/</link>
+            <guid>https://www.pinecone.io/blog/serverless-generally-available/</guid>
+            <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Since the public preview announcement, more than 20,000 companies have started building with Pinecone serverless. Today, we’re announcing the general availability of Pinecone serverless on AWS. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Pinecone%20serverless%20on%20AWS%20is%20generally%20available"/>
+        </item>
+        <item>
+            <title><![CDATA[Expanding AI Development with Pinecone, GitHub CoPilot, and Azure OpenAI]]></title>
+            <link>https://www.pinecone.io/blog/the-ultimate-developer-toolkit-for-genai/</link>
+            <guid>https://www.pinecone.io/blog/the-ultimate-developer-toolkit-for-genai/</guid>
+            <pubDate>Tue, 21 May 2024 00:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Expanding%20AI%20Development%20with%20Pinecone%2C%20GitHub%20CoPilot%2C%20and%20Azure%20OpenAI"/>
+        </item>
+        <item>
+            <title><![CDATA[Interactive Introduction to Tokenization]]></title>
+            <link>https://www.pinecone.io/learn/tokenization/</link>
+            <guid>https://www.pinecone.io/learn/tokenization/</guid>
+            <pubDate>Fri, 17 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Tokenization is the process of converting words from human languages into numerical representations, or IDs, from a specific vocabulary. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Interactive%20Introduction%20to%20Tokenization"/>
+        </item>
+        <item>
+            <title><![CDATA[A Developer’s Guide to Approximate Nearest Neighbor (ANN) Algorithms]]></title>
+            <link>https://www.pinecone.io/learn/a-developers-guide-to-ann-algorithms/</link>
+            <guid>https://www.pinecone.io/learn/a-developers-guide-to-ann-algorithms/</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This article will give an overview of the vector indexing landscape and analyses of a few popular algorithms.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=A%20Developer%E2%80%99s%20Guide%20to%20Approximate%20Nearest%20Neighbor%20(ANN)%20Algorithms"/>
+        </item>
+        <item>
+            <title><![CDATA[Build Better RAG Applications with Pinecone and Vectorize]]></title>
+            <link>https://www.pinecone.io/blog/build-better-rag-applications-with-pinecone-and-vectorize/</link>
+            <guid>https://www.pinecone.io/blog/build-better-rag-applications-with-pinecone-and-vectorize/</guid>
+            <pubDate>Tue, 14 May 2024 00:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20Better%20RAG%20Applications%20with%20Pinecone%20and%20Vectorize"/>
+        </item>
+        <item>
+            <title><![CDATA[April Monthly Product Update]]></title>
+            <link>https://www.pinecone.io/blog/april-2024-product-update/</link>
+            <guid>https://www.pinecone.io/blog/april-2024-product-update/</guid>
+            <pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[This month, we continued expanding our serverless service and improving your experience building with Pinecone.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=April%20Monthly%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[RAG with Access Control]]></title>
+            <link>https://www.pinecone.io/learn/rag-access-control/</link>
+            <guid>https://www.pinecone.io/learn/rag-access-control/</guid>
+            <pubDate>Wed, 24 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this post, we'll explore how to set up an authentication and authorization mechanism for RAG applications. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=RAG%20with%20Access%20Control"/>
+        </item>
+        <item>
+            <title><![CDATA[Going Global: Building the Global Control Plane API]]></title>
+            <link>https://www.pinecone.io/blog/global-api/</link>
+            <guid>https://www.pinecone.io/blog/global-api/</guid>
+            <pubDate>Mon, 22 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Global Control Plane API makes it even easier to build and scale with Pinecone. Learn more about the engineering motivations and efforts behind the new API.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Going%20Global%3A%20Building%20the%20Global%20Control%20Plane%20API"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone vs. Postgres pgvector: For vector search, easy isn’t so easy]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-vs-pgvector/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-vs-pgvector/</guid>
+            <pubDate>Wed, 17 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[When it comes to vector search, easy is far from simple. Learn why in our deep dive on Pinecone vs. Postgres pgvector. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Pinecone%20vs.%20Postgres%20pgvector%3A%20For%20vector%20search%2C%20easy%20isn%E2%80%99t%20so%20easy"/>
+        </item>
+        <item>
+            <title><![CDATA[Free plan gets 3x more capacity with serverless upgrade]]></title>
+            <link>https://www.pinecone.io/blog/serverless-free/</link>
+            <guid>https://www.pinecone.io/blog/serverless-free/</guid>
+            <pubDate>Wed, 17 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Pinecone Starter (free) plan has become integral to the AI journey for hundreds of thousands of developers looking to build remarkably better AI applications. Starting today, the free plan gets 3x more capacity with Pinecone serverless. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Free%20plan%20gets%203x%20more%20capacity%20with%20serverless%20upgrade"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing the Pinecone Partner Program: Integrate and Grow with Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/introducing-the-pinecone-partner-program/</link>
+            <guid>https://www.pinecone.io/blog/introducing-the-pinecone-partner-program/</guid>
+            <pubDate>Mon, 08 Apr 2024 00:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20the%20Pinecone%20Partner%20Program%3A%20Integrate%20and%20Grow%20with%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Sixfold's Transformation of Insurance Underwriting with Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/sixfold/</link>
+            <guid>https://www.pinecone.io/blog/sixfold/</guid>
+            <pubDate>Fri, 05 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[In a recent conversation with Sixfold, we explored the pivotal role Pinecone plays in enhancing insurance underwriting processes, leveraging hybrid search that combines semantic and keyword search for more relevant results to underwriters queries.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Sixfold's%20Transformation%20of%20Insurance%20Underwriting%20with%20Pinecone"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing the First Hallucination-Free LLM]]></title>
+            <link>https://www.pinecone.io/blog/hallucination-free-llm/</link>
+            <guid>https://www.pinecone.io/blog/hallucination-free-llm/</guid>
+            <pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20the%20First%20Hallucination-Free%20LLM"/>
+        </item>
+        <item>
+            <title><![CDATA[March Monthly Product Update]]></title>
+            <link>https://www.pinecone.io/blog/Marchproductupdate/</link>
+            <guid>https://www.pinecone.io/blog/Marchproductupdate/</guid>
+            <pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We had a productive March, including updated SDKs, new features, and improvements to our console. Check out some of the highlights below.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=March%20Monthly%20Product%20Update"/>
+        </item>
+        <item>
+            <title><![CDATA[Your Guide to Vectorizing Structured Text]]></title>
+            <link>https://www.pinecone.io/learn/structured-data/</link>
+            <guid>https://www.pinecone.io/learn/structured-data/</guid>
+            <pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Strategies, tips, and tricks to imposing structure in vector space.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Your%20Guide%20to%20Vectorizing%20Structured%20Text"/>
+        </item>
+        <item>
+            <title><![CDATA[Your Guide to Vectorizing Structured Text]]></title>
+            <link>https://www.pinecone.io/blog/structured-data/</link>
+            <guid>https://www.pinecone.io/blog/structured-data/</guid>
+            <pubDate>Tue, 26 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Strategies, tips, and tricks to imposing structure in vector space.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Your%20Guide%20to%20Vectorizing%20Structured%20Text"/>
+        </item>
+        <item>
+            <title><![CDATA[Advanced RAG Techniques]]></title>
+            <link>https://www.pinecone.io/learn/advanced-rag-techniques/</link>
+            <guid>https://www.pinecone.io/learn/advanced-rag-techniques/</guid>
+            <pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We explore several advanced RAG techniques and demonstrate an implementation that draws on the lessons learned from each. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/70d9acf6ffba61b80447b7d219793d9cd33122e2-1024x1024.webp"/>
+        </item>
+        <item>
+            <title><![CDATA[Simplify Stream Processing For GenAI Applications With Confluent Cloud for Apache Flink®]]></title>
+            <link>https://www.pinecone.io/blog/confluent-apache-flink-service/</link>
+            <guid>https://www.pinecone.io/blog/confluent-apache-flink-service/</guid>
+            <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Simplify%20Stream%20Processing%20For%20GenAI%20Applications%20With%20Confluent%20Cloud%20for%20Apache%20Flink%C2%AE"/>
+        </item>
+        <item>
+            <title><![CDATA[RAG Brag with Shortwave CEO Andrew Lee ]]></title>
+            <link>https://www.pinecone.io/blog/rag-brag-with-shortwave/</link>
+            <guid>https://www.pinecone.io/blog/rag-brag-with-shortwave/</guid>
+            <pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[RAG Brag is a new livestream event series where we invite leading AI founders and innovators to share their experiences of building with AI. During our first session, Andrew Lee, CEO of Shortwave, provides insights into the benefits and challenges of building with AI. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=RAG%20Brag%20with%20Shortwave%20CEO%20Andrew%20Lee%20"/>
+        </item>
+        <item>
+            <title><![CDATA[Azure OpenAI, meet Canopy]]></title>
+            <link>https://www.pinecone.io/blog/canopy-azureopenai/</link>
+            <guid>https://www.pinecone.io/blog/canopy-azureopenai/</guid>
+            <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Overview of Canopy's new integration with Azure OpenAI Studio.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c5c4671c3bac2b1bdc009202e05920f160458862-1806x702.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Winning in AI means mastering the new stack]]></title>
+            <link>https://www.pinecone.io/blog/the-new-ai-stack/</link>
+            <guid>https://www.pinecone.io/blog/the-new-ai-stack/</guid>
+            <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Over the past few years, our teams have collectively worked with thousands of companies that transform their businesses with AI. We want to share our insights on what separates those who succeed from those who struggle. Most companies understandably struggle because AI is evolving too rapidly to keep up. Those who succeed do so by mastering the new AI Stack. These are a handful of specialized core building blocks on top of which almost all AI applications are built. Once accessible only to the hyperscalers, these building blocks are now available to everyone, and soon, they will become the de facto standard for software development. These building blocks are technologically mature and cloud-agnostic. Adopting this stack allows companies to stay ahead of the game. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Winning%20in%20AI%20means%20mastering%20the%20new%20stack"/>
+        </item>
+        <item>
+            <title><![CDATA[Memory for Open-Source LLMs ]]></title>
+            <link>https://www.pinecone.io/blog/memory-for-open-source-llms/</link>
+            <guid>https://www.pinecone.io/blog/memory-for-open-source-llms/</guid>
+            <pubDate>Wed, 14 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Giving large language models the ability to remember unlocks a lot of new potential, from being able to anticipate what a customer wants based on past experience, to being a more helpful friend by remembering what’s important to you like real friends do. Let’s talk about how you can enable this conversational memory for your open-source large language models.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/2c578a4e50df44d76372f2a2d47d220f6733ee56-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Manage Serverless Costs with Read Units]]></title>
+            <link>https://www.pinecone.io/learn/read-units/</link>
+            <guid>https://www.pinecone.io/learn/read-units/</guid>
+            <pubDate>Thu, 01 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Gain a deeper understanding of how Read Units (RUs) are calculated.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Manage%20Serverless%20Costs%20with%20Read%20Units"/>
+        </item>
+        <item>
+            <title><![CDATA[5 reasons to build with Pinecone serverless ]]></title>
+            <link>https://www.pinecone.io/blog/why-serverless/</link>
+            <guid>https://www.pinecone.io/blog/why-serverless/</guid>
+            <pubDate>Mon, 29 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We recently announced Pinecone serverless in public preview. This blog shares the top five reasons to start building with Pinecone serverless today.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=5%20reasons%20to%20build%20with%20Pinecone%20serverless%20"/>
+        </item>
+        <item>
+            <title><![CDATA[OpenAI's Text Embeddings v3]]></title>
+            <link>https://www.pinecone.io/learn/openai-embeddings-v3/</link>
+            <guid>https://www.pinecone.io/learn/openai-embeddings-v3/</guid>
+            <pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[OpenAI's text-embedding-3-large and text-embedding-3-small are the latest state-of-the-art models for embeddings, a critical component of Retrieval Augmented Generation (RAG) and the AI ecosystem.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=OpenAI's%20Text%20Embeddings%20v3"/>
+        </item>
+        <item>
+            <title><![CDATA[Vectors as AI Data Primitives]]></title>
+            <link>https://www.pinecone.io/blog/vectors-as-ai-data-primitives/</link>
+            <guid>https://www.pinecone.io/blog/vectors-as-ai-data-primitives/</guid>
+            <pubDate>Wed, 24 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vector embeddings have a very different query behavior than what most databases were built for. Rather than finding something in rows and columns or document-oriented indexing, we are trying to find vectors in highly geometric, dimensional spaces. This type of data's query, write, and search paths necessitate a new, purpose-built database. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/fb27211fca0c111100724c73e98bddb8f557fd10-826x824.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Test Pinecone Serverless at Scale with the AWS Reference Architecture]]></title>
+            <link>https://www.pinecone.io/learn/scaling-pinecone-serverless/</link>
+            <guid>https://www.pinecone.io/learn/scaling-pinecone-serverless/</guid>
+            <pubDate>Tue, 23 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Pinecone AWS Reference Architecture is a production-ready example system that can be deployed in 10 minutes. 
+
+This post demonstrates how to use a deployed Reference Architecture to test Pinecone Serverless at an arbitrary scale. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/d8ca30ba6685a8236092b29d3832b050fe2e2740-1792x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Reimagining the vector database to enable knowledgeable AI]]></title>
+            <link>https://www.pinecone.io/blog/serverless-architecture/</link>
+            <guid>https://www.pinecone.io/blog/serverless-architecture/</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[With Pinecone serverless, we set out to build the future of vector databases, and what we have created is an entirely novel solution to the problem of knowledge in the AI era. This article will describe why and how we rebuilt Pinecone, the results of more than a year of active development, and ultimately, what we see as the future of vector databases.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Reimagining%20the%20vector%20database%20to%20enable%20knowledgeable%20AI"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Pinecone Serverless]]></title>
+            <link>https://www.pinecone.io/blog/serverless/</link>
+            <guid>https://www.pinecone.io/blog/serverless/</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are announcing Pinecone serverless, a completely reinvented vector database that lets you easily build fast and accurate GenAI applications. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Pinecone%20Serverless"/>
+        </item>
+        <item>
+            <title><![CDATA[How Pinecone and its partners are transforming GenAI with serverless ]]></title>
+            <link>https://www.pinecone.io/blog/serverless-launch-partners/</link>
+            <guid>https://www.pinecone.io/blog/serverless-launch-partners/</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone has integrated with other best-in-class GenAI solutions to provide a serverless experience for developers that is the easiest to use. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=How%20Pinecone%20and%20its%20partners%20are%20transforming%20GenAI%20with%20serverless%20"/>
+        </item>
+        <item>
+            <title><![CDATA[RAG makes LLMs better and equal]]></title>
+            <link>https://www.pinecone.io/blog/rag-study/</link>
+            <guid>https://www.pinecone.io/blog/rag-study/</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We investigated the impact of using Retrieval-Augmented Generation (RAG) to enhance Large Language Models (LLMs) with abundant data for GenAI applications. Our research shows that RAG with more data significantly improves the results of GenAI applications. Read the full study to learn more about our experiments and results. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=RAG%20makes%20LLMs%20better%20and%20equal"/>
+        </item>
+        <item>
+            <title><![CDATA[Build a Wikipedia chatbot, minus hallucinations ]]></title>
+            <link>https://www.pinecone.io/learn/wikipedia-chatbot/</link>
+            <guid>https://www.pinecone.io/learn/wikipedia-chatbot/</guid>
+            <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[RAG applications benefit from leveraging big datasets - the more information available to the application, the higher the likelihood to produce accurate answers to the users’ queries. But handling big datasets comes with a set of challenges, which we’ll explore in this post. We'll walk through creating a Retrieval-Augmented Generation (RAG) application using Pinecone serverless, Anyscale, and Langchain. We'll be using a moderately sized dataset from Cohere, which consists of 35 million entries from Wikipedia. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Build%20a%20Wikipedia%20chatbot%2C%20minus%20hallucinations%20"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone algorithms set new records for BigANN]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-algorithms-set-new-records-for-bigann/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-algorithms-set-new-records-for-bigann/</guid>
+            <pubDate>Thu, 11 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[As organizers, we could not participate ourselves.  Nevertheless, we invested in creating new algorithms and optimizing known techniques to measure ourselves against the other participants. We are delighted to report that our methods dominate in all four tracks, with performance that is up to 2x better than the next entry.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/52befe21d345ac35c0202c65336be56023267d3a-1374x958.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Practical Tips for Working with Pinecone at Scale]]></title>
+            <link>https://www.pinecone.io/blog/working-at-scale/</link>
+            <guid>https://www.pinecone.io/blog/working-at-scale/</guid>
+            <pubDate>Wed, 20 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone best practices for writing code in production environments.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/687060994a7ff492fe678c21f9bc15f1f114a431-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Getting Started with Mixtral 8X7B]]></title>
+            <link>https://www.pinecone.io/learn/mixtral-8x7b/</link>
+            <guid>https://www.pinecone.io/learn/mixtral-8x7b/</guid>
+            <pubDate>Wed, 20 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Mixtral 8X7B is Mistral AI's new state-of-the-art LLM. Using a Mixture of Experts (MoE) architecture the LLM is able to exceed GPT-3.5 performance at a fraction of the computational cost. Here we learn how to deploy Mixtral as an AI Agent.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Getting%20Started%20with%20Mixtral%208X7B"/>
+        </item>
+        <item>
+            <title><![CDATA[Launch production-grade architectures using Pinecone's vector database in minutes with the AWS Reference Architecture]]></title>
+            <link>https://www.pinecone.io/blog/aws-reference-architecture/</link>
+            <guid>https://www.pinecone.io/blog/aws-reference-architecture/</guid>
+            <pubDate>Mon, 27 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Pinecone AWS Reference Architecture is the fastest way to go to production with high-scale use-cases that leverage Pinecone's vector database.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/d8ca30ba6685a8236092b29d3832b050fe2e2740-1792x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Exploring the Pinecone AWS Reference Architecture]]></title>
+            <link>https://www.pinecone.io/learn/aws-reference-architecture/</link>
+            <guid>https://www.pinecone.io/learn/aws-reference-architecture/</guid>
+            <pubDate>Mon, 27 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Pinecone AWS Reference Architecture is the fastest way to go to production with high-scale uses cases leveraging Pinecone's vector database. 
+
+In this technical walkthrough post, we examine the components of the Reference Architecture and how they work together to create a distributed system that you can scale to your use cases.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c24dd70d766bb34f79a77875253cc6ea7aeb2695-1792x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone recognized as the most popular vector database]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-most-popular-vector-database-and-fortune-2023-50-ai-innovator-finalist/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-most-popular-vector-database-and-fortune-2023-50-ai-innovator-finalist/</guid>
+            <pubDate>Tue, 21 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone is named the most popular and most used vector database across industry reports. We are also the only vector database on the inaugural Fortune 2023 50 AI Innovator list.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/de1f3c423e14df9407c68f5aaf61dd44ffcedd9b-1806x1380.png"/>
+        </item>
+        <item>
+            <title><![CDATA[OpenAI Assistants API vs Canopy: A Quick Comparison]]></title>
+            <link>https://www.pinecone.io/learn/assistants-api-canopy/</link>
+            <guid>https://www.pinecone.io/learn/assistants-api-canopy/</guid>
+            <pubDate>Thu, 09 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[A quick comparison of OpenAI's new Assistants API and Canopy, a RAG framework and context engine powered by Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/87790a02bee555c14922dfc2b54a2b0259405052-2912x1632.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Canopy: An easy, free, and flexible RAG framework powered by Pinecone ]]></title>
+            <link>https://www.pinecone.io/blog/canopy-rag-framework/</link>
+            <guid>https://www.pinecone.io/blog/canopy-rag-framework/</guid>
+            <pubDate>Wed, 08 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Canopy lets you build and host your own production-ready chat assistant in under an hour. Learn more and start building today. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Introducing%20Canopy%3A%20An%20easy%2C%20free%2C%20and%20flexible%20RAG%20framework%20powered%20by%20Pinecone%20"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone is now available on the Azure Marketplace]]></title>
+            <link>https://www.pinecone.io/blog/azure-marketplace/</link>
+            <guid>https://www.pinecone.io/blog/azure-marketplace/</guid>
+            <pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[With this milestone, users already on Azure can quickly add Pinecone to their AI stack with just a few clicks. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a44ee8d053b36a4cd71e052be44211557259ee72-959x502.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Great Algorithms Are Not Enough]]></title>
+            <link>https://www.pinecone.io/blog/hnsw-not-enough/</link>
+            <guid>https://www.pinecone.io/blog/hnsw-not-enough/</guid>
+            <pubDate>Fri, 27 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Compared to bolt-on vector databases, Pinecone is thoughtfully designed to meet the escalating demands of GenAI applications, ensuring enhanced performance and scalability.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Great%20Algorithms%20Are%20Not%20Enough"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone is now HIPAA compliant]]></title>
+            <link>https://www.pinecone.io/blog/hipaa/</link>
+            <guid>https://www.pinecone.io/blog/hipaa/</guid>
+            <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone is now HIPAA compliant across Amazon Web Services (AWS), Azure, and Google Cloud Provider (GCP). ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/be3643dfc2fa08186c23c55f5e588c01e94c656c-1200x628.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Making it easier to maintain open-source projects with CodiumAI and Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/codiumai-pinecone-similar-issues/</link>
+            <guid>https://www.pinecone.io/learn/codiumai-pinecone-similar-issues/</guid>
+            <pubDate>Wed, 27 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this post, we’ll explain how CodiumAI's PR-agent project for GitHub reduces the maintenance overhead for open-source maintainers, how it uses semantic search to automatically find and link issues related to new issues opened by community members, and how the Pinecone vector database powers this high-scale use case.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/8c2dc1f3d81edcb796d114cd605870f83ae4232c-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Making Retrieval Augmented Generation Fast]]></title>
+            <link>https://www.pinecone.io/learn/fast-retrieval-augmented-generation/</link>
+            <guid>https://www.pinecone.io/learn/fast-retrieval-augmented-generation/</guid>
+            <pubDate>Wed, 13 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Retrieval Augmented Generation (RAG) is the go-to method for adding external knowledge to Large Language Models (LLMs). RAG with agents can be slow, but we can make it much faster using NVIDIA NeMo Guardrails. We explain how here.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/ccac6fa01f162a201eac7eaa3a4bfe9da73092f0-1456x816.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone as a Knowledge Base for Amazon Bedrock]]></title>
+            <link>https://www.pinecone.io/blog/amazon-bedrock-integration/</link>
+            <guid>https://www.pinecone.io/blog/amazon-bedrock-integration/</guid>
+            <pubDate>Wed, 13 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone as a Knowledge Base for Amazon Bedrock is currently available in private preview. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/fbb25a11b28d177f2adb6acd34076fde0d161347-1798x874.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[An (Opinionated) Checklist to Choose a Vector Database]]></title>
+            <link>https://www.pinecone.io/learn/an-opinionated-checklist-to-choose-a-vector-database/</link>
+            <guid>https://www.pinecone.io/learn/an-opinionated-checklist-to-choose-a-vector-database/</guid>
+            <pubDate>Wed, 13 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[AI is estimated to deliver trillions of dollars across many business use cases. To make a holistic evaluation, review these three categories: technology, developer experience, and enterprise readiness.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/61c9c2fcc5e72953909877d522923c0968e8a8b2-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[An (Opinionated) Checklist to Choose a Vector Database]]></title>
+            <link>https://www.pinecone.io/blog/an-opinionated-checklist-to-choose-a-vector-database/</link>
+            <guid>https://www.pinecone.io/blog/an-opinionated-checklist-to-choose-a-vector-database/</guid>
+            <pubDate>Wed, 13 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[AI is estimated to deliver trillions of dollars across many business use cases. To make a holistic evaluation, review these three categories: technology, developer experience, and enterprise readiness.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/61c9c2fcc5e72953909877d522923c0968e8a8b2-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[LangChain's Pinecone upsert speed increased by 5X]]></title>
+            <link>https://www.pinecone.io/blog/langchain-pinecone-upsert-faster/</link>
+            <guid>https://www.pinecone.io/blog/langchain-pinecone-upsert-faster/</guid>
+            <pubDate>Tue, 12 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In release v0.0.281 of the LangChain Python client, we’ve increased the speed of upserts to Pinecone indexes by up to 5 times, using asynchronous calls to reduce the time required to process large batches of vectors. 
+
+We made a few other quality-of-life improvements, too.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/4bb69968ce20576efec73d638380c7c645aa924a-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Falcon 180B: Model Overview]]></title>
+            <link>https://www.pinecone.io/learn/falcon-180b/</link>
+            <guid>https://www.pinecone.io/learn/falcon-180b/</guid>
+            <pubDate>Thu, 07 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Falcon 180B is an Open Access high-performance Large Language Model (LLM) with comparable performance to LLMs like Google's PaLM 2 (that powers Bard) and close to GPT-4 level performance.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/d3c5119584f8e1304fedc090272c29894b1576fe-1456x816.png"/>
+        </item>
+        <item>
+            <title><![CDATA[LLMs Are Not All You Need]]></title>
+            <link>https://www.pinecone.io/learn/llm-ecosystem/</link>
+            <guid>https://www.pinecone.io/learn/llm-ecosystem/</guid>
+            <pubDate>Wed, 06 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[A walk through the large language models (LLMs) ecosystem. Covering things like deploying open access LLMs, quantization, hallucination, retrieval augmented generation (RAG), conversational memory, agents, and more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/0c6b21f56e1bbb995e4aa2f4a6664deab7804693-901x450.png"/>
+        </item>
+        <item>
+            <title><![CDATA[The Pain and the Poetry of Python]]></title>
+            <link>https://www.pinecone.io/blog/pain-poetry-python/</link>
+            <guid>https://www.pinecone.io/blog/pain-poetry-python/</guid>
+            <pubDate>Thu, 31 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The ecosystem of tools for packaging, testing, distributing, and testing Python projects is overwhelming, especially if you’re coming to Python from other languages. 
+
+In this post, we’ll survey the evolution of Python tooling from its inception in 1991 through the present day, touching on significant milestones. 
+
+We’ll also explain why we're migrating the Pinecone Python client to the Poetry package and virtualenv management tool.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/68f8c34534846926069f20df17f8edb28c63eac4-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Fine-Tuning OpenAI's GPT 3.5 Turbo]]></title>
+            <link>https://www.pinecone.io/learn/fine-tune-gpt-3.5/</link>
+            <guid>https://www.pinecone.io/learn/fine-tune-gpt-3.5/</guid>
+            <pubDate>Mon, 28 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Fine-tuning for GPT-3.5 turbo is finally here! The latest update gives OpenAI users the ability to create their own custom GPT-3.5 model that has been tuned towards a particular dataset. We'll learn how to apply it to create a model fine-tuned for LangChain conversational agents.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Fine-Tuning%20OpenAI's%20GPT%203.5%20Turbo"/>
+        </item>
+        <item>
+            <title><![CDATA[Deploying Open Source LLMs for RAG with SageMaker]]></title>
+            <link>https://www.pinecone.io/learn/sagemaker-rag/</link>
+            <guid>https://www.pinecone.io/learn/sagemaker-rag/</guid>
+            <pubDate>Wed, 23 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn how to build Retrieval Augmented Generation (RAG) pipelines with open source LLMs like Flan T5 and Llama 2. We deploy LLMs using AWS SageMaker and implement RAG with sentence transformers and the Pinecone vector database.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/29e386e09525c1b85fa58a6b323a4ba1e833707f-1456x816.png"/>
+        </item>
+        <item>
+            <title><![CDATA[How to use Jupyter Notebooks for Machine Learning and AI Tasks]]></title>
+            <link>https://www.pinecone.io/learn/jupyter-notebooks/</link>
+            <guid>https://www.pinecone.io/learn/jupyter-notebooks/</guid>
+            <pubDate>Wed, 23 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Jupyter Notebooks are files that combine text and images with executable Python code. They are ideal for combining sample code with explanations in order to teach or demonstrate data science and AI techniques. 
+
+This tutorial explains how to get started using Jupyter Notebooks to learn the latest AI methods without needing to install any software, by loading open-source Notebooks from GitHub into Google Colab. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6a04d3de206f748f26cd541c8b1294c0c259d3b9-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Options for Solving Hallucinations in Generative AI]]></title>
+            <link>https://www.pinecone.io/learn/options-for-solving-hallucinations-in-generative-ai/</link>
+            <guid>https://www.pinecone.io/learn/options-for-solving-hallucinations-in-generative-ai/</guid>
+            <pubDate>Mon, 21 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, we’ll explain what AI hallucination is, the main solutions for this problem, and why RAG is the preferred approach in terms of scalability, cost-efficacy, and performance. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/60d0cbf01286961b542b8a1be20bb2731dc614e5-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[AI-powered and built with... JavaScript?]]></title>
+            <link>https://www.pinecone.io/learn/javascript-ai/</link>
+            <guid>https://www.pinecone.io/learn/javascript-ai/</guid>
+            <pubDate>Fri, 11 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Projecting several years ahead, digital builders will unlock some of the most exciting innovations. Six technology trends are positioning JavaScript developers to reap the rewards of a society increasingly hungry for AI applications. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c2eed7369d04186820b8acbd83f8a8f017f8a181-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[NeMo Guardrails: The Missing Manual]]></title>
+            <link>https://www.pinecone.io/learn/nemo-guardrails-intro/</link>
+            <guid>https://www.pinecone.io/learn/nemo-guardrails-intro/</guid>
+            <pubDate>Fri, 11 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this guide we explain all there is to know about Nvidia's NeMo Guardrails library for building better conversational AI. Learn how to apply guardrails for more controllable, user-friendly chatbots.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/ae27376ed4fe30fd0f63a9eb2e9f1289dddfce77-1651x929.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Image Search in Typescript]]></title>
+            <link>https://www.pinecone.io/learn/image-search-in-typescript/</link>
+            <guid>https://www.pinecone.io/learn/image-search-in-typescript/</guid>
+            <pubDate>Tue, 08 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this tutorial, we'll learn how to build an image search engine using Pinecone and the CLIP model. We'll use a small dataset of images (included in this repository) and show how to embed and index them in Pinecone. We'll then show how to query the index to find similar images.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/370c862fb2024be89f2a5ed9d91a4a8943f9b822-904x558.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Monitor Pinecone with Datadog ]]></title>
+            <link>https://www.pinecone.io/blog/datadog-integration/</link>
+            <guid>https://www.pinecone.io/blog/datadog-integration/</guid>
+            <pubDate>Thu, 03 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone users can now easily view and monitor usage and performance for AI applications in a single place with Datadog’s new integration for Pinecone.   
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c29f992bb62c362b1481f0bc7446ac6d8066435f-2400x1256.png"/>
+        </item>
+        <item>
+            <title><![CDATA[A Look Back at Pinecone's First Hackathon]]></title>
+            <link>https://www.pinecone.io/blog/the-first-pinecone-hackathon/</link>
+            <guid>https://www.pinecone.io/blog/the-first-pinecone-hackathon/</guid>
+            <pubDate>Thu, 03 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this post, we take a look back at Pinecone's inaugural virtual hackathon. Learn more about the innovative solutions developed by participants and explore the potential real-world impact of these AI applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/e9d212533987ff92826d4080d44b96e60f175525-1512x567.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Llama 2: AI Developers Handbook]]></title>
+            <link>https://www.pinecone.io/learn/llama-2/</link>
+            <guid>https://www.pinecone.io/learn/llama-2/</guid>
+            <pubDate>Mon, 24 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Llama 2 is the latest Large Language Model (LLM) from Meta AI. It has been released as an open-access model, enabling unrestricted access to corporations and open-source hackers alike. Here we learn how to use it with Hugging Face, LangChain, and as a conversational agent.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/16c5fc24133a5a8abd4bddcf3cd904e2fcae947a-1824x1026.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Less is More: Why Use Retrieval Instead of Larger Context Windows]]></title>
+            <link>https://www.pinecone.io/blog/why-use-retrieval-instead-of-larger-context/</link>
+            <guid>https://www.pinecone.io/blog/why-use-retrieval-instead-of-larger-context/</guid>
+            <pubDate>Thu, 20 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The idea of a large context window seems appealing at first — just give the model all your data and let it figure it out. However, Research shows that LLMs provide the best results when given fewer, more relevant documents in the context, rather than large numbers of unfiltered documents.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Less%20is%20More%3A%20Why%20Use%20Retrieval%20Instead%20of%20Larger%20Context%20Windows"/>
+        </item>
+        <item>
+            <title><![CDATA[Retrieval Augmented Generation (RAG) with Pinecone and Vercel's AI SDK]]></title>
+            <link>https://www.pinecone.io/learn/context-aware-chatbot-with-vercel-ai-sdk/</link>
+            <guid>https://www.pinecone.io/learn/context-aware-chatbot-with-vercel-ai-sdk/</guid>
+            <pubDate>Wed, 19 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this tutorial, we're going to build a full-stack application that uses Retrieval Augmented Generation (RAG) to deliver accurate and contextually relevant responses in a chatbot, leveraging the Vercel AI SDK.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/525ede4a302dc9d4ec34dbd652291df41765995d-1024x1024.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Run Pinecone on Azure]]></title>
+            <link>https://www.pinecone.io/blog/azure/</link>
+            <guid>https://www.pinecone.io/blog/azure/</guid>
+            <pubDate>Thu, 13 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone on Azure is now available. Learn more and start building today. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/08835b7b4f15f6443ed8ab5654d6f76e45ebbeac-2400x1256.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Understanding Hallucinations in AI: A Comprehensive Guide]]></title>
+            <link>https://www.pinecone.io/learn/ai-hallucinations/</link>
+            <guid>https://www.pinecone.io/learn/ai-hallucinations/</guid>
+            <pubDate>Thu, 13 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Explore the intriguing world of hallucinations in AI language models in our comprehensive guide. Uncover the causes, implications, and future trends in AI hallucinations, shedding light on this uncharted frontier of artificial intelligence research.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/5cd5bc6026b40374526228c1517c44aa33cf25e2-1506x1014.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Start now, then take your time: Removing the Pinecone waitlist and inactivity policy]]></title>
+            <link>https://www.pinecone.io/blog/gcp-starter/</link>
+            <guid>https://www.pinecone.io/blog/gcp-starter/</guid>
+            <pubDate>Wed, 12 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Over the coming weeks, we will be opening up instant sign ups for all users, and allowing new users to keep their free indexes indefinitely. Learn more about the changes we are making to the Starter (free) plan. 
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Start%20now%2C%20then%20take%20your%20time%3A%20Removing%20the%20Pinecone%20waitlist%20and%20inactivity%20policy"/>
+        </item>
+        <item>
+            <title><![CDATA[Audio Recommendation with OpenAI and Vector DBs]]></title>
+            <link>https://www.pinecone.io/learn/audio-recommendation-openai/</link>
+            <guid>https://www.pinecone.io/learn/audio-recommendation-openai/</guid>
+            <pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Explore the creation of an audio recommendation system using Python in this step-by-step guide. The article covers the basics of recommendation systems, their importance in the era of audio streaming, and helps users discover new, relevant content.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/47521ad155b29cbca750970b9a3978f755409a66-884x787.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Semantic search with Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/search-with-pinecone/</link>
+            <guid>https://www.pinecone.io/learn/search-with-pinecone/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Unlike keyword-based search, semantic search uses the meaning of the search query. It finds relevant results even if they don’t exactly match the query. This works by combining the power of Large Language Models (LLMs) to generate vector embeddings with the long-term memory of a vector database.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/e1544103686872d0b15ccacc3789f881172a4111-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Embeddings to Identify Fake News]]></title>
+            <link>https://www.pinecone.io/learn/embeddings-identify-fake-news/</link>
+            <guid>https://www.pinecone.io/learn/embeddings-identify-fake-news/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Fake documents and articles contain attributes and linguistic signs that can be used to reveal patterns. Considering their textual components, features like author, context, and writing style can help in identifying fake news.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/1e85551924251d5874de12e513f021cf522c411c-753x394.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Evaluation Measures in Information Retrieval]]></title>
+            <link>https://www.pinecone.io/learn/offline-evaluation/</link>
+            <guid>https://www.pinecone.io/learn/offline-evaluation/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Evaluation of information retrieval (IR) systems is critical to making well-informed design decisions. From search to recommendations, evaluation measures are paramount to understanding what does and does not work in retrieval.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/46f3117bcc0c6c866898670f981277c052abf8c3-1728x972.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Softmax Activation Function: Everything You Need to Know]]></title>
+            <link>https://www.pinecone.io/learn/softmax-activation/</link>
+            <guid>https://www.pinecone.io/learn/softmax-activation/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Have you ever trained a neural network to solve the problem of multiclass classification? If yes, you know that the raw outputs of the neural network are often very difficult to interpret. The softmax activation function simplifies this for you by making the neural network’s outputs easier to interpret!]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/ffbc45c051fa4d9bf81f236f72116546d05a3682-500x281.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Generative Question-Answering with Long-Term Memory]]></title>
+            <link>https://www.pinecone.io/learn/openai-gen-qa/</link>
+            <guid>https://www.pinecone.io/learn/openai-gen-qa/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Generative AI sparked several “wow” moments in 2022. From generative art tools like OpenAI’s DALL-E 2, Midjourney, and Stable Diffusion, to the next generation of Large Language Models like OpenAI’s GPT-3.5 generation models, BLOOM, and chatbots like LaMDA and ChatGPT.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a88abe268ea5b53ae08d65608d2943d218f4f99f-1920x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[What are Vector Embeddings]]></title>
+            <link>https://www.pinecone.io/learn/vector-embeddings/</link>
+            <guid>https://www.pinecone.io/learn/vector-embeddings/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vector embeddings are one of the most fascinating and useful concepts in machine learning. They are central to many NLP, recommendation, and search algorithms. If you’ve ever used things like recommendation engines, voice assistants, language translators, you’ve come across systems that rely on embeddings.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/e016bbd4d7d57ff27e261adf1e254d2d3c609aac-2447x849.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Getting Started with Hybrid Search]]></title>
+            <link>https://www.pinecone.io/learn/hybrid-search-intro/</link>
+            <guid>https://www.pinecone.io/learn/hybrid-search-intro/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today, we will learn how to take our search to a new level. Taking both vector and traditional search and merging them via Pinecone’s new hybrid search.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/253e06d8aea886d41d4013fd5f34e27eb86eb08a-1920x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Cross-Entropy Loss: Make Predictions with Confidence]]></title>
+            <link>https://www.pinecone.io/learn/cross-entropy-loss/</link>
+            <guid>https://www.pinecone.io/learn/cross-entropy-loss/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In classification problems, the model predicts the class label of an input. In such problems, you need metrics beyond accuracy. While accuracy tells the model whether or not a particular prediction is correct, cross-entropy loss gives information on how correct a particular prediction is. When training a classifier neural network, minimizing the cross-entropy loss during training is equivalent to helping the model learn to predict the correct labels with higher confidence.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/f4017d7bc83d8e0a1fdddb71fed99d3b19415830-900x506.png"/>
+        </item>
+        <item>
+            <title><![CDATA[K-Nearest Neighbor (KNN) Explained]]></title>
+            <link>https://www.pinecone.io/learn/k-nearest-neighbor/</link>
+            <guid>https://www.pinecone.io/learn/k-nearest-neighbor/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[One Machine Learning algorithm that relies on the concepts of proximity and similarity is K-Nearest Neighbor (KNN). KNN is a supervised learning algorithm capable of performing both classification and regression tasks.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=K-Nearest%20Neighbor%20(KNN)%20Explained"/>
+        </item>
+        <item>
+            <title><![CDATA[Optimize Classifier Training with Vector Search]]></title>
+            <link>https://www.pinecone.io/learn/classifier-train-vector-search/</link>
+            <guid>https://www.pinecone.io/learn/classifier-train-vector-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pretrained models dominate the world of machine learning. Very few ML projects begin by training a new model from scratch. Instead, people often start by taking an off-the-shelf model like Resnet or BERT and fine-tuning it for another domain, or using an existing in-house model for the same purpose.]]></description>
+            <enclosure length="0" type="image/webp" url="https://www.pinecone.io/api/og/?title=Optimize%20Classifier%20Training%20with%20Vector%20Search"/>
+        </item>
+        <item>
+            <title><![CDATA[How Language Embedding Models Will Change Financial Services]]></title>
+            <link>https://www.pinecone.io/learn/nlp-financial-services/</link>
+            <guid>https://www.pinecone.io/learn/nlp-financial-services/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Alternative data refers to non-traditional data that can provide an indication of future performance of a company outside of traditional sources. You can think of examples like records from credit card transactions, web-scraped data, geolocation data from cell phones, satellite images and weather forecasts. These sources are less structured and usually less accessible than the traditional ones, making them ideal for uncovering insights.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/b5f4a4edaae4ebff47169c4299e21ceaef95b4de-904x376.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Long Form Question Answering in Haystack]]></title>
+            <link>https://www.pinecone.io/learn/haystack-lfqa/</link>
+            <guid>https://www.pinecone.io/learn/haystack-lfqa/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Question-Answering (QA) has exploded as a subdomain of Natural Language Processing (NLP) in the last few years. QA is a widely applicable use case in NLP yet was out of reach until the introduction of transformer models in 2017.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/301f38ba79d7a6d36746ff4f3349751a98e81645-1920x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Using Semantic Search to Find GIFs]]></title>
+            <link>https://www.pinecone.io/learn/gif-search/</link>
+            <guid>https://www.pinecone.io/learn/gif-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, we will use vector search applied to language, called semantic search, to build a GIF search engine. Unlike more traditional search where we rely on keyword matching, semantic search enables search based on the human meaning behind text and images. That means we can find highly relevant GIFs with natural language prompts.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/21899cee8f751e635734de67be7d4a757e0a7c3e-1280x720.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Time Series Analysis Through Vectorization]]></title>
+            <link>https://www.pinecone.io/learn/time-series-vectors/</link>
+            <guid>https://www.pinecone.io/learn/time-series-vectors/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[A time series is a sequence of observations of data points measured over a time interval. The concept is not new, but we are witnessing an explosion of this type of data as the world gets increasingly measured.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/41e9033ffa31c84235e271fc3b2d3dcec692ecd7-1299x466.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introduction to K-Means Clustering]]></title>
+            <link>https://www.pinecone.io/learn/k-means-clustering/</link>
+            <guid>https://www.pinecone.io/learn/k-means-clustering/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Under unsupervised learning, all the objects in the same group (cluster) should be more similar to each other than to those in other clusters; data points from different clusters should be as different as possible. Clustering allows you to find and organize data into groups that have been formed organically, rather than defining groups before looking at the data.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a1f54e87d407997ad63cc594b00b6ce1abbaab33-960x684.png"/>
+        </item>
+        <item>
+            <title><![CDATA[The Missing WHERE Clause in Vector Search]]></title>
+            <link>https://www.pinecone.io/learn/vector-search-filtering/</link>
+            <guid>https://www.pinecone.io/learn/vector-search-filtering/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vector similarity search makes massive datasets searchable in fractions of a second. Yet despite the brilliance and utility of this technology, often what seem to be the most straightforward problems are the most difficult to solve. Such as filtering.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a102247b2696d3e208df9250b11b63934a7c7daf-1920x1220.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Text-to-Image and Image-to-Image Search Using CLIP]]></title>
+            <link>https://www.pinecone.io/learn/clip-image-search/</link>
+            <guid>https://www.pinecone.io/learn/clip-image-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[CLIP is a neural network trained on about 400 million (text and image) pairs. Training uses a contrastive learning approach that aims to unify text and images, allowing tasks like image classification to be done with text-image similarity.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a1bf7bcfc7087a9224b8be1f576088aa4ee981a0-1000x390.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Hybrid Search and Learning-to-Rank with Metarank]]></title>
+            <link>https://www.pinecone.io/learn/metarank/</link>
+            <guid>https://www.pinecone.io/learn/metarank/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[As more advanced Large Language Models (LLMs) are released, the dream of an accurate semantic search comes closer to reality. But a classical term search is still hard to beat, even with the largest LLMs. So what if you don’t need to choose between two approaches and combine them within a single hybrid multi-retriever system?]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/46714bde9c0253f501da04c671ef82e91bc2351b-1200x526.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introduction to Transfer Learning]]></title>
+            <link>https://www.pinecone.io/learn/transfer-learning/</link>
+            <guid>https://www.pinecone.io/learn/transfer-learning/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Transfer Learning (TL) is a Machine Learning method where a model developed for a task is reused as the starting point for a model in another task.
+]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/db540542eb64f3f9fe39847f283249f0701a8b2b-1200x613.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Fixing YouTube Search with OpenAI's Whisper]]></title>
+            <link>https://www.pinecone.io/learn/openai-whisper/</link>
+            <guid>https://www.pinecone.io/learn/openai-whisper/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[OpenAI’s Whisper is a new state-of-the-art (SotA) model in speech-to-text. It is able to almost flawlessly transcribe speech across dozens of languages and even handle poor audio quality or excessive background noise.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6fc925851095fc7caa6d8d86062b87433144b185-1920x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Vector Embeddings for Developers: The Basics]]></title>
+            <link>https://www.pinecone.io/learn/vector-embeddings-for-developers/</link>
+            <guid>https://www.pinecone.io/learn/vector-embeddings-for-developers/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[You might not know it yet, but vector embeddings are everywhere. They are the building blocks of many machine learning and deep learning algorithms used by applications ranging from search to AI assistants. If you’re considering building your own application in this space, you will likely run into vector embeddings at some point. In this post, we’ll try to get a basic intuition for what vector embeddings are and how they can be used.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/74dcb38eba9772762eb61b4b7f11caee3003c617-1828x958.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Building a Image Recognition App in Javascript using Pinecone, Hugging Face, and Vercel]]></title>
+            <link>https://www.pinecone.io/learn/pinecone-vision-app/</link>
+            <guid>https://www.pinecone.io/learn/pinecone-vision-app/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[The world of AI is rapidly expanding, and now the JavaScript/TypeScript ecosystem is joining in. With the emergence of tools like Pinecone, HuggingFace, OpenAI, Cohere, and many others, JavaScript developers can create AI applications more quickly, addressing new challenges that were once exclusive to machine learning engineers and data scientists.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6571a8f8034de1ea76196bc0835faee2284fd642-1030x728.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Transformers Are All You Need]]></title>
+            <link>https://www.pinecone.io/learn/transformers/</link>
+            <guid>https://www.pinecone.io/learn/transformers/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Transformers represent new architectures of Artificial Neural Networks (ANN) that generalize to many NLP tasks with incredible results. Transformers have improved the performance of language models in a substantial way, significantly extending the model’s contextual processing.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/1a9ed226fbbbb6249f2b3432099a995a02363464-1310x580.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Semantic Search: Measuring Meaning From Jaccard to Bert]]></title>
+            <link>https://www.pinecone.io/learn/semantic-search/</link>
+            <guid>https://www.pinecone.io/learn/semantic-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Similarity search is one of the fastest-growing domains in AI and machine learning. At its core, it is the process of matching relevant pieces of information together.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c832ffe6917e2795e39c588f5fa8d752eb0800e3-1500x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Weight Initialization Techniques in Neural Networks]]></title>
+            <link>https://www.pinecone.io/learn/weight-initialization/</link>
+            <guid>https://www.pinecone.io/learn/weight-initialization/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[This tutorial will discuss the early approaches to weight initialization and the limitations of zero, constant, and random initializations. We’ll then learn better weight initialization strategies based on the number of neurons in each layer, choice of activation functions, and more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/4c585ab6714ceba0f6ca2033634a36dc192775d1-1000x558.png"/>
+        </item>
+        <item>
+            <title><![CDATA[How Machine Learning is Accelerating Life Sciences]]></title>
+            <link>https://www.pinecone.io/learn/ml-life-sciences/</link>
+            <guid>https://www.pinecone.io/learn/ml-life-sciences/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Massive data volumes plus improved computation have eased the path to ML models that can solve new challenges in Life Sciences. ]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a6d446d411b6eea302dc51bd237d3e16b262f5dc-1000x563.png"/>
+        </item>
+        <item>
+            <title><![CDATA[What is Similarity Search?]]></title>
+            <link>https://www.pinecone.io/learn/what-is-similarity-search/</link>
+            <guid>https://www.pinecone.io/learn/what-is-similarity-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[With similarity search, we can work with semantic representations of our data and find similar items fast. And in the sections below we will discuss how exactly it works.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/99ba1bb3c45ace6737b594015966469ba0925a61-1176x522.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Regularization in Neural Networks]]></title>
+            <link>https://www.pinecone.io/learn/regularization-in-neural-networks/</link>
+            <guid>https://www.pinecone.io/learn/regularization-in-neural-networks/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Regularization techniques help improve a neural network’s generalization ability by reducing overfitting. They do this by minimizing needless complexity and exposing the network to more diverse data.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/313013361bc3b148d2d316de81c3984be0e65a5b-1200x627.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Making Stable Diffusion Faster with Intelligent Caching]]></title>
+            <link>https://www.pinecone.io/learn/faster-stable-diffusion/</link>
+            <guid>https://www.pinecone.io/learn/faster-stable-diffusion/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[It’s safe to say that diffusers are here to stay. Yet, since diffusion requires many generations and plenty of prompt tweaking to produce good results — stable diffusion is simply out of reach for most people unless we find a way to make it more efficient.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/060ea16b3d3799d40d3f57535d52e31b203560c9-3142x1728.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Streaming Embedding Generation with Databricks and Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/databricks-streaming/</link>
+            <guid>https://www.pinecone.io/learn/databricks-streaming/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Combining Databricks and Pinecone provides us with the perfect pipeline to answer these challenges. Databricks offers Structured streaming and Delta Live Tables as means to create a streaming pipeline. Pinecone provides the best solution for storing the embeddings produced in Databricks for consumption by downstream applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/2dedb2876fc008d23785feaef0c1a581600b04a6-1531x778.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Building a Multi-User Chatbot with Langchain and Pinecone in Next.JS]]></title>
+            <link>https://www.pinecone.io/learn/javascript-chatbot/</link>
+            <guid>https://www.pinecone.io/learn/javascript-chatbot/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Read our step-by-step guide and learn how to build a multi-user langchain chatbot with Langchain and Pinecone in Next.JS.
+
+In this example, we’ll imagine that our chatbot needs to answer questions about the content of a website. To do that, we’ll need a way to store and access that information when the chatbot generates its response.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6b0c271f0419859a9e1ec6f25ba83089aba30f11-1338x1110.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Plagiarism Detection Using Transformers]]></title>
+            <link>https://www.pinecone.io/learn/plagiarism-detection/</link>
+            <guid>https://www.pinecone.io/learn/plagiarism-detection/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this conceptual blog, we will explain how to use transformer-based models to tackle these two challenges in an innovative way. First of all, we will walk you through the analytical approach describing the entire workflow, from data collection to performance analysis. Then, we will dive into the scientific/technical implementation of the solution before showing the final results.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/7943e32cb3fbf518911831327f449acb67a886c6-1000x664.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Making YouTube Search Better with NLP]]></title>
+            <link>https://www.pinecone.io/learn/youtube-search/</link>
+            <guid>https://www.pinecone.io/learn/youtube-search/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Technology and culture have advanced and become ever more entangled. Some of the most significant technological breakthroughs are integrated so tightly into our culture that we never even notice they’re there. One of those is AI-powered search. It powers your Google results, Netflix recommendations, and ads you see everywhere. It is being rapidly weaved throughout all aspects of our lives. Further, this is a new technology; its full potential is unknown.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a438f260346d8f6689b47c56e518b4ab3bc80c13-1152x648.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Ludicrous BERT Search Speeds]]></title>
+            <link>https://www.pinecone.io/learn/bert-search-speed/</link>
+            <guid>https://www.pinecone.io/learn/bert-search-speed/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[BERT is a popular word embedding model because its pretrained versions provide high-quality embeddings without any additional training. However, those embeddings are high-dimensional (768 in our experiment), making it unbearably slow to search with k-nearest-neighbor (KNN) algorithms.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c5eaace70b98a4c527b1d38a4b9e8e51fc8725ef-1328x384.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Vector Similarity Explained]]></title>
+            <link>https://www.pinecone.io/learn/vector-similarity/</link>
+            <guid>https://www.pinecone.io/learn/vector-similarity/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Vector embeddings have proven to be an effective tool in a variety of fields, including natural language processing and computer vision. Comparing vector embeddings and determining their similarity is an essential part of semantic search, recommendation systems, anomaly detection, and much more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c50f7175a584bdf56284365106a159693e9cae69-937x429.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Testing p2 Pods, Vertical Scaling, and Collections]]></title>
+            <link>https://www.pinecone.io/learn/testing-p2-collections-scaling/</link>
+            <guid>https://www.pinecone.io/learn/testing-p2-collections-scaling/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Today, vector search just became up to 10x faster, easier to set up, and vertically scalable. In this article, we will show you how you can get started with the latest features in Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6725b047bcc9f8a40519f452aea187042dc8120f-661x661.png"/>
+        </item>
+        <item>
+            <title><![CDATA[How to Explain ConvNet Predictions Using Class Activation Maps]]></title>
+            <link>https://www.pinecone.io/learn/class-activation-maps/</link>
+            <guid>https://www.pinecone.io/learn/class-activation-maps/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this tutorial, you’ll learn how class activation maps (CAM) and their generalizations, Grad-CAM and Grad-CAM++, can be used to explain a ConvNet. You’ll then learn how to generate class activation maps in PyTorch.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/4ee8f14c62a131ca2366318b6befa968dfdf5d3d-1000x570.png"/>
+        </item>
+        <item>
+            <title><![CDATA[SPLADE for Sparse Vector Search Explained]]></title>
+            <link>https://www.pinecone.io/learn/splade/</link>
+            <guid>https://www.pinecone.io/learn/splade/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[This article will cover the latest in learnable sparse embeddings with SPLADE — the Sparse Lexical and Expansion model.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/6b481c4046d88fc000dc19ee482df4269c7b9385-1920x1080.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Straightforward Guide to Dimensionality Reduction]]></title>
+            <link>https://www.pinecone.io/learn/dimensionality-reduction/</link>
+            <guid>https://www.pinecone.io/learn/dimensionality-reduction/</guid>
+            <pubDate>Fri, 30 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[There is a golden rule in Machine Learning that states: the more data, the better. This rule is a double-edged sword. An indiscriminate addition of data might introduce noise, reduce model performance, and slow down its training process. In this case, more data can hurt model performance, so it’s essential to understand how to deal with it.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/ab8e4a8435cd8b3d763ceefacd947ee0c8e0eed6-944x702.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Chatbots with Pinecone]]></title>
+            <link>https://www.pinecone.io/learn/chatbots-with-pinecone/</link>
+            <guid>https://www.pinecone.io/learn/chatbots-with-pinecone/</guid>
+            <pubDate>Fri, 23 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Chatbots trained on the latest AI models have access to an extensive worldview, and when paired with the long-term memory of a vector database like Pinecone, they can generate and provide highly relevant, grounded responses.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/b545288d57d63d995e08d91fe7f3f45bc5e923bc-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Build Better Deep Learning Models with Batch and Layer Normalization]]></title>
+            <link>https://www.pinecone.io/learn/batch-layer-normalization/</link>
+            <guid>https://www.pinecone.io/learn/batch-layer-normalization/</guid>
+            <pubDate>Fri, 23 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Batch and layer normalization are two strategies for training neural networks faster, without having to be overly cautious with initialization and other regularization techniques.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/cfffb761ac397db4a38917363dbdaf7748d77de2-800x450.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Advanced Topic Modeling with BERTopic]]></title>
+            <link>https://www.pinecone.io/learn/bertopic/</link>
+            <guid>https://www.pinecone.io/learn/bertopic/</guid>
+            <pubDate>Fri, 23 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[BERTopic takes advantage of the superior language capabilities of (not yet sentient) transformer models and uses some other ML magic like UMAP and HDBSCAN to produce what is one of the most advanced techniques in language topic modeling today.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/3632492bb621b51af9c5fccc02da54fe0e44374f-1824x1026.png"/>
+        </item>
+        <item>
+            <title><![CDATA[What is Vector Search? 2024 Guide for Developers]]></title>
+            <link>https://www.pinecone.io/learn/vector-search-basics/</link>
+            <guid>https://www.pinecone.io/learn/vector-search-basics/</guid>
+            <pubDate>Thu, 22 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[What is vector search? We explain everything developers should know about vector indexes, embeddings, and how to use them effectively with Pinecone.
+For many developers, the present problem is vector similarity search. The solution is Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/74dcb38eba9772762eb61b4b7f11caee3003c617-1828x958.png"/>
+        </item>
+        <item>
+            <title><![CDATA[What is a Vector Database & How Does it Work? Use Cases + Examples]]></title>
+            <link>https://www.pinecone.io/learn/vector-database/</link>
+            <guid>https://www.pinecone.io/learn/vector-database/</guid>
+            <pubDate>Wed, 03 May 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Discover Vector Databases: How They Work, Examples, Use Cases, Pros & Cons, Selection and Implementation. They have combined capabilities of traditional databases and standalone vector indexes while specializing for vector embeddings.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/7cade82cc1721b94f725dd5106125c404f5e74b4-1399x537.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Announcing Our $100M Series B Funding to Build Long-Term Memory for AI]]></title>
+            <link>https://www.pinecone.io/blog/series-b/</link>
+            <guid>https://www.pinecone.io/blog/series-b/</guid>
+            <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Dear Pinecone Community,   I am thrilled to share some exciting news with you all. We raised $100 million in Series B funding, led by Andreessen Horowitz, with participation from ICONIQ Growth, and our existing investors Menlo Ventures and Wing Venture Capital. This funding brings our valuation to $750 million, hitting another milestone in our journey to revolutionize how AI applications are built.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/3d6cea10171656be9452ea9171f6e9a030bb037d-2400x1254.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Opening up our free plan]]></title>
+            <link>https://www.pinecone.io/blog/updated-free-plan/</link>
+            <guid>https://www.pinecone.io/blog/updated-free-plan/</guid>
+            <pubDate>Wed, 26 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Since launching the Starter (free) plan two years ago, we’ve learned a lot about how people use it. Whether building a personal project or testing a prototype before upgrading, it turns out 99.1% of users utilize less than 20% of the capacity on their free account. In other words, while one p1 pod can store 500k 1536-dimensional embeddings, 99.1% of users store less than 100k embeddings (and 90.2% using less than 10k embeddings).]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c5478503ecbe035e829e9b31eebbafeba1e3ba37-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Supporting our growing number of free users]]></title>
+            <link>https://www.pinecone.io/blog/free-plan-update/</link>
+            <guid>https://www.pinecone.io/blog/free-plan-update/</guid>
+            <pubDate>Fri, 14 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Over the past few weeks, the level of excitement around Pinecone has been astounding. There are now over 10,000 daily signups for our free plan, and growing fast. As a managed infrastructure provider, keeping a service running smoothly at enormous scales is exactly the kind of challenge we love to work on.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/8985d04404f5cc2c6694cb0194d61c9a8fd94722-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Single Sign-On (SSO) for Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/single-sign-on/</link>
+            <guid>https://www.pinecone.io/blog/single-sign-on/</guid>
+            <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Some of the world’s largest enterprises trust Pinecone to store their data and power their critical applications, and as we continue to innovate and improve our product, security remains at the center. We are excited to add support for Single Sign-On (SSO) for all Enterprise users to enable more secure access to Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/3c10f77f087e6c6d335b4644a86154665099e751-1200x629.png"/>
+        </item>
+        <item>
+            <title><![CDATA[March 1st Partial Database Outage]]></title>
+            <link>https://www.pinecone.io/blog/march-1-2023-incident/</link>
+            <guid>https://www.pinecone.io/blog/march-1-2023-incident/</guid>
+            <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Post-mortem: What happened and what we're doing after the March 1st partial database outage.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/0a4ff28ede3fc4ea3176f17b79deabd7ed8f4e4f-3600x1890.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Welcome Vector Databases, Welcome Bob]]></title>
+            <link>https://www.pinecone.io/blog/2022-growth-welcome-bob/</link>
+            <guid>https://www.pinecone.io/blog/2022-growth-welcome-bob/</guid>
+            <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone's amazing year of growth, and new President & COO to help us grow even more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/e35386545fe7c7ea5a88274ce89c341624516cc2-2400x1254.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing support for sparse-dense embeddings for better search result]]></title>
+            <link>https://www.pinecone.io/blog/sparse-dense/</link>
+            <guid>https://www.pinecone.io/blog/sparse-dense/</guid>
+            <pubDate>Thu, 23 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Index support for any sparse-dense embeddings now available in public preview for all users. Read announcement to learn more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/69be5f2866f4485c12b4e4b1cd96dd6e0944bada-1200x627.png"/>
+        </item>
+        <item>
+            <title><![CDATA[New usage insights to plan, test, and grow with confidence]]></title>
+            <link>https://www.pinecone.io/blog/usage-dashboards/</link>
+            <guid>https://www.pinecone.io/blog/usage-dashboards/</guid>
+            <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[New usage dashboards to enable you to plan, test, and grow with confidence.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/63fc6b28bb288d506b399be64292d8183db84696-1200x627.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone is now available on the AWS Marketplace]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-aws-marketplace/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-aws-marketplace/</guid>
+            <pubDate>Mon, 06 Feb 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Start building faster with Pinecone through the AWS Marketplace]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a33fb7a9fbf246f02a8dec76651486992c3d4623-1200x629.png"/>
+        </item>
+        <item>
+            <title><![CDATA[History in the making: A year of learning, growing, and connecting together]]></title>
+            <link>https://www.pinecone.io/blog/2022-highlights/</link>
+            <guid>https://www.pinecone.io/blog/2022-highlights/</guid>
+            <pubDate>Fri, 23 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[This has been an exciting year for vector search and vector databases. Embedding models got better and more accessible, the use cases for vector search expanded, and new applications powered by vector search generated a lot of buzz. While a lot happened over the past twelve months, we wanted to share a few highlights of our own.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/9171de156cb49c4163ef31e95a0585dc6c12a458-1200x800.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone is now available on the Google Cloud Marketplace]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-gcp-marketplace/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-gcp-marketplace/</guid>
+            <pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are excited to announce that Pinecone is now available on the Google Cloud Platform (GCP) Marketplace (and as the first vector database, no less). With Pinecone, you can build AI-powered search into your applications without needing to manage your own or modify legacy infrastructures.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/5e27a4e941b3ca61dc239b01d463360af570fbaa-1200x628.png"/>
+        </item>
+        <item>
+            <title><![CDATA[High-throughput vector indexes now generally available and free]]></title>
+            <link>https://www.pinecone.io/blog/pods-for-performance/</link>
+            <guid>https://www.pinecone.io/blog/pods-for-performance/</guid>
+            <pubDate>Thu, 08 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[P2 pods are now generally available to all users, dot product compatible, and 50% lower in cost.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/0f83bf940102b4b5f5d9180e74e0c163acc6b81d-1200x626.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Organizations: New access controls to makes vector search a company-wide capability]]></title>
+            <link>https://www.pinecone.io/blog/organizations/</link>
+            <guid>https://www.pinecone.io/blog/organizations/</guid>
+            <pubDate>Wed, 07 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[With organizations, users and teams can now collaborate across projects in a way that works best for them.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/8dc32341fda518637b52ea29f843b2d2a63ea915-1200x626.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing the hybrid index to enable keyword-aware semantic search]]></title>
+            <link>https://www.pinecone.io/blog/hybrid-search/</link>
+            <guid>https://www.pinecone.io/blog/hybrid-search/</guid>
+            <pubDate>Mon, 31 Oct 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[New approach to hybrid search leads to more relevant results]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/57f5e5424a5aa63574914638c0350475f942630d-1200x600.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Explore the power of Pinecone with public collections]]></title>
+            <link>https://www.pinecone.io/blog/public-collections/</link>
+            <guid>https://www.pinecone.io/blog/public-collections/</guid>
+            <pubDate>Fri, 16 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Start your vector-database journey with a click.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/909552c2b5ac2a30d69b35fb5d9916909d793cbb-600x259.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Rewriting a high performance vector database in Rust]]></title>
+            <link>https://www.pinecone.io/blog/rust-rewrite/</link>
+            <guid>https://www.pinecone.io/blog/rust-rewrite/</guid>
+            <pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Rewriting a high performance vector database in Rust]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a0a8b5c9fc13a2cfe6fc5a6057d1b52aec6fe471-1000x750.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Inside the Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/inside-the-pinecone/</link>
+            <guid>https://www.pinecone.io/blog/inside-the-pinecone/</guid>
+            <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Edo Liberty, Pinecone CEO, provides a glimpse into the journey behind building a database company, including some insights into the latest innovations around the product and vector search.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/24d097ec3c05ea389318b31f41360825723f9eef-1200x800.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Vector search just got up to 10x faster, easier to set up, and vertically scalable]]></title>
+            <link>https://www.pinecone.io/blog/faster-easier-scalable/</link>
+            <guid>https://www.pinecone.io/blog/faster-easier-scalable/</guid>
+            <pubDate>Tue, 16 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Announcing new features and performance improvements to make it easier and more cost-effective than ever for engineers to start and scale a vector database in production.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/66afda60ced054603810e355b665639cf2795d3a-2306x1208.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone sponsors the 45th annual SIGIR conference]]></title>
+            <link>https://www.pinecone.io/blog/sigit-2022/</link>
+            <guid>https://www.pinecone.io/blog/sigit-2022/</guid>
+            <pubDate>Fri, 22 Jul 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone was a proud sponsor for the conference and for the Reaching Efficiency in Neural Information Retrieval (ReNeuIR) workshop, co-led by our very own Sebastian Bruch, Staff Research Scientist at Pinecone.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/41d59ca4ec805e67a74c64fa85cb33a347566e3a-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Introducing the Enterprise Plan for Mission-Critical Applications]]></title>
+            <link>https://www.pinecone.io/blog/enterprise-plan/</link>
+            <guid>https://www.pinecone.io/blog/enterprise-plan/</guid>
+            <pubDate>Wed, 06 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Introducing the Enterprise plan for mission-critical applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/a7139a60e0e95385b46b7f29c181810fa2db845d-1350x647.png"/>
+        </item>
+        <item>
+            <title><![CDATA[$28M to Bring Search into the AI Age]]></title>
+            <link>https://www.pinecone.io/blog/funding-search-ai-age/</link>
+            <guid>https://www.pinecone.io/blog/funding-search-ai-age/</guid>
+            <pubDate>Tue, 29 Mar 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone raised $28M in Series A funding to bring search into the AI age.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/c226ab93f0b55b1c3e4ce5a32a99ee205f8827c6-2400x1260.png"/>
+        </item>
+        <item>
+            <title><![CDATA[February Release: Performance at Scale, Predictability, and Control]]></title>
+            <link>https://www.pinecone.io/blog/predict-perform-control/</link>
+            <guid>https://www.pinecone.io/blog/predict-perform-control/</guid>
+            <pubDate>Wed, 16 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Latest version of the Pinecone gives you greater performance, predictability, and control of your vector search applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/93c4b08230caf2c1baf8ac02dce392da55bd4b98-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Former Snowflake CEO Bob Muglia and Couchbase CEO Bob Wiederhold Bet on Pinecone]]></title>
+            <link>https://www.pinecone.io/blog/advisors/</link>
+            <guid>https://www.pinecone.io/blog/advisors/</guid>
+            <pubDate>Mon, 20 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are ushering in a new era of search.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/10c9daaef943532dc15cf3dc1ee061928bc255c1-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Meet Pinecone’s New VP of Engineering, Dr. Ram Sriharsha]]></title>
+            <link>https://www.pinecone.io/blog/welcome-ram/</link>
+            <guid>https://www.pinecone.io/blog/welcome-ram/</guid>
+            <pubDate>Mon, 22 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Our new VP of Engineering, Dr. Ram Sriharsha, brings a wealth of knowledge to our team and is uniquely positioned to help execute on our lofty vision.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/93402f29fde08185af17e2341745d119681d7c29-2000x1334.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone Recognized as a 2021 Gartner® Cool Vendor]]></title>
+            <link>https://www.pinecone.io/blog/cool-vendor-2021/</link>
+            <guid>https://www.pinecone.io/blog/cool-vendor-2021/</guid>
+            <pubDate>Thu, 28 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone created the category of Vector Databases to bring the power of vector similarity search to all companies. We are excited today to announce that Pinecone has been named a Gartner Cool Vendor in the October 2021 Gartner Cool Vendors&trade; in Data for Artificial Intelligence and Machine Learning.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/9602a9aa049593134ac70fd95b85657c024f2a43-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone 2.0 is Available and Free]]></title>
+            <link>https://www.pinecone.io/blog/v2-pricing/</link>
+            <guid>https://www.pinecone.io/blog/v2-pricing/</guid>
+            <pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Every use case comes with its own requirements for performance, number of vectors, and throughput. Our new pricing gives you the choice to optimize Pinecone to meet your needs and pay (less) as you go.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/383501ee1730a684701541e2a076bab4485bc1ce-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Pinecone 2.0: Take Vector Search from the Lab to Production]]></title>
+            <link>https://www.pinecone.io/blog/pinecone-v2/</link>
+            <guid>https://www.pinecone.io/blog/pinecone-v2/</guid>
+            <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pinecone 2.0 helps companies move vector similarity search from R&D labs to production applications.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/aaef33778f89f7f0455d5c53f3815cd1eadf2ccc-1200x630.png"/>
+        </item>
+        <item>
+            <title><![CDATA[The Rise of Vector Data]]></title>
+            <link>https://www.pinecone.io/blog/rise-vector-data/</link>
+            <guid>https://www.pinecone.io/blog/rise-vector-data/</guid>
+            <pubDate>Fri, 21 May 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[In Machine Learning, transformer models — or more generally “embedding models” — serve the role of converting raw data into vector embeddings. They generate vector data.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/5e8bb987869d5fa3cd008be60fd2d514306ac7d4-1999x820.png"/>
+        </item>
+        <item>
+            <title><![CDATA[Announcing the Pinecone Vector Database and $10M in Seed Funding]]></title>
+            <link>https://www.pinecone.io/blog/announcing-vector-database/</link>
+            <guid>https://www.pinecone.io/blog/announcing-vector-database/</guid>
+            <pubDate>Wed, 27 Jan 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Machine Learning (ML) represents everything as vectors, from documents, to videos, to user behaviors. This representation makes it possible to accurately search, retrieve, rank, and classify different items by similarity and relevance. This is useful in many applications such as product recommendations, semantic search, image search, anomaly detection, fraud detection, face recognition, and many more.]]></description>
+            <enclosure length="0" type="image/webp" url="https://cdn.sanity.io/images/vr8gru94/production/9fe84ac25b40d3c8f830af60d2958ce8e167d5f2-1498x780.png"/>
+        </item>
+    </channel>
+</rss>

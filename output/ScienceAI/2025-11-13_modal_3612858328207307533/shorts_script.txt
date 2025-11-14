@@ -1,0 +1,1 @@
+Modal raises $87M for AI infrastructure. Building GPU-optimized cloud platform. Solving capacity challenges for large models. Custom file system and container runtime. Used by Meta for reinforcement learning. Scaling AI development globally.

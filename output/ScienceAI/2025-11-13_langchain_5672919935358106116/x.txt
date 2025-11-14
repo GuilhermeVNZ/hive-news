@@ -1,0 +1,1 @@
+LangChain just dropped LangSmith Agent Builder - a visual platform that lets ANYONE build AI agents without coding! 🤯 Democratizing AI development with memory, planning & guided prompts. Join the waitlist: https://blog.langchain.com/langsmith-agent-builder/ #AI #NoCode #LangChain

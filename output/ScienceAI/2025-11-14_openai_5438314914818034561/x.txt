@@ -1,0 +1,1 @@
+OpenAI launches GPT-5.1 with adaptive reasoning that runs 2-3x faster than GPT-5. New coding tools, extended caching, and partnerships with Cursor, Warp, and others make this a game-changer for developers. #AI #GPT5 #DeveloperTools

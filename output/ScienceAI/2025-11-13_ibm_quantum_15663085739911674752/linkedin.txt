@@ -1,0 +1,1 @@
+IBM has launched 'The Coherence Times,' a bi-weekly quantum computing podcast hosted by IBM Quantum editor-in-chief Ryan Mandelbaum. The series features conversations with quantum researchers and technologists, breaking down complex concepts into accessible lessons about quantum hardware, software, and algorithmic innovations that could transform multiple industries.

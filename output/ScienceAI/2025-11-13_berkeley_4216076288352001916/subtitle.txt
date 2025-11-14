@@ -1,0 +1,1 @@
+Berkeley researchers develop 'divide and conquer' approach that could solve scaling problems in complex AI tasks without traditional temporal difference learning.

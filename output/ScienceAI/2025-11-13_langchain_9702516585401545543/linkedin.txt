@@ -1,0 +1,1 @@
+LangChain has released DeepAgents 0.2 with revolutionary pluggable backend architecture. This enables developers to build autonomous AI agents with composite filesystems and persistent memory capabilities. The update represents significant progress in enterprise-ready agent infrastructure for complex, long-running tasks. #ArtificialIntelligence #DeveloperTools #AIInfrastructure

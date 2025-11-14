@@ -1,0 +1,13 @@
+In a landmark demonstration of quantum computing's practical potential, D-Wave Quantum Inc. and chemical behemoth BASF have successfully completed a proof-of-concept project that slashed manufacturing scheduling times from 10 hours to a mere 5 seconds. The hybrid-quantum application, tested at a BASF liquid-filling facility, represents one of the most significant real-world quantum computing achievements to date.
+
+The project focused on optimizing complex manufacturing workflows where even minor delays can disrupt entire production cycles and increase operational costs. BASF's liquid-filling operations process thousands of bottles monthly across multiple product lines, requiring precise coordination from raw material arrival through final shipment.
+
+D-Wave's hybrid-quantum technology delivered staggering improvements across multiple operational metrics. Beyond the dramatic scheduling time reduction, the system achieved a 14% reduction in product lateness, 9% decrease in setup times, and up to 18% improvement in tank unloading durations. These results significantly outperformed existing classical optimization solutions that had previously struggled with the facility's complexity.
+
+Dr. Alan Baratz, CEO of D-Wave, emphasized the project's significance: 'This showcases how hybrid-quantum computing can address manufacturing and supply-chain bottlenecks where classical computing falls short. We're delivering measurable value today, not in some distant quantum future.'
+
+BASF representatives expressed equal enthusiasm. Ionel Rusu, quantum computing innovation management at BASF, noted that 'D-Wave's hybrid quantum technology demonstrated it has the potential to significantly improve optimization tasks, delivering faster decisions and better outcomes than classical-only solutions.' The results reportedly exceeded even BASF's ambitious expectations for the collaboration.
+
+The successful proof-of-concept marks a critical milestone for quantum computing's industrial adoption. As manufacturers face increasingly complex supply chain challenges and efficiency demands, hybrid-quantum solutions offer a path to optimization that classical computers simply cannot match for certain problem types.
+
+With over 200 million problems submitted to D-Wave's quantum systems to date, this BASF collaboration represents one of the most compelling demonstrations of quantum advantage in industrial settings. The partnership between quantum computing specialists and established industrial leaders suggests a new era of quantum-enabled manufacturing may be closer than many anticipated.

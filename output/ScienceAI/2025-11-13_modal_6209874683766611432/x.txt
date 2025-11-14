@@ -1,0 +1,1 @@
+Modal's infrastructure handled 250K+ AI app creations in 48 hours for Lovable's no-code platform. Massive scale with 20K concurrent sandboxes and zero downtime. Proof that specialized AI infrastructure can support viral growth. #AI #NoCode #Infrastructure

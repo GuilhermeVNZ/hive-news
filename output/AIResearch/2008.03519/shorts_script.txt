@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if you could teach AI to draw entirely new symbols after showing it just a few examples?
+[VISUAL DIRECTION] Animated text appears: "AI LEARNING TO DRAW" with question mark pulsing
+
+[VOICEOVER 0:05-0:20] This isn't science fiction - it's exactly what humans do naturally, and new research from Nature reveals how our brains accomplish this remarkable feat.
+[VISUAL DIRECTION] Quick cuts showing people drawing simple geometric shapes, transitioning to AI visualization
+
+[VOICEOVER 0:20-0:40] Researchers asked: How do humans learn abstract drawing patterns so efficiently? While AI needs thousands of examples, humans extract underlying rules after minimal exposure.
+[VISUAL DIRECTION] Side-by-side comparison: human drawing few examples vs AI requiring massive datasets
+
+[VOICEOVER 0:40-1:00] The breakthrough discovery: Humans spontaneously develop reusable 'mental programs' - abstract rules about shape structure that transfer across different drawing tasks.
+[VISUAL DIRECTION] Animated diagrams showing 'skewer' and 'barbell' patterns emerging from simple primitives
+
+[VOICEOVER 1:00-1:30] How does this work? Through two key principles: abstraction - focusing on higher-order structure, and compositionality - building complex shapes from simpler parts. The DreamCoder model mimics this by discovering subroutines through wake-sleep cycles.
+[VISUAL DIRECTION] Visual breakdown showing lines/circles combining into complex patterns, with text overlays: "ABSTRACTION + COMPOSITIONALITY"
+
+[VOICEOVER 1:30-1:50] Real impact: This could revolutionize AI assistants that learn from few examples, help diagnose cognitive disorders by modeling breakdowns, and create educational tools that adapt to individual learning styles.
+[VISUAL DIRECTION] Fast cuts showing potential applications: medical diagnostics, educational software, AI assistants
+
+[VOICEOVER 1:50-2:00] The takeaway: Learning doesn't always require massive data - sometimes, it's about finding the right structure. Our brains already know this secret.
+[VISUAL DIRECTION] Final text overlay: "STRUCTURE OVER DATA" with brain and AI icon merging

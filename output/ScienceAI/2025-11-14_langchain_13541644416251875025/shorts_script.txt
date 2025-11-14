@@ -1,0 +1,8 @@
+Take 1: AI agents need safe spaces to run code
+Take 2: LangChain launches secure sandboxes
+Take 3: Partnering with Runloop, Daytona, Modal
+Take 4: Isolated environments for risky code
+Take 5: Full visibility, automatic cleanup
+Take 6: Setup scripts for custom configs
+Take 7: Perfect for untrusted code testing
+Take 8: Enterprise security meets AI development

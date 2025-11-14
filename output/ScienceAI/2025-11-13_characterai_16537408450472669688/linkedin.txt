@@ -1,0 +1,1 @@
+Character.ai has detailed its Kaiju large language model family, showcasing advanced optimization techniques for conversational AI. The models employ int8 quantization, multi-query attention, and cross-layer cache sharing to achieve significant inference efficiency gains while maintaining engagement quality. Built on H100 GPU infrastructure with novel training methods.

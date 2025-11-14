@@ -1,0 +1,10 @@
+Computer vision just got smarter
+No more manual labeling needed
+Meta's DINOv3 learns from raw images
+7 billion parameters trained unsupervised
+Outperforms traditional models
+Works for healthcare, satellites, robots
+NASA using it for Mars exploration
+World Resources Institute for deforestation
+Single model, multiple applications
+The future is self-supervised

@@ -1,0 +1,1 @@
+AI now manages solar-powered 5G cells to cut energy drops by 61% annually. This distributed reinforcement learning coordinates virtual cells using real-time battery and load data. Could intelligent energy management make 5G both sustainable and cost-effective for operators?

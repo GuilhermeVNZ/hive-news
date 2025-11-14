@@ -8,3 +8,9 @@ users.json
 *.log
 *.pdb
 test_*.log
+apps/frontend-next/scienceai/node_modules/
+apps/frontend-next/scienceai/.next/
+apps/frontend-next/scienceai/dist/
+apps/frontend-next/airesearch/node_modules/
+apps/frontend-next/airesearch/.next/
+apps/frontend-next/airesearch/dist/

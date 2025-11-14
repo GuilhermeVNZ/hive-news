@@ -1,0 +1,13 @@
+LAS VEGAS—LangChain, the open-source framework powering modern AI agent development, is making a significant push into enterprise cloud infrastructure with its upcoming presence at AWS re:Invent 2025. The company confirmed it will showcase its full suite of AI development tools at Booth 524 in the Venetian Expo Center from December 1-4, marking one of its most substantial enterprise cloud partnerships to date.
+
+The announcement comes as LangChain deepens its integration with Amazon Web Services, now offering LangSmith—the company's AI development and monitoring platform—directly through AWS Marketplace. This move enables enterprises to deploy and manage LangSmith on their own AWS infrastructure while billing against existing AWS commitments, addressing a critical need for organizations seeking greater control over their AI development environments.
+
+LangChain's engineering team will conduct live demonstrations throughout the conference, featuring new capabilities including Insights Agent and Multi-turn Evaluations. These tools represent the company's latest advancements in production-ready AI agent development, specifically designed to help developers overcome common challenges in agent evaluation, deployment patterns, and scaling multi-agent systems.
+
+Harrison Chase, LangChain's founder and CEO, will host a special session at the booth on December 3rd from 12:00-1:00pm PT. The session will provide attendees with direct access to discuss roadmap decisions, implementation strategies, and production deployment experiences. This represents a rare opportunity for developers to engage directly with the leadership behind one of the most influential AI frameworks in the industry.
+
+The company will also participate in multiple technical sessions, including a deep dive into context engineering patterns using LangGraph and OpenSearch. These sessions will feature live demonstrations and panel discussions focused on practical implementation strategies that development teams can immediately apply to their AI projects.
+
+In a strategic partnership move, LangChain engineers will deliver a 10-minute lightning talk at the Redis booth (Booth 1520) on December 3rd at 2pm, focusing on building scalable AI architectures with LangChain and Redis. This collaboration highlights the growing ecosystem of infrastructure providers integrating with LangChain's development framework.
+
+For enterprises unable to attend the conference, LangChain is offering post-event technical consultations to address specific development challenges. The company's expanded AWS Marketplace availability signals a maturation of the AI development tooling ecosystem, providing enterprises with more deployment flexibility and cost management options for their AI initiatives.

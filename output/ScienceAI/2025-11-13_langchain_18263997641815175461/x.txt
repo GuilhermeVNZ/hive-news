@@ -1,0 +1,1 @@
+LangChain rebuilt its own AI chatbot after discovering even their engineers weren't using it. The new system delivers sub-15-second responses with precise citations by mirroring how humans actually search documentation and code. #AI #LangChain #Chatbot

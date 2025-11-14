@@ -1,0 +1,1 @@
+Modal & Pipecat slash voice AI latency to under 1 second using open models & GPU optimization. Real-time conversations are here—check the code on GitHub! #AI #VoiceTech #LowLatency

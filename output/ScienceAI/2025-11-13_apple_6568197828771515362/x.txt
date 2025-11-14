@@ -1,0 +1,1 @@
+Apple's new AI method revolutionizes deformable body simulation! Adaptive Spatial Tokenization handles 100k+ node meshes, outperforming existing approaches. Major implications for robotics, materials science, and mechanical design. #AI #MachineLearning #Robotics

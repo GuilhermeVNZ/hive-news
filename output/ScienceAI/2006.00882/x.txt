@@ -1,0 +1,1 @@
+AI learns faster when left alone: Independent agents solved Tower of Hanoi in 1,000 training episodes vs 3,000 for guided systems. Study reveals exploration may outperform tight control in robot training. Nature/Science paper challenges conventional AI guidance assumptions.

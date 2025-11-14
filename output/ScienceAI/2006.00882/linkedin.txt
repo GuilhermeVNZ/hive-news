@@ -1,0 +1,1 @@
+What if giving AI more freedom actually makes it learn faster? New research shows independent AI agents solved the Tower of Hanoi puzzle 3x faster than guided systems. Could stepping back be the most effective teaching strategy for artificial intelligence?

@@ -1,0 +1,1 @@
+Robots can now find near-optimal paths up to 10x faster by accepting slight suboptimality. This breakthrough enables real-time navigation for logistics and autonomous vehicles, making systems more responsive.

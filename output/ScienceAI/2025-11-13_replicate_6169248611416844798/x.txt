@@ -1,0 +1,1 @@
+Replicate just dropped a game-changing AI model search API! 🔍 Find the perfect models across Claude Desktop, VS Code & more. Beta available now in TypeScript & Python SDKs. #AI #DeveloperTools #MachineLearning

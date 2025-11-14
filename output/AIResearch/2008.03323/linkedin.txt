@@ -1,0 +1,1 @@
+What if your symptom checker misses COVID-19 AND other illnesses? New AI integrates COVID-19 into differential diagnosis while maintaining 84.4% accuracy on other diseases. Could this make online health assessments truly comprehensive?

@@ -1,0 +1,4 @@
+Take 1 (5 seconds): "OpenAI just dropped GPT-5.1 and it's way more conversational!" [Visual: ChatGPT interface with new response examples]
+Take 2 (5 seconds): "The AI now adapts its thinking time for complex questions" [Visual: Thinking animation with timing indicators]
+Take 3 (5 seconds): "You can customize how it talks - professional, quirky, or candid" [Visual: Style selection menu showing new options]
+Take 4 (5 seconds): "It's rolling out now to make ChatGPT smarter AND more human" [Visual: Smiling user interacting with ChatGPT]

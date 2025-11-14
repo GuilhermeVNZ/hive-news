@@ -1,0 +1,1 @@
+Pasqal engineers reveal systematic methods for stress-testing quantum circuit designs against inevitable hardware errors

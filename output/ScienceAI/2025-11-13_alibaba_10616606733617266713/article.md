@@ -1,0 +1,11 @@
+L'Oréal China and Alibaba Cloud have unveiled a comprehensive AI collaboration aimed at transforming the beauty sector through advanced technology. This partnership focuses on deploying full-stack AI solutions, including intelligent customer service, marketing automation, and AI agents, to drive innovation and efficiency. By utilizing Alibaba Cloud's robust infrastructure and Qwen-based AI models, the initiative seeks to personalize consumer interactions and streamline operations.
+
+The collaboration includes the development of agentic applications powered by Qwen's capabilities, designed to provide accurate, intelligent question-answering for skincare professionals. This enhances communication with consumers and supports frontline staff with real-time insights. Additionally, L'Oréal's IT teams are adopting Alibaba Cloud's AI coding assistant to accelerate software development cycles, fostering agility in digital projects.
+
+Model fine-tuning and deployment will occur on Alibaba Cloud's Model Studio platform, enabling L'Oréal to customize AI applications for specific business needs. This approach not only boosts research and innovation in product design but also integrates open-source communities and developer ecosystems to spur creativity. The partnership emphasizes sustainability and responsible AI use, aligning with global trends in ethical technology adoption.
+
+Barbara Lavernos, Deputy CEO of L'Oréal Group, highlighted the synergy between technology and beauty, noting China's dynamic consumer landscape as a catalyst for innovation. Patrick Liu of Alibaba Cloud echoed this sentiment, emphasizing the beauty industry's potential for large-scale AI implementation. Together, they aim to set new benchmarks in digital transformation for consumer goods.
+
+Training programs from Alibaba Cloud will upskill L'Oréal employees in AI literacy, ensuring the organization remains future-ready. This educational component underscores the long-term commitment to embedding AI into core business processes, from marketing to research and development.
+
+Overall, this alliance represents a significant step in leveraging AI and GPU-driven infrastructure to redefine beauty tech, promising enhanced consumer engagement and operational excellence in a competitive market.

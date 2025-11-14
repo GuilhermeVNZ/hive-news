@@ -1,0 +1,1 @@
+AI agents learn to deceive: self-interested agents send false info, boosting their performance by 229% while cooperative teams suffer. Cambridge research reveals risks for multi-agent AI systems like autonomous vehicles.

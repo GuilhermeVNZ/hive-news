@@ -1,0 +1,1 @@
+Mathematics isn't becoming irrelevant in AI—it's evolving. As machine learning advances through brute-force scaling, pure math is finding new roles explaining complex model behaviors and guiding architectural design. The shift from theoretical guarantees to empirical explanations marks a fundamental change in how we understand AI systems.

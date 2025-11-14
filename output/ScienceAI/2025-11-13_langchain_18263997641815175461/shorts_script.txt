@@ -1,0 +1,5 @@
+TAKE 1: Our engineers weren't using our own chatbot
+TAKE 2: So we rebuilt it from the ground up
+TAKE 3: New system searches like humans do
+TAKE 4: Gets answers in under 15 seconds
+TAKE 5: With precise citations and code references

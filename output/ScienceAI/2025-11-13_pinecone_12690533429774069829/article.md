@@ -1,0 +1,13 @@
+When Aquant, an agentic AI platform serving manufacturing equipment professionals, began scaling its service solutions, VP of R&D Oded Sagie faced a critical infrastructure decision that plagues many AI teams: build their own vector database or buy from a specialized provider. This seemingly technical choice revealed fundamental truths about AI development costs that extend far beyond engineering budgets.
+
+Sagie, with nearly two decades of experience transforming data into intelligent systems, discovered that what initially appears as engineering freedom—building custom infrastructure—often evolves into long-term operational burden. The hidden costs of maintaining, scaling, and optimizing in-house vector databases can silently drain resources from core business objectives.
+
+At enterprise scale, these burdens manifest as rising retrieval latency, diminished engineering agility, and degraded customer-facing AI experiences. Open-source systems, while seemingly free, simply shift costs from vendor invoices to payroll line items, requiring dedicated engineering teams for maintenance, monitoring, and optimization.
+
+For Aquant, the financial reality became clear: maintaining an in-house vector database would require at least one full-time engineer costing approximately $200,000 annually, not including the opportunity cost of diverted engineering talent. Every hour spent debugging distributed search represented time lost improving their core AI product.
+
+The company's partnership with Pinecone represents a strategic shift in AI infrastructure philosophy. By leveraging Pinecone's specialized vector database, Aquant's team refocused on their competitive advantage: applying nearly a decade of service AI expertise to deliver faster answers and smarter recommendations for manufacturing clients.
+
+This decision reflects a broader industry trend where AI teams initially drawn to open-source solutions eventually reach an inflection point. The true cost of AI infrastructure isn't measured in dollars but in time, expertise, opportunity, and momentum—the distance between where engineers spend their time and where businesses create value.
+
+As Sagie emphasizes, building feels empowering until it becomes the primary activity. For AI teams seeking to transform prototypes into scalable products, the fastest path to value often involves partnering with infrastructure specialists who have already solved the hardest distributed systems problems.

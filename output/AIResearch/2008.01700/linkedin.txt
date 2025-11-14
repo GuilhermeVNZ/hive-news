@@ -1,0 +1,1 @@
+What if you could train AI without writing a single line of code? EasyRL framework makes reinforcement learning accessible through a graphical interface, eliminating programming barriers. Could this democratize AI for healthcare and education professionals?

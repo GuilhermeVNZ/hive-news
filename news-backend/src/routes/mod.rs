@@ -1,3 +1,4 @@
+pub mod airesearch;
 pub mod auth;
 pub mod collector;
 pub mod collectors;

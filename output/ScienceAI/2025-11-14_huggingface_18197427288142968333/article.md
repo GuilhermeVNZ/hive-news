@@ -1,0 +1,15 @@
+In a significant move for the open AI ecosystem, Hugging Face and Google Cloud have announced a deepened strategic partnership designed to streamline deployment of open models across Google's cloud infrastructure. The collaboration represents a major commitment to making AI development more accessible and efficient for enterprises worldwide.
+
+Jeff Boudier of Hugging Face emphasized the vision behind the partnership: "I believe in a future where all companies will build and customize their own AI. With this new strategic partnership, we're making it easy to do on Google Cloud." This sentiment was echoed by Ryan J. Salva, Senior Director of Product Management at Google Cloud, who highlighted Hugging Face's role as "the driving force enabling companies large and small all over the world to access, use and customize now more than 2 million open models."
+
+The partnership builds on existing integration between the two platforms. Google Cloud customers already leverage Hugging Face models through Vertex AI's Model Garden, where popular open models can be deployed with minimal clicks. For organizations requiring greater infrastructure control, similar model libraries are available in GKE AI/ML, complemented by Hugging Face's pre-configured environments.
+
+Usage metrics underscore the growing demand: Hugging Face usage by Google Cloud customers has surged 10x over the past three years, translating to tens of petabytes of model downloads monthly and billions of requests. To address this scale, the companies are developing a CDN Gateway that will cache Hugging Face repositories directly on Google Cloud infrastructure, significantly reducing download times and enhancing model supply chain reliability.
+
+Performance improvements extend across Google's compute offerings. Whether using Vertex AI, GKE, Cloud Run, or custom VM stacks in Compute Engine, users will benefit from accelerated time-to-first-token and streamlined model governance. The partnership will also bring Google Cloud's cost-performance advantages to Hugging Face Inference Endpoints, with plans for new instance types and price reductions.
+
+Hardware optimization forms another pillar of the collaboration. The companies aim to make Google's TPU accelerators as accessible as GPUs for Hugging Face models through native library support, leveraging seventh-generation TPUs that continue to advance in performance and software maturity.
+
+Security receives substantial focus in the expanded partnership. Hugging Face will integrate Google's Threat Intelligence and Mandiant capabilities to enhance security for the millions of models, datasets, and Spaces on the Hugging Face Hub. This joint effort aims to provide robust protection for daily AI development workflows.
+
+The partnership represents a shared commitment to an open AI future where organizations can build custom AI solutions within their own secure infrastructure while maintaining full control. As both companies deepen their technical integration, they invite community feedback on additional features and improvements to further accelerate AI development.

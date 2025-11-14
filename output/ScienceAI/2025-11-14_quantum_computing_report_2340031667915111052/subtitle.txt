@@ -1,0 +1,1 @@
+Quantum software startup demonstrates scalable anomaly detection with proprietary embedding technique on IBM Quantum Heron processors

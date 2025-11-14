@@ -1,0 +1,1 @@
+Researchers demonstrate how black-box dialogue systems can be manipulated to produce specific outputs, revealing critical vulnerabilities in AI safety

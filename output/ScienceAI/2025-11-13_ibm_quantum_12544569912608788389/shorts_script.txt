@@ -1,0 +1,9 @@
+Quantum leap! IBM's new chip
+120 qubits in square layout
+30% more complex problems
+Roadmap to 15,000 gates
+Qiskit software 83x faster
+Error mitigation improved 100x
+Dynamic circuits more accurate
+Quantum advantage coming soon
+IBM leading the quantum race

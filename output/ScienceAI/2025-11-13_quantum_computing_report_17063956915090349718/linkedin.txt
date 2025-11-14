@@ -1,0 +1,1 @@
+Rigetti Computing's Q3 2025 results showcase both financial stability and ambitious technical vision. The quantum computing leader plans to scale from 84 qubits to 1,000+ by 2027 using modular architecture, backed by $600 million in liquidity. This represents a significant milestone in the commercial quantum computing landscape.

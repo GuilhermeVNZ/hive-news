@@ -1,0 +1,1 @@
+NVIDIA sweeps ALL MLPerf Training v5.1 benchmarks! Blackwell Ultra GPUs deliver 4-5x performance gains in LLM training. New FP4 precision breaks records with 10-minute Llama 3.1 training. #AI #GPU #MachineLearning #NVIDIA

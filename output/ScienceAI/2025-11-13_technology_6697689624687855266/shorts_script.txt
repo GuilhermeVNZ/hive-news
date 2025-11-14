@@ -1,0 +1,8 @@
+Take 1: Current AI chatbots can't maintain purpose
+Take 2: They drift from instructions after few turns
+Take 3: New research adds goal-oriented planning
+Take 4: Dialogue Action Tokens guide conversations
+Take 5: Outperforms GPT-4 in social simulations
+Take 6: Real human-AI collaboration gets closer
+Take 7: But creates new security concerns
+Take 8: The future needs purpose-driven AI

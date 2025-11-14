@@ -1,0 +1,12 @@
+Take 1: Pinecone just changed AI database management forever
+Take 2: New bulk metadata operations eliminate record ID collection
+Take 3: Update, Delete, Fetch by Metadata now available
+Take 4: Perfect for large-scale AI deployments
+Take 5: Same filter syntax as queries
+Take 6: No new languages to learn
+Take 7: Delete available now
+Take 8: Update in preview
+Take 9: Fetch in early access
+Take 10: Game changer for AI teams
+Take 11: Scale your vector databases smarter
+Take 12: Check the Pinecone blog for details

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Why do some explanations feel deeply satisfying while others leave us skeptical, even when both fit the facts?
+[VISUAL DIRECTION] [Animated text: "WHY SOME EXPLANATIONS FEEL RIGHT"]
+[VOICEOVER 0:05-0:20] When faced with puzzling events, we instinctively seek explanations. But research reveals our brains evaluate theories using three specific values that determine which ones we embrace.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on three distinct value peaks representing descriptiveness, co-explanation, and simplicity]
+[VOICEOVER 0:20-0:40] Researchers presented participants with scenarios varying in how well they accounted for facts, connected different pieces, and used fewer assumptions. They quantified how much each value influences our decisions.
+[VISUAL DIRECTION] [Animated scales showing balance between complexity and simplicity with text overlays: "FACT FIT" "CONNECTION" "SIMPLICITY"]
+[VOICEOVER 0:40-1:00] The key finding: We consistently prefer explanations that strike a balance—neither overly complex nor too simplistic. Extremes on either end get rejected.
+[VISUAL DIRECTION] [Show distribution curve from paper with optimal balance point highlighted]
+[VOICEOVER 1:00-1:30] Using a probability framework, the team modeled how we weigh these values. High co-explanation with low simplicity gets rejected, as does high simplicity with poor fact-fitting. Our brains act as natural scales.
+[VISUAL DIRECTION] [Animated probability calculations with zoom on weighting mechanisms]
+[VOICEOVER 1:30-1:50] This explains real-world issues: Overvaluing co-explanation can lead to conspiracy theories, while undervaluing simplicity creates anti-vaccine movements. Understanding these biases helps counter misinformation.
+[VISUAL DIRECTION] [Fast cuts between public health messaging and conspiracy theory examples]
+[VOICEOVER 1:50-2:00] Your brain's explanation preferences shape what you believe—and understanding this balance could be key to fighting misinformation.
+[VISUAL DIRECTION] [Final text overlay: "BALANCE MATTERS IN EXPLANATION"]

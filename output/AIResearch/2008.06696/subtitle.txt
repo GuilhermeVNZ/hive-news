@@ -1,0 +1,1 @@
+A reinforcement learning system enables autonomous vehicles to brake and accelerate smoothly, mimicking human driving while avoiding collisions in complex scenarios.

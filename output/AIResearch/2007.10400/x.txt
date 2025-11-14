@@ -1,0 +1,1 @@
+AI systems have predictable 'traffic jam' moments where complexity spikes—just like water freezing. New Nature/Science research shows we can now anticipate these bottlenecks to make AI faster and more efficient across applications from cloud computing to robotics.

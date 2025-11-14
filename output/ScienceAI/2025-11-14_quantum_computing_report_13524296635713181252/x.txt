@@ -1,0 +1,1 @@
+BREAKING: IQM launches Halocene quantum systems—150 qubits targeting 99.7% gate fidelity for error correction research. First installations late 2026, scaling to 1000+ qubits. European quantum computing just got serious. #QuantumComputing #AI #Hardware

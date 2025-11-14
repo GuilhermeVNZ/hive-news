@@ -1,0 +1,1 @@
+AI systems can be manipulated to produce harmful content 85% of the time using carefully crafted inputs. New research reveals how reinforcement learning can systematically trick even sophisticated models into generating malicious responses. This raises critical security questions about AI safety measures in healthcare and finance applications.

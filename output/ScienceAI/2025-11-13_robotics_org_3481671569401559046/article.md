@@ -1,0 +1,13 @@
+Industrial computing specialist Cincoze has unveiled its MAGNET product line, a series of DIN-rail embedded computers engineered specifically for edge AI and machine vision applications in smart manufacturing environments. This marks the company's fourth major product category, expanding beyond its existing rugged embedded computers, industrial panel PCs, and GPU-embedded systems.
+
+The MAGNET series combines high-performance computing, modular scalability, compact design, and DIN-rail mounting capabilities to address the growing demands of industrial automation. The initial flagship model, MD-3000, supports Intel Core desktop-grade processors (14th/13th/12th generation) with thermal design power up to 65W, alongside 96GB DDR5 memory and dual NVMe SSD storage configurations.
+
+Cincoze's patented thermal management technologies enable sustained high-performance operation in compact form factors. The Dynamic Thermal Mechanism ensures precise CPU heatsink contact with external cooling fins, while Smart Over Temperature Protection monitors and adjusts fan operation automatically. Both technologies are protected by Taiwanese patents I893729 and I870277.
+
+The modular architecture consists of the main computer unit, Scalable Expansion Deck (SED) with 2-, 4-, or 6-slot configurations, and various Scalable Expansion Modules (SEMs) for I/O interfaces, Power over Ethernet, M.2 expansion, and 2.5-inch storage. All SEMs support hot-swapping and guide rail installation for maintenance efficiency.
+
+With a compact 150mm height profile and front-facing I/O interfaces, the MD-3000 addresses space constraints in industrial control cabinets while maintaining DIN-rail mounting compatibility. The system operates across -40°C to 65°C temperature ranges and 9-48 VDC power inputs, with shock/vibration resistance and industrial EMC compliance (EN 61000-6-2/4) for harsh environment reliability.
+
+Target applications include vision-guided robotics, automated inspection systems, and precision measurement equipment where edge AI inference requires substantial computing power near the point of data capture. The platform's combination of processing capability and industrial ruggedness positions it as a core computing component for Industry 4.0 implementations.
+
+Cincoze, as an independent embedded computing manufacturer, continues to focus on industrial-grade solutions for automation markets. The MAGNET series represents their latest response to increasing demand for AI-capable edge computing in manufacturing environments where reliability and performance cannot be compromised.

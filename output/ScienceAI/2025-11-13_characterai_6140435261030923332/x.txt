@@ -1,0 +1,1 @@
+Character.AI reveals it manages thousands of GPUs processing billions of user seconds monthly. The AI company overhauled its logging infrastructure to handle massive scale while improving query speeds from minutes to seconds. #AI #Infrastructure #GPU

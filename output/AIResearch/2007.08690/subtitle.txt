@@ -1,0 +1,1 @@
+A new AI method slashes training time for energy management in hybrid vehicles, achieving near-optimal fuel efficiency and adapting quickly to real-world driving conditions.

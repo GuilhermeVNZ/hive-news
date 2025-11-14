@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if robots could organize themselves into teams nearly 40% faster than ever before?
+[VISUAL DIRECTION] Animated text: "39.1% FASTER ROBOT TEAMS" with pulsing effect
+[VOICEOVER 0:05-0:20] Coordinating multiple robots has been a major challenge in fields like search and rescue, security patrols, and even gaming. Current systems struggle with dynamic organization.
+[VISUAL DIRECTION] Quick cuts of robots in chaotic environments, then transition to clean grid simulation
+[VOICEOVER 0:20-0:40] Researchers asked: Can we create a system where robots automatically form efficient teams based on proximity and capabilities?
+[VISUAL DIRECTION] Show Figure 2 from paper with zoom on clustering patterns
+[VOICEOVER 0:40-1:00] They discovered that combining Self-Organizing Feature Maps with reinforcement learning creates teams that adapt in real-time.
+[VISUAL DIRECTION] Animated diagram showing SOFM clustering and AGRMF role assignment
+[VOICEOVER 1:00-1:30] The system uses neural networks to group robots and reinforcement learning to optimize their pursuit strategies. Each robot calculates rewards to focus on specific targets.
+[VISUAL DIRECTION] Show simulation cells with pursuers and evaders, highlighting reward calculations
+[VOICEOVER 1:30-1:50] This means faster disaster response where robots can quickly coordinate to find survivors, and more efficient security systems that adapt to changing threats.
+[VISUAL DIRECTION] Transition to real-world applications: search and rescue drones, security patrols
+[VOICEOVER 1:50-2:00] The future of robot teamwork just got 39.1% smarter.
+[VISUAL DIRECTION] Final text overlay: "Nature/Science: SOFM+AGRMF Method" with paper reference

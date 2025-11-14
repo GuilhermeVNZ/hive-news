@@ -1,0 +1,1 @@
+A new reinforcement learning method enables aircraft systems to adapt to gradual component degradation without needing prior fault detection, enhancing safety and reliability in real-time.

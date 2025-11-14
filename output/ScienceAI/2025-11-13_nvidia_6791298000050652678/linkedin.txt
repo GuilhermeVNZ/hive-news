@@ -1,0 +1,1 @@
+Nexa.ai has launched an accelerated version of its Hyperlink local AI agent for NVIDIA RTX AI PCs, delivering 3x faster indexing and 2x faster inference while maintaining complete data privacy. This represents a significant advancement in on-device AI computing for professionals and creators.

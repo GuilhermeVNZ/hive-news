@@ -1,0 +1,1 @@
+A new reinforcement learning method ensures AI agents avoid hazards while maximizing rewards, tested in simulations from synthetic environments to Mars terrain.

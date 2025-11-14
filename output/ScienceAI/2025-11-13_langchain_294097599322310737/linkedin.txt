@@ -1,0 +1,1 @@
+LangChain has introduced DeepAgents CLI, enabling developers to create AI agents with persistent memory capabilities. The tool supports both Anthropic Claude and OpenAI models, featuring a memory-first protocol that allows agents to retain knowledge across sessions. This represents a significant advancement for coding, research, and enterprise AI applications.

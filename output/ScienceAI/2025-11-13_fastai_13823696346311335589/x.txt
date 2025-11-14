@@ -1,0 +1,1 @@
+🚀 nbdev 2.0 just dropped with Quarto integration! Python devs are reporting 300% productivity gains using Jupyter notebooks for full software development. Automatic docs, tests, and packaging - this changes everything. #Python #AI #Programming

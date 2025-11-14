@@ -1,0 +1,38 @@
+[VOICEOVER 0:00-0:05]
+Wikipedia contains over 3,800 marriage records where one person is listed as married, but their partner's record doesn't show the relationship.
+
+[VISUAL DIRECTION]
+Animated text: "3,800+ non-symmetric spousal relationships" appears dramatically with warning symbols
+
+[VOICEOVER 0:05-0:20]
+These data inconsistencies undermine Wikipedia's reliability for millions of daily users. The world's largest encyclopedia has hidden errors that affect factual accuracy.
+
+[VISUAL DIRECTION]
+Show Wikipedia interface with red circles highlighting inconsistent data points, quick cuts between different relationship examples
+
+[VOICEOVER 0:20-0:40]
+Researchers asked: How can we systematically identify these data quality issues? Current methods are ad hoc and incomplete, lacking precise logical foundations.
+
+[VISUAL DIRECTION]
+Show abstract diagram of current constraint checking methods with question marks and confusion symbols
+
+[VOICEOVER 0:40-1:00]
+They discovered a mathematical framework using multi-attributed relational structures that can detect when Wikipedia data violates established rules and patterns.
+
+[VISUAL DIRECTION]
+Animated diagram showing MARS framework with logical formulas checking data relationships, highlight "natural and economical fashion" text overlay
+
+[VOICEOVER 1:00-1:30]
+The system evaluates data against logical formulas expressing both positive patterns and negative violations. It can handle nearly all of Wikipedia's 30 different property constraint types systematically.
+
+[VISUAL DIRECTION]
+Show constraint checking process with green checkmarks for valid data and red X's for violations, zoom on specific constraint examples
+
+[VOICEOVER 1:30-1:50]
+For users, this means fewer factual errors and more reliable information. Editors receive detailed reports highlighting problems needing human review, prioritizing correction efforts.
+
+[VISUAL DIRECTION]
+Show editor dashboard with highlighted issues, transition to cleaner Wikipedia interface with improved data quality indicators
+
+[VOICEOVER 1:50-2:00]
+This AI framework provides the logical foundation needed to systematically improve Wikipedia's accuracy - making human knowledge more reliable for everyone.

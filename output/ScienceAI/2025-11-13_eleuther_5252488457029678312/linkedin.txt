@@ -1,0 +1,1 @@
+EleutherAI continues to push boundaries in open-source AI development with sophisticated training frameworks and large language models. Their work on distributed training systems and transparent evaluation methods represents significant progress in making advanced AI accessible to researchers globally.

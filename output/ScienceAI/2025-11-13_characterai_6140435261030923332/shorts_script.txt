@@ -1,0 +1,5 @@
+Character.AI's GPU scale revealed
+Thousands of GPUs processing data
+Billions of user seconds monthly
+Logging system overhaul complete
+Query speeds improved dramatically

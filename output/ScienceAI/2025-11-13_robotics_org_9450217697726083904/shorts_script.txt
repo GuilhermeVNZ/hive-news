@@ -1,0 +1,1 @@
+Apera AI upgrades 4D vision for robots. Vue 9.51 enhances calibration with histograms. Streamlined de-racking for faster setup. Forge enables direct deployment to controllers. New large VuePort cameras expand field of view. Documentation portal supports implementation. Industrial automation gets smarter vision.

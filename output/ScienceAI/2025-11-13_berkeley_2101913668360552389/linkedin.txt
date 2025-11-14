@@ -1,0 +1,1 @@
+Discover PLAID, a multimodal AI model from UC Berkeley that generates protein sequences and structures via latent diffusion. This innovation uses protein folding predictors like ESMFold, enabling controlled design for functions and organisms. Ideal for biotech and pharmaceutical applications. #ArtificialIntelligence #Biotech #Innovation

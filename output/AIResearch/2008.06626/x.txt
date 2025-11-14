@@ -1,0 +1,1 @@
+AI can now explore dangerous environments without taking unsafe actions. New SNO-MDP method guarantees safety while learning optimal behaviors, outperforming baselines in Mars terrain simulations. Critical for autonomous vehicles and disaster response robotics.

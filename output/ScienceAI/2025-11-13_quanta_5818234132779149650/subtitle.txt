@@ -1,0 +1,1 @@
+Carnegie Mellon researchers fuse large language models with automated reasoning to tackle long-standing mathematical challenges, shifting focus from human understanding to machine trust.

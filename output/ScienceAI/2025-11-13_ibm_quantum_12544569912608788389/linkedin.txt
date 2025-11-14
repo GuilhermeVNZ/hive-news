@@ -1,0 +1,1 @@
+IBM's Quantum Developer Conference 2025 revealed groundbreaking advancements in quantum computing. The new 120-qubit Nighthawk processor with square topology enables 30% more complex circuits, while Qiskit SDK v2.2 transpiles 83x faster than competitors. These developments accelerate our path toward practical quantum advantage and fault-tolerant quantum systems.

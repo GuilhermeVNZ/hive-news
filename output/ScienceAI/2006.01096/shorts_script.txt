@@ -1,0 +1,7 @@
+[VOICEOVER 0:00-0:05] What if AI could handle the unexpected without breaking? [VISUAL DIRECTION] Animated text: 'AI Fails in New Situations' with a question mark.
+[VOICEOVER 0:05-0:20] AI often struggles in unfamiliar environments, limiting real-world use in robotics and automation. [VISUAL DIRECTION] Show a clip of a robot arm fumbling with an object, then transition to a lab setting.
+[VOICEOVER 0:20-0:40] Researchers asked: How can we make AI focus only on what's essential? [VISUAL DIRECTION] Display a simple diagram of a grid-world with keys and doors, highlighting irrelevant details.
+[VOICEOVER 0:40-1:00] They found that Invariant Policy Optimization (IPO) helps AI ignore minor changes, achieving consistent performance. [VISUAL DIRECTION] Zoom in on Table 3 from the paper, showing reward improvements like 0.85 vs 0.80 for PPO.
+[VOICEOVER 1:00-1:30] IPO trains AI to prioritize key tasks, tested in scenarios with distracting data and door-opening simulations. [VISUAL DIRECTION] Animate a robot successfully opening a door despite friction changes, with text overlays: 'Focus on Essentials'.
+[VOICEOVER 1:30-1:50] This means more reliable delivery drones or manufacturing arms that adapt without retraining. [VISUAL DIRECTION] Show real-world applications: a drone navigating a new neighborhood, a factory arm handling varied materials.
+[VOICEOVER 1:50-2:00] Smarter AI that doesn't falter with small changes—imagine the possibilities. [VISUAL DIRECTION] End with a bold text overlay: 'Robust AI for Real-World Challenges'.

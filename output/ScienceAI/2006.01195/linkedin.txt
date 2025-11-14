@@ -1,0 +1,1 @@
+What if robots could find paths 10% longer than optimal but 10x faster? New algorithms trade perfect computation for real-time decisions in dynamic environments. When should we prioritize speed over optimality in robotics?

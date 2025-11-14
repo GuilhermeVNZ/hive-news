@@ -1,0 +1,1 @@
+Pinecone just eliminated the biggest headache in AI development. Their new integrated inference feature generates vector embeddings directly in the database—no more managing separate models or APIs. This changes everything for RAG and semantic search. #AI #VectorDatabase #MachineLearning

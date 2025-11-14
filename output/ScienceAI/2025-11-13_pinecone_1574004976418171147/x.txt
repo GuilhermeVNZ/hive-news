@@ -1,0 +1,1 @@
+Pinecone partners with Clay to automate AI-powered sales outreach using vector databases & RAG technology. The system generates personalized emails by analyzing company news & matching relevant case studies. #AI #SalesTech #VectorDatabase

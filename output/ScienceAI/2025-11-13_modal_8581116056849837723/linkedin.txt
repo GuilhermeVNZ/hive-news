@@ -1,0 +1,1 @@
+Modal and Pipecat have achieved a milestone in voice AI, reducing response latency to one second with open models and scalable infrastructure. This breakthrough enhances natural conversations and offers insights for real-time applications. Explore the technical details and code to innovate in AI-driven interactions. #ArtificialIntelligence #Innovation #Tech

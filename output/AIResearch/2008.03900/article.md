@@ -1,0 +1,11 @@
+Wikipedia's vast collection of human knowledge contains hidden errors and inconsistencies that undermine its reliability. A new artificial intelligence framework can systematically identify these problems, potentially making the world's largest encyclopedia more accurate for its millions of daily users.
+
+The researchers developed a logical system that can automatically detect when Wikipedia data violates established rules and patterns. For example, the system can identify when someone is listed as married to another person, but the reciprocal relationship is missing—a common data quality issue. As of mid-June 2020, the researchers found over 3,800 such non-symmetric spousal relationships in Wikipedia's data.
+
+The approach builds on multi-attributed relational structures (MARS) and extended multi-attributed predicate logic (eMAPL), which provide a mathematical foundation for representing Wikipedia's complex data relationships. Unlike current ad hoc methods, this framework gives precise, unambiguous meaning to data constraints—the rules that define what constitutes valid information in the knowledge base.
+
+The system evaluates data against logical formulas that express both positive patterns (what should be true) and negative patterns (what constitutes violations). This allows it to systematically check whether Wikipedia's 30 different property constraint types are being followed. The framework can handle nearly all of Wikipedia's existing property constraints in what the paper describes as a "natural and economical fashion."
+
+For regular Wikipedia users, this means fewer factual errors and more reliable information. When researchers or editors use constraint-checking tools based on this framework, they receive detailed reports highlighting potential problems that need human review. This helps prioritize correction efforts and improves overall data quality over time.
+
+The framework currently cannot express two specific property constraints—one existing and one proposed—without extensions. The researchers note that handling complex constraints and accounting for constraint scope parameters will require additional work. However, the system provides a solid foundation for future improvements to Wikipedia's data validation processes.

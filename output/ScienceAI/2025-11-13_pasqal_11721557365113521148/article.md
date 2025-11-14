@@ -1,0 +1,15 @@
+In a significant move for the U.S. quantum computing landscape, French technology company Pasqal has announced plans to establish its American headquarters in Illinois with a $65 million investment that will create 50 new high-tech jobs. The announcement, made by Governor JB Pritzker and the Illinois Department of Commerce and Economic Opportunity, positions Pasqal as the latest tenant in the rapidly expanding Illinois Quantum and Microelectronics Park on Chicago's South Side.
+
+The expansion represents a major validation of Illinois' growing quantum ecosystem, which has attracted several major players including IBM, Infleqtion, and Diraq. Pasqal, founded in 2019 by a team including Nobel Prize winner Professor Dr. Alain Aspect, specializes in neutral-atom quantum computing technology that has been developed over two decades at the CNRS Charles Fabry Laboratory.
+
+Pasqal's Executive Chairman Wasiq Bokhari emphasized the strategic importance of the Midwest location, noting that the company will bring proven quantum hardware to American soil. 'We already operate multiple 140-qubit machines across Europe, the Americas, and the Middle East,' Bokhari stated. 'Establishing our presence in Illinois ensures that both industry and government can access real quantum computing hardware in the near term.'
+
+The investment is supported by Illinois' Manufacturing Illinois Chips for Real Opportunity (MICRO) Program, designed to incentivize semiconductor and quantum computing development. Additionally, Pasqal secured a $15 million loan from the Illinois Finance Authority/Climate Bank to support the U.S. expansion project.
+
+CEO Loc Henriet highlighted the practical applications driving Pasqal's expansion. 'Here, we will accelerate the development of real-world quantum applications, from advancing new materials and drug discovery to optimizing energy and financial systems,' Henriet explained. 'Illinois has the academic excellence, supportive policy environment, and diverse talent pool to build quantum solutions that will power future industries.'
+
+The announcement comes just weeks after Governor Pritzker broke ground on PsiQuantum's facility at the same quantum park, signaling accelerated development of what state officials are calling a 'global hub for cutting-edge technology.' The Illinois Economic Development Corporation played an instrumental role in attracting Pasqal to the state.
+
+Harley Johnson, Executive Director and CEO of the Illinois Quantum and Microelectronics Park, welcomed Pasqal as 'a global pioneer in neutral-atom quantum computing' that will bring scientific expertise and proven technical achievements to the growing ecosystem. The expansion positions Illinois as a central node in the global quantum computing network, with potential implications for multiple industries seeking quantum advantage.
+
+With over 300 professionals worldwide and operations in eight countries, Pasqal's U.S. expansion represents a significant milestone in the commercialization of quantum computing technology and underscores the growing international competition in the quantum computing race.

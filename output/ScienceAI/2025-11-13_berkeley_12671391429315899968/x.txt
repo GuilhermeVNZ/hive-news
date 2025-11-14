@@ -1,0 +1,1 @@
+UC Berkeley's new PEVA AI can predict first-person video from human motion data. The conditional diffusion model generates realistic egocentric sequences for embodied AI applications. #AI #Robotics #ComputerVision

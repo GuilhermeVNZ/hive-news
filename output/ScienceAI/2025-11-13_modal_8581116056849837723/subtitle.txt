@@ -1,0 +1,1 @@
+A breakthrough in real-time conversational AI using Modal's cloud infrastructure and Pipecat's open-source framework to slash response times.

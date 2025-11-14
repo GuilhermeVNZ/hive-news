@@ -1,0 +1,1 @@
+AI systems can't always choose what they know is best - even with perfect reasoning. New mathematical analysis reveals unavoidable situations where decision systems make knowingly poor choices. Could algorithms predicting our behavior better than we do create real-world paradoxes?

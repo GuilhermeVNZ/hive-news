@@ -1,0 +1,1 @@
+Anthropic research reveals key patterns for building effective AI agents: simplicity beats complexity. Successful implementations use composable patterns over complex frameworks. Practical guidance for developers building LLM agents. #AI #MachineLearning #LLM

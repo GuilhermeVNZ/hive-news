@@ -1,0 +1,1 @@
+Pinecone's Slab Architecture Revolutionizes Vector Database Performance for AI Workloads

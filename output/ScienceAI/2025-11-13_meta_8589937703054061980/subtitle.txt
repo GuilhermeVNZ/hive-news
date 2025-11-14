@@ -1,0 +1,1 @@
+FAIR team's massive 7B-parameter model delivers state-of-the-art performance across hundreds of underserved languages, open-sourcing wav2vec 2.0 and unique corpus to democratize speech technology.

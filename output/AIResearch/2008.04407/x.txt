@@ -1,0 +1,1 @@
+Aircraft that adapt to failures mid-flight? New AI control system maintains stability as components degrade, outperforming traditional methods in 20+ trials. Real-time adaptation without fault detection.

@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if the best way to teach AI is to stop teaching it altogether?
+[VISUAL DIRECTION] [Animated text: "AI LEARNS FASTER WHEN LEFT ALONE" with Tower of Hanoi puzzle visualization]
+
+[VOICEOVER 0:05-0:20] Researchers just discovered that giving AI agents freedom to explore independently produces dramatically better results than traditional guided training methods.
+[VISUAL DIRECTION] [Show Figure 2 from paper - learning curves comparison between independent vs guided agents]
+
+[VOICEOVER 0:20-0:40] The team tested this on the classic Tower of Hanoi puzzle, comparing two approaches: one where agents could request help, and another where they worked completely independently.
+[VISUAL DIRECTION] [Animated Tower of Hanoi puzzle with disks moving, showing complexity]
+
+[VOICEOVER 0:40-1:00] The results were stunning: independent agents solved the puzzle in just 1,000 training episodes, while guided systems needed 3,000 episodes. Turn-taking actually slowed learning because expert guidance prevented exploration.
+[VISUAL DIRECTION] [Zoom on learning curve peaks showing 1,000 vs 3,000 episode comparison]
+
+[VOICEOVER 1:00-1:30] Using Q-learning algorithms, the study found that when AI systems can explore and make mistakes - much like human trial-and-error learning - they develop more efficient problem-solving strategies. The independent agents eventually outperformed assisted systems after just 400 training episodes.
+[VISUAL DIRECTION] [Show algorithm parameters: discount factor 0.8, learning rate 0.05 with animated text overlays]
+
+[VOICEOVER 1:30-1:50] This challenges the fundamental assumption that guidance always leads to better outcomes. For real-world applications, this means robots could learn more efficiently in unstructured environments like manufacturing floors or household settings.
+[VISUAL DIRECTION] [Transition to robot application scenarios - manufacturing, home assistance]
+
+[VOICEOVER 1:50-2:00] Sometimes, the best way to teach may be to step back and let learning happen through exploration.
+[VISUAL DIRECTION] [Final text overlay: "EXPLORATION > GUIDANCE" with paper citation]

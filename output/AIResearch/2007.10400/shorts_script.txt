@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could predict its own traffic jams? Where complexity suddenly spikes and everything slows down?
+[VISUAL DIRECTION] Animated text: "AI TRAFFIC JAMS" with road congestion animation transitioning to data flow diagrams
+
+[VOICEOVER 0:05-0:20] In AI systems that handle complex logical reasoning, there are critical moments where processing suddenly becomes dramatically harder—similar to water abruptly turning to ice.
+[VISUAL DIRECTION] Show water freezing transition animation, then cut to Figure 2 from paper showing peak distribution of compilation sizes
+
+[VOICEOVER 0:20-0:40] Researchers Rahul Gupta, Subhajit Roy, and Kuldeep S. Meel asked: Can we predict when AI systems will hit these complexity walls?
+[VISUAL DIRECTION] Zoom in on specific data points from Figure 2 showing the sharp peaks at critical density values
+
+[VOICEOVER 0:40-1:00] They discovered clear phase transitions—specific points where compilation size and runtime spike dramatically before easing again.
+[VISUAL DIRECTION] Animated graph showing the 'small-large-small' pattern with density values (like 2.0 for d-DNNFs) highlighted
+
+[VOICEOVER 1:00-1:30] By analyzing thousands of logical formulas across multiple compilation languages, they identified that the ratio of clauses to variables acts like a control parameter—when it hits critical values, complexity explodes.
+[VISUAL DIRECTION] Show rapid cuts of different formula structures with density values changing, culminating in the complexity peak
+
+[VOICEOVER 1:30-1:50] This means developers can now design algorithms to avoid these bottleneck regions, speeding up everything from cybersecurity threat detection to autonomous vehicle path planning.
+[VISUAL DIRECTION] Show practical applications: network security monitoring, robot navigation, database optimization with "AVOID BOTTLENECKS" overlay
+
+[VOICEOVER 1:50-2:00] The takeaway? AI complexity isn't random—it has predictable patterns we can now work around for faster, more efficient systems.
+[VISUAL DIRECTION] Final screen with key density values (2.0, etc.) and "PREDICTABLE COMPLEXITY" text overlay

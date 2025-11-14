@@ -1,0 +1,1 @@
+New machine learning method from Apple Research enables scalable simulation of complex physical interactions, outperforming state-of-the-art approaches on massive meshes.

@@ -1,0 +1,1 @@
+BREAKING: D-Wave's Advantage2 quantum computer is now operational at Davidson Technologies for US government defense applications. The quantum annealing system will tackle national security challenges beyond classical computing limits. #QuantumComputing #NationalSecurity #AI

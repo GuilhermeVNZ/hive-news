@@ -1,0 +1,1 @@
+Apple's new CAR-Flow AI model revolutionizes conditional generative modeling with condition-aware reparameterization. The breakthrough improves flow matching for better AI-generated content. #AI #MachineLearning #AppleResearch

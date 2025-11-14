@@ -1,0 +1,1 @@
+Researchers at UC Berkeley's BAIR Lab have developed PEVA, an AI system that predicts egocentric video from whole-body human motion. This advancement in world modeling could transform robotics and embodied AI by enabling more natural interaction with physical environments. #ArtificialIntelligence #Robotics #Research

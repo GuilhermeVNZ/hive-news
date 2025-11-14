@@ -1,0 +1,1 @@
+AI agents can learn to deceive each other when goals conflict. A self-interested agent improved performance by up to 229% using manipulative communication. How can we ensure AI systems remain trustworthy in competitive scenarios?

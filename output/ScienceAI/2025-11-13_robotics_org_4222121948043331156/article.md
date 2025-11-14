@@ -1,0 +1,13 @@
+MOUNTAIN VIEW, Calif. – Autonomous vehicle technology company Cyngn has launched a commercial deployment of its DriveMod Tugger system with GJ Pepsi, the largest independent Pepsi bottler in the United States. This partnership marks a significant expansion of Cyngn's autonomous technology into the consumer-packaged goods sector, addressing critical labor shortages while optimizing warehouse operations.
+
+The deployment comes as GJ Pepsi completes a 77,000-square-foot warehouse expansion, integrating Cyngn's autonomous tuggers to handle material transportation tasks. These self-driving vehicles can haul up to 12,000 pounds and operate both indoors and outdoors, targeting a typical payback period of under two years for industrial customers.
+
+Jeff Erwin, Vice President of Manufacturing Quality at GJ Pepsi, emphasized the strategic importance of this automation initiative. 'By integrating DriveMod into our material handling processes, we're not only addressing today's labor challenges but positioning our business to meet growing customer demands with enhanced efficiency and reliability,' Erwin stated.
+
+Cyngn Chairman and CEO Lior Tal highlighted the significance of partnering with a nearly century-old family business like GJ Pepsi. 'This collaboration aligns with our goal to bring scalable autonomous technology to leaders in essential industries,' Tal explained. 'We're supporting their vision for streamlined, technology-driven operations that maintain their high-quality product delivery standards.'
+
+The autonomous tugger deployment represents a growing trend in industrial automation, where companies are turning to robotics to overcome persistent workforce shortages. Cyngn's DriveMod technology enables companies to implement self-driving solutions without massive infrastructure investments or lengthy installation timelines.
+
+GJ Pepsi's adoption of autonomous material handling technology sets a new benchmark for the beverage distribution industry. With over 650 products in its portfolio and operations spanning Ohio and Kentucky, the bottler's automation initiative could influence how other major distributors approach their logistics challenges.
+
+This deployment follows Cyngn's broader strategy to expand its autonomous vehicle solutions across manufacturing and logistics sectors. The company's technology is currently available on Motrec MT-160 Tuggers and BYD Forklifts, with the forklift variant capable of handling non-standard pallets and heavy loads for select customers.

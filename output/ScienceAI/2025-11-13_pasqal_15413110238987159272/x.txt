@@ -1,0 +1,1 @@
+Pasqal's quantum computing research reveals when digital outperforms analog. Their neutral atom QPUs show analog dominates until thousands of gates are achievable. Critical roadmap for quantum advantage. #QuantumComputing #AI #Hardware

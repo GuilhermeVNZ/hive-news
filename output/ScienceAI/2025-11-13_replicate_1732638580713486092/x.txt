@@ -1,0 +1,1 @@
+IBM's Granite 4.0 AI models are now live on Replicate! Open-source, hybrid architecture runs on consumer GPUs. Perfect for RAG systems & document processing. #AI #MachineLearning #IBM #OpenSource

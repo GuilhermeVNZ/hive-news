@@ -1,0 +1,1 @@
+LangChain's DeepAgents 0.2 drops with pluggable backends & composite filesystems! Build autonomous AI agents with persistent memory & custom storage. Major step for long-running agent development. #AI #MachineLearning #LangChain

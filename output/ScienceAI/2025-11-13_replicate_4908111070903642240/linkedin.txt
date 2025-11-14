@@ -1,0 +1,1 @@
+Google's Veo 3.1 introduces revolutionary video generation capabilities including reference-to-video and first/last frame input. These features enable unprecedented creative control for maintaining character consistency and creating seamless transformations. A significant advancement for content creators and developers working with AI video synthesis.

@@ -1,0 +1,1 @@
+Vector database leader Pinecone collaborates with Clay to create automated sales outreach system using retrieval-augmented generation and AI models

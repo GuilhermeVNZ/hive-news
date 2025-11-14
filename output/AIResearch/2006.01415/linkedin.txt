@@ -1,0 +1,1 @@
+An AI just solved an 8,205-bit problem with 100% accuracy using rules learned from tiny versions. Victoria University researchers developed XCSCF*, an AI that breaks complex problems into steps like human learning. Could this be the key to creating AI that truly accumulates knowledge across domains?

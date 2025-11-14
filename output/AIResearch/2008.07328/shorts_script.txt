@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] Did you know AI's legal reasoning capabilities can now be measured across 7 distinct levels - from completely manual to fully autonomous?
+[VISUAL DIRECTION] [Animated text: "7 LEVELS OF AI LEGAL REASONING" with dramatic reveal]
+[VOICEOVER 0:05-0:20] As AI increasingly handles legal tasks like contract drafting and courtroom decisions, there's been no clear way to measure its true capabilities - until now.
+[VISUAL DIRECTION] [Show legal documents, courtroom scenes with AI overlay]
+[VOICEOVER 0:20-0:40] Researchers asked: How can we distinguish between AI that merely assists humans versus AI that operates independently in legal domains?
+[VISUAL DIRECTION] [Show question marks transitioning to the framework diagram]
+[VOICEOVER 0:40-1:00] They established seven levels of artificial intelligence legal reasoning, adapting the SAE J3016 standard used for autonomous vehicles to the legal field.
+[VISUAL DIRECTION] [Show Figure 2 framework with zoom on each level progression]
+[VOICEOVER 1:00-1:30] Level 0 involves no automation - all tasks done manually. Level 2 includes AI assistance like natural language processing. Level 5 achieves full autonomy across legal domains like bankruptcy and estate planning.
+[VISUAL DIRECTION] [Animated progression from manual tasks to autonomous operation with clear level indicators]
+[VOICEOVER 1:30-1:50] This matters because lawyers can now understand what they're implementing, vendors must substantiate claims, and everyday readers get clearer insights into how AI might improve legal services.
+[VISUAL DIRECTION] [Show lawyer evaluating AI tool, vendor making claims, client receiving legal services]
+[VOICEOVER 1:50-2:00] The framework provides the first robust way to measure AI's true contributions to legal reasoning - transparency has arrived.
+[VISUAL DIRECTION] [Final text overlay: "AI Legal Reasoning: Measured at Last"]

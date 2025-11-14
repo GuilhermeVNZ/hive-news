@@ -1,0 +1,13 @@
+OpenAI has begun rolling out GPT-5.1, a significant update to its flagship language model that emphasizes both intelligence improvements and more natural conversation capabilities. The upgrade, which started with paid users on November 12, 2025, represents OpenAI's response to user feedback requesting AI that's not just smart but also enjoyable to interact with.
+
+GPT-5.1 Instant, ChatGPT's most used model, now defaults to a warmer, more conversational tone based on early testing that showed users appreciated its occasional playfulness while maintaining clarity and usefulness. The model demonstrates this improved communication style through more empathetic responses to emotional queries and better contextual understanding of user needs.
+
+The technical improvements extend to enhanced instruction following, with the model more reliably answering the exact question asked rather than providing generic responses. For the first time, GPT-5.1 Instant employs adaptive reasoning to determine when to think before responding to complex questions, resulting in more thorough and accurate answers while maintaining quick response times for simpler queries.
+
+OpenAI is also upgrading GPT-5 Thinking to make it more efficient and understandable for everyday use. The updated thinking model now varies its processing time more dynamically, spending more time on complex problems while responding faster to simpler ones. This results in roughly twice the speed on fastest tasks and twice the deliberation time on most challenging problems compared to previous versions.
+
+The company is introducing more intuitive controls for customizing ChatGPT's response style, acknowledging that communication preferences vary between individuals and even across different conversations. New preset options include Professional, Candid, and Quirky styles, joining existing Default, Friendly, and Efficient modes. Users can also fine-tune characteristics like conciseness, warmth, and emoji usage through direct settings.
+
+Rollout will continue gradually over the coming days to maintain performance stability, with GPT-5.1 becoming the sole model after a seven-day early access period for free users, enterprise, and education plans. Both GPT-5.1 Instant and Thinking will remain available as legacy options for paid subscribers for three months, allowing comparison with previous versions.
+
+This update follows OpenAI's pattern of iterative improvements within the GPT-5 generation, with the company noting that future upgrades will follow similar naming conventions. The changes represent a continued focus on making advanced AI more accessible and adaptable to individual user preferences while maintaining technical capabilities.

@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if your plane could heal itself mid-flight as parts wear out?
+[VISUAL DIRECTION] [Animated text: SELF-HEALING AIRCRAFT? with aircraft silhouette]
+[VOICEOVER 0:05-0:20] Traditional aircraft rely on complex fault detection systems that can delay responses and increase vulnerability during component failures.
+[VISUAL DIRECTION] [Show traditional fault detection diagram with red alert symbols and delay indicators]
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn to maintain aircraft stability as components degrade, without needing separate fault diagnosis?
+[VISUAL DIRECTION] [Animated question mark transforming into AI brain icon]
+[VOICEOVER 0:40-1:00] Using Proximal Policy Optimization, their AI system consistently outperformed baseline methods in 20+ trials, maintaining balance even when engines failed.
+[VISUAL DIRECTION] [Show performance comparison graph with AI line outperforming baseline, zoom on stability metrics]
+[VOICEOVER 1:00-1:30] The AI learns through constant interaction, balancing exploration and stability, selectively adjusting control surfaces to compensate for degradation.
+[VISUAL DIRECTION] [Animated aircraft with AI adjusting control surfaces in response to engine failure simulation]
+[VOICEOVER 1:30-1:50] This means enhanced fault tolerance for critical aircraft, industrial machinery, and autonomous vehicles - safer flights without additional hardware.
+[VISUAL DIRECTION] [Show applications: aircraft, industrial equipment, autonomous vehicles with safety icons]
+[VOICEOVER 1:50-2:00] Aircraft that adapt to wear and tear in real-time - making travel safer as systems age.
+[VISUAL DIRECTION] [Final text overlay: REAL-TIME ADAPTATION, ENHANCED SAFETY with aircraft landing smoothly]

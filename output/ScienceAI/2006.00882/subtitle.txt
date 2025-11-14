@@ -1,0 +1,1 @@
+Artificial intelligence agents solve problems faster when allowed to explore independently rather than receiving constant guidance, challenging assumptions about how robots should learn.

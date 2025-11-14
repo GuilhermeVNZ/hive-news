@@ -1,0 +1,10 @@
+Vector databases face tough trade-offs
+Pinecone's slab architecture solves them
+Instant queryability from write to read
+Background compaction maintains speed
+Immutable slabs ensure durability
+Progressive optimization scales efficiently
+Tombstones handle updates seamlessly
+Caching delivers low latency
+Billions of vectors, consistent performance
+AI workloads simplified

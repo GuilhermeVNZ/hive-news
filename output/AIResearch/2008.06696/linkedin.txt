@@ -1,0 +1,1 @@
+What if autonomous vehicles could brake as smoothly as human drivers? New research shows AI using reinforcement learning can navigate tricky intersections and obstacles while ensuring passenger comfort. Could this be the key to making self-driving cars truly road-ready?

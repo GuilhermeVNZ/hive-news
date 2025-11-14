@@ -1,0 +1,1 @@
+BREAKING: Q-CTRL's Fire Opal quantum software now integrated with RIKEN's IBM Quantum System Two in Japan. Early results show 1,000x improvements in accuracy and efficiency for quantum-HPC hybrid workflows. #QuantumComputing #AI #HPC

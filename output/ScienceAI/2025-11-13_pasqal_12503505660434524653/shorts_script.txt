@@ -1,0 +1,11 @@
+Quantum errors spread fast
+Unlike classical computing
+Single fault can corrupt everything
+Engineers stress-test circuits
+Simulating specific failures
+Three acceptable outcomes
+Correct result despite error
+Flag error for correction
+Contain error locally
+Verification builds confidence
+Quantum computing becomes practical

@@ -1,0 +1,1 @@
+LangChain announces comprehensive AWS integration and live demonstrations at AWS re:Invent 2025. The company will showcase LangSmith on AWS Marketplace, new agent evaluation tools, and host technical sessions for enterprise AI development teams. Join us at Booth 524 to discuss production AI deployment strategies.

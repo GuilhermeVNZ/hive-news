@@ -1,0 +1,13 @@
+In a stunning demonstration of AI infrastructure scalability, Modal's sandbox technology enabled Lovable to process over 250,000 application creations during a single weekend event in June 2025. The no-code platform, which allows users to generate fully functional applications through natural language prompts, saw concurrent sessions surge by 250-300% during the promotional period.
+
+Lovable's rapid growth trajectory—achieving $75 million in annual recurring revenue just seven months after launch—created unprecedented infrastructure demands. The startup's previous distributed cloud VM provider raised concerns about scalability and operational risk, prompting the search for more robust solutions. Lovable initially explored building custom infrastructure on AWS and Kubernetes but faced significant complexity challenges.
+
+The partnership with Modal proved transformative. Lovable reduced its sandbox orchestration code from 15,000 lines to just 700 lines while gaining access to Modal's global TCP relay network and encrypted tunnel technology. This infrastructure overhaul enabled secure, low-latency communication between user interfaces and the AI-generated applications running in isolated sandboxes.
+
+During the peak event hours, Modal successfully managed over 1 million sandbox instances with up to 20,000 concurrent sessions running simultaneously. The platform maintained zero service disruptions despite the massive traffic spike, with Lovable's engineering team reporting no emergency pages throughout the entire weekend.
+
+The collaboration highlights the critical role of specialized AI infrastructure in supporting next-generation development platforms. Modal's sandbox technology provides the security and isolation needed for running large language model-generated code at scale, while maintaining the performance requirements for real-time visual editing capabilities.
+
+Looking forward, Lovable plans to leverage additional Modal capabilities like snapshotting to further enhance user experience performance. The successful weekend event demonstrates how purpose-built AI infrastructure can support viral growth while maintaining reliability—a crucial consideration for platforms experiencing exponential user adoption.
+
+The case study underscores the evolving landscape of AI-powered development tools and the infrastructure requirements needed to support them at scale. As more companies embrace generative AI for application development, robust sandboxing and scaling solutions become increasingly essential components of the technology stack.

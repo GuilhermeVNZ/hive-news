@@ -1,0 +1,1 @@
+A new interactive learning method puts humans in charge of data selection, preventing AI from hiding its mistakes and improving trust in critical applications.

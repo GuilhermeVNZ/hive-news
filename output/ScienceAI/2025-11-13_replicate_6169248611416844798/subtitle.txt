@@ -1,0 +1,1 @@
+New search functionality enables developers to find optimal AI models across multiple platforms including Claude Desktop and VS Code

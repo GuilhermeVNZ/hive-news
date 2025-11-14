@@ -1,0 +1,11 @@
+LangChain has officially launched Sandboxes for DeepAgents, a critical security enhancement that allows developers to safely execute arbitrary code within isolated remote environments. The new feature addresses growing concerns about AI agent security while maintaining operational flexibility.
+
+The integration currently supports three major infrastructure partners: Runloop, Daytona, and Modal. Each brings distinct sandboxing capabilities to the LangChain ecosystem, providing developers with multiple options for secure code execution. This partnership approach reflects LangChain's strategy of building through collaboration rather than direct competition.
+
+Security remains paramount in the AI development space, particularly as autonomous agents gain access to more powerful capabilities. The sandbox environments create configurable, isolated spaces where code execution occurs remotely while the primary agent maintains local operation. This separation ensures that potentially harmful code cannot compromise the host system.
+
+Developers can leverage these sandboxes for various scenarios, including testing untrusted code, running resource-intensive computations, or executing commands that require specific environmental configurations. The agent maintains full visibility into sandbox filesystems and command outputs, enabling natural iteration cycles without security compromises.
+
+Setup involves straightforward integration through the DeepAgents CLI, with context managers handling automatic cleanup of sandbox resources. The system supports custom setup scripts for environment preparation, including loading environment variables, cloning repositories, and configuring dependencies. This flexibility makes the platform suitable for both simple experiments and complex production deployments.
+
+As AI agents become increasingly sophisticated in their coding capabilities, secure execution environments represent a critical infrastructure component. LangChain's approach balances developer convenience with enterprise-grade security, positioning the platform for continued growth in the competitive AI development tools market.

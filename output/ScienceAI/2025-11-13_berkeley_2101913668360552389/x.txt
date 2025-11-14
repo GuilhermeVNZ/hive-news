@@ -1,0 +1,1 @@
+UC Berkeley's PLAID AI repurposes protein folding models to generate new proteins using latent diffusion. It creates sequences & structures from prompts, leveraging larger sequence databases. A leap for computational biology! #AI #ProteinDesign #GenerativeModels

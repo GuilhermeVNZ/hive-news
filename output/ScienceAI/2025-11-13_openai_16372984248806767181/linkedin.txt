@@ -1,0 +1,1 @@
+OpenAI has released GPT-5.1 Instant and GPT-5.1 Thinking, the next evolution in its language model series. These models introduce adaptive reasoning capabilities and expanded safety protocols, including evaluations for mental health scenarios and emotional reliance. The development represents significant progress in responsible AI deployment.

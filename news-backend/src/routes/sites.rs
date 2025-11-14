@@ -15,19 +15,10 @@ pub async fn get_all_sites(
     let config_manager = SiteConfigManager::new(config_path);
 
     match config_manager.get_all_sites() {
-        Ok(sites) => {
-            println!("📋 get_all_sites: Found {} sites", sites.len());
-            for site in &sites {
-                println!(
-                    "   - {}: {} (enabled: {})",
-                    site.id, site.name, site.enabled
-                );
-            }
-            Json(json!({
-                "success": true,
-                "sites": sites,
-            }))
-        }
+        Ok(sites) => Json(json!({
+            "success": true,
+            "sites": sites,
+        })),
         Err(e) => {
             eprintln!("❌ Failed to load sites: {}", e);
             Json(json!({

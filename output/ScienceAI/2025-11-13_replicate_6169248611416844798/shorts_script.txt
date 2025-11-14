@@ -1,0 +1,10 @@
+Take 1: Discover AI models faster than ever
+Take 2: Replicate's new search API is here
+Take 3: Works with Claude Desktop and VS Code
+Take 4: Find models, collections, docs instantly
+Take 5: Beta available in TypeScript and Python
+Take 6: Intelligent filtering prevents overload
+Take 7: Legacy search still works but upgrade
+Take 8: Your feedback shapes the future
+Take 9: AI development just got smarter
+Take 10: Try the search API today

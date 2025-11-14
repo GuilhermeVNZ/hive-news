@@ -1,0 +1,1 @@
+Even perfect AI reasoning leads to knowingly bad decisions. New research shows no system can guarantee choosing the optimal outcome when knowledge and decision-making are separate. This resolves Newcomb's paradox and explains why social media algorithms might predict our choices better than we can.

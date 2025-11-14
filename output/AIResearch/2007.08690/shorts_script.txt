@@ -1,0 +1,20 @@
+[VOICEOVER 0:00-0:05] What if AI could slash hybrid vehicle optimization time from weeks to just hours while maintaining peak efficiency?
+[VISUAL DIRECTION] Animated text: "96% FASTER TRAINING" with lightning bolt animation
+
+[VOICEOVER 0:05-0:20] Hybrid electric vehicles promise cleaner transportation, but their complex systems traditionally take prohibitively long to optimize for real-world conditions.
+[VISUAL DIRECTION] Show rotating 3D model of hybrid vehicle with energy flow animations
+
+[VOICEOVER 0:20-0:40] Researchers asked: Can we dramatically accelerate the training of AI controllers without sacrificing performance?
+[VISUAL DIRECTION] Split screen showing traditional vs new approach timelines
+
+[VOICEOVER 0:40-1:00] They discovered a bi-level framework that divides driving into speed intervals and applies transfer learning, achieving 2.2896 L/100km fuel consumption.
+[VISUAL DIRECTION] Zoom on fuel consumption graph comparing new method (2.2896) vs traditional (3.2896)
+
+[VOICEOVER 1:00-1:30] The system uses Deep Q-Network and DDPG algorithms, training strategies for each speed interval then transferring knowledge across conditions like a master recipe.
+[VISUAL DIRECTION] Animated flowchart showing speed interval classification and parameter transfer
+
+[VOICEOVER 1:30-1:50] This makes AI energy management practical for everyday vehicles, potentially lowering costs and emissions without constant recalibration.
+[VISUAL DIRECTION] Show real-world driving scenarios with efficiency metrics overlay
+
+[VOICEOVER 1:50-2:00] The future of clean transportation just got 96% faster to deploy.
+[VISUAL DIRECTION] Final text overlay: "AI-OPTIMIZED HYBRIDS: READY FOR THE ROAD"

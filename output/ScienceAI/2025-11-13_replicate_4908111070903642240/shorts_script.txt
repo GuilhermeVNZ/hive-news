@@ -1,0 +1,8 @@
+Take 1: Google just dropped Veo 3.1
+Take 2: Reference images become full videos
+Take 3: Keep characters consistent across scenes
+Take 4: First and last frame control
+Take 5: Smooth transformations between images
+Take 6: Better prompt following than ever
+Take 7: Perfect for brand storytelling
+Take 8: Try it on Replicate now

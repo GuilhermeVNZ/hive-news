@@ -1,0 +1,1 @@
+Pinecone and Clay have collaborated on an innovative AI-powered sales outreach system that leverages vector database technology and retrieval-augmented generation. The automated workflow personalizes outreach emails by analyzing company news and matching relevant case studies, demonstrating practical AI application in sales technology.

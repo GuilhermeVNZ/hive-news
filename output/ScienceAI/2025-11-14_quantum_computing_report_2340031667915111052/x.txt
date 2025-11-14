@@ -1,0 +1,1 @@
+BREAKING: Haiqu achieves 0.96 F1 score in quantum anomaly detection on IBM Quantum Heron. Their high-dimensional embedding technique loaded 500+ features using just 128 qubits, beating classical methods. Quantum advantage in ML is getting closer. #QuantumComputing #AI #MachineLearning

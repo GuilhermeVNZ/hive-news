@@ -1,0 +1,1 @@
+Modal just dropped Volumes v2 in open beta + JavaScript/TypeScript & Go SDKs! 🚀 High-concurrency writes, unlimited files, and major performance boosts for AI workloads. Perfect for large datasets & model training. #AIInfrastructure #CloudComputing #DeveloperTools

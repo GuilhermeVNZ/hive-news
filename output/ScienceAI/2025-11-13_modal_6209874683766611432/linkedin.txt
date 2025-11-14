@@ -1,0 +1,1 @@
+Modal's sandbox technology enabled Lovable to process over 250,000 AI-generated applications during a single weekend event, showcasing the critical role of specialized infrastructure in supporting no-code platforms at scale. The partnership demonstrates how robust AI infrastructure can handle massive traffic spikes while maintaining reliability and performance.

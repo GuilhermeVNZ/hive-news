@@ -1,0 +1,10 @@
+Take 1: Vector embeddings just got simpler
+Take 2: Pinecone's new integrated inference
+Take 3: No more separate model management
+Take 4: Embeddings generated in database
+Take 5: One API call does everything
+Take 6: Perfect for RAG applications
+Take 7: Cut infrastructure complexity
+Take 8: Focus on building AI features
+Take 9: Production-ready today
+Take 10: Game changer for developers

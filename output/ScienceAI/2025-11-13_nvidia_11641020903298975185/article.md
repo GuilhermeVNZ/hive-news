@@ -1,0 +1,13 @@
+NVIDIA has achieved a clean sweep in the latest MLPerf Training v5.1 benchmarks, winning all seven performance tests and setting new records in AI training efficiency. The results demonstrate NVIDIA's continued dominance in the AI hardware space, with the company's Blackwell Ultra GPU architecture delivering massive performance improvements over previous generations.
+
+The GB300 NVL72 rack-scale system, powered by NVIDIA's Blackwell Ultra GPUs, made its debut in these benchmarks following a record-setting performance in recent MLPerf Inference tests. Compared to the previous Hopper architecture, the Blackwell Ultra-based system delivered more than 4x the performance in Llama 3.1 405B pretraining and nearly 5x improvement in Llama 2 70B LoRA fine-tuning using the same number of GPUs.
+
+A key breakthrough in this round was NVIDIA's implementation of NVFP4 precision calculations, marking the first time FP4 precision has been successfully used in MLPerf Training while meeting strict accuracy requirements. The Blackwell GPU architecture can perform FP4 calculations at double the rate of FP8, with Blackwell Ultra boosting this to triple the performance, enabling substantially greater AI compute capability.
+
+NVIDIA set a new record for Llama 3.1 405B training time of just 10 minutes using over 5,000 Blackwell GPUs working in concert. This represents a 2.7x improvement over the best Blackwell-based result from the previous round, achieved through efficient scaling to more GPUs and the implementation of NVFP4 precision.
+
+The company also established performance benchmarks on two new tests added this round: Llama 3.1 8B and FLUX.1. For the compact Llama 3.1 8B model, NVIDIA set the standard with a 5.2-minute training time using up to 512 Blackwell Ultra GPUs. On the FLUX.1 image generation benchmark, which replaced Stable Diffusion v2, NVIDIA achieved a record training time of 12.5 minutes using 1,152 Blackwell GPUs.
+
+NVIDIA's Quantum-X800 InfiniBand platform, the industry's first end-to-end 800 Gb/s scale-up networking solution, also made its MLPerf debut, doubling scale-out networking bandwidth compared to the previous generation. The extensive ecosystem participation included submissions from 15 organizations including Dell Technologies, Hewlett Packard Enterprise, Lenovo, and Supermicro, demonstrating broad industry adoption of NVIDIA's AI platform.
+
+These benchmark results underscore NVIDIA's accelerating innovation cycle, with the company driving significant performance improvements across pretraining, post-training, and inference workloads. The achievements position NVIDIA at the forefront of enabling new levels of AI intelligence and accelerating widespread AI adoption across industries.

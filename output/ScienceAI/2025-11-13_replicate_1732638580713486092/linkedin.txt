@@ -1,0 +1,1 @@
+IBM has launched its Granite 4.0 language model family on Replicate, featuring hybrid Mamba-2/Transformer architecture optimized for consumer hardware. These open-source models offer enterprise AI capabilities with Apache 2.0 licensing for commercial use. #ArtificialIntelligence #EnterpriseTech #IBM

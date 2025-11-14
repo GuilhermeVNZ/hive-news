@@ -1,0 +1,10 @@
+NVIDIA dominates AI training benchmarks
+Blackwell Ultra GPUs sweep all tests
+4x faster Llama training performance
+First-ever FP4 precision in MLPerf
+10-minute record for Llama 3.1
+New standard for image generation
+Quantum networking doubles bandwidth
+Ecosystem partners show broad adoption
+AI training performance revolutionized
+NVIDIA leads AI hardware innovation

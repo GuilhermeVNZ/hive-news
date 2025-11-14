@@ -1,0 +1,1 @@
+Anthropic's latest research provides valuable insights for developers building AI agents. The findings emphasize starting with simple, composable patterns and only adding complexity when necessary. Key patterns include prompt chaining, routing, and orchestrator-workers workflows. Essential reading for anyone working with LLM agents.

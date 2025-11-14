@@ -1,0 +1,38 @@
+[VOICEOVER 0:00-0:05]
+What if AI could make decisions flawlessly even when information is missing? Eclingo does just that, solving complex problems in seconds.
+
+[VISUAL DIRECTION]
+Show animated text: 'AI + Uncertainty Solved?' with a fast zoom into a graph of performance times.
+
+[VOICEOVER 0:05-0:20]
+In real-world AI, gaps in data often lead to errors, but researchers tackled this with epistemic logic programs to model knowledge uncertainty.
+
+[VISUAL DIRECTION]
+Display a split screen: one side showing incomplete data icons, the other with eclingo logo; transition to benchmark problem diagrams.
+
+[VOICEOVER 0:20-0:40]
+They tested eclingo against tools like Wviews and EP-ASP on the Scholarship Eligibility Problem, involving student eligibility with partial data.
+
+[VISUAL DIRECTION]
+Pan over Table 1 data from the paper, highlighting instances eligible01 to eligible25 and timing comparisons with bold text overlays.
+
+[VOICEOVER 0:40-1:00]
+Eclingo solved 21 of 25 scenarios in under one second, with the largest case taking just 3.35 seconds, while others timed out or showed erratic performance.
+
+[VISUAL DIRECTION]
+Animate a bar chart growing rapidly for eclingo times versus flat or spiking bars for competitors; include text: '0.03s to 0.54s for K15 semantics'.
+
+[VOICEOVER 1:00-1:30]
+It works by translating epistemic logic into standard answer set programming, using clingo and semantics like G91 and K15 to compute all possible worldviews efficiently.
+
+[VISUAL DIRECTION]
+Show a flowchart: 'Epistemic Logic → ASP Translation → Worldview Computation' with arrows and icons for integration steps; zoom on clingo version 4.5.3.
+
+[VOICEOVER 1:30-1:50]
+This means faster, more reliable AI for automated planning and data analysis, improving applications in scholarship assessments and disaster response under uncertainty.
+
+[VISUAL DIRECTION]
+Cut to real-world imagery: students receiving scholarships, emergency planning maps; overlay text: 'Reduced computational costs, quicker decisions'.
+
+[VOICEOVER 1:50-2:00]
+Eclingo's consistency in handling incomplete data could make AI smarter in fields from logistics to security—imagine the possibilities.

@@ -1,0 +1,25 @@
+[VOICEOVER 0:00-0:05] What if you could have AI that's both incredibly powerful AND completely transparent? The statistical world has been divided for decades - until now.
+
+[VISUAL DIRECTION] Rapid cuts between abstract statistical diagrams and real-world medical/financial imagery with bold text overlay: "THE DIVIDE: Interpretable vs Powerful"
+
+[VOICEOVER 0:05-0:20] For years, researchers faced a painful choice: use simple models you can understand, or complex algorithms that work better but operate like black boxes. This matters because in healthcare and finance, we need both accuracy AND trust.
+
+[VISUAL DIRECTION] Split screen showing medical diagnosis scenario on left, financial forecasting on right, with question marks over both
+
+[VOICEOVER 0:20-0:40] The fundamental question: Can we bridge Leo Breiman's 'Two Cultures' of statistics? Can we create models that don't force us to choose between understanding and performance?
+
+[VISUAL DIRECTION] Animated timeline showing Breiman's 2001 paper reference, then growing gap between statistical approaches
+
+[VOICEOVER 0:40-1:00] Researchers developed a breakthrough framework that converts any learning algorithm into an 'uncertainty prediction machine.' Instead of just giving average predictions, it estimates full probability distributions - capturing nuances like varying risks and multiple possible outcomes.
+
+[VISUAL DIRECTION] Animation showing traditional single-point prediction transforming into full probability distribution curve with multiple peaks
+
+[VOICEOVER 1:00-1:30] The secret is 'd-modulation' - starting with a simple baseline model, then adjusting based on data patterns. Using rank-based methods makes it resilient to noise and outliers. In tests on medical and film revenue data, it accurately predicted complex distributions, including bimodal shapes where traditional models fail.
+
+[VISUAL DIRECTION] Visual representation of d-modulation process with data flowing through transformation steps, highlighting robustness to outliers
+
+[VOICEOVER 1:30-1:50] This integration helps avoid misleading conclusions in real-world scenarios. When assessing health risks or forecasting economic trends, it ensures predictions reflect true uncertainties, empowering users to trust and interpret results without sacrificing performance.
+
+[VISUAL DIRECTION] Real-world application shots: doctor reviewing patient risk assessment, financial analyst examining market forecasts
+
+[VOICEOVER 1:50-2:00] The statistical divide that's separated researchers for decades? We might finally have the bridge that gives us the best of both worlds.

@@ -1,0 +1,1 @@
+A new model reveals that people rapidly develop abstract drawing routines that transfer across tasks—suggesting AI can learn human-like generalization from minimal examples.

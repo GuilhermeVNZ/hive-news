@@ -1,0 +1,10 @@
+Take 1: AI image editing models are exploding
+Take 2: We tested six top contenders head-to-head
+Take 3: Object removal reveals major differences
+Take 4: Text editing separates the best from the rest
+Take 5: Background changes show who really understands
+Take 6: Speed vs quality trade-offs matter
+Take 7: No single model wins everything
+Take 8: Choose based on your specific needs
+Take 9: The AI editing revolution continues
+Take 10: Test them yourself at Replicate

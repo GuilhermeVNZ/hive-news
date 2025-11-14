@@ -1,0 +1,1 @@
+nbdev2 Solves Jupyter's Git Collaboration Nightmare with Automated Merge Drivers

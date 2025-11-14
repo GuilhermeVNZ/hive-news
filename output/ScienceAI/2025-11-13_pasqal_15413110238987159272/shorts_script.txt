@@ -1,0 +1,1 @@
+Quantum computing has two modes: analog and digital. Pasqal's research shows analog wins for now. Their neutral atom hardware scales to 1000 qubits by 2028. Digital needs thousands of gates to compete. The future is dual-mode quantum. #QuantumTech #AIRevolution

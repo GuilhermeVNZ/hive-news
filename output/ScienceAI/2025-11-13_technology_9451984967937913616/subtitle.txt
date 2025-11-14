@@ -1,0 +1,1 @@
+New research reveals why language models face unique challenges in quantitative finance, while pointing to promising applications in multimodal analysis and synthetic data generation.

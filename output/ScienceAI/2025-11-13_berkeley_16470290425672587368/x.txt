@@ -1,0 +1,1 @@
+BREAKING: Berkeley AI researchers develop StruQ & SecAlign defenses that reduce LLM prompt injection attack success rates to near-zero. Game-changing security for production AI systems. #AISecurity #LLM #CyberSecurity

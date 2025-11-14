@@ -322,10 +322,6 @@ pub async fn list_logs(
             if let Some(site_os) = dir_path.parent().and_then(|p| p.file_name()) {
                 let site_name = site_os.to_string_lossy().to_string();
                 let site_id_lower = site_name.to_lowercase();
-                eprintln!(
-                    "[Logs API] Fallback: Article {}: output_dir={}, extracted site_name={}, site_id_lower={}",
-                    m.id, dir_str, site_name, site_id_lower
-                );
 
                 // Determine correct localhost port based on site
                 let base_url = if site_id_lower == "scienceai" {
@@ -333,21 +329,12 @@ pub async fn list_logs(
                 } else if site_id_lower == "airesearch" {
                     "http://localhost:3003"
                 } else {
-                    eprintln!(
-                        "[Logs API] Unknown site from output_dir: {}, defaulting to dashboard",
-                        site_id_lower
-                    );
                     "http://localhost:1420" // Default to dashboard
                 };
 
                 // Generate URL using actual title from filesystem (matches what AIResearch shows)
                 let slug = title_to_slug(&actual_title);
                 let url = format!("{}/article/{}", base_url, slug);
-
-                eprintln!(
-                    "[Logs API] Fallback URL: base_url={}, slug={}, url={}",
-                    base_url, slug, url
-                );
 
                 // **CRITICAL FIX**: Validate folder exists before adding
                 let full_fallback_path =
@@ -358,14 +345,7 @@ pub async fn list_logs(
                         site_name,
                         url,
                     });
-                } else {
-                    eprintln!(
-                        "[Logs API] Fallback destination skipped - folder not found at {}",
-                        full_fallback_path.display()
-                    );
                 }
-            } else {
-                eprintln!("[Logs API] Failed to extract site from output_dir: {}", dir_str);
             }
         }
 

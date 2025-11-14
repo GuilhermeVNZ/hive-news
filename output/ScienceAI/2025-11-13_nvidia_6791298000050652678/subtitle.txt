@@ -1,0 +1,1 @@
+New version triples indexing speed and doubles inference performance for private AI search across local files

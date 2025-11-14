@@ -1,0 +1,17 @@
+LangChain, the AI framework company, has completely rebuilt its public chatbot after discovering their own support engineers weren't using the tool they'd built for customers. The revelation came when the team noticed engineers were manually searching documentation, knowledge bases, and code repositories instead of relying on chat.langchain.com.
+
+The company's technical team was spending hours daily on a three-step ritual: checking official documentation for the standard approach, searching the knowledge base for real-world issues, and diving into the codebase for implementation details. This manual process, while effective, was creating significant bottlenecks for both internal engineers and external users seeking technical support.
+
+LangChain's solution involved building what they call a "Deep Agent" system with specialized subagents for documentation search, knowledge base queries, and codebase analysis. The architecture mirrors how human engineers actually work, with each subagent operating independently to filter and refine information before passing curated insights to a main orchestrator agent.
+
+For standard documentation questions, the team implemented what they call "createAgent" mode using Claude Haiku 4.5, which delivers responses in under 15 seconds with 3-6 tool calls. The system searches documentation through Mintlify's API, returning complete pages with headers and structure intact rather than fragmented chunks, eliminating the need for constant reindexing as documentation updates.
+
+The more complex Deep Agent architecture handles questions requiring code analysis, taking 1-3 minutes for thorough investigations but providing line-number precision when examining implementations. This system can search private repositories using pattern matching, navigate file structures, and extract specific code sections with exact citations.
+
+Key to the improvement was abandoning traditional vector database approaches for structured content. Instead of chunking documents and generating embeddings, the agents now access documentation, knowledge bases, and codebases directly through APIs and search tools, preserving organizational structure and context that gets lost in fragmentation.
+
+The company used LangSmith extensively during development to trace conversations, identify unnecessary tool calls, and A/B test prompting strategies. This data-driven approach revealed that most questions could be answered efficiently with 3-6 well-orchestrated tool calls when agents were properly trained to ask follow-up questions.
+
+Production infrastructure includes modular middleware for guardrails, retry logic, fallback between AI models, and caching to handle operational concerns. The system now serves users through the LangGraph SDK, which manages streaming responses, conversation history, and state persistence with 7-day TTL for threads.
+
+Since launching the rebuilt system, LangChain reports dramatic improvements in response quality and speed. Public users get precise citations linking directly to documentation pages, while internal support engineers use the Deep Agent to handle complex tickets, researching across multiple domains to provide comprehensive answers.

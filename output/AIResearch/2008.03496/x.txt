@@ -1,0 +1,1 @@
+Robots that handle human unpredictability? New research creates robots that adapt to changing plans, mistakes, and safety risks in real-time using logical reasoning. Tested in furniture assembly, they successfully navigated 29 scenarios with minimal replanning—making human-robot teams safer and more efficient.

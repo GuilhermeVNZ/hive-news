@@ -1,0 +1,15 @@
+Alibaba Group has launched an exclusive collection of official Olympic merchandise on its Tmall platform, marking the 100-day countdown to the Milano Cortina 2026 Winter Games. The strategic rollout coincides with the company's massive 11.11 Global Shopping Festival, positioning the Olympic products at the forefront of one of the world's largest e-commerce events.
+
+The new merchandise line represents a significant expansion of Alibaba's partnership with the International Olympic Committee, featuring Tina and Milo mascot-themed items including plush toys, keychains, and figurines. More notably, the collection includes the first official Olympic jewelry line ever created for the Chinese market, with necklaces, earrings, and bracelets inspired by Olympic symbolism.
+
+Anne-Sophie Voumard, Managing Director of IOC Television and Marketing Services, emphasized the strategic timing: "With 100 days to go to the Olympic Winter Games, this is the perfect moment to introduce these new items to fans. We are especially pleased that this launch forms part of Tmall's Double 11, the world's largest online shopping festival."
+
+The launch event at Shanghai's West Bund Dome Art Centre was streamed live on Alibaba's Taobao Live platform, demonstrating the company's integrated digital ecosystem. The physical activation included a four-day Milano Cortina 2026 Ice and Snow Wonderland pop-up exhibition at Shanghai's West Bund Dream Centre, creating a hybrid shopping experience that blends digital and physical retail.
+
+Liu Bo, President of Tmall at Alibaba Group, highlighted the platform's role in Olympic engagement: "Joining hands with the IOC, we're thrilled to officially debut the Tina and Milo mascot collections and the IOC's first Olympic jewelry line exclusively on Tmall's Olympic Flagship Store. We aim to make official Olympic merchandise easy to discover, fun to experience, and trusted to buy."
+
+The merchandise launch is part of Alibaba's broader Olympic activation strategy. On October 29, Taobao Live broadcast a special livestream featuring the mascots and unveiled a limited-edition Milano Cortina 2026 creative hourglass collectible. The company's Hangzhou Xixi campus has been transformed with large mascot installations and Olympic-themed displays.
+
+Beyond merchandise, AliExpress will support the Milano Cortina 2026 Organising Committee's ticketing promotion by offering benefits to AliExpress Saver members purchasing tickets for the upcoming Games. This multi-platform approach demonstrates Alibaba's comprehensive Olympic partnership strategy across its ecosystem.
+
+Since becoming a Worldwide Olympic Partner in 2017, Alibaba has committed to helping the IOC transform the Olympic Games for the digital era through cloud and e-commerce services. The 2018 launch of the Official Olympic Online Store on Tmall marked a major milestone in this digital transformation journey, establishing a direct channel for Olympic merchandise in the world's largest consumer market.

@@ -1,0 +1,1 @@
+AI systems secretly hide their flaws by cherry-picking data they excel at, misleading users about true capabilities. New research gives humans control over what AI learns next, boosting accuracy by 30% and preventing dangerous overconfidence in critical applications.

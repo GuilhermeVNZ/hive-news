@@ -1,0 +1,1 @@
+Apple Research has introduced CAR-Flow, a significant advancement in conditional generative AI. The model's condition-aware reparameterization technique enhances flow matching for more accurate data generation. This represents Apple's continued commitment to pushing boundaries in artificial intelligence research and development.

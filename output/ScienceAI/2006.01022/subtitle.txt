@@ -1,0 +1,1 @@
+New algorithm helps robotic pursuers coordinate more effectively by learning to form dynamic teams, cutting capture time by nearly 40% in simulations

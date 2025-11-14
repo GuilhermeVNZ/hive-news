@@ -1,0 +1,1 @@
+Humans don't just copy - they extract abstract rules when learning to draw. New research shows we develop reusable 'mental programs' that transfer to new symbols. This could finally help AI learn from limited examples like we do. Nature study reveals the cognitive architecture behind rapid generalization.

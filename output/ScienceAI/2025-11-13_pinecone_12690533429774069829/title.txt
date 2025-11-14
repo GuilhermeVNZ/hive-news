@@ -1,0 +1,1 @@
+Aquant's AI Infrastructure Decision: Why Building Your Own Vector Database Is a Costly Mistake

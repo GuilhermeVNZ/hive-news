@@ -1,0 +1,1 @@
+Meta just dropped a game-changing PyTorch-native agentic AI stack! 🚀 ExecuTorch 1.0 for on-device AI, Helion for kernel development, Monarch for cluster scaling + more. Partners include NVIDIA, Qualcomm & Hugging Face. The future of AI deployment is here! #AI #PyTorch #MachineLearning

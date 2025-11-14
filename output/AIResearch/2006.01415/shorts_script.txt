@@ -1,0 +1,38 @@
+[VOICEOVER 0:00-0:05]
+What if AI could learn like humans - taking knowledge from simple problems and applying it to massively complex ones?
+
+[VISUAL DIRECTION]
+Animated text: "8,205-bit problem" with "100% accuracy" flashing dramatically
+
+[VOICEOVER 0:05-0:20]
+Researchers at Victoria University of Wellington have created an AI system that does exactly this - breaking down complex tasks into manageable steps, just like how we learn arithmetic before calculus.
+
+[VISUAL DIRECTION]
+Show Figure 3 from paper - the Multiplexer domain learning process with animated arrows showing progression from address bits to data bit extraction
+
+[VOICEOVER 0:20-0:40]
+The challenge? Traditional AI often starts from scratch with each new problem size. But real-world applications require systems that can scale efficiently without retraining.
+
+[VISUAL DIRECTION]
+Split screen showing traditional AI struggling with scaling vs new approach smoothly handling different sizes
+
+[VOICEOVER 0:40-1:00]
+The breakthrough came with XCSCF* - a learning system that captures the underlying logic of domains. It learned rules from small Boolean problems and applied them to massive versions, achieving 100% accuracy on an 8,205-bit Multiplexer.
+
+[VISUAL DIRECTION]
+Zoom in on Table 4 from paper showing the scaling results, highlight the 8,205-bit case
+
+[VOICEOVER 1:00-1:30]
+How does it work? Through layered learning with code fragments - tree-like structures that represent reusable knowledge. The system learns subproblems in sequence, building skills like address determination and data extraction, then combines them into compact rule sets.
+
+[VISUAL DIRECTION]
+Animated diagram showing code fragments combining, reference Figure 10 showing the final Multiplexer solution structure
+
+[VOICEOVER 1:30-1:50]
+This means AI could become truly adaptable - handling real-world challenges like data analysis and network optimization by reusing learned patterns, much like humans apply math skills to new situations.
+
+[VISUAL DIRECTION]
+Show Figures 6-8 learning curves converging to high accuracy, then transition to real-world applications imagery
+
+[VOICEOVER 1:50-2:00]
+The future? AI that accumulates knowledge across tasks, moving us closer to systems that learn continuously - just like we do.

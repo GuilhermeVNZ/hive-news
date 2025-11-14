@@ -1,0 +1,1 @@
+BREAKING: Pasqal opens first North American quantum computer factory in Quebec and sells 100-qubit QPU to Distriq. Quantum computing goes industrial with room-temperature processors made in Canada. #QuantumComputing #AI #Hardware

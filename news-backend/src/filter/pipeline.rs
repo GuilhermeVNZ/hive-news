@@ -249,7 +249,9 @@ pub(crate) fn discover_unfiltered_pdfs(
                     None => true, // Nunca processado - processar
                     Some(meta) => match meta.status {
                         ArticleStatus::Collected => true, // Baixado mas não filtrado ainda
-                        ArticleStatus::Rejected | ArticleStatus::Filtered | ArticleStatus::Published => false, // Já processado - não reprocessar
+                        ArticleStatus::Rejected
+                        | ArticleStatus::Filtered
+                        | ArticleStatus::Published => false, // Já processado - não reprocessar
                     },
                 };
 

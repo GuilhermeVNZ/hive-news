@@ -1,0 +1,11 @@
+IBM has officially launched its Granite 4.0 family of open-source language models on the Replicate platform, marking a significant advancement in accessible AI infrastructure. The new models represent IBM's latest push into the competitive AI landscape, offering enterprise-level capabilities without requiring specialized server hardware.
+
+The Granite 4.0 series employs a sophisticated hybrid architecture that combines Mamba-2's linear-scaling efficiency with Transformer precision, enabling superior performance on consumer-grade GPUs. This technical innovation addresses one of the biggest barriers to AI adoption: the high cost of specialized computing infrastructure. The models are specifically optimized for document summarization, retrieval-augmented generation (RAG) systems, and autonomous AI agents.
+
+At the core of the Granite 4.0 lineup is the granite-4.0-h-small model, featuring 30 billion parameters and specialized long-context instruction capabilities. The hybrid design allows these models to process sequences linearly rather than quadratically, making them exceptionally efficient for handling documents containing hundreds of thousands of tokens.
+
+IBM has integrated mixture-of-experts (MoE) routing into select Granite 4.0 models, a strategic move that enhances computational efficiency. The Granite 4.0 Small variant, for instance, contains 32 billion total parameters but activates only 9 billion during inference, significantly reducing memory requirements while maintaining performance standards.
+
+The Apache 2.0 licensing ensures complete freedom for commercial deployment, modification, and customization. This open approach positions Granite as a practical solution for organizations requiring compliance, security, and specialized fine-tuning capabilities. IBM has also developed LangChain integrations specifically for Replicate, streamlining implementation workflows for developers.
+
+This launch represents IBM's continued commitment to democratizing AI technology while maintaining enterprise-grade performance standards. The availability on Replicate's platform provides immediate access to developers and organizations seeking cost-effective AI solutions without compromising on capability or scalability.

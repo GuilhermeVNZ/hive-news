@@ -1,0 +1,1 @@
+Character.ai reveals Kaiju LLM family: 13B-110B models optimized for conversation, not benchmarks. Features int8 quantization, multi-query attention & novel training techniques. H100 GPU clusters power training. #AI #LLM #MachineLearning

@@ -21,7 +21,7 @@ mod writer;
 use crate::utils::article_registry::RegistryManager;
 use crate::utils::path_resolver::{resolve_workspace_path, workspace_root};
 use crate::utils::site_config_manager::{PathsConfig, SiteConfigManager};
-use anyhow::Context;
+use anyhow::{Context, anyhow};
 use db::connection::Database;
 use std::path::{Path, PathBuf};
 
@@ -1785,7 +1785,7 @@ async fn main() -> anyhow::Result<()> {
 
                 for c in s.collectors {
                     let id_lower = c.id.to_lowercase();
-                    
+
                     // CRITICAL: Skip disabled collectors first (before any matching)
                     if !c.enabled {
                         continue;
@@ -3782,6 +3782,14 @@ async fn main() -> anyhow::Result<()> {
     // TODO: Make database truly optional
     let db = Database::new().await?;
 
+    routes::airesearch::warm_cache()
+        .await
+        .map_err(|err| anyhow!("Failed to warm AIResearch cache: {}", err))?;
+
+    routes::scienceai::warm_cache()
+        .await
+        .map_err(|err| anyhow!("Failed to warm ScienceAI cache: {}", err))?;
+
     // Build application
     let app = Router::new()
         .route("/api/auth/login", post(routes::auth::login))
@@ -3870,6 +3878,14 @@ async fn main() -> anyhow::Result<()> {
         .route(
             "/api/logs/enrich-titles",
             post(routes::logs::enrich_titles_from_arxiv),
+        )
+        .route(
+            "/api/airesearch/articles",
+            get(routes::airesearch::get_articles),
+        )
+        .route(
+            "/api/airesearch/articles/:slug",
+            get(routes::airesearch::get_article_by_slug),
         )
         .route("/api/articles", get(routes::scienceai::get_articles))
         .route("/api/categories", get(routes::scienceai::get_categories))

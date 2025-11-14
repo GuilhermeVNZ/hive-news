@@ -1,0 +1,19 @@
+[VOICEOVER 0:00-0:05] What if AI could explore dangerous environments like Mars or disaster zones without ever taking a single unsafe action?
+[VISUAL DIRECTION] [Animated text: "AI EXPLORING DANGER - ZERO SAFETY FAILURES" with Mars terrain background]
+
+[VOICEOVER 0:05-0:20] As AI systems are increasingly deployed in high-stakes environments where safety is non-negotiable, researchers face a critical challenge: how to balance the drive for rewards with the imperative of safety.
+[VISUAL DIRECTION] [Show Figure 1 from paper - decision process diagram with safety constraints highlighted in red]
+
+[VOICEOVER 0:20-0:40] The problem? Traditional reinforcement learning methods often sacrifice safety for efficiency, or efficiency for safety. But in applications like autonomous vehicles and planetary exploration, we need both.
+[VISUAL DIRECTION] [Fast cuts between autonomous vehicle, Mars rover, and industrial automation scenarios with warning symbols]
+
+[VOICEOVER 0:40-1:00] The breakthrough: SNO-MDP. This new approach enables AI to first explore the environment to identify safe regions, then optimize performance within certified safe boundaries.
+[VISUAL DIRECTION] [Animated diagram showing stepwise exploration with green "safe" zones expanding, then optimization within boundaries]
+
+[VOICEOVER 1:00-1:30] How it works: Using Gaussian processes to model limited observations, the system begins with pessimistic safety estimates, then transitions to optimistic performance optimization. The key innovation? Early Stopping for Safety ensures exploration never compromises safety.
+[VISUAL DIRECTION] [Show Gaussian process visualization with confidence bounds, transitioning from red (pessimistic) to green (optimistic) zones]
+
+[VOICEOVER 1:30-1:50] In Mars surface simulations using HiRISE camera terrain data, SNO-MDP excelled where hazards were unknown, maintaining zero safety violations while achieving near-optimal performance.
+[VISUAL DIRECTION] [Mars terrain simulation with SNO-MDP path shown in green, baseline methods in yellow with safety violations marked]
+
+[VOICEOVER 1:50-2:00] This research paves the way for reliable AI deployments in uncertain, safety-critical settings where human oversight is limited. The future of autonomous systems just got safer.

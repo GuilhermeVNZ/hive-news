@@ -1,0 +1,1 @@
+Meta's DINOv3 breaks new ground in computer vision—7B parameters trained on 1.7B images WITHOUT labels. Outperforms supervised models on detection, segmentation & more. Partners include NASA JPL & World Resources Institute. #AI #ComputerVision #MachineLearning

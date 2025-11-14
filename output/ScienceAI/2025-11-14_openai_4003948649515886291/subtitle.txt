@@ -1,0 +1,1 @@
+New research shows training neural networks with sparse connections creates interpretable circuits that reveal how AI actually thinks

@@ -1,0 +1,1 @@
+What if AI could predict its own complexity bottlenecks? New research reveals predictable phase transitions in knowledge compilation—similar to water turning to ice—where logical systems shift from easy to hard and back. This could streamline everything from cybersecurity to autonomous vehicles. Where should we apply these complexity predictions first?

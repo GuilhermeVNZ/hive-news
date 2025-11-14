@@ -1,0 +1,8 @@
+New AI tools from Meta!
+PyTorch-native agentic stack
+ExecuTorch for on-device AI
+Helion cuts kernel code 75%
+Monarch scales to clusters
+Partners: NVIDIA, Qualcomm
+OpenEnv with Hugging Face
+Deploy AI everywhere now!

@@ -1,0 +1,1 @@
+Pasqal is advancing quantum computing's practical applications in materials science. Their neutral-atom processors and hybrid algorithms are enabling simulations of complex quantum materials that could transform energy storage, electronics, and biosensors. This represents significant progress toward verifiable quantum advantage in real-world applications.

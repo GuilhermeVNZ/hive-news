@@ -1,0 +1,12 @@
+Take 1: Prompt injection attacks are the biggest threat to AI systems today
+Take 2: Berkeley researchers just solved this with two new defense methods
+Take 3: StruQ uses structured queries to separate trusted from untrusted data
+Take 4: SecAlign trains models to prefer legitimate over malicious responses
+Take 5: Both methods reduce attack success rates to near-zero
+Take 6: While preserving the AI's original capabilities
+Take 7: This could protect everything from chatbots to business AI
+Take 8: Major security breakthrough for real-world AI deployment
+Take 9: Available now for organizations to implement
+Take 10: Making AI both powerful and secure for everyone
+Take 11: Follow for more AI security breakthroughs
+Take 12: The future of safe artificial intelligence is here

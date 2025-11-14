@@ -1,0 +1,1 @@
+Robots that learn from failures achieve 107% higher performance in bin picking. New non-Markov policies remember mistakes and adapt, reducing sequential failures without complex hardware upgrades.

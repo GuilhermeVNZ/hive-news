@@ -1,0 +1,1 @@
+Jupyter notebooks + Git = ❤️? Fast.ai's nbdev2 finally solves the collaboration nightmare with automated merge drivers that handle conflicts at the cell level. No more broken JSON files or execution count conflicts! #AI #MachineLearning #DataScience #Git #Jupyter

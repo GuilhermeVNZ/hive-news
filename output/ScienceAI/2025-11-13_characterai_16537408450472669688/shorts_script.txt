@@ -1,0 +1,10 @@
+Kaiju models revealed
+Transformer architecture
+Three sizes available
+Int8 quantization
+Multi-query attention
+Sliding window focus
+H100 GPU training
+Safety classifier heads
+Production optimized
+Conversation first

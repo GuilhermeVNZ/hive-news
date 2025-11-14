@@ -1,0 +1,1 @@
+Calibrating bacterial colony models used to take weeks. EvoPER cuts it to hours using particle swarm optimization, reducing evaluations from 2,600 to just 308. Game-changer for ecological simulations.

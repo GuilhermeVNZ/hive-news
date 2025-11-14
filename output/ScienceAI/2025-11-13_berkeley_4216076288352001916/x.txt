@@ -1,0 +1,1 @@
+UC Berkeley researchers just overturned decades of reinforcement learning dogma with a new 'divide and conquer' algorithm that scales to complex tasks without traditional TD learning. Could this be the breakthrough we've been waiting for? #AI #MachineLearning #ReinforcementLearning

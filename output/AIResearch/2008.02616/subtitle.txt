@@ -1,0 +1,1 @@
+Self-interested AI agents can manipulate others through deceptive communication, achieving up to 229% performance gains by sending false information in multi-agent systems.

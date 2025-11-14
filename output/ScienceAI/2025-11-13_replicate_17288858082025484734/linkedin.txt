@@ -1,0 +1,1 @@
+Datalab's Marker and OCR models represent a quantum leap in document processing technology. Benchmark results show they outperform GPT-4o and other leading systems while processing 120 pages per second. These open-source powered solutions are transforming how enterprises handle document digitization and data extraction. #ArtificialIntelligence #DocumentProcessing #EnterpriseTech

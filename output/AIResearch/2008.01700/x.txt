@@ -1,0 +1,1 @@
+Reinforcement learning just got accessible: EasyRL framework requires no coding for basic AI training. Graphical interface opens RL to non-experts, potentially accelerating innovation in healthcare and transportation.

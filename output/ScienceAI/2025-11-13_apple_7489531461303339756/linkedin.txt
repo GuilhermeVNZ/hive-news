@@ -1,0 +1,1 @@
+Apple's ExpertLens research represents a major breakthrough in AI interpretability. By identifying concept-specific neurons in large language models, this approach provides unprecedented insight into how AI systems represent knowledge. The stability across models and alignment with human cognition could transform how we develop and deploy AI technologies.

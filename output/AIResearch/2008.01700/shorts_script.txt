@@ -1,0 +1,41 @@
+[VOICEOVER 0:00-0:05]
+What if you could train artificial intelligence without knowing how to code?
+
+[VISUAL DIRECTION]
+Animated text: "Train AI - No Coding Required" with question mark animation
+
+[VOICEOVER 0:05-0:20]
+Reinforcement learning, the AI that learns through trial and error, has been locked behind technical barriers - until now. This matters because RL could optimize complex processes in healthcare and transportation, but only experts could use it.
+
+[VISUAL DIRECTION]
+Show medical and transportation icons with lock symbols, then unlocking animation
+
+[VOICEOVER 0:20-0:40]
+Researchers at University of Washington, Tacoma asked: How can we make reinforcement learning accessible to everyone, not just programmers?
+
+[VISUAL DIRECTION]
+Show Figure 1 from paper - the overall framework diagram with animated highlights
+
+[VOICEOVER 0:40-1:00]
+They created EasyRL - a graphical interface where you select RL agents like Q-learning and PPO from dropdown menus, choose environments, and train AI through simple settings panels.
+
+[VISUAL DIRECTION]
+Show Figure 2a and 2b with zoom on dropdown menus and settings panels
+
+[VOICEOVER 1:00-1:30]
+The system uses Python with TensorFlow or PyTorch, but you never see the code. You configure hyper-parameters like learning rates visually, watch real-time training with metrics plotted, and see dynamic environment rendering. C++ implementations speed up training five times.
+
+[VISUAL DIRECTION]
+Animated text overlays: "Real-time metrics" "5x faster training" with epsilon annealing graph animation
+
+[VOICEOVER 1:30-1:50]
+This means healthcare professionals could model treatment decisions, educators could teach AI concepts, and anyone can experiment with RL for real-world problems like e-market optimization - all without programming expertise.
+
+[VISUAL DIRECTION]
+Show healthcare, education, and e-commerce icons with checkmarks
+
+[VOICEOVER 1:50-2:00]
+Reinforcement learning is no longer just for experts. The barrier to AI training just disappeared.
+
+[VISUAL DIRECTION]
+Final text overlay: "EasyRL: AI Training for Everyone" with framework logo

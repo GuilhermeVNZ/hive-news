@@ -1,0 +1,1 @@
+Vector database pioneer introduces Update, Delete, and Fetch by Metadata capabilities, eliminating the need for record ID collection in large-scale AI deployments

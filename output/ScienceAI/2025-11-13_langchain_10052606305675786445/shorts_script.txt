@@ -1,0 +1,10 @@
+LangChain at AWS re:Invent
+Booth 524 Venetian Expo
+Live AI agent demos running
+LangSmith on AWS Marketplace
+Harrison Chase session Dec 3
+Technical deep dives available
+Redis partnership lightning talk
+Enterprise deployment options
+Production agent strategies
+Scale multi-agent systems

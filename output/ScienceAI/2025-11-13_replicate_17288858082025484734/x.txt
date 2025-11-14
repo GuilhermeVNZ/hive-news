@@ -1,0 +1,1 @@
+Datalab's new Marker & OCR models are crushing benchmarks—outperforming GPT-4o in document processing! 120 pages/sec, 90 languages, and open-source foundations. The future of document AI is here. #AI #OCR #DocumentProcessing

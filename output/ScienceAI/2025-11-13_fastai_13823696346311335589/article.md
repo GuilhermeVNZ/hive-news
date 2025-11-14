@@ -1,0 +1,13 @@
+In a major advancement for Python developers, fast.ai has launched nbdev 2.0 in partnership with Quarto, creating what early adopters are calling a "superpower" for software development. The collaboration brings together two powerful open-source platforms to transform how programmers write, test, and document code using Jupyter notebooks.
+
+The integration represents a significant evolution in literate programming, where code and documentation coexist seamlessly. Unlike traditional development environments that separate coding from documentation, nbdev enables developers to write complete software packages directly within notebooks while automatically generating tests, documentation, and deployment pipelines.
+
+Early adopters from companies including Netflix, Lyft, and Outerbounds report dramatic productivity improvements. David Berg from Netflix noted that "nbdev has turned what was once a chore into a natural extension of notebook-based testing," while Erik Gaasedelen from Lyft described it as "close to a Pareto improvement over traditional Python library development."
+
+The technical foundation combines nbdev's notebook execution engine with Quarto's powerful publishing capabilities. Quarto, maintained by Posit (formerly RStudio), brings multi-format publishing support including HTML, PDF, ePub, and PowerPoint, while nbdev's execnb provides blazing-fast notebook execution with parameterization capabilities.
+
+This partnership represents a strategic alignment between the Python and R ecosystems, with Quarto's CEO JJ Allaire actively collaborating with fast.ai to enhance notebook functionality. The integration allows developers to leverage notebook filters and custom rendering options previously unavailable in standard Jupyter workflows.
+
+Beyond productivity gains, the platform addresses critical maintenance challenges in software development. Hugo Bowne-Anderson from Outerbounds highlighted how "nbdev has transformed the way we write documentation," eliminating broken code examples and manual copying errors that plague traditional documentation workflows.
+
+The release signals a broader shift toward dynamic, REPL-driven development in Python, challenging the industry's increasing reliance on static analysis tools. By embracing Python's dynamic nature through fastcore extensions and notebook-first workflows, nbdev creates what the developers describe as "a new dialect of Python" optimized for rapid iteration and experimentation.

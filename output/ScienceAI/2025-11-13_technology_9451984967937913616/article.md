@@ -1,0 +1,15 @@
+The financial industry's fascination with large language models has reached a fever pitch, with quantitative traders eagerly exploring whether these AI systems can predict market movements. However, recent analysis from Hudson River Trading presented at NeurIPS 2023 reveals fundamental limitations that make financial markets particularly challenging for LLMs.
+
+At the core of the challenge lies data scarcity. While GPT-3 trained on 500 billion tokens, HRT's analysis shows financial markets generate only about 177 billion tokens annually across 3,000 tradable stocks. More critically, financial data lacks the predictable structure of language. "Language has underlying linguistic structure like grammar," explains the research, "while predicting the next stock return given previous trades is exponentially more difficult."
+
+The competitive nature of financial markets creates another fundamental barrier. Unlike language, where authors strive for clarity, financial markets feature adversaries actively working to make predictions difficult. This creates what economist Lasse Pedersen describes as "efficiently inefficient" markets where any signal gets quickly arbitraged away.
+
+Despite these challenges, several promising applications are emerging. Multimodal learning represents one frontier, where AI systems could combine traditional market data with alternative sources like social media sentiment, news articles, and even satellite imagery of shipping activity. This approach could potentially uncover patterns invisible to single-modality analysis.
+
+Residualization techniques borrowed from transformer architectures offer another pathway. Similar to how residual networks learn deviations from identity maps, financial models could focus on predicting innovations beyond overall market movements. This structural alignment between AI and finance methodologies suggests deeper synergies than initially apparent.
+
+The most immediate application may be synthetic data generation. Given the scarcity of real market data, generative models could create simulated price trajectories for training trading strategies. This approach mirrors meta-learning techniques used in robotics, where controllers train in simulation before fine-tuning with real-world data.
+
+While LLMs may not replace quantitative traders anytime soon, they're already showing promise in fundamental analysis. These models could serve as automated research assistants, helping analysts refine investment theses, identify inconsistencies in management commentary, and discover latent relationships between industries.
+
+The rapid evolution of AI capabilities suggests financial applications will continue to emerge unexpectedly. As the research concludes, "Expecting the unexpected has been a profitable theme in the AI business" - advice that applies equally well to both AI development and financial markets.

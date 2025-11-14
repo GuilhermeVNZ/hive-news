@@ -1,0 +1,1 @@
+Meta's Omnilingual ASR now transcribes 1,600+ languages, including 500 low-resource ones, with a 7B-parameter AI model. Open-sourced wav2vec 2.0 and a unique corpus aim to bridge the digital divide. #AI #SpeechRecognition #OpenSource

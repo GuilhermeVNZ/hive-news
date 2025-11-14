@@ -1,0 +1,8 @@
+Take 1: Notebooks aren't just for exploration anymore
+Take 2: nbdev 2.0 with Quarto integration
+Take 3: Write code, docs, and tests together
+Take 4: 300% productivity gains reported
+Take 5: Used by Netflix, Lyft, Outerbounds
+Take 6: Automatic packaging and deployment
+Take 7: Revolutionizing Python development
+Take 8: Try it at nbdev.fast.ai

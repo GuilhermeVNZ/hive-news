@@ -1,0 +1,13 @@
+The AI community's obsession with multimodal models as a pathway to artificial general intelligence may be fundamentally misguided, according to new research from Brown University. While today's large language models and vision systems demonstrate impressive capabilities, they lack the embodied understanding necessary for true general intelligence.
+
+Current multimodal approaches typically involve training separate neural modules for different modalities like text, images, and audio, then attempting to fuse them into a unified system. This strategy has produced commercially viable products but fails to capture the integrated nature of human cognition. The research argues that these systems essentially create patchwork intelligences rather than genuinely general ones.
+
+The core issue lies in what researchers call the 'disembodied' nature of modern AI. True AGI requires physical understanding of the world—the kind that enables humans to repair cars, untie knots, or prepare meals. These real-world problems cannot be reduced to symbol manipulation alone, yet that's precisely what current multimodal systems attempt to do.
+
+Evidence from studies of language models suggests they may be learning sophisticated syntactic patterns rather than genuine world models. The famous Othello experiment, where researchers could predict game board states from transformer hidden states, demonstrates this limitation. While impressive, such capabilities don't translate to physical world understanding where symbols alone are insufficient.
+
+The research challenges interpretations of Richard Sutton's 'Bitter Lesson' that suggest any structural assumptions hinder AI progress. Instead, the authors argue that thoughtful architectural choices—like the attention mechanism in transformers or convolutional networks for vision—have been crucial to AI's advancement. The problem isn't structure itself, but poor structural assumptions about how modalities should interact.
+
+Looking forward, the research suggests two potential paths: either carefully design how modalities unite based on human cognitive science, or pursue fully embodied approaches where modality-specific processing emerges naturally from interaction with environments. The latter approach, while potentially less efficient initially, might ultimately yield more flexible and general intelligence.
+
+As AI companies race to combine language, vision, and other capabilities, this research serves as a crucial reminder that true intelligence may require more than just scaling existing approaches. The path to AGI might demand fundamentally rethinking how we approach intelligence itself, moving beyond the multimodal paradigm toward more integrated, embodied systems.

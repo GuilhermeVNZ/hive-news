@@ -1,0 +1,1 @@
+Vector database pioneer streamlines AI workflows by embedding model inference directly into database operations, cutting infrastructure overhead

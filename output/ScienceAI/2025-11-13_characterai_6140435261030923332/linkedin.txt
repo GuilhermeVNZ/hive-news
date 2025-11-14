@@ -1,0 +1,1 @@
+Character.AI has shared insights into its massive AI infrastructure, detailing how thousands of GPUs process billions of user seconds monthly. The company's logging system overhaul demonstrates how strategic data management enables scalable AI operations while maintaining performance and reliability for millions of users.

@@ -1,0 +1,1 @@
+Apple Research has developed Adaptive Spatial Tokenization, a breakthrough AI method for simulating deformable body interactions. This scalable approach handles massive meshes exceeding 100,000 nodes, significantly outperforming current methods. The technology has profound implications for material science, robotics, and mechanical engineering applications.

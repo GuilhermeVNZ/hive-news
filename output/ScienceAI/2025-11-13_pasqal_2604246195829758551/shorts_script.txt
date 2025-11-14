@@ -1,0 +1,1 @@
+Quantum computing's secret weapon? Digital twins. Pasqal's emulators let you test quantum algorithms without the quantum hardware. Full state access, noise control, GPU acceleration. From cargo optimization to nuclear materials. Quantum development just got practical. Build, test, deploy with confidence.

@@ -1,0 +1,10 @@
+AI agents don't need complexity
+Simple patterns work better
+Start basic, add when needed
+Prompt chaining breaks tasks down
+Routing directs to specialists
+Parallel processing speeds things up
+Orchestrators manage worker teams
+Agents handle open-ended problems
+Customer support and coding excel
+Test extensively, build trust

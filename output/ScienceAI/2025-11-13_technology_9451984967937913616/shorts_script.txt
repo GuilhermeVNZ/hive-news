@@ -1,0 +1,5 @@
+Take 1: LLMs vs financial markets - data scarcity challenge
+Take 2: Multimodal learning combines market data with alternatives
+Take 3: Synthetic data generation for trading strategy training
+Take 4: Residualization techniques bridge AI and finance
+Take 5: Future applications in fundamental analysis emerging

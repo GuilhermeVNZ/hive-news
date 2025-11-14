@@ -1,0 +1,1 @@
+A new analysis shows that even perfect AI systems face unavoidable dilemmas where they must make decisions they know will be suboptimal—revealing fundamental limits in how machines and humans make choices.

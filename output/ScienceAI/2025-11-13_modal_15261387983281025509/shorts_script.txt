@@ -1,0 +1,1 @@
+Modal's Volumes v2 is here! High-concurrency writes from hundreds of containers. No file limits for massive AI datasets. JavaScript and Go SDKs now in beta. Unified client for all Modal resources. Scale AI apps in minutes. Perfect for model training. Build faster with Modal infrastructure.

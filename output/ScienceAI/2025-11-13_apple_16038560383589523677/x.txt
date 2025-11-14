@@ -1,0 +1,1 @@
+Apple's new PolyNorm AI model transforms text-to-speech with few-shot learning, cutting word errors across 8 languages. The LLM-based approach reduces engineering overhead while expanding global accessibility. #AI #TTS #MachineLearning

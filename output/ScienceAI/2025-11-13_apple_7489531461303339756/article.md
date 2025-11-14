@@ -1,0 +1,11 @@
+Apple's machine learning research division has unveiled ExpertLens, a groundbreaking approach to understanding how large language models internally represent concepts. The research, accepted at the prestigious NeurIPS 2025 conference, demonstrates that activation steering features in AI models are surprisingly interpretable and stable across different architectures.
+
+The ExpertLens method identifies specific neurons responsible for particular concepts—such as identifying 'cat neurons' within neural networks—and provides granular insights into model representations. This represents a significant advancement in AI interpretability, a field that has struggled to make sense of the complex inner workings of modern language models.
+
+What makes ExpertLens particularly compelling is its stability across models and datasets. The research team found that these representations closely align with human conceptual organization, matching inter-human alignment levels. This suggests that AI models may be developing internal representations that mirror human cognitive structures.
+
+The method significantly outperforms traditional approaches using word and sentence embeddings for capturing conceptual alignment. By reconstructing human concept organization through neural activation patterns, ExpertLens offers researchers and developers a powerful tool for analyzing and understanding model behavior at a fundamental level.
+
+This research comes at a critical time as concerns grow about AI reliability, safety, and potential misuse. Activation steering methods like ExpertLens could provide the transparency needed to ensure AI systems behave predictably and align with human values. The lightweight nature of the approach makes it practical for real-world deployment.
+
+Apple's continued investment in fundamental AI research through its machine learning division signals the company's commitment to advancing the field responsibly. As AI systems become more powerful and pervasive, tools like ExpertLens will be essential for maintaining oversight and ensuring these technologies develop in ways that benefit society.

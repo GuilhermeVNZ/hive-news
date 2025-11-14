@@ -1,0 +1,1 @@
+Pinecone's latest Assistant update brings expanded language model support and enhanced developer controls. The vector database leader now offers OpenAI, Anthropic, and Google models with temperature parameter exposure for greater AI behavior control. Essential reading for anyone building enterprise AI applications.

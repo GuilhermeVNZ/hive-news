@@ -1,0 +1,1 @@
+Researchers finally cracked how word2vec learns! New theory shows the AI algorithm builds understanding in discrete steps, learning concepts one by one like humans. The math reveals it's essentially running PCA. Big implications for understanding modern language models. #AI #MachineLearning #NLP

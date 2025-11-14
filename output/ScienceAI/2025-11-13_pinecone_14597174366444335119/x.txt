@@ -1,0 +1,1 @@
+Pinecone just supercharged its AI Assistant with new model support from OpenAI, Anthropic & Google + temperature control. Building knowledgeable apps just got way more flexible. #AI #VectorDatabase #LLM

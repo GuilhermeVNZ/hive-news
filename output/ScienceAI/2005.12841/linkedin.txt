@@ -1,0 +1,1 @@
+What if calibrating complex biological models could be done in hours instead of weeks? EvoPER software uses evolutionary algorithms to slash parameter estimation from thousands to just hundreds of evaluations. How could this accelerate your ecological research?

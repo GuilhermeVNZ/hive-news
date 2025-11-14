@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Pasqal</title>
+	<atom:link href="https://www.pasqal.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.pasqal.com/</link>
+	<description></description>
+	<lastBuildDate>Tue, 11 Nov 2025 15:53:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+
+<image>
+	<url>https://www.pasqal.com/wp-content/uploads/2024/12/favicon-512x512-1.png?w=32&#038;h=32&#038;quality=80&#038;strip=all</url>
+	<title>Pasqal</title>
+	<link>https://www.pasqal.com/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">239375822</site>	<item>
+		<title>Quantum Computing and the New Era of Materials Discovery</title>
+		<link>https://www.pasqal.com/blog/quantum-computing-and-the-new-era-of-materials-discovery/</link>
+		
+		<dc:creator><![CDATA[lucia garbini]]></dc:creator>
+		<pubDate>Wed, 12 Nov 2025 07:53:00 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/?p=10756</guid>
+
+					<description><![CDATA[<p>Authors: Constantin Dalyac, Alexandre Dauphin Human progress has always hinged on the stuff we make things from. Bronze forged empires, steel built the modern world, and silicon wired us into the digital age. As our technology has evolved, so has our precision: we’ve gone from casting metal to sculpting matter, shrinking down until we can now&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/quantum-computing-and-the-new-era-of-materials-discovery/">Quantum Computing and the New Era of Materials Discovery</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-bright-green-background-color has-background">Authors: Constantin Dalyac, Alexandre Dauphin</p>
+
+
+
+<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Human progress has always hinged on the stuff we make things from. Bronze forged empires, steel built the modern world, and silicon wired us into the digital age. As our technology has evolved, so has our precision: we’ve gone from casting metal to sculpting matter, shrinking down until we can now produce materials that are literally <strong>one atom thick</strong>. This unprecedented ability to control and engineer quantum materials with the desired properties is at the heart of the second quantum revolution and opens new avenues for industries such as energy, manufacturing, and sustainable technology development.</p>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="quantum-frontiers-in-ultrathin-materials">Quantum Frontiers in ultrathin materials</h2>
+
+
+
+<p>In particular, two-dimensional quantum materials, first popularized by graphene, reveal <strong>a playground of quantum phenomena</strong>: ultra-fast electrons, switchable magnetism, and strong light–matter interactions. Because these materials are only a few atoms thick with extremely clean surfaces, they reduce many of the problems that bulk materials face—such as cracks, impurities, and structural defects that weaken performance and cause inconsistency. Researchers believe these atomically thin marvels will transform many domains, from ultraefficient electronics and next generation‑ energy storage to flexible bio-sensors.</p>
+
+
+
+<p>Yet designing such materials and exploring their properties is no trivial task. Quantum effects largely dominate at the atomic scale and classical computation quickly becomes impractical: predicting properties require amounts of memory and computation time that increase exponentially with the number of atoms in the sheet. To overcome the computational challenges, scientists developed approximation methods, like density functional theory (DFT), which has been very useful for understanding the properties of bulk materials by simplifying the complex interactions between electrons. However, for ultra-thin two-dimensional materials, DFT can struggle because of intricate quantum effects like strong electron interactions and sensitive magnetic behaviours. As a result, new and more precise tools are needed to fully capture the unique behaviour of these atom-thin materials.</p>
+
+
+
+<h2 class="wp-block-heading" id="quantum-simulators-microscope-like-tools-transforming-material-science">Quantum Simulators: Microscope-Like Tools Transforming Material Science</h2>
+
+
+
+<p>Back in the 1980s, Richard Feynman proposed the idea of quantum simulation — using one quantum system that we control very well to mimic another. Instead of trying to solve extremely complex equations on a regular computer, scientists build special quantum systems that behave just like the material they want to study—kind of like using a wind tunnel to test how air flows over a plane. This concept became a reality thanks to the advances in neutral-atom platforms. In these systems, individual atoms are trapped and arranged in reconfigurable two-dimensional arrays, where their interactions can be finely tuned. By carefully controlling how these atoms interact with lasers, they can observe quantum behaviours—like magnetism and exotic states—happen one atom at a time. In fact, in a landmark experiment <a href="https://www.nature.com/articles/s41586-021-03585-1">[P. Scholl et al, Nature 595, 233 (2021)]</a>, the laboratory of <strong>Antoine Browaeys</strong> and <strong>Thierry Lahaye </strong>was able to engineer a <strong>2D quantum magnet</strong> and study the appearance of the celebrated antiferromagnetic phase, where the spins are anti aligned.</p>
+
+
+
+<p><a id="_msocom_1"></a></p>
+
+
+
+<h2 class="wp-block-heading" id="pasqal-s-neutral-atom-quantum-processors-for-quantum-materials-discovery">Pasqal’s Neutral Atom Quantum Processors for Quantum Materials Discovery</h2>
+
+
+
+<p>At <strong>Pasqal</strong>, we are harnessing neutral-atom quantum processors to explore the physics of quantum materials. Our teams have developed hybrid quantum–classical algorithms to <a href="https://arxiv.org/abs/2510.05897">model strongly correlated electrons</a> — systems where conventional methods often fail. We have also used these processors to simulate <a href="https://arxiv.org/abs/2506.21299">exotic quasiparticles known as mesons</a>, which mirror phenomena seen both in high-energy physics and in condensed matter systems such as CoNb2O6 – part of the Cobalt Niobate materials family well explored for its potential applications in microwave devices and photocatalysts operating at room temperature. Crucially, these algorithms run directly on our cloud platform, enabling experiments that are not only powerful but reproducible — a cornerstone of scientific progress . Step by step, we’re moving toward a future where scientists can study and design quantum materials using quantum computers themselves. Guided by the rigorous <a href="https://arxiv.org/abs/2506.20658">quantum advantage framework</a> developed with IBM, we now have clear criteria showing that simulations involving more than 250 qubits we can target regimes beyond classical capabilities—bringing practical and verifiable quantum advantage in materials simulation within sight.</p>
+<p>The post <a href="https://www.pasqal.com/blog/quantum-computing-and-the-new-era-of-materials-discovery/">Quantum Computing and the New Era of Materials Discovery</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10756</post-id>	</item>
+		<item>
+		<title>The Race to Quantum Advantage: Reaching New Uncharted Territories</title>
+		<link>https://www.pasqal.com/blog/the-race-to-quantum-advantage-reaching-new-uncharted-territories/</link>
+		
+		<dc:creator><![CDATA[lucia garbini]]></dc:creator>
+		<pubDate>Tue, 07 Oct 2025 08:27:35 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/?p=10375</guid>
+
+					<description><![CDATA[<p>Authors: Constantin Dalyac, Lucia Garbini The race to quantum advantage — the moment where quantum computers solve useful, real-world problems beyond classical reach— is one of the great scientific frontiers of our time. Like the Moon landing, the race to quantum advantage calls for bold vision, world-class engineering and global collaboration. Engineering Excellence Driving Quantum&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/the-race-to-quantum-advantage-reaching-new-uncharted-territories/">The Race to Quantum Advantage: Reaching New Uncharted Territories</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-bright-green-background-color has-background">Authors: Constantin Dalyac, Lucia Garbini </p>
+
+
+
+<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>The race to quantum advantage — the moment where quantum computers solve useful, real-world problems beyond classical reach— is one of the great scientific frontiers of our time. Like the Moon landing, the race to quantum advantage calls for bold vision, world-class engineering and global collaboration.</p>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="engineering-excellence-driving-quantum-advantage">Engineering Excellence Driving Quantum Advantage</h2>
+
+
+
+<p>At Pasqal, we turn research into hardware. Our 2025 Quantum Roadmap articulates a bold strategy founded on unmatched engineering strength and structured around three pillars: rapid deployment of enterprise-grade QPUs, targeted demonstrations of quantum advantage and accelerated progress toward scalable fault-tolerant systems.</p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:40% auto"><figure class="wp-block-media-text__media"><img loading="eager" fetchpriority="high" decoding="async" width="3000" height="2001" src="https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?w=1024&amp;h=683&amp;quality=80&amp;strip=all" alt="" class="wp-image-10457 size-full" srcset="https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?w=3000&amp;resize=3000&amp;quality=80&amp;strip=all 3000w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=2048&amp;w=2048&amp;quality=80&amp;strip=all 2048w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=880&amp;w=880&amp;quality=80&amp;strip=all 880w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=402&amp;w=402&amp;quality=80&amp;strip=all 402w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=297&amp;w=297&amp;quality=80&amp;strip=all 297w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=943&amp;w=943&amp;quality=80&amp;strip=all 943w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=1006&amp;w=1006&amp;quality=80&amp;strip=all 1006w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/10/2024.11-Julich-Delivery-1.jpg?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="(max-width: 3000px) 100vw, 3000px" /></figure><div class="wp-block-media-text__content">
+<p>This clearly defined, engineering-led trajectory enables Pasqal to deliver meaningful quantum value today while systematically preparing for universal quantum computing tomorrow. We have already deployed neutral atom Quantum Processing Units (QPUs) in leading HPC centers, including <a href="https://www.pasqal.com/newsroom/boosting-europes-quantum-computing-infrastructure/">Forschungszentrum Jülich</a> in Germany and <a href="https://www.pasqal.com/newsroom/first-qpu-delivered-by-pasqal-to-genci-and-cea/">GENCI/CEA</a> in France — proof that our technology can be delivered and integrated into real computing environments.</p>
+</div></div>
+
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="reaching-quantum-advantage-with-physical-qubits">Reaching Quantum Advantage with Physical Qubits</h2>
+
+
+
+<div class="wp-block-media-text has-media-on-the-right is-stacked-on-mobile" style="grid-template-columns:auto 40%"><div class="wp-block-media-text__content">
+<p>With these QPUs, Pasqal is entering new computational regimes beyond the reach for classical computers. Our recent demonstration of control over <strong>250+ physical qubits</strong> shows not only scale but also low noise operation and high-fidelity control, essential for credible quantum performance. This work aligns with a <a href="https://arxiv.org/abs/2506.20658" target="_blank" rel="noreferrer noopener">co-developed framework for quantum advantage published with IBM</a>, reinforcing that we are on track to deliver advantage very soon, in a transparent and reproducible way.</p>
+</div><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="354" height="358" src="https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png" alt="" class="wp-image-10460 size-full" srcset="https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?w=354&amp;resize=354&amp;quality=80&amp;strip=all 354w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=297&amp;w=297&amp;quality=80&amp;strip=all 297w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=265&amp;w=265&amp;quality=80&amp;strip=all 265w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=196&amp;w=196&amp;quality=80&amp;strip=all 196w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=246&amp;w=246&amp;quality=80&amp;strip=all 246w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=35&amp;w=35&amp;quality=80&amp;strip=all 35w, https://www.pasqal.com/wp-content/uploads/2025/10/256-qubits.png?resize=70&amp;w=70&amp;quality=80&amp;strip=all 70w" sizes="(max-width: 354px) 100vw, 354px" /></figure></div>
+
+
+
+<p></p>
+
+
+
+<p>Physical qubits are not a stopgap; they prove the precision and scalability required to address meaningful scientific challenges today, while laying the groundwork for the next stage of quantum computing.</p>
+
+
+
+<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading" id="from-physical-to-logical-qubits">From Physical to Logical Qubits</h2>
+
+
+
+<p>Controlling large numbers of physical qubits directly enables the construction of logical qubits, the essential building blocks of fault-tolerant quantum computing. Recently, Pasqal achieved a <strong>European first</strong>: two logical qubits on a neutral atom platform, with active error detection and significant performance boosts.</p>
+
+
+
+<p>These achievements represent a continuum: from hundreds of high-quality physical qubits to strong logical qubits. Our <a href="https://www.pasqal.com/newsroom/pasqal-releases-2025-roadmap/" target="_blank" rel="noreferrer noopener">roadmap</a> charts a path from two logical qubits this year to over 200 by 2030, unlocking universal quantum computation for science and industry.</p>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading" id="embark-on-the-mission-with-us" style="padding-top:0;padding-bottom:0">Embark on the mission with us</h2>
+
+
+
+<p>Physical qubits today, logical qubits tomorrow — all on the same platform. The breakthroughs already achieved (deploying enterprise-grade QPUs, entering the 250+-qubit regime and realizing logical qubits) provide tangible evidence that quantum advantage is within reach.</p>
+
+
+
+<p><strong>Loïc Henriet</strong>, our CEO, captures the spirit: </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p><em>As in the great space race, achieving quantum advantage demands precise engineering, collaboration, and relentless pursuit of exploration. Our platform delivers value today through exquisite control of physical qubits, while our roadmap charts a clear course toward scalable, fault-tolerant quantum systems. Breakthroughs are coming, and we invite everyone to stay tuned for upcoming announcements that will push these uncharted frontiers further.</em></p>
+</blockquote>
+
+
+
+<p>Breakthroughs are approaching, and Pasqal is on the final countdown to quantum advantage. With each milestone, we move closer to a pivotal moment—akin to the moon landing—where precise engineering turns ambitious goals into reality. Join us as we take this next step toward scalable, practical quantum computing.<br></p>
+
+
+
+<p></p>
+<p>The post <a href="https://www.pasqal.com/blog/the-race-to-quantum-advantage-reaching-new-uncharted-territories/">The Race to Quantum Advantage: Reaching New Uncharted Territories</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">10375</post-id>	</item>
+		<item>
+		<title>Inside Pasqal Emulators: the Tools Driving Quantum Development</title>
+		<link>https://www.pasqal.com/blog/inside-pasqal-emulators-the-tools-driving-quantum-development/</link>
+		
+		<dc:creator><![CDATA[lucia garbini]]></dc:creator>
+		<pubDate>Tue, 22 Jul 2025 20:05:21 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/?p=9503</guid>
+
+					<description><![CDATA[<p>Authors: Kemal Bidzhiev Quantum computing is steadily entering our lives. The technology sets highly ambitious goals and promises to tackle a wide range of challenges. In particular, the Pasqal Quantum Processing Unit (QPU) is successfully used to address real world problems. Examples include scheduling and planning of satellite constellations, forecasting energy demand and material aging&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/inside-pasqal-emulators-the-tools-driving-quantum-development/">Inside Pasqal Emulators: the Tools Driving Quantum Development</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-bright-green-background-color has-background">Authors: Kemal Bidzhiev</p>
+
+
+
+<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Quantum computing is steadily entering our lives. The technology sets highly ambitious goals and promises to tackle a wide range of challenges. In particular, the Pasqal Quantum Processing Unit (QPU) is successfully used to address real world problems. Examples include scheduling and planning of <a href="https://www.pasqal.com/newsroom/pasqal-and-thales-tackles-satellite-planning-challenges/" target="_blank" rel="noreferrer noopener"><strong>satellite constellations</strong></a>, forecasting energy demand and <strong><a href="https://www.edf.fr/groupe-edf/inventer-lavenir-de-lenergie/rd-un-savoir-faire-mondial/toutes-les-actualites-de-la-rd/la-rd-dedf-grande-gagnante-du-challenge-quantique-de-la-start-up-pasqal" target="_blank" rel="noreferrer noopener">material aging</a> </strong>in nuclear power plants, the efficient allocation of <a href="https://www.cmacgm-group.com/en/news-media/cma-cgm-group-and-pasqal-join-forces-leverage-quantum-technologies-maritime-transport" target="_blank" rel="noreferrer noopener"><strong>cargo containers</strong></a> for maritime logistics and <a href="https://www.pasqal.com/resources/types/success-stories/" target="_blank" rel="noreferrer noopener"><strong>several others</strong></a>. These problems are linked by their mathematical nature and they all belong to the same category of problems, which quantum computing is principally designed to solve.</p>
+
+
+
+<p>Pasqal’s quantum computers use individual atoms for calculations and manipulate them using lasers to perform quantum operations. Small perturbations in atom positions or laser frequency noise are natural components of the physical processes inside quantum computers. While such minor disturbances typically have little impact on classical systems, they can significantly affect quantum systems, resulting in delicate and highly <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/" target="_blank" rel="noreferrer noopener">sensitive quantum states</a>. Given the fragile nature of these states, how can we determine whether a quantum computer is operating correctly and not being compromised by noise? To answer this question, at Pasqal we carefully analyze how each parameter influences quantum computing processes, with the help of emulators.</p>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="what-is-a-quantum-emulator">What is a quantum emulator</h2>
+
+
+
+<p>Pasqal QPUs are supported by digital twins, also known as <strong>emulators</strong>. These are software tools that run on a classical computer and are designed to replicate the behavior of our QPUs as closely as possible. Think of them as virtual models that allow people to test, tweak, and explore quantum algorithms without needing to access a real quantum device every time.  Emulators are incredibly useful for understanding how different parameters influence quantum computations. They help validate results, identify potential issues, and reduce uncertainties before running anything on actual hardware.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large is-resized"><img loading="lazy" decoding="async" height="576" width="1024" src="https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?w=1024&amp;h=576&amp;quality=80&amp;strip=all" alt="Pasqal emulators - the tools driving quantum development" class="wp-image-9550" style="width:500px" srcset="https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?w=1600&amp;resize=1600&amp;quality=80&amp;strip=all 1600w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=1044&amp;w=1044&amp;quality=80&amp;strip=all 1044w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=476&amp;w=476&amp;quality=80&amp;strip=all 476w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=352&amp;w=352&amp;quality=80&amp;strip=all 352w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=1118&amp;w=1118&amp;quality=80&amp;strip=all 1118w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=1193&amp;w=1193&amp;quality=80&amp;strip=all 1193w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/07/QPU-and-Emulator_v1.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>However, since emulators run on classical computers, they come with certain limitations. The more qubits you try to emulate, the more data and processing power are required, in fact, every additional qubit doubles the memory and computational resources needed. As a result, the system quickly becomes too large to handle efficiently. Indeed, to <em>exactly</em> simulate a system with 300 entangled qubits, <em>you’d need to store more numbers than there are atoms in the entire universe</em>. In practice, this limits most simulations to around 100 qubits or fewer, which strongly depends on the approximation method used and the complexity of the system.</p>
+
+
+
+<p>Pasqal’s emulators are built with advanced computational methods and optimized for efficiency, allowing users to get the most out of these tools. They can run across a broad range of systems: from standard laptops to large-scale high-performance computing (HPC) clusters equipped with GPUs.</p>
+
+
+
+<h2 class="wp-block-heading" id="why-we-use-emulators-and-why-they-matter">Why we use Emulators and why they matter</h2>
+
+
+
+<p>Emulators, serving as software analogs of our QPUs, play an essential role. Although emulators can’t replicate QPUs with a large number of qubits due to memory limitations, they are well-suited for exploring quantum algorithms at smaller scales. This provides a valuable starting point. Testing with small problems helps quickly eliminate wrong approaches, saving time and guiding development more efficiently. Real-world projects have demonsrtated this advantage. For example, in an <a href="https://www.pasqal.com/newsroom/cma-cgm-group-and-pasqal-join-forces-to-leverage-quantum-technologies-for-maritime-transport-and-logistics/" target="_blank" rel="noreferrer noopener">optimal allocation</a> task of cargo containers, emulators helped distinguish between approaches that could be translated to a real QPU and those that could not.</p>
+
+
+
+<p>These are some of the key ways emulators can improve your projects:</p>
+
+
+
+<div class="wp-block-group is-layout-grid wp-container-core-group-is-layout-988b637e wp-block-group-is-layout-grid">
+<div class="wp-block-group has-bright-green-background-color has-background is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-body-article-font-size"><strong>Validate QPU results</strong></p>
+
+
+
+<p class="has-body-simple-font-size">Emulators offer full access to the quantum state, unlike QPUs, which are limited by quantum measurement and noise. This access enables detailed analysis of system behavior during computation. By comparing ideal emulator outputs with noisy QPU results, users can pinpoint errors and assess the impact of effects like decoherence, laser noise, and crosstalk.</p>
+</div>
+
+
+
+<div class="wp-block-group has-soft-green-background-color has-background is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-white-color has-text-color has-link-color has-body-article-font-size wp-elements-2471e30ac58e9482cad22c6d6c50c759"><strong>Enable error mitigation </strong></p>
+
+
+
+<p class="has-white-color has-text-color has-link-color has-body-simple-font-size wp-elements-c5b901d82e284d19c422c0330e81d1f0">Noise-tunable emulators transform quantum errors into a controlled experiment. By isolating and combining noise sources, researchers study quantum algorithm behavior under realistic conditions and identify the most beneficial hardware improvements. Full virtual control enables exploration of error correction and <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/">fault-tolerant quantum computing</a> (FTQC) algorithms.</p>
+</div>
+
+
+
+<div class="wp-block-group has-black-color has-bright-green-background-color has-text-color has-background has-link-color wp-elements-fd941d869af95598b7722351e10329ad is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-black-color has-text-color has-link-color has-body-article-font-size wp-elements-a1cf5f6a79e9d2f3eba1e2dac0ddca2f"><strong>Reduce Costs</strong></p>
+
+
+
+<p class="has-black-color has-text-color has-link-color has-body-simple-font-size wp-elements-f970209f484b893cfe160664ff33df1c">Emulators run on your classical computer with no per-shot fees, queues, or special infrastructure. They are a far less scarce resource today, which contributes to their lower cost compared to quantum processing units (QPUs). By handling most development and testing on emulators, users save both time and money. Users will be able to reserve the QPU for critical final runs. This maximizes efficiency and ensures users can access quantum resources  where they matter most.</p>
+</div>
+</div>
+
+
+
+<div class="wp-block-group is-layout-grid wp-container-core-group-is-layout-988b637e wp-block-group-is-layout-grid">
+<div class="wp-block-group has-white-color has-soft-green-background-color has-text-color has-background has-link-color has-body-simple-font-size wp-elements-38349595496c8dbd2426b4c6a15aa9c3 is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-body-article-font-size"><strong>Accelerate algorithm development</strong></p>
+
+
+
+<p>Emulators act as a research sandbox. They enable users to prototype, debug, visualize, and optimize quantum algorithms in a fully transparent and controlled environment. They offer flexibility to test configurations and fine-tune parameters. Emulators provide full visibility into algorithm behavior and accelerate the transition from theory to implementation.</p>
+</div>
+
+
+
+<div class="wp-block-group has-black-color has-bright-green-background-color has-text-color has-background has-link-color wp-elements-8e9c0d9654ae75032433b68144748801 is-layout-flow wp-block-group-is-layout-flow" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-black-color has-text-color has-link-color has-body-article-font-size wp-elements-c58e4a57574170da3677be86842c36b4"><strong>Explore beyond current hardware limits</strong></p>
+
+
+
+<p class="has-black-color has-text-color has-link-color has-body-simple-font-size wp-elements-55ca1c00805af05ecd4f3f9f148c0c5e">Beyond replicating current hardware, emulators let researchers explore scenarios beyond today’s QPUs, like complex geometries and precise local qubit control. They also integrate with machine learning techniques to optimize laser pulse durations without compromising accuracy. This leads to more robust results while reducing QPU runtime.</p>
+</div>
+
+
+
+<div class="wp-block-group has-black-color has-soft-green-background-color has-text-color has-background has-link-color wp-elements-389927f14c4b101c7491ee85b0be9b7f wp-container-content-2155ee95 is-layout-flow wp-block-group-is-layout-flow" style="margin-bottom:0;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<p class="has-white-color has-text-color has-link-color has-body-article-font-size wp-elements-fc45ded48423446c41f2c69297acbb80"><strong>Explore now the benefits of our quantum emulators</strong></p>
+
+
+
+<p class="has-white-color has-text-color has-link-color has-body-simple-font-size wp-elements-ad7ce7773bdcc0b6d11c23c89738877d">Discover how you can leverage Pasqal Quantum Emulators in your quantum projects. </p>
+
+
+
+<div style="height:80px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-container-pasqal-cta-buttons-is-layout-e7219c75 wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button is-style-primary has-mint-green-background-color has-background"><a class="wp-block-pasqal-cta-button__link" href="https://pasqal-io.github.io/emulators/latest/" target="_blank" rel="noreferrer noopener"><span class="cta-button-text has-mint-green-background-color has-background">Explore now</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading" id="from-features-to-solutions-how-to-select-the-right-emulator-for-your-project">From Features to Solutions: how to select the right Emulator for Your Project</h2>
+
+
+
+<p>Pasqal offers two primary emulators: <a href="https://pasqal-io.github.io/emulators/latest/emu_mps/"><strong>Emu-mps</strong>, </a> and<a href="https://github.com/pasqal-io/emulators"> </a><a href="https://pasqal-io.github.io/emulators/latest/emu_sv/" target="_blank" rel="noreferrer noopener"><strong>Emu-sv</strong></a>, which are accessible through the quantum computing interface <a href="https://pulser.readthedocs.io/en/stable/" target="_blank" rel="noreferrer noopener">Pulser</a>. Each of the quantum emulators is built for different types of problems and system sizes. Whether users are working on small experiments or large-scale simulations, there&#8217;s a tool that fits different needs. </p>
+
+
+
+<p>We’ll introduce each one below in a quick overview of the emulators, and dive deeper in upcoming blog posts.</p>
+
+
+
+<div class="wp-block-group has-bright-green-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-f611be13 wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h4 class="wp-block-heading" id="emu-sv"><strong>Emu-sv</strong></h4>
+
+
+
+<p>Emu-sv uses a full state-vector representation to capture the entire quantum state. It is ideal for testing quantum algorithms and research projects involving a small number of qubits.</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p><strong>Key features</strong></p>
+
+
+
+<ul style="margin-top:0;margin-right:var(--wp--preset--spacing--30);margin-bottom:0;margin-left:var(--wp--preset--spacing--30)" class="wp-block-list is-style-pipe-list">
+<li class="has-body-simple-font-size">Supports systems ≤ 25 qubits</li>
+
+
+
+<li class="has-body-simple-font-size">Emulates Rydberg systems with high precision at machine-level accuracy.</li>
+
+
+
+<li class="has-body-simple-font-size">Capable of emulating arbitrary atomic positions</li>
+
+
+
+<li class="has-body-simple-font-size">Based on state vector representation</li>
+
+
+
+<li class="has-body-simple-font-size">Runs efficiently on both GPU/CPU, leveraging the full capacities of modern HPC clusters</li>
+</ul>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h4 class="wp-block-heading" id="emu-sv"><strong>Emu-mps</strong></h4>
+
+
+
+<p>Emu-mps is an emulator based on Matrix Product States (Emu-MPS). It enables scalable QPU emulation for larger systems beyond the limits of Emu-sv.</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p><strong>Key features</strong></p>
+
+
+
+<ul style="margin-right:var(--wp--preset--spacing--30);margin-left:var(--wp--preset--spacing--30)" class="wp-block-list is-style-pipe-list">
+<li class="has-body-simple-font-size">Handles systems ≤ 60 &#8211; 100 qubits, depending on geometry and complexity.</li>
+
+
+
+<li>Utilizes modern tensor network methods with quantum state compression</li>
+
+
+
+<li>Introduces controlled approximations as a fundamental part of the emulation process</li>
+
+
+
+<li class="has-body-simple-font-size">Can emulate around 60 qubits in 2D layouts, significantly more in 1D, and, in some cases, supports 3D configurations depending on the task.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading" id="get-started-with-pasqal-s-emulators" style="padding-top:0;padding-bottom:0">Get Started with Pasqal’s Emulators</h2>
+
+
+
+<p>Emulators are a fundamental tool in quantum computing. They enable rigorous development, thorough testing, and meaningful progress before deploying on quantum hardware. They provide transparency, flexibility, and capabilities that are critical for advancing technology deployment, research and development in this field.</p>
+
+
+
+<p>At Pasqal, we’ve developed emulators to support every phase of work with quantum computing. These emulators assit with tasks ranging from initial algorithm prototyping to complex hardware experimentation. Our tools enable industry practitioners, researchers and developers to optimize algorithms. They also benchmark performance. Users can prepare for new hardware advancements more efficiently efficiency and with greater reliability.</p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile is-image-fill-element media-text-pattern has-bright-green-background-color has-background" style="padding-top:0;padding-bottom:0"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="1788" height="1539" src="https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?w=1024&amp;h=881&amp;quality=80&amp;strip=all" alt="" class="wp-image-8606 size-full" style="object-position:50% 50%" srcset="https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?w=1788&amp;resize=1788&amp;quality=80&amp;strip=all 1788w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=682&amp;w=682&amp;quality=80&amp;strip=all 682w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=311&amp;w=311&amp;quality=80&amp;strip=all 311w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=230&amp;w=230&amp;quality=80&amp;strip=all 230w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=731&amp;w=731&amp;quality=80&amp;strip=all 731w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=780&amp;w=780&amp;quality=80&amp;strip=all 780w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=289&amp;w=289&amp;quality=80&amp;strip=all 289w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal-QPU-Vector.png?resize=579&amp;w=579&amp;quality=80&amp;strip=all 579w" sizes="auto, (max-width: 1788px) 100vw, 1788px" /></figure><div class="wp-block-media-text__content">
+<h4 class="wp-block-heading" id="ready-set-emulate">Ready, Set, Emulate</h4>
+
+
+
+<p class="has-body-simple-font-size">Explore Pasqal’s emulator resources to start building and testing quantum algorithms with confidence. Access the full documentation and the open-source repositories to accelerate your quantum projects and join the growing developer community.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://pasqal-io.github.io/emulators/latest/" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">Documentation</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+
+
+
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://github.com/pasqal-io/emulators" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">Github repository</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div></div>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2 class="wp-block-heading" id="join-pasqal-community">Join Pasqal Community</h2>
+
+
+
+<p>To further engage with this cutting-edge technology and connect with like-minded quantum enthusiasts, consider joining the Pasqal Community. It offers a wealth of resources including <a href="https://community.pasqal.com/learning" target="_blank" rel="noreferrer noopener"><strong>Quantum Quest</strong></a>, our interactive e-learning platform, access to <a href="https://community.pasqal.com/tools"><strong>open-source tools and libraries</strong></a>, and a dedicated <a href="https://insights.pasqal.com/community_joinslack"><strong>Slack workspace</strong></a> for global networking. </p>
+
+
+
+<p>By becoming a member of Pasqal community, you&#8217;ll have the opportunity to shape the future of quantum emulators and help us drive innovation in quantum computing in general. Get invoveld and contribute. Your inputs and ideas make a whole difference. </p>
+
+
+
+<div class="wp-block-media-text has-media-on-the-right is-stacked-on-mobile is-image-fill-element has-bright-green-background-color has-background" style="padding-top:var(--wp--preset--spacing--40);padding-right:0;padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><div class="wp-block-media-text__content">
+<h4 class="wp-block-heading" id="become-a-member">Become a member</h4>
+
+
+
+<p style="margin-bottom:0">Learn and discover quantum at all levels. Get hands on to see how quantum can help you, and connect with quantum innovators.</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--40)">
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-container-pasqal-cta-buttons-is-layout-a53380d3 wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button is-style-primary has-mint-green-background-color has-background"><a class="wp-block-pasqal-cta-button__link" href="https://community.pasqal.com"><span class="cta-button-text has-mint-green-background-color has-background">Register here</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div>
+</div><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="4849" height="3919" src="https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?w=1024" alt="" class="wp-image-8649 size-full" style="object-position:0% 0%" srcset="https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?w=4849&amp;resize=4849&amp;quality=80&amp;strip=all 4849w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=2048&amp;w=2048&amp;quality=80&amp;strip=all 2048w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=726&amp;w=726&amp;quality=80&amp;strip=all 726w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=332&amp;w=332&amp;quality=80&amp;strip=all 332w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=245&amp;w=245&amp;quality=80&amp;strip=all 245w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=778&amp;w=778&amp;quality=80&amp;strip=all 778w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=830&amp;w=830&amp;quality=80&amp;strip=all 830w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=308&amp;w=308&amp;quality=80&amp;strip=all 308w, https://www.pasqal.com/wp-content/uploads/2025/04/Pasqal_CommunityFloors_Floor-2-noExit.png?resize=616&amp;w=616&amp;quality=80&amp;strip=all 616w" sizes="auto, (max-width: 4849px) 100vw, 4849px" /></figure></div>
+
+
+
+<p></p>
+<p>The post <a href="https://www.pasqal.com/blog/inside-pasqal-emulators-the-tools-driving-quantum-development/">Inside Pasqal Emulators: the Tools Driving Quantum Development</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9503</post-id>	</item>
+		<item>
+		<title>Gate Count Estimates: When to transition to digital quantum computation</title>
+		<link>https://www.pasqal.com/blog/gate-count-estimates-when-to-transition-to-digital/</link>
+		
+		<dc:creator><![CDATA[Marie Wakim]]></dc:creator>
+		<pubDate>Fri, 13 Jun 2025 12:34:35 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: Natalie Pearson It is a truth universally acknowledged that a person in possession of a quantum computer must be in want of a use for it. When to use quantum computing and what to use it for are icebreaking conversation topics, certain to add some spice to an otherwise flavourless dinner party. There are&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/gate-count-estimates-when-to-transition-to-digital/">Gate Count Estimates: When to transition to digital quantum computation</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p class="has-bright-green-background-color has-background">Authors: Natalie Pearson</p>
+
+
+
+<p>It is a truth universally acknowledged that a person in possession of a quantum computer must be in want of a use for it. When to use quantum computing and what to use it for are icebreaking conversation topics, certain to add some spice to an otherwise flavourless dinner party. There are many considerations to be taken into account, starting with identifying an interesting and useful problem.</p>
+
+
+
+<p>We know that there are some problems which very quickly become intractable for classical computers and where quantum computers already outperform them, however, it remains a lively debate as to whether these instances constitute a “practical quantum advantage”. In <a href="https://www.pasqal.com/blog/decrypting-pasqal-recent-research-on-solving-optimization-problems/">this series of blog</a> posts we addressed the question of when to use a quantum computer at all (still a very debated topic). Usually instances where quantum computers can outperform classical computers involve operating the quantum computer in analog mode and using it to simulate another quantum system. There are two modes or paradigms of quantum computing: digital and analog, each with its own benefits and drawbacks, and where a single underlying hardware can often be operated in either mode, as at Pasqal.</p>
+
+
+
+<h2 class="wp-block-heading" id="the-quantum-mountaineer-s-dilemma-which-route-to-the-summit">The Quantum Mountaineer’s Dilemma: Which Route to the Summit?</h2>
+
+
+
+<p>The analog mode of quantum computers leverages the natural evolution of the quantum system to implement algorithms, which typically requires little overhead in terms of compilation. The major drawbacks are that this significantly limits the scope of problems that can be solved (essentially only problems that can be mapped onto the specific hardware in analog mode) and, without access to error correction schemes, the errors in the system accumulate, so that it becomes harder and harder to obtain accurate results as the scale of the problem increases. The digital mode of quantum computers relies on algorithms being described by discrete gate operations which are precalibrated on the hardware. These have the benefit of universality (meaning they can be used to implement any algorithm) and the possibility to make use of the many error correction schemes so that they can avoid the problem of errors accumulating. This comes at the cost of a large overhead, both in terms of number of qubits required, total runtime, and complexity of the algorithm.</p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:39% auto"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="1920" height="1080" src="https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?w=1024&amp;h=576&amp;quality=80&amp;strip=all" alt="" class="wp-image-9311 size-full" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?w=1920&amp;resize=1920&amp;quality=80&amp;strip=all 1920w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=1044&amp;w=1044&amp;quality=80&amp;strip=all 1044w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=476&amp;w=476&amp;quality=80&amp;strip=all 476w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=352&amp;w=352&amp;quality=80&amp;strip=all 352w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=1118&amp;w=1118&amp;quality=80&amp;strip=all 1118w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=1193&amp;w=1193&amp;quality=80&amp;strip=all 1193w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/2505_BlogPost-Cover-TwoPaths-Gate.jpg?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 1920px) 100vw, 1920px" /></figure><div class="wp-block-media-text__content">
+<p>Imagine that, an intrepid quantum mountaineer has secured a quantum device and identified a particular challenge of interest. She is now presented with another choice on her quest; which path to take. Ideally she would have access to the knowledge of which path requires less resources and will enable her to most quickly and with success reach the summit (and solve the problem).</p>
+</div></div>
+</div>
+
+
+
+<p>In order to compare the two modes, to facilitate this decision, we choose the example of a problem with an algorithm known to be performant on our neutral atom quantum hardware in analog mode, and explore how performant running it in digital mode would be. To skip straight to the punchline, the information that would have helped our quantum mountaineer is shown below. For a certain choice of mountain (algorithm) the intrepid mountaineer (QPU user) can determine which route (mode) to use. This will depend on the date of their adventure (which version of Pasqal’s QPU they have access to) and the equipment available to them (how many logical gates are available in digital mode).</p>
+
+
+
+<figure class="wp-block-image aligncenter size-full" id="number-perfect-logical-gates"><img loading="lazy" decoding="async" width="636" height="364" src="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?w=636&amp;h=364&amp;quality=80&amp;strip=all" alt="" class="wp-image-9312" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?w=636&amp;resize=636&amp;quality=80&amp;strip=all 636w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?resize=468&amp;w=468&amp;quality=80&amp;strip=all 468w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?resize=346&amp;w=346&amp;quality=80&amp;strip=all 346w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig2.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w" sizes="auto, (max-width: 636px) 100vw, 636px" /><figcaption class="wp-element-caption"><em>The number of perfect (logical) gates needed to achieve the same level of accuracy as using analog implementation for devices on the Pasqal roadmap with expected system sizes and noise models</em></figcaption></figure>
+
+
+
+<p>Using the method described below we can determine the number of logical gates and qubits needed to compete with different analog implementations on the Pasqal roadmap at the chosen algorithm. These results, shown above, are based on the physical capabilities of Pasqal’s devices, with sizes ranging from 100 qubits in 2024 to 1000 in 2028. What we can see is that, at this specific task, the analog mode will outperform the digital mode until large numbers of logical gates are able to be performed. These results also emphasise the importance of developing fault tolerant, error corrected digital schemes, as the implementation of these will be necessary in order to go beyond the capabilities of analog and fully realise the potential of quantum computing for a wide range of applications. By providing both modes of quantum computation at Pasqal using the same underlying hardware, we facilitate near term applications, while also building for the future.</p>
+
+
+
+<p>For the details of how we did this, and to really make an impression on your fellow dinner guests (good or bad we cannot say), read the next section.</p>
+
+
+
+<h2 class="wp-block-heading" id="technical-breakdown-cartography-for-the-quantum-mountaineer">Technical Breakdown: Cartography for the quantum mountaineer</h2>
+
+
+
+<p>As an algorithm we choose the simulation of quench dynamics. This involves mimicking the behaviour of a quantum system of interest left to evolve out of equilibrium and can tell us about properties of the system, which we might otherwise not have controlled access to. For example, by mimicking how electrons move in a material when it’s heated or disturbed, we can uncover hidden quantum behaviours that are difficult to access through direct measurement. There is precedent for this being one of the most promising avenues for quantum advantage, as it most closely aligns with what analog quantum hardware is good at and is intrinsically hard to simulate classically. In order to quantify how good our neutral atom quantum hardware would be at this task we implement the algorithm perfectly by emulating it without noise to obtain the ideal result and then repeat the implementation using the analog mode of a realistic quantum device (i.e with noise). We choose an observable to measure and compare the value at the end of the simulations to the true value obtained without noise. This enables us to quantify how “well” our realistic device performs. We call the difference between the true value and the value from the realistic analog device <strong>the error budget</strong>.</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" height="394" width="1024" src="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?w=1024&amp;h=394&amp;quality=80&amp;strip=all" alt="" class="wp-image-9314" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?w=1144&amp;resize=1144&amp;quality=80&amp;strip=all 1144w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=697&amp;w=697&amp;quality=80&amp;strip=all 697w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=515&amp;w=515&amp;quality=80&amp;strip=all 515w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3a.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em><em>Process of running a quantum computation on Pasqal’s neutral atom hardware</em></em></figcaption></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" height="299" width="1024" src="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?w=1024&amp;h=299&amp;quality=80&amp;strip=all" alt="" class="wp-image-9348" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?w=1938&amp;resize=1938&amp;quality=80&amp;strip=all 1938w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=1680&amp;w=1680&amp;quality=80&amp;strip=all 1680w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=567&amp;w=567&amp;quality=80&amp;strip=all 567w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=1800&amp;w=1800&amp;quality=80&amp;strip=all 1800w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=1920&amp;w=1920&amp;quality=80&amp;strip=all 1920w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3b.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption"><em><em>Measured value of an observable for simulations of different system sizes. The ideal value is compared to the result of realistic analog simulations, resulting in an error budget which is used to determine the number of digital gates needed, shown below</em></em>.</figcaption></figure>
+
+
+
+<figure class="wp-block-image aligncenter size-full"><img loading="lazy" decoding="async" width="593" height="355" src="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?w=593&amp;h=355&amp;quality=80&amp;strip=all" alt="" class="wp-image-9317" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?w=593&amp;resize=593&amp;quality=80&amp;strip=all 593w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?resize=448&amp;w=448&amp;quality=80&amp;strip=all 448w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?resize=331&amp;w=331&amp;quality=80&amp;strip=all 331w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/2506_BlogPost-Cover-TwoPaths-Gate-fig3c.png?resize=275&amp;w=275&amp;quality=80&amp;strip=all 275w" sizes="auto, (max-width: 593px) 100vw, 593px" /><figcaption class="wp-element-caption"><em><em>Number of gates needed using digital implementation to match the error budget for different system sizes. The fitted dashed line shows how we make estimates for larger system sizes</em></em>.</figcaption></figure>
+
+
+
+<p>In order to implement the same algorithm using digital mode we first have to ‘digitise’ the algorithm. This is done by a method called the Trotter-Suzuki decomposition, which is a way to break down an evolution into many single and two qubit gates which implement small time slices of the evolution and, when put together, induce the same dynamics in the system as the analog version. It is possible to increase the accuracy of this method by increasing the number of gates used. We choose to assume perfect logical gates with ideal connectivity and only include the error from the digitization process, finding the number of gates needed to achieve the same error budget as our realistic analog device achieves. This tells us that, until we can implement this many gates very well, we are better off using the analog device for this implementation.</p>
+
+
+
+<p>Armed with our algorithm and our three implementations (perfect, realistic-analog and Trotterised-digital) we are ready to go. We find the error budget using the first two implementations and, using our third implementation, the number of gates required to match this. It is only possible to do this using small systems which we are able to simulate classically (exactly because of the fact that we’ve chosen an algorithm that classical computers find hard!). We run simulations for small systems of different sizes, using the corresponding number of qubits for the simulation, to find the number of gates needed for each size. From this we can determine the relation between the system size and the number of gates needed and hence calculate how many gates we would need for larger system sizes, beyond classical simulation capabilities. Systems of this size are already realised at Pasqal, as described in <a href="https://www.pasqal.com/blog/perfect-506-atom-quantum-register/">this previous blog post</a>. In the end, if the quantum mountaineer has chosen the mountain corresponding to simulating a quantum quench, then, if she knows how many perfect logical gates she has available to her and the date of the expedition, she can find which path to take by looking at the main figure to find her ‘location on the map’ which tells her which path (mode) to take. It’s very likely to be the analog one!</p>
+
+
+
+<div class="wp-block-group has-bright-green-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-9e9be3cb wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--20);padding-right:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20);padding-left:var(--wp--preset--spacing--20)">
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:10%">
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1001" height="1001" src="https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?w=1001" alt="Pasqal-illustration-small-Magnifying glass" class="wp-image-6565" srcset="https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?w=1001&amp;resize=1001&amp;quality=80&amp;strip=all 1001w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=150&amp;w=150&amp;quality=80&amp;strip=all 150w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=587&amp;w=587&amp;quality=80&amp;strip=all 587w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=268&amp;w=268&amp;quality=80&amp;strip=all 268w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=198&amp;w=198&amp;quality=80&amp;strip=all 198w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=629&amp;w=629&amp;quality=80&amp;strip=all 629w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=671&amp;w=671&amp;quality=80&amp;strip=all 671w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=249&amp;w=249&amp;quality=80&amp;strip=all 249w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=498&amp;w=498&amp;quality=80&amp;strip=all 498w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=35&amp;w=35&amp;quality=80&amp;strip=all 35w, https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-illustration-small-Magnifying-glass.png?resize=70&amp;w=70&amp;quality=80&amp;strip=all 70w" sizes="auto, (max-width: 1001px) 100vw, 1001px" /></figure>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:90%">
+<h2 class="wp-block-heading" id="expert-corner-obstacles-on-the-path-1">Expert Corner: Assumptions and Obstacles on the path</h2>
+</div>
+</div>
+
+
+
+<p>In the interest of brevity (and storytelling) we have of course left out some of the details here which in turn will have an impact on the values and reliability of the results. For full transparency we note the main decisions and implications here:</p>
+
+
+
+<ul class="wp-block-list is-style-pipe-list">
+<li>This result will be different for different problems and different observables, we chose a quantum Ising-like quench as this is the native Hamiltonian of the Rydberg atom system. We chose the measured value to be a two point correlator between the centre and corner atoms, behaviour was similar for other two point correlators</li>
+
+
+
+<li>The results are specific to the assumed error model(s) of the analog system as lower analog errors will decrease the error budget and hence require more digital gates to reach the same budget. We have used the current generation error model and the expected model for our future generations of devices. Improvements in the analog hardware may increase the gate counts required.</li>
+
+
+
+<li>From the <a href="#number-perfect-logical-gates">perfect (logical) gates figure</a> you’ll see that we have data only for small systems and have used it to make estimates about much larger systems. The feasibility of this extrapolation is likely to be the largest source of uncertainty in our calculations</li>
+
+
+
+<li>We have assumed our digital gates and qubits to be perfect. Realistically this requires logical gates and qubits and use of error correction. In order to obtain estimates for the number of physical qubits and gates needed we would need to make an assumption about which fault tolerant scheme is being used in order to calculate the resulting overhead in physical gate and qubit numbers, which are typically significant. Alternately we could assume no error correction and that these gates are physical but then we would need to include realistic digital gate errors in our simulations which would reduce the accuracy of the digital mode.</li>
+
+
+
+<li>We have assumed full connectivity of the digital implementation. In practice realistic (reduced) connectivity will add further overhead in gate counts.</li>
+
+
+
+<li>We have not worked hard to optimise the digital circuit (i.e we have built the digital circuit to implement the algorithm in the simplest way (1st order Trotter)), we may be able to reduce the amount of digital resources required if we optimised this further.</li>
+</ul>
+</div>
+<p>The post <a href="https://www.pasqal.com/blog/gate-count-estimates-when-to-transition-to-digital/">Gate Count Estimates: When to transition to digital quantum computation</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9310</post-id>	</item>
+		<item>
+		<title>Understanding FTQC &#8211; How Engineers Test and Verify Quantum Fault-Tolerance &#8211; Part II</title>
+		<link>https://www.pasqal.com/blog/understanding-ftqc-part-ii/</link>
+		
+		<dc:creator><![CDATA[Marie Wakim]]></dc:creator>
+		<pubDate>Thu, 05 Jun 2025 14:11:00 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: François-Marie Le Régent Welcome back, quantum enthusiasts! In our first exploration, &#8220;Understanding FTQC Part I&#8221;, we journeyed through the delicate world of quantum bits, or qubits, uncovering why errors are an inherent challenge in quantum computing. Let’s bring that closer to reality: Imagine a quantum algorithm for modelling molecular interactions. If we are not&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/understanding-ftqc-part-ii/">Understanding FTQC &#8211; How Engineers Test and Verify Quantum Fault-Tolerance &#8211; Part II</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-bright-green-background-color has-background">Authors: François-Marie Le Régent</p>
+
+
+
+<p>Welcome back, quantum enthusiasts!</p>
+
+
+
+<p>In our first exploration, <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/">&#8220;Understanding FTQC Part I&#8221;</a>, we journeyed through the delicate world of quantum bits, or qubits, uncovering why errors are an inherent challenge in quantum computing. Let’s bring that closer to reality: Imagine a quantum algorithm for modelling molecular interactions. If we are not careful about how we design the quantum circuit, a single error occurring anywhere in the computation could propagate through the entangled quantum system and corrupt the entire simulation. Unlike classical computers where errors typically remain localized, quantum errors can spread rapidly through quantum gates, transforming what should be a precise molecular model into meaningless noise. This isn&#8217;t simply a matter of running any quantum circuit and hoping for the best, designing fault-tolerant circuits requires deliberate engineering to prevent error propagation. The challenge is particularly subtle. We need to detect and handle errors without destroying the delicate quantum information we are trying to protect, all while ensuring that our error-handling mechanisms don&#8217;t themselves become sources of additional errors. When such an algorithm is used in drug discovery for predicting solubility or toxicity, an undetected error could lead to costly synthesis and testing of ineffective drug candidates. This is why we ask the fundamental question: how do we verify that our quantum circuit designs can actually withstand the inevitable errors? Fault tolerance transforms quantum computing from an interesting but unreliable research tool into a dependable platform for solving real-world problems where accuracy isn&#8217;t just preferred, it&#8217;s essential.</p>
+
+
+
+<p>We saw how Quantum Error Correction (QEC) acts like an orchestra conductor, distributing information across many qubits to protect the overall quantum &#8220;melody&#8221; even if a few &#8220;instruments&#8221; go slightly out of tune. We learned that the goal isn&#8217;t perfect hardware, but instead clever design that allows computation to proceed correctly even when individual components inevitably fail. In the “digital” setting, as opposed to the analog one, without fault-tolerance, the incredible computational potential of quantum systems remains theoretical rather than practical.</p>
+
+
+
+<p>This brings us to the next big question: How do engineers make sure their designs achieve this robustness? How do we test and verify that a quantum circuit truly is fault-tolerant? That’s precisely what we’ll delve into in this post.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h2 class="wp-block-heading" id="i-verifying-fault-tolerant-designs-building-on-part-i">I. Verifying Fault-Tolerant Designs: Building on Part I</h2>
+
+
+
+<p>As explained in Part I, Quantum Error Correction (QEC) is the crucial technique to engineer this kind of robustness: cleverly encoding information across multiple physical qubits (like spreading a melody across an orchestra) so that errors can be detected and hopefully corrected without destroying the fragile quantum information.<br>In this post we shift focus from the why to the how, exploring the practical methods engineers use to rigorously test their quantum circuit designs. Our goal is thus to verify whether these designs truly live up to the fault-tolerant ideal: can they overcome potential component failures and still produce a trustworthy result? This involves simulating how circuits behave not just under perfect conditions, but also when specific errors are intentionally introduced, mimicking the challenges faced by real-world quantum hardware.</p>
+
+
+
+<h2 class="wp-block-heading" id="ii-what-makes-an-outcome-acceptable">II. What Makes an Outcome Acceptable?</h2>
+
+
+
+<p>So, how do engineers check if a circuit design is fault-tolerant? We can think of it like stress-testing a new car design before it goes into production. Just as engineers subject a car to specific, controlled challenges to see how it responds to individual faults, quantum engineers do the same with circuits, probing how the system handles errors one at a time. To understand how a quantum circuit behaves under stress, engineers start by examining what happens when a single error occurs at a specific location. This &#8220;local&#8221; view allows them to trace exactly how one fault propagates through the circuit design. For each individual error scenario, there are three possible acceptable outcomes. These three outcomes define what we consider &#8220;acceptable&#8221; when testing individual error scenarios.</p>
+
+
+
+<ol class="wp-block-list">
+<li>The Correct Result: The circuit still produces the intended target quantum state. This means the injected error either had no actual impact on the final outcome or the circuit&#8217;s structure inherently corrected or compensated for it.</li>
+
+
+
+<li>A Flagged Error: The final state is incorrect, the error has potentially spread, but an error flag (like the ancilla qubit in our Part I example) is successfully activated, like shown in the left part of Fig 1.. This tells the control system, &#8220;Something went wrong here; discard this result and try again.&#8221; It prevents a corrupted state from being used later.</li>
+
+
+
+<li>A Localized Error: An error did occur and wasn&#8217;t flagged, but its effect is limited and has not spread, see the right part of Fig 1. Specifically, the final error affects at most one physical qubit within any given group that&#8217;s working together to protect a single piece of logical information (an encoded block). This is crucial because, as hinted in Part I, the broader QEC framework is designed to handle such localized errors. The error hasn&#8217;t spread uncontrollably, the result is valid.</li>
+</ol>
+
+
+
+<figure class="wp-block-image aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="840" height="360" src="https://www.pasqal.com/wp-content/uploads/2025/06/image.png?w=840&amp;h=360&amp;quality=80&amp;strip=all" alt="" class="wp-image-9151" style="width:840px;height:auto" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/image.png?w=840&amp;resize=840&amp;quality=80&amp;strip=all 840w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=625&amp;w=625&amp;quality=80&amp;strip=all 625w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=462&amp;w=462&amp;quality=80&amp;strip=all 462w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/image.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 840px) 100vw, 840px" /><figcaption class="wp-element-caption">Figure 1. <strong>Types of errors and their propagation.</strong> (left) The ancilla qubit (green) detected the X error (in red) and discards the shot. (right) A localized Z error (in blue) which does not corrupt multiple data qubits</figcaption></figure>
+
+
+
+<p>Understanding what counts as an acceptable outcome is just the first step. The real challenge lies in methodically checking every possible error scenario in practice. But how exactly do engineers systematically evaluate each scenario and apply these criteria? This brings us to the practical toolkit that makes fault tolerance verification possible.</p>
+
+
+
+<h2 class="wp-block-heading" id="iii-the-testing-process-from-simulation-to-verification">III. The Testing Process: From Simulation to Verification</h2>
+
+
+
+<p>Now that we understand what constitutes an acceptable outcome for any single error scenario, let&#8217;s explore the systematic process engineers use to evaluate circuit designs. It involves simulating how the circuit performs under various conditions:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Run Baseline Check</strong> (Ideal Simulation): First, engineers use numerical simulators on classical computers to confirm the circuit works perfectly as intended in an error-free, ideal world with perfect qubits. This verifies the fundamental logic of the design.</li>
+
+
+
+<li><strong>Perform Stress Injection</strong> (Simulating Failures): Next, they identify all the possible locations of errors and deliberately introduce simplified errors into the simulation, one at a time. These represent common physical issues, like a qubit accidentally flipping its value (a bit-flip) or its phase (a phase-flip), or errors occurring during interactions between qubits (the entangling gates). By introducing these intentional faults, engineers can observe how the circuit responds to individual component failures.</li>
+
+
+
+<li><strong>Analyze the Results: </strong>Engineers examine the outcome, the final output quantum state of all the error configurations, as discussed in section II. Even in the presence of errors, did all the circuits still produce the correct result or correctly raise a flag indicating an error occurred (like our ancilla qubit example with the GHZ state we explored in <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/#building-robustness-to-errors">part I</a>? Answering these questions helps pinpoint vulnerabilities in the design.</li>
+</ol>
+
+
+
+<figure class="wp-block-image aligncenter size-full"><img loading="lazy" decoding="async" width="940" height="271" src="https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?w=940&amp;h=271&amp;quality=80&amp;strip=all" alt="" class="wp-image-9152" srcset="https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?w=940&amp;resize=940&amp;quality=80&amp;strip=all 940w, https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?resize=567&amp;w=567&amp;quality=80&amp;strip=all 567w, https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/06/image_367925.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 940px) 100vw, 940px" /><figcaption class="wp-element-caption">Figure 2. <strong>Illustration of the fault-tolerance check.</strong> A circuit design is run by adding errors corresponding to single component failures. If each circuit output has either no error, a flagged error or a localized error, then the circuit is fault tolerant.</figcaption></figure>
+
+
+
+<p>If a single simulated component failure leads to an unflagged error that corrupts multiple qubits within the same encoded block, the circuit design fails the fault-tolerance test. Such undetected errors, once spread, can become significantly harder, even impossible, for the QEC system to fix it. This definition directly addresses the core goal of fault tolerance as we discussed in Part I: preventing minor, local faults from escalating into catastrophic failures. In short, a circuit design is fault-tolerant only if no single component failure causes an unflagged error that corrupts multiple qubits within the same encoded block, see Fig 2.</p>
+
+
+
+<ol start="4" class="wp-block-list">
+<li><strong>Handle Complexity (Beyond Full Simulation):</strong> Simulating every possible error in huge circuits can become computationally infeasible. Because of this limitation, engineers rely on alternative methods for complex designs. These include mathematical proofs based on the error correction codes used, and ensuring circuit designs follow established fault-tolerant patterns. This approach helps confirm robustness without the need to exhaustively simulate every potential failure.</li>
+</ol>
+
+
+
+<p>Through this multi-faceted testing process, engineers gain confidence that a circuit design can effectively manage errors (avoid spreading or flagging).</p>
+
+
+
+<h2 class="wp-block-heading" id="iv-conclusion-engineering-reliability">IV. Conclusion: Engineering Reliability</h2>
+
+
+
+<p>Verifying fault tolerance isn&#8217;t magic, it&#8217;s a careful engineering process. It involves establishing that a circuit design works correctly first under ideal conditions, and then systematically stress-testing it by simulating how it would respond to individual component failures. By analysing whether the outcomes lead to the correct result, a flagged warning, or only a localized error, engineers can determine if the design meets the specific requirements of fault tolerance.<br>This fault-tolerance verification process, often starting with fundamental building blocks like state preparation circuits, and gradually scales up to more complex operations. This check corresponds ultimately to how we build confidence that our quantum algorithms will produce trustworthy results, even when running on inherently imperfect hardware.<br>Now, we clearly understand the inevitability of errors, and how to design and test the robustness of our computations against them. A corner piece of this construction is Quantum Error Correction. While we hinted several times at how this works, we will expose the inner workings of QEC in greater details in the next post.</p>
+
+
+
+<h2 class="wp-block-heading" id="v-pasqal-spotlight">V. Pasqal Spotlight</h2>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p>“Developing the ability to verify fault tolerance of circuits is a significant milestone on the path to building a full QEC stack, which is essential for reliable quantum computation. At Pasqal we are deeply engaged in this challenge as our hardware continues to mature.” </p>
+
+
+
+<p>Adrien Signoles, Chief Hardware Officer – Pasqal</p>
+</blockquote>
+
+
+
+<p>Want to hear how Pasqal is advancing toward fault-tolerant quantum computing and what’s next on our hardware and software horizon? Join our Quantum Roadmap Webinar on June 17 to get a front-row look at our strategic direction, the milestones we’re setting, and the technologies we’re building to reach them. <a href="https://app.livestorm.co/pasqal/pasqal-roadmap-webinar-2025?utm_source=linkedin&amp;utm_medium=event&amp;utm_campaign=2025-05-EV-Partner%20Webinar-Pasqal%20Roadmap">Register here</a></p>
+<p>The post <a href="https://www.pasqal.com/blog/understanding-ftqc-part-ii/">Understanding FTQC &#8211; How Engineers Test and Verify Quantum Fault-Tolerance &#8211; Part II</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">9150</post-id>	</item>
+		<item>
+		<title>Pasqal Released Quantum Evolution Kernel: Open-Source Library for Quantum Graph Machine Learning</title>
+		<link>https://www.pasqal.com/blog/pasqal-released-quantum-evolution-kernel-open-source-library-for-quantum-graph-machine-learning/</link>
+		
+		<dc:creator><![CDATA[lucia garbini]]></dc:creator>
+		<pubDate>Wed, 07 May 2025 13:36:44 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: Lucia Garbini, David Teller What is it? Pasqal, a leader in neutral atom quantum computing, has recently open-sourced a new software library called Quantum Evolution Kernel (QEK). This tool enables researchers and developers to explore quantum-enhanced graph machine learning, building on research published in Physical Review A titled &#8220;Quantum feature maps for graph machine&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/pasqal-released-quantum-evolution-kernel-open-source-library-for-quantum-graph-machine-learning/">Pasqal Released Quantum Evolution Kernel: Open-Source Library for Quantum Graph Machine Learning</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-bright-green-background-color has-background">Authors: Lucia Garbini, David Teller</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-h-2-font-size" id="what-is-it">What is it?</h2>
+
+
+
+<p style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">Pasqal, a leader in neutral atom quantum computing, has recently open-sourced a new software library called Quantum Evolution Kernel (QEK). This tool enables researchers and developers to explore quantum-enhanced graph machine learning, building on research published in Physical Review A titled &#8220;<a href="https://arxiv.org/abs/2211.16337" target="_blank" rel="noreferrer noopener">Quantum feature maps for graph machine learning on a neutral atom quantum processor</a>&#8220;.</p>
+
+
+
+<p>Quantum Evolution Kernel provides a framework for:</p>
+
+
+
+<p style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><strong>Designing quantum kernels</strong>: Create custom similarity metrics for graphs using quantum features on Pasqal&#8217;s neutral atom quantum processors or emulated on classical hardware (like your PC).<br><strong>Integrating with classical machine learning</strong>: Incorporate quantum kernels into existing kernel-based algorithms like support vector machines and kernel ridge regression.<br><strong>Exploring quantum feature maps</strong>: Experiment with different methods to encode graph data into quantum states.</p>
+
+
+
+<p>Quantum Evolution Kernel is available on <a href="https://pasqal-io.github.io/quantum-evolution-kernel/latest/" target="_blank" rel="noreferrer noopener">GitHub</a>, where you can find the source code, extensive documentation, and examples. The Pasqal team encourages users to contribute and help shape the library&#8217;s future.</p>
+</div>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile is-image-fill-element media-text-pattern has-bright-green-background-color has-background"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="1980" height="1485" src="https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?w=1024" alt="Pasqal Quantum-Evlution-Kernel" class="wp-image-6789 size-full" style="object-position:50% 50%" srcset="https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?w=1980&amp;resize=1980&amp;quality=80&amp;strip=all 1980w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=783&amp;w=783&amp;quality=80&amp;strip=all 783w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=357&amp;w=357&amp;quality=80&amp;strip=all 357w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=264&amp;w=264&amp;quality=80&amp;strip=all 264w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=839&amp;w=839&amp;quality=80&amp;strip=all 839w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=895&amp;w=895&amp;quality=80&amp;strip=all 895w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=332&amp;w=332&amp;quality=80&amp;strip=all 332w, https://www.pasqal.com/wp-content/uploads/2025/03/QEK-tool_image.png?resize=664&amp;w=664&amp;quality=80&amp;strip=all 664w" sizes="auto, (max-width: 1980px) 100vw, 1980px" /></figure><div class="wp-block-media-text__content">
+<h2 class="wp-block-heading" id="qek" style="padding-top:0;padding-bottom:var(--wp--preset--spacing--40)">QEK</h2>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://pasqal-io.github.io/quantum-evolution-kernel/latest/" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">Documentation</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+
+
+
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://github.com/pasqal-io/quantum-evolution-kernel" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">GitHub Repository</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div></div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60)">
+<h2 class="wp-block-heading has-h-3-font-size" id="possible-applications">Who Can Benefit from QEK?</h2>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Quantum Evolution Kernel is designed to cater to a diverse audience, ranging from quantum computing enthusiasts to seasoned researchers in machine learning and graph analytics. Whether you&#8217;re just starting to explore the intersection of quantum computing and data science or you&#8217;re an expert looking to push the boundaries of quantum-enhanced algorithms, this library provides the tools and flexibility needed to experiment, innovate, and apply quantum techniques to real-world problems. Its accessibility and modularity make it a valuable resource for anyone interested in exploring the potential of quantum computing in graph-based machine learning tasks.</p>
+
+
+
+<p style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><strong>Quantum computing newcomers: </strong>The library offers an accessible entry point to implementing quantum machine learning algorithms.<br><strong>Experienced quantum researchers:</strong> The modular design supports exploration of new ideas in quantum graph machine learning.<br><strong>Graph machine learning practitioners:</strong> Researchers working with graph data can investigate potential quantum enhancements to their existing workflows.</p>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)">
+<h2 class="wp-block-heading has-h-3-font-size" id="what-can-be-explored-with-qek">What can be explored with QEK?</h2>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Potential applications of Quantum Evolution Kernel span a wide range of fields where graph machine learning plays a critical role. For example:</p>
+
+
+
+<p style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><strong>Drug Discovery and Molecular Chemistry:</strong>&nbsp;Quantum Kernels can be used to predict molecular properties, such as toxicity or binding affinity, by analyzing molecular graphs that encode the structure of chemical compounds. This is particularly relevant for pharmaceutical research, where understanding molecular interactions can accelerate drug development pipelines<br><strong>Fraud Detection in Finance:</strong>&nbsp;Graph-based methods are often employed to detect fraudulent activity in financial transactions by identifying anomalous patterns in transaction networks. Quantum kernels could potentially enhance the detection accuracy by capturing subtle correlations in complex financial graphs<br><strong>Renewable Energy Grid Optimization</strong>: Graphs can represent power grids, where nodes are power stations or consumers, and edges are transmission lines. Quantum Kernels could be used to optimize energy distribution, detect vulnerabilities in the grid, or predict failures in renewable energy systems like wind farms or solar arrays.<br><strong>Supply Chain Optimization:</strong>&nbsp;Graphs representing supply chain networks can benefit from Quantum Kernel&#8217;s ability to analyze relationships between nodes (suppliers, manufacturers, distributors) and optimize logistics or detect vulnerabilities.</p>
+
+
+
+<p style="padding-right:0;padding-left:0">By offering a flexible framework for designing quantum feature maps and integrating them into classical machine learning workflows, Quantum Evolution Kernel opens up new possibilities for tackling these complex problems with quantum-enhanced approaches.</p>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)">
+<h2 class="wp-block-heading" id="key-features-and-strenghts">Key Features and strenghts</h2>
+
+
+
+<div class="wp-block-group has-bright-green-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-c3a5a799 wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)">
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="600" height="600" src="https://www.pasqal.com/wp-content/uploads/2025/03/pasqal-desktop-icon.svg" alt="" class="wp-image-6244" style="width:60px"/></figure>
+
+
+
+<p class="has-text-align-left small-text-align-left">Simplified interface for Pasqal&#8217;s Neutral Atom QPU</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" decoding="async" width="600" height="600" src="https://www.pasqal.com/wp-content/uploads/2025/03/Pasqal-icons-modular.svg" alt="" class="wp-image-6484" style="width:60px"/></figure>
+
+
+
+<p>Modular and extensible architecture</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" width="600" height="600" src="https://www.pasqal.com/wp-content/uploads/2025/03/pasqal-news-icon.svg" alt="Documentation" class="wp-image-6256" style="width:60px"/></figure>
+
+
+
+<p>Comprehensive documentation and tutorials</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image is-resized"><img loading="lazy" decoding="async" width="600" height="600" src="https://www.pasqal.com/wp-content/uploads/2025/03/pasqal-community-icon.svg" alt="" class="wp-image-6241" style="width:60px"/></figure>
+
+
+
+<p>Open-source license for community contributions</p>
+</div>
+</div>
+</div>
+
+
+
+<p>Dr. Francesco Ferulli, Scientific Product Manager (Software) at Pasqal, explains the motivation behind the project.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--30)">
+<p><em>Our goal was to create a tool that bridges the gap between theoretical quantum algorithms and practical applications in graph machine learning. We wanted to make it easier for researchers to experiment with quantum-enhanced methods without the need of being quantum experts.</em><br><br><strong><a href="https://www.linkedin.com/in/francesco-ferrulli-phd-b94211a9/" target="_blank" rel="noreferrer noopener">Dr. Francesco Ferulli</a></strong> &#8211; Scientific Product Manager (Software) at Pasqal</p>
+</blockquote>
+
+
+
+<p>One of the key strengths of Quantum Evolution Kernel is its seamless integration with classical machine learning frameworks. The quantum kernels generated by the library can be directly plugged into popular kernel-based algorithms like Support Vector Machines (SVM).</p>
+
+
+
+<p>This hybrid approach allows users to leverage the potential quantum advantage in feature mapping while still utilizing well-established classical algorithms for the final prediction or classification tasks.</p>
+
+
+
+<p>While several quantum machine learning libraries exist, Quantum Evolution Kernel stands out in its focus on graph-structured data and its integration with Pasqal&#8217;s neutral atom quantum hardware. Unlike more general-purpose quantum machine learning libraries, Quantum Evolution Kernel is specifically optimized for graph problems, potentially offering better performance in this domain.</p>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)">
+<h2 class="wp-block-heading" id="success-story-predicting-molecular-toxicity">Success story: Predicting Molecular Toxicity</h2>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>The work &#8220;<a href="https://arxiv.org/abs/2211.16337">Quantum Feature Maps for Graph Machine Learning on a Neutral Atom Quantum Processor</a>&#8221; demonstrates the application of QEK to a real-world toxicity prediction task using the Predictive Toxicity Challenge dataset on Female Mice.<strong> </strong>This dataset consists of 286 molecular graphs, each representing a chemical compound, with sizes ranging from 2 to 32 nodes. The task involved classifying molecules as toxic or non-toxic based on their structural properties. By encoding these molecular graphs into quantum states via a quantum feature map implemented on a neutral atom quantum processor, QEK enabled the computation of similarity metrics between graphs, which were then used in a supervised classification protocol.</p>
+
+
+
+<p>The results achieved using QEK were comparable to those obtained with some of the best classical graph kernels, such as Random Walk and Graphlet Sampling. However, beyond matching classical performance, QEK demonstrated its unique capability by capturing features in the data that classical kernels could not. This was evidenced through geometric comparisons of the feature spaces, showing that QEK perceives data in an original way.</p>
+
+
+
+<p>This proof-of-concept experiment underscores the promise of quantum-enhanced methods like QEK for addressing complex graph machine learning tasks in fields such as biochemistry and drug discovery. By leveraging the unique properties of quantum systems to encode and process graph data, QEK provides a novel approach to toxicity prediction that could complement or surpass classical methods as quantum hardware continues to advance.</p>
+
+
+
+<blockquote class="wp-block-quote is-style-plain is-layout-flow wp-block-quote-is-layout-flow" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)">
+<p><em>The success we&#8217;ve had with the toxicity prediction task is just the beginning. We&#8217;re excited to see how researchers in various fields will apply Quantum-Evolution-Kernel to their specific problems.</em></p>
+
+
+
+<p><strong><a href="https://www.linkedin.com/in/constantin-dalyac-6a6218135/" target="_blank" rel="noreferrer noopener">Dr. Constantin Dalyac</a> </strong>&#8211; Quantum Advantage Lead at Pasqal</p>
+</blockquote>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--50)">
+<h2 class="wp-block-heading" id="looking-ahead">Looking Ahead</h2>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>As Quantum Evolution Kernel continues to evolve, several potential future developments are worth considering:</p>
+
+
+
+<p style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><strong>Integration with Other Quantum Platforms:</strong>&nbsp;While currently optimized for Pasqal&#8217;s neutral atom processors, future versions could support other quantum hardware platforms, increasing accessibility and versatility.<br><br><strong>Scalability Improvements:</strong>&nbsp;As quantum hardware continues to advance, adapting the library to take advantage of larger qubit counts and improved coherence times will be crucial.</p>
+
+
+
+<p>Dr. Francesco Ferulli, Scientific Product Manager (Software) at Pasqal, shares his perspective on the future of quantum-classical hybrid models: </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow" style="margin-top:var(--wp--preset--spacing--20);margin-bottom:var(--wp--preset--spacing--20)">
+<p><em>&#8220;Hybrid approaches allow us to leverage the strengths of both quantum and classical systems. Quantum processors can encode complex graph structures in ways that are difficult for classical systems, while classical machine learning frameworks provide robust tools for optimization and prediction. This combination has the potential to unlock new capabilities in graph analysis and machine learning, particularly for applications where classical methods fall short.&#8221;</em></p>
+
+
+
+<p><strong><a href="https://www.linkedin.com/in/francesco-ferrulli-phd-b94211a9/" target="_blank" rel="noreferrer noopener">Dr. Francesco Ferulli</a></strong> &#8211; Scientific Product Manager (Software) at Pasqal</p>
+</blockquote>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="get-involved">Get involved</h2>
+
+
+
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>As quantum computing continues to advance, tools like Quantum Evolution Kernel will play a crucial role in exploring the potential of quantum algorithms to solve complex real-world problems. By making quantum machine learning more accessible, Pasqal is contributing to the broader effort of realizing practical quantum advantage in fields such as drug discovery, materials science, and financial modeling.</p>
+
+
+
+<p>Researchers and developers interested in quantum graph machine learning now have a powerful new tool at their disposal. As the community engages with Quantum-Evolution-Kernel, we can expect to see innovative applications and further refinements to the library, potentially accelerating the path to quantum advantage in machine learning tasks.</p>
+
+
+
+<p>The release of <a href="https://pasqal-io.github.io/quantum-evolution-kernel/latest/" target="_blank" rel="noreferrer noopener">Quantum Evolution Kernel </a>marks an important step in bridging the gap between theoretical quantum algorithms and practical applications in data science. As the field continues to evolve, it will be exciting to see how this open-source tool shapes the future of quantum-enhanced graph machine learning.</p>
+</div>
+
+
+
+<h3 class="wp-block-heading" id="join-pasqal-community">Join Pasqal Community</h3>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile is-image-fill-element media-text-pattern has-bright-green-background-color has-background" style="grid-template-columns:40% auto"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" src="https://www.pasqal.com/wp-content/themes/pasqal/assets/src/images/pasqal-hero.png" alt="" class="wp-image-1319 size-full" style="object-position:50% 50%"/></figure><div class="wp-block-media-text__content">
+<p class="has-body-simple-font-size">To further engage with this cutting-edge technology and connect with like-minded quantum enthusiasts, consider joining the Pasqal Community. It offers a wealth of resources including an interactive e-learning platform, access to open-source tools, and a dedicated Slack workspace for global networking.&nbsp;</p>
+
+
+
+<p class="has-body-simple-font-size">By participating in this community, you&#8217;ll have the opportunity to shape the future of quantum computing and drive innovations in quantum graph machine learning using tools like QEK.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://join.slack.com/t/pasqal-community/shared_invite/zt-2y7drym29-ZEH_uZlasEUDhrG9Tk0Vuw" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">Join the conversation</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div></div>
+<p>The post <a href="https://www.pasqal.com/blog/pasqal-released-quantum-evolution-kernel-open-source-library-for-quantum-graph-machine-learning/">Pasqal Released Quantum Evolution Kernel: Open-Source Library for Quantum Graph Machine Learning</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">6698</post-id>	</item>
+		<item>
+		<title>Pasqal Creates a Perfect 506-Atom Quantum Register</title>
+		<link>https://www.pasqal.com/blog/perfect-506-atom-quantum-register/</link>
+		
+		<dc:creator><![CDATA[Marie Wakim]]></dc:creator>
+		<pubDate>Wed, 23 Apr 2025 14:00:26 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: Corentin Monmeyran Today, we are excited to share an important milestone of our 1000+-qubit program: the rearrangement of a defect-free register of 506 atoms. This sets a new precedent for our neutral atom quantum computing platform, which is based on dipolar trap arrays rearranged by a moving “tweezer”. Why this matters The number of&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/perfect-506-atom-quantum-register/">Pasqal Creates a Perfect 506-Atom Quantum Register</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-bright-green-background-color has-background">Authors: Corentin Monmeyran</p>
+
+
+
+<p>Today, we are excited to share an important milestone of our 1000+-qubit program: the rearrangement of a defect-free register of 506 atoms. This sets a new precedent for our neutral atom quantum computing platform, which is based on dipolar trap arrays rearranged by a moving “tweezer”.</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="why-this-matters">Why this matters</h2>
+
+
+
+<p>The number of atoms a neutral atom quantum computer can handle is a key feature, both for analog and digital computations, since each of them will encode a qubit. However, these atoms have a finite lifetime, meaning that they can randomly be kicked out of their dipolar traps. Moreover, all individual processes required to prepare the register also have non-zero probability of failure. Not losing any atom during the preparation of the register is therefore a difficult task which becomes exponentially more difficult with the number of atoms. Besides being a good benchmark of operational excellence in register preparation, the ability to generate defect-free registers is also critical to implement calculations that can output reliable results.</p>
+
+
+
+<div style="height:54px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="how-we-did-it">How we did it</h2>
+
+
+
+<p>Generating defect-free registers required multiple ingredients:</p>
+
+
+
+<ul class="wp-block-list is-style-pipe-list">
+<li><strong>A large number of high-quality traps</strong>. This requires cutting edge hardware (high power lasers, state-of-the-art optical elements…) and trap optimization methods in order to ensure a good spatial uniformity over a large field-of-view;</li>
+
+
+
+<li><strong>Speed</strong>. The atoms have a finite lifetime in dipolar traps since they do not evolve in a perfect vacuum. As such the time it takes to perform a rearrangement cycle should be short with regards to the lifetime of the entire register. More precisely, we need t &lt; τ/N, where t is the cycle duration, N the number of atoms and τ the individual atom lifetime. The cycle duration includes fixed costs (imaging, computation of moves…) in addition to the time spent to move individual atoms. We alleviated this constraint by performing multiple cycles of rearrangement, with an initial, long rearrangement moving the atoms to their target locations, and a much shorter one correcting the defects induced mostly by the finite lifetime of the register;</li>
+
+
+
+<li><strong>Efficiency</strong>. The rearrangement process is full of intermediate steps: imaging, cooling, loading and unloading to/from a trap, shuttling atoms for one location to the other… All of them are sources of atomic loss and should be under tight control. Note that there is a trade-off between efficiency and speed: finding a sweet spot between these metrics is also a key part of success.</li>
+</ul>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" height="528" width="1024" src="https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?w=1024" alt="" class="wp-image-8144" srcset="https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?w=4804&amp;resize=4804&amp;quality=80&amp;strip=all 4804w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=2048&amp;w=2048&amp;quality=80&amp;strip=all 2048w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=1139&amp;w=1139&amp;quality=80&amp;strip=all 1139w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=520&amp;w=520&amp;quality=80&amp;strip=all 520w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=384&amp;w=384&amp;quality=80&amp;strip=all 384w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=1221&amp;w=1221&amp;quality=80&amp;strip=all 1221w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=1302&amp;w=1302&amp;quality=80&amp;strip=all 1302w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/04/Blog-2025.03-506-atoms-rearranged-defect-free.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<div style="height:54px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="what-comes-next">What comes next</h2>
+
+
+
+<p>More than a technological breakthrough, this achievement has immediate practical implications. This milestone was indeed obtained in a quantum computer with a few tens of seconds lifetime. As such, all the processes and know-how that we developed can be readily transferred to our Orion product line in general, and to our Quantum Advantage program in particular. As such, it will directly impact the real-life, industry-size problems that we are tackling.</p>
+
+
+
+<p>Moreover, producing 506-atom, defect free registers is just a stepping stone on our scaling roadmap. The next step is breaking the 1000-atom, defect-free barrier which we expect by the end of year through:</p>
+
+
+
+<ul class="wp-block-list is-style-pipe-list">
+<li>a cryogenic setup that will improve lifetime by multiple order of magnitudes</li>
+
+
+
+<li>a redesign of our trap generation system to increase significantly the laser power available for trapping</li>
+
+
+
+<li>even faster and more efficient methods to generate registers</li>
+</ul>
+
+
+
+<p>As the technology continues to advance toward the 1000-qubit mark and beyond, we can expect to see increasingly powerful quantum simulations and computations that could revolutionize fields from materials science to financial modeling. Hence, our ability to generate large, defect-free register puts Pasqal on a promising trajectory toward creating quantum computing systems that deliver practical value across multiple industries.</p>
+
+
+
+<p>Stay tuned for more developments as the team works toward their next ambitious milestone in the coming months!</p>
+
+
+
+<div style="height:54px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+<p>The post <a href="https://www.pasqal.com/blog/perfect-506-atom-quantum-register/">Pasqal Creates a Perfect 506-Atom Quantum Register</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8103</post-id>	</item>
+		<item>
+		<title>Understanding Fault Tolerant Quantum Computing &#8211; Dealing with Errors &#8211; Part I</title>
+		<link>https://www.pasqal.com/blog/understanding-ftqc-part-i/</link>
+		
+		<dc:creator><![CDATA[Marie Wakim]]></dc:creator>
+		<pubDate>Thu, 10 Apr 2025 09:00:32 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: Louis Vignoli Quantum computing can be approached through multiple paradigms, each with its own strategy for handling errors. Analog quantum computing leverages the natural evolution of quantum systems and can exhibit resilience to certain types of noise. Digital quantum computing, by contrast, relies on discrete operations, where errors must be actively managed to avoid&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/">Understanding Fault Tolerant Quantum Computing &#8211; Dealing with Errors &#8211; Part I</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-bright-green-background-color has-background">Authors: Louis Vignoli</p>
+
+
+
+<p>Quantum computing can be approached through multiple paradigms, each with its own strategy for handling errors. Analog quantum computing leverages the natural evolution of quantum systems and can exhibit resilience to certain types of noise. Digital quantum computing, by contrast, relies on discrete operations, where errors must be actively managed to avoid failure. These aren’t fundamentally different machines, but rather different ways of harnessing the same quantum hardware.&nbsp;</p>
+
+
+
+<p>At Pasqal we focus on two key paradigms: analog quantum computing for near-term applications, and fully digital systems designed to support quantum error correction. While each paradigm has its strengths, one truth remains: digital quantum computing cannot succeed without robust error management.&nbsp;</p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-h-3-font-size" id="measurement-precision-vs-computing-challenges">Measurement Precision vs. Computing Challenges</h2>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Quantum mechanics is the most accurate tool for describing how nature works, with its success extending far beyond laboratories. Atomic clocks, based on quantum principles, define time with impressive precision, making technologies like GPS possible.&nbsp;</p>
+
+
+
+<p>One of quantum physics&#8217; major achievements is quantum electrodynamics. It allows scientists to predict an electron’s magnetic properties with accuracy to one part in a trillion–a testament to the power of our physical theories.&nbsp;</p>
+
+
+
+<p>Yet when we build quantum computers, we find ourselves battling errors at every turn. Why does this paradox exist? Where do these errors come from? And what can we do about them?&nbsp;</p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-h-3-font-size" id="the-delicate-nature-of-quantum-computing">The Delicate Nature of Quantum Computing</h2>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>At the core of a quantum computer is the qubit, the quantum counterpart of the classical bit (0 or 1). Unlike classical bits, qubits can exist in a superposition of multiple states at once, opening the door to vast computational possibilities.&nbsp;</p>
+
+
+
+<p>At Pasqal, we create qubits – quantum versions of classical bits – by trapping individual Rubidium-87 atoms. Using lasers, we control just one of the atom&#8217;s 37 electrons, the valence electron – the outermost and most loosely bound electron, making it highly responsive to external control. Though this electron has a theoretically infinite number of discrete states, we deliberately restrict it to only two levels.&nbsp;</p>
+
+
+
+<p>This task is challenging because quantum states are inherently delicate and highly sensitive to their environment. Imagine trying to balance a pencil on its tip while:&nbsp;</p>
+
+
+
+<ul class="wp-block-list is-style-pipe-list">
+<li>The table occasionally vibrates</li>
+
+
+
+<li>Tiny air currents brush against the pencil</li>
+
+
+
+<li>The temperature fluctuates slightly</li>
+
+
+
+<li>Someone occasionally bumps your elbow</li>
+</ul>
+
+
+
+<p>This is the challenge of quantum computing. The tiniest environmental disturbance – a subtle temperature change, a stray electromagnetic wave, or even the quantum system&#8217;s interaction with itself – can disrupt the delicate quantum state, a problem known as &#8220;decoherence.&#8221;&nbsp;</p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-h-3-font-size" id="from-one-qubit-to-many-errors-multiply">From One Qubit to Many: Errors Multiply</h2>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>A single qubit, though impressive to create, isn&#8217;t computationally useful on its own. The real power emerges when multiple qubits work together. On neutral-atom platforms, where thousands of atoms can be trapped simultaneously, multi-qubit controlled behavior is enabled by exploiting a phenomenon known as the Rydberg blockade. For a deeper dive, explore our <a href="https://arxiv.org/pdf/2006.12326" target="_blank" rel="noreferrer noopener">Quantum Computing with Neutral Atoms white paper</a>.</p>
+
+
+
+<p></p>
+
+
+
+<p>Having many qubits compounds our challenges:</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li>Each qubit must be individually controlled with extreme precision</li>
+
+
+
+<li>Qubits must interact in carefully orchestrated ways</li>
+
+
+
+<li>These interactions themselves can introduce errors</li>
+
+
+
+<li>Every qubit adds more potential points of failure</li>
+</ol>
+
+
+
+<p>These errors come from two main sources: imperfect control operations as we manipulate the qubits and environmental noise that we can&#8217;t completely eliminate.</p>
+
+
+
+<p>Despite the presence of many errors, a key aspect is that they typically remain local, affecting only a small part of the system rather than immediately corrupting all qubits. This locality is crucial because it allows us to design strategies to detect and mitigate errors before they spread uncontrollably.</p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading has-h-3-font-size" id="building-robustness-to-errors">Building Robustness to Errors</h2>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>As of today, errors in quantum&nbsp;computing systems&nbsp;are inevitable.&nbsp;Given&nbsp;how fragile quantum states are when imperfectly isolated,&nbsp;hardware improvements alone will likely be insufficient&nbsp;to&nbsp;reduce errors to&nbsp;rates that&nbsp;enable reliable quantum computing.</p>
+
+
+
+<p>Hence, robust computing solutions are necessary to handle infrequent but inevitable local errors. As Daniel Gottesman, one of the pioneers of Quantum Error Correction, put it: <em>&#8220;Our goal is to produce protocols which continue to produce the correct answer even though any individual component of the [quantum] circuit may fail.&#8221;</em> (<a href="https://arxiv.org/abs/0904.2557">Read the full article here</a>)</p>
+
+
+
+<p>This concept is known as&nbsp;<em>fault tolerance.</em>&nbsp;A core&nbsp;tenet&nbsp;of fault tolerance is to limit the impact of these infrequent but inevitable local errors by preventing them from spreading across the whole quantum system.&nbsp;Anticipating a bit, this will make errors much easier to correct.</p>
+
+
+
+<p>Let’s illustrate error proliferation with a simple case. The following circuit (Fig. 1) prepares a GHZ state on four qubits. A GHZ state (named after Greenberger, Horne, and Zeilinger) is a specific type of entangled state where all qubits are correlated with each other in a superposition. This means that the state of each qubit is directly linked to the states of the others. How reliable is it? How robust is it to errors?</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" height="337" width="1024" src="https://www.pasqal.com/wp-content/uploads/2025/04/image.png?w=1024&amp;h=337&amp;quality=80&amp;strip=all" alt="" class="wp-image-8154" srcset="https://www.pasqal.com/wp-content/uploads/2025/04/image.png?w=1792&amp;resize=1792&amp;quality=80&amp;strip=all 1792w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=1536&amp;w=1536&amp;quality=80&amp;strip=all 1536w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=1680&amp;w=1680&amp;quality=80&amp;strip=all 1680w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=567&amp;w=567&amp;quality=80&amp;strip=all 567w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/04/image.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Figure 1: a) quantum circuit for preparing a 4 qubits GHZ state. <br>b) Same circuit with an X error. Lanes in red show how the error spreads and which qubits suffer from bit-flip in the end.</figcaption></figure>
+
+
+
+<p>Consider a bit-flip error on a single qubit, also called an X error. Suppose qubit 3 experiences an X error after initialization and before any two-qubit gates, as shown in Fig. 1. Tracing this error through the circuit, we see that the final state is affected on two of its qubits, becoming <img loading="lazy" decoding="async" src="https://s0.wp.com/latex.php?latex=%5Cfrac%7B%5Cleft%7C0011%5Cright%3E%2B%5Cleft%7C1100%5Cright%3E%7D%7B%5Csqrt%7B2%7D%7D&#038;bg=ffffff&#038;fg=000&#038;s=2&#038;c=20201002" alt="&#92;frac{&#92;left|0011&#92;right&gt;+&#92;left|1100&#92;right&gt;}{&#92;sqrt{2}}" class="latex" /> instead of <img loading="lazy" decoding="async" src="https://s0.wp.com/latex.php?latex=%5Cfrac%7B%5Cleft%7C0000%5Cright%3E%2B%5Cleft%7C1111%5Cright%3E%7D%7B%5Csqrt%7B2%7D%7D&#038;bg=ffffff&#038;fg=000&#038;s=2&#038;c=20201002" alt="&#92;frac{&#92;left|0000&#92;right&gt;+&#92;left|1111&#92;right&gt;}{&#92;sqrt{2}}" class="latex" />. Hence, a single qubit error has spread across the quantum system, corrupting it extensively.</p>
+
+
+
+<p>A simple way to allow detection of such serious errors is to add an <em>ancilla</em> qubit entangled with the first and fourth data qubits after the GHZ state preparation (Fig. 2). The previous X error now also flips the <em>ancilla</em> qubit. By measuring the ancilla qubit, we can detect this error! Note that the specific way the ancilla is entangled with the data qubits is carefully chosen to reveal errors in the GHZ state (for reasons not described here).</p>
+
+
+
+<figure class="wp-block-image aligncenter size-large"><img loading="lazy" decoding="async" width="903" height="390" src="https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?w=903" alt="" class="wp-image-9161" srcset="https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?w=903&amp;resize=903&amp;quality=80&amp;strip=all 903w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=621&amp;w=621&amp;quality=80&amp;strip=all 621w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=458&amp;w=458&amp;quality=80&amp;strip=all 458w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=372&amp;w=372&amp;quality=80&amp;strip=all 372w, https://www.pasqal.com/wp-content/uploads/2025/04/ftqc-blogpost-part1-fig2.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w" sizes="auto, (max-width: 903px) 100vw, 903px" /><figcaption class="wp-element-caption">Figure 2: a) A 4 qubits GHZ state with an additional ancilla qubit. <br>b) How the X error from Fig 1 is now detected by the ancilla qubit.</figcaption></figure>
+
+
+
+<p>This flag-based method is a simple trick to engineer some robustness. It does not tell us what error happened or how to correct it, but it flags some situations where the state is heavily corrupted, indicating that we should discard it and try preparing a new one.</p>
+
+
+
+<div style="height:25px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="quantum-error-correction">Quantum Error Correction</h2>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>Now, to be properly robust to errors, it’s not enough to limit their proliferation: we need a way to correct some of them without disrupting the quantum computation. Hence, the foundation for engineering generic fault tolerance in quantum computations is Quantum Error Correction (QEC).</p>
+
+
+
+<p>The breakthrough approach in QEC is that quantum information can be protected by distributing it across an entangled system. When errors occur, they don&#8217;t destroy the information but instead transform it in ways that can be identified and reversed through carefully designed measurements and corrective operations.</p>
+
+
+
+<p>Think of it like composing a symphony, where the melody isn’t carried by a single instrument but spread across an entire orchestra.</p>
+
+
+
+<p>Even if one instrument gets detuned, the overall melody remains mostly intact. The conductor can hear the mistake and get the musician to retune their instrument to match the orchestra.</p>
+
+
+
+<p>Unlike classical error correction, QEC must overcome the no-cloning theorem (the impossibility of making perfect copies of quantum states) and perform error detection – extract information about the location of potential errors –&nbsp; without directly measuring the protected quantum information (which would destroy the quantum state during computation).</p>
+
+
+
+<p>The development of practical QEC represents one of quantum computing&#8217;s greatest challenges and opportunities – turning quantum fragility into computational power through clever engineering.</p>
+
+
+
+<p>Fault tolerance isn&#8217;t just a technical detail – it&#8217;s the key to unlocking quantum computing&#8217;s full potential.</p>
+
+
+
+<p>The future of quantum computing won&#8217;t be built on perfect components, but on clever systems that remain reliable even when individual parts fail – turning quantum computing&#8217;s greatest challenge into its most impressive engineering triumph.</p>
+
+
+
+<div style="height:60px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<p><em><em>This post is part of a series exploring quantum computing fundamentals. Watch for our upcoming deep dive into neutral-atom based quantum error correction and fault-tolerant quantum computing</em></em></p>
+<p>The post <a href="https://www.pasqal.com/blog/understanding-ftqc-part-i/">Understanding Fault Tolerant Quantum Computing &#8211; Dealing with Errors &#8211; Part I</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">8153</post-id>	</item>
+		<item>
+		<title>Decrypting Pasqal recent research on solving optimization problems</title>
+		<link>https://www.pasqal.com/blog/decrypting-pasqal-recent-research-on-solving-optimization-problems/</link>
+		
+		<dc:creator><![CDATA[Marie Wakim]]></dc:creator>
+		<pubDate>Thu, 20 Mar 2025 09:46:27 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/blog//</guid>
+
+					<description><![CDATA[<p>Authors: Constantin Dalyac, Loïc Henriet and Christophe Jurczak The question of when Quantum Computers will become powerful enough for companies to start exploring their use in production is one of the most hotly debated topics in the field. The QC community has come up with concepts such as quantum supremacy, quantum advantage and quantum utility&#8230;</p>
+<p>The post <a href="https://www.pasqal.com/blog/decrypting-pasqal-recent-research-on-solving-optimization-problems/">Decrypting Pasqal recent research on solving optimization problems</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p class="has-bright-green-background-color has-background small-text-align-left">Authors: Constantin Dalyac, Loïc Henriet and Christophe Jurczak</p>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<p>The question of when Quantum Computers will become powerful enough for companies to start exploring their use in production is one of the most hotly debated topics in the field. The QC community has come up with concepts such as quantum supremacy, quantum advantage and quantum utility along with metrics such as quantum volume, Q-score and many others to measure progress. Additionally, complexity theory has been called to provide performance guarantees. However, what ultimately matters is systematic benchmarking with respect to the best solutions used in production for real-world problems of interest, whether scientific, industrial, or commercial.</p>
+
+
+
+<p>At Pasqal we believe this is crucial to guide research, track progress, and advance our understanding of quantum algorithms. We have put together multidisciplinary teams (quantum sciences, computer sciences, condensed matter physics, operations research, AI …) to address three main classes of applications: optimization, simulation and machine learning. For each class we develop original theoretical research with our academic and industrial partners, coupled with emulation and empirical research using our own Quantum Processing Units (QPUs). This approach lets us bridge the gap between quantum computing and domain problems in a comprehensive way, allowing for optimal use of quantum resources on one side and deep understanding of algorithm performance and domain relevance on the other side. In doing so, we ensure that our research not only pushes the boundaries of quantum computing but also translates into meaningful advancements in real-world applications.</p>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="creating-meaningful-benchmarks">Creating Meaningful Benchmarks</h2>
+
+
+
+<p>A key aspect is to build classically hard benchmark problems before benchmarking them on QPUs. Indeed, a critical challenge has been that past comparisons (especially in optimization) are often based on overly simple problem instances, leading to misleading speed-up claims. Just as judging a chef’s skill is more meaningful when preparing a complex dish like “boeuf bourguignon”rather than simply boiling an egg, we need harder problem instances to truly assess quantum computing’s capabilities. This way we’re making sure that we’re not restricted only to low-hanging fruits and proofs of concepts that can’t be generalized.</p>
+
+
+
+<p>This paper is the first in a series of three, focusing on combinatorial optimization running on our neutral atom platform in <a href="https://www.pasqal.com/analog-and-digital-in-quantum-computing/">analog mode</a>. It aims to address <strong>three legitimate questions</strong>:</p>
+
+
+
+<ul class="wp-block-list is-style-pipe-list">
+<li>Are today&#8217;s quantum computers faster or slower than classical solvers across all tested instances for an equivalent level of accuracy?</li>
+
+
+
+<li>Based on these results, can we extrapolate the problem size at which quantum computers might outperform classical solvers in terms of walk-clock time for achieving an equivalent accuracy?</li>
+
+
+
+<li>Besides atom number, what are the key hardware performance metrics that need to improve to reach this level of performance?</li>
+</ul>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="our-methodology-and-findings">Our Methodology and Findings</h2>
+
+
+
+<p>To answer these questions, we leverage insights from complexity theory to design harder instances of a well-known problem in graph theory and combinatorial optimization, the maximum independent set (MIS) problem on unit-disk graphs.&nbsp; This problem involves finding the largest set of points that are all separated by at least a minimum distance – a challenge that appears in many real-world applications like wireless network design and molecular structure analysis. We benchmarked these problems on our Orion Alpha quantum processor using 100 qubits and gathering 100,000 experimental data points. This ensures a meaningful evaluation of our quantum hardware capabilities.</p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="1109" height="833" src="https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?w=1024" alt="" class="wp-image-7793 size-full" srcset="https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?w=1109&amp;resize=1109&amp;quality=80&amp;strip=all 1109w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=1024&amp;w=1024&amp;quality=80&amp;strip=all 1024w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=781&amp;w=781&amp;quality=80&amp;strip=all 781w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=357&amp;w=357&amp;quality=80&amp;strip=all 357w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=264&amp;w=264&amp;quality=80&amp;strip=all 264w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=837&amp;w=837&amp;quality=80&amp;strip=all 837w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=893&amp;w=893&amp;quality=80&amp;strip=all 893w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=332&amp;w=332&amp;quality=80&amp;strip=all 332w, https://www.pasqal.com/wp-content/uploads/2025/03/image_5ce138.png?resize=663&amp;w=663&amp;quality=80&amp;strip=all 663w" sizes="auto, (max-width: 1109px) 100vw, 1109px" /></figure><div class="wp-block-media-text__content">
+<p>Graphs with higher density and bigger size are harder to solve classically. Current QPU capabilities (dotted line) are limited to relatively small, low-density graphs. Future QPU advancements (dashed line) are expected to push the boundaries, enabling the resolution of larger and denser problems that are much harder.</p>
+</div></div>
+
+
+
+<p>Comparing these results with classical state-of-the-art solvers used routinely by our industrial customers (EDF, Thales, CMA CGM, RTE, BMW) provides valuable insights into the key factors limiting current quantum performance and the engineering challenges that need to be addressed.</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Repetition rate is key</strong>: while quantum state preparation occurs at the MHz scale, bottlenecks in loading time, spatial arrangement, and imaging reduce currently the effective clock rate to just a few Hz. We have the designs at Pasqal to improve atom reservoir loading, assembly algorithms, and fast imaging techniques to push this towards the kHz range.</li>
+
+
+
+<li><strong>Scaling to thousands of atoms is essential</strong>: larger problem instances will expose prohibitive classical runtimes. We have experimentally trapped 1100+ atoms and up to 6,100 atom arrays have been demonstrated in academic labs, with a clear path for scalability.</li>
+</ol>
+
+
+
+<p><strong>These challenges are engineering problems with clear solutions</strong> and Pasqal’s teams are already addressing them to improve the next generation of products.</p>
+</div>
+
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<h2 class="wp-block-heading" id="the-path-forward">The path forward</h2>
+
+
+
+<p>Although quantum advantage for MIS on neutral atom systems has yet to be achieved for large and dense-enough graphs of industrial interest, the roadmap is increasingly clear. With continued improvements in hardware scalability, interaction programmability, and experimental efficiencies, neutral atom quantum processors will soon be able to compete more effectively with classical approaches for a well-defined class of complex combinatorial problems. We believe this research will focus the quantum computing community on benchmarking more challenging problem instances, driving further progress toward achieving practical quantum advantage. In upcoming work, we will present additional benchmarks in different applications, where quantum advantage appears even more promising.</p>
+
+
+
+<p class="has-text-align-center"></p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="961" height="758" src="https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?w=961" alt="" class="wp-image-7794 size-full" srcset="https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?w=961&amp;resize=961&amp;quality=80&amp;strip=all 961w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=744&amp;w=744&amp;quality=80&amp;strip=all 744w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=340&amp;w=340&amp;quality=80&amp;strip=all 340w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=251&amp;w=251&amp;quality=80&amp;strip=all 251w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=797&amp;w=797&amp;quality=80&amp;strip=all 797w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=851&amp;w=851&amp;quality=80&amp;strip=all 851w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=316&amp;w=316&amp;quality=80&amp;strip=all 316w, https://www.pasqal.com/wp-content/uploads/2025/03/image_d2be5d.png?resize=631&amp;w=631&amp;quality=80&amp;strip=all 631w" sizes="auto, (max-width: 961px) 100vw, 961px" /></figure><div class="wp-block-media-text__content">
+<p>Seamlessly programming the MIS problem on Pasqal’s QPU using <a href="https://www.pasqal.com/neutral-atom-programming/">Pulser Studio</a>, an intuitive no-code platform.</p>
+</div></div>
+
+
+
+<p>This research is the result of a combined effort from our hardware, software, and benchmarking teams. </p>
+
+
+
+<p>We thank our partners and collaborators who share our vision of making quantum computing a reality.</p>
+</div>
+
+
+
+<p></p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button is-style-primary has-mint-green-background-color has-background"><a class="wp-block-pasqal-cta-button__link" href="https://arxiv.org/abs/2502.04291" target="_blank" rel="noreferrer noopener"><span class="cta-button-text has-mint-green-background-color has-background">Read the full paper here</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+
+
+
+<p></p>
+<p>The post <a href="https://www.pasqal.com/blog/decrypting-pasqal-recent-research-on-solving-optimization-problems/">Decrypting Pasqal recent research on solving optimization problems</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">7791</post-id>	</item>
+		<item>
+		<title>Quantum AI Explained: New Guide for Leaders Ready to Innovate</title>
+		<link>https://www.pasqal.com/blog/quantum-ai-explained-the-essential-guide-for-business-leaders-ready-to-innovate/</link>
+		
+		<dc:creator><![CDATA[admin-pasqal]]></dc:creator>
+		<pubDate>Tue, 08 Oct 2024 07:20:19 +0000</pubDate>
+				<guid isPermaLink="false">https://www.pasqal.com/?post_type=news&#038;p=1189</guid>
+
+					<description><![CDATA[<p>Are you ready to harness the power of Quantum AI? This essential guide provides a clear and concise overview of the technology, its applications, and its impact on industries. Equip yourself with the knowledge to drive innovation and gain a competitive edge.</p>
+<p>The post <a href="https://www.pasqal.com/blog/quantum-ai-explained-the-essential-guide-for-business-leaders-ready-to-innovate/">Quantum AI Explained: New Guide for Leaders Ready to Innovate</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Are you ready to harness the power of Quantum AI? This essential guide provides a clear and concise overview of the technology, its applications, and its impact on industries. Equip yourself with the knowledge to drive innovation and gain a competitive edge.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://www.pasqal.com/how-quantum-powers-artificial-intelligence/"><span class="cta-button-text">Discover more on AI</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+
+
+
+<p>Quantum AI is on its way to revolutionizing industries by unlocking computational power beyond the reach of modern traditional computers. By combining the parallel processing capabilities of quantum computing with the predictive power of AI, businesses can solve complex problems faster and more efficiently than ever before. From accelerating <a href="https://www.pasqal.com/news/quantum-algorithm-can-help-drug-discovery/"><strong>drug discovery</strong></a> and optimizing supply chains to transforming financial modeling and materials science, quantum AI has the potential to redefine how we approach innovation and prepare for future challenges. For forward-thinking leaders, understanding and harnessing this technology will be key to gaining a competitive edge in an increasingly data-driven world.</p>
+
+
+
+<h2 class="wp-block-heading" id="what-exactly-is-quantum-ai">What exactly is Quantum AI?</h2>
+
+
+
+<p>In short, Quantum AI uses quantum computing to enhance machine learning algorithms, to create more powerful AI models. By utilizing the computational superiority of quantum systems, Quantum AI can achieve results beyond the capability of classical computers, solving complex problems faster and more efficiently.</p>
+
+
+
+<p>To understand the importance of Quantum AI it’s crucial to revisit the concepts of classical computing, quantum computing, and machine learning.</p>
+
+
+
+<h2 class="wp-block-heading" id="a-brief-history-of-classical-computers">A Brief History of Classical Computers</h2>
+
+
+
+<p>Classical computers are based on classical physics and use bits to represent data as either 0 or 1, processing information bit by bit sequentially. Bits power all classical computing devices, including laptops, servers, smartphones, and supercomputers. In a computer, bits are stored in tiny, inexpensive electromechanical devices called transistors, which reliably accept, store, and return a 0 or 1 as long as the power remains on. Early computers used individual transistors, carefully arranged for optimal performance. In the 1960s, the development of the integrated circuit (IC), which combined multiple transistors on a single chip, became the foundation of the modern digital era. The IC enabled the creation of the microprocessor, the most important component in today’s classical computers.</p>
+
+
+
+<h2 class="wp-block-heading" id="a-brief-history-of-quantum-computers">A Brief History of Quantum Computers</h2>
+
+
+
+<p>Quantum computers (QCs) harness the principles of quantum physics instead of classical physics. Rather than relying on bits representing 0 or 1, QCs use quantum bits (qubits), which can exist simultaneously in multiple states due to superposition and entanglement phenomena. These properties allow quantum computers to process vast amounts of data in parallel, giving them the potential to solve complex problems, such as optimization and molecular simulations, far more efficiently than classical computers.</p>
+
+
+
+<p>Quantum computing research began in the early 1980s, <a href="https://quantumzeitgeist.com/richard-feynman-and-his-contributions-to-quantum-computing-and-nanotechnology/"><strong>inspired by Richard Feynman’s lectures</strong></a>, who theorized that quantum systems could simulate nature in ways classical computers never could.</p>
+
+
+
+<p>Although industry-ready quantum computers are in their early stages, they are progressing rapidly, with significant milestones achieved in recent years and breakthroughs in optimization, cryptography, and AI that classical computers struggle to address. QCs will significantly influence industries such as finance, pharmaceuticals, and logistics.</p>
+
+
+
+<h2 class="wp-block-heading" id="classical-ai-the-fruit-of-classical-computers">Classical AI — The fruit of classical computers</h2>
+
+
+
+<p>Classical AI is the direct result of advancements in classical computing. The most significant enabler of these advancements is the microprocessor, which has benefited greatly from Moore’s Law—the observation that the number of transistors on a chip doubles approximately every two years, leading to exponential increases in computational power. As a result, the speed and efficiency of microprocessors have dramatically improved over the past six decades, enabling breakthroughs across various fields, including artificial intelligence (AI) and machine learning (ML).</p>
+
+
+
+<p>Specialized processors called graphic processing units (GPUs) originally popularized for computer games often handle the grunt work of AI and ML at high speed; interestingly, even GPUs are overtaxed by the ambitions of today’s AI and ML programs.</p>
+
+
+
+<p>AI and ML are likely to be among the main beneficiaries of quantum computing as it matures.</p>
+
+
+
+<h2 class="wp-block-heading" id="the-limitations-of-classical-computing-calls-for-an-alternative">The Limitations of Classical Computing Calls for an Alternative</h2>
+
+
+
+<p>Now that we’ve explored the foundational concepts, it’s clear that classical computing has limitations. Two key factors highlight why a shift to quantum computing is crucial for driving future innovation:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Physical Limitations of Classical Computers</strong><br><a href="https://www.technologyreview.com/2020/02/24/905789/were-not-prepared-for-the-end-of-moores-law/"><strong>The death of Moore’s law</strong></a>: Microchip performance is not increasing at the same rate as it used to. In terms of ready computational power, classical computing is slowly running out of headroom. As chips become smaller, classical computing encounters physical constraints that hinder further performance gains. This limitation stems, ironically, from quantum effects: as transistors shrink, electrons exhibit wave-like behavior, leading to <strong>quantum tunneling</strong>. The tunneling can randomly switch a bit between 0 and 1 which renders these deterministic devices inaccurate to determine anything.</li>
+
+
+
+<li><strong>The computational limitations of Classical Computers are not ideal for complex problems:<br></strong>The explosion of complex data and optimization challenges: As datasets grow exponentially in size and complexity—especially in areas like big data analytics, AI, and genomics—classical systems fall short due to their inability to process and optimize this data. Many optimization problems, such as training deep neural networks or analyzing high-dimensional data, scale poorly with classical computing.</li>
+</ol>
+
+
+
+<p>Quantum computers, with their ability to exploit quantum phenomena like superposition and entanglement, offer a fundamentally different approach to computation. By processing multiple possibilities simultaneously, quantum computers can potentially solve specific problems exponentially faster than classical computers. This computational advantage makes them a promising candidate for addressing the limitations of classical systems and accelerating progress in fields like machine learning.</p>
+
+
+
+<div class="wp-block-media-text is-stacked-on-mobile is-image-fill-element media-text-pattern has-bright-green-background-color has-background"><figure class="wp-block-media-text__media"><img loading="lazy" decoding="async" width="986" height="986" src="https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?w=986" alt="Quantum | Gen AI | Classical" class="wp-image-1990 size-full" style="object-position:50% 50%" srcset="https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?w=986&amp;resize=986&amp;quality=80&amp;strip=all 986w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=150&amp;w=150&amp;quality=80&amp;strip=all 150w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=300&amp;w=300&amp;quality=80&amp;strip=all 300w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=768&amp;w=768&amp;quality=80&amp;strip=all 768w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=587&amp;w=587&amp;quality=80&amp;strip=all 587w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=268&amp;w=268&amp;quality=80&amp;strip=all 268w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=198&amp;w=198&amp;quality=80&amp;strip=all 198w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=629&amp;w=629&amp;quality=80&amp;strip=all 629w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=671&amp;w=671&amp;quality=80&amp;strip=all 671w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=249&amp;w=249&amp;quality=80&amp;strip=all 249w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=498&amp;w=498&amp;quality=80&amp;strip=all 498w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=35&amp;w=35&amp;quality=80&amp;strip=all 35w, https://www.pasqal.com/wp-content/uploads/2025/01/2409_Pasqal-Whitepaper-Quantum-AI-986.jpg?resize=70&amp;w=70&amp;quality=80&amp;strip=all 70w" sizes="auto, (max-width: 986px) 100vw, 986px" /></figure><div class="wp-block-media-text__content">
+<h2 class="wp-block-heading has-h-3-font-size" id="quantum-ai-whitepaper">Quantum AI Whitepaper</h2>
+
+
+
+<p class="has-body-simple-font-size">Delve deeper into this technology and explore how quantum computing, classical computing, and artificial intelligence work together as complementary pillars of modern computation. Download our in-depth white paper, &#8220;Quantum Computing, Classical Computing, and Artificial Intelligence as Three Complementary Pillars of Computation.&#8221; Dive deeper into the future of technology by accessing the full report now!</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://www.pasqal.com/whitepaper/quantum-ai-whitepaper/" target="_blank" rel="noreferrer noopener"><span class="cta-button-text">Download now</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div></div>
+
+
+
+<h2 class="wp-block-heading" id="quantum-ai-enhanced-solutions-for-real-world-problems">Quantum-AI-enhanced solutions for real-world problems</h2>
+
+
+
+<p>Quantum computing, while incredibly promising, is still in its early stages; achieving quantum advantage involves demonstrating significant speedup or performance improvement for specific tasks. Rather than a temporary solution for today’s limitations, Quantum-AI hybridization offers a powerful and enduring path forward, both for the present and the future.</p>
+
+
+
+<p>By combining the unique strengths of quantum computing, High-Performance Classical Computing (HPC), and AI, we can more effectively tackle complex problems across multiple domains. This trinity of technologies provides a long-term, synergistic approach, where each component complements and enhances the others, allowing for more efficient and scalable solutions.</p>
+
+
+
+<h2 class="wp-block-heading" id="the-trinity-of-quantum-computing-hpc-and-ai-the-current-strategy">The Trinity of Quantum Computing, HPC, and AI — The Current Strategy</h2>
+
+
+
+<p>The real game-changer comes when we integrate quantum computing, High-Performance Classical Computing (HPC), and AI into a unified approach to solving complex problems. Here’s how the synergy works:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Quantum Computing brings a new level of computational power to address specialized tasks—like solving optimization problems or simulating quantum systems—that classical computers can’t handle efficiently.</li>
+
+
+
+<li>HPC steps in where quantum computers currently lack robustness. After quantum systems perform their specialized calculations, HPC systems take over the heavy lifting, running traditional algorithms to analyze the quantum data and refine the results. HPCs serve as the bridge that ensures quantum results are transformed into actionable insights.</li>
+
+
+
+<li>AI doesn’t just assist in this process; it plays an increasingly independent role, providing intelligent algorithms that solve specific tasks on their own while also enhancing both quantum and classical systems. AI improves the efficiency of quantum calculations, optimizes classical simulations, and refines data analysis, making the entire workflow more effective and precise.</li>
+</ul>
+
+
+
+<p>In the short term, this synergy between Quantum Computing, HPC, and AI allows for hybrid problem-solving in several industries, to name a few:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.nature.com/articles/s41598-024-67897-8"><strong>Drug discovery</strong></a>: Quantum computers can model complex molecular interactions that classical systems can’t handle. AI helps refine these models and HPC processes the large-scale data to test the effectiveness (or <a href="https://arxiv.org/abs/2211.16337"><strong>toxicity</strong></a>) of different compounds.</li>
+
+
+
+<li><a href="https://www.nature.com/articles/s41467-024-46959-5"><strong>Supply chains and logistics</strong></a><strong>:</strong> In problems like supply chain management or logistics, quantum systems generate possible solutions to highly complex optimization problems, while HPC and AI algorithms evaluate and refine these solutions, ensuring they are practical and ready for deployment.</li>
+
+
+
+<li>In <a href="https://www.forbes.com/councils/forbestechcouncil/2024/06/06/finance-40-how-quantum-computing-will-transform-financial-services/"><strong>financial modeling</strong></a>, quantum computers can quickly generate optimal strategies by solving massive optimization problems, while AI models help analyze market data, and HPC processes real-time financial datasets to adapt strategies on the fly.</li>
+</ul>
+
+
+
+<p>The beauty of adopting a quantum-enhanced hybrid approach lies in its practicality and immediate impact. While researchers and quantum experts (and Pasqal, of course) are working on the technology of QC to mature and reach quantum advantage across industries we can solve real-world challenges with this powerful strategy. From accelerating drug discovery to optimizing financial strategies and solving complex logistical problems, the synergy between these technologies is already proving transformative.</p>
+
+
+
+<p>You can read some of the success stories of Pasqal’s customers, who are already on their journey to Quantum leadership in their fields: Energy sector (<a href="https://www.pasqal.com/case-studies/edf-customer-story/">EDF</a>) &amp; Financial sector (<a href="https://www.pasqal.com/case-studies/ca-cib-customer-story/">Crédit Agricole CIB</a>).</p>
+
+
+
+<h2 class="wp-block-heading" id="quantum-for-ai-and-ai-for-quantum-a-mutual-enhancement">Quantum for AI and AI for Quantum — A Mutual Enhancement</h2>
+
+
+
+<p>Integrating quantum computing with classical systems and AI today offers a key advantage: each technology complements the other. Quantum systems, with their unparalleled ability to handle complex computations, will empower AI to tackle problems currently out of reach for classical systems. In turn, AI’s role in optimizing quantum algorithms and making them more efficient supports the advancement of quantum technologies. This mutual enhancement, the “dance” between quantum and AI, highlights the importance of <a href="https://arxiv.org/abs/2211.16337"><strong>Quantum for AI</strong></a> and <a href="https://arxiv.org/abs/2207.13030"><strong>AI for Quantum</strong></a> and points to a future where Quantum AI becomes the ultimate computational paradigm.</p>
+
+
+
+<h2 class="wp-block-heading" id="what-does-this-mean-for-your-business">What does this mean for your business?</h2>
+
+
+
+<p>For businesses and industries, investing in quantum-enhanced solutions today is about preparing for a future competitive edge. While quantum computing is still developing, companies that adopt Quantum AI early are positioning themselves for long-term success as this technology matures.</p>
+
+
+
+<div class="wp-block-group alignfull three-card-pattern solutions-sub-page has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-pasqal-three-card swiper three-card-swiper hide-navigation is-slider">
+<div class="wp-block-columns is-not-stacked-on-mobile three-card-block swiper-wrapper is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
+<div class="wp-block-column swiper-slide is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group has-bright-green-background-color has-background is-layout-flow wp-block-group-is-layout-flow">
+<h3 class="wp-block-heading has-h-5-font-size" id="financial-institution">Financial Institution</h3>
+
+
+
+<p>Financial institutions can benefit from quantum-enhanced algorithms to refine risk models and predictive analytics, setting the foundation for faster, more accurate trading decisions that could create substantial value as markets grow more complex.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://www.pasqal.com/industries/banking-finance/"><span class="cta-button-text">Learn more</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column swiper-slide is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group has-bright-green-background-color has-background is-layout-flow wp-block-group-is-layout-flow">
+<h3 class="wp-block-heading has-h-5-font-size" id="pharmaceutical-industries">Pharmaceutical Industries</h3>
+
+
+
+<p>Pharmaceutical companies investing in quantum-AI can reimagine drug discovery pipelines, identifying molecular structures with unprecedented speed, positioning themselves to cut research costs and achieve breakthroughs sooner as the technology evolves.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://www.pasqal.com/industries/pharma-healthcare/"><span class="cta-button-text">Learn more</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column swiper-slide is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group has-bright-green-background-color has-background is-layout-flow wp-block-group-is-layout-flow">
+<h3 class="wp-block-heading has-h-5-font-size" id="supply-chains-and-logistics">Supply Chains and Logistics</h3>
+
+
+
+<p>Manufacturers and logistics firms can use quantum-AI to optimize supply chains and operations to minimize resource waste and maximize throughput defining new industry standards.</p>
+
+
+
+<div class="wp-block-pasqal-cta-buttons is-layout-flex wp-block-cta-buttons-is-layout-flex">
+<div class="wp-block-pasqal-cta-button"><a class="wp-block-pasqal-cta-button__link" href="https://www.pasqal.com/industries/transportation-mobility/"><span class="cta-button-text">Learn more</span><span class="square"><svg class="icon svg-arrow-cta" id="svg-arrow-cta" viewBox="0 0 6 10"><path d="M6 4.018L2.452 0H0v.688l3.61 4.088v.449L0 9.312V10h2.452L6 5.982V4.018z"></path></svg></span></a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-button-prev three-card-swiper-button"></div><div class="swiper-button-next three-card-swiper-button"></div></div>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="the-bottom-line">The bottom line</h2>
+
+
+
+<p>The message is clear: investing in quantum technologies today is essential for businesses to remain at the forefront of innovation. As the trinity of quantum computing, AI, and HPC continues to evolve, those already integrating these technologies will be positioned to <a href="https://www.bcg.com/publications/2023/enterprise-grade-quantum-computing-almost-ready"><strong>lead their industries into the future</strong></a>. By understanding and embracing this evolution, companies not only solve present-day challenges but also help shape the future of Quantum AI, ensuring they are ready for the breakthrough as this technology emerges. The future is Quantum AI, and the time to invest in it is now.</p>
+
+
+
+<p>The easiest way to start is with the help of experts. Start your quantum journey with <a href="https://community.pasqal.com/"><strong>Quantum Quest</strong></a> (exclusively through this post before the official launch; wink), our new learning platform, and explore the potential of neutral atoms quantum computing. Experience a quantum processor in action, learn how to run algorithms on it, and how to apply them to your business.</p>
+<p>The post <a href="https://www.pasqal.com/blog/quantum-ai-explained-the-essential-guide-for-business-leaders-ready-to-innovate/">Quantum AI Explained: New Guide for Leaders Ready to Innovate</a> appeared first on <a href="https://www.pasqal.com">Pasqal</a>.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1189</post-id>	</item>
+	</channel>
+</rss>

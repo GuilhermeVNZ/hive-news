@@ -1,0 +1,1 @@
+New AI system predicts first-person video sequences using whole-body movement data, advancing embodied AI capabilities

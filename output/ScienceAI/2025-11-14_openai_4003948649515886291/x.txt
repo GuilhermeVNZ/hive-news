@@ -1,0 +1,1 @@
+OpenAI just cracked open the AI black box. Their new sparse circuit research creates neural networks humans can actually understand—revealing exactly how AI makes decisions. This could be huge for AI safety and transparency. #AI #MachineLearning #Interpretability

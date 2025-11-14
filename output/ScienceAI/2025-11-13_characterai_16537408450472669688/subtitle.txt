@@ -1,0 +1,1 @@
+Exclusive deep dive into the transformer-based models powering Character.ai's conversational platform with aggressive optimization techniques

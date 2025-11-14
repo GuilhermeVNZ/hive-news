@@ -1,0 +1,1 @@
+Symptom checkers often miss multiple diseases at once. New AI model adds COVID-19 to diagnosis while keeping 84.4% accuracy on other conditions - bridging expert systems with deep learning for better digital healthcare.

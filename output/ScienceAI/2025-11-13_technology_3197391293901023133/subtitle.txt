@@ -1,0 +1,1 @@
+As machine learning advances through brute-force scaling, pure mathematics is finding new roles in explaining complex model behaviors and guiding architectural design.

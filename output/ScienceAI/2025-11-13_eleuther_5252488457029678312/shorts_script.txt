@@ -1,0 +1,10 @@
+Take 1: EleutherAI's open-source revolution
+Take 2: Training massive language models
+Take 3: GPT-NeoX framework scales to GPT-3 size
+Take 4: Reinforcement learning with human feedback
+Take 5: RWKV challenges transformer dominance
+Take 6: Distributed computing across clusters
+Take 7: Korean language models at scale
+Take 8: Transparent AI evaluation methods
+Take 9: Democratizing AI research worldwide
+Take 10: The future of open-source AI

@@ -1,0 +1,1 @@
+LangChain brings full AI agent development suite to AWS re:Invent 2025. Live demos of LangSmith on AWS Marketplace, new Insights Agent features, and technical sessions with the engineering team. Booth 524, Dec 1-4. #AI #AWS #LangChain

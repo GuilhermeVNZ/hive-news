@@ -1,0 +1,8 @@
+IBM's new AI models
+Run on regular GPUs
+Open source and fast
+Perfect for documents
+And RAG systems
+Enterprise grade power
+Without server costs
+Available now on Replicate

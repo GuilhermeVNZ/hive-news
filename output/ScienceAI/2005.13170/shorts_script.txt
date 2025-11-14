@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if I told you AI systems can be tricked into producing harmful content 85% of the time?
+[VISUAL DIRECTION] Animated text: "85% SUCCESS RATE" with alarming red background
+[VOICEOVER 0:05-0:20] As artificial intelligence becomes increasingly integrated into customer service and personal assistants, new research reveals even sophisticated models can be systematically manipulated.
+[VISUAL DIRECTION] Show AI chatbot interface with question marks appearing
+[VOICEOVER 0:20-0:40] The fundamental question: Can state-of-the-art dialogue models be forced to produce desired responses through carefully crafted inputs?
+[VISUAL DIRECTION] Zoom in on text input field with malicious sentence examples
+[VOICEOVER 0:40-1:00] Researchers discovered the Target Dialogue Generation Policy Network achieves 85% success rates in generating malicious content by treating response generation as a sequential decision-making process.
+[VISUAL DIRECTION] Show TDGPN architecture diagram with reinforcement learning components highlighted
+[VOICEOVER 1:00-1:30] Unlike traditional methods that struggle with discrete text generation, this approach uses REINFORCE-style estimators and Monte Carlo simulations to manipulate black-box models without accessing internal parameters.
+[VISUAL DIRECTION] Animated flow chart showing token generation process with reinforcement signals
+[VOICEOVER 1:30-1:50] This poses significant security risks for AI systems in healthcare and finance, where the ability to control outputs could lead to weaponized misinformation campaigns and harmful content at scale.
+[VISUAL DIRECTION] Show healthcare and finance application icons with warning symbols
+[VOICEOVER 1:50-2:00] Current AI safety measures may be insufficient against systematic manipulation attempts - raising urgent questions about AI security.
+[VISUAL DIRECTION] Final screen with text: "AI Security: The Next Frontier"

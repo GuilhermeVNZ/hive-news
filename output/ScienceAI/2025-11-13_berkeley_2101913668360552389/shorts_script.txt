@@ -1,0 +1,1 @@
+Take 1: AI designs proteins from scratch. Take 2: Uses folding models for generation. Take 3: Prompts control function and type. Take 4: Trains on huge sequence data. Take 5: Decodes structures efficiently. Take 6: Advances drug discovery fast.

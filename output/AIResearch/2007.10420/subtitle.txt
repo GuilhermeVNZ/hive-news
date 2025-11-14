@@ -1,0 +1,1 @@
+New memory-based policies help robots avoid repeated failures in bin picking, boosting efficiency by over 100% in some cases.

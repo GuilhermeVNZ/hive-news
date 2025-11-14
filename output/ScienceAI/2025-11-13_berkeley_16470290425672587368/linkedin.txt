@@ -1,0 +1,1 @@
+UC Berkeley researchers have developed breakthrough defenses against prompt injection attacks in large language models. The StruQ and SecAlign methods significantly enhance AI security while preserving model utility, addressing OWASP's top LLM threat. Essential reading for AI security professionals and enterprise AI deployment teams.

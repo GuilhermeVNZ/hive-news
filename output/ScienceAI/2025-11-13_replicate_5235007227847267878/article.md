@@ -1,0 +1,15 @@
+The AI image editing landscape has exploded in recent months, with nearly every major AI lab rushing to release their own image manipulation models. Starting with Black Forest Labs' FLUX.1 Kontext in May, the market has seen a rapid succession of competing offerings, each promising unique capabilities in the increasingly crowded space.
+
+In a head-to-head comparison conducted by Replicate, six prominent models were evaluated across five critical image editing tasks: object removal, perspective transformation, background editing, text manipulation, and style transfer. The tested models included FLUX.1 Kontext [pro], GPT-image-1 from OpenAI, Qwen Image Edit, Nano Banana, and two ByteDance models - SeedEdit and Seedream.
+
+Performance varied dramatically across different editing scenarios. For object removal tasks, most models successfully eliminated target objects while maintaining background consistency, though FLUX.1 Kontext [pro] struggled by leaving structural elements intact. Nano Banana removed entire objects but failed to preserve background coherence, highlighting the technical challenge of seamless object elimination.
+
+Background editing proved particularly revealing, with ByteDance's Seed models demonstrating superior performance in maintaining character consistency, natural lighting, and believable environmental placement. Nano Banana performed worst in this category, producing awkward character cutouts against generic backgrounds.
+
+Text editing within images emerged as one of the most technically demanding tasks, requiring models to understand typography, perspective, and lighting simultaneously. FLUX.1 Kontext [pro] and Nano Banana excelled here, naturally integrating new text while preserving original fonts and physical sign characteristics. Other models produced visibly artificial edits with inconsistent typography.
+
+Cost and speed analysis revealed significant operational differences. OpenAI's GPT-image-1 offered the lowest pricing at $0.01 per image but suffered from the longest generation times at approximately 40 seconds. FLUX.1 Kontext [dev], optimized by Pruna AI, delivered the fastest performance at 1.9 seconds per generation while remaining cost-competitive, though with some quality trade-offs.
+
+The comprehensive testing demonstrates that no single model dominates across all editing categories. Users must prioritize their specific needs - whether speed, cost, or particular editing capabilities - when selecting an AI image editing solution. The rapid evolution of these models suggests continued performance improvements as the technology matures and competition intensifies.
+
+For developers and content creators, these findings provide crucial guidance in navigating the complex AI image editing ecosystem. The ability to test models side-by-side through platforms like Replicate's playground offers practical value in determining optimal solutions for specific workflows and use cases.

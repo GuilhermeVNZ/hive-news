@@ -1,0 +1,14 @@
+[VOICEOVER 0:00-0:05] What if self-driving cars could brake as smoothly as human drivers?
+[VISUAL DIRECTION] [Animated text: 'SMOOTH BRAKING AI' with car silhouette approaching intersection]
+[VOICEOVER 0:05-0:20] Autonomous vehicles are advancing rapidly, but making them drive safely and naturally remains a major challenge.
+[VISUAL DIRECTION] [Show Figure 2 with zoom on braking distribution curves, highlight smooth trajectory]
+[VOICEOVER 0:20-0:40] Researchers asked: Can AI learn to brake and accelerate like humans in complex driving scenarios?
+[VISUAL DIRECTION] [Split screen: left shows jerky robotic braking, right shows smooth human-like braking]
+[VOICEOVER 0:40-1:00] They discovered reinforcement learning allows AI to master naturalistic driving. The system achieved significant improvements in obstacle avoidance over 200 training episodes.
+[VISUAL DIRECTION] [Animated text: '200% PERFORMANCE IMPROVEMENT' with upward arrow]
+[VOICEOVER 1:00-1:30] Using the DDPG algorithm, the AI learned from thousands of virtual driving scenarios. It receives penalties for collisions and rewards for safe, comfortable braking - adjusting speed gradually like human drivers.
+[VISUAL DIRECTION] [Show Figure 4 velocity trajectories, zoom on smooth acceleration/deceleration curves]
+[VOICEOVER 1:30-1:50] This means future autonomous vehicles could handle emergencies more reliably while providing smoother rides, potentially reducing accidents.
+[VISUAL DIRECTION] [Show car navigating intersection with other vehicles, smooth stop and go motion]
+[VOICEOVER 1:50-2:00] The result? AI that doesn't just avoid crashes - it drives like we do.
+[VISUAL DIRECTION] [Final text overlay: 'NATURAL DRIVING AI' with car icon smoothly stopping]

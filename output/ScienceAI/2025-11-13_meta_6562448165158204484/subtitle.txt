@@ -1,0 +1,1 @@
+Meta's latest AI breakthrough eliminates the need for labeled data, achieving state-of-the-art performance across multiple vision tasks while enabling applications from healthcare to environmental monitoring.

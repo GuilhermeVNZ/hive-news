@@ -1,0 +1,1 @@
+Why LLMs struggle with financial markets: Data scarcity, competitive dynamics & lack of linguistic structure create unique challenges. But multimodal learning & synthetic data generation offer promising paths forward for AI in quantitative trading. #AI #FinTech #MachineLearning

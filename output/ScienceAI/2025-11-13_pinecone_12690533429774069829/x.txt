@@ -1,0 +1,1 @@
+Aquant VP reveals why building your own vector database is a $200K/year mistake for AI teams. The hidden costs go far beyond engineering budgets. Partnering with @Pinecone let them focus on core AI value. #AI #VectorDatabase #Infrastructure
