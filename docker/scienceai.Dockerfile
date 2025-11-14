@@ -6,13 +6,16 @@ FROM node:${NODE_VERSION}-alpine AS deps
 WORKDIR /app
 
 COPY apps/frontend-next/ScienceAI/package*.json ./
-RUN npm ci
+# Use npm install because this project does not provide a package-lock.json yet.
+# When a lockfile is added we can switch back to the faster `npm ci`.
+RUN npm install
 
 
 FROM node:${NODE_VERSION}-alpine AS build
 WORKDIR /app
 
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
+    NEWS_BASE_DIR=/data
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/frontend-next/ScienceAI ./
