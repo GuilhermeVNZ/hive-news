@@ -30,7 +30,7 @@ export function selectArticleImage(
     'science': 'science',
     'coding': 'coding',
     'crypto': 'crypto',
-    'database': 'database',
+    'data': 'data',
     'ethics': 'ethics',
     'games': 'games',
     'hardware': 'hardware',

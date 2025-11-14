@@ -41,7 +41,7 @@ CRITICAL RULES:
 IMAGE CATEGORY SELECTION:
 
 Choose EXACTLY 3 categories (must be lowercase):
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 Order = most → second → third relevance.
 

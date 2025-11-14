@@ -2393,21 +2393,21 @@ Article:
 ### 🔹 IMAGE CATEGORIES (CRITICAL - READ CAREFULLY)
 
 **⚠️ MANDATORY: You MUST select exactly 3 categories from THIS EXACT LIST ONLY (NO EXCEPTIONS):**
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 **ABSOLUTE CONSTRAINTS (VIOLATING THESE WILL CAUSE ERRORS):**
 - ❌ DO NOT create new categories like "infrastructure", "partnership", "computing", "technology", etc.
 - ❌ DO NOT use synonyms, variations, or related words
 - ❌ DO NOT translate or pluralize (keep exactly as listed)
-- ✅ ONLY use these exact 13 lowercase strings from the list above
+- ✅ ONLY use these exact 14 lowercase strings from the list above
 - ✅ Order by priority: most relevant first, second choice, third choice
 - ✅ Must match the list EXACTLY (case-sensitive, spelling-sensitive)
 
 **VALIDATION: Before returning JSON, verify your image_categories array contains ONLY items from this list:**
-["ai", "coding", "crypto", "database", "ethics", "games", "hardware", "legal", "network", "robotics", "science", "security", "sound"]
+["ai", "coding", "crypto", "data", "ethics", "games", "hardware", "legal", "network", "quantum_computing", "robotics", "science", "security", "sound"]
 
 **EXAMPLES OF CORRECT USAGE:**
-- For cloud/infrastructure articles → ["database", "network", "hardware"]
+- For cloud/infrastructure articles → ["data", "network", "hardware"]
 - For AI partnerships → ["ai", "network", "hardware"]
 - For computing research → ["hardware", "ai", "science"]
 

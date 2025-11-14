@@ -51,7 +51,7 @@ WHAT TO AVOID:
 IMAGE CATEGORY SELECTION (REQUIRED):
 
 Choose exactly 3 categories from:
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 RULES:
 - lowercase only

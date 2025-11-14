@@ -41,7 +41,7 @@ Not allowed:
 IMAGE CATEGORY SELECTION (MANDATORY)
 Your JSON output must include *exactly three* categories selected from this list only:
 
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 They must be ordered by relevance:
 1. Second Most relevant  

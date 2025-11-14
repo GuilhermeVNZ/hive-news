@@ -50,7 +50,7 @@ WHAT TO AVOID:
 IMAGE CATEGORY SELECTION:
 
 Allowed categories:
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 Rules:
 - exactly 3 categories  

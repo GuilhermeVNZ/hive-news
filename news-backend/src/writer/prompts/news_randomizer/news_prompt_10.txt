@@ -33,7 +33,7 @@ You MUST follow:
 IMAGE CATEGORY RULES
 Pick exactly 3 from:
 
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 Order:
 1. Second Most relevant  

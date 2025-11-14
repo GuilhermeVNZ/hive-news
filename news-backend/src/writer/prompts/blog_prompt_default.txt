@@ -37,12 +37,12 @@ Article:
 ### 🔹 IMAGE CATEGORIES
 
 You must select exactly 3 categories from this exact list ONLY:
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 CRITICAL CONSTRAINTS:
 - ❌ DO NOT create new categories
 - ❌ DO NOT use synonyms or variations
-- ✅ ONLY use the 13 categories listed above
+- ✅ ONLY use the 14 categories listed above
 - ✅ Order by priority: most relevant first, second choice, third choice
 - ✅ Must be lowercase, matching the list exactly
 

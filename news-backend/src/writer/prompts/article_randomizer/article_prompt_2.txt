@@ -50,7 +50,7 @@ WHAT TO AVOID (AI writing patterns):
 IMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):
 
 You MUST select exactly 3 categories from THIS EXACT LIST ONLY:
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 CRITICAL CONSTRAINTS:
 - DO NOT create new categories (no biology, physics, medicine, etc.)
@@ -62,7 +62,7 @@ EXAMPLES:
 For neural networks → ["ai", "science", "network"]
 For robotics → ["robotics", "ai", "hardware"]
 For cybersecurity → ["security", "network", "crypto"]
-For data analysis → ["database", "ai", "coding"]
+For data analysis → ["data", "ai", "coding"]
 For chip research → ["hardware", "science", "ai"]
 
 Include this as "image_categories" array in your JSON response.

@@ -88,7 +88,7 @@ fn map_category_to_dir(category: &str) -> &'static str {
         "science" => "science",
         "coding" => "coding",
         "crypto" => "crypto",
-        "database" => "database",
+        "data" => "data",
         "ethics" => "ethics",
         "games" => "games",
         "hardware" => "hardware",
@@ -443,7 +443,24 @@ fn load_scienceai_articles() -> Result<Vec<Article>, String> {
                 .split_whitespace()
                 .filter(|w| !w.is_empty())
                 .count();
-            std::cmp::max(1, (words as f64 / 200.0).ceil() as u32)
+            // Calculate reading time based on 200 words per minute
+            // Then scale to fit between 2-4 minutes based on content length
+            let base_time = words as f64 / 200.0;
+            
+            // Scale the time to fit between 2-4 minutes
+            // Articles with 400 words or less: 2 minutes
+            // Articles with 800 words or more: 4 minutes
+            // Linear interpolation for values in between
+            if base_time <= 2.0 {
+                2
+            } else if base_time >= 4.0 {
+                4
+            } else {
+                // Linear interpolation: map base_time (2.0-4.0) to output (2-4)
+                let ratio = (base_time - 2.0) / 2.0; // 0.0 to 1.0
+                let scaled = 2.0 + (ratio * 2.0); // 2.0 to 4.0
+                scaled.ceil() as u32
+            }
         };
 
         let feed_image = select_feed_image(

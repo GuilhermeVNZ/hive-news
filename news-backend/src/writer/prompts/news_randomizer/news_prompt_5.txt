@@ -35,7 +35,7 @@ You may NOT:
 IMAGE CATEGORY REQUIREMENTS
 Choose 3 exactly from:
 
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 Order categories by relevance:
 1. Second Most relevant  

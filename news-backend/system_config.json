@@ -733,15 +733,28 @@
           "config": {
             "max_results": 5
           },
-          "enabled": true,
+          "enabled": false,
           "id": "html_airesearch_news",
-          "name": "AIResearch News",
+          "name": "AIResearch News (HTML - Disabled)",
           "selectors": {
             "article": "article, .post, .news-item, .post-item, .blog-item, .article-item",
             "content": ".content, .post-content, .article-content, article, main, .article-body",
             "link": "a[href*='airesearch.news'], a[href*='/article/'], a[href*='/news/']",
             "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
           }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.airesearch.news",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 10
+          },
+          "destinations": ["airesearch"],
+          "enabled": true,
+          "feed_url": "https://www.airesearch.news/rss",
+          "id": "rss_airesearch_news",
+          "name": "AIResearch News RSS"
         },
         {
           "api_key": null,

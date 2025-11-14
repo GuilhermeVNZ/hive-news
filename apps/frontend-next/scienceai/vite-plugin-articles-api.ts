@@ -34,6 +34,34 @@ interface Article {
 
 const ARTICLE_CONTENT_FILES = ["article.md", "article.txt"] as const;
 
+/**
+ * Calculate reading time based on content length
+ * Returns a value between 2-4 minutes based on word count
+ * @param content - Article content text
+ * @returns Reading time in minutes (2-4)
+ */
+function calculateReadTime(content: string): number {
+  const words = content.split(/\s+/).filter((w) => w.length > 0).length;
+  // Calculate reading time based on 200 words per minute
+  // Then scale to fit between 2-4 minutes based on content length
+  const baseTime = words / 200;
+  
+  // Scale the time to fit between 2-4 minutes
+  // Articles with 400 words or less: 2 minutes
+  // Articles with 800 words or more: 4 minutes
+  // Linear interpolation for values in between
+  if (baseTime <= 2.0) {
+    return 2;
+  } else if (baseTime >= 4.0) {
+    return 4;
+  } else {
+    // Linear interpolation: map baseTime (2.0-4.0) to output (2-4)
+    const ratio = (baseTime - 2.0) / 2.0; // 0.0 to 1.0
+    const scaled = 2.0 + ratio * 2.0; // 2.0 to 4.0
+    return Math.ceil(scaled);
+  }
+}
+
 // NEW APPROACH: Pool-based image selection for feed
 // Format: { [category]: { [usageType]: { availableImages: string[], allImages: string[] } } }
 interface ImagePool {
@@ -270,7 +298,7 @@ async function selectArticleImage(
       science: "science",
       coding: "coding",
       crypto: "crypto",
-      database: "database",
+      data: "data",
       ethics: "ethics",
       games: "games",
       hardware: "hardware",
@@ -1179,7 +1207,7 @@ async function readArticlesFromDir(
           date,
           author: sourceContent.trim() || "ScienceAI Team",
           category,
-          readTime: Math.ceil(articleContent.split(" ").length / 200),
+          readTime: calculateReadTime(articleContent),
           imageCategories,
           image: imageFeed || "/images/ai/ai_1.jpg",
           imageCarousel: imageCarousel || "/images/ai/ai_1.jpg",
@@ -2019,7 +2047,7 @@ export function articlesApiPlugin(): Plugin {
                 : new Date().toISOString().split("T")[0],
               author: sourceContent.trim() || "ScienceAI Team",
               category,
-              readTime: Math.ceil(articleContent.split(" ").length / 200),
+              readTime: calculateReadTime(articleContent),
               imageCategories,
               imageArticle: imageArticle || "/images/ai/ai_1.jpg", // Image for article detail (first category)
             };
