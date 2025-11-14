@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AuthorImage } from "@/components/AuthorImage";
 import {
   Clock,
   Calendar,
@@ -8,6 +9,7 @@ import {
   Share2,
   BookOpen,
   Download,
+  Linkedin,
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -56,12 +58,13 @@ const categoryLabels: Record<string, string> = {
   science: "Science",
   coding: "Coding",
   crypto: "Crypto",
-  database: "Database",
+  data: "Data",
   ethics: "Ethics",
   games: "Games",
   hardware: "Hardware",
   legal: "Legal",
   network: "Network",
+  quantum_computing: "Quantum Computing",
   security: "Security",
   sound: "Sound",
 };
@@ -291,6 +294,34 @@ export default async function ArticlePage({
                   </p>
                 </div>
               </Link>
+            </div>
+          </div>
+
+          {/* Author Info Section */}
+          <div className="mt-16 pt-12 border-t border-border">
+            <div className="bg-card rounded-xl p-6 shadow-card border border-border">
+              <h3 className="text-lg font-bold mb-4">About the Author</h3>
+              <div className="flex items-start space-x-4">
+                <AuthorImage />
+                <div className="flex-1">
+                  <h4 className="font-semibold">Guilherme A.</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                    Former dentist (MD) from Brazil, 41 years old, husband, and
+                    AI enthusiast. In 2020, he transitioned from a decade-long
+                    career in dentistry to pursue his passion for technology,
+                    entrepreneurship, and helping others grow.
+                  </p>
+                  <a
+                    href="https://www.linkedin.com/in/guilherme-vnz/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mt-3 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                  >
+                    <Linkedin className="h-4 w-4 mr-2" />
+                    Connect on LinkedIn
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </article>
