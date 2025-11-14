@@ -1000,6 +1000,7 @@ async fn main() -> anyhow::Result<()> {
                                     }
                                 }
                             } else {
+                                let status_code = response.status().as_u16();
                                 println!(
                                     "❌ HTTP Error: {} {}",
                                     response.status(),
@@ -1011,7 +1012,32 @@ async fn main() -> anyhow::Result<()> {
                                     let preview = status_text.chars().take(200).collect::<String>();
                                     println!("      💥 Response preview: {}", preview);
                                 }
-                                break 'retry_loop;
+                                
+                                // 404 = PDF não existe (removido, ID incorreto, etc.) - pular e continuar
+                                if status_code == 404 {
+                                    println!("      ⚠️  PDF not found (404), skipping this article and continuing...");
+                                    // Não incrementar downloaded_count, apenas continuar para próximo artigo
+                                    break 'retry_loop;
+                                }
+                                
+                                // Outros erros (403, 500, etc.) - tentar retry
+                                if retry_count < max_retries {
+                                    retry_count += 1;
+                                    let wait_time = 2u64.pow(retry_count) * 5;
+                                    println!(
+                                        "⚠️  HTTP {} error, waiting {}s before retry {}/{}...",
+                                        status_code, wait_time, retry_count, max_retries
+                                    );
+                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time))
+                                        .await;
+                                    continue 'retry_loop;
+                                } else {
+                                    println!(
+                                        "❌ HTTP {} error after {} retries, skipping article",
+                                        status_code, max_retries
+                                    );
+                                    break 'retry_loop;
+                                }
                             }
                         }
                         Err(e) => {
