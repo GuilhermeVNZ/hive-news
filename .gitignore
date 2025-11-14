@@ -1,0 +1,75 @@
+# Generated registry files
+articles_registry.json
+articles_registry.json.backup
+articles_registry*.backup
+articles_registry.backup.json
+
+# Generated output directories
+output/
+downloads/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+downloads/temp/
+
+# Cache files
+downloads/cache/
+*.cache
+
+# Build artifacts
+target/
+dist/
+build/
+.next/
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Rust
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv
+
+# Statistics and loop data (generated)
+loop_stats.json
+
+# Test files
+test_*.json
+test_*.log
+
+# Backup files
+*.backup
+*.bak
+
