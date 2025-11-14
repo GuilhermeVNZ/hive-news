@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Calendar, Clock, User, Share2, Twitter, Linkedin } from "lucide-react";
+import { Calendar, Clock, Share2, Twitter, Linkedin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
@@ -166,10 +166,6 @@ const ArticleDetail = () => {
             <article className="lg:col-span-2">
               {/* Meta Information */}
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8">
-                <span className="flex items-center">
-                  <User className="h-4 w-4 mr-2" />
-                  {article.author}
-                </span>
                 <span className="flex items-center">
                   <Calendar className="h-4 w-4 mr-2" />
                   {new Date(article.date).toLocaleDateString("en-US", {

@@ -33,26 +33,18 @@ const Footer = () => {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="#"
+                  href="/"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  Machine Learning
+                  Articles
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/education"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
-                  LLMs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
-                >
-                  Computer Vision
+                  Education
                 </Link>
               </li>
             </ul>
@@ -79,7 +71,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/rss"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
                   RSS Feed
@@ -93,15 +85,7 @@ const Footer = () => {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
-                >
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
+                  href="/terms"
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
                 >
                   Terms
