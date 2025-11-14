@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: docker/frontend.Dockerfile
       args:
-        APP_DIR: apps/frontend-next/ScienceAI
+        APP_DIR: apps/frontend-next/scienceai
     depends_on:
       - backend
     ports:

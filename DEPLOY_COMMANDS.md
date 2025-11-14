@@ -206,7 +206,7 @@ server {
     }
 
     location @scienceai {
-        root /home/usuario/News-main/apps/frontend-next/ScienceAI/dist;
+        root /home/usuario/News-main/apps/frontend-next/scienceai/dist;
         try_files /index.html =404;
     }
 
@@ -302,12 +302,12 @@ tail -20 /home/usuario/News-main/logs/backend.log
 ### 14. Configurar Frontend
 ```bash
 # Build do ScienceAI
-cd /home/usuario/News-main/apps/frontend-next/ScienceAI
+cd /home/usuario/News-main/apps/frontend-next/scienceai
 npm install
 npm run build
 
 # Copiar build para local correto (se necessário)
-# cp -r dist/* /home/usuario/News-main/apps/frontend-next/ScienceAI/dist/
+# cp -r dist/* /home/usuario/News-main/apps/frontend-next/scienceai/dist/
 ```
 
 ### 15. Primeiro Login e Configuração
@@ -447,6 +447,7 @@ Sistema operacional com:
 ---
 
 *Gerado automaticamente para deploy em produção*
+
 
 
 

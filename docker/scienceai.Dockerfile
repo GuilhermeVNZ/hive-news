@@ -5,7 +5,7 @@ ARG NODE_VERSION=20
 FROM node:${NODE_VERSION}-alpine AS deps
 WORKDIR /app
 
-COPY apps/frontend-next/ScienceAI/package.json ./package.json
+COPY apps/frontend-next/scienceai/package.json ./package.json
 # Use npm install because this project does not provide a package-lock.json yet.
 # When a lockfile is added we can switch back to the faster `npm ci`.
 RUN npm install
@@ -19,7 +19,7 @@ ENV NODE_ENV=production \
 
 # Bring in the prepared source (including node_modules) from the deps stage.
 COPY --from=deps /app/node_modules ./node_modules
-COPY apps/frontend-next/ScienceAI ./
+COPY apps/frontend-next/scienceai ./
 
 RUN npm run build
 

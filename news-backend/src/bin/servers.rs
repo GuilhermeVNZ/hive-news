@@ -255,7 +255,7 @@ fn start_airesearch() {
 }
 
 fn start_scienceai() {
-    let scienceai_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/ScienceAI");
+    let scienceai_dir = Path::new("G:/Hive-Hub/News-main/apps/frontend-next/scienceai");
 
     if !scienceai_dir.exists() {
         println!(
