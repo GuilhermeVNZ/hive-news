@@ -187,8 +187,8 @@
     },
     {
       "id": "html_airesearch_news",
-      "name": "AIResearch News",
-      "enabled": true,
+      "name": "AIResearch News (HTML - Disabled, use RSS instead)",
+      "enabled": false,
       "api_key": null,
       "collector_type": "html",
       "base_url": "https://www.airesearch.news/",
