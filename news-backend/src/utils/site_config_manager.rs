@@ -270,7 +270,7 @@ impl SiteConfigManager {
         eprintln!("🔍 [DEBUG] Loaded system_config.json: {} bytes", content.len());
         
         // Try to parse and log any errors with more detail
-        let config: SystemConfig = match serde_json::from_str(&content) {
+        let config: SystemConfig = match serde_json::from_str::<SystemConfig>(&content) {
             Ok(c) => {
                 eprintln!("🔍 [DEBUG] Successfully parsed system_config.json");
                 // Log collector count for airesearch site
