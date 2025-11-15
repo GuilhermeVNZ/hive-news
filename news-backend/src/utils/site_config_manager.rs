@@ -346,7 +346,33 @@ impl SiteConfigManager {
     /// Update configuration for a specific site
     pub fn update_site_config(&self, site_id: &str, site_config: SiteConfig) -> Result<()> {
         let mut config = self.load()?;
-        config.sites.insert(site_id.to_string(), site_config);
+        
+        // CRITICAL: Preserve existing collectors when updating site config
+        // This prevents the dashboard from removing collectors that exist in the file
+        // but may not be visible due to deserialization issues
+        if let Some(existing_site) = config.sites.get(site_id) {
+            // Merge collectors: keep existing collectors that are not in the new config
+            let mut merged_collectors = site_config.collectors.clone();
+            let new_collector_ids: std::collections::HashSet<String> = 
+                merged_collectors.iter().map(|c| c.id.clone()).collect();
+            
+            // Add existing collectors that are not in the new config
+            for existing_collector in &existing_site.collectors {
+                if !new_collector_ids.contains(&existing_collector.id) {
+                    eprintln!("⚠️  [PRESERVE] Keeping existing collector '{}' that was not in update", existing_collector.id);
+                    merged_collectors.push(existing_collector.clone());
+                }
+            }
+            
+            // Create merged site config
+            let mut merged_site = site_config;
+            merged_site.collectors = merged_collectors;
+            config.sites.insert(site_id.to_string(), merged_site);
+        } else {
+            // Site doesn't exist, just insert
+            config.sites.insert(site_id.to_string(), site_config);
+        }
+        
         self.save(&config)
     }
 
