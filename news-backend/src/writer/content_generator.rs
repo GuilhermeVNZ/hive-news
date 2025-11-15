@@ -486,8 +486,17 @@ impl WriterService {
                     compressed_social.compression_ratio * 100.0
                 );
 
+                // CRITICAL: Add JSON format instructions back after compression
+                // The compressor may have removed them, so we add them explicitly
+                let mut final_compressed_social = compressed_social.compressed_text.clone();
+                if !final_compressed_social.to_lowercase().contains("linkedin_post") 
+                    || !final_compressed_social.to_lowercase().contains("x_post")
+                    || !final_compressed_social.to_lowercase().contains("shorts_script") {
+                    final_compressed_social.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{\"linkedin_post\": \"...\", \"x_post\": \"...\", \"shorts_script\": \"...\"}\n⚠️ DO NOT include \"title\" or \"article_text\" fields. ONLY return linkedin_post, x_post, and shorts_script.");
+                }
+
                 (
-                    compressed_social.compressed_text,
+                    final_compressed_social,
                     compressed_social.original_tokens,
                     compressed_social.compressed_tokens,
                     compressed_social.compression_ratio,
@@ -504,10 +513,19 @@ impl WriterService {
         };
 
         // CRITICAL: DeepSeek API requires the word "json" in the prompt when using response_format: json_object
-        // Add it if not present (case-insensitive check)
+        // Also ensure the exact field names are present (compressor may have removed them)
         let mut final_social_prompt_with_json = final_social_prompt.clone();
-        if !final_social_prompt_with_json.to_lowercase().contains("json") {
-            final_social_prompt_with_json.push_str("\n\n⚠️ IMPORTANT: You MUST return your response as valid JSON format with ONLY the 3 required fields: linkedin_post, x_post, and shorts_script.");
+        let lower_prompt = final_social_prompt_with_json.to_lowercase();
+        
+        // Check if JSON instructions are present
+        let has_json = lower_prompt.contains("json");
+        let has_linkedin = lower_prompt.contains("linkedin_post");
+        let has_x_post = lower_prompt.contains("x_post");
+        let has_shorts = lower_prompt.contains("shorts_script");
+        
+        if !has_json || !has_linkedin || !has_x_post || !has_shorts {
+            // Add complete JSON format instructions
+            final_social_prompt_with_json.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{\"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\", \"x_post\": \"Your X/Twitter post text here (280 chars max)\", \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"}\n\n⚠️ FORBIDDEN FIELDS: Do NOT include \"title\", \"article_text\", \"subtitle\", or any other fields.\n⚠️ REQUIRED FIELDS: ONLY \"linkedin_post\", \"x_post\", and \"shorts_script\" are allowed.\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields.");
         }
 
         println!("  🤖 Generating social content...");
