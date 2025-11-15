@@ -1409,7 +1409,15 @@ async fn main() -> anyhow::Result<()> {
         let mut html_collectors = Vec::new();
 
         for c in &collectors {
+            // Skip disabled collectors
             if !c.enabled {
+                continue;
+            }
+            
+            // Safety check: Skip collectors with "Disabled" in the name (even if enabled flag is wrong)
+            // This prevents HTML collectors that should be disabled from running
+            if c.name.to_lowercase().contains("disabled") {
+                eprintln!("⚠️  Skipping collector '{}' (has 'Disabled' in name, even though enabled=true)", c.id);
                 continue;
             }
 
@@ -1529,6 +1537,8 @@ async fn main() -> anyhow::Result<()> {
                     .map(|(id, _, _, _)| id.clone())
                     .collect::<Vec<_>>()
             );
+        } else {
+            eprintln!("⚠️  WARNING: No RSS collectors found! Check system_config.json and sync.");
         }
         println!(
             "    - HTML:    {} collector(s) {}",

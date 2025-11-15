@@ -24,6 +24,11 @@ FROM mcr.microsoft.com/playwright:v1.56.1-jammy AS runtime
 ENV NODE_ENV=production \
     PORT=3005
 
+# Install poppler-utils for pdftotext (PDF text extraction)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Copy backend sources and install Node dependencies for Playwright + sharp
