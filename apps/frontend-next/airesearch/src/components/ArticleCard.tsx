@@ -43,11 +43,10 @@ const ArticleCard = ({
       .replace(/^-|-$/g, "");
 
   // Map category values to display labels
-  // Format: First letter uppercase, rest lowercase
+  // Format: First letter uppercase, rest lowercase (except for multi-word categories)
+  // Must match exactly the 14 categories: ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
   const categoryLabels: Record<string, string> = {
     ai: "AI",
-    robotics: "Robotics",
-    science: "Science",
     coding: "Coding",
     crypto: "Crypto",
     data: "Data",
@@ -57,6 +56,8 @@ const ArticleCard = ({
     legal: "Legal",
     network: "Network",
     quantum_computing: "Quantum computing",
+    robotics: "Robotics",
+    science: "Science",
     security: "Security",
     sound: "Sound",
   };
@@ -66,11 +67,11 @@ const ArticleCard = ({
 
   return (
     <Link href={`/article/${slug}`} prefetch={false}>
-      <Card className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift cursor-pointer h-full bg-gradient-to-br from-card via-card to-card/50">
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-primary/0 group-hover:to-primary/5 transition-all duration-300 pointer-events-none" />
+      <Card className="group relative overflow-hidden hover:border-primary/50 transition-performance duration-300 hover-lift cursor-pointer h-full bg-gradient-to-br from-card via-card to-card/50">
+        {/* Gradient overlay on hover - otimizado com opacity apenas */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-primary/0 group-hover:to-primary/5 transition-opacity duration-300 pointer-events-none" />
 
-        {/* Otimização: Imagem lazy load apenas se visível */}
+        {/* Otimização: Imagem lazy load para imagens abaixo da dobra */}
         {cardImage && (
           <div className="relative w-full h-48 overflow-hidden">
             <Image
@@ -79,8 +80,11 @@ const ArticleCard = ({
               fill
               className="object-cover transition-opacity duration-300"
               loading="lazy"
+              decoding="async"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               quality={82}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//9k="
             />
           </div>
         )}
@@ -110,7 +114,7 @@ const ArticleCard = ({
               </span>
             )}
           </div>
-          <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors duration-300">
+          <CardTitle className="line-clamp-2 group-hover:text-primary transition-performance duration-300">
             {title}
           </CardTitle>
           <CardDescription className="line-clamp-3 mt-2">
@@ -120,8 +124,8 @@ const ArticleCard = ({
 
         <CardContent className="relative">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <span className="group-hover:text-primary transition-colors">
+            <div className="flex items-center gap-4 text-xs text-foreground/70">
+              <span className="group-hover:text-primary transition-performance">
                 {author}
               </span>
               <span>
@@ -136,7 +140,7 @@ const ArticleCard = ({
                 <span>{readTime} min</span>
               </div>
             </div>
-            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
+            <ArrowRight className="h-4 w-4 text-foreground/70 group-hover:text-primary group-hover:translate-x-1 transition-performance duration-300" aria-hidden="true" />
           </div>
         </CardContent>
       </Card>

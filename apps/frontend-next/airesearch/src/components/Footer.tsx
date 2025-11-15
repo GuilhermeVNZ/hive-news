@@ -4,7 +4,7 @@ import icon from "@/assets/airesearch-icon.png";
 
 const Footer = () => {
   return (
-    <footer className="relative border-t border-border bg-gradient-to-br from-card via-background to-card mt-auto overflow-hidden">
+    <footer className="relative border-t border-border bg-gradient-to-br from-card via-background to-card mt-auto overflow-hidden section-below-fold">
       {/* Decorative gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-20" />
 
@@ -23,7 +23,7 @@ const Footer = () => {
                 AIResearch
               </h3>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-foreground/70 leading-relaxed">
               Scientific news about Artificial Intelligence
             </p>
           </div>
@@ -34,7 +34,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   Articles
                 </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/education"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   Education
                 </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   About
                 </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="mailto:contact@hive-hub.ai"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   Contact
                 </Link>
@@ -72,7 +72,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/rss"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   RSS Feed
                 </Link>
@@ -86,7 +86,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/terms"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 inline-block hover:translate-x-1"
+                  className="text-foreground/75 hover:text-primary transition-performance duration-200 inline-block hover:translate-x-1"
                 >
                   Terms
                 </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-10 pt-8">
           <div className="flex items-center justify-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/70">
               &copy; 2025 AIResearch. All rights reserved.
             </p>
           </div>

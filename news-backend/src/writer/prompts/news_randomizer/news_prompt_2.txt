@@ -5,6 +5,10 @@ Your task is to reshape the content of {paper_text} into a 900-1100 word news-st
 
 Never use phrases like “revolutionize”, “unlock”, “shed light on”, “game-changer”, “dive into”, “delve”.  
 Never invent citations, authors, studies, comparisons, or consequences not stated in the text.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

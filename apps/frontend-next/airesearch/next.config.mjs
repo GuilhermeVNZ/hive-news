@@ -72,6 +72,46 @@ const nextConfig = {
   
   // Otimização de bundle splitting - mais agressivo para reduzir tarefas longas
   webpack: (config, { isServer, dev }) => {
+    // Otimização de SVGs com SVGO (apenas se necessário)
+    if (!isServer) {
+      // Verificar se já existe regra para SVGs
+      const svgRuleIndex = config.module.rules.findIndex((rule) =>
+        rule.test?.toString().includes('svg')
+      );
+      
+      // Se não existe, adicionar regra para SVGs otimizados
+      if (svgRuleIndex === -1) {
+        config.module.rules.push({
+          test: /\.svg$/i,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgo: true,
+                svgoConfig: {
+                  plugins: [
+                    {
+                      name: 'preset-default',
+                      params: {
+                        overrides: {
+                          cleanupIds: true,
+                          removeHiddenElems: true,
+                          removeUselessDefs: true,
+                          removeEmptyAttrs: true,
+                          removeComments: true,
+                          removeMetadata: true,
+                        },
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        });
+      }
+    }
+    
     if (!isServer) {
       // Otimização de chunks - reduzir tamanho máximo de chunks
       config.optimization = {
@@ -201,6 +241,49 @@ const nextConfig = {
         destination: `${backendUrl}/api/:path*`,
       },
     ];
+  },
+  
+  // Otimização de SVGs com SVGO
+  webpack: (config, { isServer }) => {
+    // Adicionar loader para SVGs (já incluído por padrão no Next.js)
+    // Next.js já otimiza SVGs, mas podemos adicionar SVGO se necessário
+    if (!isServer) {
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgo: true,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        // Remover IDs e classes não usados
+                        cleanupIds: true,
+                        // Remover elementos não visíveis
+                        removeHiddenElems: true,
+                        // Remover atributos desnecessários
+                        removeUselessDefs: true,
+                        // Remover atributos vazios
+                        removeEmptyAttrs: true,
+                        // Remover comentários
+                        removeComments: true,
+                        // Remover metadados
+                        removeMetadata: true,
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      });
+    }
+    return config;
   },
 };
 

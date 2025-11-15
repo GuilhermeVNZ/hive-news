@@ -553,12 +553,12 @@ WHAT TO AVOID (AI writing patterns):
 IMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):
 
 You MUST select exactly 3 categories from THIS EXACT LIST ONLY:
-ai, coding, crypto, database, ethics, games, hardware, legal, network, robotics, science, security, sound
+ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
 CRITICAL CONSTRAINTS:
 - ❌ DO NOT create new categories (like "biology", "physics", "medical", etc.)
 - ❌ DO NOT use synonyms or variations
-- ✅ ONLY use the 13 categories listed above
+- ✅ ONLY use the 14 categories listed above
 - ✅ Order by priority: most relevant first, second choice, third choice
 - ✅ Must be lowercase, matching the list exactly
 
@@ -566,12 +566,13 @@ SELECTION GUIDELINES:
 - ai: Artificial intelligence, machine learning, AI research
 - coding: Programming, software development, code
 - crypto: Cryptocurrency, blockchain, digital currency
-- database: Data storage, data management, servers
+- data: Data storage, data management, servers, datasets, data analysis
 - ethics: Ethical considerations, societal impact
 - games: Gaming, game development, interactive tech
 - hardware: Physical computing, electronics, processors
 - legal: Legal issues, regulations, compliance
 - network: Networking, connectivity, communication
+- quantum_computing: Quantum computing, quantum algorithms, qubits, quantum mechanics
 - robotics: Robots, automation, mechanical AI
 - science: General scientific research, experiments
 - security: Cybersecurity, privacy, protection
@@ -581,7 +582,7 @@ EXAMPLES (USE THESE EXACT NAMES):
 ✓ For neural networks → ["ai", "science", "network"]
 ✓ For robotics → ["robotics", "ai", "hardware"]
 ✓ For cybersecurity → ["security", "network", "crypto"]
-✓ For data analysis → ["database", "ai", "coding"]
+✓ For data analysis → ["data", "ai", "coding"]
 ✓ For chip research → ["hardware", "science", "ai"]
 
 Include this as "image_categories" array in your JSON response.

@@ -2,19 +2,13 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
+import { useCategories } from "@/hooks/useCategories";
 
 // HeroCarousel NÃO pode ser lazy loaded - contém a imagem LCP!
 import { HeroCarousel } from "@/components/HeroCarousel";
 
 // Lazy load do Sidebar para melhorar performance inicial
 const LazySidebar = lazy(() => import("@/components/Sidebar").then(module => ({ default: module.Sidebar })));
-
-interface Category {
-  name: string;
-  slug: string;
-  icon: string;
-  latestDate?: string;
-}
 
 interface Article {
   id: string;
@@ -34,80 +28,13 @@ interface Article {
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [articles, setArticles] = useState<Article[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Buscar categorias dinâmicas (top 5 mais recentes)
-  useEffect(() => {
-    async function fetchCategories() {
-      try {
-        // Cache por 5 minutos para categorias
-        const cacheKey = 'scienceai-categories';
-        const cached = sessionStorage.getItem(cacheKey);
-        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
-        const now = Date.now();
-        const cacheDuration = 5 * 60 * 1000; // 5 minutos
-        
-        if (cached && (now - cacheTime) < cacheDuration) {
-          const data = JSON.parse(cached).data;
-          const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
-            if (!a.latestDate || !b.latestDate) return 0;
-            return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
-          });
-          
-          // CRÍTICO: Garantir que não há duplicatas por slug
-          const seenSlugs = new Set<string>();
-          const uniqueCategories = sortedCategories.filter((cat) => {
-            const slug = cat.slug.toLowerCase().trim();
-            if (seenSlugs.has(slug)) {
-              return false;
-            }
-            seenSlugs.add(slug);
-            return true;
-          });
-          
-          setCategories(uniqueCategories.slice(0, 5));
-          return;
-        }
-        
-        const response = await fetch('/api/categories', {
-          headers: {
-            'Cache-Control': 'max-age=300', // 5 minutos
-          },
-        });
-        const data = await response.json();
-        
-        // Salvar no cache
-        sessionStorage.setItem(cacheKey, JSON.stringify({
-          data,
-          timestamp: now,
-        }));
-        
-        // Ordenar da esquerda para direita (mais recente primeiro)
-        const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
-          if (!a.latestDate || !b.latestDate) return 0;
-          return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
-        });
-        
-        // CRÍTICO: Garantir que não há duplicatas por slug
-        const seenSlugs = new Set<string>();
-        const uniqueCategories = sortedCategories.filter((cat) => {
-          const slug = cat.slug.toLowerCase().trim();
-          if (seenSlugs.has(slug)) {
-            return false;
-          }
-          seenSlugs.add(slug);
-          return true;
-        });
-        
-        setCategories(uniqueCategories.slice(0, 5)); // Máximo 5 categorias
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-        setCategories([]);
-      }
-    }
-    fetchCategories();
-  }, []);
+  // Usar hook compartilhado para categorias (evita duplicação)
+  const { categories } = useCategories({
+    cacheKey: "scienceai-categories",
+    maxCategories: 5,
+  });
 
   // Buscar artigos
   useEffect(() => {
@@ -233,24 +160,15 @@ const Index = () => {
                   </div>
                 </section>
               ) : (
-                // CRÍTICO: Garantir que não há categorias duplicadas no feed
+                // Categorias já vêm deduplicadas do hook useCategories
                 (() => {
-                  const seenCategorySlugs = new Set<string>();
-                  return categories
-                    .filter((category) => {
-                      const slug = category.slug.toLowerCase().trim();
-                      if (seenCategorySlugs.has(slug)) {
-                        console.warn(
-                          `[Index] ⚠️ Duplicate category filtered out: ${slug}`,
-                        );
-                        return false;
-                      }
-                      seenCategorySlugs.add(slug);
-                      return true;
-                    })
+                  // Filtrar categorias que têm artigos e evitar null no map
+                  const categorySections = categories
                     .map((category) => {
                       const categoryArticles = getArticlesByCategory(category.slug);
-                      if (categoryArticles.length === 0) return null;
+                      if (categoryArticles.length === 0) {
+                        return null; // Será filtrado depois
+                      }
 
                       // Garantir máximo de 4 artigos por categoria na página principal
                       const displayedArticles = categoryArticles.slice(0, 4);
@@ -278,7 +196,16 @@ const Index = () => {
                           </div>
                         </section>
                       );
-                    });
+                    })
+                    .filter((section) => section !== null); // Remover nulls
+                  
+                  return categorySections.length > 0 ? (
+                    categorySections
+                  ) : (
+                    <p className="text-muted-foreground">
+                      No categories with articles available.
+                    </p>
+                  );
                 })()
               )}
             </div>

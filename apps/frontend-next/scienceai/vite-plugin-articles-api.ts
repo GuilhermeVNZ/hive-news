@@ -1308,9 +1308,27 @@ export function articlesApiPlugin(): Plugin {
             };
 
             res.setHeader("Content-Type", contentType[ext] || "image/jpeg");
-            // Cache headers para imagens - 1 ano para imagens estáticas
-            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-            res.setHeader("Expires", new Date(Date.now() + 31536000000).toUTCString());
+            // Cache headers para imagens - equivalente ao LiteSpeed Cache
+            // Cache forte: 1 ano para imagens estáticas (immutable)
+            res.setHeader(
+              "Cache-Control",
+              "public, max-age=31536000, s-maxage=31536000, immutable",
+            );
+            res.setHeader(
+              "Expires",
+              new Date(Date.now() + 31536000000).toUTCString(),
+            );
+            // ETag para validação condicional (equivalente ao LiteSpeed Cache)
+            const etag = `"${stats.mtime.getTime()}-${stats.size}"`;
+            res.setHeader("ETag", etag);
+            
+            // Verificar If-None-Match (validação condicional)
+            if (req.headers["if-none-match"] === etag) {
+              res.statusCode = 304;
+              res.end();
+              return;
+            }
+            
             const fileContent = await fs.readFile(filePath);
             res.end(fileContent);
           } else {
@@ -1525,13 +1543,11 @@ export function articlesApiPlugin(): Plugin {
 
             res.setHeader("Content-Type", "application/json");
             res.setHeader("Access-Control-Allow-Origin", "*");
-            // Disable caching to ensure fresh data
+            // Cache otimizado: 5 minutos para categorias (dados não mudam frequentemente)
             res.setHeader(
               "Cache-Control",
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
+              "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
             );
-            res.setHeader("Pragma", "no-cache");
-            res.setHeader("Expires", "0");
             res.end(JSON.stringify({ categories: topCategories }));
           } catch (error) {
             console.error("Error in categories API:", error);
@@ -1596,13 +1612,11 @@ export function articlesApiPlugin(): Plugin {
 
             res.setHeader("Content-Type", "application/json");
             res.setHeader("Access-Control-Allow-Origin", "*");
-            // Disable caching to ensure fresh data
+            // Cache otimizado: 60 segundos para artigos (dados mudam mais frequentemente)
             res.setHeader(
               "Cache-Control",
-              "no-store, no-cache, must-revalidate, proxy-revalidate",
+              "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
             );
-            res.setHeader("Pragma", "no-cache");
-            res.setHeader("Expires", "0");
             res.end(JSON.stringify({ articles }));
           } catch (error) {
             console.error("Error in articles API:", error);

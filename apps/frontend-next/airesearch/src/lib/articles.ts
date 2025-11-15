@@ -22,11 +22,12 @@ function buildArticlesUrl(categoryFilter?: string): URL {
 
 export async function getArticles(categoryFilter?: string): Promise<Article[]> {
   const url = buildArticlesUrl(categoryFilter);
-  // Cache por 60 segundos para reduzir latência (economia de ~650ms)
-  // Revalida em background para manter dados atualizados
+  // ISR (Incremental Static Regeneration) com revalidate otimizado
+  // Cache agressivo: 5 minutos (artigos não mudam frequentemente)
+  // Revalida em background para manter dados atualizados sem impactar TTFB
   const response = await fetch(url.toString(), {
     next: { 
-      revalidate: 60, // Revalida a cada 60 segundos
+      revalidate: 300, // Revalida a cada 5 minutos (ISR)
       tags: ['articles', categoryFilter || 'all'],
     },
   });
@@ -47,11 +48,12 @@ export async function findArticleBySlug(slug: string): Promise<Article | null> {
     getBackendUrl(),
   );
 
-  // Cache por 300 segundos (5 minutos) para artigos individuais
-  // Artigos individuais mudam menos frequentemente
+  // ISR (Incremental Static Regeneration) com cache agressivo
+  // Artigos individuais são estáticos e mudam raramente
+  // Revalida apenas em background, mantendo TTFB baixo
   const response = await fetch(url.toString(), {
     next: {
-      revalidate: 300,
+      revalidate: 3600, // Revalida a cada 1 hora (artigos individuais mudam menos)
       tags: ['article', slug],
     },
   });

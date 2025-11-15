@@ -26,21 +26,23 @@ interface Article {
   xPost?: string; // X/Twitter post content from x.txt
 }
 
+// Map category slugs to display names (14 allowed categories only)
+// Format: First letter uppercase, rest lowercase, with spaces
 const categoryLabels: Record<string, string> = {
-  quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
-  nvidia: 'NVIDIA',
-  openai: 'OpenAI',
-  google: 'Google',
-  anthropic: 'Anthropic',
-  deepseek: 'DeepSeek',
-  meta: 'Meta',
-  x: 'X',
-  mistral: 'Mistral',
-  alibaba: 'Alibaba',
-  microsoft: 'Microsoft',
-  hivehub: 'HiveHub',
-  unknown: 'Technology',
-  technology: 'Technology',
+  ai: 'AI',
+  coding: 'Coding',
+  crypto: 'Crypto',
+  data: 'Data',
+  ethics: 'Ethics',
+  games: 'Games',
+  hardware: 'Hardware',
+  legal: 'Legal',
+  network: 'Network',
+  quantum_computing: 'Quantum computing',
+  robotics: 'Robotics',
+  science: 'Science',
+  security: 'Security',
+  sound: 'Sound',
 };
 
 const ArticleDetail = () => {
@@ -115,7 +117,7 @@ const ArticleDetail = () => {
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
-            <p className="text-muted-foreground">Loading article...</p>
+            <p className="text-foreground/70">Loading article...</p>
           </div>
         </main>
         <Footer />
@@ -149,10 +151,8 @@ const ArticleDetail = () => {
       navigator.clipboard.writeText(url);
       toast.success("Link copied to clipboard!");
     } else if (platform === "twitter" || platform === "x") {
-      // X/Twitter: conteúdo do arquivo x.txt + link + preview da imagem
-      const shareText = article.xPost 
-        ? `${article.xPost}\n\n${url}`
-        : article.title;
+      // X/Twitter: conteúdo do arquivo x.txt (sem link no texto, o parâmetro url já adiciona automaticamente)
+      const shareText = article.xPost || article.title;
       window.open(
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`,
         "_blank"
@@ -192,11 +192,15 @@ const ArticleDetail = () => {
         <div className="relative h-[500px] w-full">
           <img
             src={article.imageArticle || article.image || selectArticleImage(article.imageCategories, article.id)}
+            // srcset pode ser habilitado quando houver CDN ou servidor de imagens que suporte redimensionamento
+            // srcSet={/* gerar dinamicamente quando suporte disponível */}
+            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             alt={article.title}
             width={1200}
             height={675}
             loading="eager"
             decoding="sync"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             style={{ aspectRatio: '1200/675' }}
             onError={(e) => {
@@ -207,7 +211,11 @@ const ArticleDetail = () => {
           <div className="absolute inset-0 flex items-end">
             <div className="container mx-auto px-4 pb-12">
               <span className="inline-block px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-4">
-                {categoryLabels[article.category] || article.category.replace(/_/g, ' ').toUpperCase()}
+                {categoryLabels[article.category] || article.category
+                  .replace(/_/g, ' ')
+                  .split(' ')
+                  .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                  .join(' ')}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 max-w-4xl">
                 {article.title}
@@ -222,9 +230,9 @@ const ArticleDetail = () => {
             {/* Main Content */}
             <article className="lg:col-span-2">
               {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-foreground/75 mb-8">
                 <span className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-2" />
+                  <Calendar className="h-4 w-4 mr-2" aria-hidden="true" />
                   {new Date(article.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
@@ -232,7 +240,7 @@ const ArticleDetail = () => {
                   })}
                 </span>
                 <span className="flex items-center">
-                  <Clock className="h-4 w-4 mr-2" />
+                  <Clock className="h-4 w-4 mr-2" aria-hidden="true" />
                   {article.readTime} min read
                 </span>
               </div>
@@ -342,7 +350,7 @@ const ArticleDetail = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-semibold">Guilherme A.</h4>
-                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                      <p className="text-sm text-foreground/75 mt-1 leading-relaxed">
                         Former dentist (MD) from Brazil, 41 years old, husband, and AI enthusiast. In 2020, he transitioned from a decade-long career in dentistry to pursue his passion for technology, entrepreneurship, and helping others grow.
                       </p>
                       <a

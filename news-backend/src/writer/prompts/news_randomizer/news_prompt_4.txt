@@ -5,6 +5,10 @@ DO NOT:
 - Invent numbers, results, context, or implications.
 - Use banned language (“revolutionize”, “delve”, “shed light”, “game-changer”, etc.).
 - Refer to unrelated work.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

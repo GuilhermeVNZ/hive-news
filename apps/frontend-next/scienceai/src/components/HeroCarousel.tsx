@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { selectArticleImage } from "@/lib/imageUtils";
+import { ImagePreload } from "@/components/ImagePreload";
 
 interface Article {
   id: string;
@@ -33,30 +34,36 @@ interface HeroCarouselProps {
   categories: Category[]; // Top 5 categories from trending topics
 }
 
+// Map category slugs to display names (14 allowed categories only)
+// Format: First letter uppercase, rest lowercase, with spaces
 const categoryLabels: Record<string, string> = {
-  nvidia: 'NVIDIA',
-  openai: 'OpenAI',
-  google: 'Google',
-  anthropic: 'Anthropic',
-  deepseek: 'DeepSeek',
-  meta: 'Meta',
-  x: 'X',
-  mistral: 'Mistral',
-  alibaba: 'Alibaba',
-  microsoft: 'Microsoft',
-  hivehub: 'HiveHub',
-  unknown: 'Technology',
-  technology: 'Technology',
-  quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
+  ai: 'AI',
+  coding: 'Coding',
+  crypto: 'Crypto',
+  data: 'Data',
+  ethics: 'Ethics',
+  games: 'Games',
+  hardware: 'Hardware',
+  legal: 'Legal',
+  network: 'Network',
+  quantum_computing: 'Quantum computing',
+  robotics: 'Robotics',
+  science: 'Science',
+  security: 'Security',
+  sound: 'Sound',
 };
 
-// Format category name: replace underscores with spaces and uppercase
+// Format category name: use label if available, otherwise format with spaces
 const getCategoryName = (category: string): string => {
   if (categoryLabels[category]) {
     return categoryLabels[category];
   }
-  // Replace underscores with spaces and uppercase
-  return category.replace(/_/g, ' ').toUpperCase();
+  // Fallback: replace underscores with spaces and capitalize first letter
+  return category
+    .replace(/_/g, ' ')
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 };
 
 export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) => {
@@ -144,13 +151,33 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
   // Se não tiver nenhuma notícia, não renderizar carrossel
   if (finalCarouselArticles.length === 0) return null;
 
+  // Primeira imagem é a LCP - fazer preload
+  const firstArticle = finalCarouselArticles[0];
+  const firstImageUrl = firstArticle 
+    ? (firstArticle.imageCarousel || firstArticle.image || selectArticleImage(firstArticle.imageCategories, firstArticle.id))
+    : null;
+
   return (
     <section className="relative h-[600px] w-full overflow-hidden rounded-xl">
+      {/* Preload da imagem LCP (primeira imagem do carousel) */}
+      {firstImageUrl && <ImagePreload imageUrl={firstImageUrl} />}
+      
       {finalCarouselArticles.map((article, index) => {
         const imageUrl = article.imageCarousel || article.image || selectArticleImage(article.imageCategories, article.id);
         const isVisible = index === currentSlide;
         // CRÍTICO: Primeira imagem (LCP) sempre deve carregar imediatamente, outras apenas se visíveis ou já carregadas
         const shouldLoad = index === 0 || loadedImages.has(index) || isVisible;
+        
+        // Criar srcset para diferentes tamanhos (apenas para primeira imagem/LCP)
+        // Nota: srcset requer que o servidor suporte redimensionamento de imagens
+        // Por enquanto, manter apenas src se não houver suporte a redimensionamento
+        const baseImageUrl = imageUrl.startsWith('http') || imageUrl.startsWith('/') 
+          ? imageUrl 
+          : `/${imageUrl}`;
+        // srcset pode ser adicionado quando houver CDN ou servidor de imagens que suporte redimensionamento
+        const srcset = index === 0 && baseImageUrl.includes('?')
+          ? `${baseImageUrl}&w=640 640w, ${baseImageUrl}&w=750 750w, ${baseImageUrl}&w=828 828w, ${baseImageUrl}&w=1080 1080w, ${baseImageUrl}&w=1200 1200w, ${baseImageUrl}&w=1920 1920w`
+          : undefined;
         
         return (
           <div
@@ -162,6 +189,8 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
             {shouldLoad ? (
               <img
                 src={imageUrl}
+                srcSet={srcset}
+                sizes={index === 0 ? "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1920px" : undefined}
                 alt={article.title}
                 width={1920}
                 height={600}

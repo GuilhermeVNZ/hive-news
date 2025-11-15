@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AuthorImage } from "@/components/AuthorImage";
 import { ShareButton } from "@/components/ShareButton";
+import { ImagePreload } from "@/components/ImagePreload";
 import {
   Clock,
   Calendar,
@@ -64,10 +65,15 @@ const categoryLabels: Record<string, string> = {
   hardware: "Hardware",
   legal: "Legal",
   network: "Network",
-  quantum_computing: "Quantum Computing",
+  quantum_computing: "Quantum computing",
   security: "Security",
   sound: "Sound",
 };
+
+// ISR (Incremental Static Regeneration) para páginas de artigos
+// Páginas estáticas geradas em build, revalidadas em background a cada 1 hora
+// Mantém TTFB baixo e visual idêntico
+export const revalidate = 3600; // Revalida a cada 1 hora (ISR)
 
 // Generate metadata for SEO
 export async function generateMetadata({
@@ -82,6 +88,16 @@ export async function generateMetadata({
     const article = await findArticleBySlug(decodedSlug);
 
     if (article) {
+      // Construir URL completa da imagem para Open Graph
+      const articleImage =
+        article.imagePath && article.imagePath.length > 0
+          ? article.imagePath
+          : "/images/ai/ai_1.jpg";
+      
+      const imageUrl = articleImage.startsWith('http')
+        ? articleImage
+        : `https://airesearch.news${articleImage}`;
+
       return {
         title: article.title,
         description: article.excerpt,
@@ -89,16 +105,25 @@ export async function generateMetadata({
         authors: [{ name: article.author }],
         openGraph: {
           title: article.title,
-          description: article.excerpt,
+          description: article.excerpt || article.linkedinPost || article.title,
           type: "article",
           publishedTime: article.publishedAt,
           authors: [article.author],
           tags: article.imageCategories,
+          images: [
+            {
+              url: imageUrl,
+              width: 1200,
+              height: 630,
+              alt: article.title,
+            },
+          ],
         },
         twitter: {
           card: "summary_large_image",
           title: article.title,
           description: article.excerpt,
+          images: [imageUrl],
         },
       } satisfies Metadata;
     }
@@ -134,6 +159,8 @@ export default async function ArticlePage({
 
   return (
     <div className="flex min-h-screen flex-col">
+      {/* Preload da imagem principal (LCP) para melhorar performance */}
+      <ImagePreload imageUrl={articleImage} />
       <Header />
       <main className="flex-1">
         {/* Article Hero Section */}
@@ -174,19 +201,19 @@ export default async function ArticlePage({
 
             {/* Excerpt */}
             {article.excerpt && (
-              <p className="text-2xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-2xl text-foreground/80 mb-8 leading-relaxed">
                 {article.excerpt}
               </p>
             )}
 
             {/* Meta Information */}
             <div className="flex flex-wrap items-center gap-6 pb-8 border-b border-border">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <User className="h-4 w-4" />
+              <div className="flex items-center gap-2 text-foreground/75">
+                <User className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm font-medium">{article.author}</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Calendar className="h-4 w-4" />
+              <div className="flex items-center gap-2 text-foreground/75">
+                <Calendar className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm">
                   {new Date(article.publishedAt).toLocaleDateString("en-US", {
                     day: "2-digit",
@@ -195,8 +222,8 @@ export default async function ArticlePage({
                   })}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Clock className="h-4 w-4" />
+              <div className="flex items-center gap-2 text-foreground/75">
+                <Clock className="h-4 w-4" aria-hidden="true" />
                 <span className="text-sm">{article.readTime} min read</span>
               </div>
               <div className="flex-1" />
@@ -214,7 +241,7 @@ export default async function ArticlePage({
 
         {/* Article Content */}
         <article className="container mx-auto px-4 py-12 max-w-4xl">
-          {/* Article Image */}
+          {/* Article Image - LCP otimizado com fetchpriority="high" */}
           {articleImage && (
             <div className="mb-12">
               <div className="aspect-video relative rounded-2xl overflow-hidden border border-border">
@@ -224,6 +251,7 @@ export default async function ArticlePage({
                   fill
                   className="object-cover"
                   priority
+                  fetchPriority="high"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   quality={82}
                   placeholder="blur"

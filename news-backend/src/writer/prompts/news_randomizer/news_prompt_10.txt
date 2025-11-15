@@ -4,6 +4,10 @@ Write a 900-1100 word Science AI article that uses a historical-contrast framing
 You must rely exclusively on {paper_text}. No imagined history or external references are permitted.
 
 Forbidden expressions: “revolutionize”, “delve”, “shed light”, “game-changer”, “unlock”.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

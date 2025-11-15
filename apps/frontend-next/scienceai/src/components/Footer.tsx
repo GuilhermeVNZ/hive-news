@@ -1,84 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-interface Category {
-  name: string;
-  slug: string;
-  icon: string;
-  latestDate?: string;
-}
+import { useCategories } from "@/hooks/useCategories";
 
 export const Footer = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  // Buscar categorias dinâmicas (top 5 mais recentes) com cache para evitar CLS
-  useEffect(() => {
-    async function fetchCategories() {
-      try {
-        // Cache por 5 minutos para categorias no Footer
-        const cacheKey = 'scienceai-footer-categories';
-        const cached = sessionStorage.getItem(cacheKey);
-        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
-        const now = Date.now();
-        const cacheDuration = 5 * 60 * 1000; // 5 minutos
-        
-        if (cached && (now - cacheTime) < cacheDuration) {
-          const data = JSON.parse(cached).data;
-          const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
-            if (!a.latestDate || !b.latestDate) return 0;
-            return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
-          });
-          
-          // CRÍTICO: Garantir que não há duplicatas por slug
-          const seenSlugs = new Set<string>();
-          const uniqueCategories = sortedCategories.filter((cat) => {
-            const slug = cat.slug.toLowerCase().trim();
-            if (seenSlugs.has(slug)) {
-              return false;
-            }
-            seenSlugs.add(slug);
-            return true;
-          });
-          
-          setCategories(uniqueCategories.slice(0, 5));
-          return;
-        }
-        
-        const response = await fetch('/api/categories', {
-          headers: { 'Cache-Control': 'max-age=300' },
-        });
-        const data = await response.json();
-        
-        // Salvar no cache
-        sessionStorage.setItem(cacheKey, JSON.stringify({
-          data,
-          timestamp: now,
-        }));
-        
-        const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
-          if (!a.latestDate || !b.latestDate) return 0;
-          return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
-        });
-        
-        // CRÍTICO: Garantir que não há duplicatas por slug
-        const seenSlugs = new Set<string>();
-        const uniqueCategories = sortedCategories.filter((cat) => {
-          const slug = cat.slug.toLowerCase().trim();
-          if (seenSlugs.has(slug)) {
-            return false;
-          }
-          seenSlugs.add(slug);
-          return true;
-        });
-        
-        setCategories(uniqueCategories.slice(0, 5)); // Máximo 5 categorias
-      } catch (error) {
-        console.error('Error fetching categories:', error);
-        setCategories([]);
-      }
-    }
-    fetchCategories();
-  }, []);
+  // Usar hook compartilhado para categorias (evita duplicação)
+  const { categories } = useCategories({
+    cacheKey: "scienceai-footer-categories",
+    maxCategories: 5,
+  });
 
   return (
     <footer className="bg-muted text-foreground mt-20" style={{ minHeight: '300px' }}>
@@ -90,7 +18,7 @@ export const Footer = () => {
               <span className="text-foreground">Science</span>
               <span className="text-primary">AI</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-foreground/70 mb-4">
               Your trusted source for the latest breakthroughs in artificial
               intelligence, robotics, medicine, space exploration, and data science.
             </p>
@@ -103,7 +31,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-muted-foreground hover:text-primary transition-smooth"
+                  className="text-foreground/75 hover:text-primary transition-smooth"
                 >
                   Home
                 </Link>
@@ -111,7 +39,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-muted-foreground hover:text-primary transition-smooth"
+                  className="text-foreground/75 hover:text-primary transition-smooth"
                 >
                   About Us
                 </Link>
@@ -119,7 +47,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="mailto:contact@hive-hub.ai"
-                  className="text-muted-foreground hover:text-primary transition-smooth"
+                  className="text-foreground/75 hover:text-primary transition-smooth"
                 >
                   Contact
                 </a>
@@ -127,7 +55,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-muted-foreground hover:text-primary transition-smooth"
+                  className="text-foreground/75 hover:text-primary transition-smooth"
                 >
                   Privacy Policy
                 </Link>
@@ -144,20 +72,20 @@ export const Footer = () => {
                   <li key={category.slug}>
                     <Link
                       to={`/category/${category.slug}`}
-                      className="text-muted-foreground hover:text-primary transition-smooth"
+                      className="text-foreground/75 hover:text-primary transition-smooth"
                     >
                       {category.name}
                     </Link>
                   </li>
                 ))
               ) : (
-                <li className="text-muted-foreground">Loading categories...</li>
+                <li className="text-foreground/70">Loading categories...</li>
               )}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-foreground/70">
           <p>&copy; 2025 ScienceAI.news. All rights reserved.</p>
         </div>
       </div>

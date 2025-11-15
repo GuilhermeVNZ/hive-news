@@ -40,16 +40,16 @@ const Header = () => {
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
           <Link
             href="/"
-            className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+            className="px-4 py-2 text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-accent rounded-lg transition-performance duration-200"
           >
             Articles
           </Link>
           <Link
             href="/education"
-            className="px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+            className="px-4 py-2 text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-accent rounded-lg transition-performance duration-200"
           >
             Education
           </Link>
@@ -59,11 +59,16 @@ const Header = () => {
           <ThemeToggle size="compact" />
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <button className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors hover:bg-accent rounded-lg">
-                <Menu className="h-5 w-5" />
+              <button
+                className="md:hidden p-2 text-foreground hover:text-primary transition-colors hover:bg-accent rounded-lg"
+                aria-label="Open mobile navigation menu"
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu"
+              >
+                <Menu className="h-5 w-5" aria-hidden="true" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]" id="mobile-menu">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-3">
                   <Image
@@ -76,18 +81,18 @@ const Header = () => {
                   <span>AIResearch</span>
                 </SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-8">
+              <nav className="flex flex-col gap-4 mt-8" aria-label="Mobile navigation">
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+                  className="px-4 py-3 text-base font-semibold text-foreground/80 hover:text-foreground hover:bg-accent rounded-lg transition-performance duration-200"
                 >
                   Articles
                 </Link>
                 <Link
                   href="/education"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-base font-semibold text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200"
+                  className="px-4 py-3 text-base font-semibold text-foreground/80 hover:text-foreground hover:bg-accent rounded-lg transition-performance duration-200"
                 >
                   Education
                 </Link>

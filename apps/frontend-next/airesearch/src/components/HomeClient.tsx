@@ -8,10 +8,10 @@ import Hero from "@/components/Hero";
 import ArticleGrid from "@/components/ArticleGrid";
 import type { Article } from "@/types/article";
 
-// Lazy load do Footer para melhorar performance inicial
-// O Footer não é crítico para o FCP
+// Islands Hydration: Footer carrega sem SSR (não é crítico para SEO)
+// Reduz JavaScript enviado para blocos estáticos abaixo da dobra
 const Footer = dynamic(() => import("@/components/Footer"), {
-  ssr: true, // Manter SSR para SEO
+  ssr: false, // Não renderizar no servidor - apenas client-side
 });
 
 interface HomeClientProps {
@@ -31,7 +31,8 @@ export default function HomeClient({
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [committedQuery, setCommittedQuery] = useState<string>(initialQuery);
   
-  // Prefetch de rotas prováveis quando o mouse está sobre links
+  // Prefetch inteligente de rotas quando o mouse está sobre cards de artigos
+  // Prefetch HTML/JSON da rota antes do clique para navegação quase instantânea
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -39,11 +40,15 @@ export default function HomeClient({
       if (link && link.href) {
         const url = new URL(link.href);
         if (url.pathname.startsWith('/article/')) {
+          // Prefetch da página completa (HTML + dados)
           router.prefetch(url.pathname);
+          // Também prefetch dos dados da API se necessário
+          // O Next.js já faz isso automaticamente com prefetch
         }
       }
     };
     
+    // Usar mouseenter para prefetch proativo
     document.addEventListener('mouseenter', handleMouseEnter, true);
     return () => document.removeEventListener('mouseenter', handleMouseEnter, true);
   }, [router]);

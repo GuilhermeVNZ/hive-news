@@ -29,34 +29,43 @@ export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps
   // Otherwise fallback to client-side selection
   const imageUrl = article.image || selectArticleImage(article.imageCategories, article.id);
   
-  // Map category slugs to display names (todas as possibilidades)
+  // Map category slugs to display names (14 allowed categories only)
+  // Format: First letter uppercase, rest lowercase, with spaces
   const categoryLabels: Record<string, string> = {
-    nvidia: 'NVIDIA',
-    openai: 'OpenAI',
-    google: 'Google',
-    anthropic: 'Anthropic',
-    deepseek: 'DeepSeek',
-    meta: 'Meta',
-    x: 'X',
-    mistral: 'Mistral',
-    alibaba: 'Alibaba',
-    microsoft: 'Microsoft',
-    hivehub: 'HiveHub',
-    unknown: 'Technology',
-    technology: 'Technology',
-    quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
+    ai: 'AI',
+    coding: 'Coding',
+    crypto: 'Crypto',
+    data: 'Data',
+    ethics: 'Ethics',
+    games: 'Games',
+    hardware: 'Hardware',
+    legal: 'Legal',
+    network: 'Network',
+    quantum_computing: 'Quantum computing',
+    robotics: 'Robotics',
+    science: 'Science',
+    security: 'Security',
+    sound: 'Sound',
   };
 
-  // Format category name: replace underscores with spaces and uppercase
+  // Format category name: use label if available, otherwise format with spaces
   const getCategoryName = (category: string): string => {
     if (categoryLabels[category]) {
       return categoryLabels[category];
     }
-    // Replace underscores with spaces and uppercase
-    return category.replace(/_/g, ' ').toUpperCase();
+    // Fallback: replace underscores with spaces and capitalize first letter
+    return category
+      .replace(/_/g, ' ')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
   };
 
-  const categoryName = getCategoryName(article.category);
+  // Use first category from imageCategories if available, otherwise fallback to category
+  const primaryCategory = article.imageCategories && article.imageCategories.length > 0
+    ? article.imageCategories[0]
+    : article.category;
+  const categoryName = getCategoryName(primaryCategory);
 
   return (
     <Link
@@ -66,11 +75,14 @@ export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps
       <div className="relative h-48 overflow-hidden">
         <img
           src={imageUrl}
+          srcSet={priority ? `${imageUrl}?w=400 400w, ${imageUrl}?w=640 640w, ${imageUrl}?w=800 800w` : undefined}
+          sizes={priority ? "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" : undefined}
           alt={article.title}
           width={400}
           height={192}
           loading={priority ? "eager" : "lazy"}
           decoding={priority ? "sync" : "async"}
+          fetchPriority={priority ? "high" : "auto"}
           className="w-full h-full object-cover transition-smooth group-hover:scale-105"
           style={{ aspectRatio: '400/192' }}
           onError={(e) => {
@@ -89,21 +101,21 @@ export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps
         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-smooth line-clamp-2">
           {article.title}
         </h3>
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3 text-justify">
+        <p className="text-foreground/80 text-sm mb-4 line-clamp-3 text-justify">
           {article.excerpt}
         </p>
 
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs text-foreground/70">
           <div className="flex items-center space-x-4">
             <span className="flex items-center">
-              <Calendar className="h-4 w-4 mr-1" />
+              <Calendar className="h-4 w-4 mr-1" aria-hidden="true" />
               {new Date(article.date).toLocaleDateString("en-US", {
                 month: "short",
                 day: "numeric",
               })}
             </span>
             <span className="flex items-center">
-              <Clock className="h-4 w-4 mr-1" />
+              <Clock className="h-4 w-4 mr-1" aria-hidden="true" />
               {article.readTime} min read
             </span>
           </div>

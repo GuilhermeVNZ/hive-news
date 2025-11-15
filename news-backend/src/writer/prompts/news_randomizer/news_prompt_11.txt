@@ -2,6 +2,10 @@ CRITICAL INSTRUCTIONS
 Produce a 900-1100 word article for Science AI that opens by explaining the significance of the study, then works backward through evidence, methodology, and conclusions. Only use {paper_text} as your knowledge base.
 
 Avoid all prohibited language: “revolutionize”, “delve”, “shed light”, “unlock”, “game-changing”, “dive into”.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

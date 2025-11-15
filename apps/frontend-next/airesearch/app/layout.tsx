@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { DeferredScripts } from "@/components/DeferredScripts";
 
 // Otimização de fontes: preload e display swap para melhor FCP
 const inter = Inter({ 
@@ -90,6 +91,10 @@ export default function RootLayout({
         {/* Preload de recursos críticos */}
         <link rel="preload" href="/favicon.png" as="image" type="image/png" />
         
+        {/* DNS Prefetch e Preconnect para domínios externos */}
+        <link rel="dns-prefetch" href="https://arxiv.org" />
+        <link rel="preconnect" href="https://arxiv.org" crossOrigin="anonymous" />
+        
         {/* Prefetch de rotas prováveis */}
         
         {/* Structured Data para SEO */}
@@ -111,7 +116,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} ${inter.variable}`}>{children}</body>
+      <body className={`${inter.className} ${inter.variable}`}>
+        {children}
+        <DeferredScripts />
+      </body>
     </html>
   );
 }

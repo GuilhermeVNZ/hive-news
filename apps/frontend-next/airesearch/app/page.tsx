@@ -5,6 +5,11 @@ interface HomePageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
+// ISR (Incremental Static Regeneration) com revalidate otimizado
+// Página estática gerada em build, revalidada em background a cada 5 minutos
+// Mantém TTFB baixo e visual idêntico
+export const revalidate = 300; // Revalida a cada 5 minutos (ISR)
+
 export default async function Home({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
   const initialCategory = Array.isArray(resolvedSearchParams.category)
@@ -14,6 +19,8 @@ export default async function Home({ searchParams }: HomePageProps) {
     ? resolvedSearchParams.q[0] ?? ""
     : resolvedSearchParams.q ?? "";
 
+  // Dados são cacheados e revalidados em background (ISR)
+  // Não bloqueia renderização, mantém TTFB baixo
   const articles = await getArticles();
 
   return (

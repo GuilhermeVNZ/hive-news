@@ -14,6 +14,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
+    <!-- Preconnect para APIs externas comuns -->
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <!-- Preload de recursos críticos - apenas favicon, logo será carregado depois -->
     <link rel="preload" href="/favicon.png" as="image" type="image/png" />
 
@@ -30,10 +34,20 @@
     <meta name="twitter:image" content="/scienceai-logo.png" />
     
     <!-- Otimização de fontes: display swap para evitar FOIT - async load para não bloquear renderização -->
+    <!-- Font-display: swap já está no link do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     </noscript>
+    
+    <!-- Critical CSS inline - apenas estilos essenciais acima da dobra -->
+    <style>
+      /* Critical CSS: Layout inicial */
+      body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+      #root { min-height: 100vh; }
+      /* Prevenir FOUC */
+      html { visibility: visible; opacity: 1; }
+    </style>
   </head>
 
   <body>

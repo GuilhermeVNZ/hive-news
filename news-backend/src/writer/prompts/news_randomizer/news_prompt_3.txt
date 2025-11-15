@@ -2,6 +2,10 @@ CRITICAL INSTRUCTIONS (READ FULLY)
 Your role is to create a 900-1100 word news-oriented interpretation of {paper_text} for *Science AI*. Treat the paper as the only authoritative source. No speculation, invented context, external experts, or extrapolation are allowed. Maintain discipline in reporting: every statement must tie directly to what the authors wrote.
 
 Never use banned phrases such as “delve”, “revolutionize”, “dive into”, “shed light on”, “game-changer”, “unlock”.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

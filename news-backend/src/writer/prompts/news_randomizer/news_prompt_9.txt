@@ -2,6 +2,10 @@ CRITICAL INSTRUCTIONS
 Produce a 900-1100 word Science AI article based entirely on {paper_text}. Begin the narrative with a puzzle, contradiction, or knowledge gap stated in the paper. You are not allowed to invent or imply any puzzle not explicitly present in the text.
 
 Banned language: “revolutionize”, “delve”, “gain insight”, “shed light”, “unlock”, “game-changing”.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

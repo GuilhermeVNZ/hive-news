@@ -6,9 +6,11 @@ import ArticleCard from "./ArticleCard";
 import { Button } from "@/components/ui/button";
 import type { Article } from "@/types/article";
 
-// Lazy load do ArticleCard para melhorar performance inicial
-// O ArticleCard será carregado apenas quando necessário
+// Islands Hydration: ArticleCard abaixo da dobra carrega sem SSR
+// Reduz JavaScript enviado para blocos estáticos
+// Visual idêntico, mas com menos JS para hidratação
 const LazyArticleCard = dynamic(() => import("./ArticleCard"), {
+  ssr: false, // Não renderizar no servidor - apenas client-side
   loading: () => <div className="h-64 bg-muted animate-pulse rounded-lg" />,
 });
 
@@ -102,7 +104,7 @@ const ArticleGrid = ({
   const hasMore = filteredArticles.length > displayedCount;
 
   return (
-    <section className="container mx-auto px-4 py-16" id="articles">
+    <section className="container mx-auto px-4 py-16 section-below-fold" id="articles">
       <div className="mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
           {selectedCategory
@@ -129,13 +131,16 @@ const ArticleGrid = ({
             {displayedArticles.map((article, index) => (
               <div
                 key={article.id}
-                className="animate-fade-in-up"
+                className="animate-fade-in-up animate-optimized"
                 style={{
                   animationDelay: `${index * 150}ms`,
                   animationFillMode: "both",
                 }}
               >
-                {/* Usar ArticleCard normal para os primeiros 6 (above the fold) */}
+                {/* Islands Hydration:
+                    - Primeiros 6 cards (above the fold): SSR completo para SEO e FCP
+                    - Demais cards (below the fold): Client-side apenas (islands)
+                    Visual idêntico, menos JS para hidratação */}
                 {index < 6 ? (
                   <ArticleCard {...article} />
                 ) : (

@@ -2,6 +2,10 @@ CRITICAL INSTRUCTIONS
 Write a 900-1100 word interpretive news piece for Science AI that reconstructs the reasoning pathway taken by the authors. Your only source is {paper_text}. No additional interpretation, historical context, or unsupported claims may be included.
 
 Avoid prohibited expressions (“delve”, “shed light”, “revolutionize”, “unlock”, “game-changing”).
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

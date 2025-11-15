@@ -20,25 +20,32 @@ const Hero = memo(({
   onSearchQueryChange,
   onSubmitSearch,
 }: HeroProps) => {
+  // All 14 valid categories for articles (must match backend and prompts)
   const categories = [
-    { label: "Machine Learning", value: "ai" },
+    { label: "AI", value: "ai" },
+    { label: "Coding", value: "coding" },
+    { label: "Crypto", value: "crypto" },
+    { label: "Data", value: "data" },
+    { label: "Ethics", value: "ethics" },
+    { label: "Games", value: "games" },
+    { label: "Hardware", value: "hardware" },
+    { label: "Legal", value: "legal" },
+    { label: "Network", value: "network" },
+    { label: "Quantum Computing", value: "quantum_computing" },
     { label: "Robotics", value: "robotics" },
     { label: "Science", value: "science" },
-    { label: "Coding", value: "coding" },
-    { label: "Hardware", value: "hardware" },
-    { label: "Network", value: "network" },
     { label: "Security", value: "security" },
-    { label: "Quantum Computing", value: "quantum_computing" },
-    { label: "Data", value: "data" },
+    { label: "Sound", value: "sound" },
   ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
-      {/* Animated Background Blobs */}
+      {/* Animated Background Blobs - Otimizado com transform apenas */}
+      {/* Usa apenas transform e opacity para melhor performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animate-optimized"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 animate-optimized"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 animate-optimized"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -55,7 +62,7 @@ const Hero = memo(({
               <Input
                 id="hero-search-input"
                 placeholder="Search articles, topics or researchers..."
-                className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-all"
+                className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-performance"
                 value={searchQuery ?? ""}
                 onChange={(e) => onSearchQueryChange?.(e.target.value)}
                 onKeyDown={(e) => {
@@ -65,7 +72,7 @@ const Hero = memo(({
             </div>
             <Button
               size="lg"
-              className="h-14 px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all hover-lift"
+              className="h-14 px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-performance hover-lift"
               onClick={() => onSubmitSearch?.()}
             >
               Search
@@ -77,7 +84,7 @@ const Hero = memo(({
               <button
                 key={cat.value}
                 onClick={() => onCategorySelect?.(cat.value)}
-                className={`group px-4 py-2 text-xs sm:text-sm font-medium rounded-full border-2 transition-all duration-300 animate-fade-in whitespace-nowrap flex-shrink-0 ${
+                className={`group px-4 py-2 text-xs sm:text-sm font-medium rounded-full border-2 transition-performance duration-300 animate-fade-in animate-optimized whitespace-nowrap flex-shrink-0 ${
                   selectedCategory === cat.value
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary"

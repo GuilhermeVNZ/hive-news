@@ -46,6 +46,10 @@ WHAT TO AVOID (AI writing patterns):
 - "Paradigm-shifting", "game-changing" (unless genuinely warranted)
 - Inventing related research not mentioned in paper
 - Speculating beyond what paper's data supports
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 IMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):
 

@@ -2,6 +2,10 @@ CRITICAL INSTRUCTIONS
 Generate a 900-1100 word consequence-first news article for Science AI. Begin by explaining why the outcome of the study matters before unpacking what the authors did. You must stay confined entirely to what is written in {paper_text}.
 
 Forbidden terms: “delve”, “revolutionize”, “shed light”, “game-changer”, “unlock”, “dive into”.
+- No stylistic noise:  
+- No emojis.  
+- No em-dashes (—).  
+- No ellipses (...). 
 
 ---
 

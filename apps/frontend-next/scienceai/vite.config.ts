@@ -14,7 +14,11 @@ export default defineConfig(({ mode }) => ({
       allow: ['..'],
     },
   },
-  plugins: [react(), articlesApiPlugin(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [
+    react(),
+    articlesApiPlugin(),
+    mode === "development" && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -23,26 +27,38 @@ export default defineConfig(({ mode }) => ({
   
   // Otimizações de performance para produção
   build: {
-    // Minificação otimizada
+    // Minificação otimizada - melhor compressão
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: mode === 'production', // Remove console.log em produção
         drop_debugger: true,
         pure_funcs: mode === 'production' ? ['console.log', 'console.info', 'console.debug'] : [],
-        passes: 2, // Múltiplas passadas para melhor compressão
+        passes: 3, // Aumentado para 3 passadas - melhor compressão
+        dead_code: true,
+        unused: true,
+        collapse_vars: true,
+        reduce_vars: true,
       },
       mangle: {
         safari10: true, // Compatibilidade Safari
+        toplevel: mode === 'production', // Mangling de nível superior em produção
+      },
+      format: {
+        comments: false, // Remove comentários
       },
     },
     
-    // Otimização de chunk splitting
+    // Otimização de chunk splitting (equivalente ao LiteSpeed Cache - combina e minifica)
     rollupOptions: {
       output: {
         manualChunks: (id) => {
           // Vendor chunk para node_modules
           if (id.includes('node_modules')) {
+            // React core em chunk separado (grande, raramente muda)
+            if (id.includes('react/') || id.includes('react-dom/')) {
+              return 'react-vendor';
+            }
             // Radix UI em chunk separado
             if (id.includes('@radix-ui')) {
               return 'radix-ui';
@@ -63,7 +79,7 @@ export default defineConfig(({ mode }) => ({
             if (id.includes('recharts')) {
               return 'recharts';
             }
-            // Vendor comum
+            // Vendor comum - combina bibliotecas menores
             return 'vendor';
           }
         },
@@ -82,21 +98,24 @@ export default defineConfig(({ mode }) => ({
       },
     },
     
-    // Otimização de CSS
+    // Otimização de CSS - minificação mais agressiva
     cssCodeSplit: true,
     cssMinify: true,
+    
+    // Otimização de SVGs (via build do Vite)
+    assetsInclude: ['**/*.svg'],
     
     // Otimização de assets
     assetsInlineLimit: 2048, // Reduzido para 2KB - inline apenas assets muito pequenos
     
-    // Otimização de source maps (apenas em dev)
+    // Otimização de source maps (desabilitado em produção para melhor performance)
     sourcemap: mode === 'development',
     
-    // Otimização de tamanho
-    chunkSizeWarningLimit: 500, // Reduzido para alertar sobre chunks grandes
-    
-    // Otimização de compressão
+    // Otimização de relatório de tamanho
     reportCompressedSize: true,
+    
+    // Otimização de tamanho
+    chunkSizeWarningLimit: 500, // Alertar sobre chunks grandes
     
     // Otimização de target
     target: 'esnext',

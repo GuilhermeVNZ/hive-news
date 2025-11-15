@@ -103,11 +103,35 @@ const CATEGORY_KEYWORDS: &[(&str, &[&str])] = &[
     ("science", &["science"]),
 ];
 
+// Valid categories for articles (must match prompts and frontend)
+const VALID_CATEGORIES: &[&str] = &[
+    "ai", "coding", "crypto", "data", "ethics", "games", "hardware",
+    "legal", "network", "quantum_computing", "robotics", "science",
+    "security", "sound",
+];
+
 fn sanitize_categories(raw: &str) -> Vec<String> {
     raw.lines()
         .map(|line| line.trim().to_lowercase())
         .filter(|line| !line.is_empty())
-        .collect()
+        .filter(|line| {
+            // Split by comma if present, then validate each category
+            line.split(',')
+                .map(|cat| cat.trim().to_lowercase())
+                .filter(|cat| !cat.is_empty())
+                .any(|cat| VALID_CATEGORIES.contains(&cat.as_str()))
+        })
+        .flat_map(|line| {
+            // Split comma-separated categories
+            line.split(',')
+                .map(|cat| cat.trim().to_lowercase())
+                .filter(|cat| !cat.is_empty())
+                .filter(|cat| VALID_CATEGORIES.contains(&cat.as_str()))
+                .collect::<Vec<_>>()
+        })
+        .collect::<std::collections::HashSet<_>>()
+        .into_iter()
+        .collect::<Vec<String>>()
 }
 
 fn take_non_empty(value: Option<&String>) -> Option<String> {
@@ -450,17 +474,30 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
             metadata.category.as_deref(),
         );
 
+        // Ensure primary category is valid, fallback to "ai" if not
+        let primary_category = if VALID_CATEGORIES.contains(&primary_category.as_str()) {
+            primary_category
+        } else {
+            "ai".to_string()
+        };
+
         let mut normalized_categories = Vec::new();
-        for cat in categories_list {
-            if !normalized_categories.contains(&cat) {
-                normalized_categories.push(cat);
+        // Add valid categories from the list (max 3, as per prompt requirements)
+        for cat in categories_list.iter().take(3) {
+            if VALID_CATEGORIES.contains(&cat.as_str()) && !normalized_categories.contains(cat) {
+                normalized_categories.push(cat.clone());
             }
         }
 
+        // Ensure primary category is first if not already present
         if !normalized_categories.contains(&primary_category) {
             normalized_categories.insert(0, primary_category.clone());
         }
 
+        // Limit to 3 categories total (as per prompt requirements)
+        normalized_categories.truncate(3);
+
+        // Fallback to primary category if empty
         if normalized_categories.is_empty() {
             normalized_categories.push(primary_category.clone());
         }

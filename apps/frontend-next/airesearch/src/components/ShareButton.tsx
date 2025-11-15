@@ -28,10 +28,8 @@ export function ShareButton({ article, url }: ShareButtonProps) {
       navigator.clipboard.writeText(currentUrl);
       toast.success("Link copied to clipboard!");
     } else if (platform === "twitter" || platform === "x") {
-      // X/Twitter: conteúdo do arquivo x.txt + link + preview da imagem
-      const shareText = article.xPost
-        ? `${article.xPost}\n\n${currentUrl}`
-        : article.title;
+      // X/Twitter: conteúdo do arquivo x.txt (sem link no texto, o parâmetro url já adiciona automaticamente)
+      const shareText = article.xPost || article.title;
       window.open(
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(currentUrl)}`,
         "_blank"
