@@ -72,6 +72,19 @@
           "enabled": false,
           "id": "semantic_scholar",
           "name": "Semantic Scholar"
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.airesearch.news",
+          "collector_type": "rss",
+          "config": {
+            "max_results": 10
+          },
+          "destinations": ["airesearch", "scienceai"],
+          "enabled": true,
+          "feed_url": "https://www.airesearch.news/rss",
+          "id": "rss_airesearch_news",
+          "name": "AIResearch News RSS"
         }
       ],
       "domain": "airesearch.news",

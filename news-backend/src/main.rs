@@ -1691,6 +1691,12 @@ async fn main() -> anyhow::Result<()> {
                 continue;
             }
 
+            // Safety check: Skip collectors with "Disabled" in the name (even if enabled flag is wrong)
+            if c.name.to_lowercase().contains("disabled") {
+                eprintln!("⚠️  Skipping collector '{}' (has 'Disabled' in name, even though enabled=true)", c.id);
+                continue;
+            }
+
             let collector_type = if let Some(ct) = c.collector_type.as_deref() {
                 ct
             } else if c.feed_url.is_some() {
