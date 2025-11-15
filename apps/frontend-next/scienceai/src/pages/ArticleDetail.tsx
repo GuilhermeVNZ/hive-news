@@ -27,6 +27,7 @@ interface Article {
 }
 
 const categoryLabels: Record<string, string> = {
+  quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
   nvidia: 'NVIDIA',
   openai: 'OpenAI',
   google: 'Google',
@@ -206,7 +207,7 @@ const ArticleDetail = () => {
           <div className="absolute inset-0 flex items-end">
             <div className="container mx-auto px-4 pb-12">
               <span className="inline-block px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-4">
-                {categoryLabels[article.category] || article.category.toUpperCase()}
+                {categoryLabels[article.category] || article.category.replace(/_/g, ' ').toUpperCase()}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 max-w-4xl">
                 {article.title}

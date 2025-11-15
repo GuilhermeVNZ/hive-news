@@ -477,20 +477,22 @@ fn validate_and_fix_image_categories(raw_categories: &[String]) -> Vec<String> {
             }
         } else if let Some(&mapped) = category_mapping.get(normalized.as_str()) {
             // Map invalid category to valid one
-            if !used.contains(mapped) {
+            let mapped_str = mapped.to_string();
+            if !used.contains(&mapped_str) {
                 eprintln!("  ⚠️  Mapped invalid category '{}' to '{}'", cat, mapped);
-                valid_categories.push(mapped.to_string());
-                used.insert(mapped);
+                valid_categories.push(mapped_str.clone());
+                used.insert(mapped_str);
             }
         } else {
             // Try partial matching (e.g., "quantum_computing" contains "quantum")
             let mut found_match = false;
             for &allowed_cat in allowed.iter() {
                 if normalized.contains(allowed_cat) || allowed_cat.contains(normalized.as_str()) {
-                    if !used.contains(allowed_cat) {
+                    let allowed_cat_str = allowed_cat.to_string();
+                    if !used.contains(&allowed_cat_str) {
                         eprintln!("  ⚠️  Mapped '{}' to '{}' (partial match)", cat, allowed_cat);
-                        valid_categories.push(allowed_cat.to_string());
-                        used.insert(allowed_cat);
+                        valid_categories.push(allowed_cat_str.clone());
+                        used.insert(allowed_cat_str);
                         found_match = true;
                         break;
                     }
@@ -514,10 +516,11 @@ fn validate_and_fix_image_categories(raw_categories: &[String]) -> Vec<String> {
         if valid_categories.len() >= 3 {
             break;
         }
-        if !used.contains(fallback) {
+        let fallback_str = fallback.to_string();
+        if !used.contains(&fallback_str) {
             eprintln!("  ⚠️  Using fallback category '{}' to complete list", fallback);
-            valid_categories.push(fallback.to_string());
-            used.insert(fallback);
+            valid_categories.push(fallback_str.clone());
+            used.insert(fallback_str);
         }
     }
     

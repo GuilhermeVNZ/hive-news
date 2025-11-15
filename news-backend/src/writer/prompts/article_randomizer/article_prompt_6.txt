@@ -138,21 +138,22 @@ Your subtitle must:
 
 ---
 
-## 9. IMAGE CATEGORY RULES (fixed)
+## 9. IMAGE CATEGORY RULES (CRITICAL)
 
-Choose exactly 3 categories from:
+You MUST select EXACTLY 3 categories from THIS EXACT LIST of 14 categories ONLY:
 
 ```
 ai, coding, crypto, data, ethics, games, hardware, legal,
 network, quantum_computing, robotics, science, security, sound
 ```
 
-Rules:
-
-- Must be lowercase.  
-- Must be comma-separated.  
-- Must be ordered by relevance.  
-- Must use only the categories listed.
+CRITICAL RULES:
+- ❌ DO NOT create new categories (like "physics", "biology", "medical", etc.)
+- ❌ DO NOT use synonyms or variations
+- ✅ ONLY use the 14 categories listed above
+- ✅ You MUST select EXACTLY 3 (not 2, not 4, not more)
+- ✅ Order by priority: most relevant first, second choice, third choice
+- ✅ Must be lowercase, matching the list exactly
 
 ---
 

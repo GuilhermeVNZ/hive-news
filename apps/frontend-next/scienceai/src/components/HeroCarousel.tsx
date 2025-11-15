@@ -47,6 +47,16 @@ const categoryLabels: Record<string, string> = {
   hivehub: 'HiveHub',
   unknown: 'Technology',
   technology: 'Technology',
+  quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
+};
+
+// Format category name: replace underscores with spaces and uppercase
+const getCategoryName = (category: string): string => {
+  if (categoryLabels[category]) {
+    return categoryLabels[category];
+  }
+  // Replace underscores with spaces and uppercase
+  return category.replace(/_/g, ' ').toUpperCase();
 };
 
 export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) => {
@@ -55,6 +65,7 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
   
   // Memoizar artigos do carousel para evitar recálculos
+  // CRITICAL: Limitar a máximo 2 notícias por categoria para evitar repetição
   const finalCarouselArticles = useMemo(() => {
     const sortedArticles = [...articles].sort((a, b) => {
       const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -68,7 +79,26 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
       }
       return b.id.localeCompare(a.id);
     });
-    return sortedArticles.slice(0, 5);
+    
+    // Limitar a máximo 2 artigos por categoria
+    const categoryCounts = new Map<string, number>();
+    const limitedArticles: Article[] = [];
+    
+    for (const article of sortedArticles) {
+      const category = article.category.toLowerCase();
+      const count = categoryCounts.get(category) || 0;
+      
+      if (count < 2) {
+        categoryCounts.set(category, count + 1);
+        limitedArticles.push(article);
+        
+        if (limitedArticles.length >= 5) {
+          break;
+        }
+      }
+    }
+    
+    return limitedArticles;
   }, [articles]);
   
   // Preload da próxima imagem quando o slide atual muda
@@ -158,7 +188,7 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
             <div className="container mx-auto px-4 pb-12">
               <div className="max-w-3xl">
                 <span className="inline-block px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-4">
-                  {categoryLabels[article.category] || article.category.toUpperCase()}
+                  {getCategoryName(article.category)}
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                   {article.title}

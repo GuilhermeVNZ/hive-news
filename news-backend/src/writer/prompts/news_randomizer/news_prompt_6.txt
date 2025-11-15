@@ -32,15 +32,19 @@ NOT ALLOWED:
 
 ---
 
-IMAGE CATEGORY REQUIREMENT
-Pick exactly 3 from:
+IMAGE CATEGORY REQUIREMENT (CRITICAL)
+
+You MUST select EXACTLY 3 categories from THIS EXACT LIST of 14 categories ONLY:
 
 ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
 
-Order them:
-1. Most relevant  
-2. Second most relevant  
-3. Third most relevant  
+CRITICAL RULES:
+- ❌ DO NOT create new categories (like "physics", "biology", "medical", etc.)
+- ❌ DO NOT use synonyms or variations
+- ✅ ONLY use the 14 categories listed above
+- ✅ You MUST select EXACTLY 3 (not 2, not 4, not more)
+- ✅ Order by priority: most relevant first, second choice, third choice
+- ✅ Must be lowercase, matching the list exactly  
 
 ---
 

@@ -44,9 +44,19 @@ export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps
     hivehub: 'HiveHub',
     unknown: 'Technology',
     technology: 'Technology',
+    quantum_computing: 'QUANTUM COMPUTING', // Format with space instead of underscore
   };
 
-  const categoryName = categoryLabels[article.category] || article.category.toUpperCase();
+  // Format category name: replace underscores with spaces and uppercase
+  const getCategoryName = (category: string): string => {
+    if (categoryLabels[category]) {
+      return categoryLabels[category];
+    }
+    // Replace underscores with spaces and uppercase
+    return category.replace(/_/g, ' ').toUpperCase();
+  };
+
+  const categoryName = getCategoryName(article.category);
 
   return (
     <Link

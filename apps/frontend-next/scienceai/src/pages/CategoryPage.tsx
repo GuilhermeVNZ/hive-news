@@ -63,6 +63,7 @@ const categoryNames: Record<string, string> = {
   'menlo': 'Menlo Ventures',
   'unknown': 'Technology',
   'technology': 'Technology',
+  'quantum_computing': 'QUANTUM COMPUTING', // Format with space instead of underscore
 };
 
 const CategoryPage = () => {
@@ -106,7 +107,19 @@ const CategoryPage = () => {
   }, []);
   
   const categoryInfo = categories.find((c) => c.slug === category);
-  const categoryName = categoryInfo?.name || categoryNames[category?.toLowerCase() || ''] || category?.charAt(0).toUpperCase() + category?.slice(1) || 'Category';
+  // Format category name: use mapping or replace underscores with spaces
+  const getCategoryName = (cat: string | undefined): string => {
+    if (!cat) return 'Category';
+    const lower = cat.toLowerCase();
+    if (categoryNames[lower]) return categoryNames[lower];
+    const categoryInfo = categories.find(c => c.slug.toLowerCase() === lower);
+    if (categoryInfo) return categoryInfo.name;
+    // Replace underscores with spaces and capitalize
+    return cat.replace(/_/g, ' ').split(' ').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  };
+  const categoryName = getCategoryName(category);
   
   useEffect(() => {
     async function fetchArticles() {

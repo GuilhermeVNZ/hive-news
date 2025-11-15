@@ -6,6 +6,7 @@ use std::path::Path;
 use tokio::fs;
 
 /// Remove formatação markdown indesejada como **Label:** do texto
+/// Também remove "Opening Hook" e outros labels que indicam conteúdo gerado por IA
 fn clean_markdown_formatting(content: &str) -> String {
     let mut cleaned = content.to_string();
 
@@ -16,6 +17,130 @@ fn clean_markdown_formatting(content: &str) -> String {
     // Remove **Label:** no meio do texto (com cuidado para não remover markdown legítimo)
     let inline_label_pattern = Regex::new(r"\*\*([^:]+):\*\*\s+").unwrap();
     cleaned = inline_label_pattern.replace_all(&cleaned, "").to_string();
+
+    // CRITICAL: Remove TODOS os labels estruturais que indicam conteúdo gerado por IA
+    // Lista completa de labels comuns gerados pelo DeepSeek
+    // Usamos (?i) para case-insensitive, então não precisamos de todas as variações
+    let ai_label_patterns = vec![
+        // Opening Hook
+        r"(?i)^\s*\*\*Opening Hook\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Opening Hook\s*[—–-]?\s*",
+        // The Challenge / Challenge
+        r"(?i)^\s*\*\*The Challenge\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Challenge\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Challenge\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Challenge\s*[—–-]?\s*",
+        // The Method / Method / Methodology
+        r"(?i)^\s*\*\*The Method\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Method\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Method\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Method\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Methodology\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Methodology\s*[—–-]?\s*",
+        // The Discovery / Discovery
+        r"(?i)^\s*\*\*The Discovery\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Discovery\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Discovery\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Discovery\s*[—–-]?\s*",
+        // The Findings / Findings
+        r"(?i)^\s*\*\*The Findings\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Findings\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Findings\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Findings\s*[—–-]?\s*",
+        // The Results / Results
+        r"(?i)^\s*\*\*The Results\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Results\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Results\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Results\s*[—–-]?\s*",
+        // The Implications / Implications
+        r"(?i)^\s*\*\*The Implications\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Implications\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Implications\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Implications\s*[—–-]?\s*",
+        // The Significance / Significance
+        r"(?i)^\s*\*\*The Significance\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Significance\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Significance\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Significance\s*[—–-]?\s*",
+        // Key Finding / Key Findings
+        r"(?i)^\s*\*\*Key Finding\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Key Finding\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*Key Findings\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Key Findings\s*[—–-]?\s*",
+        // Context
+        r"(?i)^\s*\*\*Context\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Context\s*[—–-]?\s*",
+        // Limitations / The Limitations
+        r"(?i)^\s*\*\*Limitations\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Limitations\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*The Limitations\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Limitations\s*[—–-]?\s*",
+        // Background / The Background
+        r"(?i)^\s*\*\*Background\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Background\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*The Background\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Background\s*[—–-]?\s*",
+        // Analysis / The Analysis
+        r"(?i)^\s*\*\*Analysis\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Analysis\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*The Analysis\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Analysis\s*[—–-]?\s*",
+        // Conclusion / The Conclusion
+        r"(?i)^\s*\*\*Conclusion\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Conclusion\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*The Conclusion\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Conclusion\s*[—–-]?\s*",
+        // Discussion / The Discussion
+        r"(?i)^\s*\*\*Discussion\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*Discussion\s*[—–-]?\s*",
+        r"(?i)^\s*\*\*The Discussion\*\*\s*[—–-]?\s*",
+        r"(?i)^\s*The Discussion\s*[—–-]?\s*",
+    ];
+    
+    // Remove cada padrão no início de linha
+    for pattern in &ai_label_patterns {
+        if let Ok(regex) = Regex::new(pattern) {
+            cleaned = regex.replace_all(&cleaned, "").to_string();
+        }
+    }
+    
+    // Remove também no meio do texto (se aparecer) - versões inline
+    let ai_label_inline_patterns = vec![
+        r"(?i)\*\*Opening Hook\*\*\s*[—–-]?\s*",
+        r"(?i)Opening Hook\s*[—–-]?\s*",
+        r"(?i)\*\*The Challenge\*\*\s*[—–-]?\s*",
+        r"(?i)The Challenge\s*[—–-]?\s*",
+        r"(?i)\*\*Challenge\*\*\s*[—–-]?\s*",
+        r"(?i)Challenge\s*[—–-]?\s*",
+        r"(?i)\*\*The Method\*\*\s*[—–-]?\s*",
+        r"(?i)The Method\s*[—–-]?\s*",
+        r"(?i)\*\*Method\*\*\s*[—–-]?\s*",
+        r"(?i)Method\s*[—–-]?\s*",
+        r"(?i)\*\*Methodology\*\*\s*[—–-]?\s*",
+        r"(?i)Methodology\s*[—–-]?\s*",
+        r"(?i)\*\*The Discovery\*\*\s*[—–-]?\s*",
+        r"(?i)The Discovery\s*[—–-]?\s*",
+        r"(?i)\*\*Discovery\*\*\s*[—–-]?\s*",
+        r"(?i)Discovery\s*[—–-]?\s*",
+        r"(?i)\*\*The Findings\*\*\s*[—–-]?\s*",
+        r"(?i)The Findings\s*[—–-]?\s*",
+        r"(?i)\*\*Findings\*\*\s*[—–-]?\s*",
+        r"(?i)Findings\s*[—–-]?\s*",
+        r"(?i)\*\*The Results\*\*\s*[—–-]?\s*",
+        r"(?i)The Results\s*[—–-]?\s*",
+        r"(?i)\*\*Results\*\*\s*[—–-]?\s*",
+        r"(?i)Results\s*[—–-]?\s*",
+        r"(?i)\*\*The Implications\*\*\s*[—–-]?\s*",
+        r"(?i)The Implications\s*[—–-]?\s*",
+        r"(?i)\*\*Implications\*\*\s*[—–-]?\s*",
+        r"(?i)Implications\s*[—–-]?\s*",
+    ];
+    
+    for pattern in &ai_label_inline_patterns {
+        if let Ok(regex) = Regex::new(pattern) {
+            cleaned = regex.replace_all(&cleaned, "").to_string();
+        }
+    }
 
     // Limpar espaços extras entre parágrafos (mais de 2 quebras de linha)
     let extra_newlines = Regex::new(r"\n{3,}").unwrap();
