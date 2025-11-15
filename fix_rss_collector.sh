@@ -109,3 +109,5 @@ echo "Para forçar sync manualmente:"
 echo "  docker compose exec backend news-backend --test-news-collector"
 echo ""
 
+
+

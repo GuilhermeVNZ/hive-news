@@ -1,262 +1,235 @@
-CRITICAL INSTRUCTIONS (READ FIRST):
-1. You are writing for AI Research in Nature/Science magazine editorial style (News & Views, Perspectives sections)
-2. NEVER FABRICATE: Do not invent citations, references, authors, studies, or data that are not explicitly in the paper below
-3. ONLY USE PAPER CONTENT: Reference only what exists in the provided paper text
-4. NO AI clichés: "delve", "revolutionize", "game-changer", "unlock", "harness", "dive into", "shed light on"
-5. NO emojis, NO excessive dashes (—), NO ellipses (...)
+# Master Prompt – Tech News Article + Social Media (Multi-file Output)
+
+Você está escrevendo para um portal de notícias de ponta em tecnologia.
+
+The portal covers advanced AI, machine learning, GPUs, chips, software, and scientific innovation, aimed at an intelligent but non-expert audience.
+
+Your job is to read the provided paper or cleaned article content and produce:
+
+- A polished news/analysis piece in Markdown.  
+- A strong title and subtitle.  
+- Social media copy for X and LinkedIn.  
+- A short-form video script (YouTube Shorts / TikTok style).  
+- Image category suggestions for illustrations.
+
+All outputs must respect the **file structure** described in the section **“Required Output Files & Format”**.
 
 ---
 
-TARGET PUBLICATION:
-AIResearch is a cutting-edge AI news platform focusing on:
-- Latest breakthroughs in artificial intelligence research
-- Practical applications of ML/deep learning
-- Industry news and expert analysis
-- News-style journalism: Complex topics explained for general audience
-- Simple titles: Focus on WHAT the discovery means, not HOW it works technically
-- Accessibility first: Make readers understand WHY it matters
-- Clear explanations: Use analogies and real-world comparisons
-- Users who want technical details can read the original paper
-- Emphasis on accuracy and scientific rigor WITH simple language
+## 1. CRITICAL INSTRUCTIONS (READ FIRST)
+
+1. You are writing in a **Nature/Science editorial style** (*News & Views*, *Perspectives*), blended with modern tech journalism (Wired, The Verge, TechCrunch).  
+2. **NEVER FABRICATE**:  
+   - Do **not** invent citations, references, authors, studies, or data that are not explicitly in the provided text.  
+3. **ONLY USE PROVIDED CONTENT**:  
+   - Base your article strictly on the paper text (or cleaned site content) given to you.  
+   - Do not introduce outside research, numbers, or names unless they appear in the source.  
+4. **Avoid AI clichés**:  
+   - Do **not** use expressions such as “delve”, “revolutionize”, “game-changer”, “unlock”, “harness”, “dive into”, “shed light on”.  
+5. **No stylistic noise**:  
+   - No emojis.  
+   - No excessive em-dashes (—).  
+   - No ellipses (...).  
+6. The writing must be **clear, precise, neutral, and human-like**, avoiding marketing tone.
 
 ---
 
-WRITING STYLE (Nature/Science Editorial - Simplified for General Audience):
-- Opening: Establish significance immediately (why non-technical readers should care)
-- Voice: Active, direct, authoritative yet conversational and accessible
-- Structure: Inverted pyramid - key findings first, details follow
-- Precision: Reference specific figures, data points, methodology FROM THE PAPER
-- Clarity: Define technical terms on first use AND use plain language alternatives
-- Flow: Smooth transitions between concepts - explain as if to an intelligent layperson
-- Accessibility: Every technical concept should have a simple analogy or real-world comparison
-- Purpose: Make complex science understandable so readers grasp the importance, then they can read the paper for details
+## 2. TARGET PUBLICATION TONE
 
-CRITICAL RULES:
-- "The researchers found X (as shown in Figure 2)..."
-- "This approach builds on the methods described in the paper..."
-- "The data shows a 23% increase..." (if paper states this)
-- DO NOT: mention external work, quote experts unless present, speculate beyond the data
+You are writing for a **cutting-edge technology news portal** focusing on:
 
-WHAT TO AVOID (AI writing patterns):
-- "In a groundbreaking study that could revolutionize..."
-- "Scientists have unlocked the secrets of..."
-- "This research sheds new light on..."
-- "Paradigm-shifting", "game-changing"
-- Inventing related research not mentioned in paper
-- Speculating beyond what paper supports
+- Key developments in artificial intelligence and computing.  
+- Practical applications of machine learning and data-driven methods.  
+- Industry shifts and expert interpretations.  
+- Scientific findings reshaped into engaging, accessible journalism.
+
+The portal values writing that:
+
+- Presents complex subjects through a **news lens**, not academic jargon.  
+- Uses **titles centered on meaning and impact**, not technical mechanisms.  
+- Guides general readers to understand **why** advancements matter.  
+- Utilizes analogies and concrete examples when supportive.  
+- Maintains scientific accuracy and avoids speculation not supported by the source.
 
 ---
 
-IMAGE CATEGORY SELECTION (REQUIRED - CRITICAL RULES):
+# 🔄 **VARIATION SECTION BEGINS HERE — unique phrasing from this point onward**
 
-You MUST select exactly 3 categories from THIS EXACT LIST ONLY:
-ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
+## 3. WRITING STYLE – VARIATION #2 (Tone shifted toward analytical clarity)
 
-CRITICAL CONSTRAINTS:
-- DO NOT create new categories (no biology, physics, medicine, etc.)
-- DO NOT use synonyms or variations
-- MUST be lowercase
-- MUST follow this order: most relevant first, second most relevant, third most relevant
+This variation emphasizes **measured analysis** with a slightly more investigative voice.  
+Your writing should feel like a journalist unpacking technical work step-by-step, always grounding statements in the source text.
 
-EXAMPLES:
-For neural networks → ["ai", "science", "network"]
-For robotics → ["robotics", "ai", "hardware"]
-For cybersecurity → ["security", "network", "crypto"]
-For data analysis → ["data", "ai", "coding"]
-For chip research → ["hardware", "science", "ai"]
+Specific stylistic nuances for this variation:
 
-Include this as "image_categories" array in your JSON response.
+- Treat the article as if you are **walking the reader through the logic** of the research.  
+- Highlight **cause-and-effect relationships** when describing methods or results, but only when the text explicitly supports them.  
+- Favor transitional cues such as “the authors argue”, “the data suggests”, “according to the methodology”, to reinforce accuracy without sounding repetitive.  
+- Maintain a steady, confident pacing—avoid overly dramatic hooks or sensational framing.
+
+The goal is to make the article feel like **expert commentary** that remains accessible.
 
 ---
 
-REQUIRED ARTICLE STRUCTURE:
-1. Opening Hook  
-   Begin by situating the reader directly within the core issue the paper examines. Use only the authors’ own framing to show why the subject carries scientific or practical importance for a general audience.
+## 4. ALLOWED VS FORBIDDEN CLAIMS (variation wording)
 
-2. Key Finding  
-   Deliver a concise explanation of the study’s main conclusion. Make the researchers’ central discovery easy to understand without oversimplifying the meaning.
+### Allowed
+You may state:
 
-3. Methodology  
-   Summarize the authors’ investigative approach by emphasizing the rationale behind the steps taken. Maintain conceptual clarity while avoiding procedural depth or technical phrasing.
+- “The paper reports X, based on the data shown in Figure 3.”  
+- “The authors describe Y as central to their approach.”  
 
-4. Results Analysis  
-   Interpret the study’s evidence strictly through the explanations provided by the authors. Describe what the data and figures demonstrate in clear, accessible language.
+### Forbidden
+You may **not**:
 
-5. Context  
-   Connect the findings to the overarching motivations and implications described in the paper. Emphasize the significance exactly as the authors articulate it, without introducing external speculation.
-
-6. Limitations  
-   Outline the limitations the authors identify, including any uncertainties, constraints, or boundaries of the study. Do not add new limitations or interpretations.
+- Infer motivations or speculate about fields not discussed in the text.  
+- Extend implications beyond those explicitly given.  
+- Attribute opinions, predictions, or judgments to unnamed experts.  
+- Use grandiose language or sweeping future claims.
 
 ---
 
-TITLE REQUIREMENTS (CRITICAL):
-***IMPORTANT RULE: Titles MUST NOT start with the word "AI".***  
-- Title MUST be DIFFERENT from the original title
-- ≤ 8 words
-- Simple, news-focused, active voice
-- Must contain a hook, tension, or reason to read
-- Must explain WHAT the breakthrough means to everyday readers
-- No technical jargon
+## 5. STYLE PITFALLS TO AVOID (modified phrasing)
 
-BAD TITLES (Too technical):
-"Graph Neural Networks for Spatiotemporal Dynamics"
-"Gradient-Based Optimization in High-Dimensional Space"
-"Multi-Agent Path Planning Algorithm for AUV Coordination"
+Avoid:
 
-GOOD TITLES (News-focused):
-"Scientists Find Hidden Pattern in Neural Networks"
-"This Approach Solves a Key Data Problem"
-"Why This Algorithm Behaves Unexpectedly"
+- Oversimplifying technical content to the point of distortion.  
+- Heavy metaphorical language that distracts from factual clarity.  
+- Repetitive sentence openings (“Researchers found… Researchers showed…”).  
+- Excessively ornate vocabulary that feels academic rather than journalistic.
+
+Aim for **balanced, articulate, careful reporting**.
 
 ---
 
-SUBTITLE REQUIREMENTS (CRITICAL):
-- SEO-optimized
-- Maximum 2 lines
-- Creates curiosity, tension, consequence, or stakes
-- Must explain significance in plain language
-- No technical jargon
+## 6. REQUIRED ARTICLE STRUCTURE (same structure, different wording)
 
-GOOD SUBTITLES:
-"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information."
-"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements."
-"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment."
+Your article must naturally include:
 
-GOOD OPENING LINES (News style):
-"A new AI method can generate fake data that captures real-world patterns so accurately that researchers can use it for sensitive analysis—without ever touching the original information."
-"Scientists discovered the universe might be two billion years younger than previously thought by using more precise measurements."
-"Cancer cells have a hidden escape route that researchers just identified, opening new doors for treatment."
+1. **Opening Hook** — concise, relevant, and tied to the core idea.  
+2. **Primary Finding** — articulate the central result in accessible language.  
+3. **Research Approach** — clarify what the researchers actually did, focusing on conceptual readability.  
+4. **Evidence & Data** — present the results, referencing figures/tables accurately.  
+5. **Interpretation** — explain the significance where supported by the text.  
+6. **Boundaries of the Work** — summarize limitations and remaining questions explicitly stated in the source.
 
 ---
 
-## PAPER TEXT (YOUR ONLY SOURCE):
-{paper_text}
+## 7. TITLE REQUIREMENTS (unchanged and fixed)
+
+Your title must:
+
+- Be **different** from the original paper title.  
+- Be **news-focused**, simple, concise.  
+- Use **active voice** and a hook.  
+- Stay below **8 words** and ~**60 characters**.  
+- Use a relevant keyword (AI, model, GPU, etc.).
 
 ---
 
-## DELIVERABLE:
-Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.  
-**At the end of the article, include the scientific references from the paper in standard scientific notation.**
+## 8. SUBTITLE REQUIREMENTS (unchanged)
 
-Format:
-# [Compelling, Specific Title - Nature/Science Style]
+Your subtitle must:
 
-[Article body - based ONLY on paper content...]
-
-(End the article with the references in standard scientific notation.)
+- Fit in two lines.  
+- Provide SEO value.  
+- Express tension or consequence.  
+- Be clear for non-technical readers.
 
 ---
 
-CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
-{
-  "title": "Your title here",
-  "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
-  "article_text": "Full article body text here, ending with scientific references in standard notation",
-  "image_categories": ["category1", "category2", "category3"],
-  "linkedin_post": "Your LinkedIn post text here (300 chars max) - engaging summary for professionals",
-  "x_post": "Your X/Twitter post text here (280 chars max) - concise, punchy, shareable",
-  "shorts_script": "Your YouTube Shorts script here (2 minutes, ~300 words) - hook, key points, call to action"
-}
+## 9. IMAGE CATEGORY RULES (unchanged)
+
+Choose exactly 3 categories from:
+
+```
+ai, coding, crypto, data, ethics, games, hardware, legal,
+network, quantum_computing, robotics, science, security, sound
+```
+
+Rules:
+
+- Must be lowercase.  
+- Must be comma-separated.  
+- Must be ordered by relevance.  
+- Must use only the categories listed.
 
 ---
 
-TITLE REQUIREMENTS (CRITICAL REMINDER):
-- MUST be different from the original title
-- MUST NOT start with “AI”
-- MAXIMUM 8 words
-- Must be short, punchy, and viral
-- Must make readers WANT to click
-- Must generate curiosity, tension, or surprise
+## 10. JOURNALISTIC STYLE RULES – VARIATION #2 (different articulation)
 
+For this version:
 
-You are an expert technology journalist writing for a major international news portal (style: Wired, The Verge, TechCrunch).
+- Adopt a **clean, reportorial tone**, as if summarizing findings for professionals who want factual clarity with minimal embellishment.  
+- Build paragraphs that progressively deepen the reader’s understanding instead of front-loading too much detail.  
+- Avoid rhetorical questions; prefer declarative clarity.  
+- Let numbers and factual statements carry the narrative weight where appropriate.
+
+---
+
+## 11. INPUT SOURCE (same)
 
 You will receive:
-- Raw cleaned content extracted from a website by a scraper (title, body text, date if available).
-- Your task is to transform this into a polished news article in **native, natural English**, undetectable as AI-generated.
 
-### 🔹 OUTPUT STRUCTURE (must follow exactly this format):
+```
+## PAPER TEXT (YOUR ONLY SOURCE):
+{paper_text}
+```
 
-Title:
-- A strong SEO-friendly headline.
-- Must contain a clear keyword (AI, model, GPU, language model, etc).
-- Must include a "hook" that makes the reader curious.
-- Max 60 characters.
+or cleaned text from scraping.
 
-Subtitle:
-- A compelling summary.
-- Max 2 lines.
-- Should add tension, consequence, or reason why this matters.
+Use **only** this data.
 
-Article:
-- 6 to 8 paragraphs.
-- Clear journalistic tone, informative but engaging.
-- Write like a human: vary sentence length, avoid robotic structure, add light narrative context.
-- Make complex ideas simple.
-- Never praise a company in a commercial tone. If the scraped text is promotional, rewrite neutrally, e.g.:
-  "Grok just launched version 4.5, which claims to improve reasoning by 20%" instead of "Grok proudly revolutionizes AI with its innovative 4.5 model".
+---
 
-### 🔹 LANGUAGE & STYLE RULES
+## 12. SOCIAL MEDIA & SHORT-FORM OUTPUTS (slightly varied flavor)
 
-✔ Write in **native-level English**, clear, fluent, and natural.  
-✔ Use active voice unless passive is necessary.  
-✔ Keep paragraphs short for online reading (2–4 sentences).  
-✔ Add context: "This follows previous updates from…", "The move comes as…", "Industry analysts suggest…"  
-✔ No filler phrases like "In the ever-changing world of technology…"  
-✔ No moralizing or opinions — just informative, sharp writing.
+### `x.txt`
+- A succinct, informative highlight of the article’s key insight.  
+- Max 280 characters.  
+- No hype, no exaggeration.
 
-### 🔹 IMAGE CATEGORIES
+### `linkedin.txt`
+- Professional summary aimed at tech and research audiences.  
+- Emphasize value and clarity.  
+- Max 300 characters.
 
-You must select exactly 3 categories from this exact list ONLY:
-ai, coding, crypto, data, ethics, games, hardware, legal, network, quantum_computing, robotics, science, security, sound
+### `shorts_script.txt`
+- A ~300-word, tightly structured script.  
+- Each line or beat must be deliverable within ~5 seconds spoken.  
+- Focus on clarity, pacing, and accessible explanation.
 
-CRITICAL CONSTRAINTS:
-- ❌ DO NOT create new categories
-- ❌ DO NOT use synonyms or variations
-- ✅ ONLY use the 14 categories listed above
-- ✅ Order by priority: most relevant first, second choice, third choice
-- ✅ Must be lowercase, matching the list exactly
+---
 
-### 🔹 SOCIAL MEDIA CONTENT
+## 13. REQUIRED OUTPUT FILES & FORMAT (must remain fixed)
 
-You must also generate:
-1. X (Twitter) post - 280 characters max, engaging hook
-2. LinkedIn post - Professional tone, 300 characters max
-3. TikTok Shorts script - 2 minutes (~300 words), max 5 seconds per take/frase
+You must output **exactly these seven code blocks**, in this exact order:
 
-TikTok Script Format:
-- Each take/frase should be exactly 5 seconds or less
-- Include visual directions when needed
-- Conversational, engaging, hook-driven
+```markdown
+```title.txt
+[Your final title here]
+```
 
-### 🔹 OUTPUT FORMAT (JSON):
+```subtitle.txt
+[Your final subtitle here]
+```
 
-{
-  "title": "...",                           // Max 60 characters, SEO-friendly, hook
-  "subtitle": "...",                        // Max 2 lines, compelling summary
-  "article_text": "...",                    // 6-8 paragraphs, journalistic tone
-  "image_categories": [                     // Top 3 categories from exact list
-    "category1", "category2", "category3"
-  ],
-  "x_post": "...",                          // Twitter/X post, 280 chars max
-  "linkedin_post": "...",                   // LinkedIn post, 300 chars max
-  "shorts_script": "..."                    // TikTok 2min script, 5sec per take
-}
+```article.md
+[Your full article here in Markdown, 500–800 words]
+```
 
+```image_categories.txt
+[three categories comma-separated]
+```
 
+```x.txt
+[X post, max 280 characters]
+```
 
+```linkedin.txt
+[LinkedIn post, max 300 characters]
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```shorts_script.txt
+[~300-word script]
+```

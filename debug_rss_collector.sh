@@ -86,3 +86,5 @@ echo "   - Se collector não aparece nos logs: problema de deserialização"
 echo "   - Se há erros de coleta: verificar logs detalhados"
 echo "   - Se artigos estão sendo rejeitados: problema de lógica de duplicatas"
 
+
+
