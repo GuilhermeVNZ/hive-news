@@ -1420,6 +1420,8 @@ async fn main() -> anyhow::Result<()> {
                 eprintln!("⚠️  Skipping collector '{}' (has 'Disabled' in name, even though enabled=true)", c.id);
                 continue;
             }
+            
+            eprintln!("🔄 [DEBUG] Processing collector: {} (type: {:?}, feed_url: {:?})", c.id, c.collector_type, c.feed_url);
 
             // INFER collector_type from fields if not explicitly set
             // Priority: explicit type > inferred from fields > default to "api"
@@ -1444,6 +1446,7 @@ async fn main() -> anyhow::Result<()> {
                 "rss" => {
                     // Deduplicar por ID antes de adicionar
                     if rss_collector_ids.contains(&c.id) {
+                        eprintln!("🔄 [DEBUG] Skipping duplicate RSS collector: {}", c.id);
                         continue;
                     }
 
@@ -1454,6 +1457,7 @@ async fn main() -> anyhow::Result<()> {
                             .get("max_results")
                             .and_then(|v| v.as_u64())
                             .map(|v| v as u32);
+                        eprintln!("🔄 [DEBUG] Adding RSS collector: {} (feed: {}, enabled: {})", c.id, feed_url, c.enabled);
                         rss_collector_ids.insert(c.id.clone());
                         rss_collectors.push((
                             c.id.clone(),
@@ -1461,6 +1465,8 @@ async fn main() -> anyhow::Result<()> {
                             base_url,
                             max_results,
                         ));
+                    } else {
+                        eprintln!("⚠️  [DEBUG] RSS collector '{}' has no feed_url, skipping", c.id);
                     }
                 }
                 "html" => {

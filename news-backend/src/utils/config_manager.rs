@@ -262,8 +262,11 @@ impl ConfigManager {
                 );
                 for site_collector in &site.collectors {
                     eprintln!(
-                        "🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?})",
-                        site_collector.id, site_collector.enabled, site_collector.collector_type
+                        "🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?}, feed_url: {:?})",
+                        site_collector.id, 
+                        site_collector.enabled, 
+                        site_collector.collector_type,
+                        site_collector.feed_url
                     );
                     let collector_id = site_collector.id.clone();
 
