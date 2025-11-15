@@ -267,12 +267,17 @@ impl DeepSeekClient {
         temperature: Option<f64>,
     ) -> Result<SocialResponse> {
         let temp = temperature.unwrap_or(0.8);
+        // CRITICAL: Ensure prompt contains JSON instructions before sending
+        // Add explicit system message to reinforce JSON format requirements
+        // Make it absolutely clear this is SOCIAL content, NOT an article
+        let system_message = "You are a science communication expert creating viral SOCIAL MEDIA CONTENT ONLY. This is NOT an article request. You MUST return your response as a JSON object with EXACTLY these 3 fields: \"linkedin_post\", \"x_post\", and \"shorts_script\". Do NOT include \"title\", \"article_text\", \"subtitle\", \"image_categories\", or any other fields. This is for SOCIAL MEDIA posts, NOT an article.";
+        
         let request_body = json!({
             "model": self.model,
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are a science communication expert creating viral social media content."
+                    "content": system_message
                 },
                 {
                     "role": "user",
@@ -337,14 +342,36 @@ impl DeepSeekClient {
         }
 
         // Parse JSON response
+        // First, try to parse as SocialContentJson
         let parsed: SocialContentJson = match serde_json::from_str(&content) {
             Ok(p) => p,
             Err(e) => {
+                // Check if DeepSeek returned article format instead of social format
+                let json_value: serde_json::Value = serde_json::from_str(&content)
+                    .context("Failed to parse JSON at all")?;
+                
+                // Check if it's the wrong format (has article fields instead of social fields)
+                let has_title = json_value.get("title").is_some();
+                let has_article_text = json_value.get("article_text").is_some();
+                let has_image_categories = json_value.get("image_categories").is_some();
+                
+                if has_title || has_article_text || has_image_categories {
+                    eprintln!("❌ CRITICAL ERROR: DeepSeek returned ARTICLE format instead of SOCIAL format!");
+                    eprintln!("❌ Received fields: {:?}", json_value.as_object().map(|o| o.keys().collect::<Vec<_>>()));
+                    eprintln!("❌ Expected fields: linkedin_post, x_post, shorts_script");
+                    eprintln!("❌ This indicates the prompt JSON instructions were not followed.");
+                    eprintln!("❌ Full response (first 2000 chars): {}", &content[..content.len().min(2000)]);
+                    return Err(anyhow::anyhow!(
+                        "DeepSeek returned wrong format: got article fields (title/article_text/image_categories) instead of social fields (linkedin_post/x_post/shorts_script). This suggests the JSON format instructions in the prompt were ignored or removed by the compressor."
+                    ));
+                }
+                
+                // If it's not the article format, it's a different parsing error
                 eprintln!("❌ Failed to parse social content JSON from DeepSeek response");
                 eprintln!("❌ Parse error: {}", e);
                 eprintln!(
-                    "❌ Content (first 1000 chars): {}",
-                    &content[..content.len().min(1000)]
+                    "❌ Content (first 2000 chars): {}",
+                    &content[..content.len().min(2000)]
                 );
                 return Err(e).context("Failed to parse social content JSON");
             }

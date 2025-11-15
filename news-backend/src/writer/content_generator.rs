@@ -465,6 +465,13 @@ impl WriterService {
             eprintln!("  ⚠️  WARNING: Social content not found in article response, using fallback generation");
             eprintln!("  ⚠️  This should not happen with updated prompts. Check prompt format.");
             println!("  📱 Building social media prompts (FALLBACK)...");
+            eprintln!("  🔍 DEBUG: Article response fields: title={}, subtitle={}, article_text_len={}, linkedin={}, x={}, shorts={}", 
+                !article_response.title.is_empty(),
+                !article_response.subtitle.is_empty(),
+                article_response.article_text.len(),
+                !article_response.linkedin_post.is_empty(),
+                !article_response.x_post.is_empty(),
+                !article_response.shorts_script.is_empty());
             let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
             println!("  📱 Using custom social prompt from config");
             // Replace placeholders if present, otherwise prepend article text
@@ -508,14 +515,22 @@ impl WriterService {
                     compressed_social.compression_ratio * 100.0
                 );
 
-                // CRITICAL: Add JSON format instructions back after compression
-                // The compressor may have removed them, so we add them explicitly
+                // CRITICAL: ALWAYS add JSON format instructions back after compression
+                // The compressor may have removed them, so we ALWAYS add them explicitly
+                // This ensures DeepSeek returns the correct format even if compressor removed instructions
                 let mut final_compressed_social = compressed_social.compressed_text.clone();
-                if !final_compressed_social.to_lowercase().contains("linkedin_post") 
-                    || !final_compressed_social.to_lowercase().contains("x_post")
-                    || !final_compressed_social.to_lowercase().contains("shorts_script") {
-                    final_compressed_social.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{\"linkedin_post\": \"...\", \"x_post\": \"...\", \"shorts_script\": \"...\"}\n⚠️ DO NOT include \"title\" or \"article_text\" fields. ONLY return linkedin_post, x_post, and shorts_script.");
+                
+                // Remove any existing JSON instructions to avoid duplicates, then add fresh ones
+                // This ensures we always have the correct, complete instructions
+                let json_instruction_marker = "## CRITICAL: JSON OUTPUT REQUIRED";
+                if let Some(pos) = final_compressed_social.rfind(json_instruction_marker) {
+                    final_compressed_social.truncate(pos);
+                    final_compressed_social = final_compressed_social.trim_end().to_string();
                 }
+                
+                // ALWAYS append the complete JSON format instructions
+                // CRITICAL: Make it absolutely clear this is for SOCIAL content, not article content
+                final_compressed_social.push_str("\n\n## ⚠️⚠️⚠️ CRITICAL: THIS IS A SOCIAL MEDIA CONTENT REQUEST - NOT AN ARTICLE REQUEST ⚠️⚠️⚠️\n\n## JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n\nYou are generating SOCIAL MEDIA CONTENT ONLY. You MUST return a JSON object with EXACTLY these 3 fields (no more, no less):\n{\n  \"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\",\n  \"x_post\": \"Your X/Twitter post text here (280 chars max)\",\n  \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"\n}\n\n🚫🚫🚫 FORBIDDEN FIELDS - DO NOT INCLUDE THESE: 🚫🚫🚫\n- \"title\" (FORBIDDEN - this is for articles, not social content)\n- \"article_text\" (FORBIDDEN - this is for articles, not social content)\n- \"subtitle\" (FORBIDDEN - this is for articles, not social content)\n- \"image_categories\" (FORBIDDEN - this is for articles, not social content)\n- ANY other fields (FORBIDDEN)\n\n✅✅✅ REQUIRED FIELDS - ONLY THESE 3 ARE ALLOWED: ✅✅✅\n- \"linkedin_post\" (REQUIRED)\n- \"x_post\" (REQUIRED)\n- \"shorts_script\" (REQUIRED)\n\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields above.\n⚠️ The word \"json\" must appear in your response format.\n⚠️ Remember: This is SOCIAL MEDIA content, NOT an article. Do NOT return article fields.");
 
                 (
                     final_compressed_social,
@@ -530,27 +545,68 @@ impl WriterService {
             }
         } else {
             println!("  ⏭️  Social prompt compression disabled");
-            let tokens = social_prompt.len() / 4;
-            (social_prompt, tokens, tokens, 0.0)
+            // Even without compression, ensure JSON instructions are present
+            let mut social_prompt_checked = social_prompt.clone();
+            let lower_prompt = social_prompt_checked.to_lowercase();
+            let has_json = lower_prompt.contains("json");
+            let has_linkedin = lower_prompt.contains("linkedin_post");
+            let has_x_post = lower_prompt.contains("x_post");
+            let has_shorts = lower_prompt.contains("shorts_script");
+            let has_forbidden_warning = lower_prompt.contains("forbidden") || lower_prompt.contains("do not include");
+            
+            if !has_json || !has_linkedin || !has_x_post || !has_shorts || !has_forbidden_warning {
+                // Remove any existing incomplete JSON instructions first
+                let json_instruction_marker = "## CRITICAL: JSON OUTPUT REQUIRED";
+                if let Some(pos) = social_prompt_checked.rfind(json_instruction_marker) {
+                    social_prompt_checked.truncate(pos);
+                    social_prompt_checked = social_prompt_checked.trim_end().to_string();
+                }
+                
+                // Add complete JSON format instructions
+                // CRITICAL: Make it absolutely clear this is for SOCIAL content, not article content
+                social_prompt_checked.push_str("\n\n## ⚠️⚠️⚠️ CRITICAL: THIS IS A SOCIAL MEDIA CONTENT REQUEST - NOT AN ARTICLE REQUEST ⚠️⚠️⚠️\n\n## JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n\nYou are generating SOCIAL MEDIA CONTENT ONLY. You MUST return a JSON object with EXACTLY these 3 fields (no more, no less):\n{\n  \"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\",\n  \"x_post\": \"Your X/Twitter post text here (280 chars max)\",\n  \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"\n}\n\n🚫🚫🚫 FORBIDDEN FIELDS - DO NOT INCLUDE THESE: 🚫🚫🚫\n- \"title\" (FORBIDDEN - this is for articles, not social content)\n- \"article_text\" (FORBIDDEN - this is for articles, not social content)\n- \"subtitle\" (FORBIDDEN - this is for articles, not social content)\n- \"image_categories\" (FORBIDDEN - this is for articles, not social content)\n- ANY other fields (FORBIDDEN)\n\n✅✅✅ REQUIRED FIELDS - ONLY THESE 3 ARE ALLOWED: ✅✅✅\n- \"linkedin_post\" (REQUIRED)\n- \"x_post\" (REQUIRED)\n- \"shorts_script\" (REQUIRED)\n\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields above.\n⚠️ The word \"json\" must appear in your response format.\n⚠️ Remember: This is SOCIAL MEDIA content, NOT an article. Do NOT return article fields.");
+            }
+            
+            let tokens = social_prompt_checked.len() / 4;
+            (social_prompt_checked, tokens, tokens, 0.0)
         };
 
-        // CRITICAL: DeepSeek API requires the word "json" in the prompt when using response_format: json_object
-        // Also ensure the exact field names are present (compressor may have removed them)
+        // CRITICAL: ALWAYS ensure JSON format instructions are present before sending to DeepSeek
+        // DeepSeek API requires the word "json" in the prompt when using response_format: json_object
+        // This is a final safety check to guarantee correct format even if previous steps failed
         let mut final_social_prompt_with_json = final_social_prompt.clone();
         let lower_prompt = final_social_prompt_with_json.to_lowercase();
         
-        // Check if JSON instructions are present
+        // Check if JSON instructions are present and complete
         let has_json = lower_prompt.contains("json");
         let has_linkedin = lower_prompt.contains("linkedin_post");
         let has_x_post = lower_prompt.contains("x_post");
         let has_shorts = lower_prompt.contains("shorts_script");
+        let has_forbidden_warning = lower_prompt.contains("forbidden") || lower_prompt.contains("do not include");
         
-        if !has_json || !has_linkedin || !has_x_post || !has_shorts {
-            // Add complete JSON format instructions
-            final_social_prompt_with_json.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{\"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\", \"x_post\": \"Your X/Twitter post text here (280 chars max)\", \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"}\n\n⚠️ FORBIDDEN FIELDS: Do NOT include \"title\", \"article_text\", \"subtitle\", or any other fields.\n⚠️ REQUIRED FIELDS: ONLY \"linkedin_post\", \"x_post\", and \"shorts_script\" are allowed.\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields.");
+        // ALWAYS add instructions if any are missing or incomplete
+        if !has_json || !has_linkedin || !has_x_post || !has_shorts || !has_forbidden_warning {
+            // Remove any existing incomplete JSON instructions first
+            let json_instruction_marker = "## CRITICAL: JSON OUTPUT REQUIRED";
+            if let Some(pos) = final_social_prompt_with_json.rfind(json_instruction_marker) {
+                final_social_prompt_with_json.truncate(pos);
+                final_social_prompt_with_json = final_social_prompt_with_json.trim_end().to_string();
+            }
+            
+            // Add complete, explicit JSON format instructions
+            // CRITICAL: Make it absolutely clear this is for SOCIAL content, not article content
+            final_social_prompt_with_json.push_str("\n\n## ⚠️⚠️⚠️ CRITICAL: THIS IS A SOCIAL MEDIA CONTENT REQUEST - NOT AN ARTICLE REQUEST ⚠️⚠️⚠️\n\n## JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n\nYou are generating SOCIAL MEDIA CONTENT ONLY. You MUST return a JSON object with EXACTLY these 3 fields (no more, no less):\n{\n  \"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\",\n  \"x_post\": \"Your X/Twitter post text here (280 chars max)\",\n  \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"\n}\n\n🚫🚫🚫 FORBIDDEN FIELDS - DO NOT INCLUDE THESE: 🚫🚫🚫\n- \"title\" (FORBIDDEN - this is for articles, not social content)\n- \"article_text\" (FORBIDDEN - this is for articles, not social content)\n- \"subtitle\" (FORBIDDEN - this is for articles, not social content)\n- \"image_categories\" (FORBIDDEN - this is for articles, not social content)\n- ANY other fields (FORBIDDEN)\n\n✅✅✅ REQUIRED FIELDS - ONLY THESE 3 ARE ALLOWED: ✅✅✅\n- \"linkedin_post\" (REQUIRED)\n- \"x_post\" (REQUIRED)\n- \"shorts_script\" (REQUIRED)\n\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields above.\n⚠️ The word \"json\" must appear in your response format.\n⚠️ Remember: This is SOCIAL MEDIA content, NOT an article. Do NOT return article fields.");
         }
 
             println!("  🤖 Generating social content...");
+            eprintln!("  🔍 DEBUG: Final social prompt length: {} chars", final_social_prompt_with_json.len());
+            eprintln!("  🔍 DEBUG: Prompt contains 'json': {}", final_social_prompt_with_json.to_lowercase().contains("json"));
+            eprintln!("  🔍 DEBUG: Prompt contains 'linkedin_post': {}", final_social_prompt_with_json.to_lowercase().contains("linkedin_post"));
+            eprintln!("  🔍 DEBUG: Prompt contains 'x_post': {}", final_social_prompt_with_json.to_lowercase().contains("x_post"));
+            eprintln!("  🔍 DEBUG: Prompt contains 'shorts_script': {}", final_social_prompt_with_json.to_lowercase().contains("shorts_script"));
+            eprintln!("  🔍 DEBUG: Prompt contains 'FORBIDDEN': {}", final_social_prompt_with_json.to_lowercase().contains("forbidden"));
+            eprintln!("  🔍 DEBUG: Last 500 chars of prompt: {}", &final_social_prompt_with_json[final_social_prompt_with_json.len().saturating_sub(500)..]);
+            
             let response = match self
                 .deepseek_client
                 .generate_social_content(&final_social_prompt_with_json, Some(self.temperature_social))
@@ -566,7 +622,18 @@ impl WriterService {
                         article_id, e
                     );
                     eprintln!("  📄 PDF: {}", pdf_path.display());
-                    return Err(e).context("Failed to generate social content");
+                    eprintln!("  🔍 DEBUG: This error occurred during social content generation fallback.");
+                    eprintln!("  🔍 DEBUG: The article was generated successfully, but social content failed.");
+                    eprintln!("  🔍 DEBUG: Check the prompt JSON instructions above to see if they were preserved.");
+                    eprintln!("  ⚠️  WARNING: Continuing with empty social content to save article files.");
+                    
+                    // Return empty social content instead of failing completely
+                    // This ensures article files are still saved even if social content fails
+                    SocialResponse {
+                        linkedin_post: String::new(),
+                        x_post: String::new(),
+                        shorts_script: String::new(),
+                    }
                 }
             };
             
