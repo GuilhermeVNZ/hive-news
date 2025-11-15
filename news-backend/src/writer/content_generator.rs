@@ -442,12 +442,13 @@ impl WriterService {
         };
 
         // 4. PHASE 2: Generate social content
-        // Check if social content is already in article response (from combined prompt)
+        // CRITICAL: Social content should be included in article response (from combined prompt)
+        // Only use fallback if fields are completely missing (should not happen with updated prompts)
         let (social_response, social_original_tokens, social_compressed_tokens, social_compression_ratio) = 
             if !article_response.linkedin_post.is_empty() 
             && !article_response.x_post.is_empty() 
             && !article_response.shorts_script.is_empty() {
-            println!("  ✅ Social content already included in article response (saving API call)");
+            println!("  ✅ Social content included in article response (no additional API call needed)");
             (
                 SocialResponse {
                     linkedin_post: article_response.linkedin_post.clone(),
@@ -459,8 +460,11 @@ impl WriterService {
                 0.0,
             )
         } else {
-            // Fallback: Generate social content separately if not in article response
-            println!("  📱 Building social media prompts...");
+            // FALLBACK ONLY: Generate social content separately (should rarely happen)
+            // This indicates the prompt may not have included social fields or DeepSeek didn't return them
+            eprintln!("  ⚠️  WARNING: Social content not found in article response, using fallback generation");
+            eprintln!("  ⚠️  This should not happen with updated prompts. Check prompt format.");
+            println!("  📱 Building social media prompts (FALLBACK)...");
             let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
             println!("  📱 Using custom social prompt from config");
             // Replace placeholders if present, otherwise prepend article text
