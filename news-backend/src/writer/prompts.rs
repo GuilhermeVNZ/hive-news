@@ -357,7 +357,13 @@ pub fn load_random_article_prompt(paper_text: &str) -> Result<String> {
         .with_context(|| format!("Failed to read prompt file: {}", selected_file.display()))?;
     
     // Replace {paper_text} placeholder
-    let final_prompt = prompt_template.replace("{paper_text}", paper_text);
+    let mut final_prompt = prompt_template.replace("{paper_text}", paper_text);
+    
+    // CRITICAL: DeepSeek API requires the word "json" in the prompt when using response_format: json_object
+    // Add it if not present (case-insensitive check)
+    if !final_prompt.to_lowercase().contains("json") {
+        final_prompt.push_str("\n\n⚠️ IMPORTANT: You MUST return your response as valid JSON format with the required fields.");
+    }
     
     println!(
         "  🎲 Using randomized prompt: {}",
@@ -495,12 +501,16 @@ VISUAL REQUIREMENTS:
 - Suggest text overlays for key numbers
 - Indicate pacing (fast cuts vs holds)
 
-OUTPUT FORMAT (JSON):
+CRITICAL: You MUST return ONLY a JSON object with these EXACT fields:
 {{
-  "linkedin_post": "...",
-  "x_post": "...",
-  "shorts_script": "..."
+  "linkedin_post": "Your LinkedIn post text here (300 chars max)",
+  "x_post": "Your X/Twitter post text here (280 chars max)",
+  "shorts_script": "Your YouTube Shorts script here (2 minutes, ~300 words)"
 }}
+
+⚠️ DO NOT include "title" or "article_text" fields. ONLY return linkedin_post, x_post, and shorts_script.
+
+Return your response as valid JSON format.
 "#,
         article, paper_title
     )
