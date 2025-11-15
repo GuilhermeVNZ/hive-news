@@ -266,8 +266,39 @@ impl SiteConfigManager {
             self.config_path.display()
         ))?;
 
-        let config: SystemConfig =
-            serde_json::from_str(&content).context("Failed to parse config file")?;
+        eprintln!("🔍 [DEBUG] Loaded system_config.json: {} bytes", content.len());
+        
+        // Try to parse and log any errors with more detail
+        let config: SystemConfig = match serde_json::from_str(&content) {
+            Ok(c) => {
+                eprintln!("🔍 [DEBUG] Successfully parsed system_config.json");
+                // Log collector count for airesearch site
+                if let Some(site) = c.sites.get("airesearch") {
+                    eprintln!("🔍 [DEBUG] airesearch site has {} collectors", site.collectors.len());
+                    for (idx, collector) in site.collectors.iter().enumerate() {
+                        eprintln!("🔍 [DEBUG]   Collector {}: {} (enabled: {})", idx + 1, collector.id, collector.enabled);
+                    }
+                }
+                c
+            }
+            Err(e) => {
+                eprintln!("❌ [DEBUG] Failed to parse system_config.json: {}", e);
+                eprintln!("❌ [DEBUG] Error at line: {}, column: {}", e.line(), e.column());
+                // Try to show context around the error
+                let lines: Vec<&str> = content.lines().collect();
+                let error_line = e.line().saturating_sub(1) as usize;
+                if error_line < lines.len() {
+                    eprintln!("❌ [DEBUG] Error near line {}: {}", error_line + 1, lines[error_line]);
+                    if error_line > 0 {
+                        eprintln!("❌ [DEBUG] Previous line: {}", lines[error_line - 1]);
+                    }
+                    if error_line + 1 < lines.len() {
+                        eprintln!("❌ [DEBUG] Next line: {}", lines[error_line + 1]);
+                    }
+                }
+                return Err(e).context("Failed to parse config file");
+            }
+        };
 
         Ok(config)
     }
