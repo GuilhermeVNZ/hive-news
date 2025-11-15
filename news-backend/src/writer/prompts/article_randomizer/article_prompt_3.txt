@@ -182,6 +182,26 @@ Use **only** this data.
 
 ---
 
+## 11.5. REFERENCE REQUIREMENTS FOR `article.md`
+
+**CRITICAL RULES FOR REFERENCES:**
+
+- **ONLY ONE REFERENCE**: Add exactly ONE reference at the end of the article body in `article.md`
+- **SCIENTIFIC NOTATION**: Use proper scientific citation format (Author et al., Year. Title. Journal/Publication. URL)
+- **SOURCE ARTICLE ONLY**: Reference ONLY the source article provided in {paper_text}
+- **NO MULTIPLE REFERENCES**: Do NOT add multiple references, bibliography sections, or works cited
+- **NO DUPLICATES**: Do NOT repeat the same reference multiple times
+- **FORMAT**: Add reference as a single line at the very end of `article.md`, after the article body
+
+**Example format:**
+```
+Source: Author, A., Author, B., & Author, C. (Year). Article Title. Journal Name. Retrieved from https://example.com/article
+```
+
+**Where to add:** Insert the reference at the very end of the `article.md` content, after all paragraphs and before closing the code block.
+
+---
+
 ## 12. SOCIAL MEDIA & SHORT-FORM OUTPUTS (slightly varied flavor)
 
 ### `x.txt`

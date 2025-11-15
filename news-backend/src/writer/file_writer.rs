@@ -25,9 +25,117 @@ fn clean_markdown_formatting(content: &str) -> String {
     cleaned.trim().to_string()
 }
 
+/// Limpa referências duplicadas e garante apenas uma referência científica ao final do artigo
+/// Remove múltiplas seções de "References", "Bibliography", "Works Cited", etc.
+/// Mantém apenas a primeira referência encontrada (assumindo que é a do artigo fonte)
+fn clean_duplicate_references(content: &str) -> String {
+    let lines: Vec<&str> = content.lines().collect();
+    let mut cleaned_lines: Vec<&str> = Vec::new();
+    let mut seen_reference_sections = 0;
+    let mut in_reference_section = false;
+    let mut reference_section_start = 0;
+    
+    // Padrão para detectar início de seção de referências
+    let section_header_pattern = Regex::new(r"(?i)^(?:##?\s*)?(?:References|Bibliography|Works Cited|Sources|Fontes|Referências|Source|Fonte)\s*$").unwrap();
+    
+    // Padrão para detectar linhas de referência (números, colchetes, parênteses)
+    let citation_pattern = Regex::new(r"^\s*(\d+\.|\[.*?\]|\(.*?\)|\-|\*)\s*").unwrap();
+    
+    for (i, line) in lines.iter().enumerate() {
+        let trimmed = line.trim();
+        
+        // Detectar início de seção de referências
+        if section_header_pattern.is_match(trimmed) {
+            seen_reference_sections += 1;
+            
+            // Se já vimos uma seção de referências, pular esta e todas as seguintes
+            if seen_reference_sections > 1 {
+                in_reference_section = true;
+                continue;
+            }
+            
+            // Primeira seção de referências - manter
+            in_reference_section = true;
+            reference_section_start = cleaned_lines.len();
+            cleaned_lines.push(line);
+            continue;
+        }
+        
+        // Se estamos em uma seção de referências duplicada, pular todas as linhas
+        if in_reference_section && seen_reference_sections > 1 {
+            // Verificar se esta linha parece ser o fim da seção (linha vazia seguida de conteúdo não-referência)
+            if trimmed.is_empty() {
+                // Verificar próxima linha para ver se ainda estamos na seção
+                if i + 1 < lines.len() {
+                    let next_line = lines[i + 1].trim();
+                    if !citation_pattern.is_match(next_line) && !section_header_pattern.is_match(next_line) && !next_line.is_empty() {
+                        // Próxima linha não é referência, sair da seção
+                        in_reference_section = false;
+                    }
+                }
+            }
+            continue;
+        }
+        
+        // Se estamos na primeira seção de referências, verificar duplicatas dentro da seção
+        if in_reference_section && seen_reference_sections == 1 {
+            // Se a linha parece ser uma referência, verificar se é duplicata
+            if citation_pattern.is_match(trimmed) {
+                // Normalizar para comparação (remover marcadores de citação)
+                let normalized = citation_pattern
+                    .replace(trimmed, "")
+                    .trim()
+                    .to_lowercase();
+                
+                // Verificar se já vimos esta referência antes nesta seção
+                let mut is_duplicate = false;
+                for prev_line in cleaned_lines.iter().skip(reference_section_start) {
+                    let prev_trimmed = prev_line.trim();
+                    if citation_pattern.is_match(prev_trimmed) {
+                        let prev_normalized = citation_pattern
+                            .replace(prev_trimmed, "")
+                            .trim()
+                            .to_lowercase();
+                        
+                        // Comparar referências normalizadas (ignorando diferenças de formatação)
+                        if !normalized.is_empty() && !prev_normalized.is_empty() {
+                            // Comparação simples: se o conteúdo principal é muito similar, considerar duplicata
+                            let similarity = normalized.chars().filter(|c| prev_normalized.contains(*c)).count();
+                            if similarity as f32 / normalized.len().max(1) as f32 > 0.8 {
+                                is_duplicate = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if is_duplicate {
+                    continue;
+                }
+            }
+            
+            // Verificar se saímos da seção de referências
+            if trimmed.is_empty() && i + 1 < lines.len() {
+                let next_line = lines[i + 1].trim();
+                if !citation_pattern.is_match(next_line) && !section_header_pattern.is_match(next_line) && !next_line.is_empty() {
+                    in_reference_section = false;
+                }
+            }
+        }
+        
+        cleaned_lines.push(line);
+    }
+    
+    cleaned_lines.join("\n")
+}
+
 pub async fn save_article(output_dir: &Path, content: &str) -> Result<()> {
     // Limpar formatação markdown indesejada antes de salvar
-    let cleaned_content = clean_markdown_formatting(content);
+    let mut cleaned_content = clean_markdown_formatting(content);
+    
+    // Limpar referências duplicadas e garantir apenas uma referência científica
+    cleaned_content = clean_duplicate_references(&cleaned_content);
+    
     fs::write(output_dir.join("article.md"), cleaned_content).await?;
     Ok(())
 }
