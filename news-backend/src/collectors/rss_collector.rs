@@ -19,12 +19,18 @@ type FeedItem = (String, Option<DateTime<Utc>>, Option<String>, String);
 impl RssCollector {
     /// Cria novo cliente RSS
     pub fn new(temp_dir: PathBuf) -> Self {
+        // Configure client to handle SSL errors (unrecognized name, etc.)
+        // This is needed for some servers with SSL certificate issues
+        let client = Client::builder()
+            .timeout(std::time::Duration::from_secs(60))
+            .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+            .danger_accept_invalid_certs(true) // Accept invalid SSL certificates
+            .danger_accept_invalid_hostnames(true) // Accept invalid hostnames (fixes "unrecognized name" error)
+            .build()
+            .expect("Failed to create RSS client");
+        
         Self {
-            client: Client::builder()
-                .timeout(std::time::Duration::from_secs(60))
-                .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-                .build()
-                .expect("Failed to create RSS client"),
+            client,
             temp_dir,
         }
     }
