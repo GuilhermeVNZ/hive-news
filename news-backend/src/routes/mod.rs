@@ -8,4 +8,5 @@ pub mod pages;
 pub mod scienceai;
 pub mod sites;
 pub mod sources;
+pub mod subscribe;
 pub mod system;

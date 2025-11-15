@@ -82,34 +82,50 @@ impl NewsFilter {
         // Se for do arXiv, permitir coletar a notícia mesmo que a URL seja a mesma
         if collecting_news {
             let all_articles = self.registry.get_all_articles();
-            let url_duplicate = all_articles.iter().any(|article| {
+            let mut found_match = false;
+            let mut is_arxiv_match = false;
+            
+            // Para RSS do AIResearch, a URL será https://www.airesearch.news/article/...
+            // Essa URL NÃO vai corresponder a arxiv_url ou pdf_url (que são URLs do arXiv)
+            // Então precisamos verificar se há algum artigo no registry que:
+            // 1. Tem a mesma URL (caso raro, mas possível)
+            // 2. É do arXiv (permitir coletar news mesmo assim)
+            
+            for article in all_articles.iter() {
                 let normalized_arxiv = Self::normalize_url_for_comparison(&article.arxiv_url);
                 let normalized_pdf = Self::normalize_url_for_comparison(&article.pdf_url);
 
                 // Se a URL corresponde, verificar se o artigo existente é do arXiv
                 if normalized_arxiv == normalized_article_url || normalized_pdf == normalized_article_url {
+                    found_match = true;
                     // Se o artigo existente é do arXiv (URL contém arxiv.org), permitir coletar a notícia
-                    let is_arxiv_article = normalized_arxiv.contains("arxiv.org") 
+                    is_arxiv_match = normalized_arxiv.contains("arxiv.org") 
                         || normalized_pdf.contains("arxiv.org");
-                    
-                    // Se é do arXiv, NÃO considerar duplicata (permitir coletar news)
-                    if is_arxiv_article {
-                        return false; // Não é duplicata, permitir coletar
-                    }
-                    // Se não é do arXiv, é duplicata real
+                    break; // Encontrou match, pode parar
+                }
+            }
+
+            if found_match {
+                if is_arxiv_match {
+                    // É do arXiv, NÃO considerar duplicata (permitir coletar news)
+                    debug!(
+                        article_url = %article_url,
+                        normalized_url = %normalized_article_url,
+                        "URL matches arXiv article - allowing news collection"
+                    );
+                    return false; // Não é duplicata, permitir coletar
+                } else {
+                    // Não é do arXiv, é duplicata real
+                    debug!(
+                        article_url = %article_url,
+                        normalized_url = %normalized_article_url,
+                        "Found duplicate by URL in registry (not from arXiv)"
+                    );
                     return true;
                 }
-                false
-            });
-
-            if url_duplicate {
-                debug!(
-                    article_url = %article_url,
-                    normalized_url = %normalized_article_url,
-                    "Found duplicate by URL in registry (any status)"
-                );
-                return true;
             }
+            // Não encontrou match de URL, não é duplicata por URL
+            // A verificação por ID será feita depois
             return false;
         }
 
@@ -159,8 +175,20 @@ impl NewsFilter {
                 let is_arxiv_article = metadata.arxiv_url.contains("arxiv.org") 
                     || metadata.pdf_url.contains("arxiv.org");
                 
+                debug!(
+                    article_id = %article_id,
+                    arxiv_url = %metadata.arxiv_url,
+                    pdf_url = %metadata.pdf_url,
+                    is_arxiv = is_arxiv_article,
+                    "Checking if article is from arXiv"
+                );
+                
                 // Se é do arXiv, NÃO considerar duplicata (permitir coletar news)
                 if is_arxiv_article {
+                    debug!(
+                        article_id = %article_id,
+                        "Article is from arXiv - allowing news collection"
+                    );
                     return false; // Não é duplicata, permitir coletar
                 }
                 

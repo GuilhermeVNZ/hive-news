@@ -3953,6 +3953,7 @@ async fn main() -> anyhow::Result<()> {
         )
         .route("/api/articles", get(routes::scienceai::get_articles))
         .route("/api/categories", get(routes::scienceai::get_categories))
+        .route("/api/subscribe", post(routes::subscribe::subscribe))
         .route("/api/health", get(routes::system::health))
         .route("/api/system/status", get(routes::system::system_status))
         .route("/api/system/config", get(routes::system::get_system_config))

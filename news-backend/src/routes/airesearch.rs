@@ -157,6 +157,7 @@ fn map_category_to_dir(category: &str) -> &'static str {
         "network" => "network",
         "security" => "security",
         "sound" => "sound",
+        "quantum_computing" | "quantum" => "quantum_computing",
         "nvidia" => "hardware",
         "openai" => "ai",
         "google" => "ai",

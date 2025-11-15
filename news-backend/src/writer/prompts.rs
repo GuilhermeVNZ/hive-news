@@ -378,6 +378,8 @@ fn get_prompt_randomizer_dir() -> Result<PathBuf> {
         .unwrap_or_else(|_| PathBuf::from("."));
     
     let possible_paths = [
+        // Docker path (when running in container)
+        PathBuf::from("/app/news-backend/src/writer/prompts/article_randomizer"),
         // Relative to current working directory (most common case)
         current_dir.join("src/writer/prompts/article_randomizer"),
         // Relative to workspace root (if running from workspace root)
@@ -394,8 +396,15 @@ fn get_prompt_randomizer_dir() -> Result<PathBuf> {
     // Find the first path that exists
     for path in &possible_paths {
         if path.exists() && path.is_dir() {
+            eprintln!("🔍 [DEBUG] Found prompt randomizer dir: {}", path.display());
             return Ok(path.clone());
         }
+    }
+    
+    // Debug: list what we tried
+    eprintln!("⚠️  [DEBUG] Prompt randomizer dir not found. Tried paths:");
+    for path in &possible_paths {
+        eprintln!("   - {} (exists: {})", path.display(), path.exists());
     }
     
     // If none exist, return the first one as default (will fail gracefully later)
