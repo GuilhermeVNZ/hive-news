@@ -19,7 +19,7 @@
           "api_key": null,
           "collector_type": null,
           "config": {
-            "category": "cs.AI",
+            "category": "cs",
             "max_results": 10
           },
           "enabled": true,

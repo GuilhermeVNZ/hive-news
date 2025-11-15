@@ -71,11 +71,49 @@ impl NewsFilter {
     ///
     /// NÃO verifica apenas domínio genérico como "openai.com"
     /// A verificação é específica para cada notícia individual
-    pub fn is_url_duplicate(&self, article_url: &str) -> bool {
+    ///
+    /// Se `collecting_news` for true, permite coletar notícias mesmo que já existam como artigos do arXiv
+    pub fn is_url_duplicate(&self, article_url: &str, collecting_news: bool) -> bool {
         // Normalizar URL do artigo sendo verificado (remove trailing slash, lowercase)
         // MAS mantém URL completa (path completo, não apenas domínio)
         let normalized_article_url = Self::normalize_url_for_comparison(article_url);
 
+        // Se estamos coletando notícias (RSS/HTML), verificar se o artigo existente é do arXiv
+        // Se for do arXiv, permitir coletar a notícia mesmo que a URL seja a mesma
+        if collecting_news {
+            let all_articles = self.registry.get_all_articles();
+            let url_duplicate = all_articles.iter().any(|article| {
+                let normalized_arxiv = Self::normalize_url_for_comparison(&article.arxiv_url);
+                let normalized_pdf = Self::normalize_url_for_comparison(&article.pdf_url);
+
+                // Se a URL corresponde, verificar se o artigo existente é do arXiv
+                if normalized_arxiv == normalized_article_url || normalized_pdf == normalized_article_url {
+                    // Se o artigo existente é do arXiv (URL contém arxiv.org), permitir coletar a notícia
+                    let is_arxiv_article = normalized_arxiv.contains("arxiv.org") 
+                        || normalized_pdf.contains("arxiv.org");
+                    
+                    // Se é do arXiv, NÃO considerar duplicata (permitir coletar news)
+                    if is_arxiv_article {
+                        return false; // Não é duplicata, permitir coletar
+                    }
+                    // Se não é do arXiv, é duplicata real
+                    return true;
+                }
+                false
+            });
+
+            if url_duplicate {
+                debug!(
+                    article_url = %article_url,
+                    normalized_url = %normalized_article_url,
+                    "Found duplicate by URL in registry (any status)"
+                );
+                return true;
+            }
+            return false;
+        }
+
+        // Lógica original para coleta de artigos (não news)
         let all_articles = self.registry.get_all_articles();
         let url_duplicate = all_articles.iter().any(|article| {
             // Verificar URL em qualquer status (Collected, Filtered, Published, Rejected)
@@ -104,14 +142,41 @@ impl NewsFilter {
 
     /// Verifica se uma notícia já está registrada no registry (por ID ou URL)
     /// Considera apenas artigos com status "Published", não "Collected" (que podem não ter sido escritos)
-    pub fn is_duplicate(&self, article_id: &str, article_url: &str) -> bool {
+    ///
+    /// Se `collecting_news` for true, permite coletar notícias mesmo que já existam como artigos do arXiv
+    pub fn is_duplicate(&self, article_id: &str, article_url: &str, collecting_news: bool) -> bool {
         use crate::utils::article_registry::ArticleStatus;
 
         // PRIMEIRO: Verificar URL em qualquer status (verificação mais completa)
-        if self.is_url_duplicate(article_url) {
+        if self.is_url_duplicate(article_url, collecting_news) {
             return true;
         }
 
+        // Se estamos coletando notícias, verificar se o artigo existente é do arXiv
+        if collecting_news {
+            if let Some(metadata) = self.registry.get_metadata(article_id) {
+                // Se o artigo existente é do arXiv (URL contém arxiv.org), permitir coletar a notícia
+                let is_arxiv_article = metadata.arxiv_url.contains("arxiv.org") 
+                    || metadata.pdf_url.contains("arxiv.org");
+                
+                // Se é do arXiv, NÃO considerar duplicata (permitir coletar news)
+                if is_arxiv_article {
+                    return false; // Não é duplicata, permitir coletar
+                }
+                
+                // Se não é do arXiv e está Published, é duplicata real
+                if matches!(metadata.status, ArticleStatus::Published) {
+                    debug!(
+                        article_id = %article_id,
+                        "Found duplicate by ID in registry (Published, not from arXiv)"
+                    );
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Lógica original para coleta de artigos (não news)
         // Verificar se o ID já está no registry E tem status Published
         if let Some(metadata) = self.registry.get_metadata(article_id)
             && matches!(metadata.status, ArticleStatus::Published)

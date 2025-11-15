@@ -454,9 +454,20 @@ async fn main() -> anyhow::Result<()> {
             }
         }
 
+        // Build query for multiple categories: Computer Science (cs) and Quantum Computing (quant-ph)
+        // arXiv API syntax: cat:cs OR cat:quant-ph (URL encoded: spaces become +)
+        let arxiv_query = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
+            // Use combined query for cs and quant-ph
+            // arXiv API uses OR (uppercase) and spaces are encoded as +
+            "cat:cs+OR+cat:quant-ph".to_string()
+        } else {
+            // Use original category format
+            format!("cat:{}", arxiv_category)
+        };
+
         eprintln!(
-            "✅ [DEBUG] Arxiv configuration: category={}, max_results={}",
-            arxiv_category, arxiv_max_results
+            "✅ [DEBUG] Arxiv configuration: query={}, max_results={}",
+            arxiv_query, arxiv_max_results
         );
 
         // Inicializar registry
@@ -511,11 +522,11 @@ async fn main() -> anyhow::Result<()> {
             .build()?;
 
         // Fazer uma requisição inicial ao arXiv para estabelecer sessão e obter cookies
-        // Use category from config (not hardcoded)
+        // Use cs category for session (most common)
         println!("🔐 Establishing session with arXiv...");
-        let session_url = format!("https://arxiv.org/list/{}/recent", arxiv_category);
+        let session_url = "https://arxiv.org/list/cs/recent".to_string();
         match client.get(&session_url).send().await {
-            Ok(_) => println!("   Session established ✓ (category: {})", arxiv_category),
+            Ok(_) => println!("   Session established ✓ (categories: cs + quant-ph)"),
             Err(e) => println!("   Warning: Could not establish session: {}", e),
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
@@ -561,10 +572,10 @@ async fn main() -> anyhow::Result<()> {
             // 1. submittedDate filters cause internal server errors
             // 2. sortBy with descending often returns OLD papers (2020)
             // 3. Best strategy: NO sorting = relevance-based (naturally recent)
-            // 4. Use category from config (not hardcoded)
+            // 4. Use combined query for cs and quant-ph categories
             let url = format!(
-                "https://export.arxiv.org/api/query?search_query=cat:{}&start={}&max_results={}",
-                arxiv_category,
+                "https://export.arxiv.org/api/query?search_query={}&start={}&max_results={}",
+                arxiv_query,
                 start_offset,
                 target_count * 2 // Buscar mais para garantir que achamos novos
             );
@@ -1000,7 +1011,6 @@ async fn main() -> anyhow::Result<()> {
                                     }
                                 }
                             } else {
-                                let status_code = response.status().as_u16();
                                 println!(
                                     "❌ HTTP Error: {} {}",
                                     response.status(),
@@ -1012,32 +1022,7 @@ async fn main() -> anyhow::Result<()> {
                                     let preview = status_text.chars().take(200).collect::<String>();
                                     println!("      💥 Response preview: {}", preview);
                                 }
-                                
-                                // 404 = PDF não existe (removido, ID incorreto, etc.) - pular e continuar
-                                if status_code == 404 {
-                                    println!("      ⚠️  PDF not found (404), skipping this article and continuing...");
-                                    // Não incrementar downloaded_count, apenas continuar para próximo artigo
-                                    break 'retry_loop;
-                                }
-                                
-                                // Outros erros (403, 500, etc.) - tentar retry
-                                if retry_count < max_retries {
-                                    retry_count += 1;
-                                    let wait_time = 2u64.pow(retry_count) * 5;
-                                    println!(
-                                        "⚠️  HTTP {} error, waiting {}s before retry {}/{}...",
-                                        status_code, wait_time, retry_count, max_retries
-                                    );
-                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time))
-                                        .await;
-                                    continue 'retry_loop;
-                                } else {
-                                    println!(
-                                        "❌ HTTP {} error after {} retries, skipping article",
-                                        status_code, max_retries
-                                    );
-                                    break 'retry_loop;
-                                }
+                                break 'retry_loop;
                             }
                         }
                         Err(e) => {
@@ -2019,7 +2004,9 @@ async fn main() -> anyhow::Result<()> {
                                         println!("    │  🔗 URL: {}", article.url);
 
                                         // Verificar duplicatas
-                                        if news_filter.is_url_duplicate(&article.url) {
+                                        // RSS/HTML collectors sempre coletam news
+                                        let collecting_news = true;
+                                        if news_filter.is_url_duplicate(&article.url, collecting_news) {
                                             println!(
                                                 "    │  ⚠️  URL already exists in registry (any status)"
                                             );
@@ -2068,7 +2055,7 @@ async fn main() -> anyhow::Result<()> {
                                             }
                                         }
 
-                                        if news_filter.is_duplicate(&article.id, &article.url) {
+                                        if news_filter.is_duplicate(&article.id, &article.url, collecting_news) {
                                             println!("    │  ⚠️  Duplicate detected");
                                             let json_path =
                                                 date_dir.join(format!("{}.json", article.id));
@@ -2208,7 +2195,8 @@ async fn main() -> anyhow::Result<()> {
 
                         // PRIMEIRO: Verificar URL no registry (em qualquer status) - verificação mais confiável
                         println!("    │  🔍 Checking URL in registry (any status)...");
-                        if news_filter.is_url_duplicate(&article.url) {
+                        let collecting_news = true; // RSS/HTML collectors sempre coletam news
+                        if news_filter.is_url_duplicate(&article.url, collecting_news) {
                             println!("    │  ⚠️  URL already exists in registry (any status)");
                             println!("    │  ⏭️  Skipping duplicate URL: {}", article.url);
                             println!("    └─ ❌ DUPLICATE (URL)\n");
@@ -2217,17 +2205,28 @@ async fn main() -> anyhow::Result<()> {
                         }
 
                         // SEGUNDO: Verificar se ID já está registrado
+                        // Se estamos coletando news e o artigo existente é do arXiv, permitir coletar
                         println!("    │  🔍 Checking if ID already registered...");
-                        if registry.is_article_registered(&article.id) {
-                            println!("    │  ⚠️  ID already registered - skipping");
-                            println!("    └─ ❌ DUPLICATE (ID)\n");
-                            total_rejected += 1;
-                            continue;
+                        if let Some(existing_meta) = registry.get_metadata(&article.id) {
+                            // Se o artigo existente é do arXiv, permitir coletar a notícia
+                            let is_arxiv_article = existing_meta.arxiv_url.contains("arxiv.org") 
+                                || existing_meta.pdf_url.contains("arxiv.org");
+                            
+                            if !is_arxiv_article {
+                                // Se não é do arXiv, é duplicata real
+                                println!("    │  ⚠️  ID already registered (not from arXiv) - skipping");
+                                println!("    └─ ❌ DUPLICATE (ID)\n");
+                                total_rejected += 1;
+                                continue;
+                            } else {
+                                // Se é do arXiv, permitir coletar a notícia
+                                println!("    │  ℹ️  ID exists but from arXiv - allowing news collection");
+                            }
                         }
 
                         // Verificar se é duplicata no registry (verificação adicional)
                         println!("    │  🔍 Checking for duplicates (secondary check)...");
-                        if news_filter.is_duplicate(&article.id, &article.url) {
+                        if news_filter.is_duplicate(&article.id, &article.url, collecting_news) {
                             println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
                             println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
 
@@ -2487,7 +2486,9 @@ async fn main() -> anyhow::Result<()> {
                                         }
                                     }
 
-                                    if news_filter.is_duplicate(&article.id, &article.url) {
+                                    // RSS/HTML collectors sempre coletam news
+                                    let collecting_news = true;
+                                    if news_filter.is_duplicate(&article.id, &article.url, collecting_news) {
                                         println!("    │  ⚠️  Duplicate detected");
                                         println!(
                                             "    │  ⏭️  Rejecting: {} - {}",
@@ -2742,7 +2743,8 @@ async fn main() -> anyhow::Result<()> {
 
                         // PRIMEIRO: Verificar URL no registry (em qualquer status) - verificação mais confiável
                         println!("    │  🔍 Checking URL in registry (any status)...");
-                        if news_filter.is_url_duplicate(&article.url) {
+                        let collecting_news = true; // RSS/HTML collectors sempre coletam news
+                        if news_filter.is_url_duplicate(&article.url, collecting_news) {
                             println!("    │  ⚠️  URL already exists in registry (any status)");
                             println!("    │  ⏭️  Skipping duplicate URL: {}", article.url);
                             println!("    └─ ❌ DUPLICATE (URL)\n");
@@ -2751,17 +2753,28 @@ async fn main() -> anyhow::Result<()> {
                         }
 
                         // SEGUNDO: Verificar se ID já está registrado
+                        // Se estamos coletando news e o artigo existente é do arXiv, permitir coletar
                         println!("    │  🔍 Checking if ID already registered...");
-                        if registry.is_article_registered(&article.id) {
-                            println!("    │  ⚠️  ID already registered - skipping");
-                            println!("    └─ ❌ DUPLICATE (ID)\n");
-                            total_rejected += 1;
-                            continue;
+                        if let Some(existing_meta) = registry.get_metadata(&article.id) {
+                            // Se o artigo existente é do arXiv, permitir coletar a notícia
+                            let is_arxiv_article = existing_meta.arxiv_url.contains("arxiv.org") 
+                                || existing_meta.pdf_url.contains("arxiv.org");
+                            
+                            if !is_arxiv_article {
+                                // Se não é do arXiv, é duplicata real
+                                println!("    │  ⚠️  ID already registered (not from arXiv) - skipping");
+                                println!("    └─ ❌ DUPLICATE (ID)\n");
+                                total_rejected += 1;
+                                continue;
+                            } else {
+                                // Se é do arXiv, permitir coletar a notícia
+                                println!("    │  ℹ️  ID exists but from arXiv - allowing news collection");
+                            }
                         }
 
                         // Verificar se é duplicata no registry (verificação adicional)
                         println!("    │  🔍 Checking for duplicates (secondary check)...");
-                        if news_filter.is_duplicate(&article.id, &article.url) {
+                        if news_filter.is_duplicate(&article.id, &article.url, collecting_news) {
                             println!("    │  ⚠️  Duplicate detected (ID or URL already exists)");
                             println!("    │  ⏭️  Rejecting: {} - {}", article.id, article.title);
 
