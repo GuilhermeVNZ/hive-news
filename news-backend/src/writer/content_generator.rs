@@ -503,10 +503,17 @@ impl WriterService {
             (social_prompt, tokens, tokens, 0.0)
         };
 
+        // CRITICAL: DeepSeek API requires the word "json" in the prompt when using response_format: json_object
+        // Add it if not present (case-insensitive check)
+        let mut final_social_prompt_with_json = final_social_prompt.clone();
+        if !final_social_prompt_with_json.to_lowercase().contains("json") {
+            final_social_prompt_with_json.push_str("\n\n⚠️ IMPORTANT: You MUST return your response as valid JSON format with ONLY the 3 required fields: linkedin_post, x_post, and shorts_script.");
+        }
+
         println!("  🤖 Generating social content...");
         let social_response = match self
             .deepseek_client
-            .generate_social_content(&final_social_prompt, Some(self.temperature_social))
+            .generate_social_content(&final_social_prompt_with_json, Some(self.temperature_social))
             .await
         {
             Ok(response) => {

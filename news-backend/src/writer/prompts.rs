@@ -510,7 +510,18 @@ CRITICAL: You MUST return ONLY a JSON object with these EXACT fields:
 
 ⚠️ DO NOT include "title" or "article_text" fields. ONLY return linkedin_post, x_post, and shorts_script.
 
-Return your response as valid JSON format.
+CRITICAL JSON FORMAT REQUIREMENT:
+You MUST return ONLY a JSON object with EXACTLY these 3 fields (no more, no less):
+{{
+  "linkedin_post": "...",
+  "x_post": "...",
+  "shorts_script": "..."
+}}
+
+⚠️ FORBIDDEN FIELDS: Do NOT include "title", "article_text", "subtitle", or any other fields.
+⚠️ REQUIRED FIELDS: ONLY "linkedin_post", "x_post", and "shorts_script" are allowed.
+
+Return your response as valid JSON format with ONLY the 3 required fields.
 "#,
         article, paper_title
     )
