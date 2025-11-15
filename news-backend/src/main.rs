@@ -454,21 +454,27 @@ async fn main() -> anyhow::Result<()> {
             }
         }
 
-        // Build query for multiple categories: Computer Science (cs) and Quantum Computing (quant-ph)
-        // arXiv API syntax: cat:cs OR cat:quant-ph (URL encoded: spaces become +)
-        let arxiv_query = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
-            // Use combined query for cs and quant-ph
-            // arXiv API uses OR (uppercase) and spaces are encoded as +
-            "cat:cs+OR+cat:quant-ph".to_string()
+        // Build balanced category distribution: 70% IA, 30% Quantum Computing
+        // Instead of a single OR query, we'll fetch separately and combine
+        let (ai_query, quantum_query, ai_target, quantum_target) = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
+            // Calculate targets: 70% AI, 30% Quantum
+            let ai_target = ((arxiv_max_results as f64) * 0.7).ceil() as u32;
+            let quantum_target = arxiv_max_results - ai_target;
+            
+            let ai_query = "cat:cs".to_string();
+            let quantum_query = "cat:quant-ph".to_string();
+            
+            eprintln!(
+                "✅ [BALANCED] Arxiv distribution: AI={} papers (70%), Quantum={} papers (30%), Total={}",
+                ai_target, quantum_target, arxiv_max_results
+            );
+            
+            (ai_query, quantum_query, ai_target, quantum_target)
         } else {
-            // Use original category format
-            format!("cat:{}", arxiv_category)
+            // Use original category format (single category)
+            let original_query = format!("cat:{}", arxiv_category);
+            (original_query.clone(), original_query, arxiv_max_results, 0)
         };
-
-        eprintln!(
-            "✅ [DEBUG] Arxiv configuration: query={}, max_results={}",
-            arxiv_query, arxiv_max_results
-        );
 
         // Inicializar registry
         let registry_path = get_registry_path();
@@ -499,14 +505,10 @@ async fn main() -> anyhow::Result<()> {
         let date_dir = download_dir.join(&date);
         tokio::fs::create_dir_all(&date_dir).await?;
 
-        // Use max_results from config (not hardcoded)
-        let target_count = arxiv_max_results;
-        let mut start_offset = 0;
-        let mut downloaded_count = 0;
-
-        println!("⬇️  Downloading PDFs from arXiv...");
+        // Use balanced distribution: fetch AI and Quantum separately, then combine
+        println!("⬇️  Collecting PDFs from arXiv with balanced distribution...");
         println!("   📂 Target directory: {}", date_dir.display());
-        println!("   🎯 Target count: {} new papers", target_count);
+        println!("   🎯 Target: {} AI papers (70%) + {} Quantum papers (30%) = {} total", ai_target, quantum_target, arxiv_max_results);
         println!(
             "   📊 Registry: {} articles already registered",
             total_articles
@@ -522,7 +524,6 @@ async fn main() -> anyhow::Result<()> {
             .build()?;
 
         // Fazer uma requisição inicial ao arXiv para estabelecer sessão e obter cookies
-        // Use cs category for session (most common)
         println!("🔐 Establishing session with arXiv...");
         let session_url = "https://arxiv.org/list/cs/recent".to_string();
         match client.get(&session_url).send().await {
@@ -531,542 +532,308 @@ async fn main() -> anyhow::Result<()> {
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
 
-        // Safe guards para evitar ban da API
-        let max_api_requests = 50; // Máximo de requisições por ciclo
-        let max_consecutive_empty = 5; // Máximo de batches vazios consecutivos antes de parar (aumentado para permitir gaps)
-        let mut api_request_count = 0;
-        let mut consecutive_empty_batches = 0;
-        let mut _last_successful_offset = None;
-        let mut batches_with_articles_seen = 0; // Contador de batches com artigos encontrados
-
-        // Loop até baixar 10 novos artigos (busca regressiva até encontrar)
-        while downloaded_count < target_count {
-            // Safe guard: limite de requisições por ciclo
-            if api_request_count >= max_api_requests {
-                println!(
-                    "⚠️  Reached maximum API requests limit ({}), stopping search",
-                    max_api_requests
-                );
-                println!(
-                    "   Found {} new papers (target was {})",
-                    downloaded_count, target_count
-                );
-                break;
-            }
-
-            println!("📡 [BATCH] Fetching articles from arXiv API...");
-            println!("   📊 Offset: {}", start_offset);
-            println!("   🔢 Batch size: {}", target_count * 2);
-            println!(
-                "   📈 Progress: {} new papers downloaded (target: {})",
-                downloaded_count, target_count
-            );
-            println!(
-                "   🔄 API requests: {}/{}",
-                api_request_count + 1,
-                max_api_requests
-            );
-
-            // URL correta do arXiv API
-            // IMPORTANT: arXiv API issues:
-            // 1. submittedDate filters cause internal server errors
-            // 2. sortBy with descending often returns OLD papers (2020)
-            // 3. Best strategy: NO sorting = relevance-based (naturally recent)
-            // 4. Use combined query for cs and quant-ph categories
-            let url = format!(
-                "https://export.arxiv.org/api/query?search_query={}&start={}&max_results={}",
-                arxiv_query,
-                start_offset,
-                target_count * 2 // Buscar mais para garantir que achamos novos
-            );
-
-            println!("  URL: {}", url);
-
-            // Safe guard: delay entre requisições de batch (evitar rate limiting)
-            if api_request_count > 0 {
-                let delay_seconds = if consecutive_empty_batches > 0 {
-                    // Backoff exponencial se encontrar batches vazios
-                    2.0 + (consecutive_empty_batches as f64 * 0.5)
-                } else {
-                    1.0 // Delay normal de 1 segundo
-                };
-                println!(
-                    "  ⏳ Waiting {:.1}s before API request (safe guard)...",
-                    delay_seconds
-                );
-                tokio::time::sleep(tokio::time::Duration::from_secs_f64(delay_seconds)).await;
-            }
-
-            api_request_count += 1;
-
-            let response = client.get(&url).send().await?;
-            let xml = response.text().await?;
-
-            // Debug: verificar se recebemos dados válidos
-            println!("  Response length: {} bytes", xml.len());
-            if xml.len() < 100 {
-                println!("  ⚠️  Warning: Very short response, might be an error page");
-            }
-
-            // Parse básico do XML com extração de título (suporta títulos multilinha)
-            let mut current_id = None;
-            let mut current_title = None;
-            let mut collecting_title = false;
-            let mut title_parts = Vec::new();
+        // Helper function to fetch articles from a specific category
+        async fn fetch_category_articles(
+            client: &reqwest::Client,
+            query: &str,
+            target: u32,
+            category_name: &str,
+            registry: &crate::utils::article_registry::RegistryManager,
+        ) -> anyhow::Result<Vec<(String, String)>> {
+            // Article ID -> Title mapping
             let mut articles = Vec::new();
+            let mut start_offset = 0;
+            let mut fetched_count = 0;
+            let max_api_requests = 25; // Half of total per category
+            let mut api_request_count = 0;
 
-            for line in xml.lines() {
-                // Extrair ID do artigo
-                if line.contains("<id>")
-                    && let Some(start) = line.find("<id>")
-                    && let Some(end) = line.find("</id>")
-                {
-                    let id = &line[start + 4..end];
-                    if id.contains("arxiv.org/abs/") {
-                        let mut paper_id = id
-                            .replace("http://arxiv.org/abs/", "")
-                            .replace("https://arxiv.org/abs/", "");
-                        // Remove version suffix (v1, v2, etc.) to get published version
-                        // Verificar se termina com "v" seguido de dígitos antes de remover
-                        if let Some(pos) = paper_id.rfind('v') {
-                            // Verificar se após 'v' há apenas dígitos até o fim da string
-                            if pos + 1 < paper_id.len() {
-                                let after_v = &paper_id[pos + 1..];
-                                if after_v.chars().all(|c| c.is_ascii_digit()) {
-                                    paper_id = paper_id[..pos].to_string();
-                                }
-                            }
-                        }
-                        current_id = Some(paper_id.clone());
-                        // Debug: mostrar ID extraído
-                        if api_request_count <= 2 {
-                            println!(
-                                "  [DEBUG] Extracted ID from XML: {} -> {}",
-                                id.trim(),
-                                paper_id
-                            );
-                        }
-                    }
+            println!("📡 Fetching {} articles from {} category...", target, category_name);
+            
+            while fetched_count < target && api_request_count < max_api_requests {
+                let batch_size = target * 2; // Fetch more to ensure we find new ones
+                let url = format!(
+                    "https://export.arxiv.org/api/query?search_query={}&start={}&max_results={}",
+                    query, start_offset, batch_size
+                );
+
+                if api_request_count > 0 {
+                    tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
                 }
 
-                // Extrair título (suporta títulos multilinha)
-                if line.contains("<title>") {
-                    collecting_title = true;
-                    title_parts.clear();
+                api_request_count += 1;
+                println!("  [{}] Fetching batch (offset: {}, target: {})...", category_name, start_offset, target);
 
-                    // Caso 1: título completo na mesma linha
-                    if let Some(start) = line.find("<title>") {
-                        if let Some(end) = line.find("</title>") {
-                            let title = line[start + 7..end].trim().to_string();
-                            if !title.is_empty() {
-                                current_title = Some(title);
-                                collecting_title = false;
-                            }
-                        } else {
-                            // Caso 2: título começa na linha mas continua em outras
-                            if let Some(start) = line.find("<title>") {
-                                let title_part = line[start + 7..].trim().to_string();
-                                if !title_part.is_empty() {
-                                    title_parts.push(title_part);
+                let response = client.get(&url).send().await?;
+                let xml = response.text().await?;
+
+                // Parse XML to extract article IDs and titles
+                let mut current_id = None;
+                let mut current_title = None;
+                let mut collecting_title = false;
+                let mut title_parts = Vec::new();
+                let mut batch_articles = Vec::new();
+
+                for line in xml.lines() {
+                    // Extract ID
+                    if line.contains("<id>") {
+                        if let Some(start) = line.find("<id>") {
+                            if let Some(end) = line.find("</id>") {
+                                let id = &line[start + 4..end];
+                                if id.contains("arxiv.org/abs/") {
+                                    let mut paper_id = id
+                                        .replace("http://arxiv.org/abs/", "")
+                                        .replace("https://arxiv.org/abs/", "");
+                                    // Remove version suffix
+                                    if let Some(pos) = paper_id.rfind('v') {
+                                        if pos + 1 < paper_id.len() {
+                                            let after_v = &paper_id[pos + 1..];
+                                            if after_v.chars().all(|c| c.is_ascii_digit()) {
+                                                paper_id = paper_id[..pos].to_string();
+                                            }
+                                        }
+                                    }
+                                    current_id = Some(paper_id);
                                 }
                             }
                         }
                     }
-                } else if collecting_title {
-                    // Continuar coletando título até encontrar </title>
-                    if let Some(end_pos) = line.find("</title>") {
-                        // Fim do título encontrado
-                        let title_part = line[..end_pos].trim().to_string();
-                        if !title_part.is_empty() {
-                            title_parts.push(title_part);
-                        }
-                        // Combinar todas as partes do título
-                        let full_title = title_parts.join(" ").trim().to_string();
-                        if !full_title.is_empty() {
-                            current_title = Some(full_title);
-                        }
-                        collecting_title = false;
+
+                    // Extract title
+                    if line.contains("<title>") {
+                        collecting_title = true;
                         title_parts.clear();
-                    } else {
-                        // Continuar coletando título
-                        let title_part = line.trim().to_string();
-                        if !title_part.is_empty() {
-                            title_parts.push(title_part);
+                        if let Some(start) = line.find("<title>") {
+                            if let Some(end) = line.find("</title>") {
+                                let title = line[start + 7..end].trim().to_string();
+                                if !title.is_empty() {
+                                    current_title = Some(title);
+                                    collecting_title = false;
+                                }
+                            } else {
+                                if let Some(start) = line.find("<title>") {
+                                    let title_part = line[start + 7..].trim().to_string();
+                                    if !title_part.is_empty() {
+                                        title_parts.push(title_part);
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
-
-                // Quando encontrar </entry>, finalizar artigo
-                if line.contains("</entry>") {
-                    if let Some(id) = current_id.take() {
-                        // Se ainda estava coletando título mas não encontrou </title>, usar o que coletou
-                        if collecting_title && !title_parts.is_empty() {
+                    } else if collecting_title {
+                        if let Some(end_pos) = line.find("</title>") {
+                            let title_part = line[..end_pos].trim().to_string();
+                            if !title_part.is_empty() {
+                                title_parts.push(title_part);
+                            }
                             let full_title = title_parts.join(" ").trim().to_string();
                             if !full_title.is_empty() {
                                 current_title = Some(full_title);
                             }
                             collecting_title = false;
                             title_parts.clear();
+                        } else {
+                            let title_part = line.trim().to_string();
+                            if !title_part.is_empty() {
+                                title_parts.push(title_part);
+                            }
                         }
-
-                        let title = current_title.take().unwrap_or_else(|| {
-                            eprintln!(
-                                "  ⚠️  WARNING: Article {} has no title - using 'Untitled'",
-                                id
-                            );
-                            "Untitled".to_string()
-                        });
-
-                        let title_clone = title.clone();
-                        articles.push(ArticleMetadata {
-                            id: id.clone(),
-                            title: title_clone.clone(),
-                            original_title: Some(title_clone),
-                            generated_title: None,
-                            url: format!("https://arxiv.org/abs/{}", id),
-                            author: Some("Unknown".to_string()),
-                            summary: Some("No summary available".to_string()),
-                            published_date: Some(chrono::Utc::now()),
-                            image_url: None,
-                            source_type: Some("arxiv".to_string()),
-                            content_html: None,
-                            content_text: None,
-                            category: None,
-                            slug: None,
-                        });
                     }
-                    // Reset estado para próximo artigo (se ainda estava coletando)
-                    if collecting_title {
-                        collecting_title = false;
-                        title_parts.clear();
-                    }
-                }
-            }
 
-            println!("  ✅ Batch fetched successfully");
-            println!("  📄 Found {} papers in this batch", articles.len());
-            if !articles.is_empty() {
-                println!(
-                    "  📋 First article: {} - {}",
-                    articles[0].id,
-                    articles[0].title.chars().take(60).collect::<String>()
-                );
-            }
+                    // Finalize article
+                    if line.contains("</entry>") {
+                        if let Some(id) = current_id.take() {
+                            if collecting_title && !title_parts.is_empty() {
+                                let full_title = title_parts.join(" ").trim().to_string();
+                                if !full_title.is_empty() {
+                                    current_title = Some(full_title);
+                                }
+                                collecting_title = false;
+                                title_parts.clear();
+                            }
 
-            // Safe guard: verificar se batch está vazio
-            if articles.is_empty() {
-                consecutive_empty_batches += 1;
-                println!(
-                    "  ⚠️  Empty batch encountered (consecutive: {}/{})",
-                    consecutive_empty_batches, max_consecutive_empty
-                );
-
-                // Se muitos batches vazios consecutivos, pode ser que chegamos ao fim dos resultados recentes
-                // Mas só parar se já encontramos alguns artigos novos OU se já vimos muitos batches com artigos
-                if consecutive_empty_batches >= max_consecutive_empty {
-                    // Se ainda não encontramos nenhum artigo novo, continuar buscando mesmo com gaps
-                    // (pode ser gaps temporários na API, não o fim dos resultados)
-                    if downloaded_count == 0 && batches_with_articles_seen > 0 {
-                        // Reset contador se ainda não encontramos nenhum novo - pode ser gaps na API
-                        println!(
-                            "  ℹ️  Reset empty batch count (continuing search - may be API gaps, seen {} batches with articles)",
-                            batches_with_articles_seen
-                        );
-                        consecutive_empty_batches = 0;
-                        // Continuar para próximo batch
-                        let batch_size = target_count * 2;
-                        start_offset += batch_size;
-                        continue;
-                    } else if downloaded_count > 0 {
-                        // Já encontramos alguns novos, então batches vazios provavelmente indicam fim
-                        println!(
-                            "  ⚠️  Too many consecutive empty batches ({}), stopping (found {} new articles)",
-                            consecutive_empty_batches, downloaded_count
-                        );
-                        break;
-                    } else if api_request_count >= max_api_requests {
-                        println!("  ⚠️  Reached max API requests limit, stopping");
-                        break;
-                    } else {
-                        // Continuar buscando
-                        println!(
-                            "  ℹ️  Continuing search (found 0 new so far, {} requests made)",
-                            api_request_count
-                        );
-                        consecutive_empty_batches = 0;
-                        let batch_size = target_count * 2;
-                        start_offset += batch_size;
-                        continue;
+                            let title = current_title.take().unwrap_or_else(|| "Untitled".to_string());
+                            
+                            // Check if already in registry (not downloaded yet)
+                            if !registry.has_article(&id) {
+                                batch_articles.push((id, title));
+                            }
+                        }
                     }
                 }
 
-                // Continuar para próximo batch (mas com backoff)
-                let batch_size = target_count * 2;
-                start_offset += batch_size;
-                continue;
-            } else {
-                // Reset contador se encontramos resultados
-                consecutive_empty_batches = 0;
-                _last_successful_offset = Some(start_offset);
-                batches_with_articles_seen += 1;
-            }
+                println!("  [{}] Found {} new articles in batch", category_name, batch_articles.len());
+                
+                // Add to our list, but only up to target
+                for (id, title) in batch_articles {
+                    if fetched_count >= target {
+                        break;
+                    }
+                    // Double-check registry (may have been added by another category fetch)
+                    if !registry.has_article(&id) && !articles.iter().any(|(existing_id, _)| existing_id == &id) {
+                        articles.push((id, title));
+                        fetched_count += 1;
+                    }
+                }
 
-            // Tentar baixar artigos não duplicados
-            let mut found_new_in_batch = false;
-            for article in articles.iter() {
-                if downloaded_count >= target_count {
+                if fetched_count >= target {
                     break;
                 }
 
-                let file_path = date_dir.join(format!("{}.pdf", article.id));
-
-                // Verificar se já foi processado usando registry
-                // Só pular se o artigo já foi publicado (não precisa re-baixar)
-                // Artigos rejeitados ou apenas coletados podem ser re-baixados se necessário
-                let metadata = registry.get_metadata(&article.id);
-                if let Some(meta) = metadata {
-                    // Só pular se já foi publicado
-                    if meta.status == crate::utils::article_registry::ArticleStatus::Published {
-                        println!(
-                            "  [{}/{}]: ⏭️  SKIPPED (already published): {}",
-                            downloaded_count + 1,
-                            target_count,
-                            article.id
-                        );
-                        println!("      📄 Title: {}", article.title);
-                        println!("      📊 Status: {:?}", meta.status);
-                        if let Some(output_dir) = &meta.output_dir {
-                            println!("      📁 Output dir: {}", output_dir.display());
-                        }
-                        println!("      ℹ️  Article already published, skipping download");
-                        continue;
-                    }
-                    // Se foi rejeitado ou apenas coletado, permitir re-download se o arquivo não existir
-                    let file_exists = file_path.exists();
-                    if file_exists {
-                        println!(
-                            "  [{}/{}]: ⏭️  SKIPPED (file exists): {}",
-                            downloaded_count + 1,
-                            target_count,
-                            article.id
-                        );
-                        println!("      📄 Title: {}", article.title);
-                        println!("      📊 Status: {:?}", meta.status);
-                        println!("      ℹ️  PDF file already exists, skipping download");
-                        continue;
-                    }
-                    // Se o arquivo não existe mas está no registry, permitir re-download
-                    println!(
-                        "  [{}/{}]: 🔄 RE-DOWNLOADING (file missing): {}",
-                        downloaded_count + 1,
-                        target_count,
-                        article.id
-                    );
-                    println!("      📄 Title: {}", article.title);
-                    println!("      📊 Status: {:?}", meta.status);
-                    println!("      ℹ️  Article in registry but PDF missing, re-downloading");
-                }
-
-                found_new_in_batch = true;
-
-                // Baixar (use published ID without version suffix)
-                // Usar a API REST oficial do arXiv para baixar PDFs
-                let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", article.id);
-                let arxiv_url = format!("https://arxiv.org/abs/{}", article.id);
-                println!(
-                    "  [{}/{}]: 📥 DOWNLOADING: {}",
-                    downloaded_count + 1,
-                    target_count,
-                    article.id
-                );
-                println!("      📄 Title: {}", article.title);
-                println!("      🔗 URL: {}", arxiv_url);
-                println!("      ⬇️  PDF URL: {}", pdf_url);
-                print!("      ⏳ Downloading... ");
-
-                // Criar requisição com headers adequados para arXiv
-                // arXiv prefere identificação clara do bot
-                let mut retry_count = 0;
-                let max_retries = 3;
-                let download_start = std::time::Instant::now();
-
-                'retry_loop: loop {
-                    let request = client
-                        .get(&pdf_url)
-                        .header("User-Agent", "NewsSystemCollector/1.0 (contact: admin@airesearch.news; automated research paper collection)")
-                        .header("Accept", "application/pdf")
-                        .header("Accept-Encoding", "gzip, deflate")
-                        .header("Connection", "keep-alive");
-
-                    match request.send().await {
-                        Ok(response) => {
-                            // Check for rate limiting (429 Too Many Requests)
-                            if response.status().as_u16() == 429 {
-                                if retry_count < max_retries {
-                                    retry_count += 1;
-                                    let wait_time = 2u64.pow(retry_count) * 5; // 10s, 20s, 40s
-                                    println!(
-                                        "⚠️  Rate limited by arXiv (429), waiting {}s before retry {}/{}...",
-                                        wait_time, retry_count, max_retries
-                                    );
-                                    tokio::time::sleep(tokio::time::Duration::from_secs(wait_time))
-                                        .await;
-                                    continue 'retry_loop;
-                                } else {
-                                    println!(
-                                        "❌ Rate limit exceeded after {} retries, skipping article",
-                                        max_retries
-                                    );
-                                    break 'retry_loop;
-                                }
-                            }
-
-                            // Verificar se é uma resposta de sucesso
-                            if response.status().is_success() {
-                                // Verificar Content-Length se disponível
-                                if let Some(content_length) =
-                                    response.headers().get("content-length")
-                                    && let Ok(len_str) = content_length.to_str()
-                                    && let Ok(len_bytes) = len_str.parse::<u64>()
-                                {
-                                    let len_mb = len_bytes as f64 / 1_048_576.0;
-                                    println!("({:.2} MB)", len_mb);
-                                }
-                                let bytes = response.bytes().await;
-                                match bytes {
-                                    Ok(b) => {
-                                        let file_size_mb = b.len() as f64 / 1_048_576.0;
-                                        // Verify it's actually a PDF (starts with %PDF)
-                                        if b.len() > 4 && &b[0..4] == b"%PDF" {
-                                            match tokio::fs::write(&file_path, &b).await {
-                                                Ok(_) => {
-                                                    let download_duration =
-                                                        download_start.elapsed();
-                                                    println!("      ✅ Downloaded successfully!");
-                                                    println!(
-                                                        "      📦 File size: {:.2} MB",
-                                                        file_size_mb
-                                                    );
-                                                    println!(
-                                                        "      📁 Saved to: {}",
-                                                        file_path.display()
-                                                    );
-                                                    println!(
-                                                        "      ⏱️  Download time: {:.2}s",
-                                                        download_duration.as_secs_f64()
-                                                    );
-                                                    print!("      📝 Registering in registry... ");
-                                                    // Registrar no registry após download bem-sucedido
-                                                    if let Err(e) = registry.register_collected(
-                                                        article.id.clone(),
-                                                        article.title.clone(),
-                                                        arxiv_url.clone(),
-                                                        pdf_url.clone(),
-                                                    ) {
-                                                        eprintln!("⚠️  Failed: {}", e);
-                                                    } else {
-                                                        // Define destinos com base nos sites que têm arXiv habilitado
-                                                        let destinations =
-                                                            get_enabled_sites_for_source("arxiv");
-                                                        if let Err(e) = registry.set_destinations(
-                                                            &article.id,
-                                                            destinations,
-                                                        ) {
-                                                            eprintln!(
-                                                                "⚠️  Failed to set destinations: {}",
-                                                                e
-                                                            );
-                                                        }
-                                                        downloaded_count += 1;
-                                                        println!("✅ Registered");
-                                                        println!(
-                                                            "      ✅ Article {} registered successfully!",
-                                                            article.id
-                                                        );
-                                                    }
-                                                    break 'retry_loop; // Success - exit retry loop
-                                                }
-                                                Err(e) => {
-                                                    println!("❌ Failed to write file: {}", e);
-                                                    println!("      💥 Error details: {:?}", e);
-                                                    break 'retry_loop;
-                                                }
-                                            }
-                                        } else {
-                                            println!(
-                                                "❌ Invalid PDF format (got HTML or redirect)"
-                                            );
-                                            println!("      💥 Response size: {} bytes", b.len());
-                                            println!(
-                                                "      💥 First bytes: {:?}",
-                                                &b[..std::cmp::min(100, b.len())]
-                                            );
-                                            break 'retry_loop;
-                                        }
-                                    }
-                                    Err(e) => {
-                                        println!("❌ Failed to read response bytes: {}", e);
-                                        println!("      💥 Error details: {:?}", e);
-                                        break 'retry_loop;
-                                    }
-                                }
-                            } else {
-                                println!(
-                                    "❌ HTTP Error: {} {}",
-                                    response.status(),
-                                    response.status().canonical_reason().unwrap_or("Unknown")
-                                );
-                                if let Ok(status_text) = response.text().await
-                                    && !status_text.is_empty()
-                                {
-                                    let preview = status_text.chars().take(200).collect::<String>();
-                                    println!("      💥 Response preview: {}", preview);
-                                }
-                                break 'retry_loop;
-                            }
-                        }
-                        Err(e) => {
-                            println!("❌ Request failed: {}", e);
-                            println!("      💥 Error details: {:?}", e);
-                            break 'retry_loop;
-                        }
-                    } // end match
-                } // end retry_loop
-
-                // Delay entre downloads para evitar rate limiting
-                // arXiv recomenda mínimo de 3s, usando 5s para margem de segurança
-                tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
-            }
-
-            // Se não baixou nenhum novo neste batch, incrementar offset para próximo batch
-            if downloaded_count < target_count && !found_new_in_batch {
-                // Incrementar pelo número de artigos buscados no batch anterior
-                let batch_size = target_count * 2; // max_results = 20
                 start_offset += batch_size;
-                println!(
-                    "  No new papers in this batch, trying older articles (offset {})...\n",
-                    start_offset
-                );
-            } else if found_new_in_batch {
-                // Se encontrou novos neste batch, resetar contador de vazios
-                consecutive_empty_batches = 0;
             }
 
-            // Safety: não ficar em loop infinito (permitir buscar até 1000 artigos no histórico)
-            // Se já tentou muito longe e ainda não achou 10 novos, provavelmente já processou tudo recente
-            if start_offset > 1000 {
-                println!("⚠️  Reached max offset (1000), stopping search");
-                println!(
-                    "   Found {} new papers so far (target was {})",
-                    downloaded_count, target_count
-                );
-                break;
-            }
+            println!("  [{}] ✅ Collected {} articles", category_name, articles.len());
+            Ok(articles)
         }
 
-        println!("\n✅ Collection completed!");
-        println!("   New papers downloaded: {}/10", downloaded_count);
-        println!("   Location: {}", date_dir.display());
+        // Fetch articles from both categories separately
+        let mut ai_articles = Vec::new();
+        let mut quantum_articles = Vec::new();
+
+        if ai_target > 0 {
+            ai_articles = fetch_category_articles(&client, &ai_query, ai_target, "AI (cs)", &registry).await?;
+        }
+
+        if quantum_target > 0 {
+            // Small delay between category fetches
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+            quantum_articles = fetch_category_articles(&client, &quantum_query, quantum_target, "Quantum (quant-ph)", &registry).await?;
+        }
+
+        // Combine articles: 70% AI first, then 30% Quantum
+        let mut combined_articles: Vec<(String, String)> = Vec::new();
+        combined_articles.extend(ai_articles);
+        combined_articles.extend(quantum_articles);
+
+        println!();
+        println!("📊 Combined articles: {} AI + {} Quantum = {} total", ai_articles.len(), quantum_articles.len(), combined_articles.len());
+        println!("⬇️  Starting downloads...");
+        println!();
+
+        // Download the combined list
+        let mut downloaded_count = 0;
+        let target_count = combined_articles.len();
+
+        // Loop through combined articles and download
+        for (paper_id, paper_title) in combined_articles {
+            downloaded_count += 1;
+            
+            println!(
+                "📥 [{}/{}] Downloading: {}",
+                downloaded_count, target_count, paper_id
+            );
+            println!("   Title: {}", paper_title);
+
+            // Download PDF
+            let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", paper_id);
+            let arxiv_url = format!("https://arxiv.org/abs/{}", paper_id);
+            let file_path = date_dir.join(format!("{}.pdf", paper_id));
+            
+            // Skip if already downloaded
+            if file_path.exists() {
+                println!("   ⏭️  Already downloaded, skipping");
+                continue;
+            }
+
+            // Check registry
+            let metadata = registry.get_metadata(&paper_id);
+            if let Some(meta) = metadata {
+                if meta.status == crate::utils::article_registry::ArticleStatus::Published {
+                    println!("   ⏭️  Already published, skipping");
+                    continue;
+                }
+            }
+
+            // Download with retry logic
+            let mut retry_count = 0;
+            let max_retries = 3;
+            let download_success = loop {
+                let request = client
+                    .get(&pdf_url)
+                    .header("User-Agent", "NewsSystemCollector/1.0 (contact: admin@airesearch.news; automated research paper collection)")
+                    .header("Accept", "application/pdf")
+                    .header("Accept-Encoding", "gzip, deflate")
+                    .header("Connection", "keep-alive");
+
+                match request.send().await {
+
+                    Ok(response) => {
+                        // Check for rate limiting
+                        if response.status().as_u16() == 429 {
+                            if retry_count < max_retries {
+                                retry_count += 1;
+                                let wait_time = 2u64.pow(retry_count) * 5;
+                                println!("   ⚠️  Rate limited, waiting {}s...", wait_time);
+                                tokio::time::sleep(tokio::time::Duration::from_secs(wait_time)).await;
+                                continue;
+                            } else {
+                                println!("   ❌ Rate limit exceeded after {} retries", max_retries);
+                                break false;
+                            }
+                        }
+
+                        if response.status().is_success() {
+                            match response.bytes().await {
+                                Ok(bytes) => {
+                                    if bytes.len() > 4 && &bytes[0..4] == b"%PDF" {
+                                        match tokio::fs::write(&file_path, &bytes).await {
+                                            Ok(_) => {
+                                                let file_size_mb = bytes.len() as f64 / 1_048_576.0;
+                                                println!("   ✅ Downloaded ({:.2} MB)", file_size_mb);
+                                                
+                                                // Register in registry
+                                                if let Err(e) = registry.register_collected(
+                                                    paper_id.clone(),
+                                                    paper_title.clone(),
+                                                    arxiv_url.clone(),
+                                                    pdf_url.clone(),
+                                                ) {
+                                                    eprintln!("   ⚠️  Failed to register: {}", e);
+                                                } else {
+                                                    let destinations = get_enabled_sites_for_source("arxiv");
+                                                    if let Err(e) = registry.set_destinations(&paper_id, destinations) {
+                                                        eprintln!("   ⚠️  Failed to set destinations: {}", e);
+                                                    }
+                                                }
+                                                break true;
+                                            }
+                                            Err(e) => {
+                                                println!("   ❌ Failed to write file: {}", e);
+                                                break false;
+                                            }
+                                        }
+                                    } else {
+                                        println!("   ❌ Invalid PDF format");
+                                        break false;
+                                    }
+                                }
+                                Err(e) => {
+                                    println!("   ❌ Failed to read response: {}", e);
+                                    break false;
+                                }
+                            }
+                        } else {
+                            println!("   ❌ HTTP Error: {}", response.status());
+                            break false;
+                        }
+                    }
+                    Err(e) => {
+                        println!("   ❌ Request failed: {}", e);
+                        break false;
+                    }
+                }
+            };
+
+            if !download_success {
+                println!("   ⚠️  Failed to download, continuing with next article");
+            }
+
+            // Delay between downloads (5 seconds to avoid rate limiting)
+            tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
+        }
+
+        println!();
+        println!("✅ Collection completed!");
+        println!("   Downloaded: {}/{} papers", downloaded_count, target_count);
 
         // Limpar arquivos temporários
         println!("\n🧹 Cleaning temporary files...");
