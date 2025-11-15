@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ArticleGrid from "@/components/ArticleGrid";
-import Footer from "@/components/Footer";
 import type { Article } from "@/types/article";
+
+// Lazy load do Footer para melhorar performance inicial
+// O Footer não é crítico para o FCP
+const Footer = dynamic(() => import("@/components/Footer"), {
+  ssr: true, // Manter SSR para SEO
+});
 
 interface HomeClientProps {
   initialArticles: Article[];
@@ -18,10 +25,28 @@ export default function HomeClient({
   initialCategory = "",
   initialQuery = "",
 }: HomeClientProps) {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] =
     useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [committedQuery, setCommittedQuery] = useState<string>(initialQuery);
+  
+  // Prefetch de rotas prováveis quando o mouse está sobre links
+  useEffect(() => {
+    const handleMouseEnter = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+      if (link && link.href) {
+        const url = new URL(link.href);
+        if (url.pathname.startsWith('/article/')) {
+          router.prefetch(url.pathname);
+        }
+      }
+    };
+    
+    document.addEventListener('mouseenter', handleMouseEnter, true);
+    return () => document.removeEventListener('mouseenter', handleMouseEnter, true);
+  }, [router]);
 
   useEffect(() => {
     setSelectedCategory(initialCategory);

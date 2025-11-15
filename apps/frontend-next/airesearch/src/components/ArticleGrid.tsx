@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import ArticleCard from "./ArticleCard";
 import { Button } from "@/components/ui/button";
 import type { Article } from "@/types/article";
+
+// Lazy load do ArticleCard para melhorar performance inicial
+// O ArticleCard será carregado apenas quando necessário
+const LazyArticleCard = dynamic(() => import("./ArticleCard"), {
+  loading: () => <div className="h-64 bg-muted animate-pulse rounded-lg" />,
+});
 
 interface ArticleGridProps {
   articles: Article[];
@@ -128,7 +135,12 @@ const ArticleGrid = ({
                   animationFillMode: "both",
                 }}
               >
-                <ArticleCard {...article} />
+                {/* Usar ArticleCard normal para os primeiros 6 (above the fold) */}
+                {index < 6 ? (
+                  <ArticleCard {...article} />
+                ) : (
+                  <LazyArticleCard {...article} />
+                )}
               </div>
             ))}
           </div>

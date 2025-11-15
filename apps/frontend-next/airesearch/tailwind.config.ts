@@ -8,6 +8,7 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Otimizações de performance - Tailwind v3+ já faz purge automático
   theme: {
     extend: {
       colors: {

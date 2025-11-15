@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+// Otimização de fontes: preload e display swap para melhor FCP
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap', // Evita FOIT (Flash of Invisible Text)
+  preload: true,
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -60,6 +66,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://airesearch.com',
   },
+  // Otimizações de performance
+  other: {
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-xss-protection': '1; mode=block',
+  },
 };
 
 export default function RootLayout({
@@ -70,6 +82,18 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
+        {/* Resource Hints para performance máxima */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        
+        {/* Preload de recursos críticos */}
+        <link rel="preload" href="/favicon.png" as="image" type="image/png" />
+        
+        {/* Prefetch de rotas prováveis */}
+        <link rel="prefetch" href="/article" as="document" />
+        
+        {/* Structured Data para SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -88,7 +112,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${inter.variable}`}>{children}</body>
     </html>
   );
 }

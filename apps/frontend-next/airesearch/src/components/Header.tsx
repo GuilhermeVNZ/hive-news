@@ -28,6 +28,8 @@ const Header = () => {
               width={40}
               height={40}
               className="object-contain group-hover:scale-105 transition-transform duration-300"
+              priority
+              quality={90}
             />
             <div className="absolute inset-0 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
           </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ const categoryLabels: Record<string, string> = {
   technology: 'Technology',
 };
 
-export const HeroCarousel = ({ articles, categories }: HeroCarouselProps) => {
+export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const sortedArticles = [...articles].sort((a, b) => {
@@ -102,7 +102,12 @@ export const HeroCarousel = ({ articles, categories }: HeroCarouselProps) => {
           <img
             src={article.imageCarousel || article.image || selectArticleImage(article.imageCategories, article.id)}
             alt={article.title}
+            width={1920}
+            height={600}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding={index === 0 ? "sync" : "async"}
             className="h-full w-full object-cover"
+            style={{ aspectRatio: '1920/600' }}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
             }}
@@ -164,4 +169,6 @@ export const HeroCarousel = ({ articles, categories }: HeroCarouselProps) => {
       </div>
     </section>
   );
-};
+});
+
+HeroCarousel.displayName = 'HeroCarousel';

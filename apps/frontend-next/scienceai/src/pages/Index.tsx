@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { ArticleCard } from "@/components/ArticleCard";
-import { Sidebar } from "@/components/Sidebar";
+
+// Lazy load do Sidebar para melhorar performance inicial
+const LazySidebar = lazy(() => import("@/components/Sidebar").then(module => ({ default: module.Sidebar })));
 
 interface Category {
   name: string;
@@ -37,8 +39,36 @@ const Index = () => {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('/api/categories');
+        // Cache por 5 minutos para categorias
+        const cacheKey = 'scienceai-categories';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 5 * 60 * 1000; // 5 minutos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const data = JSON.parse(cached).data;
+          const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
+            if (!a.latestDate || !b.latestDate) return 0;
+            return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
+          });
+          setCategories(sortedCategories.slice(0, 5));
+          return;
+        }
+        
+        const response = await fetch('/api/categories', {
+          headers: {
+            'Cache-Control': 'max-age=300', // 5 minutos
+          },
+        });
         const data = await response.json();
+        
+        // Salvar no cache
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data,
+          timestamp: now,
+        }));
+        
         // Ordenar da esquerda para direita (mais recente primeiro)
         const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
           if (!a.latestDate || !b.latestDate) return 0;
@@ -57,15 +87,40 @@ const Index = () => {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        // Add cache-busting to ensure fresh data
-        const response = await fetch('/api/articles?' + new Date().getTime());
+        // Cache por 60 segundos para artigos (reduz latência de ~640ms)
+        const cacheKey = 'scienceai-articles';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 60 * 1000; // 60 segundos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const articles = JSON.parse(cached).data;
+          setArticles(articles);
+          setLoading(false);
+          return;
+        }
+        
+        const response = await fetch('/api/articles', {
+          headers: {
+            'Cache-Control': 'max-age=60', // 60 segundos
+          },
+        });
         const data = await response.json();
         const articles = data.articles || [];
         
-        // Debug: Log featured articles
-        const featuredArticles = articles.filter((a: Article) => a.featured === true);
-        console.log(`[ScienceAI Index] Fetched ${articles.length} articles, ${featuredArticles.length} featured:`, 
-          featuredArticles.map((a: Article) => ({ id: a.id, title: a.title.substring(0, 50), featured: a.featured })));
+        // Salvar no cache
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data: articles,
+          timestamp: now,
+        }));
+        
+        // Debug: Log featured articles (apenas em dev)
+        if (import.meta.env.DEV) {
+          const featuredArticles = articles.filter((a: Article) => a.featured === true);
+          console.log(`[ScienceAI Index] Fetched ${articles.length} articles, ${featuredArticles.length} featured:`, 
+            featuredArticles.map((a: Article) => ({ id: a.id, title: a.title.substring(0, 50), featured: a.featured })));
+        }
         
         setArticles(articles);
       } catch (error) {
@@ -180,7 +235,9 @@ const Index = () => {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <Sidebar articles={filteredArticles} />
+                <Suspense fallback={<div className="h-64 bg-muted animate-pulse rounded-lg" />}>
+                  <LazySidebar articles={filteredArticles} />
+                </Suspense>
               </div>
             </div>
           </div>

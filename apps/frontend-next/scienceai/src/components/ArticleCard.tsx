@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, Clock } from "lucide-react";
 import { selectArticleImage } from "@/lib/imageUtils";
@@ -22,7 +23,7 @@ interface ArticleCardProps {
   article: Article;
 }
 
-export const ArticleCard = ({ article }: ArticleCardProps) => {
+export const ArticleCard = memo(({ article }: ArticleCardProps) => {
   // Use image from server if available (selected using AIResearch logic)
   // Otherwise fallback to client-side selection
   const imageUrl = article.image || selectArticleImage(article.imageCategories, article.id);
@@ -55,7 +56,12 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
         <img
           src={imageUrl}
           alt={article.title}
+          width={400}
+          height={192}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transition-smooth group-hover:scale-105"
+          style={{ aspectRatio: '400/192' }}
           onError={(e) => {
             // Fallback to default image if selected image doesn't exist
             (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
@@ -97,4 +103,6 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
       </div>
     </Link>
   );
-};
+});
+
+ArticleCard.displayName = 'ArticleCard';

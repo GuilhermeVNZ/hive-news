@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Plus, Settings, ExternalLink, Globe, Edit, Trash2 } from 'lucide-react';
+import { Plus, Settings, ExternalLink, Globe, Edit, Trash2, FileText, PlusCircle } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
@@ -71,20 +71,32 @@ export default function Sites() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [promptArticle, setPromptArticle] = useState<string>(''); // Default prompt
-  const [promptSocial, setPromptSocial] = useState<string>(''); // Default prompt
   const [promptBlog, setPromptBlog] = useState<string>(''); // Default prompt
   const [customArticlePrompt, setCustomArticlePrompt] = useState<string>(''); // Custom prompt
-  const [customSocialPrompt, setCustomSocialPrompt] = useState<string>(''); // Custom prompt
   const [customNewsPrompt, setCustomNewsPrompt] = useState<string>(''); // Custom prompt
   const [promptModeArticle, setPromptModeArticle] = useState<'default' | 'custom'>('default'); // Which mode is active
-  const [promptModeSocial, setPromptModeSocial] = useState<'default' | 'custom'>('default'); // Which mode is active
   const [promptModeNews, setPromptModeNews] = useState<'default' | 'custom'>('default'); // Which mode is active
   const [useCompressor, setUseCompressor] = useState<boolean>(false); // Compressor state
   const [temperatureArticle, setTemperatureArticle] = useState<number>(0.7); // Temperature for article prompt
-  const [temperatureSocial, setTemperatureSocial] = useState<number>(0.8); // Temperature for social prompt
   const [temperatureBlog, setTemperatureBlog] = useState<number>(0.7); // Temperature for blog prompt
-  type PromptTab = 'article'|'social'|'blog';
+  type PromptTab = 'article'|'blog'|'prompts';
   const [activeTab, setActiveTab] = useState<PromptTab>('article');
+  
+  // Prompt management state
+  interface PromptFile {
+    filename: string;
+    size: number;
+    modified: string;
+  }
+  const [articlePrompts, setArticlePrompts] = useState<PromptFile[]>([]);
+  const [newsPrompts, setNewsPrompts] = useState<PromptFile[]>([]);
+  const [selectedPromptType, setSelectedPromptType] = useState<'article' | 'news'>('article');
+  const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
+  const [promptContent, setPromptContent] = useState<string>('');
+  const [promptDialogOpen, setPromptDialogOpen] = useState(false);
+  const [newPromptName, setNewPromptName] = useState<string>('');
+  const [deletePromptDialogOpen, setDeletePromptDialogOpen] = useState(false);
+  const [promptToDelete, setPromptToDelete] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
@@ -154,7 +166,6 @@ export default function Sites() {
           }
           if (firstSite) {
             setTemperatureArticle(firstSite.temperature_article ?? 0.7);
-            setTemperatureSocial(firstSite.temperature_social ?? 0.8);
             setTemperatureBlog(firstSite.temperature_blog ?? 0.7);
           }
         }
@@ -185,9 +196,8 @@ export default function Sites() {
     
     try {
       // Try to load from backend API - don't let failures block each other
-      const [articleResponse, socialResponse, newsResponse] = await Promise.allSettled([
+      const [articleResponse, newsResponse] = await Promise.allSettled([
         axios.get(`/api/sites/${siteId}/prompt/article`).catch(err => ({ error: err })),
-        axios.get(`/api/sites/${siteId}/prompt/social`).catch(err => ({ error: err })),
         axios.get(`/api/sites/${siteId}/prompt/news`).catch(err => ({ error: err })),
       ]);
       
@@ -207,24 +217,6 @@ export default function Sites() {
           setCustomArticlePrompt(next.prompt_article);
         }
         setPromptModeArticle(next.prompt_article_enabled ? 'custom' : 'default');
-      }
-      
-      // Process social prompt
-      if (socialResponse.status === 'fulfilled' && !('error' in socialResponse.value) && socialResponse.value.data?.success) {
-        setPromptSocial(socialResponse.value.data.prompt || ''); // Always load default
-        // Load custom prompt if it exists
-        if (next?.prompt_social) {
-          setCustomSocialPrompt(next.prompt_social);
-        }
-        // Set mode based on enabled flag
-        setPromptModeSocial(next?.prompt_social_enabled ? 'custom' : 'default');
-      } else if (next) {
-        // Fallback
-        setPromptSocial(getDefaultSocialPrompt());
-        if (next.prompt_social) {
-          setCustomSocialPrompt(next.prompt_social);
-        }
-        setPromptModeSocial(next.prompt_social_enabled ? 'custom' : 'default');
       }
       
       // Process news prompt
@@ -253,7 +245,6 @@ export default function Sites() {
       // Load temperature states
       if (next) {
         setTemperatureArticle(next.temperature_article ?? 0.7);
-        setTemperatureSocial(next.temperature_social ?? 0.8);
         setTemperatureBlog(next.temperature_blog ?? 0.7);
       }
       
@@ -266,13 +257,10 @@ export default function Sites() {
       // Final fallback
       if (next) {
         setPromptArticle(getDefaultArticlePrompt(next.name));
-        setPromptSocial(getDefaultSocialPrompt());
         setPromptBlog(getDefaultNewsPrompt());
         if (next.prompt_article) setCustomArticlePrompt(next.prompt_article);
-        if (next.prompt_social) setCustomSocialPrompt(next.prompt_social);
         if (next.prompt_blog) setCustomNewsPrompt(next.prompt_blog);
         setPromptModeArticle(next.prompt_article_enabled ? 'custom' : 'default');
-        setPromptModeSocial(next.prompt_social_enabled ? 'custom' : 'default');
         setPromptModeNews(next.prompt_blog_enabled ? 'custom' : 'default');
         // Load compressor state and temperatures from writer config
         if (next.writer) {
@@ -280,7 +268,6 @@ export default function Sites() {
         }
         if (next) {
           setTemperatureArticle(next.temperature_article ?? 0.7);
-          setTemperatureSocial(next.temperature_social ?? 0.8);
           setTemperatureBlog(next.temperature_blog ?? 0.7);
         }
       }
@@ -450,6 +437,107 @@ GOOD TITLES (short, hooky, irresistible):
 ✓ "This AI Breakthrough May Be Wrong"`;
   };
 
+  // Load prompt files from backend
+  const loadPrompts = async (type: 'article' | 'news') => {
+    try {
+      const response = await axios.get(`/api/prompts/${type}`);
+      if (response.data.success) {
+        if (type === 'article') {
+          setArticlePrompts(response.data.prompts || []);
+        } else {
+          setNewsPrompts(response.data.prompts || []);
+        }
+      }
+    } catch (err: any) {
+      console.error(`Failed to load ${type} prompts:`, err);
+      setError(err.response?.data?.error || err.message || `Failed to load ${type} prompts`);
+    }
+  };
+
+  // Load prompt content
+  const loadPromptContent = async (type: 'article' | 'news', filename: string) => {
+    try {
+      const response = await axios.get(`/api/prompts/${type}/${filename}`);
+      if (response.data.success) {
+        setPromptContent(response.data.content || '');
+        setSelectedPrompt(filename);
+      }
+    } catch (err: any) {
+      console.error(`Failed to load prompt content:`, err);
+      setError(err.response?.data?.error || err.message || 'Failed to load prompt content');
+    }
+  };
+
+  // Create new prompt
+  const createPrompt = async () => {
+    if (!newPromptName.trim()) {
+      setError('Prompt name is required');
+      return;
+    }
+    try {
+      setSaving(true);
+      const filename = newPromptName.endsWith('.txt') ? newPromptName : `${newPromptName}.txt`;
+      await axios.post(`/api/prompts/${selectedPromptType}`, {
+        filename,
+        content: promptContent || '',
+      });
+      await loadPrompts(selectedPromptType);
+      setPromptDialogOpen(false);
+      setNewPromptName('');
+      setPromptContent('');
+      setSelectedPrompt(null);
+    } catch (err: any) {
+      setError(err.response?.data?.error || err.message || 'Failed to create prompt');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Update prompt
+  const updatePrompt = async () => {
+    if (!selectedPrompt) return;
+    try {
+      setSaving(true);
+      await axios.put(`/api/prompts/${selectedPromptType}/${selectedPrompt}`, {
+        content: promptContent,
+      });
+      await loadPrompts(selectedPromptType);
+    } catch (err: any) {
+      setError(err.response?.data?.error || err.message || 'Failed to update prompt');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Delete prompt
+  const deletePrompt = async () => {
+    if (!promptToDelete) return;
+    try {
+      setSaving(true);
+      await axios.delete(`/api/prompts/${selectedPromptType}/${promptToDelete}`);
+      await loadPrompts(selectedPromptType);
+      if (selectedPrompt === promptToDelete) {
+        setSelectedPrompt(null);
+        setPromptContent('');
+      }
+      setDeletePromptDialogOpen(false);
+      setPromptToDelete(null);
+    } catch (err: any) {
+      setError(err.response?.data?.error || err.message || 'Failed to delete prompt');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Load prompts when tab changes to prompts
+  useEffect(() => {
+    if (activeTab === 'prompts') {
+      loadPrompts('article');
+      loadPrompts('news');
+    }
+  }, [activeTab]);
+
+  // Removed getDefaultSocialPrompt - no longer needed
   const getDefaultSocialPrompt = () => {
     return `CRITICAL INSTRUCTIONS (READ FIRST):
 1. Create viral social media content based on Nature/Science style article below
@@ -627,7 +715,6 @@ TikTok Script Format:
       }
       if (next) {
         setTemperatureArticle(next.temperature_article ?? 0.7);
-        setTemperatureSocial(next.temperature_social ?? 0.8);
         setTemperatureBlog(next.temperature_blog ?? 0.7);
       }
       // Load actual prompts from backend (the real prompts that will be sent to API)
@@ -907,8 +994,8 @@ TikTok Script Format:
                 <CardContent className="space-y-4">
                   <div className="flex gap-2">
                     <Button variant={activeTab==='article'?'default':'outline'} onClick={()=>setActiveTab('article')}>Article</Button>
-                    <Button variant={activeTab==='social'?'default':'outline'} onClick={()=>setActiveTab('social')}>Social</Button>
                     <Button variant={activeTab==='blog'?'default':'outline'} onClick={()=>setActiveTab('blog')}>News</Button>
+                    <Button variant={activeTab==='prompts'?'default':'outline'} onClick={()=>setActiveTab('prompts')}>Manage Prompts</Button>
                   </div>
                   {activeTab==='article' && (
                     <div className="space-y-4">
@@ -1106,194 +1193,147 @@ TikTok Script Format:
 
                     </div>
                   )}
-                  {activeTab==='social' && (
+                  {activeTab==='prompts' && (
                     <div className="space-y-4">
-                      {/* Prompt Type Selector */}
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                        <Label className="text-sm font-semibold">Select Active Prompt:</Label>
-                          <div className="flex items-center gap-4">
-                            <label className="flex items-center gap-2 cursor-pointer">
-                              <input 
-                                type="checkbox" 
-                                checked={useCompressor} 
-                                onChange={async (e) => {
-                                  const newValue = e.target.checked;
-                                  setUseCompressor(newValue);
-                                  try {
-                                    setSaving(true);
-                                    await axios.put(`/api/sites/${currentSite.id}/writer`, { 
-                                      use_compressor: newValue
-                                    }); 
-                                    await loadSites();
-                                  } catch(err: any) {
-                                    setError(err.response?.data?.error || err.message || 'Failed to update compressor');
-                                    // Revert on error
-                                    setUseCompressor(!newValue);
-                                  } finally {
-                                    setSaving(false);
-                                  }
-                                }}
-                                className="rounded border-gray-300 w-4 h-4 accent-primary cursor-pointer"
-                                disabled={saving}
-                              />
-                              <span className="text-sm">Use Compressor</span>
-                            </label>
-                            <div className="flex items-center gap-2">
-                              <Label className="text-sm">Temperature:</Label>
-                              <input 
-                                type="number" 
-                                step="0.1" 
-                                min="0" 
-                                max="2" 
-                                value={temperatureSocial} 
-                                onChange={async (e) => {
-                                  const newValue = parseFloat(e.target.value) || 0.8;
-                                  setTemperatureSocial(newValue);
-                                  try {
-                                    setSaving(true);
-                                    await axios.put(`/api/sites/${currentSite.id}/writer`, { 
-                                      temperature_social: newValue
-                                    }); 
-                                    await loadSites();
-                                  } catch(err: any) {
-                                    setError(err.response?.data?.error || err.message || 'Failed to update temperature');
-                                    // Revert on error
-                                    setTemperatureSocial(currentSite.temperature_social ?? 0.8);
-                                  } finally {
-                                    setSaving(false);
-                                  }
-                                }}
-                                className="w-20 px-2 py-1 rounded border border-input text-sm"
-                                disabled={saving}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex gap-4">
-                          <label className="flex items-center gap-2 cursor-pointer">
-                            <input 
-                              type="radio" 
-                              name="prompt-mode-social" 
-                              checked={promptModeSocial === 'default'} 
-                              onChange={async ()=>{
-                                setPromptModeSocial('default');
-                                try {
-                                  setSaving(true);
-                                  await axios.put(`/api/sites/${currentSite.id}/writer`, { 
-                                    prompt_social_enabled: false 
-                                  }); 
-                                  await loadSites(); 
-                                  await loadActualPrompts(currentSite.id, sites);
-                                } catch(err:any) {
-                                  setError(err.response?.data?.error || err.message || 'Failed to switch to default');
-                                  setPromptModeSocial('custom');
-                                } finally {
-                                  setSaving(false);
-                                }
-                              }}
-                              className="cursor-pointer"
-                              disabled={saving}
-                            />
-                            <span className="text-sm">Default Prompt</span>
-                            {promptModeSocial === 'default' && (
-                              <Badge variant="secondary" className="text-xs">Currently Active</Badge>
-                            )}
-                          </label>
-                          <label className="flex items-center gap-2 cursor-pointer">
-                            <input 
-                              type="radio" 
-                              name="prompt-mode-social" 
-                              checked={promptModeSocial === 'custom'} 
-                              onChange={async ()=>{
-                                setPromptModeSocial('custom');
-                                try {
-                                  setSaving(true);
-                                  const promptToSave = customSocialPrompt || currentSite.prompt_social || '';
-                                  await axios.put(`/api/sites/${currentSite.id}/writer`, { 
-                                    prompt_social: promptToSave,
-                                    prompt_social_enabled: true 
-                                  }); 
-                                  await loadSites(); 
-                                  await loadActualPrompts(currentSite.id, sites);
-                                } catch(err:any) {
-                                  setError(err.response?.data?.error || err.message || 'Failed to switch to custom');
-                                  setPromptModeSocial('default');
-                                } finally {
-                                  setSaving(false);
-                                }
-                              }}
-                              className="cursor-pointer"
-                              disabled={saving}
-                            />
-                            <span className="text-sm">Custom Prompt</span>
-                            {promptModeSocial === 'custom' && (
-                              <Badge variant="default" className="text-xs">Currently Active</Badge>
-                            )}
-                          </label>
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-semibold">Prompt Type:</Label>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant={selectedPromptType==='article'?'default':'outline'} 
+                            size="sm"
+                            onClick={()=>{
+                              setSelectedPromptType('article');
+                              setSelectedPrompt(null);
+                              setPromptContent('');
+                            }}
+                          >
+                            Article Prompts
+                          </Button>
+                          <Button 
+                            variant={selectedPromptType==='news'?'default':'outline'} 
+                            size="sm"
+                            onClick={()=>{
+                              setSelectedPromptType('news');
+                              setSelectedPrompt(null);
+                              setPromptContent('');
+                            }}
+                          >
+                            News Prompts
+                          </Button>
                         </div>
                       </div>
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Prompt List */}
+                        <Card>
+                          <CardHeader className="pb-3">
+                            <div className="flex items-center justify-between">
+                              <CardTitle className="text-sm">
+                                {selectedPromptType === 'article' ? 'Article' : 'News'} Prompts
+                                <Badge variant="secondary" className="ml-2">
+                                  {(selectedPromptType === 'article' ? articlePrompts : newsPrompts).length}
+                                </Badge>
+                              </CardTitle>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => {
+                                  setNewPromptName('');
+                                  setPromptContent('');
+                                  setSelectedPrompt(null);
+                                  setPromptDialogOpen(true);
+                                }}
+                              >
+                                <PlusCircle className="h-4 w-4 mr-1" />
+                                New
+                              </Button>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-2 max-h-[600px] overflow-y-auto">
+                              {(selectedPromptType === 'article' ? articlePrompts : newsPrompts).map((prompt) => (
+                                <div
+                                  key={prompt.filename}
+                                  className={`p-2 rounded border cursor-pointer hover:bg-muted ${
+                                    selectedPrompt === prompt.filename ? 'border-primary bg-primary/5' : ''
+                                  }`}
+                                  onClick={() => loadPromptContent(selectedPromptType, prompt.filename)}
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                      <FileText className="h-4 w-4" />
+                                      <span className="text-sm font-medium">{prompt.filename}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                      <span className="text-xs text-muted-foreground">
+                                        {(prompt.size / 1024).toFixed(1)} KB
+                                      </span>
+                                      <Button
+                                        size="sm"
+                                        variant="ghost"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setPromptToDelete(prompt.filename);
+                                          setDeletePromptDialogOpen(true);
+                                        }}
+                                      >
+                                        <Trash2 className="h-4 w-4 text-destructive" />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                              {(selectedPromptType === 'article' ? articlePrompts : newsPrompts).length === 0 && (
+                                <p className="text-sm text-muted-foreground text-center py-4">
+                                  No prompts found. Click "New" to create one.
+                                </p>
+                              )}
+                            </div>
+                          </CardContent>
+                        </Card>
 
-                      {/* Default Prompt (Read-only) */}
-                      {promptModeSocial === 'default' && (
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <Label className="text-sm font-semibold">Default Prompt (Read-only - Safe Reference):</Label>
-                            <Badge variant="secondary" className="text-xs">Active</Badge>
-                          </div>
-                          <div className="p-3 bg-muted rounded-md text-sm font-mono whitespace-pre-wrap max-h-[600px] overflow-y-auto border border-input">
-                            {promptSocial || 'Loading default prompt...'}
-                          </div>
-                          <p className="text-xs text-muted-foreground">
-                            This is the fixed default prompt sent to DeepSeek API. It cannot be edited and serves as a safe reference.
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Custom Prompt (Editable) */}
-                      {promptModeSocial === 'custom' && (
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <Label className="text-sm font-semibold">Custom Prompt (Editable):</Label>
-                            <Badge variant="default" className="text-xs">Active</Badge>
-                          </div>
-                          <textarea 
-                            className="w-full min-h-[600px] p-3 rounded-md border border-input bg-background text-sm font-mono text-xs" 
-                            value={customSocialPrompt} 
-                            onChange={(e)=>setCustomSocialPrompt(e.target.value)}
-                            placeholder="Enter your custom prompt here. Use {{article_text}} and {{paper_title}} placeholders."
-                          />
-                          <p className="text-xs text-muted-foreground">
-                            Edit your custom prompt freely. Use {'{{article_text}}'} and {'{{paper_title}}'} to reference content when this prompt is sent to the API.
-                          </p>
-                          <div className="flex gap-2 justify-end">
-                            <Button variant="outline" onClick={()=>{
-                              setCustomSocialPrompt(currentSite.prompt_social || '');
-                            }}>
-                              Reset Changes
-                            </Button>
-                            <Button disabled={saving} onClick={async ()=>{ 
-                              try{ 
-                                setSaving(true); 
-                                // Only save the prompt text, don't change enabled flag
-                                await axios.put(`/api/sites/${currentSite.id}/writer`, { 
-                                  prompt_social: customSocialPrompt
-                                  // Don't send prompt_social_enabled - keep current state
-                                }); 
-                                await loadSites(); 
-                                await loadActualPrompts(currentSite.id, sites); 
-                              } catch(err:any){ 
-                                setError(err.response?.data?.error || err.message || 'Failed to save'); 
-                              } finally{ 
-                                setSaving(false); 
-                              } 
-                            }}>
-                              {saving?'Saving...':'Save Custom Prompt'}
-                            </Button>
-                          </div>
-                        </div>
-                      )}
-
+                        {/* Prompt Editor */}
+                        <Card>
+                          <CardHeader className="pb-3">
+                            <CardTitle className="text-sm">
+                              {selectedPrompt ? `Edit: ${selectedPrompt}` : 'Prompt Editor'}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            {selectedPrompt ? (
+                              <div className="space-y-2">
+                                <textarea
+                                  className="w-full min-h-[600px] p-3 rounded-md border border-input bg-background text-sm font-mono text-xs"
+                                  value={promptContent}
+                                  onChange={(e) => setPromptContent(e.target.value)}
+                                  placeholder="Prompt content..."
+                                />
+                                <div className="flex gap-2 justify-end">
+                                  <Button
+                                    variant="outline"
+                                    onClick={() => {
+                                      setSelectedPrompt(null);
+                                      setPromptContent('');
+                                    }}
+                                  >
+                                    Cancel
+                                  </Button>
+                                  <Button
+                                    disabled={saving}
+                                    onClick={updatePrompt}
+                                  >
+                                    {saving ? 'Saving...' : 'Save Changes'}
+                                  </Button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="flex items-center justify-center h-[600px] text-muted-foreground">
+                                <p className="text-sm">Select a prompt from the list to edit</p>
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      </div>
                     </div>
                   )}
                   {activeTab==='blog' && (
@@ -1734,6 +1774,97 @@ TikTok Script Format:
             </Button>
             <Button variant="destructive" onClick={handleDeleteSite} disabled={saving || !siteToDelete}>
               {saving ? 'Deleting...' : 'Delete Site'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Create Prompt Dialog */}
+      <Dialog open={promptDialogOpen} onOpenChange={setPromptDialogOpen}>
+        <DialogContent onClose={() => setPromptDialogOpen(false)} className="max-w-2xl max-h-[90vh]">
+          <DialogHeader>
+            <DialogTitle>Create New {selectedPromptType === 'article' ? 'Article' : 'News'} Prompt</DialogTitle>
+            <DialogDescription>
+              Create a new prompt file. The filename will automatically get a .txt extension if not provided.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="prompt-name">Prompt Name</Label>
+              <Input
+                id="prompt-name"
+                value={newPromptName}
+                onChange={(e) => setNewPromptName(e.target.value)}
+                placeholder="article_prompt_12 or news_prompt_12"
+              />
+              <p className="text-xs text-muted-foreground">
+                Enter the filename (without .txt extension, it will be added automatically)
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="prompt-content">Prompt Content</Label>
+              <textarea
+                id="prompt-content"
+                className="w-full min-h-[400px] p-3 rounded-md border border-input bg-background text-sm font-mono"
+                value={promptContent}
+                onChange={(e) => setPromptContent(e.target.value)}
+                placeholder="Enter your prompt content here..."
+              />
+            </div>
+          </div>
+
+          {error && (
+            <div className="mt-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+              {error}
+            </div>
+          )}
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setPromptDialogOpen(false)} disabled={saving}>
+              Cancel
+            </Button>
+            <Button onClick={createPrompt} disabled={saving || !newPromptName.trim()}>
+              {saving ? 'Creating...' : 'Create Prompt'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Prompt Dialog */}
+      <Dialog open={deletePromptDialogOpen} onOpenChange={setDeletePromptDialogOpen}>
+        <DialogContent onClose={() => setDeletePromptDialogOpen(false)} className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Delete Prompt</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete this prompt? This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+
+          {promptToDelete && (
+            <div className="py-4">
+              <p className="text-sm text-muted-foreground">
+                Prompt: <span className="font-medium text-foreground">{promptToDelete}</span>
+              </p>
+              <p className="text-sm text-destructive mt-2">
+                This prompt file will be permanently deleted from the system.
+              </p>
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+              {error}
+            </div>
+          )}
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeletePromptDialogOpen(false)} disabled={saving}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={deletePrompt} disabled={saving || !promptToDelete}>
+              {saving ? 'Deleting...' : 'Delete Prompt'}
             </Button>
           </DialogFooter>
         </DialogContent>

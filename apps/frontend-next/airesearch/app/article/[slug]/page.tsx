@@ -1,17 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AuthorImage } from "@/components/AuthorImage";
+import { ShareButton } from "@/components/ShareButton";
 import {
   Clock,
   Calendar,
   User,
   ArrowLeft,
-  Share2,
   BookOpen,
   Download,
   Linkedin,
-  Twitter,
-  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -202,10 +200,14 @@ export default async function ArticlePage({
                 <span className="text-sm">{article.readTime} min read</span>
               </div>
               <div className="flex-1" />
-              <Button variant="outline" size="sm" className="gap-2">
-                <Share2 className="h-4 w-4" />
-                Share
-              </Button>
+              <ShareButton
+                article={{
+                  title: article.title,
+                  linkedinPost: article.linkedinPost,
+                  xPost: article.xPost,
+                  imagePath: article.imagePath,
+                }}
+              />
             </div>
           </div>
         </div>
@@ -222,6 +224,10 @@ export default async function ArticlePage({
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//9k="
                 />
               </div>
             </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ interface HeroProps {
   onSubmitSearch?: () => void;
 }
 
-const Hero = ({
+const Hero = memo(({
   selectedCategory,
   onCategorySelect,
   searchQuery,
@@ -91,6 +92,8 @@ const Hero = ({
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;

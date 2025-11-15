@@ -22,12 +22,6 @@ interface ShareButtonProps {
 
 export function ShareButton({ article, url }: ShareButtonProps) {
   const currentUrl = url || (typeof window !== "undefined" ? window.location.href : "");
-  const imageUrl = article.imagePath || "/images/ai/ai_1.jpg";
-  const fullImageUrl = imageUrl.startsWith("http")
-    ? imageUrl
-    : typeof window !== "undefined"
-    ? `${window.location.origin}${imageUrl}`
-    : imageUrl;
 
   const handleShare = (platform: string) => {
     if (platform === "copy") {
@@ -58,7 +52,6 @@ export function ShareButton({ article, url }: ShareButtonProps) {
       );
     } else if (platform === "telegram") {
       // Telegram: título + link + preview da imagem (mesmo modelo do WhatsApp)
-      const shareText = `${article.title}\n\n${currentUrl}`;
       window.open(
         `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(article.title)}`,
         "_blank"

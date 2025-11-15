@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ArticleCardProps {
   id: string;
@@ -18,6 +19,7 @@ interface ArticleCardProps {
   category: string;
   readTime: number;
   imageCategories?: string[];
+  imagePath?: string;
 }
 
 const ArticleCard = ({
@@ -28,6 +30,7 @@ const ArticleCard = ({
   category,
   readTime,
   imageCategories = [],
+  imagePath,
   slug: providedSlug,
 }: ArticleCardProps) => {
   const slug =
@@ -57,11 +60,29 @@ const ArticleCard = ({
     sound: "Sound",
   };
 
+  const defaultImage = "/images/ai/ai_1.jpg";
+  const cardImage = imagePath || defaultImage;
+
   return (
-    <Link href={`/article/${slug}`}>
+    <Link href={`/article/${slug}`} prefetch={false}>
       <Card className="group relative overflow-hidden hover:border-primary/50 transition-all duration-300 hover-lift cursor-pointer h-full bg-gradient-to-br from-card via-card to-card/50">
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-primary/0 group-hover:to-primary/5 transition-all duration-300 pointer-events-none" />
+
+        {/* Otimização: Imagem lazy load apenas se visível */}
+        {cardImage && (
+          <div className="relative w-full h-48 overflow-hidden">
+            <Image
+              src={cardImage}
+              alt={title}
+              fill
+              className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={75}
+            />
+          </div>
+        )}
 
         <CardHeader className="relative">
           <div className="flex items-center gap-2 mb-3 flex-wrap">

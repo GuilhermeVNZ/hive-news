@@ -22,7 +22,14 @@ function buildArticlesUrl(categoryFilter?: string): URL {
 
 export async function getArticles(categoryFilter?: string): Promise<Article[]> {
   const url = buildArticlesUrl(categoryFilter);
-  const response = await fetch(url.toString(), { cache: "no-store" });
+  // Cache por 60 segundos para reduzir latência (economia de ~650ms)
+  // Revalida em background para manter dados atualizados
+  const response = await fetch(url.toString(), {
+    next: { 
+      revalidate: 60, // Revalida a cada 60 segundos
+      tags: ['articles', categoryFilter || 'all'],
+    },
+  });
 
   if (!response.ok) {
     throw new Error(
@@ -40,7 +47,14 @@ export async function findArticleBySlug(slug: string): Promise<Article | null> {
     getBackendUrl(),
   );
 
-  const response = await fetch(url.toString(), { cache: "no-store" });
+  // Cache por 300 segundos (5 minutos) para artigos individuais
+  // Artigos individuais mudam menos frequentemente
+  const response = await fetch(url.toString(), {
+    next: {
+      revalidate: 300,
+      tags: ['article', slug],
+    },
+  });
 
   if (response.status === 404) {
     return null;

@@ -3924,6 +3924,29 @@ async fn main() -> anyhow::Result<()> {
             "/api/sites/:site_id/prompt/news",
             get(routes::sites::get_news_prompt),
         )
+        // Prompt management endpoints
+        .route(
+            "/api/prompts/article",
+            get(routes::prompts::list_article_prompts)
+                .post(routes::prompts::create_article_prompt),
+        )
+        .route(
+            "/api/prompts/article/:filename",
+            get(routes::prompts::get_article_prompt_content)
+                .put(routes::prompts::update_article_prompt)
+                .delete(routes::prompts::delete_article_prompt),
+        )
+        .route(
+            "/api/prompts/news",
+            get(routes::prompts::list_news_prompts)
+                .post(routes::prompts::create_news_prompt),
+        )
+        .route(
+            "/api/prompts/news/:filename",
+            get(routes::prompts::get_news_prompt_content)
+                .put(routes::prompts::update_news_prompt)
+                .delete(routes::prompts::delete_news_prompt),
+        )
         .route(
             "/api/sites/:site_id/writer",
             put(routes::sites::update_writer_config),
