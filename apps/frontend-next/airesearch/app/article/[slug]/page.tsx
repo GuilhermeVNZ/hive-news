@@ -10,6 +10,8 @@ import {
   BookOpen,
   Download,
   Linkedin,
+  Twitter,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

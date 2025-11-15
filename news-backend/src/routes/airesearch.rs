@@ -40,6 +40,10 @@ struct Article {
     is_promotional: bool,
     featured: bool,
     hidden: bool,
+    #[serde(rename = "linkedinPost", skip_serializing_if = "Option::is_none")]
+    linkedin_post: Option<String>,
+    #[serde(rename = "xPost", skip_serializing_if = "Option::is_none")]
+    x_post: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -401,6 +405,8 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
         let categories_raw = read_optional_file(output_dir.as_path(), "image_categories.txt");
         let slug_raw = read_optional_file(output_dir.as_path(), "slug.txt");
         let source_raw = read_optional_file(output_dir.as_path(), "source.txt");
+        let linkedin_raw = read_optional_file(output_dir.as_path(), "linkedin.txt");
+        let x_raw = read_optional_file(output_dir.as_path(), "x.txt");
 
         let title = take_non_empty(metadata.generated_title.as_ref())
             .or_else(|| take_non_empty(metadata.original_title.as_ref()))
@@ -463,6 +469,9 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
         let featured = metadata.featured.unwrap_or(false);
         let hidden = metadata.hidden.unwrap_or(false);
 
+        let linkedin_post = linkedin_raw.trim();
+        let x_post = x_raw.trim();
+        
         let article = Article {
             id: metadata.id.clone(),
             slug,
@@ -478,6 +487,8 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
             is_promotional: false,
             featured,
             hidden,
+            linkedin_post: if linkedin_post.is_empty() { None } else { Some(linkedin_post.to_string()) },
+            x_post: if x_post.is_empty() { None } else { Some(x_post.to_string()) },
         };
 
         articles_with_keys.push((published_at_dt, featured, metadata.id.clone(), article));

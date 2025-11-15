@@ -13,6 +13,8 @@ export interface Article {
   isPromotional?: boolean;
   featured?: boolean;
   hidden?: boolean;
+  linkedinPost?: string; // LinkedIn post content from linkedin.txt
+  xPost?: string; // X/Twitter post content from x.txt
 }
 
 export type ArticleCollection = Article[];

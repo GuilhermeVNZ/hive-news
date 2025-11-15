@@ -219,35 +219,28 @@ Source: Author, A., Author, B., & Author, C. (Year). Article Title. Journal Name
 
 ---
 
-## 13. REQUIRED OUTPUT FILES & FORMAT (unchanged)
+## 13. REQUIRED JSON OUTPUT FORMAT
 
-You must output **exactly these seven code blocks**, in this exact order:
+**CRITICAL**: You MUST return your response as a valid JSON object. Do NOT use code blocks or markdown formatting.
 
-```markdown
-```title.txt
-[Your final title here]
+You MUST return a JSON object with EXACTLY these fields:
+
+```json
+{
+  "title": "Your final title here (max 8 words, strong hook)",
+  "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
+  "article_text": "Your full article here in Markdown format, 500–800 words, 6–8 paragraphs",
+  "image_categories": ["category1", "category2", "category3"],
+  "x_post": "Your X/Twitter post here (max 280 characters) - concise, punchy, shareable",
+  "linkedin_post": "Your LinkedIn post here (max 300 characters) - professional, engaging summary",
+  "shorts_script": "Your Shorts/TikTok-style script here (around 300 words, ~2 minutes)"
+}
 ```
 
-```subtitle.txt
-[Your final subtitle here]
-```
-
-```article.md
-[Your full article here in Markdown, 500–800 words]
-```
-
-```image_categories.txt
-[three categories comma-separated]
-```
-
-```x.txt
-[X post, max 280 characters]
-```
-
-```linkedin.txt
-[LinkedIn post, max 300 characters]
-```
-
-```shorts_script.txt
-[~300-word script]
-```
+⚠️ **CRITICAL RULES**:
+- Return ONLY valid JSON - no markdown code blocks, no extra formatting
+- "article_text" MUST be a STRING field containing the complete article in Markdown format
+- "image_categories" MUST be an array of exactly 3 strings from the allowed list
+- "x_post", "linkedin_post", and "shorts_script" are REQUIRED fields
+- All fields must be present in the JSON response
+- The word "json" must appear in your response format

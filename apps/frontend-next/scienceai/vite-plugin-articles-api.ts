@@ -30,6 +30,8 @@ interface Article {
   readTime: number;
   featured?: boolean;
   imageCategories?: string[];
+  linkedinPost?: string; // LinkedIn post content from linkedin.txt
+  xPost?: string; // X/Twitter post content from x.txt
 }
 
 const ARTICLE_CONTENT_FILES = ["article.md", "article.txt"] as const;
@@ -1054,19 +1056,25 @@ async function readArticlesFromDir(
         const subtitlePath = path.join(dirPath, "subtitle.txt");
         const categoriesPath = path.join(dirPath, "image_categories.txt");
         const slugPath = path.join(dirPath, "slug.txt");
+        const linkedinPath = path.join(dirPath, "linkedin.txt");
+        const xPath = path.join(dirPath, "x.txt");
 
         let sourceContent = "";
         let subtitle = "";
         let categoriesContent = "";
         let slugContent = "";
+        let linkedinContent = "";
+        let xContent = "";
 
         try {
-          [sourceContent, subtitle, categoriesContent, slugContent] =
+          [sourceContent, subtitle, categoriesContent, slugContent, linkedinContent, xContent] =
             await Promise.all([
               fs.readFile(sourcePath, "utf-8").catch(() => ""),
               fs.readFile(subtitlePath, "utf-8").catch(() => ""),
               fs.readFile(categoriesPath, "utf-8").catch(() => ""),
               fs.readFile(slugPath, "utf-8").catch(() => ""),
+              fs.readFile(linkedinPath, "utf-8").catch(() => ""),
+              fs.readFile(xPath, "utf-8").catch(() => ""),
             ]);
         } catch (err) {
           // Continuar mesmo se alguns arquivos não existirem
@@ -1213,6 +1221,8 @@ async function readArticlesFromDir(
           imageCarousel: imageCarousel || "/images/ai/ai_1.jpg",
           imageArticle: imageArticle || "/images/ai/ai_1.jpg",
           featured: isFeatured,
+          linkedinPost: linkedinContent.trim() || undefined,
+          xPost: xContent.trim() || undefined,
         };
 
         if (isFeatured) {
@@ -2029,6 +2039,21 @@ export function articlesApiPlugin(): Plugin {
                 .replace(/^-|-$/g, "");
             }
 
+            // Ler arquivos sociais se existirem
+            const linkedinPath = path.join(articleDir, "linkedin.txt");
+            const xPath = path.join(articleDir, "x.txt");
+            let linkedinContent = "";
+            let xContent = "";
+
+            try {
+              [linkedinContent, xContent] = await Promise.all([
+                fs.readFile(linkedinPath, "utf-8").catch(() => ""),
+                fs.readFile(xPath, "utf-8").catch(() => ""),
+              ]);
+            } catch (err) {
+              // Continuar mesmo se arquivos não existirem
+            }
+
             const article: Article = {
               id: articleId,
               slug: slug || articleId,
@@ -2050,6 +2075,8 @@ export function articlesApiPlugin(): Plugin {
               readTime: calculateReadTime(articleContent),
               imageCategories,
               imageArticle: imageArticle || "/images/ai/ai_1.jpg", // Image for article detail (first category)
+              linkedinPost: linkedinContent.trim() || undefined,
+              xPost: xContent.trim() || undefined,
             };
 
             res.setHeader("Content-Type", "application/json");

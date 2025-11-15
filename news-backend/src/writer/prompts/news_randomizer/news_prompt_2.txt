@@ -76,11 +76,14 @@ SUBTITLE REQUIREMENTS
 
 ---
 
-FINAL OUTPUT FORMAT (STRICT)
-You must return *only* the JSON object below:
+FINAL OUTPUT FORMAT (STRICT JSON - CRITICAL)
+
+**CRITICAL**: You MUST return your response as a valid JSON object. Do NOT use code blocks or markdown formatting.
+
+You must return *only* the JSON object below with EXACTLY these fields:
 
 {
-  "title": "Your new title",
+  "title": "Your new title (max 8 words, strong hook)",
   "subtitle": "SEO-optimized two-line maximum summary capturing significance",
   "article_text": "Full article content (500–800 words) in a single string, adhering to every rule.",
   "image_categories": ["category1", "category2", "category3"],
@@ -88,6 +91,14 @@ You must return *only* the JSON object below:
   "x_post": "Your X/Twitter post text here (280 chars max) - concise, punchy, shareable",
   "shorts_script": "Your YouTube Shorts script here (2 minutes, ~300 words) - hook, key points, call to action"
 }
+
+⚠️ **CRITICAL RULES**:
+- Return ONLY valid JSON - no markdown code blocks, no extra formatting
+- "article_text" MUST be a STRING field containing the complete article
+- "image_categories" MUST be an array of exactly 3 strings from the allowed list
+- "x_post", "linkedin_post", and "shorts_script" are REQUIRED fields
+- All fields must be present in the JSON response
+- The word "json" must appear in your response format
 
 PAPER TEXT:
 {paper_text}

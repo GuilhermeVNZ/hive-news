@@ -152,19 +152,35 @@ impl ConfigManager {
         // Create parent directory if it doesn't exist
         if let Some(parent) = self.config_path.parent() {
             eprintln!("🔍 [DEBUG] Creating parent directory: {}", parent.display());
-            fs::create_dir_all(parent).context(format!(
-                "Failed to create config directory: {}",
-                parent.display()
-            ))?;
-            eprintln!("🔍 [DEBUG] Parent directory created/exists: {}", parent.exists());
+            match fs::create_dir_all(parent) {
+                Ok(_) => {
+                    eprintln!("🔍 [DEBUG] Parent directory created/exists: {}", parent.exists());
+                }
+                Err(e) => {
+                    eprintln!("⚠️  [WARN] Failed to create parent directory {}: {}", parent.display(), e);
+                    eprintln!("🔍 [DEBUG] Parent directory exists: {}", parent.exists());
+                    // Continue anyway - maybe directory already exists or we can write to file directly
+                }
+            }
         }
 
-        eprintln!("🔍 [DEBUG] Writing config file ({} bytes)...", content.len());
-        fs::write(&self.config_path, content).context(format!(
-            "Failed to write config file: {}",
-            self.config_path.display()
-        ))?;
-        eprintln!("🔍 [DEBUG] Config file written successfully");
+        eprintln!("🔍 [DEBUG] Writing config file ({} bytes) to: {}", content.len(), self.config_path.display());
+        match fs::write(&self.config_path, content) {
+            Ok(_) => {
+                eprintln!("🔍 [DEBUG] Config file written successfully");
+            }
+            Err(e) => {
+                eprintln!("❌ [ERROR] Failed to write config file: {}", e);
+                eprintln!("🔍 [DEBUG] File path: {}", self.config_path.display());
+                eprintln!("🔍 [DEBUG] Parent exists: {}", self.config_path.parent().map(|p| p.exists()).unwrap_or(false));
+                eprintln!("🔍 [DEBUG] File exists: {}", self.config_path.exists());
+                return Err(anyhow::anyhow!(
+                    "Failed to write config file to {}: {}. Check permissions and directory access.",
+                    self.config_path.display(),
+                    e
+                ));
+            }
+        }
 
         Ok(())
     }

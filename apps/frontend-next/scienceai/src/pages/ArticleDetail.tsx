@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Calendar, Clock, Share2, Twitter, Linkedin } from "lucide-react";
+import { Calendar, Clock, Share2, Twitter, Linkedin, MessageCircle, Send } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
@@ -22,6 +22,8 @@ interface Article {
   image?: string; // Image for feed (second category, non-repeating)
   imageCarousel?: string; // Image for carousel (first category, deterministic)
   imageArticle?: string; // Image for article detail (first category, deterministic)
+  linkedinPost?: string; // LinkedIn post content from linkedin.txt
+  xPost?: string; // X/Twitter post content from x.txt
 }
 
 const categoryLabels: Record<string, string> = {
@@ -113,19 +115,42 @@ const ArticleDetail = () => {
 
   const handleShare = (platform: string) => {
     const url = window.location.href;
-    const text = article.title;
+    const imageUrl = article.imageArticle || article.image || selectArticleImage(article.imageCategories || [], article.id);
+    const fullImageUrl = imageUrl.startsWith('http') ? imageUrl : `${window.location.origin}${imageUrl}`;
     
     if (platform === "copy") {
       navigator.clipboard.writeText(url);
       toast.success("Link copied to clipboard!");
-    } else if (platform === "twitter") {
+    } else if (platform === "twitter" || platform === "x") {
+      // X/Twitter: conteúdo do arquivo x.txt + link + preview da imagem
+      const shareText = article.xPost 
+        ? `${article.xPost}\n\n${url}`
+        : article.title;
       window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`,
         "_blank"
       );
     } else if (platform === "linkedin") {
+      // LinkedIn: conteúdo do arquivo linkedin.txt + link + preview da imagem
+      const shareText = article.linkedinPost 
+        ? `${article.linkedinPost}\n\n${url}`
+        : article.title;
+      // LinkedIn usa share-offsite que permite preview automático da imagem via Open Graph
       window.open(
         `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+        "_blank"
+      );
+    } else if (platform === "whatsapp") {
+      // WhatsApp: título + link + preview da imagem
+      const shareText = `${article.title}\n\n${url}`;
+      window.open(
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`,
+        "_blank"
+      );
+    } else if (platform === "telegram") {
+      // Telegram: título + link + preview da imagem (mesmo modelo do WhatsApp)
+      window.open(
+        `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(article.title)}`,
         "_blank"
       );
     }
@@ -230,6 +255,22 @@ const ArticleDetail = () => {
                     >
                       <Linkedin className="h-4 w-4 mr-2" />
                       Share on LinkedIn
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start"
+                      onClick={() => handleShare("whatsapp")}
+                    >
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      Share on WhatsApp
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start"
+                      onClick={() => handleShare("telegram")}
+                    >
+                      <Send className="h-4 w-4 mr-2" />
+                      Share on Telegram
                     </Button>
                     <Button
                       variant="outline"

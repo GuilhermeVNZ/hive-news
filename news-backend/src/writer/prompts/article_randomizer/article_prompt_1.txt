@@ -318,57 +318,28 @@ You must generate the following, each saved into its own file:
 
 ---
 
-## 14. REQUIRED OUTPUT FILES & FORMAT
+## 14. REQUIRED JSON OUTPUT FORMAT
 
-Your entire response must be structured as **multiple fenced code blocks**, one per file, in this exact order and with these exact tags.  
-Each block’s language tag is the **file name**, so an external tool can split them into files.
+**CRITICAL**: You MUST return your response as a valid JSON object. Do NOT use code blocks or markdown formatting.
 
-You must output **exactly these seven blocks**:
+You MUST return a JSON object with EXACTLY these fields:
 
-1. `title.txt`  
-2. `subtitle.txt`  
-3. `article.md`  
-4. `image_categories.txt`  
-5. `x.txt`  
-6. `linkedin.txt`  
-7. `shorts_script.txt`  
-
-### Exact output template
-
-When you answer, follow **exactly** this structure:
-
-```markdown
-```title.txt
-[Your final title here]
+```json
+{
+  "title": "Your final title here (max 8 words, strong hook)",
+  "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
+  "article_text": "Your full article here in Markdown format, 500–800 words, 6–8 paragraphs",
+  "image_categories": ["category1", "category2", "category3"],
+  "x_post": "Your X/Twitter post here (max 280 characters) - concise, punchy, shareable",
+  "linkedin_post": "Your LinkedIn post here (max 300 characters) - professional, engaging summary",
+  "shorts_script": "Your Shorts/TikTok-style script here (around 300 words, ~2 minutes)"
+}
 ```
 
-```subtitle.txt
-[Your final subtitle here, max 2 lines]
-```
-
-```article.md
-[Your full article here in Markdown, 500–800 words, 6–8 paragraphs]
-```
-
-```image_categories.txt
-[three categories here, comma-separated, e.g.: ai, data, security]
-```
-
-```x.txt
-[Your X/Twitter post here, max 280 characters]
-```
-
-```linkedin.txt
-[Your LinkedIn post here, max 300 characters]
-```
-
-```shorts_script.txt
-[Your Shorts/TikTok-style script here, around 300 words]
-```
-```
-
-Replace the bracketed text (`[...]`) with your actual content.  
-
-Do **not** add any other text outside these seven code blocks.  
-
-Do **not** add extra code blocks or change their order or names.
+⚠️ **CRITICAL RULES**:
+- Return ONLY valid JSON - no markdown code blocks, no extra formatting
+- "article_text" MUST be a STRING field containing the complete article in Markdown format
+- "image_categories" MUST be an array of exactly 3 strings from the allowed list
+- "x_post", "linkedin_post", and "shorts_script" are REQUIRED fields
+- All fields must be present in the JSON response
+- The word "json" must appear in your response format
