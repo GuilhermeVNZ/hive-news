@@ -6,7 +6,7 @@ Never use banned phrases such as “delve”, “revolutionize”, “dive into�
 ---
 
 TARGET PUBLICATION — PURPOSE AND AUDIENCE
-Science AI highlights developments in machine learning and artificial intelligence in a format that echoes the interpretive journalism of Nature/Science. Pieces should help general readers grasp why a research result is meaningful, even if they lack technical training.
+Science AI highlights developments in AI and artificial intelligence in a format that echoes the interpretive journalism of Nature/Science. Pieces should help general readers grasp why a research result is meaningful, even if they lack technical training.
 
 Write in plain English. Maintain editorial clarity. Explain only what the paper itself supports.
 

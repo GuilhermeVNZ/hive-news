@@ -9,7 +9,7 @@ use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{
-    collections::{HashMap, hash_map::Entry},
+    collections::{HashMap, HashSet, hash_map::Entry},
     fs,
     path::Path as FsPath,
     sync::Arc,
@@ -53,6 +53,7 @@ pub struct ArticlesQuery {
 
 struct CategoryImages {
     files: Vec<String>,
+    used_indices: HashSet<usize>,
 }
 
 struct CachedState {
@@ -297,7 +298,10 @@ fn extract_category_images<'a>(
                 num_a.cmp(&num_b).then_with(|| a.cmp(b))
             });
 
-            Some(entry.insert(CategoryImages { files }))
+            Some(entry.insert(CategoryImages { 
+                files,
+                used_indices: HashSet::new(),
+            }))
         }
     }
 }
@@ -339,7 +343,24 @@ fn select_article_image(
             continue;
         }
 
-        let index = numeric_id % images.files.len();
+        // Try to find an unused image
+        let mut index = numeric_id % images.files.len();
+        let mut attempts = 0;
+        let max_attempts = images.files.len();
+        
+        // If all images are used, reset the pool for this category
+        if images.used_indices.len() >= images.files.len() {
+            images.used_indices.clear();
+        }
+        
+        // Find an unused image, starting from the calculated index
+        while images.used_indices.contains(&index) && attempts < max_attempts {
+            index = (index + 1) % images.files.len();
+            attempts += 1;
+        }
+        
+        // Mark this image as used
+        images.used_indices.insert(index);
         let filename = &images.files[index];
         return Some(format!("/images/{}/{}", dir, filename));
     }

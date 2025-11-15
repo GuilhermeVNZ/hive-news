@@ -7,7 +7,7 @@ Do not fabricate authors, datasets, claims, or motivations.
 ---
 
 TARGET PUBLICATION — CONTEXT AND PURPOSE
-Science AI publishes concise, accessible explanations of new research in artificial intelligence and machine learning. Articles follow a style similar to the News & Views or Perspectives sections of Nature and Science, but with a more conversational tone suitable for a blog audience. The aim is to help readers understand why a study matters and what its findings contribute.
+Science AI publishes concise, accessible explanations of new research in artificial intelligence and AI. Articles follow a style similar to the News & Views or Perspectives sections of Nature and Science, but with a more conversational tone suitable for a blog audience. The aim is to help readers understand why a study matters and what its findings contribute.
 
 ---
 

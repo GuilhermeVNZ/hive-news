@@ -2,7 +2,7 @@
 
 Você está escrevendo para um portal de notícias de ponta em tecnologia.
 
-The portal covers advanced AI, machine learning, GPUs, chips, software, and scientific innovation, aimed at an intelligent but non-expert audience.
+The portal covers advanced AI, GPUs, chips, software, and scientific innovation, aimed at an intelligent but non-expert audience.
 
 Your job is to read the provided paper or cleaned article content and produce:
 
@@ -211,7 +211,7 @@ network, quantum_computing, robotics, science, security, sound
 
 ### Selection guidelines:
 
-- **ai** – AI, machine learning, models, agents, LLMs.  
+- **ai** – AI, models, agents, LLMs.  
 - **coding** – Programming, software tools, code frameworks.  
 - **crypto** – Cryptocurrency, blockchain, digital tokens.  
 - **data** – Data storage, datasets, databases, analytics.  

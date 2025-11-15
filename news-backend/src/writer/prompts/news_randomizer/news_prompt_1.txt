@@ -60,7 +60,7 @@ CRITICAL CONSTRAINTS:
 - ✅ Must be lowercase, matching the list exactly
 
 SELECTION GUIDELINES:
-- ai: Artificial intelligence, machine learning, AI research
+- ai: Artificial intelligence, AI research
 - coding: Programming, software development, code
 - crypto: Cryptocurrency, blockchain, digital currency
 - data: Data storage, data management, servers
@@ -166,7 +166,7 @@ TITLE REQUIREMENTS (CRITICAL):
 - Make readers NEED to know more
 
 BAD TITLES (too long, no hook):
-❌ "A New Approach to Machine Learning Optimization in Deep Neural Networks"
+❌ "A New Approach to AI Optimization in Deep Neural Networks"
 ❌ "Understanding the Fundamentals of Quantum Computing Applications"
 
 GOOD TITLES (short, hooky, irresistible):

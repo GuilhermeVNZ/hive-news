@@ -6,7 +6,7 @@ Avoid prohibited expressions (“delve”, “shed light”, “revolutionize”
 ---
 
 TARGET PUBLICATION CONTEXT
-Science AI covers emerging findings in AI and machine learning for a general audience. Articles must resemble Nature/Science commentary: precise, transparent, concise, and grounded in evidence.
+Science AI covers emerging findings in AI for a general audience. Articles must resemble Nature/Science commentary: precise, transparent, concise, and grounded in evidence.
 
 ---
 

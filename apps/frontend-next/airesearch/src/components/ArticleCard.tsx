@@ -43,6 +43,7 @@ const ArticleCard = ({
       .replace(/^-|-$/g, "");
 
   // Map category values to display labels
+  // Format: First letter uppercase, rest lowercase
   const categoryLabels: Record<string, string> = {
     ai: "AI",
     robotics: "Robotics",
@@ -55,7 +56,7 @@ const ArticleCard = ({
     hardware: "Hardware",
     legal: "Legal",
     network: "Network",
-    quantum_computing: "Quantum Computing",
+    quantum_computing: "Quantum computing",
     security: "Security",
     sound: "Sound",
   };
@@ -76,7 +77,7 @@ const ArticleCard = ({
               src={cardImage}
               alt={title}
               fill
-              className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="object-cover transition-opacity duration-300"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               quality={82}
