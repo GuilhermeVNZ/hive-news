@@ -268,13 +268,17 @@ impl ConfigManager {
                     site_id,
                     site.collectors.len()
                 );
-                for site_collector in &site.collectors {
+                eprintln!("🔄 [SYNC]   Total collectors in site: {}", site.collectors.len());
+                for (idx, site_collector) in site.collectors.iter().enumerate() {
                     eprintln!(
-                        "🔄 [SYNC]   → Collector: {} (enabled: {}, type: {:?}, feed_url: {:?})",
+                        "🔄 [SYNC]   → Collector {}/{}: {} (enabled: {}, type: {:?}, feed_url: {:?}, base_url: {:?})",
+                        idx + 1,
+                        site.collectors.len(),
                         site_collector.id, 
                         site_collector.enabled, 
                         site_collector.collector_type,
-                        site_collector.feed_url
+                        site_collector.feed_url,
+                        site_collector.base_url
                     );
                     let collector_id = site_collector.id.clone();
 
