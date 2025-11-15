@@ -272,13 +272,18 @@ impl SiteConfigManager {
         // Try to parse and log any errors with more detail
         let config: SystemConfig = match serde_json::from_str::<SystemConfig>(&content) {
             Ok(c) => {
-                eprintln!("🔍 [DEBUG] Successfully parsed system_config.json");
+                eprintln!("🔍 [DEBUG] ✅ Successfully parsed system_config.json");
+                eprintln!("🔍 [DEBUG] Total sites: {}", c.sites.len());
+                
                 // Log collector count for airesearch site
                 if let Some(site) = c.sites.get("airesearch") {
-                    eprintln!("🔍 [DEBUG] airesearch site has {} collectors", site.collectors.len());
+                    eprintln!("🔍 [DEBUG] ✅ airesearch site found with {} collectors", site.collectors.len());
                     for (idx, collector) in site.collectors.iter().enumerate() {
-                        eprintln!("🔍 [DEBUG]   Collector {}: {} (enabled: {})", idx + 1, collector.id, collector.enabled);
+                        eprintln!("🔍 [DEBUG]   Collector {}: {} (enabled: {}, type: {:?}, feed_url: {:?})", 
+                            idx + 1, collector.id, collector.enabled, collector.collector_type, collector.feed_url);
                     }
+                } else {
+                    eprintln!("🔍 [DEBUG] ❌ airesearch site NOT found in parsed config!");
                 }
                 c
             }
