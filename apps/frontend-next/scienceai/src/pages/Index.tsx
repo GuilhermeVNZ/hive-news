@@ -54,7 +54,19 @@ const Index = () => {
             if (!a.latestDate || !b.latestDate) return 0;
             return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
           });
-          setCategories(sortedCategories.slice(0, 5));
+          
+          // CRÍTICO: Garantir que não há duplicatas por slug
+          const seenSlugs = new Set<string>();
+          const uniqueCategories = sortedCategories.filter((cat) => {
+            const slug = cat.slug.toLowerCase().trim();
+            if (seenSlugs.has(slug)) {
+              return false;
+            }
+            seenSlugs.add(slug);
+            return true;
+          });
+          
+          setCategories(uniqueCategories.slice(0, 5));
           return;
         }
         
@@ -76,7 +88,19 @@ const Index = () => {
           if (!a.latestDate || !b.latestDate) return 0;
           return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
         });
-        setCategories(sortedCategories.slice(0, 5)); // Máximo 5 categorias
+        
+        // CRÍTICO: Garantir que não há duplicatas por slug
+        const seenSlugs = new Set<string>();
+        const uniqueCategories = sortedCategories.filter((cat) => {
+          const slug = cat.slug.toLowerCase().trim();
+          if (seenSlugs.has(slug)) {
+            return false;
+          }
+          seenSlugs.add(slug);
+          return true;
+        });
+        
+        setCategories(uniqueCategories.slice(0, 5)); // Máximo 5 categorias
       } catch (error) {
         console.error('Error fetching categories:', error);
         setCategories([]);
@@ -209,37 +233,53 @@ const Index = () => {
                   </div>
                 </section>
               ) : (
-                categories.map((category) => {
-                  const categoryArticles = getArticlesByCategory(category.slug);
-                  if (categoryArticles.length === 0) return null;
+                // CRÍTICO: Garantir que não há categorias duplicadas no feed
+                (() => {
+                  const seenCategorySlugs = new Set<string>();
+                  return categories
+                    .filter((category) => {
+                      const slug = category.slug.toLowerCase().trim();
+                      if (seenCategorySlugs.has(slug)) {
+                        console.warn(
+                          `[Index] ⚠️ Duplicate category filtered out: ${slug}`,
+                        );
+                        return false;
+                      }
+                      seenCategorySlugs.add(slug);
+                      return true;
+                    })
+                    .map((category) => {
+                      const categoryArticles = getArticlesByCategory(category.slug);
+                      if (categoryArticles.length === 0) return null;
 
-                  // Garantir máximo de 4 artigos por categoria na página principal
-                  const displayedArticles = categoryArticles.slice(0, 4);
+                      // Garantir máximo de 4 artigos por categoria na página principal
+                      const displayedArticles = categoryArticles.slice(0, 4);
 
-                  return (
-                    <section key={category.slug}>
-                      <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold">{category.name}</h2>
-                        <a
-                          href={`/category/${category.slug}`}
-                          className="text-primary hover:underline text-sm font-medium"
-                        >
-                          View all →
-                        </a>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {displayedArticles.map((article, index) => (
-                          <ArticleCard 
-                            key={article.id} 
-                            article={article}
-                            // Priorizar carregamento dos primeiros 4 artigos (above the fold)
-                            priority={index < 4}
-                          />
-                        ))}
-                      </div>
-                    </section>
-                  );
-                })
+                      return (
+                        <section key={category.slug}>
+                          <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-2xl font-bold">{category.name}</h2>
+                            <a
+                              href={`/category/${category.slug}`}
+                              className="text-primary hover:underline text-sm font-medium"
+                            >
+                              View all →
+                            </a>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {displayedArticles.map((article, index) => (
+                              <ArticleCard 
+                                key={article.id} 
+                                article={article}
+                                // Priorizar carregamento dos primeiros 4 artigos (above the fold)
+                                priority={index < 4}
+                              />
+                            ))}
+                          </div>
+                        </section>
+                      );
+                    });
+                })()
               )}
             </div>
 

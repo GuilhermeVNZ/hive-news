@@ -41,7 +41,19 @@ export const Header = ({ onSearch }: HeaderProps) => {
             if (!a.latestDate || !b.latestDate) return 0;
             return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
           });
-          setCategories(sortedCategories.slice(0, 5));
+          
+          // CRÍTICO: Garantir que não há duplicatas por slug
+          const seenSlugs = new Set<string>();
+          const uniqueCategories = sortedCategories.filter((cat) => {
+            const slug = cat.slug.toLowerCase().trim();
+            if (seenSlugs.has(slug)) {
+              return false;
+            }
+            seenSlugs.add(slug);
+            return true;
+          });
+          
+          setCategories(uniqueCategories.slice(0, 5));
           return;
         }
         
@@ -63,7 +75,22 @@ export const Header = ({ onSearch }: HeaderProps) => {
           if (!a.latestDate || !b.latestDate) return 0;
           return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
         });
-        setCategories(sortedCategories.slice(0, 5)); // Máximo 5 categorias
+        
+        // CRÍTICO: Garantir que não há duplicatas por slug
+        const seenSlugs = new Set<string>();
+        const uniqueCategories = sortedCategories.filter((cat) => {
+          const slug = cat.slug.toLowerCase().trim();
+          if (seenSlugs.has(slug)) {
+            console.warn(
+              `[Header] ⚠️ Duplicate category filtered out: ${slug}`,
+            );
+            return false;
+          }
+          seenSlugs.add(slug);
+          return true;
+        });
+        
+        setCategories(uniqueCategories.slice(0, 5)); // Máximo 5 categorias
       } catch (error) {
         console.error('Error fetching categories:', error);
         // Fallback: usar categorias padrão se API falhar

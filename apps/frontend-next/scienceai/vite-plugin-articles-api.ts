@@ -1408,34 +1408,37 @@ export function articlesApiPlugin(): Plugin {
             );
             const featuredCategories = new Set<string>();
 
-            // Coletar categorias das featured (sem repetir)
+            // Coletar categorias das featured (sem repetir) - CRÍTICO: usar Set para evitar duplicatas
             for (const article of featuredArticles) {
-              const categorySlug = article.category.toLowerCase();
-              if (!featuredCategories.has(categorySlug)) {
-                featuredCategories.add(categorySlug);
+              const categorySlug = article.category.toLowerCase().trim();
+              // Pular se já processamos esta categoria
+              if (featuredCategories.has(categorySlug)) {
+                continue;
+              }
+              
+              featuredCategories.add(categorySlug);
 
-                if (!categoryMap.has(categorySlug)) {
-                  const info = categoryInfo[categorySlug] || {
-                    name:
-                      categorySlug.charAt(0).toUpperCase() +
-                      categorySlug.slice(1),
-                    icon: "Circle",
-                  };
-                  categoryMap.set(categorySlug, {
-                    name: info.name,
-                    slug: categorySlug,
-                    latestDate: article.date,
-                    icon: info.icon,
-                  });
-                } else {
-                  const existing = categoryMap.get(categorySlug)!;
-                  // Atualizar se este artigo for mais recente
-                  if (
-                    new Date(article.date).getTime() >
-                    new Date(existing.latestDate).getTime()
-                  ) {
-                    existing.latestDate = article.date;
-                  }
+              if (!categoryMap.has(categorySlug)) {
+                const info = categoryInfo[categorySlug] || {
+                  name:
+                    categorySlug.charAt(0).toUpperCase() +
+                    categorySlug.slice(1),
+                  icon: "Circle",
+                };
+                categoryMap.set(categorySlug, {
+                  name: info.name,
+                  slug: categorySlug,
+                  latestDate: article.date,
+                  icon: info.icon,
+                });
+              } else {
+                const existing = categoryMap.get(categorySlug)!;
+                // Atualizar se este artigo for mais recente
+                if (
+                  new Date(article.date).getTime() >
+                  new Date(existing.latestDate).getTime()
+                ) {
+                  existing.latestDate = article.date;
                 }
               }
             }
@@ -1443,7 +1446,6 @@ export function articlesApiPlugin(): Plugin {
             // SEGUNDO: Encontrar categorias dos demais artigos (mais recentes)
             // Limitar a 5 categorias no total (featured + recentes)
             const maxCategories = 5;
-            const currentCategoryCount = categoryMap.size;
 
             // Ordenar artigos por data (mais recente primeiro)
             const sortedArticles = [...articles].sort((a, b) => {
@@ -1453,12 +1455,13 @@ export function articlesApiPlugin(): Plugin {
             });
 
             // Adicionar categorias dos demais artigos até completar 5 (sem repetir)
+            // CRÍTICO: Garantir que não há duplicatas usando categoryMap.has()
             for (const article of sortedArticles) {
               if (categoryMap.size >= maxCategories) break;
 
-              const categorySlug = article.category.toLowerCase();
+              const categorySlug = article.category.toLowerCase().trim();
 
-              // Só adicionar se ainda não está no mapa (não repetir)
+              // CRÍTICO: Só adicionar se ainda não está no mapa (garantir sem duplicatas)
               if (!categoryMap.has(categorySlug)) {
                 const info = categoryInfo[categorySlug] || {
                   name:
@@ -1503,8 +1506,22 @@ export function articlesApiPlugin(): Plugin {
               },
             );
 
+            // CRÍTICO: Garantir que não há duplicatas por slug antes de retornar
+            const seenSlugs = new Set<string>();
+            const uniqueCategories = categoriesArray.filter((cat) => {
+              const slug = cat.slug.toLowerCase().trim();
+              if (seenSlugs.has(slug)) {
+                console.warn(
+                  `[Categories API] ⚠️ Duplicate category detected and removed: ${slug}`,
+                );
+                return false;
+              }
+              seenSlugs.add(slug);
+              return true;
+            });
+
             // Retornar apenas as 5 (garantir máximo 5, sem repetir)
-            const topCategories = categoriesArray.slice(0, maxCategories);
+            const topCategories = uniqueCategories.slice(0, maxCategories);
 
             res.setHeader("Content-Type", "application/json");
             res.setHeader("Access-Control-Allow-Origin", "*");
