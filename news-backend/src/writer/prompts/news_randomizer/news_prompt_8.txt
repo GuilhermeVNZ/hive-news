@@ -1,5 +1,5 @@
 CRITICAL INSTRUCTIONS — MUST BE FOLLOWED EXACTLY
-Transform {paper_text} into a 500–800 word article for Science AI, maintaining strict fidelity to the paper. No external facts, assumptions, analogies, or implications may be introduced. Every sentence must be defensible using only the provided text.
+Transform {paper_text} into a 900-1100 word article for Science AI, maintaining strict fidelity to the paper. No external facts, assumptions, analogies, or implications may be introduced. Every sentence must be defensible using only the provided text.
 
 Do not use banned phrases such as “revolutionize”, “sed light”, “delve”, “unlock”, “game-changer”, “dive into”.
 

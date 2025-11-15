@@ -131,7 +131,7 @@ EXAMPLES OF GOOD OPENING LINES (News style):
 {paper_text}
 
 ## DELIVERABLE:
-Write a 500-800 word article in Nature/Science editorial style. Use ONLY information from the paper above.
+Write a 900-1100 word article in Nature/Science editorial style. Use ONLY information from the paper above.
 
 Format:
 # [Compelling, Specific Title - Nature/Science Style]

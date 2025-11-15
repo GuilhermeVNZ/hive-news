@@ -93,6 +93,7 @@ Do NOT write:
 - “This research sheds new light on…”  
 - Generic filler and moralizing.  
 - Robotic sentence rhythm (all sentences same length and structure).
+- Guidelines/Topics between **
 
 Your tone should be **sharp, concrete, and specific**, not vague or dramatic.
 

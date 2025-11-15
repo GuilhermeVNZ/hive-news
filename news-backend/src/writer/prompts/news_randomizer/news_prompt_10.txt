@@ -1,5 +1,5 @@
 CRITICAL INSTRUCTIONS
-Write a 500–800 word Science AI article that uses a historical-contrast framing. This means the article should begin with how the paper itself describes prior understanding or a previously accepted view, then introduce what this study contributes or changes.
+Write a 900-1100 word Science AI article that uses a historical-contrast framing. This means the article should begin with how the paper itself describes prior understanding or a previously accepted view, then introduce what this study contributes or changes.
 
 You must rely exclusively on {paper_text}. No imagined history or external references are permitted.
 

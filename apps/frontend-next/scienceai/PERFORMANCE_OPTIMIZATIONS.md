@@ -238,3 +238,4 @@ O ScienceAI usa **Vite + React** (não Next.js), então as otimizações foram a
 
 
 
+

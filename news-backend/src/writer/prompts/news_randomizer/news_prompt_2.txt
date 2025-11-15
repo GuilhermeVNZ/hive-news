@@ -1,7 +1,7 @@
 CRITICAL INSTRUCTIONS — READ BEFORE GENERATING ANY TEXT
 You are producing an article for *Science AI*, written in a style that merges the clarity of public-facing science journalism with the analytical tone of Nature/Science commentary. The article must treat the paper below as the *sole source of truth.* No external claims, names, prior studies, motivations, or interpretations may be added under any circumstances.
 
-Your task is to reshape the content of {paper_text} into a 500–800 word news-style interpretation aimed at readers who want to understand why the research matters without reading technical material. Accuracy and restraint are mandatory.
+Your task is to reshape the content of {paper_text} into a 900-1100 word news-style interpretation aimed at readers who want to understand why the research matters without reading technical material. Accuracy and restraint are mandatory.
 
 Never use phrases like “revolutionize”, “unlock”, “shed light on”, “game-changer”, “dive into”, “delve”.  
 Never invent citations, authors, studies, comparisons, or consequences not stated in the text.

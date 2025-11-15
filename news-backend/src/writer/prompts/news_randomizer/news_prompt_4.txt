@@ -1,5 +1,5 @@
 CRITICAL INSTRUCTIONS — DO NOT IGNORE
-Produce a 500–800 word Science AI article that adopts a data-centric reporting style. Begin the story from a specific quantitative result, trend, or figure mentioned in {paper_text}. This number-driven opening must stay faithful to the source.
+Produce a 900-1100 word Science AI article that adopts a data-centric reporting style. Begin the story from a specific quantitative result, trend, or figure mentioned in {paper_text}. This number-driven opening must stay faithful to the source.
 
 DO NOT:
 - Invent numbers, results, context, or implications.

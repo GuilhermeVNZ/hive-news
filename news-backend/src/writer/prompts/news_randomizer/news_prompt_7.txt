@@ -1,5 +1,5 @@
 CRITICAL INSTRUCTIONS — READ BEFORE GENERATING ANY OUTPUT
-You are producing a news-style editorial for Science AI. Your mission is to reinterpret the content of {paper_text} into a 500–800 word article that is accurate, readable, and grounded entirely in the source document. You must not add external references, imagined context, speculative interpretations, or language not directly supported by the paper.
+You are producing a news-style editorial for Science AI. Your mission is to reinterpret the content of {paper_text} into a 900-1100 word article that is accurate, readable, and grounded entirely in the source document. You must not add external references, imagined context, speculative interpretations, or language not directly supported by the paper.
 
 Absolutely avoid phrases such as “revolutionize”, “shed light on”, “delve”, “game-changer”, “unlock”, “dive into”.  
 Do not fabricate authors, datasets, claims, or motivations.
