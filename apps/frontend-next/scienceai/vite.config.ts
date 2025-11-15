@@ -29,7 +29,11 @@ export default defineConfig(({ mode }) => ({
       compress: {
         drop_console: mode === 'production', // Remove console.log em produção
         drop_debugger: true,
-        pure_funcs: mode === 'production' ? ['console.log', 'console.info'] : [],
+        pure_funcs: mode === 'production' ? ['console.log', 'console.info', 'console.debug'] : [],
+        passes: 2, // Múltiplas passadas para melhor compressão
+      },
+      mangle: {
+        safari10: true, // Compatibilidade Safari
       },
     },
     
@@ -83,16 +87,24 @@ export default defineConfig(({ mode }) => ({
     cssMinify: true,
     
     // Otimização de assets
-    assetsInlineLimit: 4096, // Inline assets < 4KB
+    assetsInlineLimit: 2048, // Reduzido para 2KB - inline apenas assets muito pequenos
     
     // Otimização de source maps (apenas em dev)
     sourcemap: mode === 'development',
     
     // Otimização de tamanho
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500, // Reduzido para alertar sobre chunks grandes
     
     // Otimização de compressão
     reportCompressedSize: true,
+    
+    // Otimização de target
+    target: 'esnext',
+    
+    // Otimização de module format
+    modulePreload: {
+      polyfill: false, // Desabilitar polyfill para melhor performance
+    },
   },
   
   // Otimização de preview (produção local)

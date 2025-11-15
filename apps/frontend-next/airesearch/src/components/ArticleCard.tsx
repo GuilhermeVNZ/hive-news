@@ -79,7 +79,7 @@ const ArticleCard = ({
               className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              quality={75}
+              quality={82}
             />
           </div>
         )}

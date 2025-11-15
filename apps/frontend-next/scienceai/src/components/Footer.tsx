@@ -11,12 +11,38 @@ interface Category {
 export const Footer = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
-  // Buscar categorias dinâmicas (top 5 mais recentes)
+  // Buscar categorias dinâmicas (top 5 mais recentes) com cache para evitar CLS
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('/api/categories');
+        // Cache por 5 minutos para categorias no Footer
+        const cacheKey = 'scienceai-footer-categories';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 5 * 60 * 1000; // 5 minutos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const data = JSON.parse(cached).data;
+          const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
+            if (!a.latestDate || !b.latestDate) return 0;
+            return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
+          });
+          setCategories(sortedCategories.slice(0, 5));
+          return;
+        }
+        
+        const response = await fetch('/api/categories', {
+          headers: { 'Cache-Control': 'max-age=300' },
+        });
         const data = await response.json();
+        
+        // Salvar no cache
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data,
+          timestamp: now,
+        }));
+        
         const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
           if (!a.latestDate || !b.latestDate) return 0;
           return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
@@ -31,7 +57,7 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-muted text-foreground mt-20">
+    <footer className="bg-muted text-foreground mt-20" style={{ minHeight: '300px' }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}

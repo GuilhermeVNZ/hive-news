@@ -109,7 +109,7 @@ const ArticleGrid = ({
             ? `Articles in ${selectedCategory}`
             : "Featured Articles"}
         </h2>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-foreground/80 text-lg font-medium">
           {selectedCategory
             ? `${filteredArticles.length} ${
                 filteredArticles.length === 1
@@ -121,7 +121,7 @@ const ArticleGrid = ({
       </div>
       {filteredArticles.length === 0 ? (
         <div className="text-center py-16">
-          <p className="text-muted-foreground text-lg">No articles found</p>
+          <p className="text-foreground/70 text-lg">No articles found</p>
         </div>
       ) : (
         <>

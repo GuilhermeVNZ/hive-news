@@ -24,14 +24,41 @@ export const Header = ({ onSearch }: HeaderProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
   const location = useLocation();
 
-  // Buscar categorias dinâmicas da API (top 5 mais recentes)
+  // Buscar categorias dinâmicas da API (top 5 mais recentes) com cache
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('/api/categories');
+        // Cache por 5 minutos para categorias no Header
+        const cacheKey = 'scienceai-header-categories';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 5 * 60 * 1000; // 5 minutos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const data = JSON.parse(cached).data;
+          const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
+            if (!a.latestDate || !b.latestDate) return 0;
+            return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
+          });
+          setCategories(sortedCategories.slice(0, 5));
+          return;
+        }
+        
+        const response = await fetch('/api/categories', {
+          headers: {
+            'Cache-Control': 'max-age=300', // 5 minutos
+          },
+        });
         const data = await response.json();
+        
+        // Salvar no cache
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data,
+          timestamp: now,
+        }));
+        
         // Ordenar da esquerda para direita (mais recente primeiro)
-        // A API já retorna ordenado, mas garantimos aqui também
         const sortedCategories = (data.categories || []).sort((a: Category, b: Category) => {
           if (!a.latestDate || !b.latestDate) return 0;
           return new Date(b.latestDate).getTime() - new Date(a.latestDate).getTime();
@@ -68,7 +95,12 @@ export const Header = ({ onSearch }: HeaderProps) => {
             <img 
               src={logoIcon} 
               alt="ScienceAI" 
+              width={40}
+              height={40}
+              loading="eager"
+              decoding="sync"
               className="h-10 w-auto"
+              style={{ aspectRatio: '1/1' }}
             />
             <div className="text-2xl font-bold">
               <span className="text-foreground">Science</span>

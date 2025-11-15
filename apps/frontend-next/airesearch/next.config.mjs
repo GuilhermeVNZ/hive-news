@@ -67,23 +67,38 @@ const nextConfig = {
   // Otimização de produção
   swcMinify: true,
   
-  // Otimização de bundle splitting
-  webpack: (config, { isServer }) => {
+  // Configuração de browsers modernos - remove JavaScript legado
+  transpilePackages: [],
+  
+  // Otimização de bundle splitting - mais agressivo para reduzir tarefas longas
+  webpack: (config, { isServer, dev }) => {
     if (!isServer) {
-      // Otimização de chunks
+      // Otimização de chunks - reduzir tamanho máximo de chunks
       config.optimization = {
         ...config.optimization,
         splitChunks: {
           chunks: 'all',
+          maxInitialRequests: 25,
+          minSize: 20000,
+          maxSize: 244000, // Reduzido para evitar chunks grandes que causam tarefas longas
           cacheGroups: {
             default: false,
             vendors: false,
+            // Framework chunk (React, React-DOM)
+            framework: {
+              name: 'framework',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+              priority: 40,
+              enforce: true,
+            },
             // Vendor chunk para bibliotecas grandes
             vendor: {
               name: 'vendor',
               chunks: 'all',
-              test: /node_modules/,
+              test: /[\\/]node_modules[\\/]/,
               priority: 20,
+              maxSize: 244000,
             },
             // Chunk separado para Radix UI
             radix: {
@@ -91,6 +106,7 @@ const nextConfig = {
               chunks: 'all',
               test: /[\\/]node_modules[\\/]@radix-ui/,
               priority: 30,
+              maxSize: 244000,
             },
             // Chunk separado para React Query
             reactQuery: {
@@ -98,14 +114,32 @@ const nextConfig = {
               chunks: 'all',
               test: /[\\/]node_modules[\\/]@tanstack[\\/]react-query/,
               priority: 30,
+              maxSize: 244000,
             },
-            // Chunk comum
+            // Chunk para Lucide icons
+            lucide: {
+              name: 'lucide',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]lucide-react/,
+              priority: 30,
+              maxSize: 244000,
+            },
+            // Chunk para Recharts
+            recharts: {
+              name: 'recharts',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]recharts/,
+              priority: 30,
+              maxSize: 244000,
+            },
+            // Chunk comum - reduzido
             common: {
               name: 'common',
               minChunks: 2,
               chunks: 'all',
               priority: 10,
               reuseExistingChunk: true,
+              maxSize: 244000,
             },
           },
         },

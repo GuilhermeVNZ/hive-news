@@ -53,7 +53,26 @@ const ArticleDetail = () => {
       if (!slug) return;
       
       try {
-        const response = await fetch('/api/articles');
+        // Cache por 5 minutos para artigos individuais
+        const cacheKey = `scienceai-article-${slug}`;
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 5 * 60 * 1000; // 5 minutos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const cachedData = JSON.parse(cached).data;
+          setArticle(cachedData.article);
+          setRelatedArticles(cachedData.related);
+          setLoading(false);
+          return;
+        }
+        
+        const response = await fetch('/api/articles', {
+          headers: {
+            'Cache-Control': 'max-age=300', // 5 minutos
+          },
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch articles');
         }
@@ -63,10 +82,17 @@ const ArticleDetail = () => {
 
         const selected = articles.find((item: Article) => item.slug === slug);
         if (selected) {
-          setArticle(selected);
           const related = articles
             .filter((a: Article) => a.category === selected.category && a.id !== selected.id)
             .slice(0, 3);
+          
+          // Salvar no cache
+          sessionStorage.setItem(cacheKey, JSON.stringify({
+            data: { article: selected, related },
+            timestamp: now,
+          }));
+          
+          setArticle(selected);
           setRelatedArticles(related);
         } else {
           setArticle(null);
@@ -166,7 +192,12 @@ const ArticleDetail = () => {
           <img
             src={article.imageArticle || article.image || selectArticleImage(article.imageCategories, article.id)}
             alt={article.title}
+            width={1200}
+            height={675}
+            loading="eager"
+            decoding="sync"
             className="w-full h-full object-cover"
+            style={{ aspectRatio: '1200/675' }}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
             }}
@@ -291,7 +322,12 @@ const ArticleDetail = () => {
                       <img
                         src="/images/author.jpeg"
                         alt="Guilherme A."
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
+                        style={{ aspectRatio: '1/1' }}
                         onError={(e) => {
                           // Fallback to initial if image fails to load
                           const target = e.target as HTMLImageElement;

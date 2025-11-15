@@ -91,7 +91,6 @@ export default function RootLayout({
         <link rel="preload" href="/favicon.png" as="image" type="image/png" />
         
         {/* Prefetch de rotas prováveis */}
-        <link rel="prefetch" href="/article" as="document" />
         
         {/* Structured Data para SEO */}
         <script

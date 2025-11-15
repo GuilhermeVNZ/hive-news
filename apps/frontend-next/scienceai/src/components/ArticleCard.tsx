@@ -21,9 +21,10 @@ interface Article {
 
 interface ArticleCardProps {
   article: Article;
+  priority?: boolean; // Para artigos above the fold
 }
 
-export const ArticleCard = memo(({ article }: ArticleCardProps) => {
+export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps) => {
   // Use image from server if available (selected using AIResearch logic)
   // Otherwise fallback to client-side selection
   const imageUrl = article.image || selectArticleImage(article.imageCategories, article.id);
@@ -58,8 +59,8 @@ export const ArticleCard = memo(({ article }: ArticleCardProps) => {
           alt={article.title}
           width={400}
           height={192}
-          loading="lazy"
-          decoding="async"
+          loading={priority ? "eager" : "lazy"}
+          decoding={priority ? "sync" : "async"}
           className="w-full h-full object-cover transition-smooth group-hover:scale-105"
           style={{ aspectRatio: '400/192' }}
           onError={(e) => {

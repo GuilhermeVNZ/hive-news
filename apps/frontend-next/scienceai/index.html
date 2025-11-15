@@ -14,9 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Preload de recursos críticos -->
+    <!-- Preload de recursos críticos - apenas favicon, logo será carregado depois -->
     <link rel="preload" href="/favicon.png" as="image" type="image/png" />
-    <link rel="preload" href="/scienceai-logo.png" as="image" type="image/png" />
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -30,8 +29,11 @@
     <meta name="twitter:site" content="@scienceai_news" />
     <meta name="twitter:image" content="/scienceai-logo.png" />
     
-    <!-- Otimização de fontes: display swap para evitar FOIT -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Otimização de fontes: display swap para evitar FOIT - async load para não bloquear renderização -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
   </head>
 
   <body>

@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -51,31 +51,55 @@ const categoryLabels: Record<string, string> = {
 
 export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  // CRÍTICO: Primeira imagem deve ser carregada imediatamente (LCP)
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
   
-  const sortedArticles = [...articles].sort((a, b) => {
-    const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
-    if (dateDiff !== 0) {
-      return dateDiff;
-    }
-    const aFeatured = a.featured === true;
-    const bFeatured = b.featured === true;
-    if (aFeatured !== bFeatured) {
-      return aFeatured ? -1 : 1;
-    }
-    return b.id.localeCompare(a.id);
-  });
-
-  const finalCarouselArticles = sortedArticles.slice(0, 5);
+  // Memoizar artigos do carousel para evitar recálculos
+  const finalCarouselArticles = useMemo(() => {
+    const sortedArticles = [...articles].sort((a, b) => {
+      const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+      if (dateDiff !== 0) {
+        return dateDiff;
+      }
+      const aFeatured = a.featured === true;
+      const bFeatured = b.featured === true;
+      if (aFeatured !== bFeatured) {
+        return aFeatured ? -1 : 1;
+      }
+      return b.id.localeCompare(a.id);
+    });
+    return sortedArticles.slice(0, 5);
+  }, [articles]);
   
+  // Preload da próxima imagem quando o slide atual muda
   useEffect(() => {
     if (finalCarouselArticles.length === 0) {
       return;
     }
+    
+    // Preload da próxima imagem apenas quando necessário
+    const nextIndex = (currentSlide + 1) % finalCarouselArticles.length;
+    if (!loadedImages.has(nextIndex) && finalCarouselArticles[nextIndex]) {
+      const nextArticle = finalCarouselArticles[nextIndex];
+      const nextImageUrl = nextArticle.imageCarousel || nextArticle.image || selectArticleImage(nextArticle.imageCategories, nextArticle.id);
+      if (nextImageUrl) {
+        const img = new Image();
+        img.src = nextImageUrl;
+        img.onload = () => {
+          setLoadedImages(prev => new Set([...prev, nextIndex]));
+        };
+        img.onerror = () => {
+          // Se falhar, marcar como carregado para evitar tentativas infinitas
+          setLoadedImages(prev => new Set([...prev, nextIndex]));
+        };
+      }
+    }
+    
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % finalCarouselArticles.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [finalCarouselArticles.length]);
+  }, [finalCarouselArticles.length, currentSlide]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % finalCarouselArticles.length);
@@ -92,27 +116,44 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
 
   return (
     <section className="relative h-[600px] w-full overflow-hidden rounded-xl">
-      {finalCarouselArticles.map((article, index) => (
-        <div
-          key={article.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <img
-            src={article.imageCarousel || article.image || selectArticleImage(article.imageCategories, article.id)}
-            alt={article.title}
-            width={1920}
-            height={600}
-            loading={index === 0 ? "eager" : "lazy"}
-            decoding={index === 0 ? "sync" : "async"}
-            className="h-full w-full object-cover"
-            style={{ aspectRatio: '1920/600' }}
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
-            }}
-          />
-          <div className="absolute inset-0 gradient-hero" />
+      {finalCarouselArticles.map((article, index) => {
+        const imageUrl = article.imageCarousel || article.image || selectArticleImage(article.imageCategories, article.id);
+        const isVisible = index === currentSlide;
+        // CRÍTICO: Primeira imagem (LCP) sempre deve carregar imediatamente, outras apenas se visíveis ou já carregadas
+        const shouldLoad = index === 0 || loadedImages.has(index) || isVisible;
+        
+        return (
+          <div
+            key={article.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {shouldLoad ? (
+              <img
+                src={imageUrl}
+                alt={article.title}
+                width={1920}
+                height={600}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding={index === 0 ? "sync" : "async"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                className="h-full w-full object-cover"
+                style={{ aspectRatio: '1920/600' }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
+                }}
+                onLoad={() => {
+                  if (!loadedImages.has(index)) {
+                    setLoadedImages(prev => new Set([...prev, index]));
+                  }
+                }}
+              />
+            ) : (
+              // Placeholder enquanto não carrega
+              <div className="h-full w-full bg-gradient-to-br from-primary/20 via-primary/10 to-background animate-pulse" />
+            )}
+            <div className="absolute inset-0 gradient-hero" />
           <div className="absolute inset-0 flex items-end">
             <div className="container mx-auto px-4 pb-12">
               <div className="max-w-3xl">
@@ -132,7 +173,8 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
             </div>
           </div>
         </div>
-      ))}
+        );
+      })}
 
       {/* Navigation Buttons */}
       <Button

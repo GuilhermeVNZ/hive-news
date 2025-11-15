@@ -1,8 +1,10 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { HeroCarousel } from "@/components/HeroCarousel";
 import { ArticleCard } from "@/components/ArticleCard";
+
+// HeroCarousel NÃO pode ser lazy loaded - contém a imagem LCP!
+import { HeroCarousel } from "@/components/HeroCarousel";
 
 // Lazy load do Sidebar para melhorar performance inicial
 const LazySidebar = lazy(() => import("@/components/Sidebar").then(module => ({ default: module.Sidebar })));
@@ -178,7 +180,7 @@ const Index = () => {
             </div>
           ) : (
             <>
-              {/* Hero Carousel */}
+              {/* Hero Carousel - CRÍTICO: Não lazy load pois contém imagem LCP */}
               <HeroCarousel articles={filteredArticles} categories={categories} />
 
           {/* Main Content Grid */}
@@ -192,8 +194,12 @@ const Index = () => {
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {filteredArticles.length > 0 ? (
-                      filteredArticles.map((article) => (
-                        <ArticleCard key={article.id} article={article} />
+                      filteredArticles.map((article, index) => (
+                        <ArticleCard 
+                          key={article.id} 
+                          article={article}
+                          priority={index < 4} // Primeiros 4 artigos acima da dobra
+                        />
                       ))
                     ) : (
                       <p className="text-muted-foreground col-span-2">
@@ -222,8 +228,13 @@ const Index = () => {
                         </a>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {displayedArticles.map((article) => (
-                          <ArticleCard key={article.id} article={article} />
+                        {displayedArticles.map((article, index) => (
+                          <ArticleCard 
+                            key={article.id} 
+                            article={article}
+                            // Priorizar carregamento dos primeiros 4 artigos (above the fold)
+                            priority={index < 4}
+                          />
                         ))}
                       </div>
                     </section>

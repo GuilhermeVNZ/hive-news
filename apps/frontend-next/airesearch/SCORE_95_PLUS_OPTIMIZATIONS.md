@@ -184,3 +184,6 @@ Se ainda precisar melhorar:
 - [Lighthouse Scoring](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring/)
 - [React Performance](https://react.dev/learn/render-and-commit)
 
+
+
+

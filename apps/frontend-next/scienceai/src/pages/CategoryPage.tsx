@@ -71,12 +71,32 @@ const CategoryPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   
-  // Buscar categorias dinâmicas para obter nome correto
+  // Buscar categorias dinâmicas para obter nome correto (com cache)
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('/api/categories');
+        const cacheKey = 'scienceai-category-page-categories';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 5 * 60 * 1000; // 5 minutos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const data = JSON.parse(cached).data;
+          setCategories(data.categories || []);
+          return;
+        }
+        
+        const response = await fetch('/api/categories', {
+          headers: { 'Cache-Control': 'max-age=300' },
+        });
         const data = await response.json();
+        
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data,
+          timestamp: now,
+        }));
+        
         setCategories(data.categories || []);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -91,9 +111,32 @@ const CategoryPage = () => {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const response = await fetch('/api/articles');
+        // Cache por 60 segundos
+        const cacheKey = 'scienceai-category-page-articles';
+        const cached = sessionStorage.getItem(cacheKey);
+        const cacheTime = cached ? JSON.parse(cached).timestamp : 0;
+        const now = Date.now();
+        const cacheDuration = 60 * 1000; // 60 segundos
+        
+        if (cached && (now - cacheTime) < cacheDuration) {
+          const articles = JSON.parse(cached).data;
+          setArticles(articles);
+          setLoading(false);
+          return;
+        }
+        
+        const response = await fetch('/api/articles', {
+          headers: { 'Cache-Control': 'max-age=60' },
+        });
         const data = await response.json();
-        setArticles(data.articles || []);
+        const articles = data.articles || [];
+        
+        sessionStorage.setItem(cacheKey, JSON.stringify({
+          data: articles,
+          timestamp: now,
+        }));
+        
+        setArticles(articles);
       } catch (error) {
         console.error('Error fetching articles:', error);
       } finally {

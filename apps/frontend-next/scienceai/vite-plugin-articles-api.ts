@@ -1308,6 +1308,9 @@ export function articlesApiPlugin(): Plugin {
             };
 
             res.setHeader("Content-Type", contentType[ext] || "image/jpeg");
+            // Cache headers para imagens - 1 ano para imagens estáticas
+            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+            res.setHeader("Expires", new Date(Date.now() + 31536000000).toUTCString());
             const fileContent = await fs.readFile(filePath);
             res.end(fileContent);
           } else {

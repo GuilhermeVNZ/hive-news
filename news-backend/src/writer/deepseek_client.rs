@@ -4,7 +4,7 @@ use anyhow::{Context, Result};
 use reqwest::Client;
 use serde::Deserialize;
 use serde_json::json;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 pub struct DeepSeekClient {
     client: Client,
@@ -229,14 +229,18 @@ impl DeepSeekClient {
             .as_str()
             .map(|s| s.to_string())
             .unwrap_or_default();
-        let image_categories = parsed_json["image_categories"]
+        let raw_image_categories = parsed_json["image_categories"]
             .as_array()
             .map(|arr| {
                 arr.iter()
-                    .filter_map(|v| v.as_str().map(|s| s.to_string()))
-                    .collect()
+                    .filter_map(|v| v.as_str().map(|s| s.to_string().to_lowercase()))
+                    .collect::<Vec<String>>()
             })
             .unwrap_or_default();
+        
+        // Validate and fix image categories
+        let image_categories = validate_and_fix_image_categories(&raw_image_categories);
+        
         let x_post = parsed_json["x_post"]
             .as_str()
             .map(|s| s.to_string())
@@ -390,4 +394,140 @@ struct SocialContentJson {
     linkedin_post: String,
     x_post: String,
     shorts_script: String,
+}
+
+/// Validates and fixes image categories to ensure they match the allowed list
+/// Returns exactly 3 valid categories, mapping invalid ones to valid equivalents
+fn validate_and_fix_image_categories(raw_categories: &[String]) -> Vec<String> {
+    // Allowed categories (exact list from prompts)
+    let allowed: HashSet<&str> = [
+        "ai", "coding", "crypto", "data", "ethics", "games", "hardware", 
+        "legal", "network", "quantum_computing", "robotics", "science", 
+        "security", "sound"
+    ].iter().cloned().collect();
+    
+    // Mapping of invalid categories to valid ones
+    let category_mapping: HashMap<&str, &str> = [
+        // Physics/quantum related
+        ("physics", "science"),
+        ("quantum", "quantum_computing"),
+        ("quantum_mechanics", "quantum_computing"),
+        ("quantum_physics", "quantum_computing"),
+        // AI/ML related
+        ("machine_learning", "ai"),
+        ("ml", "ai"),
+        ("deep_learning", "ai"),
+        ("neural_networks", "ai"),
+        ("neural_network", "ai"),
+        ("generative_ai", "ai"),
+        ("computer_vision", "ai"),
+        ("cv", "ai"),
+        ("natural_language_processing", "ai"),
+        ("nlp", "ai"),
+        ("reinforcement_learning", "ai"),
+        ("rl", "ai"),
+        ("artificial_intelligence", "ai"),
+        // Programming/software
+        ("programming", "coding"),
+        ("software", "coding"),
+        ("development", "coding"),
+        ("code", "coding"),
+        // Data related
+        ("databases", "data"),
+        ("database", "data"),
+        ("data_storage", "data"),
+        ("data_analysis", "data"),
+        ("big_data", "data"),
+        // Security related
+        ("cybersecurity", "security"),
+        ("cyber_security", "security"),
+        ("privacy", "security"),
+        // Hardware related
+        ("electronics", "hardware"),
+        ("processors", "hardware"),
+        ("chips", "hardware"),
+        ("computing", "hardware"),
+        // Network related
+        ("connectivity", "network"),
+        ("networking", "network"),
+        ("communication", "network"),
+        // Other
+        ("biology", "science"),
+        ("chemistry", "science"),
+        ("medical", "science"),
+        ("research", "science"),
+    ].iter().cloned().collect();
+    
+    let mut valid_categories = Vec::new();
+    let mut used = HashSet::new();
+    
+    // First pass: collect valid categories and map invalid ones
+    for cat in raw_categories.iter() {
+        let normalized = cat.trim().to_lowercase();
+        
+        if normalized.is_empty() {
+            continue;
+        }
+        
+        // Check if it's already valid
+        if allowed.contains(normalized.as_str()) {
+            if !used.contains(&normalized) {
+                valid_categories.push(normalized.clone());
+                used.insert(normalized);
+            }
+        } else if let Some(&mapped) = category_mapping.get(normalized.as_str()) {
+            // Map invalid category to valid one
+            if !used.contains(mapped) {
+                eprintln!("  ⚠️  Mapped invalid category '{}' to '{}'", cat, mapped);
+                valid_categories.push(mapped.to_string());
+                used.insert(mapped);
+            }
+        } else {
+            // Try partial matching (e.g., "quantum_computing" contains "quantum")
+            let mut found_match = false;
+            for &allowed_cat in allowed.iter() {
+                if normalized.contains(allowed_cat) || allowed_cat.contains(normalized.as_str()) {
+                    if !used.contains(allowed_cat) {
+                        eprintln!("  ⚠️  Mapped '{}' to '{}' (partial match)", cat, allowed_cat);
+                        valid_categories.push(allowed_cat.to_string());
+                        used.insert(allowed_cat);
+                        found_match = true;
+                        break;
+                    }
+                }
+            }
+            
+            if !found_match {
+                eprintln!("  ⚠️  Invalid category '{}' - will be replaced with fallback", cat);
+            }
+        }
+        
+        // Stop if we have 3 valid categories
+        if valid_categories.len() >= 3 {
+            break;
+        }
+    }
+    
+    // Fill up to 3 categories with fallbacks if needed
+    let fallbacks = ["science", "ai", "hardware"];
+    for fallback in fallbacks.iter() {
+        if valid_categories.len() >= 3 {
+            break;
+        }
+        if !used.contains(fallback) {
+            eprintln!("  ⚠️  Using fallback category '{}' to complete list", fallback);
+            valid_categories.push(fallback.to_string());
+            used.insert(fallback);
+        }
+    }
+    
+    // Ensure we have exactly 3 (or less if we couldn't find enough)
+    valid_categories.truncate(3);
+    
+    if valid_categories.len() != raw_categories.len() || 
+       raw_categories.iter().any(|c| !allowed.contains(c.trim().to_lowercase().as_str())) {
+        eprintln!("  ⚠️  Category validation: {:?} -> {:?}", raw_categories, valid_categories);
+    }
+    
+    valid_categories
 }
