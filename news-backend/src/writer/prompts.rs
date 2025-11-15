@@ -186,7 +186,10 @@ CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
   "title": "Your title here",
   "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
   "article_text": "Full article body text here - all content in one string field",
-  "image_categories": ["category1", "category2", "category3"]
+  "image_categories": ["category1", "category2", "category3"],
+  "linkedin_post": "Your LinkedIn post text here (300 chars max) - engaging summary for professionals",
+  "x_post": "Your X/Twitter post text here (280 chars max) - concise, punchy, shareable",
+  "shorts_script": "Your YouTube Shorts script here (2 minutes, ~300 words) - hook, key points, call to action"
 }}
 
 ⚠️ IMPORTANT RULES:
@@ -196,6 +199,9 @@ CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
 - "article_text" MUST contain the complete article text in one string
 - DO NOT create nested objects like {{"article": {{"opening_hook": "...", "key_finding": "..."}}}}
 - All article content goes directly into the "article_text" string field
+- "linkedin_post": Professional, engaging summary (300 chars max) for LinkedIn audience
+- "x_post": Concise, punchy, shareable post (280 chars max) for X/Twitter
+- "shorts_script": YouTube Shorts script (2 minutes, ~300 words) with hook, key points, call to action
 - Return ONLY valid JSON - no markdown, no extra formatting
 
 TITLE REQUIREMENTS (CRITICAL):

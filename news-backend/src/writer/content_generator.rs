@@ -442,8 +442,26 @@ impl WriterService {
         };
 
         // 4. PHASE 2: Generate social content
-        println!("  📱 Building social media prompts...");
-        let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
+        // Check if social content is already in article response (from combined prompt)
+        let (social_response, social_original_tokens, social_compressed_tokens, social_compression_ratio) = 
+            if !article_response.linkedin_post.is_empty() 
+            && !article_response.x_post.is_empty() 
+            && !article_response.shorts_script.is_empty() {
+            println!("  ✅ Social content already included in article response (saving API call)");
+            (
+                SocialResponse {
+                    linkedin_post: article_response.linkedin_post.clone(),
+                    x_post: article_response.x_post.clone(),
+                    shorts_script: article_response.shorts_script.clone(),
+                },
+                0, // No tokens used for social (already in article)
+                0,
+                0.0,
+            )
+        } else {
+            // Fallback: Generate social content separately if not in article response
+            println!("  📱 Building social media prompts...");
+            let social_prompt = if let Some(ref custom_prompt) = self.prompt_social {
             println!("  📱 Using custom social prompt from config");
             // Replace placeholders if present, otherwise prepend article text
             let mut prompt = custom_prompt.clone();
@@ -528,24 +546,32 @@ impl WriterService {
             final_social_prompt_with_json.push_str("\n\n## CRITICAL: JSON OUTPUT REQUIRED - FOLLOW THIS EXACT FORMAT:\n{\"linkedin_post\": \"Your LinkedIn post text here (300 chars max)\", \"x_post\": \"Your X/Twitter post text here (280 chars max)\", \"shorts_script\": \"Your YouTube Shorts script here (2 minutes, ~300 words)\"}\n\n⚠️ FORBIDDEN FIELDS: Do NOT include \"title\", \"article_text\", \"subtitle\", or any other fields.\n⚠️ REQUIRED FIELDS: ONLY \"linkedin_post\", \"x_post\", and \"shorts_script\" are allowed.\n⚠️ Return your response as valid JSON format with ONLY the 3 required fields.");
         }
 
-        println!("  🤖 Generating social content...");
-        let social_response = match self
-            .deepseek_client
-            .generate_social_content(&final_social_prompt_with_json, Some(self.temperature_social))
-            .await
-        {
-            Ok(response) => {
-                println!("  ✅ Social content generated");
-                response
-            }
-            Err(e) => {
-                eprintln!(
-                    "  ❌ Failed to generate social content for {}: {}",
-                    article_id, e
-                );
-                eprintln!("  📄 PDF: {}", pdf_path.display());
-                return Err(e).context("Failed to generate social content");
-            }
+            println!("  🤖 Generating social content...");
+            let response = match self
+                .deepseek_client
+                .generate_social_content(&final_social_prompt_with_json, Some(self.temperature_social))
+                .await
+            {
+                Ok(response) => {
+                    println!("  ✅ Social content generated");
+                    response
+                }
+                Err(e) => {
+                    eprintln!(
+                        "  ❌ Failed to generate social content for {}: {}",
+                        article_id, e
+                    );
+                    eprintln!("  📄 PDF: {}", pdf_path.display());
+                    return Err(e).context("Failed to generate social content");
+                }
+            };
+            
+            (
+                response,
+                social_original_tokens,
+                social_compressed_tokens,
+                social_compression_ratio,
+            )
         };
 
         // PHASE 3: Save all content
