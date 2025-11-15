@@ -80,7 +80,7 @@
           "config": {
             "max_results": 10
           },
-          "destinations": ["airesearch", "scienceai"],
+          "destinations": ["scienceai"],
           "enabled": true,
           "feed_url": "https://www.airesearch.news/rss",
           "id": "rss_airesearch_news",
@@ -763,7 +763,7 @@
           "config": {
             "max_results": 10
           },
-          "destinations": ["airesearch"],
+          "destinations": ["scienceai"],
           "enabled": true,
           "feed_url": "https://www.airesearch.news/rss",
           "id": "rss_airesearch_news",
