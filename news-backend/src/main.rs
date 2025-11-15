@@ -1408,9 +1408,17 @@ async fn main() -> anyhow::Result<()> {
         let mut rss_collectors = Vec::new();
         let mut html_collectors = Vec::new();
 
+        eprintln!("🔄 [DEBUG] Total collectors loaded: {}", collectors.len());
+        eprintln!("🔄 [DEBUG] Enabled collectors: {}", collectors.iter().filter(|c| c.enabled).count());
+        
         for c in &collectors {
+            // Log ALL collectors (enabled and disabled) for debugging
+            eprintln!("🔄 [DEBUG] Collector: {} (enabled: {}, type: {:?}, feed_url: {:?}, name: {})", 
+                c.id, c.enabled, c.collector_type, c.feed_url, c.name);
+            
             // Skip disabled collectors
             if !c.enabled {
+                eprintln!("🔄 [DEBUG] Skipping disabled collector: {}", c.id);
                 continue;
             }
             
