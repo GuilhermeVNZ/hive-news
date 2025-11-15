@@ -145,18 +145,26 @@ impl ConfigManager {
         let content =
             serde_json::to_string_pretty(&config_to_save).context("Failed to serialize config")?;
 
+        eprintln!("🔍 [DEBUG] Attempting to save collectors_config.json to: {}", self.config_path.display());
+        eprintln!("🔍 [DEBUG] Parent directory exists: {}", 
+            self.config_path.parent().map(|p| p.exists()).unwrap_or(false));
+
         // Create parent directory if it doesn't exist
         if let Some(parent) = self.config_path.parent() {
+            eprintln!("🔍 [DEBUG] Creating parent directory: {}", parent.display());
             fs::create_dir_all(parent).context(format!(
                 "Failed to create config directory: {}",
                 parent.display()
             ))?;
+            eprintln!("🔍 [DEBUG] Parent directory created/exists: {}", parent.exists());
         }
 
+        eprintln!("🔍 [DEBUG] Writing config file ({} bytes)...", content.len());
         fs::write(&self.config_path, content).context(format!(
             "Failed to write config file: {}",
             self.config_path.display()
         ))?;
+        eprintln!("🔍 [DEBUG] Config file written successfully");
 
         Ok(())
     }
