@@ -123,6 +123,7 @@ pub struct CollectorConfig {
     /// List of site IDs where content from this collector should be sent
     /// This is separate from enabled - it indicates the target destinations for generated content
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default)]
     pub destinations: Option<Vec<String>>,
     /// Additional configuration (for backwards compatibility)
     pub config: serde_json::Value,
