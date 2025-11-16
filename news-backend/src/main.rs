@@ -653,7 +653,7 @@ async fn main() -> anyhow::Result<()> {
                             let title = current_title.take().unwrap_or_else(|| "Untitled".to_string());
                             
                             // Check if already in registry (not downloaded yet)
-                            if !registry.has_article(&id) {
+                            if !registry.is_article_registered(&id) {
                                 batch_articles.push((id, title));
                             }
                         }
@@ -668,7 +668,7 @@ async fn main() -> anyhow::Result<()> {
                         break;
                     }
                     // Double-check registry (may have been added by another category fetch)
-                    if !registry.has_article(&id) && !articles.iter().any(|(existing_id, _)| existing_id == &id) {
+                    if !registry.is_article_registered(&id) && !articles.iter().any(|(existing_id, _)| existing_id == &id) {
                         articles.push((id, title));
                         fetched_count += 1;
                     }
@@ -701,11 +701,14 @@ async fn main() -> anyhow::Result<()> {
 
         // Combine articles: 70% AI first, then 30% Quantum
         let mut combined_articles: Vec<(String, String)> = Vec::new();
+        // Store counts before moving vectors to avoid borrow-after-move
+        let ai_count = ai_articles.len();
+        let quantum_count = quantum_articles.len();
         combined_articles.extend(ai_articles);
         combined_articles.extend(quantum_articles);
 
         println!();
-        println!("📊 Combined articles: {} AI + {} Quantum = {} total", ai_articles.len(), quantum_articles.len(), combined_articles.len());
+        println!("📊 Combined articles: {} AI + {} Quantum = {} total", ai_count, quantum_count, combined_articles.len());
         println!("⬇️  Starting downloads...");
         println!();
 

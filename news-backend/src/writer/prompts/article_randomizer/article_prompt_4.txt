@@ -77,11 +77,12 @@ Overall, the writing should read as if a seasoned journalist is explaining a tec
 You may state what the authors directly describe:
 
 - “The paper outlines X as the main objective.”  
-- “Figure 4 shows Y occurring consistently across tests.”
+
 
 ### Forbidden
 You must avoid:
 
+- “Figure 4 shows Y occurring consistently across tests.”
 - Any interpretation that drifts beyond what the authors wrote.  
 - Overreaching societal predictions.  
 - Introducing external research context that is not present.  

@@ -18,7 +18,7 @@ export function ImagePreload({ imageUrl }: ImagePreloadProps) {
     link.as = "image";
     link.href = imageUrl;
     link.setAttribute("fetchpriority", "high");
-    
+
     // Adicionar srcset para diferentes tamanhos (Next.js Image otimiza automaticamente)
     // O Next.js já gera srcset, então preload apenas da imagem original
     document.head.appendChild(link);

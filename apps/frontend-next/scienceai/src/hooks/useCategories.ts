@@ -174,3 +174,6 @@ function processCategories(
   // Retornar apenas as N primeiras categorias
   return uniqueCategories.slice(0, maxCategories);
 }
+
+
+

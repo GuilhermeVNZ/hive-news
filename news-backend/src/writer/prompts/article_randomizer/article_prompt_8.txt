@@ -81,7 +81,8 @@ You may:
 
 - Interpret the structure or sequence of the study exactly as written.  
 - Explain why a particular method matters, based strictly on the authors’ rationale.  
-- Summarize evidence when referencing figures or metrics.
+- Summarize evidence without referencing figures or metrics.
+- Indirect references to results of figures/tables.
 
 ### Forbidden
 You must not:

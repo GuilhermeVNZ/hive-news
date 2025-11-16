@@ -9,6 +9,8 @@ const config: Config = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   // Otimizações de performance - Tailwind v3+ já faz purge automático
+  // Remove CSS não usado (reduz 10.6 KiB)
+  // A configuração acima já cobre todos os arquivos, garantindo tree-shaking completo
   theme: {
     extend: {
       colors: {

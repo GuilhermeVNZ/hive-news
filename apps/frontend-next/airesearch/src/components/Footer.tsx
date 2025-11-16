@@ -4,7 +4,7 @@ import icon from "@/assets/airesearch-icon.png";
 
 const Footer = () => {
   return (
-    <footer className="relative border-t border-border bg-gradient-to-br from-card via-background to-card mt-auto overflow-hidden section-below-fold">
+    <footer className="relative border-t border-border bg-gradient-to-br from-card via-background to-card mt-auto overflow-hidden section-below-fold" style={{ minHeight: 'auto' }}>
       {/* Decorative gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-20" />
 

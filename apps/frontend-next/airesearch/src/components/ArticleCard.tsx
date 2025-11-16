@@ -66,7 +66,11 @@ const ArticleCard = ({
   const cardImage = imagePath || defaultImage;
 
   return (
-    <Link href={`/article/${slug}`} prefetch={false}>
+    <Link 
+      href={`/article/${slug}`} 
+      prefetch={false}
+      aria-label={`Read article: ${title}`} // Aria-label único para cada artigo (resolve links duplicados)
+    >
       <Card className="group relative overflow-hidden hover:border-primary/50 transition-performance duration-300 hover-lift cursor-pointer h-full bg-gradient-to-br from-card via-card to-card/50">
         {/* Gradient overlay on hover - otimizado com opacity apenas */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:via-primary/0 group-hover:to-primary/5 transition-opacity duration-300 pointer-events-none" />

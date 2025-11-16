@@ -77,11 +77,12 @@ The overall feeling should be crisp, factual, and confident, while still readabl
 You may make statements such as:
 
 - “According to the paper, X is the central contribution.”  
-- “Figure 3 illustrates Y consistently across conditions.”
+
 
 ### Forbidden
 You must avoid:
 
+- “Figure 3 illustrates Y consistently across conditions.”
 - Any extrapolation not directly supported by the text.  
 - Suggesting broader impact unless explicitly discussed.  
 - External comparisons to unrelated studies.  

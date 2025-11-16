@@ -77,7 +77,7 @@ The objective: **maximum clarity with minimal ornamentation**, like a concise fi
 ### Allowed
 - Factual statements directly traceable to the text.  
 - Lean, unembellished summaries of methods or findings.  
-- Direct references to figures/tables.
+- Indirect references to results of figures/tables.
 
 ### Forbidden
 - Extrapolation of meaning or purpose.  

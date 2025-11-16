@@ -161,3 +161,6 @@ Se o LCP ainda não estiver <2.5s:
 
 
 
+
+
+

@@ -204,7 +204,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute h-11 w-11 rounded-full min-h-[44px] min-w-[44px] touch-manipulation", // 44x44px mínimo para áreas de toque (WCAG 2.5.5)
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",

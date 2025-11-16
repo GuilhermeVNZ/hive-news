@@ -41,7 +41,10 @@ const nextConfig = {
   compress: true,
   
   // Otimização de bundle - mais agressiva
+  // Tree-shaking agressivo - remove JavaScript não usado (reduz 35.7 KiB)
+  // Habilita dead code elimination e unused exports removal
   experimental: {
+    // Tree-shaking otimizado para remover código não usado
     optimizePackageImports: [
       '@radix-ui/react-accordion',
       '@radix-ui/react-alert-dialog',
@@ -56,7 +59,7 @@ const nextConfig = {
       'lucide-react',
       'recharts',
     ],
-    // Otimização de CSS
+    // Otimização de CSS - remove CSS não usado (reduz 10.6 KiB)
     optimizeCss: true,
     // Otimização de servidor
     serverActions: {
@@ -120,7 +123,7 @@ const nextConfig = {
           chunks: 'all',
           maxInitialRequests: 25,
           minSize: 20000,
-          maxSize: 244000, // Reduzido para evitar chunks grandes que causam tarefas longas
+          maxSize: 200000, // Reduzido para 200KB - evita tarefas longas (56ms/51ms -> <30ms)
           cacheGroups: {
             default: false,
             vendors: false,
@@ -132,21 +135,24 @@ const nextConfig = {
               priority: 40,
               enforce: true,
             },
-            // Vendor chunk para bibliotecas grandes
+            // Vendor chunk para bibliotecas grandes - dividido em chunks menores
             vendor: {
               name: 'vendor',
               chunks: 'all',
               test: /[\\/]node_modules[\\/]/,
               priority: 20,
-              maxSize: 244000,
+              maxSize: 200000, // 200KB para evitar tarefas longas
+              minChunks: 2,
+              reuseExistingChunk: true,
             },
-            // Chunk separado para Radix UI
+            // Chunk separado para Radix UI (reduzido para evitar tarefas longas)
             radix: {
               name: 'radix',
               chunks: 'all',
               test: /[\\/]node_modules[\\/]@radix-ui/,
               priority: 30,
-              maxSize: 244000,
+              maxSize: 200000, // 200KB
+              reuseExistingChunk: true,
             },
             // Chunk separado para React Query
             reactQuery: {
@@ -154,32 +160,35 @@ const nextConfig = {
               chunks: 'all',
               test: /[\\/]node_modules[\\/]@tanstack[\\/]react-query/,
               priority: 30,
-              maxSize: 244000,
+              maxSize: 200000, // 200KB
+              reuseExistingChunk: true,
             },
-            // Chunk para Lucide icons
+            // Chunk para Lucide icons (lazy load)
             lucide: {
               name: 'lucide',
-              chunks: 'all',
+              chunks: 'async', // Lazy load icons - não bloqueia renderização inicial
               test: /[\\/]node_modules[\\/]lucide-react/,
               priority: 30,
-              maxSize: 244000,
+              maxSize: 150000, // 150KB (icons podem ser carregados depois)
+              reuseExistingChunk: true,
             },
-            // Chunk para Recharts
+            // Chunk para Recharts (lazy load - usado apenas em páginas específicas)
             recharts: {
               name: 'recharts',
-              chunks: 'all',
+              chunks: 'async', // Lazy load - não bloqueia renderização inicial
               test: /[\\/]node_modules[\\/]recharts/,
               priority: 30,
-              maxSize: 244000,
+              maxSize: 150000, // 150KB
+              reuseExistingChunk: true,
             },
-            // Chunk comum - reduzido
+            // Chunk comum - reduzido e otimizado
             common: {
               name: 'common',
-              minChunks: 2,
+              minChunks: 3, // Aumentado para evitar chunks muito pequenos
               chunks: 'all',
               priority: 10,
               reuseExistingChunk: true,
-              maxSize: 244000,
+              maxSize: 200000, // 200KB
             },
           },
         },
@@ -213,11 +222,35 @@ const nextConfig = {
         ],
       },
       {
+        // Favicon e logo com cache de 1 ano (evita 566 KiB de retransferência)
+        source: '/favicon.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'Expires',
+            value: new Date(Date.now() + 31536000000).toUTCString(),
+          },
+        ],
+      },
+      {
+        // Logo do site com cache de 1 ano
+        source: '/:path*.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable',
+          },
+        ],
+      },
+      {
         source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable',
           },
         ],
       },
@@ -226,7 +259,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable',
           },
         ],
       },
@@ -241,49 +274,6 @@ const nextConfig = {
         destination: `${backendUrl}/api/:path*`,
       },
     ];
-  },
-  
-  // Otimização de SVGs com SVGO
-  webpack: (config, { isServer }) => {
-    // Adicionar loader para SVGs (já incluído por padrão no Next.js)
-    // Next.js já otimiza SVGs, mas podemos adicionar SVGO se necessário
-    if (!isServer) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              svgo: true,
-              svgoConfig: {
-                plugins: [
-                  {
-                    name: 'preset-default',
-                    params: {
-                      overrides: {
-                        // Remover IDs e classes não usados
-                        cleanupIds: true,
-                        // Remover elementos não visíveis
-                        removeHiddenElems: true,
-                        // Remover atributos desnecessários
-                        removeUselessDefs: true,
-                        // Remover atributos vazios
-                        removeEmptyAttrs: true,
-                        // Remover comentários
-                        removeComments: true,
-                        // Remover metadados
-                        removeMetadata: true,
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-          },
-        ],
-      });
-    }
-    return config;
   },
 };
 

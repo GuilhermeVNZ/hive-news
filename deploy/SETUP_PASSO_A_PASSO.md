@@ -396,3 +396,6 @@ Se algo não funcionar:
 
 **Guia simplificado para iniciantes - apenas copiar e colar! 🚀**
 
+
+
+

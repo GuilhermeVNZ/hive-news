@@ -75,7 +75,7 @@ Avoid abrupt topic shifts. Make each paragraph feel like a natural continuation 
 
 ### Permitted
 - Statements grounded in the text:  
-  - “The results indicate X, according to Figure 2.”  
+
   - “The authors describe Y as a key part of their methodology.”  
 
 ### Prohibited

@@ -80,13 +80,14 @@ The reader should feel like they are being led through the research with clarity
 ### Allowed
 - Describe sequences of actions as presented in the paper.  
 - Summarize the logic behind the method using only the authors’ explanations.  
-- Reference figures and tables within the context of the narrative arc.
+- Reference results of figures and tables within the context of the narrative arc.
 
 ### Forbidden
 - Imposing dramatic stakes.  
 - Suggesting broader societal or ethical impacts unless stated.  
 - Inventing scenes or analogies that add new meaning not in the text.  
 - Adding urgency or speculation.
+- “The measurements in Figure 5 support Y during testing.”  
 
 ---
 

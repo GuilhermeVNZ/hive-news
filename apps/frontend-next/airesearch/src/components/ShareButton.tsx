@@ -1,6 +1,13 @@
 "use client";
 
-import { Share2, Twitter, Linkedin, MessageCircle, Copy, Send } from "lucide-react";
+import {
+  Share2,
+  Twitter,
+  Linkedin,
+  MessageCircle,
+  Copy,
+  Send,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -21,7 +28,8 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({ article, url }: ShareButtonProps) {
-  const currentUrl = url || (typeof window !== "undefined" ? window.location.href : "");
+  const currentUrl =
+    url || (typeof window !== "undefined" ? window.location.href : "");
 
   const handleShare = (platform: string) => {
     if (platform === "copy") {
@@ -32,27 +40,27 @@ export function ShareButton({ article, url }: ShareButtonProps) {
       const shareText = article.xPost || article.title;
       window.open(
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(currentUrl)}`,
-        "_blank"
+        "_blank",
       );
     } else if (platform === "linkedin") {
       // LinkedIn: conteúdo do arquivo linkedin.txt + link + preview da imagem
       // LinkedIn usa share-offsite que permite preview automático da imagem via Open Graph
       window.open(
         `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`,
-        "_blank"
+        "_blank",
       );
     } else if (platform === "whatsapp") {
       // WhatsApp: título + link + preview da imagem
       const shareText = `${article.title}\n\n${currentUrl}`;
       window.open(
         `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`,
-        "_blank"
+        "_blank",
       );
     } else if (platform === "telegram") {
       // Telegram: título + link + preview da imagem (mesmo modelo do WhatsApp)
       window.open(
         `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(article.title)}`,
-        "_blank"
+        "_blank",
       );
     }
   };
@@ -90,4 +98,3 @@ export function ShareButton({ article, url }: ShareButtonProps) {
     </DropdownMenu>
   );
 }
-

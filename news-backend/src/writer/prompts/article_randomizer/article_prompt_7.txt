@@ -75,10 +75,10 @@ The article should feel like an analytical briefing crafted for readers who enjo
 
 ### Allowed
 - “The authors position X as the motivation for their approach.”  
-- “The measurements in Figure 5 support Y during testing.”  
 - “The paper identifies Z as a central constraint.”
 
 ### Forbidden
+- “The measurements in Figure 5 support Y during testing.”  
 - Any leap from research detail to industry prediction without explicit support.  
 - Implying controversy or debate unless the text explicitly mentions disagreements.  
 - Drawing parallels to external studies or trends not mentioned in the source.

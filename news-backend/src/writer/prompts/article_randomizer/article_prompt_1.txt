@@ -59,7 +59,7 @@ Editorial philosophy:
 - **Opening**: highlight significance immediately; answer “why should a non-technical reader care?”.  
 - **Voice**: active, direct, authoritative yet accessible and conversational.  
 - **Structure**: inverted pyramid (key findings and significance first, details later).  
-- **Precision**: reference figures/data **only when in the paper** (e.g., “as shown in Figure 2”).  
+ 
 - **Clarity**: define technical terms on first use and give simple analogies or real-world comparisons.  
 - **Flow**: smooth transitions for non-expert readers; avoid abrupt jumps.  
 - **Purpose**: make complex science understandable and clearly relevant.  
@@ -81,7 +81,7 @@ Editorial philosophy:
   - “Experts suggest…” unless explicit quotes appear in the text.  
 - Speculation like “This could cure cancer” unless the paper clearly states something equivalent.  
 - Hyperbolic wording such as “groundbreaking”, “paradigm-shifting”, “game-changing”, unless the paper itself uses and justifies such framing.
-
+- **Precision**: reference figures/data **only when in the paper** (e.g., “as shown in Figure 2”). 
 ---
 
 ## 5. PROHIBITED AI-WRITING PATTERNS

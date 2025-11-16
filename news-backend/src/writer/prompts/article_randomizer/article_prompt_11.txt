@@ -79,6 +79,7 @@ This variation should feel like premium magazine writing—**polished, fluid, bu
 - Re-order explanations for smoother narrative flow, without modifying facts.  
 - Add context **only** when explicitly provided in the paper.  
 - Provide summarizing statements grounded entirely in the source.
+- Indirect references to results of figures/tables.
 
 ### Forbidden
 - Any subjective judgments (“important”, “brilliant”, “concerning”, etc.) unless implied by the authors.  

@@ -859,3 +859,6 @@ curl -I --http2 https://airesearch.news
 
 **Documentação completa para implementação de otimizações de infraestrutura.**
 
+
+
+

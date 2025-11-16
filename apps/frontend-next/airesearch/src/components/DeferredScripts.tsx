@@ -21,7 +21,6 @@ export function DeferredScripts() {
           // - Facebook Pixel
           // - Hotjar
           // - Outros scripts de analytics
-          
           // Exemplo de como carregar Google Analytics após renderização:
           // if (process.env.NEXT_PUBLIC_GA_ID) {
           //   const script = document.createElement('script');
@@ -30,7 +29,6 @@ export function DeferredScripts() {
           //   script.defer = true;
           //   document.head.appendChild(script);
           // }
-          
           // Carregar outros scripts de terceiros aqui
         }, 2000); // Aguardar 2 segundos após renderização
       }

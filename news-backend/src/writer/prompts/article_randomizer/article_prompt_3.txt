@@ -77,12 +77,12 @@ The goal is to make the article feel like **expert commentary** that remains acc
 ### Allowed
 You may state:
 
-- “The paper reports X, based on the data shown in Figure 3.”  
+
 - “The authors describe Y as central to their approach.”  
 
 ### Forbidden
 You may **not**:
-
+- “The paper reports X, based on the data shown in Figure 3.”  
 - Infer motivations or speculate about fields not discussed in the text.  
 - Extend implications beyond those explicitly given.  
 - Attribute opinions, predictions, or judgments to unnamed experts.  
