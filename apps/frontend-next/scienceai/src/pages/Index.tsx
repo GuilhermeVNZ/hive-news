@@ -1,8 +1,9 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useMemo, useCallback } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { useCategories } from "@/hooks/useCategories";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 // HeroCarousel NÃO pode ser lazy loaded - contém a imagem LCP!
 import { HeroCarousel } from "@/components/HeroCarousel";
@@ -29,6 +30,7 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [displayedCount, setDisplayedCount] = useState(4); // Inicial: 4 artigos
 
   // Usar hook compartilhado para categorias (evita duplicação)
   const { categories } = useCategories({
@@ -86,21 +88,11 @@ const Index = () => {
     fetchArticles();
   }, []);
 
-  // Articles are already sorted by backend (featured first), but ensure they stay that way
-  let filteredArticles = searchQuery
-    ? articles.filter(
-        (article) =>
-          article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          article.category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : articles;
-  
-  // If no search query, ensure featured articles are at the top
-  if (!searchQuery) {
-    filteredArticles = [...filteredArticles].sort((a, b) => {
-      const dateDiff =
-        new Date(b.date).getTime() - new Date(a.date).getTime();
+  // Memoizar artigos do carrossel para excluir do feed
+  const carouselArticles = useMemo(() => {
+    // Mesma lógica do HeroCarousel: máximo 5 artigos, 2 por categoria
+    const sortedArticles = [...articles].sort((a, b) => {
+      const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
       if (dateDiff !== 0) {
         return dateDiff;
       }
@@ -111,13 +103,94 @@ const Index = () => {
       }
       return b.id.localeCompare(a.id);
     });
-  }
+    
+    const categoryCounts = new Map<string, number>();
+    const limitedArticles: Article[] = [];
+    
+    for (const article of sortedArticles) {
+      const category = article.category.toLowerCase();
+      const count = categoryCounts.get(category) || 0;
+      
+      if (count < 2) {
+        categoryCounts.set(category, count + 1);
+        limitedArticles.push(article);
+        
+        if (limitedArticles.length >= 5) {
+          break;
+        }
+      }
+    }
+    
+    return limitedArticles.map(a => a.id);
+  }, [articles]);
 
-  const getArticlesByCategory = (categorySlug: string) => {
-    return filteredArticles.filter(
-      (article) => article.category.toLowerCase() === categorySlug.toLowerCase()
-    );
-  };
+  // Filtrar e preparar artigos para o feed (excluindo os do carrossel)
+  const feedArticles = useMemo(() => {
+    let filtered = searchQuery
+      ? articles.filter(
+          (article) =>
+            article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            article.category.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : articles;
+
+    // Excluir artigos do carrossel
+    filtered = filtered.filter(article => !carouselArticles.includes(article.id));
+
+    // Ordenar por data (mais novo primeiro)
+    filtered = [...filtered].sort((a, b) => {
+      const dateDiff = new Date(b.date).getTime() - new Date(a.date).getTime();
+      if (dateDiff !== 0) {
+        return dateDiff;
+      }
+      return b.id.localeCompare(a.id);
+    });
+
+    // Agrupar por categoria e limitar a 2 por categoria
+    const categoryCounts = new Map<string, number>();
+    const categoryLimitedArticles: Article[] = [];
+
+    for (const article of filtered) {
+      const category = article.category.toLowerCase();
+      const count = categoryCounts.get(category) || 0;
+      
+      if (count < 2) {
+        categoryCounts.set(category, count + 1);
+        categoryLimitedArticles.push(article);
+      }
+    }
+
+    return categoryLimitedArticles;
+  }, [articles, searchQuery, carouselArticles]);
+
+  // Limite máximo de artigos para garantir acesso ao footer (20 artigos = ~4-5 telas)
+  const MAX_ARTICLES = 20;
+
+  // Artigos a serem exibidos (limitados pelo scroll infinito e máximo)
+  const displayedArticles = useMemo(() => {
+    const limitedCount = Math.min(displayedCount, MAX_ARTICLES);
+    return feedArticles.slice(0, limitedCount);
+  }, [feedArticles, displayedCount]);
+
+  // Verificar se há mais artigos para carregar (respeitando limite máximo)
+  const hasMore = displayedCount < feedArticles.length && displayedCount < MAX_ARTICLES;
+
+  // Handler para carregar mais artigos (scroll infinito)
+  const handleLoadMore = useCallback(() => {
+    if (!loading && hasMore && displayedCount < MAX_ARTICLES) {
+      // Carregar mais 4 de cada vez, mas não ultrapassar o limite
+      setDisplayedCount(prev => Math.min(prev + 4, MAX_ARTICLES));
+    }
+  }, [loading, hasMore, displayedCount]);
+
+  // Hook de scroll infinito (threshold menor para garantir espaço para footer)
+  const { loadMoreRef } = useInfiniteScroll({
+    onLoadMore: handleLoadMore,
+    hasMore,
+    isLoading: loading,
+    threshold: 200, // Trigger mais cedo (200px) para não bloquear footer
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -132,93 +205,93 @@ const Index = () => {
           ) : (
             <>
               {/* Hero Carousel - CRÍTICO: Não lazy load pois contém imagem LCP */}
-              <HeroCarousel articles={filteredArticles} categories={categories} />
+              <HeroCarousel articles={articles} categories={categories} />
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-            {/* Articles Section */}
-            <div className="lg:col-span-2 space-y-12">
-              {searchQuery ? (
-                <section>
-                  <h2 className="text-2xl font-bold mb-6">
-                    Search Results for "{searchQuery}"
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {filteredArticles.length > 0 ? (
-                      filteredArticles.map((article, index) => (
-                        <ArticleCard 
-                          key={article.id} 
-                          article={article}
-                          priority={index < 4} // Primeiros 4 artigos acima da dobra
-                        />
-                      ))
-                    ) : (
-                      <p className="text-muted-foreground col-span-2">
-                        No articles found matching your search.
-                      </p>
-                    )}
-                  </div>
-                </section>
-              ) : (
-                // Categorias já vêm deduplicadas do hook useCategories
-                (() => {
-                  // Filtrar categorias que têm artigos e evitar null no map
-                  const categorySections = categories
-                    .map((category) => {
-                      const categoryArticles = getArticlesByCategory(category.slug);
-                      if (categoryArticles.length === 0) {
-                        return null; // Será filtrado depois
-                      }
-
-                      // Garantir máximo de 4 artigos por categoria na página principal
-                      const displayedArticles = categoryArticles.slice(0, 4);
-
-                      return (
-                        <section key={category.slug}>
-                          <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-2xl font-bold">{category.name}</h2>
-                            <a
-                              href={`/category/${category.slug}`}
-                              className="text-primary hover:underline text-sm font-medium"
-                            >
-                              View all →
-                            </a>
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Main Content Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+                {/* Articles Section */}
+                <div className="lg:col-span-2 space-y-12">
+                  {searchQuery ? (
+                    <section>
+                      <h2 className="text-2xl font-bold mb-6">
+                        Search Results for "{searchQuery}"
+                      </h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {feedArticles.length > 0 ? (
+                          feedArticles.map((article, index) => (
+                            <ArticleCard 
+                              key={article.id} 
+                              article={article}
+                              priority={index < 4} // Primeiros 4 artigos acima da dobra
+                            />
+                          ))
+                        ) : (
+                          <p className="text-muted-foreground col-span-2">
+                            No articles found matching your search.
+                          </p>
+                        )}
+                      </div>
+                    </section>
+                  ) : (
+                    <section>
+                      <h2 className="text-2xl font-bold mb-6">Latest Articles</h2>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {displayedArticles.length > 0 ? (
+                          <>
                             {displayedArticles.map((article, index) => (
                               <ArticleCard 
                                 key={article.id} 
                                 article={article}
-                                // Priorizar carregamento dos primeiros 4 artigos (above the fold)
-                                priority={index < 4}
+                                priority={index < 4} // Primeiros 4 artigos acima da dobra
                               />
                             ))}
-                          </div>
-                        </section>
-                      );
-                    })
-                    .filter((section) => section !== null); // Remover nulls
-                  
-                  return categorySections.length > 0 ? (
-                    categorySections
-                  ) : (
-                    <p className="text-muted-foreground">
-                      No categories with articles available.
-                    </p>
-                  );
-                })()
-              )}
-            </div>
+                            {/* Trigger para scroll infinito */}
+                            {hasMore && (
+                              <div 
+                                ref={loadMoreRef} 
+                                className="col-span-2 flex justify-center items-center py-8"
+                              >
+                                <div className="text-center">
+                                  <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                                  <p className="text-sm text-muted-foreground">Loading more articles...</p>
+                                </div>
+                              </div>
+                            )}
+                            {/* Mensagem de fim (quando todos foram carregados ou limite atingido) */}
+                            {(!hasMore || displayedArticles.length >= MAX_ARTICLES) && displayedArticles.length > 4 && (
+                              <div className="col-span-2 text-center py-8">
+                                <p className="text-sm text-muted-foreground">
+                                  {displayedArticles.length >= MAX_ARTICLES 
+                                    ? `Showing ${displayedArticles.length} latest articles. Scroll down to see the footer.`
+                                    : "You've reached the end!"
+                                  }
+                                </p>
+                              </div>
+                            )}
+                            {/* Espaçamento extra antes do footer para garantir acesso */}
+                            {(!hasMore || displayedArticles.length >= MAX_ARTICLES) && (
+                              <div className="col-span-2 h-16" aria-hidden="true" />
+                            )}
+                          </>
+                        ) : (
+                          <p className="text-muted-foreground col-span-2">
+                            No articles available.
+                          </p>
+                        )}
+                      </div>
+                    </section>
+                  )}
+                </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24">
-                <Suspense fallback={<div className="h-64 bg-muted animate-pulse rounded-lg" />}>
-                  <LazySidebar articles={filteredArticles} />
-                </Suspense>
+                {/* Sidebar */}
+                <div className="lg:col-span-1">
+                  <div className="sticky top-24">
+                    <Suspense fallback={<div className="h-64 bg-muted animate-pulse rounded-lg" />}>
+                      <LazySidebar articles={articles} />
+                    </Suspense>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
             </>
           )}
         </div>
