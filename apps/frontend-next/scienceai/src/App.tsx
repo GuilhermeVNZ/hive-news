@@ -1,10 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScriptLoader } from "@/components/ScriptLoader";
+import { initializePolyfills } from "@/lib/polyfills";
 
 // Lazy load de rotas para melhorar performance inicial
 const Index = lazy(() => import("./pages/Index"));
@@ -37,27 +38,34 @@ const RouteLoading = () => (
   </div>
 );
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <ScriptLoader />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Suspense fallback={<RouteLoading />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/article/:id" element={<ArticleDetail />} />
-            <Route path="/category/:category" element={<CategoryPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Inicializar polyfills na primeira renderização
+  useEffect(() => {
+    initializePolyfills();
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <ScriptLoader />
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Suspense fallback={<RouteLoading />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/article/:id" element={<ArticleDetail />} />
+              <Route path="/category/:category" element={<CategoryPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
