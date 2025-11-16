@@ -15,7 +15,31 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    react(),
+    react({
+      // Configurar SWC para não transpilar features modernas desnecessariamente
+      // Target moderno: ES2022+ (remover polyfills desnecessários)
+      swcOptions: {
+        jsc: {
+          target: 'es2022', // Usar ES2022 para evitar transpilação de features modernas
+          parser: {
+            syntax: 'typescript',
+            tsx: true,
+            decorators: false,
+            dynamicImport: true,
+          },
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
+          // Não adicionar helpers/polyfills para features modernas (Array.at, Object.hasOwn, etc)
+          // Os navegadores modernos já suportam essas features
+          loose: false,
+          externalHelpers: false,
+        },
+        minify: mode === 'production',
+      },
+    }),
     articlesApiPlugin(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),

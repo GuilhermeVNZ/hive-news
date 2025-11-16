@@ -1,0 +1,14 @@
+# Browserslist para ScienceAI
+# Configuração para navegadores modernos apenas (evitar transpilação desnecessária)
+# Remove necessidade de polyfills para Array.at, Object.hasOwn, String.trimStart, etc
+
+# Navegadores com suporte a ES2022 features (Array.at, Object.hasOwn, etc)
+# Chrome 92+, Firefox 90+, Safari 15.4+, Edge 92+
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+
+# Não incluir navegadores antigos que requerem polyfills
+# Isso reduz o bundle size em ~12 KiB (JavaScript legado)
+
