@@ -150,6 +150,16 @@ fn map_source_to_category(
     image_categories: &[String],
     fallback_category: Option<&str>,
 ) -> String {
+    // 1) Se DeepSeek marcou explicitamente como quantum_computing em QUALQUER posição,
+    // usamos isso como categoria primária (mesmo que não seja a primeira da lista).
+    if image_categories
+        .iter()
+        .any(|c| c.eq_ignore_ascii_case("quantum_computing"))
+    {
+        return "quantum_computing".to_string();
+    }
+
+    // 2) Caso contrário, mantemos o comportamento padrão: primeira categoria da lista
     if let Some(first) = image_categories.first() {
         return first.clone();
     }
