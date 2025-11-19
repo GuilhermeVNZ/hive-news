@@ -65,7 +65,7 @@ services:
   airesearch:
     environment:
       NEWS_BASE_DIR: /data
-      BACKEND_URL: https://backend.scienceai.news
+      BACKEND_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro
