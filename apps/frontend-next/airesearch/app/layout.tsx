@@ -100,9 +100,10 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
             /* Layout inicial crítico - apenas acima da dobra */
-            body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#fff;color:#1a1a1a}
+            /* Usar variáveis CSS para respeitar tema dark */
+            body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:hsl(var(--background));color:hsl(var(--foreground))}
             #__next,#root{min-height:100vh;display:flex;flex-direction:column}
-            main{flex:1}
+            main{flex:1;background:hsl(var(--background))}
             /* Prevenir FOUC */
             html{visibility:visible;opacity:1}
             /* Header crítico */
