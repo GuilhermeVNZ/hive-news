@@ -1010,11 +1010,8 @@ impl HtmlCollector {
                 }
             }
 
-            // Remover duplicatas (preservar ordem original para x.ai/news)
-            let is_xai = base_url.contains("x.ai/news");
-            if !is_xai {
-                link_urls.sort();
-            }
+            // Remover duplicatas (preservar ordem original para todas as fontes)
+            // A ordem original garante que notícias mais recentes sejam processadas primeiro
             link_urls.dedup();
 
             debug!(
@@ -1022,8 +1019,7 @@ impl HtmlCollector {
                 total_links_processed = total_links_found,
                 valid_article_links = link_urls.len(),
                 href_patterns = ?href_patterns,
-                is_xai = is_xai,
-                "Found article links directly"
+                "Found article links directly (order preserved)"
             );
 
             // Debug: mostrar alguns links encontrados
