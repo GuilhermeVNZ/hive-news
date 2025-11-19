@@ -44,9 +44,8 @@ find . -type f -not -path './.git/*' -exec du -h {} + 2>/dev/null | sort -rh | h
 echo ""
 
 # Arquivos antigos que podem ser removidos
-echo "🗓️  Arquivos antigos (>30 dias) que podem ser removidos:"
-echo "  PDFs em downloads:"
-find ./downloads -type f -name "*.pdf" -mtime +30 2>/dev/null | wc -l | xargs echo "    "
+echo "🗓️  Arquivos antigos que podem ser removidos:"
 echo "  Logs em logs/:"
 find ./logs -type f -name "*.log" -mtime +7 2>/dev/null | wc -l | xargs echo "    "
+echo "  (PDFs são limpos automaticamente pelo sistema de coleta)"
 

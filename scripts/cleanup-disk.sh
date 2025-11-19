@@ -40,22 +40,9 @@ else
 fi
 echo ""
 
-# 2. Limpar downloads de PDFs antigos (>30 dias)
-echo "📥 2. Limpando PDFs antigos de downloads (>30 dias)..."
-DOWNLOADS_DIR="./downloads"
-if [ -d "$DOWNLOADS_DIR" ]; then
-    BEFORE=$(du -sb "$DOWNLOADS_DIR" 2>/dev/null | cut -f1 || echo "0")
-    # Manter apenas últimos 30 dias de downloads
-    find "$DOWNLOADS_DIR" -type f -name "*.pdf" -mtime +30 -delete 2>/dev/null || true
-    # Limpar diretórios vazios
-    find "$DOWNLOADS_DIR" -type d -empty -delete 2>/dev/null || true
-    AFTER=$(du -sb "$DOWNLOADS_DIR" 2>/dev/null | cut -f1 || echo "0")
-    FREED=$((BEFORE - AFTER))
-    TOTAL_FREED=$((TOTAL_FREED + FREED))
-    echo "   ✅ Downloads: $(numfmt --to=iec-i --suffix=B $FREED 2>/dev/null || echo "${FREED}B") liberados"
-else
-    echo "   ⏭️  Diretório de downloads não encontrado"
-fi
+# 2. PDFs já são limpos pelo sistema de coleta (pulando)
+echo "📥 2. PDFs já são limpos automaticamente pelo sistema de coleta"
+echo "   ⏭️  Pulando limpeza de PDFs"
 echo ""
 
 # 3. Limpar output de artigos antigos (>90 dias) - manter apenas publicados
