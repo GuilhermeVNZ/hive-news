@@ -34,32 +34,36 @@ const ArticleGrid = ({
   const [hasMore, setHasMore] = useState(initialHasMore);
   const [total, setTotal] = useState(initialTotal);
   const [loading, setLoading] = useState(false);
-  const [displayedCount, setDisplayedCount] = useState(50); // Mostrar todos os 50 iniciais
+  const [displayedCount, setDisplayedCount] = useState(6); // Mostrar apenas 6 artigos inicialmente
 
   // Reset quando categoria ou busca mudam
   useEffect(() => {
     setArticles(initialArticles);
     setHasMore(initialHasMore);
     setTotal(initialTotal);
-    setDisplayedCount(50);
+    setDisplayedCount(6); // Reset para 6 artigos
   }, [selectedCategory, searchQuery, initialArticles, initialHasMore, initialTotal]);
 
   const loadMore = async () => {
-    if (loading || !hasMore) return;
+    if (loading) return;
     
     setLoading(true);
     try {
-      const offset = articles.length;
-      const { articles: newArticles, hasMore: newHasMore, total: newTotal } = await getArticles(
-        selectedCategory && selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
-        50, // Carregar mais 50 artigos
-        offset
-      );
-      
-      setArticles(prev => [...prev, ...newArticles]);
-      setHasMore(newHasMore);
-      setTotal(newTotal);
-      setDisplayedCount(prev => prev + 50);
+      // Se ainda há artigos no servidor, carregar mais da API
+      if (hasMore && displayedCount >= articles.length) {
+        const offset = articles.length;
+        const { articles: newArticles, hasMore: newHasMore, total: newTotal } = await getArticles(
+          selectedCategory && selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
+          50, // Carregar mais 50 artigos
+          offset
+        );
+        
+        setArticles(prev => [...prev, ...newArticles]);
+        setHasMore(newHasMore);
+        setTotal(newTotal);
+      }
+      // Mostrar mais 6 artigos dos que já estão carregados
+      setDisplayedCount(prev => prev + 6);
     } catch (error) {
       console.error("Failed to load more articles:", error);
     } finally {
@@ -190,12 +194,18 @@ const ArticleGrid = ({
           {(hasMore || hasMoreLocal) && (
             <div className="flex justify-center mt-12">
               <Button
-                onClick={hasMore ? loadMore : () => setDisplayedCount((prev) => prev + 50)}
+                onClick={loadMore}
                 className="px-8 py-6 text-lg"
                 variant="outline"
                 disabled={loading}
               >
-                {loading ? "Loading..." : hasMore ? `Load More Articles (${total - articles.length} remaining)` : "Show More Articles"}
+                {loading 
+                  ? "Loading..." 
+                  : hasMoreLocal
+                  ? `Show More Articles (${filteredArticles.length - displayedCount} remaining)`
+                  : hasMore
+                  ? `Load More Articles (${total - articles.length} remaining)`
+                  : "Show More Articles"}
               </Button>
             </div>
           )}
