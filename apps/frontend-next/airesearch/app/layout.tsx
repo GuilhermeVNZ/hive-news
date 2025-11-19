@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { DeferredScripts } from "@/components/DeferredScripts";
+import { ThemeProvider } from "@/components/theme-provider";
 
 // Otimização de fontes: preload e display swap para melhor FCP
 const inter = Inter({ 
@@ -135,7 +136,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} ${inter.variable}`}>
-        {children}
+        <ThemeProvider defaultTheme="system" storageKey="airesearch-ui-theme">
+          {children}
+        </ThemeProvider>
         <DeferredScripts />
       </body>
     </html>

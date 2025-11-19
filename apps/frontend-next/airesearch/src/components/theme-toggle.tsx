@@ -24,11 +24,12 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
     } else if (theme === "light") {
       setTheme("dark");
     } else {
-      // System theme - determine current preference and toggle
+      // System theme - determine current preference and toggle to explicit
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"
         : "light";
+      // Toggle to the opposite of current system theme
       setTheme(systemTheme === "dark" ? "light" : "dark");
     }
   };
