@@ -532,6 +532,125 @@ async fn main() -> anyhow::Result<()> {
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
 
+        // Helper function to fetch articles from HTML page (https://arxiv.org/list/cs/new)
+        // PRIORITY: This is the primary source for Computer Science articles
+        async fn fetch_articles_from_html_list(
+            client: &reqwest::Client,
+            target: u32,
+            category_name: &str,
+            registry: &crate::utils::article_registry::RegistryManager,
+        ) -> anyhow::Result<Vec<(String, String)>> {
+            use scraper::{Html, Selector};
+            
+            println!("📡 [PRIORITY] Fetching {} articles from HTML list (https://arxiv.org/list/cs/new)...", target);
+            
+            let url = "https://arxiv.org/list/cs/new";
+            let response = client.get(url).send().await
+                .context("Failed to fetch HTML page from arxiv.org/list/cs/new")?;
+            
+            if !response.status().is_success() {
+                return Err(anyhow::anyhow!("HTTP error {} when fetching HTML list", response.status()));
+            }
+            
+            let html_content = response.text().await
+                .context("Failed to read HTML content")?;
+            
+            let document = Html::parse_document(&html_content);
+            
+            // Estrutura HTML: <dt> contém o link, <dd> contém o título
+            // Formato: <dt><span class="list-identifier"><a href="/abs/2511.13722">arXiv:2511.13722</a>...</span></dt>
+            //          <dd><div class="list-title mathjax"><span class="descriptor">Title:</span> Título aqui</div>...</dd>
+            let dt_selector = Selector::parse("dt").unwrap();
+            let abs_link_selector = Selector::parse("a[href^='/abs/']").unwrap();
+            let title_selector = Selector::parse("dd .list-title").unwrap();
+            
+            let mut articles = Vec::new();
+            let mut fetched_count = 0;
+            
+            // Coletar todos os <dt> elementos primeiro
+            let dt_elements: Vec<_> = document.select(&dt_selector).collect();
+            println!("  Found {} <dt> elements in HTML", dt_elements.len());
+            
+            // Iterar sobre todos os <dt> elementos
+            for (idx, dt_element) in dt_elements.iter().enumerate() {
+                if fetched_count >= target {
+                    break;
+                }
+                
+                // Extrair ID do artigo do link /abs/
+                if let Some(link) = dt_element.select(&abs_link_selector).next() {
+                    if let Some(href) = link.value().attr("href") {
+                        // Formato: /abs/2511.13722 ou /abs/2511.13722v1
+                        if let Some(id_part) = href.strip_prefix("/abs/") {
+                            let mut paper_id = id_part.to_string();
+                            
+                            // Remover sufixo de versão (v1, v2, etc)
+                            if let Some(pos) = paper_id.rfind('v') {
+                                if pos + 1 < paper_id.len() {
+                                    let after_v = &paper_id[pos + 1..];
+                                    if after_v.chars().all(|c| c.is_ascii_digit()) {
+                                        paper_id = paper_id[..pos].to_string();
+                                    }
+                                }
+                            }
+                            
+                            // Buscar título no <dd> correspondente (mesmo índice)
+                            let mut title = "Untitled".to_string();
+                            
+                            // Tentar encontrar o <dd> correspondente
+                            let dd_elements: Vec<_> = document.select(&Selector::parse("dd").unwrap()).collect();
+                            if idx < dd_elements.len() {
+                                let dd_element = &dd_elements[idx];
+                                
+                                // Tentar com seletor de título
+                                if let Some(title_elem) = dd_element.select(&title_selector).next() {
+                                    let title_text: String = title_elem.text().collect();
+                                    title = title_text.trim().to_string();
+                                    // Remover "Title:" se presente
+                                    title = title.replace("Title:", "").trim().to_string();
+                                } else {
+                                    // Fallback: extrair do texto completo do <dd>
+                                    let dd_text: String = dd_element.text().collect();
+                                    let lines: Vec<&str> = dd_text.lines().collect();
+                                    for line in lines {
+                                        let trimmed = line.trim();
+                                        // Pular linhas vazias, "Title:", e linhas muito curtas
+                                        if !trimmed.is_empty() 
+                                            && trimmed != "Title:" 
+                                            && trimmed.len() > 10
+                                            && !trimmed.starts_with("Subjects:")
+                                            && !trimmed.starts_with("Comments:")
+                                            && !trimmed.starts_with("Journal-ref:") {
+                                            title = trimmed.to_string();
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            // Limpar título final
+                            title = title.trim().to_string();
+                            if title.is_empty() {
+                                title = "Untitled".to_string();
+                            }
+                            
+                            // Verificar se já está no registry
+                            if !registry.is_article_registered(&paper_id) {
+                                articles.push((paper_id.clone(), title.clone()));
+                                fetched_count += 1;
+                                if fetched_count <= 5 {
+                                    println!("  [{}] Found: {} - {}", fetched_count, paper_id, title.chars().take(60).collect::<String>());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            println!("  [{}] ✅ Collected {} new articles from HTML list (target: {})", category_name, articles.len(), target);
+            Ok(articles)
+        }
+
         // Helper function to fetch articles from a specific category
         async fn fetch_category_articles(
             client: &reqwest::Client,
@@ -540,6 +659,25 @@ async fn main() -> anyhow::Result<()> {
             category_name: &str,
             registry: &crate::utils::article_registry::RegistryManager,
         ) -> anyhow::Result<Vec<(String, String)>> {
+            // PRIORITY: Para cs.AI e cs, SEMPRE usar HTML list primeiro (fonte mais atualizada e confiável)
+            if query == "cat:cs.AI" || query == "cat:cs" {
+                println!("  [{}] [PRIORITY] Using HTML list (https://arxiv.org/list/cs/new) as primary source...", category_name);
+                match fetch_articles_from_html_list(client, target, category_name, registry).await {
+                    Ok(articles) if !articles.is_empty() => {
+                        println!("  [{}] ✅ Successfully fetched {} articles from HTML list (PRIORITY source)", category_name, articles.len());
+                        return Ok(articles);
+                    }
+                    Ok(_) => {
+                        println!("  [{}] ⚠️  HTML list returned no new articles, falling back to API...", category_name);
+                    }
+                    Err(e) => {
+                        eprintln!("  [{}] ❌ HTML list fetch failed: {}", category_name, e);
+                        eprintln!("  [{}] ⚠️  Falling back to API...", category_name);
+                    }
+                }
+            }
+            
+            // Fallback to API for other categories or if HTML fails
             // Article ID -> Title mapping
             let mut articles = Vec::new();
             let mut start_offset = 0;
@@ -547,7 +685,7 @@ async fn main() -> anyhow::Result<()> {
             let max_api_requests = 25; // Half of total per category
             let mut api_request_count = 0;
 
-            println!("📡 Fetching {} articles from {} category...", target, category_name);
+            println!("📡 Fetching {} articles from {} category via API...", target, category_name);
             
             while fetched_count < target && api_request_count < max_api_requests {
                 let batch_size = target * 2; // Fetch more to ensure we find new ones
