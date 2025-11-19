@@ -532,24 +532,25 @@ async fn main() -> anyhow::Result<()> {
         }
         tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
 
-        // Helper function to fetch articles from HTML page (https://arxiv.org/list/cs/new)
-        // PRIORITY: This is the primary source for Computer Science articles
+        // Helper function to fetch articles from HTML page (https://arxiv.org/list/{category}/new)
+        // Busca os artigos mais recentes e continua até encontrar artigos novos (não registrados)
         async fn fetch_articles_from_html_list(
             client: &reqwest::Client,
             target: u32,
+            category: &str,
             category_name: &str,
             registry: &crate::utils::article_registry::RegistryManager,
         ) -> anyhow::Result<Vec<(String, String)>> {
             use scraper::{Html, Selector};
             
-            println!("📡 [PRIORITY] Fetching {} articles from HTML list (https://arxiv.org/list/cs/new)...", target);
+            let url = format!("https://arxiv.org/list/{}/new", category);
+            println!("📡 Fetching {} articles from HTML list ({})...", target, url);
             
-            let url = "https://arxiv.org/list/cs/new";
-            let response = client.get(url).send().await
-                .context("Failed to fetch HTML page from arxiv.org/list/cs/new")?;
+            let response = client.get(&url).send().await
+                .with_context(|| format!("Failed to fetch HTML page from {}", url))?;
             
             if !response.status().is_success() {
-                return Err(anyhow::anyhow!("HTTP error {} when fetching HTML list", response.status()));
+                return Err(anyhow::anyhow!("HTTP error {} when fetching HTML list from {}", response.status(), url));
             }
             
             let html_content = response.text().await
@@ -558,22 +559,20 @@ async fn main() -> anyhow::Result<()> {
             let document = Html::parse_document(&html_content);
             
             // Estrutura HTML: <dt> contém o link, <dd> contém o título
-            // Formato: <dt><span class="list-identifier"><a href="/abs/2511.13722">arXiv:2511.13722</a>...</span></dt>
-            //          <dd><div class="list-title mathjax"><span class="descriptor">Title:</span> Título aqui</div>...</dd>
             let dt_selector = Selector::parse("dt").unwrap();
             let abs_link_selector = Selector::parse("a[href^='/abs/']").unwrap();
             let title_selector = Selector::parse("dd .list-title").unwrap();
             
             let mut articles = Vec::new();
-            let mut fetched_count = 0;
             
-            // Coletar todos os <dt> elementos primeiro
+            // Coletar todos os <dt> e <dd> elementos
             let dt_elements: Vec<_> = document.select(&dt_selector).collect();
+            let dd_elements: Vec<_> = document.select(&Selector::parse("dd").unwrap()).collect();
             println!("  Found {} <dt> elements in HTML", dt_elements.len());
             
-            // Iterar sobre todos os <dt> elementos
+            // Iterar sobre todos os <dt> elementos (do mais recente para o mais antigo)
             for (idx, dt_element) in dt_elements.iter().enumerate() {
-                if fetched_count >= target {
+                if articles.len() >= target as usize {
                     break;
                 }
                 
@@ -594,11 +593,14 @@ async fn main() -> anyhow::Result<()> {
                                 }
                             }
                             
-                            // Buscar título no <dd> correspondente (mesmo índice)
+                            // Verificar se já está no registry - se sim, pular e continuar buscando mais antigos
+                            if registry.is_article_registered(&paper_id) {
+                                continue; // Artigo já existe, buscar o próximo (mais antigo)
+                            }
+                            
+                            // Buscar título no <dd> correspondente
                             let mut title = "Untitled".to_string();
                             
-                            // Tentar encontrar o <dd> correspondente
-                            let dd_elements: Vec<_> = document.select(&Selector::parse("dd").unwrap()).collect();
                             if idx < dd_elements.len() {
                                 let dd_element = &dd_elements[idx];
                                 
@@ -606,7 +608,6 @@ async fn main() -> anyhow::Result<()> {
                                 if let Some(title_elem) = dd_element.select(&title_selector).next() {
                                     let title_text: String = title_elem.text().collect();
                                     title = title_text.trim().to_string();
-                                    // Remover "Title:" se presente
                                     title = title.replace("Title:", "").trim().to_string();
                                 } else {
                                     // Fallback: extrair do texto completo do <dd>
@@ -614,7 +615,6 @@ async fn main() -> anyhow::Result<()> {
                                     let lines: Vec<&str> = dd_text.lines().collect();
                                     for line in lines {
                                         let trimmed = line.trim();
-                                        // Pular linhas vazias, "Title:", e linhas muito curtas
                                         if !trimmed.is_empty() 
                                             && trimmed != "Title:" 
                                             && trimmed.len() > 10
@@ -634,14 +634,9 @@ async fn main() -> anyhow::Result<()> {
                                 title = "Untitled".to_string();
                             }
                             
-                            // Verificar se já está no registry
-                            if !registry.is_article_registered(&paper_id) {
-                                articles.push((paper_id.clone(), title.clone()));
-                                fetched_count += 1;
-                                if fetched_count <= 5 {
-                                    println!("  [{}] Found: {} - {}", fetched_count, paper_id, title.chars().take(60).collect::<String>());
-                                }
-                            }
+                            // Adicionar artigo (já verificamos que não está no registry)
+                            articles.push((paper_id.clone(), title.clone()));
+                            println!("  [{}] Found new article: {} - {}", articles.len(), paper_id, title.chars().take(60).collect::<String>());
                         }
                     }
                 }
@@ -662,7 +657,7 @@ async fn main() -> anyhow::Result<()> {
             // PRIORITY: Para cs.AI e cs, SEMPRE usar HTML list primeiro (fonte mais atualizada e confiável)
             if query == "cat:cs.AI" || query == "cat:cs" {
                 println!("  [{}] [PRIORITY] Using HTML list (https://arxiv.org/list/cs/new) as primary source...", category_name);
-                match fetch_articles_from_html_list(client, target, category_name, registry).await {
+                match fetch_articles_from_html_list(client, target, "cs", category_name, registry).await {
                     Ok(articles) if !articles.is_empty() => {
                         println!("  [{}] ✅ Successfully fetched {} articles from HTML list (PRIORITY source)", category_name, articles.len());
                         return Ok(articles);
@@ -823,91 +818,41 @@ async fn main() -> anyhow::Result<()> {
             Ok(articles)
         }
 
-        // Fetch articles from both categories separately
-        let mut ai_articles = Vec::new();
-        let mut quantum_articles = Vec::new();
-
-        if ai_target > 0 {
-            ai_articles = fetch_category_articles(&client, &ai_query, ai_target, "AI (cs.AI)", &registry).await?;
-        }
-
-        // Fallback logic: if we couldn't collect enough AI articles (less than 90% of target),
-        // we try to fill using Quantum. This ensures we always try to get close to arxiv_max_results.
-        let min_ai_threshold = ((ai_target as f64) * 0.9).floor() as u32; // At least 90% of AI target
-        let found_ai_count = ai_articles.len() as u32;
-        
-        if quantum_target > 0 {
-            if found_ai_count < min_ai_threshold {
-                // Not enough AI articles found - use Quantum to fill the gap
-                let shortfall = arxiv_max_results.saturating_sub(found_ai_count);
-                println!();
-                println!("⚠️  Only {} AI articles found (target: {}, minimum: {}). Filling gap with Quantum...", 
-                    found_ai_count, ai_target, min_ai_threshold);
-                println!();
-                
-                // Try to fill up to arxiv_max_results with Quantum articles
-                let quantum_fill_target = shortfall.min(quantum_target * 3); // Allow up to 3x quantum target to fill gap
-                quantum_articles =
-                    fetch_category_articles(&client, &quantum_query, quantum_fill_target, "Quantum (quant-ph fallback)", &registry).await?;
-                
-                // If we still don't have enough, try to get more AI articles (even if duplicates might be skipped)
-                if (found_ai_count + quantum_articles.len() as u32) < arxiv_max_results {
-                    let remaining = arxiv_max_results.saturating_sub(found_ai_count + quantum_articles.len() as u32);
-                    println!();
-                    println!("⚠️  Still short {} articles. Attempting to fetch more AI articles...", remaining);
-                    
-                    // Try one more batch of AI articles with a larger target
-                    let additional_ai = fetch_category_articles(&client, &ai_query, remaining * 2, "AI (cs.AI - additional)", &registry).await?;
-                    
-                    // Only add articles we don't already have
-                    for (id, title) in additional_ai {
-                        if !ai_articles.iter().any(|(existing_id, _)| existing_id == &id) {
-                            ai_articles.push((id, title));
-                            if ai_articles.len() as u32 >= arxiv_max_results {
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else {
-                // Normal 90/10 behavior: fetch dedicated Quantum subset
-                // Small delay between category fetches
-                tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
-                quantum_articles = fetch_category_articles(
-                    &client,
-                    &quantum_query,
-                    quantum_target,
-                    "Quantum (quant-ph)",
-                    &registry,
-                )
-                .await?;
-            }
-        }
-
-        // Combine articles: 90% AI first, then 10% Quantum
-        let mut combined_articles: Vec<(String, String)> = Vec::new();
-        // Store counts before moving vectors to avoid borrow-after-move
-        let ai_count = ai_articles.len();
-        let quantum_count = quantum_articles.len();
-        combined_articles.extend(ai_articles);
-        combined_articles.extend(quantum_articles);
-
+        // NOVA LÓGICA: Buscar 9 artigos de "cs" e depois 1 de "quant-ph" usando HTML list
         println!();
-        println!("📊 Combined articles: {} AI + {} Quantum = {} total", ai_count, quantum_count, combined_articles.len());
-        println!("⬇️  Starting downloads...");
+        println!("📋 New collection strategy:");
+        println!("   1. Fetch 9 articles from Computer Science (cs) using HTML list");
+        println!("   2. Download those 9 PDFs");
+        println!("   3. Fetch 1 article from Quantum Physics (quant-ph) using HTML list");
+        println!("   4. Download that 1 PDF");
         println!();
 
-        // Download the combined list
-        let mut downloaded_count = 0;
-        let target_count = combined_articles.len();
+        // Step 1: Buscar 9 artigos de "cs" usando HTML list
+        let cs_target = 9u32;
+        let cs_articles = fetch_articles_from_html_list(
+            &client,
+            cs_target,
+            "cs",
+            "Computer Science (cs)",
+            &registry,
+        )
+        .await?;
 
-        // Loop through combined articles and download
-        for (paper_id, paper_title) in combined_articles {
-            downloaded_count += 1;
+        println!();
+        println!("📊 Step 1 complete: Found {} CS articles (target: {})", cs_articles.len(), cs_target);
+        println!();
+
+        // Step 2: Baixar os 9 PDFs de CS
+        println!("⬇️  Step 2: Downloading {} CS PDFs...", cs_articles.len());
+        println!();
+
+        let mut downloaded_cs = 0;
+        for (paper_id, paper_title) in cs_articles.iter() {
+            downloaded_cs += 1;
             
             println!(
-                "📥 [{}/{}] Downloading: {}",
-                downloaded_count, target_count, paper_id
+                "📥 [{}/{}] Downloading CS article: {}",
+                downloaded_cs, cs_articles.len(), paper_id
             );
             println!("   Title: {}", paper_title);
 
@@ -925,7 +870,7 @@ async fn main() -> anyhow::Result<()> {
             }
 
             // Check registry
-            let metadata = registry.get_metadata(&paper_id);
+            let metadata = registry.get_metadata(paper_id);
             if let Some(meta) = metadata {
                 if meta.status == crate::utils::article_registry::ArticleStatus::Published {
                     println!("   ⏭️  Already published, skipping");
@@ -973,13 +918,6 @@ async fn main() -> anyhow::Result<()> {
                             }
                         }
 
-                        // Check for redirects or errors
-                        if status.is_redirection() {
-                            if let Some(location) = response.headers().get("location") {
-                                println!("   🔄 Redirect to: {}", location.to_str().unwrap_or("unknown"));
-                            }
-                        }
-
                         if status.is_success() {
                             match response.bytes().await {
                                 Ok(bytes) => {
@@ -1018,12 +956,12 @@ async fn main() -> anyhow::Result<()> {
                                                 paper_id.clone(),
                                                 paper_title.clone(),
                                                 arxiv_url.clone(),
-                                                pdf_url_primary.clone(), // Always use primary URL for registry
+                                                pdf_url_primary.clone(),
                                             ) {
                                                 eprintln!("   ⚠️  Failed to register: {}", e);
                                             } else {
                                                 let destinations = get_enabled_sites_for_source("arxiv");
-                                                if let Err(e) = registry.set_destinations(&paper_id, destinations) {
+                                                if let Err(e) = registry.set_destinations(paper_id, destinations) {
                                                     eprintln!("   ⚠️  Failed to set destinations: {}", e);
                                                 }
                                             }
@@ -1047,7 +985,6 @@ async fn main() -> anyhow::Result<()> {
                             }
                         } else {
                             println!("   ❌ HTTP Error: {} {}", status.as_u16(), status.canonical_reason().unwrap_or("Unknown"));
-                            // Try fallback URL on error
                             if retry_count < max_retries && retry_count == 0 {
                                 retry_count += 1;
                                 println!("   🔄 Retrying with fallback URL...");
@@ -1059,7 +996,6 @@ async fn main() -> anyhow::Result<()> {
                     }
                     Err(e) => {
                         println!("   ❌ Request failed: {}", e);
-                        // Try fallback URL on network error
                         if retry_count < max_retries && retry_count == 0 {
                             retry_count += 1;
                             println!("   🔄 Retrying with fallback URL...");
@@ -1080,8 +1016,148 @@ async fn main() -> anyhow::Result<()> {
         }
 
         println!();
+        println!("✅ Step 2 complete: Downloaded {} CS PDFs", downloaded_cs);
+        println!();
+
+        // Step 3: Buscar 1 artigo de "quant-ph" usando HTML list
+        let quantum_target = 1u32;
+        tokio::time::sleep(tokio::time::Duration::from_secs(2)).await; // Small delay between category fetches
+        
+        let quantum_articles = fetch_articles_from_html_list(
+            &client,
+            quantum_target,
+            "quant-ph",
+            "Quantum Physics (quant-ph)",
+            &registry,
+        )
+        .await?;
+
+        println!();
+        println!("📊 Step 3 complete: Found {} Quantum articles (target: {})", quantum_articles.len(), quantum_target);
+        println!();
+
+        // Step 4: Baixar o 1 PDF de Quantum
+        println!("⬇️  Step 4: Downloading {} Quantum PDF...", quantum_articles.len());
+        println!();
+
+        let mut downloaded_quantum = 0;
+        for (paper_id, paper_title) in quantum_articles.iter() {
+            downloaded_quantum += 1;
+            
+            println!(
+                "📥 [{}/{}] Downloading Quantum article: {}",
+                downloaded_quantum, quantum_articles.len(), paper_id
+            );
+            println!("   Title: {}", paper_title);
+
+            // Reuse the same download logic as CS articles
+            let pdf_url_primary = format!("https://export.arxiv.org/pdf/{}.pdf", paper_id);
+            let pdf_url_fallback = format!("https://arxiv.org/pdf/{}.pdf", paper_id);
+            let arxiv_url = format!("https://arxiv.org/abs/{}", paper_id);
+            let file_path = date_dir.join(format!("{}.pdf", paper_id));
+            
+            if file_path.exists() {
+                println!("   ⏭️  Already downloaded, skipping");
+                continue;
+            }
+
+            let metadata = registry.get_metadata(paper_id);
+            if let Some(meta) = metadata {
+                if meta.status == crate::utils::article_registry::ArticleStatus::Published {
+                    println!("   ⏭️  Already published, skipping");
+                    continue;
+                }
+            }
+
+            // Same download logic as above (reuse the retry/fallback code)
+            let mut retry_count = 0;
+            let max_retries = 3;
+            let download_success = loop {
+                let pdf_url = if retry_count > 1 { &pdf_url_fallback } else { &pdf_url_primary };
+                println!("   📡 Downloading from: {}", pdf_url);
+                
+                let request = client
+                    .get(pdf_url)
+                    .header("User-Agent", "NewsSystemCollector/1.0 (contact: admin@airesearch.news; automated research paper collection)")
+                    .header("Accept", "application/pdf")
+                    .header("Accept-Encoding", "gzip, deflate")
+                    .header("Connection", "keep-alive");
+
+                match request.send().await {
+                    Ok(response) => {
+                        let status = response.status();
+                        if status.as_u16() == 429 && retry_count < max_retries {
+                            retry_count += 1;
+                            let wait_time = 2u64.pow(retry_count) * 5;
+                            println!("   ⚠️  Rate limited, waiting {}s...", wait_time);
+                            tokio::time::sleep(tokio::time::Duration::from_secs(wait_time)).await;
+                            continue;
+                        }
+
+                        if status.is_success() {
+                            match response.bytes().await {
+                                Ok(bytes) => {
+                                    if bytes.len() >= 4 && &bytes[0..4] == b"%PDF" {
+                                        match tokio::fs::write(&file_path, &bytes).await {
+                                            Ok(_) => {
+                                                let file_size_mb = bytes.len() as f64 / 1_048_576.0;
+                                                println!("   ✅ Downloaded ({:.2} MB)", file_size_mb);
+                                                
+                                                if let Err(e) = registry.register_collected(
+                                                    paper_id.clone(),
+                                                    paper_title.clone(),
+                                                    arxiv_url.clone(),
+                                                    pdf_url_primary.clone(),
+                                                ) {
+                                                    eprintln!("   ⚠️  Failed to register: {}", e);
+                                                } else {
+                                                    let destinations = get_enabled_sites_for_source("arxiv");
+                                                    if let Err(e) = registry.set_destinations(paper_id, destinations) {
+                                                        eprintln!("   ⚠️  Failed to set destinations: {}", e);
+                                                    }
+                                                }
+                                                break true;
+                                            }
+                                            Err(e) => {
+                                                println!("   ❌ Failed to write file: {}", e);
+                                                break false;
+                                            }
+                                        }
+                                    } else {
+                                        println!("   ❌ Invalid PDF format");
+                                        break false;
+                                    }
+                                }
+                                Err(e) => {
+                                    println!("   ❌ Failed to read response: {}", e);
+                                    break false;
+                                }
+                            }
+                        } else {
+                            println!("   ❌ HTTP Error: {}", status);
+                            break false;
+                        }
+                    }
+                    Err(e) => {
+                        println!("   ❌ Request failed: {}", e);
+                        break false;
+                    }
+                }
+            };
+
+            if !download_success {
+                println!("   ⚠️  Failed to download");
+            }
+
+            tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
+        }
+
+        println!();
+        println!("✅ Step 4 complete: Downloaded {} Quantum PDF", downloaded_quantum);
+        println!();
+        println!("📊 Final summary: {} CS + {} Quantum = {} total PDFs downloaded", downloaded_cs, downloaded_quantum, downloaded_cs + downloaded_quantum);
+        println!();
         println!("✅ Collection completed!");
-        println!("   Downloaded: {}/{} papers", downloaded_count, target_count);
 
         // Limpar arquivos temporários
         println!("\n🧹 Cleaning temporary files...");
