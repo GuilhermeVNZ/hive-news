@@ -49,6 +49,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   
+  // Otimização de dependências - garantir que React seja pré-empacotado corretamente
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react/jsx-runtime'],
+    exclude: [],
+  },
+  
   // Otimizações de performance para produção
   build: {
     // Minificação otimizada - melhor compressão
