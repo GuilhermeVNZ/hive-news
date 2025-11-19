@@ -39,15 +39,24 @@ export default function HomeClient({
   // Prefetch HTML/JSON da rota antes do clique para navegação quase instantânea
   useEffect(() => {
     const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+      // Verificar se e.target é um Element válido antes de usar closest
+      const target = e.target;
+      if (!target || !(target instanceof Element)) {
+        return;
+      }
+      
       const link = target.closest('a');
       if (link && link.href) {
-        const url = new URL(link.href);
-        if (url.pathname.startsWith('/article/')) {
-          // Prefetch da página completa (HTML + dados)
-          router.prefetch(url.pathname);
-          // Também prefetch dos dados da API se necessário
-          // O Next.js já faz isso automaticamente com prefetch
+        try {
+          const url = new URL(link.href);
+          if (url.pathname.startsWith('/article/')) {
+            // Prefetch da página completa (HTML + dados)
+            router.prefetch(url.pathname);
+            // Também prefetch dos dados da API se necessário
+            // O Next.js já faz isso automaticamente com prefetch
+          }
+        } catch (err) {
+          // Ignorar URLs inválidas
         }
       }
     };
