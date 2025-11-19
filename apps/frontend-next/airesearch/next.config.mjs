@@ -20,7 +20,7 @@ const nextConfig = {
   
   // Otimização de imagens - mais agressiva
   images: {
-    domains: ['localhost'],
+    // Usar remotePatterns ao invés de domains (deprecated)
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -33,6 +33,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
@@ -65,6 +71,8 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Aumentar limite de cache do Next.js para payloads grandes
+    isrMemoryCacheSize: 52428800, // 50MB (padrão é 50MB, mas garantir)
   },
   
   // Otimização de produção
