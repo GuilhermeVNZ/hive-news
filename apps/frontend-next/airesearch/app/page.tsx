@@ -19,9 +19,9 @@ export default async function Home({ searchParams }: HomePageProps) {
     ? resolvedSearchParams.q[0] ?? ""
     : resolvedSearchParams.q ?? "";
 
-  // Carregar apenas 50 artigos iniciais para melhor performance
+  // Carregar apenas 6 artigos iniciais para melhor performance
   // Mais artigos serão carregados via lazy loading quando necessário
-  const { articles, hasMore, total } = await getArticles(undefined, 50, 0);
+  const { articles, hasMore, total } = await getArticles(undefined, 6, 0);
 
   return (
     <HomeClient
