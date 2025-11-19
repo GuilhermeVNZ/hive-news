@@ -638,13 +638,19 @@ impl HtmlCollector {
                                 .split('/')
                                 .filter(|s| !s.is_empty() && !s.contains(':'))
                                 .collect();
+                            // Para x.ai/news, aceitar qualquer URL que contenha /news/ (genérico para qualquer notícia)
+                            let is_xai = url.contains("x.ai/news") && (
+                                path_segments.len() >= 3 ||
+                                url.contains("/news/")
+                            );
                             let is_article = url.contains("/20")
                                 || path_segments.len() >= 4
                                 || (path_segments.len() >= 3
                                     && path_segments
                                         .last()
                                         .map(|s| s.matches('-').count() >= 2)
-                                        .unwrap_or(false));
+                                        .unwrap_or(false))
+                                || is_xai; // Permitir URLs do x.ai/news com qualquer path válido
 
                             if is_article && !link_urls.contains(&url) {
                                 link_urls.push(url.clone());
@@ -915,11 +921,18 @@ impl HtmlCollector {
                 total_links_found += 1;
                 if let Some(href) = link_element.value().attr("href") {
                     // Se há padrões específicos no seletor, verificar se o href corresponde
+                    // Para x.ai/news, aceitar qualquer link que contenha /news/ (genérico para todas as notícias)
+                    let is_xai_base = base_url.contains("x.ai/news");
                     if !href_patterns.is_empty() {
                         let matches_pattern = href_patterns
                             .iter()
                             .any(|pattern| href.contains(pattern.as_str()));
-                        if !matches_pattern {
+                        // Para x.ai, aceitar qualquer link que vá para /news/ (genérico para qualquer notícia)
+                        let matches_xai_generic = is_xai_base && (
+                            href.contains("/news/") ||
+                            href.contains("x.ai/news")
+                        );
+                        if !matches_pattern && !matches_xai_generic {
                             continue;
                         }
                     }
@@ -970,17 +983,25 @@ impl HtmlCollector {
                         // - Contém ano (2024, 2025)
                         // - Ou tem 4+ segmentos no path
                         // - Ou termina com padrão de slug (múltiplas palavras com hífen)
+                        // - Ou é de x.ai/news (mais permissivo para este domínio)
                         let path_segments: Vec<&str> = resolved_url
                             .split('/')
                             .filter(|s| !s.is_empty() && !s.contains(':'))
                             .collect();
+                        // Para x.ai/news, aceitar qualquer URL que contenha /news/ e não seja apenas a base
+                        // Solução genérica: qualquer path após /news/ é considerado artigo
+                        let is_xai = resolved_url.contains("x.ai/news") && (
+                            path_segments.len() >= 3 ||
+                            resolved_url.contains("/news/")
+                        );
                         let is_article = resolved_url.contains("/20")
                             || path_segments.len() >= 4
                             || (path_segments.len() >= 3
                                 && path_segments
                                     .last()
                                     .map(|s| s.matches('-').count() >= 2)
-                                    .unwrap_or(false));
+                                    .unwrap_or(false))
+                            || is_xai; // Permitir URLs do x.ai/news com qualquer path válido
 
                         if is_article {
                             link_urls.push(resolved_url);
@@ -989,8 +1010,11 @@ impl HtmlCollector {
                 }
             }
 
-            // Remover duplicatas
-            link_urls.sort();
+            // Remover duplicatas (preservar ordem original para x.ai/news)
+            let is_xai = base_url.contains("x.ai/news");
+            if !is_xai {
+                link_urls.sort();
+            }
             link_urls.dedup();
 
             debug!(
@@ -998,6 +1022,7 @@ impl HtmlCollector {
                 total_links_processed = total_links_found,
                 valid_article_links = link_urls.len(),
                 href_patterns = ?href_patterns,
+                is_xai = is_xai,
                 "Found article links directly"
             );
 
@@ -1024,11 +1049,13 @@ impl HtmlCollector {
 
                 match self.fetch_full_article(link_url, selectors).await {
                     Ok(metadata) => {
+                        // Limite padrão para todos (x.ai já confirmado ter conteúdo suficiente)
                         const MIN_CONTENT_LENGTH: usize = 1500;
+                        let min_length = MIN_CONTENT_LENGTH;
                         let has_valid_content = metadata
                             .content_text
                             .as_ref()
-                            .map(|text| !text.trim().is_empty() && text.len() >= MIN_CONTENT_LENGTH)
+                            .map(|text| !text.trim().is_empty() && text.len() >= min_length)
                             .unwrap_or(false);
 
                         if has_valid_content {
@@ -1386,13 +1413,19 @@ impl HtmlCollector {
             .split('/')
             .filter(|segment| !segment.is_empty() && !segment.contains(':'))
             .collect();
+        // Para x.ai/news, aceitar qualquer URL que contenha /news/ (genérico para qualquer notícia)
+        let is_xai = url.contains("x.ai/news") && (
+            path_segments.len() >= 3 ||
+            url.contains("/news/")
+        );
         let is_article = url.contains("/20")
             || path_segments.len() >= 4
             || (path_segments.len() >= 3
                 && path_segments
                     .last()
                     .map(|segment| segment.matches('-').count() >= 2)
-                    .unwrap_or(false));
+                    .unwrap_or(false))
+            || is_xai; // Permitir URLs do x.ai/news com qualquer path válido
 
         if is_article {
             link_urls.push(url.to_string());

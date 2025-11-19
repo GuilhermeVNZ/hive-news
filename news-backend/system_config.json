@@ -349,16 +349,16 @@
           "collector_type": "html",
           "config": {
             "force_js": true,
-            "max_results": 5
+            "max_results": 10
           },
           "enabled": true,
           "id": "html_xai",
           "name": "X.ai News",
           "selectors": {
-            "article": "article, .post, .news-item, .blog-item",
-            "content": ".content, .post-content, .article-content, article, main, .article-body",
-            "link": "a[href*='/news/'], a[href*='x.ai/news']",
-            "title": "h1, h2, h3, .title, .post-title, .article-title"
+            "article": "article, .post, .news-item, .blog-item, [data-article], .article",
+            "content": ".content, .post-content, .article-content, article, main, .article-body, [role='article']",
+            "link": "a[href*='/news/'], a[href*='x.ai/news'], a[href^='/news/']",
+            "title": "h1, h2, h3, .title, .post-title, .article-title, [data-title]"
           }
         },
         {
