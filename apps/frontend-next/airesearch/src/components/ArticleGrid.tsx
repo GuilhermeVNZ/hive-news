@@ -141,7 +141,7 @@ const ArticleGrid = ({
   const hasMoreLocal = filteredArticles.length > displayedCount;
 
   return (
-    <section className="container mx-auto px-4 py-16 section-below-fold" id="articles">
+    <section className="container mx-auto px-4 py-16 section-below-fold bg-background" id="articles">
       <div className="mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
           {selectedCategory
