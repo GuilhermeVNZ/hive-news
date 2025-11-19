@@ -460,7 +460,8 @@ async fn main() -> anyhow::Result<()> {
             let ai_target = ((arxiv_max_results as f64) * 0.9).ceil() as u32;
             let quantum_target = arxiv_max_results - ai_target;
             
-            let ai_query = "cat:cs".to_string();
+            // Use cat:cs.AI instead of cat:cs to focus specifically on AI articles, not all CS
+            let ai_query = "cat:cs.AI".to_string();
             let quantum_query = "cat:quant-ph".to_string();
             
             eprintln!(
@@ -689,7 +690,7 @@ async fn main() -> anyhow::Result<()> {
         let mut quantum_articles = Vec::new();
 
         if ai_target > 0 {
-            ai_articles = fetch_category_articles(&client, &ai_query, ai_target, "AI (cs)", &registry).await?;
+            ai_articles = fetch_category_articles(&client, &ai_query, ai_target, "AI (cs.AI)", &registry).await?;
         }
 
         // Fallback logic: if we couldn't collect enough AI articles (less than 90% of target),
@@ -718,7 +719,7 @@ async fn main() -> anyhow::Result<()> {
                     println!("⚠️  Still short {} articles. Attempting to fetch more AI articles...", remaining);
                     
                     // Try one more batch of AI articles with a larger target
-                    let additional_ai = fetch_category_articles(&client, &ai_query, remaining * 2, "AI (cs - additional)", &registry).await?;
+                    let additional_ai = fetch_category_articles(&client, &ai_query, remaining * 2, "AI (cs.AI - additional)", &registry).await?;
                     
                     // Only add articles we don't already have
                     for (id, title) in additional_ai {
