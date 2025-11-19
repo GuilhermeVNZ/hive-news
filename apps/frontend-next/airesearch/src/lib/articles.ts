@@ -22,14 +22,11 @@ function buildArticlesUrl(categoryFilter?: string): URL {
 
 export async function getArticles(categoryFilter?: string): Promise<Article[]> {
   const url = buildArticlesUrl(categoryFilter);
-  // ISR (Incremental Static Regeneration) com revalidate otimizado
-  // Cache agressivo: 5 minutos (artigos não mudam frequentemente)
-  // Revalida em background para manter dados atualizados sem impactar TTFB
+  // Desabilitar cache do Next.js para payloads grandes (>2MB)
+  // O cache será gerenciado pelo backend/Nginx via Cache-Control headers
+  // Isso evita o erro "items over 2MB can not be cached"
   const response = await fetch(url.toString(), {
-    next: { 
-      revalidate: 300, // Revalida a cada 5 minutos (ISR)
-      tags: ['articles', categoryFilter || 'all'],
-    },
+    cache: 'no-store', // Desabilita cache do Next.js para payloads grandes
   });
 
   if (!response.ok) {

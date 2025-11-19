@@ -391,7 +391,6 @@ async fn main() -> anyhow::Result<()> {
     // Função para coleta direta do arXiv sem banco
     async fn run_arxiv_collection_direct() -> anyhow::Result<()> {
         use crate::collectors::arxiv_collector::ArxivCollector;
-        use crate::models::raw_document::ArticleMetadata;
         use crate::utils::site_config_manager::SiteConfigManager;
 
         // Load arxiv configuration from system_config.json
@@ -454,18 +453,18 @@ async fn main() -> anyhow::Result<()> {
             }
         }
 
-        // Build balanced category distribution: 70% IA, 30% Quantum Computing
+        // Build balanced category distribution: 90% IA, 10% Quantum Computing
         // Instead of a single OR query, we'll fetch separately and combine
         let (ai_query, quantum_query, ai_target, quantum_target) = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
-            // Calculate targets: 70% AI, 30% Quantum
-            let ai_target = ((arxiv_max_results as f64) * 0.7).ceil() as u32;
+            // Calculate targets: 90% AI, 10% Quantum
+            let ai_target = ((arxiv_max_results as f64) * 0.9).ceil() as u32;
             let quantum_target = arxiv_max_results - ai_target;
             
             let ai_query = "cat:cs".to_string();
             let quantum_query = "cat:quant-ph".to_string();
             
             eprintln!(
-                "✅ [BALANCED] Arxiv distribution: AI={} papers (70%), Quantum={} papers (30%), Total={}",
+                "✅ [BALANCED] Arxiv distribution: AI={} papers (90%), Quantum={} papers (10%), Total={}",
                 ai_target, quantum_target, arxiv_max_results
             );
             
@@ -508,7 +507,7 @@ async fn main() -> anyhow::Result<()> {
         // Use balanced distribution: fetch AI and Quantum separately, then combine
         println!("⬇️  Collecting PDFs from arXiv with balanced distribution...");
         println!("   📂 Target directory: {}", date_dir.display());
-        println!("   🎯 Target: {} AI papers (70%) + {} Quantum papers (30%) = {} total", ai_target, quantum_target, arxiv_max_results);
+        println!("   🎯 Target: {} AI papers (90%) + {} Quantum papers (10%) = {} total", ai_target, quantum_target, arxiv_max_results);
         println!(
             "   📊 Registry: {} articles already registered",
             total_articles
@@ -693,13 +692,60 @@ async fn main() -> anyhow::Result<()> {
             ai_articles = fetch_category_articles(&client, &ai_query, ai_target, "AI (cs)", &registry).await?;
         }
 
+        // Fallback logic: if we couldn't collect enough AI articles (less than 90% of target),
+        // we try to fill using Quantum. This ensures we always try to get close to arxiv_max_results.
+        let min_ai_threshold = ((ai_target as f64) * 0.9).floor() as u32; // At least 90% of AI target
+        let found_ai_count = ai_articles.len() as u32;
+        
         if quantum_target > 0 {
-            // Small delay between category fetches
-            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
-            quantum_articles = fetch_category_articles(&client, &quantum_query, quantum_target, "Quantum (quant-ph)", &registry).await?;
+            if found_ai_count < min_ai_threshold {
+                // Not enough AI articles found - use Quantum to fill the gap
+                let shortfall = arxiv_max_results.saturating_sub(found_ai_count);
+                println!();
+                println!("⚠️  Only {} AI articles found (target: {}, minimum: {}). Filling gap with Quantum...", 
+                    found_ai_count, ai_target, min_ai_threshold);
+                println!();
+                
+                // Try to fill up to arxiv_max_results with Quantum articles
+                let quantum_fill_target = shortfall.min(quantum_target * 3); // Allow up to 3x quantum target to fill gap
+                quantum_articles =
+                    fetch_category_articles(&client, &quantum_query, quantum_fill_target, "Quantum (quant-ph fallback)", &registry).await?;
+                
+                // If we still don't have enough, try to get more AI articles (even if duplicates might be skipped)
+                if (found_ai_count + quantum_articles.len() as u32) < arxiv_max_results {
+                    let remaining = arxiv_max_results.saturating_sub(found_ai_count + quantum_articles.len() as u32);
+                    println!();
+                    println!("⚠️  Still short {} articles. Attempting to fetch more AI articles...", remaining);
+                    
+                    // Try one more batch of AI articles with a larger target
+                    let additional_ai = fetch_category_articles(&client, &ai_query, remaining * 2, "AI (cs - additional)", &registry).await?;
+                    
+                    // Only add articles we don't already have
+                    for (id, title) in additional_ai {
+                        if !ai_articles.iter().any(|(existing_id, _)| existing_id == &id) {
+                            ai_articles.push((id, title));
+                            if ai_articles.len() as u32 >= arxiv_max_results {
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else {
+                // Normal 90/10 behavior: fetch dedicated Quantum subset
+                // Small delay between category fetches
+                tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                quantum_articles = fetch_category_articles(
+                    &client,
+                    &quantum_query,
+                    quantum_target,
+                    "Quantum (quant-ph)",
+                    &registry,
+                )
+                .await?;
+            }
         }
 
-        // Combine articles: 70% AI first, then 30% Quantum
+        // Combine articles: 90% AI first, then 10% Quantum
         let mut combined_articles: Vec<(String, String)> = Vec::new();
         // Store counts before moving vectors to avoid borrow-after-move
         let ai_count = ai_articles.len();
