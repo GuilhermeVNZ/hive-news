@@ -3104,6 +3104,36 @@ async fn main() -> anyhow::Result<()> {
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             );
             println!("  📄 JSON path: {}", article_path.display());
+
+            // Verificar se o artigo já foi publicado antes de processar
+            let registry_path = get_registry_path();
+            let registry = RegistryManager::new(&registry_path)?;
+            if let Some(metadata) = registry.get_metadata(article_id) {
+                use crate::utils::article_registry::ArticleStatus;
+                if matches!(metadata.status, ArticleStatus::Published) {
+                    if let Some(output_dir) = &metadata.output_dir {
+                        // Verificar se os arquivos realmente existem
+                        let required_files = vec!["title.txt", "article.md", "slug.txt"];
+                        let all_files_exist = required_files.iter().all(|file_name| {
+                            output_dir.join(file_name).exists()
+                        });
+                        
+                        if all_files_exist {
+                            println!("  ⏭️  Article already published - skipping");
+                            println!("      Output dir: {}", output_dir.display());
+                            println!("      Status: Published");
+                            println!();
+                            continue; // Skip this article - already processed
+                        } else {
+                            println!("  ⚠️  Article marked as Published but files missing - reprocessing");
+                            println!("      Output dir: {}", output_dir.display());
+                        }
+                    } else {
+                        println!("  ⚠️  Article marked as Published but no output_dir - reprocessing");
+                    }
+                }
+            }
+
             println!("  ⏳ Processing article...\n");
 
             let process_start = std::time::Instant::now();
