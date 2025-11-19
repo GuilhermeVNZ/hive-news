@@ -40,9 +40,62 @@ else
 fi
 echo ""
 
-# 2. PDFs já são limpos pelo sistema de coleta (pulando)
-echo "📥 2. PDFs já são limpos automaticamente pelo sistema de coleta"
-echo "   ⏭️  Pulando limpeza de PDFs"
+# 2. Limpar PDFs órfãos e processados da pasta downloads
+echo "📥 2. Limpando PDFs órfãos e processados da pasta downloads..."
+DOWNLOADS_DIR="./downloads"
+REGISTRY_FILE="./articles_registry.json"
+
+if [ -d "$DOWNLOADS_DIR" ]; then
+    BEFORE=$(du -sb "$DOWNLOADS_DIR" 2>/dev/null | cut -f1 || echo "0")
+    
+    if [ -f "$REGISTRY_FILE" ]; then
+        # Ler IDs de artigos processados (Published ou Rejected) do registry
+        PROCESSED_IDS=$(jq -r '.articles // {} | to_entries[] | select(.value.status == "Published" or .value.status == "Rejected") | .key' "$REGISTRY_FILE" 2>/dev/null || echo "")
+        
+        if [ -n "$PROCESSED_IDS" ]; then
+            echo "$PROCESSED_IDS" | while read -r article_id; do
+                # Remover PDFs deste artigo em qualquer subpasta de downloads/
+                find "$DOWNLOADS_DIR" -type f -name "${article_id}.pdf" -delete 2>/dev/null || true
+                find "$DOWNLOADS_DIR" -type f -name "${article_id}*.pdf" -delete 2>/dev/null || true
+            done
+            echo "   ✅ PDFs processados (Published/Rejected) removidos"
+        fi
+        
+        # Remover PDFs órfãos (não referenciados no registry)
+        # Obter todos os IDs do registry
+        REGISTRY_IDS=$(jq -r '.articles // {} | keys[]' "$REGISTRY_FILE" 2>/dev/null || echo "")
+        
+        # Encontrar todos os PDFs em downloads/
+        find "$DOWNLOADS_DIR" -type f -name "*.pdf" | while read -r pdf_path; do
+            pdf_name=$(basename "$pdf_path" .pdf)
+            # Extrair possível ID do artigo do nome do arquivo
+            article_id=$(echo "$pdf_name" | grep -oE '[0-9]{4}\.[0-9]{4,5}(v[0-9]+)?' | head -1 || echo "$pdf_name")
+            
+            # Se o ID não está no registry, é um PDF órfão
+            if [ -z "$REGISTRY_IDS" ] || ! echo "$REGISTRY_IDS" | grep -q "^${article_id}$"; then
+                # Verificar se o PDF tem mais de 1 dia (evitar remover PDFs recém baixados)
+                if [ -n "$(find "$pdf_path" -mtime +1 2>/dev/null)" ]; then
+                    rm -f "$pdf_path" 2>/dev/null || true
+                fi
+            fi
+        done
+        echo "   ✅ PDFs órfãos (>1 dia) removidos"
+    else
+        # Se não há registry, remover PDFs antigos (>7 dias) como fallback
+        echo "   ⚠️  Registry não encontrado, removendo PDFs antigos (>7 dias)"
+        find "$DOWNLOADS_DIR" -type f -name "*.pdf" -mtime +7 -delete 2>/dev/null || true
+    fi
+    
+    # Limpar diretórios vazios
+    find "$DOWNLOADS_DIR" -type d -empty -delete 2>/dev/null || true
+    
+    AFTER=$(du -sb "$DOWNLOADS_DIR" 2>/dev/null | cut -f1 || echo "0")
+    FREED=$((BEFORE - AFTER))
+    TOTAL_FREED=$((TOTAL_FREED + FREED))
+    echo "   ✅ Downloads: $(numfmt --to=iec-i --suffix=B $FREED 2>/dev/null || echo "${FREED}B") liberados"
+else
+    echo "   ⏭️  Diretório de downloads não encontrado"
+fi
 echo ""
 
 # 3. Limpar output de artigos antigos (>90 dias) - manter apenas publicados
