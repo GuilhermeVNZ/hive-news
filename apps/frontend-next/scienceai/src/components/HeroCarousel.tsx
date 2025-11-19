@@ -183,7 +183,7 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
           <div
             key={article.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              isVisible ? "opacity-100" : "opacity-0"
+              isVisible ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
             {shouldLoad ? (
@@ -223,11 +223,14 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
                   {article.title}
                 </h2>
                 <p className="text-lg text-white/90 mb-6 text-justify">{article.excerpt}</p>
-                <Link to={`/article/${article.slug}`}>
-                  <Button size="lg" className="gradient-primary">
-                    Read Full Story
-                  </Button>
-                </Link>
+                {/* CRÍTICO: Desabilitar pointer events em slides não visíveis para evitar cliques errados */}
+                <div style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
+                  <Link to={`/article/${article.slug}`}>
+                    <Button size="lg" className="gradient-primary">
+                      Read Full Story
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
