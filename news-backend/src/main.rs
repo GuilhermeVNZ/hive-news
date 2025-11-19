@@ -637,6 +637,7 @@ async fn main() -> anyhow::Result<()> {
         }
 
         // Helper function to fetch articles from a specific category
+        #[allow(dead_code)]
         async fn fetch_category_articles(
             client: &reqwest::Client,
             query: &str,
