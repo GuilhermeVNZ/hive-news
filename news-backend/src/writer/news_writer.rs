@@ -239,6 +239,37 @@ impl NewsWriterService {
                 site_id
             );
 
+            // Verificar se o artigo já foi processado para este site específico
+            let site_output_dir = Self::get_site_output_dir(site_id);
+            let source_category = Self::detect_source_category(&article.url, article.original_title.as_ref().unwrap_or(&article.title));
+            let standardized_folder_name = format!("{}_{}_{}", collection_date, source_category, article.id);
+            let article_output_dir = site_output_dir.join(&standardized_folder_name);
+            
+            // Verificar se os arquivos já existem para este site
+            let required_files = vec!["title.txt", "article.md", "slug.txt"];
+            let already_processed = article_output_dir.exists() && required_files.iter().all(|file_name| {
+                article_output_dir.join(file_name).exists()
+            });
+
+            if already_processed {
+                println!("  │  ⏭️  Already processed for {} - skipping", site_id);
+                println!("  │      Output dir: {}", article_output_dir.display());
+                println!("  └─\n");
+                // Adicionar resultado mesmo que já processado para manter consistência
+                let site_name = config_manager
+                    .get_site_config(site_id)
+                    .ok()
+                    .flatten()
+                    .map(|config| config.name)
+                    .unwrap_or_else(|| site_id.to_string());
+                results.push(NewsWriterResult {
+                    output_dir: article_output_dir,
+                    site_id: site_id.to_string(),
+                    site_name,
+                });
+                continue;
+            }
+
             match self
                 .process_article_for_site(&article, site_id, &config_manager, &collection_date)
                 .await
