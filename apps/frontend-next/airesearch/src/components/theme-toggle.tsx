@@ -3,47 +3,39 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/theme-provider";
 
 interface ThemeToggleProps {
   size?: "default" | "compact";
 }
 
 export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
-  // Avoid hydration mismatch and load from localStorage
+  // Avoid hydration mismatch
   React.useEffect(() => {
     setMounted(true);
-    // Check localStorage first
-    const savedTheme = localStorage.getItem("airesearch-ui-theme");
-    if (savedTheme === "dark") {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else if (savedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      // If no saved theme, check if dark class is already set (from system preference or default)
-      const isDark = document.documentElement.classList.contains("dark");
-      setDarkMode(isDark);
-    }
   }, []);
 
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    document.documentElement.classList.toggle("dark");
-    // Save to localStorage
-    if (typeof window !== "undefined") {
-      localStorage.setItem(
-        "airesearch-ui-theme",
-        newDarkMode ? "dark" : "light",
-      );
+  const toggleTheme = () => {
+    if (theme === "dark") {
+      setTheme("light");
+    } else if (theme === "light") {
+      setTheme("dark");
+    } else {
+      // System theme - determine current preference and toggle to explicit
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      // Toggle to the opposite of current system theme
+      setTheme(systemTheme === "dark" ? "light" : "dark");
     }
   };
 
   const iconClasses = size === "compact" ? "h-4 w-4" : "h-5 w-5";
+  const isDark = theme === "dark" || (theme === "system" && typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   if (!mounted) {
     return (
@@ -61,11 +53,11 @@ export function ThemeToggle({ size = "default" }: ThemeToggleProps) {
     <Button
       variant="ghost"
       size="icon"
-      onClick={toggleDarkMode}
+      onClick={toggleTheme}
       className={size === "compact" ? "h-9 w-9" : "h-14 w-14"}
-      aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {darkMode ? (
+      {isDark ? (
         <Sun className={iconClasses} />
       ) : (
         <Moon className={iconClasses} />
