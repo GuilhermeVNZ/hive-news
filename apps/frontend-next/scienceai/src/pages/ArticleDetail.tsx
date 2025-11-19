@@ -204,7 +204,13 @@ const ArticleDetail = () => {
             className="w-full h-full object-cover"
             style={{ aspectRatio: '1200/675' }}
             onError={(e) => {
-              (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
+              // Tentar WebP primeiro, fallback para JPG se não existir
+              const target = e.target as HTMLImageElement;
+              if (target.src.endsWith('.webp')) {
+                target.src = '/images/ai/ai_1.jpg';
+              } else {
+                target.src = '/images/ai/ai_1.webp';
+              }
             }}
           />
           <div className="absolute inset-0 gradient-hero" />
@@ -329,7 +335,7 @@ const ArticleDetail = () => {
                   <div className="flex items-start space-x-4">
                     <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                       <img
-                        src="/images/author.jpeg"
+                        src="/images/Author.webp"
                         alt="Guilherme A."
                         width={80}
                         height={80}

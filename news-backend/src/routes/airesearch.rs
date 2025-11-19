@@ -1,7 +1,7 @@
 use axum::{
     Json,
     extract::{Path as AxumPath, Query},
-    http::StatusCode,
+    http::{StatusCode, HeaderMap, HeaderValue},
     response::IntoResponse,
 };
 use chrono::{DateTime, Utc};
@@ -49,6 +49,8 @@ struct Article {
 #[derive(Debug, Deserialize)]
 pub struct ArticlesQuery {
     category: Option<String>,
+    limit: Option<usize>,
+    offset: Option<usize>,
 }
 
 struct CategoryImages {
@@ -70,6 +72,7 @@ static AIRESEARCH_CACHE: Lazy<RwLock<Option<CachedState>>> = Lazy::new(|| RwLock
 const ARTICLE_FILES: [&str; 2] = ["article.md", "article.txt"];
 
 const CATEGORY_KEYWORDS: &[(&str, &[&str])] = &[
+    ("quantum_computing", &["quantum computing", "quantum computer", "quantum", "qubit", "qiskit", "ibm quantum", "quantum algorithm", "quantum processor", "quantum hardware", "quantum error correction", "quantum supremacy", "quantum advantage"]),
     ("openai", &["openai", "gpt", "chatgpt"]),
     ("nvidia", &["nvidia"]),
     ("google", &["google", "deepmind"]),
@@ -150,28 +153,44 @@ fn map_source_to_category(
     image_categories: &[String],
     fallback_category: Option<&str>,
 ) -> String {
-    // 1) Se DeepSeek marcou explicitamente como quantum_computing em QUALQUER posição,
+    // 1) PRIORIDADE: Se DeepSeek marcou explicitamente como quantum_computing em QUALQUER posição,
     // usamos isso como categoria primária (mesmo que não seja a primeira da lista).
-    if image_categories
-        .iter()
-        .any(|c| c.eq_ignore_ascii_case("quantum_computing"))
-    {
+    // Verificar variações: "quantum_computing", "quantum computing", "quantum", "quantum-computing"
+    if image_categories.iter().any(|c| {
+        let c_lower = c.to_lowercase().replace("_", " ").replace("-", " ");
+        c_lower.contains("quantum") && (c_lower.contains("computing") || c_lower == "quantum")
+    }) {
         return "quantum_computing".to_string();
     }
 
-    // 2) Caso contrário, mantemos o comportamento padrão: primeira categoria da lista
+    // 2) Verificar se a primeira categoria é uma variação de quantum computing
     if let Some(first) = image_categories.first() {
+        let first_lower = first.to_lowercase().replace("_", " ").replace("-", " ");
+        if first_lower.contains("quantum") && (first_lower.contains("computing") || first_lower == "quantum") {
+            return "quantum_computing".to_string();
+        }
+        // Se não for quantum, retornar a primeira categoria normalmente
         return first.clone();
     }
 
     if let Some(fallback) = fallback_category {
-        let trimmed = fallback.trim();
+        let trimmed = fallback.trim().to_lowercase();
         if !trimmed.is_empty() {
-            return trimmed.to_lowercase();
+            // Verificar se fallback é quantum computing
+            let fallback_normalized = trimmed.replace("_", " ").replace("-", " ");
+            if fallback_normalized.contains("quantum") && (fallback_normalized.contains("computing") || fallback_normalized == "quantum") {
+                return "quantum_computing".to_string();
+            }
+            return trimmed;
         }
     }
 
+    // 3) Verificar keywords de quantum no source
     let normalized = source.to_lowercase();
+    if normalized.contains("quantum") && (normalized.contains("computing") || normalized.contains("computer")) {
+        return "quantum_computing".to_string();
+    }
+
     for (category, keywords) in CATEGORY_KEYWORDS {
         if keywords.iter().any(|keyword| normalized.contains(keyword)) {
             return (*category).to_string();
@@ -396,7 +415,20 @@ fn select_article_image(
         // Mark this image as used
         images.used_indices.insert(index);
         let filename = &images.files[index];
-        return Some(format!("/images/{}/{}", dir, filename));
+        
+        // Priorizar WebP: tentar encontrar versão WebP primeiro
+        let webp_filename = filename
+            .replace(".jpg", ".webp")
+            .replace(".jpeg", ".webp")
+            .replace(".png", ".webp");
+        
+        let final_filename = if images.files.iter().any(|f| f.eq_ignore_ascii_case(&webp_filename)) {
+            &webp_filename
+        } else {
+            filename
+        };
+        
+        return Some(format!("/images/{}/{}", dir, final_filename));
     }
 
     None
@@ -683,14 +715,44 @@ pub async fn get_articles(
     };
 
     let featured_count = filtered.iter().filter(|article| article.featured).count();
+    
+    // Paginação: limit padrão de 50 artigos para melhor performance
+    let limit = query.limit.unwrap_or(50).min(200); // Máximo 200 artigos por request
+    let offset = query.offset.unwrap_or(0);
+    let total = filtered.len();
+    
+    // Aplicar paginação
+    let paginated: Vec<Article> = filtered
+        .into_iter()
+        .skip(offset)
+        .take(limit)
+        .collect();
 
     eprintln!(
-        "[AIResearch API] Returning {} articles, {} featured",
-        filtered.len(),
-        featured_count
+        "[AIResearch API] Returning {}/{} articles (offset: {}, limit: {}), {} featured",
+        paginated.len(), total, offset, limit, featured_count
     );
 
-    Ok(Json(json!({ "articles": filtered })))
+    // Adicionar headers de cache para melhor performance
+    let mut headers = HeaderMap::new();
+    headers.insert(
+        "Cache-Control",
+        HeaderValue::from_static("public, max-age=300, s-maxage=300, stale-while-revalidate=600"),
+    );
+    headers.insert(
+        "Vary",
+        HeaderValue::from_static("Accept-Encoding"),
+    );
+    
+    Ok((headers, Json(json!({ 
+        "articles": paginated,
+        "pagination": {
+            "total": total,
+            "limit": limit,
+            "offset": offset,
+            "hasMore": offset + paginated.len() < total
+        }
+    }))))
 }
 
 pub async fn get_article_by_slug(

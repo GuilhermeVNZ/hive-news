@@ -811,3 +811,94 @@ pub async fn set_featured(
         }
     }
 }
+
+#[derive(Debug, Serialize)]
+struct CleanLogsResult {
+    success: bool,
+    message: String,
+    files_cleaned: usize,
+    bytes_freed: u64,
+}
+
+/// Clean server logs - removes old log files and truncates current logs
+pub async fn clean_logs(
+    Extension(_db): Extension<std::sync::Arc<Database>>,
+) -> Json<Value> {
+    use std::fs;
+    use std::time::{SystemTime, Duration};
+    
+    let mut files_cleaned = 0usize;
+    let mut bytes_freed = 0u64;
+    
+    // Common log locations to clean
+    let log_paths: Vec<String> = vec![
+        "/var/log".to_string(),                    // System logs
+        "/app/logs".to_string(),                   // App logs (Docker)
+        "/data/logs".to_string(),                  // Data logs
+        "/tmp".to_string(),                        // Temp logs
+        resolve_workspace_path("logs").to_string_lossy().to_string(), // Workspace logs
+    ];
+    
+    let now = SystemTime::now();
+    let max_age = Duration::from_secs(7 * 24 * 60 * 60); // 7 days
+    
+    // Clean regular log files
+    for log_path in log_paths.iter() {
+        if let Ok(path) = std::path::Path::new(log_path.as_str()).canonicalize() {
+            if path.exists() && path.is_dir() {
+                if let Ok(entries) = fs::read_dir(&path) {
+                    for entry in entries.flatten() {
+                        let file_path = entry.path();
+                        if file_path.is_file() {
+                            let file_name = file_path.file_name().unwrap_or_default().to_string_lossy();
+                            if file_name.ends_with(".log") || file_name.contains("log") {
+                                if let Ok(metadata) = fs::metadata(&file_path) {
+                                    if let Ok(modified) = metadata.modified() {
+                                        if let Ok(age) = now.duration_since(modified) {
+                                            if age > max_age {
+                                                let size = metadata.len();
+                                                if fs::remove_file(&file_path).is_ok() {
+                                                    files_cleaned += 1;
+                                                    bytes_freed += size;
+                                                }
+                                            } else if metadata.len() > 1_048_576 {
+                                                // Truncate large recent logs (keep last 1MB)
+                                                if let Ok(content) = fs::read_to_string(&file_path) {
+                                                    let lines: Vec<&str> = content.lines().collect();
+                                                    let keep_lines = lines.len().saturating_sub(1000);
+                                                    let truncated: String = lines.into_iter().skip(keep_lines).collect::<Vec<_>>().join("\n");
+                                                    let truncated_len = truncated.len() as u64;
+                                                    let old_size = metadata.len();
+                                                    if fs::write(&file_path, &truncated).is_ok() {
+                                                        bytes_freed += old_size.saturating_sub(truncated_len);
+                                                        files_cleaned += 1;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    let message = if files_cleaned > 0 {
+        format!("Cleaned {} files, freed {:.2} MB", files_cleaned, bytes_freed as f64 / 1_048_576.0)
+    } else {
+        "No log files to clean".to_string()
+    };
+    
+    Json(serde_json::json!({
+        "success": true,
+        "result": CleanLogsResult {
+            success: true,
+            message,
+            files_cleaned,
+            bytes_freed,
+        }
+    }))
+}

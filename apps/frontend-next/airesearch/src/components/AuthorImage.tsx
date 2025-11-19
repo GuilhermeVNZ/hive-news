@@ -17,7 +17,7 @@ export function AuthorImage() {
   return (
     <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
       <Image
-        src="/images/Author.jpeg"
+        src="/images/Author.webp"
         alt="Guilherme A."
         width={64}
         height={64}
@@ -27,3 +27,7 @@ export function AuthorImage() {
     </div>
   );
 }
+
+
+
+

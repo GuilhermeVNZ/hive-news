@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Tentar obter artigos, mas não falhar o build se o backend não estiver disponível
   let articlePages: MetadataRoute.Sitemap = [];
   try {
-    const articles = await getArticles();
+    const { articles } = await getArticles();
     articlePages = articles.map((article) => ({
       url: `${baseUrl}/article/${article.slug}`,
       lastModified: new Date(article.publishedAt),

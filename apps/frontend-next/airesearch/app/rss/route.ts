@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
  */
 export async function GET() {
   try {
-    const articles = await getArticles();
+    const { articles } = await getArticles();
     
     // Filter only published articles (not hidden)
     const publishedArticles = articles

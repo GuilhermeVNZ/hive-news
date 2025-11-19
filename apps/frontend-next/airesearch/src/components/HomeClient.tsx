@@ -16,12 +16,16 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 
 interface HomeClientProps {
   initialArticles: Article[];
+  initialHasMore?: boolean;
+  initialTotal?: number;
   initialCategory?: string;
   initialQuery?: string;
 }
 
 export default function HomeClient({
   initialArticles,
+  initialHasMore = false,
+  initialTotal = 0,
   initialCategory = "",
   initialQuery = "",
 }: HomeClientProps) {
@@ -111,7 +115,9 @@ export default function HomeClient({
           onSubmitSearch={handleSubmitSearch}
         />
         <ArticleGrid
-          articles={initialArticles}
+          initialArticles={initialArticles}
+          initialHasMore={initialHasMore}
+          initialTotal={initialTotal}
           selectedCategory={selectedCategory}
           searchQuery={committedQuery}
         />

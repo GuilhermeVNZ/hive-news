@@ -26,10 +26,10 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category") ?? undefined;
 
-    const articles = await getArticles(category);
+    const { articles, hasMore, total } = await getArticles(category);
     const featuredCount = articles.filter((a) => a.featured).length;
     console.log(
-      `[AIResearch Articles API] Returning ${articles.length} articles, ${featuredCount} featured`,
+      `[AIResearch Articles API] Returning ${articles.length}/${total} articles (hasMore: ${hasMore}), ${featuredCount} featured`,
     );
 
     return NextResponse.json(

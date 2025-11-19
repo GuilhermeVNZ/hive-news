@@ -267,41 +267,21 @@ impl SiteConfigManager {
             self.config_path.display()
         ))?;
 
-        eprintln!("🔍 [DEBUG] Loaded system_config.json: {} bytes", content.len());
-        
         // Try to parse and log any errors with more detail
         let config: SystemConfig = match serde_json::from_str::<SystemConfig>(&content) {
             Ok(c) => {
-                eprintln!("🔍 [DEBUG] ✅ Successfully parsed system_config.json");
-                eprintln!("🔍 [DEBUG] Total sites: {}", c.sites.len());
-                
-                // Log collector count for airesearch site
-                if let Some(site) = c.sites.get("airesearch") {
-                    eprintln!("🔍 [DEBUG] ✅ airesearch site found with {} collectors", site.collectors.len());
-                    for (idx, collector) in site.collectors.iter().enumerate() {
-                        eprintln!("🔍 [DEBUG]   Collector {}: {} (enabled: {}, type: {:?}, feed_url: {:?})", 
-                            idx + 1, collector.id, collector.enabled, collector.collector_type, collector.feed_url);
-                    }
-                } else {
-                    eprintln!("🔍 [DEBUG] ❌ airesearch site NOT found in parsed config!");
+                // Log resumido: apenas contagem de sites e collectors habilitados
+                let enabled_collectors: usize = c.sites.values()
+                    .flat_map(|site| site.collectors.iter())
+                    .filter(|c| c.enabled)
+                    .count();
+                if enabled_collectors > 0 {
+                    eprintln!("📋 Config loaded: {} sites, {} enabled collectors", c.sites.len(), enabled_collectors);
                 }
                 c
             }
             Err(e) => {
-                eprintln!("❌ [DEBUG] Failed to parse system_config.json: {}", e);
-                eprintln!("❌ [DEBUG] Error at line: {}, column: {}", e.line(), e.column());
-                // Try to show context around the error
-                let lines: Vec<&str> = content.lines().collect();
-                let error_line = e.line().saturating_sub(1) as usize;
-                if error_line < lines.len() {
-                    eprintln!("❌ [DEBUG] Error near line {}: {}", error_line + 1, lines[error_line]);
-                    if error_line > 0 {
-                        eprintln!("❌ [DEBUG] Previous line: {}", lines[error_line - 1]);
-                    }
-                    if error_line + 1 < lines.len() {
-                        eprintln!("❌ [DEBUG] Next line: {}", lines[error_line + 1]);
-                    }
-                }
+                eprintln!("❌ Failed to parse system_config.json: {} (line: {}, col: {})", e, e.line(), e.column());
                 return Err(e).context("Failed to parse config file");
             }
         };

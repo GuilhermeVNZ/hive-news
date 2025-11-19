@@ -62,7 +62,7 @@ const ArticleCard = ({
     sound: "Sound",
   };
 
-  const defaultImage = "/images/ai/ai_1.jpg";
+  const defaultImage = "/images/ai/ai_1.webp";
   const cardImage = imagePath || defaultImage;
 
   return (

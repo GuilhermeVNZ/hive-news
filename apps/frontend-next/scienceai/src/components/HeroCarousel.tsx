@@ -183,8 +183,9 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
           <div
             key={article.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              isVisible ? "opacity-100 z-10" : "opacity-0 z-0"
+              isVisible ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
             }`}
+            aria-hidden={!isVisible}
           >
             {shouldLoad ? (
               <img
@@ -200,7 +201,13 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
                 className="h-full w-full object-cover"
                 style={{ aspectRatio: '1920/600' }}
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
+                  // Tentar WebP primeiro, fallback para JPG se não existir
+                  const target = e.target as HTMLImageElement;
+                  if (target.src.endsWith('.webp')) {
+                    target.src = '/images/ai/ai_1.jpg';
+                  } else {
+                    target.src = '/images/ai/ai_1.webp';
+                  }
                 }}
                 onLoad={() => {
                   if (!loadedImages.has(index)) {
@@ -223,14 +230,27 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
                   {article.title}
                 </h2>
                 <p className="text-lg text-white/90 mb-6 text-justify">{article.excerpt}</p>
-                {/* CRÍTICO: Desabilitar pointer events em slides não visíveis para evitar cliques errados */}
-                <div style={{ pointerEvents: isVisible ? 'auto' : 'none' }}>
-                  <Link to={`/article/${article.slug}`}>
+                {/* CRÍTICO: Renderizar link apenas no slide visível para garantir que o link correto seja clicado */}
+                {isVisible && article.slug && (
+                  <Link 
+                    to={`/article/${article.slug}`} 
+                    className="block"
+                    aria-label={`Read full story: ${article.title}`}
+                    onClick={(e) => {
+                      // Garantir que o clique vai para o artigo correto
+                      e.stopPropagation();
+                      console.debug(`[Carousel] Navigating to article: ${article.slug} (${article.title})`);
+                    }}
+                  >
                     <Button size="lg" className="gradient-primary">
                       Read Full Story
                     </Button>
                   </Link>
-                </div>
+                )}
+                {/* Placeholder invisível para manter layout quando slide não está visível */}
+                {!isVisible && (
+                  <div className="h-12" aria-hidden="true" />
+                )}
               </div>
             </div>
           </div>

@@ -19,13 +19,15 @@ export default async function Home({ searchParams }: HomePageProps) {
     ? resolvedSearchParams.q[0] ?? ""
     : resolvedSearchParams.q ?? "";
 
-  // Dados são cacheados e revalidados em background (ISR)
-  // Não bloqueia renderização, mantém TTFB baixo
-  const articles = await getArticles();
+  // Carregar apenas 50 artigos iniciais para melhor performance
+  // Mais artigos serão carregados via lazy loading quando necessário
+  const { articles, hasMore, total } = await getArticles(undefined, 50, 0);
 
   return (
     <HomeClient
       initialArticles={articles}
+      initialHasMore={hasMore}
+      initialTotal={total}
       initialCategory={initialCategory}
       initialQuery={initialQuery}
     />

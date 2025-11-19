@@ -333,19 +333,15 @@ async fn main() -> anyhow::Result<()> {
     }
 
     if run_pipeline {
-        eprintln!("🔍 [DEBUG] main() - run_pipeline=true, calling run_news_pipeline()");
+        // Pipeline iniciado (logs reduzidos)
         println!("🔄 News Pipeline - Complete Processing Flow");
         println!("==========================================\n");
         match run_news_pipeline().await {
             Ok(_) => {
-                eprintln!("🔍 [DEBUG] main() - run_news_pipeline() completed successfully");
+                // Pipeline concluído
             }
             Err(e) => {
-                eprintln!("🔍 [DEBUG] main() - run_news_pipeline() failed: {}", e);
-                eprintln!(
-                    "🔍 [DEBUG] Error chain: {:?}",
-                    e.chain().collect::<Vec<_>>()
-                );
+                eprintln!("❌ Pipeline failed: {}", e);
                 return Err(e);
             }
         }
@@ -394,14 +390,8 @@ async fn main() -> anyhow::Result<()> {
         use crate::utils::site_config_manager::SiteConfigManager;
 
         // Load arxiv configuration from system_config.json
-        eprintln!("🔍 [DEBUG] Loading arxiv configuration from system_config.json...");
+        // Carregando configuração do arXiv
         let config_path = get_system_config_path();
-        eprintln!("🔍 [DEBUG] Config path: {}", config_path.display());
-        eprintln!("🔍 [DEBUG] Config path exists: {}", config_path.exists());
-        eprintln!(
-            "🔍 [DEBUG] Current working directory: {:?}",
-            std::env::current_dir()
-        );
 
         if !config_path.exists() {
             return Err(anyhow::anyhow!(
@@ -427,7 +417,7 @@ async fn main() -> anyhow::Result<()> {
 
             for collector in &site.collectors {
                 if collector.id == "arxiv" && collector.enabled {
-                    eprintln!("🔍 [DEBUG] Found arxiv collector in site: {}", _site_id);
+                    // arXiv collector encontrado
 
                     // Read category from config
                     if let Some(category) = collector.config.get("category")
@@ -455,7 +445,7 @@ async fn main() -> anyhow::Result<()> {
 
         // Build balanced category distribution: 90% IA, 10% Quantum Computing
         // Instead of a single OR query, we'll fetch separately and combine
-        let (ai_query, quantum_query, ai_target, quantum_target) = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
+        let (_ai_query, _quantum_query, ai_target, quantum_target) = if arxiv_category == "cs" || arxiv_category == "cs.AI" {
             // Calculate targets: 90% AI, 10% Quantum
             let ai_target = ((arxiv_max_results as f64) * 0.9).ceil() as u32;
             let quantum_target = arxiv_max_results - ai_target;
@@ -2114,143 +2104,81 @@ async fn main() -> anyhow::Result<()> {
                                         articles.len()
                                     );
 
-                                    for (art_idx, article) in articles.iter().enumerate() {
-                                        println!(
-                                            "    ┌─ [ARTICLE {}/{}] {}",
-                                            art_idx + 1,
-                                            articles.len(),
-                                            article.id
-                                        );
-                                        println!("    │  📝 Title: {}", article.title);
-                                        println!("    │  🔗 URL: {}", article.url);
-
+                                    // Processar artigos e colapsar logs em resumo
+                                    let mut processed_count = 0;
+                                    let mut duplicates_url = 0;
+                                    let mut duplicates_id = 0;
+                                    let mut rejected = 0;
+                                    let mut saved = 0;
+                                    
+                                    for article in articles.iter() {
+                                        processed_count += 1;
+                                        
                                         // Verificar duplicatas
-                                        // RSS/HTML collectors sempre coletam news
                                         let collecting_news = true;
                                         if news_filter.is_url_duplicate(&article.url, collecting_news) {
-                                            println!(
-                                                "    │  ⚠️  URL already exists in registry (any status)"
-                                            );
-                                            println!(
-                                                "    │  ⏭️  Skipping duplicate URL: {}",
-                                                article.url
-                                            );
-                                            println!("    └─ ❌ DUPLICATE (URL)\n");
+                                            duplicates_url += 1;
                                             total_rejected += 1;
                                             continue;
                                         }
 
-                                        // Verificar se já está registrado, mas permitir retentativa se não tem destinations
+                                        // Verificar se já está registrado
                                         if let Some(meta) = registry.get_metadata(&article.id) {
-                                            // Se tem destinations configurados, é duplicata válida - pular
                                             if meta.destinations.is_some()
                                                 && !meta.destinations.as_ref().unwrap().is_empty()
                                             {
-                                                println!(
-                                                    "    │  ⏭️  Already registered with destinations - skipping"
-                                                );
-                                                println!("    └─ ❌ DUPLICATE (ID)\n");
+                                                duplicates_id += 1;
                                                 total_rejected += 1;
                                                 continue;
                                             }
-                                            // Se não tem destinations, permitir retentativa (houve erro anterior)
+                                            // Se não tem destinations, permitir retentativa
                                             if meta.destinations.is_none()
                                                 || meta.destinations.as_ref().unwrap().is_empty()
                                             {
-                                                println!(
-                                                    "    │  ⚠️  Article registered but missing destinations - retrying..."
-                                                );
-                                                println!("    │     Status: {:?}", meta.status);
-                                                // Remover registro anterior para permitir novo registro completo
-                                                if let Err(e) = registry.remove_article(&article.id)
-                                                {
-                                                    eprintln!(
-                                                        "    │  ⚠️  Failed to remove article for retry: {}",
-                                                        e
-                                                    );
-                                                } else {
-                                                    println!(
-                                                        "    │  ✅ Removed previous registration - retrying collection"
-                                                    );
-                                                }
+                                                let _ = registry.remove_article(&article.id);
                                             }
                                         }
 
                                         if news_filter.is_duplicate(&article.id, &article.url, collecting_news) {
-                                            println!("    │  ⚠️  Duplicate detected");
-                                            let json_path =
-                                                date_dir.join(format!("{}.json", article.id));
-                                            if let Ok(json_str) =
-                                                serde_json::to_string_pretty(&article)
-                                                && let Err(e) =
-                                                    tokio::fs::write(&json_path, json_str).await
-                                            {
-                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
-                                                println!("    └─\n");
-                                                continue;
+                                            let json_path = date_dir.join(format!("{}.json", article.id));
+                                            if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                                let _ = tokio::fs::write(&json_path, json_str).await;
                                             }
-                                            if let Err(e) =
-                                                news_filter.reject_news(&json_path).await
-                                            {
-                                                eprintln!("    │  ❌ Failed to reject: {}", e);
-                                                let _ = tokio::fs::remove_file(&json_path).await;
-                                            }
-                                            println!("    └─ ❌ REJECTED\n");
+                                            let _ = news_filter.reject_news(&json_path).await;
+                                            rejected += 1;
                                             total_rejected += 1;
                                             continue;
                                         }
 
                                         // Salvar JSON
-                                        let json_path =
-                                            date_dir.join(format!("{}.json", article.id));
-                                        if let Ok(json_str) = serde_json::to_string_pretty(&article)
-                                        {
-                                            if let Err(e) =
-                                                tokio::fs::write(&json_path, json_str).await
-                                            {
-                                                eprintln!("    │  ❌ Failed to save JSON: {}", e);
-                                                println!("    └─\n");
+                                        let json_path = date_dir.join(format!("{}.json", article.id));
+                                        if let Ok(json_str) = serde_json::to_string_pretty(&article) {
+                                            if tokio::fs::write(&json_path, json_str).await.is_err() {
                                                 continue;
                                             }
-                                            println!(
-                                                "    │  ✅ JSON saved: {}",
-                                                json_path.display()
-                                            );
                                         }
 
                                         // Registrar no registry
-                                        if let Err(e) = registry.register_collected(
+                                        if registry.register_collected(
                                             article.id.clone(),
                                             article.title.clone(),
                                             article.url.clone(),
                                             article.url.clone(),
-                                        ) {
-                                            eprintln!("    │  ❌ Failed to register: {}", e);
-                                            println!("    └─\n");
+                                        ).is_err() {
                                             continue;
                                         }
-                                        println!("    │  ✅ Registered successfully");
 
                                         let destinations = get_enabled_sites_for_source("rss");
-                                        if let Err(e) = registry
-                                            .set_destinations(&article.id, destinations.clone())
-                                        {
-                                            eprintln!(
-                                                "    │  ⚠️  Failed to set destinations: {}",
-                                                e
-                                            );
-                                        } else {
-                                            println!(
-                                                "    │  ✅ Destinations set: {:?}",
-                                                destinations
-                                            );
-                                        }
+                                        let _ = registry.set_destinations(&article.id, destinations.clone());
 
+                                        saved += 1;
                                         total_saved += 1;
-                                        println!(
-                                            "    └─ ✅ SAVED: {} - {}\n",
-                                            article.id, article.title
-                                        );
+                                    }
+                                    
+                                    // Log resumido ao invés de linha por linha
+                                    if processed_count > 0 {
+                                        println!("  📊 Processed {} articles: {} saved, {} duplicates (URL: {}, ID: {}), {} rejected", 
+                                            processed_count, saved, duplicates_url + duplicates_id, duplicates_url, duplicates_id, rejected);
                                     }
                                 }
 
@@ -3317,41 +3245,33 @@ async fn main() -> anyhow::Result<()> {
             }
         };
 
+        let mut articles_with_json = 0;
+        let mut orphaned_json = 0;
+        let mut articles_no_json = 0;
+        
         for metadata in &registry_articles {
             if let Some(json_path) = json_by_article.remove(&metadata.id) {
                 if metadata.output_dir.is_some() {
-                    println!(
-                        "  📄 Found JSON for {}: {}",
-                        metadata.id,
-                        json_path.display()
-                    );
+                    articles_with_json += 1;
                 } else {
-                    println!(
-                        "  📄 Found orphaned JSON for {}: {}",
-                        metadata.id,
-                        json_path.display()
-                    );
+                    orphaned_json += 1;
                 }
                 add_processed(json_path);
             } else if metadata.output_dir.is_some() {
-                println!(
-                    "  ℹ️  Article {} has no JSON in raw/ (already cleaned?)",
-                    metadata.id
-                );
+                articles_no_json += 1;
             }
+        }
+        
+        // Log resumido ao invés de linha por linha
+        if articles_with_json > 0 || orphaned_json > 0 || articles_no_json > 0 {
+            println!("  📊 Cleanup scan: {} with JSON, {} orphaned, {} no JSON (already cleaned)", 
+                articles_with_json, orphaned_json, articles_no_json);
         }
 
         if !json_by_article.is_empty() {
-            println!(
-                "\nℹ️  Found {} JSON file(s) not referenced in registry",
-                json_by_article.len()
-            );
-            for (article_id, json_path) in json_by_article {
-                println!(
-                    "  📄 Found orphaned JSON (not in registry) {}: {}",
-                    article_id,
-                    json_path.display()
-                );
+            let orphaned_count = json_by_article.len();
+            println!("\nℹ️  Found {} orphaned JSON file(s) not in registry", orphaned_count);
+            for (_article_id, json_path) in json_by_article {
                 add_processed(json_path);
             }
         }
@@ -3383,7 +3303,7 @@ async fn main() -> anyhow::Result<()> {
     }
 
     async fn run_news_pipeline() -> anyhow::Result<()> {
-        eprintln!("🔍 [DEBUG] run_news_pipeline() STARTED");
+        // Pipeline iniciado
         let pipeline_start = std::time::Instant::now();
 
         println!("╔═══════════════════════════════════════════════════════════════╗");
@@ -4074,6 +3994,7 @@ async fn main() -> anyhow::Result<()> {
         .route("/api/sources", get(routes::sources::list_sources))
         .route("/api/sources", post(routes::sources::create_source))
         .route("/api/logs", get(routes::logs::list_logs))
+        .route("/api/logs/clean", post(routes::logs::clean_logs))
         .route("/api/logs/articles/:id", delete(routes::logs::hide_article))
         .route(
             "/api/logs/articles/:id/hidden",

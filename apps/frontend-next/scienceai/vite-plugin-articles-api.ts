@@ -1217,9 +1217,9 @@ async function readArticlesFromDir(
           category,
           readTime: calculateReadTime(articleContent),
           imageCategories,
-          image: imageFeed || "/images/ai/ai_1.jpg",
-          imageCarousel: imageCarousel || "/images/ai/ai_1.jpg",
-          imageArticle: imageArticle || "/images/ai/ai_1.jpg",
+          image: imageFeed || "/images/ai/ai_1.webp",
+          imageCarousel: imageCarousel || "/images/ai/ai_1.webp",
+          imageArticle: imageArticle || "/images/ai/ai_1.webp",
           featured: isFeatured,
           linkedinPost: linkedinContent.trim() || undefined,
           xPost: xContent.trim() || undefined,
@@ -2116,7 +2116,7 @@ export function articlesApiPlugin(): Plugin {
               category,
               readTime: calculateReadTime(articleContent),
               imageCategories,
-              imageArticle: imageArticle || "/images/ai/ai_1.jpg", // Image for article detail (first category)
+              imageArticle: imageArticle || "/images/ai/ai_1.webp", // Image for article detail (first category)
               linkedinPost: linkedinContent.trim() || undefined,
               xPost: xContent.trim() || undefined,
             };

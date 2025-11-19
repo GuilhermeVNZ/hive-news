@@ -145,35 +145,20 @@ impl ConfigManager {
         let content =
             serde_json::to_string_pretty(&config_to_save).context("Failed to serialize config")?;
 
-        eprintln!("🔍 [DEBUG] Attempting to save collectors_config.json to: {}", self.config_path.display());
-        eprintln!("🔍 [DEBUG] Parent directory exists: {}", 
-            self.config_path.parent().map(|p| p.exists()).unwrap_or(false));
-
         // Create parent directory if it doesn't exist
         if let Some(parent) = self.config_path.parent() {
-            eprintln!("🔍 [DEBUG] Creating parent directory: {}", parent.display());
-            match fs::create_dir_all(parent) {
-                Ok(_) => {
-                    eprintln!("🔍 [DEBUG] Parent directory created/exists: {}", parent.exists());
-                }
-                Err(e) => {
-                    eprintln!("⚠️  [WARN] Failed to create parent directory {}: {}", parent.display(), e);
-                    eprintln!("🔍 [DEBUG] Parent directory exists: {}", parent.exists());
-                    // Continue anyway - maybe directory already exists or we can write to file directly
-                }
+            if let Err(e) = fs::create_dir_all(parent) {
+                eprintln!("⚠️  Failed to create parent directory {}: {}", parent.display(), e);
+                // Continue anyway - maybe directory already exists
             }
         }
 
-        eprintln!("🔍 [DEBUG] Writing config file ({} bytes) to: {}", content.len(), self.config_path.display());
         match fs::write(&self.config_path, content) {
             Ok(_) => {
-                eprintln!("🔍 [DEBUG] Config file written successfully");
+                // Log apenas em caso de sucesso silencioso (não poluir logs)
             }
             Err(e) => {
-                eprintln!("❌ [ERROR] Failed to write config file: {}", e);
-                eprintln!("🔍 [DEBUG] File path: {}", self.config_path.display());
-                eprintln!("🔍 [DEBUG] Parent exists: {}", self.config_path.parent().map(|p| p.exists()).unwrap_or(false));
-                eprintln!("🔍 [DEBUG] File exists: {}", self.config_path.exists());
+                eprintln!("❌ Failed to write config file: {} (path: {})", e, self.config_path.display());
                 return Err(anyhow::anyhow!(
                     "Failed to write config file to {}: {}. Check permissions and directory access.",
                     self.config_path.display(),

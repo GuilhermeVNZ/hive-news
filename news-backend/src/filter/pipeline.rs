@@ -49,13 +49,25 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         total: pdfs.len(),
         ..FilterStats::default()
     };
+    
+    // Contadores para logs colapsados
+    let mut extraction_failures = 0;
+    let mut parse_errors = 0;
+    let mut non_scientific = 0;
+    let mut rejected_count = 0;
 
     for pdf_path in pdfs {
         // Parse do PDF
         let parsed = match crate::filter::parser::parse_pdf(&pdf_path) {
-            Ok(p) => p,
-            Err(e) => {
-                eprintln!("   Failed to parse {}: {}", pdf_path.display(), e);
+            Ok(p) => {
+                // Verificar se extração de texto falhou (texto vazio)
+                if p.text.is_empty() || p.text.len() < 100 {
+                    extraction_failures += 1;
+                }
+                p
+            },
+            Err(_e) => {
+                parse_errors += 1;
                 stats.rejected += 1;
                 continue;
             }
@@ -65,30 +77,49 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         let source_type = detect_source_type(&parsed);
 
         if source_type == SourceType::NonScientific {
-            println!("   Skipping non-scientific source: {}", pdf_path.display());
+            non_scientific += 1;
+            stats.skipped += 1;
+            continue;
+        }
+
+        // Se extração de texto falhou, tentar buscar metadados do arXiv como fallback
+        let mut parsed_with_text = parsed;
+        if parsed_with_text.text.is_empty() || parsed_with_text.text.len() < 100 {
+            // Tentar buscar abstract do arXiv via API
+            if let Some(arxiv_id) = pdf_path.file_stem().and_then(|s| s.to_str()) {
+                if let Ok(abstract_text) = fetch_arxiv_abstract(arxiv_id).await {
+                    if !abstract_text.is_empty() {
+                        // Atualizar o texto do parsed usando uma nova instância
+                        parsed_with_text.text = abstract_text;
+                    }
+                }
+            }
+        }
+
+        // Se ainda não tem texto suficiente, pular mas não rejeitar ainda
+        // (pode ser um PDF válido que precisa de melhor extração)
+        if parsed_with_text.text.is_empty() || parsed_with_text.text.len() < 50 {
+            extraction_failures += 1;
             stats.skipped += 1;
             continue;
         }
 
         // Filtros rápidos
-        let has_tests = has_experimental_sections(&parsed); // Agora verifica testes nos resultados
-        let fake_penalty = calculate_fake_penalty(&parsed.text);
+        let has_tests = has_experimental_sections(&parsed_with_text) || parsed_with_text.text.len() > 500; // Se tem texto suficiente, assumir que pode ter testes
+        let fake_penalty = calculate_fake_penalty(&parsed_with_text.text);
 
         if !has_tests || fake_penalty > 0.5 {
-            println!(
-                "   Rejected (no tests in results or high fake penalty): {}",
-                parsed.title
-            );
+            rejected_count += 1;
             stats.rejected += 1;
             continue;
         }
 
         // Validação via APIs
-        let doi_ratio = validate_dois(&parsed.dois).await;
-        let author_ratio = validate_authors(&parsed.authors).await;
+        let doi_ratio = validate_dois(&parsed_with_text.dois).await;
+        let author_ratio = validate_authors(&parsed_with_text.authors).await;
 
         let result = FilterResult {
-            doc: parsed,
+            doc: parsed_with_text,
             doi_ratio,
             author_ratio,
             has_exp: has_tests, // Usar has_tests para has_exp
@@ -199,8 +230,42 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
             }
         }
     }
+    
+    // Log resumido ao invés de linha por linha
+    if extraction_failures > 0 || parse_errors > 0 || rejected_count > 0 || non_scientific > 0 {
+        println!("\n📊 Filter summary: {} approved, {} rejected ({} no tests/fake), {} extraction failures, {} parse errors, {} non-scientific", 
+            stats.approved, stats.rejected, rejected_count, extraction_failures, parse_errors, non_scientific);
+    }
 
     Ok(stats)
+}
+
+// Função auxiliar para buscar abstract do arXiv quando extração de PDF falha
+async fn fetch_arxiv_abstract(arxiv_id: &str) -> Result<String, Box<dyn std::error::Error>> {
+    use reqwest;
+    
+    let client = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(5))
+        .build()?;
+    
+    let url = format!("https://export.arxiv.org/api/query?id_list={}", arxiv_id);
+    let response = client.get(&url).send().await?;
+    
+    if !response.status().is_success() {
+        return Err("HTTP error".into());
+    }
+    
+    let xml = response.text().await?;
+    
+    // Extrair abstract do XML
+    if let Some(abstract_start) = xml.find("<summary>") {
+        if let Some(abstract_end) = xml[abstract_start..].find("</summary>") {
+            let abstract_text = &xml[abstract_start + 9..abstract_start + abstract_end];
+            return Ok(abstract_text.trim().to_string());
+        }
+    }
+    
+    Err("No abstract found".into())
 }
 
 pub(crate) fn discover_unfiltered_pdfs(

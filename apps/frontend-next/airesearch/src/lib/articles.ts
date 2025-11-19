@@ -2,6 +2,12 @@ import { Article } from "@/types/article";
 
 interface ArticleApiResponse {
   articles: Article[];
+  pagination?: {
+    total: number;
+    limit: number;
+    offset: number;
+    hasMore: boolean;
+  };
 }
 
 interface ArticleDetailResponse {
@@ -12,21 +18,37 @@ function getBackendUrl(): string {
   return process.env.BACKEND_URL ?? "http://localhost:3005";
 }
 
-function buildArticlesUrl(categoryFilter?: string): URL {
+function buildArticlesUrl(
+  categoryFilter?: string,
+  limit?: number,
+  offset?: number
+): URL {
   const url = new URL("/api/airesearch/articles", getBackendUrl());
   if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
     url.searchParams.set("category", categoryFilter);
   }
+  if (limit !== undefined) {
+    url.searchParams.set("limit", limit.toString());
+  }
+  if (offset !== undefined) {
+    url.searchParams.set("offset", offset.toString());
+  }
   return url;
 }
 
-export async function getArticles(categoryFilter?: string): Promise<Article[]> {
-  const url = buildArticlesUrl(categoryFilter);
-  // Desabilitar cache do Next.js para payloads grandes (>2MB)
-  // O cache será gerenciado pelo backend/Nginx via Cache-Control headers
-  // Isso evita o erro "items over 2MB can not be cached"
+export async function getArticles(
+  categoryFilter?: string,
+  limit: number = 50,
+  offset: number = 0
+): Promise<{ articles: Article[]; hasMore: boolean; total: number }> {
+  const url = buildArticlesUrl(categoryFilter, limit, offset);
+  
+  // Cache otimizado: 5 minutos para lista de artigos (dados mudam com frequência moderada)
+  // Reduz TTFB de ~500ms para ~100ms em requisições subsequentes
   const response = await fetch(url.toString(), {
-    cache: 'no-store', // Desabilita cache do Next.js para payloads grandes
+    next: {
+      revalidate: 300, // Cache de 5 minutos (ISR)
+    },
   });
 
   if (!response.ok) {
@@ -36,7 +58,11 @@ export async function getArticles(categoryFilter?: string): Promise<Article[]> {
   }
 
   const payload = (await response.json()) as ArticleApiResponse;
-  return payload.articles ?? [];
+  return {
+    articles: payload.articles ?? [],
+    hasMore: payload.pagination?.hasMore ?? false,
+    total: payload.pagination?.total ?? payload.articles?.length ?? 0,
+  };
 }
 
 export async function findArticleBySlug(slug: string): Promise<Article | null> {

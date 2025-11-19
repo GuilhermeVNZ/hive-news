@@ -92,7 +92,7 @@ export async function generateMetadata({
       const articleImage =
         article.imagePath && article.imagePath.length > 0
           ? article.imagePath
-          : "/images/ai/ai_1.jpg";
+          : "/images/ai/ai_1.webp";
       
       const imageUrl = articleImage.startsWith('http')
         ? articleImage

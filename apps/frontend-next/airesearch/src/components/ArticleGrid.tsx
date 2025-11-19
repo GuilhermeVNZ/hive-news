@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import ArticleCard from "./ArticleCard";
 import { Button } from "@/components/ui/button";
+import { getArticles } from "@/lib/articles";
 import type { Article } from "@/types/article";
 
 // Islands Hydration: ArticleCard abaixo da dobra carrega sem SSR
@@ -15,21 +16,56 @@ const LazyArticleCard = dynamic(() => import("./ArticleCard"), {
 });
 
 interface ArticleGridProps {
-  articles: Article[];
+  initialArticles: Article[];
+  initialHasMore?: boolean;
+  initialTotal?: number;
   selectedCategory?: string;
   searchQuery?: string;
 }
 
 const ArticleGrid = ({
-  articles,
+  initialArticles,
+  initialHasMore = false,
+  initialTotal = 0,
   selectedCategory,
   searchQuery,
 }: ArticleGridProps) => {
-  const [displayedCount, setDisplayedCount] = useState(6);
+  const [articles, setArticles] = useState<Article[]>(initialArticles);
+  const [hasMore, setHasMore] = useState(initialHasMore);
+  const [total, setTotal] = useState(initialTotal);
+  const [loading, setLoading] = useState(false);
+  const [displayedCount, setDisplayedCount] = useState(50); // Mostrar todos os 50 iniciais
 
+  // Reset quando categoria ou busca mudam
   useEffect(() => {
-    setDisplayedCount(6);
-  }, [selectedCategory, searchQuery]);
+    setArticles(initialArticles);
+    setHasMore(initialHasMore);
+    setTotal(initialTotal);
+    setDisplayedCount(50);
+  }, [selectedCategory, searchQuery, initialArticles, initialHasMore, initialTotal]);
+
+  const loadMore = async () => {
+    if (loading || !hasMore) return;
+    
+    setLoading(true);
+    try {
+      const offset = articles.length;
+      const { articles: newArticles, hasMore: newHasMore, total: newTotal } = await getArticles(
+        selectedCategory && selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
+        50, // Carregar mais 50 artigos
+        offset
+      );
+      
+      setArticles(prev => [...prev, ...newArticles]);
+      setHasMore(newHasMore);
+      setTotal(newTotal);
+      setDisplayedCount(prev => prev + 50);
+    } catch (error) {
+      console.error("Failed to load more articles:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const normalize = (value: string) =>
     value
@@ -101,7 +137,8 @@ const ArticleGrid = ({
     [filteredArticles, displayedCount],
   );
 
-  const hasMore = filteredArticles.length > displayedCount;
+  // Verificar se há mais artigos: do servidor OU localmente filtrados
+  const hasMoreLocal = filteredArticles.length > displayedCount;
 
   return (
     <section className="container mx-auto px-4 py-16 section-below-fold" id="articles">
@@ -117,8 +154,8 @@ const ArticleGrid = ({
                 filteredArticles.length === 1
                   ? "article found"
                   : "articles found"
-              }`
-            : "Explore the latest research and developments in AI"}
+              }${total > filteredArticles.length ? ` (${total} total)` : ""}`
+            : `Explore ${total > 0 ? `${total} ` : ""}articles on the latest research and developments in AI`}
         </p>
       </div>
       {filteredArticles.length === 0 ? (
@@ -150,14 +187,15 @@ const ArticleGrid = ({
             ))}
           </div>
 
-          {hasMore && (
+          {(hasMore || hasMoreLocal) && (
             <div className="flex justify-center mt-12">
               <Button
-                onClick={() => setDisplayedCount((prev) => prev + 6)}
+                onClick={hasMore ? loadMore : () => setDisplayedCount((prev) => prev + 50)}
                 className="px-8 py-6 text-lg"
                 variant="outline"
+                disabled={loading}
               >
-                Load More Articles
+                {loading ? "Loading..." : hasMore ? `Load More Articles (${total - articles.length} remaining)` : "Show More Articles"}
               </Button>
             </div>
           )}

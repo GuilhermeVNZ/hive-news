@@ -6,6 +6,7 @@ use std::fs;
 use std::path::PathBuf;
 use anyhow::{Context, Result};
 use rand::Rng;
+use tracing::debug;
 
 fn get_site_context(site: &str) -> String {
     match site.to_lowercase().as_str() {
@@ -293,29 +294,74 @@ fn get_news_randomizer_dir() -> Result<PathBuf> {
     let current_dir = std::env::current_dir()
         .unwrap_or_else(|_| PathBuf::from("."));
     
-    let possible_paths = [
-        // Relative to current working directory (most common case)
-        current_dir.join("src/writer/prompts/news_randomizer"),
-        // Relative to workspace root (if running from workspace root)
-        current_dir.join("news-backend/src/writer/prompts/news_randomizer"),
-        // Using path resolver (if NEWS_BASE_DIR is set)
-        crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/news_randomizer"),
-        // Try from executable location (if available)
-        std::env::current_exe()
-            .ok()
-            .and_then(|exe| exe.parent().map(|p| p.join("src/writer/prompts/news_randomizer")))
-            .unwrap_or_else(|| PathBuf::from("src/writer/prompts/news_randomizer")),
-    ];
+    // Get executable path to find source code location in Docker
+    let exe_path = std::env::current_exe()
+        .ok()
+        .and_then(|exe| exe.parent().map(|p| p.to_path_buf()));
+    
+    // Build list of possible paths
+    let mut possible_paths = Vec::new();
+    
+    // 1. Relative to current working directory (most common case - local development)
+    possible_paths.push(current_dir.join("src/writer/prompts/news_randomizer"));
+    
+    // 2. Relative to workspace root (if running from workspace root)
+    possible_paths.push(current_dir.join("news-backend/src/writer/prompts/news_randomizer"));
+    
+    // 3. Docker: /app/news-backend/src/writer/prompts/news_randomizer (where source code is mounted)
+    possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/news_randomizer"));
+    
+    // 4. Using path resolver (if NEWS_BASE_DIR is set) - for data directories
+    possible_paths.push(crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/news_randomizer"));
+    
+    // 5. Direct from NEWS_BASE_DIR if it points to source (Docker scenario where code might be in /data)
+    if let Ok(base_dir) = std::env::var("NEWS_BASE_DIR") {
+        let base_path = PathBuf::from(base_dir);
+        // Try /data/src/writer/prompts/news_randomizer (if source is mounted there)
+        possible_paths.push(base_path.join("src/writer/prompts/news_randomizer"));
+        // Try /data/news-backend/src/writer/prompts/news_randomizer
+        possible_paths.push(base_path.join("news-backend/src/writer/prompts/news_randomizer"));
+    }
+    
+    // 6. From executable location - navigate back to source code
+    if let Some(exe_dir) = exe_path {
+        // If executable is in /usr/local/bin/, try /app/news-backend (Docker default)
+        if exe_dir.to_string_lossy().contains("/usr/local/bin") {
+            possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/news_randomizer"));
+        }
+        // Try relative to executable (if running from news-backend directory)
+        possible_paths.push(exe_dir.join("src/writer/prompts/news_randomizer"));
+        // Try going up from executable (for different Docker setups)
+        if let Some(parent) = exe_dir.parent() {
+            possible_paths.push(parent.join("news-backend/src/writer/prompts/news_randomizer"));
+            // Try /app (Docker common location)
+            if parent.to_string_lossy() == "/usr/local" {
+                possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/news_randomizer"));
+            }
+        }
+    }
+    
+    // 7. Fallback: try from environment or default
+    possible_paths.push(PathBuf::from("src/writer/prompts/news_randomizer"));
     
     // Find the first path that exists
     for path in &possible_paths {
         if path.exists() && path.is_dir() {
+            debug!("Found news_randomizer prompts directory at: {}", path.display());
             return Ok(path.clone());
         }
     }
     
-    // If none exist, return the first one as default (will fail gracefully later)
-    Ok(possible_paths[0].clone())
+    // If none exist, return error with all tried paths for debugging
+    let tried_paths: Vec<String> = possible_paths.iter()
+        .map(|p| p.display().to_string())
+        .collect();
+    
+    Err(anyhow::anyhow!(
+        "No prompt files found in: {}. Tried paths: {:?}",
+        possible_paths[0].display(),
+        tried_paths
+    ))
 }
 
 /// Loads a random prompt from the article_randomizer directory
@@ -389,38 +435,74 @@ fn get_prompt_randomizer_dir() -> Result<PathBuf> {
     let current_dir = std::env::current_dir()
         .unwrap_or_else(|_| PathBuf::from("."));
     
-    let possible_paths = [
-        // Docker path (when running in container)
-        PathBuf::from("/app/news-backend/src/writer/prompts/article_randomizer"),
-        // Relative to current working directory (most common case)
-        current_dir.join("src/writer/prompts/article_randomizer"),
-        // Relative to workspace root (if running from workspace root)
-        current_dir.join("news-backend/src/writer/prompts/article_randomizer"),
-        // Using path resolver (if NEWS_BASE_DIR is set)
-        crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/article_randomizer"),
-        // Try from executable location (if available)
-        std::env::current_exe()
-            .ok()
-            .and_then(|exe| exe.parent().map(|p| p.join("src/writer/prompts/article_randomizer")))
-            .unwrap_or_else(|| PathBuf::from("src/writer/prompts/article_randomizer")),
-    ];
+    // Get executable path to find source code location in Docker
+    let exe_path = std::env::current_exe()
+        .ok()
+        .and_then(|exe| exe.parent().map(|p| p.to_path_buf()));
+    
+    // Build list of possible paths
+    let mut possible_paths = Vec::new();
+    
+    // 1. Relative to current working directory (most common case - local development)
+    possible_paths.push(current_dir.join("src/writer/prompts/article_randomizer"));
+    
+    // 2. Relative to workspace root (if running from workspace root)
+    possible_paths.push(current_dir.join("news-backend/src/writer/prompts/article_randomizer"));
+    
+    // 3. Docker: /app/news-backend/src/writer/prompts/article_randomizer (where source code is mounted)
+    possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/article_randomizer"));
+    
+    // 4. Using path resolver (if NEWS_BASE_DIR is set) - for data directories
+    possible_paths.push(crate::utils::path_resolver::resolve_workspace_path("news-backend/src/writer/prompts/article_randomizer"));
+    
+    // 5. Direct from NEWS_BASE_DIR if it points to source (Docker scenario where code might be in /data)
+    if let Ok(base_dir) = std::env::var("NEWS_BASE_DIR") {
+        let base_path = PathBuf::from(base_dir);
+        // Try /data/src/writer/prompts/article_randomizer (if source is mounted there)
+        possible_paths.push(base_path.join("src/writer/prompts/article_randomizer"));
+        // Try /data/news-backend/src/writer/prompts/article_randomizer
+        possible_paths.push(base_path.join("news-backend/src/writer/prompts/article_randomizer"));
+    }
+    
+    // 6. From executable location - navigate back to source code
+    if let Some(exe_dir) = exe_path {
+        // If executable is in /usr/local/bin/, try /app/news-backend (Docker default)
+        if exe_dir.to_string_lossy().contains("/usr/local/bin") {
+            possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/article_randomizer"));
+        }
+        // Try relative to executable (if running from news-backend directory)
+        possible_paths.push(exe_dir.join("src/writer/prompts/article_randomizer"));
+        // Try going up from executable (for different Docker setups)
+        if let Some(parent) = exe_dir.parent() {
+            possible_paths.push(parent.join("news-backend/src/writer/prompts/article_randomizer"));
+            // Try /app (Docker common location)
+            if parent.to_string_lossy() == "/usr/local" {
+                possible_paths.push(PathBuf::from("/app/news-backend/src/writer/prompts/article_randomizer"));
+            }
+        }
+    }
+    
+    // 7. Fallback: try from environment or default
+    possible_paths.push(PathBuf::from("src/writer/prompts/article_randomizer"));
     
     // Find the first path that exists
     for path in &possible_paths {
         if path.exists() && path.is_dir() {
-            eprintln!("🔍 [DEBUG] Found prompt randomizer dir: {}", path.display());
+            debug!("Found article_randomizer prompts directory at: {}", path.display());
             return Ok(path.clone());
         }
     }
     
-    // Debug: list what we tried
-    eprintln!("⚠️  [DEBUG] Prompt randomizer dir not found. Tried paths:");
-    for path in &possible_paths {
-        eprintln!("   - {} (exists: {})", path.display(), path.exists());
-    }
+    // If none exist, return error with all tried paths for debugging
+    let tried_paths: Vec<String> = possible_paths.iter()
+        .map(|p| p.display().to_string())
+        .collect();
     
-    // If none exist, return the first one as default (will fail gracefully later)
-    Ok(possible_paths[0].clone())
+    Err(anyhow::anyhow!(
+        "No prompt files found in: {}. Tried paths: {:?}",
+        possible_paths[0].display(),
+        tried_paths
+    ))
 }
 
 pub fn build_social_script_prompt(article: &str, paper_title: &str) -> String {

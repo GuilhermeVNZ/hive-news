@@ -86,8 +86,13 @@ export const ArticleCard = memo(({ article, priority = false }: ArticleCardProps
           className="w-full h-full object-cover transition-smooth group-hover:scale-105"
           style={{ aspectRatio: '400/192' }}
           onError={(e) => {
-            // Fallback to default image if selected image doesn't exist
-            (e.target as HTMLImageElement).src = '/images/ai/ai_1.jpg';
+            // Tentar WebP primeiro, fallback para JPG se não existir
+            const target = e.target as HTMLImageElement;
+            if (target.src.endsWith('.webp')) {
+              target.src = '/images/ai/ai_1.jpg';
+            } else {
+              target.src = '/images/ai/ai_1.webp';
+            }
           }}
         />
         <div className="absolute top-4 left-4">

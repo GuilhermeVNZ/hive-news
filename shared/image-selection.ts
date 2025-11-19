@@ -91,7 +91,13 @@ export async function selectArticleImageAsync(
           // Use article ID to select image (same logic as AIResearch)
           // Extract numbers from articleId and use modulo with actual file count
           const imageIndex = parseInt(articleId.split('.').pop()?.replace(/[^0-9]/g, '') || '0') % imageFiles.length;
-          const selectedImage = imageFiles[imageIndex];
+          const baseImageName = imageFiles[imageIndex];
+          
+          // Priorizar WebP: tentar encontrar versão WebP primeiro
+          const webpName = baseImageName.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+          const hasWebP = imageFiles.some(f => f.toLowerCase() === webpName.toLowerCase());
+          
+          const selectedImage = hasWebP ? webpName : baseImageName;
           
           return `/images/${imageDirName}/${selectedImage}`;
         }
@@ -143,11 +149,12 @@ export function selectArticleImage(
     const maxImages = imageDir === 'ai' ? 34 : 20;
     const imageNumber = (imageIndex % maxImages) + 1;
     
-    return `/images/${imageDir}/${imageDir}_${imageNumber}.jpg`;
+    // Priorizar WebP: tentar usar .webp primeiro (fallback para .jpg se não existir)
+    return `/images/${imageDir}/${imageDir}_${imageNumber}.webp`;
   }
 
-  // Fallback to default
-  return '/images/ai/ai_1.jpg';
+  // Fallback to default (priorizar WebP)
+  return '/images/ai/ai_1.webp';
 }
 
 

@@ -14,9 +14,9 @@ export function selectArticleImage(
   imageCategories: string[] | undefined,
   articleId: string,
 ): string {
-  // Se não há categorias, usar fallback padrão
+  // Se não há categorias, usar fallback padrão (priorizar WebP)
   if (!imageCategories || imageCategories.length === 0) {
-    return '/images/ai/ai_1.jpg';
+    return '/images/ai/ai_1.webp';
   }
 
   // Mapear categoria para diretório de imagens
@@ -51,7 +51,8 @@ export function selectArticleImage(
   // Usar hash para selecionar imagem de 1-10 (assumindo que há pelo menos 10 imagens por categoria)
   const imageNumber = (Math.abs(hash) % 10) + 1;
 
-  return `/images/${imageDir}/${imageDir}_${imageNumber}.jpg`;
+  // Priorizar WebP: tentar usar .webp primeiro (fallback para .jpg se não existir)
+  return `/images/${imageDir}/${imageDir}_${imageNumber}.webp`;
 }
 
 /**

@@ -114,8 +114,7 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
         }
     }
 
-    // Fallback: retornar string vazia mas logar o erro
-    eprintln!("⚠️  Failed to extract text from PDF: {}", path.display());
+    // Fallback: retornar string vazia (log será colapsado no pipeline)
     Ok(String::new())
 }
 

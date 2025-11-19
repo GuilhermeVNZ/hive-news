@@ -44,6 +44,10 @@ path = "src/bin/servers.rs"
 name = "clean-orphan-articles"
 path = "src/bin/clean_orphan_articles.rs"
 
+[[bin]]
+name = "test-xai-grok"
+path = "src/bin/test_xai_grok.rs"
+
 [dependencies]
 # Web Framework
 axum = "0.7"
