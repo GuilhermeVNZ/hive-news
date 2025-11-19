@@ -509,3 +509,4 @@ Após implementar todas as otimizações:
 
 
 
+

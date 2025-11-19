@@ -1,0 +1,128 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-news_system}
+      # Desabilitar funções perigosas
+      POSTGRES_INITDB_ARGS: "-c log_connections=on -c log_disconnections=on -c log_duration=on"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Script de inicialização para criar usuário não-superuser
+      - ./docker/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    # REMOVER EXPOSIÇÃO PÚBLICA DA PORTA 5432
+    # ports:
+    #   - "5432:5432"  # COMENTADO POR SEGURANÇA - apenas acesso interno via Docker network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Segurança adicional
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    env_file:
+      - .env
+      - news-backend/.env
+    environment:
+      # Usar usuário não-superuser para conexão
+      DATABASE_URL: "${DATABASE_URL:-postgresql://news_app:${POSTGRES_APP_PASSWORD:-changeme123}@postgres:5432/news_system}"
+      NEWS_BASE_DIR: /data
+    volumes:
+      - ./downloads:/data/downloads
+      - ./output:/data/output
+      - ./logs:/data/logs
+      - ./images:/data/images
+      - ./news-backend/system_config.json:/data/news-backend/system_config.json:ro
+      - ./collectors_config.json:/data/collectors_config.json:ro
+      - ./scienceai_subscribers.json:/data/scienceai_subscribers.json:ro
+      - ./news-backend/loop_stats.json:/data/news-backend/loop_stats.json
+      - ./articles_registry.json:/data/articles_registry.json
+    ports:
+      - "3005:3005"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  dashboard:
+    environment:
+      NEWS_BASE_DIR: /data
+      VITE_API_URL: https://backend.scienceai.news
+    volumes:
+      - ./output:/data/output:ro
+      - ./images:/data/images:ro
+      - ./articles_registry.json:/data/articles_registry.json:ro
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args:
+        APP_DIR: news-dashboard
+    depends_on:
+      - backend
+    ports:
+      - "1420:80"
+    restart: unless-stopped
+
+  airesearch:
+    environment:
+      NEWS_BASE_DIR: /data
+      BACKEND_URL: https://backend.scienceai.news
+    volumes:
+      - ./output:/data/output:ro
+      - ./images:/data/images:ro
+      - ./articles_registry.json:/data/articles_registry.json:ro
+      - ./images:/app/public/images:ro
+    build:
+      context: .
+      dockerfile: docker/frontend.next.Dockerfile
+      args:
+        APP_DIR: apps/frontend-next/airesearch
+    depends_on:
+      - backend
+    ports:
+      - "3003:80"
+    restart: unless-stopped
+
+  scienceai:
+    environment:
+      NEWS_BASE_DIR: /data
+      VITE_API_URL: https://backend.scienceai.news
+    volumes:
+      - ./output:/data/output:ro
+      - ./images:/data/images:ro
+      - ./scienceai_subscribers.json:/data/scienceai_subscribers.json
+      - ./articles_registry.json:/data/articles_registry.json:ro
+      - ./images:/usr/share/nginx/html/images:ro
+    build:
+      context: .
+      dockerfile: docker/scienceai.Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: news-system
+
+volumes:
+  postgres_data:
+    driver: local
+

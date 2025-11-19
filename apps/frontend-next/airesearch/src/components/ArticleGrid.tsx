@@ -78,7 +78,18 @@ const ArticleGrid = ({
       .replace(/\s+/g, " ")
       .trim();
 
-  const normalizedCategory = selectedCategory?.toLowerCase().trim();
+  // Normalizar categoria: converter espaços para underscores e vice-versa
+  const normalizeCategory = (category: string): string => {
+    return category
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "_") // Converter espaços para underscores
+      .replace(/-/g, "_"); // Converter hífens para underscores
+  };
+
+  // Normalizar categoria selecionada
+  const normalizedCategory = selectedCategory ? normalizeCategory(selectedCategory) : null;
+
   const searchWords = useMemo(() => {
     if (!searchQuery || !searchQuery.trim()) {
       return [];
@@ -91,11 +102,26 @@ const ArticleGrid = ({
       return articles;
     }
 
-    return articles.filter((article) =>
-      Array.isArray(article.imageCategories)
-        ? article.imageCategories.includes(normalizedCategory)
-        : false,
-    );
+    return articles.filter((article) => {
+      // Verificar se imageCategories contém a categoria normalizada
+      if (Array.isArray(article.imageCategories) && article.imageCategories.length > 0) {
+        // Normalizar todas as categorias do artigo e verificar se alguma corresponde
+        const normalizedArticleCategories = article.imageCategories.map(cat => normalizeCategory(cat));
+        if (normalizedArticleCategories.includes(normalizedCategory)) {
+          return true;
+        }
+      }
+      
+      // Fallback: verificar também o campo category do artigo
+      if (article.category) {
+        const normalizedArticleCategory = normalizeCategory(article.category);
+        if (normalizedArticleCategory === normalizedCategory) {
+          return true;
+        }
+      }
+      
+      return false;
+    });
   }, [articles, normalizedCategory]);
 
   const prioritizedArticles = useMemo(() => {
