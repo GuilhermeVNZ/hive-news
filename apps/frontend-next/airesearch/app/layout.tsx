@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { DeferredScripts } from "@/components/DeferredScripts";
-import { Providers } from "@/components/providers";
 
 // Otimização de fontes: preload e display swap para melhor FCP
 const inter = Inter({ 
@@ -136,9 +135,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} ${inter.variable}`}>
-        <Providers>
-          {children}
-        </Providers>
+        {children}
         <DeferredScripts />
       </body>
     </html>
