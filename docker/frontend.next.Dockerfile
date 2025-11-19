@@ -8,7 +8,12 @@ WORKDIR /app
 ARG APP_DIR
 ARG NPM_CI_FLAGS=""
 COPY ${APP_DIR}/package*.json ./
-RUN npm ci ${NPM_CI_FLAGS} \
+# Configurar npm para retry e timeout aumentado para lidar com problemas de rede
+RUN npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-timeout 300000 && \
+    (npm ci ${NPM_CI_FLAGS} || (sleep 10 && npm ci ${NPM_CI_FLAGS}) || (sleep 20 && npm ci ${NPM_CI_FLAGS})) \
     && (npm install --no-save @rollup/rollup-linux-x64-gnu \
         || npm install --no-save @rollup/rollup-linux-x64-musl \
         || true) \

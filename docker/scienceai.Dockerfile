@@ -8,7 +8,12 @@ WORKDIR /app
 COPY apps/frontend-next/scienceai/package.json ./package.json
 # Use npm install because this project does not provide a package-lock.json yet.
 # When a lockfile is added we can switch back to the faster `npm ci`.
-RUN npm install
+# Configurar npm para retry e timeout aumentado para lidar com problemas de rede
+RUN npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-timeout 300000 && \
+    (npm install || (sleep 10 && npm install) || (sleep 20 && npm install))
 
 
 FROM node:${NODE_VERSION}-alpine AS build

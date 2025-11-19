@@ -7,7 +7,12 @@ WORKDIR /app
 
 ARG APP_DIR
 COPY ${APP_DIR}/package*.json ./
-RUN npm ci
+# Configurar npm para retry e timeout aumentado para lidar com problemas de rede
+RUN npm config set fetch-retries 5 && \
+    npm config set fetch-retry-mintimeout 20000 && \
+    npm config set fetch-retry-maxtimeout 120000 && \
+    npm config set fetch-timeout 300000 && \
+    npm ci || (sleep 10 && npm ci) || (sleep 20 && npm ci)
 
 
 FROM node:${NODE_VERSION}-alpine AS build
