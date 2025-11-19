@@ -55,7 +55,7 @@ export default function HomeClient({
             // Também prefetch dos dados da API se necessário
             // O Next.js já faz isso automaticamente com prefetch
           }
-        } catch (err) {
+        } catch {
           // Ignorar URLs inválidas
         }
       }
