@@ -773,8 +773,10 @@ async fn main() -> anyhow::Result<()> {
             );
             println!("   Title: {}", paper_title);
 
-            // Download PDF
-            let pdf_url = format!("https://export.arxiv.org/pdf/{}.pdf", paper_id);
+            // Download PDF - try export.arxiv.org first (official API, avoids reCAPTCHA)
+            // Fallback to arxiv.org if export fails
+            let pdf_url_primary = format!("https://export.arxiv.org/pdf/{}.pdf", paper_id);
+            let pdf_url_fallback = format!("https://arxiv.org/pdf/{}.pdf", paper_id);
             let arxiv_url = format!("https://arxiv.org/abs/{}", paper_id);
             let file_path = date_dir.join(format!("{}.pdf", paper_id));
             
@@ -793,22 +795,34 @@ async fn main() -> anyhow::Result<()> {
                 }
             }
 
-            // Download with retry logic
+            // Download with retry logic and fallback URL
             let mut retry_count = 0;
             let max_retries = 3;
             let download_success = loop {
+                // Try primary URL first, fallback to secondary if retry > 1
+                let pdf_url = if retry_count > 1 {
+                    println!("   🔄 Trying fallback URL: {}", pdf_url_fallback);
+                    &pdf_url_fallback
+                } else {
+                    &pdf_url_primary
+                };
+
+                println!("   📡 Downloading from: {}", pdf_url);
+                
                 let request = client
-                    .get(&pdf_url)
+                    .get(pdf_url)
                     .header("User-Agent", "NewsSystemCollector/1.0 (contact: admin@airesearch.news; automated research paper collection)")
                     .header("Accept", "application/pdf")
                     .header("Accept-Encoding", "gzip, deflate")
                     .header("Connection", "keep-alive");
 
                 match request.send().await {
-
                     Ok(response) => {
+                        let status = response.status();
+                        println!("   📊 Response status: {} {}", status.as_u16(), status.canonical_reason().unwrap_or("Unknown"));
+
                         // Check for rate limiting
-                        if response.status().as_u16() == 429 {
+                        if status.as_u16() == 429 {
                             if retry_count < max_retries {
                                 retry_count += 1;
                                 let wait_time = 2u64.pow(retry_count) * 5;
@@ -821,53 +835,99 @@ async fn main() -> anyhow::Result<()> {
                             }
                         }
 
-                        if response.status().is_success() {
+                        // Check for redirects or errors
+                        if status.is_redirection() {
+                            if let Some(location) = response.headers().get("location") {
+                                println!("   🔄 Redirect to: {}", location.to_str().unwrap_or("unknown"));
+                            }
+                        }
+
+                        if status.is_success() {
                             match response.bytes().await {
                                 Ok(bytes) => {
-                                    if bytes.len() > 4 && &bytes[0..4] == b"%PDF" {
-                                        match tokio::fs::write(&file_path, &bytes).await {
-                                            Ok(_) => {
-                                                let file_size_mb = bytes.len() as f64 / 1_048_576.0;
-                                                println!("   ✅ Downloaded ({:.2} MB)", file_size_mb);
-                                                
-                                                // Register in registry
-                                                if let Err(e) = registry.register_collected(
-                                                    paper_id.clone(),
-                                                    paper_title.clone(),
-                                                    arxiv_url.clone(),
-                                                    pdf_url.clone(),
-                                                ) {
-                                                    eprintln!("   ⚠️  Failed to register: {}", e);
-                                                } else {
-                                                    let destinations = get_enabled_sites_for_source("arxiv");
-                                                    if let Err(e) = registry.set_destinations(&paper_id, destinations) {
-                                                        eprintln!("   ⚠️  Failed to set destinations: {}", e);
-                                                    }
-                                                }
-                                                break true;
-                                            }
-                                            Err(e) => {
-                                                println!("   ❌ Failed to write file: {}", e);
-                                                break false;
-                                            }
+                                    println!("   📦 Received {} bytes", bytes.len());
+                                    
+                                    // Validate PDF format
+                                    if bytes.len() < 4 {
+                                        println!("   ❌ Response too small ({} bytes), not a valid PDF", bytes.len());
+                                        if retry_count < max_retries && retry_count == 0 {
+                                            retry_count += 1;
+                                            println!("   🔄 Retrying with fallback URL...");
+                                            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                                            continue;
                                         }
-                                    } else {
-                                        println!("   ❌ Invalid PDF format");
                                         break false;
+                                    }
+                                    
+                                    if &bytes[0..4] != b"%PDF" {
+                                        println!("   ❌ Invalid PDF format (first 4 bytes: {:?})", &bytes[0..4.min(bytes.len())]);
+                                        if retry_count < max_retries && retry_count == 0 {
+                                            retry_count += 1;
+                                            println!("   🔄 Retrying with fallback URL...");
+                                            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                                            continue;
+                                        }
+                                        break false;
+                                    }
+                                    
+                                    match tokio::fs::write(&file_path, &bytes).await {
+                                        Ok(_) => {
+                                            let file_size_mb = bytes.len() as f64 / 1_048_576.0;
+                                            println!("   ✅ Downloaded ({:.2} MB) to {}", file_size_mb, file_path.display());
+                                            
+                                            // Register in registry
+                                            if let Err(e) = registry.register_collected(
+                                                paper_id.clone(),
+                                                paper_title.clone(),
+                                                arxiv_url.clone(),
+                                                pdf_url_primary.clone(), // Always use primary URL for registry
+                                            ) {
+                                                eprintln!("   ⚠️  Failed to register: {}", e);
+                                            } else {
+                                                let destinations = get_enabled_sites_for_source("arxiv");
+                                                if let Err(e) = registry.set_destinations(&paper_id, destinations) {
+                                                    eprintln!("   ⚠️  Failed to set destinations: {}", e);
+                                                }
+                                            }
+                                            break true;
+                                        }
+                                        Err(e) => {
+                                            println!("   ❌ Failed to write file: {}", e);
+                                            break false;
+                                        }
                                     }
                                 }
                                 Err(e) => {
                                     println!("   ❌ Failed to read response: {}", e);
+                                    if retry_count < max_retries {
+                                        retry_count += 1;
+                                        tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                                        continue;
+                                    }
                                     break false;
                                 }
                             }
                         } else {
-                            println!("   ❌ HTTP Error: {}", response.status());
+                            println!("   ❌ HTTP Error: {} {}", status.as_u16(), status.canonical_reason().unwrap_or("Unknown"));
+                            // Try fallback URL on error
+                            if retry_count < max_retries && retry_count == 0 {
+                                retry_count += 1;
+                                println!("   🔄 Retrying with fallback URL...");
+                                tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                                continue;
+                            }
                             break false;
                         }
                     }
                     Err(e) => {
                         println!("   ❌ Request failed: {}", e);
+                        // Try fallback URL on network error
+                        if retry_count < max_retries && retry_count == 0 {
+                            retry_count += 1;
+                            println!("   🔄 Retrying with fallback URL...");
+                            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                            continue;
+                        }
                         break false;
                     }
                 }
