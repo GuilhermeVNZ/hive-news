@@ -40,7 +40,7 @@ const Hero = memo(({
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
               <Input
                 id="hero-search-input"
-                placeholder="Search articles, topics or researchers..."
+                placeholder="Search articles, topics or content..."
                 className="pl-12 h-14 text-base border-2 border-border bg-card/50 backdrop-blur-sm focus:border-primary transition-performance"
                 value={searchQuery ?? ""}
                 onChange={(e) => onSearchQueryChange?.(e.target.value)}

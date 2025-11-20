@@ -34,12 +34,54 @@ const ArticleGrid = ({
   const [loading, setLoading] = useState(false);
   const [displayedCount, setDisplayedCount] = useState(6); // Mostrar apenas 6 artigos inicialmente
 
-  // Reset quando busca muda
+  // Função para recarregar artigos com nova busca
+  const reloadArticles = async (query?: string) => {
+    console.log('[ArticleGrid] Reloading articles with query:', query);
+    setLoading(true);
+    try {
+      const { articles: newArticles, hasMore: newHasMore, total: newTotal } = await getArticles(
+        undefined, // Sem filtro de categoria
+        6, // Carregar 6 artigos iniciais
+        0, // Offset 0 para nova busca
+        query // Query de busca
+      );
+      
+      console.log('[ArticleGrid] Loaded articles:', newArticles.length, 'total:', newTotal);
+      setArticles(newArticles);
+      setHasMore(newHasMore);
+      setTotal(newTotal);
+      setDisplayedCount(6);
+    } catch (error) {
+      console.error("Failed to reload articles:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Reset quando busca muda - recarregar do servidor
   useEffect(() => {
-    setArticles(initialArticles);
-    setHasMore(initialHasMore);
-    setTotal(initialTotal);
-    setDisplayedCount(6); // Reset para 6 artigos
+    console.log('[ArticleGrid] Search query changed:', searchQuery);
+    // Se searchQuery mudou, recarregar artigos
+    if (searchQuery !== undefined) {
+      reloadArticles(searchQuery);
+    } else {
+      // Fallback para artigos iniciais se não há query
+      console.log('[ArticleGrid] No query, using initial articles');
+      setArticles(initialArticles);
+      setHasMore(initialHasMore);
+      setTotal(initialTotal);
+      setDisplayedCount(6);
+    }
+  }, [searchQuery]);
+
+  // Reset apenas para artigos iniciais quando eles mudam (primeira carga)
+  useEffect(() => {
+    if (!searchQuery) {
+      setArticles(initialArticles);
+      setHasMore(initialHasMore);
+      setTotal(initialTotal);
+      setDisplayedCount(6);
+    }
   }, [searchQuery, initialArticles, initialHasMore, initialTotal]);
 
   const loadMore = async () => {
