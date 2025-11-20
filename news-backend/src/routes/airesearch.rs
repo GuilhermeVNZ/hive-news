@@ -457,15 +457,6 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
             continue;
         }
 
-        if metadata
-            .destinations
-            .as_ref()
-            .map(|dests| !dests.iter().any(|d| d.eq_ignore_ascii_case("airesearch")))
-            .unwrap_or(true)
-        {
-            continue;
-        }
-
         if metadata.hidden.unwrap_or(false) {
             continue;
         }
@@ -476,6 +467,20 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
         };
 
         if !output_dir.is_dir() {
+            continue;
+        }
+
+        // Verificar se o artigo é para airesearch:
+        // 1. Se destinations contém "airesearch" (case-insensitive)
+        // 2. OU se output_dir está em output/AIResearch (para artigos antigos sem destinations)
+        let is_airesearch = metadata
+            .destinations
+            .as_ref()
+            .map(|dests| dests.iter().any(|d| d.eq_ignore_ascii_case("airesearch")))
+            .unwrap_or(false)
+            || output_dir.to_string_lossy().contains("AIResearch");
+
+        if !is_airesearch {
             continue;
         }
 
