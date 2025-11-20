@@ -51,6 +51,19 @@ impl DeepSeekClient {
         compressed_prompt: &str,
         temperature: Option<f64>,
     ) -> Result<ArticleResponse> {
+        // CRITICAL: Log what is actually being sent to DeepSeek API
+        println!("  📤 [DeepSeekClient] Preparing to send prompt to DeepSeek API...");
+        println!("  📊 [DeepSeekClient] Prompt length: {} characters", compressed_prompt.len());
+        
+        // Log preview of what will be sent
+        let api_prompt_preview = if compressed_prompt.len() > 1500 {
+            format!("{}... [truncated]", &compressed_prompt[..1500])
+        } else {
+            compressed_prompt.to_string()
+        };
+        println!("  📄 [DeepSeekClient] Prompt preview (first 1500 chars) that will be sent:");
+        println!("     {}", api_prompt_preview);
+        
         let temp = temperature.unwrap_or(0.7);
         let request_body = json!({
             "model": self.model,
@@ -68,6 +81,11 @@ impl DeepSeekClient {
             "max_tokens": 4000, // Increased for news articles with social content
             "response_format": { "type": "json_object" }
         });
+        
+        // Log request details (without exposing API key)
+        println!("  🔗 [DeepSeekClient] API endpoint: {}/chat/completions", self.base_url);
+        println!("  🤖 [DeepSeekClient] Model: {}", self.model);
+        println!("  🌡️  [DeepSeekClient] Temperature: {}", temp);
 
         let response = self
             .client

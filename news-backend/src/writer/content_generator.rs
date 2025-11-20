@@ -404,32 +404,86 @@ impl WriterService {
         let text_hash = hasher.finish();
         println!("  🔍 Text hash (for uniqueness check): {}", text_hash);
         
+        // CRITICAL: Log preview do texto que será enviado ao DeepSeek
+        let text_for_prompt = &parsed.text;
+        let text_preview_length = text_for_prompt.len().min(500);
+        let text_preview_in_prompt = if text_for_prompt.len() > 500 {
+            format!("{}... [truncated at 500 chars for preview]", &text_for_prompt[..500])
+        } else {
+            text_for_prompt.clone()
+        };
+        println!("  📄 Text that will be sent to DeepSeek (first {} chars):", text_preview_length);
+        println!("     {}", text_preview_in_prompt);
+        
         let article_prompt = if let Some(ref custom_prompt) = self.prompt_article {
             println!("  📝 Using custom article prompt from config");
             // Replace {{paper_text}} placeholder if present, otherwise prepend paper text
             let prompt = if custom_prompt.contains("{{paper_text}}") {
-                custom_prompt.replace("{{paper_text}}", &parsed.text)
+                custom_prompt.replace("{{paper_text}}", text_for_prompt)
             } else {
                 format!(
                     "{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{}",
-                    custom_prompt, &parsed.text
+                    custom_prompt, text_for_prompt
                 )
             };
             println!("  📊 Final prompt length: {} characters", prompt.len());
+            
+            // CRITICAL: Verify that the PDF text is actually in the prompt
+            if !prompt.contains(text_for_prompt) {
+                eprintln!("  ❌ CRITICAL ERROR: PDF text is NOT in the prompt!");
+                eprintln!("  ⚠️  The placeholder replacement may have failed!");
+                eprintln!("  📄 Expected text hash: {}", text_hash);
+                return Err(anyhow::anyhow!("PDF text not found in prompt after replacement"));
+            }
+            
+            // Log preview of prompt to verify text is included
+            let prompt_preview = if prompt.len() > 1000 {
+                format!("{}...", &prompt[..1000])
+            } else {
+                prompt.clone()
+            };
+            println!("  🔍 Prompt preview (first 1000 chars): {}", prompt_preview);
+            
             prompt
         } else {
             // Try to use randomized prompt, fallback to default if it fails
-            match load_random_article_prompt(&parsed.text) {
+            match load_random_article_prompt(text_for_prompt) {
                 Ok(random_prompt) => {
                     println!("  🎲 Using randomized prompt from article_randomizer");
                     println!("  📊 Final prompt length: {} characters", random_prompt.len());
+                    
+                    // CRITICAL: Verify that the PDF text is actually in the prompt
+                    if !random_prompt.contains(text_for_prompt) {
+                        eprintln!("  ❌ CRITICAL ERROR: PDF text is NOT in the randomized prompt!");
+                        eprintln!("  ⚠️  The placeholder replacement may have failed!");
+                        eprintln!("  📄 Expected text hash: {}", text_hash);
+                        return Err(anyhow::anyhow!("PDF text not found in randomized prompt after replacement"));
+                    }
+                    
+                    // Log preview of prompt to verify text is included
+                    let prompt_preview = if random_prompt.len() > 1000 {
+                        format!("{}...", &random_prompt[..1000])
+                    } else {
+                        random_prompt.clone()
+                    };
+                    println!("  🔍 Prompt preview (first 1000 chars): {}", prompt_preview);
+                    
                     random_prompt
                 }
                 Err(e) => {
                     eprintln!("  ⚠️  Failed to load randomized prompt: {}", e);
                     println!("  📝 Falling back to default article prompt");
-                    let default_prompt = build_article_prompt(&parsed.text, &[], &self.site);
+                    let default_prompt = build_article_prompt(text_for_prompt, &[], &self.site);
                     println!("  📊 Final prompt length: {} characters", default_prompt.len());
+                    
+                    // CRITICAL: Verify that the PDF text is actually in the default prompt
+                    if !default_prompt.contains(text_for_prompt) {
+                        eprintln!("  ❌ CRITICAL ERROR: PDF text is NOT in the default prompt!");
+                        eprintln!("  ⚠️  The build_article_prompt may have failed to include text!");
+                        eprintln!("  📄 Expected text hash: {}", text_hash);
+                        return Err(anyhow::anyhow!("PDF text not found in default prompt"));
+                    }
+                    
                     default_prompt
                 }
             }
@@ -441,6 +495,21 @@ impl WriterService {
             if let Some(ref compressor) = self.prompt_compressor {
                 let estimated_tokens = article_prompt.len() / 4;
                 println!("  🗜️  Compressing prompt (~{} tokens)...", estimated_tokens);
+                
+                // CRITICAL: Log preview of prompt BEFORE compression
+                let prompt_before_compression = if article_prompt.len() > 1000 {
+                    format!("{}...", &article_prompt[..1000])
+                } else {
+                    article_prompt.clone()
+                };
+                println!("  🔍 Prompt BEFORE compression (first 1000 chars): {}", prompt_before_compression);
+                
+                // Verify PDF text is in prompt before compression
+                if !article_prompt.contains(text_for_prompt) {
+                    eprintln!("  ❌ CRITICAL ERROR: PDF text disappeared from prompt BEFORE compression!");
+                    eprintln!("  ⚠️  This should not happen - text was verified above!");
+                    return Err(anyhow::anyhow!("PDF text lost from prompt before compression"));
+                }
 
                 let compressed_article = compressor
                     .compress(&article_prompt)
@@ -451,6 +520,31 @@ impl WriterService {
                     compressed_article.compressed_tokens,
                     compressed_article.compression_ratio * 100.0
                 );
+                
+                // CRITICAL: Verify PDF text is still in prompt AFTER compression
+                // Note: Compression may change the exact text, but key concepts should remain
+                // Log preview of compressed prompt
+                let prompt_after_compression = if compressed_article.compressed_text.len() > 1000 {
+                    format!("{}...", &compressed_article.compressed_text[..1000])
+                } else {
+                    compressed_article.compressed_text.clone()
+                };
+                println!("  🔍 Prompt AFTER compression (first 1000 chars): {}", prompt_after_compression);
+                
+                // Check if at least some key words from PDF text are still present
+                // (compression may paraphrase, but should retain concepts)
+                let text_words: Vec<&str> = text_for_prompt.split_whitespace().take(10).collect();
+                let has_key_words = text_words.iter().any(|word| {
+                    word.len() > 3 && compressed_article.compressed_text.contains(word)
+                });
+                
+                if !has_key_words && text_for_prompt.len() > 100 {
+                    eprintln!("  ⚠️  WARNING: Key words from PDF text not found in compressed prompt!");
+                    eprintln!("  ⚠️  Compression may have removed important content!");
+                    eprintln!("  📄 Original text preview: {}", &text_preview_in_prompt[..text_preview_length.min(200)]);
+                } else {
+                    println!("  ✅ PDF text concepts verified in compressed prompt");
+                }
 
                 (
                     compressed_article.compressed_text,
@@ -469,6 +563,25 @@ impl WriterService {
             let tokens = article_prompt.len() / 4;
             (article_prompt, tokens, tokens, 0.0)
         };
+        
+        // CRITICAL: Final verification before sending to DeepSeek
+        println!("  🔍 Final verification before sending to DeepSeek API...");
+        println!("  📊 Final prompt length: {} characters", final_article_prompt.len());
+        
+        // Log a sample of what will actually be sent
+        let final_preview = if final_article_prompt.len() > 2000 {
+            format!("{}... [truncated]", &final_article_prompt[..2000])
+        } else {
+            final_article_prompt.clone()
+        };
+        println!("  📤 Final prompt that will be sent to DeepSeek (first 2000 chars):");
+        println!("     {}", final_preview);
+        
+        // Verify text hash one more time
+        let mut final_hasher = DefaultHasher::new();
+        final_article_prompt.hash(&mut final_hasher);
+        let final_prompt_hash = final_hasher.finish();
+        println!("  🔍 Final prompt hash: {}", final_prompt_hash);
 
         println!("  🤖 Sending to DeepSeek API...");
         let article_response = match self
