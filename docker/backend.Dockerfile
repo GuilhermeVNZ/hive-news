@@ -53,6 +53,9 @@ RUN mkdir -p downloads/raw downloads/cache downloads/temp output logs js \
     && chmod +x /usr/local/bin/news-backend \
     && chmod +x /usr/local/bin/compress
 
+# Copy JavaScript scraper for Playwright
+COPY news-backend/js/scraper.js /app/js/scraper.js
+
 # Entrypoint ensures directories exist before booting the service
 COPY docker/scripts/backend-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

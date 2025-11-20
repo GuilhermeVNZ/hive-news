@@ -257,6 +257,51 @@ impl HtmlCollector {
                 );
                 return Some(headers);
             }
+
+            // Sites que frequentemente bloqueiam bots (403 Forbidden)
+            if host.contains("eleuther.ai") || host.contains("x.ai") {
+                // Headers mais robustos para contornar bloqueios
+                headers.insert(
+                    reqwest::header::USER_AGENT,
+                    reqwest::header::HeaderValue::from_static(
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                    ),
+                );
+                headers.insert(
+                    reqwest::header::ACCEPT,
+                    reqwest::header::HeaderValue::from_static(
+                        "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+                    ),
+                );
+                headers.insert(
+                    reqwest::header::ACCEPT_LANGUAGE,
+                    reqwest::header::HeaderValue::from_static("en-US,en;q=0.9"),
+                );
+                headers.insert(
+                    reqwest::header::ACCEPT_ENCODING,
+                    reqwest::header::HeaderValue::from_static("gzip, deflate, br"),
+                );
+                headers.insert(
+                    reqwest::header::DNT,
+                    reqwest::header::HeaderValue::from_static("1"),
+                );
+                headers.insert(
+                    reqwest::header::CONNECTION,
+                    reqwest::header::HeaderValue::from_static("keep-alive"),
+                );
+                headers.insert(
+                    reqwest::header::UPGRADE_INSECURE_REQUESTS,
+                    reqwest::header::HeaderValue::from_static("1"),
+                );
+                headers.insert(
+                    reqwest::header::REFERER,
+                    reqwest::header::HeaderValue::from_str(&format!("https://{}/", host))
+                        .unwrap_or_else(|_| {
+                            reqwest::header::HeaderValue::from_static("https://google.com/")
+                        }),
+                );
+                return Some(headers);
+            }
         }
 
         None

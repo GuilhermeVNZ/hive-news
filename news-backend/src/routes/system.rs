@@ -410,17 +410,17 @@ pub async fn get_services_status(Extension(_db): Extension<Arc<Database>>) -> Js
         },
         "news_dashboard": {
             "name": "News Dashboard",
-            "url": "http://localhost:1420",
+            "url": "https://admin.scienceai.news",
             "online": true, // If request reached here, dashboard is definitely online!
         },
         "airesearch": {
             "name": "AIResearch",
-            "url": "http://localhost:3003",
+            "url": "https://airesearch.news",
             "online": check_port(3003),
         },
         "scienceai": {
             "name": "ScienceAI",
-            "url": "http://localhost:8080",
+            "url": "https://scienceai.news",
             "online": check_port(8080),
         },
     });

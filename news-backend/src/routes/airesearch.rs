@@ -53,6 +53,7 @@ pub struct ArticlesQuery {
     category: Option<String>,
     limit: Option<usize>,
     offset: Option<usize>,
+    q: Option<String>, // Query de busca por texto
 }
 
 struct CategoryImages {
@@ -868,6 +869,54 @@ pub async fn warm_cache() -> Result<(), String> {
     Ok(())
 }
 
+// Função helper para normalizar texto para busca
+fn normalize_for_search(text: &str) -> String {
+    text.to_lowercase()
+        .chars()
+        .filter(|c| c.is_alphanumeric() || c.is_whitespace())
+        .collect::<String>()
+        .split_whitespace()
+        .collect::<Vec<&str>>()
+        .join(" ")
+}
+
+// Função helper para verificar se um artigo contém todas as palavras de busca
+fn article_matches_search(article: &Article, search_words: &[String]) -> bool {
+    if search_words.is_empty() {
+        return true;
+    }
+
+    // Criar o texto de busca combinando todos os campos relevantes
+    let topics = article.image_categories.join(" ");
+    let haystack = normalize_for_search(&format!(
+        "{} {} {} {} {} {}",
+        article.title,
+        article.id,
+        article.excerpt.as_deref().unwrap_or(""),
+        article.category,
+        topics,
+        article.article.as_deref().unwrap_or("")
+    ));
+
+    // Verificar se todas as palavras de busca estão presentes
+    let matches = search_words.iter().all(|word| haystack.contains(word));
+    
+    // Debug: log apenas os primeiros 5 artigos para não poluir muito
+    static mut DEBUG_COUNT: i32 = 0;
+    unsafe {
+        if DEBUG_COUNT < 5 {
+            println!("[AIResearch Search] Article '{}': {} (haystack preview: '{}')", 
+                article.title, 
+                if matches { "MATCH" } else { "NO MATCH" },
+                &haystack[..haystack.len().min(100)]
+            );
+            DEBUG_COUNT += 1;
+        }
+    }
+    
+    matches
+}
+
 pub async fn get_articles(
     Query(query): Query<ArticlesQuery>,
 ) -> Result<impl IntoResponse, (StatusCode, String)> {
@@ -877,7 +926,8 @@ pub async fn get_articles(
 
     let articles_arc = snapshot.articles;
 
-    let filtered: Vec<Article> = if let Some(category) = query.category {
+    // Primeiro, filtrar por categoria se especificada
+    let category_filtered: Vec<Article> = if let Some(category) = query.category {
         let filter = category.to_lowercase();
         if filter == "all" {
             articles_arc.as_ref().clone()
@@ -896,6 +946,35 @@ pub async fn get_articles(
         }
     } else {
         articles_arc.as_ref().clone()
+    };
+
+    // Segundo, filtrar por busca de texto se especificada
+    let filtered: Vec<Article> = if let Some(search_query) = query.q {
+        let search_query = search_query.trim();
+        println!("[AIResearch Search] Query received: '{}'", search_query);
+        if search_query.is_empty() {
+            println!("[AIResearch Search] Empty query, returning all articles");
+            category_filtered
+        } else {
+            let search_words: Vec<String> = normalize_for_search(search_query)
+                .split_whitespace()
+                .map(|s| s.to_string())
+                .collect();
+            
+            println!("[AIResearch Search] Normalized search words: {:?}", search_words);
+            println!("[AIResearch Search] Total articles before search: {}", category_filtered.len());
+
+            let search_results: Vec<Article> = category_filtered
+                .into_iter()
+                .filter(|article| article_matches_search(article, &search_words))
+                .collect();
+                
+            println!("[AIResearch Search] Articles found: {}", search_results.len());
+            search_results
+        }
+    } else {
+        println!("[AIResearch Search] No query provided, returning all articles");
+        category_filtered
     };
 
     let featured_count = filtered.iter().filter(|article| article.featured).count();

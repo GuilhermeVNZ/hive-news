@@ -7,6 +7,7 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { selectArticleImage } from "@/lib/imageUtils";
+import { formatParagraphs } from "@/lib/textUtils";
 
 interface Article {
   id: string;
@@ -253,7 +254,7 @@ const ArticleDetail = () => {
 
               {/* Article Body */}
               <div className="prose prose-lg max-w-none">
-                {article.content.split("\n\n").map((paragraph, index) => (
+                {formatParagraphs(article.content.split("\n\n")).map((paragraph, index) => (
                   <p key={index} className="mb-4 text-foreground leading-relaxed text-justify">
                     {paragraph}
                   </p>

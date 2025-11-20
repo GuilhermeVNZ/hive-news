@@ -259,11 +259,11 @@ pub async fn list_logs(
         {
             for site_id in dest_sites {
                 let site_id_lower = site_id.to_lowercase();
-                // Determine correct localhost port based on site
+                // Determine correct domain based on site
                 let base_url = if site_id_lower == "scienceai" {
-                    "http://localhost:8080"
+                    "https://scienceai.news"
                 } else if site_id_lower == "airesearch" {
-                    "http://localhost:3003"
+                    "https://airesearch.news"
                 } else {
                     eprintln!("[Logs API] Unknown site_id: {}, skipping...", site_id_lower);
                     continue; // Skip unknown sites
@@ -323,13 +323,13 @@ pub async fn list_logs(
                 let site_name = site_os.to_string_lossy().to_string();
                 let site_id_lower = site_name.to_lowercase();
 
-                // Determine correct localhost port based on site
+                // Determine correct domain based on site
                 let base_url = if site_id_lower == "scienceai" {
-                    "http://localhost:8080"
+                    "https://scienceai.news"
                 } else if site_id_lower == "airesearch" {
-                    "http://localhost:3003"
+                    "https://airesearch.news"
                 } else {
-                    "http://localhost:1420" // Default to dashboard
+                    "https://admin.scienceai.news" // Default to dashboard
                 };
 
                 // Generate URL using actual title from filesystem (matches what AIResearch shows)
