@@ -85,9 +85,10 @@ export default defineConfig(({ mode }) => ({
         manualChunks: (id) => {
           // Vendor chunk para node_modules
           if (id.includes('node_modules')) {
-            // React core em chunk separado (grande, raramente muda)
-            if (id.includes('react/') || id.includes('react-dom/')) {
-              return 'react-vendor';
+            // React core DEVE estar no mesmo chunk que o código principal para evitar problemas de carregamento
+            // Não separar React em chunk diferente - causa erro "Cannot read properties of undefined"
+            if (id.includes('react/') || id.includes('react-dom/') || id.includes('react/jsx-runtime')) {
+              return 'vendor'; // Colocar React no vendor comum, não em chunk separado
             }
             // Radix UI em chunk separado
             if (id.includes('@radix-ui')) {

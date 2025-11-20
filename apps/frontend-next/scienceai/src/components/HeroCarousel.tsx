@@ -157,6 +157,9 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
     ? (firstArticle.imageCarousel || firstArticle.image || selectArticleImage(firstArticle.imageCategories, firstArticle.id))
     : null;
 
+  // Obter artigo atual do slide visível - usar diretamente para garantir que o link sempre aponte para o artigo correto
+  const currentArticle = finalCarouselArticles[currentSlide];
+
   return (
     <section className="relative h-[600px] w-full overflow-hidden rounded-xl">
       {/* Preload da imagem LCP (primeira imagem do carousel) */}
@@ -186,6 +189,7 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
               isVisible ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
             }`}
             aria-hidden={!isVisible}
+            style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
           >
             {shouldLoad ? (
               <img
@@ -220,8 +224,8 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
               <div className="h-full w-full bg-gradient-to-br from-primary/20 via-primary/10 to-background animate-pulse" />
             )}
             <div className="absolute inset-0 gradient-hero" />
-          <div className="absolute inset-0 flex items-end">
-            <div className="container mx-auto px-4 pb-12">
+            <div className="absolute inset-0 flex items-end pointer-events-none">
+            <div className="container mx-auto px-4 pb-12 pointer-events-auto">
               <div className="max-w-3xl">
                 <span className="inline-block px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full mb-4">
                   {getCategoryName(article.category)}
@@ -230,33 +234,37 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
                   {article.title}
                 </h2>
                 <p className="text-lg text-white/90 mb-6 text-justify">{article.excerpt}</p>
-                {/* CRÍTICO: Renderizar link apenas no slide visível para garantir que o link correto seja clicado */}
-                {isVisible && article.slug && (
-                  <Link 
-                    to={`/article/${article.slug}`} 
-                    className="block"
-                    aria-label={`Read full story: ${article.title}`}
-                    onClick={(e) => {
-                      // Garantir que o clique vai para o artigo correto
-                      e.stopPropagation();
-                      console.debug(`[Carousel] Navigating to article: ${article.slug} (${article.title})`);
-                    }}
-                  >
-                    <Button size="lg" className="gradient-primary">
-                      Read Full Story
-                    </Button>
-                  </Link>
-                )}
-                {/* Placeholder invisível para manter layout quando slide não está visível */}
-                {!isVisible && (
-                  <div className="h-12" aria-hidden="true" />
-                )}
               </div>
             </div>
           </div>
         </div>
         );
       })}
+
+      {/* Botão de link - renderizado uma única vez usando o artigo atual visível */}
+      {currentArticle && currentArticle.slug && (
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+              <Link 
+                to={`/article/${currentArticle.slug}`}
+                state={{ articleId: currentArticle.id }}
+                className="block"
+                aria-label={`Read full story: ${currentArticle.title}`}
+                onClick={(e) => {
+                  // Garantir que o clique vai para o artigo correto do slide atual
+                  e.stopPropagation();
+                  console.debug(`[Carousel] Navigating to article: ${currentArticle.slug} (ID: ${currentArticle.id}, Title: ${currentArticle.title})`);
+                }}
+              >
+                <Button size="lg" className="gradient-primary">
+                  Read Full Story
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Navigation Buttons */}
       <Button
