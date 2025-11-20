@@ -21,7 +21,8 @@ function getBackendUrl(): string {
 function buildArticlesUrl(
   categoryFilter?: string,
   limit?: number,
-  offset?: number
+  offset?: number,
+  searchQuery?: string
 ): URL {
   const url = new URL("/api/airesearch/articles", getBackendUrl());
   if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
@@ -33,15 +34,19 @@ function buildArticlesUrl(
   if (offset !== undefined) {
     url.searchParams.set("offset", offset.toString());
   }
+  if (searchQuery && searchQuery.trim()) {
+    url.searchParams.set("q", searchQuery.trim());
+  }
   return url;
 }
 
 export async function getArticles(
   categoryFilter?: string,
   limit: number = 50,
-  offset: number = 0
+  offset: number = 0,
+  searchQuery?: string
 ): Promise<{ articles: Article[]; hasMore: boolean; total: number }> {
-  const url = buildArticlesUrl(categoryFilter, limit, offset);
+  const url = buildArticlesUrl(categoryFilter, limit, offset, searchQuery);
   
   // Cache otimizado: 5 minutos para lista de artigos (dados mudam com frequência moderada)
   // Reduz TTFB de ~500ms para ~100ms em requisições subsequentes

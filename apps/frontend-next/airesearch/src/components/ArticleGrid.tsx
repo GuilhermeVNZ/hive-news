@@ -19,7 +19,6 @@ interface ArticleGridProps {
   initialArticles: Article[];
   initialHasMore?: boolean;
   initialTotal?: number;
-  selectedCategory?: string;
   searchQuery?: string;
 }
 
@@ -27,7 +26,6 @@ const ArticleGrid = ({
   initialArticles,
   initialHasMore = false,
   initialTotal = 0,
-  selectedCategory,
   searchQuery,
 }: ArticleGridProps) => {
   const [articles, setArticles] = useState<Article[]>(initialArticles);
@@ -36,13 +34,13 @@ const ArticleGrid = ({
   const [loading, setLoading] = useState(false);
   const [displayedCount, setDisplayedCount] = useState(6); // Mostrar apenas 6 artigos inicialmente
 
-  // Reset quando categoria ou busca mudam
+  // Reset quando busca muda
   useEffect(() => {
     setArticles(initialArticles);
     setHasMore(initialHasMore);
     setTotal(initialTotal);
     setDisplayedCount(6); // Reset para 6 artigos
-  }, [selectedCategory, searchQuery, initialArticles, initialHasMore, initialTotal]);
+  }, [searchQuery, initialArticles, initialHasMore, initialTotal]);
 
   const loadMore = async () => {
     if (loading) return;
@@ -53,9 +51,10 @@ const ArticleGrid = ({
       if (hasMore && displayedCount >= articles.length) {
         const offset = articles.length;
         const { articles: newArticles, hasMore: newHasMore, total: newTotal } = await getArticles(
-          selectedCategory && selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
+          undefined, // Sem filtro de categoria
           50, // Carregar mais 50 artigos
-          offset
+          offset,
+          searchQuery // Incluir query de busca
         );
         
         setArticles(prev => [...prev, ...newArticles]);
@@ -71,65 +70,9 @@ const ArticleGrid = ({
     }
   };
 
-  const normalize = (value: string) =>
-    value
-      .toLowerCase()
-      .replace(/[^\w\s]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-
-  // Normalizar categoria: converter espaços para underscores e vice-versa
-  const normalizeCategory = (category: string): string => {
-    return category
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, "_") // Converter espaços para underscores
-      .replace(/-/g, "_"); // Converter hífens para underscores
-  };
-
-  // Normalizar categoria selecionada
-  const normalizedCategory = selectedCategory ? normalizeCategory(selectedCategory) : null;
-
-  const searchWords = useMemo(() => {
-    if (!searchQuery || !searchQuery.trim()) {
-      return [];
-    }
-    return normalize(searchQuery).split(" ");
-  }, [searchQuery]);
-
-  const filteredByCategory = useMemo(() => {
-    if (!normalizedCategory) {
-      return articles;
-    }
-
-    return articles.filter((article) => {
-      // Verificar se imageCategories contém a categoria normalizada
-      if (Array.isArray(article.imageCategories) && article.imageCategories.length > 0) {
-        // Normalizar todas as categorias do artigo e verificar se alguma corresponde
-        const normalizedArticleCategories = article.imageCategories.map(cat => normalizeCategory(cat));
-        if (normalizedArticleCategories.includes(normalizedCategory)) {
-          return true;
-        }
-      }
-      
-      // Fallback: verificar também o campo category do artigo
-      if (article.category) {
-        const normalizedArticleCategory = normalizeCategory(article.category);
-        if (normalizedArticleCategory === normalizedCategory) {
-          return true;
-        }
-      }
-      
-      return false;
-    });
-  }, [articles, normalizedCategory]);
-
-  const prioritizedArticles = useMemo(() => {
-    if (normalizedCategory || searchWords.length > 0) {
-      return filteredByCategory;
-    }
-
-    return [...filteredByCategory].sort((a, b) => {
+  // Os artigos já vêm filtrados do backend, então não precisamos filtrar aqui
+  const filteredArticles = useMemo(() => {
+    return [...articles].sort((a, b) => {
       const dateDiff =
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
       if (dateDiff !== 0) {
@@ -144,23 +87,7 @@ const ArticleGrid = ({
 
       return String(b.id).localeCompare(String(a.id));
     });
-  }, [filteredByCategory, normalizedCategory, searchWords.length]);
-
-  const filteredArticles = useMemo(() => {
-    if (searchWords.length === 0) {
-      return prioritizedArticles;
-    }
-
-    return prioritizedArticles.filter((article) => {
-      const topics = Array.isArray(article.imageCategories)
-        ? article.imageCategories.join(" ")
-        : "";
-      const haystack = normalize(
-        `${article.title} ${article.id} ${article.excerpt} ${article.category ?? ""} ${topics}`,
-      );
-      return searchWords.every((word) => haystack.includes(word));
-    });
-  }, [prioritizedArticles, searchWords]);
+  }, [articles]);
 
   const displayedArticles = useMemo(
     () => filteredArticles.slice(0, displayedCount),
@@ -174,17 +101,17 @@ const ArticleGrid = ({
     <section className="container mx-auto px-4 py-16 section-below-fold bg-background" id="articles">
       <div className="mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
-          {selectedCategory
-            ? `Articles in ${selectedCategory}`
+          {searchQuery && searchQuery.trim() 
+            ? `Search Results` 
             : "Featured Articles"}
         </h2>
         <p className="text-foreground/80 text-lg font-medium">
-          {selectedCategory
+          {searchQuery && searchQuery.trim()
             ? `${filteredArticles.length} ${
                 filteredArticles.length === 1
                   ? "article found"
                   : "articles found"
-              }${total > filteredArticles.length ? ` (${total} total)` : ""}`
+              } for "${searchQuery}"`
             : `Explore ${total > 0 ? `${total} ` : ""}articles on the latest research and developments in AI`}
         </p>
       </div>

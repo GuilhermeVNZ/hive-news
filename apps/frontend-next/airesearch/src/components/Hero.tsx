@@ -6,37 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 interface HeroProps {
-  selectedCategory?: string;
-  onCategorySelect?: (category: string) => void;
   searchQuery?: string;
   onSearchQueryChange?: (q: string) => void;
   onSubmitSearch?: () => void;
 }
 
 const Hero = memo(({
-  selectedCategory,
-  onCategorySelect,
   searchQuery,
   onSearchQueryChange,
   onSubmitSearch,
 }: HeroProps) => {
-  // All 14 valid categories for articles (must match backend and prompts)
-  const categories = [
-    { label: "AI", value: "ai" },
-    { label: "Coding", value: "coding" },
-    { label: "Crypto", value: "crypto" },
-    { label: "Data", value: "data" },
-    { label: "Ethics", value: "ethics" },
-    { label: "Games", value: "games" },
-    { label: "Hardware", value: "hardware" },
-    { label: "Legal", value: "legal" },
-    { label: "Network", value: "network" },
-    { label: "Quantum Computing", value: "quantum_computing" },
-    { label: "Robotics", value: "robotics" },
-    { label: "Science", value: "science" },
-    { label: "Security", value: "security" },
-    { label: "Sound", value: "sound" },
-  ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
@@ -79,22 +58,6 @@ const Hero = memo(({
             </Button>
           </div>
 
-          <div className="flex flex-wrap md:flex-nowrap gap-3 justify-center">
-            {categories.map((cat, index) => (
-              <button
-                key={cat.value}
-                onClick={() => onCategorySelect?.(cat.value)}
-                className={`group px-4 py-2 text-xs sm:text-sm font-medium rounded-full border-2 transition-performance duration-300 animate-fade-in animate-optimized whitespace-nowrap flex-shrink-0 ${
-                  selectedCategory === cat.value
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card/50 backdrop-blur-sm hover:border-primary hover:bg-primary/10 hover:text-primary"
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </section>

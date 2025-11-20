@@ -18,7 +18,6 @@ interface HomeClientProps {
   initialArticles: Article[];
   initialHasMore?: boolean;
   initialTotal?: number;
-  initialCategory?: string;
   initialQuery?: string;
 }
 
@@ -26,12 +25,9 @@ export default function HomeClient({
   initialArticles,
   initialHasMore = false,
   initialTotal = 0,
-  initialCategory = "",
   initialQuery = "",
 }: HomeClientProps) {
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [committedQuery, setCommittedQuery] = useState<string>(initialQuery);
   
@@ -67,42 +63,21 @@ export default function HomeClient({
   }, [router]);
 
   useEffect(() => {
-    setSelectedCategory(initialCategory);
-  }, [initialCategory]);
-
-  useEffect(() => {
     setSearchQuery(initialQuery);
     setCommittedQuery(initialQuery);
   }, [initialQuery]);
 
-  useEffect(() => {
-    if (!initialCategory) {
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      const articlesSection = document.getElementById("articles");
-      if (articlesSection) {
-        articlesSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [initialCategory]);
-
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory((current) => (category === current ? "" : category));
-
-    setTimeout(() => {
-      const articlesSection = document.getElementById("articles");
-      if (articlesSection) {
-        articlesSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 100);
-  };
-
   const handleSubmitSearch = () => {
     setCommittedQuery(searchQuery);
+    
+    // Atualizar a URL para refletir a busca
+    const url = new URL(window.location.href);
+    if (searchQuery && searchQuery.trim()) {
+      url.searchParams.set('q', searchQuery.trim());
+    } else {
+      url.searchParams.delete('q');
+    }
+    window.history.pushState({}, '', url.toString());
 
     setTimeout(() => {
       const articlesSection = document.getElementById("articles");
@@ -117,8 +92,6 @@ export default function HomeClient({
       <Header />
       <main className="flex-1">
         <Hero
-          selectedCategory={selectedCategory}
-          onCategorySelect={handleCategorySelect}
           searchQuery={searchQuery}
           onSearchQueryChange={setSearchQuery}
           onSubmitSearch={handleSubmitSearch}
@@ -127,7 +100,6 @@ export default function HomeClient({
           initialArticles={initialArticles}
           initialHasMore={initialHasMore}
           initialTotal={initialTotal}
-          selectedCategory={selectedCategory}
           searchQuery={committedQuery}
         />
       </main>

@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { findArticleBySlug } from "@/lib/articles";
+import { formatArticleText } from "@/lib/textUtils";
 
 // Extract arXiv ID from folder name
 // Handles formats:
@@ -264,7 +265,7 @@ export default async function ArticlePage({
           {/* Content */}
           <div className="prose prose-xl max-w-none dark:prose-invert prose-headings:font-bold prose-p:text-lg prose-p:leading-relaxed prose-p:text-foreground prose-li:text-lg prose-strong:text-foreground prose-p:text-justify">
             <div className="article-content whitespace-pre-wrap leading-relaxed text-lg text-justify">
-              {article.article.trim()}
+              {formatArticleText(article.article)}
             </div>
           </div>
 
