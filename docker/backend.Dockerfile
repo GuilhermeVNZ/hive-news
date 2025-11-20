@@ -13,10 +13,16 @@ RUN apt-get update \
 COPY . ./
 
 # Build the backend binary
-RUN cargo build --release --manifest-path news-backend/Cargo.toml --bin news-backend
+# Change to news-backend directory to ensure target is in the right place
+WORKDIR /app/news-backend
+RUN cargo build --release --bin news-backend
 
 # Build compression-prompt binary
-RUN cargo build --release --manifest-path compression-prompt-main/rust/Cargo.toml
+WORKDIR /app/compression-prompt-main/rust
+RUN cargo build --release
+
+# Return to /app for next stage
+WORKDIR /app
 
 
 FROM mcr.microsoft.com/playwright:v1.56.1-jammy AS runtime
@@ -38,7 +44,7 @@ COPY compression-prompt-main /app/compression-prompt-main
 WORKDIR /app/news-backend
 RUN npm ci --omit=dev
 
-# Copy compiled binaries
+# Copy compiled binaries from their respective target directories
 COPY --from=builder /app/news-backend/target/release/news-backend /usr/local/bin/news-backend
 COPY --from=builder /app/compression-prompt-main/rust/target/release/compress /usr/local/bin/compress
 
