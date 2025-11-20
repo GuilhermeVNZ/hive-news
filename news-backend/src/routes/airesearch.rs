@@ -44,6 +44,8 @@ struct Article {
     linkedin_post: Option<String>,
     #[serde(rename = "xPost", skip_serializing_if = "Option::is_none")]
     x_post: Option<String>,
+    #[serde(rename = "sourceUrl", skip_serializing_if = "Option::is_none")]
+    source_url: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -577,6 +579,19 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
         let linkedin_post = linkedin_raw.trim();
         let x_post = x_raw.trim();
         
+        // Get source URL from registry metadata (this is the original article URL used by the writer)
+        // For news articles, arxiv_url contains the original article URL, not an arXiv URL
+        // For arXiv papers, arxiv_url contains the arXiv abstract URL
+        // pdf_url contains the PDF URL (arXiv PDF for papers, or same as arxiv_url for news)
+        // Prefer pdf_url if it's different from arxiv_url (actual PDF), otherwise use arxiv_url (original source)
+        let source_url = if !metadata.pdf_url.is_empty() && metadata.pdf_url != metadata.arxiv_url {
+            Some(metadata.pdf_url.clone())
+        } else if !metadata.arxiv_url.is_empty() {
+            Some(metadata.arxiv_url.clone())
+        } else {
+            None
+        };
+        
         let article = Article {
             id: metadata.id.clone(),
             slug,
@@ -594,6 +609,7 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
             hidden,
             linkedin_post: if linkedin_post.is_empty() { None } else { Some(linkedin_post.to_string()) },
             x_post: if x_post.is_empty() { None } else { Some(x_post.to_string()) },
+            source_url,
         };
 
         articles_with_keys.push((published_at_dt, featured, metadata.id.clone(), article));
