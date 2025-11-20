@@ -142,11 +142,34 @@ Format:
 
 [Article body - based ONLY on paper content...]
 
+CRITICAL PARAGRAPH FORMATTING REQUIREMENTS (MUST FOLLOW):
+
+**MANDATORY**: The "article_text" field MUST be formatted with clear paragraphs separated by double line breaks (\n\n).
+
+**CRITICAL RULES FOR article_text FORMATTING**:
+- ✅ Each paragraph must be separated by TWO line breaks (\n\n)
+- ✅ Each paragraph should contain 2-4 sentences (not a wall of text)
+- ✅ The article MUST contain 6-8 distinct paragraphs (not 1 long block)
+- ✅ Use natural paragraph breaks to separate different ideas
+- ❌ DO NOT write everything as one continuous block of text
+- ❌ DO NOT use single line breaks (\n) between paragraphs
+- ❌ DO NOT omit paragraph breaks entirely
+
+**EXAMPLE OF CORRECT FORMAT**:
+```json
+"article_text": "This is the first paragraph with 2-4 sentences that introduces the topic.\n\nThis is the second paragraph that expands on the first idea with more details and context.\n\nThis is the third paragraph that transitions to a new aspect of the topic."
+```
+
+**EXAMPLE OF INCORRECT FORMAT** (DO NOT DO THIS):
+```json
+"article_text": "This is all one continuous block of text with no paragraph breaks making it hard to read and unprofessional even though it contains multiple ideas and concepts that should be separated into distinct paragraphs."
+```
+
 CRITICAL JSON FORMAT - YOU MUST FOLLOW THIS EXACT STRUCTURE:
 {
   "title": "Your title here",
   "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
-  "article_text": "Full article body text here - all content in one string field",
+  "article_text": "Full article body text here - MUST be formatted with paragraphs separated by \\n\\n (double line breaks). Each paragraph should be 2-4 sentences. Total of 6-8 paragraphs.",
   "image_categories": ["category1", "category2", "category3"],
   "linkedin_post": "Your LinkedIn post text here (300 chars max) - engaging summary for professionals",
   "x_post": "Your X/Twitter post text here (280 chars max) - concise, punchy, shareable",
