@@ -255,8 +255,11 @@ impl NewsWriterService {
                         
                         if all_files_exist {
                             // Verificar se é para o mesmo site
-                            let is_same_site = output_dir_resolved.to_string_lossy().contains(site_id)
-                                || output_dir_resolved.to_string_lossy().contains(&Self::get_site_output_dir(site_id).to_string_lossy());
+                            let output_dir_str = output_dir_resolved.to_string_lossy().to_string();
+                            let expected_site_dir = Self::get_site_output_dir(site_id);
+                            let expected_site_dir_str = expected_site_dir.to_string_lossy().to_string();
+                            let is_same_site = output_dir_str.contains(site_id)
+                                || output_dir_str.contains(&expected_site_dir_str);
                             
                             if is_same_site {
                                 println!("  │  ⏭️  Already published for {} - skipping", site_id);
