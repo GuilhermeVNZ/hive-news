@@ -793,3 +793,145 @@ pub async fn get_article_by_slug(
 
     Err((StatusCode::NOT_FOUND, "Article not found".to_string()))
 }
+
+/// Diagnóstico: Compara artigos na pasta output/AIResearch com o registry
+/// Retorna artigos que estão na pasta mas não estão sendo incluídos na API
+pub async fn diagnose_articles() -> Result<impl IntoResponse, (StatusCode, String)> {
+    let registry_path = path_resolver::resolve_workspace_path("articles_registry.json");
+    let output_dir = path_resolver::resolve_workspace_path("output/AIResearch");
+
+    let registry = ArticleRegistry::load(&registry_path).map_err(|err| {
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            format!("Failed to load registry: {}", err),
+        )
+    })?;
+
+    // 1. Listar todos os diretórios em output/AIResearch
+    let mut folders_in_output: Vec<String> = Vec::new();
+    if output_dir.is_dir() {
+        if let Ok(entries) = fs::read_dir(&output_dir) {
+            for entry in entries.flatten() {
+                if let Ok(file_type) = entry.file_type() {
+                    if file_type.is_dir() {
+                        if let Some(folder_name) = entry.file_name().to_str() {
+                            folders_in_output.push(folder_name.to_string());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 2. Analisar artigos no registry que DEVERIAM aparecer
+    let mut in_registry_published = 0;
+    let mut in_registry_with_output_dir = 0;
+    let mut in_registry_visible = 0;
+    let mut in_registry_in_airesearch = 0;
+    let mut missing_output_dir = Vec::new();
+    let mut hidden_articles = Vec::new();
+    let mut wrong_status = Vec::new();
+    let mut output_dir_not_exists = Vec::new();
+    let mut missing_article_file = Vec::new();
+    let mut empty_content = Vec::new();
+    let mut not_in_airesearch = Vec::new();
+
+    for (id, metadata) in registry.articles.iter() {
+        // Contar apenas Published
+        if matches!(metadata.status, crate::utils::article_registry::ArticleStatus::Published) {
+            in_registry_published += 1;
+
+            // Verificar output_dir
+            if let Some(output_path) = &metadata.output_dir {
+                in_registry_with_output_dir += 1;
+                let resolved_output = path_resolver::resolve_workspace_path(output_path);
+                
+                if resolved_output.is_dir() {
+                    // Verificar se é para airesearch
+                    let is_airesearch = metadata
+                        .destinations
+                        .as_ref()
+                        .map(|dests| dests.iter().any(|d| d.eq_ignore_ascii_case("airesearch")))
+                        .unwrap_or(false)
+                        || resolved_output.to_string_lossy().contains("AIResearch");
+
+                    if is_airesearch {
+                        in_registry_in_airesearch += 1;
+
+                        // Verificar se não está hidden
+                        if !metadata.hidden.unwrap_or(false) {
+                            in_registry_visible += 1;
+
+                            // Verificar se tem article.md
+                            if let Some(article_content) = read_first_existing_file(&resolved_output, &ARTICLE_FILES) {
+                                if article_content.trim().is_empty() {
+                                    empty_content.push(id.clone());
+                                }
+                            } else {
+                                missing_article_file.push(id.clone());
+                            }
+                        } else {
+                            hidden_articles.push(id.clone());
+                        }
+                    } else {
+                        not_in_airesearch.push(id.clone());
+                    }
+                } else {
+                    output_dir_not_exists.push((id.clone(), output_path.to_string_lossy().to_string()));
+                }
+            } else {
+                missing_output_dir.push(id.clone());
+            }
+        } else {
+            wrong_status.push((id.clone(), format!("{:?}", metadata.status)));
+        }
+    }
+
+    // 3. Encontrar pastas em output que não estão no registry
+    let folders_in_registry: HashSet<String> = registry.articles.values()
+        .filter_map(|m| m.output_dir.as_ref())
+        .filter_map(|p| {
+            let resolved = path_resolver::resolve_workspace_path(p);
+            resolved.file_name().and_then(|n| n.to_str()).map(|s| s.to_string())
+        })
+        .collect();
+
+    let folders_not_in_registry: Vec<String> = folders_in_output
+        .iter()
+        .filter(|folder| !folders_in_registry.contains(*folder))
+        .cloned()
+        .collect();
+
+    Ok(Json(json!({
+        "summary": {
+            "folders_in_output_dir": folders_in_output.len(),
+            "articles_in_registry": registry.articles.len(),
+            "articles_published": in_registry_published,
+            "articles_with_output_dir": in_registry_with_output_dir,
+            "articles_in_airesearch": in_registry_in_airesearch,
+            "articles_visible": in_registry_visible,
+        },
+        "issues": {
+            "folders_not_in_registry": folders_not_in_registry,
+            "folders_not_in_registry_count": folders_not_in_registry.len(),
+            "missing_output_dir": missing_output_dir,
+            "hidden_articles": hidden_articles,
+            "wrong_status": wrong_status,
+            "output_dir_not_exists": output_dir_not_exists,
+            "missing_article_file": missing_article_file,
+            "empty_content": empty_content,
+            "not_in_airesearch": not_in_airesearch,
+        },
+        "counts": {
+            "folders_in_output": folders_in_output.len(),
+            "folders_not_in_registry": folders_not_in_registry.len(),
+            "missing_output_dir_count": missing_output_dir.len(),
+            "hidden_count": hidden_articles.len(),
+            "wrong_status_count": wrong_status.len(),
+            "output_dir_not_exists_count": output_dir_not_exists.len(),
+            "missing_article_file_count": missing_article_file.len(),
+            "empty_content_count": empty_content.len(),
+            "not_in_airesearch_count": not_in_airesearch.len(),
+        }
+    })))
+}

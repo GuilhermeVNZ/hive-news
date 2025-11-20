@@ -4047,6 +4047,10 @@ async fn main() -> anyhow::Result<()> {
             "/api/airesearch/articles/:slug",
             get(routes::airesearch::get_article_by_slug),
         )
+        .route(
+            "/api/airesearch/diagnose",
+            get(routes::airesearch::diagnose_articles),
+        )
         .route("/api/articles", get(routes::scienceai::get_articles))
         .route("/api/categories", get(routes::scienceai::get_categories))
         .route("/api/subscribe", post(routes::subscribe::subscribe))
