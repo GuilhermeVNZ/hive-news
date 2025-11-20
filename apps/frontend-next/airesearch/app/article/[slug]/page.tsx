@@ -285,12 +285,12 @@ export default async function ArticlePage({
                 asChild
               >
                 <a
-                  href={`https://arxiv.org/pdf/${extractArxivId(article.id)}.pdf`}
+                  href={article.sourceUrl || `https://arxiv.org/pdf/${extractArxivId(article.id)}.pdf`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Download className="h-5 w-5" />
-                  Download PDF from arXiv
+                  {article.sourceUrl ? "View Original Article" : "Download PDF from arXiv"}
                 </a>
               </Button>
             </div>
