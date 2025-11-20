@@ -254,12 +254,50 @@ fn clean_duplicate_references(content: &str) -> String {
     cleaned_lines.join("\n")
 }
 
+/// Garante que cada parágrafo comece com letra maiúscula
+/// Processa quebras de linha duplas como separadores de parágrafo
+fn capitalize_paragraphs(content: &str) -> String {
+    let paragraphs: Vec<&str> = content.split("\n\n").collect();
+    let mut capitalized_paragraphs = Vec::new();
+    
+    for paragraph in paragraphs {
+        let trimmed = paragraph.trim();
+        if trimmed.is_empty() {
+            continue;
+        }
+        
+        // Encontrar a primeira letra alfabética e capitalizá-la
+        let mut chars: Vec<char> = trimmed.chars().collect();
+        let mut found_letter = false;
+        
+        for i in 0..chars.len() {
+            if chars[i].is_alphabetic() {
+                chars[i] = chars[i].to_uppercase().next().unwrap_or(chars[i]);
+                found_letter = true;
+                break;
+            }
+        }
+        
+        if found_letter {
+            capitalized_paragraphs.push(chars.into_iter().collect::<String>());
+        } else {
+            // Se não encontrou letra alfabética, manter original
+            capitalized_paragraphs.push(trimmed.to_string());
+        }
+    }
+    
+    capitalized_paragraphs.join("\n\n")
+}
+
 pub async fn save_article(output_dir: &Path, content: &str) -> Result<()> {
     // Limpar formatação markdown indesejada antes de salvar
     let mut cleaned_content = clean_markdown_formatting(content);
     
     // Limpar referências duplicadas e garantir apenas uma referência científica
     cleaned_content = clean_duplicate_references(&cleaned_content);
+    
+    // Garantir que cada parágrafo comece com letra maiúscula
+    cleaned_content = capitalize_paragraphs(&cleaned_content);
     
     fs::write(output_dir.join("article.md"), cleaned_content).await?;
     Ok(())
