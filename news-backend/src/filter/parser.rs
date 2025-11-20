@@ -62,34 +62,58 @@ pub fn parse_pdf(path: &Path) -> Result<ParsedPdf> {
 fn parse_pdf_text(path: &Path) -> Result<String> {
     use std::process::Command;
 
-    // Caminho para pdftotext instalado localmente
+    // Caminho para pdftotext - priorizar Docker, fallback para Windows local
     let pdftotext_path: PathBuf = std::env::var("PDFTOTEXT_PATH")
         .map(PathBuf::from)
         .unwrap_or_else(|_| {
-            resolve_workspace_path(
-                "apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe",
-            )
+            // Tentar Docker primeiro (Linux)
+            if PathBuf::from("/usr/bin/pdftotext").exists() {
+                PathBuf::from("/usr/bin/pdftotext")
+            } else {
+                // Fallback para Windows local
+                resolve_workspace_path(
+                    "apps/Release-25.07.0-0/poppler-25.07.0/Library/bin/pdftotext.exe",
+                )
+            }
         });
 
     // Verificar se pdftotext existe
     if pdftotext_path.exists() {
+        println!("🔧 [DEBUG] Using pdftotext at: {}", pdftotext_path.display());
         let output = Command::new(&pdftotext_path)
             .arg(path.as_os_str())
             .arg("-") // output para stdout
             .output()?;
 
+        println!("🔧 [DEBUG] pdftotext exit status: {}", output.status);
+        println!("🔧 [DEBUG] pdftotext stdout length: {} bytes", output.stdout.len());
+        
+        if !output.stderr.is_empty() {
+            let stderr_text = String::from_utf8_lossy(&output.stderr);
+            println!("🔧 [DEBUG] pdftotext stderr: {}", stderr_text);
+        }
+
         if output.status.success() {
             let text = String::from_utf8_lossy(&output.stdout);
+            println!("🔧 [DEBUG] Extracted text length: {} chars", text.len());
             if text.len() > 100 {
                 return Ok(text.to_string());
+            } else {
+                println!("🔧 [DEBUG] Text too short ({} chars), trying lopdf fallback", text.len());
             }
+        } else {
+            println!("🔧 [DEBUG] pdftotext failed with status: {}", output.status);
         }
+    } else {
+        println!("🔧 [DEBUG] pdftotext not found at: {}", pdftotext_path.display());
     }
 
     // Estratégia 2: Tentar lopdf (silenciando avisos de encoding)
+    println!("🔧 [DEBUG] Trying lopdf extraction for: {}", path.display());
     if let Ok(doc) = Document::load(path) {
         let mut full_text = String::new();
         let pages = doc.get_pages();
+        println!("🔧 [DEBUG] lopdf found {} pages", pages.len());
 
         if !pages.is_empty() {
             for (page_id, _) in pages.iter() {
@@ -99,11 +123,18 @@ fn parse_pdf_text(path: &Path) -> Result<String> {
                     full_text.push('\n');
                 }
             }
+            println!("🔧 [DEBUG] lopdf extracted {} chars total", full_text.len());
 
             if full_text.len() > 100 {
                 return Ok(full_text);
+            } else {
+                println!("🔧 [DEBUG] lopdf text too short ({} chars), trying raw bytes", full_text.len());
             }
+        } else {
+            println!("🔧 [DEBUG] lopdf found no pages");
         }
+    } else {
+        println!("🔧 [DEBUG] lopdf failed to load document");
     }
 
     // Estratégia 3: Leitura direta de bytes brutos
