@@ -9,7 +9,7 @@ export const Footer = () => {
   });
 
   return (
-    <footer className="bg-muted text-foreground mt-20" style={{ minHeight: '300px', containIntrinsicSize: 'auto 300px' }}>
+    <footer className="bg-muted text-foreground mt-20" style={{ minHeight: '300px' }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
