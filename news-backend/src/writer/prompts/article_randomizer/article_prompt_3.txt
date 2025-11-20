@@ -225,7 +225,52 @@ Source: Author, A., Author, B., & Author, C. (Year). Journal Name.
 
 ---
 
-## 13. REQUIRED JSON OUTPUT FORMAT
+## 13. CRITICAL ARTICLE CONTENT AND PARAGRAPH REQUIREMENTS (MUST FOLLOW):
+
+**MANDATORY**: The "article_text" field MUST contain a comprehensive, well-developed article with MINIMUM requirements:
+
+**MINIMUM CONTENT REQUIREMENTS**:
+- ✅ **MINIMUM 5 PARAGRAPHS** (not maximum - this is the absolute minimum)
+- ✅ **MINIMUM 600 words** (aim for 700-900 words to fully cover the paper content)
+- ✅ Each paragraph must be **substantial** (3-5 sentences, not 1-2 sentence fragments)
+- ✅ Paragraphs must be separated by **TWO line breaks (\n\n)** in the JSON string
+- ✅ **USE ALL RELEVANT CONTENT** from the provided paper text - do not summarize too aggressively
+- ✅ Cover all major sections: Introduction, Methodology, Results, Implications, Limitations
+- ❌ DO NOT write a short summary paragraph (this is NOT acceptable)
+- ❌ DO NOT write only 1-3 paragraphs regardless of paper length
+- ❌ DO NOT omit important details from the paper to keep it short
+
+**CRITICAL RULES FOR article_text FORMATTING**:
+- ✅ Each paragraph must be separated by TWO line breaks (\n\n)
+- ✅ Each paragraph should contain 3-5 substantial sentences (not 1-2)
+- ✅ The article MUST contain at LEAST 5 distinct paragraphs (6-8 is ideal)
+- ✅ Use natural paragraph breaks to separate different ideas/sections
+- ✅ Include substantial detail from the paper's methodology, results, and analysis
+- ❌ DO NOT write everything as one continuous block of text
+- ❌ DO NOT write a single short paragraph
+- ❌ DO NOT use single line breaks (\n) between paragraphs
+
+**CONTENT DEPTH REQUIREMENTS**:
+- **Opening Hook**: 2-3 sentences introducing the topic
+- **Key Finding**: 1 full paragraph explaining what was discovered (not 1-2 sentences)
+- **Methodology**: 1-2 paragraphs explaining HOW the research was conducted (use details from the paper)
+- **Results**: 1-2 paragraphs describing WHAT was found (reference specific figures, data, percentages from the paper)
+- **Implications**: 1 paragraph explaining WHY this matters
+- **Limitations**: 1 paragraph covering constraints and future work
+
+**EXAMPLE OF CORRECT FORMAT** (5+ paragraphs, substantial content):
+```json
+"article_text": "This is the first substantial paragraph with 3-5 sentences that introduces the topic and provides context about why this research matters.\n\nThis is the second paragraph that explains the key finding in detail, including specific numbers, percentages, or results mentioned in the paper. It should be a full paragraph, not just a sentence or two.\n\nThis is the third paragraph that describes the methodology used by the researchers. Include relevant details from the paper about how they conducted the study, what data they used, or what approach they took.\n\nThis is the fourth paragraph that analyzes the results in depth. Reference specific figures, tables, or data points from the paper. Explain what the results mean and their significance.\n\nThis is the fifth paragraph that discusses the implications and why this research matters for the field or for practical applications. Use information from the paper's discussion section.\n\nFinally, this is the sixth paragraph that covers limitations and future directions as mentioned by the authors in the paper."
+```
+
+**EXAMPLE OF INCORRECT FORMAT** (DO NOT DO THIS - too short, single paragraph):
+```json
+"article_text": "LinkedIn's professional landscape is ripe for an AI revolution. One turning point comes when we examine how hybrid neural networks could reshape how businesses understand sentiment on the platform. The authors position contextual nuance as the motivation for their hybrid BGRU-LSTM model, which achieved 95% accuracy in sentiment classification."
+```
+
+**⚠️ REMEMBER**: The paper text provided contains extensive detail. Your job is to transform this into an accessible article while preserving the depth and covering all major aspects. A single short paragraph is NEVER acceptable, regardless of compression requirements.
+
+## 14. REQUIRED JSON OUTPUT FORMAT
 
 **CRITICAL**: You MUST return your response as a valid JSON object. Do NOT use code blocks or markdown formatting.
 
@@ -235,7 +280,7 @@ You MUST return a JSON object with EXACTLY these fields:
 {
   "title": "Your final title here (max 8 words, strong hook)",
   "subtitle": "SEO-optimized subtitle (max 2 lines) - compelling summary that adds tension or explains significance",
-  "article_text": "Your full article here in Markdown format, 500–800 words, 6–8 paragraphs",
+  "article_text": "Your full article here - MINIMUM 5 paragraphs separated by \\n\\n, MINIMUM 600 words, covering all major sections of the paper (Introduction, Methodology, Results, Implications, Limitations). Each paragraph should be 3-5 sentences. Use substantial detail from the paper.",
   "image_categories": ["category1", "category2", "category3"],
   "x_post": "Your X/Twitter post here (max 280 characters) - concise, punchy, shareable",
   "linkedin_post": "Your LinkedIn post here (max 300 characters) - professional, engaging summary",

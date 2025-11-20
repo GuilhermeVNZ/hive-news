@@ -276,12 +276,31 @@ const nextConfig = {
   
   async rewrites() {
     const backendUrl = process.env.BACKEND_URL || 'http://localhost:3005';
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${backendUrl}/api/:path*`,
-      },
+    
+    // Lista de rotas válidas do backend - apenas essas serão feitas proxy
+    // Isso previne erros de proxy para rotas de bots/scanners que não existem
+    const validApiRoutes = [
+      '/api/airesearch/:path*',
+      '/api/articles',
+      '/api/categories',
+      '/api/subscribe',
+      '/api/health',
+      '/api/system/:path*',
+      '/api/logs/:path*',
+      '/api/auth/:path*',
+      '/api/sites/:path*',
+      '/api/prompts/:path*',
+      '/api/collectors/:path*',
+      '/api/pages/:path*',
+      '/api/sources/:path*',
+      '/api/courses/:path*',
+      '/api/collector/:path*',
     ];
+    
+    return validApiRoutes.map(route => ({
+      source: route,
+      destination: `${backendUrl}${route}`,
+    }));
   },
 };
 

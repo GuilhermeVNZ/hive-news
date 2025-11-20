@@ -213,10 +213,30 @@ impl CollectorService {
         let bytes = response.bytes().await?;
         let size = bytes.len();
 
+        // Validar tamanho mínimo (PDFs válidos geralmente têm pelo menos 1KB)
+        if size < 1024 {
+            return Err(anyhow::anyhow!(
+                "PDF too small ({} bytes) - likely empty or HTML/captcha page",
+                size
+            ));
+        }
+
         // Validar se é um PDF (verificar magic bytes)
         if bytes.len() > 4 && &bytes[0..4] != b"%PDF" {
+            // Verificar se é HTML (captcha page)
+            let text_preview = String::from_utf8_lossy(&bytes[0..size.min(500)]);
+            if text_preview.contains("<html") || text_preview.contains("<head") || 
+               text_preview.contains("<body") || text_preview.contains("captcha") ||
+               text_preview.contains("reCAPTCHA") || text_preview.contains("403") ||
+               text_preview.contains("Forbidden") || text_preview.contains("Access Denied") {
+                return Err(anyhow::anyhow!(
+                    "Invalid PDF - received HTML/captcha page instead of PDF (first 500 chars: {})",
+                    text_preview.chars().take(100).collect::<String>()
+                ));
+            }
             return Err(anyhow::anyhow!(
-                "Invalid PDF (got HTML or redirect, likely reCAPTCHA)"
+                "Invalid PDF (got HTML or redirect, likely reCAPTCHA) - first 4 bytes: {:?}",
+                &bytes[0..4.min(bytes.len())]
             ));
         }
 

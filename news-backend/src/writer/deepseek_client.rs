@@ -65,12 +65,26 @@ impl DeepSeekClient {
         println!("     {}", api_prompt_preview);
         
         let temp = temperature.unwrap_or(0.7);
+        
+        // CRITICAL: Add instructions about minimum article length in system message
+        // This ensures they are not removed by prompt compression
+        let system_message = r#"You are an expert technology journalist writing for a major international news portal (style: Wired, The Verge, TechCrunch).
+
+CRITICAL REQUIREMENTS FOR article_text FIELD:
+- MINIMUM 5 PARAGRAPHS (this is the absolute minimum, not a maximum)
+- MINIMUM 600 words (aim for 700-900 words)
+- Each paragraph must be substantial (3-5 sentences)
+- Paragraphs must be separated by \n\n (two line breaks)
+- DO NOT write a single short paragraph - this is NEVER acceptable
+- Cover all major sections: Introduction, Methodology, Results, Implications, Limitations
+- Use substantial detail from the paper provided"#;
+        
         let request_body = json!({
             "model": self.model,
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are an expert technology journalist writing for a major international news portal (style: Wired, The Verge, TechCrunch)."
+                    "content": system_message
                 },
                 {
                     "role": "user",

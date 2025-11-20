@@ -914,9 +914,9 @@ async fn main() -> anyhow::Result<()> {
                                 Ok(bytes) => {
                                     println!("   📦 Received {} bytes", bytes.len());
                                     
-                                    // Validate PDF format
-                                    if bytes.len() < 4 {
-                                        println!("   ❌ Response too small ({} bytes), not a valid PDF", bytes.len());
+                                    // Validate PDF format - check minimum size first
+                                    if bytes.len() < 1024 {
+                                        println!("   ❌ PDF too small ({} bytes) - likely empty or HTML/captcha page", bytes.len());
                                         if retry_count < max_retries && retry_count == 0 {
                                             retry_count += 1;
                                             println!("   🔄 Retrying with fallback URL...");
@@ -927,6 +927,22 @@ async fn main() -> anyhow::Result<()> {
                                     }
                                     
                                     if &bytes[0..4] != b"%PDF" {
+                                        // Check if it's HTML/captcha page
+                                        let text_preview = String::from_utf8_lossy(&bytes[0..bytes.len().min(500)]);
+                                        if text_preview.contains("<html") || text_preview.contains("<head") || 
+                                           text_preview.contains("<body") || text_preview.contains("captcha") ||
+                                           text_preview.contains("reCAPTCHA") || text_preview.contains("403") ||
+                                           text_preview.contains("Forbidden") || text_preview.contains("Access Denied") {
+                                            println!("   ❌ Received HTML/captcha page instead of PDF");
+                                            println!("   📄 Preview (first 100 chars): {}", text_preview.chars().take(100).collect::<String>());
+                                            if retry_count < max_retries && retry_count == 0 {
+                                                retry_count += 1;
+                                                println!("   🔄 Retrying with fallback URL...");
+                                                tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                                                continue;
+                                            }
+                                            break false;
+                                        }
                                         println!("   ❌ Invalid PDF format (first 4 bytes: {:?})", &bytes[0..4.min(bytes.len())]);
                                         if retry_count < max_retries && retry_count == 0 {
                                             retry_count += 1;
