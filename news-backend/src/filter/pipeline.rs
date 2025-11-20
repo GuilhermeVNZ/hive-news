@@ -57,16 +57,24 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
     let mut rejected_count = 0;
 
     for pdf_path in pdfs {
+        // CRITICAL: Log each PDF being processed
+        let article_id = pdf_path.file_stem().and_then(|s| s.to_str()).unwrap_or("unknown");
+        println!("   🔍 Processing PDF: {} ({})", article_id, pdf_path.file_name().and_then(|n| n.to_str()).unwrap_or("unknown"));
+        
         // Parse do PDF
         let parsed = match crate::filter::parser::parse_pdf(&pdf_path) {
             Ok(p) => {
                 // Verificar se extração de texto falhou (texto vazio)
                 if p.text.is_empty() || p.text.len() < 100 {
+                    println!("   ⚠️  PDF {}: Text extraction failed or very short ({} chars)", article_id, p.text.len());
                     extraction_failures += 1;
+                } else {
+                    println!("   ✅ PDF {}: Text extracted successfully ({} chars)", article_id, p.text.len());
                 }
                 p
             },
-            Err(_e) => {
+            Err(e) => {
+                println!("   ❌ PDF {}: Parse error - {}", article_id, e);
                 parse_errors += 1;
                 stats.rejected += 1;
                 continue;
@@ -77,6 +85,7 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         let source_type = detect_source_type(&parsed);
 
         if source_type == SourceType::NonScientific {
+            println!("   ⏭️  PDF {}: Non-scientific source, skipping", article_id);
             non_scientific += 1;
             stats.skipped += 1;
             continue;
@@ -84,21 +93,33 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
 
         // Se extração de texto falhou, tentar buscar metadados do arXiv como fallback
         let mut parsed_with_text = parsed;
-        if parsed_with_text.text.is_empty() || parsed_with_text.text.len() < 100 {
+        let used_fallback = parsed_with_text.text.is_empty() || parsed_with_text.text.len() < 100;
+        if used_fallback {
             // Tentar buscar abstract do arXiv via API
+            println!("   🔄 PDF {}: Attempting arXiv abstract fallback...", article_id);
             if let Some(arxiv_id) = pdf_path.file_stem().and_then(|s| s.to_str()) {
-                if let Ok(abstract_text) = fetch_arxiv_abstract(arxiv_id).await {
-                    if !abstract_text.is_empty() {
+                match fetch_arxiv_abstract(arxiv_id).await {
+                    Ok(abstract_text) if !abstract_text.is_empty() => {
+                        println!("   ✅ PDF {}: arXiv abstract retrieved ({} chars)", article_id, abstract_text.len());
                         // Atualizar o texto do parsed usando uma nova instância
                         parsed_with_text.text = abstract_text;
                     }
+                    Ok(_) => {
+                        println!("   ⚠️  PDF {}: arXiv abstract is empty", article_id);
+                    }
+                    Err(e) => {
+                        println!("   ⚠️  PDF {}: Failed to fetch arXiv abstract: {}", article_id, e);
+                    }
                 }
+            } else {
+                println!("   ⚠️  PDF {}: Cannot extract arxiv_id from filename", article_id);
             }
         }
 
         // Se ainda não tem texto suficiente, pular mas não rejeitar ainda
         // (pode ser um PDF válido que precisa de melhor extração)
         if parsed_with_text.text.is_empty() || parsed_with_text.text.len() < 50 {
+            println!("   ⏭️  PDF {}: Insufficient text after fallback ({} chars), skipping", article_id, parsed_with_text.text.len());
             extraction_failures += 1;
             stats.skipped += 1;
             continue;
@@ -108,15 +129,22 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         let has_tests = has_experimental_sections(&parsed_with_text) || parsed_with_text.text.len() > 500; // Se tem texto suficiente, assumir que pode ter testes
         let fake_penalty = calculate_fake_penalty(&parsed_with_text.text);
 
+        println!("   🔍 PDF {}: Filter checks - has_tests={}, fake_penalty={:.2}", article_id, has_tests, fake_penalty);
+
         if !has_tests || fake_penalty > 0.5 {
+            println!("   ❌ PDF {}: REJECTED - has_tests={}, fake_penalty={:.2}", article_id, has_tests, fake_penalty);
             rejected_count += 1;
             stats.rejected += 1;
             continue;
         }
+        
+        println!("   ✅ PDF {}: Passed initial filters, proceeding to validation...", article_id);
 
         // Validação via APIs
+        println!("   🔍 PDF {}: Validating via APIs (DOI, authors)...", article_id);
         let doi_ratio = validate_dois(&parsed_with_text.dois).await;
         let author_ratio = validate_authors(&parsed_with_text.authors).await;
+        println!("   📊 PDF {}: Validation results - DOI ratio: {:.2}, Author ratio: {:.2}", article_id, doi_ratio, author_ratio);
 
         let result = FilterResult {
             doc: parsed_with_text,
@@ -127,13 +155,14 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         };
 
         let score = calculate_score(&result);
+        println!("   📊 PDF {}: Calculated filter score: {:.2} (threshold: {:.2})", article_id, score, FILTER_THRESHOLD);
 
-        // Extrair article_id do caminho do PDF
-        let article_id = pdf_path.file_stem().and_then(|s| s.to_str()).unwrap_or("");
+        // Article ID já extraído acima no início do loop
 
         // Verificar se o artigo existe no registry antes de tentar atualizar
         // Se não existir, criar uma entrada básica primeiro
         if !registry.is_article_registered(article_id) {
+            println!("   📋 PDF {}: Not in registry, creating entry...", article_id);
             // Criar entrada básica no registry se não existir
             // Isso pode acontecer se o PDF foi descoberto antes do registro ser concluído
             let pdf_url = pdf_path.to_string_lossy().to_string();
@@ -149,13 +178,18 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
                 arxiv_url,
                 pdf_url,
             ) {
+                println!("   ❌ PDF {}: Failed to create registry entry: {}", article_id, e);
                 eprintln!(
                     "   ⚠️  Failed to create registry entry for article {}: {}",
                     article_id, e
                 );
                 stats.rejected += 1;
                 continue;
+            } else {
+                println!("   ✅ PDF {}: Registry entry created", article_id);
             }
+        } else {
+            println!("   ✅ PDF {}: Already in registry", article_id);
         }
 
         // Arredondar score para 2 casas decimais para evitar problemas de precisão float
@@ -166,29 +200,36 @@ pub async fn run_filter_pipeline(download_dir: &Path) -> Result<FilterStats> {
         if rounded_score >= FILTER_THRESHOLD {
             let category = categorize(&result.doc);
             println!(
-                "   Approved (score: {:.2}): {} → {}",
-                score, result.doc.title, category
+                "   ✅ PDF {}: APPROVED (score: {:.2} >= {:.2}) - {} → {}",
+                article_id, rounded_score, FILTER_THRESHOLD, result.doc.title, category
             );
             stats.approved += 1;
 
             // Mover para /filtered/<category>/ (ainda temporário - será deletado após writer)
+            println!("   📁 PDF {}: Moving to filtered/{}...", article_id, category);
             move_to_category(&pdf_path, &category, download_dir)?;
+            println!("   ✅ PDF {}: Moved to filtered/{}/", article_id, category);
 
             // Registrar no registry como filtered
             if let Err(e) = registry.register_filtered(article_id, score as f64, category.clone()) {
-                eprintln!("   ⚠️  Failed to register filtered article: {}", e);
+                eprintln!("   ⚠️  PDF {}: Failed to register filtered article: {}", article_id, e);
+            } else {
+                println!("   ✅ PDF {}: Registered as filtered in registry", article_id);
             }
 
             // Nota: PDF será deletado após writer processar (não deletar aqui ainda)
         } else {
-            println!("   Rejected (score: {:.2}): {}", score, result.doc.title);
+            println!("   ❌ PDF {}: REJECTED (score: {:.2} < {:.2}) - {}", article_id, rounded_score, FILTER_THRESHOLD, result.doc.title);
             stats.rejected += 1;
 
             // Registrar no registry como rejected ANTES de mover/deletar
             let reason = format!("Score {:.2} below threshold {:.2}", score, FILTER_THRESHOLD);
             if let Err(e) = registry.register_rejected(article_id, score as f64, reason.clone()) {
+                println!("   ⚠️  PDF {}: Failed to register rejected article: {}", article_id, e);
                 eprintln!("   ⚠️  Failed to register rejected article: {}", e);
                 // Se falhou porque o artigo não existe, já foi tratado acima
+            } else {
+                println!("   ✅ PDF {}: Registered as rejected in registry", article_id);
             }
 
             // Verificar se o arquivo ainda existe antes de tentar mover

@@ -4146,21 +4146,40 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
 
     // Scan filtered directory for approved PDFs
     let filtered_dir = get_downloads_dir().join("filtered");
+    println!("🔍 Scanning filtered directory: {}", filtered_dir.display());
     let all_approved_pdfs = scan_filtered_directory(&filtered_dir)?;
 
     println!(
         "📄 Found {} approved documents in filtered/\n",
         all_approved_pdfs.len()
     );
+    
+    // CRITICAL: Log each PDF found in filtered directory
+    if !all_approved_pdfs.is_empty() {
+        println!("📋 PDFs found in filtered/ directory:");
+        for (idx, pdf_path) in all_approved_pdfs.iter().enumerate() {
+            let article_id = pdf_path.file_stem().and_then(|s| s.to_str()).unwrap_or("unknown");
+            let category = pdf_path.parent()
+                .and_then(|p| p.file_name())
+                .and_then(|n| n.to_str())
+                .unwrap_or("unknown");
+            println!("   [{}/{}] {} ({})", idx + 1, all_approved_pdfs.len(), article_id, category);
+        }
+        println!();
+    }
 
     if all_approved_pdfs.is_empty() {
         println!("⚠️  No filtered PDFs found in downloads/filtered/");
-        println!("   Run collector first to generate content");
+        println!("   Possible reasons:");
+        println!("   - Filter rejected all PDFs");
+        println!("   - Filter hasn't run yet (run 'filter' command)");
+        println!("   - PDFs are in wrong directory");
         return Ok(());
     }
 
     // Filtrar apenas PDFs ainda não processados (filtered mas não published)
     let mut pending_pdfs = Vec::new();
+    let mut skipped_pdfs = Vec::new();
     let site = writer.get_site();
     let _output_base = writer.get_output_base();
 
@@ -4174,9 +4193,18 @@ async fn run_writer_pipeline() -> anyhow::Result<()> {
         if !registry.is_article_published(article_id) {
             pending_pdfs.push(pdf_path.clone());
         } else {
+            skipped_pdfs.push((article_id, pdf_path.clone()));
             println!("⏭️  Skipping {} (already published)", article_id);
         }
     }
+    
+    // CRITICAL: Log summary
+    println!(
+        "📊 Summary: {} total filtered PDFs, {} pending, {} already published\n",
+        all_approved_pdfs.len(),
+        pending_pdfs.len(),
+        skipped_pdfs.len()
+    );
 
     println!(
         "📝 {} new documents to process for {}\n",
