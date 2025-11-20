@@ -157,8 +157,21 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
     ? (firstArticle.imageCarousel || firstArticle.image || selectArticleImage(firstArticle.imageCategories, firstArticle.id))
     : null;
 
-  // Obter artigo atual do slide visível - usar diretamente para garantir que o link sempre aponte para o artigo correto
-  const currentArticle = finalCarouselArticles[currentSlide];
+  // Preload da imagem LCP no head (mais eficiente que componente)
+  useEffect(() => {
+    if (firstImageUrl) {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = firstImageUrl;
+      link.fetchPriority = 'high';
+      document.head.appendChild(link);
+      
+      return () => {
+        document.head.removeChild(link);
+      };
+    }
+  }, [firstImageUrl]);
 
   return (
     <section className="relative h-[600px] w-full overflow-hidden rounded-xl">
@@ -242,19 +255,21 @@ export const HeroCarousel = memo(({ articles, categories }: HeroCarouselProps) =
       })}
 
       {/* Botão de link - renderizado uma única vez usando o artigo atual visível */}
-      {currentArticle && currentArticle.slug && (
+      {/* CRÍTICO: Usar o artigo do slide visível diretamente do array para garantir sincronização */}
+      {finalCarouselArticles[currentSlide] && finalCarouselArticles[currentSlide].slug && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
               <Link 
-                to={`/article/${currentArticle.slug}`}
-                state={{ articleId: currentArticle.id }}
+                to={`/article/${finalCarouselArticles[currentSlide].slug}`}
+                state={{ articleId: finalCarouselArticles[currentSlide].id }}
                 className="block"
-                aria-label={`Read full story: ${currentArticle.title}`}
+                aria-label={`Read full story: ${finalCarouselArticles[currentSlide].title}`}
                 onClick={(e) => {
                   // Garantir que o clique vai para o artigo correto do slide atual
                   e.stopPropagation();
-                  console.debug(`[Carousel] Navigating to article: ${currentArticle.slug} (ID: ${currentArticle.id}, Title: ${currentArticle.title})`);
+                  const clickedArticle = finalCarouselArticles[currentSlide];
+                  console.debug(`[Carousel] Navigating to article: ${clickedArticle.slug} (ID: ${clickedArticle.id}, Title: ${clickedArticle.title}, Slide: ${currentSlide})`);
                 }}
               >
                 <Button size="lg" className="gradient-primary">

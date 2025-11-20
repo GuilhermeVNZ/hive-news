@@ -297,6 +297,9 @@ const Index = () => {
         </div>
       </main>
 
+      {/* Placeholder para prevenir CLS do footer (0.376) */}
+      <div style={{ minHeight: '300px' }} aria-hidden="true" />
+      
       <Footer />
     </div>
   );

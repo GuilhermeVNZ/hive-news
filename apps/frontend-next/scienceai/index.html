@@ -14,12 +14,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
+    <!-- Preconnect para backend API (reduz latência de 3.340ms) -->
+    <link rel="preconnect" href="https://backend.scienceai.news" />
+    <link rel="dns-prefetch" href="https://backend.scienceai.news" />
+    
     <!-- Preconnect para APIs externas comuns -->
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Preload de recursos críticos - apenas favicon, logo será carregado depois -->
+    <!-- Preload de recursos críticos -->
     <link rel="preload" href="/favicon.png" as="image" type="image/png" />
+    <link rel="preload" href="/scienceai-logo.png" as="image" type="image/png" />
 
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
