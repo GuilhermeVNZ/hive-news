@@ -226,8 +226,8 @@ GOOD TITLES (short, hooky, irresistible):
 }
 
 /// Loads a random prompt from the news_randomizer directory
-/// Returns the prompt with {paper_text} placeholder replaced by the actual article JSON
-pub fn load_random_news_prompt(article_json: &str) -> Result<String> {
+/// Returns the prompt with {paper_text} placeholder replaced by the actual article text
+pub fn load_random_news_prompt(article_text: &str) -> Result<String> {
     // Use relative path that works both locally and in Docker
     // The prompts directory is at: src/writer/prompts/news_randomizer/
     
@@ -268,12 +268,12 @@ pub fn load_random_news_prompt(article_json: &str) -> Result<String> {
     let prompt_template = fs::read_to_string(selected_file)
         .with_context(|| format!("Failed to read prompt file: {}", selected_file.display()))?;
     
-    // Replace {paper_text} placeholder with article JSON
+    // Replace {paper_text} placeholder with actual article text
     let final_prompt = if prompt_template.contains("{paper_text}") {
-        prompt_template.replace("{paper_text}", article_json)
+        prompt_template.replace("{paper_text}", article_text)
     } else {
-        // If no placeholder, append JSON at the end (backward compatibility)
-        format!("{}\n\n## ARTICLE JSON:\n{}", prompt_template, article_json)
+        // If no placeholder, append article text at the end (backward compatibility)
+        format!("{}\n\n## ARTICLE TEXT (YOUR ONLY SOURCE):\n{}", prompt_template, article_text)
     };
     
     println!(

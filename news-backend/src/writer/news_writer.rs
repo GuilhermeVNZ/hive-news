@@ -326,9 +326,36 @@ impl NewsWriterService {
         // Get temperature for blog prompt from config
         let temperature_blog = site_config.temperature_blog.unwrap_or(0.7);
 
-        // Build prompt with article JSON
-        let article_json = serde_json::to_string_pretty(article)?;
-        
+        // CRITICAL: Extract the actual article text content, not the full JSON
+        // The prompts expect {paper_text} to contain the actual article content, not metadata
+        let article_text = article.content_text
+            .as_ref()
+            .or_else(|| article.content_html.as_ref())
+            .or_else(|| article.summary.as_ref())
+            .map(|s| s.as_str())
+            .unwrap_or_else(|| {
+                eprintln!("    │  ⚠️  WARNING: No content_text, content_html, or summary found in article!");
+                eprintln!("    │  ⚠️  Article ID: {}, URL: {}", article.id, article.url);
+                eprintln!("    │  ⚠️  Using title as fallback (this may result in poor article generation)");
+                ""
+            });
+
+        // If article_text is empty, try to use title as minimal fallback
+        let paper_text = if article_text.is_empty() {
+            eprintln!("    │  ⚠️  CRITICAL: Article text is empty! Using title as fallback.");
+            eprintln!("    │  ⚠️  This article may not generate correctly. Check collection process.");
+            article.original_title.as_ref().unwrap_or(&article.title).as_str()
+        } else {
+            article_text
+        };
+
+        // Log content info for debugging
+        println!("    │  📄 Article text length: {} characters", paper_text.len());
+        if paper_text.len() < 100 {
+            eprintln!("    │  ⚠️  WARNING: Article text is very short ({} chars). This may cause poor generation.", paper_text.len());
+        }
+
+        // Build prompt with article text (not full JSON)
         // Get blog prompt (use custom if enabled, otherwise try randomized, fallback to default)
         let full_prompt = if site_config.prompt_blog_enabled.unwrap_or(false) {
             // Use custom prompt from config
@@ -337,17 +364,18 @@ impl NewsWriterService {
                 .clone()
                 .unwrap_or_else(Self::default_blog_prompt);
             
-            // Replace {{paper_text}} or {paper_text} if present, otherwise append JSON
+            // Replace {{paper_text}} or {paper_text} with actual article text
             if blog_prompt.contains("{{paper_text}}") {
-                blog_prompt.replace("{{paper_text}}", &article_json)
+                blog_prompt.replace("{{paper_text}}", paper_text)
             } else if blog_prompt.contains("{paper_text}") {
-                blog_prompt.replace("{paper_text}", &article_json)
+                blog_prompt.replace("{paper_text}", paper_text)
             } else {
-                format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json)
+                // If no placeholder, append article text (not full JSON)
+                format!("{}\n\n## ARTICLE TEXT (YOUR ONLY SOURCE):\n{}", blog_prompt, paper_text)
             }
         } else {
             // Try to use randomized prompt, fallback to default if it fails
-            match load_random_news_prompt(&article_json) {
+            match load_random_news_prompt(paper_text) {
                 Ok(random_prompt) => {
                     println!("    │  🎲 Using randomized news prompt from news_randomizer");
                     random_prompt
@@ -356,7 +384,7 @@ impl NewsWriterService {
                     println!("    │  ⚠️  Failed to load randomized prompt: {}", e);
                     println!("    │  📝 Falling back to default blog prompt");
                     let blog_prompt = Self::default_blog_prompt();
-                    format!("{}\n\n## ARTICLE JSON:\n{}", blog_prompt, article_json)
+                    format!("{}\n\n## ARTICLE TEXT (YOUR ONLY SOURCE):\n{}", blog_prompt, paper_text)
                 }
             }
         };
