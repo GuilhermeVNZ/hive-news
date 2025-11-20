@@ -337,10 +337,46 @@ impl WriterService {
     pub async fn process_pdf(&self, pdf_path: &Path) -> Result<GeneratedContent> {
         // 1. Extract text from PDF
         println!("  📄 Parsing PDF...");
-        let parsed = parse_pdf(pdf_path)?;
+        println!("  📂 PDF path: {}", pdf_path.display());
+        
+        let parsed = match parse_pdf(pdf_path) {
+            Ok(p) => {
+                // Log texto extraído para debug
+                println!("  ✅ PDF parsed successfully");
+                println!("  📊 Extracted text length: {} characters", p.text.len());
+                println!("  📝 Title extracted: {}", p.title);
+                
+                // Log primeiros 200 caracteres do texto para verificar se é diferente
+                let text_preview = if p.text.len() > 200 {
+                    format!("{}...", &p.text[..200])
+                } else {
+                    p.text.clone()
+                };
+                println!("  🔍 Text preview (first 200 chars): {}", text_preview);
+                
+                // Verificar se texto está vazio ou muito curto
+                if p.text.is_empty() {
+                    eprintln!("  ❌ CRITICAL: Extracted text is EMPTY!");
+                    eprintln!("  ⚠️  This PDF will not generate correct content.");
+                    return Err(anyhow::anyhow!("PDF text extraction returned empty text for {}", pdf_path.display()));
+                }
+                
+                if p.text.len() < 100 {
+                    eprintln!("  ⚠️  WARNING: Extracted text is very short ({} chars). This may cause poor generation.", p.text.len());
+                }
+                
+                p
+            }
+            Err(e) => {
+                eprintln!("  ❌ CRITICAL: Failed to parse PDF: {}", e);
+                eprintln!("  📂 PDF path: {}", pdf_path.display());
+                return Err(e).with_context(|| format!("Failed to parse PDF: {}", pdf_path.display()));
+            }
+        };
 
         // 2. Extract article ID (sem criar pasta ainda)
         let article_id = extract_article_id(pdf_path);
+        println!("  🆔 Article ID: {}", article_id);
 
         // Map site_id to correct output directory name
         let output_dir_name = match self.site_id.to_lowercase().as_str() {
@@ -358,28 +394,43 @@ impl WriterService {
 
         // 3. PHASE 1: Generate article
         println!("  📝 Building article prompt for: {}", self.site);
+        println!("  📊 Paper text length: {} characters", parsed.text.len());
+        
+        // Log hash do texto para verificar se é diferente entre PDFs
+        use std::collections::hash_map::DefaultHasher;
+        use std::hash::{Hash, Hasher};
+        let mut hasher = DefaultHasher::new();
+        parsed.text.hash(&mut hasher);
+        let text_hash = hasher.finish();
+        println!("  🔍 Text hash (for uniqueness check): {}", text_hash);
+        
         let article_prompt = if let Some(ref custom_prompt) = self.prompt_article {
             println!("  📝 Using custom article prompt from config");
             // Replace {{paper_text}} placeholder if present, otherwise prepend paper text
-            if custom_prompt.contains("{{paper_text}}") {
+            let prompt = if custom_prompt.contains("{{paper_text}}") {
                 custom_prompt.replace("{{paper_text}}", &parsed.text)
             } else {
                 format!(
                     "{}\n\n## PAPER TEXT (YOUR ONLY SOURCE):\n{}",
                     custom_prompt, &parsed.text
                 )
-            }
+            };
+            println!("  📊 Final prompt length: {} characters", prompt.len());
+            prompt
         } else {
             // Try to use randomized prompt, fallback to default if it fails
             match load_random_article_prompt(&parsed.text) {
                 Ok(random_prompt) => {
                     println!("  🎲 Using randomized prompt from article_randomizer");
+                    println!("  📊 Final prompt length: {} characters", random_prompt.len());
                     random_prompt
                 }
                 Err(e) => {
-                    println!("  ⚠️  Failed to load randomized prompt: {}", e);
+                    eprintln!("  ⚠️  Failed to load randomized prompt: {}", e);
                     println!("  📝 Falling back to default article prompt");
-                    build_article_prompt(&parsed.text, &[], &self.site)
+                    let default_prompt = build_article_prompt(&parsed.text, &[], &self.site);
+                    println!("  📊 Final prompt length: {} characters", default_prompt.len());
+                    default_prompt
                 }
             }
         };
