@@ -644,6 +644,14 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
                             continue;
                         }
                         
+                        // Verificar se está marcado como hidden (arquivo .hidden na pasta)
+                        let hidden_file = output_dir.join(".hidden");
+                        let is_hidden = hidden_file.exists();
+                        
+                        if is_hidden {
+                            continue; // Pular artigos hidden mesmo sem registry
+                        }
+                        
                         // Verificar se tem os arquivos necessários
                         let article_content = match read_first_existing_file(&output_dir, &ARTICLE_FILES) {
                             Some(content) => content.trim().to_string(),

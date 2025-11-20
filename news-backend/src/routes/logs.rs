@@ -543,25 +543,93 @@ pub async fn set_hidden(
         article_id_to_update, body.hidden, actual_title_from_fs
     );
 
-    // Usar método thread-safe do RegistryManager
-    match manager.set_hidden(&article_id_to_update, body.hidden) {
-        Ok(_) => {
-            tracing::info!(
-                "Successfully updated hidden status for article: {} (fs_title: {:?})",
-                article_id_to_update,
-                actual_title_from_fs
-            );
-            Json(serde_json::json!({"success": true}))
+    // Tentar atualizar no registry primeiro
+    let registry_updated = manager.set_hidden(&article_id_to_update, body.hidden).is_ok();
+    
+    // Se não encontrou no registry, criar/remover arquivo .hidden na pasta do artigo
+    if !registry_updated {
+        // Procurar pasta do artigo em output/AIResearch ou output/ScienceAI
+        let mut article_folder: Option<std::path::PathBuf> = None;
+        
+        for site_output_dir in &site_dirs {
+            if let Ok(entries) = fs::read_dir(site_output_dir) {
+                for entry in entries.flatten() {
+                    let folder_name = entry.file_name().to_string_lossy().to_string();
+                    // Verificar se a pasta contém o ID do artigo
+                    if folder_name.contains(&article_id_to_update) || 
+                       (arxiv_id.is_some() && folder_name.contains(arxiv_id.as_ref().unwrap())) {
+                        let folder_path = entry.path();
+                        if folder_path.is_dir() {
+                            article_folder = Some(folder_path);
+                            break;
+                        }
+                    }
+                }
+            }
+            if article_folder.is_some() {
+                break;
+            }
         }
-        Err(e) => {
-            tracing::error!(
-                "Failed to update hidden status for article {}: {}",
-                article_id_to_update,
-                e
+        
+        if let Some(folder) = article_folder {
+            let hidden_file = folder.join(".hidden");
+            if body.hidden {
+                // Criar arquivo .hidden
+                if let Err(e) = fs::write(&hidden_file, "") {
+                    tracing::error!(
+                        "Failed to create .hidden file for article {}: {}",
+                        article_id_to_update,
+                        e
+                    );
+                    return Json(serde_json::json!({
+                        "success": false,
+                        "error": format!("Failed to create .hidden file: {}", e)
+                    }));
+                }
+                tracing::info!(
+                    "Created .hidden file for article {} (not in registry)",
+                    article_id_to_update
+                );
+            } else {
+                // Remover arquivo .hidden
+                if hidden_file.exists() {
+                    if let Err(e) = fs::remove_file(&hidden_file) {
+                        tracing::error!(
+                            "Failed to remove .hidden file for article {}: {}",
+                            article_id_to_update,
+                            e
+                        );
+                        return Json(serde_json::json!({
+                            "success": false,
+                            "error": format!("Failed to remove .hidden file: {}", e)
+                        }));
+                    }
+                    tracing::info!(
+                        "Removed .hidden file for article {} (not in registry)",
+                        article_id_to_update
+                    );
+                }
+            }
+            return Json(serde_json::json!({"success": true}));
+        } else {
+            tracing::warn!(
+                "Article {} not found in registry or filesystem",
+                article_id_to_update
             );
-            Json(serde_json::json!({"success": false, "error": format!("{}", e)}))
+            return Json(serde_json::json!({
+                "success": false,
+                "error": format!("Article '{}' not found in registry or filesystem", article_id_to_update)
+            }));
         }
     }
+    
+    // Se chegou aqui, atualizou no registry com sucesso
+    tracing::info!(
+        "Successfully updated hidden status for article: {} (fs_title: {:?})",
+        article_id_to_update,
+        actual_title_from_fs
+    );
+    Json(serde_json::json!({"success": true}))
 }
 
 #[derive(Debug, Serialize)]
