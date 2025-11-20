@@ -68,14 +68,17 @@ export default function HomeClient({
   }, [initialQuery]);
 
   const handleSubmitSearch = () => {
+    console.log('[HomeClient] Search submitted:', searchQuery);
     setCommittedQuery(searchQuery);
     
     // Atualizar a URL para refletir a busca
     const url = new URL(window.location.href);
     if (searchQuery && searchQuery.trim()) {
       url.searchParams.set('q', searchQuery.trim());
+      console.log('[HomeClient] URL updated with query:', searchQuery.trim());
     } else {
       url.searchParams.delete('q');
+      console.log('[HomeClient] Query removed from URL');
     }
     window.history.pushState({}, '', url.toString());
 

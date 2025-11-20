@@ -18,7 +18,7 @@ const Hero = memo(({
 }: HeroProps) => {
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-10 md:py-16">
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background py-6 md:py-8">
       {/* Animated Background Blobs - Otimizado com transform apenas */}
       {/* Usa apenas transform e opacity para melhor performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
