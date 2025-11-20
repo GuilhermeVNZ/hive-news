@@ -70,13 +70,17 @@ export default function Dashboard() {
         if (sysRes.data?.success) setSys({ output_size_bytes: sysRes.data.output_size_bytes, images_size_bytes: sysRes.data.images_size_bytes });
         if (configRes?.data?.loop_config) {
           setLoopConfig(configRes.data.loop_config);
-          setIsLoopRunning(configRes.data.loop_config.enabled || false);
         }
         if (statsRes?.data?.success) {
           setLoopStats(statsRes.data);
         }
         if (collectionRes?.data?.success) {
           setCollectionStatus(collectionRes.data);
+          // Sincronizar isLoopRunning com collectionStatus.enabled (mais confiável)
+          setIsLoopRunning(collectionRes.data.enabled || false);
+        } else if (configRes?.data?.loop_config) {
+          // Fallback: usar config se collectionStatus não disponível
+          setIsLoopRunning(configRes.data.loop_config.enabled || false);
         }
         if (servicesRes?.data?.success) {
           setServicesStatus(servicesRes.data.services || {});
@@ -209,16 +213,27 @@ export default function Dashboard() {
                   className="flex-1"
                   onClick={async () => {
                     try {
-                      await axios.post('/api/system/loop/start', loopConfig);
-                      setIsLoopRunning(true);
+                      const response = await axios.post('/api/system/loop/start', loopConfig);
                       setError('');
+                      // Recarregar status do backend para sincronizar
+                      const [configRes, collectionRes] = await Promise.all([
+                        axios.get('/api/system/config').catch(() => null),
+                        axios.get('/api/system/collection/status').catch(() => null)
+                      ]);
+                      if (configRes?.data?.loop_config) {
+                        setLoopConfig(configRes.data.loop_config);
+                        setIsLoopRunning(configRes.data.loop_config.enabled || false);
+                      }
+                      if (collectionRes?.data?.success) {
+                        setCollectionStatus(collectionRes.data);
+                      }
                     } catch (e: any) {
                       setError(e.response?.data?.error || e.message);
                     }
                   }}
                 >
                   <Play size={16} className="mr-2" />
-                  Start Loop
+                  Start Pipeline
                 </Button>
               ) : (
                 <Button
@@ -227,15 +242,26 @@ export default function Dashboard() {
                   onClick={async () => {
                     try {
                       await axios.post('/api/system/loop/stop');
-                      setIsLoopRunning(false);
                       setError('');
+                      // Recarregar status do backend para sincronizar
+                      const [configRes, collectionRes] = await Promise.all([
+                        axios.get('/api/system/config').catch(() => null),
+                        axios.get('/api/system/collection/status').catch(() => null)
+                      ]);
+                      if (configRes?.data?.loop_config) {
+                        setLoopConfig(configRes.data.loop_config);
+                        setIsLoopRunning(configRes.data.loop_config.enabled || false);
+                      }
+                      if (collectionRes?.data?.success) {
+                        setCollectionStatus(collectionRes.data);
+                      }
                     } catch (e: any) {
                       setError(e.response?.data?.error || e.message);
                     }
                   }}
                 >
                   <Square size={16} className="mr-2" />
-                  Stop Loop
+                  Stop Pipeline
                 </Button>
               )}
             </div>
