@@ -240,6 +240,48 @@ impl NewsWriterService {
             );
 
             // Verificar se o artigo já foi processado para este site específico
+            // PRIMEIRO: Verificar no registry se já está Published
+            let metadata = self.registry.get_metadata(&article.id);
+            if let Some(meta) = metadata {
+                use crate::utils::article_registry::ArticleStatus;
+                if matches!(meta.status, ArticleStatus::Published) {
+                    // Verificar se tem output_dir e se os arquivos existem
+                    if let Some(output_dir_rel) = &meta.output_dir {
+                        let output_dir_resolved = crate::utils::path_resolver::resolve_workspace_path(output_dir_rel);
+                        let required_files = vec!["title.txt", "article.md", "slug.txt"];
+                        let all_files_exist = output_dir_resolved.is_dir() && required_files.iter().all(|file_name| {
+                            output_dir_resolved.join(file_name).exists()
+                        });
+                        
+                        if all_files_exist {
+                            // Verificar se é para o mesmo site
+                            let is_same_site = output_dir_resolved.to_string_lossy().contains(site_id)
+                                || output_dir_resolved.to_string_lossy().contains(&Self::get_site_output_dir(site_id).to_string_lossy());
+                            
+                            if is_same_site {
+                                println!("  │  ⏭️  Already published for {} - skipping", site_id);
+                                println!("  │      Output dir: {}", output_dir_resolved.display());
+                                println!("  │      Status: Published");
+                                println!("  └─\n");
+                                let site_name = config_manager
+                                    .get_site_config(site_id)
+                                    .ok()
+                                    .flatten()
+                                    .map(|config| config.name)
+                                    .unwrap_or_else(|| site_id.to_string());
+                                results.push(NewsWriterResult {
+                                    output_dir: output_dir_resolved,
+                                    site_id: site_id.to_string(),
+                                    site_name,
+                                });
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // SEGUNDO: Verificar se os arquivos já existem no caminho esperado
             let site_output_dir = Self::get_site_output_dir(site_id);
             let source_category = Self::detect_source_category(&article.url, article.original_title.as_ref().unwrap_or(&article.title));
             let standardized_folder_name = format!("{}_{}_{}", collection_date, source_category, article.id);
@@ -252,7 +294,7 @@ impl NewsWriterService {
             });
 
             if already_processed {
-                println!("  │  ⏭️  Already processed for {} - skipping", site_id);
+                println!("  │  ⏭️  Already processed for {} - skipping (files exist)", site_id);
                 println!("  │      Output dir: {}", article_output_dir.display());
                 println!("  └─\n");
                 // Adicionar resultado mesmo que já processado para manter consistência

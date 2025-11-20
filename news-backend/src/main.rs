@@ -3112,10 +3112,13 @@ async fn main() -> anyhow::Result<()> {
             if let Some(metadata) = registry.get_metadata(article_id) {
                 use crate::utils::article_registry::ArticleStatus;
                 if matches!(metadata.status, ArticleStatus::Published) {
-                    if let Some(output_dir) = &metadata.output_dir {
+                    if let Some(output_dir_rel) = &metadata.output_dir {
+                        // Resolver caminho completo usando resolve_workspace_path
+                        let output_dir = crate::utils::path_resolver::resolve_workspace_path(output_dir_rel);
+                        
                         // Verificar se os arquivos realmente existem
                         let required_files = vec!["title.txt", "article.md", "slug.txt"];
-                        let all_files_exist = required_files.iter().all(|file_name| {
+                        let all_files_exist = output_dir.is_dir() && required_files.iter().all(|file_name| {
                             output_dir.join(file_name).exists()
                         });
                         
@@ -3127,7 +3130,13 @@ async fn main() -> anyhow::Result<()> {
                             continue; // Skip this article - already processed
                         } else {
                             println!("  ⚠️  Article marked as Published but files missing - reprocessing");
-                            println!("      Output dir: {}", output_dir.display());
+                            println!("      Output dir (registry): {}", output_dir_rel.display());
+                            println!("      Output dir (resolved): {}", output_dir.display());
+                            if !output_dir.is_dir() {
+                                println!("      ⚠️  Directory does not exist!");
+                            } else {
+                                println!("      ⚠️  Missing required files!");
+                            }
                         }
                     } else {
                         println!("  ⚠️  Article marked as Published but no output_dir - reprocessing");
