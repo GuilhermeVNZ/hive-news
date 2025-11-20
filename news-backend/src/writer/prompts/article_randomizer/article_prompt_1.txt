@@ -274,15 +274,17 @@ In both cases:
 **CRITICAL RULES FOR REFERENCES:**
 
 - **ONLY ONE REFERENCE**: Add exactly ONE reference at the end of the article body in `article.md`
-- **SCIENTIFIC NOTATION**: Use proper scientific citation format (Author et al., Year. Title. Journal/Publication. URL)
+- **SCIENTIFIC NOTATION**: Use proper scientific citation format with ONLY: Author names, Year, Journal/Publication name
 - **SOURCE ARTICLE ONLY**: Reference ONLY the source article provided in {paper_text}
 - **NO MULTIPLE REFERENCES**: Do NOT add multiple references, bibliography sections, or works cited
 - **NO DUPLICATES**: Do NOT repeat the same reference multiple times
+- **NO URLS**: Do NOT include "Retrieved from" or any URLs
+- **NO TITLES**: Do NOT include the article title in the reference
 - **FORMAT**: Add reference as a single line at the very end of `article.md`, after the article body
 
 **Example format:**
 ```
-Source: Author, A., Author, B., & Author, C. (Year). Article Title. Journal Name. Retrieved from https://example.com/article
+Source: Author, A., Author, B., & Author, C. (Year). Journal Name.
 ```
 
 **Where to add:** Insert the reference at the very end of the `article.md` content, after all paragraphs and before closing the code block.
