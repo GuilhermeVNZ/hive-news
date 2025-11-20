@@ -439,6 +439,7 @@ fn select_article_image(
 fn load_airesearch_articles() -> Result<Vec<Article>, String> {
     let registry_path = path_resolver::resolve_workspace_path("articles_registry.json");
     let images_base_dir = path_resolver::resolve_workspace_path("images");
+    let output_base_dir = path_resolver::resolve_workspace_path("output/AIResearch");
 
     let registry = ArticleRegistry::load(&registry_path).map_err(|err| {
         format!(
@@ -450,7 +451,11 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
 
     let mut articles_with_keys: Vec<(DateTime<Utc>, bool, String, Article)> = Vec::new();
     let mut category_pools: HashMap<String, CategoryImages> = HashMap::new();
+    
+    // Coletar IDs de artigos já processados do registry para evitar duplicatas
+    let mut processed_ids: HashSet<String> = HashSet::new();
 
+    // PRIMEIRO: Processar artigos do registry (prioridade)
     for metadata in registry.articles.values() {
         if !matches!(
             metadata.status,
@@ -613,6 +618,156 @@ fn load_airesearch_articles() -> Result<Vec<Article>, String> {
         };
 
         articles_with_keys.push((published_at_dt, featured, metadata.id.clone(), article));
+        processed_ids.insert(metadata.id.clone());
+    }
+
+    // SEGUNDO: Processar pastas em output/AIResearch que NÃO estão no registry
+    // Isso garante que artigos antigos ou não registrados também apareçam
+    if output_base_dir.is_dir() {
+        if let Ok(entries) = fs::read_dir(&output_base_dir) {
+            for entry in entries.flatten() {
+                if let Ok(file_type) = entry.file_type() {
+                    if file_type.is_dir() {
+                        let folder_name = entry.file_name();
+                        let folder_name_str = folder_name.to_string_lossy();
+                        let output_dir = output_base_dir.join(&folder_name);
+                        
+                        // Extrair ID do nome da pasta (formato: YYYY-MM-DD_source_ID ou apenas ID)
+                        let article_id = folder_name_str
+                            .split('_')
+                            .last()
+                            .unwrap_or(&folder_name_str)
+                            .to_string();
+                        
+                        // Pular se já foi processado do registry
+                        if processed_ids.contains(&article_id) {
+                            continue;
+                        }
+                        
+                        // Verificar se tem os arquivos necessários
+                        let article_content = match read_first_existing_file(&output_dir, &ARTICLE_FILES) {
+                            Some(content) => content.trim().to_string(),
+                            None => continue,
+                        };
+                        
+                        if article_content.is_empty() {
+                            continue;
+                        }
+                        
+                        // Tentar ler metadados dos arquivos
+                        let title_raw = read_optional_file(&output_dir, "title.txt");
+                        let subtitle_raw = read_optional_file(&output_dir, "subtitle.txt");
+                        let categories_raw = read_optional_file(&output_dir, "image_categories.txt");
+                        let slug_raw = read_optional_file(&output_dir, "slug.txt");
+                        let source_raw = read_optional_file(&output_dir, "source.txt");
+                        let linkedin_raw = read_optional_file(&output_dir, "linkedin.txt");
+                        let x_raw = read_optional_file(&output_dir, "x.txt");
+                        
+                        let title = if !title_raw.trim().is_empty() {
+                            title_raw.trim().to_string()
+                        } else {
+                            // Tentar extrair do nome da pasta como fallback
+                            folder_name_str.to_string()
+                        };
+                        
+                        let fallback_slug = generate_slug(&title);
+                        let slug = if !slug_raw.trim().is_empty() {
+                            slug_raw.trim().to_string()
+                        } else {
+                            fallback_slug.clone()
+                        };
+                        
+                        let categories_list = sanitize_categories(&categories_raw);
+                        let source_trimmed = source_raw.trim();
+                        
+                        let primary_category = map_source_to_category(
+                            source_trimmed,
+                            &categories_list,
+                            None,
+                        );
+                        
+                        let primary_category = if VALID_CATEGORIES.contains(&primary_category.as_str()) {
+                            primary_category
+                        } else {
+                            "ai".to_string()
+                        };
+                        
+                        let mut normalized_categories = Vec::new();
+                        for cat in categories_list.iter().take(3) {
+                            if VALID_CATEGORIES.contains(&cat.as_str()) && !normalized_categories.contains(cat) {
+                                normalized_categories.push(cat.clone());
+                            }
+                        }
+                        
+                        if !normalized_categories.contains(&primary_category) {
+                            normalized_categories.insert(0, primary_category.clone());
+                        }
+                        
+                        normalized_categories.truncate(3);
+                        
+                        if normalized_categories.is_empty() {
+                            normalized_categories.push(primary_category.clone());
+                        }
+                        
+                        let image_path = select_article_image(
+                            &normalized_categories,
+                            images_base_dir.as_path(),
+                            &article_id,
+                            &mut category_pools,
+                        );
+                        
+                        let author = if source_trimmed.is_empty() {
+                            "AI Research".to_string()
+                        } else {
+                            source_trimmed.to_string()
+                        };
+                        
+                        let subtitle_trimmed = subtitle_raw.trim().to_string();
+                        
+                        // Usar data de modificação da pasta como published_at
+                        let published_at_dt = output_dir
+                            .metadata()
+                            .ok()
+                            .and_then(|m| m.modified().ok())
+                            .and_then(|t| {
+                                t.duration_since(std::time::UNIX_EPOCH)
+                                    .ok()
+                                    .and_then(|d| DateTime::from_timestamp(d.as_secs() as i64, 0))
+                            })
+                            .unwrap_or_else(|| Utc::now());
+                        
+                        let published_at = published_at_dt.to_rfc3339();
+                        let linkedin_post = linkedin_raw.trim();
+                        let x_post = x_raw.trim();
+                        
+                        // Tentar obter source_url do registry se existir, senão usar arxiv_url/pdf_url
+                        let source_url = None; // Para artigos não no registry, não temos URL ainda
+                        
+                        let article = Article {
+                            id: article_id.clone(),
+                            slug,
+                            title,
+                            excerpt: compute_excerpt(&subtitle_trimmed, &article_content),
+                            article: article_content.clone(),
+                            published_at,
+                            author,
+                            category: primary_category,
+                            read_time: compute_read_time(&article_content),
+                            image_categories: normalized_categories.clone(),
+                            image_path,
+                            is_promotional: false,
+                            featured: false,
+                            hidden: false,
+                            linkedin_post: if linkedin_post.is_empty() { None } else { Some(linkedin_post.to_string()) },
+                            x_post: if x_post.is_empty() { None } else { Some(x_post.to_string()) },
+                            source_url,
+                        };
+                        
+                        articles_with_keys.push((published_at_dt, false, article_id, article));
+                    }
+                }
+            }
+        }
     }
 
     articles_with_keys.sort_by(|a, b| {
