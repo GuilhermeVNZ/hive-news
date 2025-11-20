@@ -8,7 +8,8 @@ import {
   X,
   LogOut,
   User,
-  Globe
+  Globe,
+  Megaphone
 } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
@@ -29,6 +30,7 @@ export default function Layout({ children }: LayoutProps) {
     { path: "/sites", icon: Globe, label: "Sites" },
     { path: "/writer", icon: FileCode, label: "Writer" },
     { path: "/educational", icon: FileCode, label: "Education" },
+    { path: "/promo", icon: Megaphone, label: "Promo" },
     { path: "/sources", icon: Newspaper, label: "Sources" },
     { path: "/logs", icon: FileText, label: "Logs" },
   ];

@@ -4056,6 +4056,7 @@ async fn main() -> anyhow::Result<()> {
             "/api/logs/articles/:id/hidden",
             put(routes::logs::set_hidden),
         )
+        .nest("/api/promo", routes::promo::routes())
         .route(
             "/api/logs/articles/:id/featured",
             put(routes::logs::set_featured),

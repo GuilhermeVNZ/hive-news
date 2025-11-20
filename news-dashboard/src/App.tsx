@@ -9,6 +9,7 @@ import Sources from "./pages/Sources";
 import Logs from "./pages/Logs";
 import Writer from "./pages/Writer";
 import Educational from "./pages/Educational";
+import Promo from "./pages/Promo";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                   <Route path="/sites" element={<Sites />} />
                   <Route path="/writer" element={<Writer />} />
                   <Route path="/educational" element={<Educational />} />
+                  <Route path="/promo" element={<Promo />} />
                   <Route path="/sources" element={<Sources />} />
                   <Route path="/logs" element={<Logs />} />
                 </Routes>

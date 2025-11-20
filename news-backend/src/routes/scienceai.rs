@@ -12,6 +12,7 @@ use std::{
 use tokio::sync::RwLock;
 
 use crate::utils::{article_registry::ArticleRegistry, path_resolver};
+use crate::routes::promo;
 use chrono::{DateTime, Utc};
 
 #[derive(Debug, Serialize)]
@@ -706,13 +707,42 @@ pub async fn get_articles(
         .map_err(|err| (StatusCode::INTERNAL_SERVER_ERROR, err))?;
 
     let articles_arc = snapshot.articles;
+    
+    // Load promotional articles for ScienceAI
+    let mut promo_articles: Vec<Article> = Vec::new();
+    if let Ok(promos) = promo::get_visible_promo_articles("scienceai").await {
+        for promo in promos {
+            // Convert promo article to ScienceAI Article format
+            let promo_article = Article {
+                id: format!("promo_{}", promo.id),
+                slug: format!("promo-{}", promo.id),
+                title: promo.title,
+                category: "featured".to_string(),
+                image: promo.image_url.clone(),
+                image_carousel: promo.image_url.clone(),
+                image_article: promo.image_url,
+                image_categories: vec!["promo".to_string(), "featured".to_string()],
+                content: promo.content,
+                excerpt: Some(promo.subtitle),
+                published_at: promo.created_at,
+                author: Some("Promo".to_string()),
+                featured: true,
+                external_link: promo.external_link,
+            };
+            promo_articles.push(promo_article);
+        }
+    }
+
+    // Combine regular articles with promo articles
+    let mut all_articles: Vec<Article> = promo_articles;
+    all_articles.extend(articles_arc.as_ref().clone());
 
     let filtered: Vec<&Article> = if let Some(category) = query.category {
         let filter = category.to_lowercase();
         if filter == "all" {
-            articles_arc.iter().collect()
+            all_articles.iter().collect()
         } else {
-            articles_arc
+            all_articles
                 .iter()
                 .filter(|article| {
                     article.category == filter
@@ -724,7 +754,7 @@ pub async fn get_articles(
                 .collect()
         }
     } else {
-        articles_arc.iter().collect()
+        all_articles.iter().collect()
     };
 
     let featured_count = filtered.iter().filter(|article| article.featured).count();

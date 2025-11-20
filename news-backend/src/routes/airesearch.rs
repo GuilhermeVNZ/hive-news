@@ -18,6 +18,7 @@ use std::{
 use tokio::sync::RwLock;
 
 use crate::utils::{article_registry::ArticleRegistry, path_resolver};
+use crate::routes::promo;
 
 #[derive(Debug, Serialize, Clone)]
 struct Article {
@@ -892,10 +893,10 @@ fn article_matches_search(article: &Article, search_words: &[String]) -> bool {
         "{} {} {} {} {} {}",
         article.title,
         article.id,
-        article.excerpt.as_deref().unwrap_or(""),
+        article.excerpt.as_ref().map(|s| s.as_str()).unwrap_or(""),
         article.category,
         topics,
-        article.article.as_deref().unwrap_or("")
+        article.article.as_ref().map(|s| s.as_str()).unwrap_or("")
     ));
 
     // Verificar se todas as palavras de busca estão presentes
@@ -925,15 +926,40 @@ pub async fn get_articles(
         .map_err(|err| (StatusCode::INTERNAL_SERVER_ERROR, err))?;
 
     let articles_arc = snapshot.articles;
+    
+    // Load promotional articles for AIResearch
+    let mut promo_articles: Vec<Article> = Vec::new();
+    if let Ok(promos) = promo::get_visible_promo_articles("airesearch").await {
+        for promo in promos {
+            // Convert promo article to regular Article format
+            let promo_article = Article {
+                id: format!("promo_{}", promo.id),
+                slug: format!("promo-{}", promo.id),
+                title: promo.title,
+                excerpt: promo.subtitle,
+                article: promo.content,
+                published_at: promo.created_at,
+                category: "featured".to_string(),
+                image_categories: vec!["promo".to_string(), "featured".to_string()],
+                featured: true,
+                source_url: promo.external_link,
+            };
+            promo_articles.push(promo_article);
+        }
+    }
+
+    // Combine regular articles with promo articles
+    let mut all_articles = promo_articles;
+    all_articles.extend(articles_arc.as_ref().clone());
 
     // Primeiro, filtrar por categoria se especificada
     let category_filtered: Vec<Article> = if let Some(category) = query.category {
         let filter = category.to_lowercase();
         if filter == "all" {
-            articles_arc.as_ref().clone()
+            all_articles
         } else {
-            articles_arc
-                .iter()
+            all_articles
+                .into_iter()
                 .filter(|article| {
                     article.category == filter
                         || article
@@ -941,11 +967,10 @@ pub async fn get_articles(
                             .iter()
                             .any(|cat| cat.eq_ignore_ascii_case(&filter))
                 })
-                .cloned()
                 .collect()
         }
     } else {
-        articles_arc.as_ref().clone()
+        all_articles
     };
 
     // Segundo, filtrar por busca de texto se especificada
