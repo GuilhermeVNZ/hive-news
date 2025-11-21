@@ -65,8 +65,6 @@ const nextConfig = {
       'lucide-react',
       'recharts',
     ],
-    // Otimização de CSS - remove CSS não usado (reduz 10.6 KiB)
-    optimizeCss: true,
     // Otimização de servidor
     serverActions: {
       bodySizeLimit: '2mb',
@@ -74,9 +72,6 @@ const nextConfig = {
     // Aumentar limite de cache do Next.js para payloads grandes
     isrMemoryCacheSize: 52428800, // 50MB (padrão é 50MB, mas garantir)
   },
-  
-  // Otimização de produção
-  swcMinify: true,
   
   // Configuração de browsers modernos - remove JavaScript legado
   transpilePackages: [],
