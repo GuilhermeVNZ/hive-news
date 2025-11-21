@@ -22,23 +22,25 @@ function buildArticlesUrl(
   offset?: number,
   searchQuery?: string
 ): string {
-  // Use relative URL to leverage Next.js proxy
-  const url = new URL("/api/airesearch/articles", 'http://localhost');
+  // Build query parameters
+  const params = new URLSearchParams();
   
   if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
-    url.searchParams.set("category", categoryFilter);
+    params.set("category", categoryFilter);
   }
   if (limit !== undefined) {
-    url.searchParams.set("limit", limit.toString());
+    params.set("limit", limit.toString());
   }
   if (offset !== undefined) {
-    url.searchParams.set("offset", offset.toString());
+    params.set("offset", offset.toString());
   }
   if (searchQuery && searchQuery.trim()) {
-    url.searchParams.set("q", searchQuery.trim());
+    params.set("q", searchQuery.trim());
   }
   
-  return url.pathname + url.search;
+  // Return path with query string
+  const queryString = params.toString();
+  return `/api/airesearch/articles${queryString ? `?${queryString}` : ''}`;
 }
 
 export async function getArticles(
@@ -47,7 +49,15 @@ export async function getArticles(
   offset: number = 0,
   searchQuery?: string
 ): Promise<{ articles: Article[]; hasMore: boolean; total: number }> {
-  const url = buildArticlesUrl(categoryFilter, limit, offset, searchQuery);
+  const relativePath = buildArticlesUrl(categoryFilter, limit, offset, searchQuery);
+  
+  // Check if we're running on the server (SSR/SSG) or client
+  const isServer = typeof window === 'undefined';
+  const url = isServer 
+    ? `http://backend:3005${relativePath}` // Use internal Docker service name on server
+    : relativePath; // Use relative URL on client (leverages Next.js proxy)
+  
+  console.log(`[AIResearch] Fetching articles - Server: ${isServer}, URL: ${url}`);
   
   // Cache otimizado: 5 minutos para lista de artigos (dados mudam com frequência moderada)
   // Reduz TTFB de ~500ms para ~100ms em requisições subsequentes
@@ -72,11 +82,17 @@ export async function getArticles(
 }
 
 export async function findArticleBySlug(slug: string): Promise<Article | null> {
-  // Use relative URL to leverage Next.js proxy
-  const url = `/api/airesearch/articles/${encodeURIComponent(slug)}`;
-
   console.log(`[AIResearch] Fetching article by slug: ${slug}`);
-  console.log(`[AIResearch] URL: ${url}`);
+  
+  const relativePath = `/api/airesearch/articles/${encodeURIComponent(slug)}`;
+  
+  // Check if we're running on the server (SSR/SSG) or client
+  const isServer = typeof window === 'undefined';
+  const url = isServer 
+    ? `http://backend:3005${relativePath}` // Use internal Docker service name on server
+    : relativePath; // Use relative URL on client (leverages Next.js proxy)
+  
+  console.log(`[AIResearch] Server: ${isServer}, URL: ${url}`);
 
   try {
     const response = await fetch(url, {
