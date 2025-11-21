@@ -175,6 +175,7 @@ impl HtmlCollector {
             "html_mistral_ai",   // 308 redirect, precisa JS
             "html_character_ai", // 308 redirect, precisa JS
             "html_intel_ai",     // 403, precisa JS
+            "html_reuters_ai",   // Reuters AI - precisa JS para carregar artigos
             // Robótica - sites com popups de cookies
             "html_robot_report", // Tem popups de cookies antes de acessar notícias
             "html_boston_dynamics",
@@ -333,6 +334,7 @@ impl HtmlCollector {
             "perplexity.ai",
             "venturebeat.com",
             "time.com",
+            "reuters.com",        // Reuters - precisa JS para carregar artigos
             // Robótica
             "therobotreport.com", // Tem popups de cookies
             "bostondynamics.com",

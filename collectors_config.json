@@ -1165,7 +1165,26 @@
       "config": {
         "max_results": 5
       }
+    },
+    {
+      "id": "html_reuters_ai",
+      "name": "Reuters AI Technology",
+      "enabled": true,
+      "api_key": null,
+      "collector_type": "html",
+      "base_url": "https://www.reuters.com/technology/artificial-intelligence/",
+      "selectors": {
+        "article": "article, .story-card, .media-story-card, .story-item, [data-testid='MediaStoryCard']",
+        "content": ".article-body, .story-body, .article-content, .content, main article",
+        "link": "a[href*='/technology/artificial-intelligence/'], a[href*='/technology/'], a[data-testid='Heading']",
+        "title": "h1, h2, h3, .headline, .story-title, [data-testid='Heading']"
+      },
+      "config": {
+        "max_results": 10,
+        "needs_antibot_headers": true,
+        "force_js": true
+      }
     }
   ],
-  "updated_at": "2025-11-13T03:09:12.473390049+00:00"
+  "updated_at": "2025-11-21T15:30:00.000000000+00:00"
 }

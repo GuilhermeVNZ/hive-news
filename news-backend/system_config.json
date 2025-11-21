@@ -1341,6 +1341,25 @@
             "link": "a[href*='unitree.com/news'], a[href*='/news/']",
             "title": "h1, h2, h3, .title, .post-title, .article-title, .news-title"
           }
+        },
+        {
+          "api_key": null,
+          "base_url": "https://www.reuters.com/technology/artificial-intelligence/",
+          "collector_type": "html",
+          "config": {
+            "max_results": 10,
+            "needs_antibot_headers": true,
+            "force_js": true
+          },
+          "enabled": true,
+          "id": "html_reuters_ai",
+          "name": "Reuters AI Technology",
+          "selectors": {
+            "article": "article, .story-card, .media-story-card, .story-item, [data-testid='MediaStoryCard']",
+            "content": ".article-body, .story-body, .article-content, .content, main article",
+            "link": "a[href*='/technology/artificial-intelligence/'], a[href*='/technology/'], a[data-testid='Heading']",
+            "title": "h1, h2, h3, .headline, .story-title, [data-testid='Heading']"
+          }
         }
       ],
       "domain": "scienceai.news",
