@@ -63,6 +63,11 @@ services:
     restart: unless-stopped
 
   airesearch:
+    build:
+      context: .
+      dockerfile: docker/frontend.next.Dockerfile
+      args:
+        APP_DIR: apps/frontend-next/airesearch
     environment:
       NEWS_BASE_DIR: /data
       BACKEND_URL: http://backend:3005
@@ -71,15 +76,12 @@ services:
       - ./images:/data/images:ro
       - ./articles_registry.json:/data/articles_registry.json:ro
       - ./images:/app/public/images:ro
-    build:
-      context: .
-      dockerfile: docker/frontend.next.Dockerfile
-      args:
-        APP_DIR: apps/frontend-next/airesearch
     depends_on:
       - backend
     ports:
       - "3003:80"
+    links:
+      - backend
     restart: unless-stopped
 
   scienceai:
