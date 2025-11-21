@@ -15,7 +15,7 @@ use crate::utils::{article_registry::ArticleRegistry, path_resolver};
 use crate::routes::promo;
 use chrono::{DateTime, Utc};
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Clone)]
 struct Article {
     id: String,
     slug: String,

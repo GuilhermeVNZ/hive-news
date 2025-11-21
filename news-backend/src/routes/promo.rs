@@ -2,7 +2,7 @@ use axum::{
     extract::{Multipart, Path},
     http::StatusCode,
     response::Json,
-    routing::{delete, get, post, put},
+    routing::{get, put},
     Router,
 };
 use serde::{Deserialize, Serialize};
@@ -266,6 +266,7 @@ async fn update_article(
             }
             "image" => {
                 if let Some(filename) = field.file_name() {
+                    let filename = filename.to_string(); // Clone filename before moving field
                     let image_data = field.bytes().await.map_err(|e| {
                         (StatusCode::BAD_REQUEST, format!("Failed to read image data: {}", e))
                     })?.to_vec();
