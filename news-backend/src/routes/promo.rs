@@ -21,6 +21,7 @@ pub struct PromoArticle {
     pub content: String,
     pub image_url: Option<String>,
     pub external_link: Option<String>,
+    pub category: String,
     pub featured: bool,
     pub hidden: bool,
     pub created_at: String,
@@ -34,6 +35,7 @@ pub struct CreatePromoRequest {
     pub subtitle: String,
     pub content: String,
     pub external_link: Option<String>,
+    pub category: Option<String>,
     pub featured: Option<bool>,
 }
 
@@ -71,6 +73,7 @@ async fn create_article(mut multipart: Multipart) -> Result<Json<serde_json::Val
     let mut subtitle = String::new();
     let mut content = String::new();
     let mut external_link: Option<String> = None;
+    let mut category = "featured".to_string(); // Default category
     let mut featured = true; // Default to featured for promo articles
     let mut image_data: Option<Vec<u8>> = None;
     let mut image_filename: Option<String> = None;
@@ -125,6 +128,11 @@ async fn create_article(mut multipart: Multipart) -> Result<Json<serde_json::Val
                 if !link.trim().is_empty() {
                     external_link = Some(link.trim().to_string());
                 }
+            }
+            "category" => {
+                category = field.text().await.map_err(|e| {
+                    (StatusCode::BAD_REQUEST, format!("Failed to read category: {}", e))
+                })?;
             }
             "featured" => {
                 let featured_str = field.text().await.map_err(|e| {
@@ -201,6 +209,7 @@ async fn create_article(mut multipart: Multipart) -> Result<Json<serde_json::Val
         content: content.trim().to_string(),
         image_url,
         external_link,
+        category: category.trim().to_string(),
         featured,
         hidden: false,
         created_at: now.clone(),

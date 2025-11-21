@@ -940,9 +940,9 @@ pub async fn get_articles(
                 article: promo.content,
                 published_at: promo.created_at,
                 author: "Promo".to_string(),
-                category: "featured".to_string(),
+                category: promo.category.clone(),
                 read_time: 5, // Default read time for promo articles
-                image_categories: vec!["promo".to_string(), "featured".to_string()],
+                image_categories: vec!["promo".to_string(), promo.category.clone()],
                 image_path: promo.image_url,
                 is_promotional: true,
                 featured: true,

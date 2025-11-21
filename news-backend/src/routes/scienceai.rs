@@ -717,7 +717,7 @@ pub async fn get_articles(
                 id: format!("promo_{}", promo.id),
                 slug: format!("promo-{}", promo.id),
                 title: promo.title,
-                category: "featured".to_string(),
+                category: promo.category.clone(),
                 image: promo.image_url.clone(),
                 image_carousel: promo.image_url.clone(),
                 image_article: promo.image_url,
@@ -727,7 +727,7 @@ pub async fn get_articles(
                 author: "Promo".to_string(),
                 read_time: 5, // Default read time for promo articles
                 featured: true,
-                image_categories: vec!["promo".to_string(), "featured".to_string()],
+                image_categories: vec!["promo".to_string(), promo.category.clone()],
             };
             promo_articles.push(promo_article);
         }

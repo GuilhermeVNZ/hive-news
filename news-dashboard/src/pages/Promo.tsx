@@ -17,6 +17,7 @@ interface PromoArticle {
   content: string;
   image_url?: string;
   external_link?: string;
+  category?: string;
   featured: boolean;
   hidden: boolean;
   created_at: string;
@@ -36,6 +37,7 @@ export default function Promo() {
     subtitle: '',
     content: '',
     external_link: '',
+    category: 'featured',
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
@@ -69,6 +71,7 @@ export default function Promo() {
       subtitle: '',
       content: '',
       external_link: '',
+      category: 'featured',
     });
     setImageFile(null);
     setImagePreview('');
@@ -118,6 +121,7 @@ export default function Promo() {
       // Preserve paragraph structure - only trim start/end, keep internal formatting
       formDataToSend.append('content', formData.content.replace(/^\s+|\s+$/g, ''));
       formDataToSend.append('external_link', formData.external_link.trim());
+      formDataToSend.append('category', formData.category);
       formDataToSend.append('featured', 'true'); // Always featured for promo articles
       
       if (imageFile) {
@@ -191,6 +195,7 @@ export default function Promo() {
       subtitle: article.subtitle,
       content: article.content,
       external_link: article.external_link || '',
+      category: article.category || 'featured',
     });
     setImagePreview(article.image_url || '');
     setEditingId(article.id);
@@ -232,6 +237,27 @@ export default function Promo() {
                   <SelectContent>
                     <SelectItem value="airesearch">AIResearch (Featured Articles)</SelectItem>
                     <SelectItem value="scienceai">ScienceAI (Carousel)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="category">Category</Label>
+                <Select value={formData.category} onValueChange={(value: string) => 
+                  setFormData(prev => ({ ...prev, category: value }))
+                }>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="featured">Featured</SelectItem>
+                    <SelectItem value="science">Science</SelectItem>
+                    <SelectItem value="ai">AI</SelectItem>
+                    <SelectItem value="quantum">Quantum Computing</SelectItem>
+                    <SelectItem value="hardware">Hardware</SelectItem>
+                    <SelectItem value="games">Games</SelectItem>
+                    <SelectItem value="news">News</SelectItem>
+                    <SelectItem value="research">Research</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
