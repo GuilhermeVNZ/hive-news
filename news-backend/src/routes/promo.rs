@@ -1,14 +1,12 @@
 use axum::{
-    extract::{Multipart, Path, Query},
+    extract::{Multipart, Path},
     http::StatusCode,
     response::Json,
     routing::{delete, get, post, put},
     Router,
 };
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::fs;
-use std::path::PathBuf;
 use tokio::fs as async_fs;
 use uuid::Uuid;
 

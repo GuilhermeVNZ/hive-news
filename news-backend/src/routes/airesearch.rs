@@ -893,10 +893,10 @@ fn article_matches_search(article: &Article, search_words: &[String]) -> bool {
         "{} {} {} {} {} {}",
         article.title,
         article.id,
-        article.excerpt.as_ref().map(|s| s.as_str()).unwrap_or(""),
+        &article.excerpt,
         article.category,
         topics,
-        article.article.as_ref().map(|s| s.as_str()).unwrap_or("")
+        &article.article
     ));
 
     // Verificar se todas as palavras de busca estão presentes
@@ -939,9 +939,16 @@ pub async fn get_articles(
                 excerpt: promo.subtitle,
                 article: promo.content,
                 published_at: promo.created_at,
+                author: "Promo".to_string(),
                 category: "featured".to_string(),
+                read_time: 5, // Default read time for promo articles
                 image_categories: vec!["promo".to_string(), "featured".to_string()],
+                image_path: promo.image_url,
+                is_promotional: true,
                 featured: true,
+                hidden: false,
+                linkedin_post: None,
+                x_post: None,
                 source_url: promo.external_link,
             };
             promo_articles.push(promo_article);

@@ -721,13 +721,13 @@ pub async fn get_articles(
                 image: promo.image_url.clone(),
                 image_carousel: promo.image_url.clone(),
                 image_article: promo.image_url,
-                image_categories: vec!["promo".to_string(), "featured".to_string()],
+                excerpt: promo.subtitle,
                 content: promo.content,
-                excerpt: Some(promo.subtitle),
-                published_at: promo.created_at,
-                author: Some("Promo".to_string()),
+                date: promo.created_at,
+                author: "Promo".to_string(),
+                read_time: 5, // Default read time for promo articles
                 featured: true,
-                external_link: promo.external_link,
+                image_categories: vec!["promo".to_string(), "featured".to_string()],
             };
             promo_articles.push(promo_article);
         }
@@ -735,7 +735,7 @@ pub async fn get_articles(
 
     // Combine regular articles with promo articles
     let mut all_articles: Vec<Article> = promo_articles;
-    all_articles.extend(articles_arc.as_ref().clone());
+    all_articles.extend(articles_arc.as_ref().iter().cloned());
 
     let filtered: Vec<&Article> = if let Some(category) = query.category {
         let filter = category.to_lowercase();
