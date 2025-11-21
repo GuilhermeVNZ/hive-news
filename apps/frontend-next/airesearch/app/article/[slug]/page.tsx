@@ -71,10 +71,9 @@ const categoryLabels: Record<string, string> = {
   sound: "Sound",
 };
 
-// ISR (Incremental Static Regeneration) para páginas de artigos
-// Páginas estáticas geradas em build, revalidadas em background a cada 1 hora
-// Mantém TTFB baixo e visual idêntico
-export const revalidate = 3600; // Revalida a cada 1 hora (ISR)
+// Dynamic rendering - páginas de artigos são renderizadas em runtime
+// Evita problemas de build time quando backend não está disponível
+export const dynamic = 'force-dynamic';
 
 // Generate metadata for SEO
 export async function generateMetadata({

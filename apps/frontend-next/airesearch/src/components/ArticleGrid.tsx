@@ -72,7 +72,7 @@ const ArticleGrid = ({
       setTotal(initialTotal);
       setDisplayedCount(6);
     }
-  }, [searchQuery]);
+  }, [searchQuery, initialArticles, initialHasMore, initialTotal]);
 
   // Reset apenas para artigos iniciais quando eles mudam (primeira carga)
   useEffect(() => {

@@ -46,7 +46,7 @@ services:
   dashboard:
     environment:
       NEWS_BASE_DIR: /data
-      VITE_API_URL: https://backend.scienceai.news
+      VITE_API_URL: http://backend:3005
     volumes:
       - ./output:/data/output:ro
       - ./images:/data/images:ro

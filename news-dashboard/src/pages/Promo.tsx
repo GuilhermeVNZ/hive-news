@@ -115,7 +115,8 @@ export default function Promo() {
       formDataToSend.append('site', formData.site);
       formDataToSend.append('title', formData.title.trim());
       formDataToSend.append('subtitle', formData.subtitle.trim());
-      formDataToSend.append('content', formData.content.trim());
+      // Preserve paragraph structure - only trim start/end, keep internal formatting
+      formDataToSend.append('content', formData.content.replace(/^\s+|\s+$/g, ''));
       formDataToSend.append('external_link', formData.external_link.trim());
       formDataToSend.append('featured', 'true'); // Always featured for promo articles
       
@@ -326,11 +327,17 @@ export default function Promo() {
               id="content"
               value={formData.content}
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-              placeholder="Enter the full article content..."
+              placeholder="Enter the full article content... (Separate paragraphs with double line breaks)"
               rows={8}
               maxLength={5000}
+              style={{ whiteSpace: 'pre-wrap' }}
             />
-            <p className="text-xs text-muted-foreground mt-1">{formData.content.length}/5000 characters</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              {formData.content.length}/5000 characters
+              {formData.content.includes('\n\n') && (
+                <span className="text-green-600 ml-2">✓ Paragraphs detected</span>
+              )}
+            </p>
           </div>
 
           <div className="flex gap-3">

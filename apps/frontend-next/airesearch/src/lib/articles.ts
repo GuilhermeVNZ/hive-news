@@ -14,17 +14,17 @@ interface ArticleDetailResponse {
   article: Article;
 }
 
-function getBackendUrl(): string {
-  return process.env.BACKEND_URL ?? "http://localhost:3005";
-}
+// Removed unused getBackendUrl function - now using relative URLs with Next.js proxy
 
 function buildArticlesUrl(
   categoryFilter?: string,
   limit?: number,
   offset?: number,
   searchQuery?: string
-): URL {
-  const url = new URL("/api/airesearch/articles", getBackendUrl());
+): string {
+  // Use relative URL to leverage Next.js proxy
+  const url = new URL("/api/airesearch/articles", 'http://localhost');
+  
   if (categoryFilter && categoryFilter.toLowerCase() !== "all") {
     url.searchParams.set("category", categoryFilter);
   }
@@ -37,7 +37,8 @@ function buildArticlesUrl(
   if (searchQuery && searchQuery.trim()) {
     url.searchParams.set("q", searchQuery.trim());
   }
-  return url;
+  
+  return url.pathname + url.search;
 }
 
 export async function getArticles(
@@ -50,7 +51,7 @@ export async function getArticles(
   
   // Cache otimizado: 5 minutos para lista de artigos (dados mudam com frequência moderada)
   // Reduz TTFB de ~500ms para ~100ms em requisições subsequentes
-  const response = await fetch(url.toString(), {
+  const response = await fetch(url, {
     next: {
       revalidate: 300, // Cache de 5 minutos (ISR)
     },
@@ -71,31 +72,44 @@ export async function getArticles(
 }
 
 export async function findArticleBySlug(slug: string): Promise<Article | null> {
-  const url = new URL(
-    `/api/airesearch/articles/${encodeURIComponent(slug)}`,
-    getBackendUrl(),
-  );
+  // Use relative URL to leverage Next.js proxy
+  const url = `/api/airesearch/articles/${encodeURIComponent(slug)}`;
 
-  // ISR (Incremental Static Regeneration) com cache agressivo
-  // Artigos individuais são estáticos e mudam raramente
-  // Revalida apenas em background, mantendo TTFB baixo
-  const response = await fetch(url.toString(), {
-    next: {
-      revalidate: 3600, // Revalida a cada 1 hora (artigos individuais mudam menos)
-      tags: ['article', slug],
-    },
-  });
+  console.log(`[AIResearch] Fetching article by slug: ${slug}`);
+  console.log(`[AIResearch] URL: ${url}`);
 
-  if (response.status === 404) {
-    return null;
+  try {
+    const response = await fetch(url, {
+      next: {
+        revalidate: 3600, // Revalida a cada 1 hora
+        tags: ['article', slug],
+      },
+    });
+
+    console.log(`[AIResearch] Response status: ${response.status}`);
+
+    if (response.status === 404) {
+      console.log(`[AIResearch] Article not found: ${slug}`);
+      return null;
+    }
+
+    if (!response.ok) {
+      console.error(`[AIResearch] Failed to load article: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `[AIResearch] Failed to load article: ${response.status} ${response.statusText}`,
+      );
+    }
+
+    const payload = (await response.json()) as ArticleDetailResponse;
+    console.log(`[AIResearch] Successfully loaded article: ${payload.article.title}`);
+    return payload.article ?? null;
+  } catch (error) {
+    console.error(`[AIResearch] Error fetching article: ${error}`);
+    // During build time, return null instead of throwing
+    if (error instanceof Error && error.message.includes('ECONNREFUSED')) {
+      console.log(`[AIResearch] Build time error, returning null for slug: ${slug}`);
+      return null;
+    }
+    throw error;
   }
-
-  if (!response.ok) {
-    throw new Error(
-      `[AIResearch] Failed to load article: ${response.status} ${response.statusText}`,
-    );
-  }
-
-  const payload = (await response.json()) as ArticleDetailResponse;
-  return payload.article ?? null;
 }
