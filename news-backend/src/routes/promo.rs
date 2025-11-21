@@ -98,9 +98,25 @@ async fn create_article(mut multipart: Multipart) -> Result<Json<serde_json::Val
                 })?;
             }
             "content" => {
-                content = field.text().await.map_err(|e| {
+                let raw_content = field.text().await.map_err(|e| {
                     (StatusCode::BAD_REQUEST, format!("Failed to read content: {}", e))
                 })?;
+                
+                // Normalize paragraph breaks: ensure double line breaks between paragraphs
+                // This handles cases where the frontend might send single line breaks
+                content = raw_content
+                    .lines()
+                    .collect::<Vec<&str>>()
+                    .split(|line| line.trim().is_empty())
+                    .filter(|paragraph| !paragraph.is_empty())
+                    .map(|paragraph| paragraph.join(" ").trim().to_string())
+                    .filter(|paragraph| !paragraph.is_empty())
+                    .collect::<Vec<String>>()
+                    .join("\n\n");
+                
+                println!("[PROMO DEBUG] Raw content: {:?}", raw_content);
+                println!("[PROMO DEBUG] Normalized content: {:?}", content);
+                println!("[PROMO DEBUG] Contains \\n\\n: {}", content.contains("\n\n"));
             }
             "external_link" => {
                 let link = field.text().await.map_err(|e| {

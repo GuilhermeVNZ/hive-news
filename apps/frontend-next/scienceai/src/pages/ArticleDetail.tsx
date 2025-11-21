@@ -254,11 +254,18 @@ const ArticleDetail = () => {
 
               {/* Article Body */}
               <div className="prose prose-lg max-w-none">
-                {formatParagraphs(article.content.split("\n\n")).map((paragraph, index) => (
-                  <p key={index} className="mb-4 text-foreground leading-relaxed text-justify">
-                    {paragraph}
-                  </p>
-                ))}
+                {(() => {
+                  console.log("[ScienceAI DEBUG] Article content:", JSON.stringify(article.content));
+                  console.log("[ScienceAI DEBUG] Content length:", article.content.length);
+                  console.log("[ScienceAI DEBUG] Contains \\n\\n:", article.content.includes('\n\n'));
+                  const paragraphs = article.content.split("\n\n");
+                  console.log("[ScienceAI DEBUG] Split paragraphs:", paragraphs.length, paragraphs);
+                  return formatParagraphs(paragraphs).map((paragraph, index) => (
+                    <p key={index} className="mb-4 text-foreground leading-relaxed text-justify">
+                      {paragraph}
+                    </p>
+                  ));
+                })()}
               </div>
 
               {/* Related Articles */}
