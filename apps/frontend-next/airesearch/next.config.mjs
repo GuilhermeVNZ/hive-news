@@ -270,7 +270,7 @@ const nextConfig = {
   },
   
   async rewrites() {
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:3005';
+    const backendUrl = process.env.BACKEND_URL || 'http://backend:3005';
     
     // Lista de rotas válidas do backend - apenas essas serão feitas proxy
     // Isso previne erros de proxy para rotas de bots/scanners que não existem
