@@ -9,24 +9,26 @@ use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{
-    collections::{HashMap, HashSet, hash_map::Entry},
+    collections::{HashMap, HashSet, hash_map::Entry, hash_map::DefaultHasher},
     fs,
     path::Path as FsPath,
     sync::Arc,
     time::{Duration, UNIX_EPOCH},
+    hash::{Hash, Hasher},
 };
 use tokio::sync::RwLock;
+use lru::LruCache;
 
 use crate::utils::{article_registry::ArticleRegistry, path_resolver};
 use crate::routes::promo;
 
+// Struct otimizado para listagem (sem conteúdo completo)
 #[derive(Debug, Serialize, Clone)]
-struct Article {
+struct ArticleListItem {
     id: String,
     slug: String,
     title: String,
     excerpt: String,
-    article: String,
     #[serde(rename = "publishedAt")]
     published_at: String,
     author: String,
@@ -49,6 +51,59 @@ struct Article {
     source_url: Option<String>,
 }
 
+// Struct completo para artigo individual (com conteúdo)
+#[derive(Debug, Serialize, Clone)]
+struct Article {
+    id: String,
+    slug: String,
+    title: String,
+    excerpt: String,
+    article: String, // Conteúdo completo apenas para artigo individual
+    #[serde(rename = "publishedAt")]
+    published_at: String,
+    author: String,
+    category: String,
+    #[serde(rename = "readTime")]
+    read_time: u32,
+    #[serde(rename = "imageCategories")]
+    image_categories: Vec<String>,
+    #[serde(rename = "imagePath", skip_serializing_if = "Option::is_none")]
+    image_path: Option<String>,
+    #[serde(rename = "isPromotional")]
+    is_promotional: bool,
+    featured: bool,
+    hidden: bool,
+    #[serde(rename = "linkedinPost", skip_serializing_if = "Option::is_none")]
+    linkedin_post: Option<String>,
+    #[serde(rename = "xPost", skip_serializing_if = "Option::is_none")]
+    x_post: Option<String>,
+    #[serde(rename = "sourceUrl", skip_serializing_if = "Option::is_none")]
+    source_url: Option<String>,
+}
+
+impl From<Article> for ArticleListItem {
+    fn from(article: Article) -> Self {
+        Self {
+            id: article.id,
+            slug: article.slug,
+            title: article.title,
+            excerpt: article.excerpt,
+            published_at: article.published_at,
+            author: article.author,
+            category: article.category,
+            read_time: article.read_time,
+            image_categories: article.image_categories,
+            image_path: article.image_path,
+            is_promotional: article.is_promotional,
+            featured: article.featured,
+            hidden: article.hidden,
+            linkedin_post: article.linkedin_post,
+            x_post: article.x_post,
+            source_url: article.source_url,
+        }
+    }
+}
+
 #[derive(Debug, Deserialize)]
 pub struct ArticlesQuery {
     category: Option<String>,
@@ -63,15 +118,21 @@ struct CategoryImages {
 }
 
 struct CachedState {
-    articles: Arc<Vec<Article>>,
+    articles: Arc<Vec<ArticleListItem>>, // Cache otimizado sem conteúdo completo
+    full_articles: Arc<Vec<Article>>,    // Cache completo para busca individual
     registry_signature: u128,
 }
 
 struct CacheSnapshot {
-    articles: Arc<Vec<Article>>,
+    articles: Arc<Vec<ArticleListItem>>,
+    full_articles: Arc<Vec<Article>>,
 }
 
 static AIRESEARCH_CACHE: Lazy<RwLock<Option<CachedState>>> = Lazy::new(|| RwLock::new(None));
+
+// Cache de resultados de busca para melhor performance
+static SEARCH_CACHE: Lazy<RwLock<LruCache<u64, Arc<Vec<ArticleListItem>>>>> = 
+    Lazy::new(|| RwLock::new(LruCache::new(std::num::NonZeroUsize::new(100).unwrap())));
 
 const ARTICLE_FILES: [&str; 2] = ["article.md", "article.txt"];
 
@@ -835,6 +896,7 @@ async fn get_cache_snapshot() -> Result<CacheSnapshot, String> {
         {
             return Ok(CacheSnapshot {
                 articles: state.articles.clone(),
+                full_articles: state.full_articles.clone(),
             });
         }
     }
@@ -846,18 +908,24 @@ async fn get_cache_snapshot() -> Result<CacheSnapshot, String> {
     {
         return Ok(CacheSnapshot {
             articles: state.articles.clone(),
+            full_articles: state.full_articles.clone(),
         });
     }
 
-    let articles_vec = load_airesearch_articles()?;
+    let full_articles_vec = load_airesearch_articles()?;
+    let articles_vec: Vec<ArticleListItem> = full_articles_vec.iter()
+        .map(|article| ArticleListItem::from(article.clone()))
+        .collect();
 
     let state = CachedState {
         articles: Arc::new(articles_vec),
+        full_articles: Arc::new(full_articles_vec),
         registry_signature: signature,
     };
 
     let snapshot = CacheSnapshot {
         articles: state.articles.clone(),
+        full_articles: state.full_articles.clone(),
     };
 
     *cache_guard = Some(state);
@@ -868,6 +936,16 @@ async fn get_cache_snapshot() -> Result<CacheSnapshot, String> {
 pub async fn warm_cache() -> Result<(), String> {
     let _ = get_cache_snapshot().await?;
     Ok(())
+}
+
+// Função helper para gerar hash da query de busca
+fn get_query_hash(category: &Option<String>, query: &Option<String>, limit: usize, offset: usize) -> u64 {
+    let mut hasher = DefaultHasher::new();
+    category.hash(&mut hasher);
+    query.hash(&mut hasher);
+    limit.hash(&mut hasher);
+    offset.hash(&mut hasher);
+    hasher.finish()
 }
 
 // Função helper para normalizar texto para busca
@@ -882,21 +960,21 @@ fn normalize_for_search(text: &str) -> String {
 }
 
 // Função helper para verificar se um artigo contém todas as palavras de busca
-fn article_matches_search(article: &Article, search_words: &[String]) -> bool {
+// OTIMIZAÇÃO: Usa apenas campos essenciais (sem conteúdo completo)
+fn article_matches_search(article: &ArticleListItem, search_words: &[String]) -> bool {
     if search_words.is_empty() {
         return true;
     }
 
-    // Criar o texto de busca combinando todos os campos relevantes
+    // Criar o texto de busca combinando apenas campos essenciais (sem article content)
     let topics = article.image_categories.join(" ");
     let haystack = normalize_for_search(&format!(
-        "{} {} {} {} {} {}",
+        "{} {} {} {} {}",
         article.title,
         article.id,
         &article.excerpt,
         article.category,
-        topics,
-        &article.article
+        topics
     ));
 
     // Verificar se todas as palavras de busca estão presentes
@@ -921,6 +999,41 @@ fn article_matches_search(article: &Article, search_words: &[String]) -> bool {
 pub async fn get_articles(
     Query(query): Query<ArticlesQuery>,
 ) -> Result<impl IntoResponse, (StatusCode, String)> {
+    // Gerar hash da query para cache
+    let limit = query.limit.unwrap_or(50).min(200);
+    let offset = query.offset.unwrap_or(0);
+    let query_hash = get_query_hash(&query.category, &query.q, limit, offset);
+    
+    // Verificar cache de busca primeiro
+    {
+        let mut search_cache = SEARCH_CACHE.write().await;
+        if let Some(cached_results) = search_cache.get(&query_hash) {
+            let total = cached_results.len();
+            let has_more = offset + limit < total;
+            
+            // Adicionar headers de cache
+            let mut headers = HeaderMap::new();
+            headers.insert(
+                "Cache-Control",
+                HeaderValue::from_static("public, max-age=300, s-maxage=300, stale-while-revalidate=600"),
+            );
+            headers.insert(
+                "Vary",
+                HeaderValue::from_static("Accept-Encoding"),
+            );
+            
+            return Ok((headers, Json(json!({
+                "articles": cached_results.as_ref(),
+                "pagination": {
+                    "total": total,
+                    "limit": limit,
+                    "offset": offset,
+                    "hasMore": has_more
+                }
+            }))));
+        }
+    }
+
     let snapshot = get_cache_snapshot()
         .await
         .map_err(|err| (StatusCode::INTERNAL_SERVER_ERROR, err))?;
@@ -928,16 +1041,15 @@ pub async fn get_articles(
     let articles_arc = snapshot.articles;
     
     // Load promotional articles for AIResearch
-    let mut promo_articles: Vec<Article> = Vec::new();
+    let mut promo_articles: Vec<ArticleListItem> = Vec::new();
     if let Ok(promos) = promo::get_visible_promo_articles("airesearch").await {
         for promo in promos {
-            // Convert promo article to regular Article format
-            let promo_article = Article {
+            // Convert promo article to ArticleListItem format (sem conteúdo completo)
+            let promo_article = ArticleListItem {
                 id: format!("promo_{}", promo.id),
                 slug: format!("promo-{}", promo.id),
                 title: promo.title,
                 excerpt: promo.subtitle,
-                article: promo.content,
                 published_at: promo.created_at,
                 author: "Promo".to_string(),
                 category: promo.category.clone(),
@@ -960,7 +1072,7 @@ pub async fn get_articles(
     all_articles.extend(articles_arc.as_ref().clone());
 
     // Primeiro, filtrar por categoria se especificada
-    let category_filtered: Vec<Article> = if let Some(category) = query.category {
+    let category_filtered: Vec<ArticleListItem> = if let Some(category) = query.category {
         let filter = category.to_lowercase();
         if filter == "all" {
             all_articles
@@ -981,7 +1093,7 @@ pub async fn get_articles(
     };
 
     // Segundo, filtrar por busca de texto se especificada
-    let filtered: Vec<Article> = if let Some(search_query) = query.q {
+    let filtered: Vec<ArticleListItem> = if let Some(search_query) = query.q {
         let search_query = search_query.trim();
         println!("[AIResearch Search] Query received: '{}'", search_query);
         if search_query.is_empty() {
@@ -996,7 +1108,7 @@ pub async fn get_articles(
             println!("[AIResearch Search] Normalized search words: {:?}", search_words);
             println!("[AIResearch Search] Total articles before search: {}", category_filtered.len());
 
-            let search_results: Vec<Article> = category_filtered
+            let search_results: Vec<ArticleListItem> = category_filtered
                 .into_iter()
                 .filter(|article| article_matches_search(article, &search_words))
                 .collect();
@@ -1017,7 +1129,7 @@ pub async fn get_articles(
     let total = filtered.len();
     
     // Aplicar paginação
-    let paginated: Vec<Article> = filtered
+    let paginated: Vec<ArticleListItem> = filtered
         .into_iter()
         .skip(offset)
         .take(limit)
@@ -1027,6 +1139,12 @@ pub async fn get_articles(
         "[AIResearch API] Returning {}/{} articles (offset: {}, limit: {}), {} featured",
         paginated.len(), total, offset, limit, featured_count
     );
+
+    // Salvar resultado no cache de busca
+    {
+        let mut search_cache = SEARCH_CACHE.write().await;
+        search_cache.put(query_hash, Arc::new(paginated.clone()));
+    }
 
     // Adicionar headers de cache para melhor performance
     let mut headers = HeaderMap::new();
@@ -1058,7 +1176,7 @@ pub async fn get_article_by_slug(
         .await
         .map_err(|err| (StatusCode::INTERNAL_SERVER_ERROR, err))?;
 
-    if let Some(article) = snapshot.articles.iter().find(|article| {
+    if let Some(article) = snapshot.full_articles.iter().find(|article| {
         article.slug.eq_ignore_ascii_case(&normalized)
             || article.id.eq_ignore_ascii_case(&normalized)
     }) {
